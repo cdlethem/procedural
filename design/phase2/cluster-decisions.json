@@ -3237,6 +3237,197 @@
         "decision": "design/capabilities/p5-tenfold.md",
         "rationale": "Interpret explicit token commands into retained planar segments with stack-restored pose and branch depth."
       }
+    },
+    {
+      "id": "raster.seeded-pixel-grain",
+      "status": "reviewed_provisional",
+      "reason": "Reusable seeded raster brightness/alpha dependency for the requested survey coverage batch1; no generic shader or candidate reassignment.",
+      "admission_kind": "capability_dependency",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Straight ARGB8 raster, mode RGB_ADD or ALPHA_MULTIPLY, finite ordered range, positive exponent, uint32 rngState and maxWork.",
+        "outputs": "Detached same-size raster and next uint32 rngState.",
+        "invariants": "One LCG32 draw per row-major pixel, including transparent and identity cases; one correlated scalar for RGB or alpha; no host state or input mutation.",
+        "open_questions": [],
+        "review": "design/capabilities/seeded-pixel-grain.md",
+        "reviewer": "root"
+      },
+      "dependency_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root",
+        "decision": "design/capabilities/seeded-pixel-grain.md",
+        "rationale": "The artist can texture retained rasters and isolated alpha layers independently of drawing; existing raster composition does not generate grain.",
+        "motivating_candidates": [
+          {
+            "candidate_id": "2014/Generativos/cuadraditos#1",
+            "source_sha256": "93f6baf98a57d128b62bd7f1e0be2254a242d752f824e8758ed4d58fb710baa5",
+            "evidence_sha256": "1ca254ef707dc60333d80adc40d7b8042952927abd52072cf42e1d02eda3cb9a",
+            "dependency": "Independent deterministic raster perturbation semantics motivated by the reported brightness/alpha grain.",
+            "remainder": [
+              {
+                "component": "Source random stream or fragment coordinate hash and shader scheduling",
+                "disposition": "deferred",
+                "reason": "Library-owned explicit LCG stream replaces source replay; per-fragment overlap is not a flattened raster pass."
+              },
+              {
+                "component": "Drawing geometry, layer order, capture/display and artistic constants",
+                "disposition": "adapter",
+                "reason": "Host sketch owns scene and pixels; core consumes explicit raster data."
+              }
+            ]
+          },
+          {
+            "candidate_id": "2014/Generativos/minimalCirculines#1",
+            "source_sha256": "a11a36af89f724292eba862a15fc9740548e0d7ba3efb93307f79f5213d5f087",
+            "evidence_sha256": "8ab6e19ebb8dc74e4753a24fe13616590e3caeb166b2abd9d638df27eb1ede76",
+            "dependency": "Independent deterministic raster perturbation semantics motivated by the reported brightness/alpha grain.",
+            "remainder": [
+              {
+                "component": "Source random stream or fragment coordinate hash and shader scheduling",
+                "disposition": "deferred",
+                "reason": "Library-owned explicit LCG stream replaces source replay; per-fragment overlap is not a flattened raster pass."
+              },
+              {
+                "component": "Drawing geometry, layer order, capture/display and artistic constants",
+                "disposition": "adapter",
+                "reason": "Host sketch owns scene and pixels; core consumes explicit raster data."
+              }
+            ]
+          },
+          {
+            "candidate_id": "2018/Generativos/quadShadow#1",
+            "source_sha256": "033d71537b0fb4165ece4a266757350f75a4932afffcafd2ad837338b401ac8f",
+            "evidence_sha256": "7f8e1463ed9c88a7942b015c09dc04201a0becad80ce8db5e68fd21e866d1c61",
+            "dependency": "Independent deterministic raster perturbation semantics motivated by the reported brightness/alpha grain.",
+            "remainder": [
+              {
+                "component": "Source random stream or fragment coordinate hash and shader scheduling",
+                "disposition": "deferred",
+                "reason": "Library-owned explicit LCG stream replaces source replay; per-fragment overlap is not a flattened raster pass."
+              },
+              {
+                "component": "Drawing geometry, layer order, capture/display and artistic constants",
+                "disposition": "adapter",
+                "reason": "Host sketch owns scene and pixels; core consumes explicit raster data."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "field.displace-points-2d",
+      "status": "reviewed_provisional",
+      "reason": "Requested batch1 coordinate displacement; preserve field substitution.",
+      "admission_kind": "capability_dependency",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Points and paired finite samples, Cartesian/polar mode, bias/gain and budget.",
+        "outputs": "Detached ordered points and offsets.",
+        "invariants": "No resampling, mutation, state or topology change.",
+        "open_questions": [],
+        "review": "design/capabilities/field-displace-2d.md",
+        "reviewer": "root"
+      },
+      "dependency_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root",
+        "decision": "design/capabilities/field-displace-2d.md",
+        "rationale": "Reusable sampled-field conversion preserves sampler and mark substitution.",
+        "motivating_candidates": [
+          {
+            "candidate_id": "2017/Generativos/burbujas_ani#0",
+            "source_sha256": "17b1e0aa5dea249f361e0b07186813ed7cf6965c5263ede047a68ac7224cfe5d",
+            "evidence_sha256": "2f0a5fbb9a9a9e793ebc541526aeefde644cc7e54c5f9967078a2a759c036865",
+            "dependency": "Ordered two-channel displacement conversion.",
+            "remainder": [
+              {
+                "component": "Source noise algorithm and query schedule",
+                "disposition": "deferred",
+                "reason": "Caller samples explicit values; original source replay not implemented."
+              },
+              {
+                "component": "Geometry generation, connectivity and drawing",
+                "disposition": "adapter",
+                "reason": "Retained supplied points are transformed, not generated."
+              }
+            ]
+          },
+          {
+            "candidate_id": "2019/generativos/cirnoi#0",
+            "source_sha256": "cf649dbb32de9ca203974b056402ffab757df56e55e1b9c725c03650c47f77a3",
+            "evidence_sha256": "8bfc09e2c24a9bae746ee246934ee30c2ac6ad27fe35e879af966a76481cd255",
+            "dependency": "Ordered two-channel displacement conversion.",
+            "remainder": [
+              {
+                "component": "Source noise algorithm and query schedule",
+                "disposition": "deferred",
+                "reason": "Caller samples explicit values; original source replay not implemented."
+              },
+              {
+                "component": "Geometry generation, connectivity and drawing",
+                "disposition": "adapter",
+                "reason": "Retained supplied points are transformed, not generated."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "field.octave-gradient-noise",
+      "status": "reviewed_provisional",
+      "reason": "Requested third batch1 capability over existing profiles.",
+      "admission_kind": "capability_dependency",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "2D/3D points, seed, octave frequency/amplitude progression, normalization and budget.",
+        "outputs": "Detached scalar values plus amplitude sum.",
+        "invariants": "Fixed seed and binary64 ordered progression/sum; no ambient state.",
+        "open_questions": [],
+        "review": "design/capabilities/octave-gradient-noise.md",
+        "reviewer": "root"
+      },
+      "dependency_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root",
+        "decision": "design/capabilities/octave-gradient-noise.md",
+        "rationale": "Reusable multiscale scalar field dependency keeps geometry and marks replaceable.",
+        "motivating_candidates": [
+          {
+            "candidate_id": "2018/Generativos/noisub/noisub003#0",
+            "source_sha256": "469a9a49c3acd8d38b34af3b19ea5a53e6518639fabc720fbca948e9d7bb627a",
+            "evidence_sha256": "091665adef15e49d678181b868986d99e2fc83c0424ec640afc2e519bb41373e",
+            "dependency": "Explicit additive octaves over accepted gradient fields.",
+            "remainder": [
+              {
+                "component": "Source noise algorithm, geometry, shaping and rendering",
+                "disposition": "deferred",
+                "reason": "Only independent octave accumulation is admitted; whole source helper not equivalent."
+              }
+            ]
+          },
+          {
+            "candidate_id": "2018/Generativos/micro#0",
+            "source_sha256": "9e4bf68abaca6166b121a99060fe7dc132b84172cdd422515348f2e27d788990",
+            "evidence_sha256": "54c4121bd8f9af2d22c7b6d743f6b93d3efba52dbabc15768e6361d2cc7a8868",
+            "dependency": "Explicit additive octaves over accepted gradient fields.",
+            "remainder": [
+              {
+                "component": "Source noise algorithm, geometry, shaping and rendering",
+                "disposition": "deferred",
+                "reason": "Only independent octave accumulation is admitted; whole source helper not equivalent."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "records": {

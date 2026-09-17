@@ -1,0 +1,258 @@
+{
+  "id": "raster.seeded-pixel-grain",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "description": "Apply seeded shared-channel brightness addition or alpha multiplication to a straight ARGB8 raster, returning detached pixels and the next random state.",
+  "decision_cluster": "raster.seeded-pixel-grain",
+  "capability_decision": "design/capabilities/seeded-pixel-grain.md",
+  "design_review": "design/operations/seeded-pixel-grain-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2014/Generativos/cuadraditos#1",
+      "notes_path": "survey/out/2014/Generativos/cuadraditos/notes.md",
+      "note_sha256": "93f6baf98a57d128b62bd7f1e0be2254a242d752f824e8758ed4d58fb710baa5",
+      "evidence_sha256": "1ca254ef707dc60333d80adc40d7b8042952927abd52072cf42e1d02eda3cb9a",
+      "relationship": "Motivates the independently specified raster perturbation dependency; source RNG/hash, geometry and fragment scheduling excluded."
+    },
+    {
+      "candidate_id": "2014/Generativos/minimalCirculines#1",
+      "notes_path": "survey/out/2014/Generativos/minimalCirculines/notes.md",
+      "note_sha256": "a11a36af89f724292eba862a15fc9740548e0d7ba3efb93307f79f5213d5f087",
+      "evidence_sha256": "8ab6e19ebb8dc74e4753a24fe13616590e3caeb166b2abd9d638df27eb1ede76",
+      "relationship": "Motivates the independently specified raster perturbation dependency; source RNG/hash, geometry and fragment scheduling excluded."
+    },
+    {
+      "candidate_id": "2018/Generativos/quadShadow#1",
+      "notes_path": "survey/out/2018/Generativos/quadShadow/notes.md",
+      "note_sha256": "033d71537b0fb4165ece4a266757350f75a4932afffcafd2ad837338b401ac8f",
+      "evidence_sha256": "7f8e1463ed9c88a7942b015c09dc04201a0becad80ce8db5e68fd21e866d1c61",
+      "relationship": "Alpha-distribution observation only: coordinate hash and per-fragment overlap scheduling are excluded. Not a structural reproduction or whole-sketch coverage claim."
+    }
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "source": {
+        "type": "object",
+        "properties": {
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "pixels": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4294967295
+            },
+            "maxItems": 2147483647
+          }
+        },
+        "required": [
+          "width",
+          "height",
+          "pixels"
+        ],
+        "additionalProperties": false
+      },
+      "mode": {
+        "enum": [
+          "RGB_ADD",
+          "ALPHA_MULTIPLY"
+        ]
+      },
+      "range": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "exponent": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "rngState": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "source",
+      "mode",
+      "range",
+      "exponent",
+      "rngState",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "raster": {
+        "type": "object",
+        "properties": {
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "pixels": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4294967295
+            },
+            "maxItems": 2147483647
+          }
+        },
+        "required": [
+          "width",
+          "height",
+          "pixels"
+        ],
+        "additionalProperties": false
+      },
+      "rngState": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      }
+    },
+    "required": [
+      "raster",
+      "rngState"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Same dimensions, detached unsigned32 packed pixels and exact next uint32 state. No input mutation or retained aliases.",
+  "behavior": {
+    "validation": "Exactly source,mode,range,exponent,rngState,maxWork in a passive Object/null-prototype record. Reject accessors, class instances, symbols, extra keys, coercion and booleans as numbers; proxies are outside passive interchange. Dense ordinary arrays with own data slots and no extra properties. Static validation order: outer record/keys; source record/keys; width; height; exact product <=2147483647; pixels shape then all pixel values in row-major order; mode; range shape then low then high then low<=high and for ALPHA_MULTIPLY low>=0; exponent finite>0; rngState; maxWork. Dimensions1..2147483647 and uint32/safe integer domains as schema. Canonicalize accepted zeros. Validate every pixel even for identity effect and insufficient budget. INVALID_INPUT is raised before work/algorithm arithmetic. No defaults.",
+    "work": "After complete static validation require N=width*height<=maxWork or WORK_LIMIT, before range subtraction, random draws or output allocation. One abstract event per pixel includes one draw, one power and channel arithmetic; no skips for transparent pixels or identity intervals. Validation itself is O(N). Output storage O(N), auxiliary effect state O(1). Host resource exhaustion is a host error; no partial result escapes.",
+    "rng": "LCG32 own state: state=(1664525*state+1013904223) modulo4294967296. A draw advances first, then u=state/4294967296. Zero is valid. Traverse y ascending then x ascending; exactly one draw per pixel even when source alpha0, low==high, source black, output clips, or effect is identity. Return final state. Calls can thread that state; seed replay is external state restoration. No ambient RNG, hash, time or renderer.",
+    "algorithm": "Compute span=high-low after work preflight; nonfinite span is NUMERIC_OVERFLOW. For each pixel draw u, set q=fdlibm5.3Pow(u,exponent) (exponent1 may use exact u). Compute scaled=span*q then sample=low+scaled, checking each primitive for finiteness. RGB_ADD unpacks straight R,G,B and computes R+sample then G+sample then B+sample; preserve source alpha byte. ALPHA_MULTIPLY computes sourceAlpha*sample and preserves original straight RGB bytes. Quantize each changed channel by floor(min(255,max(0,value))+.5); nonfinite arithmetic fails before clamp. Repack unsigned32 ARGB. Preserve hidden RGB even when alpha quantizes to0; no premultiplication/unpremultiplication, color-space conversion, spatial interpolation or automatic compositing. A point sample at the high endpoint can occur from binary64 rounding even though uniform u<1. Source output arrays are separate and mutable value carriers; modifying returned pixels never changes input or later calls.",
+    "numerics": "IEEE754 binary64 separately rounded primitive operations, no FMA/reassociation or binary32 narrowing. Power is the existing independently audited fdlibm5.3 e_pow numerical profile, including its positive-base/positive-exponent zero and underflow behavior; p5 implementation reuses packages/javascript/src/internal/fdlibm-pow.js with its Sun Microsystems notice. Do not substitute host Math.pow. Inputs u in[0,1) and exponent>0 imply q finite in[0,1]; underflow to0 is valid. Every primitive specified above must be finite or NUMERIC_OVERFLOW. No global epsilon; packed pixels, dimensions and RNG state compare exactly. uint32 transition may use unsigned Math.imul arithmetic. Preserve zero byte values.",
+    "native_surface": "p5.js named export seededPixelGrain(input) and SeededPixelGrainError from packages/javascript/src/seeded-pixel-grain.js and the public package index. Returns {raster:{width,height,pixels},rngState}; no native host objects. Other targets deferred.",
+    "adapter": "Core requires no renderer. Editable native example requires p5 Canvas2D RGBA8 pixel read/write with pixelDensity(1), upper-left row-major order and explicit byte packing/unpacking. Call loadPixels after drawing and updatePixels after copying output. Process isolated transparent layers before compositing for alpha grain; never substitute flattened scene grain for per-fragment shader scheduling. Browser premultiplication may discard hidden transparent RGB on upload/readback; exact core hidden-RGB tests remain core evidence, while visible native output is checked separately. Save exports the already rendered canvas without reseeding or redraw. Pack straight p5 RGBA bytes as unsigned (A<<24)|(R<<16)|(G<<8)|B and unpack back without premultiplication. Native visual validation cannot attest hidden transparent RGB. The editable adapter rejects density other than1 or mismatched byte length before invoking core; unreadable/tainted canvas errors propagate visibly as host errors. These example checks are not another public core API.",
+    "environment": "Only explicit input and the named deterministic power profile. No global RNG/noise/time, callbacks, image assets, shaders, fonts or persistent mutation."
+  },
+  "errors": {
+    "INVALID_INPUT": "Static schema/carrier/domain failure, before work and arithmetic.",
+    "WORK_LIMIT": "N exceeds maxWork after static validation; no draws or output.",
+    "NUMERIC_OVERFLOW": "Nonfinite span or effect primitive; no partial raster or returned state."
+  },
+  "parameters": {
+    "source": {
+      "unit": "Straight encoded-sRGB ARGB8 pixels, upper-left row-major order.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Existing raster boundary; source cuadro grid600x800 and alpha-layer inputs. No image/default supplied."
+    },
+    "mode": {
+      "unit": "RGB_ADD or ALPHA_MULTIPLY",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source brightness addition in cuadraditos/minimalCirculines; source alpha multiplier in quadShadow. Separate semantics, no automatic selection."
+    },
+    "range": {
+      "unit": "Two ordered additive byte offsets or nonnegative alpha factors.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source brightness [0,10),[-5,5); alpha .001+u^.4. MinimalCirculines5->20 scored none after blur. No recommended interval; clipping allowed."
+    },
+    "exponent": {
+      "unit": "Positive dimensionless power of uniform sample.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source brightness is uniform (1); quadShadow uses .4. Explicit design control, no recommended range. Strictly positive excludes singular0^0 and negative powers."
+    },
+    "rngState": {
+      "unit": "uint32 LCG32 state",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit state is a design divergence from Processing random and coordinate-hashed GLSL; no ambient source."
+    },
+    "maxWork": {
+      "unit": "Pixel events",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Required allowance at least width*height before effect arithmetic/output allocation. Abstract work, not a memory or speed guarantee."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no implementation/native/technique support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5 first; acceptance requires fixtures, native workflow and scoped reproduction evidence."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no implementation/native/technique support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no implementation/native/technique support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/seeded-pixel-grain.json",
+  "reproduction": {
+    "level": "structural",
+    "status": "unvalidated",
+    "acceptance": "Selected cuadraditos static frame1 at600x800, raw benchmark gates and root image review; alpha-layer study and withheld pelotitas transfer recorded separately. No full-corpus claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Root contract accepted before implementation; independent challenge resolved in design_review. Target acceptance pending."
+  },
+  "exclusions": [
+    "HSB/saturation/hue grain, independent color-channel noise and random-grey crossfade",
+    "coordinate-hash/source-RNG or shader replay, per-fragment multisample grain and automatic layer capture",
+    "spatially correlated noise, varying masks, raster warps and temporal feedback",
+    "recommended parameter ranges, default source, hidden seeds and in-place writes"
+  ]
+}

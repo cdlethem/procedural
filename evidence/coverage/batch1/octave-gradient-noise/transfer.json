@@ -1,0 +1,17 @@
+{
+  "status": "supported-source-walkthrough",
+  "scope": "Withheld until contract freeze; octave field dependency only, no transfer rendering or full-scene recreation.",
+  "sketch": "2018/Generativos/noisub/noisub004",
+  "note_path": "survey/out/2018/Generativos/noisub/noisub004/notes.md",
+  "note_sha256": "33684803fa2589d4748ae22d5a1eebb21f9a79476f1c67c8c3204f13fe12209c",
+  "source_path": "/home/colin/dev/processing_sketches/2018/Generativos/noisub/noisub004/noisub004.pde",
+  "source_sha256": "e8923f1ff9274dbdee65870543d8485faf1f4fb050ab247a8b0a58a67512b338",
+  "source_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+  "observations": [
+    "Active noiseDetail(2,0.45) at line43 precedes noise-based subdivision threshold and corner selection.",
+    "Explicit geometric octaves with lacunarity2 and persistence0.45 express the field dependency using the existing gradient profile as a structural substitution, not Processing noise replay.",
+    "Reported variant changes both count2->5 and falloff0.45->0.9; confounded large change does not establish either recommended range.",
+    "Noise-gated subdivision, palette and corner shading remain outside this capability."
+  ],
+  "new_demonstrated_originals": 0
+}

@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "operation": "field.displace-points-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS field-displace-points core against frozen shared fixtures plus carrier, ownership, signed-zero and complete-static-validation checks. No renderer or acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/field-displace-2d.json": "b52a961032d36a7292d35eda882cbb5a8e8603366de2f214e426f8e947eba83a",
+    "fixtures/operations/field-displace-2d.json": "f32ec55ba6ade310db99d6f2154177a5be3fd3a9c8dfb35f905d4fe5e4ed4dfa",
+    "packages/javascript/src/field-displace-2d.js": "cda0d26f09f511d6f3abb2be26908600ab01d1baa4487fb7fe765686f424b090",
+    "tests/native/field-displace-2d-javascript.mjs": "dfb382bf9956b3e372c19096fe26c08a02219226a5082a548daaf8dfd2145911"
+  },
+  "input_sha256_after": {
+    "catalog/operations/field-displace-2d.json": "b52a961032d36a7292d35eda882cbb5a8e8603366de2f214e426f8e947eba83a",
+    "fixtures/operations/field-displace-2d.json": "f32ec55ba6ade310db99d6f2154177a5be3fd3a9c8dfb35f905d4fe5e4ed4dfa",
+    "packages/javascript/src/field-displace-2d.js": "cda0d26f09f511d6f3abb2be26908600ab01d1baa4487fb7fe765686f424b090",
+    "tests/native/field-displace-2d-javascript.mjs": "dfb382bf9956b3e372c19096fe26c08a02219226a5082a548daaf8dfd2145911"
+  },
+  "scenarios": {
+    "fixture_cases": 17,
+    "ownership_signed_zero": [
+      "input/result detachment",
+      "fresh point and offset pairs",
+      "canonical positive output zeros"
+    ],
+    "javascript_only": [
+      "passive records and dense arrays",
+      "NaN/Infinity rejected",
+      "late invalid sample precedes work budget"
+    ]
+  }
+}

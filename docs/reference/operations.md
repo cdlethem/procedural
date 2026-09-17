@@ -1681,6 +1681,131 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/extrude-simple-polygon-3d.json).
 
+## field.displace-points-2d (0.1.0)
+
+Displace supplied 2D points with paired sampled channels interpreted as Cartesian offsets or polar angle/distance.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "maxItems": 2147483647
+    },
+    "samples": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "maxItems": 2147483647
+    },
+    "mode": {
+      "enum": [
+        "CARTESIAN",
+        "POLAR"
+      ]
+    },
+    "bias": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "gain": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "points",
+    "samples",
+    "mode",
+    "bias",
+    "gain",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | Finite 2D positions in caller coordinate units. | null | null | Explicit design boundary; source centering and polar scale motivate mapping. No default or recommended interval. |
+| samples | Two finite sampled channel values per point, corresponding by index. | null | null | Explicit design boundary; source centering and polar scale motivate mapping. No default or recommended interval. |
+| mode | CARTESIAN dx/dy or POLAR angle/signed distance. | null | null | Explicit design boundary; source centering and polar scale motivate mapping. No default or recommended interval. |
+| bias | Two finite channel biases, in offset units or radians/distance. | null | null | Explicit design boundary; source centering and polar scale motivate mapping. No default or recommended interval. |
+| gain | Two finite signed sample-to-channel scales. | null | null | Explicit design boundary; source centering and polar scale motivate mapping. No default or recommended interval. |
+| maxWork | Point events. | null | null | Explicit design boundary; source centering and polar scale motivate mapping. No default or recommended interval. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/coverage/batch1/field-displace-2d/root-review.json) | [validated-scoped](../../evidence/coverage/batch1/field-displace-2d/root-review.json) | unvalidated | [review](../../evidence/coverage/batch1/field-displace-2d/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2017/Generativos/burbujas_ani#0`](../../survey/out/2017/Generativos/burbujas_ani/notes.md)
+- [`2019/generativos/cirnoi#0`](../../survey/out/2019/generativos/cirnoi/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/field-displace-2d.json).
+
 ## raster.floyd-steinberg-dither (0.1.0)
 
 Draft proposal only.
@@ -3076,6 +3201,119 @@ Motivating evidence:
 - [`2019/generativos/tata#0`](../../survey/out/2019/generativos/tata/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/occupied-lattice-paths-2d.json).
+
+## field.octave-gradient-noise (0.1.0)
+
+Evaluate an ordered geometric octave sum over the existing 2D or 3D gradient-noise profile at supplied points.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "dimension": {
+      "enum": [
+        2,
+        3
+      ]
+    },
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 3
+      },
+      "maxItems": 2147483647
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "octaves": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2147483647
+    },
+    "frequency": {
+      "type": "number",
+      "minimum": 0
+    },
+    "lacunarity": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "amplitude": {
+      "type": "number",
+      "minimum": 0
+    },
+    "persistence": {
+      "type": "number",
+      "minimum": 0
+    },
+    "normalization": {
+      "enum": [
+        "NONE",
+        "WEIGHT_SUM"
+      ]
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "dimension",
+    "points",
+    "seed",
+    "octaves",
+    "frequency",
+    "lacunarity",
+    "amplitude",
+    "persistence",
+    "normalization",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| dimension | 2 or3 coordinate dimensions. | null | null | Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range. |
+| points | Finite coordinate tuples; lattice domain checked after frequency scaling. | null | null | Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range. |
+| seed | uint32; same seed at every octave. | null | null | Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range. |
+| octaves | Positive integer count of evaluated bands. | null | null | Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range. |
+| frequency | Initial nonnegative frequency. | null | null | Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range. |
+| lacunarity | Positive frequency ratio between octaves. | null | null | Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range. |
+| amplitude | Initial nonnegative weight; must be positive for WEIGHT_SUM. | null | null | Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range. |
+| persistence | Nonnegative weight ratio. | null | null | Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range. |
+| normalization | NONE or one final division by WEIGHT_SUM. | null | null | Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range. |
+| maxWork | (pointCount+1)*octaves schedule/sample events. | null | null | Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/coverage/batch1/octave-gradient-noise/root-review.json) | [validated-scoped](../../evidence/coverage/batch1/octave-gradient-noise/root-review.json) | unvalidated | [review](../../evidence/coverage/batch1/octave-gradient-noise/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2018/Generativos/noisub/noisub003#0`](../../survey/out/2018/Generativos/noisub/noisub003/notes.md)
+- [`2018/Generativos/micro#0`](../../survey/out/2018/Generativos/micro/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/octave-gradient-noise.json).
 
 ## geometry.offset-polyline-2d (0.1.0)
 
@@ -4863,6 +5101,121 @@ Motivating evidence:
 - [`2019/generativos/brotes#0`](../../survey/out/2019/generativos/brotes/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/seeded-line-pool-2d.json).
+
+## raster.seeded-pixel-grain (0.1.0)
+
+Apply seeded shared-channel brightness addition or alpha multiplication to a straight ARGB8 raster, returning detached pixels and the next random state.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "pixels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "maxItems": 2147483647
+        }
+      },
+      "required": [
+        "width",
+        "height",
+        "pixels"
+      ],
+      "additionalProperties": false
+    },
+    "mode": {
+      "enum": [
+        "RGB_ADD",
+        "ALPHA_MULTIPLY"
+      ]
+    },
+    "range": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "exponent": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "rngState": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "source",
+    "mode",
+    "range",
+    "exponent",
+    "rngState",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| source | Straight encoded-sRGB ARGB8 pixels, upper-left row-major order. | null | null | Existing raster boundary; source cuadro grid600x800 and alpha-layer inputs. No image/default supplied. |
+| mode | RGB_ADD or ALPHA_MULTIPLY | null | null | Source brightness addition in cuadraditos/minimalCirculines; source alpha multiplier in quadShadow. Separate semantics, no automatic selection. |
+| range | Two ordered additive byte offsets or nonnegative alpha factors. | null | null | Source brightness [0,10),[-5,5); alpha .001+u^.4. MinimalCirculines5->20 scored none after blur. No recommended interval; clipping allowed. |
+| exponent | Positive dimensionless power of uniform sample. | null | null | Source brightness is uniform (1); quadShadow uses .4. Explicit design control, no recommended range. Strictly positive excludes singular0^0 and negative powers. |
+| rngState | uint32 LCG32 state | null | null | Explicit state is a design divergence from Processing random and coordinate-hashed GLSL; no ambient source. |
+| maxWork | Pixel events | null | null | Required allowance at least width*height before effect arithmetic/output allocation. Abstract work, not a memory or speed guarantee. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/coverage/batch1/seeded-pixel-grain/root-review.json) | [validated-scoped](../../evidence/coverage/batch1/seeded-pixel-grain/root-review.json) | unvalidated | [review](../../evidence/coverage/batch1/seeded-pixel-grain/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2014/Generativos/cuadraditos#1`](../../survey/out/2014/Generativos/cuadraditos/notes.md)
+- [`2014/Generativos/minimalCirculines#1`](../../survey/out/2014/Generativos/minimalCirculines/notes.md)
+- [`2018/Generativos/quadShadow#1`](../../survey/out/2018/Generativos/quadShadow/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/seeded-pixel-grain.json).
 
 ## layout.seeded-quadrant-partition-2d (0.1.0)
 

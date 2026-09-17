@@ -60,3 +60,6 @@ export { simplifyPolyline2D } from "./simplify-polyline-2d.js";
 export { skylinePack2D } from "./skyline-pack-2d.js";
 export { tokenTurtle2D } from "./token-turtle-2d.js";
 export { triangulateSimplePolygon2D } from "./triangulate-simple-polygon-2d.js";
+export { seededPixelGrain, SeededPixelGrainError } from "./seeded-pixel-grain.js";
+export { fieldDisplace2D, FieldDisplace2DError } from "./field-displace-2d.js";
+export { octaveGradientNoise, OctaveGradientNoiseError } from "./octave-gradient-noise.js";

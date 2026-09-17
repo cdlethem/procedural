@@ -1,144 +1,102 @@
 # Current project state
 
-Updated 2026-09-13. Read with [AGENTS.md](AGENTS.md); open other docs only for the task.
-This is a snapshot, not a chronological log. Earlier decisions and runs remain in Git and
-linked evidence. Do not treat old pending statements as new assignments.
+Updated 2026-09-17. Read with [AGENTS.md](AGENTS.md); open other documents only for the task.
+This is a current snapshot. Historical plans and reviews are not an active assignment queue.
 
-## Accepted baseline
+## Accepted capabilities
 
-- Latest port integration: p5 completion `cb984387`, independently reviewed with a
-  [fresh-checkout integration review](evidence/ports/p5-workflow-completion/integration-review.json).
-- Java implementation objective is accepted: **31 operations, 37 editable workflows**.
-  Java 0.35 runtime baseline: `d7f95a06f55fd0937ebb2c12bb2192c7644922c4`.
-  [Completion review](evidence/distribution/java-completion-review.json) evaluates the
-  [five requirements](docs/java-completion-plan.md); the installed start-page successor
-  changes documentation/navigation without changing runtime classes.
-- The p5 surface now has **64 conformant cores, 64 scoped native operations and 103 editable
-  workflows**. Completion evidence includes controls, reset/reload and save behavior;
-  technique support remains four scoped attestations. See [port integration](docs/port-integration-status.md).
-- The [web app](apps/README.md) provides 90 techniques in both its gallery and layered
-  studio, plus formatted API pages for all 64 operations. Shared numeric controls,
-  custom per-layer palettes, inline highlighted source, undo/redo, local recovery,
-  JSON/PNG export and Go storage are implemented. Studio v3 adds per-layer movement,
-  scale and rotation, a thumbnail picker, a compact tabbed inspector, focused reseed/cut
-  actions and human-readable constructor/output guides. The redesigned Studio has a fitted
-  canvas, independently scrolling layer/inspector panels, mobile drawers, and separate
-  project/export dialogs. Prompt drafts persist across editor tabs.
-  [Workspace review](evidence/web/studio-workspace-review.json) records layout stress checks
-  and preserved editing, generation, export and storage behavior. Sketch source opens by default.
-  [Version 3 root review](evidence/web/app-v3-review.json) records production browser
-  checks and visual inspection; earlier web reviews remain historical.
-  Tailnet deployment: https://eunoia.tailf03dad.ts.net:8443/ (Next 3002, Go 8088),
-  served from the reviewed `.work/p5-tenfold-release` checkout to isolate concurrent work.
-  The `procedurals-web` and `procedurals-api` user services own Next and Go respectively.
-  This remains an app-specific compositor, separate from portable recipes and MCP.
-- Packages are local reviewed artifacts, not registry publications. Java completion
-  does not imply equivalent ports, a general recipe executor or full-corpus coverage.
+- Java implementation objective: **31 operations, 37 editable workflows**. Java 0.35 runtime
+  baseline remains `d7f95a06f55fd0937ebb2c12bb2192c7644922c4`; see the
+  [completion review](evidence/distribution/java-completion-review.json).
+- p5.js: **67 conformant cores, 67 operations with scoped native coverage, 106 editable
+  package workflows**, and four scoped technique attestations. These dimensions are separate.
+  [Port status](docs/port-integration-status.md) links the historical integrations.
+- [Survey coverage batch 1](evidence/coverage/batch1/integration-review.json) adds exactly
+  seeded pixel grain, sampled-field displacement and octave gradient noise. Each has a
+  reviewed contract, independent fixtures, an editable p5 study, native controls/reset/reload/save,
+  performance evidence and a withheld source transfer. Other targets remain deferred.
+- The grain original benchmark **failed SSIM 0.674 < 0.7** and earns no demonstrated credit.
+  The two field studies demonstrate independent components. All three transfers are source
+  walkthroughs; none is a rendered transfer recreation.
+- Packages are reviewed local artifacts, not registry publications. This work does not imply
+  a portable recipe executor, full-corpus certification or equivalent target ports.
 
 ## Target support
 
-Current catalog attestations have the following operation counts. These are distinct
-support dimensions, not sums or counts of all example workflows. Recompute from
-`catalog/validation/` when support changes; check its bound evidence before making claims.
+Counts derive from `catalog/validation/` and its bound reviews. Frozen contract prose and
+old example headers are not current support authority.
 
 | Target | Conformant core | Scoped native | Scoped technique |
 |---|---:|---:|---:|
 | Processing Java | 31 | 31 | 26 |
-| p5.js | 64 | 64 | 4 |
+| p5.js | 67 | 67 | 4 |
 | py5 | 10 | 10 | 4 |
 | Processing Android | 10 | 10 | 4 |
 
-Radial-profile JavaScript core/native evidence is now bound in the shared catalog.
-The separate Python review still requires shared-attestation reconciliation.
-The [port handoff](docs/porting-resume.md) distinguishes these integration obligations.
-Four selected original structural recreations are demonstrated; no extrapolation to the
-full corpus is accepted. See [recreation coverage](docs/recreation-coverage.md).
+The [coverage report](docs/survey-operation-coverage-report.md) now records **474/800 plausible**
+recreations, including **381/800 operation-led**. Step0 reconciliation added20 to each original
+439/346 total; the three new capabilities add another15. Demonstrated originals remain **4**.
+The report includes all69 family dispositions and all three denominators:800 assessed,
+826 snapshot notes and901 targets. Missing/unassessed cases never count as supported.
 
-Three independently designed p5-only geometry operations add six original gallery studies:
-Voronoi cells, polyline resampling and marching squares. Java remains at 31 operations.
-The [p5 expansion review](evidence/web/p5-gallery-expansion/root-review.json) binds core,
-native edits/reset/save, packaging and visual evidence; previous Studio catalogs migrate
-explicitly. This expansion is deployed with the palette library; the palette integration review also
-records the corrected Studio adapter dispatch for these six studies.
+## Web application
 
-The [tenfold p5 expansion](evidence/web/p5-tenfold/root-review.json) adds 30 independent
-operations and 60 original studies across paths, fields, symbolic systems, raster/color and
-projected meshes. All 60 have matching gallery/Studio/native pixels and checked edits,
-reset/reload/save. The [artist guide](docs/p5-gallery-expansion.md) maps tasks to examples.
-This batch is merged at `4724f0d7` and deployed. The [deployment review](evidence/web/p5-tenfold/deployment.json)
-records 120 exact HTTPS gallery/Studio pixel comparisons across all 60 additions, 161 successful
-route checks, and preservation of palette, saved-layer, prompt-artifact and Go storage.
+- The [web app](apps/README.md) has90 gallery/Studio studies and generated API pages for67
+  operations. The three coverage studies are packaged native examples; the web study count
+  stays90. The app compositor remains separate from portable recipes/MCP.
+- Layer editing, custom palettes, source inspection, undo/redo, local recovery, JSON/PNG export
+  and Go storage are reviewed. [Workspace review](evidence/web/studio-workspace-review.json),
+  [v3 review](evidence/web/app-v3-review.json) and [architecture](docs/web-app-architecture.md)
+  describe layout, persistence and boundaries.
+- Prompt drafts and applied source/layer revisions are covered by the
+  [prompt integration](evidence/web/prompt-web-integration-review.json) and
+  [saved-layer successor](evidence/web/generated-layer-review.json). See the
+  [artist guide](docs/prompt-studio-guide.md). Generated artifact JSON needs the harness service.
+- Named manual/generated palettes are covered by the
+  [palette review](evidence/web/palette-library-review.json). This does not accept concurrent
+  default-palette work or additional API exports.
+- Reviewed live deployment remains the prior90-study release at
+  https://eunoia.tailf03dad.ts.net:8443/ (Next3002, Go8088), from `.work/p5-tenfold-release`.
+  `procedurals-web` and `procedurals-api` user services own the processes. The
+  [deployment review](evidence/web/p5-tenfold/deployment.json) records its HTTPS checks;
+  this coverage batch has not been deployed.
+- Named projects live in `.work/web-projects`. The current release links shared prompt
+  artifacts, saved layers and palettes under `.work/web-palettes-release/.work/harness`.
 
-## Current work and remaining decisions
+## Remaining work and ownership
 
-The Java buildout, requested p5 batch integration and initial web gallery/studio are complete
-within their recorded scope. Follow the next user assignment; the [roadmap](docs/roadmap.md) lists downstream work and dependencies.
+The [batch-1 handoff](docs/handoff-survey-coverage-batch1.md) is implemented to the scoped
+acceptance above. Stop after these three capabilities. [Roadmap](docs/roadmap.md) owns future
+sequencing; rectangle partitions, heading wander, simplex noise and shader work are not
+part of this batch. Reproduction failures and residual families are retained in its review.
 
-- Other target ports remain separate work, including Python changes on the port branch,
-  Android ProfileMarks lifecycle validation and remaining Java capabilities/adapters.
-- Preserve the unrelated working-tree edit in
-  `packages/java-android/examples/ProfileMarks/ProfileMarksActivity.java`.
-  Gradle directories may be created by another worker; do not stage or delete them as cleanup.
-  Recheck Git/process state before assuming an agent or native task is running or stopped.
-- SpringMarks p5 animation now has scoped native acceptance; source reproductions remain
-  separate. Three new Python cores are pending source only; older Python/Android backlog
-  files were excluded from the merge and must be transplanted explicitly from `2f9418e3`.
-- General Voronoi cells, grammar rewriting, text shaping and arbitrary solid modeling are
-  explicit extensions outside the accepted Java surface, not missing promised implementations.
-- A Java recipe prototype exists, documented in [recipe preview](docs/java-recipe-preview.md).
-  It is not a general portable executor. The [web architecture](docs/web-app-architecture.md)
-  freezes the separate app boundary: all 90 browser techniques, at most eight layers,
-  transparent Canvas2D/WebGL composition, per-layer affine placement, versioned JSON
-  with exact v1/v2 migration and trusted local Go storage. Portable operation graphs and
-  multi-user hosting remain future work.
-- Prompt generation is integrated into `/studio`, with mixed workflow/source documents,
-  explicit candidate apply/rebase, undo/redo, source controls and a collapsed code viewer.
-  `/explorations` supports follow-up revisions of its generated layers and fresh sketches;
-  `/harness` remains a Studio alias. See the [artist guide](docs/prompt-studio-guide.md),
-  [integration plan](docs/prompt-web-integration-plan.md) and
-  [root review](evidence/web/prompt-web-integration-review.json) for tested scope and limits.
-  Generated layers can be saved as named snapshots and reused from the gallery’s Saved
-  layers category or Studio picker. Follow-ups receive exact current source and replay inputs;
-  Studio edits remain explicitly applied and undoable. See the [successor review](evidence/web/generated-layer-review.json).
-  Named projects remain in `.work/web-projects`; deployed prompt artifacts and saved layers
-  live in the shared `.work/web-palettes-release/.work/harness` directory, linked by the current release. JSON references require that artifact service.
-  Processing Java, portable recipe expansion and blind benchmarks remain outside this slice.
-- Named palettes can be created manually or with the configured prompt model, edited,
-  reordered, duplicated and deleted. Shared storage lives in the deployed harness `palettes/`
-  directory. Workflow layers and gallery previews apply detached colors; Studio source-layer
-  revisions and Explorations prompts include the selected palette’s exact RGB values.
-  [Palette review](evidence/web/palette-library-review.json) records persistence, browser
-  application/undo, prompt behavior and native evidence limits.
+- Other-target ports remain separate. The [port handoff](docs/porting-resume.md) tracks Python
+  attestation reconciliation, Android ProfileMarks lifecycle validation and Java backlog.
+  Three Python cores remain pending source; older Python/Android work at `2f9418e3` requires
+  explicit transplant and review. SpringMarks p5 has scoped animation acceptance.
+- Preserve concurrent Android ProfileMarks edits and `.gradle/` directories, external-art
+  research, and web/default-palette work. The batch was checked in an isolated copy and its
+  entrypoint review binds only its three exports. A later export needs its own successor.
+- The [Java recipe preview](docs/java-recipe-preview.md) is a prototype. Before natural-language
+  recipe planning/its first prompt benchmark, create the missing prompt-to-recipe evaluation
+  skill after catalog/executor work, as required by AGENTS.md.
 
-## Evidence and navigation
+## Evidence and focused commands
 
-The publishable [snapshot](survey/snapshot.json) contains 826 reports of the 901-sketch
-survey target, including stubs. Work on this incomplete snapshot is authorized. Use the
-snapshot, normalized corpus and exact source-note hashes for decisions; never infer live
-survey progress from these checked-in counts.
-
-| Need | Read |
-|---|---|
-| Install and edit Java artwork | [Getting started](README.md#get-started), `tools/install.py`, [workflow chooser](docs/choosing-java-workflow.md) |
-| Compose regions, images and effects | [Composition guide](docs/composing-java-effects.md) |
-| Current operation semantics/support | [Generated reference](docs/reference/operations.md), relevant catalog entry and attestation |
-| Capability admission | [Artist architecture](docs/artist-capabilities.md) |
-| Delegate a bounded task | [Agent briefs](docs/agent-briefs.md) |
-| Review or continue ports | [Port handoff](docs/porting-resume.md) |
-| Inspect actual images | [Gallery guide](docs/visual-review.md), `.work/visual-review/index.html` |
-
-## Focused commands
-
-Run only those relevant to changed inputs; a routine resume does not require rebuilding.
+Use [survey/snapshot.json](survey/snapshot.json), exact note hashes and linked raw evidence.
+The authorized incomplete snapshot has826 reports including26 unassessed blank baselines;
+75 target sketches are outside it. Native rendering always uses the shared machine lease.
 
 ```sh
 uv run python tools/check_catalog.py
 uv run python tools/check_phase2_design.py --contract-cluster <id>
+python3 tools/update_survey_coverage.py --check
 python3 tools/with_native_render_lock.py -- <native command>
 python3 tools/build_visual_review.py
 node tools/build_ported_javascript_package.mjs .work/dist/<fresh-directory>
 ```
 
-Full corpus adjudication/certification and exhaustive test runs are not routine checkpoint
-gates. Use the existing operation, adapter or packaging runner for the assigned change.
-Keep this file near 100 lines by replacing resolved work with links to its acceptance record.
+The local [visual gallery](.work/visual-review/index.html) links reviewed images; inclusion
+is navigation, not acceptance. The [artist architecture](docs/artist-capabilities.md),
+[agent briefs](docs/agent-briefs.md) and [generated reference](docs/reference/operations.md)
+cover admission, bounded delegation and current operation semantics.

@@ -3670,6 +3670,260 @@
       "sha256": "0ad42afef703a17709ecf2b7495ee495befa4e018c83ebfe7f18b85ca9c60647"
     },
     {
+      "id": "field.displace-points-2d",
+      "version": "0.1.0",
+      "role": "transform",
+      "description": "Displace supplied 2D points with paired sampled channels interpreted as Cartesian offsets or polar angle/distance.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "maxItems": 2147483647
+          },
+          "samples": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "maxItems": 2147483647
+          },
+          "mode": {
+            "enum": [
+              "CARTESIAN",
+              "POLAR"
+            ]
+          },
+          "bias": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "gain": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "maxWork": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "points",
+          "samples",
+          "mode",
+          "bias",
+          "gain",
+          "maxWork"
+        ],
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "maxItems": 2147483647
+          },
+          "offsets": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "maxItems": 2147483647
+          }
+        },
+        "required": [
+          "points",
+          "offsets"
+        ],
+        "additionalProperties": false
+      },
+      "errors": {
+        "INVALID_INPUT": "Static carrier/domain/correspondence failure before work.",
+        "WORK_LIMIT": "N exceeds maxWork after all static validation.",
+        "NUMERIC_OVERFLOW": "Nonfinite arithmetic/trig/output; no partial result."
+      },
+      "errorOrder": [],
+      "behavior": {
+        "validation": "Passive Object/null-prototype record with exactly points,samples,mode,bias,gain,maxWork. No accessors/classes/symbols/extras/coercion; proxies outside interchange. Dense ordinary arrays with own data slots and no extras. Validate outer record; points shape and all finite pairs in order (length0..2147483647); samples shape, equal length and all finite pairs; mode; bias finite pair; gain finite pair; maxWork nonnegative safe integer. Canonicalize all accepted zeros. Complete static validation even for empty/identity/budget failure.",
+        "work": "After full static validation require N<=maxWork or WORK_LIMIT before arithmetic/output allocation. One event per point including all-zero gain. Empty input returns empty detached arrays. Validation O(N), output O(N), auxiliary algorithm state O(1). Host exhaustion is a host error; no partial result.",
+        "algorithm": "Visit input index ascending. For channel0 then1 compute product=gain[c]*samples[i][c], then mapped=bias[c]+product, checking finiteness after each primitive. CARTESIAN sets dx=mapped0,dy=mapped1. POLAR computes cos=fdlibmCos(mapped0), sin=fdlibmSin(mapped0), then dx=cos*mapped1,dy=sin*mapped1, checking finiteness. Negative signed distance is allowed and reverses the offset. Canonicalize completed dx,dy zeros to positive zero before storing offsets and adding them. Compute outputX=points[i][0]+dx then outputY=points[i][1]+dy, each finite; canonicalize zero output components. Return points and offsets as separate mutable dense value arrays with fresh pairs even for repeated/duplicate/empty input. No clamping, normalization, angle wrapping, skipping or source-coordinate feedback.",
+        "numerics": "IEEE754 binary64 separately rounded primitive order, no FMA/reassociation or binary32 narrowing. Polar trig uses the existing independently audited fdlibm profile in packages/javascript/src/fdlibm-trig.js; no host Math.sin/cos substitution. No epsilon in computation; fixture floating values have absolute tolerance1e-12, relative tolerance0, while lengths/errors/order compare exactly. Finite intermediate checks precede downstream cancellation; no overflow recovery.",
+        "native_surface": "p5 exports fieldDisplace2D(input) and FieldDisplace2DError from field-displace-2d.js and index. Plain values only; other targets deferred.",
+        "environment": "Already-sampled paired values are explicit input, not callbacks or host noise. Operation consumes no RNG, clock, field queries or renderer. Caller samples before the call and owns sampling failure/state.",
+        "adapter": "Native p5 Canvas2D draws retained polyline vertices in returned order; endpoints and repeated points preserved. Polylines can be separate calls or flattened with caller-retained boundaries. This is coordinate geometry, never source-pixel remapping."
+      },
+      "provenance": [
+        {
+          "candidate": "2017/Generativos/burbujas_ani#0",
+          "sketch": "2017/Generativos/burbujas_ani"
+        },
+        {
+          "candidate": "2019/generativos/cirnoi#0",
+          "sketch": "2019/generativos/cirnoi"
+        }
+      ],
+      "javascript": {
+        "exports": [
+          "fieldDisplace2D"
+        ],
+        "module": "packages/javascript/src/field-displace-2d.js",
+        "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Displace sampled points",
+        "summary": "Bend a grid or wobble a contour while keeping its points available for different drawing styles.",
+        "useWhen": "Use it when a retained 2D point set should bend through an already sampled field while preserving point order.",
+        "inputs": {
+          "points": "Ordered finite [x,y] points.",
+          "samples": "One ordered finite [a,b] sample pair per point.",
+          "mode": "CARTESIAN interprets pairs as x/y changes; POLAR as angle in radians and signed distance.",
+          "bias": "Two base values: x/y changes or angle/distance, according to mode.",
+          "gain": "Two sample multipliers; increase these to amplify coordinate changes or angle/distance variation.",
+          "maxWork": "Bounded point-work budget."
+        },
+        "output": "{points,offsets}",
+        "code": "// The source field is sampled by the caller; this function only transforms supplied values.\nconst result = fieldDisplace2D({\n  points: [[0, 0], [1, 0], [1, 1]],\n  samples: [[0, 0], [0.5, 0.25], [1, 0]],\n  mode: \"CARTESIAN\", bias: [0, 0], gain: [2, 2], maxWork: 3,\n});\nconsole.log(result);",
+        "tryThis": "Switch to POLAR or change one gain while keeping the supplied points in order.",
+        "pitfalls": [
+          "Samples are explicit input; the operation does not evaluate noise or own a field generator.",
+          "The returned points and offsets are detached and have one entry per input point.",
+          "Renderer drawing, path styling, and spatial sampling remain outside the operation."
+        ],
+        "importLine": "import { fieldDisplace2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0.5
+              ],
+              [
+                3,
+                1
+              ]
+            ],
+            "offsets": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0.5
+              ],
+              [
+                2,
+                0
+              ]
+            ]
+          }
+        ]
+      },
+      "support": [
+        {
+          "target": "processing-java",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "p5js",
+          "core": "conformant",
+          "native": "validated-scoped",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "py5",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "processing-android",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        }
+      ],
+      "sha256": "b52a961032d36a7292d35eda882cbb5a8e8603366de2f214e426f8e947eba83a"
+    },
+    {
       "id": "raster.floyd-steinberg-dither",
       "version": "0.1.0",
       "role": "generator",
@@ -6394,6 +6648,203 @@
         }
       ],
       "sha256": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d"
+    },
+    {
+      "id": "field.octave-gradient-noise",
+      "version": "0.1.0",
+      "role": "generator",
+      "description": "Evaluate an ordered geometric octave sum over the existing 2D or 3D gradient-noise profile at supplied points.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "dimension": {
+            "enum": [
+              2,
+              3
+            ]
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 3
+            },
+            "maxItems": 2147483647
+          },
+          "seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "octaves": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "frequency": {
+            "type": "number",
+            "minimum": 0
+          },
+          "lacunarity": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "amplitude": {
+            "type": "number",
+            "minimum": 0
+          },
+          "persistence": {
+            "type": "number",
+            "minimum": 0
+          },
+          "normalization": {
+            "enum": [
+              "NONE",
+              "WEIGHT_SUM"
+            ]
+          },
+          "maxWork": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "dimension",
+          "points",
+          "seed",
+          "octaves",
+          "frequency",
+          "lacunarity",
+          "amplitude",
+          "persistence",
+          "normalization",
+          "maxWork"
+        ],
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 2147483647
+          },
+          "amplitudeSum": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "values",
+          "amplitudeSum"
+        ],
+        "additionalProperties": false
+      },
+      "errors": {
+        "INVALID_INPUT": "Static carrier/domain/normalization failure before work.",
+        "WORK_LIMIT": "Exact schedule+sampling events exceed budget/safe bound.",
+        "NUMERIC_OVERFLOW": "Nonfinite schedule, query product, weighted sample, sum or normalized result.",
+        "QUERY_OUT_OF_RANGE": "Finite multiplied coordinate outside existing gradient profile half-open safe query domain."
+      },
+      "errorOrder": [],
+      "behavior": {
+        "validation": "Passive Object/null-prototype record with exactly dimension,points,seed,octaves,frequency,lacunarity,amplitude,persistence,normalization,maxWork. Reject classes/accessors/symbols/extras/coercion; proxies outside interchange. Dense ordinary arrays with own data slots, no extras. Static validation order: outer carrier/keys; dimension numeric2 or3; points shape length0..2147483647 and every tuple with exactly dimension finite coordinates in array/axis order; uint32 seed; octaves integer1..2147483647; finite frequency>=0; finite lacunarity>0; finite amplitude>=0; finite persistence>=0; normalization NONE/WEIGHT_SUM and WEIGHT_SUM requires amplitude>0; nonnegative safe-integer maxWork. Canonicalize accepted zeros. Validate all inputs before work, including zero weights and empty points.",
+        "work": "After full static validation compute exact integer W=(N+1)*octaves with overflow-safe arithmetic. If W exceeds maxWork or safe integer maximum, WORK_LIMIT before schedule, field creation or output allocation. One schedule event and N field-sample events per octave, including zero-weight octaves. Empty points still compute schedule and amplitudeSum with cost octaves. Output storage O(N), schedule O(octaves), total work O((N+1)*octaves). Host exhaustion is a host error; no partial output.",
+        "schedule": "Before evaluating any point, build frequencies and weights in octave order starting frequency and amplitude. Set amplitudeSum=0; for each used octave store frequency/weight then amplitudeSum=amplitudeSum+weight, checking finite. Only if another octave remains: nextFrequency=frequency*lacunarity then nextWeight=weight*persistence, checking finite after each. Underflow to0 is valid. Never update past the last octave. Finite amplitudeSum is required even for NONE and empty points.",
+        "algorithm": "Select existing field.gradient-noise-2d-01@0.1.0 or field.gradient-noise-3d-01@0.1.0 by dimension, with the SAME supplied seed for every octave. For each point in supplied order start sum=0. For each octave ascending: for axes x,y,(z) in that order compute q=point[axis]*frequency[octave], check finite or NUMERIC_OVERFLOW; require -9007199254740991<=q<9007199254740991 or QUERY_OUT_OF_RANGE. Sample the existing profile only after all query axes validate. Compute weighted=weight*sample then sum=sum+weighted, each finite. No skip when weight0. If WEIGHT_SUM compute value=sum/amplitudeSum once after the last octave and require finite; else value=sum. Canonicalize completed output zero. Return detached {values,amplitudeSum}; no output clamp, signed remap, compensated sum, normalization per octave or coordinate feedback.",
+        "numerics": "IEEE754 binary64 separately rounded primitive operations in specified order; no FMA/reassociation or narrowing. Existing gradient profiles and hash define exact scalar samples; no host Processing/p5 noise substitution. State/shape/errors compare exactly; scalar fixture tolerance absolute1e-12 relative0. Finite arithmetic checks precede any later cancellation; underflow to zero valid. Inputs are finite, but multiplied query coordinates may violate the existing profile domain.",
+        "native_surface": "p5 named exports octaveGradientNoise(input) and OctaveGradientNoiseError from octave-gradient-noise.js and package index; other targets deferred. Plain values only.",
+        "environment": "No ambient noise, RNG, clock, field callbacks or host objects. Fixed seed reused each octave, no seed advance. Any coordinate offset is supplied by caller before frequency scaling; no per-octave offset or independent seed.",
+        "adapter": "Native p5 Canvas2D study maps returned scalar values to mark size/color on retained positions. Renderer never evaluates noise or recomputes accumulation; save exports the rendered canvas."
+      },
+      "provenance": [
+        {
+          "candidate": "2018/Generativos/noisub/noisub003#0",
+          "sketch": "2018/Generativos/noisub/noisub003"
+        },
+        {
+          "candidate": "2018/Generativos/micro#0",
+          "sketch": "2018/Generativos/micro"
+        }
+      ],
+      "javascript": {
+        "exports": [
+          "octaveGradientNoise"
+        ],
+        "module": "packages/javascript/src/octave-gradient-noise.js",
+        "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Evaluate octave gradient noise",
+        "summary": "Add smaller patches of variation to a broad pattern, then use the values for size, color or movement.",
+        "useWhen": "Sample the same retained positions at several scales. Weight normalization keeps the total field scale separate from its detail count.",
+        "inputs": {
+          "dimension": "2 or 3 coordinate dimensions.",
+          "points": "Ordered finite coordinate tuples matching dimension.",
+          "seed": "Explicit uint32 seed reused at every octave.",
+          "octaves": "Positive band count; more bands can add smaller detail when lacunarity exceeds 1.",
+          "frequency": "Initial nonnegative spatial frequency; higher values make the broad pattern smaller.",
+          "lacunarity": "Positive frequency multiplier between bands; values above 1 move toward finer detail.",
+          "amplitude": "Initial nonnegative weight; sets strength for NONE and cancels under WEIGHT_SUM.",
+          "persistence": "Nonnegative weight multiplier; larger values give later bands more influence.",
+          "normalization": "NONE keeps the raw sum; WEIGHT_SUM divides by the total weight.",
+          "maxWork": "Schedule and sampling budget: at least (points.length+1)*octaves."
+        },
+        "output": "{values,amplitudeSum}",
+        "code": "// Source noise is replaced by the frozen gradient-noise profile; no host noise is consulted.\nconst result = octaveGradientNoise({\n  dimension: 2, points: [[0, 0], [0.5, 0.25], [1, 1]], seed: 42,\n  octaves: 3, frequency: 0.02, lacunarity: 2, amplitude: 1,\n  persistence: 0.5, normalization: \"WEIGHT_SUM\", maxWork: 12,\n});\nconsole.log(result);",
+        "tryThis": "Increase octaves or change normalization, then compare values in the original point order.",
+        "pitfalls": [
+          "The same seed is reused for each octave; it is not an ambient or advancing RNG stream.",
+          "Coordinate products are checked against the existing profile domain before sampling.",
+          "The operation returns scalar values only; displacement, color mapping, and drawing are caller work."
+        ],
+        "importLine": "import { octaveGradientNoise } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "values": [
+              0.5,
+              0.48720041212955917,
+              0.46623611523309283
+            ],
+            "amplitudeSum": 1.75
+          }
+        ]
+      },
+      "support": [
+        {
+          "target": "processing-java",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "p5js",
+          "core": "conformant",
+          "native": "validated-scoped",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "py5",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "processing-android",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        }
+      ],
+      "sha256": "f24f4cccf742952c5291e2788b7abdb7d6674c3815f33485e45f2eb5d0febefc"
     },
     {
       "id": "geometry.offset-polyline-2d",
@@ -10466,6 +10917,234 @@
         }
       ],
       "sha256": "7236eaf10bdd8cb21107096f7962e248967c9aa6813573f11784a63ba0007e4a"
+    },
+    {
+      "id": "raster.seeded-pixel-grain",
+      "version": "0.1.0",
+      "role": "transform",
+      "description": "Apply seeded shared-channel brightness addition or alpha multiplication to a straight ARGB8 raster, returning detached pixels and the next random state.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "object",
+            "properties": {
+              "width": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483647
+              },
+              "height": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483647
+              },
+              "pixels": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4294967295
+                },
+                "maxItems": 2147483647
+              }
+            },
+            "required": [
+              "width",
+              "height",
+              "pixels"
+            ],
+            "additionalProperties": false
+          },
+          "mode": {
+            "enum": [
+              "RGB_ADD",
+              "ALPHA_MULTIPLY"
+            ]
+          },
+          "range": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "exponent": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "rngState": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "maxWork": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "source",
+          "mode",
+          "range",
+          "exponent",
+          "rngState",
+          "maxWork"
+        ],
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "raster": {
+            "type": "object",
+            "properties": {
+              "width": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483647
+              },
+              "height": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483647
+              },
+              "pixels": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4294967295
+                },
+                "maxItems": 2147483647
+              }
+            },
+            "required": [
+              "width",
+              "height",
+              "pixels"
+            ],
+            "additionalProperties": false
+          },
+          "rngState": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        },
+        "required": [
+          "raster",
+          "rngState"
+        ],
+        "additionalProperties": false
+      },
+      "errors": {
+        "INVALID_INPUT": "Static schema/carrier/domain failure, before work and arithmetic.",
+        "WORK_LIMIT": "N exceeds maxWork after static validation; no draws or output.",
+        "NUMERIC_OVERFLOW": "Nonfinite span or effect primitive; no partial raster or returned state."
+      },
+      "errorOrder": [],
+      "behavior": {
+        "validation": "Exactly source,mode,range,exponent,rngState,maxWork in a passive Object/null-prototype record. Reject accessors, class instances, symbols, extra keys, coercion and booleans as numbers; proxies are outside passive interchange. Dense ordinary arrays with own data slots and no extra properties. Static validation order: outer record/keys; source record/keys; width; height; exact product <=2147483647; pixels shape then all pixel values in row-major order; mode; range shape then low then high then low<=high and for ALPHA_MULTIPLY low>=0; exponent finite>0; rngState; maxWork. Dimensions1..2147483647 and uint32/safe integer domains as schema. Canonicalize accepted zeros. Validate every pixel even for identity effect and insufficient budget. INVALID_INPUT is raised before work/algorithm arithmetic. No defaults.",
+        "work": "After complete static validation require N=width*height<=maxWork or WORK_LIMIT, before range subtraction, random draws or output allocation. One abstract event per pixel includes one draw, one power and channel arithmetic; no skips for transparent pixels or identity intervals. Validation itself is O(N). Output storage O(N), auxiliary effect state O(1). Host resource exhaustion is a host error; no partial result escapes.",
+        "rng": "LCG32 own state: state=(1664525*state+1013904223) modulo4294967296. A draw advances first, then u=state/4294967296. Zero is valid. Traverse y ascending then x ascending; exactly one draw per pixel even when source alpha0, low==high, source black, output clips, or effect is identity. Return final state. Calls can thread that state; seed replay is external state restoration. No ambient RNG, hash, time or renderer.",
+        "algorithm": "Compute span=high-low after work preflight; nonfinite span is NUMERIC_OVERFLOW. For each pixel draw u, set q=fdlibm5.3Pow(u,exponent) (exponent1 may use exact u). Compute scaled=span*q then sample=low+scaled, checking each primitive for finiteness. RGB_ADD unpacks straight R,G,B and computes R+sample then G+sample then B+sample; preserve source alpha byte. ALPHA_MULTIPLY computes sourceAlpha*sample and preserves original straight RGB bytes. Quantize each changed channel by floor(min(255,max(0,value))+.5); nonfinite arithmetic fails before clamp. Repack unsigned32 ARGB. Preserve hidden RGB even when alpha quantizes to0; no premultiplication/unpremultiplication, color-space conversion, spatial interpolation or automatic compositing. A point sample at the high endpoint can occur from binary64 rounding even though uniform u<1. Source output arrays are separate and mutable value carriers; modifying returned pixels never changes input or later calls.",
+        "numerics": "IEEE754 binary64 separately rounded primitive operations, no FMA/reassociation or binary32 narrowing. Power is the existing independently audited fdlibm5.3 e_pow numerical profile, including its positive-base/positive-exponent zero and underflow behavior; p5 implementation reuses packages/javascript/src/internal/fdlibm-pow.js with its Sun Microsystems notice. Do not substitute host Math.pow. Inputs u in[0,1) and exponent>0 imply q finite in[0,1]; underflow to0 is valid. Every primitive specified above must be finite or NUMERIC_OVERFLOW. No global epsilon; packed pixels, dimensions and RNG state compare exactly. uint32 transition may use unsigned Math.imul arithmetic. Preserve zero byte values.",
+        "native_surface": "p5.js named export seededPixelGrain(input) and SeededPixelGrainError from packages/javascript/src/seeded-pixel-grain.js and the public package index. Returns {raster:{width,height,pixels},rngState}; no native host objects. Other targets deferred.",
+        "adapter": "Core requires no renderer. Editable native example requires p5 Canvas2D RGBA8 pixel read/write with pixelDensity(1), upper-left row-major order and explicit byte packing/unpacking. Call loadPixels after drawing and updatePixels after copying output. Process isolated transparent layers before compositing for alpha grain; never substitute flattened scene grain for per-fragment shader scheduling. Browser premultiplication may discard hidden transparent RGB on upload/readback; exact core hidden-RGB tests remain core evidence, while visible native output is checked separately. Save exports the already rendered canvas without reseeding or redraw. Pack straight p5 RGBA bytes as unsigned (A<<24)|(R<<16)|(G<<8)|B and unpack back without premultiplication. Native visual validation cannot attest hidden transparent RGB. The editable adapter rejects density other than1 or mismatched byte length before invoking core; unreadable/tainted canvas errors propagate visibly as host errors. These example checks are not another public core API.",
+        "environment": "Only explicit input and the named deterministic power profile. No global RNG/noise/time, callbacks, image assets, shaders, fonts or persistent mutation."
+      },
+      "provenance": [
+        {
+          "candidate": "2014/Generativos/cuadraditos#1",
+          "sketch": "2014/Generativos/cuadraditos"
+        },
+        {
+          "candidate": "2014/Generativos/minimalCirculines#1",
+          "sketch": "2014/Generativos/minimalCirculines"
+        },
+        {
+          "candidate": "2018/Generativos/quadShadow#1",
+          "sketch": "2018/Generativos/quadShadow"
+        }
+      ],
+      "javascript": {
+        "exports": [
+          "seededPixelGrain"
+        ],
+        "module": "packages/javascript/src/seeded-pixel-grain.js",
+        "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Add seeded raster grain",
+        "summary": "Give flat colors a fine brightness texture, or make an existing layer speckled and translucent.",
+        "useWhen": "Use it on a captured pixel raster, then draw or composite the returned raster. Keep the seed to repeat the texture.",
+        "inputs": {
+          "source": "{width,height,pixels}: straight ARGB8 pixels in upper-left row-major order.",
+          "mode": "RGB_ADD changes brightness; ALPHA_MULTIPLY changes opacity.",
+          "range": "[low,high]: brightness change in bytes, or an opacity multiplier interval.",
+          "exponent": "Positive power: values above 1 favor the low end of the interval; values below 1 favor the high end.",
+          "rngState": "Explicit uint32 LCG state.",
+          "maxWork": "Pixel-event budget; at least width*height."
+        },
+        "output": "{raster:{width,height,pixels},rngState}",
+        "code": "// Motivated by survey/out/2014/Generativos/cuadraditos/notes.md: shared-channel pixel brightness.\nconst result = seededPixelGrain({\n  source: { width: 2, height: 1, pixels: [0xff202020, 0xff808080] },\n  mode: \"RGB_ADD\", range: [0, 10], exponent: 1, rngState: 42, maxWork: 2,\n});\nconsole.log(result);",
+        "tryThis": "Change mode or range, then inspect the detached raster and returned state.",
+        "pitfalls": [
+          "The operation has no defaults and does not read a renderer or ambient RNG.",
+          "ALPHA_MULTIPLY preserves straight RGB bytes and changes only alpha.",
+          "This is a pixel transform component; it does not reproduce a source shader hash or an entire sketch."
+        ],
+        "importLine": "import { seededPixelGrain } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "raster": {
+              "width": 2,
+              "height": 1,
+              "pixels": [
+                4280492835,
+                4286677377
+              ]
+            },
+            "rngState": 378494188
+          }
+        ]
+      },
+      "support": [
+        {
+          "target": "processing-java",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "p5js",
+          "core": "conformant",
+          "native": "validated-scoped",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "py5",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "processing-android",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        }
+      ],
+      "sha256": "2a87b136cb4a990cfa900a42ff7711407cbbbfe2984532fbae31ff68efd51cfc"
     },
     {
       "id": "layout.seeded-quadrant-partition-2d",

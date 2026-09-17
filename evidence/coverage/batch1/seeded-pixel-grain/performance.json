@@ -1,0 +1,97 @@
+{
+  "status": "measured",
+  "runtime": "v22.22.1",
+  "scope": "Local Node CPU, warmup then three repeats; no browser/mobile throughput guarantee.",
+  "results": [
+    {
+      "width": 1,
+      "height": 1,
+      "mode": "RGB_ADD",
+      "exponent": 1,
+      "setupMs": 0.005159999999996501,
+      "repeats": 3,
+      "elapsedMs": [
+        0.01879000000000275,
+        0.059609999999999275,
+        0.014440000000000452
+      ],
+      "rngState": 1083814273,
+      "pixels_sha256": "401536e3d0b5557a7d10c431ba07e510f47803ca740241ae8226c4c2c54f7b1e"
+    },
+    {
+      "width": 1,
+      "height": 1,
+      "mode": "ALPHA_MULTIPLY",
+      "exponent": 0.4,
+      "setupMs": 0.0028399999999990655,
+      "repeats": 3,
+      "elapsedMs": [
+        0.03282000000000096,
+        0.01318000000000552,
+        0.02949999999999875
+      ],
+      "rngState": 1083814273,
+      "pixels_sha256": "184d3f492ddd7f7eb7eaad779f40fbef622aecd65986a2022dd36b44ad8050e3"
+    },
+    {
+      "width": 600,
+      "height": 800,
+      "mode": "RGB_ADD",
+      "exponent": 1,
+      "setupMs": 2.3611980000000017,
+      "repeats": 3,
+      "elapsedMs": [
+        59.17129600000001,
+        65.97989000000001,
+        61.69034499999998
+      ],
+      "rngState": 3904993066,
+      "pixels_sha256": "fa0f4d68754e8bbf9ea8f26fabc43cf1a0a788c9e49788370678a8bfbe2357a1"
+    },
+    {
+      "width": 600,
+      "height": 800,
+      "mode": "ALPHA_MULTIPLY",
+      "exponent": 0.4,
+      "setupMs": 1.4285189999999943,
+      "repeats": 3,
+      "elapsedMs": [
+        119.26349199999999,
+        132.38767999999993,
+        121.13103999999998
+      ],
+      "rngState": 3904993066,
+      "pixels_sha256": "a9d8926a427e8091f3c3341db100e80a68b6ed828dfacdcc62eccb423ec5b49b"
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "mode": "RGB_ADD",
+      "exponent": 1,
+      "setupMs": 9.255852000000004,
+      "repeats": 3,
+      "elapsedMs": [
+        384.55842099999995,
+        407.0441009999997,
+        391.344376
+      ],
+      "rngState": 3618526250,
+      "pixels_sha256": "2d3de1701a9ddc9a53679b3022d5b135c1e40a63176a738376554dd463da83e2"
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "mode": "ALPHA_MULTIPLY",
+      "exponent": 0.4,
+      "setupMs": 8.921902000000046,
+      "repeats": 3,
+      "elapsedMs": [
+        652.1404090000001,
+        708.8140480000002,
+        645.621134
+      ],
+      "rngState": 3618526250,
+      "pixels_sha256": "1a3cd6d2cb5d7bb49bbde8594629ad1da3902993d9b4d57ec8171e996f439f60"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "status": "partial-walkthrough",
+  "owner": "root",
+  "sketch": "2020/generative/01_04/telfi",
+  "withheld_until": "Frozen contract review preceded root source/notes inspection.",
+  "notes_path": "survey/out/2020/generative/01_04/telfi/notes.md",
+  "notes_sha256": "0fa1fe6d2aea5a08171d8a8bf18d1e15f18f0834164ede712a93cc3f0d27ac07",
+  "source_path": "/home/colin/dev/processing_sketches/2020/generative/01_04/telfi/telfi.pde",
+  "source_sha256": "81d34c24cc253e12bf08326c611228f6461bd8c7beced0daaa81ddae5328cc3a",
+  "source_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+  "finding": "Actual source uses Processing noise, not simplex as notes say. q is first transformed in x/z by a noise-derived matrix whose c,s are not a normalized rotation; then q.x/q.y get four sequential coarse/fine offsets with y queries reading updated x.",
+  "supported_component": "Four ordered CARTESIAN axis passes with resampling, bias=-amplitude and gain=2*amplitude, represent the XY offset updates.",
+  "residual": "Initial x/z deformation and retained z need a separate 3D transform; not provided by this 2D API. Source noiseDetail4 accumulation is separately assessed by third capability.",
+  "execution": "Source/contract walkthrough only; no transfer rendering and no whole-sketch gap closure or demonstrated claim."
+}

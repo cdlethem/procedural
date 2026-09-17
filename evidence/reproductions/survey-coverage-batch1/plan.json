@@ -1,0 +1,72 @@
+{
+  "date": "2026-09-17",
+  "status": "planned",
+  "scope": "Three selected p5-only capability slices; no full-corpus certification.",
+  "cases": [
+    {
+      "operation": "raster.seeded-pixel-grain@0.1.0",
+      "sketch": "2014/Generativos/cuadraditos",
+      "notes_path": "survey/out/2014/Generativos/cuadraditos/notes.md",
+      "note_sha256": "93f6baf98a57d128b62bd7f1e0be2254a242d752f824e8758ed4d58fb710baa5",
+      "source_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "reference": "/home/colin/dev/genart-survey/out/2014/Generativos/cuadraditos/baseline/frame_00001.png",
+      "candidate_convention": "<candidate-root>/2014/Generativos/cuadraditos/frame_00001.png",
+      "fidelity": "structural/technique; explicit different random stream and byte conversion",
+      "renderer": "p5 Canvas2D, 600x800, pixelDensity1, encoded-sRGB straight ARGB8 transport",
+      "frames": [
+        1
+      ],
+      "determinism": "geometry seed42 and grain rngState42 in separate streams; no frame or clock input",
+      "mapping": "24x7 blocks at30+i*80,40+j*30;8x2 cells of5 pixels on9-pixel pitch,30% skips; background24 and fill200 alpha180; RGB_ADD grain range[0,10],exponent1",
+      "intentional_differences": [
+        "Explicit LCG32 rather than Processing random; independent geometry/grain streams",
+        "Round-to-nearest changed byte rather than Processing float color conversion",
+        "Native Canvas2D instead of JAVA2D"
+      ],
+      "acceptance": [
+        "Shared exact fixtures pass",
+        "Browser executes actual public operation without errors",
+        "Canvas dimensions and selected stored frame coverage match",
+        "tools/benchmark.py default portable-deterministic profile passes, with all raw metrics retained",
+        "Root directly inspects baseline and candidate: block arrangement, missing-cell texture and fine brightness grain remain visible",
+        "Strength edit changes pixels without changing geometry; reset/reload exact; save does not redraw"
+      ],
+      "limits": "No exact source pixel identity; failed visual gates remain failed and cannot be renamed into demonstrated coverage. Alpha-layer study is separate and does not recreate quadShadow's per-fragment scheduling."
+    },
+    {
+      "operation": "field.displace-points-2d@0.1.0",
+      "motivations": [
+        "2017/Generativos/burbujas_ani#0",
+        "2019/generativos/cirnoi#0"
+      ],
+      "fidelity": "Technique component in independent composition, not original recreation. Chosen before rendering.",
+      "native_study": "field-displacement: retained regularly sampled grid lines and circle rims; paired existing portable gradient samples; Cartesian/polar display toggle and gain edit.",
+      "acceptance": [
+        "Exact/error shared fixtures and passive ownership checks",
+        "Actual p5 Canvas2D renders returned points in order",
+        "Gain edit changes geometry while source count/connectivity and palette remain fixed",
+        "Reset/reload exact, PNG save without redraw",
+        "Root inspects original references and native baseline/edit; record declared sampler/composition differences"
+      ],
+      "limits": "No original-image benchmark or demonstrated original claim. Source value-noise/simplex, sequential query feedback and whole-scene artwork are not implemented by this conversion."
+    },
+    {
+      "operation": "field.octave-gradient-noise@0.1.0",
+      "motivations": [
+        "2018/Generativos/micro#0",
+        "2018/Generativos/noisub/noisub003#0"
+      ],
+      "fidelity": "Technique dependency in independent field-sized dot composition. No original scene recreation. Chosen before code/render.",
+      "native_study": "octave-noise: fixed2D dot positions sampled by existing portable2D gradient profile; baseline1 versus5 octaves, independent persistence and normalization edits.",
+      "acceptance": [
+        "Independent Fraction noise+accumulation goldens pass",
+        "Actual p5Canvas2D uses returned values for mark sizes",
+        "Octave/persistence/normalization edits visibly change scalar-size pattern while positions/count/seed fixed",
+        "Reset/reload exact,PNG save without redraw",
+        "Root source/native image inspection and withheld source transfer recorded"
+      ],
+      "limits": "No original-image benchmark, original scene or exact Processing noise claim. Field accumulates untransformed existinggradient values only."
+    }
+  ],
+  "remaining_cases": null
+}

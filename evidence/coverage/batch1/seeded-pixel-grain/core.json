@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "operation": "raster.seeded-pixel-grain",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS seeded-pixel-grain core against frozen shared golden fixtures plus passive carrier, ownership and continuation checks. No renderer or acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/seeded-pixel-grain.json": "2a87b136cb4a990cfa900a42ff7711407cbbbfe2984532fbae31ff68efd51cfc",
+    "fixtures/operations/seeded-pixel-grain.json": "d0198a99c59404e0e173492df5f55261ac6edce9da148e58aa08abf854129927",
+    "packages/javascript/src/seeded-pixel-grain.js": "cdc5961f7ac0cf09cbd15b443de06e1777fccdf2b3ccb222a4ad06ddf24b8ce2",
+    "tests/native/seeded-pixel-grain-javascript.mjs": "ee5128cf08915226fc9131cf7962c42d0c61efd1da8dabd07a8aeafce84b5a32"
+  },
+  "input_sha256_after": {
+    "catalog/operations/seeded-pixel-grain.json": "2a87b136cb4a990cfa900a42ff7711407cbbbfe2984532fbae31ff68efd51cfc",
+    "fixtures/operations/seeded-pixel-grain.json": "d0198a99c59404e0e173492df5f55261ac6edce9da148e58aa08abf854129927",
+    "packages/javascript/src/seeded-pixel-grain.js": "cdc5961f7ac0cf09cbd15b443de06e1777fccdf2b3ccb222a4ad06ddf24b8ce2",
+    "tests/native/seeded-pixel-grain-javascript.mjs": "ee5128cf08915226fc9131cf7962c42d0c61efd1da8dabd07a8aeafce84b5a32"
+  },
+  "scenarios": {
+    "fixture_cases": 26,
+    "ownership_continuation": [
+      "input/output ownership",
+      "continuation state"
+    ],
+    "javascript_only": [
+      "passive records/arrays",
+      "NaN and infinities rejected before work"
+    ]
+  }
+}

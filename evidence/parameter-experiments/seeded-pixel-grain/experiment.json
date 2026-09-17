@@ -1,0 +1,118 @@
+{
+  "id": "2026-09-17-seeded-pixel-grain",
+  "question": "Can independent brightness strength and alpha distribution be edited visibly without changing the drawn geometry?",
+  "decision": "retain-unbounded",
+  "hypothesis": "Increasing additive spread makes the dark ground visibly grainier; changing the alpha exponent changes coverage on an isolated layer.",
+  "source_sketches": [
+    "2014/Generativos/cuadraditos",
+    "2014/Generativos/minimalCirculines",
+    "2018/Generativos/quadShadow"
+  ],
+  "parameter": {
+    "name": "range and exponent, tested separately",
+    "default": null,
+    "unit": "byte offsets or alpha factors; dimensionless exponent"
+  },
+  "baseline": {
+    "path": "/home/colin/dev/genart-survey/out/2014/Generativos/cuadraditos/baseline",
+    "deterministic": true,
+    "renderer": "JAVA2D",
+    "seed": 42,
+    "frames": [
+      1
+    ]
+  },
+  "values": {
+    "brightness_high": [
+      0,
+      10,
+      40
+    ],
+    "alpha_exponent": [
+      0.4,
+      1,
+      2
+    ]
+  },
+  "comparison": "Native p5 Canvas2D candidate at pixelDensity1, fixed geometry seed42 and independent grain state42. Compare raw pixel differences and inspect each successful render. Alpha changes operate on an isolated transparent layer before composition, not the finished scene.",
+  "constraints": [
+    "one causal parameter changed per comparison",
+    "at most six selected states",
+    "no recommended range inferred from these discrete values",
+    "source noise/RNG and rendering differences are declared",
+    "all native execution uses the shared machine lease"
+  ],
+  "provenance": [
+    "survey/out/2014/Generativos/cuadraditos/notes.md: source-only grain10; no grain-amplitude experiment",
+    "survey/out/2014/Generativos/minimalCirculines/variants/grain_20/result.json: none, mean0.0095, fraction0, following blur is a confound",
+    "survey/out/2016/Generativos/ThePiper/notes.md: signed jitter4->20 subtle; missing font weakens whole-scene comparison",
+    "survey/out/2018/Generativos/quadShadow/notes.md: shader alpha exponent0.4, source evidence only; density warning"
+  ],
+  "decision_rule": "Retain the controls if replay is exact, geometry stays unchanged, and inspected output displays their stated mechanism. If the intended effect is absent, diagnose visibility/capture/order before revising the boundary. Keep default and encouraged range null; these observations cannot establish a continuous useful interval.",
+  "status": "completed",
+  "results": [
+    {
+      "label": "baseline",
+      "sha256": "509f176f260d997a9ea72090737b2184cd672707012a3ada2c132710f1f2aa8e",
+      "width": 600,
+      "height": 800,
+      "geometry": "blocks:1897:2044586154",
+      "rngState": "3904993066",
+      "redMean": 41.245122916666666,
+      "redVariance": 1377.5343918390581
+    },
+    {
+      "label": "strength-edit",
+      "sha256": "a0449f8cd08878d9f1c3cfc0d65c9a8fd984936dd00ccb37de5ca27f6994244b",
+      "width": 600,
+      "height": 800,
+      "geometry": "blocks:1897:2044586154",
+      "rngState": "3904993066",
+      "redMean": 56.22744375,
+      "redVariance": 1502.5892672572531
+    },
+    {
+      "label": "zero-grain",
+      "sha256": "ac13018e157d1f28bbe1692b1060636b8c2dbb3cad2b2c6257468cac45424490",
+      "width": 600,
+      "height": 800,
+      "geometry": "blocks:1897:2044586154",
+      "rngState": "3904993066",
+      "redMean": 36.25145833333333,
+      "redVariance": 1369.0826020399309
+    },
+    {
+      "label": "alpha-04",
+      "sha256": "7faaeaeeaccae96a422bd5032d7f5f8e299c2d54868ca5ddeb90c9e1710cc2db",
+      "width": 600,
+      "height": 800,
+      "geometry": "six-overlapping-rectangles-in-one-layer",
+      "rngState": "3904993066",
+      "redMean": 74.80695416666667,
+      "redVariance": 3421.0674666395653
+    },
+    {
+      "label": "alpha-1",
+      "sha256": "dcfad99aee3575b56de6cffba53521114935dd3f25fd1e67e2cfac66c9b2b6fa",
+      "width": 600,
+      "height": 800,
+      "geometry": "six-overlapping-rectangles-in-one-layer",
+      "rngState": "3904993066",
+      "redMean": 59.485085416666664,
+      "redVariance": 2335.138294221871
+    },
+    {
+      "label": "alpha-2",
+      "sha256": "b7c05e3863c669f72f446a03a162401084842ebfb41a042bcf8ca305e3c93390",
+      "width": 600,
+      "height": 800,
+      "geometry": "six-overlapping-rectangles-in-one-layer",
+      "rngState": "3904993066",
+      "redMean": 47.584575,
+      "redVariance": 1597.0079220693751
+    }
+  ],
+  "native_evidence": "evidence/coverage/batch1/seeded-pixel-grain/native.json",
+  "root_observation": "Root inspected all six native states. At high0 the dark ground is flat, high10 fine grain, high40 clearly coarser contrast; block geometry is unchanged. Alpha exponents .4,1,2 progressively reveal more ground within the same layered rectangles. Exact replay/save checked by browser.",
+  "conclusion": "Retain both explicit controls; no default or continuous recommended range inferred."
+}

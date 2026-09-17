@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "scope": "Isolated c7071577 snapshot plus batch-owned changes; excludes concurrent default-palettes export, web UI, external-art and Android work. Native runs were separately executed against the same bound core/example bytes in the shared workspace.",
+  "checks": [
+    {
+      "command": "uv run python tools/check_catalog.py --write-reference",
+      "result": "Catalog schemas, source bindings, fixtures and generated reference valid; runtime conformance is separate."
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p test_reviewed_export_extension.py -v",
+      "result": "3 tests pass, including exact archival chains and fail-closed mutations of root status, child reviews, preimages and current files."
+    },
+    {
+      "command": "node apps/web/scripts/generate-api.mjs --check",
+      "result": "67 operation guides generated, executed with actual bindings and checked for finite output; metadata current."
+    },
+    {
+      "command": "node tools/build_ported_javascript_package.mjs .work/dist/survey-batch1-final",
+      "result": "Fresh tarball packed, offline installed; installed bytes and module resolution verified."
+    },
+    {
+      "command": "python3 tools/update_survey_coverage.py --check",
+      "result": "Affected-family outputs reproduce from immutable baseline plus authored reviews."
+    },
+    {
+      "command": "python3 tools/build_visual_review.py",
+      "result": "84 groups,633 images,no problems; navigation only."
+    },
+    {
+      "command": "python3 tools/build_octave_gradient_noise_fixtures.py",
+      "result": "Independent Fraction-oracle fixture regeneration byte-identical."
+    }
+  ],
+  "prior_failures_resolved": [
+    "Fixture metadata claimed approximate comparison under exact-json-output. Corrected label and made the already exact object comparison explicit; all golden outputs unchanged.",
+    "Previous verifier/test bytes were needed by historical attestation bindings. Added narrow archival return paths through the complete validated successor chain."
+  ],
+  "excluded_claims": [
+    "No web deployment or gallery/Studio addition.",
+    "No acceptance of concurrent changes.",
+    "No new original-scene or transfer recreation accepted."
+  ]
+}

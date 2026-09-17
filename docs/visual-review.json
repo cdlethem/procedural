@@ -3827,6 +3827,103 @@
           "sha256": "d864c4cacddf319df49f6c4407560abd4f0ae303dc72393c9ec3b54e1bdfc0dd"
         }
       ]
+    },
+    {
+      "id": "survey-batch1-grain",
+      "title": "Seeded pixel grain: brightness and alpha",
+      "category": "Root reviewed native; motivating benchmark failed",
+      "description": "Six discrete control states. No demonstrated recreation: original comparison failed SSIM gate.",
+      "evidence": "evidence/coverage/batch1/seeded-pixel-grain/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/survey-coverage-batch1/grain-native-final/baseline.png",
+          "sha256": "509f176f260d997a9ea72090737b2184cd672707012a3ada2c132710f1f2aa8e"
+        },
+        {
+          "label": "strength-edit",
+          "path": ".work/survey-coverage-batch1/grain-native-final/strength-edit.png",
+          "sha256": "a0449f8cd08878d9f1c3cfc0d65c9a8fd984936dd00ccb37de5ca27f6994244b"
+        },
+        {
+          "label": "zero-grain",
+          "path": ".work/survey-coverage-batch1/grain-native-final/zero-grain.png",
+          "sha256": "ac13018e157d1f28bbe1692b1060636b8c2dbb3cad2b2c6257468cac45424490"
+        },
+        {
+          "label": "alpha-04",
+          "path": ".work/survey-coverage-batch1/grain-native-final/alpha-04.png",
+          "sha256": "7faaeaeeaccae96a422bd5032d7f5f8e299c2d54868ca5ddeb90c9e1710cc2db"
+        },
+        {
+          "label": "alpha-1",
+          "path": ".work/survey-coverage-batch1/grain-native-final/alpha-1.png",
+          "sha256": "dcfad99aee3575b56de6cffba53521114935dd3f25fd1e67e2cfac66c9b2b6fa"
+        },
+        {
+          "label": "alpha-2",
+          "path": ".work/survey-coverage-batch1/grain-native-final/alpha-2.png",
+          "sha256": "b7c05e3863c669f72f446a03a162401084842ebfb41a042bcf8ca305e3c93390"
+        }
+      ]
+    },
+    {
+      "id": "survey-batch1-displacement",
+      "title": "Field displacement: retained grid and rims",
+      "category": "Root reviewed native component; no original recreation",
+      "description": "Gain, interpretation and mark substitution; coordinate identity across line/dot views.",
+      "evidence": "evidence/coverage/batch1/field-displace-2d/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/survey-coverage-batch1/displace-native/baseline.png",
+          "sha256": "ed9ee5127a6bdc101763d6a70bcfe260f018787a354ad59c9404faee052c7fcb"
+        },
+        {
+          "label": "strength-edit",
+          "path": ".work/survey-coverage-batch1/displace-native/strength-edit.png",
+          "sha256": "42491d1ff22ee8f3c1b686e69e893b08227c384fbdc97e71c5db86ea9a07c40d"
+        },
+        {
+          "label": "cartesian",
+          "path": ".work/survey-coverage-batch1/displace-native/cartesian.png",
+          "sha256": "b7ba326a5bed83d9a856034516e3031864bb37fe6bcf1f6f92982b8196df53f5"
+        },
+        {
+          "label": "dots",
+          "path": ".work/survey-coverage-batch1/displace-native/dots.png",
+          "sha256": "0a6c7a5b6c3c44b5d2dccbbab3b81c2f93d90b4d4cfbb35b9077d0e9e97d6c9d"
+        }
+      ]
+    },
+    {
+      "id": "survey-batch1-octaves",
+      "title": "Octave detail: retained dot positions",
+      "category": "Root reviewed native component; no original recreation",
+      "description": "Count, persistence and normalization edits on the same supplied points.",
+      "evidence": "evidence/coverage/batch1/octave-gradient-noise/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/survey-coverage-batch1/octave-native-final/baseline.png",
+          "sha256": "f60cea67cb572cb7144b513638d323954d96c519db547dde054eb7014fb077cc"
+        },
+        {
+          "label": "strength-edit",
+          "path": ".work/survey-coverage-batch1/octave-native-final/strength-edit.png",
+          "sha256": "920ed7d8c1744bb205d1832063175236434d9bc4fcf2b98c1e43cc3876e1f5ac"
+        },
+        {
+          "label": "persistence",
+          "path": ".work/survey-coverage-batch1/octave-native-final/persistence.png",
+          "sha256": "e2a802c5e6030a943d34000ab22a2ad5a563c633c15da45d2394bab39f6fce3a"
+        },
+        {
+          "label": "raw-sum",
+          "path": ".work/survey-coverage-batch1/octave-native-final/raw-sum.png",
+          "sha256": "858f586a0e768036877bda2e8ab96a4efdb38c9c1acc98cee448c1a363ea13f8"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,121 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "field.displace-points-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/field-displace-2d.json",
+    "catalog_sha256": "b52a961032d36a7292d35eda882cbb5a8e8603366de2f214e426f8e947eba83a"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/javascript/src/field-displace-2d.js": "cda0d26f09f511d6f3abb2be26908600ab01d1baa4487fb7fe765686f424b090",
+          "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+          "packages/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+          "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+          "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+          "packages/javascript/examples/field-displacement/index.html": "fa11049a040e22b1c170b1d8b1bd3d2d52b6d26a2dc30a061e05421b497e5c54",
+          "packages/javascript/examples/field-displacement/sketch.js": "e058707e687912264a5d90b353c85b9cd8c6ca1efdd6ae9ccdf20780dbe625eb"
+        },
+        "evidence_sha256": {
+          "evidence/coverage/batch1/field-displace-2d/core.json": "1de96cb38f910d05efc9fd83a740a780a57a42c3f67cfba90282d791a197bea0",
+          "evidence/coverage/batch1/field-displace-2d/native.json": "67adad2952cfda82bd41ac9e6befb44547a8efb25d80764a975228c11b764efe",
+          "evidence/coverage/batch1/field-displace-2d/performance.json": "45a6b405a114392d05be1f3132cf44f1ab73843b5efa02cd29b9c8f8d6ca5c60",
+          "evidence/coverage/batch1/field-displace-2d/transfer.json": "aff5a90b6f1f7af4dff250d10716965df796338a91da623f429190670c85f9e8",
+          "fixtures/operations/field-displace-2d.json": "f32ec55ba6ade310db99d6f2154177a5be3fd3a9c8dfb35f905d4fe5e4ed4dfa"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/coverage/batch1/field-displace-2d/core.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/coverage/batch1/field-displace-2d/root-review.json",
+          "sha256": "41a767f259f897c8a5acc86b4f8498aecb7d8768b073d58bdf105e28a7c45062"
+        },
+        "runtime_profile": {
+          "name": "p5 2.3.2 Chromium 153.0.8010.12",
+          "scope": "p5 pure displacement conversion and independent native grid/rim workflow. Source helper technique-component demonstration only; no original-scene recreation, no other target."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/javascript/src/field-displace-2d.js": "cda0d26f09f511d6f3abb2be26908600ab01d1baa4487fb7fe765686f424b090",
+          "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+          "packages/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+          "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+          "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+          "packages/javascript/examples/field-displacement/index.html": "fa11049a040e22b1c170b1d8b1bd3d2d52b6d26a2dc30a061e05421b497e5c54",
+          "packages/javascript/examples/field-displacement/sketch.js": "e058707e687912264a5d90b353c85b9cd8c6ca1efdd6ae9ccdf20780dbe625eb"
+        },
+        "evidence_sha256": {
+          "evidence/coverage/batch1/field-displace-2d/core.json": "1de96cb38f910d05efc9fd83a740a780a57a42c3f67cfba90282d791a197bea0",
+          "evidence/coverage/batch1/field-displace-2d/native.json": "67adad2952cfda82bd41ac9e6befb44547a8efb25d80764a975228c11b764efe",
+          "evidence/coverage/batch1/field-displace-2d/performance.json": "45a6b405a114392d05be1f3132cf44f1ab73843b5efa02cd29b9c8f8d6ca5c60",
+          "evidence/coverage/batch1/field-displace-2d/transfer.json": "aff5a90b6f1f7af4dff250d10716965df796338a91da623f429190670c85f9e8",
+          "fixtures/operations/field-displace-2d.json": "f32ec55ba6ade310db99d6f2154177a5be3fd3a9c8dfb35f905d4fe5e4ed4dfa"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/coverage/batch1/field-displace-2d/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/coverage/batch1/field-displace-2d/root-review.json",
+          "sha256": "41a767f259f897c8a5acc86b4f8498aecb7d8768b073d58bdf105e28a7c45062"
+        },
+        "runtime_profile": {
+          "name": "p5 2.3.2 Chromium 153.0.8010.12",
+          "scope": "p5 pure displacement conversion and independent native grid/rim workflow. Source helper technique-component demonstration only; no original-scene recreation, no other target."
+        }
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pixel grain</title>
+<style>body{margin:0;padding:24px;background:#eeeae2;color:#262624;font:16px system-ui}main{max-width:900px;margin:auto}#controls{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}button,input{font:inherit;padding:6px}input{width:70px}canvas{display:block;width:min(600px,100%);height:auto}table{border-collapse:collapse}td,th{padding:8px;text-align:left;border-bottom:1px solid #bbb}</style>
+<main><h1>Pixel grain</h1><p>Scatter fine brightness across a grid of tiny blocks, or break up a translucent layer. Geometry and grain have separate fixed seeds, so changing the texture leaves the shapes in place.</p>
+<div id="controls"><button data-action="t">T strength</button><button data-action="m">M alpha layer</button><label>Brightness high <input id="strength" type="number" value="10" step="1"></label><label>Distribution exponent <input id="exponent" type="number" value="1" min="0.001" step="0.1"></label><button data-action="0">0 reset</button><button data-action="s">S save PNG</button></div>
+<div id="art" aria-label="Pixel grain artwork"></div><p id="status" role="status">Preparing…</p>
+<table><tr><th>Control</th><th>Canvas effect</th></tr><tr><td>Brightness high</td><td>Upper end of the shared R/G/B addition. Zero removes visible grain.</td></tr><tr><td>Distribution exponent</td><td>Larger positive values put more samples near the low end of the interval.</td></tr><tr><td>Alpha layer</td><td>Grains one transparent layer before placing it over a dark ground; its interval is [.001,1.001].</td></tr><tr><td>Reset / save</td><td>Restore the original pixels, or export the current canvas without redrawing.</td></tr></table>
+<p>The block composition follows <a href="../../../../survey/out/2014/Generativos/cuadraditos/notes.md">cuadraditos</a>; the alpha composition is independent. Edit <code>sketch.js</code> to change the grid, layer shapes, interval or seeds.</p></main>
+<script src="/p5.js"></script><script type="module" src="./sketch.js"></script></html>

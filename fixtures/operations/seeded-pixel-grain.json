@@ -1,0 +1,836 @@
+{
+  "operation": "raster.seeded-pixel-grain",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "2a87b136cb4a990cfa900a42ff7711407cbbbfe2984532fbae31ff68efd51cfc",
+  "oracle": "Independent integer LCG and analytical binary64 arithmetic for integer powers; Java StrictMath.pow oracle for exponent .4 and underflow. The cancellation fixture distinguishes the specified power profile from current V8 Math.pow.",
+  "cases": [
+    {
+      "id": "shared-rgb-straight-and-transparent",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -20,
+          20
+        ],
+        "exponent": 1,
+        "rngState": 42,
+        "maxWork": 4
+      },
+      "output": {
+        "raster": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4278588966,
+            2147487776,
+            1254195,
+            4293252549
+          ]
+        },
+        "rngState": 955863294
+      }
+    },
+    {
+      "id": "ten-draws-seed-0",
+      "input": {
+        "source": {
+          "width": 10,
+          "height": 1,
+          "pixels": [
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -128,
+          128
+        ],
+        "exponent": 1,
+        "rngState": 0,
+        "maxWork": 10
+      },
+      "output": {
+        "raster": {
+          "width": 10,
+          "height": 1,
+          "pixels": [
+            4282137660,
+            4282861383,
+            4292006610,
+            4289440683,
+            4284637794,
+            4288651167,
+            4283979864,
+            4288980132,
+            4286743170,
+            4287993237
+          ]
+        },
+        "rngState": 2498801434
+      }
+    },
+    {
+      "id": "ten-draws-seed-1",
+      "input": {
+        "source": {
+          "width": 10,
+          "height": 1,
+          "pixels": [
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -128,
+          128
+        ],
+        "exponent": 1,
+        "rngState": 1,
+        "maxWork": 10
+      },
+      "output": {
+        "raster": {
+          "width": 10,
+          "height": 1,
+          "pixels": [
+            4282203453,
+            4284440415,
+            4286677377,
+            4290032820,
+            4279045389,
+            4284440415,
+            4291217094,
+            4287532686,
+            4278453252,
+            4288980132
+          ]
+        },
+        "rngState": 2745540835
+      }
+    },
+    {
+      "id": "ten-draws-seed-2147483648",
+      "input": {
+        "source": {
+          "width": 10,
+          "height": 1,
+          "pixels": [
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -128,
+          128
+        ],
+        "exponent": 1,
+        "rngState": 2147483648,
+        "maxWork": 10
+      },
+      "output": {
+        "raster": {
+          "width": 10,
+          "height": 1,
+          "pixels": [
+            4290559164,
+            4291282887,
+            4283585106,
+            4281019179,
+            4293059298,
+            4280229663,
+            4292401368,
+            4280558628,
+            4278321666,
+            4279571733
+          ]
+        },
+        "rngState": 351317786
+      }
+    },
+    {
+      "id": "ten-draws-seed-42",
+      "input": {
+        "source": {
+          "width": 10,
+          "height": 1,
+          "pixels": [
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584,
+            4286611584
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -128,
+          128
+        ],
+        "exponent": 1,
+        "rngState": 42,
+        "maxWork": 10
+      },
+      "output": {
+        "raster": {
+          "width": 10,
+          "height": 1,
+          "pixels": [
+            4282466625,
+            4279703319,
+            4287927444,
+            4281940281,
+            4284506208,
+            4278650631,
+            4285756275,
+            4280163870,
+            4292927712,
+            4294967295
+          ]
+        },
+        "rngState": 4271921684
+      }
+    },
+    {
+      "id": "alpha-power-two-preserves-hidden-rgb",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "mode": "ALPHA_MULTIPLY",
+        "range": [
+          0,
+          1
+        ],
+        "exponent": 2,
+        "rngState": 42,
+        "maxWork": 4
+      },
+      "output": {
+        "raster": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            269492272,
+            17834032,
+            1056816,
+            233890000
+          ]
+        },
+        "rngState": 955863294
+      }
+    },
+    {
+      "id": "zero-grain-still-consumes",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          0,
+          0
+        ],
+        "exponent": 1,
+        "rngState": 42,
+        "maxWork": 4
+      },
+      "output": {
+        "raster": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "rngState": 955863294
+      }
+    },
+    {
+      "id": "identity-alpha-still-consumes",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "mode": "ALPHA_MULTIPLY",
+        "range": [
+          1,
+          1
+        ],
+        "exponent": 1,
+        "rngState": 42,
+        "maxWork": 4
+      },
+      "output": {
+        "raster": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "rngState": 955863294
+      }
+    },
+    {
+      "id": "byte-clipping",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -300,
+          300
+        ],
+        "exponent": 1,
+        "rngState": 42,
+        "maxWork": 4
+      },
+      "output": {
+        "raster": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4278190080,
+            2147483648,
+            4083294,
+            4283054634
+          ]
+        },
+        "rngState": 955863294
+      }
+    },
+    {
+      "id": "half-byte-rounds-up",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            33554690
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          0,
+          1
+        ],
+        "exponent": 1,
+        "rngState": 2782269413,
+        "maxWork": 1
+      },
+      "output": {
+        "raster": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            33620483
+          ]
+        },
+        "rngState": 2147483648
+      }
+    },
+    {
+      "id": "alpha-half-byte-rounds-up",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            33554690
+          ]
+        },
+        "mode": "ALPHA_MULTIPLY",
+        "range": [
+          0,
+          1
+        ],
+        "exponent": 2,
+        "rngState": 2782269413,
+        "maxWork": 1
+      },
+      "output": {
+        "raster": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            16777474
+          ]
+        },
+        "rngState": 2147483648
+      }
+    },
+    {
+      "id": "continued-stream",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -20,
+          20
+        ],
+        "exponent": 1,
+        "rngState": 955863294,
+        "maxWork": 4
+      },
+      "output": {
+        "raster": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4278917931,
+            2147487005,
+            925230,
+            4292989377
+          ]
+        },
+        "rngState": 508781842
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -20,
+          20
+        ],
+        "exponent": 1,
+        "rngState": 42,
+        "maxWork": 3
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "negative-alpha",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "mode": "ALPHA_MULTIPLY",
+        "range": [
+          -20,
+          20
+        ],
+        "exponent": 1,
+        "rngState": 42,
+        "maxWork": 4
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "reversed-range",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          1,
+          0
+        ],
+        "exponent": 1,
+        "rngState": 42,
+        "maxWork": 4
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero-exponent",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -20,
+          20
+        ],
+        "exponent": 0,
+        "rngState": 42,
+        "maxWork": 4
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid-seed",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -20,
+          20
+        ],
+        "exponent": 1,
+        "rngState": -1,
+        "maxWork": 4
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "range-overflow",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -1e+308,
+          1e+308
+        ],
+        "exponent": 1,
+        "rngState": 42,
+        "maxWork": 4
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "budget-before-range-overflow",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -1e+308,
+          1e+308
+        ],
+        "exponent": 1,
+        "rngState": 42,
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "pixel-before-budget",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            -1
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -20,
+          20
+        ],
+        "exponent": 1,
+        "rngState": 42,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "empty-raster-invalid",
+      "input": {
+        "source": {
+          "width": 0,
+          "height": 1,
+          "pixels": []
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -20,
+          20
+        ],
+        "exponent": 1,
+        "rngState": 42,
+        "maxWork": 4
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "unknown-mode",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            2148540464,
+            1056816,
+            4293976272
+          ]
+        },
+        "mode": "HSB",
+        "range": [
+          -20,
+          20
+        ],
+        "exponent": 1,
+        "rngState": 42,
+        "maxWork": 4
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "source-alpha-distribution",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279246896,
+            4279246896,
+            4279246896,
+            4279246896
+          ]
+        },
+        "mode": "ALPHA_MULTIPLY",
+        "range": [
+          0.001,
+          1.001
+        ],
+        "exponent": 0.4,
+        "rngState": 42,
+        "maxWork": 4
+      },
+      "output": {
+        "raster": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            2467307568,
+            1628446768,
+            3440386096,
+            2349867056
+          ]
+        },
+        "rngState": 955863294
+      }
+    },
+    {
+      "id": "fdlibm-profile-byte-boundary",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4278190080
+          ]
+        },
+        "mode": "RGB_ADD",
+        "range": [
+          -3449282167339910.5,
+          5557917087401082
+        ],
+        "exponent": 0.4,
+        "rngState": 2561818183,
+        "maxWork": 1
+      },
+      "output": {
+        "raster": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4278255873
+          ]
+        },
+        "rngState": 389768954
+      }
+    },
+    {
+      "id": "positive-power-underflow-1074",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4279246896
+          ]
+        },
+        "mode": "ALPHA_MULTIPLY",
+        "range": [
+          0,
+          1
+        ],
+        "exponent": 1074,
+        "rngState": 2782269413,
+        "maxWork": 1
+      },
+      "output": {
+        "raster": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            1056816
+          ]
+        },
+        "rngState": 2147483648
+      }
+    },
+    {
+      "id": "positive-power-underflow-1075",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4279246896
+          ]
+        },
+        "mode": "ALPHA_MULTIPLY",
+        "range": [
+          0,
+          1
+        ],
+        "exponent": 1075,
+        "rngState": 2782269413,
+        "maxWork": 1
+      },
+      "output": {
+        "raster": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            1056816
+          ]
+        },
+        "rngState": 2147483648
+      }
+    }
+  ]
+}

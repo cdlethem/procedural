@@ -1,0 +1,247 @@
+{
+  "id": "field.octave-gradient-noise",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "description": "Evaluate an ordered geometric octave sum over the existing 2D or 3D gradient-noise profile at supplied points.",
+  "decision_cluster": "field.octave-gradient-noise",
+  "capability_decision": "design/capabilities/octave-gradient-noise.md",
+  "design_review": "design/operations/octave-gradient-noise-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/noisub/noisub003#0",
+      "notes_path": "survey/out/2018/Generativos/noisub/noisub003/notes.md",
+      "note_sha256": "469a9a49c3acd8d38b34af3b19ea5a53e6518639fabc720fbca948e9d7bb627a",
+      "evidence_sha256": "091665adef15e49d678181b868986d99e2fc83c0424ec640afc2e519bb41373e",
+      "relationship": "Multi-octave field dependency of composite helper; no source-noise, packing or subdivision equivalence."
+    },
+    {
+      "candidate_id": "2018/Generativos/micro#0",
+      "notes_path": "survey/out/2018/Generativos/micro/notes.md",
+      "note_sha256": "9e4bf68abaca6166b121a99060fe7dc132b84172cdd422515348f2e27d788990",
+      "evidence_sha256": "54c4121bd8f9af2d22c7b6d743f6b93d3efba52dbabc15768e6361d2cc7a8868",
+      "relationship": "Multi-octave field dependency of composite helper; no source-noise, packing or subdivision equivalence."
+    }
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "dimension": {
+        "enum": [
+          2,
+          3
+        ]
+      },
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 3
+        },
+        "maxItems": 2147483647
+      },
+      "seed": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "octaves": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "frequency": {
+        "type": "number",
+        "minimum": 0
+      },
+      "lacunarity": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "amplitude": {
+        "type": "number",
+        "minimum": 0
+      },
+      "persistence": {
+        "type": "number",
+        "minimum": 0
+      },
+      "normalization": {
+        "enum": [
+          "NONE",
+          "WEIGHT_SUM"
+        ]
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "dimension",
+      "points",
+      "seed",
+      "octaves",
+      "frequency",
+      "lacunarity",
+      "amplitude",
+      "persistence",
+      "normalization",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "values": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 2147483647
+      },
+      "amplitudeSum": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "required": [
+      "values",
+      "amplitudeSum"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached scalar values in supplied point order, finite nonnegative amplitudeSum; no mutation, aliases or ambient state.",
+  "behavior": {
+    "validation": "Passive Object/null-prototype record with exactly dimension,points,seed,octaves,frequency,lacunarity,amplitude,persistence,normalization,maxWork. Reject classes/accessors/symbols/extras/coercion; proxies outside interchange. Dense ordinary arrays with own data slots, no extras. Static validation order: outer carrier/keys; dimension numeric2 or3; points shape length0..2147483647 and every tuple with exactly dimension finite coordinates in array/axis order; uint32 seed; octaves integer1..2147483647; finite frequency>=0; finite lacunarity>0; finite amplitude>=0; finite persistence>=0; normalization NONE/WEIGHT_SUM and WEIGHT_SUM requires amplitude>0; nonnegative safe-integer maxWork. Canonicalize accepted zeros. Validate all inputs before work, including zero weights and empty points.",
+    "work": "After full static validation compute exact integer W=(N+1)*octaves with overflow-safe arithmetic. If W exceeds maxWork or safe integer maximum, WORK_LIMIT before schedule, field creation or output allocation. One schedule event and N field-sample events per octave, including zero-weight octaves. Empty points still compute schedule and amplitudeSum with cost octaves. Output storage O(N), schedule O(octaves), total work O((N+1)*octaves). Host exhaustion is a host error; no partial output.",
+    "schedule": "Before evaluating any point, build frequencies and weights in octave order starting frequency and amplitude. Set amplitudeSum=0; for each used octave store frequency/weight then amplitudeSum=amplitudeSum+weight, checking finite. Only if another octave remains: nextFrequency=frequency*lacunarity then nextWeight=weight*persistence, checking finite after each. Underflow to0 is valid. Never update past the last octave. Finite amplitudeSum is required even for NONE and empty points.",
+    "algorithm": "Select existing field.gradient-noise-2d-01@0.1.0 or field.gradient-noise-3d-01@0.1.0 by dimension, with the SAME supplied seed for every octave. For each point in supplied order start sum=0. For each octave ascending: for axes x,y,(z) in that order compute q=point[axis]*frequency[octave], check finite or NUMERIC_OVERFLOW; require -9007199254740991<=q<9007199254740991 or QUERY_OUT_OF_RANGE. Sample the existing profile only after all query axes validate. Compute weighted=weight*sample then sum=sum+weighted, each finite. No skip when weight0. If WEIGHT_SUM compute value=sum/amplitudeSum once after the last octave and require finite; else value=sum. Canonicalize completed output zero. Return detached {values,amplitudeSum}; no output clamp, signed remap, compensated sum, normalization per octave or coordinate feedback.",
+    "numerics": "IEEE754 binary64 separately rounded primitive operations in specified order; no FMA/reassociation or narrowing. Existing gradient profiles and hash define exact scalar samples; no host Processing/p5 noise substitution. State/shape/errors compare exactly; scalar fixture tolerance absolute1e-12 relative0. Finite arithmetic checks precede any later cancellation; underflow to zero valid. Inputs are finite, but multiplied query coordinates may violate the existing profile domain.",
+    "native_surface": "p5 named exports octaveGradientNoise(input) and OctaveGradientNoiseError from octave-gradient-noise.js and package index; other targets deferred. Plain values only.",
+    "environment": "No ambient noise, RNG, clock, field callbacks or host objects. Fixed seed reused each octave, no seed advance. Any coordinate offset is supplied by caller before frequency scaling; no per-octave offset or independent seed.",
+    "adapter": "Native p5 Canvas2D study maps returned scalar values to mark size/color on retained positions. Renderer never evaluates noise or recomputes accumulation; save exports the rendered canvas."
+  },
+  "errors": {
+    "INVALID_INPUT": "Static carrier/domain/normalization failure before work.",
+    "WORK_LIMIT": "Exact schedule+sampling events exceed budget/safe bound.",
+    "NUMERIC_OVERFLOW": "Nonfinite schedule, query product, weighted sample, sum or normalized result.",
+    "QUERY_OUT_OF_RANGE": "Finite multiplied coordinate outside existing gradient profile half-open safe query domain."
+  },
+  "parameters": {
+    "dimension": {
+      "unit": "2 or3 coordinate dimensions.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range."
+    },
+    "points": {
+      "unit": "Finite coordinate tuples; lattice domain checked after frequency scaling.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range."
+    },
+    "seed": {
+      "unit": "uint32; same seed at every octave.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range."
+    },
+    "octaves": {
+      "unit": "Positive integer count of evaluated bands.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range."
+    },
+    "frequency": {
+      "unit": "Initial nonnegative frequency.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range."
+    },
+    "lacunarity": {
+      "unit": "Positive frequency ratio between octaves.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range."
+    },
+    "amplitude": {
+      "unit": "Initial nonnegative weight; must be positive for WEIGHT_SUM.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range."
+    },
+    "persistence": {
+      "unit": "Nonnegative weight ratio.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range."
+    },
+    "normalization": {
+      "unit": "NONE or one final division by WEIGHT_SUM.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range."
+    },
+    "maxWork": {
+      "unit": "(pointCount+1)*octaves schedule/sample events.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit design control. Source noiseDetail(2,.45) motivates octave count/weight; no measured default or continuous recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no implementation/native/technique support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5 first; acceptance requires fixtures, native workflow and scoped reproduction evidence."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no implementation/native/technique support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no implementation/native/technique support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/octave-gradient-noise.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Preregistered independent field-sized dot study; no whole-original reproduction claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Root contract accepted before implementation; independent challenge resolved in design_review. Target acceptance pending."
+  },
+  "exclusions": [
+    "Processing/p5 source-noise replay, simplex or value-noise generators",
+    "Signed recentering, absolute/ridged/product multifractals and nonlinear per-octave shaping",
+    "Independent per-octave seeds, offsets, arbitrary frequency/weight lists or spatial warp",
+    "Geometry subdivision, packing, source scene or ambient time/RNG"
+  ]
+}

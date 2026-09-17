@@ -1,0 +1,2811 @@
+{
+  "status": "passed",
+  "scope": "Locally packed and offline-installed package; byte-for-byte installed inventory, no browser or registry claim.",
+  "input_sha256_before": {
+    "packages/javascript/examples/annular-marks/README.md": "c4304096deb52a20dde87ee5360756290520d3052280aa9b004a2394cf1e251b",
+    "packages/javascript/examples/annular-marks/annular-marks.js": "5b65dbbf336901ef27c7ac5c74b7109544c0e23d8faa6d85941caa86031f4cee",
+    "packages/javascript/examples/annular-marks/index.html": "0a30cc81397d67cc59ed2aee1d558a69b7bb168384864aad24e601eaabd24909",
+    "packages/javascript/examples/annular-marks/sketch.js": "877fd9f3552a9f8068ef4ccf3272fe71a2b47ded6685b1730c7735c94c29d38b",
+    "packages/javascript/examples/arrival-contours/README.md": "c1a1d70017de292b8631e30c29e896d7064ba3589795890472cfe576e3c3da15",
+    "packages/javascript/examples/arrival-contours/index.html": "8b3df711eb3d0f60e9f7204c95be619fb26e62eedbc9e5f90f4d794532a2973e",
+    "packages/javascript/examples/arrival-contours/sketch.js": "9af9881b09e19e59233dec1fb5e7b54684508eab2b5128daaf707dd918ec0608",
+    "packages/javascript/examples/aspect-tiles/README.md": "dce922a07995df9377c1b726d051a906a5d0d2b41d2dbe53bd7b08104940d2e4",
+    "packages/javascript/examples/aspect-tiles/index.html": "dfc1a2a7a4e1f2a8674281215c1c066d5c97937bb78fc09374b28d154d5d41e0",
+    "packages/javascript/examples/aspect-tiles/sketch.js": "289ed41e2e48cf8852484b2f91983b69079f649886f301f1ea3509747d63d33d",
+    "packages/javascript/examples/band-marks/README.md": "87a79dd4c8b7a59c824db510efa63dae4378f43d7172989a849571bc93cd907f",
+    "packages/javascript/examples/band-marks/band-marks.js": "4ad6cd9c8117d28821984c2f0e129032f1a81fdfd8d320bdc002e5a4f85ebe55",
+    "packages/javascript/examples/band-marks/index.html": "ed869e5218432472ffd3fb753e7bf4478eb1ebfba15187a3d548540331eac528",
+    "packages/javascript/examples/band-marks/sketch.js": "9d444db4696833274a034d98549c29e407a56fb97f877735a4ffe82222ffdaae",
+    "packages/javascript/examples/bayer-weave/README.md": "4a9a6f7231902bb60b236f7aba9320ebb09a65790b6c3453928bdcb2f0de0314",
+    "packages/javascript/examples/bayer-weave/index.html": "cc46780254210849ccb5efb52328207c6ff5747b17f661bc8c6777f282b55c71",
+    "packages/javascript/examples/bayer-weave/sketch.js": "bb4f612435bf63f292416e281c8f5ccd9ac843f43dab6ea7ba229f0f0079ff4e",
+    "packages/javascript/examples/blue-noise-stipple/README.md": "b0e6df44a7a609fc6c0e814ff0acbeff9512461fb20601fb60f82411b97c7e44",
+    "packages/javascript/examples/blue-noise-stipple/index.html": "51b0f0e6e9138c6bb395514f9f4b03d11e4a4ed0b6a94fd085b572179edea17a",
+    "packages/javascript/examples/blue-noise-stipple/sketch.js": "a8077f8f51089b25b4f41d39af2b0ac859a6569a6534802360555fa5f2632984",
+    "packages/javascript/examples/blur-marks/README.md": "341fe272a0bfb43b9b4375882718b20f600bd8b63ae519d408ceac357638b36a",
+    "packages/javascript/examples/blur-marks/blur-marks.js": "0b0eccd4a9658d0dbbdcda2cbe02e0f68ccf25fe0b45c8184e9c1232ec6db9c0",
+    "packages/javascript/examples/blur-marks/index.html": "a36e5388ebcba2988f18ba574cbeb6ec12de72fd8e6fc84d99c869ba9cc269f1",
+    "packages/javascript/examples/blur-marks/sketch.js": "4148546b764f1fe042e8f6db2ce8af644b3786aec5be42ec8e696fcf1530d0ec",
+    "packages/javascript/examples/body-marks/README.md": "6f59c2334469cb0494fe7c5c2a0e1632403938a506aaea460f86d38e7ae46599",
+    "packages/javascript/examples/body-marks/body-marks.js": "4f2befcd17695d72d33440f4f2c3b1bdcb0a40d2361b21a254de4bb5e7c79315",
+    "packages/javascript/examples/body-marks/index.html": "f3d0b605955ad4d8a136a84322274bd9aab538e4072434b283cdd6890d0e1e8f",
+    "packages/javascript/examples/body-marks/sketch.js": "0419bde4ad0254d60de435d8cea9f1b73bfe3d75219d4b89ec5895a897281128",
+    "packages/javascript/examples/branch-marks/README.md": "befac22e2fc186dc3358d83645a35b33be5e638060ce33ac4e2c8f7a18960cc6",
+    "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
+    "packages/javascript/examples/branch-marks/index.html": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70",
+    "packages/javascript/examples/branch-marks/sketch.js": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1",
+    "packages/javascript/examples/branching-networks/README.md": "7ef7b906ab8d5577e6d4705edb02e8bc461b9bd31a39823d0c1b561457c4432a",
+    "packages/javascript/examples/branching-networks/index.html": "bbfe293bb70bf9ba14e069677241dc6cffb0eb1ad182ab46937034ba8159e773",
+    "packages/javascript/examples/branching-networks/sketch.js": "afebfe9b8cce8dd071bfaa30e925b4e5c72437f9add02d716a753dd8fa08d45c",
+    "packages/javascript/examples/branching-sentences/README.md": "1ba19f7e9329f473ced6986d55401436b5a66dc1167eeaea3e16d691157ab033",
+    "packages/javascript/examples/branching-sentences/index.html": "889c4a7d504807115e819bd59b9fc8d9a0daf5657449e6920f79f9264d0ab096",
+    "packages/javascript/examples/branching-sentences/sketch.js": "3e01ef8695db1af38d13747b02c451db4814ca6687fd22daca5f6fc336f950c7",
+    "packages/javascript/examples/cell-echoes/README.md": "c443a1e8dfce81f756f2d621a5139a40cf9dd6c7af99d7c7bcfc89970f0a501c",
+    "packages/javascript/examples/cell-echoes/index.html": "edad7f23d14160218a75a801acf9815be30f7582e4dce48bd87f2cde8c3c6766",
+    "packages/javascript/examples/cell-echoes/sketch.js": "91555423f4caa19787fd7faa795e36b0bd9d00e761cdfaccb695936ac0fb6518",
+    "packages/javascript/examples/cell-mosaic/README.md": "21893b8228a06e9209437ddce9095352b230fd947fbc95063a0b6e34d48cac66",
+    "packages/javascript/examples/cell-mosaic/expansion-studies.js": "b5ad12caf3bc34421d59cada62ca91ce11444f22f567a14fc568e056c892bbfa",
+    "packages/javascript/examples/cell-mosaic/index.html": "0ea6222afaaf24e573e121d488b3f95b0cbb21f7530b8b43116c918f9321ce42",
+    "packages/javascript/examples/cell-mosaic/sketch.js": "02b22bf3c864643f7451800140976c5601b8ef7c2388ffdf3c33b1a50a9614d4",
+    "packages/javascript/examples/centroid-trails/README.md": "60c8bfa450a05843509af35a56bb4401893e58a666870771841f2dc2cd0666af",
+    "packages/javascript/examples/centroid-trails/index.html": "b6460b2af565cb3a2c18ec761b59829ba29680c09824b096d2fb526e7190afda",
+    "packages/javascript/examples/centroid-trails/sketch.js": "9ea28c2bd16cc11c78313274b28ad7773d362f207f3c6aaefc38f9bce104c7c7",
+    "packages/javascript/examples/city-marks/README.md": "35e33b36e3a71bf827685788d48e6f68393eb7f541c59732ce42a4029631bf1e",
+    "packages/javascript/examples/city-marks/city-marks.js": "9f3b9aa2eef1d5387e8d088e5e2de4c400960fa4997bd85dba26dd7cd2364250",
+    "packages/javascript/examples/city-marks/index.html": "ea1a2f69bdb07c019217f3510dcf033dbddb089f89516eaa1daf6df6504fcee4",
+    "packages/javascript/examples/city-marks/sketch.js": "b6ef9a40b308563d6225048d5d27dfe5b6122af5c711d89e92d5750008e21ab2",
+    "packages/javascript/examples/clip-marks/README.md": "f16288cf886e4d9fa7d52212c70580801c245d9561dee5c5bb8e2ba724d75f33",
+    "packages/javascript/examples/clip-marks/clip-marks.js": "44dd9e5facf233655d8ed378e96f5098bdd8e65e02e6b1c221698fcc4da24874",
+    "packages/javascript/examples/clip-marks/index.html": "2b987a88eb4e7203eeabaeacefac2cb765bf1eafa1c4321009770ba8dbcc9a47",
+    "packages/javascript/examples/clip-marks/sketch.js": "19ea5fbd1c8e2c324b0489f5c86ad011cf97768078f80d32ab68d6cbcea61618",
+    "packages/javascript/examples/compatible-mosaics/README.md": "02be85d652baffe886799b9e829bb0050216d8732e4da7ea62dc41961eb221dd",
+    "packages/javascript/examples/compatible-mosaics/index.html": "a3f2103a979af928354a498b2ecd83df6bcd3a21a6dcb06f6377f3bf12b6bf59",
+    "packages/javascript/examples/compatible-mosaics/sketch.js": "7a1a2893544911ed6918e0c8450ea6b8207882e51912826b5a8d2d2808c4536a",
+    "packages/javascript/examples/concave-grain/README.md": "4f36dd52067edeec6b3ae3e05fe2137eb40de7778faa49776e7ebb7334941c00",
+    "packages/javascript/examples/concave-grain/index.html": "b1306fd0898c9f915788b712f8aea3163de4f80d6de989dd294d914b39eb961f",
+    "packages/javascript/examples/concave-grain/sketch.js": "eaa4ae742b258de298318e26ac833a236c600f0f80cff58d56eb1e5cc496468f",
+    "packages/javascript/examples/contact-marks/README.md": "b0caaab7d805606ee57669f0ebd8c15571f1b7900eeedff327195cfb98aadbc4",
+    "packages/javascript/examples/contact-marks/contact-marks.js": "e91cbc60c23eca6e22182b63a69cc347c99ae5efd4277cfc55c1fc44aba96763",
+    "packages/javascript/examples/contact-marks/index.html": "bf45d6ba8562f3341c309f05628d6e78cbd476a86566bded7738530410484f56",
+    "packages/javascript/examples/contact-marks/sketch.js": "1b5ed883e5ae839d551332973dccb804976f74c595db44d78aa35ac800943777",
+    "packages/javascript/examples/contour-abstraction/README.md": "0d624ee8ef2d39e9fb91ba345ab398c20f92016734d3dc4434d9b7d5a00f3caf",
+    "packages/javascript/examples/contour-abstraction/index.html": "55003f0fcce72eb831cc5c0628634c84d710189b34858e031ee315c61fd674ca",
+    "packages/javascript/examples/contour-abstraction/sketch.js": "4e48fa67c5dfaeb0c73e49525146cf1c25c50b5300979a28bbd214b28822b2a3",
+    "packages/javascript/examples/contour-blobs/README.md": "22d68783857a88b6fe55fc2a75edc382ab964e06e847d3002bd60d18c17cd986",
+    "packages/javascript/examples/contour-blobs/index.html": "4b1c98db9e6dee08209a1c4685980410988e73744e4de1420f9fe04224dbd211",
+    "packages/javascript/examples/contour-blobs/sketch.js": "1653743655fd07dbc0ec9d03c18c5e9d2dc7dc393e18c5a2116e420226537ca8",
+    "packages/javascript/examples/contour-terrain/README.md": "1bdcecdb145a28c992ba19bac2747d65b08790f84c508a65d235903db668dadd",
+    "packages/javascript/examples/contour-terrain/index.html": "3757e47388c38d353bab80d02b705ed60e0795f43a1e3b555881930c85339bbe",
+    "packages/javascript/examples/contour-terrain/sketch.js": "f257446d8899dd0ee54c1a08aad3393e972e546d0f36c4c1fbb7409341385830",
+    "packages/javascript/examples/curved-trajectories/README.md": "01c330edba2d29b847375f0ab5b0509d158c5bd80058ff8282a121bf2ba7282d",
+    "packages/javascript/examples/curved-trajectories/index.html": "7139588e3a7afc50a3ab82acf1b03242102840df918ed4004de695b90a09a71b",
+    "packages/javascript/examples/curved-trajectories/sketch.js": "4135e508f8b7f583d60a15230a9084fb8c4930084abaf99b46e0b0f7c05ec488",
+    "packages/javascript/examples/cut-branch-marks/README.md": "25321f9fc141bf3871350babc32ac2e3a88596306a2b2b25cc70c32aa93996cf",
+    "packages/javascript/examples/cut-branch-marks/cut-branch-marks.js": "97a4e8fceb259c593b7b26a2a6a4f3255082a70921d54e2b17426dbfb2cf7d28",
+    "packages/javascript/examples/cut-branch-marks/index.html": "b966ff7d8cf2ca4f6189e18b1f415fb20a6dda67407657e56c12ba22265b1f28",
+    "packages/javascript/examples/cut-branch-marks/sketch.js": "6d94d11aa0b978bbb897e8ea8515b19eeb864ea14f7582efbf3454f78f4e88df",
+    "packages/javascript/examples/cut-marks/README.md": "68a4b594682495dafa9b8c038c8b396c2824daeecc66348a3c4f9ad73423f12f",
+    "packages/javascript/examples/cut-marks/cut-marks.js": "36f7a5b02ddbdf2bac84ce063de742782d88de62733c007723488777c05f7977",
+    "packages/javascript/examples/cut-marks/index.html": "ce1ff31024b6a8676b49ad3e1d5b41910ddb00befe63d35174b5e3456c0f91fb",
+    "packages/javascript/examples/cut-marks/sketch.js": "9c730b1b30dbaaea5dd47c480f1b7f88aa6bda7f5a086dbedcf241c3696e8d72",
+    "packages/javascript/examples/depth-marks/README.md": "9825a2b30fbcf85030225fba3a3b2e8aba3ac909bf403ede2cd1f04610f0b363",
+    "packages/javascript/examples/depth-marks/depth-marks.js": "a21cfa074ae3458ef8da0f806b79a2cd334c7da88d1a4dd7ca63bc54ebf11807",
+    "packages/javascript/examples/depth-marks/index.html": "b5bde353517261a064a814be3488916136b8d49af2ced4528f19aed9f8446478",
+    "packages/javascript/examples/depth-marks/sketch.js": "fae998ab613afb589004f467ae55651093590311eee82d0ec29fc77cfe0771f5",
+    "packages/javascript/examples/diffusion-engraving/README.md": "8e34555f719db5136694b76297a9199df1ff7d8642f5958cddacdcff66949edb",
+    "packages/javascript/examples/diffusion-engraving/index.html": "db9a931fe33561ee20f013c56109f5cd8e08abc03da0d30be31dbfd2d8041d30",
+    "packages/javascript/examples/diffusion-engraving/sketch.js": "0a42a6b5b5fb325fcc877cf01916be07db0f3164bd5cec99a8be939f24fd4523",
+    "packages/javascript/examples/dilated-stamps/README.md": "aedbe27d79a7221c1168e3064b57bcb3a28cb21aa361ba0c088dc1f8b0653ecb",
+    "packages/javascript/examples/dilated-stamps/index.html": "96eab710edb6a01904c7b3f5926c529ade62eff5b77f3b29d52b03d8bbd12ad7",
+    "packages/javascript/examples/dilated-stamps/sketch.js": "1b22118e425bae0b86453757504f5681f619246fa4212de4bfedc3905689157d",
+    "packages/javascript/examples/distance-halos/README.md": "6288fc2c4460a1ddf2cc0b6d2d27429903e2608e29872a0d493a426e30c862b2",
+    "packages/javascript/examples/distance-halos/index.html": "2aae7d6b46f004e851a394a333826de3c9bc9a8ebf9edc4fd9c697b3a0856940",
+    "packages/javascript/examples/distance-halos/sketch.js": "61445ce751810275c59c3aa38daa88f9894b8f3da008cc1337c355700caed378",
+    "packages/javascript/examples/dithered-ribbons/README.md": "444f84c5e146e77d589d413337b448706e600249da2622682d3b06a854398540",
+    "packages/javascript/examples/dithered-ribbons/index.html": "df0d6f7ae090c05119784455393f5a65adb13c4a8505d69efeb4a80b74b366cc",
+    "packages/javascript/examples/dithered-ribbons/sketch.js": "38e517f1dab6aff7ddee2c714e56513c2ae39a4066b594709b6099ed325be4df",
+    "packages/javascript/examples/embossed-field/README.md": "73b996bf3c9114573d349971967261358fb55a3668c5d51de8fcbd28b6a0091c",
+    "packages/javascript/examples/embossed-field/index.html": "0e871047c1e18bb6dc3dd2470e536bfa358e8a4d179e3ebf02820a96cd65acee",
+    "packages/javascript/examples/embossed-field/sketch.js": "99ffc5045478feb2bba8699d023f3bccf6a27ae5d5bf059c382ed7d33303cc2c",
+    "packages/javascript/examples/eroded-lace/README.md": "cf5a5cb368d8d2492b0fd69820bdd8c8cd6c18a23153bf44892a545e9264d873",
+    "packages/javascript/examples/eroded-lace/index.html": "16463f4a653d5e0292ca2d6f80f7fb8e0ece582035972a6a15105e888f0487b2",
+    "packages/javascript/examples/eroded-lace/sketch.js": "73c971c325e3874c468f4b9c9994fe5ed4ee545b2e3aca71cd945469b81a15e4",
+    "packages/javascript/examples/extruded-seals/README.md": "f89f90ec6c84df26f7c80606c14cdbc2fbd9bbae9a7048e42424a6d11e252b6d",
+    "packages/javascript/examples/extruded-seals/index.html": "1aabda7a8aaf6eba00c69c9546ba37d696939b621c96bbc68dad6f922a942aaa",
+    "packages/javascript/examples/extruded-seals/sketch.js": "9ed0ee70b439ad852c2922fbcca252077a53b3efb2912e78291d85dc0fbb8fc5",
+    "packages/javascript/examples/facet-marks/README.md": "69bcfa68c313a820ade628191b844b363f8eb502c51dffe856beec328ed0cd2f",
+    "packages/javascript/examples/facet-marks/facet-marks.js": "4b4d56a0d4654dc0717a2551e3f572253baf17745867acd1b30ffc88148b0380",
+    "packages/javascript/examples/facet-marks/index.html": "cbac841c922b8c7699ff6c07a4789a18ef16f43ea28801b1b887e2b013aa8f47",
+    "packages/javascript/examples/facet-marks/sketch.js": "a6d1e9dcf39856b06b600c763a3534f7b6cc1c55ba87ae002e05424fe7e1c83a",
+    "packages/javascript/examples/faceted-silhouettes/README.md": "ff6c3667c6785ccb11ccfbef6677acc626a56fa7d316773768cba086dbf5e172",
+    "packages/javascript/examples/faceted-silhouettes/index.html": "d51d58a1fc785f701cb5cf01bc71f9df6f75c727e4d866bee2ffde5f521e0394",
+    "packages/javascript/examples/faceted-silhouettes/sketch.js": "c0a1e31cae9baa14e13bd5599c851a1707a76195f631aa542a29788449004fb2",
+    "packages/javascript/examples/field-displacement/README.md": "93fe26e05a8a88f9753a08449d4b0bb246a56d567d2f5d33eb9215c75ad03ea3",
+    "packages/javascript/examples/field-displacement/index.html": "fa11049a040e22b1c170b1d8b1bd3d2d52b6d26a2dc30a061e05421b497e5c54",
+    "packages/javascript/examples/field-displacement/sketch.js": "e058707e687912264a5d90b353c85b9cd8c6ca1efdd6ae9ccdf20780dbe625eb",
+    "packages/javascript/examples/field-marks/README.md": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27",
+    "packages/javascript/examples/field-marks/index.html": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d",
+    "packages/javascript/examples/field-marks/mark-field.js": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf",
+    "packages/javascript/examples/field-marks/sketch.js": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b",
+    "packages/javascript/examples/flow-needles/README.md": "64ea830a02bba88a5d5e4ce38babf96b2213253b6f1783eed896cf9d81b8e2f3",
+    "packages/javascript/examples/flow-needles/index.html": "5a2e3912d8d3a4709c6fdf2fe826d4ac9c88e290db91ffc98e37c81bc1a157ec",
+    "packages/javascript/examples/flow-needles/sketch.js": "f06c07bfc26985834910c4f792e8054bb1e1079949bc39a17782dcfb02a01709",
+    "packages/javascript/examples/flowing-brushes/README.md": "ccb896567f08139e7f7849b37d68bb1f0bb42c775f681319c15d4ab715198219",
+    "packages/javascript/examples/flowing-brushes/index.html": "a61a0e0aec6db81e42f0cb191913817bc591a6be6d936e59ce69236eb083892c",
+    "packages/javascript/examples/flowing-brushes/sketch.js": "de2accb05c816ff707dc43757dc790b3231ebe11003f60dabe3e8bad0645d0a1",
+    "packages/javascript/examples/fragmented-lines/README.md": "d28c4804ef7f69306cd9c537dd2745ca78d8735227325e29c27a3a4eba157646",
+    "packages/javascript/examples/fragmented-lines/index.html": "39b0aee2e56a257d1c779029e89ca246f8912a5b3a786afde36fdcf8bf6ebe5a",
+    "packages/javascript/examples/fragmented-lines/sketch.js": "8b3bf37c60beb599aabb3eb637f0cd8da372afd3bc3996bdd161460d73c81aab",
+    "packages/javascript/examples/geometric-generations/README.md": "96d388e9dad71a26ab15432809ffcbe3f05eb9710a03c34af76f0d6fa9163086",
+    "packages/javascript/examples/geometric-generations/index.html": "2a19c3c325ab5907e4dda4abf6bc3570d97fee960cf5a25a1d85e625a142e02f",
+    "packages/javascript/examples/geometric-generations/sketch.js": "0e2dada4f7ef70b56f86cdb1fefcd034f4216ee8d72d9b6b09a8fbf63b8a3a62",
+    "packages/javascript/examples/gesture-skeletons/README.md": "9db275608337bece9955610920338bac244918968bd045ad383656e8dc78acca",
+    "packages/javascript/examples/gesture-skeletons/index.html": "6d1389f012ea5ec8127240dcb45ff9dcc2f3c5694d14f0e4a88335ebd950720e",
+    "packages/javascript/examples/gesture-skeletons/sketch.js": "4ee7812f835a37732e6ff87ed160c19bf024ddd9f9cc7545c5c029e4380ba917",
+    "packages/javascript/examples/glyph-marks/README.md": "5acbe2148b1180e42095cff4b211c3e9fed4f8a6f98ab28396db11ba73858d51",
+    "packages/javascript/examples/glyph-marks/assets/FONT-LICENSE.txt": "63544717f051095f67c6da4f36776aafd81e561320baf36ae65925f3336ebb8a",
+    "packages/javascript/examples/glyph-marks/assets/GlyphMarks.ttf": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+    "packages/javascript/examples/glyph-marks/glyph-marks.js": "34f9ec004e4d84c64475b32c11151f9f9c160725d1870b8a15695e21fde293bf",
+    "packages/javascript/examples/glyph-marks/index.html": "cc61930d03b49b047bb6375f068f399596e96bfae4ce82cf5b3cea9beacd33a3",
+    "packages/javascript/examples/glyph-marks/sketch.js": "9787c41ea258cb0e8faffe2f4c55ad7f0f9c5404678ef33ba1677edb9374226a",
+    "packages/javascript/examples/grain-marks/README.md": "a8f823c43737434a40869ef73523e0f0ea5ab77f3167716ef4ed6a21b91df381",
+    "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+    "packages/javascript/examples/grain-marks/index.html": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8",
+    "packages/javascript/examples/grain-marks/sketch.js": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17",
+    "packages/javascript/examples/image-field-marks/README.md": "db216b9e0f7f1b906090e5a965723d689cc950f0769eefcb3cc00101efaeab15",
+    "packages/javascript/examples/image-field-marks/image-field-marks.js": "b713f2beb7cc5e203719118bccb848d3d4088954696b036c6e987069d519a8cd",
+    "packages/javascript/examples/image-field-marks/index.html": "60726429a18c74c83c05ffac2caf1fcb34a1473337156feb108438c741342a33",
+    "packages/javascript/examples/image-field-marks/sketch.js": "639613acbae365cb91546f704ba35d87cdb6ee53700dbee411c6b9a7a49bc9a3",
+    "packages/javascript/examples/landscape-marks/README.md": "e6b90a0af707ab9236868285f32fbe9e4e1508c30f2409e38ed888f479d335ad",
+    "packages/javascript/examples/landscape-marks/index.html": "cf49d436e701b53e8e3adb4446805c59249b2f55175439466c12e0e5db6c1fe1",
+    "packages/javascript/examples/landscape-marks/landscape-marks.js": "c8aa3ee62ddce70dfd51dd4e8c6fa95a351744dfe6bd529b60d213118ad29560",
+    "packages/javascript/examples/landscape-marks/sketch.js": "ee17f04de10c8d93a70f59521cf47011bee9c5a0c532c8a17fc56d498019b9d2",
+    "packages/javascript/examples/lattice-marks/README.md": "d53386a2691062b2a698889bed49ae1aa782eded2661808870d3b1e45f8d5d36",
+    "packages/javascript/examples/lattice-marks/index.html": "63bdf4ee52021e0ab12be6d22b02b686d6d6d242397e9ade62c231c7935352e7",
+    "packages/javascript/examples/lattice-marks/lattice-marks.js": "62e8025efd2af2d2cb53e66e266894400f2a7deabe1ff664f560927d18f80882",
+    "packages/javascript/examples/lattice-marks/sketch.js": "a64e2542b2bbdcd790d952fb48cd9b9f0b0c8c22f6d8f9c38014711d0e2be51a",
+    "packages/javascript/examples/layer-marks/README.md": "1acbfbc48bd73f79507048b18d64afb7848fb20a9eef77dcaeef428eb89fcaf8",
+    "packages/javascript/examples/layer-marks/index.html": "761801276641b9634c456d7d48743ac5f044387d60743b813278160129a46367",
+    "packages/javascript/examples/layer-marks/layer-marks.js": "0311fd8444d2a8f7ce87b6133a71920e51bc7d2dfd019507f095b6cefcabb7c3",
+    "packages/javascript/examples/layer-marks/sketch.js": "2eec327cd0b03297cbd72cdaf0fb733820b06834720a1af83bfa080dc8e7bd28",
+    "packages/javascript/examples/loop-marks/README.md": "92088b3d6dcedfdf349f9a7afd582d426d29e970bf5d18d0004dfda4baf173f2",
+    "packages/javascript/examples/loop-marks/index.html": "dd3af9cbef4df9c859e64e5aefad3fb2ad4f25591f303aa04f0c75e7b4419a61",
+    "packages/javascript/examples/loop-marks/loop-marks.js": "8f610c69d2d708bcd8a3e23c3d135e3d124ef2e058993ea47efbb16d69fdce91",
+    "packages/javascript/examples/loop-marks/sketch.js": "8d0ad68788503f0cffb576c9834472f3ae5f182362d9ed59cd8fe23f9f4e1d69",
+    "packages/javascript/examples/mask-marks/README.md": "fcd2fde347322654162018213936a92b42882b8c505a7b07a6f7e49567101c2d",
+    "packages/javascript/examples/mask-marks/index.html": "444ccb42c2d7dcc2070e17befe65f7be5fe876c6abdc9c20afba05242b8b1740",
+    "packages/javascript/examples/mask-marks/mask-marks.js": "a8a522d90f2aa96e2ea5587b859d1126798536aaf722d4c29af37c45344104a5",
+    "packages/javascript/examples/mask-marks/sketch.js": "5c4230d87a4be32348847f5fd74d60b6a5fbbcfb9d7c2c98ee042f74b39b2f5e",
+    "packages/javascript/examples/masked-partition-marks/README.md": "7a353a66e63a280cd29ecf3402a7cf11271f83ffbc115e30ae1e530109dc3851",
+    "packages/javascript/examples/masked-partition-marks/index.html": "ddd3cfa75d1c9c58d5ae4e64132e244f7bf4d8076591dbc76cffe770373d8be2",
+    "packages/javascript/examples/masked-partition-marks/masked-partition-marks.js": "94222e0e260852f3b060f96457025b02b0eecafee316f654e517e32a3b48c5b5",
+    "packages/javascript/examples/masked-partition-marks/sketch.js": "b59896671ca026866c6cbfca9dab006d118cde17dfa2067e6ef938288ee247f6",
+    "packages/javascript/examples/materials-a-studies.js": "f4db69c9a138bca40a70e315f23d97b0e965bebcc585aedc56124157e1518eef",
+    "packages/javascript/examples/materials-b-studies.js": "177ad888b0067dd8721409c07d2830d03131615f45b589aa61412286994ca455",
+    "packages/javascript/examples/maze-gardens/README.md": "fac7effdc2dfce388907f22c3675ad615a17f18e7c86a0e445deef8e3d73bbc9",
+    "packages/javascript/examples/maze-gardens/index.html": "a15c85a48400c3d39f7ebf5daa80110e37c1d2cdd8ea1bffc0ab970681191cbd",
+    "packages/javascript/examples/maze-gardens/sketch.js": "6433780793ce3c6dd322dfb8d579524d1000bc7388aa7cfdb9a2cabd725ab581",
+    "packages/javascript/examples/nearest-feature-mosaic/README.md": "0576cfa8c8c277eebaf9ecff22835550fdb8c488a11b7e995c8c9eaae1a0ecdb",
+    "packages/javascript/examples/nearest-feature-mosaic/index.html": "9318e7eae0db2c0c515da2eb3ed92af08354945acc00bfe8cf7a7566b62568a2",
+    "packages/javascript/examples/nearest-feature-mosaic/sketch.js": "56f477210c5b91987404d4e155be9726b44fb1657c6d653c91b280713f77c839",
+    "packages/javascript/examples/nested-contour-strokes/README.md": "d06a88fbcecc0956ed628f76cddebf8ee1447f7b77f700c8a5962481c1b26d75",
+    "packages/javascript/examples/nested-contour-strokes/index.html": "253770e64b6d61dce8b3767790cd080c5d1e4625c37b04a7ff3f9be5a979edf9",
+    "packages/javascript/examples/nested-contour-strokes/sketch.js": "00d9387fcb8d9255b5548d8e41de5829705cac61880e6f01f9f71827994c2e8a",
+    "packages/javascript/examples/obstacle-roads/README.md": "5ba0b629e203bb6cf016a4cf022329a55d6499cf41f1b3e27f4abdfda52d0c4f",
+    "packages/javascript/examples/obstacle-roads/index.html": "008ec8b9aaa76074b68960da9d37222a10f556d7185b2a42be6ac86de2683728",
+    "packages/javascript/examples/obstacle-roads/sketch.js": "d9933964c5b93d33e0c80e10e4767b0dd379571626019d6ac186c0d10f5ae6fd",
+    "packages/javascript/examples/octave-noise/README.md": "6c6299ef75e278ae54894d6aad73eb1229b0f3466cf034972fdb7f97a340951a",
+    "packages/javascript/examples/octave-noise/index.html": "022bb87966eef31385ec1badc76961096d771600b4dbed366c1b59d7f5dc5c93",
+    "packages/javascript/examples/octave-noise/sketch.js": "a9bd8d66198922cecfe601fb4dc2ace09b2481becb44f6cb20129d3e510856ac",
+    "packages/javascript/examples/oklab-orbits/README.md": "9d82995c4de90e47e79afa1bdf16e38e83eb223f56e4740cb23a0f9db050795c",
+    "packages/javascript/examples/oklab-orbits/index.html": "b502c0738fa45b987ff54613ceba2fd195392ffdbc96cb443fc5da62daba49f2",
+    "packages/javascript/examples/oklab-orbits/sketch.js": "8cd8283b3511debefcf1e45ab9d622f9930ce6c4ae50fa987d1c42a48d4b7d05",
+    "packages/javascript/examples/orbit-beads/README.md": "9dc5c9e0d1fda0f5b792b3a389255f43f34fd44c5673206c1435cec648653310",
+    "packages/javascript/examples/orbit-beads/index.html": "edae5d35311b0c6828b25c8c426fb111cf222a5040bace5f11290c059d3348b4",
+    "packages/javascript/examples/orbit-beads/sketch.js": "424a80589a3e1c5d3aa5392c80b836bd2ad590ded0a0aa7c3e3aff409d342434",
+    "packages/javascript/examples/ordered-halftone/README.md": "e7f0f44d45a7076ea1e0be7d65ba0afb365e03e304c2948112cd16644be503f5",
+    "packages/javascript/examples/ordered-halftone/index.html": "3391b59bf8f5bb21ceb9edcd787b3b4d46fcf38166dd9df5e0ee1d409ac245ee",
+    "packages/javascript/examples/ordered-halftone/sketch.js": "ed4b98bba8601aefee6713b8ebacfd2d458cbf1057e27e9ec00d323f2421df3e",
+    "packages/javascript/examples/organic-cells/README.md": "c71bfe59b2859728af93654d5de6af009c9051ac00ae0a3a1b44fc01c2f783c0",
+    "packages/javascript/examples/organic-cells/index.html": "179943916d2427a8f56fedb53cc618f6c3b105325396b3179dea3f6cec426b60",
+    "packages/javascript/examples/organic-cells/sketch.js": "04d300b986c85c981eeb623af6283ce838b43e2a4c4e18ee001e7c3db3c96742",
+    "packages/javascript/examples/packed-posters/README.md": "9d805e992e993d1d686585ac2c8c767cf2352fa7d1468c8cc1598b6caf3fe4d3",
+    "packages/javascript/examples/packed-posters/index.html": "02e6a0ef2b4ded71323f50492364771ce8386c2ba2df53ef41e3cc5f5d7f0923",
+    "packages/javascript/examples/packed-posters/sketch.js": "bf684ef84d9213ee759bffd7806d7c68323a5324740182aec1b92e9b84e4216c",
+    "packages/javascript/examples/panel-marks/README.md": "03731fed37a7042e453c1b69ed4ccc6bc1116457f46b5f2e9dfddace0b9ab573",
+    "packages/javascript/examples/panel-marks/index.html": "5f2592744b5a346fa02feea51ff9f4f666b225cf841a698e332b8a83aeb00240",
+    "packages/javascript/examples/panel-marks/panel-marks.js": "d192527d6307abd753f1e57570a7b4ea6c4950fe1cb428040e0b5d88d3feda58",
+    "packages/javascript/examples/panel-marks/sketch.js": "e7522301477eaba78644c514146df770d5eaca3b67c3db28fc0e33635dccbc2a",
+    "packages/javascript/examples/path-clip-marks/README.md": "3f060f7191ac4c44146c380d6b18fb7f72c3f21c2609a225e2d6560322e660ce",
+    "packages/javascript/examples/path-clip-marks/index.html": "6509db8d1619dc9e7fd5cce5422f288d741b2df27028bc891a42f36973e63d76",
+    "packages/javascript/examples/path-clip-marks/path-clip-marks.js": "5ba2a22939f499973aa5b020df2e560ce872bdc81ac618b046553e60104937e8",
+    "packages/javascript/examples/path-clip-marks/sketch.js": "f7c3cf4243a6fb6ca8f0af29e8a68ef96f3bf1aa75ae6fe04c3fc25e374e3006",
+    "packages/javascript/examples/path-marks/README.md": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291",
+    "packages/javascript/examples/path-marks/index.html": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f",
+    "packages/javascript/examples/path-marks/path-marks.js": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743",
+    "packages/javascript/examples/path-marks/sketch.js": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473",
+    "packages/javascript/examples/paths-a-studies.js": "c51e455de2062675f4b92e6e70608fdb9e5533cab7fbb2408c0bac2fcbd4747c",
+    "packages/javascript/examples/paths-b-studies.js": "a7852153ce5dbb8f79065fb2c17711c74bf3bbd3d5035669ff9cf99c266fd6c5",
+    "packages/javascript/examples/perceptual-bands/README.md": "2be68a1f1ec03f3236525b09366570c72aff122d348d0d4554631363f7277bbd",
+    "packages/javascript/examples/perceptual-bands/index.html": "5c201526634fb7cc6269f4de1a6d5fcbe1025f479bb936cf834cbbebdc447507",
+    "packages/javascript/examples/perceptual-bands/sketch.js": "f29ff9f2fcfe9ba25c8dc30978935dfc701c8bdf549c55ead47ef74a53bfbe19",
+    "packages/javascript/examples/pinned-waves/README.md": "88e4fc7dd65739b51b0e538f3a70b85b9f1173ae1c3456cbd73c42ced1f64f98",
+    "packages/javascript/examples/pinned-waves/index.html": "b0582ad0daa6799b365d0c5ad9632e525ebd67c0dcd58d5fb2873a8dc73b116b",
+    "packages/javascript/examples/pinned-waves/sketch.js": "35c6520dd5fc64106ff419a818e5b30119f11733961af849abbf8adc42e0c15f",
+    "packages/javascript/examples/pixel-grain/README.md": "c8d28469a5cc20a1b920ffdfa938ead74beeba7c58c028e958125c98dfb43d79",
+    "packages/javascript/examples/pixel-grain/index.html": "f581c8756492277f2d6adb505260c5d0a440b79e8384ced0bc0e385fbcbb8ade",
+    "packages/javascript/examples/pixel-grain/sketch.js": "f68bdc41afa2e6734f9e716027636013abaa1bb0f0058f2ae770e697df7b4104",
+    "packages/javascript/examples/placement-image-marks/README.md": "417ae8f228b4e536a524ff92d549a070c51491fabf49e764dc09aaa75a61cbe8",
+    "packages/javascript/examples/placement-image-marks/index.html": "286d0b425845223982b28ae81a1c0e7883730fdb16632eef61a29ee5e3d2df1a",
+    "packages/javascript/examples/placement-image-marks/placement-image-marks.js": "797b15b0015412790c1dd4acb0e25a8597eb71785682701e9936ccf8a7a7bf2d",
+    "packages/javascript/examples/placement-image-marks/sketch.js": "65c2a0cb1c2139629f49255c371268684bbc8307d5dd202cd27e8383049321ad",
+    "packages/javascript/examples/placement-marks/README.md": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1",
+    "packages/javascript/examples/placement-marks/index.html": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318",
+    "packages/javascript/examples/placement-marks/placement-marks.js": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382",
+    "packages/javascript/examples/placement-marks/sketch.js": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c",
+    "packages/javascript/examples/pointer-marks/README.md": "aac53dd84fa19e0045f81689d9f1266fbb5a734b4d9991f951168a664d1556f8",
+    "packages/javascript/examples/pointer-marks/index.html": "aa0c6c58647679564436cd349af60b69843593a233bdaa8687972614b2650dfc",
+    "packages/javascript/examples/pointer-marks/pointer-marks.js": "9eee3ad0c62d59f7b788bb110b18c249f7e05bb9b3e726d2562c6807bbc88445",
+    "packages/javascript/examples/pointer-marks/sketch.js": "ef1d722880c7929af84ec565bf7f1a7fab656ba8e6545d5ccb8ca59dbca19e23",
+    "packages/javascript/examples/polygon-marks/README.md": "6b6d0190feaa7358a1563d1147cc8e93b835747bee3ae1ad88003ce0817bd2dc",
+    "packages/javascript/examples/polygon-marks/index.html": "eb8c06bc3a65b6626ab24af74899fffdf5852287a699a31835f4282110284262",
+    "packages/javascript/examples/polygon-marks/polygon-marks.js": "4a850118868c7956bc4d7919ca4f4fd2a6c19aef706e2e14021382291fecf369",
+    "packages/javascript/examples/polygon-marks/sketch.js": "3f1b35dc25908b9d609cd80dfb462d5b0950d97900dc0f1e62a30b730a573bab",
+    "packages/javascript/examples/profile-marks/README.md": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6",
+    "packages/javascript/examples/profile-marks/index.html": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867",
+    "packages/javascript/examples/profile-marks/profile-marks.js": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c",
+    "packages/javascript/examples/profile-marks/sketch.js": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c",
+    "packages/javascript/examples/projection-marks/README.md": "ed1dd6fcaf5e302a6afec3cf8dc5c64a060cf8bfb8192d217200fa789c28bb42",
+    "packages/javascript/examples/projection-marks/index.html": "488d8920ad2d56260a209741b6d800703609d3c28d5c4907ba6a77ce7d69abca",
+    "packages/javascript/examples/projection-marks/projection-marks.js": "9441c1fe98ba35ff5824a28fa57a7d30764d80f538561963318bf7623f99c54f",
+    "packages/javascript/examples/projection-marks/sketch.js": "5569b3da81606dd2e9a83191b4035424ee8f90d55135ee70c241ed3f9373ee5c",
+    "packages/javascript/examples/pull-marks/README.md": "bbeaa1df18af8fbf335fda6de8e9f162cb0b66c2a5a2f253b947055d860a2a3b",
+    "packages/javascript/examples/pull-marks/index.html": "c1d3fb3b79683ce842957a7b493176fc8d41d905f8e17c89b4a1f14d61e812c1",
+    "packages/javascript/examples/pull-marks/pull-marks.js": "af49f8461e8d12099d6bed13e85ec6165305b890fa6c9a29fa8144d3e9aee830",
+    "packages/javascript/examples/pull-marks/sketch.js": "83bc47bd0dbdedb4e1beebb9a2418c99cc625267cb02d33746d70e8ffbb86e2b",
+    "packages/javascript/examples/quantized-stripes/README.md": "c7d88f4be963d0618a2aa70c3b35110340d63c257fc8054d4fa8f5c6e230f760",
+    "packages/javascript/examples/quantized-stripes/index.html": "199893207aae9b7a9f5ec3d9b89a94d6b88865dd2760a9d62012e8df88ff9816",
+    "packages/javascript/examples/quantized-stripes/sketch.js": "a453f8d3c12181c7038fae5b35f96d783f15305dc06366cfeb1921a873a6267f",
+    "packages/javascript/examples/ramp-marks/README.md": "ad5589e4f562f214b78788baa432c16a67837707bfb45c83ca67826a6efefd3b",
+    "packages/javascript/examples/ramp-marks/index.html": "4a1f569d65dab5f50f16e49dc57a48342436b7c15f6b66e3babc6442916a3ab4",
+    "packages/javascript/examples/ramp-marks/ramp-marks.js": "4528fcdea69f41ee6f82a72b4e52ce6b8426b1f096c54434e6aec8e325ae6ac2",
+    "packages/javascript/examples/ramp-marks/sketch.js": "cd3e1db4deb2989fc70a8bce0433d9f80dcf47175f98dc77b7224e855de90cec",
+    "packages/javascript/examples/reaction-spots/README.md": "f7889e6b481e53b527295211233e8add3ec06026cef247a76f324a77a5d23edb",
+    "packages/javascript/examples/reaction-spots/index.html": "dd176739c9e3b90781263441c9abdca75ab3a19de94f2b62a6bb428cb8c38362",
+    "packages/javascript/examples/reaction-spots/sketch.js": "827bf6b0523da088d87ec72ee6b616a9d08d8d18dbd9947d8724e0af4f700abf",
+    "packages/javascript/examples/reaction-stripes/README.md": "114d68183c60c9a68aa4344deb2985bc0585289df3a07480445461ecbcecd0a9",
+    "packages/javascript/examples/reaction-stripes/index.html": "45987214d0ed4c784ab2860dd6e6e4b3e686fdfc2986ecaad48ffbcc4701dca7",
+    "packages/javascript/examples/reaction-stripes/sketch.js": "8e6d57f57f3e9351682fd584e4662e70efe504d9bd08ee88147a8352bef83c93",
+    "packages/javascript/examples/recursive-tiles/README.md": "70a8d4f3898b27369362e574c36e067075febf0567efe64a6658b427bd072bc0",
+    "packages/javascript/examples/recursive-tiles/index.html": "424b508573fc628cbd1e0881f2bf8ca096f8cf193a2366b778422f9c1ab82496",
+    "packages/javascript/examples/recursive-tiles/sketch.js": "891eda2f646d478d5e21c153a7e01bf4ba5b1808bfec7b39b63447a6999f88fd",
+    "packages/javascript/examples/reduced-mosaic/README.md": "caeb80067d39c96eda8ee694b4160b51d3764881173afdc7a1c3b19cea784c37",
+    "packages/javascript/examples/reduced-mosaic/index.html": "2ef10f3ed02909a7125676ce8098225807cae031c35a27b6c2af41617c2b24b0",
+    "packages/javascript/examples/reduced-mosaic/sketch.js": "67b09c124cabc9a9d9b12359e9e8fc095402cac35d417309cf8a719178892df7",
+    "packages/javascript/examples/region-marks/README.md": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010",
+    "packages/javascript/examples/region-marks/index.html": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d",
+    "packages/javascript/examples/region-marks/region-marks.js": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8",
+    "packages/javascript/examples/region-marks/sketch.js": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a",
+    "packages/javascript/examples/relaxed-stones/README.md": "cda1debf7ee0f100533620cb9c84cec9a931d27302f3b72deec745a7ca9e13a1",
+    "packages/javascript/examples/relaxed-stones/index.html": "9bf9a70c91dd16c33930474252a34da5ac558bae7e1992e019f64305798fa916",
+    "packages/javascript/examples/relaxed-stones/sketch.js": "22b02194a6fdece1cc6a5f7b9ddd58ab7551c54920174f3af0c7d00891e59788",
+    "packages/javascript/examples/relief-marks/README.md": "7121543eceae1946acbe7d161939288af0b5ef723d836cf0f96edb342634da38",
+    "packages/javascript/examples/relief-marks/index.html": "9517989ebe64632e08c64d1fa3bd0123b3fdc9d4b5fde8f6ce150890d9290ef6",
+    "packages/javascript/examples/relief-marks/relief-marks.js": "c98891a3cbb50a0112dce6645f5563195b62da2986b9578f10c0393b7ae690bb",
+    "packages/javascript/examples/relief-marks/sketch.js": "49d3471a4c15d9fb8e277141724d913aabfba0f4d135c7b623de62c22e7cfe19",
+    "packages/javascript/examples/ripple-interference/README.md": "6d6546c538be30526c9f3d331e52c6836acb192e4e4d58b73275f4cbfa74d52a",
+    "packages/javascript/examples/ripple-interference/index.html": "716ecc987d1f092a5e1a8ba3bc90a84174d46c4b39a6999ef87d8d3d373a6f24",
+    "packages/javascript/examples/ripple-interference/sketch.js": "8d13f1f11e16293d81304b7cf371e382b4f4ed2568481ffdd6028c06bf670e09",
+    "packages/javascript/examples/road-margins/README.md": "6e92fcc54bd42d71b45b3d8860eba2a88872462f5f41e152618dba5fbd550f25",
+    "packages/javascript/examples/road-margins/index.html": "6a8d6b2574c031c6584d1ecf5e48e85c4c1423d2bd8b63cd543dc655f5e671e2",
+    "packages/javascript/examples/road-margins/sketch.js": "f8843a7fc163e414fa23cd886c3b7ef87eb08bf0d6234f6760406d87075aba3d",
+    "packages/javascript/examples/rounded-panels/README.md": "3a1b5957f2d0c4512dbd8e0c79c912b335cd7fb65c8cdc2bec2c1f4d9d0d71e7",
+    "packages/javascript/examples/rounded-panels/index.html": "8f067fe80570db35ff78b0c0e046fc1479df2ab40a78abacef4606aaf461561a",
+    "packages/javascript/examples/rounded-panels/sketch.js": "7bd0cbf57a82b9a59753a8941e2f2be05d5c5911a0f6419c65775cd744d80a29",
+    "packages/javascript/examples/rounded-polyhedra/README.md": "47ef80ade4e921688ee384342ecb481c9e334736ffafcdf358c72a734a3fcc6b",
+    "packages/javascript/examples/rounded-polyhedra/index.html": "597be4466ff0c8910f4c993a156ad1543171067292d756ca5095b5382afcc6ff",
+    "packages/javascript/examples/rounded-polyhedra/sketch.js": "056b4746510a99566b44fd6eaed0f0ecd2e2e29a1a2d069c00315c6d0d7bbac5",
+    "packages/javascript/examples/scatter-envelopes/README.md": "d004b146b933ad6de4e98c9de7ea9d244156585c114f0e5b10550bef095b5609",
+    "packages/javascript/examples/scatter-envelopes/index.html": "e32ddbb60839e65110b6ba32d7fc6269ed423d1116dbc8d3c2c094cf7f1196a4",
+    "packages/javascript/examples/scatter-envelopes/sketch.js": "42b79fca43d0d0665d35a7ea156f9a2d02e657fe5fd28f465b8962f406feaea9",
+    "packages/javascript/examples/signed-edge-print/README.md": "ca450ae8c47e0d2111e57f5af73235221b44bc4a397dd78493de3b5601fbb6c1",
+    "packages/javascript/examples/signed-edge-print/index.html": "91a9e5677ee2fff6fa5f4b95bd83a23376f3cfb48e7ee48b5fdeacd5fbbb3bc8",
+    "packages/javascript/examples/signed-edge-print/sketch.js": "e7f0a552c03229ad56d20211451bafa9e1a5eece4f022aee9f1702d55d795b2c",
+    "packages/javascript/examples/spaced-symbols/README.md": "9b8c8f881cfb8b80f3cbc5b3724a605af77bec09a8a5d51976d1dffc92d18dba",
+    "packages/javascript/examples/spaced-symbols/index.html": "e9722c57cf2be878aca9cec40f88b083ddbd98a649e996d34199ec0ac4a5979e",
+    "packages/javascript/examples/spaced-symbols/sketch.js": "ebe2a5cc074fa9a295ec47bfb289b78ce25056e3174c9cc8744a967621916ff9",
+    "packages/javascript/examples/spring-marks/README.md": "fa0499f1a199b66abc028442162a9cbeb03fc0af902f34fa9cff56af3fd049ab",
+    "packages/javascript/examples/spring-marks/index.html": "c0acfe5d21f1fd50fea84bd85f006b31771a8203378fd3062eb8edb1607f0b91",
+    "packages/javascript/examples/spring-marks/sketch.js": "e56b7d7a00cfe4f7e60ab7f6660940f9aa4911fb2eb3771f6d12bca6d612ad70",
+    "packages/javascript/examples/spring-marks/spring-marks.js": "a47eaba5f5b3d2bb90286017d1f4c742dc0960a25e64891123a763813301fca9",
+    "packages/javascript/examples/stepped-blocks/README.md": "5c063e7569102241fd2eed58e9cebe095d88600e00f2712ea2d5df7bb8d4dd56",
+    "packages/javascript/examples/stepped-blocks/index.html": "8d29fdb38d8a967c5353cdf958ca153047f1b55718ecd45abea954a6bff631cb",
+    "packages/javascript/examples/stepped-blocks/sketch.js": "1672e4fc95a9d77ff1f51f117013275fe008f00aa45374f1488602f7eae079e1",
+    "packages/javascript/examples/stitched-contours/README.md": "ac8214cd8f33eb9cbfb03bb70d52f67dd13b5eab1b1e8c3f4d21b443c139d615",
+    "packages/javascript/examples/stitched-contours/index.html": "e8cb49b6f1e528f3f15eac81bff243d7f0ad2aebe28d5ec7262cdb0043bd444b",
+    "packages/javascript/examples/stitched-contours/sketch.js": "318ad06fb9f613f019344627be20d1e0897bb5bf189f6b975580340eacae81b6",
+    "packages/javascript/examples/stitched-paths/README.md": "35d9e06c240fde1748bc898b7995ac0fec78e330f440d82a7b07d770aa934452",
+    "packages/javascript/examples/stitched-paths/index.html": "13cf0a77871e7e93e4b0739095187239393b3e2224b88ce6a78f1a75db88e1c5",
+    "packages/javascript/examples/stitched-paths/sketch.js": "ed6a47bc01bb674287ad08bc9c7581436c2e5142d1ae729918a8e026a1471cdf",
+    "packages/javascript/examples/stream-ribbons/README.md": "d8eebb35d8485d1fd6e2890221f5d244f40d4311b01d29292cce10447b152eb6",
+    "packages/javascript/examples/stream-ribbons/index.html": "e354f9f05752d976ee3f2337b0fb3749265b547b1f6d89454896c0d5099ee43b",
+    "packages/javascript/examples/stream-ribbons/sketch.js": "1983ef20000843dcff2f8d259147e7f0a62f28cd72737d3c2092ea19c59a9dc7",
+    "packages/javascript/examples/study-controls.js": "89c1399024c5e342978910b98c7045d99ca2a716e0b6e55679f66913edf91324",
+    "packages/javascript/examples/subdivided-shells/README.md": "e7b3be9be8fcd62c262a83ca4beec8c23ccd1d658cf52dc9bce76a0ff53e794b",
+    "packages/javascript/examples/subdivided-shells/index.html": "f6fa0ac2675e3985b6bac2b54a1be5ce5319f58dee2d7a46267381ecae23442c",
+    "packages/javascript/examples/subdivided-shells/sketch.js": "2a32fff1428254d241eccf7d51d6e8d301feeea356fc1b0350fcf96a3559f57f",
+    "packages/javascript/examples/swirling-particles/README.md": "23f1221f0ba579ec5b79f5f6a6fb819d50438501bda65c459ab1edc74e1a7933",
+    "packages/javascript/examples/swirling-particles/index.html": "789477da921fae66a488b835b37d47ed4007a3d5b39b3fb69c4782c6a0c8eb64",
+    "packages/javascript/examples/swirling-particles/sketch.js": "e4f3703d8539a67c23a127811a79d871fc6a3449ca06766609235d02444aa6ab",
+    "packages/javascript/examples/systems-a-studies.js": "58c2f4d09d6d26f120ef5e4f381330f10a21d6924d9d419d4474584be013266f",
+    "packages/javascript/examples/systems-b-studies.js": "91d08e3863397f9605ea150c2f03ec0f23e11796a72d72d974897f4c16875527",
+    "packages/javascript/examples/terraced-islands/README.md": "232133f5bbab8e5769337014b9f8ed1ec683cd3fb3ada7e805527ac9ee8e1a99",
+    "packages/javascript/examples/terraced-islands/index.html": "166990f0bce98d8f85139450a0427f01798a5275438517dc9560f8b06cb48de0",
+    "packages/javascript/examples/terraced-islands/sketch.js": "4e64131d74e4ac4fea381164fc4c0dc3972eb973c9746fa9c8ad1e61c106b7d3",
+    "packages/javascript/examples/tiled-circuits/README.md": "95d7c12890f709610b8ccd0e4d06360519ccdfde89160b240c2bc780c70e3b61",
+    "packages/javascript/examples/tiled-circuits/index.html": "2623120393cd1ccf25c0418e843cb0e12270ebd45971ef0f820bb1eda8f89938",
+    "packages/javascript/examples/tiled-circuits/sketch.js": "f30c3ae31adb67c132dd602d7acce6888dd3cca194c013bef2f7f0640512c20d",
+    "packages/javascript/examples/transported-ribbons/README.md": "fbece8de5baf674ae19838bb4fb25e76fc6a6d6f44575ad0882ed7b9286c33ce",
+    "packages/javascript/examples/transported-ribbons/index.html": "10915f92cab5ccf07b7de065bc3482d35e4fdac3abcd2bc405020ab386c78212",
+    "packages/javascript/examples/transported-ribbons/sketch.js": "9a60fafc181d79702d7a54b3995586c332aad89c5024cebbfe757d2c6c87354d",
+    "packages/javascript/examples/triangle-glyphs/README.md": "8ab1bb3cb5b4e0383d0bab49cb3eaa188fd903571f8e977f202cbe6c4cd9540d",
+    "packages/javascript/examples/triangle-glyphs/index.html": "7592755be6d32e25f62962e596db7172c562091de24f529f08d7ea29163bf8d8",
+    "packages/javascript/examples/triangle-glyphs/sketch.js": "0d5e9b2ef3864f45d53a5732c0c8f5de53646e91786afb511837c3164aaa4f8e",
+    "packages/javascript/examples/turtle-canopies/README.md": "6b5d9c6f3ca5a0a7e4abdcb9c42ba52c11d2bfc9b8596f4879cb7d05033adf16",
+    "packages/javascript/examples/turtle-canopies/index.html": "07a852784854f4cf530d1bf267ce3642d7e11d57cf4ead3348bf516d8e125a74",
+    "packages/javascript/examples/turtle-canopies/sketch.js": "18ffd63acaab4c5b14a891286708000bf945467bb59c03801a4d31085dbd06a4",
+    "packages/javascript/examples/twisting-streamers/README.md": "ce6ce3aeece29e0d334864680a9a99a7db88a31f4c9560549e715238804f1e8a",
+    "packages/javascript/examples/twisting-streamers/index.html": "7e53b87d20cab975811259ef6fe9b3b647501d6d713791182883ab53960340d2",
+    "packages/javascript/examples/twisting-streamers/sketch.js": "ce04fecc1bae3815f687a5fd47b6723b7760c929dab86c6c27877c3f88a8a7e5",
+    "packages/javascript/examples/warp-marks/README.md": "ae5578442c7b7a1b9bc103f5f2089e94d42aad1b7fd26eaa32fe54ceab8eb096",
+    "packages/javascript/examples/warp-marks/index.html": "460af05d02054bd1584b33eb680262a204adbc9ca015e509b231e9389f4c2927",
+    "packages/javascript/examples/warp-marks/sketch.js": "e4122d81f4854bbbdb56a71438cb8cb470314eed4564c27910c56213aeaa05b9",
+    "packages/javascript/examples/warp-marks/warp-marks.js": "7ce10a730dce26f9183b4f5c494af7a85093aa648769550fce7419144484711a",
+    "packages/javascript/examples/woven-grammar/README.md": "191367a67ad2d27f07c2848f6a924ca3a285c7f5aa898a5b1dda646b7a468052",
+    "packages/javascript/examples/woven-grammar/index.html": "552e71d04bf5ea2673e7eac7c2c6aa51f2bfabf0af87c0b2e77936b58e89fbb9",
+    "packages/javascript/examples/woven-grammar/sketch.js": "3ad0bd6a31e29d09f9e381a2898e832974776cc3e2e253bd30e3278820a9fb64",
+    "packages/javascript/examples/woven-rows/README.md": "28c04226a7f802483029e9dc31f5e2020665a21c4293bc97d65bafbfb4cf511b",
+    "packages/javascript/examples/woven-rows/index.html": "7e447d038e0d0a9699fd745c751c3e4c4f1561d498fa72b475be260e87aa7657",
+    "packages/javascript/examples/woven-rows/sketch.js": "49ea3db5488acee96a607356127e5b34821185ecbadd47570f92d8dfdcee3a0d",
+    "packages/javascript/package.json": "a2e8d61d3fcf0365b6ed0033cab2873aacb38eea46872bcb4a7b75da5e4531b8",
+    "packages/javascript/src/adjacency-tile-collapse-2d.js": "ad70df385f1066de90fdb0b04ac84535cd9370a522b3ed91b996235d936c51e4",
+    "packages/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
+    "packages/javascript/src/assemble-segment-chains-2d.js": "8ab83d01e0dcff42e6e75b183aa26596511ed5bc5a1a734c2791ff2455096291",
+    "packages/javascript/src/bayer-dither.js": "2c6b749115c51e0569be56612fb9a1edcf1f5906718389a0157f5d8c2dcf4a43",
+    "packages/javascript/src/binary-cell-partition.js": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00",
+    "packages/javascript/src/binary-morphology-2d.js": "112b2e90fae068250c8cf16b2906cabf463b21e3138bb0be164c9b68e3198151",
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "packages/javascript/src/chaikin-polyline-2d.js": "5f7dd247985be361679e15f4fb2a7bd5e033927b53e1d6a1a85d2a30685ebb97",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    "packages/javascript/src/convex-hull-2d.js": "d156a22647adb5fe931c8740ee2c74eae7f4b243de8bc6fedc714e49139c0075",
+    "packages/javascript/src/convex-polygon-placements.js": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52",
+    "packages/javascript/src/convolve-2d-signed.js": "88a639ede86d5f656ad83fddc3f4063da7b97c824cf6afd77344038aac03309d",
+    "packages/javascript/src/cost-grid-paths-2d.js": "73f133373556969568b16baab369aedd944c7fa08671bbf418db319e32f364b6",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/damped-wave-step-2d.js": "6d309ed8b0bf78d5abb5097d24839f62019e57a0c4aadac41e2d9d51d96aeeaa",
+    "packages/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    "packages/javascript/src/disc-projection.js": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1",
+    "packages/javascript/src/elementary-cellular-rows.js": "cf99a0c8cea6f0f645df343765218bf91c372a3aeaefe7fb8cbb2c3aaffd4af6",
+    "packages/javascript/src/euclidean-distance-transform-2d.js": "d23b9f390d8f5bf2b913b9d046671969226cc4d0062d799035c715d6b5f23fb7",
+    "packages/javascript/src/extrude-simple-polygon-3d.js": "7b13ac647e6115dbcdd29ae1346eb7df84894af97fa4def05624b34e37e16740",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/field-displace-2d.js": "cda0d26f09f511d6f3abb2be26908600ab01d1baa4487fb7fe765686f424b090",
+    "packages/javascript/src/floyd-steinberg-dither.js": "9ff206e74a55a799e9cecb7844b8f7640ec1a20cf726b8e2ed30f547e7f73283",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-noise-3d-01.js": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c",
+    "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    "packages/javascript/src/gray-scott-step-2d.js": "3106ec4ffbb2b8a2bab29406f9d49a62e4831ccf67af18a320b899cd494adfbc",
+    "packages/javascript/src/index.js": "7c771598970adb033fa9d0405dd01462d0d9ffb763966d1468dd07cc6e4caa87",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+    "packages/javascript/src/internal/geometry-a-utils.js": "b13eec1218c84e3758c8b831182518a2b069be6fb355561bd512a259c3c94a45",
+    "packages/javascript/src/internal/geometry-b-utils.js": "72e6dae1c98dc48285764908c38999127390520902d69a2dadebf7fa2b53c773",
+    "packages/javascript/src/internal/mesh-study-utils.js": "3e7f9501ece2259c768e296978b2d9c9292437ea561a4120566211a4a14561bd",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+    "packages/javascript/src/internal/systems-a-utils.js": "c6e4920c72648b559fb70395a51ead4deb47e972cd91ae54145d1b1c1e5d5204",
+    "packages/javascript/src/life-like-step-2d.js": "37b145560381679290e862addbff05ed4adf94b1b90fdfd90400116132c1fd4f",
+    "packages/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    "packages/javascript/src/lloyd-relaxation-2d.js": "85d30436973e1010a49ae159f10ca00e0c0b6b546d95345b175c5b55bf6ff5b3",
+    "packages/javascript/src/loop-subdivide-triangles-3d.js": "848f5258859d0fafa0ac82a4b71dc04612f5c219fa926c2e3d9f4f24f229eab0",
+    "packages/javascript/src/marching-squares-2d.js": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d",
+    "packages/javascript/src/masked-source-over.js": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d",
+    "packages/javascript/src/median-cut-quantize.js": "10c334b0897c28a6ea722407a50f30dc74c4e6da2d7134322155266950d3ccf8",
+    "packages/javascript/src/nearest-segment-contact.js": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d",
+    "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    "packages/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    "packages/javascript/src/octave-gradient-noise.js": "ea3556c22d7d8ae04b5863011ad9f59dfd7d2a2583ba1b6e6e9dbe7641faca10",
+    "packages/javascript/src/offset-polyline-2d.js": "eb42f6a1bba9bf15cfc6d873fba8896bce09a5b5f9168ffd199119e643c38382",
+    "packages/javascript/src/oklab-ramp.js": "b0523d44f8556694f9c81bb8c561a9d2550a9f309ead76f4aa67400811bd44de",
+    "packages/javascript/src/parallel-token-rewrite.js": "0801534342dafd5b394e900a19edf051645a1f0666bf9f52744d6ae28936c7c9",
+    "packages/javascript/src/parallel-transport-ribbon-3d.js": "9f5d099e4777ffeb2e897c5155466fe797d010dc31b96edb4d5d9a7c59393fdf",
+    "packages/javascript/src/poisson-disc-2d.js": "ccdf5f339ad29589ad44ae5a1585283a52bb033c1240ba86314a83254df4cb19",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/javascript/src/radial-pull.js": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c",
+    "packages/javascript/src/raster-crossfade.js": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19",
+    "packages/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/src/resample-polyline-2d.js": "0cadef92e1a999ebe8f58bc17b7dc82341db03b190cf4ebf8087058657b0ff42",
+    "packages/javascript/src/retained-rectangle-cuts.js": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866",
+    "packages/javascript/src/rk4-vector-grid-trace-2d.js": "f29ad04d1629d04c1d21cc15f901abb6404c6b6afc9af1699f1c070e99f0e281",
+    "packages/javascript/src/scalar-grid-curl-2d.js": "6b3237010420fbe77d2770aa8d71436c223522506e68244944bb053e8b1eef89",
+    "packages/javascript/src/seeded-depth-first-spanning-tree.js": "7b2d71cef7caad248bc511d715a68ac379addc6bed3adc22605502bc05b82c57",
+    "packages/javascript/src/seeded-pixel-grain.js": "cdc5961f7ac0cf09cbd15b443de06e1777fccdf2b3ccb222a4ad06ddf24b8ce2",
+    "packages/javascript/src/segment-clip.js": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4",
+    "packages/javascript/src/separable-blur.js": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632",
+    "packages/javascript/src/simplify-polyline-2d.js": "b874b18cf0ee75397f09676d5bfe4f66fbeb8987e260577a0579a613799b1feb",
+    "packages/javascript/src/skyline-pack-2d.js": "427c4ebd2d16b163abdc31e8ffe1348b0d9e10e96f6b7dfdd2524fbebe763de7",
+    "packages/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    "packages/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+    "packages/javascript/src/token-turtle-2d.js": "24ecdf07d999153c7f611e2c743553450d15e7be929dff4c31edf210b57026fb",
+    "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "packages/javascript/src/triangulate-simple-polygon-2d.js": "bfbf0df2fd29df8590daa74c629312e14b36342e8577078e1e2f369362ed2760",
+    "packages/javascript/src/voronoi-cells-2d.js": "e711b13d660c6c1020daca2bc7d58f655cd614238e0fd0f4155af524ac3fe1a6",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "113e37c45dda83ac837ac5f9128c70a9fcd3986ab93895411172fd0f5918c0d9",
+    "tools/build_ported_javascript_package.mjs": "f6b19a0a2c73759c1b392fbc14a7153c58728a13c4478bf5db22bb77e47fdfe3"
+  },
+  "input_sha256_after": {
+    "packages/javascript/examples/annular-marks/README.md": "c4304096deb52a20dde87ee5360756290520d3052280aa9b004a2394cf1e251b",
+    "packages/javascript/examples/annular-marks/annular-marks.js": "5b65dbbf336901ef27c7ac5c74b7109544c0e23d8faa6d85941caa86031f4cee",
+    "packages/javascript/examples/annular-marks/index.html": "0a30cc81397d67cc59ed2aee1d558a69b7bb168384864aad24e601eaabd24909",
+    "packages/javascript/examples/annular-marks/sketch.js": "877fd9f3552a9f8068ef4ccf3272fe71a2b47ded6685b1730c7735c94c29d38b",
+    "packages/javascript/examples/arrival-contours/README.md": "c1a1d70017de292b8631e30c29e896d7064ba3589795890472cfe576e3c3da15",
+    "packages/javascript/examples/arrival-contours/index.html": "8b3df711eb3d0f60e9f7204c95be619fb26e62eedbc9e5f90f4d794532a2973e",
+    "packages/javascript/examples/arrival-contours/sketch.js": "9af9881b09e19e59233dec1fb5e7b54684508eab2b5128daaf707dd918ec0608",
+    "packages/javascript/examples/aspect-tiles/README.md": "dce922a07995df9377c1b726d051a906a5d0d2b41d2dbe53bd7b08104940d2e4",
+    "packages/javascript/examples/aspect-tiles/index.html": "dfc1a2a7a4e1f2a8674281215c1c066d5c97937bb78fc09374b28d154d5d41e0",
+    "packages/javascript/examples/aspect-tiles/sketch.js": "289ed41e2e48cf8852484b2f91983b69079f649886f301f1ea3509747d63d33d",
+    "packages/javascript/examples/band-marks/README.md": "87a79dd4c8b7a59c824db510efa63dae4378f43d7172989a849571bc93cd907f",
+    "packages/javascript/examples/band-marks/band-marks.js": "4ad6cd9c8117d28821984c2f0e129032f1a81fdfd8d320bdc002e5a4f85ebe55",
+    "packages/javascript/examples/band-marks/index.html": "ed869e5218432472ffd3fb753e7bf4478eb1ebfba15187a3d548540331eac528",
+    "packages/javascript/examples/band-marks/sketch.js": "9d444db4696833274a034d98549c29e407a56fb97f877735a4ffe82222ffdaae",
+    "packages/javascript/examples/bayer-weave/README.md": "4a9a6f7231902bb60b236f7aba9320ebb09a65790b6c3453928bdcb2f0de0314",
+    "packages/javascript/examples/bayer-weave/index.html": "cc46780254210849ccb5efb52328207c6ff5747b17f661bc8c6777f282b55c71",
+    "packages/javascript/examples/bayer-weave/sketch.js": "bb4f612435bf63f292416e281c8f5ccd9ac843f43dab6ea7ba229f0f0079ff4e",
+    "packages/javascript/examples/blue-noise-stipple/README.md": "b0e6df44a7a609fc6c0e814ff0acbeff9512461fb20601fb60f82411b97c7e44",
+    "packages/javascript/examples/blue-noise-stipple/index.html": "51b0f0e6e9138c6bb395514f9f4b03d11e4a4ed0b6a94fd085b572179edea17a",
+    "packages/javascript/examples/blue-noise-stipple/sketch.js": "a8077f8f51089b25b4f41d39af2b0ac859a6569a6534802360555fa5f2632984",
+    "packages/javascript/examples/blur-marks/README.md": "341fe272a0bfb43b9b4375882718b20f600bd8b63ae519d408ceac357638b36a",
+    "packages/javascript/examples/blur-marks/blur-marks.js": "0b0eccd4a9658d0dbbdcda2cbe02e0f68ccf25fe0b45c8184e9c1232ec6db9c0",
+    "packages/javascript/examples/blur-marks/index.html": "a36e5388ebcba2988f18ba574cbeb6ec12de72fd8e6fc84d99c869ba9cc269f1",
+    "packages/javascript/examples/blur-marks/sketch.js": "4148546b764f1fe042e8f6db2ce8af644b3786aec5be42ec8e696fcf1530d0ec",
+    "packages/javascript/examples/body-marks/README.md": "6f59c2334469cb0494fe7c5c2a0e1632403938a506aaea460f86d38e7ae46599",
+    "packages/javascript/examples/body-marks/body-marks.js": "4f2befcd17695d72d33440f4f2c3b1bdcb0a40d2361b21a254de4bb5e7c79315",
+    "packages/javascript/examples/body-marks/index.html": "f3d0b605955ad4d8a136a84322274bd9aab538e4072434b283cdd6890d0e1e8f",
+    "packages/javascript/examples/body-marks/sketch.js": "0419bde4ad0254d60de435d8cea9f1b73bfe3d75219d4b89ec5895a897281128",
+    "packages/javascript/examples/branch-marks/README.md": "befac22e2fc186dc3358d83645a35b33be5e638060ce33ac4e2c8f7a18960cc6",
+    "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
+    "packages/javascript/examples/branch-marks/index.html": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70",
+    "packages/javascript/examples/branch-marks/sketch.js": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1",
+    "packages/javascript/examples/branching-networks/README.md": "7ef7b906ab8d5577e6d4705edb02e8bc461b9bd31a39823d0c1b561457c4432a",
+    "packages/javascript/examples/branching-networks/index.html": "bbfe293bb70bf9ba14e069677241dc6cffb0eb1ad182ab46937034ba8159e773",
+    "packages/javascript/examples/branching-networks/sketch.js": "afebfe9b8cce8dd071bfaa30e925b4e5c72437f9add02d716a753dd8fa08d45c",
+    "packages/javascript/examples/branching-sentences/README.md": "1ba19f7e9329f473ced6986d55401436b5a66dc1167eeaea3e16d691157ab033",
+    "packages/javascript/examples/branching-sentences/index.html": "889c4a7d504807115e819bd59b9fc8d9a0daf5657449e6920f79f9264d0ab096",
+    "packages/javascript/examples/branching-sentences/sketch.js": "3e01ef8695db1af38d13747b02c451db4814ca6687fd22daca5f6fc336f950c7",
+    "packages/javascript/examples/cell-echoes/README.md": "c443a1e8dfce81f756f2d621a5139a40cf9dd6c7af99d7c7bcfc89970f0a501c",
+    "packages/javascript/examples/cell-echoes/index.html": "edad7f23d14160218a75a801acf9815be30f7582e4dce48bd87f2cde8c3c6766",
+    "packages/javascript/examples/cell-echoes/sketch.js": "91555423f4caa19787fd7faa795e36b0bd9d00e761cdfaccb695936ac0fb6518",
+    "packages/javascript/examples/cell-mosaic/README.md": "21893b8228a06e9209437ddce9095352b230fd947fbc95063a0b6e34d48cac66",
+    "packages/javascript/examples/cell-mosaic/expansion-studies.js": "b5ad12caf3bc34421d59cada62ca91ce11444f22f567a14fc568e056c892bbfa",
+    "packages/javascript/examples/cell-mosaic/index.html": "0ea6222afaaf24e573e121d488b3f95b0cbb21f7530b8b43116c918f9321ce42",
+    "packages/javascript/examples/cell-mosaic/sketch.js": "02b22bf3c864643f7451800140976c5601b8ef7c2388ffdf3c33b1a50a9614d4",
+    "packages/javascript/examples/centroid-trails/README.md": "60c8bfa450a05843509af35a56bb4401893e58a666870771841f2dc2cd0666af",
+    "packages/javascript/examples/centroid-trails/index.html": "b6460b2af565cb3a2c18ec761b59829ba29680c09824b096d2fb526e7190afda",
+    "packages/javascript/examples/centroid-trails/sketch.js": "9ea28c2bd16cc11c78313274b28ad7773d362f207f3c6aaefc38f9bce104c7c7",
+    "packages/javascript/examples/city-marks/README.md": "35e33b36e3a71bf827685788d48e6f68393eb7f541c59732ce42a4029631bf1e",
+    "packages/javascript/examples/city-marks/city-marks.js": "9f3b9aa2eef1d5387e8d088e5e2de4c400960fa4997bd85dba26dd7cd2364250",
+    "packages/javascript/examples/city-marks/index.html": "ea1a2f69bdb07c019217f3510dcf033dbddb089f89516eaa1daf6df6504fcee4",
+    "packages/javascript/examples/city-marks/sketch.js": "b6ef9a40b308563d6225048d5d27dfe5b6122af5c711d89e92d5750008e21ab2",
+    "packages/javascript/examples/clip-marks/README.md": "f16288cf886e4d9fa7d52212c70580801c245d9561dee5c5bb8e2ba724d75f33",
+    "packages/javascript/examples/clip-marks/clip-marks.js": "44dd9e5facf233655d8ed378e96f5098bdd8e65e02e6b1c221698fcc4da24874",
+    "packages/javascript/examples/clip-marks/index.html": "2b987a88eb4e7203eeabaeacefac2cb765bf1eafa1c4321009770ba8dbcc9a47",
+    "packages/javascript/examples/clip-marks/sketch.js": "19ea5fbd1c8e2c324b0489f5c86ad011cf97768078f80d32ab68d6cbcea61618",
+    "packages/javascript/examples/compatible-mosaics/README.md": "02be85d652baffe886799b9e829bb0050216d8732e4da7ea62dc41961eb221dd",
+    "packages/javascript/examples/compatible-mosaics/index.html": "a3f2103a979af928354a498b2ecd83df6bcd3a21a6dcb06f6377f3bf12b6bf59",
+    "packages/javascript/examples/compatible-mosaics/sketch.js": "7a1a2893544911ed6918e0c8450ea6b8207882e51912826b5a8d2d2808c4536a",
+    "packages/javascript/examples/concave-grain/README.md": "4f36dd52067edeec6b3ae3e05fe2137eb40de7778faa49776e7ebb7334941c00",
+    "packages/javascript/examples/concave-grain/index.html": "b1306fd0898c9f915788b712f8aea3163de4f80d6de989dd294d914b39eb961f",
+    "packages/javascript/examples/concave-grain/sketch.js": "eaa4ae742b258de298318e26ac833a236c600f0f80cff58d56eb1e5cc496468f",
+    "packages/javascript/examples/contact-marks/README.md": "b0caaab7d805606ee57669f0ebd8c15571f1b7900eeedff327195cfb98aadbc4",
+    "packages/javascript/examples/contact-marks/contact-marks.js": "e91cbc60c23eca6e22182b63a69cc347c99ae5efd4277cfc55c1fc44aba96763",
+    "packages/javascript/examples/contact-marks/index.html": "bf45d6ba8562f3341c309f05628d6e78cbd476a86566bded7738530410484f56",
+    "packages/javascript/examples/contact-marks/sketch.js": "1b5ed883e5ae839d551332973dccb804976f74c595db44d78aa35ac800943777",
+    "packages/javascript/examples/contour-abstraction/README.md": "0d624ee8ef2d39e9fb91ba345ab398c20f92016734d3dc4434d9b7d5a00f3caf",
+    "packages/javascript/examples/contour-abstraction/index.html": "55003f0fcce72eb831cc5c0628634c84d710189b34858e031ee315c61fd674ca",
+    "packages/javascript/examples/contour-abstraction/sketch.js": "4e48fa67c5dfaeb0c73e49525146cf1c25c50b5300979a28bbd214b28822b2a3",
+    "packages/javascript/examples/contour-blobs/README.md": "22d68783857a88b6fe55fc2a75edc382ab964e06e847d3002bd60d18c17cd986",
+    "packages/javascript/examples/contour-blobs/index.html": "4b1c98db9e6dee08209a1c4685980410988e73744e4de1420f9fe04224dbd211",
+    "packages/javascript/examples/contour-blobs/sketch.js": "1653743655fd07dbc0ec9d03c18c5e9d2dc7dc393e18c5a2116e420226537ca8",
+    "packages/javascript/examples/contour-terrain/README.md": "1bdcecdb145a28c992ba19bac2747d65b08790f84c508a65d235903db668dadd",
+    "packages/javascript/examples/contour-terrain/index.html": "3757e47388c38d353bab80d02b705ed60e0795f43a1e3b555881930c85339bbe",
+    "packages/javascript/examples/contour-terrain/sketch.js": "f257446d8899dd0ee54c1a08aad3393e972e546d0f36c4c1fbb7409341385830",
+    "packages/javascript/examples/curved-trajectories/README.md": "01c330edba2d29b847375f0ab5b0509d158c5bd80058ff8282a121bf2ba7282d",
+    "packages/javascript/examples/curved-trajectories/index.html": "7139588e3a7afc50a3ab82acf1b03242102840df918ed4004de695b90a09a71b",
+    "packages/javascript/examples/curved-trajectories/sketch.js": "4135e508f8b7f583d60a15230a9084fb8c4930084abaf99b46e0b0f7c05ec488",
+    "packages/javascript/examples/cut-branch-marks/README.md": "25321f9fc141bf3871350babc32ac2e3a88596306a2b2b25cc70c32aa93996cf",
+    "packages/javascript/examples/cut-branch-marks/cut-branch-marks.js": "97a4e8fceb259c593b7b26a2a6a4f3255082a70921d54e2b17426dbfb2cf7d28",
+    "packages/javascript/examples/cut-branch-marks/index.html": "b966ff7d8cf2ca4f6189e18b1f415fb20a6dda67407657e56c12ba22265b1f28",
+    "packages/javascript/examples/cut-branch-marks/sketch.js": "6d94d11aa0b978bbb897e8ea8515b19eeb864ea14f7582efbf3454f78f4e88df",
+    "packages/javascript/examples/cut-marks/README.md": "68a4b594682495dafa9b8c038c8b396c2824daeecc66348a3c4f9ad73423f12f",
+    "packages/javascript/examples/cut-marks/cut-marks.js": "36f7a5b02ddbdf2bac84ce063de742782d88de62733c007723488777c05f7977",
+    "packages/javascript/examples/cut-marks/index.html": "ce1ff31024b6a8676b49ad3e1d5b41910ddb00befe63d35174b5e3456c0f91fb",
+    "packages/javascript/examples/cut-marks/sketch.js": "9c730b1b30dbaaea5dd47c480f1b7f88aa6bda7f5a086dbedcf241c3696e8d72",
+    "packages/javascript/examples/depth-marks/README.md": "9825a2b30fbcf85030225fba3a3b2e8aba3ac909bf403ede2cd1f04610f0b363",
+    "packages/javascript/examples/depth-marks/depth-marks.js": "a21cfa074ae3458ef8da0f806b79a2cd334c7da88d1a4dd7ca63bc54ebf11807",
+    "packages/javascript/examples/depth-marks/index.html": "b5bde353517261a064a814be3488916136b8d49af2ced4528f19aed9f8446478",
+    "packages/javascript/examples/depth-marks/sketch.js": "fae998ab613afb589004f467ae55651093590311eee82d0ec29fc77cfe0771f5",
+    "packages/javascript/examples/diffusion-engraving/README.md": "8e34555f719db5136694b76297a9199df1ff7d8642f5958cddacdcff66949edb",
+    "packages/javascript/examples/diffusion-engraving/index.html": "db9a931fe33561ee20f013c56109f5cd8e08abc03da0d30be31dbfd2d8041d30",
+    "packages/javascript/examples/diffusion-engraving/sketch.js": "0a42a6b5b5fb325fcc877cf01916be07db0f3164bd5cec99a8be939f24fd4523",
+    "packages/javascript/examples/dilated-stamps/README.md": "aedbe27d79a7221c1168e3064b57bcb3a28cb21aa361ba0c088dc1f8b0653ecb",
+    "packages/javascript/examples/dilated-stamps/index.html": "96eab710edb6a01904c7b3f5926c529ade62eff5b77f3b29d52b03d8bbd12ad7",
+    "packages/javascript/examples/dilated-stamps/sketch.js": "1b22118e425bae0b86453757504f5681f619246fa4212de4bfedc3905689157d",
+    "packages/javascript/examples/distance-halos/README.md": "6288fc2c4460a1ddf2cc0b6d2d27429903e2608e29872a0d493a426e30c862b2",
+    "packages/javascript/examples/distance-halos/index.html": "2aae7d6b46f004e851a394a333826de3c9bc9a8ebf9edc4fd9c697b3a0856940",
+    "packages/javascript/examples/distance-halos/sketch.js": "61445ce751810275c59c3aa38daa88f9894b8f3da008cc1337c355700caed378",
+    "packages/javascript/examples/dithered-ribbons/README.md": "444f84c5e146e77d589d413337b448706e600249da2622682d3b06a854398540",
+    "packages/javascript/examples/dithered-ribbons/index.html": "df0d6f7ae090c05119784455393f5a65adb13c4a8505d69efeb4a80b74b366cc",
+    "packages/javascript/examples/dithered-ribbons/sketch.js": "38e517f1dab6aff7ddee2c714e56513c2ae39a4066b594709b6099ed325be4df",
+    "packages/javascript/examples/embossed-field/README.md": "73b996bf3c9114573d349971967261358fb55a3668c5d51de8fcbd28b6a0091c",
+    "packages/javascript/examples/embossed-field/index.html": "0e871047c1e18bb6dc3dd2470e536bfa358e8a4d179e3ebf02820a96cd65acee",
+    "packages/javascript/examples/embossed-field/sketch.js": "99ffc5045478feb2bba8699d023f3bccf6a27ae5d5bf059c382ed7d33303cc2c",
+    "packages/javascript/examples/eroded-lace/README.md": "cf5a5cb368d8d2492b0fd69820bdd8c8cd6c18a23153bf44892a545e9264d873",
+    "packages/javascript/examples/eroded-lace/index.html": "16463f4a653d5e0292ca2d6f80f7fb8e0ece582035972a6a15105e888f0487b2",
+    "packages/javascript/examples/eroded-lace/sketch.js": "73c971c325e3874c468f4b9c9994fe5ed4ee545b2e3aca71cd945469b81a15e4",
+    "packages/javascript/examples/extruded-seals/README.md": "f89f90ec6c84df26f7c80606c14cdbc2fbd9bbae9a7048e42424a6d11e252b6d",
+    "packages/javascript/examples/extruded-seals/index.html": "1aabda7a8aaf6eba00c69c9546ba37d696939b621c96bbc68dad6f922a942aaa",
+    "packages/javascript/examples/extruded-seals/sketch.js": "9ed0ee70b439ad852c2922fbcca252077a53b3efb2912e78291d85dc0fbb8fc5",
+    "packages/javascript/examples/facet-marks/README.md": "69bcfa68c313a820ade628191b844b363f8eb502c51dffe856beec328ed0cd2f",
+    "packages/javascript/examples/facet-marks/facet-marks.js": "4b4d56a0d4654dc0717a2551e3f572253baf17745867acd1b30ffc88148b0380",
+    "packages/javascript/examples/facet-marks/index.html": "cbac841c922b8c7699ff6c07a4789a18ef16f43ea28801b1b887e2b013aa8f47",
+    "packages/javascript/examples/facet-marks/sketch.js": "a6d1e9dcf39856b06b600c763a3534f7b6cc1c55ba87ae002e05424fe7e1c83a",
+    "packages/javascript/examples/faceted-silhouettes/README.md": "ff6c3667c6785ccb11ccfbef6677acc626a56fa7d316773768cba086dbf5e172",
+    "packages/javascript/examples/faceted-silhouettes/index.html": "d51d58a1fc785f701cb5cf01bc71f9df6f75c727e4d866bee2ffde5f521e0394",
+    "packages/javascript/examples/faceted-silhouettes/sketch.js": "c0a1e31cae9baa14e13bd5599c851a1707a76195f631aa542a29788449004fb2",
+    "packages/javascript/examples/field-displacement/README.md": "93fe26e05a8a88f9753a08449d4b0bb246a56d567d2f5d33eb9215c75ad03ea3",
+    "packages/javascript/examples/field-displacement/index.html": "fa11049a040e22b1c170b1d8b1bd3d2d52b6d26a2dc30a061e05421b497e5c54",
+    "packages/javascript/examples/field-displacement/sketch.js": "e058707e687912264a5d90b353c85b9cd8c6ca1efdd6ae9ccdf20780dbe625eb",
+    "packages/javascript/examples/field-marks/README.md": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27",
+    "packages/javascript/examples/field-marks/index.html": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d",
+    "packages/javascript/examples/field-marks/mark-field.js": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf",
+    "packages/javascript/examples/field-marks/sketch.js": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b",
+    "packages/javascript/examples/flow-needles/README.md": "64ea830a02bba88a5d5e4ce38babf96b2213253b6f1783eed896cf9d81b8e2f3",
+    "packages/javascript/examples/flow-needles/index.html": "5a2e3912d8d3a4709c6fdf2fe826d4ac9c88e290db91ffc98e37c81bc1a157ec",
+    "packages/javascript/examples/flow-needles/sketch.js": "f06c07bfc26985834910c4f792e8054bb1e1079949bc39a17782dcfb02a01709",
+    "packages/javascript/examples/flowing-brushes/README.md": "ccb896567f08139e7f7849b37d68bb1f0bb42c775f681319c15d4ab715198219",
+    "packages/javascript/examples/flowing-brushes/index.html": "a61a0e0aec6db81e42f0cb191913817bc591a6be6d936e59ce69236eb083892c",
+    "packages/javascript/examples/flowing-brushes/sketch.js": "de2accb05c816ff707dc43757dc790b3231ebe11003f60dabe3e8bad0645d0a1",
+    "packages/javascript/examples/fragmented-lines/README.md": "d28c4804ef7f69306cd9c537dd2745ca78d8735227325e29c27a3a4eba157646",
+    "packages/javascript/examples/fragmented-lines/index.html": "39b0aee2e56a257d1c779029e89ca246f8912a5b3a786afde36fdcf8bf6ebe5a",
+    "packages/javascript/examples/fragmented-lines/sketch.js": "8b3bf37c60beb599aabb3eb637f0cd8da372afd3bc3996bdd161460d73c81aab",
+    "packages/javascript/examples/geometric-generations/README.md": "96d388e9dad71a26ab15432809ffcbe3f05eb9710a03c34af76f0d6fa9163086",
+    "packages/javascript/examples/geometric-generations/index.html": "2a19c3c325ab5907e4dda4abf6bc3570d97fee960cf5a25a1d85e625a142e02f",
+    "packages/javascript/examples/geometric-generations/sketch.js": "0e2dada4f7ef70b56f86cdb1fefcd034f4216ee8d72d9b6b09a8fbf63b8a3a62",
+    "packages/javascript/examples/gesture-skeletons/README.md": "9db275608337bece9955610920338bac244918968bd045ad383656e8dc78acca",
+    "packages/javascript/examples/gesture-skeletons/index.html": "6d1389f012ea5ec8127240dcb45ff9dcc2f3c5694d14f0e4a88335ebd950720e",
+    "packages/javascript/examples/gesture-skeletons/sketch.js": "4ee7812f835a37732e6ff87ed160c19bf024ddd9f9cc7545c5c029e4380ba917",
+    "packages/javascript/examples/glyph-marks/README.md": "5acbe2148b1180e42095cff4b211c3e9fed4f8a6f98ab28396db11ba73858d51",
+    "packages/javascript/examples/glyph-marks/assets/FONT-LICENSE.txt": "63544717f051095f67c6da4f36776aafd81e561320baf36ae65925f3336ebb8a",
+    "packages/javascript/examples/glyph-marks/assets/GlyphMarks.ttf": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+    "packages/javascript/examples/glyph-marks/glyph-marks.js": "34f9ec004e4d84c64475b32c11151f9f9c160725d1870b8a15695e21fde293bf",
+    "packages/javascript/examples/glyph-marks/index.html": "cc61930d03b49b047bb6375f068f399596e96bfae4ce82cf5b3cea9beacd33a3",
+    "packages/javascript/examples/glyph-marks/sketch.js": "9787c41ea258cb0e8faffe2f4c55ad7f0f9c5404678ef33ba1677edb9374226a",
+    "packages/javascript/examples/grain-marks/README.md": "a8f823c43737434a40869ef73523e0f0ea5ab77f3167716ef4ed6a21b91df381",
+    "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+    "packages/javascript/examples/grain-marks/index.html": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8",
+    "packages/javascript/examples/grain-marks/sketch.js": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17",
+    "packages/javascript/examples/image-field-marks/README.md": "db216b9e0f7f1b906090e5a965723d689cc950f0769eefcb3cc00101efaeab15",
+    "packages/javascript/examples/image-field-marks/image-field-marks.js": "b713f2beb7cc5e203719118bccb848d3d4088954696b036c6e987069d519a8cd",
+    "packages/javascript/examples/image-field-marks/index.html": "60726429a18c74c83c05ffac2caf1fcb34a1473337156feb108438c741342a33",
+    "packages/javascript/examples/image-field-marks/sketch.js": "639613acbae365cb91546f704ba35d87cdb6ee53700dbee411c6b9a7a49bc9a3",
+    "packages/javascript/examples/landscape-marks/README.md": "e6b90a0af707ab9236868285f32fbe9e4e1508c30f2409e38ed888f479d335ad",
+    "packages/javascript/examples/landscape-marks/index.html": "cf49d436e701b53e8e3adb4446805c59249b2f55175439466c12e0e5db6c1fe1",
+    "packages/javascript/examples/landscape-marks/landscape-marks.js": "c8aa3ee62ddce70dfd51dd4e8c6fa95a351744dfe6bd529b60d213118ad29560",
+    "packages/javascript/examples/landscape-marks/sketch.js": "ee17f04de10c8d93a70f59521cf47011bee9c5a0c532c8a17fc56d498019b9d2",
+    "packages/javascript/examples/lattice-marks/README.md": "d53386a2691062b2a698889bed49ae1aa782eded2661808870d3b1e45f8d5d36",
+    "packages/javascript/examples/lattice-marks/index.html": "63bdf4ee52021e0ab12be6d22b02b686d6d6d242397e9ade62c231c7935352e7",
+    "packages/javascript/examples/lattice-marks/lattice-marks.js": "62e8025efd2af2d2cb53e66e266894400f2a7deabe1ff664f560927d18f80882",
+    "packages/javascript/examples/lattice-marks/sketch.js": "a64e2542b2bbdcd790d952fb48cd9b9f0b0c8c22f6d8f9c38014711d0e2be51a",
+    "packages/javascript/examples/layer-marks/README.md": "1acbfbc48bd73f79507048b18d64afb7848fb20a9eef77dcaeef428eb89fcaf8",
+    "packages/javascript/examples/layer-marks/index.html": "761801276641b9634c456d7d48743ac5f044387d60743b813278160129a46367",
+    "packages/javascript/examples/layer-marks/layer-marks.js": "0311fd8444d2a8f7ce87b6133a71920e51bc7d2dfd019507f095b6cefcabb7c3",
+    "packages/javascript/examples/layer-marks/sketch.js": "2eec327cd0b03297cbd72cdaf0fb733820b06834720a1af83bfa080dc8e7bd28",
+    "packages/javascript/examples/loop-marks/README.md": "92088b3d6dcedfdf349f9a7afd582d426d29e970bf5d18d0004dfda4baf173f2",
+    "packages/javascript/examples/loop-marks/index.html": "dd3af9cbef4df9c859e64e5aefad3fb2ad4f25591f303aa04f0c75e7b4419a61",
+    "packages/javascript/examples/loop-marks/loop-marks.js": "8f610c69d2d708bcd8a3e23c3d135e3d124ef2e058993ea47efbb16d69fdce91",
+    "packages/javascript/examples/loop-marks/sketch.js": "8d0ad68788503f0cffb576c9834472f3ae5f182362d9ed59cd8fe23f9f4e1d69",
+    "packages/javascript/examples/mask-marks/README.md": "fcd2fde347322654162018213936a92b42882b8c505a7b07a6f7e49567101c2d",
+    "packages/javascript/examples/mask-marks/index.html": "444ccb42c2d7dcc2070e17befe65f7be5fe876c6abdc9c20afba05242b8b1740",
+    "packages/javascript/examples/mask-marks/mask-marks.js": "a8a522d90f2aa96e2ea5587b859d1126798536aaf722d4c29af37c45344104a5",
+    "packages/javascript/examples/mask-marks/sketch.js": "5c4230d87a4be32348847f5fd74d60b6a5fbbcfb9d7c2c98ee042f74b39b2f5e",
+    "packages/javascript/examples/masked-partition-marks/README.md": "7a353a66e63a280cd29ecf3402a7cf11271f83ffbc115e30ae1e530109dc3851",
+    "packages/javascript/examples/masked-partition-marks/index.html": "ddd3cfa75d1c9c58d5ae4e64132e244f7bf4d8076591dbc76cffe770373d8be2",
+    "packages/javascript/examples/masked-partition-marks/masked-partition-marks.js": "94222e0e260852f3b060f96457025b02b0eecafee316f654e517e32a3b48c5b5",
+    "packages/javascript/examples/masked-partition-marks/sketch.js": "b59896671ca026866c6cbfca9dab006d118cde17dfa2067e6ef938288ee247f6",
+    "packages/javascript/examples/materials-a-studies.js": "f4db69c9a138bca40a70e315f23d97b0e965bebcc585aedc56124157e1518eef",
+    "packages/javascript/examples/materials-b-studies.js": "177ad888b0067dd8721409c07d2830d03131615f45b589aa61412286994ca455",
+    "packages/javascript/examples/maze-gardens/README.md": "fac7effdc2dfce388907f22c3675ad615a17f18e7c86a0e445deef8e3d73bbc9",
+    "packages/javascript/examples/maze-gardens/index.html": "a15c85a48400c3d39f7ebf5daa80110e37c1d2cdd8ea1bffc0ab970681191cbd",
+    "packages/javascript/examples/maze-gardens/sketch.js": "6433780793ce3c6dd322dfb8d579524d1000bc7388aa7cfdb9a2cabd725ab581",
+    "packages/javascript/examples/nearest-feature-mosaic/README.md": "0576cfa8c8c277eebaf9ecff22835550fdb8c488a11b7e995c8c9eaae1a0ecdb",
+    "packages/javascript/examples/nearest-feature-mosaic/index.html": "9318e7eae0db2c0c515da2eb3ed92af08354945acc00bfe8cf7a7566b62568a2",
+    "packages/javascript/examples/nearest-feature-mosaic/sketch.js": "56f477210c5b91987404d4e155be9726b44fb1657c6d653c91b280713f77c839",
+    "packages/javascript/examples/nested-contour-strokes/README.md": "d06a88fbcecc0956ed628f76cddebf8ee1447f7b77f700c8a5962481c1b26d75",
+    "packages/javascript/examples/nested-contour-strokes/index.html": "253770e64b6d61dce8b3767790cd080c5d1e4625c37b04a7ff3f9be5a979edf9",
+    "packages/javascript/examples/nested-contour-strokes/sketch.js": "00d9387fcb8d9255b5548d8e41de5829705cac61880e6f01f9f71827994c2e8a",
+    "packages/javascript/examples/obstacle-roads/README.md": "5ba0b629e203bb6cf016a4cf022329a55d6499cf41f1b3e27f4abdfda52d0c4f",
+    "packages/javascript/examples/obstacle-roads/index.html": "008ec8b9aaa76074b68960da9d37222a10f556d7185b2a42be6ac86de2683728",
+    "packages/javascript/examples/obstacle-roads/sketch.js": "d9933964c5b93d33e0c80e10e4767b0dd379571626019d6ac186c0d10f5ae6fd",
+    "packages/javascript/examples/octave-noise/README.md": "6c6299ef75e278ae54894d6aad73eb1229b0f3466cf034972fdb7f97a340951a",
+    "packages/javascript/examples/octave-noise/index.html": "022bb87966eef31385ec1badc76961096d771600b4dbed366c1b59d7f5dc5c93",
+    "packages/javascript/examples/octave-noise/sketch.js": "a9bd8d66198922cecfe601fb4dc2ace09b2481becb44f6cb20129d3e510856ac",
+    "packages/javascript/examples/oklab-orbits/README.md": "9d82995c4de90e47e79afa1bdf16e38e83eb223f56e4740cb23a0f9db050795c",
+    "packages/javascript/examples/oklab-orbits/index.html": "b502c0738fa45b987ff54613ceba2fd195392ffdbc96cb443fc5da62daba49f2",
+    "packages/javascript/examples/oklab-orbits/sketch.js": "8cd8283b3511debefcf1e45ab9d622f9930ce6c4ae50fa987d1c42a48d4b7d05",
+    "packages/javascript/examples/orbit-beads/README.md": "9dc5c9e0d1fda0f5b792b3a389255f43f34fd44c5673206c1435cec648653310",
+    "packages/javascript/examples/orbit-beads/index.html": "edae5d35311b0c6828b25c8c426fb111cf222a5040bace5f11290c059d3348b4",
+    "packages/javascript/examples/orbit-beads/sketch.js": "424a80589a3e1c5d3aa5392c80b836bd2ad590ded0a0aa7c3e3aff409d342434",
+    "packages/javascript/examples/ordered-halftone/README.md": "e7f0f44d45a7076ea1e0be7d65ba0afb365e03e304c2948112cd16644be503f5",
+    "packages/javascript/examples/ordered-halftone/index.html": "3391b59bf8f5bb21ceb9edcd787b3b4d46fcf38166dd9df5e0ee1d409ac245ee",
+    "packages/javascript/examples/ordered-halftone/sketch.js": "ed4b98bba8601aefee6713b8ebacfd2d458cbf1057e27e9ec00d323f2421df3e",
+    "packages/javascript/examples/organic-cells/README.md": "c71bfe59b2859728af93654d5de6af009c9051ac00ae0a3a1b44fc01c2f783c0",
+    "packages/javascript/examples/organic-cells/index.html": "179943916d2427a8f56fedb53cc618f6c3b105325396b3179dea3f6cec426b60",
+    "packages/javascript/examples/organic-cells/sketch.js": "04d300b986c85c981eeb623af6283ce838b43e2a4c4e18ee001e7c3db3c96742",
+    "packages/javascript/examples/packed-posters/README.md": "9d805e992e993d1d686585ac2c8c767cf2352fa7d1468c8cc1598b6caf3fe4d3",
+    "packages/javascript/examples/packed-posters/index.html": "02e6a0ef2b4ded71323f50492364771ce8386c2ba2df53ef41e3cc5f5d7f0923",
+    "packages/javascript/examples/packed-posters/sketch.js": "bf684ef84d9213ee759bffd7806d7c68323a5324740182aec1b92e9b84e4216c",
+    "packages/javascript/examples/panel-marks/README.md": "03731fed37a7042e453c1b69ed4ccc6bc1116457f46b5f2e9dfddace0b9ab573",
+    "packages/javascript/examples/panel-marks/index.html": "5f2592744b5a346fa02feea51ff9f4f666b225cf841a698e332b8a83aeb00240",
+    "packages/javascript/examples/panel-marks/panel-marks.js": "d192527d6307abd753f1e57570a7b4ea6c4950fe1cb428040e0b5d88d3feda58",
+    "packages/javascript/examples/panel-marks/sketch.js": "e7522301477eaba78644c514146df770d5eaca3b67c3db28fc0e33635dccbc2a",
+    "packages/javascript/examples/path-clip-marks/README.md": "3f060f7191ac4c44146c380d6b18fb7f72c3f21c2609a225e2d6560322e660ce",
+    "packages/javascript/examples/path-clip-marks/index.html": "6509db8d1619dc9e7fd5cce5422f288d741b2df27028bc891a42f36973e63d76",
+    "packages/javascript/examples/path-clip-marks/path-clip-marks.js": "5ba2a22939f499973aa5b020df2e560ce872bdc81ac618b046553e60104937e8",
+    "packages/javascript/examples/path-clip-marks/sketch.js": "f7c3cf4243a6fb6ca8f0af29e8a68ef96f3bf1aa75ae6fe04c3fc25e374e3006",
+    "packages/javascript/examples/path-marks/README.md": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291",
+    "packages/javascript/examples/path-marks/index.html": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f",
+    "packages/javascript/examples/path-marks/path-marks.js": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743",
+    "packages/javascript/examples/path-marks/sketch.js": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473",
+    "packages/javascript/examples/paths-a-studies.js": "c51e455de2062675f4b92e6e70608fdb9e5533cab7fbb2408c0bac2fcbd4747c",
+    "packages/javascript/examples/paths-b-studies.js": "a7852153ce5dbb8f79065fb2c17711c74bf3bbd3d5035669ff9cf99c266fd6c5",
+    "packages/javascript/examples/perceptual-bands/README.md": "2be68a1f1ec03f3236525b09366570c72aff122d348d0d4554631363f7277bbd",
+    "packages/javascript/examples/perceptual-bands/index.html": "5c201526634fb7cc6269f4de1a6d5fcbe1025f479bb936cf834cbbebdc447507",
+    "packages/javascript/examples/perceptual-bands/sketch.js": "f29ff9f2fcfe9ba25c8dc30978935dfc701c8bdf549c55ead47ef74a53bfbe19",
+    "packages/javascript/examples/pinned-waves/README.md": "88e4fc7dd65739b51b0e538f3a70b85b9f1173ae1c3456cbd73c42ced1f64f98",
+    "packages/javascript/examples/pinned-waves/index.html": "b0582ad0daa6799b365d0c5ad9632e525ebd67c0dcd58d5fb2873a8dc73b116b",
+    "packages/javascript/examples/pinned-waves/sketch.js": "35c6520dd5fc64106ff419a818e5b30119f11733961af849abbf8adc42e0c15f",
+    "packages/javascript/examples/pixel-grain/README.md": "c8d28469a5cc20a1b920ffdfa938ead74beeba7c58c028e958125c98dfb43d79",
+    "packages/javascript/examples/pixel-grain/index.html": "f581c8756492277f2d6adb505260c5d0a440b79e8384ced0bc0e385fbcbb8ade",
+    "packages/javascript/examples/pixel-grain/sketch.js": "f68bdc41afa2e6734f9e716027636013abaa1bb0f0058f2ae770e697df7b4104",
+    "packages/javascript/examples/placement-image-marks/README.md": "417ae8f228b4e536a524ff92d549a070c51491fabf49e764dc09aaa75a61cbe8",
+    "packages/javascript/examples/placement-image-marks/index.html": "286d0b425845223982b28ae81a1c0e7883730fdb16632eef61a29ee5e3d2df1a",
+    "packages/javascript/examples/placement-image-marks/placement-image-marks.js": "797b15b0015412790c1dd4acb0e25a8597eb71785682701e9936ccf8a7a7bf2d",
+    "packages/javascript/examples/placement-image-marks/sketch.js": "65c2a0cb1c2139629f49255c371268684bbc8307d5dd202cd27e8383049321ad",
+    "packages/javascript/examples/placement-marks/README.md": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1",
+    "packages/javascript/examples/placement-marks/index.html": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318",
+    "packages/javascript/examples/placement-marks/placement-marks.js": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382",
+    "packages/javascript/examples/placement-marks/sketch.js": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c",
+    "packages/javascript/examples/pointer-marks/README.md": "aac53dd84fa19e0045f81689d9f1266fbb5a734b4d9991f951168a664d1556f8",
+    "packages/javascript/examples/pointer-marks/index.html": "aa0c6c58647679564436cd349af60b69843593a233bdaa8687972614b2650dfc",
+    "packages/javascript/examples/pointer-marks/pointer-marks.js": "9eee3ad0c62d59f7b788bb110b18c249f7e05bb9b3e726d2562c6807bbc88445",
+    "packages/javascript/examples/pointer-marks/sketch.js": "ef1d722880c7929af84ec565bf7f1a7fab656ba8e6545d5ccb8ca59dbca19e23",
+    "packages/javascript/examples/polygon-marks/README.md": "6b6d0190feaa7358a1563d1147cc8e93b835747bee3ae1ad88003ce0817bd2dc",
+    "packages/javascript/examples/polygon-marks/index.html": "eb8c06bc3a65b6626ab24af74899fffdf5852287a699a31835f4282110284262",
+    "packages/javascript/examples/polygon-marks/polygon-marks.js": "4a850118868c7956bc4d7919ca4f4fd2a6c19aef706e2e14021382291fecf369",
+    "packages/javascript/examples/polygon-marks/sketch.js": "3f1b35dc25908b9d609cd80dfb462d5b0950d97900dc0f1e62a30b730a573bab",
+    "packages/javascript/examples/profile-marks/README.md": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6",
+    "packages/javascript/examples/profile-marks/index.html": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867",
+    "packages/javascript/examples/profile-marks/profile-marks.js": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c",
+    "packages/javascript/examples/profile-marks/sketch.js": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c",
+    "packages/javascript/examples/projection-marks/README.md": "ed1dd6fcaf5e302a6afec3cf8dc5c64a060cf8bfb8192d217200fa789c28bb42",
+    "packages/javascript/examples/projection-marks/index.html": "488d8920ad2d56260a209741b6d800703609d3c28d5c4907ba6a77ce7d69abca",
+    "packages/javascript/examples/projection-marks/projection-marks.js": "9441c1fe98ba35ff5824a28fa57a7d30764d80f538561963318bf7623f99c54f",
+    "packages/javascript/examples/projection-marks/sketch.js": "5569b3da81606dd2e9a83191b4035424ee8f90d55135ee70c241ed3f9373ee5c",
+    "packages/javascript/examples/pull-marks/README.md": "bbeaa1df18af8fbf335fda6de8e9f162cb0b66c2a5a2f253b947055d860a2a3b",
+    "packages/javascript/examples/pull-marks/index.html": "c1d3fb3b79683ce842957a7b493176fc8d41d905f8e17c89b4a1f14d61e812c1",
+    "packages/javascript/examples/pull-marks/pull-marks.js": "af49f8461e8d12099d6bed13e85ec6165305b890fa6c9a29fa8144d3e9aee830",
+    "packages/javascript/examples/pull-marks/sketch.js": "83bc47bd0dbdedb4e1beebb9a2418c99cc625267cb02d33746d70e8ffbb86e2b",
+    "packages/javascript/examples/quantized-stripes/README.md": "c7d88f4be963d0618a2aa70c3b35110340d63c257fc8054d4fa8f5c6e230f760",
+    "packages/javascript/examples/quantized-stripes/index.html": "199893207aae9b7a9f5ec3d9b89a94d6b88865dd2760a9d62012e8df88ff9816",
+    "packages/javascript/examples/quantized-stripes/sketch.js": "a453f8d3c12181c7038fae5b35f96d783f15305dc06366cfeb1921a873a6267f",
+    "packages/javascript/examples/ramp-marks/README.md": "ad5589e4f562f214b78788baa432c16a67837707bfb45c83ca67826a6efefd3b",
+    "packages/javascript/examples/ramp-marks/index.html": "4a1f569d65dab5f50f16e49dc57a48342436b7c15f6b66e3babc6442916a3ab4",
+    "packages/javascript/examples/ramp-marks/ramp-marks.js": "4528fcdea69f41ee6f82a72b4e52ce6b8426b1f096c54434e6aec8e325ae6ac2",
+    "packages/javascript/examples/ramp-marks/sketch.js": "cd3e1db4deb2989fc70a8bce0433d9f80dcf47175f98dc77b7224e855de90cec",
+    "packages/javascript/examples/reaction-spots/README.md": "f7889e6b481e53b527295211233e8add3ec06026cef247a76f324a77a5d23edb",
+    "packages/javascript/examples/reaction-spots/index.html": "dd176739c9e3b90781263441c9abdca75ab3a19de94f2b62a6bb428cb8c38362",
+    "packages/javascript/examples/reaction-spots/sketch.js": "827bf6b0523da088d87ec72ee6b616a9d08d8d18dbd9947d8724e0af4f700abf",
+    "packages/javascript/examples/reaction-stripes/README.md": "114d68183c60c9a68aa4344deb2985bc0585289df3a07480445461ecbcecd0a9",
+    "packages/javascript/examples/reaction-stripes/index.html": "45987214d0ed4c784ab2860dd6e6e4b3e686fdfc2986ecaad48ffbcc4701dca7",
+    "packages/javascript/examples/reaction-stripes/sketch.js": "8e6d57f57f3e9351682fd584e4662e70efe504d9bd08ee88147a8352bef83c93",
+    "packages/javascript/examples/recursive-tiles/README.md": "70a8d4f3898b27369362e574c36e067075febf0567efe64a6658b427bd072bc0",
+    "packages/javascript/examples/recursive-tiles/index.html": "424b508573fc628cbd1e0881f2bf8ca096f8cf193a2366b778422f9c1ab82496",
+    "packages/javascript/examples/recursive-tiles/sketch.js": "891eda2f646d478d5e21c153a7e01bf4ba5b1808bfec7b39b63447a6999f88fd",
+    "packages/javascript/examples/reduced-mosaic/README.md": "caeb80067d39c96eda8ee694b4160b51d3764881173afdc7a1c3b19cea784c37",
+    "packages/javascript/examples/reduced-mosaic/index.html": "2ef10f3ed02909a7125676ce8098225807cae031c35a27b6c2af41617c2b24b0",
+    "packages/javascript/examples/reduced-mosaic/sketch.js": "67b09c124cabc9a9d9b12359e9e8fc095402cac35d417309cf8a719178892df7",
+    "packages/javascript/examples/region-marks/README.md": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010",
+    "packages/javascript/examples/region-marks/index.html": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d",
+    "packages/javascript/examples/region-marks/region-marks.js": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8",
+    "packages/javascript/examples/region-marks/sketch.js": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a",
+    "packages/javascript/examples/relaxed-stones/README.md": "cda1debf7ee0f100533620cb9c84cec9a931d27302f3b72deec745a7ca9e13a1",
+    "packages/javascript/examples/relaxed-stones/index.html": "9bf9a70c91dd16c33930474252a34da5ac558bae7e1992e019f64305798fa916",
+    "packages/javascript/examples/relaxed-stones/sketch.js": "22b02194a6fdece1cc6a5f7b9ddd58ab7551c54920174f3af0c7d00891e59788",
+    "packages/javascript/examples/relief-marks/README.md": "7121543eceae1946acbe7d161939288af0b5ef723d836cf0f96edb342634da38",
+    "packages/javascript/examples/relief-marks/index.html": "9517989ebe64632e08c64d1fa3bd0123b3fdc9d4b5fde8f6ce150890d9290ef6",
+    "packages/javascript/examples/relief-marks/relief-marks.js": "c98891a3cbb50a0112dce6645f5563195b62da2986b9578f10c0393b7ae690bb",
+    "packages/javascript/examples/relief-marks/sketch.js": "49d3471a4c15d9fb8e277141724d913aabfba0f4d135c7b623de62c22e7cfe19",
+    "packages/javascript/examples/ripple-interference/README.md": "6d6546c538be30526c9f3d331e52c6836acb192e4e4d58b73275f4cbfa74d52a",
+    "packages/javascript/examples/ripple-interference/index.html": "716ecc987d1f092a5e1a8ba3bc90a84174d46c4b39a6999ef87d8d3d373a6f24",
+    "packages/javascript/examples/ripple-interference/sketch.js": "8d13f1f11e16293d81304b7cf371e382b4f4ed2568481ffdd6028c06bf670e09",
+    "packages/javascript/examples/road-margins/README.md": "6e92fcc54bd42d71b45b3d8860eba2a88872462f5f41e152618dba5fbd550f25",
+    "packages/javascript/examples/road-margins/index.html": "6a8d6b2574c031c6584d1ecf5e48e85c4c1423d2bd8b63cd543dc655f5e671e2",
+    "packages/javascript/examples/road-margins/sketch.js": "f8843a7fc163e414fa23cd886c3b7ef87eb08bf0d6234f6760406d87075aba3d",
+    "packages/javascript/examples/rounded-panels/README.md": "3a1b5957f2d0c4512dbd8e0c79c912b335cd7fb65c8cdc2bec2c1f4d9d0d71e7",
+    "packages/javascript/examples/rounded-panels/index.html": "8f067fe80570db35ff78b0c0e046fc1479df2ab40a78abacef4606aaf461561a",
+    "packages/javascript/examples/rounded-panels/sketch.js": "7bd0cbf57a82b9a59753a8941e2f2be05d5c5911a0f6419c65775cd744d80a29",
+    "packages/javascript/examples/rounded-polyhedra/README.md": "47ef80ade4e921688ee384342ecb481c9e334736ffafcdf358c72a734a3fcc6b",
+    "packages/javascript/examples/rounded-polyhedra/index.html": "597be4466ff0c8910f4c993a156ad1543171067292d756ca5095b5382afcc6ff",
+    "packages/javascript/examples/rounded-polyhedra/sketch.js": "056b4746510a99566b44fd6eaed0f0ecd2e2e29a1a2d069c00315c6d0d7bbac5",
+    "packages/javascript/examples/scatter-envelopes/README.md": "d004b146b933ad6de4e98c9de7ea9d244156585c114f0e5b10550bef095b5609",
+    "packages/javascript/examples/scatter-envelopes/index.html": "e32ddbb60839e65110b6ba32d7fc6269ed423d1116dbc8d3c2c094cf7f1196a4",
+    "packages/javascript/examples/scatter-envelopes/sketch.js": "42b79fca43d0d0665d35a7ea156f9a2d02e657fe5fd28f465b8962f406feaea9",
+    "packages/javascript/examples/signed-edge-print/README.md": "ca450ae8c47e0d2111e57f5af73235221b44bc4a397dd78493de3b5601fbb6c1",
+    "packages/javascript/examples/signed-edge-print/index.html": "91a9e5677ee2fff6fa5f4b95bd83a23376f3cfb48e7ee48b5fdeacd5fbbb3bc8",
+    "packages/javascript/examples/signed-edge-print/sketch.js": "e7f0a552c03229ad56d20211451bafa9e1a5eece4f022aee9f1702d55d795b2c",
+    "packages/javascript/examples/spaced-symbols/README.md": "9b8c8f881cfb8b80f3cbc5b3724a605af77bec09a8a5d51976d1dffc92d18dba",
+    "packages/javascript/examples/spaced-symbols/index.html": "e9722c57cf2be878aca9cec40f88b083ddbd98a649e996d34199ec0ac4a5979e",
+    "packages/javascript/examples/spaced-symbols/sketch.js": "ebe2a5cc074fa9a295ec47bfb289b78ce25056e3174c9cc8744a967621916ff9",
+    "packages/javascript/examples/spring-marks/README.md": "fa0499f1a199b66abc028442162a9cbeb03fc0af902f34fa9cff56af3fd049ab",
+    "packages/javascript/examples/spring-marks/index.html": "c0acfe5d21f1fd50fea84bd85f006b31771a8203378fd3062eb8edb1607f0b91",
+    "packages/javascript/examples/spring-marks/sketch.js": "e56b7d7a00cfe4f7e60ab7f6660940f9aa4911fb2eb3771f6d12bca6d612ad70",
+    "packages/javascript/examples/spring-marks/spring-marks.js": "a47eaba5f5b3d2bb90286017d1f4c742dc0960a25e64891123a763813301fca9",
+    "packages/javascript/examples/stepped-blocks/README.md": "5c063e7569102241fd2eed58e9cebe095d88600e00f2712ea2d5df7bb8d4dd56",
+    "packages/javascript/examples/stepped-blocks/index.html": "8d29fdb38d8a967c5353cdf958ca153047f1b55718ecd45abea954a6bff631cb",
+    "packages/javascript/examples/stepped-blocks/sketch.js": "1672e4fc95a9d77ff1f51f117013275fe008f00aa45374f1488602f7eae079e1",
+    "packages/javascript/examples/stitched-contours/README.md": "ac8214cd8f33eb9cbfb03bb70d52f67dd13b5eab1b1e8c3f4d21b443c139d615",
+    "packages/javascript/examples/stitched-contours/index.html": "e8cb49b6f1e528f3f15eac81bff243d7f0ad2aebe28d5ec7262cdb0043bd444b",
+    "packages/javascript/examples/stitched-contours/sketch.js": "318ad06fb9f613f019344627be20d1e0897bb5bf189f6b975580340eacae81b6",
+    "packages/javascript/examples/stitched-paths/README.md": "35d9e06c240fde1748bc898b7995ac0fec78e330f440d82a7b07d770aa934452",
+    "packages/javascript/examples/stitched-paths/index.html": "13cf0a77871e7e93e4b0739095187239393b3e2224b88ce6a78f1a75db88e1c5",
+    "packages/javascript/examples/stitched-paths/sketch.js": "ed6a47bc01bb674287ad08bc9c7581436c2e5142d1ae729918a8e026a1471cdf",
+    "packages/javascript/examples/stream-ribbons/README.md": "d8eebb35d8485d1fd6e2890221f5d244f40d4311b01d29292cce10447b152eb6",
+    "packages/javascript/examples/stream-ribbons/index.html": "e354f9f05752d976ee3f2337b0fb3749265b547b1f6d89454896c0d5099ee43b",
+    "packages/javascript/examples/stream-ribbons/sketch.js": "1983ef20000843dcff2f8d259147e7f0a62f28cd72737d3c2092ea19c59a9dc7",
+    "packages/javascript/examples/study-controls.js": "89c1399024c5e342978910b98c7045d99ca2a716e0b6e55679f66913edf91324",
+    "packages/javascript/examples/subdivided-shells/README.md": "e7b3be9be8fcd62c262a83ca4beec8c23ccd1d658cf52dc9bce76a0ff53e794b",
+    "packages/javascript/examples/subdivided-shells/index.html": "f6fa0ac2675e3985b6bac2b54a1be5ce5319f58dee2d7a46267381ecae23442c",
+    "packages/javascript/examples/subdivided-shells/sketch.js": "2a32fff1428254d241eccf7d51d6e8d301feeea356fc1b0350fcf96a3559f57f",
+    "packages/javascript/examples/swirling-particles/README.md": "23f1221f0ba579ec5b79f5f6a6fb819d50438501bda65c459ab1edc74e1a7933",
+    "packages/javascript/examples/swirling-particles/index.html": "789477da921fae66a488b835b37d47ed4007a3d5b39b3fb69c4782c6a0c8eb64",
+    "packages/javascript/examples/swirling-particles/sketch.js": "e4f3703d8539a67c23a127811a79d871fc6a3449ca06766609235d02444aa6ab",
+    "packages/javascript/examples/systems-a-studies.js": "58c2f4d09d6d26f120ef5e4f381330f10a21d6924d9d419d4474584be013266f",
+    "packages/javascript/examples/systems-b-studies.js": "91d08e3863397f9605ea150c2f03ec0f23e11796a72d72d974897f4c16875527",
+    "packages/javascript/examples/terraced-islands/README.md": "232133f5bbab8e5769337014b9f8ed1ec683cd3fb3ada7e805527ac9ee8e1a99",
+    "packages/javascript/examples/terraced-islands/index.html": "166990f0bce98d8f85139450a0427f01798a5275438517dc9560f8b06cb48de0",
+    "packages/javascript/examples/terraced-islands/sketch.js": "4e64131d74e4ac4fea381164fc4c0dc3972eb973c9746fa9c8ad1e61c106b7d3",
+    "packages/javascript/examples/tiled-circuits/README.md": "95d7c12890f709610b8ccd0e4d06360519ccdfde89160b240c2bc780c70e3b61",
+    "packages/javascript/examples/tiled-circuits/index.html": "2623120393cd1ccf25c0418e843cb0e12270ebd45971ef0f820bb1eda8f89938",
+    "packages/javascript/examples/tiled-circuits/sketch.js": "f30c3ae31adb67c132dd602d7acce6888dd3cca194c013bef2f7f0640512c20d",
+    "packages/javascript/examples/transported-ribbons/README.md": "fbece8de5baf674ae19838bb4fb25e76fc6a6d6f44575ad0882ed7b9286c33ce",
+    "packages/javascript/examples/transported-ribbons/index.html": "10915f92cab5ccf07b7de065bc3482d35e4fdac3abcd2bc405020ab386c78212",
+    "packages/javascript/examples/transported-ribbons/sketch.js": "9a60fafc181d79702d7a54b3995586c332aad89c5024cebbfe757d2c6c87354d",
+    "packages/javascript/examples/triangle-glyphs/README.md": "8ab1bb3cb5b4e0383d0bab49cb3eaa188fd903571f8e977f202cbe6c4cd9540d",
+    "packages/javascript/examples/triangle-glyphs/index.html": "7592755be6d32e25f62962e596db7172c562091de24f529f08d7ea29163bf8d8",
+    "packages/javascript/examples/triangle-glyphs/sketch.js": "0d5e9b2ef3864f45d53a5732c0c8f5de53646e91786afb511837c3164aaa4f8e",
+    "packages/javascript/examples/turtle-canopies/README.md": "6b5d9c6f3ca5a0a7e4abdcb9c42ba52c11d2bfc9b8596f4879cb7d05033adf16",
+    "packages/javascript/examples/turtle-canopies/index.html": "07a852784854f4cf530d1bf267ce3642d7e11d57cf4ead3348bf516d8e125a74",
+    "packages/javascript/examples/turtle-canopies/sketch.js": "18ffd63acaab4c5b14a891286708000bf945467bb59c03801a4d31085dbd06a4",
+    "packages/javascript/examples/twisting-streamers/README.md": "ce6ce3aeece29e0d334864680a9a99a7db88a31f4c9560549e715238804f1e8a",
+    "packages/javascript/examples/twisting-streamers/index.html": "7e53b87d20cab975811259ef6fe9b3b647501d6d713791182883ab53960340d2",
+    "packages/javascript/examples/twisting-streamers/sketch.js": "ce04fecc1bae3815f687a5fd47b6723b7760c929dab86c6c27877c3f88a8a7e5",
+    "packages/javascript/examples/warp-marks/README.md": "ae5578442c7b7a1b9bc103f5f2089e94d42aad1b7fd26eaa32fe54ceab8eb096",
+    "packages/javascript/examples/warp-marks/index.html": "460af05d02054bd1584b33eb680262a204adbc9ca015e509b231e9389f4c2927",
+    "packages/javascript/examples/warp-marks/sketch.js": "e4122d81f4854bbbdb56a71438cb8cb470314eed4564c27910c56213aeaa05b9",
+    "packages/javascript/examples/warp-marks/warp-marks.js": "7ce10a730dce26f9183b4f5c494af7a85093aa648769550fce7419144484711a",
+    "packages/javascript/examples/woven-grammar/README.md": "191367a67ad2d27f07c2848f6a924ca3a285c7f5aa898a5b1dda646b7a468052",
+    "packages/javascript/examples/woven-grammar/index.html": "552e71d04bf5ea2673e7eac7c2c6aa51f2bfabf0af87c0b2e77936b58e89fbb9",
+    "packages/javascript/examples/woven-grammar/sketch.js": "3ad0bd6a31e29d09f9e381a2898e832974776cc3e2e253bd30e3278820a9fb64",
+    "packages/javascript/examples/woven-rows/README.md": "28c04226a7f802483029e9dc31f5e2020665a21c4293bc97d65bafbfb4cf511b",
+    "packages/javascript/examples/woven-rows/index.html": "7e447d038e0d0a9699fd745c751c3e4c4f1561d498fa72b475be260e87aa7657",
+    "packages/javascript/examples/woven-rows/sketch.js": "49ea3db5488acee96a607356127e5b34821185ecbadd47570f92d8dfdcee3a0d",
+    "packages/javascript/package.json": "a2e8d61d3fcf0365b6ed0033cab2873aacb38eea46872bcb4a7b75da5e4531b8",
+    "packages/javascript/src/adjacency-tile-collapse-2d.js": "ad70df385f1066de90fdb0b04ac84535cd9370a522b3ed91b996235d936c51e4",
+    "packages/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
+    "packages/javascript/src/assemble-segment-chains-2d.js": "8ab83d01e0dcff42e6e75b183aa26596511ed5bc5a1a734c2791ff2455096291",
+    "packages/javascript/src/bayer-dither.js": "2c6b749115c51e0569be56612fb9a1edcf1f5906718389a0157f5d8c2dcf4a43",
+    "packages/javascript/src/binary-cell-partition.js": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00",
+    "packages/javascript/src/binary-morphology-2d.js": "112b2e90fae068250c8cf16b2906cabf463b21e3138bb0be164c9b68e3198151",
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "packages/javascript/src/chaikin-polyline-2d.js": "5f7dd247985be361679e15f4fb2a7bd5e033927b53e1d6a1a85d2a30685ebb97",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    "packages/javascript/src/convex-hull-2d.js": "d156a22647adb5fe931c8740ee2c74eae7f4b243de8bc6fedc714e49139c0075",
+    "packages/javascript/src/convex-polygon-placements.js": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52",
+    "packages/javascript/src/convolve-2d-signed.js": "88a639ede86d5f656ad83fddc3f4063da7b97c824cf6afd77344038aac03309d",
+    "packages/javascript/src/cost-grid-paths-2d.js": "73f133373556969568b16baab369aedd944c7fa08671bbf418db319e32f364b6",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/damped-wave-step-2d.js": "6d309ed8b0bf78d5abb5097d24839f62019e57a0c4aadac41e2d9d51d96aeeaa",
+    "packages/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    "packages/javascript/src/disc-projection.js": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1",
+    "packages/javascript/src/elementary-cellular-rows.js": "cf99a0c8cea6f0f645df343765218bf91c372a3aeaefe7fb8cbb2c3aaffd4af6",
+    "packages/javascript/src/euclidean-distance-transform-2d.js": "d23b9f390d8f5bf2b913b9d046671969226cc4d0062d799035c715d6b5f23fb7",
+    "packages/javascript/src/extrude-simple-polygon-3d.js": "7b13ac647e6115dbcdd29ae1346eb7df84894af97fa4def05624b34e37e16740",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/field-displace-2d.js": "cda0d26f09f511d6f3abb2be26908600ab01d1baa4487fb7fe765686f424b090",
+    "packages/javascript/src/floyd-steinberg-dither.js": "9ff206e74a55a799e9cecb7844b8f7640ec1a20cf726b8e2ed30f547e7f73283",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-noise-3d-01.js": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c",
+    "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    "packages/javascript/src/gray-scott-step-2d.js": "3106ec4ffbb2b8a2bab29406f9d49a62e4831ccf67af18a320b899cd494adfbc",
+    "packages/javascript/src/index.js": "7c771598970adb033fa9d0405dd01462d0d9ffb763966d1468dd07cc6e4caa87",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+    "packages/javascript/src/internal/geometry-a-utils.js": "b13eec1218c84e3758c8b831182518a2b069be6fb355561bd512a259c3c94a45",
+    "packages/javascript/src/internal/geometry-b-utils.js": "72e6dae1c98dc48285764908c38999127390520902d69a2dadebf7fa2b53c773",
+    "packages/javascript/src/internal/mesh-study-utils.js": "3e7f9501ece2259c768e296978b2d9c9292437ea561a4120566211a4a14561bd",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+    "packages/javascript/src/internal/systems-a-utils.js": "c6e4920c72648b559fb70395a51ead4deb47e972cd91ae54145d1b1c1e5d5204",
+    "packages/javascript/src/life-like-step-2d.js": "37b145560381679290e862addbff05ed4adf94b1b90fdfd90400116132c1fd4f",
+    "packages/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    "packages/javascript/src/lloyd-relaxation-2d.js": "85d30436973e1010a49ae159f10ca00e0c0b6b546d95345b175c5b55bf6ff5b3",
+    "packages/javascript/src/loop-subdivide-triangles-3d.js": "848f5258859d0fafa0ac82a4b71dc04612f5c219fa926c2e3d9f4f24f229eab0",
+    "packages/javascript/src/marching-squares-2d.js": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d",
+    "packages/javascript/src/masked-source-over.js": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d",
+    "packages/javascript/src/median-cut-quantize.js": "10c334b0897c28a6ea722407a50f30dc74c4e6da2d7134322155266950d3ccf8",
+    "packages/javascript/src/nearest-segment-contact.js": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d",
+    "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    "packages/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    "packages/javascript/src/octave-gradient-noise.js": "ea3556c22d7d8ae04b5863011ad9f59dfd7d2a2583ba1b6e6e9dbe7641faca10",
+    "packages/javascript/src/offset-polyline-2d.js": "eb42f6a1bba9bf15cfc6d873fba8896bce09a5b5f9168ffd199119e643c38382",
+    "packages/javascript/src/oklab-ramp.js": "b0523d44f8556694f9c81bb8c561a9d2550a9f309ead76f4aa67400811bd44de",
+    "packages/javascript/src/parallel-token-rewrite.js": "0801534342dafd5b394e900a19edf051645a1f0666bf9f52744d6ae28936c7c9",
+    "packages/javascript/src/parallel-transport-ribbon-3d.js": "9f5d099e4777ffeb2e897c5155466fe797d010dc31b96edb4d5d9a7c59393fdf",
+    "packages/javascript/src/poisson-disc-2d.js": "ccdf5f339ad29589ad44ae5a1585283a52bb033c1240ba86314a83254df4cb19",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/javascript/src/radial-pull.js": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c",
+    "packages/javascript/src/raster-crossfade.js": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19",
+    "packages/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/src/resample-polyline-2d.js": "0cadef92e1a999ebe8f58bc17b7dc82341db03b190cf4ebf8087058657b0ff42",
+    "packages/javascript/src/retained-rectangle-cuts.js": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866",
+    "packages/javascript/src/rk4-vector-grid-trace-2d.js": "f29ad04d1629d04c1d21cc15f901abb6404c6b6afc9af1699f1c070e99f0e281",
+    "packages/javascript/src/scalar-grid-curl-2d.js": "6b3237010420fbe77d2770aa8d71436c223522506e68244944bb053e8b1eef89",
+    "packages/javascript/src/seeded-depth-first-spanning-tree.js": "7b2d71cef7caad248bc511d715a68ac379addc6bed3adc22605502bc05b82c57",
+    "packages/javascript/src/seeded-pixel-grain.js": "cdc5961f7ac0cf09cbd15b443de06e1777fccdf2b3ccb222a4ad06ddf24b8ce2",
+    "packages/javascript/src/segment-clip.js": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4",
+    "packages/javascript/src/separable-blur.js": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632",
+    "packages/javascript/src/simplify-polyline-2d.js": "b874b18cf0ee75397f09676d5bfe4f66fbeb8987e260577a0579a613799b1feb",
+    "packages/javascript/src/skyline-pack-2d.js": "427c4ebd2d16b163abdc31e8ffe1348b0d9e10e96f6b7dfdd2524fbebe763de7",
+    "packages/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    "packages/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+    "packages/javascript/src/token-turtle-2d.js": "24ecdf07d999153c7f611e2c743553450d15e7be929dff4c31edf210b57026fb",
+    "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "packages/javascript/src/triangulate-simple-polygon-2d.js": "bfbf0df2fd29df8590daa74c629312e14b36342e8577078e1e2f369362ed2760",
+    "packages/javascript/src/voronoi-cells-2d.js": "e711b13d660c6c1020daca2bc7d58f655cd614238e0fd0f4155af524ac3fe1a6",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "113e37c45dda83ac837ac5f9128c70a9fcd3986ab93895411172fd0f5918c0d9",
+    "tools/build_ported_javascript_package.mjs": "f6b19a0a2c73759c1b392fbc14a7153c58728a13c4478bf5db22bb77e47fdfe3"
+  },
+  "node": "v22.22.1",
+  "resolution": {
+    "resolved": "file:///home/colin/dev/procedural/.work/survey-coverage-batch1/integration/.work/dist/survey-batch1-final/consumer/node_modules/@procedurals/javascript/src/index.js",
+    "exports": [
+      "AnnularFaceLimitError",
+      "AnnularMeshArithmeticError",
+      "AnnularMeshError",
+      "BinaryPartitionError",
+      "BranchTreeError",
+      "CirclePlacementError",
+      "ContactError",
+      "ConvexPlacementError",
+      "CyclicPaletteError",
+      "DelaunayError",
+      "DiscProjectionError",
+      "FieldDisplace2DError",
+      "GradientNoise2D01Error",
+      "GradientNoise3D01Error",
+      "GradientPathError",
+      "LatticeError",
+      "LinePoolError",
+      "MaskedCompositeError",
+      "NoiseBandPathError",
+      "OctaveGradientNoiseError",
+      "PartitionError",
+      "PullError",
+      "RadialProfile3D",
+      "RadialProfileError",
+      "RasterCrossfadeError",
+      "RasterRemapError",
+      "RectangleCutError",
+      "RegularGridError",
+      "RetainedRectangleCuts2D",
+      "SeededPixelGrainError",
+      "SegmentClipError",
+      "SeparableBlurError",
+      "SplineError",
+      "SpringError",
+      "StopRampError",
+      "TrianglePointsError",
+      "adjacencyTileCollapse2D",
+      "annularSolid3D",
+      "assembleSegmentChains2D",
+      "bayerDither",
+      "bilinearRasterRemap2D",
+      "binaryCellPartition2D",
+      "binaryMorphology2D",
+      "chaikinPolyline2D",
+      "clipSegmentsSimplePolygon2D",
+      "closedSpline2D",
+      "convexHull2D",
+      "convolve2DSigned",
+      "costGridPaths2D",
+      "cyclicPalette",
+      "dampedWaveStep2D",
+      "delaunay2D",
+      "elementaryCellularRows",
+      "euclideanDistanceTransform2D",
+      "extrudeSimplePolygon3D",
+      "fieldDisplace2D",
+      "floydSteinbergDither",
+      "gradientNoise2D01",
+      "gradientNoise3D01",
+      "gradientPath2D",
+      "grayScottStep2D",
+      "lifeLikeStep2D",
+      "lloydRelaxation2D",
+      "loopSubdivideTriangles3D",
+      "mapTriangleCoordinates2D",
+      "marchingSquares2D",
+      "maskedSourceOver2D",
+      "medianCutQuantize",
+      "nearestSegmentContact2D",
+      "noiseBandPath2D",
+      "occupiedLatticePaths2D",
+      "octaveGradientNoise",
+      "offsetPolyline2D",
+      "oklabRamp",
+      "orderedCircleFilter2D",
+      "orderedConvexPolygonFilter2D",
+      "parallelTokenRewrite",
+      "parallelTransportRibbon3D",
+      "poissonDisc2D",
+      "radialPull2D",
+      "rasterCrossfade2D",
+      "regularGrid",
+      "resamplePolyline2D",
+      "retainedRectangleCuts2D",
+      "rk4VectorGridTrace2D",
+      "scalarGridCurl2D",
+      "seededCirclePlacement2D",
+      "seededDepthFirstSpanningTree",
+      "seededEndpointBranches2D",
+      "seededLinePool2D",
+      "seededPixelGrain",
+      "seededQuadrantPartition2D",
+      "seededTrianglePoints2D",
+      "separableBlur2D",
+      "sequentialDiscProjection2D",
+      "simplifyPolyline2D",
+      "skylinePack2D",
+      "stopRamp",
+      "targetSprings2D",
+      "tokenTurtle2D",
+      "triangulateSimplePolygon2D",
+      "voronoiCells2D"
+    ]
+  },
+  "tarball": {
+    "path": ".work/dist/survey-batch1-final/procedurals-javascript-0.1.0.tgz",
+    "sha256": "7ca90a6a53a88ce00559c669c7b4bcbdaaaf1554aa857e414a1bccdc05b1fba4"
+  },
+  "installed_index": ".work/dist/survey-batch1-final/consumer/node_modules/@procedurals/javascript/src/index.js",
+  "entries": [
+    {
+      "path": "LICENSE",
+      "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+    },
+    {
+      "path": "README.md",
+      "sha256": "842539fc87de7f0cdcbe6cd2cccf0f5613ca3b188d8d21d9a299b8966023a4b3"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "113e37c45dda83ac837ac5f9128c70a9fcd3986ab93895411172fd0f5918c0d9"
+    },
+    {
+      "path": "examples/annular-marks/README.md",
+      "sha256": "c4304096deb52a20dde87ee5360756290520d3052280aa9b004a2394cf1e251b"
+    },
+    {
+      "path": "examples/annular-marks/annular-marks.js",
+      "sha256": "5b65dbbf336901ef27c7ac5c74b7109544c0e23d8faa6d85941caa86031f4cee"
+    },
+    {
+      "path": "examples/annular-marks/index.html",
+      "sha256": "0a30cc81397d67cc59ed2aee1d558a69b7bb168384864aad24e601eaabd24909"
+    },
+    {
+      "path": "examples/annular-marks/sketch.js",
+      "sha256": "877fd9f3552a9f8068ef4ccf3272fe71a2b47ded6685b1730c7735c94c29d38b"
+    },
+    {
+      "path": "examples/arrival-contours/README.md",
+      "sha256": "c1a1d70017de292b8631e30c29e896d7064ba3589795890472cfe576e3c3da15"
+    },
+    {
+      "path": "examples/arrival-contours/index.html",
+      "sha256": "8b3df711eb3d0f60e9f7204c95be619fb26e62eedbc9e5f90f4d794532a2973e"
+    },
+    {
+      "path": "examples/arrival-contours/sketch.js",
+      "sha256": "9af9881b09e19e59233dec1fb5e7b54684508eab2b5128daaf707dd918ec0608"
+    },
+    {
+      "path": "examples/aspect-tiles/README.md",
+      "sha256": "dce922a07995df9377c1b726d051a906a5d0d2b41d2dbe53bd7b08104940d2e4"
+    },
+    {
+      "path": "examples/aspect-tiles/index.html",
+      "sha256": "dfc1a2a7a4e1f2a8674281215c1c066d5c97937bb78fc09374b28d154d5d41e0"
+    },
+    {
+      "path": "examples/aspect-tiles/sketch.js",
+      "sha256": "289ed41e2e48cf8852484b2f91983b69079f649886f301f1ea3509747d63d33d"
+    },
+    {
+      "path": "examples/band-marks/README.md",
+      "sha256": "87a79dd4c8b7a59c824db510efa63dae4378f43d7172989a849571bc93cd907f"
+    },
+    {
+      "path": "examples/band-marks/band-marks.js",
+      "sha256": "4ad6cd9c8117d28821984c2f0e129032f1a81fdfd8d320bdc002e5a4f85ebe55"
+    },
+    {
+      "path": "examples/band-marks/index.html",
+      "sha256": "ed869e5218432472ffd3fb753e7bf4478eb1ebfba15187a3d548540331eac528"
+    },
+    {
+      "path": "examples/band-marks/sketch.js",
+      "sha256": "9d444db4696833274a034d98549c29e407a56fb97f877735a4ffe82222ffdaae"
+    },
+    {
+      "path": "examples/bayer-weave/README.md",
+      "sha256": "4a9a6f7231902bb60b236f7aba9320ebb09a65790b6c3453928bdcb2f0de0314"
+    },
+    {
+      "path": "examples/bayer-weave/index.html",
+      "sha256": "cc46780254210849ccb5efb52328207c6ff5747b17f661bc8c6777f282b55c71"
+    },
+    {
+      "path": "examples/bayer-weave/sketch.js",
+      "sha256": "bb4f612435bf63f292416e281c8f5ccd9ac843f43dab6ea7ba229f0f0079ff4e"
+    },
+    {
+      "path": "examples/blue-noise-stipple/README.md",
+      "sha256": "b0e6df44a7a609fc6c0e814ff0acbeff9512461fb20601fb60f82411b97c7e44"
+    },
+    {
+      "path": "examples/blue-noise-stipple/index.html",
+      "sha256": "51b0f0e6e9138c6bb395514f9f4b03d11e4a4ed0b6a94fd085b572179edea17a"
+    },
+    {
+      "path": "examples/blue-noise-stipple/sketch.js",
+      "sha256": "a8077f8f51089b25b4f41d39af2b0ac859a6569a6534802360555fa5f2632984"
+    },
+    {
+      "path": "examples/blur-marks/README.md",
+      "sha256": "341fe272a0bfb43b9b4375882718b20f600bd8b63ae519d408ceac357638b36a"
+    },
+    {
+      "path": "examples/blur-marks/blur-marks.js",
+      "sha256": "0b0eccd4a9658d0dbbdcda2cbe02e0f68ccf25fe0b45c8184e9c1232ec6db9c0"
+    },
+    {
+      "path": "examples/blur-marks/index.html",
+      "sha256": "a36e5388ebcba2988f18ba574cbeb6ec12de72fd8e6fc84d99c869ba9cc269f1"
+    },
+    {
+      "path": "examples/blur-marks/sketch.js",
+      "sha256": "4148546b764f1fe042e8f6db2ce8af644b3786aec5be42ec8e696fcf1530d0ec"
+    },
+    {
+      "path": "examples/body-marks/README.md",
+      "sha256": "6f59c2334469cb0494fe7c5c2a0e1632403938a506aaea460f86d38e7ae46599"
+    },
+    {
+      "path": "examples/body-marks/body-marks.js",
+      "sha256": "4f2befcd17695d72d33440f4f2c3b1bdcb0a40d2361b21a254de4bb5e7c79315"
+    },
+    {
+      "path": "examples/body-marks/index.html",
+      "sha256": "f3d0b605955ad4d8a136a84322274bd9aab538e4072434b283cdd6890d0e1e8f"
+    },
+    {
+      "path": "examples/body-marks/sketch.js",
+      "sha256": "0419bde4ad0254d60de435d8cea9f1b73bfe3d75219d4b89ec5895a897281128"
+    },
+    {
+      "path": "examples/branch-marks/README.md",
+      "sha256": "befac22e2fc186dc3358d83645a35b33be5e638060ce33ac4e2c8f7a18960cc6"
+    },
+    {
+      "path": "examples/branch-marks/branch-marks.js",
+      "sha256": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780"
+    },
+    {
+      "path": "examples/branch-marks/index.html",
+      "sha256": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70"
+    },
+    {
+      "path": "examples/branch-marks/sketch.js",
+      "sha256": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1"
+    },
+    {
+      "path": "examples/branching-networks/README.md",
+      "sha256": "7ef7b906ab8d5577e6d4705edb02e8bc461b9bd31a39823d0c1b561457c4432a"
+    },
+    {
+      "path": "examples/branching-networks/index.html",
+      "sha256": "bbfe293bb70bf9ba14e069677241dc6cffb0eb1ad182ab46937034ba8159e773"
+    },
+    {
+      "path": "examples/branching-networks/sketch.js",
+      "sha256": "afebfe9b8cce8dd071bfaa30e925b4e5c72437f9add02d716a753dd8fa08d45c"
+    },
+    {
+      "path": "examples/branching-sentences/README.md",
+      "sha256": "1ba19f7e9329f473ced6986d55401436b5a66dc1167eeaea3e16d691157ab033"
+    },
+    {
+      "path": "examples/branching-sentences/index.html",
+      "sha256": "889c4a7d504807115e819bd59b9fc8d9a0daf5657449e6920f79f9264d0ab096"
+    },
+    {
+      "path": "examples/branching-sentences/sketch.js",
+      "sha256": "3e01ef8695db1af38d13747b02c451db4814ca6687fd22daca5f6fc336f950c7"
+    },
+    {
+      "path": "examples/cell-echoes/README.md",
+      "sha256": "c443a1e8dfce81f756f2d621a5139a40cf9dd6c7af99d7c7bcfc89970f0a501c"
+    },
+    {
+      "path": "examples/cell-echoes/index.html",
+      "sha256": "edad7f23d14160218a75a801acf9815be30f7582e4dce48bd87f2cde8c3c6766"
+    },
+    {
+      "path": "examples/cell-echoes/sketch.js",
+      "sha256": "91555423f4caa19787fd7faa795e36b0bd9d00e761cdfaccb695936ac0fb6518"
+    },
+    {
+      "path": "examples/cell-mosaic/README.md",
+      "sha256": "21893b8228a06e9209437ddce9095352b230fd947fbc95063a0b6e34d48cac66"
+    },
+    {
+      "path": "examples/cell-mosaic/expansion-studies.js",
+      "sha256": "b5ad12caf3bc34421d59cada62ca91ce11444f22f567a14fc568e056c892bbfa"
+    },
+    {
+      "path": "examples/cell-mosaic/index.html",
+      "sha256": "0ea6222afaaf24e573e121d488b3f95b0cbb21f7530b8b43116c918f9321ce42"
+    },
+    {
+      "path": "examples/cell-mosaic/sketch.js",
+      "sha256": "02b22bf3c864643f7451800140976c5601b8ef7c2388ffdf3c33b1a50a9614d4"
+    },
+    {
+      "path": "examples/centroid-trails/README.md",
+      "sha256": "60c8bfa450a05843509af35a56bb4401893e58a666870771841f2dc2cd0666af"
+    },
+    {
+      "path": "examples/centroid-trails/index.html",
+      "sha256": "b6460b2af565cb3a2c18ec761b59829ba29680c09824b096d2fb526e7190afda"
+    },
+    {
+      "path": "examples/centroid-trails/sketch.js",
+      "sha256": "9ea28c2bd16cc11c78313274b28ad7773d362f207f3c6aaefc38f9bce104c7c7"
+    },
+    {
+      "path": "examples/city-marks/README.md",
+      "sha256": "35e33b36e3a71bf827685788d48e6f68393eb7f541c59732ce42a4029631bf1e"
+    },
+    {
+      "path": "examples/city-marks/city-marks.js",
+      "sha256": "9f3b9aa2eef1d5387e8d088e5e2de4c400960fa4997bd85dba26dd7cd2364250"
+    },
+    {
+      "path": "examples/city-marks/index.html",
+      "sha256": "ea1a2f69bdb07c019217f3510dcf033dbddb089f89516eaa1daf6df6504fcee4"
+    },
+    {
+      "path": "examples/city-marks/sketch.js",
+      "sha256": "b6ef9a40b308563d6225048d5d27dfe5b6122af5c711d89e92d5750008e21ab2"
+    },
+    {
+      "path": "examples/clip-marks/README.md",
+      "sha256": "f16288cf886e4d9fa7d52212c70580801c245d9561dee5c5bb8e2ba724d75f33"
+    },
+    {
+      "path": "examples/clip-marks/clip-marks.js",
+      "sha256": "44dd9e5facf233655d8ed378e96f5098bdd8e65e02e6b1c221698fcc4da24874"
+    },
+    {
+      "path": "examples/clip-marks/index.html",
+      "sha256": "2b987a88eb4e7203eeabaeacefac2cb765bf1eafa1c4321009770ba8dbcc9a47"
+    },
+    {
+      "path": "examples/clip-marks/sketch.js",
+      "sha256": "19ea5fbd1c8e2c324b0489f5c86ad011cf97768078f80d32ab68d6cbcea61618"
+    },
+    {
+      "path": "examples/compatible-mosaics/README.md",
+      "sha256": "02be85d652baffe886799b9e829bb0050216d8732e4da7ea62dc41961eb221dd"
+    },
+    {
+      "path": "examples/compatible-mosaics/index.html",
+      "sha256": "a3f2103a979af928354a498b2ecd83df6bcd3a21a6dcb06f6377f3bf12b6bf59"
+    },
+    {
+      "path": "examples/compatible-mosaics/sketch.js",
+      "sha256": "7a1a2893544911ed6918e0c8450ea6b8207882e51912826b5a8d2d2808c4536a"
+    },
+    {
+      "path": "examples/concave-grain/README.md",
+      "sha256": "4f36dd52067edeec6b3ae3e05fe2137eb40de7778faa49776e7ebb7334941c00"
+    },
+    {
+      "path": "examples/concave-grain/index.html",
+      "sha256": "b1306fd0898c9f915788b712f8aea3163de4f80d6de989dd294d914b39eb961f"
+    },
+    {
+      "path": "examples/concave-grain/sketch.js",
+      "sha256": "eaa4ae742b258de298318e26ac833a236c600f0f80cff58d56eb1e5cc496468f"
+    },
+    {
+      "path": "examples/contact-marks/README.md",
+      "sha256": "b0caaab7d805606ee57669f0ebd8c15571f1b7900eeedff327195cfb98aadbc4"
+    },
+    {
+      "path": "examples/contact-marks/contact-marks.js",
+      "sha256": "e91cbc60c23eca6e22182b63a69cc347c99ae5efd4277cfc55c1fc44aba96763"
+    },
+    {
+      "path": "examples/contact-marks/index.html",
+      "sha256": "bf45d6ba8562f3341c309f05628d6e78cbd476a86566bded7738530410484f56"
+    },
+    {
+      "path": "examples/contact-marks/sketch.js",
+      "sha256": "1b5ed883e5ae839d551332973dccb804976f74c595db44d78aa35ac800943777"
+    },
+    {
+      "path": "examples/contour-abstraction/README.md",
+      "sha256": "0d624ee8ef2d39e9fb91ba345ab398c20f92016734d3dc4434d9b7d5a00f3caf"
+    },
+    {
+      "path": "examples/contour-abstraction/index.html",
+      "sha256": "55003f0fcce72eb831cc5c0628634c84d710189b34858e031ee315c61fd674ca"
+    },
+    {
+      "path": "examples/contour-abstraction/sketch.js",
+      "sha256": "4e48fa67c5dfaeb0c73e49525146cf1c25c50b5300979a28bbd214b28822b2a3"
+    },
+    {
+      "path": "examples/contour-blobs/README.md",
+      "sha256": "22d68783857a88b6fe55fc2a75edc382ab964e06e847d3002bd60d18c17cd986"
+    },
+    {
+      "path": "examples/contour-blobs/index.html",
+      "sha256": "4b1c98db9e6dee08209a1c4685980410988e73744e4de1420f9fe04224dbd211"
+    },
+    {
+      "path": "examples/contour-blobs/sketch.js",
+      "sha256": "1653743655fd07dbc0ec9d03c18c5e9d2dc7dc393e18c5a2116e420226537ca8"
+    },
+    {
+      "path": "examples/contour-terrain/README.md",
+      "sha256": "1bdcecdb145a28c992ba19bac2747d65b08790f84c508a65d235903db668dadd"
+    },
+    {
+      "path": "examples/contour-terrain/index.html",
+      "sha256": "3757e47388c38d353bab80d02b705ed60e0795f43a1e3b555881930c85339bbe"
+    },
+    {
+      "path": "examples/contour-terrain/sketch.js",
+      "sha256": "f257446d8899dd0ee54c1a08aad3393e972e546d0f36c4c1fbb7409341385830"
+    },
+    {
+      "path": "examples/curved-trajectories/README.md",
+      "sha256": "01c330edba2d29b847375f0ab5b0509d158c5bd80058ff8282a121bf2ba7282d"
+    },
+    {
+      "path": "examples/curved-trajectories/index.html",
+      "sha256": "7139588e3a7afc50a3ab82acf1b03242102840df918ed4004de695b90a09a71b"
+    },
+    {
+      "path": "examples/curved-trajectories/sketch.js",
+      "sha256": "4135e508f8b7f583d60a15230a9084fb8c4930084abaf99b46e0b0f7c05ec488"
+    },
+    {
+      "path": "examples/cut-branch-marks/README.md",
+      "sha256": "25321f9fc141bf3871350babc32ac2e3a88596306a2b2b25cc70c32aa93996cf"
+    },
+    {
+      "path": "examples/cut-branch-marks/cut-branch-marks.js",
+      "sha256": "97a4e8fceb259c593b7b26a2a6a4f3255082a70921d54e2b17426dbfb2cf7d28"
+    },
+    {
+      "path": "examples/cut-branch-marks/index.html",
+      "sha256": "b966ff7d8cf2ca4f6189e18b1f415fb20a6dda67407657e56c12ba22265b1f28"
+    },
+    {
+      "path": "examples/cut-branch-marks/sketch.js",
+      "sha256": "6d94d11aa0b978bbb897e8ea8515b19eeb864ea14f7582efbf3454f78f4e88df"
+    },
+    {
+      "path": "examples/cut-marks/README.md",
+      "sha256": "68a4b594682495dafa9b8c038c8b396c2824daeecc66348a3c4f9ad73423f12f"
+    },
+    {
+      "path": "examples/cut-marks/cut-marks.js",
+      "sha256": "36f7a5b02ddbdf2bac84ce063de742782d88de62733c007723488777c05f7977"
+    },
+    {
+      "path": "examples/cut-marks/index.html",
+      "sha256": "ce1ff31024b6a8676b49ad3e1d5b41910ddb00befe63d35174b5e3456c0f91fb"
+    },
+    {
+      "path": "examples/cut-marks/sketch.js",
+      "sha256": "9c730b1b30dbaaea5dd47c480f1b7f88aa6bda7f5a086dbedcf241c3696e8d72"
+    },
+    {
+      "path": "examples/depth-marks/README.md",
+      "sha256": "9825a2b30fbcf85030225fba3a3b2e8aba3ac909bf403ede2cd1f04610f0b363"
+    },
+    {
+      "path": "examples/depth-marks/depth-marks.js",
+      "sha256": "a21cfa074ae3458ef8da0f806b79a2cd334c7da88d1a4dd7ca63bc54ebf11807"
+    },
+    {
+      "path": "examples/depth-marks/index.html",
+      "sha256": "b5bde353517261a064a814be3488916136b8d49af2ced4528f19aed9f8446478"
+    },
+    {
+      "path": "examples/depth-marks/sketch.js",
+      "sha256": "fae998ab613afb589004f467ae55651093590311eee82d0ec29fc77cfe0771f5"
+    },
+    {
+      "path": "examples/diffusion-engraving/README.md",
+      "sha256": "8e34555f719db5136694b76297a9199df1ff7d8642f5958cddacdcff66949edb"
+    },
+    {
+      "path": "examples/diffusion-engraving/index.html",
+      "sha256": "db9a931fe33561ee20f013c56109f5cd8e08abc03da0d30be31dbfd2d8041d30"
+    },
+    {
+      "path": "examples/diffusion-engraving/sketch.js",
+      "sha256": "0a42a6b5b5fb325fcc877cf01916be07db0f3164bd5cec99a8be939f24fd4523"
+    },
+    {
+      "path": "examples/dilated-stamps/README.md",
+      "sha256": "aedbe27d79a7221c1168e3064b57bcb3a28cb21aa361ba0c088dc1f8b0653ecb"
+    },
+    {
+      "path": "examples/dilated-stamps/index.html",
+      "sha256": "96eab710edb6a01904c7b3f5926c529ade62eff5b77f3b29d52b03d8bbd12ad7"
+    },
+    {
+      "path": "examples/dilated-stamps/sketch.js",
+      "sha256": "1b22118e425bae0b86453757504f5681f619246fa4212de4bfedc3905689157d"
+    },
+    {
+      "path": "examples/distance-halos/README.md",
+      "sha256": "6288fc2c4460a1ddf2cc0b6d2d27429903e2608e29872a0d493a426e30c862b2"
+    },
+    {
+      "path": "examples/distance-halos/index.html",
+      "sha256": "2aae7d6b46f004e851a394a333826de3c9bc9a8ebf9edc4fd9c697b3a0856940"
+    },
+    {
+      "path": "examples/distance-halos/sketch.js",
+      "sha256": "61445ce751810275c59c3aa38daa88f9894b8f3da008cc1337c355700caed378"
+    },
+    {
+      "path": "examples/dithered-ribbons/README.md",
+      "sha256": "444f84c5e146e77d589d413337b448706e600249da2622682d3b06a854398540"
+    },
+    {
+      "path": "examples/dithered-ribbons/index.html",
+      "sha256": "df0d6f7ae090c05119784455393f5a65adb13c4a8505d69efeb4a80b74b366cc"
+    },
+    {
+      "path": "examples/dithered-ribbons/sketch.js",
+      "sha256": "38e517f1dab6aff7ddee2c714e56513c2ae39a4066b594709b6099ed325be4df"
+    },
+    {
+      "path": "examples/embossed-field/README.md",
+      "sha256": "73b996bf3c9114573d349971967261358fb55a3668c5d51de8fcbd28b6a0091c"
+    },
+    {
+      "path": "examples/embossed-field/index.html",
+      "sha256": "0e871047c1e18bb6dc3dd2470e536bfa358e8a4d179e3ebf02820a96cd65acee"
+    },
+    {
+      "path": "examples/embossed-field/sketch.js",
+      "sha256": "99ffc5045478feb2bba8699d023f3bccf6a27ae5d5bf059c382ed7d33303cc2c"
+    },
+    {
+      "path": "examples/eroded-lace/README.md",
+      "sha256": "cf5a5cb368d8d2492b0fd69820bdd8c8cd6c18a23153bf44892a545e9264d873"
+    },
+    {
+      "path": "examples/eroded-lace/index.html",
+      "sha256": "16463f4a653d5e0292ca2d6f80f7fb8e0ece582035972a6a15105e888f0487b2"
+    },
+    {
+      "path": "examples/eroded-lace/sketch.js",
+      "sha256": "73c971c325e3874c468f4b9c9994fe5ed4ee545b2e3aca71cd945469b81a15e4"
+    },
+    {
+      "path": "examples/extruded-seals/README.md",
+      "sha256": "f89f90ec6c84df26f7c80606c14cdbc2fbd9bbae9a7048e42424a6d11e252b6d"
+    },
+    {
+      "path": "examples/extruded-seals/index.html",
+      "sha256": "1aabda7a8aaf6eba00c69c9546ba37d696939b621c96bbc68dad6f922a942aaa"
+    },
+    {
+      "path": "examples/extruded-seals/sketch.js",
+      "sha256": "9ed0ee70b439ad852c2922fbcca252077a53b3efb2912e78291d85dc0fbb8fc5"
+    },
+    {
+      "path": "examples/facet-marks/README.md",
+      "sha256": "69bcfa68c313a820ade628191b844b363f8eb502c51dffe856beec328ed0cd2f"
+    },
+    {
+      "path": "examples/facet-marks/facet-marks.js",
+      "sha256": "4b4d56a0d4654dc0717a2551e3f572253baf17745867acd1b30ffc88148b0380"
+    },
+    {
+      "path": "examples/facet-marks/index.html",
+      "sha256": "cbac841c922b8c7699ff6c07a4789a18ef16f43ea28801b1b887e2b013aa8f47"
+    },
+    {
+      "path": "examples/facet-marks/sketch.js",
+      "sha256": "a6d1e9dcf39856b06b600c763a3534f7b6cc1c55ba87ae002e05424fe7e1c83a"
+    },
+    {
+      "path": "examples/faceted-silhouettes/README.md",
+      "sha256": "ff6c3667c6785ccb11ccfbef6677acc626a56fa7d316773768cba086dbf5e172"
+    },
+    {
+      "path": "examples/faceted-silhouettes/index.html",
+      "sha256": "d51d58a1fc785f701cb5cf01bc71f9df6f75c727e4d866bee2ffde5f521e0394"
+    },
+    {
+      "path": "examples/faceted-silhouettes/sketch.js",
+      "sha256": "c0a1e31cae9baa14e13bd5599c851a1707a76195f631aa542a29788449004fb2"
+    },
+    {
+      "path": "examples/field-displacement/README.md",
+      "sha256": "93fe26e05a8a88f9753a08449d4b0bb246a56d567d2f5d33eb9215c75ad03ea3"
+    },
+    {
+      "path": "examples/field-displacement/index.html",
+      "sha256": "fa11049a040e22b1c170b1d8b1bd3d2d52b6d26a2dc30a061e05421b497e5c54"
+    },
+    {
+      "path": "examples/field-displacement/sketch.js",
+      "sha256": "e058707e687912264a5d90b353c85b9cd8c6ca1efdd6ae9ccdf20780dbe625eb"
+    },
+    {
+      "path": "examples/field-marks/README.md",
+      "sha256": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27"
+    },
+    {
+      "path": "examples/field-marks/index.html",
+      "sha256": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d"
+    },
+    {
+      "path": "examples/field-marks/mark-field.js",
+      "sha256": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf"
+    },
+    {
+      "path": "examples/field-marks/sketch.js",
+      "sha256": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b"
+    },
+    {
+      "path": "examples/flow-needles/README.md",
+      "sha256": "64ea830a02bba88a5d5e4ce38babf96b2213253b6f1783eed896cf9d81b8e2f3"
+    },
+    {
+      "path": "examples/flow-needles/index.html",
+      "sha256": "5a2e3912d8d3a4709c6fdf2fe826d4ac9c88e290db91ffc98e37c81bc1a157ec"
+    },
+    {
+      "path": "examples/flow-needles/sketch.js",
+      "sha256": "f06c07bfc26985834910c4f792e8054bb1e1079949bc39a17782dcfb02a01709"
+    },
+    {
+      "path": "examples/flowing-brushes/README.md",
+      "sha256": "ccb896567f08139e7f7849b37d68bb1f0bb42c775f681319c15d4ab715198219"
+    },
+    {
+      "path": "examples/flowing-brushes/index.html",
+      "sha256": "a61a0e0aec6db81e42f0cb191913817bc591a6be6d936e59ce69236eb083892c"
+    },
+    {
+      "path": "examples/flowing-brushes/sketch.js",
+      "sha256": "de2accb05c816ff707dc43757dc790b3231ebe11003f60dabe3e8bad0645d0a1"
+    },
+    {
+      "path": "examples/fragmented-lines/README.md",
+      "sha256": "d28c4804ef7f69306cd9c537dd2745ca78d8735227325e29c27a3a4eba157646"
+    },
+    {
+      "path": "examples/fragmented-lines/index.html",
+      "sha256": "39b0aee2e56a257d1c779029e89ca246f8912a5b3a786afde36fdcf8bf6ebe5a"
+    },
+    {
+      "path": "examples/fragmented-lines/sketch.js",
+      "sha256": "8b3bf37c60beb599aabb3eb637f0cd8da372afd3bc3996bdd161460d73c81aab"
+    },
+    {
+      "path": "examples/geometric-generations/README.md",
+      "sha256": "96d388e9dad71a26ab15432809ffcbe3f05eb9710a03c34af76f0d6fa9163086"
+    },
+    {
+      "path": "examples/geometric-generations/index.html",
+      "sha256": "2a19c3c325ab5907e4dda4abf6bc3570d97fee960cf5a25a1d85e625a142e02f"
+    },
+    {
+      "path": "examples/geometric-generations/sketch.js",
+      "sha256": "0e2dada4f7ef70b56f86cdb1fefcd034f4216ee8d72d9b6b09a8fbf63b8a3a62"
+    },
+    {
+      "path": "examples/gesture-skeletons/README.md",
+      "sha256": "9db275608337bece9955610920338bac244918968bd045ad383656e8dc78acca"
+    },
+    {
+      "path": "examples/gesture-skeletons/index.html",
+      "sha256": "6d1389f012ea5ec8127240dcb45ff9dcc2f3c5694d14f0e4a88335ebd950720e"
+    },
+    {
+      "path": "examples/gesture-skeletons/sketch.js",
+      "sha256": "4ee7812f835a37732e6ff87ed160c19bf024ddd9f9cc7545c5c029e4380ba917"
+    },
+    {
+      "path": "examples/glyph-marks/README.md",
+      "sha256": "5acbe2148b1180e42095cff4b211c3e9fed4f8a6f98ab28396db11ba73858d51"
+    },
+    {
+      "path": "examples/glyph-marks/assets/FONT-LICENSE.txt",
+      "sha256": "63544717f051095f67c6da4f36776aafd81e561320baf36ae65925f3336ebb8a"
+    },
+    {
+      "path": "examples/glyph-marks/assets/GlyphMarks.ttf",
+      "sha256": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c"
+    },
+    {
+      "path": "examples/glyph-marks/glyph-marks.js",
+      "sha256": "34f9ec004e4d84c64475b32c11151f9f9c160725d1870b8a15695e21fde293bf"
+    },
+    {
+      "path": "examples/glyph-marks/index.html",
+      "sha256": "cc61930d03b49b047bb6375f068f399596e96bfae4ce82cf5b3cea9beacd33a3"
+    },
+    {
+      "path": "examples/glyph-marks/sketch.js",
+      "sha256": "9787c41ea258cb0e8faffe2f4c55ad7f0f9c5404678ef33ba1677edb9374226a"
+    },
+    {
+      "path": "examples/grain-marks/README.md",
+      "sha256": "a8f823c43737434a40869ef73523e0f0ea5ab77f3167716ef4ed6a21b91df381"
+    },
+    {
+      "path": "examples/grain-marks/grain-marks.js",
+      "sha256": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce"
+    },
+    {
+      "path": "examples/grain-marks/index.html",
+      "sha256": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8"
+    },
+    {
+      "path": "examples/grain-marks/sketch.js",
+      "sha256": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17"
+    },
+    {
+      "path": "examples/image-field-marks/README.md",
+      "sha256": "db216b9e0f7f1b906090e5a965723d689cc950f0769eefcb3cc00101efaeab15"
+    },
+    {
+      "path": "examples/image-field-marks/image-field-marks.js",
+      "sha256": "b713f2beb7cc5e203719118bccb848d3d4088954696b036c6e987069d519a8cd"
+    },
+    {
+      "path": "examples/image-field-marks/index.html",
+      "sha256": "60726429a18c74c83c05ffac2caf1fcb34a1473337156feb108438c741342a33"
+    },
+    {
+      "path": "examples/image-field-marks/sketch.js",
+      "sha256": "639613acbae365cb91546f704ba35d87cdb6ee53700dbee411c6b9a7a49bc9a3"
+    },
+    {
+      "path": "examples/landscape-marks/README.md",
+      "sha256": "e6b90a0af707ab9236868285f32fbe9e4e1508c30f2409e38ed888f479d335ad"
+    },
+    {
+      "path": "examples/landscape-marks/index.html",
+      "sha256": "cf49d436e701b53e8e3adb4446805c59249b2f55175439466c12e0e5db6c1fe1"
+    },
+    {
+      "path": "examples/landscape-marks/landscape-marks.js",
+      "sha256": "c8aa3ee62ddce70dfd51dd4e8c6fa95a351744dfe6bd529b60d213118ad29560"
+    },
+    {
+      "path": "examples/landscape-marks/sketch.js",
+      "sha256": "ee17f04de10c8d93a70f59521cf47011bee9c5a0c532c8a17fc56d498019b9d2"
+    },
+    {
+      "path": "examples/lattice-marks/README.md",
+      "sha256": "d53386a2691062b2a698889bed49ae1aa782eded2661808870d3b1e45f8d5d36"
+    },
+    {
+      "path": "examples/lattice-marks/index.html",
+      "sha256": "63bdf4ee52021e0ab12be6d22b02b686d6d6d242397e9ade62c231c7935352e7"
+    },
+    {
+      "path": "examples/lattice-marks/lattice-marks.js",
+      "sha256": "62e8025efd2af2d2cb53e66e266894400f2a7deabe1ff664f560927d18f80882"
+    },
+    {
+      "path": "examples/lattice-marks/sketch.js",
+      "sha256": "a64e2542b2bbdcd790d952fb48cd9b9f0b0c8c22f6d8f9c38014711d0e2be51a"
+    },
+    {
+      "path": "examples/layer-marks/README.md",
+      "sha256": "1acbfbc48bd73f79507048b18d64afb7848fb20a9eef77dcaeef428eb89fcaf8"
+    },
+    {
+      "path": "examples/layer-marks/index.html",
+      "sha256": "761801276641b9634c456d7d48743ac5f044387d60743b813278160129a46367"
+    },
+    {
+      "path": "examples/layer-marks/layer-marks.js",
+      "sha256": "0311fd8444d2a8f7ce87b6133a71920e51bc7d2dfd019507f095b6cefcabb7c3"
+    },
+    {
+      "path": "examples/layer-marks/sketch.js",
+      "sha256": "2eec327cd0b03297cbd72cdaf0fb733820b06834720a1af83bfa080dc8e7bd28"
+    },
+    {
+      "path": "examples/loop-marks/README.md",
+      "sha256": "92088b3d6dcedfdf349f9a7afd582d426d29e970bf5d18d0004dfda4baf173f2"
+    },
+    {
+      "path": "examples/loop-marks/index.html",
+      "sha256": "dd3af9cbef4df9c859e64e5aefad3fb2ad4f25591f303aa04f0c75e7b4419a61"
+    },
+    {
+      "path": "examples/loop-marks/loop-marks.js",
+      "sha256": "8f610c69d2d708bcd8a3e23c3d135e3d124ef2e058993ea47efbb16d69fdce91"
+    },
+    {
+      "path": "examples/loop-marks/sketch.js",
+      "sha256": "8d0ad68788503f0cffb576c9834472f3ae5f182362d9ed59cd8fe23f9f4e1d69"
+    },
+    {
+      "path": "examples/mask-marks/README.md",
+      "sha256": "fcd2fde347322654162018213936a92b42882b8c505a7b07a6f7e49567101c2d"
+    },
+    {
+      "path": "examples/mask-marks/index.html",
+      "sha256": "444ccb42c2d7dcc2070e17befe65f7be5fe876c6abdc9c20afba05242b8b1740"
+    },
+    {
+      "path": "examples/mask-marks/mask-marks.js",
+      "sha256": "a8a522d90f2aa96e2ea5587b859d1126798536aaf722d4c29af37c45344104a5"
+    },
+    {
+      "path": "examples/mask-marks/sketch.js",
+      "sha256": "5c4230d87a4be32348847f5fd74d60b6a5fbbcfb9d7c2c98ee042f74b39b2f5e"
+    },
+    {
+      "path": "examples/masked-partition-marks/README.md",
+      "sha256": "7a353a66e63a280cd29ecf3402a7cf11271f83ffbc115e30ae1e530109dc3851"
+    },
+    {
+      "path": "examples/masked-partition-marks/index.html",
+      "sha256": "ddd3cfa75d1c9c58d5ae4e64132e244f7bf4d8076591dbc76cffe770373d8be2"
+    },
+    {
+      "path": "examples/masked-partition-marks/masked-partition-marks.js",
+      "sha256": "94222e0e260852f3b060f96457025b02b0eecafee316f654e517e32a3b48c5b5"
+    },
+    {
+      "path": "examples/masked-partition-marks/sketch.js",
+      "sha256": "b59896671ca026866c6cbfca9dab006d118cde17dfa2067e6ef938288ee247f6"
+    },
+    {
+      "path": "examples/materials-a-studies.js",
+      "sha256": "f4db69c9a138bca40a70e315f23d97b0e965bebcc585aedc56124157e1518eef"
+    },
+    {
+      "path": "examples/materials-b-studies.js",
+      "sha256": "177ad888b0067dd8721409c07d2830d03131615f45b589aa61412286994ca455"
+    },
+    {
+      "path": "examples/maze-gardens/README.md",
+      "sha256": "fac7effdc2dfce388907f22c3675ad615a17f18e7c86a0e445deef8e3d73bbc9"
+    },
+    {
+      "path": "examples/maze-gardens/index.html",
+      "sha256": "a15c85a48400c3d39f7ebf5daa80110e37c1d2cdd8ea1bffc0ab970681191cbd"
+    },
+    {
+      "path": "examples/maze-gardens/sketch.js",
+      "sha256": "6433780793ce3c6dd322dfb8d579524d1000bc7388aa7cfdb9a2cabd725ab581"
+    },
+    {
+      "path": "examples/nearest-feature-mosaic/README.md",
+      "sha256": "0576cfa8c8c277eebaf9ecff22835550fdb8c488a11b7e995c8c9eaae1a0ecdb"
+    },
+    {
+      "path": "examples/nearest-feature-mosaic/index.html",
+      "sha256": "9318e7eae0db2c0c515da2eb3ed92af08354945acc00bfe8cf7a7566b62568a2"
+    },
+    {
+      "path": "examples/nearest-feature-mosaic/sketch.js",
+      "sha256": "56f477210c5b91987404d4e155be9726b44fb1657c6d653c91b280713f77c839"
+    },
+    {
+      "path": "examples/nested-contour-strokes/README.md",
+      "sha256": "d06a88fbcecc0956ed628f76cddebf8ee1447f7b77f700c8a5962481c1b26d75"
+    },
+    {
+      "path": "examples/nested-contour-strokes/index.html",
+      "sha256": "253770e64b6d61dce8b3767790cd080c5d1e4625c37b04a7ff3f9be5a979edf9"
+    },
+    {
+      "path": "examples/nested-contour-strokes/sketch.js",
+      "sha256": "00d9387fcb8d9255b5548d8e41de5829705cac61880e6f01f9f71827994c2e8a"
+    },
+    {
+      "path": "examples/obstacle-roads/README.md",
+      "sha256": "5ba0b629e203bb6cf016a4cf022329a55d6499cf41f1b3e27f4abdfda52d0c4f"
+    },
+    {
+      "path": "examples/obstacle-roads/index.html",
+      "sha256": "008ec8b9aaa76074b68960da9d37222a10f556d7185b2a42be6ac86de2683728"
+    },
+    {
+      "path": "examples/obstacle-roads/sketch.js",
+      "sha256": "d9933964c5b93d33e0c80e10e4767b0dd379571626019d6ac186c0d10f5ae6fd"
+    },
+    {
+      "path": "examples/octave-noise/README.md",
+      "sha256": "6c6299ef75e278ae54894d6aad73eb1229b0f3466cf034972fdb7f97a340951a"
+    },
+    {
+      "path": "examples/octave-noise/index.html",
+      "sha256": "022bb87966eef31385ec1badc76961096d771600b4dbed366c1b59d7f5dc5c93"
+    },
+    {
+      "path": "examples/octave-noise/sketch.js",
+      "sha256": "a9bd8d66198922cecfe601fb4dc2ace09b2481becb44f6cb20129d3e510856ac"
+    },
+    {
+      "path": "examples/oklab-orbits/README.md",
+      "sha256": "9d82995c4de90e47e79afa1bdf16e38e83eb223f56e4740cb23a0f9db050795c"
+    },
+    {
+      "path": "examples/oklab-orbits/index.html",
+      "sha256": "b502c0738fa45b987ff54613ceba2fd195392ffdbc96cb443fc5da62daba49f2"
+    },
+    {
+      "path": "examples/oklab-orbits/sketch.js",
+      "sha256": "8cd8283b3511debefcf1e45ab9d622f9930ce6c4ae50fa987d1c42a48d4b7d05"
+    },
+    {
+      "path": "examples/orbit-beads/README.md",
+      "sha256": "9dc5c9e0d1fda0f5b792b3a389255f43f34fd44c5673206c1435cec648653310"
+    },
+    {
+      "path": "examples/orbit-beads/index.html",
+      "sha256": "edae5d35311b0c6828b25c8c426fb111cf222a5040bace5f11290c059d3348b4"
+    },
+    {
+      "path": "examples/orbit-beads/sketch.js",
+      "sha256": "424a80589a3e1c5d3aa5392c80b836bd2ad590ded0a0aa7c3e3aff409d342434"
+    },
+    {
+      "path": "examples/ordered-halftone/README.md",
+      "sha256": "e7f0f44d45a7076ea1e0be7d65ba0afb365e03e304c2948112cd16644be503f5"
+    },
+    {
+      "path": "examples/ordered-halftone/index.html",
+      "sha256": "3391b59bf8f5bb21ceb9edcd787b3b4d46fcf38166dd9df5e0ee1d409ac245ee"
+    },
+    {
+      "path": "examples/ordered-halftone/sketch.js",
+      "sha256": "ed4b98bba8601aefee6713b8ebacfd2d458cbf1057e27e9ec00d323f2421df3e"
+    },
+    {
+      "path": "examples/organic-cells/README.md",
+      "sha256": "c71bfe59b2859728af93654d5de6af009c9051ac00ae0a3a1b44fc01c2f783c0"
+    },
+    {
+      "path": "examples/organic-cells/index.html",
+      "sha256": "179943916d2427a8f56fedb53cc618f6c3b105325396b3179dea3f6cec426b60"
+    },
+    {
+      "path": "examples/organic-cells/sketch.js",
+      "sha256": "04d300b986c85c981eeb623af6283ce838b43e2a4c4e18ee001e7c3db3c96742"
+    },
+    {
+      "path": "examples/packed-posters/README.md",
+      "sha256": "9d805e992e993d1d686585ac2c8c767cf2352fa7d1468c8cc1598b6caf3fe4d3"
+    },
+    {
+      "path": "examples/packed-posters/index.html",
+      "sha256": "02e6a0ef2b4ded71323f50492364771ce8386c2ba2df53ef41e3cc5f5d7f0923"
+    },
+    {
+      "path": "examples/packed-posters/sketch.js",
+      "sha256": "bf684ef84d9213ee759bffd7806d7c68323a5324740182aec1b92e9b84e4216c"
+    },
+    {
+      "path": "examples/panel-marks/README.md",
+      "sha256": "03731fed37a7042e453c1b69ed4ccc6bc1116457f46b5f2e9dfddace0b9ab573"
+    },
+    {
+      "path": "examples/panel-marks/index.html",
+      "sha256": "5f2592744b5a346fa02feea51ff9f4f666b225cf841a698e332b8a83aeb00240"
+    },
+    {
+      "path": "examples/panel-marks/panel-marks.js",
+      "sha256": "d192527d6307abd753f1e57570a7b4ea6c4950fe1cb428040e0b5d88d3feda58"
+    },
+    {
+      "path": "examples/panel-marks/sketch.js",
+      "sha256": "e7522301477eaba78644c514146df770d5eaca3b67c3db28fc0e33635dccbc2a"
+    },
+    {
+      "path": "examples/path-clip-marks/README.md",
+      "sha256": "3f060f7191ac4c44146c380d6b18fb7f72c3f21c2609a225e2d6560322e660ce"
+    },
+    {
+      "path": "examples/path-clip-marks/index.html",
+      "sha256": "6509db8d1619dc9e7fd5cce5422f288d741b2df27028bc891a42f36973e63d76"
+    },
+    {
+      "path": "examples/path-clip-marks/path-clip-marks.js",
+      "sha256": "5ba2a22939f499973aa5b020df2e560ce872bdc81ac618b046553e60104937e8"
+    },
+    {
+      "path": "examples/path-clip-marks/sketch.js",
+      "sha256": "f7c3cf4243a6fb6ca8f0af29e8a68ef96f3bf1aa75ae6fe04c3fc25e374e3006"
+    },
+    {
+      "path": "examples/path-marks/README.md",
+      "sha256": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291"
+    },
+    {
+      "path": "examples/path-marks/index.html",
+      "sha256": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f"
+    },
+    {
+      "path": "examples/path-marks/path-marks.js",
+      "sha256": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743"
+    },
+    {
+      "path": "examples/path-marks/sketch.js",
+      "sha256": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473"
+    },
+    {
+      "path": "examples/paths-a-studies.js",
+      "sha256": "c51e455de2062675f4b92e6e70608fdb9e5533cab7fbb2408c0bac2fcbd4747c"
+    },
+    {
+      "path": "examples/paths-b-studies.js",
+      "sha256": "a7852153ce5dbb8f79065fb2c17711c74bf3bbd3d5035669ff9cf99c266fd6c5"
+    },
+    {
+      "path": "examples/perceptual-bands/README.md",
+      "sha256": "2be68a1f1ec03f3236525b09366570c72aff122d348d0d4554631363f7277bbd"
+    },
+    {
+      "path": "examples/perceptual-bands/index.html",
+      "sha256": "5c201526634fb7cc6269f4de1a6d5fcbe1025f479bb936cf834cbbebdc447507"
+    },
+    {
+      "path": "examples/perceptual-bands/sketch.js",
+      "sha256": "f29ff9f2fcfe9ba25c8dc30978935dfc701c8bdf549c55ead47ef74a53bfbe19"
+    },
+    {
+      "path": "examples/pinned-waves/README.md",
+      "sha256": "88e4fc7dd65739b51b0e538f3a70b85b9f1173ae1c3456cbd73c42ced1f64f98"
+    },
+    {
+      "path": "examples/pinned-waves/index.html",
+      "sha256": "b0582ad0daa6799b365d0c5ad9632e525ebd67c0dcd58d5fb2873a8dc73b116b"
+    },
+    {
+      "path": "examples/pinned-waves/sketch.js",
+      "sha256": "35c6520dd5fc64106ff419a818e5b30119f11733961af849abbf8adc42e0c15f"
+    },
+    {
+      "path": "examples/pixel-grain/README.md",
+      "sha256": "c8d28469a5cc20a1b920ffdfa938ead74beeba7c58c028e958125c98dfb43d79"
+    },
+    {
+      "path": "examples/pixel-grain/index.html",
+      "sha256": "f581c8756492277f2d6adb505260c5d0a440b79e8384ced0bc0e385fbcbb8ade"
+    },
+    {
+      "path": "examples/pixel-grain/sketch.js",
+      "sha256": "f68bdc41afa2e6734f9e716027636013abaa1bb0f0058f2ae770e697df7b4104"
+    },
+    {
+      "path": "examples/placement-image-marks/README.md",
+      "sha256": "417ae8f228b4e536a524ff92d549a070c51491fabf49e764dc09aaa75a61cbe8"
+    },
+    {
+      "path": "examples/placement-image-marks/index.html",
+      "sha256": "286d0b425845223982b28ae81a1c0e7883730fdb16632eef61a29ee5e3d2df1a"
+    },
+    {
+      "path": "examples/placement-image-marks/placement-image-marks.js",
+      "sha256": "797b15b0015412790c1dd4acb0e25a8597eb71785682701e9936ccf8a7a7bf2d"
+    },
+    {
+      "path": "examples/placement-image-marks/sketch.js",
+      "sha256": "65c2a0cb1c2139629f49255c371268684bbc8307d5dd202cd27e8383049321ad"
+    },
+    {
+      "path": "examples/placement-marks/README.md",
+      "sha256": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1"
+    },
+    {
+      "path": "examples/placement-marks/index.html",
+      "sha256": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318"
+    },
+    {
+      "path": "examples/placement-marks/placement-marks.js",
+      "sha256": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382"
+    },
+    {
+      "path": "examples/placement-marks/sketch.js",
+      "sha256": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c"
+    },
+    {
+      "path": "examples/pointer-marks/README.md",
+      "sha256": "aac53dd84fa19e0045f81689d9f1266fbb5a734b4d9991f951168a664d1556f8"
+    },
+    {
+      "path": "examples/pointer-marks/index.html",
+      "sha256": "aa0c6c58647679564436cd349af60b69843593a233bdaa8687972614b2650dfc"
+    },
+    {
+      "path": "examples/pointer-marks/pointer-marks.js",
+      "sha256": "9eee3ad0c62d59f7b788bb110b18c249f7e05bb9b3e726d2562c6807bbc88445"
+    },
+    {
+      "path": "examples/pointer-marks/sketch.js",
+      "sha256": "ef1d722880c7929af84ec565bf7f1a7fab656ba8e6545d5ccb8ca59dbca19e23"
+    },
+    {
+      "path": "examples/polygon-marks/README.md",
+      "sha256": "6b6d0190feaa7358a1563d1147cc8e93b835747bee3ae1ad88003ce0817bd2dc"
+    },
+    {
+      "path": "examples/polygon-marks/index.html",
+      "sha256": "eb8c06bc3a65b6626ab24af74899fffdf5852287a699a31835f4282110284262"
+    },
+    {
+      "path": "examples/polygon-marks/polygon-marks.js",
+      "sha256": "4a850118868c7956bc4d7919ca4f4fd2a6c19aef706e2e14021382291fecf369"
+    },
+    {
+      "path": "examples/polygon-marks/sketch.js",
+      "sha256": "3f1b35dc25908b9d609cd80dfb462d5b0950d97900dc0f1e62a30b730a573bab"
+    },
+    {
+      "path": "examples/profile-marks/README.md",
+      "sha256": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6"
+    },
+    {
+      "path": "examples/profile-marks/index.html",
+      "sha256": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867"
+    },
+    {
+      "path": "examples/profile-marks/profile-marks.js",
+      "sha256": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c"
+    },
+    {
+      "path": "examples/profile-marks/sketch.js",
+      "sha256": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c"
+    },
+    {
+      "path": "examples/projection-marks/README.md",
+      "sha256": "ed1dd6fcaf5e302a6afec3cf8dc5c64a060cf8bfb8192d217200fa789c28bb42"
+    },
+    {
+      "path": "examples/projection-marks/index.html",
+      "sha256": "488d8920ad2d56260a209741b6d800703609d3c28d5c4907ba6a77ce7d69abca"
+    },
+    {
+      "path": "examples/projection-marks/projection-marks.js",
+      "sha256": "9441c1fe98ba35ff5824a28fa57a7d30764d80f538561963318bf7623f99c54f"
+    },
+    {
+      "path": "examples/projection-marks/sketch.js",
+      "sha256": "5569b3da81606dd2e9a83191b4035424ee8f90d55135ee70c241ed3f9373ee5c"
+    },
+    {
+      "path": "examples/pull-marks/README.md",
+      "sha256": "bbeaa1df18af8fbf335fda6de8e9f162cb0b66c2a5a2f253b947055d860a2a3b"
+    },
+    {
+      "path": "examples/pull-marks/index.html",
+      "sha256": "c1d3fb3b79683ce842957a7b493176fc8d41d905f8e17c89b4a1f14d61e812c1"
+    },
+    {
+      "path": "examples/pull-marks/pull-marks.js",
+      "sha256": "af49f8461e8d12099d6bed13e85ec6165305b890fa6c9a29fa8144d3e9aee830"
+    },
+    {
+      "path": "examples/pull-marks/sketch.js",
+      "sha256": "83bc47bd0dbdedb4e1beebb9a2418c99cc625267cb02d33746d70e8ffbb86e2b"
+    },
+    {
+      "path": "examples/quantized-stripes/README.md",
+      "sha256": "c7d88f4be963d0618a2aa70c3b35110340d63c257fc8054d4fa8f5c6e230f760"
+    },
+    {
+      "path": "examples/quantized-stripes/index.html",
+      "sha256": "199893207aae9b7a9f5ec3d9b89a94d6b88865dd2760a9d62012e8df88ff9816"
+    },
+    {
+      "path": "examples/quantized-stripes/sketch.js",
+      "sha256": "a453f8d3c12181c7038fae5b35f96d783f15305dc06366cfeb1921a873a6267f"
+    },
+    {
+      "path": "examples/ramp-marks/README.md",
+      "sha256": "ad5589e4f562f214b78788baa432c16a67837707bfb45c83ca67826a6efefd3b"
+    },
+    {
+      "path": "examples/ramp-marks/index.html",
+      "sha256": "4a1f569d65dab5f50f16e49dc57a48342436b7c15f6b66e3babc6442916a3ab4"
+    },
+    {
+      "path": "examples/ramp-marks/ramp-marks.js",
+      "sha256": "4528fcdea69f41ee6f82a72b4e52ce6b8426b1f096c54434e6aec8e325ae6ac2"
+    },
+    {
+      "path": "examples/ramp-marks/sketch.js",
+      "sha256": "cd3e1db4deb2989fc70a8bce0433d9f80dcf47175f98dc77b7224e855de90cec"
+    },
+    {
+      "path": "examples/reaction-spots/README.md",
+      "sha256": "f7889e6b481e53b527295211233e8add3ec06026cef247a76f324a77a5d23edb"
+    },
+    {
+      "path": "examples/reaction-spots/index.html",
+      "sha256": "dd176739c9e3b90781263441c9abdca75ab3a19de94f2b62a6bb428cb8c38362"
+    },
+    {
+      "path": "examples/reaction-spots/sketch.js",
+      "sha256": "827bf6b0523da088d87ec72ee6b616a9d08d8d18dbd9947d8724e0af4f700abf"
+    },
+    {
+      "path": "examples/reaction-stripes/README.md",
+      "sha256": "114d68183c60c9a68aa4344deb2985bc0585289df3a07480445461ecbcecd0a9"
+    },
+    {
+      "path": "examples/reaction-stripes/index.html",
+      "sha256": "45987214d0ed4c784ab2860dd6e6e4b3e686fdfc2986ecaad48ffbcc4701dca7"
+    },
+    {
+      "path": "examples/reaction-stripes/sketch.js",
+      "sha256": "8e6d57f57f3e9351682fd584e4662e70efe504d9bd08ee88147a8352bef83c93"
+    },
+    {
+      "path": "examples/recursive-tiles/README.md",
+      "sha256": "70a8d4f3898b27369362e574c36e067075febf0567efe64a6658b427bd072bc0"
+    },
+    {
+      "path": "examples/recursive-tiles/index.html",
+      "sha256": "424b508573fc628cbd1e0881f2bf8ca096f8cf193a2366b778422f9c1ab82496"
+    },
+    {
+      "path": "examples/recursive-tiles/sketch.js",
+      "sha256": "891eda2f646d478d5e21c153a7e01bf4ba5b1808bfec7b39b63447a6999f88fd"
+    },
+    {
+      "path": "examples/reduced-mosaic/README.md",
+      "sha256": "caeb80067d39c96eda8ee694b4160b51d3764881173afdc7a1c3b19cea784c37"
+    },
+    {
+      "path": "examples/reduced-mosaic/index.html",
+      "sha256": "2ef10f3ed02909a7125676ce8098225807cae031c35a27b6c2af41617c2b24b0"
+    },
+    {
+      "path": "examples/reduced-mosaic/sketch.js",
+      "sha256": "67b09c124cabc9a9d9b12359e9e8fc095402cac35d417309cf8a719178892df7"
+    },
+    {
+      "path": "examples/region-marks/README.md",
+      "sha256": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010"
+    },
+    {
+      "path": "examples/region-marks/index.html",
+      "sha256": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d"
+    },
+    {
+      "path": "examples/region-marks/region-marks.js",
+      "sha256": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8"
+    },
+    {
+      "path": "examples/region-marks/sketch.js",
+      "sha256": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a"
+    },
+    {
+      "path": "examples/relaxed-stones/README.md",
+      "sha256": "cda1debf7ee0f100533620cb9c84cec9a931d27302f3b72deec745a7ca9e13a1"
+    },
+    {
+      "path": "examples/relaxed-stones/index.html",
+      "sha256": "9bf9a70c91dd16c33930474252a34da5ac558bae7e1992e019f64305798fa916"
+    },
+    {
+      "path": "examples/relaxed-stones/sketch.js",
+      "sha256": "22b02194a6fdece1cc6a5f7b9ddd58ab7551c54920174f3af0c7d00891e59788"
+    },
+    {
+      "path": "examples/relief-marks/README.md",
+      "sha256": "7121543eceae1946acbe7d161939288af0b5ef723d836cf0f96edb342634da38"
+    },
+    {
+      "path": "examples/relief-marks/index.html",
+      "sha256": "9517989ebe64632e08c64d1fa3bd0123b3fdc9d4b5fde8f6ce150890d9290ef6"
+    },
+    {
+      "path": "examples/relief-marks/relief-marks.js",
+      "sha256": "c98891a3cbb50a0112dce6645f5563195b62da2986b9578f10c0393b7ae690bb"
+    },
+    {
+      "path": "examples/relief-marks/sketch.js",
+      "sha256": "49d3471a4c15d9fb8e277141724d913aabfba0f4d135c7b623de62c22e7cfe19"
+    },
+    {
+      "path": "examples/ripple-interference/README.md",
+      "sha256": "6d6546c538be30526c9f3d331e52c6836acb192e4e4d58b73275f4cbfa74d52a"
+    },
+    {
+      "path": "examples/ripple-interference/index.html",
+      "sha256": "716ecc987d1f092a5e1a8ba3bc90a84174d46c4b39a6999ef87d8d3d373a6f24"
+    },
+    {
+      "path": "examples/ripple-interference/sketch.js",
+      "sha256": "8d13f1f11e16293d81304b7cf371e382b4f4ed2568481ffdd6028c06bf670e09"
+    },
+    {
+      "path": "examples/road-margins/README.md",
+      "sha256": "6e92fcc54bd42d71b45b3d8860eba2a88872462f5f41e152618dba5fbd550f25"
+    },
+    {
+      "path": "examples/road-margins/index.html",
+      "sha256": "6a8d6b2574c031c6584d1ecf5e48e85c4c1423d2bd8b63cd543dc655f5e671e2"
+    },
+    {
+      "path": "examples/road-margins/sketch.js",
+      "sha256": "f8843a7fc163e414fa23cd886c3b7ef87eb08bf0d6234f6760406d87075aba3d"
+    },
+    {
+      "path": "examples/rounded-panels/README.md",
+      "sha256": "3a1b5957f2d0c4512dbd8e0c79c912b335cd7fb65c8cdc2bec2c1f4d9d0d71e7"
+    },
+    {
+      "path": "examples/rounded-panels/index.html",
+      "sha256": "8f067fe80570db35ff78b0c0e046fc1479df2ab40a78abacef4606aaf461561a"
+    },
+    {
+      "path": "examples/rounded-panels/sketch.js",
+      "sha256": "7bd0cbf57a82b9a59753a8941e2f2be05d5c5911a0f6419c65775cd744d80a29"
+    },
+    {
+      "path": "examples/rounded-polyhedra/README.md",
+      "sha256": "47ef80ade4e921688ee384342ecb481c9e334736ffafcdf358c72a734a3fcc6b"
+    },
+    {
+      "path": "examples/rounded-polyhedra/index.html",
+      "sha256": "597be4466ff0c8910f4c993a156ad1543171067292d756ca5095b5382afcc6ff"
+    },
+    {
+      "path": "examples/rounded-polyhedra/sketch.js",
+      "sha256": "056b4746510a99566b44fd6eaed0f0ecd2e2e29a1a2d069c00315c6d0d7bbac5"
+    },
+    {
+      "path": "examples/scatter-envelopes/README.md",
+      "sha256": "d004b146b933ad6de4e98c9de7ea9d244156585c114f0e5b10550bef095b5609"
+    },
+    {
+      "path": "examples/scatter-envelopes/index.html",
+      "sha256": "e32ddbb60839e65110b6ba32d7fc6269ed423d1116dbc8d3c2c094cf7f1196a4"
+    },
+    {
+      "path": "examples/scatter-envelopes/sketch.js",
+      "sha256": "42b79fca43d0d0665d35a7ea156f9a2d02e657fe5fd28f465b8962f406feaea9"
+    },
+    {
+      "path": "examples/signed-edge-print/README.md",
+      "sha256": "ca450ae8c47e0d2111e57f5af73235221b44bc4a397dd78493de3b5601fbb6c1"
+    },
+    {
+      "path": "examples/signed-edge-print/index.html",
+      "sha256": "91a9e5677ee2fff6fa5f4b95bd83a23376f3cfb48e7ee48b5fdeacd5fbbb3bc8"
+    },
+    {
+      "path": "examples/signed-edge-print/sketch.js",
+      "sha256": "e7f0a552c03229ad56d20211451bafa9e1a5eece4f022aee9f1702d55d795b2c"
+    },
+    {
+      "path": "examples/spaced-symbols/README.md",
+      "sha256": "9b8c8f881cfb8b80f3cbc5b3724a605af77bec09a8a5d51976d1dffc92d18dba"
+    },
+    {
+      "path": "examples/spaced-symbols/index.html",
+      "sha256": "e9722c57cf2be878aca9cec40f88b083ddbd98a649e996d34199ec0ac4a5979e"
+    },
+    {
+      "path": "examples/spaced-symbols/sketch.js",
+      "sha256": "ebe2a5cc074fa9a295ec47bfb289b78ce25056e3174c9cc8744a967621916ff9"
+    },
+    {
+      "path": "examples/spring-marks/README.md",
+      "sha256": "fa0499f1a199b66abc028442162a9cbeb03fc0af902f34fa9cff56af3fd049ab"
+    },
+    {
+      "path": "examples/spring-marks/index.html",
+      "sha256": "c0acfe5d21f1fd50fea84bd85f006b31771a8203378fd3062eb8edb1607f0b91"
+    },
+    {
+      "path": "examples/spring-marks/sketch.js",
+      "sha256": "e56b7d7a00cfe4f7e60ab7f6660940f9aa4911fb2eb3771f6d12bca6d612ad70"
+    },
+    {
+      "path": "examples/spring-marks/spring-marks.js",
+      "sha256": "a47eaba5f5b3d2bb90286017d1f4c742dc0960a25e64891123a763813301fca9"
+    },
+    {
+      "path": "examples/stepped-blocks/README.md",
+      "sha256": "5c063e7569102241fd2eed58e9cebe095d88600e00f2712ea2d5df7bb8d4dd56"
+    },
+    {
+      "path": "examples/stepped-blocks/index.html",
+      "sha256": "8d29fdb38d8a967c5353cdf958ca153047f1b55718ecd45abea954a6bff631cb"
+    },
+    {
+      "path": "examples/stepped-blocks/sketch.js",
+      "sha256": "1672e4fc95a9d77ff1f51f117013275fe008f00aa45374f1488602f7eae079e1"
+    },
+    {
+      "path": "examples/stitched-contours/README.md",
+      "sha256": "ac8214cd8f33eb9cbfb03bb70d52f67dd13b5eab1b1e8c3f4d21b443c139d615"
+    },
+    {
+      "path": "examples/stitched-contours/index.html",
+      "sha256": "e8cb49b6f1e528f3f15eac81bff243d7f0ad2aebe28d5ec7262cdb0043bd444b"
+    },
+    {
+      "path": "examples/stitched-contours/sketch.js",
+      "sha256": "318ad06fb9f613f019344627be20d1e0897bb5bf189f6b975580340eacae81b6"
+    },
+    {
+      "path": "examples/stitched-paths/README.md",
+      "sha256": "35d9e06c240fde1748bc898b7995ac0fec78e330f440d82a7b07d770aa934452"
+    },
+    {
+      "path": "examples/stitched-paths/index.html",
+      "sha256": "13cf0a77871e7e93e4b0739095187239393b3e2224b88ce6a78f1a75db88e1c5"
+    },
+    {
+      "path": "examples/stitched-paths/sketch.js",
+      "sha256": "ed6a47bc01bb674287ad08bc9c7581436c2e5142d1ae729918a8e026a1471cdf"
+    },
+    {
+      "path": "examples/stream-ribbons/README.md",
+      "sha256": "d8eebb35d8485d1fd6e2890221f5d244f40d4311b01d29292cce10447b152eb6"
+    },
+    {
+      "path": "examples/stream-ribbons/index.html",
+      "sha256": "e354f9f05752d976ee3f2337b0fb3749265b547b1f6d89454896c0d5099ee43b"
+    },
+    {
+      "path": "examples/stream-ribbons/sketch.js",
+      "sha256": "1983ef20000843dcff2f8d259147e7f0a62f28cd72737d3c2092ea19c59a9dc7"
+    },
+    {
+      "path": "examples/study-controls.js",
+      "sha256": "89c1399024c5e342978910b98c7045d99ca2a716e0b6e55679f66913edf91324"
+    },
+    {
+      "path": "examples/subdivided-shells/README.md",
+      "sha256": "e7b3be9be8fcd62c262a83ca4beec8c23ccd1d658cf52dc9bce76a0ff53e794b"
+    },
+    {
+      "path": "examples/subdivided-shells/index.html",
+      "sha256": "f6fa0ac2675e3985b6bac2b54a1be5ce5319f58dee2d7a46267381ecae23442c"
+    },
+    {
+      "path": "examples/subdivided-shells/sketch.js",
+      "sha256": "2a32fff1428254d241eccf7d51d6e8d301feeea356fc1b0350fcf96a3559f57f"
+    },
+    {
+      "path": "examples/swirling-particles/README.md",
+      "sha256": "23f1221f0ba579ec5b79f5f6a6fb819d50438501bda65c459ab1edc74e1a7933"
+    },
+    {
+      "path": "examples/swirling-particles/index.html",
+      "sha256": "789477da921fae66a488b835b37d47ed4007a3d5b39b3fb69c4782c6a0c8eb64"
+    },
+    {
+      "path": "examples/swirling-particles/sketch.js",
+      "sha256": "e4f3703d8539a67c23a127811a79d871fc6a3449ca06766609235d02444aa6ab"
+    },
+    {
+      "path": "examples/systems-a-studies.js",
+      "sha256": "58c2f4d09d6d26f120ef5e4f381330f10a21d6924d9d419d4474584be013266f"
+    },
+    {
+      "path": "examples/systems-b-studies.js",
+      "sha256": "91d08e3863397f9605ea150c2f03ec0f23e11796a72d72d974897f4c16875527"
+    },
+    {
+      "path": "examples/terraced-islands/README.md",
+      "sha256": "232133f5bbab8e5769337014b9f8ed1ec683cd3fb3ada7e805527ac9ee8e1a99"
+    },
+    {
+      "path": "examples/terraced-islands/index.html",
+      "sha256": "166990f0bce98d8f85139450a0427f01798a5275438517dc9560f8b06cb48de0"
+    },
+    {
+      "path": "examples/terraced-islands/sketch.js",
+      "sha256": "4e64131d74e4ac4fea381164fc4c0dc3972eb973c9746fa9c8ad1e61c106b7d3"
+    },
+    {
+      "path": "examples/tiled-circuits/README.md",
+      "sha256": "95d7c12890f709610b8ccd0e4d06360519ccdfde89160b240c2bc780c70e3b61"
+    },
+    {
+      "path": "examples/tiled-circuits/index.html",
+      "sha256": "2623120393cd1ccf25c0418e843cb0e12270ebd45971ef0f820bb1eda8f89938"
+    },
+    {
+      "path": "examples/tiled-circuits/sketch.js",
+      "sha256": "f30c3ae31adb67c132dd602d7acce6888dd3cca194c013bef2f7f0640512c20d"
+    },
+    {
+      "path": "examples/transported-ribbons/README.md",
+      "sha256": "fbece8de5baf674ae19838bb4fb25e76fc6a6d6f44575ad0882ed7b9286c33ce"
+    },
+    {
+      "path": "examples/transported-ribbons/index.html",
+      "sha256": "10915f92cab5ccf07b7de065bc3482d35e4fdac3abcd2bc405020ab386c78212"
+    },
+    {
+      "path": "examples/transported-ribbons/sketch.js",
+      "sha256": "9a60fafc181d79702d7a54b3995586c332aad89c5024cebbfe757d2c6c87354d"
+    },
+    {
+      "path": "examples/triangle-glyphs/README.md",
+      "sha256": "8ab1bb3cb5b4e0383d0bab49cb3eaa188fd903571f8e977f202cbe6c4cd9540d"
+    },
+    {
+      "path": "examples/triangle-glyphs/index.html",
+      "sha256": "7592755be6d32e25f62962e596db7172c562091de24f529f08d7ea29163bf8d8"
+    },
+    {
+      "path": "examples/triangle-glyphs/sketch.js",
+      "sha256": "0d5e9b2ef3864f45d53a5732c0c8f5de53646e91786afb511837c3164aaa4f8e"
+    },
+    {
+      "path": "examples/turtle-canopies/README.md",
+      "sha256": "6b5d9c6f3ca5a0a7e4abdcb9c42ba52c11d2bfc9b8596f4879cb7d05033adf16"
+    },
+    {
+      "path": "examples/turtle-canopies/index.html",
+      "sha256": "07a852784854f4cf530d1bf267ce3642d7e11d57cf4ead3348bf516d8e125a74"
+    },
+    {
+      "path": "examples/turtle-canopies/sketch.js",
+      "sha256": "18ffd63acaab4c5b14a891286708000bf945467bb59c03801a4d31085dbd06a4"
+    },
+    {
+      "path": "examples/twisting-streamers/README.md",
+      "sha256": "ce6ce3aeece29e0d334864680a9a99a7db88a31f4c9560549e715238804f1e8a"
+    },
+    {
+      "path": "examples/twisting-streamers/index.html",
+      "sha256": "7e53b87d20cab975811259ef6fe9b3b647501d6d713791182883ab53960340d2"
+    },
+    {
+      "path": "examples/twisting-streamers/sketch.js",
+      "sha256": "ce04fecc1bae3815f687a5fd47b6723b7760c929dab86c6c27877c3f88a8a7e5"
+    },
+    {
+      "path": "examples/warp-marks/README.md",
+      "sha256": "ae5578442c7b7a1b9bc103f5f2089e94d42aad1b7fd26eaa32fe54ceab8eb096"
+    },
+    {
+      "path": "examples/warp-marks/index.html",
+      "sha256": "460af05d02054bd1584b33eb680262a204adbc9ca015e509b231e9389f4c2927"
+    },
+    {
+      "path": "examples/warp-marks/sketch.js",
+      "sha256": "e4122d81f4854bbbdb56a71438cb8cb470314eed4564c27910c56213aeaa05b9"
+    },
+    {
+      "path": "examples/warp-marks/warp-marks.js",
+      "sha256": "7ce10a730dce26f9183b4f5c494af7a85093aa648769550fce7419144484711a"
+    },
+    {
+      "path": "examples/woven-grammar/README.md",
+      "sha256": "191367a67ad2d27f07c2848f6a924ca3a285c7f5aa898a5b1dda646b7a468052"
+    },
+    {
+      "path": "examples/woven-grammar/index.html",
+      "sha256": "552e71d04bf5ea2673e7eac7c2c6aa51f2bfabf0af87c0b2e77936b58e89fbb9"
+    },
+    {
+      "path": "examples/woven-grammar/sketch.js",
+      "sha256": "3ad0bd6a31e29d09f9e381a2898e832974776cc3e2e253bd30e3278820a9fb64"
+    },
+    {
+      "path": "examples/woven-rows/README.md",
+      "sha256": "28c04226a7f802483029e9dc31f5e2020665a21c4293bc97d65bafbfb4cf511b"
+    },
+    {
+      "path": "examples/woven-rows/index.html",
+      "sha256": "7e447d038e0d0a9699fd745c751c3e4c4f1561d498fa72b475be260e87aa7657"
+    },
+    {
+      "path": "examples/woven-rows/sketch.js",
+      "sha256": "49ea3db5488acee96a607356127e5b34821185ecbadd47570f92d8dfdcee3a0d"
+    },
+    {
+      "path": "package.json",
+      "sha256": "a2e8d61d3fcf0365b6ed0033cab2873aacb38eea46872bcb4a7b75da5e4531b8"
+    },
+    {
+      "path": "src/adjacency-tile-collapse-2d.js",
+      "sha256": "ad70df385f1066de90fdb0b04ac84535cd9370a522b3ed91b996235d936c51e4"
+    },
+    {
+      "path": "src/annular-mesh.js",
+      "sha256": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761"
+    },
+    {
+      "path": "src/assemble-segment-chains-2d.js",
+      "sha256": "8ab83d01e0dcff42e6e75b183aa26596511ed5bc5a1a734c2791ff2455096291"
+    },
+    {
+      "path": "src/bayer-dither.js",
+      "sha256": "2c6b749115c51e0569be56612fb9a1edcf1f5906718389a0157f5d8c2dcf4a43"
+    },
+    {
+      "path": "src/binary-cell-partition.js",
+      "sha256": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00"
+    },
+    {
+      "path": "src/binary-morphology-2d.js",
+      "sha256": "112b2e90fae068250c8cf16b2906cabf463b21e3138bb0be164c9b68e3198151"
+    },
+    {
+      "path": "src/branch-tree.js",
+      "sha256": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6"
+    },
+    {
+      "path": "src/chaikin-polyline-2d.js",
+      "sha256": "5f7dd247985be361679e15f4fb2a7bd5e033927b53e1d6a1a85d2a30685ebb97"
+    },
+    {
+      "path": "src/circle-placements.js",
+      "sha256": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567"
+    },
+    {
+      "path": "src/closed-spline.js",
+      "sha256": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea"
+    },
+    {
+      "path": "src/convex-hull-2d.js",
+      "sha256": "d156a22647adb5fe931c8740ee2c74eae7f4b243de8bc6fedc714e49139c0075"
+    },
+    {
+      "path": "src/convex-polygon-placements.js",
+      "sha256": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52"
+    },
+    {
+      "path": "src/convolve-2d-signed.js",
+      "sha256": "88a639ede86d5f656ad83fddc3f4063da7b97c824cf6afd77344038aac03309d"
+    },
+    {
+      "path": "src/cost-grid-paths-2d.js",
+      "sha256": "73f133373556969568b16baab369aedd944c7fa08671bbf418db319e32f364b6"
+    },
+    {
+      "path": "src/cyclic-palette.js",
+      "sha256": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b"
+    },
+    {
+      "path": "src/damped-wave-step-2d.js",
+      "sha256": "6d309ed8b0bf78d5abb5097d24839f62019e57a0c4aadac41e2d9d51d96aeeaa"
+    },
+    {
+      "path": "src/delaunay.js",
+      "sha256": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47"
+    },
+    {
+      "path": "src/disc-projection.js",
+      "sha256": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1"
+    },
+    {
+      "path": "src/elementary-cellular-rows.js",
+      "sha256": "cf99a0c8cea6f0f645df343765218bf91c372a3aeaefe7fb8cbb2c3aaffd4af6"
+    },
+    {
+      "path": "src/euclidean-distance-transform-2d.js",
+      "sha256": "d23b9f390d8f5bf2b913b9d046671969226cc4d0062d799035c715d6b5f23fb7"
+    },
+    {
+      "path": "src/extrude-simple-polygon-3d.js",
+      "sha256": "7b13ac647e6115dbcdd29ae1346eb7df84894af97fa4def05624b34e37e16740"
+    },
+    {
+      "path": "src/fdlibm-trig.js",
+      "sha256": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f"
+    },
+    {
+      "path": "src/field-displace-2d.js",
+      "sha256": "cda0d26f09f511d6f3abb2be26908600ab01d1baa4487fb7fe765686f424b090"
+    },
+    {
+      "path": "src/floyd-steinberg-dither.js",
+      "sha256": "9ff206e74a55a799e9cecb7844b8f7640ec1a20cf726b8e2ed30f547e7f73283"
+    },
+    {
+      "path": "src/gradient-noise-2d-01.js",
+      "sha256": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e"
+    },
+    {
+      "path": "src/gradient-noise-3d-01.js",
+      "sha256": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c"
+    },
+    {
+      "path": "src/gradient-path.js",
+      "sha256": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a"
+    },
+    {
+      "path": "src/gray-scott-step-2d.js",
+      "sha256": "3106ec4ffbb2b8a2bab29406f9d49a62e4831ccf67af18a320b899cd494adfbc"
+    },
+    {
+      "path": "src/index.js",
+      "sha256": "7c771598970adb033fa9d0405dd01462d0d9ffb763966d1468dd07cc6e4caa87"
+    },
+    {
+      "path": "src/internal/drawing-state.js",
+      "sha256": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c"
+    },
+    {
+      "path": "src/internal/drawing.js",
+      "sha256": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+    },
+    {
+      "path": "src/internal/exact-rational.js",
+      "sha256": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6"
+    },
+    {
+      "path": "src/internal/fdlibm-hypot.js",
+      "sha256": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf"
+    },
+    {
+      "path": "src/internal/fdlibm-pow.js",
+      "sha256": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472"
+    },
+    {
+      "path": "src/internal/geometry-a-utils.js",
+      "sha256": "b13eec1218c84e3758c8b831182518a2b069be6fb355561bd512a259c3c94a45"
+    },
+    {
+      "path": "src/internal/geometry-b-utils.js",
+      "sha256": "72e6dae1c98dc48285764908c38999127390520902d69a2dadebf7fa2b53c773"
+    },
+    {
+      "path": "src/internal/mesh-study-utils.js",
+      "sha256": "3e7f9501ece2259c768e296978b2d9c9292437ea561a4120566211a4a14561bd"
+    },
+    {
+      "path": "src/internal/noise-hash.js",
+      "sha256": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6"
+    },
+    {
+      "path": "src/internal/p5-frame.js",
+      "sha256": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7"
+    },
+    {
+      "path": "src/internal/raster-study-utils.js",
+      "sha256": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658"
+    },
+    {
+      "path": "src/internal/systems-a-utils.js",
+      "sha256": "c6e4920c72648b559fb70395a51ead4deb47e972cd91ae54145d1b1c1e5d5204"
+    },
+    {
+      "path": "src/life-like-step-2d.js",
+      "sha256": "37b145560381679290e862addbff05ed4adf94b1b90fdfd90400116132c1fd4f"
+    },
+    {
+      "path": "src/line-pool.js",
+      "sha256": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae"
+    },
+    {
+      "path": "src/lloyd-relaxation-2d.js",
+      "sha256": "85d30436973e1010a49ae159f10ca00e0c0b6b546d95345b175c5b55bf6ff5b3"
+    },
+    {
+      "path": "src/loop-subdivide-triangles-3d.js",
+      "sha256": "848f5258859d0fafa0ac82a4b71dc04612f5c219fa926c2e3d9f4f24f229eab0"
+    },
+    {
+      "path": "src/marching-squares-2d.js",
+      "sha256": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d"
+    },
+    {
+      "path": "src/masked-source-over.js",
+      "sha256": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d"
+    },
+    {
+      "path": "src/median-cut-quantize.js",
+      "sha256": "10c334b0897c28a6ea722407a50f30dc74c4e6da2d7134322155266950d3ccf8"
+    },
+    {
+      "path": "src/nearest-segment-contact.js",
+      "sha256": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d"
+    },
+    {
+      "path": "src/noise-band-path.js",
+      "sha256": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f"
+    },
+    {
+      "path": "src/occupied-lattice-paths.js",
+      "sha256": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82"
+    },
+    {
+      "path": "src/octave-gradient-noise.js",
+      "sha256": "ea3556c22d7d8ae04b5863011ad9f59dfd7d2a2583ba1b6e6e9dbe7641faca10"
+    },
+    {
+      "path": "src/offset-polyline-2d.js",
+      "sha256": "eb42f6a1bba9bf15cfc6d873fba8896bce09a5b5f9168ffd199119e643c38382"
+    },
+    {
+      "path": "src/oklab-ramp.js",
+      "sha256": "b0523d44f8556694f9c81bb8c561a9d2550a9f309ead76f4aa67400811bd44de"
+    },
+    {
+      "path": "src/parallel-token-rewrite.js",
+      "sha256": "0801534342dafd5b394e900a19edf051645a1f0666bf9f52744d6ae28936c7c9"
+    },
+    {
+      "path": "src/parallel-transport-ribbon-3d.js",
+      "sha256": "9f5d099e4777ffeb2e897c5155466fe797d010dc31b96edb4d5d9a7c59393fdf"
+    },
+    {
+      "path": "src/poisson-disc-2d.js",
+      "sha256": "ccdf5f339ad29589ad44ae5a1585283a52bb033c1240ba86314a83254df4cb19"
+    },
+    {
+      "path": "src/quadrant-partition.js",
+      "sha256": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f"
+    },
+    {
+      "path": "src/radial-profile.js",
+      "sha256": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d"
+    },
+    {
+      "path": "src/radial-pull.js",
+      "sha256": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c"
+    },
+    {
+      "path": "src/raster-crossfade.js",
+      "sha256": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19"
+    },
+    {
+      "path": "src/raster-remap.js",
+      "sha256": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c"
+    },
+    {
+      "path": "src/regular-grid.js",
+      "sha256": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278"
+    },
+    {
+      "path": "src/resample-polyline-2d.js",
+      "sha256": "0cadef92e1a999ebe8f58bc17b7dc82341db03b190cf4ebf8087058657b0ff42"
+    },
+    {
+      "path": "src/retained-rectangle-cuts.js",
+      "sha256": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866"
+    },
+    {
+      "path": "src/rk4-vector-grid-trace-2d.js",
+      "sha256": "f29ad04d1629d04c1d21cc15f901abb6404c6b6afc9af1699f1c070e99f0e281"
+    },
+    {
+      "path": "src/scalar-grid-curl-2d.js",
+      "sha256": "6b3237010420fbe77d2770aa8d71436c223522506e68244944bb053e8b1eef89"
+    },
+    {
+      "path": "src/seeded-depth-first-spanning-tree.js",
+      "sha256": "7b2d71cef7caad248bc511d715a68ac379addc6bed3adc22605502bc05b82c57"
+    },
+    {
+      "path": "src/seeded-pixel-grain.js",
+      "sha256": "cdc5961f7ac0cf09cbd15b443de06e1777fccdf2b3ccb222a4ad06ddf24b8ce2"
+    },
+    {
+      "path": "src/segment-clip.js",
+      "sha256": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4"
+    },
+    {
+      "path": "src/separable-blur.js",
+      "sha256": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632"
+    },
+    {
+      "path": "src/simplify-polyline-2d.js",
+      "sha256": "b874b18cf0ee75397f09676d5bfe4f66fbeb8987e260577a0579a613799b1feb"
+    },
+    {
+      "path": "src/skyline-pack-2d.js",
+      "sha256": "427c4ebd2d16b163abdc31e8ffe1348b0d9e10e96f6b7dfdd2524fbebe763de7"
+    },
+    {
+      "path": "src/stop-ramp.js",
+      "sha256": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50"
+    },
+    {
+      "path": "src/target-springs.js",
+      "sha256": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7"
+    },
+    {
+      "path": "src/token-turtle-2d.js",
+      "sha256": "24ecdf07d999153c7f611e2c743553450d15e7be929dff4c31edf210b57026fb"
+    },
+    {
+      "path": "src/triangle-points.js",
+      "sha256": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290"
+    },
+    {
+      "path": "src/triangulate-simple-polygon-2d.js",
+      "sha256": "bfbf0df2fd29df8590daa74c629312e14b36342e8577078e1e2f369362ed2760"
+    },
+    {
+      "path": "src/voronoi-cells-2d.js",
+      "sha256": "e711b13d660c6c1020daca2bc7d58f655cd614238e0fd0f4155af524ac3fe1a6"
+    }
+  ]
+}

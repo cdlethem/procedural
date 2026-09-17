@@ -1,0 +1,1125 @@
+{
+  "operation": "field.octave-gradient-noise",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "f24f4cccf742952c5291e2788b7abdb7d6674c3815f33485e45f2eb5d0febefc",
+  "oracle": "tools/build_octave_gradient_noise_fixtures.py; Fraction-rounded octave arithmetic and existing independent 2D/3D Fraction noise oracles; no JS evaluator imported.",
+  "cases": [
+    {
+      "id": "two-dimensional-raw",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          0.4580115146636963,
+          0.37229426574707025,
+          0.34755711609664003,
+          0.43590624999999994
+        ],
+        "amplitudeSum": 0.8718124999999999
+      }
+    },
+    {
+      "id": "two-dimensional-normalized",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "WEIGHT_SUM",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          0.5253555261752915,
+          0.4270347875799788,
+          0.398660395551383,
+          0.5
+        ],
+        "amplitudeSum": 0.8718124999999999
+      }
+    },
+    {
+      "id": "three-dimensional",
+      "input": {
+        "dimension": 3,
+        "points": [
+          [
+            0.25,
+            0.5,
+            0.75
+          ],
+          [
+            -0.25,
+            1.5,
+            -2.75
+          ],
+          [
+            0.1,
+            0.2,
+            0.3
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          0.3334390230178833,
+          0.5264017171859741,
+          0.3296645602311176,
+          0.43590624999999994
+        ],
+        "amplitudeSum": 0.8718124999999999
+      }
+    },
+    {
+      "id": "single-octave-identity",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 1,
+        "frequency": 1.0,
+        "lacunarity": 1e+308,
+        "amplitude": 1,
+        "persistence": 1e+308,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          0.6004605293273926,
+          0.3727760314941406,
+          0.36601273856,
+          0.5
+        ],
+        "amplitudeSum": 1.0
+      }
+    },
+    {
+      "id": "zero-persistence",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          0.3002302646636963,
+          0.1863880157470703,
+          0.18300636928,
+          0.25
+        ],
+        "amplitudeSum": 0.5
+      }
+    },
+    {
+      "id": "zero-amplitude-raw",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "amplitudeSum": 0.0
+      }
+    },
+    {
+      "id": "empty-but-computed-schedule",
+      "input": {
+        "dimension": 2,
+        "points": [],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 4
+      },
+      "output": {
+        "values": [],
+        "amplitudeSum": 0.8718124999999999
+      }
+    },
+    {
+      "id": "weight-underflow",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 5e-324,
+        "persistence": 0.5,
+        "normalization": "WEIGHT_SUM",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "amplitudeSum": 5e-324
+      }
+    },
+    {
+      "id": "fractional-frequency-progression",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 0.3,
+        "lacunarity": 1.7,
+        "amplitude": 0.5,
+        "persistence": 1.2,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          1.3661072117964612,
+          1.0551029911465128,
+          1.0484837067625052,
+          1.342
+        ],
+        "amplitudeSum": 2.684
+      }
+    },
+    {
+      "id": "large-weight-ordered-sum",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.1,
+            0.2
+          ]
+        ],
+        "seed": 42,
+        "octaves": 8,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 1000000000000000.0,
+        "persistence": 0.2,
+        "normalization": "NONE",
+        "maxWork": 16
+      },
+      "output": {
+        "values": [
+          469600146915655.6
+        ],
+        "amplitudeSum": 1249996800000000.0
+      }
+    },
+    {
+      "id": "sensitive-frequency-not-coordinate-progression",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            1000000000000.25,
+            -999999999999.25
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 0.3,
+        "lacunarity": 1.7,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          0.5271445245688187
+        ],
+        "amplitudeSum": 0.8718124999999999
+      }
+    },
+    {
+      "id": "frequency-underflow",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 5e-324,
+        "lacunarity": 0.5,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          0.43590624999999994,
+          0.43590624999999994,
+          0.43590624999999994,
+          0.43590624999999994
+        ],
+        "amplitudeSum": 0.8718124999999999
+      }
+    },
+    {
+      "id": "zero-frequency",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          0.43590624999999994,
+          0.43590624999999994,
+          0.43590624999999994,
+          0.43590624999999994
+        ],
+        "amplitudeSum": 0.8718124999999999
+      }
+    },
+    {
+      "id": "seed-0",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 0,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          0.3948135204315185,
+          0.48877938461303716,
+          0.46920034497984003,
+          0.43590624999999994
+        ],
+        "amplitudeSum": 0.8718124999999999
+      }
+    },
+    {
+      "id": "seed-1",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 1,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          0.5477331943511963,
+          0.44193986129760743,
+          0.60184997329216,
+          0.43590624999999994
+        ],
+        "amplitudeSum": 0.8718124999999999
+      }
+    },
+    {
+      "id": "seed-2147483648",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 2147483648,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          0.34015095901489256,
+          0.4472726650238037,
+          0.4201656786656,
+          0.43590624999999994
+        ],
+        "amplitudeSum": 0.8718124999999999
+      }
+    },
+    {
+      "id": "seed-4294967295",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 4294967295,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "output": {
+        "values": [
+          0.5039898700714112,
+          0.37854760360717776,
+          0.38718551924416006,
+          0.43590624999999994
+        ],
+        "amplitudeSum": 0.8718124999999999
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 19
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "empty-budget",
+      "input": {
+        "dimension": 2,
+        "points": [],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 3
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "work-product-overflow",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 2147483647,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "weight-sum-overflow",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 1e+308,
+        "persistence": 1,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "frequency-overflow",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1e+308,
+        "lacunarity": 1e+308,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "budget-before-schedule",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1e+308,
+        "lacunarity": 1e+308,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "query-upper-exclusive",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            9007199254740991,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 1,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "error": "QUERY_OUT_OF_RANGE"
+    },
+    {
+      "id": "query-below-lower",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            -9007199254740992,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 1,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "error": "QUERY_OUT_OF_RANGE"
+    },
+    {
+      "id": "query-3d-z-outside",
+      "input": {
+        "dimension": 3,
+        "points": [
+          [
+            0,
+            0,
+            9007199254740991
+          ]
+        ],
+        "seed": 42,
+        "octaves": 1,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "error": "QUERY_OUT_OF_RANGE"
+    },
+    {
+      "id": "zero-weight-query-still-evaluated",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            9007199254740991,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 1,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "error": "QUERY_OUT_OF_RANGE"
+    },
+    {
+      "id": "query-product-overflow",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            1e+308,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 1,
+        "frequency": 1e+308,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "zero-normalized-weight",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0,
+        "persistence": 0.45,
+        "normalization": "WEIGHT_SUM",
+        "maxWork": 20
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "wrong-dimension",
+      "input": {
+        "dimension": 4,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "wrong-tuple",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "late-invalid-before-work",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            "bad"
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero-octaves",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 0,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": 0.45,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "negative-persistence",
+      "input": {
+        "dimension": 2,
+        "points": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -0.25,
+            0.75
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "seed": 42,
+        "octaves": 4,
+        "frequency": 1.0,
+        "lacunarity": 2.0,
+        "amplitude": 0.5,
+        "persistence": -0.5,
+        "normalization": "NONE",
+        "maxWork": 20
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

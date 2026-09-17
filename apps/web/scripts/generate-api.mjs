@@ -5,6 +5,7 @@ import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { apiGuides } from "../content/api-guides.mjs";
+import { surveyCoverageApiGuides } from "../content/survey-coverage-api.mjs";
 
 const app = resolve(dirname(fileURLToPath(import.meta.url)), ".."),
   root = resolve(app, "../..");
@@ -16,6 +17,9 @@ const packageBindings = await import(
   pathToFileURL(join(root, "packages/javascript/src/index.js")).href
 );
 const bindings = {
+  "seeded-pixel-grain": ["seeded-pixel-grain", "seededPixelGrain"],
+  "field-displace-2d": ["field-displace-2d", "fieldDisplace2D"],
+  "octave-gradient-noise": ["octave-gradient-noise", "octaveGradientNoise"],
   "adjacency-tile-collapse-2d": ["adjacency-tile-collapse-2d", "adjacencyTileCollapse2D"],
   "assemble-segment-chains-2d": ["assemble-segment-chains-2d", "assembleSegmentChains2D"],
   "bayer-dither": ["bayer-dither", "bayerDither"],
@@ -131,7 +135,7 @@ const entries = readdirSync(join(root, "catalog/operations"))
       throw Error(
         `JavaScript module drift: ${catalog.id} expects ${binding[1]} in ${binding[0]}.js`,
       );
-    const guide = apiGuides[catalog.id];
+    const guide = surveyCoverageApiGuides[catalog.id] ?? apiGuides[catalog.id];
     if (!guide) throw Error(`Missing human API guide: ${catalog.id}`);
     const topLevel = Object.keys(catalog.input_schema?.properties ?? {});
     if (

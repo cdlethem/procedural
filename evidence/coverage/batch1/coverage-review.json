@@ -1,0 +1,805 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "date": "2026-09-17",
+  "scope": "Only named cases within the three assigned families; no whole-corpus reassessment. Source formulas/root visual reviews support plausible component substitutions, not new original recreations.",
+  "reconciliation": "evidence/coverage/reconciliation-2026-09-17.json",
+  "source_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+  "operations": [
+    "adjacency-tile-collapse-2d",
+    "annular-solid-3d",
+    "assemble-segment-chains-2d",
+    "bayer-dither",
+    "bilinear-raster-remap",
+    "binary-cell-partition-2d",
+    "binary-morphology-2d",
+    "chaikin-polyline-2d",
+    "clip-segments-simple-polygon-2d",
+    "closed-spline-2d",
+    "convex-hull-2d",
+    "convolve-2d-signed",
+    "cost-grid-paths-2d",
+    "cyclic-palette",
+    "damped-wave-step-2d",
+    "delaunay-2d",
+    "elementary-cellular-rows",
+    "euclidean-distance-transform-2d",
+    "extrude-simple-polygon-3d",
+    "field-displace-2d",
+    "floyd-steinberg-dither",
+    "gradient-noise-2d-01",
+    "gradient-noise-3d-01",
+    "gradient-path",
+    "gray-scott-step-2d",
+    "life-like-step-2d",
+    "lloyd-relaxation-2d",
+    "loop-subdivide-triangles-3d",
+    "marching-squares-2d",
+    "masked-source-over",
+    "median-cut-quantize",
+    "nearest-segment-contact-2d",
+    "noise-band-path",
+    "occupied-lattice-paths-2d",
+    "octave-gradient-noise",
+    "offset-polyline-2d",
+    "oklab-ramp",
+    "ordered-circle-filter",
+    "ordered-convex-polygon-filter-2d",
+    "parallel-token-rewrite",
+    "parallel-transport-ribbon-3d",
+    "poisson-disc-2d",
+    "radial-profile-surface",
+    "radial-pull-2d",
+    "raster-crossfade",
+    "regular-grid",
+    "resample-polyline-2d",
+    "retained-rectangle-cuts-2d",
+    "rk4-vector-grid-trace-2d",
+    "scalar-grid-curl-2d",
+    "seeded-circle-placement",
+    "seeded-depth-first-spanning-tree",
+    "seeded-endpoint-branches",
+    "seeded-line-pool-2d",
+    "seeded-pixel-grain",
+    "seeded-quadrant-partition",
+    "seeded-triangle-points",
+    "separable-blur-2d",
+    "sequential-disc-projection-2d",
+    "simplify-polyline-2d",
+    "skyline-pack-2d",
+    "stop-ramp",
+    "target-springs-2d",
+    "token-turtle-2d",
+    "triangle-coordinate-map",
+    "triangulate-simple-polygon-2d",
+    "voronoi-cells-2d"
+  ],
+  "families": [
+    {
+      "family": "post.pixel-grain",
+      "verdict": "partial",
+      "catalog_evidence": [
+        {
+          "path": "catalog/operations/seeded-pixel-grain.json",
+          "pointer": "/behavior/algorithm"
+        }
+      ],
+      "limits": [
+        "Only seven verified shared-channel raster-addition cases close.",
+        "Random-grey blending, saturation/HSB changes, spatial masks and per-fragment coordinate-hash scheduling remain outside this operation; alpha-distribution similarity alone does not close a shader scene."
+      ],
+      "revised_affected": 50,
+      "revised_sole_gap": 25
+    },
+    {
+      "family": "field.noise-displace",
+      "verdict": "partial",
+      "catalog_evidence": [
+        {
+          "path": "catalog/operations/field-displace-2d.json",
+          "pointer": "/behavior/algorithm"
+        }
+      ],
+      "limits": [
+        "Only seven verified 2D components close. Sequential source updates require multiple explicit passes and resampling.",
+        "Simplex/value fields, 3D deformation, initial x/z matrices, raster domain warp and radial attract/repel remain separate.",
+        "orderLines/orderco03/polos/spirit require actual SimplexNoise despite blanket worker proposals; cc/telfi retain3D."
+      ],
+      "revised_affected": 42,
+      "revised_sole_gap": 26
+    },
+    {
+      "family": "field.fbm",
+      "verdict": "partial",
+      "catalog_evidence": [
+        {
+          "path": "catalog/operations/octave-gradient-noise.json",
+          "pointer": "/behavior/algorithm"
+        }
+      ],
+      "limits": [
+        "Fifteen verified dependencies close with an explicitly substituted gradient profile, not exact Processing replay.",
+        "cirnoi/fibra/finas/noicir/nosenose use custom value/abs fields; dondon003/limo002/montanon use custom DoubleNoise; these remain unresolved.",
+        "erosion combines shifted gamma-shaped fields, forms002d products, acid abs/warps, dondon002 count accumulation and planets3d raster/mesh pipeline are not silently admitted.",
+        "win and other unverified cases retain their original gap; missing evidence is not proof of incompatibility."
+      ],
+      "revised_affected": 15,
+      "revised_sole_gap": 5
+    }
+  ],
+  "sketch_revisions": [
+    {
+      "sketch": "2014/Generativos/cuadraditos",
+      "note_path": "survey/out/2014/Generativos/cuadraditos/notes.md",
+      "note_sha256": "93f6baf98a57d128b62bd7f1e0be2254a242d752f824e8758ed4d58fb710baa5",
+      "closed_gaps": {
+        "post.pixel-grain": {
+          "reason": "A single random[0,10) perturbation is added equally to RGB for each pixel; RGB_ADD range[0,10], exponent1 preserves the computation. Different explicit RNG and byte rounding are structural substitutions. The native original benchmark failed and earns no demonstrated credit.",
+          "operations": [
+            "seeded-pixel-grain"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2014/Generativos/cuadraditos/cuadraditos.pde",
+          "sha256": "ed0c2e2848aa26d2a40f5f12ed930ad999c879633edd8c8fe0fc1534da286346"
+        }
+      ]
+    },
+    {
+      "sketch": "2014/Generativos/minimalCirculines",
+      "note_path": "survey/out/2014/Generativos/minimalCirculines/notes.md",
+      "note_sha256": "a11a36af89f724292eba862a15fc9740548e0d7ba3efb93307f79f5213d5f087",
+      "closed_gaps": {
+        "post.pixel-grain": {
+          "reason": "The source adds one random[-5,5) value equally to RGB before a separate blur. RGB_ADD range[-5,5], exponent1 closes grain; existing blur remains a separate composition.",
+          "operations": [
+            "seeded-pixel-grain"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2014/Generativos/minimalCirculines/minimalCirculines.pde",
+          "sha256": "853eb9eef548f0ad3d5d91826374458ca82be9add0b23250c3c7285ced43b2c4"
+        }
+      ]
+    },
+    {
+      "sketch": "2014/Generativos/pelotitas",
+      "note_path": "survey/out/2014/Generativos/pelotitas/notes.md",
+      "note_sha256": "4405350b17226c62c4dc9bf27afa3cea0e0cb669a7b240e57c02a406fe8df748",
+      "closed_gaps": {
+        "post.pixel-grain": {
+          "reason": "noisee adds one random[0,5) value equally to RGB on the ground/hatching raster before glyphs. Apply RGB_ADD to that stage only; the weighted-choice gap remains.",
+          "operations": [
+            "seeded-pixel-grain"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2014/Generativos/pelotitas/pelotitas.pde",
+          "sha256": "9c2515bb783bdc03b4f1774c1ac64f3ccad345b1c32bf29615a27d62cca458c9"
+        }
+      ]
+    },
+    {
+      "sketch": "2014/Generativos/quadFeos",
+      "note_path": "survey/out/2014/Generativos/quadFeos/notes.md",
+      "note_sha256": "2fccc2bc36d983f9b9fba64c4736252ecdd2bee3d2c066ccc1cf08109b5d7c70",
+      "closed_gaps": {
+        "post.pixel-grain": {
+          "reason": "Shared random[0,5) RGB addition maps to RGB_ADD before the separate translucent white wash.",
+          "operations": [
+            "seeded-pixel-grain"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2014/Generativos/quadFeos/quadFeos.pde",
+          "sha256": "918600c8f394a191aa5d407470216d77108142e92b769697f7e8905982978106"
+        }
+      ]
+    },
+    {
+      "sketch": "2016/Generativos/ThePiper",
+      "note_path": "survey/out/2016/Generativos/ThePiper/notes.md",
+      "note_sha256": "2fc96c6a2961d80f57fec4e7d5eb0880f191aabcb7fbb2fdece5ceecca3a9a18",
+      "closed_gaps": {
+        "post.pixel-grain": {
+          "reason": "Exact source uses one rnd in[-4,4) for all three channels, despite notes suggesting independent channels. RGB_ADD is the matching component.",
+          "operations": [
+            "seeded-pixel-grain"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2016/Generativos/ThePiper/ThePiper.pde",
+          "sha256": "6c224d51d7a5b4f6257ec023df055a110614a9d88c70a4204c76fe3da9ddb596"
+        }
+      ]
+    },
+    {
+      "sketch": "2016/Generativos/noiseGrids",
+      "note_path": "survey/out/2016/Generativos/noiseGrids/notes.md",
+      "note_sha256": "8aeeda267478defc977df3d7aab46e2cd28a628781522d78b3d8fc0392164994",
+      "closed_gaps": {
+        "post.pixel-grain": {
+          "reason": "The active final noise call spans the whole raster with n=int(random(5)); its helper adds one random[-n,n) value equally to RGB. Choose n in caller composition and supply range[-n,n].",
+          "operations": [
+            "seeded-pixel-grain"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2016/Generativos/noiseGrids/noiseGrids.pde",
+          "sha256": "45d0add203bf584b981d4d4d9a428aced01400cc7eadb2cc824330db7eff9ecb"
+        }
+      ]
+    },
+    {
+      "sketch": "2017/Generativos/quadiiies",
+      "note_path": "survey/out/2017/Generativos/quadiiies/notes.md",
+      "note_sha256": "d788a5672139a8fe5e6cbf68a2a99765f963ab75453fec74c5d22626df83bfc4",
+      "closed_gaps": {
+        "post.pixel-grain": {
+          "reason": "Shared-channel pixel grain is applied to background and final raster in separate calls with symmetric small intervals. RGB_ADD handles each stage; lattice packing remains unresolved.",
+          "operations": [
+            "seeded-pixel-grain"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2017/Generativos/quadiiies/quadiiies.pde",
+          "sha256": "49590d823de3d8094c2b6126be659a32d06eedb6dd2d88c8b65d79451609d3b6"
+        }
+      ]
+    },
+    {
+      "sketch": "2017/Generativos/burbujas_ani",
+      "note_path": "survey/out/2017/Generativos/burbujas_ani/notes.md",
+      "note_sha256": "17b1e0aa5dea249f361e0b07186813ed7cf6965c5263ede047a68ac7224cfe5d",
+      "closed_gaps": {
+        "field.noise-displace": {
+          "reason": "Source mutates x by noise(x*d,y*d,t)*s-s/2, then samples y using UPDATED x and t+100. Compose two CARTESIAN axis passes with resampling between them; gradient octave samples structurally replace Processing noise. Do not sample both channels at the original point.",
+          "operations": [
+            "field-displace-2d",
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2017/Generativos/burbujas_ani/burbujas_ani.pde",
+          "sha256": "eec06f6826428ef18bf006041688b9aed9fcce593a361317d1cc93d7c2d5ecf2"
+        }
+      ]
+    },
+    {
+      "sketch": "2017/Generativos/fields",
+      "note_path": "survey/out/2017/Generativos/fields/notes.md",
+      "note_sha256": "09e09574df9374bbe161efd9f3d61fb1fb241aaee451fad9257aa5a6ced3ee98",
+      "closed_gaps": {
+        "field.noise-displace": {
+          "reason": "Source x+=noise(x*d,y*d)*s, then y samples UPDATED x. Two CARTESIAN axis passes with a new sampled field query between passes preserve the dependency; a single frozen pair at original coordinates does not.",
+          "operations": [
+            "field-displace-2d",
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2017/Generativos/fields/fields.pde",
+          "sha256": "b98ffb050b892c767a957f661d103956b10353d984f508a368fe95c7db438320"
+        }
+      ]
+    },
+    {
+      "sketch": "2017/Generativos/gusanos",
+      "note_path": "survey/out/2017/Generativos/gusanos/notes.md",
+      "note_sha256": "ee9bd680081c2c637427e5d5ae417e74fc7069eafe4cf7f52968b5d1c0465c38",
+      "closed_gaps": {
+        "field.noise-displace": {
+          "reason": "The helper uses angle=noise*TAU*2 and distance=pow(noise,0.2)*amp. Caller scalar pow shapes an already sampled magnitude; POLAR owns angle/distance conversion and addition. Ridge drawing and simple scalar clamp/power remain caller composition.",
+          "operations": [
+            "field-displace-2d",
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2017/Generativos/gusanos/gusanos.pde",
+          "sha256": "b62fb181167dc5afb692e0a1e513d767cecd1593afb87727903cb8be0a08a8a5"
+        }
+      ]
+    },
+    {
+      "sketch": "2018/Generativos/popote",
+      "note_path": "survey/out/2018/Generativos/popote/notes.md",
+      "note_sha256": "119e0d9879056ed8e9cd7a1aa23bd4e9940d769f83b85b0617fd5e2cbeed5e9a",
+      "closed_gaps": {
+        "field.noise-displace": {
+          "reason": "Paired Processing-noise samples map to angle*TAU*2 and distance*80. Octave-gradient samples with two caller query offsets/scales feed POLAR; no hidden noise or displacement loop is needed.",
+          "operations": [
+            "field-displace-2d",
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        },
+        "field.fbm": {
+          "reason": "Active noiseDetail(2) supplies paired angle/distance fields; displacement is resolved separately by POLAR conversion. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/popote/popote.pde",
+          "sha256": "23b7f9f70c1529392ade0e63fe46ab215b1cb11cade0424811d5acf30dbad83c"
+        }
+      ]
+    },
+    {
+      "sketch": "2018/Generativos/horizontes",
+      "note_path": "survey/out/2018/Generativos/horizontes/notes.md",
+      "note_sha256": "1a1b061a730d116829d385b126ab4bc9029f22163552b6649382c918e2d21e3c",
+      "closed_gaps": {
+        "field.noise-displace": {
+          "reason": "x offset is centered 2-octave noise; y offset multiplies a 4-octave sample by pow(a separate1-octave sample,0.2). Existing field calls plus ordinary scalar multiplication/power produce supplied sample pairs for CARTESIAN. This is shaping completed fields, not nonlinear shaping within octave accumulation.",
+          "operations": [
+            "field-displace-2d",
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        },
+        "field.fbm": {
+          "reason": "Source switches detail2,4,1 for its x field and two y fields. Separate octave calls followed by scalar product/power preserve this decomposition; no single accumulator is claimed to own their product. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/horizontes/horizontes.pde",
+          "sha256": "6e277c0e22f81cc8fb2de2e4d5d07a7e716951544eb54b664dcfe50e039fc6c6"
+        }
+      ]
+    },
+    {
+      "sketch": "2020/generative/01_04/arena",
+      "note_path": "survey/out/2020/generative/01_04/arena/notes.md",
+      "note_sha256": "133a8d73b0a9c6af1c668181a5b7ad7f0ba003cdcea22d51bef138b434dd54c2",
+      "closed_gaps": {
+        "field.noise-displace": {
+          "reason": "Two POLAR passes use angle noise and affine-clamped magnitude noise, resampling after the first displacement. Scalar constrain is caller composition. The subsequent radial attraction/blending remains an explicit separate gap.",
+          "operations": [
+            "field-displace-2d",
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2020/generative/01_04/arena/arena.pde",
+          "sha256": "33d8c00cd79e04dedef5c2a84806c7f3e1670dab698148e1e0c79476985cb3e9"
+        }
+      ]
+    },
+    {
+      "sketch": "2020/generative/01_04/opena",
+      "note_path": "survey/out/2020/generative/01_04/opena/notes.md",
+      "note_sha256": "e36eb9eacb63dffb5983b16c84446cdb00f2b11f7c1e0c17461392abddf70cad",
+      "closed_gaps": {
+        "field.noise-displace": {
+          "reason": "Two POLAR passes with resampling use noise*TAU*3 and clamped magnitude fields at distinct scales. The subsequent radial attraction remains a separate gap; closing the sampled-field component does not close the scene.",
+          "operations": [
+            "field-displace-2d",
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        },
+        "field.fbm": {
+          "reason": "Active noiseDetail(4) supplies four-octave fields before the two displacement stages. Radial attraction remains unresolved. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2020/generative/01_04/opena/opena.pde",
+          "sha256": "5255ea818ddc72634f538f66ab62a4b195fc81fab7964202748d06c914152113"
+        }
+      ]
+    },
+    {
+      "sketch": "2018/Generativos/OP/op_016",
+      "note_path": "survey/out/2018/Generativos/OP/op_016/notes.md",
+      "note_sha256": "12fd2ad8ca31368c007ea09f92dcda0ab6d813c6bf2f1e228d2a5accdaff4e68",
+      "closed_gaps": {
+        "field.fbm": {
+          "reason": "Active noiseDetail(2) feeds ellipse amplitude; pow(completedNoise,2) is an ordinary scalar mapping after accumulation. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/OP/op_016/op_016.pde",
+          "sha256": "dc7892bddc42c42734356ac712e57b90947fe4b235fb131be2041c438ac80a15"
+        }
+      ]
+    },
+    {
+      "sketch": "2018/Generativos/circles005",
+      "note_path": "survey/out/2018/Generativos/circles005/notes.md",
+      "note_sha256": "a82715922e88623a7dc274a321d16bb40bec783e19745b5f9c2219f8bdd3ba60",
+      "closed_gaps": {
+        "field.fbm": {
+          "reason": "Exact source uses noiseDetail(3), correcting the notes count. The field dependency maps to three gradient octaves; pixel shader grain remains unresolved. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/circles005/circles005.pde",
+          "sha256": "dee2d50862d06b56ae86993239e6e70d2512e4b3c766e546f18859e878b12c89"
+        }
+      ]
+    },
+    {
+      "sketch": "2018/Generativos/citypop",
+      "note_path": "survey/out/2018/Generativos/citypop/notes.md",
+      "note_sha256": "2d8ae79fc7aedf0e4f55bdae303ccd5ba9fb971b5656d350ad0a807780023ccf",
+      "closed_gaps": {
+        "field.fbm": {
+          "reason": "Active montains calls query the ordinary Processing noise field. The only explicit noiseDetail(2) is in the inactive flowers helper, so it is not treated as an active two-octave setting. Explicit octave scheduling supplies a structural field replacement for the ridge component, not a replay claim. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/citypop/city.pde",
+          "sha256": "b5f7a4ed4f46ff18c225daeef6a87b1c4c34c2d7b701f7d046519fffcde8926b"
+        },
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/citypop/citypop.pde",
+          "sha256": "e4ed6662a78dcaabf4e7a8405a21a3b4b5af4051e2a3e6781a508689984dff4a"
+        },
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/citypop/clouds.pde",
+          "sha256": "cda384b47bb4f4d359dfc06f2565db9901bb14f738bc2e5bfcfda748daff3664"
+        },
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/citypop/flowers.pde",
+          "sha256": "7650c9b9bc9388b649b8d6caaca5af3e61eae4f72cea720772df019f97fe5872"
+        },
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/citypop/formsSky.pde",
+          "sha256": "62e1d4bee51487d888a9c9e76e45e3e066236f3fbd1399d074833a19c98f197a"
+        },
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/citypop/montains.pde",
+          "sha256": "70b7631e06f776d2871be9fd57441fe1155a96bb01d70f04e3384b9a7bb33327"
+        }
+      ]
+    },
+    {
+      "sketch": "2018/Generativos/griiiids",
+      "note_path": "survey/out/2018/Generativos/griiiids/notes.md",
+      "note_sha256": "52cf5bd199c21a36730c3283d0645e8503f420345d3518f3a3d491a5558c974d",
+      "closed_gaps": {
+        "field.fbm": {
+          "reason": "Active noiseDetail(2) precedes field-sized marks/time-dependent angles. Two gradient octaves supply the dependency; grading, grain and vignette remain unresolved. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/griiiids/griiiids.pde",
+          "sha256": "dbea911286efba839651c5c51d1ace108e0b2495934f433761406d5391d88c3a"
+        }
+      ]
+    },
+    {
+      "sketch": "2018/Generativos/micro",
+      "note_path": "survey/out/2018/Generativos/micro/notes.md",
+      "note_sha256": "9e4bf68abaca6166b121a99060fe7dc132b84172cdd422515348f2e27d788990",
+      "closed_gaps": {
+        "field.fbm": {
+          "reason": "Active noiseDetail(2,0.45) supplies packing size and color fields. Two octaves close this field dependency; ordered-circle-filter and triangulation remain the existing ledger composition, not functionality of this new operation. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/micro/micro.pde",
+          "sha256": "6bbf636fe6a6d0bbf09116b5e09f0e33a4544cde85f583105e6c4d525bfc3f3f"
+        }
+      ]
+    },
+    {
+      "sketch": "2018/Generativos/noisub/noisub003",
+      "note_path": "survey/out/2018/Generativos/noisub/noisub003/notes.md",
+      "note_sha256": "469a9a49c3acd8d38b34af3b19ea5a53e6518639fabc720fbca948e9d7bb627a",
+      "closed_gaps": {
+        "field.fbm": {
+          "reason": "Active noiseDetail(2,0.45) supplies the subdivision threshold/shading field; conditional partition algorithm remains unresolved. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/noisub/noisub003/noisub003.pde",
+          "sha256": "e8923f1ff9274dbdee65870543d8485faf1f4fb050ab247a8b0a58a67512b338"
+        }
+      ]
+    },
+    {
+      "sketch": "2018/Generativos/noisub/noisub004",
+      "note_path": "survey/out/2018/Generativos/noisub/noisub004/notes.md",
+      "note_sha256": "33684803fa2589d4748ae22d5a1eebb21f9a79476f1c67c8c3204f13fe12209c",
+      "closed_gaps": {
+        "field.fbm": {
+          "reason": "Withheld transfer: active noiseDetail(2,0.45) feeds minimum-size gate/corner selection. Count5/falloff0.9 experiment is confounded. Conditional partition remains unresolved. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/noisub/noisub004/noisub004.pde",
+          "sha256": "e8923f1ff9274dbdee65870543d8485faf1f4fb050ab247a8b0a58a67512b338"
+        }
+      ]
+    },
+    {
+      "sketch": "2018/Generativos/noisub/noisub005",
+      "note_path": "survey/out/2018/Generativos/noisub/noisub005/notes.md",
+      "note_sha256": "5287c4353b086ac4e6ceb936ddf380cf2cc783a43785f6d0a64bb6627885eab5",
+      "closed_gaps": {
+        "field.fbm": {
+          "reason": "Active noiseDetail(2,0.45) supplies the threshold field; subdivision remains unresolved. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/noisub/noisub005/noisub005.pde",
+          "sha256": "d9a6ef360dcae61b8cf048f6c038961f8b8d212bbabaf7b5ae4da670749249b8"
+        }
+      ]
+    },
+    {
+      "sketch": "2018/Generativos/peligths",
+      "note_path": "survey/out/2018/Generativos/peligths/notes.md",
+      "note_sha256": "6e860afdcaf386748d95047e08837071141946a0cb0e072efc347f04e3e93834",
+      "closed_gaps": {
+        "field.fbm": {
+          "reason": "Active noiseDetail(2) supplies two fields; POLAR displacement converts angle=noise*TAU*3 and distance=noise*80. Both new field operations are needed for this structural composition. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise",
+            "field-displace-2d"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2018/Generativos/peligths/peligths.pde",
+          "sha256": "6945259905c9d27bd3ced9b476c2d5693f1202444de37296773f5db87baf1b91"
+        }
+      ]
+    },
+    {
+      "sketch": "2019/generativos/demolision",
+      "note_path": "survey/out/2019/generativos/demolision/notes.md",
+      "note_sha256": "b64c94edfcb2ff9e2a38a1afd51c516f3c7ca7cae90df3fd7f7f9b6b812db54b",
+      "closed_gaps": {
+        "field.fbm": {
+          "reason": "Active noiseDetail(2) supplies the 2D queried wobble values used for scene rotations. Ordinary host rotations remain drawing; no mesh deformation is inferred. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2019/generativos/demolision/demolision.pde",
+          "sha256": "bb511851c1948592b2430ad2189d872763f45ee50e806a986061b5178d51fd8d"
+        }
+      ]
+    },
+    {
+      "sketch": "2020/generative/01_04/fieldop",
+      "note_path": "survey/out/2020/generative/01_04/fieldop/notes.md",
+      "note_sha256": "223b8730ae03cd939de5f88a05a7e1717f863446d09755b711244afc91280cf6",
+      "closed_gaps": {
+        "field.fbm": {
+          "reason": "Actual source switches noiseDetail4 then3 before active queries. Three gradient octaves replace only the Processing-noise dependency; its x/z SimplexNoise matrix and 3D deformation retain separate gaps. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2020/generative/01_04/fieldop/fieldop.pde",
+          "sha256": "44d9641ff5e07edf6514c019c7a968292d85f5f80be6aade555d312d3cbdea56"
+        }
+      ]
+    },
+    {
+      "sketch": "2020/generative/01_04/telfi",
+      "note_path": "survey/out/2020/generative/01_04/telfi/notes.md",
+      "note_sha256": "0fa1fe6d2aea5a08171d8a8bf18d1e15f18f0834164ede712a93cc3f0d27ac07",
+      "closed_gaps": {
+        "field.fbm": {
+          "reason": "Active noiseDetail(4) supplies the Processing-noise dependency (notes mislabel simplex). The initial x/z matrix and subsequent ordered axis updates do not become a complete2D scene mapping; the displacement gap remains. Existing gradient noise is an explicit structural substitution; Processing noise samples/seeds are not replayed.",
+          "operations": [
+            "octave-gradient-noise"
+          ],
+          "fidelity": "plausible structural component mapping, not executed original recreation"
+        }
+      },
+      "additional_gaps": [],
+      "source_files": [
+        {
+          "path": "/home/colin/dev/processing_sketches/2020/generative/01_04/telfi/telfi.pde",
+          "sha256": "81d34c24cc253e12bf08326c611228f6461bd8c7beced0daaa81ddae5328cc3a"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "assessed": 800,
+    "snapshot": 826,
+    "target": 901,
+    "plausibly_supported": 474,
+    "operation_led_plausibly_supported": 381,
+    "host_glue_only": 93,
+    "core_supported_secondary_gap": 40,
+    "unsupported": 286,
+    "unassessed_snapshot": 26,
+    "outside_snapshot": 75,
+    "demonstrated_originals": 4,
+    "newly_demonstrated": 0,
+    "delta_plausible_vs_439": 35,
+    "delta_operation_led_vs_346": 35,
+    "shares": {
+      "800": {
+        "plausible": 0.5925,
+        "operation_led": 0.47625
+      },
+      "826": {
+        "plausible": 0.5738498789346247,
+        "operation_led": 0.4612590799031477
+      },
+      "901": {
+        "plausible": 0.5260821309655938,
+        "operation_led": 0.42286348501664817
+      }
+    },
+    "newly_plausible_sketches": [
+      "2014/Generativos/cuadraditos",
+      "2014/Generativos/minimalCirculines",
+      "2014/Generativos/quadFeos",
+      "2016/Generativos/ThePiper",
+      "2016/Generativos/noiseGrids",
+      "2017/Generativos/burbujas_ani",
+      "2017/Generativos/fields",
+      "2017/Generativos/gusanos",
+      "2018/Generativos/OP/op_016",
+      "2018/Generativos/citypop",
+      "2018/Generativos/horizontes",
+      "2018/Generativos/micro",
+      "2018/Generativos/peligths",
+      "2018/Generativos/popote",
+      "2019/generativos/demolision"
+    ],
+    "delta_plausible_vs_reconciled459": 15,
+    "delta_operation_led_vs_reconciled366": 15
+  },
+  "evidence_sha256": {
+    "evidence/coverage/batch1/seeded-pixel-grain/root-review.json": "7959154e25bb9775b5d8c1a1acce30e787571382354fa948214ec83eb40502c2",
+    "evidence/coverage/batch1/field-displace-2d/root-review.json": "41a767f259f897c8a5acc86b4f8498aecb7d8768b073d58bdf105e28a7c45062",
+    "evidence/coverage/batch1/octave-gradient-noise/root-review.json": "37c611fe2986e45fbd947e6d12853bcfc60d1186c31bf0ba663cb7ca4509b247"
+  },
+  "limits": [
+    "Baseline classifications outside these three families are inherited, not recertified.",
+    "Original grain benchmark failed; other two native studies are preregistered independent components.",
+    "All three transfers are source walkthroughs; no transfer render claimed.",
+    "No exact shared RNG/noise replay or cross-target acceptance inferred."
+  ],
+  "measured_sequence": [
+    {
+      "family": "post.pixel-grain",
+      "plausibly_supported": 464,
+      "operation_led": 371
+    },
+    {
+      "family": "field.noise-displace",
+      "plausibly_supported": 467,
+      "operation_led": 374
+    },
+    {
+      "family": "field.fbm",
+      "plausibly_supported": 474,
+      "operation_led": 381
+    }
+  ]
+}

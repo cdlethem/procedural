@@ -1,0 +1,73 @@
+{
+  "status": "measured",
+  "runtime": "v22.22.1",
+  "scope": "Local Node; setup separated, one warmup and three repeats; no browser/mobile throughput guarantee.",
+  "results": [
+    {
+      "count": 1,
+      "octaves": 1,
+      "setupMs": 0.017000000000003013,
+      "elapsedMs": [
+        0.025190000000002044,
+        0.07679999999999865,
+        0.029920000000004165
+      ],
+      "result_sha256": "7b91c31ea01af7baa8dfce890beab1ff63630e5bac23c0d449687b30846d9046"
+    },
+    {
+      "count": 1,
+      "octaves": 4,
+      "setupMs": 0.007449999999998624,
+      "elapsedMs": [
+        0.03305000000000291,
+        0.016059999999995966,
+        0.01185000000000258
+      ],
+      "result_sha256": "0ebf62a473cfa32b8e677766806ae398a5ed67b377c9dedacce6f5ff762fd966"
+    },
+    {
+      "count": 1,
+      "octaves": 8,
+      "setupMs": 0.002559999999995455,
+      "elapsedMs": [
+        0.02190999999999832,
+        0.018259999999997945,
+        0.155859999999997
+      ],
+      "result_sha256": "410d1cd632cdf1a0c7ce925aeafc00a5f05847172408ec956d64ea89618a2cdf"
+    },
+    {
+      "count": 100000,
+      "octaves": 1,
+      "setupMs": 7.441336,
+      "elapsedMs": [
+        42.72537,
+        37.757101000000006,
+        36.839923
+      ],
+      "result_sha256": "3d82f0a9f7a1f76ff3f70641e29746368f54a707f8bcfcbe28be3ec34a153225"
+    },
+    {
+      "count": 100000,
+      "octaves": 4,
+      "setupMs": 2.2888089999999863,
+      "elapsedMs": [
+        50.130426,
+        50.130904999999984,
+        49.22969599999999
+      ],
+      "result_sha256": "89998f3092482157ef77041ca863f27d7559df04354fd826d404a57aacdb6c5b"
+    },
+    {
+      "count": 100000,
+      "octaves": 8,
+      "setupMs": 2.378829000000053,
+      "elapsedMs": [
+        67.656387,
+        70.37406600000008,
+        75.04625299999998
+      ],
+      "result_sha256": "0456e011cfb3525ff2623f6b7601fe442d276d96133e263d8a75976b260f48a5"
+    }
+  ]
+}

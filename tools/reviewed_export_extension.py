@@ -250,7 +250,7 @@ def _validate_p5_tenfold(root, snapshots):
     test = 'tests/test_reviewed_export_extension.py'
     prior_names = {HELPER, JS_INDEX, test}
     required = prior_names | {f'packages/javascript/src/{stem}.js' for stem, _ in P5_TENFOLD_BINDINGS}
-    if (not _accepted(review) or not _bindings(root, review, {})
+    if (not _accepted(review) or not _bindings(root, review, snapshots)
             or not required.issubset(review['implementation_sha256'])
             or P5_GALLERY not in review['evidence_sha256']
             or review['previous_review_sha256'] != _digest(_read(root, P5_GALLERY))):
@@ -263,8 +263,73 @@ def _validate_p5_tenfold(root, snapshots):
     entry = review['extensions'][JS_INDEX]
     if (set(entry) != {'before', 'after'} or entry['before'] != prior[JS_INDEX]
             or entry['after'] != prior[JS_INDEX] + P5_TENFOLD_ADDITIONS
-            or entry['after'].encode() != _read(root, JS_INDEX)):
+            or entry['after'].encode() != snapshots.get(JS_INDEX, _read(root, JS_INDEX))):
         return False
+    snapshots.update({name: value.encode() for name, value in prior.items()})
+    return True
+
+
+BATCH1_SURFACE = 'evidence/conformance/survey-batch1-surface-compatibility-review.json'
+BATCH1_GENERATOR = 'apps/web/scripts/generate-api.mjs'
+BATCH1_GUIDES = 'apps/web/content/survey-coverage-api.mjs'
+BATCH1_PRIOR_WEB = 'evidence/web/p5-tenfold/root-review.json'
+BATCH1_BINDINGS = (('seeded-pixel-grain', 'seededPixelGrain', 'SeededPixelGrainError'),
+                   ('field-displace-2d', 'fieldDisplace2D', 'FieldDisplace2DError'),
+                   ('octave-gradient-noise', 'octaveGradientNoise', 'OctaveGradientNoiseError'))
+BATCH1_ROOT_REVIEWS = tuple(
+    f'evidence/coverage/batch1/{stem}/root-review.json' for stem, _, _ in BATCH1_BINDINGS)
+BATCH1_ADDITIONS = ''.join(f'export {{ {name}, {error} }} from "./{stem}.js";\n' for stem, name, error in BATCH1_BINDINGS)
+
+
+def batch1_generator_successor(before):
+    """Only three named bindings and an isolated authored-guide fallback are admitted."""
+    changes = (
+        ('import { apiGuides } from "../content/api-guides.mjs";\n',
+         'import { apiGuides } from "../content/api-guides.mjs";\nimport { surveyCoverageApiGuides } from "../content/survey-coverage-api.mjs";\n'),
+        ('const bindings = {\n', 'const bindings = {\n' + ''.join(
+            f'  "{stem}": ["{stem}", "{name}"],\n' for stem, name, _ in BATCH1_BINDINGS)),
+        ('const guide = apiGuides[catalog.id];',
+         'const guide = surveyCoverageApiGuides[catalog.id] ?? apiGuides[catalog.id];'),
+    )
+    result = before
+    for old, new in changes:
+        if result.count(old) != 1:
+            return None
+        result = result.replace(old, new)
+    return result
+
+
+def _validate_batch1_surface(root, snapshots):
+    review = json.loads(_read(root, BATCH1_SURFACE))
+    older = json.loads(_read(root, P5_TENFOLD))
+    web = json.loads(_read(root, BATCH1_PRIOR_WEB))
+    test = 'tests/test_reviewed_export_extension.py'
+    prior_names = {HELPER, test, JS_INDEX, BATCH1_GENERATOR}
+    required = prior_names | {BATCH1_GUIDES} | {f'packages/javascript/src/{stem}.js' for stem, _, _ in BATCH1_BINDINGS}
+    evidence = {P5_TENFOLD, BATCH1_PRIOR_WEB, *BATCH1_ROOT_REVIEWS}
+    if (not _accepted(review) or not _bindings(root, review, {})
+            or not required.issubset(review['implementation_sha256'])
+            or not evidence.issubset(review['evidence_sha256'])
+            or review.get('previous_review_sha256') != _digest(_read(root, P5_TENFOLD))):
+        return False
+    prior = review['previous_bytes']
+    if set(prior) != prior_names or set(review['extensions']) != {JS_INDEX, BATCH1_GENERATOR}:
+        return False
+    for name in prior:
+        source = web if name == BATCH1_GENERATOR else older
+        if _digest(prior[name].encode()) != source['implementation_sha256'][name]:
+            return False
+    expected = {JS_INDEX: prior[JS_INDEX] + BATCH1_ADDITIONS,
+                BATCH1_GENERATOR: batch1_generator_successor(prior[BATCH1_GENERATOR])}
+    for name in expected:
+        entry = review['extensions'][name]
+        if (set(entry) != {'before', 'after'} or entry['before'] != prior[name]
+                or entry['after'] != expected[name] or entry['after'].encode() != _read(root, name)):
+            return False
+    for name in BATCH1_ROOT_REVIEWS:
+        accepted = json.loads(_read(root, name))
+        if not _accepted(accepted) or not _bindings(root, accepted, {}):
+            return False
     snapshots.update({name: value.encode() for name, value in prior.items()})
     return True
 
@@ -277,11 +342,17 @@ def historical_export_bytes(root, relative, expected):
     supplies two old source snapshots only to archival binding checks. Returned bytes
     are always entrypoints; runtime operation validation never uses these snapshots.
     """
-    if relative not in PATHS:
+    batch1_archival_paths = {JS_INDEX, BATCH1_GENERATOR, HELPER, 'tests/test_reviewed_export_extension.py'}
+    if relative not in PATHS and relative not in batch1_archival_paths:
         return None
     try:
         snapshots = {}
         successor_match = None
+        if (root / BATCH1_SURFACE).exists():
+            if not _validate_batch1_surface(root, snapshots):
+                return None
+            if relative in batch1_archival_paths and _digest(snapshots[relative]) == expected:
+                successor_match = snapshots[relative]
         if (root / P5_TENFOLD).exists():
             if not _validate_p5_tenfold(root, snapshots):
                 return None

@@ -1,0 +1,73 @@
+{
+  "status": "measured",
+  "runtime": "v22.22.1",
+  "scope": "Local Node; setup separated, one warmup and three repeats; field sampling excluded; no mobile throughput guarantee.",
+  "results": [
+    {
+      "count": 1,
+      "mode": "CARTESIAN",
+      "setupMs": 0.02436999999999756,
+      "elapsedMs": [
+        0.02611999999999881,
+        0.06399000000000399,
+        0.01523000000000252
+      ],
+      "result_sha256": "31bae82e2ef072d996753e0c40af70c0ec22db44e678aa95a6ec34210d966cac"
+    },
+    {
+      "count": 1,
+      "mode": "POLAR",
+      "setupMs": 0.007789999999999964,
+      "elapsedMs": [
+        0.023780000000002133,
+        0.01109000000000293,
+        0.006059999999997956
+      ],
+      "result_sha256": "31bae82e2ef072d996753e0c40af70c0ec22db44e678aa95a6ec34210d966cac"
+    },
+    {
+      "count": 10000,
+      "mode": "CARTESIAN",
+      "setupMs": 2.704577999999998,
+      "elapsedMs": [
+        6.340767000000007,
+        7.575946000000002,
+        7.851895999999996
+      ],
+      "result_sha256": "847bf94ae7e02e4e331be95175b2cab02decbe251296497a6ea2bb55a6e9d551"
+    },
+    {
+      "count": 10000,
+      "mode": "POLAR",
+      "setupMs": 1.0462190000000078,
+      "elapsedMs": [
+        9.291124999999994,
+        7.738636,
+        7.853256999999999
+      ],
+      "result_sha256": "fca5f91de27843f4b31ee7eb9be0307e90118d0e0aa558c05f9f488f9130c044"
+    },
+    {
+      "count": 100000,
+      "mode": "CARTESIAN",
+      "setupMs": 9.687345000000022,
+      "elapsedMs": [
+        74.61309399999999,
+        76.09733299999999,
+        94.26519400000001
+      ],
+      "result_sha256": "a9fe215f36db88ca0acbd79b2ffb2c7cc7a7e0fa5cd931837c61065458bf13ae"
+    },
+    {
+      "count": 100000,
+      "mode": "POLAR",
+      "setupMs": 10.313673999999992,
+      "elapsedMs": [
+        79.61004100000002,
+        78.77998200000002,
+        77.32276200000001
+      ],
+      "result_sha256": "9d6b1178499d5fc64a06f9a86ff4dffa562f745ee70e7cebc15366ad7b7daf22"
+    }
+  ]
+}

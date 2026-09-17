@@ -1,5 +1,129 @@
 # Genart survey recreation coverage and missing operations
 
+## Current reconciliation — 2026-09-17
+
+The [reviewed reconciliation](../evidence/coverage/reconciliation-2026-09-17.json) compared the **64 pre-batch contracts**
+with all 69 blocking families. It corrects only named affected sketches; it does not
+repeat or certify the full 800-sketch classification. The original report and ledger are
+preserved unchanged in Git commit `c7071577`. All 826 note hashes still match.
+
+| Scope | Plausibly supported | Operation-led subset |
+|---|---:|---:|
+| Assessed | 474/800 (59.2%) | 381/800 (47.6%) |
+| Snapshot | 474/826 (57.4%) | 381/826 (46.1%) |
+| Target | 474/901 (52.6%) | 381/901 (42.3%) |
+
+This is **+35 plausible sketches** versus 439, and
+**+35 operation-led sketches** versus 346. There are still only
+**four demonstrated originals**; reconciliation adds no executed recreation.
+
+The most consequential correction is that `gradient-path` already implements affine
+scalar-noise-to-heading tracing. Source inspection also shows `mountain3` and `mountain4`
+choose speed once per path. Simplex, nonlinear/summed fields, step-index noise and 3D
+walks retain their gaps. Name-only Poisson, spline, offset and edge-detection matches fail.
+The full catalog inventory distinguishes frozen pending/draft prose from current bound
+validation attestations, which accept 67 p5 cores and scoped native workflows.
+
+Batch 1 adds **three p5 capabilities**, bringing the catalog to **67**: seeded pixel grain,
+sampled-field displacement and octave gradient noise. Each has core fixtures and an
+editable native study with checked edits, reset/reload and save. Other targets are deferred.
+The [batch review](../evidence/coverage/batch1/coverage-review.json) adds **+15 plausible**
+and **+15 operation-led** sketches after the 459/366 reconciliation.
+Newly demonstrated originals: **0**. Grain failed its preregistered SSIM threshold
+**0.674 < 0.7**; displacement and octave studies demonstrate components only.
+Transfers are source/contract walkthroughs, not rendered recreations.
+[Grain evidence](../evidence/coverage/batch1/seeded-pixel-grain/root-review.json),
+[displacement evidence](../evidence/coverage/batch1/field-displace-2d/root-review.json),
+[octave evidence](../evidence/coverage/batch1/octave-gradient-noise/root-review.json).
+The historical step-0 broad-family upper bounds (488, 516 and 536) are not measured
+gains. Random-grey blending, saturation grain, per-fragment shader scheduling, 3D
+displacement, simplex/value noise and nonlinear multifractals remain outside the
+three contracts. Cases without a verified complete mapping retain their gaps.
+
+### Current family dispositions
+
+Closed means every assessed instance maps; partial means only some instances or a
+component maps. A partial overlap earns no gain unless a named sketch mapping closes
+its gap. Citations link to the governing catalog clause; detailed mappings and limits
+are in the reconciliation JSON. Counts are residual affected / sole remaining gap.
+
+| Family | Verdict | Residual affected / sole gap | Catalog evidence |
+|---|---|---:|---|
+| `post.pixel-grain` | partial | 50 / 25 | [seeded-pixel-grain/behavior/algorithm](../catalog/operations/seeded-pixel-grain.json) |
+| `field.noise-displace` | partial | 42 / 26 | [field-displace-2d/behavior/algorithm](../catalog/operations/field-displace-2d.json) |
+| `path.flow-trace` | partial | 27 / 19 | [gradient-path/behavior/advance](../catalog/operations/gradient-path.json) |
+| `field.fbm` | partial | 15 / 5 | [octave-gradient-noise/behavior/algorithm](../catalog/operations/octave-gradient-noise.json) |
+| `post.vignette` | live | 28 / 0 | [masked-source-over/behavior/compositing](../catalog/operations/masked-source-over.json) |
+| `layout.unequal-four-way-partition` | live | 24 / 15 | [seeded-quadrant-partition/behavior/replacement](../catalog/operations/seeded-quadrant-partition.json) |
+| `post.color-grade` | live | 20 / 1 | [oklab-ramp/behavior/algorithm](../catalog/operations/oklab-ramp.json) |
+| `path.heading-wander` | live | 18 / 7 | [noise-band-path/behavior/transition](../catalog/operations/noise-band-path.json) |
+| `layout.conditional-mixed-partition` | live | 14 / 8 | [seeded-quadrant-partition/behavior/replacement](../catalog/operations/seeded-quadrant-partition.json) |
+| `layout.variable-grid-partition` | live | 13 / 10 | [seeded-quadrant-partition/behavior/replacement](../catalog/operations/seeded-quadrant-partition.json) |
+| `path.unrestricted-grid-walk` | partial | 13 / 11 | [cost-grid-paths-2d/behavior/algorithm](../catalog/operations/cost-grid-paths-2d.json) |
+| `field.simplex-noise` | live | 12 / 7 | [gradient-noise-2d-01/behavior/gradients](../catalog/operations/gradient-noise-2d-01.json) |
+| `layout.biased-binary-partition` | live | 10 / 7 | [seeded-quadrant-partition/behavior/replacement](../catalog/operations/seeded-quadrant-partition.json) |
+| `path.custom-state-walk` | partial | 10 / 4 | [seeded-depth-first-spanning-tree/behavior/algorithm](../catalog/operations/seeded-depth-first-spanning-tree.json) |
+| `topology.proximity-graph` | live | 9 / 4 | [delaunay-2d/behavior/input](../catalog/operations/delaunay-2d.json) |
+| `layout.box-subdivide-3d` | live | 7 / 7 | [seeded-quadrant-partition/behavior/replacement](../catalog/operations/seeded-quadrant-partition.json) |
+| `mark.tapered-line` | partial | 2 / 0 | [parallel-transport-ribbon-3d/behavior/algorithm](../catalog/operations/parallel-transport-ribbon-3d.json) |
+| `topology.triangle-subdivide` | partial | 7 / 6 | [loop-subdivide-triangles-3d/behavior/algorithm](../catalog/operations/loop-subdivide-triangles-3d.json) |
+| `field.radial-attract-repel` | live | 6 / 5 | [radial-pull-2d/behavior/identity](../catalog/operations/radial-pull-2d.json) |
+| `other.long-tail` | live | 6 / 4 | [seeded-line-pool-2d/behavior/transition_specification](../catalog/operations/seeded-line-pool-2d.json) |
+| `field.raster-domain-warp` | live | 5 / 2 | [bilinear-raster-remap/behavior/input](../catalog/operations/bilinear-raster-remap.json) |
+| `layout.grid-transform` | live | 5 / 4 | [regular-grid/behavior/point](../catalog/operations/regular-grid.json) |
+| `layout.quad-subdivide` | live | 5 / 5 | [seeded-quadrant-partition/behavior/replacement](../catalog/operations/seeded-quadrant-partition.json) |
+| `layout.retained-parent-partition` | live | 5 / 2 | [seeded-quadrant-partition/behavior/replacement](../catalog/operations/seeded-quadrant-partition.json) |
+| `mesh.extrude` | partial | 1 / 0 | [extrude-simple-polygon-3d/behavior/algorithm](../catalog/operations/extrude-simple-polygon-3d.json) |
+| `post.directional-mask-blur` | live | 5 / 4 | [convolve-2d-signed/behavior/algorithm](../catalog/operations/convolve-2d-signed.json) |
+| `post.scanlines` | live | 5 / 0 | [separable-blur-2d/behavior/filtering](../catalog/operations/separable-blur-2d.json) |
+| `sampling.circle-pack` | partial | 1 / 0 | [ordered-circle-filter/behavior/acceptance](../catalog/operations/ordered-circle-filter.json) |
+| `geometry.segment-intersection` | live | 4 / 3 | [nearest-segment-contact-2d/behavior/selection](../catalog/operations/nearest-segment-contact-2d.json) |
+| `layout.packing-shelf` | partial | 4 / 3 | [skyline-pack-2d/behavior/algorithm](../catalog/operations/skyline-pack-2d.json) |
+| `mark.brush-texture` | live | 4 / 0 | [resample-polyline-2d/behavior/algorithm](../catalog/operations/resample-polyline-2d.json) |
+| `mesh.point-cloud` | live | 4 / 1 | [poisson-disc-2d/behavior/algorithm](../catalog/operations/poisson-disc-2d.json) |
+| `path.recursive-branch` | live | 4 / 4 | [parallel-token-rewrite/behavior/algorithm](../catalog/operations/parallel-token-rewrite.json) |
+| `post.chromatic-offset` | live | 4 / 0 | [convolve-2d-signed/behavior/algorithm](../catalog/operations/convolve-2d-signed.json) |
+| `post.feedback` | live | 4 / 3 | [raster-crossfade/behavior/compositing](../catalog/operations/raster-crossfade.json) |
+| `post.threshold` | partial | 4 / 2 | [floyd-steinberg-dither/behavior/algorithm](../catalog/operations/floyd-steinberg-dither.json) |
+| `sampling.poisson-disk` | partial | 4 / 3 | [poisson-disc-2d/behavior/algorithm](../catalog/operations/poisson-disc-2d.json) |
+| `topology.polygon-subdivide` | live | 4 / 3 | [loop-subdivide-triangles-3d/behavior/algorithm](../catalog/operations/loop-subdivide-triangles-3d.json) |
+| `audio.fft` | live | 3 / 1 | [regular-grid/behavior/environment](../catalog/operations/regular-grid.json) |
+| `mesh.displaced-surface` | live | 3 / 1 | [radial-profile-surface/behavior/topology](../catalog/operations/radial-profile-surface.json) |
+| `post.spatially-varying-blur` | live | 3 / 2 | [convolve-2d-signed/behavior/algorithm](../catalog/operations/convolve-2d-signed.json) |
+| `sampling.polygon-fill` | partial | 3 / 2 | [triangulate-simple-polygon-2d/behavior/algorithm](../catalog/operations/triangulate-simple-polygon-2d.json) |
+| `sampling.weighted-choice` | live | 3 / 1 | [adjacency-tile-collapse-2d/behavior/algorithm](../catalog/operations/adjacency-tile-collapse-2d.json) |
+| `geometry.open-spline` | live | 2 / 1 | [chaikin-polyline-2d/behavior/algorithm](../catalog/operations/chaikin-polyline-2d.json) |
+| `geometry.polygon-boolean` | live | 2 / 0 | [clip-segments-simple-polygon-2d/behavior/clipping](../catalog/operations/clip-segments-simple-polygon-2d.json) |
+| `layout.other-rectangle-partition` | live | 2 / 2 | [seeded-quadrant-partition/behavior/replacement](../catalog/operations/seeded-quadrant-partition.json) |
+| `mark.dash-pattern` | live | 2 / 2 | [resample-polyline-2d/behavior/algorithm](../catalog/operations/resample-polyline-2d.json) |
+| `mesh.shader-displace` | live | 2 / 1 | [radial-profile-surface/behavior/topology](../catalog/operations/radial-profile-surface.json) |
+| `path.random-walk-3d` | live | 2 / 1 | [token-turtle-2d/behavior/algorithm](../catalog/operations/token-turtle-2d.json) |
+| `post.glow` | live | 2 / 0 | [separable-blur-2d/behavior/filtering](../catalog/operations/separable-blur-2d.json) |
+| `sampling.noise-gated` | live | 2 / 2 | [ordered-circle-filter/behavior/acceptance](../catalog/operations/ordered-circle-filter.json) |
+| `shader.unknown` | live | 2 / 2 | [convolve-2d-signed/behavior/algorithm](../catalog/operations/convolve-2d-signed.json) |
+| `topology.recursive-circle-split` | live | 2 / 2 | [seeded-quadrant-partition/behavior/replacement](../catalog/operations/seeded-quadrant-partition.json) |
+| `field.neighbour-displace` | live | 1 / 0 | [sequential-disc-projection-2d/behavior/algorithm](../catalog/operations/sequential-disc-projection-2d.json) |
+| `fractal.iteration` | live | 1 / 1 | [gray-scott-step-2d/behavior/algorithm](../catalog/operations/gray-scott-step-2d.json) |
+| `geometry.circle-intersection` | live | 1 / 1 | [nearest-segment-contact-2d/behavior/contact](../catalog/operations/nearest-segment-contact-2d.json) |
+| `geometry.point-in-polygon` | closed | 0 / 0 | [triangulate-simple-polygon-2d/behavior/algorithm](../catalog/operations/triangulate-simple-polygon-2d.json) |
+| `geometry.polygon-offset` | live | 1 / 1 | [offset-polyline-2d/behavior/algorithm](../catalog/operations/offset-polyline-2d.json) |
+| `layout.hex-lattice` | live | 1 / 1 | [regular-grid/behavior/point](../catalog/operations/regular-grid.json) |
+| `layout.irregular-grid` | live | 1 / 1 | [regular-grid/behavior/point](../catalog/operations/regular-grid.json) |
+| `mesh.cone` | live | 1 / 0 | [radial-profile-surface/behavior/topology](../catalog/operations/radial-profile-surface.json) |
+| `mesh.depth-sort` | live | 1 / 1 | [extrude-simple-polygon-3d/behavior/algorithm](../catalog/operations/extrude-simple-polygon-3d.json) |
+| `mesh.tube-along-path` | partial | 1 / 1 | [parallel-transport-ribbon-3d/behavior/algorithm](../catalog/operations/parallel-transport-ribbon-3d.json) |
+| `motion.particle-step` | live | 1 / 1 | [target-springs-2d/behavior/step](../catalog/operations/target-springs-2d.json) |
+| `motion.population` | live | 1 / 0 | [seeded-endpoint-branches/behavior/layout](../catalog/operations/seeded-endpoint-branches.json) |
+| `post.depth-fade` | live | 1 / 0 | [raster-crossfade/behavior/compositing](../catalog/operations/raster-crossfade.json) |
+| `post.edge-detect` | live | 1 / 1 | [convolve-2d-signed/behavior/algorithm](../catalog/operations/convolve-2d-signed.json) |
+| `post.lut-3d` | live | 1 / 0 | [oklab-ramp/behavior/algorithm](../catalog/operations/oklab-ramp.json) |
+| `sampling.image-driven` | live | 1 / 0 | [bilinear-raster-remap/behavior/input](../catalog/operations/bilinear-raster-remap.json) |
+
+## Historical assessment — 2026-09-13
+
+**All counts and “current” references below describe the original 34-operation
+assessment, not current support. The current correction is above.**
+
 **Assessment date:** 2026-09-13  
 **Survey snapshot:** [`survey/snapshot.json`](../survey/snapshot.json), survey revision `b64fadf8cc484025f58a112b95630a7b0c420ea3`  
 **Per-sketch ledger:** [`evidence/coverage/survey-operation-coverage.json`](../evidence/coverage/survey-operation-coverage.json)

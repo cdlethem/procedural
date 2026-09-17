@@ -1,0 +1,121 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "raster.seeded-pixel-grain",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/seeded-pixel-grain.json",
+    "catalog_sha256": "2a87b136cb4a990cfa900a42ff7711407cbbbfe2984532fbae31ff68efd51cfc"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/javascript/src/seeded-pixel-grain.js": "cdc5961f7ac0cf09cbd15b443de06e1777fccdf2b3ccb222a4ad06ddf24b8ce2",
+          "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+          "packages/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+          "packages/javascript/examples/pixel-grain/index.html": "f581c8756492277f2d6adb505260c5d0a440b79e8384ced0bc0e385fbcbb8ade",
+          "packages/javascript/examples/pixel-grain/sketch.js": "f68bdc41afa2e6734f9e716027636013abaa1bb0f0058f2ae770e697df7b4104"
+        },
+        "evidence_sha256": {
+          "evidence/coverage/batch1/seeded-pixel-grain/core.json": "2f5f2accf156945245cca72270f976607a5c43bd78682bf28df9f9fe4500e403",
+          "evidence/coverage/batch1/seeded-pixel-grain/native.json": "9ab0692edba2535a3306747a0218e3f294c23dc94f553aefcee96d102480f79b",
+          "evidence/coverage/batch1/seeded-pixel-grain/benchmark.json": "a8099a4f79173bd2d3128616e9f609e8809f3c7712ce8d3c62480fdc38189827",
+          "evidence/coverage/batch1/seeded-pixel-grain/performance.json": "4a38315cea8e836a57b87061c431ad4513a064c3560342a6ef0580874eb62b2a",
+          "evidence/coverage/batch1/seeded-pixel-grain/transfer.json": "c172c540a89a2dbf73ef4830976ffd458ed9d9a0a593ecf87220e3c5561cf1e7",
+          "fixtures/operations/seeded-pixel-grain.json": "d0198a99c59404e0e173492df5f55261ac6edce9da148e58aa08abf854129927",
+          "evidence/parameter-experiments/seeded-pixel-grain/experiment.json": "c363664b434925bfb5d80d6748a3aa4217a0f1f61709ccb8abcfcbed82b71a8e"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/coverage/batch1/seeded-pixel-grain/core.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/coverage/batch1/seeded-pixel-grain/root-review.json",
+          "sha256": "7959154e25bb9775b5d8c1a1acce30e787571382354fa948214ec83eb40502c2"
+        },
+        "runtime_profile": {
+          "name": "Node v22.22.1; p5 2.3.2 Chromium 153.0.8010.12",
+          "scope": "p5 core and native pixel-grain study only. Motivating corpus benchmark failed; technique remains unvalidated. Other targets deferred."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/javascript/src/seeded-pixel-grain.js": "cdc5961f7ac0cf09cbd15b443de06e1777fccdf2b3ccb222a4ad06ddf24b8ce2",
+          "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+          "packages/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+          "packages/javascript/examples/pixel-grain/index.html": "f581c8756492277f2d6adb505260c5d0a440b79e8384ced0bc0e385fbcbb8ade",
+          "packages/javascript/examples/pixel-grain/sketch.js": "f68bdc41afa2e6734f9e716027636013abaa1bb0f0058f2ae770e697df7b4104"
+        },
+        "evidence_sha256": {
+          "evidence/coverage/batch1/seeded-pixel-grain/core.json": "2f5f2accf156945245cca72270f976607a5c43bd78682bf28df9f9fe4500e403",
+          "evidence/coverage/batch1/seeded-pixel-grain/native.json": "9ab0692edba2535a3306747a0218e3f294c23dc94f553aefcee96d102480f79b",
+          "evidence/coverage/batch1/seeded-pixel-grain/benchmark.json": "a8099a4f79173bd2d3128616e9f609e8809f3c7712ce8d3c62480fdc38189827",
+          "evidence/coverage/batch1/seeded-pixel-grain/performance.json": "4a38315cea8e836a57b87061c431ad4513a064c3560342a6ef0580874eb62b2a",
+          "evidence/coverage/batch1/seeded-pixel-grain/transfer.json": "c172c540a89a2dbf73ef4830976ffd458ed9d9a0a593ecf87220e3c5561cf1e7",
+          "fixtures/operations/seeded-pixel-grain.json": "d0198a99c59404e0e173492df5f55261ac6edce9da148e58aa08abf854129927",
+          "evidence/parameter-experiments/seeded-pixel-grain/experiment.json": "c363664b434925bfb5d80d6748a3aa4217a0f1f61709ccb8abcfcbed82b71a8e"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/coverage/batch1/seeded-pixel-grain/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/coverage/batch1/seeded-pixel-grain/root-review.json",
+          "sha256": "7959154e25bb9775b5d8c1a1acce30e787571382354fa948214ec83eb40502c2"
+        },
+        "runtime_profile": {
+          "name": "Node v22.22.1; p5 2.3.2 Chromium 153.0.8010.12",
+          "scope": "p5 core and native pixel-grain study only. Motivating corpus benchmark failed; technique remains unvalidated. Other targets deferred."
+        }
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

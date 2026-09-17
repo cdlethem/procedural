@@ -1,0 +1,28 @@
+{
+  "status": "supported-walkthrough",
+  "owner": "root",
+  "sketch": "2014/Generativos/pelotitas",
+  "withheld_until": "Contract accepted in design/operations/seeded-pixel-grain-contract-review.md before detailed notes/source read.",
+  "notes_path": "survey/out/2014/Generativos/pelotitas/notes.md",
+  "notes_sha256": "4405350b17226c62c4dc9bf27afa3cea0e0cb669a7b240e57c02a406fe8df748",
+  "source_path": "/home/colin/dev/processing_sketches/2014/Generativos/pelotitas/pelotitas.pde",
+  "source_sha256": "9c2515bb783bdc03b4f1774c1ac64f3ccad345b1c32bf29615a27d62cca458c9",
+  "source_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+  "mechanism": "noisee() traverses y,x, adds one random(5) value equally to R,G,B before drawing the circle glyph grid.",
+  "mapping": {
+    "mode": "RGB_ADD",
+    "range": [
+      0,
+      5
+    ],
+    "exponent": 1,
+    "rngState": 42,
+    "maxWork": 480000
+  },
+  "composition": "Capture cream ground and diagonal hatching, run grain, upload; draw circle glyphs afterwards. Foreground geometry remains host drawing.",
+  "actual_execution": "Core and similar motivating study executed separately. This transfer is a source/contract walkthrough, not a native rendering.",
+  "limits": [
+    "Explicit LCG and byte rounding differ from original shared Processing random/color conversion.",
+    "No demonstrated original or pixel parity claim."
+  ]
+}

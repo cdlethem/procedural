@@ -1,0 +1,41 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "p5 pure 2D/3D octave accumulation and independent field-sized dot workflow; no original-scene reproduction and no other target.",
+  "implementation_sha256": {
+    "packages/javascript/src/octave-gradient-noise.js": "ea3556c22d7d8ae04b5863011ad9f59dfd7d2a2583ba1b6e6e9dbe7641faca10",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-noise-3d-01.js": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+    "packages/javascript/examples/octave-noise/index.html": "022bb87966eef31385ec1badc76961096d771600b4dbed366c1b59d7f5dc5c93",
+    "packages/javascript/examples/octave-noise/sketch.js": "a9bd8d66198922cecfe601fb4dc2ace09b2481becb44f6cb20129d3e510856ac"
+  },
+  "evidence_sha256": {
+    "evidence/coverage/batch1/octave-gradient-noise/core.json": "151c3a3399218af057ebf45309bd7674fdbe17e40f27af928280ec9f68c2bade",
+    "evidence/coverage/batch1/octave-gradient-noise/native.json": "e488a3fbdb958dd551ff0354e26a109c85672dfe20a89c38c423976db5a1dfd8",
+    "evidence/coverage/batch1/octave-gradient-noise/performance.json": "d7a8caf9f6089f4ed4f4a9a45f43d99fbce220eec11b45c348d3b5317efc6625",
+    "evidence/coverage/batch1/octave-gradient-noise/transfer.json": "d192aa88f7265344965ddcc76dd6fd8cf15373d9de391eba53568f322dbc67f4",
+    "fixtures/operations/octave-gradient-noise.json": "0b3baaa915baaf0d549762c256ca70b146a00a02d0c7193e97b63e9cca03a0f3",
+    "tools/build_octave_gradient_noise_fixtures.py": "c95a972e9eea3da216818cf3f1b9d2d0f35b511ba56abe606852ca8646681968"
+  },
+  "inspection": [
+    "Root inspected contract, implementation and independent Fraction-oracle fixtures;34 scenarios pass, including order-distinguishing large weights/coordinates, domain, work and failure precedence.",
+    "Root inspected the micro original and native baseline, five-octave, persistence and raw-sum images. Fixed positions remain intact; normalized added detail reduces broad size contrast, raw sum increases and saturates drawn sizes. This is a field component study, not the packed micro scene.",
+    "Final native run binds final code; all seven frame hashes equal the personally inspected prior run. Count, persistence and normalization edits pass; reset/reload/save are exact.",
+    "Integration corrected fixture metadata to comparison=exact, matching the existing object-level deep equality actually used. Golden values and runtime behavior are unchanged; explicit exact-profile checks pass."
+  ],
+  "results": {
+    "core": "conformant",
+    "native": "validated-scoped",
+    "technique": "unvalidated",
+    "transfer": "supported source walkthrough, not rendered"
+  },
+  "limits": [
+    "No exact Processing noise replay, simplex/value noise or nonlinear multifractal coverage.",
+    "Native demonstrates2D;3D core has shared fixtures, no3D native-scene claim.",
+    "No recommended artistic ranges or cross-target acceptance.",
+    "Batch package/export/catalog integration is recorded separately."
+  ]
+}

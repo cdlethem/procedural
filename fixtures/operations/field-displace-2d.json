@@ -1,0 +1,675 @@
+{
+  "operation": "field.displace-points-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "b52a961032d36a7292d35eda882cbb5a8e8603366de2f214e426f8e947eba83a",
+  "oracle": "Root analytical affine/zero-angle vectors and Java StrictMath.sin/cos oracle for positive, negative and large-angle reduction before implementation.",
+  "cases": [
+    {
+      "id": "cartesian-channel-pairing",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ],
+          [
+            -3,
+            4
+          ]
+        ],
+        "samples": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -1,
+            2
+          ]
+        ],
+        "mode": "CARTESIAN",
+        "bias": [
+          -1,
+          2
+        ],
+        "gain": [
+          4,
+          -2
+        ],
+        "maxWork": 2
+      },
+      "output": {
+        "points": [
+          [
+            1,
+            2.5
+          ],
+          [
+            -8,
+            2
+          ]
+        ],
+        "offsets": [
+          [
+            0,
+            0.5
+          ],
+          [
+            -5,
+            -2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "polar-signed-distance",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ],
+          [
+            -3,
+            4
+          ]
+        ],
+        "samples": [
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            -2
+          ]
+        ],
+        "mode": "POLAR",
+        "bias": [
+          0,
+          0
+        ],
+        "gain": [
+          1,
+          1
+        ],
+        "maxWork": 2
+      },
+      "output": {
+        "points": [
+          [
+            4,
+            2
+          ],
+          [
+            -5,
+            4
+          ]
+        ],
+        "offsets": [
+          [
+            3,
+            0
+          ],
+          [
+            -2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "empty",
+      "input": {
+        "points": [],
+        "samples": [],
+        "mode": "CARTESIAN",
+        "bias": [
+          -1,
+          2
+        ],
+        "gain": [
+          4,
+          -2
+        ],
+        "maxWork": 0
+      },
+      "output": {
+        "points": [],
+        "offsets": []
+      }
+    },
+    {
+      "id": "zero-gain",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ],
+          [
+            -3,
+            4
+          ]
+        ],
+        "samples": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -1,
+            2
+          ]
+        ],
+        "mode": "CARTESIAN",
+        "bias": [
+          0,
+          0
+        ],
+        "gain": [
+          0,
+          0
+        ],
+        "maxWork": 2
+      },
+      "output": {
+        "points": [
+          [
+            1,
+            2
+          ],
+          [
+            -3,
+            4
+          ]
+        ],
+        "offsets": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "length-mismatch",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ],
+          [
+            -3,
+            4
+          ]
+        ],
+        "samples": [
+          [
+            1,
+            2
+          ]
+        ],
+        "mode": "CARTESIAN",
+        "bias": [
+          -1,
+          2
+        ],
+        "gain": [
+          4,
+          -2
+        ],
+        "maxWork": 2
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "budget",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ],
+          [
+            -3,
+            4
+          ]
+        ],
+        "samples": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -1,
+            2
+          ]
+        ],
+        "mode": "CARTESIAN",
+        "bias": [
+          -1,
+          2
+        ],
+        "gain": [
+          4,
+          -2
+        ],
+        "maxWork": 1
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "mode",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ],
+          [
+            -3,
+            4
+          ]
+        ],
+        "samples": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -1,
+            2
+          ]
+        ],
+        "mode": "SPHERICAL",
+        "bias": [
+          -1,
+          2
+        ],
+        "gain": [
+          4,
+          -2
+        ],
+        "maxWork": 2
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "overflow",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ],
+          [
+            -3,
+            4
+          ]
+        ],
+        "samples": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -1,
+            2
+          ]
+        ],
+        "mode": "CARTESIAN",
+        "bias": [
+          -1,
+          2
+        ],
+        "gain": [
+          1e+308,
+          1e+308
+        ],
+        "maxWork": 2
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "budget-before-overflow",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ],
+          [
+            -3,
+            4
+          ]
+        ],
+        "samples": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -1,
+            2
+          ]
+        ],
+        "mode": "CARTESIAN",
+        "bias": [
+          -1,
+          2
+        ],
+        "gain": [
+          1e+308,
+          1e+308
+        ],
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "invalid-before-budget",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ],
+          [
+            -3,
+            4
+          ]
+        ],
+        "samples": [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "mode": "CARTESIAN",
+        "bias": [
+          -1,
+          2
+        ],
+        "gain": [
+          4,
+          -2
+        ],
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "negative-budget",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ],
+          [
+            -3,
+            4
+          ]
+        ],
+        "samples": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            -1,
+            2
+          ]
+        ],
+        "mode": "CARTESIAN",
+        "bias": [
+          -1,
+          2
+        ],
+        "gain": [
+          4,
+          -2
+        ],
+        "maxWork": -1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "positive-angle",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ]
+        ],
+        "samples": [
+          [
+            1,
+            3
+          ]
+        ],
+        "mode": "POLAR",
+        "bias": [
+          0,
+          0
+        ],
+        "gain": [
+          1,
+          1
+        ],
+        "maxWork": 1
+      },
+      "output": {
+        "points": [
+          [
+            2.6209069176044193,
+            4.524412954423689
+          ]
+        ],
+        "offsets": [
+          [
+            1.6209069176044193,
+            2.5244129544236893
+          ]
+        ]
+      }
+    },
+    {
+      "id": "negative-angle",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ]
+        ],
+        "samples": [
+          [
+            -1,
+            3
+          ]
+        ],
+        "mode": "POLAR",
+        "bias": [
+          0,
+          0
+        ],
+        "gain": [
+          1,
+          1
+        ],
+        "maxWork": 1
+      },
+      "output": {
+        "points": [
+          [
+            2.6209069176044193,
+            -0.5244129544236893
+          ]
+        ],
+        "offsets": [
+          [
+            1.6209069176044193,
+            -2.5244129544236893
+          ]
+        ]
+      }
+    },
+    {
+      "id": "large-angle-reduction",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ]
+        ],
+        "samples": [
+          [
+            1e+20,
+            3
+          ]
+        ],
+        "mode": "POLAR",
+        "bias": [
+          0,
+          0
+        ],
+        "gain": [
+          1,
+          1
+        ],
+        "maxWork": 1
+      },
+      "output": {
+        "points": [
+          [
+            3.291911213325185,
+            0.06424614420265762
+          ]
+        ],
+        "offsets": [
+          [
+            2.291911213325185,
+            -1.9357538557973424
+          ]
+        ]
+      }
+    },
+    {
+      "id": "output-overflow",
+      "input": {
+        "points": [
+          [
+            1e+308,
+            0
+          ]
+        ],
+        "samples": [
+          [
+            1e+308,
+            0
+          ]
+        ],
+        "mode": "CARTESIAN",
+        "bias": [
+          0,
+          0
+        ],
+        "gain": [
+          1,
+          0
+        ],
+        "maxWork": 1
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "polar-affine-both-channels-negative-distance",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ]
+        ],
+        "samples": [
+          [
+            0.25,
+            2
+          ]
+        ],
+        "mode": "POLAR",
+        "bias": [
+          0.5,
+          1
+        ],
+        "gain": [
+          2,
+          -2
+        ],
+        "maxWork": 1
+      },
+      "output": {
+        "points": [
+          [
+            -0.6209069176044193,
+            -0.5244129544236893
+          ]
+        ],
+        "offsets": [
+          [
+            -1.6209069176044193,
+            -2.5244129544236893
+          ]
+        ]
+      }
+    },
+    {
+      "id": "late-invalid-before-budget",
+      "input": {
+        "points": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "samples": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            "invalid"
+          ]
+        ],
+        "mode": "CARTESIAN",
+        "bias": [
+          0,
+          0
+        ],
+        "gain": [
+          1,
+          1
+        ],
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

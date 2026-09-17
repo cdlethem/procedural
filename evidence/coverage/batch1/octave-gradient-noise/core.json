@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "operation": "field.octave-gradient-noise",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS octave-gradient-noise core against frozen shared fixtures plus passive carrier, ownership, signed-zero, full-static-validation, query-domain and work-budget checks. No renderer or acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/octave-gradient-noise.json": "f24f4cccf742952c5291e2788b7abdb7d6674c3815f33485e45f2eb5d0febefc",
+    "fixtures/operations/octave-gradient-noise.json": "0b3baaa915baaf0d549762c256ca70b146a00a02d0c7193e97b63e9cca03a0f3",
+    "packages/javascript/src/octave-gradient-noise.js": "ea3556c22d7d8ae04b5863011ad9f59dfd7d2a2583ba1b6e6e9dbe7641faca10",
+    "tests/native/octave-gradient-noise-javascript.mjs": "275263a4966cf9c711860cb67bd065594b345a7b224893fd0845fb2d7a1d52e9"
+  },
+  "input_sha256_after": {
+    "catalog/operations/octave-gradient-noise.json": "f24f4cccf742952c5291e2788b7abdb7d6674c3815f33485e45f2eb5d0febefc",
+    "fixtures/operations/octave-gradient-noise.json": "0b3baaa915baaf0d549762c256ca70b146a00a02d0c7193e97b63e9cca03a0f3",
+    "packages/javascript/src/octave-gradient-noise.js": "ea3556c22d7d8ae04b5863011ad9f59dfd7d2a2583ba1b6e6e9dbe7641faca10",
+    "tests/native/octave-gradient-noise-javascript.mjs": "275263a4966cf9c711860cb67bd065594b345a7b224893fd0845fb2d7a1d52e9"
+  },
+  "scenarios": {
+    "fixture_cases": 34,
+    "ownership_signed_zero": [
+      "input/output detachment",
+      "canonical output zeros",
+      "fresh returned values array"
+    ],
+    "javascript_only": [
+      "passive records and dense arrays",
+      "NaN/Infinity rejected",
+      "complete static validation precedes budget",
+      "half-open profile domain",
+      "query multiplication overflow",
+      "work limit"
+    ]
+  }
+}

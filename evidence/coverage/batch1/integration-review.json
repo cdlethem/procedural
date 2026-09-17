@@ -1,0 +1,85 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "date": "2026-09-17",
+  "scope": "Integration of exactly the three assigned p5 core/native capability slices. Failed original benchmark remains failed; no technique or other-target upgrade.",
+  "baseline_commit": "c7071577",
+  "isolated_validation_root": ".work/survey-coverage-batch1/integration",
+  "implementation_sha256": {
+    "packages/javascript/src/index.js": "7c771598970adb033fa9d0405dd01462d0d9ffb763966d1468dd07cc6e4caa87",
+    "tools/reviewed_export_extension.py": "39cc2df44330b250642360a0b5d1c9671d961fa379f774a91dd9610779b5007f",
+    "tests/test_reviewed_export_extension.py": "cd2b1fe9310e9a61c2165a390cd52d971d34b0ce8dcb77366fb85b326926f074",
+    "tools/update_survey_coverage.py": "6c0389ee9517ca3dfaf04092139024c5399af84cc944c4eed4f0253c630adba1",
+    "apps/web/scripts/generate-api.mjs": "22943667d8bb09f3dbd38da270e4e9d0ed8fcaade825d228f19bca4ceca90257",
+    "apps/web/content/survey-coverage-api.mjs": "af5001ad2fccb27d7b5c608bee85daf1b35f2d0e1ee1cc16fe31e26c11ae0771",
+    "apps/web/lib/generated-api.json": "ca8464c7b3acc99604d18dbf5f2bf764eb678f2334fc594e75b1f689209db6a8",
+    "docs/reference/operations.md": "ba50fd4e7fbe7c74a1d50b18f56bd8449e8847057b8bc2a679cb01e12c5d2c20",
+    "tools/run_survey_coverage_studies.mjs": "d92423a03f6ac416726af0c774a4ac273f9d145758366d5fca6346dd479b408f",
+    "tools/serve_survey_coverage_studies.mjs": "37a84095bda00e6c6a50d40fd6f79609b63b6146c7151516bc745542ef9de43b",
+    "catalog/operations/seeded-pixel-grain.json": "2a87b136cb4a990cfa900a42ff7711407cbbbfe2984532fbae31ff68efd51cfc",
+    "catalog/validation/seeded-pixel-grain.json": "b312a6ed7219c7cad06bcdfaef7d194d431d6ba16ac5ad6f7c49cd01cc79bd18",
+    "packages/javascript/src/seeded-pixel-grain.js": "cdc5961f7ac0cf09cbd15b443de06e1777fccdf2b3ccb222a4ad06ddf24b8ce2",
+    "catalog/operations/field-displace-2d.json": "b52a961032d36a7292d35eda882cbb5a8e8603366de2f214e426f8e947eba83a",
+    "catalog/validation/field-displace-2d.json": "f987a52651c530ae8951c6bbd5209c56ef297f0a0f40b50047e7fd8adf62969a",
+    "packages/javascript/src/field-displace-2d.js": "cda0d26f09f511d6f3abb2be26908600ab01d1baa4487fb7fe765686f424b090",
+    "catalog/operations/octave-gradient-noise.json": "f24f4cccf742952c5291e2788b7abdb7d6674c3815f33485e45f2eb5d0febefc",
+    "catalog/validation/octave-gradient-noise.json": "5cd10b33d6d0bfebef0d498a9de5210891d7ee44f44ad2c44aba44da34708372",
+    "packages/javascript/src/octave-gradient-noise.js": "ea3556c22d7d8ae04b5863011ad9f59dfd7d2a2583ba1b6e6e9dbe7641faca10"
+  },
+  "evidence_sha256": {
+    "evidence/coverage/batch1/seeded-pixel-grain/root-review.json": "7959154e25bb9775b5d8c1a1acce30e787571382354fa948214ec83eb40502c2",
+    "evidence/coverage/batch1/field-displace-2d/root-review.json": "41a767f259f897c8a5acc86b4f8498aecb7d8768b073d58bdf105e28a7c45062",
+    "evidence/coverage/batch1/octave-gradient-noise/root-review.json": "37c611fe2986e45fbd947e6d12853bcfc60d1186c31bf0ba663cb7ca4509b247",
+    "evidence/coverage/reconciliation-2026-09-17.json": "950382f8cb3e0632b59d02787c095cbf9d61764d02a38a22f6f9bea93a2c7991",
+    "evidence/coverage/batch1/coverage-review.json": "c237f7d283fd84c88f5e50185c104460e753dc7f7d843c7781bb099b6b64be12",
+    "evidence/coverage/batch1/package.json": "5622af3165a1bcfd873ee131b33707b9b830d6d2eb4628527084b71f56e676fc",
+    "evidence/coverage/batch1/integration-checks.json": "64b2bf9a231f668805a481eacce782ca0109071e92b130ab58d101997f4b751e",
+    "evidence/conformance/survey-batch1-surface-compatibility-review.json": "e03dea52b2f6e175416281eec595d1ffd888dba1d8afcab4812748e1d99fadb9",
+    "evidence/reproductions/survey-coverage-batch1/plan.json": "3c609fc7813f10626682dbad875dfe988b3fc238163cb117be281ddacc8380ce"
+  },
+  "results": {
+    "catalog_operations": 67,
+    "p5_conformant_cores": 67,
+    "p5_scoped_native_operations": 67,
+    "p5_technique_attestations": 4,
+    "p5_editable_package_workflows": 106,
+    "web_studies": 90,
+    "added_fixture_scenarios": {
+      "seeded-pixel-grain": 26,
+      "field-displace-2d": 17,
+      "octave-gradient-noise": 34
+    },
+    "added_native_studies": 3,
+    "plausible_sketches": 474,
+    "operation_led_plausible_sketches": 381,
+    "assessed": 800,
+    "snapshot": 826,
+    "target": 901,
+    "delta_vs_original_plausible439": 35,
+    "delta_vs_original_operation_led346": 35,
+    "delta_after_reconciliation": 15,
+    "newly_demonstrated_originals": 0,
+    "demonstrated_originals": 4
+  },
+  "package": {
+    "path": ".work/dist/survey-coverage-batch1/procedurals-javascript-0.1.0.tgz",
+    "sha256": "7ca90a6a53a88ce00559c669c7b4bcbdaaaf1554aa857e414a1bccdc05b1fba4",
+    "scope": "Local review tarball; not a registry publication."
+  },
+  "review": [
+    "Root inspected all three contracts, implementation boundaries, decisive source helpers, fixtures, native baseline/edit images and independent field-study scope.",
+    "Exact golden values and failure/ownership/work scenarios pass. Native controls, reset/reload and PNG save pass on actual p5Canvas2D.",
+    "All69 initial gap families were reconciled; final changes touch only26 named sketches across the three assigned families. Source hashes and narrow closure reasons are retained.",
+    "Historical acceptance records remain immutable; the successor validates exact prior entrypoint/generator/verifier bytes and current accepted child reviews.",
+    "Package installed inventory includes106 examples. Generated API examples execute the real exported functions."
+  ],
+  "failures_and_limits": [
+    "Grain original benchmark SSIM0.673759 is below0.7; native workflow acceptance does not imply accepted original recreation.",
+    "Displacement and octave studies are preregistered independent components; transfer evidence is source walkthrough only.",
+    "Processing/random replay, simplex/value noise, nonlinear multifractals, spatial shader scheduling, radial attraction and3D deformation remain explicit residuals.",
+    "Java0.35 runtime unchanged; processing-java,py5,processing-android additions deferred.",
+    "Integration checks use isolated batch bytes; the concurrent defaultPalettes export in the working tree is preserved but outside this acceptance.",
+    "No web deployment, rectangle partition, heading wander, simplex, proximity graph or shader extension performed."
+  ]
+}
