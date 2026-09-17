@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "scope": "Private pixel-grain reproduction layout parity with real java.util.Random only; no renderer, library API or acceptance claim.",
+  "node_version": "v22.22.1",
+  "input_sha256_before": {
+    "tests/native/pixel-grain-reproduction/layout.mjs": "0d7f3fa6fdb6e9126d5f6e5e427f36726e6aaba5628cfe138ec1cc217151b199",
+    "tests/native/PixelGrainLayoutOracle.java": "40eaf949e5479a367598fbf8ed2997e661baee3ce1a2a895af108aa8a58deb35",
+    "tests/native/pixel-grain-layout.mjs": "2d9ad44f4fbdef57fdffc87f2346cc381e416f4d4dc709c6320fd2539d3bdb06",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "input_sha256_after": {
+    "tests/native/pixel-grain-reproduction/layout.mjs": "0d7f3fa6fdb6e9126d5f6e5e427f36726e6aaba5628cfe138ec1cc217151b199",
+    "tests/native/PixelGrainLayoutOracle.java": "40eaf949e5479a367598fbf8ed2997e661baee3ce1a2a895af108aa8a58deb35",
+    "tests/native/pixel-grain-layout.mjs": "2d9ad44f4fbdef57fdffc87f2346cc381e416f4d4dc709c6320fd2539d3bdb06",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "observed": [
+    {
+      "seed": 42,
+      "retainedPoints": 1903,
+      "consumedDraws": 2688
+    },
+    {
+      "seed": 0,
+      "retainedPoints": 1886,
+      "consumedDraws": 2688
+    }
+  ]
+}

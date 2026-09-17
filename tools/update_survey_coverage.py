@@ -67,8 +67,10 @@ def _validate_batch(batch, ledger, inventory):
     assert isinstance(batch['date'], str) and batch['date']
     assert isinstance(batch['operations'], list) and batch['operations']
     catalog_stems = {p.stem for p in (ROOT / 'catalog/operations').glob('*.json')}
-    assert len(batch['operations']) == len(catalog_stems)
-    assert set(batch['operations']) == catalog_stems
+    reviewed_stems = set(inventory) | {'seeded-pixel-grain', 'field-displace-2d', 'octave-gradient-noise'}
+    assert len(batch['operations']) == len(reviewed_stems)
+    assert set(batch['operations']) == reviewed_stems
+    assert reviewed_stems <= catalog_stems
     assert {f['family'] for f in batch['families']} == ALLOWED_BATCH_FAMILIES
     assert len(batch['families']) == len(ALLOWED_BATCH_FAMILIES)
     for family in batch['families']:
@@ -91,7 +93,7 @@ def _validate_batch(batch, ledger, inventory):
     assert required <= set(batch['summary'])
 
 
-def build(reconciliation_path, batch_review_path=None):
+def build(reconciliation_path, batch_review_path=None, reproduction_review_path=None):
     review = json.loads((ROOT / reconciliation_path).read_text())
     baseline = review['baseline']
 
@@ -162,6 +164,28 @@ def build(reconciliation_path, batch_review_path=None):
     if batch_review_path:
         ledger['ranked_projection_scope'] = 'Historical step-0 broad-family upper bounds; not measured batch gains.'
 
+    new_demonstrated = 0
+    if reproduction_review_path:
+        reproduction = json.loads((ROOT / reproduction_review_path).read_text())
+        assert reproduction['status'] == 'accepted'
+        assert reproduction['owner'] == reproduction['reviewer'] == 'root'
+        assert reproduction['results']['status'] == 'passed'
+        for group in ('implementation_sha256', 'evidence_sha256'):
+            for path, expected in reproduction[group].items():
+                assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == expected, path
+        additions = reproduction['newly_demonstrated']
+        assert len({a['sketch'] for a in additions}) == len(additions)
+        for addition in additions:
+            assessment = next(a for a in assessed if a['sketch'] == addition['sketch'])
+            assert not assessment['blocking_gaps']
+            assert assessment['note_sha256'] == addition['note_sha256']
+            assert hashlib.sha256((ROOT / addition['note_path']).read_bytes()).hexdigest() == addition['note_sha256']
+            assert 'demonstrated_recreation' not in assessment
+            assessment['demonstrated_recreation'] = {**addition, 'review': reproduction_review_path}
+        new_demonstrated = len(additions)
+        ledger['summary']['demonstrated_originals'] += new_demonstrated
+        ledger['reproduction_review'] = reproduction_review_path
+
     summary = active_review['summary']
     intro = [
         '# Genart survey recreation coverage and missing operations', '',
@@ -182,8 +206,8 @@ def build(reconciliation_path, batch_review_path=None):
          'editable native study with checked edits, reset/reload and save. Other targets are deferred.',
          f"The [batch review](../{batch_review_path}) adds **+{summary['plausibly_supported']-459} plausible**",
          f"and **+{summary['operation_led_plausibly_supported']-366} operation-led** sketches after the 459/366 reconciliation.",
-         'Newly demonstrated originals: **0**. Grain failed its preregistered SSIM threshold',
-         '**0.674 < 0.7**; displacement and octave studies demonstrate components only.',
+         f'Newly demonstrated originals: **{new_demonstrated}**. The first grain candidate failed its SSIM gate',
+         '**0.674 < 0.7** and remains a recorded failure. Displacement and octave studies demonstrate components only.',
          'Transfers are source/contract walkthroughs, not rendered recreations.',
          '[Grain evidence](../evidence/coverage/batch1/seeded-pixel-grain/root-review.json),',
          '[displacement evidence](../evidence/coverage/batch1/field-displace-2d/root-review.json),',
@@ -194,8 +218,8 @@ def build(reconciliation_path, batch_review_path=None):
     )
     intro += [
         '', f"This is **+{summary['delta_plausible_vs_439']} plausible sketches** versus 439, and",
-        f"**+{summary['delta_operation_led_vs_346']} operation-led sketches** versus 346. There are still only",
-        '**four demonstrated originals**; reconciliation adds no executed recreation.', '',
+        f"**+{summary['delta_operation_led_vs_346']} operation-led sketches** versus 346. There are now",
+        f"**{ledger['summary']['demonstrated_originals']} demonstrated originals**; reconciliation itself adds no executed recreation.", '',
         'The most consequential correction is that `gradient-path` already implements affine',
         'scalar-noise-to-heading tracing. Source inspection also shows `mountain3` and `mountain4`',
         'choose speed once per path. Simplex, nonlinear/summed fields, step-index noise and 3D',
@@ -204,6 +228,14 @@ def build(reconciliation_path, batch_review_path=None):
         f"validation attestations, which accept {len(inventory)} p5 cores and scoped native workflows.", '',
     ]
     intro += batch_statement
+    if reproduction_review_path:
+        intro += [
+            '', f'[The grain replay successor](../{reproduction_review_path}) restores source-layout RNG',
+            'from the recorded seed42 and passes the unchanged benchmark: SSIM0.995341 and',
+            'score96.959. Root inspected the original and corrected images; controls/reset/reload/save',
+            'pass. This adds one demonstrated structural recreation, with no change to plausible totals.',
+            'The portable grain RNG and byte rounding remain explicit source differences.', '',
+        ]
     intro += [
         'The historical step-0 broad-family upper bounds (488, 516 and 536) are not measured',
         'gains. Random-grey blending, saturation grain, per-fragment shader scheduling, 3D',
@@ -235,12 +267,18 @@ def main():
     parser.add_argument('--check', action='store_true')
     parser.add_argument('--batch-review', default=None,
                         help='Optional authored batch review applied after immutable reconciliation.')
+    parser.add_argument('--reproduction-review', default=None,
+                        help='Optional accepted reproduction successor; preserves authored batch counts.')
     args = parser.parse_args()
     batch_path = args.batch_review
     if batch_path is None:
         default_batch = ROOT / 'evidence/coverage/batch1/coverage-review.json'
         batch_path = str(default_batch.relative_to(ROOT)) if default_batch.exists() else None
-    for path, content in build(args.reconciliation, batch_path).items():
+    reproduction_path = args.reproduction_review
+    if reproduction_path is None:
+        default_reproduction = ROOT / 'evidence/reproductions/survey-coverage-batch1/grain-replay/root-review.json'
+        reproduction_path = str(default_reproduction.relative_to(ROOT)) if default_reproduction.exists() else None
+    for path, content in build(args.reconciliation, batch_path, reproduction_path).items():
         if args.check:
             assert (ROOT / path).read_text() == content, f'Stale coverage output: {path}'
         else:

@@ -24,7 +24,7 @@
     "host_glue_only_plausibly_supported": 93,
     "core_supported_secondary_gap": 40,
     "unsupported": 286,
-    "demonstrated_originals": 4
+    "demonstrated_originals": 5
   },
   "gap_summary": [
     {
@@ -1645,7 +1645,18 @@
           "evidence": "evidence/coverage/batch1/coverage-review.json"
         }
       ],
-      "reconciliation": "evidence/coverage/batch1/coverage-review.json"
+      "reconciliation": "evidence/coverage/batch1/coverage-review.json",
+      "demonstrated_recreation": {
+        "sketch": "2014/Generativos/cuadraditos",
+        "target": "p5js",
+        "fidelity": "structural/technique",
+        "note_path": "survey/out/2014/Generativos/cuadraditos/notes.md",
+        "note_sha256": "93f6baf98a57d128b62bd7f1e0be2254a242d752f824e8758ed4d58fb710baa5",
+        "frames": [
+          1
+        ],
+        "review": "evidence/reproductions/survey-coverage-batch1/grain-replay/root-review.json"
+      }
     },
     {
       "sketch": "2014/Generativos/curdiculasdecuadrados",
@@ -35568,5 +35579,6 @@
   "batch_review": "evidence/coverage/batch1/coverage-review.json",
   "reconciled_at": "2026-09-17",
   "reconciliation": "evidence/coverage/reconciliation-2026-09-17.json",
-  "ranked_projection_scope": "Historical step-0 broad-family upper bounds; not measured batch gains."
+  "ranked_projection_scope": "Historical step-0 broad-family upper bounds; not measured batch gains.",
+  "reproduction_review": "evidence/reproductions/survey-coverage-batch1/grain-replay/root-review.json"
 }

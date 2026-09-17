@@ -93,7 +93,10 @@ frame1 here), retain raw metrics and inspect baseline/candidate images. A failed
 does not become a demonstrated recreation by renaming its scope after rendering.
 
 After validation: p5 core and native accepted in [the root review](../../evidence/coverage/batch1/seeded-pixel-grain/root-review.json).
-The selected original failed SSIM0.673759<0.7 and earns no demonstrated credit. The withheld
+The first selected candidate failed SSIM0.673759<0.7 and earns no demonstrated credit.
+The [source-layout replay successor](../../evidence/reproductions/survey-coverage-batch1/grain-replay/root-review.json)
+corrects the reproduction-only RNG policy, passes the unchanged gate at SSIM0.995341 and
+earns one demonstrated structural original. The public grain operation is unchanged. The withheld
 transfer is a supported source walkthrough, not a rendering. The
 [affected-case review](../../evidence/coverage/batch1/coverage-review.json) closes seven
 grain components, leaving50 residual cases. Five sketches become newly plausible at this

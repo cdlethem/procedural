@@ -1,0 +1,74 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "date": "2026-09-17",
+  "scope": "One selected p5Canvas2D structural recreation of2014/Generativos/cuadraditos using the public seeded pixel-grain operation. Technique acceptance only; original core/native reviews remain unchanged.",
+  "operation": "raster.seeded-pixel-grain@0.1.0",
+  "target": "p5js",
+  "previous_review": {
+    "path": "evidence/coverage/batch1/seeded-pixel-grain/root-review.json",
+    "sha256": "7959154e25bb9775b5d8c1a1acce30e787571382354fa948214ec83eb40502c2"
+  },
+  "implementation_sha256": {
+    "packages/javascript/src/seeded-pixel-grain.js": "cdc5961f7ac0cf09cbd15b443de06e1777fccdf2b3ccb222a4ad06ddf24b8ce2",
+    "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+    "packages/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+    "tests/native/pixel-grain-reproduction/layout.mjs": "0d7f3fa6fdb6e9126d5f6e5e427f36726e6aaba5628cfe138ec1cc217151b199",
+    "tests/native/pixel-grain-reproduction/sketch.js": "9125db16598914e660fc6d12f3ac2d4af74536c7cdc4f55a91c4a39b2af4dfde",
+    "tests/native/pixel-grain-reproduction/index.html": "b31e05df543db8f4324bd6b3bf396174a8a840afe84728c277bf10698dcfe83b",
+    "tests/native/PixelGrainLayoutOracle.java": "40eaf949e5479a367598fbf8ed2997e661baee3ce1a2a895af108aa8a58deb35",
+    "tests/native/pixel-grain-layout.mjs": "2d9ad44f4fbdef57fdffc87f2346cc381e416f4d4dc709c6320fd2539d3bdb06"
+  },
+  "evidence_sha256": {
+    "evidence/reproductions/survey-coverage-batch1/grain-replay/layout.json": "474ab5fa14f9b9dd6895c04cd92d1dc25b05132f469c29070e6f029c2314aea6",
+    "evidence/reproductions/survey-coverage-batch1/grain-replay/reference-layout.json": "1adef71e46b6c3b93c83d883462516211a3f43585afa0c5968b43be4667c5d56",
+    "evidence/reproductions/survey-coverage-batch1/grain-replay/native.json": "108dcba50272b5d8784dd7a683fdfb7dd9d1790490672fb1e75dffcdb6717e15",
+    "evidence/reproductions/survey-coverage-batch1/grain-replay/benchmark.json": "eb2f3060dfdb2cb4dc48f9421eef529b35a18e5181e36136ff9e8fb3af7c20ea",
+    "evidence/reproductions/survey-coverage-batch1/grain-replay-plan.json": "24fd2b96470d62faf5959fdebe5e34a7e366137fca45c5f857ee55bd20795ce5",
+    "evidence/coverage/batch1/seeded-pixel-grain/root-review.json": "7959154e25bb9775b5d8c1a1acce30e787571382354fa948214ec83eb40502c2",
+    "evidence/coverage/batch1/seeded-pixel-grain/benchmark.json": "a8099a4f79173bd2d3128616e9f609e8809f3c7712ce8d3c62480fdc38189827",
+    "evidence/coverage/batch1/seeded-pixel-grain/core.json": "2f5f2accf156945245cca72270f976607a5c43bd78682bf28df9f9fe4500e403",
+    "survey/out/2014/Generativos/cuadraditos/baseline/result.json": "a136f03517400a31181e159dd2a37850b311b3784f2013f5c334e5539b97bd48",
+    "fixtures/operations/seeded-pixel-grain.json": "d0198a99c59404e0e173492df5f55261ac6edce9da148e58aa08abf854129927"
+  },
+  "results": {
+    "status": "passed",
+    "required_cases": 1,
+    "required_frames": [
+      1
+    ],
+    "original_benchmark_preserved": "failed",
+    "successor_benchmark": "passed",
+    "ssim": 0.995341,
+    "score": 96.959,
+    "histogram_intersection": 0.879822,
+    "native": "strength edit,reset,reload,PNGsave withoutredraw passed",
+    "layout": "Real JavaRandom parity at seeds42/0; all2688 source-grid cell decisions match stored reference at42."
+  },
+  "newly_demonstrated": [
+    {
+      "sketch": "2014/Generativos/cuadraditos",
+      "target": "p5js",
+      "fidelity": "structural/technique",
+      "note_path": "survey/out/2014/Generativos/cuadraditos/notes.md",
+      "note_sha256": "93f6baf98a57d128b62bd7f1e0be2254a242d752f824e8758ed4d58fb710baa5",
+      "frames": [
+        1
+      ]
+    }
+  ],
+  "inspection": [
+    "Root inspected original source, baseline metadata showing reflectedseed42, original image, failedcandidate and corrected baseline/stronggrain images.",
+    "The failedcandidate used a different layout RNG. Independent Java replay restores the actual source cell decisions; no seed search,image-derivedmask or threshold change.",
+    "Corrected baseline preserves ragged missing-cell blocks and fine shared-channel brightness grain. Strong edit visibly increases raster grain with identical retained geometry.",
+    "Same benchmark profile and all required frames pass; source frames10/60 were already deduplicated as identical in survey metadata."
+  ],
+  "limits": [
+    "Selected case only; no full-corpus certification.",
+    "Grain still uses its specified portableLCG32 and byte rounding rather than source JavaRandom continuation. Canvas2D differs from JAVA2D; no exact pixel identity claim.",
+    "Reproduction-only source RNG policy is not a new public library capability.",
+    "Other targets and quadShadow fragment-shader reproduction remain deferred/unvalidated.",
+    "Earlier failedbenchmark, authoredbatchreview and integrationreview remain historical and unchanged."
+  ]
+}

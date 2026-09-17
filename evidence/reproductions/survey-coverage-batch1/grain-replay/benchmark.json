@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "metric_version": 1,
+  "mode": "development",
+  "evidence": null,
+  "target": "p5js",
+  "target_contract": {
+    "label": "p5.js web port",
+    "runtime": "JavaScript or TypeScript in a browser",
+    "adapter": "Canvas2D and WebGL"
+  },
+  "manifest_summary": {
+    "cases": 980,
+    "required_cases": 980,
+    "informational_cases": 0,
+    "sketches": 800,
+    "excluded_sketches": 26,
+    "profiles": {
+      "portable-deterministic": 851,
+      "portable-nondeterministic": 129
+    }
+  },
+  "selection": "^2014/Generativos/cuadraditos::",
+  "reference_root": "/home/colin/dev/genart-survey",
+  "candidate_root": "/home/colin/dev/procedural/.work/survey-coverage-batch1/grain-replay/candidates",
+  "summary": {
+    "selected_cases": 1,
+    "required_cases": 1,
+    "informational_cases": 0,
+    "present_candidates": 1,
+    "missing_candidates": 0,
+    "required_passed": 1,
+    "required_failed": 0,
+    "coverage": 1.0,
+    "pass_rate": 1.0,
+    "full_manifest_cases": 980,
+    "full_manifest_required_cases": 980,
+    "full_manifest_coverage": 0.00102,
+    "full_manifest_pass_rate": 0.00102,
+    "mean_score_present_required": 96.959,
+    "passed": true,
+    "evaluation_failures": [],
+    "release_certified": false
+  },
+  "by_profile": {
+    "portable-deterministic": {
+      "passed": 1
+    }
+  },
+  "by_renderer": {
+    "JAVA2D": {
+      "passed": 1
+    }
+  },
+  "by_technique": {
+    "dots-stippling": {
+      "passed": 1
+    },
+    "grid": {
+      "passed": 1
+    },
+    "pixel-ops": {
+      "passed": 1
+    }
+  },
+  "cases": [
+    {
+      "id": "2014/Generativos/cuadraditos::frame_00001",
+      "sketch": "2014/Generativos/cuadraditos",
+      "frame": 1,
+      "profile": "portable-deterministic",
+      "required": true,
+      "reference": "/home/colin/dev/genart-survey/out/2014/Generativos/cuadraditos/baseline/frame_00001.png",
+      "candidate": "/home/colin/dev/procedural/.work/survey-coverage-batch1/grain-replay/candidates/2014/Generativos/cuadraditos/frame_00001.png",
+      "metadata": {
+        "notes_path": "out/2014/Generativos/cuadraditos/notes.md",
+        "renderer": "JAVA2D",
+        "deterministic": true,
+        "animated": false,
+        "composition": "tiled",
+        "techniques": [
+          "grid",
+          "dots-stippling",
+          "pixel-ops"
+        ],
+        "baseline_display": ":2",
+        "uses_shader": false
+      },
+      "status": "passed",
+      "failures": [],
+      "metrics": {
+        "reference_size": [
+          600,
+          800
+        ],
+        "candidate_size": [
+          600,
+          800
+        ],
+        "dimensions_match": true,
+        "exact_sha256": false,
+        "reference_sha256": "21343697ff1c501d10b68d1c0aa602d56ba8e86ec387f23e7700f467d0259a71",
+        "candidate_sha256": "69043085b9c9a1a7e1cc278323cb1cf9663f4c58ea72c492897bb36c7564f0d9",
+        "rgb_mae": 0.004034,
+        "changed_fraction_10pct": 0.0,
+        "ssim": 0.995341,
+        "histogram_intersection": 0.879822,
+        "edge_similarity": 0.997752,
+        "dhash_distance": 6,
+        "score": 96.959
+      }
+    }
+  ]
+}

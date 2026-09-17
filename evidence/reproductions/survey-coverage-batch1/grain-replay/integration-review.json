@@ -1,0 +1,53 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Resolve the outstanding motivating grain recreation and synchronize its scoped technique/demonstrated counts; no operation or package implementation changes.",
+  "baseline_commit": "c4f9c525",
+  "implementation_sha256": {
+    "tools/update_survey_coverage.py": "feaa1117a2eb6f46cde245ddc1507e477c6252c3f1189e8cab5bdff561a5cefe",
+    "tools/run_survey_coverage_studies.mjs": "09637c89dbb43acd45f2ae49541c2c9fc787b9d5719b8b59f2921997ed5929ba",
+    "tools/serve_survey_coverage_studies.mjs": "49f6afd8b5636dc3cf1656648e835fca9e8c2dfa1030739c301686fd7fe6fe90",
+    "catalog/validation/seeded-pixel-grain.json": "16b19d2e4eab1f39ff5a3ffec788ba06fc6ca5c744bdcc15ab654865f3e1d189",
+    "apps/web/lib/generated-api.json": "c446c1d625f6cecebb035dc789b3d31bd6c90e5ac828b3133062aa34360eff5d",
+    "docs/reference/operations.md": "a19bbba3b3ebee9f60e24e29a497fc7607a527c7a163a5d3b11a11617d6d276d"
+  },
+  "evidence_sha256": {
+    "evidence/reproductions/survey-coverage-batch1/grain-replay/root-review.json": "9dfbdbcdc436c7f335efd69f8a039528d02dd7f23d68c6021ad83ec6b91b58e7",
+    "evidence/reproductions/survey-coverage-batch1/grain-replay/benchmark.json": "eb2f3060dfdb2cb4dc48f9421eef529b35a18e5181e36136ff9e8fb3af7c20ea",
+    "evidence/reproductions/survey-coverage-batch1/grain-replay/native.json": "108dcba50272b5d8784dd7a683fdfb7dd9d1790490672fb1e75dffcdb6717e15",
+    "evidence/reproductions/survey-coverage-batch1/grain-replay/layout.json": "474ab5fa14f9b9dd6895c04cd92d1dc25b05132f469c29070e6f029c2314aea6",
+    "evidence/coverage/batch1/integration-review.json": "09c16ac1c1a2831b6e43a903d9d307be6f58e609139748c56212b81ad0a67aa3",
+    "evidence/coverage/batch1/package.json": "5622af3165a1bcfd873ee131b33707b9b830d6d2eb4628527084b71f56e676fc"
+  },
+  "validation": [
+    "Real Java RNG oracle matches all ordered layout points at seeds42/0; source42 cell occupancy also matches all2688 reference decisions.",
+    "Shared-lease p5Canvas2D reproduction passes strength edit,reset,reload,save; root inspects original and corrected baseline/edited images.",
+    "Same portable-deterministic profile passes1/1required frame,SSIM0.995341,score96.959; earlierfailedcandidate retained unchanged.",
+    "Isolated catalog schema/source/fixture/attestation validation and reference generation pass.",
+    "API metadata regenerated; guide examples execute actual public functions.",
+    "Affected-family report reproduces from immutable reconciliation,batch review and new reproduction successor.",
+    "Gallery rebuilt with no problems; inclusion is navigation only.",
+    "All inputs to the previously reviewed local package are byte-identical in the isolated copy; package rebuild was unnecessary.",
+    "Concurrent UI commit0a8849a2 integrated: disjoint committed files preserved and shared state/gallery changes merged without conflicts. It does not change the checked core,example or benchmark inputs."
+  ],
+  "counts": {
+    "catalog_operations_reviewed": 67,
+    "p5_scoped_technique_attestations": 5,
+    "package_workflows": 106,
+    "plausible": 474,
+    "operation_led": 381,
+    "assessed": 800,
+    "snapshot": 826,
+    "target": 901,
+    "demonstrated_originals": 5,
+    "new_demonstrated_in_successor": 1
+  },
+  "concurrent_work": "Validation and staged files use the isolated batch copy; working-tree web/default-palette/external-expansion/Android changes are preserved. Only the reproduction route addition belongs to this server change.",
+  "limits": [
+    "Selected source structural recreation; not exact grain-stream/JAVA2D pixels or full-corpus certification.",
+    "No Java runtime change or other-target acceptance.",
+    "No new public capability or deployment."
+  ],
+  "integration_parent": "0a8849a27746eab5561a6a3d09904ac575919c94"
+}

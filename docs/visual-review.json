@@ -4104,6 +4104,25 @@
           "sha256": "858f586a0e768036877bda2e8ab96a4efdb38c9c1acc98cee448c1a363ea13f8"
         }
       ]
+    },
+    {
+      "id": "survey-batch1-grain-replay",
+      "title": "Grain: corrected source-layout replay",
+      "category": "Root accepted structural original recreation",
+      "description": "JavaRandom source layout, unchanged portable grain; original failed run retained separately. SSIM0.995 with unchanged0.7 gate.",
+      "evidence": "evidence/reproductions/survey-coverage-batch1/grain-replay/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/survey-coverage-batch1/integration/.work/grain-replay-native/baseline.png",
+          "sha256": "69043085b9c9a1a7e1cc278323cb1cf9663f4c58ea72c492897bb36c7564f0d9"
+        },
+        {
+          "label": "strength-edit",
+          "path": ".work/survey-coverage-batch1/integration/.work/grain-replay-native/strength-edit.png",
+          "sha256": "8db36e44547ecd47fc31ce5f4535a9cc2a263e576ab6b38ed92c83901022d3c8"
+        }
+      ]
     }
   ]
 }

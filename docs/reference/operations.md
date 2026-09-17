@@ -5205,7 +5205,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | unvalidated | unvalidated | unvalidated | not attested |
-| p5js | [conformant](../../evidence/coverage/batch1/seeded-pixel-grain/root-review.json) | [validated-scoped](../../evidence/coverage/batch1/seeded-pixel-grain/root-review.json) | unvalidated | [review](../../evidence/coverage/batch1/seeded-pixel-grain/root-review.json) |
+| p5js | [conformant](../../evidence/coverage/batch1/seeded-pixel-grain/root-review.json) | [validated-scoped](../../evidence/coverage/batch1/seeded-pixel-grain/root-review.json) | [validated-scoped](../../evidence/reproductions/survey-coverage-batch1/grain-replay/root-review.json) | [review](../../evidence/coverage/batch1/seeded-pixel-grain/root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 

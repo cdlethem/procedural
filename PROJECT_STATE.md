@@ -9,15 +9,16 @@ This is a current snapshot. Historical plans and reviews are not an active assig
   baseline remains `d7f95a06f55fd0937ebb2c12bb2192c7644922c4`; see the
   [completion review](evidence/distribution/java-completion-review.json).
 - p5.js: **67 conformant cores, 67 operations with scoped native coverage, 106 editable
-  package workflows**, and four scoped technique attestations. These dimensions are separate.
+  package workflows**, and five scoped technique attestations. These dimensions are separate.
   [Port status](docs/port-integration-status.md) links the historical integrations.
 - [Survey coverage batch 1](evidence/coverage/batch1/integration-review.json) adds exactly
   seeded pixel grain, sampled-field displacement and octave gradient noise. Each has a
   reviewed contract, independent fixtures, an editable p5 study, native controls/reset/reload/save,
   performance evidence and a withheld source transfer. Other targets remain deferred.
-- The grain original benchmark **failed SSIM 0.674 < 0.7** and earns no demonstrated credit.
-  The two field studies demonstrate independent components. All three transfers are source
-  walkthroughs; none is a rendered transfer recreation.
+- The first grain candidate failed SSIM0.674. Its [replay successor](evidence/reproductions/survey-coverage-batch1/grain-replay/root-review.json)
+  restores the recorded source-layout RNG and passes the unchanged gate at **SSIM0.995**,
+  adding one demonstrated structural recreation. Both field studies remain independent
+  components. All three withheld transfers remain source walkthroughs.
 - Packages are reviewed local artifacts, not registry publications. This work does not imply
   a portable recipe executor, full-corpus certification or equivalent target ports.
 
@@ -29,13 +30,13 @@ old example headers are not current support authority.
 | Target | Conformant core | Scoped native | Scoped technique |
 |---|---:|---:|---:|
 | Processing Java | 31 | 31 | 26 |
-| p5.js | 67 | 67 | 4 |
+| p5.js | 67 | 67 | 5 |
 | py5 | 10 | 10 | 4 |
 | Processing Android | 10 | 10 | 4 |
 
 The [coverage report](docs/survey-operation-coverage-report.md) now records **474/800 plausible**
 recreations, including **381/800 operation-led**. Step0 reconciliation added20 to each original
-439/346 total; the three new capabilities add another15. Demonstrated originals remain **4**.
+439/346 total; the three new capabilities add another15. Demonstrated originals are now **5**, including the accepted grain replay.
 The report includes all69 family dispositions and all three denominators:800 assessed,
 826 snapshot notes and901 targets. Missing/unassessed cases never count as supported.
 

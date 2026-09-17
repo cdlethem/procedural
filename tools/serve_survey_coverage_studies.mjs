@@ -11,7 +11,8 @@ export async function startCoverageStudiesServer(port=0){
  const server=http.createServer(async(req,res)=>{try{
   const pathname=new URL(req.url,'http://localhost').pathname;
   const relative=pathname==='/p5.js'?runtime+'/lib/p5.min.js':pathname.slice(1);
-  if(pathname!=='/p5.js'&&!/^packages\/javascript\/(src\/(internal\/)?[a-z0-9-]+\.js|examples\/(pixel-grain|field-displacement|octave-noise)\/(index\.html|sketch\.js))$/.test(relative)){res.writeHead(404);res.end();return;}
+  const reproductionFile=/^tests\/native\/pixel-grain-reproduction\/(index\.html|sketch\.js|layout\.mjs)$/.test(relative);
+  if(pathname!=='/p5.js'&&!reproductionFile&&!/^packages\/javascript\/(src\/(internal\/)?[a-z0-9-]+\.js|examples\/(pixel-grain|field-displacement|octave-noise)\/(index\.html|sketch\.js))$/.test(relative)){res.writeHead(404);res.end();return;}
   res.setHeader('Content-Type',relative.endsWith('.html')?'text/html; charset=utf-8':'text/javascript; charset=utf-8');res.end(await fs.readFile(path.join(root,relative)));
  }catch{res.writeHead(500);res.end('Study file unavailable');}});
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',resolve);});return server;

@@ -14,8 +14,8 @@ preserved unchanged in Git commit `c7071577`. All 826 note hashes still match.
 | Target | 474/901 (52.6%) | 381/901 (42.3%) |
 
 This is **+35 plausible sketches** versus 439, and
-**+35 operation-led sketches** versus 346. There are still only
-**four demonstrated originals**; reconciliation adds no executed recreation.
+**+35 operation-led sketches** versus 346. There are now
+**5 demonstrated originals**; reconciliation itself adds no executed recreation.
 
 The most consequential correction is that `gradient-path` already implements affine
 scalar-noise-to-heading tracing. Source inspection also shows `mountain3` and `mountain4`
@@ -29,12 +29,19 @@ sampled-field displacement and octave gradient noise. Each has core fixtures and
 editable native study with checked edits, reset/reload and save. Other targets are deferred.
 The [batch review](../evidence/coverage/batch1/coverage-review.json) adds **+15 plausible**
 and **+15 operation-led** sketches after the 459/366 reconciliation.
-Newly demonstrated originals: **0**. Grain failed its preregistered SSIM threshold
-**0.674 < 0.7**; displacement and octave studies demonstrate components only.
+Newly demonstrated originals: **1**. The first grain candidate failed its SSIM gate
+**0.674 < 0.7** and remains a recorded failure. Displacement and octave studies demonstrate components only.
 Transfers are source/contract walkthroughs, not rendered recreations.
 [Grain evidence](../evidence/coverage/batch1/seeded-pixel-grain/root-review.json),
 [displacement evidence](../evidence/coverage/batch1/field-displace-2d/root-review.json),
 [octave evidence](../evidence/coverage/batch1/octave-gradient-noise/root-review.json).
+
+[The grain replay successor](../evidence/reproductions/survey-coverage-batch1/grain-replay/root-review.json) restores source-layout RNG
+from the recorded seed42 and passes the unchanged benchmark: SSIM0.995341 and
+score96.959. Root inspected the original and corrected images; controls/reset/reload/save
+pass. This adds one demonstrated structural recreation, with no change to plausible totals.
+The portable grain RNG and byte rounding remain explicit source differences.
+
 The historical step-0 broad-family upper bounds (488, 516 and 536) are not measured
 gains. Random-grey blending, saturation grain, per-fragment shader scheduling, 3D
 displacement, simplex/value noise and nonlinear multifractals remain outside the

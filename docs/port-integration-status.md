@@ -4,7 +4,7 @@ The reviewed twelve-core/twelve-workflow p5.js batch at `2f9418e3` remains the
 integration foundation. The subsequent completion packet adds thirteen editable browser
 workflows and reconciles the already reviewed radial-profile target records. Current shared
 support is **67 conformant JavaScript cores, 67 operations with scoped native coverage, and
-four with technique coverage**. These dimensions are separate, not additive.
+five with technique coverage**. These dimensions are separate, not additive.
 
 The [p5-only geometry expansion](../evidence/web/p5-gallery-expansion/root-review.json)
 adds Voronoi cells, polyline resampling and marching squares, with six editable
@@ -13,8 +13,9 @@ original design studies. The following [tenfold expansion](../evidence/web/p5-te
 [survey coverage batch](../evidence/coverage/batch1/integration-review.json) adds seeded
 pixel grain, sampled-field displacement and octave gradient noise, each with an editable
 native study. There are now 106 package workflows and 90 web gallery/Studio studies.
-The new operations are p5-only. Their scopes add no technique attestations or demonstrated
-original recreations: the grain benchmark failed, and the two field studies demonstrate
+The new operations are p5-only. The [grain replay successor](../evidence/reproductions/survey-coverage-batch1/grain-replay/root-review.json)
+adds one scoped technique attestation and demonstrated structural original after correcting
+source-layout RNG; its original failed candidate remains recorded. The field studies demonstrate
 components. API pages are generated for all67 operations; these three studies are packaged
 native examples, not additional gallery/Studio entries.
 

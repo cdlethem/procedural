@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Seeded dot blocks</title>
+<style>body{margin:24px;background:#eeeae2;color:#262624;font:16px system-ui}main{max-width:800px;margin:auto}button{font:inherit;padding:8px;margin:0 8px 12px 0}canvas{display:block;width:min(600px,100%);height:auto}</style>
+<main><h1>Seeded dot blocks</h1><p>Fine brightness grain across a field of small squares. Changing the grain leaves every square in place.</p>
+<div id="controls"><button data-action="t">T — grain strength</button><button data-action="0">0 — reset</button><button data-action="s">S — save PNG</button></div>
+<div id="art" aria-label="Seeded dot block artwork"></div><p id="status" role="status">Preparing…</p>
+<p>Edit the seed and drawing constants in <code>sketch.js</code>, or the layout in <code>layout.mjs</code>. This study follows the surveyed <em>cuadraditos</em> composition.</p></main>
+<script src="/p5.js"></script><script type="module" src="./sketch.js"></script></html>

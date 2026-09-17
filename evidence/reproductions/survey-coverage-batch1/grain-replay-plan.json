@@ -1,0 +1,39 @@
+{
+  "status": "preregistered",
+  "owner": "root",
+  "date": "2026-09-17",
+  "scope": "Correct the motivating grain recreation input geometry while preserving the old failed run and the exact same benchmark gates. No core/API/threshold change.",
+  "source": "2014/Generativos/cuadraditos",
+  "source_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+  "source_files": {
+    "/home/colin/dev/processing_sketches/2014/Generativos/cuadraditos/cuadraditos.pde": "ed0c2e2848aa26d2a40f5f12ed930ad999c879633edd8c8fe0fc1534da286346"
+  },
+  "prior_evidence_sha256": {
+    "evidence/reproductions/survey-coverage-batch1/plan.json": "3c609fc7813f10626682dbad875dfe988b3fc238163cb117be281ddacc8380ce",
+    "survey/out/2014/Generativos/cuadraditos/notes.md": "93f6baf98a57d128b62bd7f1e0be2254a242d752f824e8758ed4d58fb710baa5",
+    "survey/out/2014/Generativos/cuadraditos/baseline/result.json": "a136f03517400a31181e159dd2a37850b311b3784f2013f5c334e5539b97bd48",
+    "catalog/operations/seeded-pixel-grain.json": "2a87b136cb4a990cfa900a42ff7711407cbbbfe2984532fbae31ff68efd51cfc",
+    "evidence/coverage/batch1/seeded-pixel-grain/benchmark.json": "a8099a4f79173bd2d3128616e9f609e8809f3c7712ce8d3c62480fdc38189827"
+  },
+  "diagnosis": "The first candidate deliberately replaced source geometry RNG with LCG32. Reference metadata explicitly records reflected seed42 before setup; source randomSeed(seed) uses Processing nextFloat randomness. Different missing-cell positions are the earliest canonical mismatch, before the grain operation.",
+  "mapping": {
+    "layout": "Reproduction-only java.util.Random nextFloat replay, explicit seed42, binary32 random(100), same24x7 blocks,8x2 cells,source ordering,skip<30,positions30+col*80+x*9 and40+row*30+y*9. Validate every retained coordinate against an independent java.util.Random oracle.",
+    "native": "p5Canvas2D600x800,density1,background24,gray200 alpha180,5x5 squares.",
+    "operation": "Public seededPixelGrain(source ARGB8,RGB_ADD,range[0,10],exponent1,rngState42,maxWork480000).",
+    "intentional_differences": [
+      "Grain keeps the frozen portableLCG32 independent seed42, instead of continuing the source JavaRandom stream.",
+      "Byte rounding and Canvas2D alpha composition remain the previously declared structural substitutions."
+    ]
+  },
+  "acceptance": [
+    "Exact ordered layout matches independent Java oracle before rendering.",
+    "Actual public core renders without errors; gain edit preserves geometry;reset/reload/save exact.",
+    "Every stored required frame (only frame1;10/60were proven identical by survey) present.",
+    "Same portable-deterministic default benchmark: dimensions match,score>=75,SSIM>=0.70,histogram>=0.70; preserve all metrics.",
+    "Root inspects original and new baseline/edited images and confirms fine shared-channel grain and missing-cell structure."
+  ],
+  "limits": [
+    "No threshold calibration, image-derived mask, seed search, source special case in core, or new public API.",
+    "Original failed candidate remains failed; a successor may earn scoped acceptance only after all gates pass."
+  ]
+}

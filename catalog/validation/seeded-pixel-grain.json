@@ -92,7 +92,54 @@
         }
       },
       "technique": {
-        "status": "unvalidated"
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/javascript/src/seeded-pixel-grain.js": "cdc5961f7ac0cf09cbd15b443de06e1777fccdf2b3ccb222a4ad06ddf24b8ce2",
+          "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+          "packages/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+          "tests/native/pixel-grain-reproduction/layout.mjs": "0d7f3fa6fdb6e9126d5f6e5e427f36726e6aaba5628cfe138ec1cc217151b199",
+          "tests/native/pixel-grain-reproduction/sketch.js": "9125db16598914e660fc6d12f3ac2d4af74536c7cdc4f55a91c4a39b2af4dfde",
+          "tests/native/pixel-grain-reproduction/index.html": "b31e05df543db8f4324bd6b3bf396174a8a840afe84728c277bf10698dcfe83b",
+          "tests/native/PixelGrainLayoutOracle.java": "40eaf949e5479a367598fbf8ed2997e661baee3ce1a2a895af108aa8a58deb35",
+          "tests/native/pixel-grain-layout.mjs": "2d9ad44f4fbdef57fdffc87f2346cc381e416f4d4dc709c6320fd2539d3bdb06"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/survey-coverage-batch1/grain-replay/layout.json": "474ab5fa14f9b9dd6895c04cd92d1dc25b05132f469c29070e6f029c2314aea6",
+          "evidence/reproductions/survey-coverage-batch1/grain-replay/reference-layout.json": "1adef71e46b6c3b93c83d883462516211a3f43585afa0c5968b43be4667c5d56",
+          "evidence/reproductions/survey-coverage-batch1/grain-replay/native.json": "108dcba50272b5d8784dd7a683fdfb7dd9d1790490672fb1e75dffcdb6717e15",
+          "evidence/reproductions/survey-coverage-batch1/grain-replay/benchmark.json": "eb2f3060dfdb2cb4dc48f9421eef529b35a18e5181e36136ff9e8fb3af7c20ea",
+          "evidence/reproductions/survey-coverage-batch1/grain-replay-plan.json": "24fd2b96470d62faf5959fdebe5e34a7e366137fca45c5f857ee55bd20795ce5",
+          "evidence/coverage/batch1/seeded-pixel-grain/root-review.json": "7959154e25bb9775b5d8c1a1acce30e787571382354fa948214ec83eb40502c2",
+          "evidence/coverage/batch1/seeded-pixel-grain/benchmark.json": "a8099a4f79173bd2d3128616e9f609e8809f3c7712ce8d3c62480fdc38189827",
+          "evidence/coverage/batch1/seeded-pixel-grain/core.json": "2f5f2accf156945245cca72270f976607a5c43bd78682bf28df9f9fe4500e403",
+          "survey/out/2014/Generativos/cuadraditos/baseline/result.json": "a136f03517400a31181e159dd2a37850b311b3784f2013f5c334e5539b97bd48",
+          "fixtures/operations/seeded-pixel-grain.json": "d0198a99c59404e0e173492df5f55261ac6edce9da148e58aa08abf854129927"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/survey-coverage-batch1/grain-replay/benchmark.json",
+            "pointer": "/summary/passed",
+            "equals": true
+          },
+          {
+            "path": "evidence/reproductions/survey-coverage-batch1/grain-replay/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/reproductions/survey-coverage-batch1/grain-replay/layout.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/reproductions/survey-coverage-batch1/grain-replay/root-review.json",
+          "sha256": "9dfbdbcdc436c7f335efd69f8a039528d02dd7f23d68c6021ad83ec6b91b58e7"
+        },
+        "runtime_profile": {
+          "name": "p5 2.3.2 Chromium153.0.8010.12,Canvas2D density1",
+          "scope": "One selected p5Canvas2D structural recreation of2014/Generativos/cuadraditos using the public seeded pixel-grain operation. Technique acceptance only; original core/native reviews remain unchanged."
+        }
       }
     },
     "py5": {
