@@ -1,0 +1,209 @@
+{
+  "kind": "root-landing-page-review",
+  "date": "2026-09-17",
+  "scope": "New root landing experience, bounded interactive SVG study, scroll effects, and migration of the existing gallery to /gallery. No operation, storage, renderer-contract or target-support changes.",
+  "previousReview": "evidence/web/ui-main-integration.json",
+  "historyNote": "Successor for the root entry experience and navigation only. Earlier integration, identity and About evidence retain their historical source and image bindings.",
+  "design": {
+    "direction": "A playable print-workshop introduction: demonstrate an editable procedure before presenting the collection.",
+    "preserved": "Art with knobs as one natural phrase; exact approved supporting copy; bone/charcoal/oxide identity and procedural mark.",
+    "skills": {
+      "endpoint": "https://www.ui-skills.com/mcp",
+      "ids": [
+        "mengto/landing-page",
+        "mengto/animation-on-scroll",
+        "ibelick/fixing-motion-performance"
+      ],
+      "source": {
+        "path": ".work/landing-design-skills.txt",
+        "sha256": "d7bddcf246f7e636ce6a49f2915b40984617c698a36413d4b402e578088b3abb"
+      }
+    },
+    "motion": "Finite headline arrival; CSS ViewTimeline process rule and three print transforms; no requestAnimationFrame loop or scroll listener in application code; static reduced-motion/unsupported-timeline fallback.",
+    "study": "Existing createMarkField and markCommands helper, 32 × 32 marks in a 512-unit SVG viewBox. Field attributes are cached by seed; ink changes reuse geometry. Controls do not write Studio storage."
+  },
+  "verification": {
+    "build": "Next production build and TypeScript passed after final navigation fix.",
+    "landing": {
+      "path": ".work/landing-review/smoke.json",
+      "sha256": "65444aa3f97a010bd763043fcc59f87c4fb9aaf875cfd4de72d7e99d6fa0575c"
+    },
+    "workspace": {
+      "path": ".work/landing-review/workspace.json",
+      "sha256": "5362c769a7cb1e07f5836eaf24af646dd321c001248444e896bb94dd3ede3771"
+    },
+    "workspaceCommand": "WEB_BASE_URL=http://127.0.0.1:3016 python3 tools/with_native_render_lock.py --timeout 240 -- node apps/web/scripts/test-browser.mjs --workspace-only",
+    "scenarios": [
+      "Real length, ink and seed edits change rendered pixels; ink preserves geometry; reset exactly restores original pixels and leaves storage untouched.",
+      "Native FAQ keyboard disclosure and focus-following section navigation work; scroll timelines visibly change print and process-rule transforms.",
+      "Primary action opens hydrated, rendered Studio.",
+      "Gallery navigation, search, real study rendering, return-to-gallery and home wordmark work.",
+      "Reduced motion removes animations and smooth scrolling without disabling live artwork.",
+      "Without JavaScript the original SVG geometry is visible, unavailable controls are disabled with an explanation, and FAQ/gallery links work."
+    ],
+    "widths": [
+      1440,
+      1024,
+      900,
+      768,
+      721,
+      720,
+      390,
+      320
+    ],
+    "layout": "One-line heading and no horizontal overflow at all eight widths; the first range control fits within the tested 844px-tall narrow viewports.",
+    "accessibility": "axe-core WCAG 2 A/AA and 2.1 AA tags: zero reported violations at 1440, 390 and 320px and with reduced motion. Keyboard range, native FAQ disclosure and section-focus handoff exercised.",
+    "motion": "Observed intermediate and final ViewTimeline transform matrices, not just animation declarations; reduced motion removes animation and smooth scrolling.",
+    "performance": {
+      "measurement": "Input event to next animation-frame callback in local headless Chromium; not a device performance guarantee.",
+      "samples": 21,
+      "median": 14.200000047683716,
+      "max": 14.600000143051147
+    },
+    "visualReview": "Root inspected desktop, narrow, interactive variant and no-JavaScript screenshots. All browser rendering used the shared native-render machine lease.",
+    "resolvedDuringReview": "Next client navigation did not transfer focus to the process section. A native same-page anchor and programmatically focusable section now pass the actual keyboard/focus scenario.",
+    "numerics": "Server/client serialized coordinates differed by at most 7.11e-15; exact reset raster hashes matched. No cross-engine bit-identical geometry or cross-layout pixel equivalence is asserted."
+  },
+  "preview": {
+    "url": "https://eunoia.tailf03dad.ts.net:8444/",
+    "process": "ui-design-preview",
+    "port": 3016,
+    "release8443": "unchanged"
+  },
+  "limits": [
+    "Scoped Chromium review, not cross-browser, physical-touch-device, full WCAG or full-corpus certification.",
+    "The study is a landing presentation of an existing helper, not a new package operation or technique attestation.",
+    "Working-checkout preview only; this review does not claim a main commit or an 8443 deployment.",
+    "Existing lib/harness/jobs.ts:58 dynamic filesystem-tracing build warning remains."
+  ],
+  "artworkInputs": [
+    {
+      "path": "apps/web/public/previews/cell-mosaic.png",
+      "sha256": "363daa4eed41ba140d2fcf27fc0b97128a2058e8d31b58836834d7d4dfdb577f"
+    },
+    {
+      "path": "apps/web/public/previews/flowing-brushes.png",
+      "sha256": "1ef2bf768ccc275c86670b3d77acc1a4d58673fc7e68b9a21b33f851c72b246b"
+    },
+    {
+      "path": "apps/web/public/previews/rounded-polyhedra.png",
+      "sha256": "1e07c393db921a8f656f4b2963ffc1235858f53e397e8970aa07d51c214d9078"
+    }
+  ],
+  "images": [
+    {
+      "label": "Landing — desktop",
+      "path": ".work/landing-review/top-1440.png",
+      "sha256": "c36e6fa5c34a994383374feee4bd818b7ccfe2a0625455209b0706ad7238c1f9"
+    },
+    {
+      "label": "Landing — mobile",
+      "path": ".work/landing-review/top-390.png",
+      "sha256": "efdd356704c6fc21873a917638ff4a58290e1a3e7bbedb5bb1fa883d8cdd95fe"
+    },
+    {
+      "label": "Process — scroll-led desktop",
+      "path": ".work/landing-review/desktop-process.png",
+      "sha256": "6a41888bb8a7ed8995babb26178b8cc3e48a4db52902d6716746abfb74f6e3a9"
+    },
+    {
+      "label": "Three starting points",
+      "path": ".work/landing-review/desktop-examples.png",
+      "sha256": "3b5ed491dc01daad4bf28b5f23aaa429252289dedcd6401ec4153724b0fdbc68"
+    },
+    {
+      "label": "Process — mobile",
+      "path": ".work/landing-review/mobile-process.png",
+      "sha256": "17261a7e9246724876cfa1fc0f2c6dfb0cb263b2089bdbb9b5c332da421c9b20"
+    },
+    {
+      "label": "Closing invitation — mobile",
+      "path": ".work/landing-review/mobile-finish.png",
+      "sha256": "43bc43ca7dfa10f3563ac83ea3fd1fb648135972df16d2881e8af4de8a50538a"
+    },
+    {
+      "label": "Live edit — length 64, cobalt ink",
+      "path": ".work/landing-review/study-cobalt.png",
+      "sha256": "bc2435bbaf1d342c1f7561f08338dcc6e2f1c34e75e4e122be33317ca2299d78"
+    },
+    {
+      "label": "No JavaScript — visible artwork and honest fallback",
+      "path": ".work/landing-review/no-javascript.png",
+      "sha256": "eca784694b30612a10911a3cf9f0b13e886da42269ebe2fb80b0f7230fffbf28"
+    }
+  ],
+  "sourceBindings": [
+    {
+      "path": "apps/web/app/page.tsx",
+      "sha256": "1e79a861ba0d98ae81f6940bab0555e9d330b95c2fa8da5e185792adff40d020"
+    },
+    {
+      "path": "apps/web/app/gallery/page.tsx",
+      "sha256": "d6ac37efdb04100eb3bbb326b27e14cb578c0366bc20b25e220c0f37d56eb01f"
+    },
+    {
+      "path": "apps/web/app/layout.tsx",
+      "sha256": "b15cd598555178c3109b3f3065da4d6faf3f8bce03126166f3ab1ea004a0ecd0"
+    },
+    {
+      "path": "apps/web/app/not-found.tsx",
+      "sha256": "4177fb7fd02b7553549fb019e21f7e6f2eecb61f93f6adc21e18430d9f83d1b7"
+    },
+    {
+      "path": "apps/web/app/about/page.tsx",
+      "sha256": "a10adcfed99283963023ce0740b3a53484e0a51ebfeeea0461935f62297c9d47"
+    },
+    {
+      "path": "apps/web/app/techniques/[slug]/page.tsx",
+      "sha256": "2479e12861cabae6aa050ce1ab0cd8f6167c794961de90c60b2a61e9f2a3188f"
+    },
+    {
+      "path": "apps/web/components/LandingPage.tsx",
+      "sha256": "b1592c1d5d04624f4686a2707546bddf167d2753800532865ed98c8d1b96e61d"
+    },
+    {
+      "path": "apps/web/components/LandingPage.module.css",
+      "sha256": "b70936dd5b54ee208f41fe29e1f88093b1b4c456a81e17a090e2dbac2201470e"
+    },
+    {
+      "path": "apps/web/components/LandingStudy.tsx",
+      "sha256": "df213a29a549bf09eaae4934e0b880811497b8ba95a398b21dad30e07e317b1b"
+    },
+    {
+      "path": "apps/web/components/LandingStudy.module.css",
+      "sha256": "b8d915a01f9a3200f414cbe6160e343d590c871db50b1bc64f3914a75519f82a"
+    },
+    {
+      "path": "apps/web/components/SiteNav.tsx",
+      "sha256": "c792e00870c0ed1dc87eef1331b4395869bf7cb11e025c4abb3030281a7f9ba2"
+    },
+    {
+      "path": "apps/web/components/SavedLayerView.tsx",
+      "sha256": "abb82d0e3365134257b1e6b7b0c6e9b20e9ca89fa2a589087e9f687f5e5ac5f9"
+    },
+    {
+      "path": "apps/web/components/Gallery.tsx",
+      "sha256": "4264b29aaabbaa2a989f4deb0c0ff3b0ddb49e70ea6eefa75b08b909834b18ab"
+    },
+    {
+      "path": "apps/web/components/ProceduralMark.tsx",
+      "sha256": "c72605b90971f446668373f56328ff44a570ab36e15c26281e1ad6aed5235cea"
+    },
+    {
+      "path": "apps/web/app/globals.css",
+      "sha256": "4d1278fc1f9529c640d5fdbc90718b564044859d32ed0e1643a9a5a526dbf0ba"
+    },
+    {
+      "path": "apps/web/scripts/test-browser.mjs",
+      "sha256": "7c2b89ce50ea1c0f547f3a33c86f99d549595f694931113023d10199f7a386c5"
+    },
+    {
+      "path": "apps/web/lib/generated-gallery.json",
+      "sha256": "036e13f32ee55ca40c8a1f0e800daa3517ff6f0caff0b5efe13f7cdaadbb8d13"
+    },
+    {
+      "path": "packages/javascript/examples/field-marks/mark-field.js",
+      "sha256": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf"
+    }
+  ]
+}

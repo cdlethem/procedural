@@ -49,7 +49,7 @@ export default function AboutPage() {
 
       <footer className="about-next">
         <p>The image is a result.<br />The procedure is something you can keep working with.</p>
-        <Link className="text-link" href="/">Find a starting point <span aria-hidden="true">→</span></Link>
+        <Link className="text-link" href="/gallery">Find a starting point <span aria-hidden="true">→</span></Link>
       </footer>
     </main>
   );

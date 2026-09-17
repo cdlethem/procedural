@@ -1,0 +1,89 @@
+{
+  "kind": "root-reviewed-logo-aligned-hero",
+  "date": "2026-09-17",
+  "scope": "Hero typography successor on the working-checkout HTTPS8444 preview; carousel behavior and capability scope unchanged.",
+  "previousReview": "evidence/web/warm-carousel-review.json",
+  "userFeedback": "The first distinct-word treatment was rejected because its filled oxide badge was incoherent with the Procedurals logo.",
+  "designSkills": {
+    "mcp": "https://www.ui-skills.com/mcp",
+    "retrieved": [
+      "jakubkrehel/better-typography",
+      "nextlevelbuilder/banner-design"
+    ],
+    "applied": [
+      "Use at most two contrasting type roles; the final hero uses the existing UI sans, matching the wordmark.",
+      "Use tight display leading, balanced wrapping, sufficient contrast and real rendered-width review.",
+      "Keep hero copy editable and semantic; create geometric art direction in CSS rather than image text."
+    ]
+  },
+  "decision": [
+    "Keep exact accessible heading “make art with knobs”.",
+    "Use the existing sans wordmark vocabulary for the entire hero.",
+    "Distinguish knobs with the shared oxide token, stronger weight, a CSS dial replacing the visual o, and three stepped right angles matching ProceduralMark.tsx.",
+    "Remove the rejected filled capsule, shadow and unrelated serif treatment.",
+    "Keep all decoration aria-hidden; aria-label supplies the exact heading."
+  ],
+  "verification": {
+    "productionBuild": {
+      "status": "passed",
+      "command": "node node_modules/next/dist/bin/next build",
+      "cwd": "apps/web",
+      "warning": "Existing lib/harness/jobs.ts:58 dynamic filesystem tracing warning remains."
+    },
+    "browser": {
+      "path": ".work/logo-hero-review/report.json",
+      "sha256": "1f71c290ddc70da1ed9c248758ead6ed99c72b2438087df7b7573e851c66987c",
+      "version": "Chromium153",
+      "observed": [
+        "Exact heading accessible name at1440,1024,768,560,390,320px.",
+        "No horizontal overflow at any reviewed width.",
+        "The distinct word has transparent background, oxide logo-token color and six visible gradient strokes forming three corner marks.",
+        "axe4.10.3 WCAG2A/AA and2.1AA scans returned zero violations at1440,390,320px.",
+        "Root inspected final desktop and320px mobile compositions."
+      ]
+    }
+  },
+  "preview": {
+    "url": "https://eunoia.tailf03dad.ts.net:8444/",
+    "release8443": "Unchanged."
+  },
+  "limits": [
+    "Chromium responsive emulation, not physical-device or cross-browser certification.",
+    "No carousel, renderer, study, persistence, operation or support changes."
+  ],
+  "images": [
+    {
+      "label": "Logo-aligned desktop hero",
+      "path": ".work/logo-hero-review/hero-1440-final.png",
+      "sha256": "bf7a3e8d6ae4ed7595d2a6c5a4596480819d1ac7d0b144833f41550edf1e30e2"
+    },
+    {
+      "label": "Logo-aligned mobile hero",
+      "path": ".work/logo-hero-review/hero-320-final.png",
+      "sha256": "27fab80f1680c7772e04d03a5cc588b16299dce372aa62b57df0125341c59e05"
+    },
+    {
+      "label": "Responsive mobile hero",
+      "path": ".work/logo-hero-review/hero-390.png",
+      "sha256": "b45a5153f6064f7d454fc21a3f1e83555e364db158e49425841a1b6bbbe49a9f"
+    }
+  ],
+  "sourceBindings": [
+    {
+      "path": "apps/web/components/ProceduralMark.tsx",
+      "sha256": "c72605b90971f446668373f56328ff44a570ab36e15c26281e1ad6aed5235cea"
+    },
+    {
+      "path": "apps/web/components/LandingPage.tsx",
+      "sha256": "8518d95330002824c9c7f916fb892dcc9b9bf80c1e250af0ac9565ecfaadd6cf"
+    },
+    {
+      "path": "apps/web/components/LandingPage.module.css",
+      "sha256": "a25ad7cf28dd3276b543d423041a1eaac47491dad2a638f14af46c339687f465"
+    },
+    {
+      "path": "apps/web/app/globals.css",
+      "sha256": "fb3fa0ab3370108a4eaf4bcbb00aa7c597f6c8ca910cf3288c07bf27488d2a9b"
+    }
+  ]
+}

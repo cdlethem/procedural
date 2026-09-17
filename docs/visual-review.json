@@ -2,6 +2,236 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "logo-led-site-identity",
+      "title": "art with knobs \u2014 logo-led site identity",
+      "category": "Root reviewed web identity",
+      "description": "Stepped typography and square-corner rules drawn from the existing logo across the landing and application. Individual studies use open artwork and controls, editorial method sections and full-width source. Browser review covers eight routes at desktop, tablet and mobile widths; gallery inclusion is not native technique acceptance.",
+      "evidence": "evidence/web/logo-led-site-identity.json",
+      "images": [
+        {
+          "label": "Landing desktop",
+          "path": ".work/identity-landing-1440.png",
+          "sha256": "7148f6be3e011b6252de54d5bee10c0ac9ef091fa101391bb69b7beb2775a8f2"
+        },
+        {
+          "label": "Landing mobile",
+          "path": ".work/identity-landing-390.png",
+          "sha256": "79100113f87027b7a8061d1a8319529b454d90032d5fba9181070c08516dde83"
+        },
+        {
+          "label": "Individual study desktop",
+          "path": ".work/identity-techniques-cell-mosaic-1440.png",
+          "sha256": "3c8d1bcf032b7ad3a0884934ecbe8403921bdb6b78b6bb973140cf762aa33642"
+        },
+        {
+          "label": "Individual study mobile",
+          "path": ".work/identity-techniques-cell-mosaic-390.png",
+          "sha256": "cd94266f1ec6abceace8044fe582d6b3ef0c711accded886d2b195fe48cc894d"
+        },
+        {
+          "label": "Method and source",
+          "path": ".work/identity-study-method.png",
+          "sha256": "56ceb9bfd1d8fcd189838a8b984795d5f9ad3a61207d1aed3b246f0694f06fb4"
+        },
+        {
+          "label": "Gallery",
+          "path": ".work/identity-gallery-1440.png",
+          "sha256": "494c822dfb04a216881483b451fb70d36ffa62b64b97fa816bad35edf6dbc324"
+        },
+        {
+          "label": "Studio desktop",
+          "path": ".work/identity-studio-1440.png",
+          "sha256": "3175eec8481de2b463c85cb2c515cf5017dce3f6f65ac73bc64467eab1362a85"
+        },
+        {
+          "label": "Studio mobile",
+          "path": ".work/identity-studio-390.png",
+          "sha256": "6385c3ef859bc472e467e43c46d0b7e80f47ca971719c85fe062c850996831f5"
+        },
+        {
+          "label": "Layer picker",
+          "path": ".work/identity-picker-desktop.png",
+          "sha256": "421dfd8dc0285e39829574921d6be1a350c69fcb68b0496fa91e7b7f5ffee9c0"
+        },
+        {
+          "label": "Palettes",
+          "path": ".work/identity-palettes-1440.png",
+          "sha256": "f7e3be1b70400c6ee77a432d3360efbd93c91017d5e3f3334f6887f99572f2c0"
+        },
+        {
+          "label": "Explorations",
+          "path": ".work/identity-explorations-1440.png",
+          "sha256": "8c2be709a18035b69784400f0e02dec1f4e2576e3c64633bdf2e4afd8c15a24d"
+        },
+        {
+          "label": "API reference",
+          "path": ".work/identity-api-reference-1440.png",
+          "sha256": "84a31aa07525fd3afde180d3aa36a6767020537111a1d91d88188cf254ff2ae0"
+        },
+        {
+          "label": "About",
+          "path": ".work/identity-about-1440.png",
+          "sha256": "45e2f7941b577c0777501f67cdbb3336b118f05eca4d697e3209bec9416f0e99"
+        }
+      ]
+    },
+    {
+      "id": "sterile-landing-rollback",
+      "title": "Procedural studies \u2014 restored neutral landing",
+      "category": "Root reviewed landing rollback",
+      "description": "Restores the sparse neutral presentation while retaining the six-study carousel, three-second cadence, five-second inactivity resume and 500ms crossfade. Warm, logo-derived and gallery-CTA experiments are historical and not current.",
+      "evidence": "evidence/web/sterile-landing-rollback.json",
+      "images": [
+        {
+          "label": "Restored sterile desktop",
+          "path": ".work/sterile-rollback-desktop.png",
+          "sha256": "6fd3195c9c1853d4e4d68b6712d7a7a43a3924ade56fe560c29f3bae49625e61"
+        }
+      ]
+    },
+    {
+      "id": "warm-distinctive-carousel",
+      "title": "Procedural studies \u2014 warm artwork-led landing",
+      "category": "Root reviewed landing preview",
+      "description": "Visual successor to the sterile minimal pass: warm geometric poster stage, full-color neighboring studies, editorial type and tactile controls without slogans. Existing six studies, timing and crossfades remain unchanged. Reviewed desktop, mobile, native edit feedback, contrast and motion on 8444.",
+      "evidence": "evidence/web/warm-carousel-review.json",
+      "images": [
+        {
+          "label": "Warm poster stage",
+          "path": ".work/warm-landing-review/desktop.png",
+          "sha256": "33698c6c687f828b6b02587763f0e89312c68bdaf77cb4a0733eefd0d729816d"
+        },
+        {
+          "label": "Warm mobile landing",
+          "path": ".work/warm-landing-review/mobile-390.png",
+          "sha256": "635dc35486ed67110755243a49ffa92d6bd41b592f9140cf478443f5a65e81ea"
+        },
+        {
+          "label": "Narrow mobile landing",
+          "path": ".work/warm-landing-review/mobile-320.png",
+          "sha256": "5de67e1b3de2137025f3442c4dd0d16c6da3b7c3f4e91ee879ac3c2703eb3b0b"
+        },
+        {
+          "label": "Tactile controls and study picker",
+          "path": ".work/warm-landing-review/mobile-controls.png",
+          "sha256": "e2730f3da3f0cbe9ba339cd920057e3414e2b6523719e375db1e5c079a5b9818"
+        }
+      ]
+    },
+    {
+      "id": "minimal-six-study-carousel",
+      "title": "Procedural studies \u2014 minimal animated carousel",
+      "category": "Root reviewed landing preview",
+      "description": "Six palette-varied native studies, three-second rotation, five-second inactivity resume and a sliding crossfade retaining outgoing edits. Minimal factual presentation. Reviewed timing, controls/reset, responsive layouts, accessibility, reduced motion and no-JavaScript previews on 8444.",
+      "evidence": "evidence/web/minimal-carousel-review.json",
+      "images": [
+        {
+          "label": "Six native palettes",
+          "path": ".work/minimal-carousel-review/curation.png",
+          "sha256": "5ddc79c4d3688f057da11b8c89898d255fe18f1c6f9d25c4a5301f477019e48f"
+        },
+        {
+          "label": "Minimal desktop landing",
+          "path": ".work/minimal-carousel-review/landing-1440.png",
+          "sha256": "0436050efd2ba4067ed930c08672faba59b5eea26ca6164d55c954ab8d725def"
+        },
+        {
+          "label": "Minimal mobile landing",
+          "path": ".work/minimal-carousel-review/landing-390.png",
+          "sha256": "bd3d9e7e4df582f910271795f9542dcc6ba25c3e8bcf37ac568550abaf21f6a4"
+        },
+        {
+          "label": "Narrow mobile landing",
+          "path": ".work/minimal-carousel-review/landing-320.png",
+          "sha256": "d951288331bfe047cf016c96eb165ed7f6e7a92626ccdff328872f12b2a24caf"
+        },
+        {
+          "label": "Sliding crossfade midpoint",
+          "path": ".work/minimal-carousel-review/transition-midpoint.png",
+          "sha256": "22379661e3e200e8ade681331a94c00060927a9df38de0439ccdc27aee848fcc"
+        },
+        {
+          "label": "Reduced motion",
+          "path": ".work/minimal-carousel-review/reduced-motion.png",
+          "sha256": "8bc1d8338ca917d6e75cae7adb6943cffd5c56c16960df76963c824fe95ee427"
+        },
+        {
+          "label": "No JavaScript",
+          "path": ".work/minimal-carousel-review/no-javascript.png",
+          "sha256": "dd7f52135d5d12d789bceb6dcbc9a2208135f7669806ce4ce47d3d2a37fdc80a"
+        }
+      ]
+    },
+    {
+      "id": "interactive-artwork-carousel",
+      "title": "Art with knobs \u2014 three live studies",
+      "category": "Root reviewed landing preview",
+      "description": "Native mosaic, warped bands and 3D form; eight-second rotation stops after interaction. Open artwork stage, controls below, no thin panel framing. Reviewed responsive, keyboard, touch, reduced-motion and no-JavaScript paths on 8444. Separate from the 8443 release.",
+      "evidence": "evidence/web/landing-carousel-review.json",
+      "images": [
+        {
+          "label": "Desktop carousel",
+          "path": ".work/landing-carousel-review/landing-1440.png",
+          "sha256": "0f7a9ba9537e5cd1e25805480872a370fbfac6956e3d04be4040a285e3ba82ed"
+        },
+        {
+          "label": "Mobile landing",
+          "path": ".work/landing-carousel-review/landing-320.png",
+          "sha256": "a35544bf3c2669cce76cee31289829b925336b82d91e91f4dbda9640bcea7510"
+        },
+        {
+          "label": "Mobile touch controls",
+          "path": ".work/landing-carousel-review/touch-controls.png",
+          "sha256": "a872371dac741a206b2eff2180d396829680d0ec53f7e58f68f5b93e6a4f38b3"
+        },
+        {
+          "label": "Warped bands",
+          "path": ".work/landing-carousel-review/desktop-warp.png",
+          "sha256": "a4fff4088130cee0731ea9c38529fd57a144b7f41bedd0cbee6efb7391766237"
+        },
+        {
+          "label": "Three-dimensional profile",
+          "path": ".work/landing-carousel-review/desktop-profile.png",
+          "sha256": "48cc334aee9e0eaa50ff3b8068dd55cc294e14804a012f002ffa6b3ab1c8c49f"
+        },
+        {
+          "label": "Edited mosaic",
+          "path": ".work/landing-carousel-review/cell-mosaic-edited.png",
+          "sha256": "ff6a11e1e8acfb6e164bedad2e8e2dc67f8299b3a7d03105f52b777aec108b45"
+        },
+        {
+          "label": "Edited warped bands",
+          "path": ".work/landing-carousel-review/warp-marks-edited.png",
+          "sha256": "b9b6baabbe9fe0273098e6afd335ecc771a68be5e8177bfed5575e3e2ebe4a54"
+        },
+        {
+          "label": "Edited profile",
+          "path": ".work/landing-carousel-review/profile-marks-edited.png",
+          "sha256": "80f1c0c7f343f1ff998d74bb6df53e363126efa79b46d950b8b9568499450889"
+        },
+        {
+          "label": "Scroll narrative",
+          "path": ".work/landing-carousel-review/process.png",
+          "sha256": "294640a58c784a8e5617c7928b9c06f98602cf32bb5f61150a2ec70bcf713f28"
+        },
+        {
+          "label": "Artwork invitations",
+          "path": ".work/landing-carousel-review/examples.png",
+          "sha256": "5dde69908fb518966440fa21995f968b769e347b199771a29f698bf6274d421b"
+        },
+        {
+          "label": "Reduced motion",
+          "path": ".work/landing-carousel-review/reduced-motion.png",
+          "sha256": "a353a69b1087394e3d93298e922a729fd2c46354d53e1a52d9ad844684760b27"
+        },
+        {
+          "label": "No JavaScript",
+          "path": ".work/landing-carousel-review/no-javascript.png",
+          "sha256": "cd299048f74eb5648ccdd6403ff690b422213f969101f23689edff8301e77ec2"
+        }
+      ]
+    },
+    {
       "id": "external-expansion-live-release",
       "title": "Completed redesign with five new studies",
       "category": "Root reviewed live HTTPS release",
@@ -22,6 +252,55 @@
           "label": "Palettes",
           "path": ".work/expansion-full/gallery-release/live/palettes.png",
           "sha256": "76aabf686bd6b2f3ca42a87fbb5af2bab30e9c3e7195d30aaef65c693b648076"
+        }
+      ]
+    },
+    {
+      "id": "playable-landing-page",
+      "title": "Art with knobs \u2014 a playable first impression",
+      "category": "Root reviewed landing preview",
+      "description": "The homepage now starts with a real editable field, a scroll-led process narrative, and three artwork invitations. The full collection lives at /gallery. Reviewed responsive layouts, exact reset pixels, reduced motion, native keyboard controls, no-JavaScript fallback, and Studio/gallery handoffs. Preview on 8444; the 8443 release is unchanged.",
+      "evidence": "evidence/web/landing-page-review.json",
+      "images": [
+        {
+          "label": "Landing \u2014 desktop",
+          "path": ".work/landing-review/top-1440.png",
+          "sha256": "c36e6fa5c34a994383374feee4bd818b7ccfe2a0625455209b0706ad7238c1f9"
+        },
+        {
+          "label": "Landing \u2014 mobile",
+          "path": ".work/landing-review/top-390.png",
+          "sha256": "efdd356704c6fc21873a917638ff4a58290e1a3e7bbedb5bb1fa883d8cdd95fe"
+        },
+        {
+          "label": "Process \u2014 scroll-led desktop",
+          "path": ".work/landing-review/desktop-process.png",
+          "sha256": "6a41888bb8a7ed8995babb26178b8cc3e48a4db52902d6716746abfb74f6e3a9"
+        },
+        {
+          "label": "Three starting points",
+          "path": ".work/landing-review/desktop-examples.png",
+          "sha256": "3b5ed491dc01daad4bf28b5f23aaa429252289dedcd6401ec4153724b0fdbc68"
+        },
+        {
+          "label": "Process \u2014 mobile",
+          "path": ".work/landing-review/mobile-process.png",
+          "sha256": "17261a7e9246724876cfa1fc0f2c6dfb0cb263b2089bdbb9b5c332da421c9b20"
+        },
+        {
+          "label": "Closing invitation \u2014 mobile",
+          "path": ".work/landing-review/mobile-finish.png",
+          "sha256": "43bc43ca7dfa10f3563ac83ea3fd1fb648135972df16d2881e8af4de8a50538a"
+        },
+        {
+          "label": "Live edit \u2014 length 64, cobalt ink",
+          "path": ".work/landing-review/study-cobalt.png",
+          "sha256": "bc2435bbaf1d342c1f7561f08338dcc6e2f1c34e75e4e122be33317ca2299d78"
+        },
+        {
+          "label": "No JavaScript \u2014 visible artwork and honest fallback",
+          "path": ".work/landing-review/no-javascript.png",
+          "sha256": "eca784694b30612a10911a3cf9f0b13e886da42269ebe2fb80b0f7230fffbf28"
         }
       ]
     },
@@ -4130,25 +4409,6 @@
       ]
     },
     {
-      "id": "survey-batch1-grain-replay",
-      "title": "Grain: corrected source-layout replay",
-      "category": "Root accepted structural original recreation",
-      "description": "JavaRandom source layout, unchanged portable grain; original failed run retained separately. SSIM0.995 with unchanged0.7 gate.",
-      "evidence": "evidence/reproductions/survey-coverage-batch1/grain-replay/root-review.json",
-      "images": [
-        {
-          "label": "baseline",
-          "path": ".work/survey-coverage-batch1/integration/.work/grain-replay-native/baseline.png",
-          "sha256": "69043085b9c9a1a7e1cc278323cb1cf9663f4c58ea72c492897bb36c7564f0d9"
-        },
-        {
-          "label": "strength-edit",
-          "path": ".work/survey-coverage-batch1/integration/.work/grain-replay-native/strength-edit.png",
-          "sha256": "8db36e44547ecd47fc31ce5f4535a9cc2a263e576ab6b38ed92c83901022d3c8"
-        }
-      ]
-    },
-    {
       "id": "external-art-anchor-research",
       "title": "External references \u2014 Davis, Reas and Quilez",
       "category": "Root reviewed reference research",
@@ -4407,6 +4667,60 @@
       ]
     },
     {
+      "id": "corpus-default-palettes",
+      "title": "Fifty default palettes \u2014 swatches, sources and p5 application",
+      "category": "Root reviewed palette data and scoped web",
+      "description": "Color-led names, source comparisons, three actual Studio applications and mobile navigation. Local scoped acceptance; not a deployment.",
+      "evidence": "evidence/external-art/2026-09/default-palette-review.json",
+      "images": [
+        {
+          "label": "external-art-research \u2014 default-palette-swatches-0.png",
+          "path": ".work/external-art-research/default-palette-swatches-0.png",
+          "sha256": "62a506ad082d490f581956a30cb436ad3d9c62a9abac04d97466bb2badc08e89"
+        },
+        {
+          "label": "external-art-research \u2014 default-palette-swatches-1.png",
+          "path": ".work/external-art-research/default-palette-swatches-1.png",
+          "sha256": "d1893253000e7688a598f7ca2d14ba979e0f5a504428a8da0a50d5aab1d8db3b"
+        },
+        {
+          "label": "external-art-research \u2014 default-palette-source-comparisons-0.jpg",
+          "path": ".work/external-art-research/default-palette-source-comparisons-0.jpg",
+          "sha256": "767bc224b05455a70435cb16565a5088455c0f7d13e70f69da8c661d1b1e7cc1"
+        },
+        {
+          "label": "external-art-research \u2014 default-palette-source-comparisons-1.jpg",
+          "path": ".work/external-art-research/default-palette-source-comparisons-1.jpg",
+          "sha256": "b5b562d04c5284ba053f36d7877a11961f3bc78f4bd7e1c67f0c19334ca41384"
+        },
+        {
+          "label": "external-art-research \u2014 default-palette-source-comparisons-2.jpg",
+          "path": ".work/external-art-research/default-palette-source-comparisons-2.jpg",
+          "sha256": "53acb6c9722c1fe6d0ffddda9b5c48fddb0891e06577d2ab4ced4ba8ebe2375b"
+        },
+        {
+          "label": "default-palettes-app \u2014 apps \u2014 web \u2014 .work \u2014 palettes \u2014 browser \u2014 default-cell-mosaic.png",
+          "path": ".work/default-palettes-app/apps/web/.work/palettes/browser/default-cell-mosaic.png",
+          "sha256": "76fa156ba1096bf88b0ef3316c926cea679d8827737fc483c99d941404ac49e2"
+        },
+        {
+          "label": "default-palettes-app \u2014 apps \u2014 web \u2014 .work \u2014 palettes \u2014 browser \u2014 default-flow-needles.png",
+          "path": ".work/default-palettes-app/apps/web/.work/palettes/browser/default-flow-needles.png",
+          "sha256": "deb0938274812e8d37a4977f304a7f98121c5b51f862e3c42be2f730f3e8b349"
+        },
+        {
+          "label": "default-palettes-app \u2014 apps \u2014 web \u2014 .work \u2014 palettes \u2014 browser \u2014 default-rounded-panels.png",
+          "path": ".work/default-palettes-app/apps/web/.work/palettes/browser/default-rounded-panels.png",
+          "sha256": "33552fb0c3eb87c28f818db489e7b9a01d4a30b150e48441b7e8867bc0edd56e"
+        },
+        {
+          "label": "default-palettes-app \u2014 apps \u2014 web \u2014 .work \u2014 palettes \u2014 browser \u2014 mobile-defaults-last.png",
+          "path": ".work/default-palettes-app/apps/web/.work/palettes/browser/mobile-defaults-last.png",
+          "sha256": "32dedbd772240b0592375a7e28d98260d74fe0a7d7e6da8a33b770b87ef41eaa"
+        }
+      ]
+    },
+    {
       "id": "external-art-gallery",
       "title": "External reference gallery \u2014 desktop and mobile",
       "category": "Root reviewed corpus navigation",
@@ -4427,6 +4741,25 @@
           "label": "external-art-corpus \u2014 browser-mobile-art.png",
           "path": ".work/external-art-corpus/browser-mobile-art.png",
           "sha256": "2c9ce41f9df1e73364ba7c9e5569905c5fd1dcd5a2df6899a1313c531011db8d"
+        }
+      ]
+    },
+    {
+      "id": "survey-batch1-grain-replay",
+      "title": "Grain: corrected source-layout replay",
+      "category": "Root accepted structural original recreation",
+      "description": "JavaRandom source layout, unchanged portable grain; original failed run retained separately. SSIM0.995 with unchanged0.7 gate.",
+      "evidence": "evidence/reproductions/survey-coverage-batch1/grain-replay/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/survey-coverage-batch1/integration/.work/grain-replay-native/baseline.png",
+          "sha256": "69043085b9c9a1a7e1cc278323cb1cf9663f4c58ea72c492897bb36c7564f0d9"
+        },
+        {
+          "label": "strength-edit",
+          "path": ".work/survey-coverage-batch1/integration/.work/grain-replay-native/strength-edit.png",
+          "sha256": "8db36e44547ecd47fc31ce5f4535a9cc2a263e576ab6b38ed92c83901022d3c8"
         }
       ]
     },
@@ -4588,6 +4921,97 @@
       ]
     },
     {
+      "id": "agent-behaviors-pending",
+      "title": "Contact memory, sensing and flock steering",
+      "category": "Root visual review; acceptance pending",
+      "description": "Native behavior and lifecycle checks passed. Root inspected representative frames; installed-package replay and final acceptance remain pending.",
+      "evidence": ".work/agent-behavior-native-final-v7/report.json",
+      "images": [
+        {
+          "label": "lingering-links",
+          "path": ".work/agent-behavior-native-final-v7/lingering-links/late-tick-030.png",
+          "sha256": "ab0f8bfa4e7ef2a832aa853377557220367532aa318258620996f3e5475e311e"
+        },
+        {
+          "label": "sensing-trails",
+          "path": ".work/agent-behavior-native-final-v7/sensing-trails/late-tick-030.png",
+          "sha256": "432f9f6c3ce046dafd3b147d435f0fe5bad3d8272050e6e749326c5c78313a80"
+        },
+        {
+          "label": "flocking-marks",
+          "path": ".work/agent-behavior-native-final-v7/flocking-marks/late-tick-030.png",
+          "sha256": "f8bc8a0dbadbee99f9dcd6597441eb3f07cbe856a23a3d14abaa9f4603452897"
+        }
+      ]
+    },
+    {
+      "id": "periodic-fluid-pending",
+      "title": "Transported dye and density contours",
+      "category": "Root visual review; acceptance pending",
+      "description": "Explicit periodic projected velocity transports three scalar dyes. Contours show retained scalar levels, with a separate texture substitution. Finite projection and dissipative advection; no artist recreation.",
+      "evidence": ".work/expansion-full/fluid/native-03/report.json",
+      "images": [
+        {
+          "label": "flow-120",
+          "path": ".work/expansion-full/fluid/native-03/flow-120.png",
+          "sha256": "fda3439fcaeeffabb711ecffa1dd8733a336de1e69d38d650f8570dec7593d6c"
+        },
+        {
+          "label": "soft-120",
+          "path": ".work/expansion-full/fluid/native-03/soft-120.png",
+          "sha256": "fb6d1aac8e99495389f0bd8fa8ff5a3ad23e59091fe273e3f341fd3eabbcff9d"
+        },
+        {
+          "label": "striped-30",
+          "path": ".work/expansion-full/fluid/native-03/striped-30.png",
+          "sha256": "12d23f9af2b5db57915e0457267d6989f7d52aab0d556571a4c7dba8e5ba50e9"
+        }
+      ]
+    },
+    {
+      "id": "graph-growth-pending",
+      "title": "Editable bridge and neighborhood graph studies",
+      "category": "Native draft; root review pending",
+      "description": "Two original p5 studies after independent graph input substitution, with core and browser checks. No target acceptance or source recreation claimed.",
+      "evidence": ".work/graph-growth-native-v3/report.json",
+      "images": [
+        {
+          "label": "bridge-web \u2014 transferred graph, tick 2",
+          "path": ".work/graph-growth-native-v3/bridge-web/transfer-next-tick.png",
+          "sha256": "4db988cca2bcdda5390a716348736d60ac1305ac3b17e1d3c20402963a35343a"
+        },
+        {
+          "label": "neighborhood-growth \u2014 transferred graph, tick 2",
+          "path": ".work/graph-growth-native-v3/neighborhood-growth/transfer-next-tick.png",
+          "sha256": "0ee13b23481b57c66df780d03bf727a295b75d3d788adba74a4e745cfa7970dc"
+        }
+      ]
+    },
+    {
+      "id": "elastic-growth-pending",
+      "title": "Editable elastic loops",
+      "category": "Native draft; root review pending",
+      "description": "Original p5 study after material refinement, evolving motion and independent acceleration substitution. No source recreation or target acceptance claimed.",
+      "evidence": ".work/elastic-growth-native-v5/report.json",
+      "images": [
+        {
+          "label": "early-refinement",
+          "path": ".work/elastic-growth-native-v5/early-tick-001.png",
+          "sha256": "6ccf5f76b8a8252edc69831df26b363673e67212bb55740549961d336fb50e22"
+        },
+        {
+          "label": "late-motion",
+          "path": ".work/elastic-growth-native-v5/late-tick-012.png",
+          "sha256": "05f412cf373ea2f714f080d4d6842fa1f328e074a0196dda37fa0a486a9bb11b"
+        },
+        {
+          "label": "wind-and-nodes",
+          "path": ".work/elastic-growth-native-v5/transfer-next-tick.png",
+          "sha256": "f816ef56a351a1a26e5a3a1765b9fa068064faaccb4af0d2859a522370d08660"
+        }
+      ]
+    },
+    {
       "id": "external-gallery-first-batch",
       "title": "Five new studies in the completed gallery and Studio",
       "category": "Root reviewed web integration",
@@ -4613,6 +5037,738 @@
           "label": "techniques-orbital-brush",
           "path": ".work/external-gallery-review/.work/browser-review/screens/techniques-orbital-brush.png",
           "sha256": "4b7d3cf65d6bc36f8de707a2946009f20fbaa76e41fc98c3811fb50427b9df4c"
+        }
+      ]
+    },
+    {
+      "id": "study-copy-live-release",
+      "title": "Live study copy cleanup",
+      "category": "Root reviewed live release",
+      "description": "Requested copy cleanup; completed gallery and Studio preserved.",
+      "evidence": "evidence/web/study-copy-live-release.json",
+      "images": [
+        {
+          "label": "gallery",
+          "path": ".work/expansion-full/study-copy-release/live/gallery.png",
+          "sha256": "24c3c38773fbe738966008e69a003ff2f207d629cd30881532a99165def68307"
+        },
+        {
+          "label": "studio",
+          "path": ".work/expansion-full/study-copy-release/live/studio.png",
+          "sha256": "d8f7d4e53897b240f2b36e92dd07213738c1f6a39fddf1b2c82d8cdcd2037d16"
+        }
+      ]
+    },
+    {
+      "id": "external-dynamics-package-second-batch",
+      "title": "Agent dynamics, region geometry, connected growth, fluids and feedback",
+      "category": "Root reviewed p5 package studies",
+      "description": "Fifteen cores, feedback host and ten scoped source/installed editable studies.",
+      "evidence": "evidence/expansion/second-batch/root-review.json",
+      "images": [
+        {
+          "label": "1-native-root-review-ready-3-withheld-open-glyph",
+          "path": ".work/expansion-full/feedback/native-root-review-ready-3/withheld-open-glyph.png",
+          "sha256": "7e5c122db1f104453c277664b8c11d5cb5abf2bfd9b3c48cdf2ffacc0f07e8fa"
+        },
+        {
+          "label": "2-native-root-review-ready-3-step-25",
+          "path": ".work/expansion-full/feedback/native-root-review-ready-3/step-25.png",
+          "sha256": "1d288664b2cffee3999cf51f01d4d40b0abca0f41822d711ed4b76688da47e02"
+        },
+        {
+          "label": "3-guarded-bands-baseline",
+          "path": ".work/thick-regions-native-MNq2vX/guarded-bands/baseline.png",
+          "sha256": "b9d4d67dd223e870da0ecd9dc98bd9379fe5ba7741e9b43bebfedf0d37410065"
+        },
+        {
+          "label": "4-guarded-bands-second-control",
+          "path": ".work/thick-regions-native-MNq2vX/guarded-bands/second-control.png",
+          "sha256": "9d0c79942fa55e8b1c6f5dffde0aebb840ed1e376340b073b8ef728630160009"
+        },
+        {
+          "label": "5-hatched-islands-baseline",
+          "path": ".work/thick-regions-native-MNq2vX/hatched-islands/baseline.png",
+          "sha256": "8885cbe55cc4a60967452067b4135e95c9fa01200f77cd53e5314f4e255e962e"
+        },
+        {
+          "label": "6-bridge-web-full-web-tick-042",
+          "path": ".work/graph-growth-native-v7/bridge-web/full-web-tick-042.png",
+          "sha256": "c227fa35444d035fe6cf95b2609a621341517ebe3b0d0be2f84d2d23666bc46c"
+        },
+        {
+          "label": "7-elastic-growth-native-v8-folded-tick-036",
+          "path": ".work/elastic-growth-native-v8/folded-tick-036.png",
+          "sha256": "e58f6119734f5ad0509979fb88a9a2b6345c8fe321035995221eebcdc2cdbb7b"
+        },
+        {
+          "label": "8-neighborhood-growth-transfer-next-tick",
+          "path": ".work/expansion-full/second-final/source/graph/neighborhood-growth/transfer-next-tick.png",
+          "sha256": "0ee13b23481b57c66df780d03bf727a295b75d3d788adba74a4e745cfa7970dc"
+        },
+        {
+          "label": "9-sensing-trails-late-tick-030",
+          "path": ".work/expansion-full/second-final/source/b/sensing-trails/late-tick-030.png",
+          "sha256": "432f9f6c3ce046dafd3b147d435f0fe5bad3d8272050e6e749326c5c78313a80"
+        },
+        {
+          "label": "10-native-final-04-flow-120",
+          "path": ".work/expansion-full/fluid/native-final-04/flow-120.png",
+          "sha256": "fda3439fcaeeffabb711ecffa1dd8733a336de1e69d38d650f8570dec7593d6c"
+        },
+        {
+          "label": "11-lingering-links-late-tick-030",
+          "path": ".work/agent-behavior-native-final-v7/lingering-links/late-tick-030.png",
+          "sha256": "ab0f8bfa4e7ef2a832aa853377557220367532aa318258620996f3e5475e311e"
+        },
+        {
+          "label": "12-flocking-marks-late-tick-030",
+          "path": ".work/agent-behavior-native-final-v7/flocking-marks/late-tick-030.png",
+          "sha256": "f8bc8a0dbadbee99f9dcd6597441eb3f07cbe856a23a3d14abaa9f4603452897"
+        }
+      ]
+    },
+    {
+      "id": "paths-a-native-quality-draft-20260917",
+      "title": "Path study native editing \u2014 worker draft",
+      "category": "Worker visual review pending root",
+      "description": "Five p5 path examples with mirrored web construction controls. Default and construction-edit views; browser checks include exact entry, mark edits, historical composition, reset/reload and transparent PNG. Root creative review and integration are pending.",
+      "evidence": ".work/paths-a-quality-browser-20260917-r5/report.json",
+      "images": [
+        {
+          "label": "Rounded panels native controls",
+          "path": ".work/paths-a-quality-browser-20260917-r5/rounded-panels/native-interface.png",
+          "sha256": "a65a06ac951b1bbb005e7f28be39b3299a2fad46f7266785227ae7f925aa5526"
+        },
+        {
+          "label": "rounded-panels default",
+          "path": ".work/paths-a-quality-browser-20260917-r5/rounded-panels/modern-default.png",
+          "sha256": "f6114b087386613be70f1254c02312523e3a1c3c489dfbebbe4e58ada3c0dca7"
+        },
+        {
+          "label": "rounded-panels construction edit",
+          "path": ".work/paths-a-quality-browser-20260917-r5/rounded-panels/construction-edit.png",
+          "sha256": "828755827eb2f7a0db7f6702982338ae8aeca75666e9bd350c57fe1dea776e32"
+        },
+        {
+          "label": "road-margins default",
+          "path": ".work/paths-a-quality-browser-20260917-r5/road-margins/modern-default.png",
+          "sha256": "deef3cebc105f120f5f4d27b96fcc40367b040844919babf7887163a36ef8a75"
+        },
+        {
+          "label": "road-margins construction edit",
+          "path": ".work/paths-a-quality-browser-20260917-r5/road-margins/construction-edit.png",
+          "sha256": "7f8b064816ef0fc54056c486c63d2b52da1c5e96a0b88f49f32a2b50511a7d3d"
+        },
+        {
+          "label": "nested-contour-strokes default",
+          "path": ".work/paths-a-quality-browser-20260917-r5/nested-contour-strokes/modern-default.png",
+          "sha256": "2a50ea107922ee68348de3e8d21bf9ba1bbb50be49b14e8cfcef14ff1db9f4bd"
+        },
+        {
+          "label": "nested-contour-strokes construction edit",
+          "path": ".work/paths-a-quality-browser-20260917-r5/nested-contour-strokes/construction-edit.png",
+          "sha256": "128633fb00ce6609ada2352e59192584b293bf92990afb51d1937ec476155aca"
+        },
+        {
+          "label": "faceted-silhouettes default",
+          "path": ".work/paths-a-quality-browser-20260917-r5/faceted-silhouettes/modern-default.png",
+          "sha256": "ff89eb8ce268661795267fcc63822ce057d1391408b93b0263118ba4f4c94e25"
+        },
+        {
+          "label": "faceted-silhouettes construction edit",
+          "path": ".work/paths-a-quality-browser-20260917-r5/faceted-silhouettes/construction-edit.png",
+          "sha256": "ff15620acfba8050ae57f5e83b065ff7fcbebeb486c4486083938a8088b65ae4"
+        },
+        {
+          "label": "concave-grain default",
+          "path": ".work/paths-a-quality-browser-20260917-r5/concave-grain/modern-default.png",
+          "sha256": "a8585eaa5c2162b2728b03dae7b2785d7022f9a5e8646f0f452dc5f70a0d2e99"
+        },
+        {
+          "label": "concave-grain construction edit",
+          "path": ".work/paths-a-quality-browser-20260917-r5/concave-grain/construction-edit.png",
+          "sha256": "92586712ef1572efb528dad6899166ac91e596bf229aa41d9a9c20815b3f5a9b"
+        }
+      ]
+    },
+    {
+      "id": "paths-a-web-quality-draft-20260917",
+      "title": "Editable path construction in the web gallery",
+      "category": "Root visual review \u2014 draft integration",
+      "description": "Five path studies rendered through the actual revised web dispatcher; source/layout and mark edits produce distinct images. Native parity, saved-work migration and release binding remain separate checks.",
+      "evidence": ".work/gallery-quality/real-path-review/report.json",
+      "images": [
+        {
+          "label": "rounded panels default",
+          "path": ".work/gallery-quality/real-path-review/rounded-panels-default.png",
+          "sha256": "ae4e0879f781a73371a2864b83a341427c74022c135b8a140ad00fcb10369c3e"
+        },
+        {
+          "label": "rounded panels overlap fill",
+          "path": ".work/gallery-quality/real-path-review/rounded-panels-overlap-fill.png",
+          "sha256": "bfb381c01e77e5f10d1ceadbb8ab56c526db35dafeca342dfcc7a25d875653c2"
+        },
+        {
+          "label": "road margins default",
+          "path": ".work/gallery-quality/real-path-review/road-margins-default.png",
+          "sha256": "466fd42ac0527b67a0e532c316b4b81fb94a7ce55314c97654c896e6df19fe7c"
+        },
+        {
+          "label": "road margins signed source",
+          "path": ".work/gallery-quality/real-path-review/road-margins-signed-source.png",
+          "sha256": "f9421c4503c2e86dc9457bd992bfa401768733aee73434fdd61db44868644069"
+        },
+        {
+          "label": "nested contour strokes default",
+          "path": ".work/gallery-quality/real-path-review/nested-contour-strokes-default.png",
+          "sha256": "1d149465829d356864faf11b9df812018a9e3e0f0d8829e18e690800d1c08f0c"
+        },
+        {
+          "label": "nested contour strokes notched dots",
+          "path": ".work/gallery-quality/real-path-review/nested-contour-strokes-notched-dots.png",
+          "sha256": "cda381b94865ab7f8c9c63ecbfda034b43ee12faf872ae011e07c37d494737e5"
+        },
+        {
+          "label": "faceted silhouettes default",
+          "path": ".work/gallery-quality/real-path-review/faceted-silhouettes-default.png",
+          "sha256": "ccd9b07989c03a5ce9e4f6adde89059ebdf4f528bb16d6db068489fe88c474cb"
+        },
+        {
+          "label": "faceted silhouettes notched grain",
+          "path": ".work/gallery-quality/real-path-review/faceted-silhouettes-notched-grain.png",
+          "sha256": "74596c493c250ead376ab69d3f87789281f90fb48adf7b56d01b3f717fc57320"
+        },
+        {
+          "label": "concave grain default",
+          "path": ".work/gallery-quality/real-path-review/concave-grain-default.png",
+          "sha256": "b600dbb43d9e846e734162f77345cdc18db39f56d9f5a97015b2f3825d34dcf8"
+        },
+        {
+          "label": "concave grain convex solid",
+          "path": ".work/gallery-quality/real-path-review/concave-grain-convex-solid.png",
+          "sha256": "48797b96fb868ab6b1497c22007423f8f0d75b604bf96a60c0024fd34e71d109"
+        }
+      ]
+    },
+    {
+      "id": "mesh-web-quality-draft-20260917",
+      "title": "Editable mesh sources and surfaces in the web gallery",
+      "category": "Root visual review \u2014 draft integration",
+      "description": "Six mesh studies rendered through the actual web gallery; source, camera and surface edits visibly differ. Solid-lit outlines omit accidental triangulation diagonals. Saved-work and release binding remain separate checks.",
+      "evidence": ".work/gallery-quality/real-mesh-review/report.json",
+      "images": [
+        {
+          "label": "extruded seals default",
+          "path": ".work/gallery-quality/real-mesh-review/extruded-seals-default.png",
+          "sha256": "079c3a68b3050d502a347c1cd59e670976e64e63bd1f66162e03f7ff3e8eddf6"
+        },
+        {
+          "label": "extruded seals stepped bands",
+          "path": ".work/gallery-quality/real-mesh-review/extruded-seals-stepped-bands.png",
+          "sha256": "3bc300ad9021d86b18f531264604fc4791be55a7fa3b7c33329572600e1b4991"
+        },
+        {
+          "label": "stepped blocks default",
+          "path": ".work/gallery-quality/real-mesh-review/stepped-blocks-default.png",
+          "sha256": "1f71fb4719964b623ec19cfa73d9c349217a96ec50122c2af21d33739f3ffd49"
+        },
+        {
+          "label": "stepped blocks beveled",
+          "path": ".work/gallery-quality/real-mesh-review/stepped-blocks-beveled.png",
+          "sha256": "210be577dd5c88016cec996cc0c9b980dbbb1b6bbe06256ed792611a3dcea13e"
+        },
+        {
+          "label": "transported ribbons default",
+          "path": ".work/gallery-quality/real-mesh-review/transported-ribbons-default.png",
+          "sha256": "ab9b893dc0bba48de95ded277ba8be808d4e8658496d4be3334ce9c79bb696cf"
+        },
+        {
+          "label": "transported ribbons straight taper",
+          "path": ".work/gallery-quality/real-mesh-review/transported-ribbons-straight-taper.png",
+          "sha256": "f4aabf597f9578f4863bba90f30cf3e34781b772272c82cb612d1ec0e2bcf195"
+        },
+        {
+          "label": "twisting streamers default",
+          "path": ".work/gallery-quality/real-mesh-review/twisting-streamers-default.png",
+          "sha256": "e88e5d5b93f73929f11551e0d876970a861cb80bd76c438f49c59b72aef0df45"
+        },
+        {
+          "label": "twisting streamers folded",
+          "path": ".work/gallery-quality/real-mesh-review/twisting-streamers-folded.png",
+          "sha256": "1d9e9fd277e2cf319e9378322b9037bfc05cbb45537069053a07c77484b39a9b"
+        },
+        {
+          "label": "rounded polyhedra default",
+          "path": ".work/gallery-quality/real-mesh-review/rounded-polyhedra-default.png",
+          "sha256": "3f390f0be23e36265ba751f79f3e15fb0072ad8a3a6a854517479259801c61fb"
+        },
+        {
+          "label": "rounded polyhedra open patch",
+          "path": ".work/gallery-quality/real-mesh-review/rounded-polyhedra-open-patch.png",
+          "sha256": "445c4cf7d4e1096eca87a8169c02fdcef0ef12894704626d6db536a123f06c45"
+        },
+        {
+          "label": "subdivided shells default",
+          "path": ".work/gallery-quality/real-mesh-review/subdivided-shells-default.png",
+          "sha256": "ef37f6dc6ccc4174c39a09f7c22a802a3b9137ae974acea0c4cf30fe32eae57c"
+        },
+        {
+          "label": "subdivided shells tetra facets",
+          "path": ".work/gallery-quality/real-mesh-review/subdivided-shells-tetra-facets.png",
+          "sha256": "dacbd2618bb24891116f5f0940a6dcebc44e77a8fcfdfb65035c0926e5cdbc93"
+        }
+      ]
+    },
+    {
+      "id": "orbital-web-quality-draft-20260917",
+      "title": "Orbital Brush paths and marks in the web gallery",
+      "category": "Root visual review \u2014 draft integration",
+      "description": "Real web-gallery renders of the revised default and four deliberate path/mark configurations. The default was strengthened after visual inspection. Release binding remains pending.",
+      "evidence": ".work/gallery-quality/real-orbital-review/report.json",
+      "images": [
+        {
+          "label": "default",
+          "path": ".work/gallery-quality/real-orbital-review/default.png",
+          "sha256": "ca5aa307998dc262063d3985123a1ae8f39159742200c2b721c18eeaf15c9b24"
+        },
+        {
+          "label": "sparse",
+          "path": ".work/gallery-quality/real-orbital-review/sparse.png",
+          "sha256": "d63d0eda559d757e41aa83215fd822096f13ab547f00266e238cd7bc6b29f7dc"
+        },
+        {
+          "label": "nested",
+          "path": ".work/gallery-quality/real-orbital-review/nested.png",
+          "sha256": "9b4d34af9fdf01ec51e46be206efe0cdd0026b23fb8c27273e330064c822ccb2"
+        },
+        {
+          "label": "crossing",
+          "path": ".work/gallery-quality/real-orbital-review/crossing.png",
+          "sha256": "8a1ccb6cac547623ae126ad365d46ab338518e873c10651bfa1e5c465d23786b"
+        },
+        {
+          "label": "lobed",
+          "path": ".work/gallery-quality/real-orbital-review/lobed.png",
+          "sha256": "ac286c7a8e21d7da7bfaa29a397888ac760003c916afc454c52c03a5044473af"
+        }
+      ]
+    },
+    {
+      "id": "mesh-native-quality-draft-20260917",
+      "title": "Native p5 mesh editing",
+      "category": "Root visual review \u2014 draft integration",
+      "description": "Native p5 transparent renders for source and surface edits in the six revised mesh examples; browser interaction report covers all six.",
+      "evidence": ".work/gallery-quality/native-mesh-modern/report.json",
+      "images": [
+        {
+          "label": "extruded seals default",
+          "path": ".work/gallery-quality/native-mesh-modern/extruded-seals-default.png",
+          "sha256": "b762263b17063299d537d0f996bfc53d5a365649f0711a73b4aa2858062eb155"
+        },
+        {
+          "label": "transported ribbons source",
+          "path": ".work/gallery-quality/native-mesh-modern/transported-ribbons-source.png",
+          "sha256": "accaa1009874ccf14b5747e52c87662afd10b2f149edfb19ab4886de778a941f"
+        },
+        {
+          "label": "rounded polyhedra open patch",
+          "path": ".work/gallery-quality/native-mesh-modern/rounded-polyhedra-open-patch.png",
+          "sha256": "65eaae5c42265d5bc988a8aa46e5cbdf1af38ed52336e2aab209c1836f1b5b5f"
+        }
+      ]
+    },
+    {
+      "id": "cellular-web-quality-draft-20260917",
+      "title": "Editable cellular sources and rules",
+      "category": "Root visual review \u2014 draft integration",
+      "description": "Four revised cellular web studies rendered through the actual gallery. Defaults and source/rule alternatives are visible; high-pass chemical flattening and coefficient range remain under review.",
+      "evidence": ".work/gallery-quality/real-systems-review/report.json",
+      "images": [
+        {
+          "label": "reaction spots default",
+          "path": ".work/gallery-quality/real-systems-review/reaction-spots-default.png",
+          "sha256": "fd63f8a36b5487cfb7e30ba34e55c9db262ba6253a0bd8158524586d7c4ab039"
+        },
+        {
+          "label": "reaction spots disc initial",
+          "path": ".work/gallery-quality/real-systems-review/reaction-spots-disc-initial.png",
+          "sha256": "e7aebec00b63d999610c84cc3e4a6420b3a717468103473817b4ef22ad927e49"
+        },
+        {
+          "label": "reaction spots bands evolved",
+          "path": ".work/gallery-quality/real-systems-review/reaction-spots-bands-evolved.png",
+          "sha256": "e0df8702c4314259b173f2acba228f53077d1bb4f3293ef37c242a7c6c78a6c2"
+        },
+        {
+          "label": "reaction stripes default",
+          "path": ".work/gallery-quality/real-systems-review/reaction-stripes-default.png",
+          "sha256": "eef53b3b67fa379440dd19e8151077952be1164ba8a7b0e20fe222d8824eb5a2"
+        },
+        {
+          "label": "reaction stripes checker low",
+          "path": ".work/gallery-quality/real-systems-review/reaction-stripes-checker-low.png",
+          "sha256": "8882bc16d29af43589f3f2ea03ea30cff29e3df92b080173152c4666120ea8e5"
+        },
+        {
+          "label": "reaction stripes checker high",
+          "path": ".work/gallery-quality/real-systems-review/reaction-stripes-checker-high.png",
+          "sha256": "bedfffceb24bcfd77c22fb53203704c0374b9d8ecc0a3d511aa9de753275c561"
+        },
+        {
+          "label": "organic cells default",
+          "path": ".work/gallery-quality/real-systems-review/organic-cells-default.png",
+          "sha256": "d3cad734c54af241c5ff358dc9a10c9b5cd132dd4e75856f5230b2fe03af6b55"
+        },
+        {
+          "label": "organic cells highlife edge",
+          "path": ".work/gallery-quality/real-systems-review/organic-cells-highlife-edge.png",
+          "sha256": "f32b31bb6eb803e400535c326370f1d468ee507f271848a1019fd73375546e03"
+        },
+        {
+          "label": "geometric generations default",
+          "path": ".work/gallery-quality/real-systems-review/geometric-generations-default.png",
+          "sha256": "61a6c31366c313ecb6e31d4b424947b96846aba2075199ef67eabbac8eab953b"
+        },
+        {
+          "label": "geometric generations seeds bands",
+          "path": ".work/gallery-quality/real-systems-review/geometric-generations-seeds-bands.png",
+          "sha256": "86fb165eb9288ae37cfbcb94d26e5c172cdf9ea4a74a49d7455d732961c493c0"
+        }
+      ]
+    },
+    {
+      "id": "materials-a-fields-web-quality-draft-20260917",
+      "title": "Transparent color-field bands in Studio",
+      "category": "Root visual review \u2014 draft integration",
+      "description": "Quantized bands at partial coverage reveal a lower image while retaining their colors; zero-coverage and opaque-default comparisons are in the linked browser report.",
+      "evidence": ".work/gallery-quality/materials-a-fields/report.json",
+      "images": [
+        {
+          "label": "partial composition",
+          "path": ".work/gallery-quality/materials-a-fields/partial-composition.png",
+          "sha256": "4cb6c0330fc3d3b0aec2314db0271ca1276914d31834e14c876e2eae10dce91e"
+        },
+        {
+          "label": "partial export",
+          "path": ".work/gallery-quality/materials-a-fields/partial-export.png",
+          "sha256": "e62f96175a1fed5a9a350bfbfd5ea9554e67a9998b09e3bab14f9979946c46cd"
+        }
+      ]
+    },
+    {
+      "id": "effects-source-coverage-web-quality-draft-20260917",
+      "title": "Warp and Blur source-space coverage",
+      "category": "Root visual review \u2014 draft integration",
+      "description": "Real p5 Studio comparisons of opaque and masked fields, including horizontal-only Blur and exported PNG. Masked gaps reveal a lower layer.",
+      "evidence": ".work/gallery-quality/effects-coverage/report.json",
+      "images": [
+        {
+          "label": "warp marks opaque",
+          "path": ".work/gallery-quality/effects-coverage/warp-marks-opaque.png",
+          "sha256": "9a3ceaefa7342804085d15a2b97cf974af02347d9b7f9228f8c61fcecd944afe"
+        },
+        {
+          "label": "warp marks masked",
+          "path": ".work/gallery-quality/effects-coverage/warp-marks-masked.png",
+          "sha256": "c99608cfeddc3dfa5351040a28cdcf180cb47421072a1ecdf6d242adfbc7ae0f"
+        },
+        {
+          "label": "blur marks opaque",
+          "path": ".work/gallery-quality/effects-coverage/blur-marks-opaque.png",
+          "sha256": "344642613f5abcabe9b835543ea14b79562e29715a2b55eb4ac21137916f86e3"
+        },
+        {
+          "label": "blur marks masked",
+          "path": ".work/gallery-quality/effects-coverage/blur-marks-masked.png",
+          "sha256": "463d749ddedf87656f58c0bab5e42ffe5c19acba1336a56b6e08126be142afee"
+        },
+        {
+          "label": "blur marks horizontal masked",
+          "path": ".work/gallery-quality/effects-coverage/blur-marks-horizontal-masked.png",
+          "sha256": "6c3fca2c20b49d13c828d4f1336562d406c678db9191d4c647cf8d397a7da4c9"
+        }
+      ]
+    },
+    {
+      "id": "effects-source-coverage-native-draft-20260917",
+      "title": "Native Warp and Blur transparency",
+      "category": "Root visual review \u2014 draft integration",
+      "description": "Native p5 masked, empty, reset and horizontal-only comparisons; background checkerboard is preview-only.",
+      "evidence": ".work/gallery-quality/native-raster-coverage/report.json",
+      "images": [
+        {
+          "label": "warp marks default",
+          "path": ".work/gallery-quality/native-raster-coverage/warp-marks-default.png",
+          "sha256": "26a100d1c39d5f3d718f0234d9b7891f1405e6d409360c54dbcffad5ed0a4cf3"
+        },
+        {
+          "label": "warp marks masked",
+          "path": ".work/gallery-quality/native-raster-coverage/warp-marks-masked.png",
+          "sha256": "f49ca66319051e09635b4f8043c5c80a3f05fa297f10dbb7302946425019cd81"
+        },
+        {
+          "label": "warp marks empty",
+          "path": ".work/gallery-quality/native-raster-coverage/warp-marks-empty.png",
+          "sha256": "43bc6193dc865c32ac2c7e59ecc0ca6047dbc1318dce7079c6296286ddd20f4f"
+        },
+        {
+          "label": "blur marks default",
+          "path": ".work/gallery-quality/native-raster-coverage/blur-marks-default.png",
+          "sha256": "652897be73fc622ec9bc0f029723f9fd9dfd6b73ca200befa1b6e7df09b82c74"
+        },
+        {
+          "label": "blur marks soft masked",
+          "path": ".work/gallery-quality/native-raster-coverage/blur-marks-soft-masked.png",
+          "sha256": "4031b6f5b239a596c47a67e95bb447cd16461bab6f9dba033304bf459894cfca"
+        },
+        {
+          "label": "blur marks horizontal masked",
+          "path": ".work/gallery-quality/native-raster-coverage/blur-marks-horizontal-masked.png",
+          "sha256": "e8eb5c22c5fa332610c77a98a1bedc142cf06513ebf7fdb7b92627e7127ab557"
+        },
+        {
+          "label": "blur marks empty",
+          "path": ".work/gallery-quality/native-raster-coverage/blur-marks-empty.png",
+          "sha256": "937fe1315f3e255cab5455c6305e6d98620f630ef33f790a3e29978688fc543b"
+        }
+      ]
+    },
+    {
+      "id": "materials-a-fields-native-draft-20260917",
+      "title": "Native color-field masks",
+      "category": "Root visual review \u2014 draft integration",
+      "description": "Native p5 controlled field examples with masked color regions, paired with web Studio transparency review.",
+      "evidence": ".work/gallery-quality/materials-a-native/report.json",
+      "images": [
+        {
+          "label": "nearest feature mosaic masked",
+          "path": ".work/gallery-quality/materials-a-native/nearest-feature-mosaic-masked.png",
+          "sha256": "44343fe2c8d17d4208b4b8b69685396755a7cb8b9ee342f91f24ebcf3e88af20"
+        },
+        {
+          "label": "perceptual bands masked",
+          "path": ".work/gallery-quality/materials-a-native/perceptual-bands-masked.png",
+          "sha256": "f39bc57ed0d52656f5b035d1ef5ee07036eb869dbddbfbc8542b458c9af986d9"
+        },
+        {
+          "label": "quantized stripes masked",
+          "path": ".work/gallery-quality/materials-a-native/quantized-stripes-masked.png",
+          "sha256": "c674148bbfe3ca1836e961b9eddf456d25ece77b7edb11fae70775263794d31e"
+        },
+        {
+          "label": "reduced mosaic masked",
+          "path": ".work/gallery-quality/materials-a-native/reduced-mosaic-masked.png",
+          "sha256": "c35ab611045b055be5084623edfa95314dbbb7154ec6f8685c9785abfec16a7d"
+        }
+      ]
+    },
+    {
+      "id": "reaction-stripes-ranked-web-native-draft-20260917",
+      "title": "Reaction Stripes source and coefficient revision",
+      "category": "Root visual review \u2014 draft integration",
+      "description": "Ranked initial fill gives three selectable nonempty source families. Real Studio and native p5 show ribbon, disc and speckle states plus coefficient changes and clear layer PNG.",
+      "evidence": ".work/gallery-quality/chemical-quality-proposal.md",
+      "images": [
+        {
+          "label": "web reaction stripes default",
+          "path": ".work/gallery-quality/real-systems-ranked-review/reaction-stripes-default.png",
+          "sha256": "87dd084a4143d856d9e92c5c2906098c19458951605a6acc89e074eb980d6357"
+        },
+        {
+          "label": "web reaction stripes disc",
+          "path": ".work/gallery-quality/real-systems-ranked-review/reaction-stripes-disc.png",
+          "sha256": "c1b9af1a7f0b8a7e1e311e5754dfd0ad53ae3cd40f31b1baa298eba1326ef04d"
+        },
+        {
+          "label": "web reaction stripes speckle",
+          "path": ".work/gallery-quality/real-systems-ranked-review/reaction-stripes-speckle.png",
+          "sha256": "cc7430bb1a1e3fe6d2213b2285ce90825a8837db296614c0862546a71dfdb7ed"
+        },
+        {
+          "label": "web reaction stripes feed low",
+          "path": ".work/gallery-quality/real-systems-ranked-review/reaction-stripes-feed-low.png",
+          "sha256": "cfd4eb8d03755afc308c968bed45d549a63f23447771788b551249a88a278d4f"
+        },
+        {
+          "label": "web reaction stripes feed high",
+          "path": ".work/gallery-quality/real-systems-ranked-review/reaction-stripes-feed-high.png",
+          "sha256": "59a426350ceaf90a1a808061af798ddaca463da2e98284bcfe4c9e9c1ec1bb80"
+        },
+        {
+          "label": "native modern default",
+          "path": ".work/cellular-quality-browser-ranked-20260917/reaction-stripes/modern-default.png",
+          "sha256": "0667b48e007d939cf93d68ad63264adb8b67ab7e346038b43db2d72a4255775e"
+        },
+        {
+          "label": "native source disc",
+          "path": ".work/cellular-quality-browser-ranked-20260917/reaction-stripes/source-disc.png",
+          "sha256": "1bcdb3a84d6b5324b9a18a5b84f50cb35245803c4b551e439c44a83a48c7e39b"
+        },
+        {
+          "label": "native source speckle",
+          "path": ".work/cellular-quality-browser-ranked-20260917/reaction-stripes/source-speckle.png",
+          "sha256": "6d71020980215478f921ba25efa80fa253a26e7b5b7afae52aff0f802000922b"
+        },
+        {
+          "label": "native saved transparent",
+          "path": ".work/cellular-quality-browser-ranked-20260917/reaction-stripes/saved-transparent.png",
+          "sha256": "e7490a9088a52a4862c21d594610c3773440c68674639de707a5726f6e25221b"
+        }
+      ]
+    },
+    {
+      "id": "creative-quality-live-release-20260917",
+      "title": "Live 8443 creative-quality checkpoint",
+      "category": "Root visual review \u2014 scoped draft release",
+      "description": "Actual HTTPS page and release-checkout browser/gallery outputs at source eb2bdfdc. Historical catalog target acceptance remains pending.",
+      "evidence": "evidence/web/creative-quality-live-release.json",
+      "images": [
+        {
+          "label": "live reaction stripes",
+          "path": ".work/gallery-quality/live-reaction-stripes.png",
+          "sha256": "3ea5ff24e2d4cb31082aa5797c234856c1bc55e8f78246776dfff9dd31848dc0"
+        },
+        {
+          "label": "released Studio composition",
+          "path": ".work/study-quality-release/.work/web-app-review/integration/studio-composition.png",
+          "sha256": "d28e8f246902f74af03da2c90df01ef71a901c6b8b75b120139f8fc0c3c975bb"
+        },
+        {
+          "label": "released revised ornament",
+          "path": ".work/study-quality-release/apps/web/public/previews/ornament-poster.png",
+          "sha256": "ea0b962c84253b3b24a8dfefb17dec1148689b2ea32ae7b050fdb6cf5472208b"
+        },
+        {
+          "label": "released shape matrix",
+          "path": ".work/study-quality-release/apps/web/public/previews/geometric-panel.png",
+          "sha256": "2531383e30923644165ebdd63fb605bec02defaa9299c804d628de0e27e83ad5"
+        }
+      ]
+    },
+    {
+      "id": "pull-projection-web-next-draft-20260917",
+      "title": "Editable pull and projection paths",
+      "category": "Root visual review \u2014 next draft batch",
+      "description": "Real p5 compositions reviewed for source/geometry edits and clear layer areas. No target acceptance claim.",
+      "evidence": ".work/gallery-quality/effects-path-fields/review.json",
+      "images": [
+        {
+          "label": "pull marks default",
+          "path": ".work/gallery-quality/effects-path-fields/pull-marks-default.png",
+          "sha256": "05a63f159167178c8dd7603f424e064b6ba9d048d98447a863d584f730303968"
+        },
+        {
+          "label": "pull marks spokes",
+          "path": ".work/gallery-quality/effects-path-fields/pull-marks-spokes.png",
+          "sha256": "82b95ef08ac2a8ccb2cebb8703a80968b7e018245420f00ea8f03f3c3ea32599"
+        },
+        {
+          "label": "projection marks default",
+          "path": ".work/gallery-quality/effects-path-fields/projection-marks-default.png",
+          "sha256": "10cacb25aafe5333a45c54e48312deb2db35899c08b7630ed14673cc0c0cfec7"
+        },
+        {
+          "label": "projection marks spokes",
+          "path": ".work/gallery-quality/effects-path-fields/projection-marks-spokes.png",
+          "sha256": "d79887000b75eb308f496242ee34f281aed500bdd024515c130707de0217e835"
+        },
+        {
+          "label": "pull over path",
+          "path": ".work/gallery-quality/effects-path-fields/pull-over-path.png",
+          "sha256": "538a909efe9d8a8be1414018b8d3a82e8473d7d3af08a1168e5d3acf270134a2"
+        }
+      ]
+    },
+    {
+      "id": "pull-projection-native-next-draft-20260917",
+      "title": "Native pull and projection controls",
+      "category": "Root visual review \u2014 next draft batch",
+      "description": "Real p5 compositions reviewed for source/geometry edits and clear layer areas. No target acceptance claim.",
+      "evidence": ".work/gallery-quality/native-deformation-marks/report.json",
+      "images": [
+        {
+          "label": "pull marks default",
+          "path": ".work/gallery-quality/native-deformation-marks/pull-marks-default.png",
+          "sha256": "9645d92249b0f4d5601de9fd3022ea4493979548bdce3577a6713edad995a3a3"
+        },
+        {
+          "label": "pull marks columns one",
+          "path": ".work/gallery-quality/native-deformation-marks/pull-marks-columns-one.png",
+          "sha256": "5c9a8a8a112df6b957a8a24f1307f8d520030b77410f8eae0dfff8cc02f08380"
+        },
+        {
+          "label": "projection marks default",
+          "path": ".work/gallery-quality/native-deformation-marks/projection-marks-default.png",
+          "sha256": "c6fa429819c1619c26c04e2f8f7276efb9544153d02025fb228d1bf4a4a33a64"
+        },
+        {
+          "label": "projection marks columns one",
+          "path": ".work/gallery-quality/native-deformation-marks/projection-marks-columns-one.png",
+          "sha256": "60b99a9a7431053ee72af9f4f02bfd10998ff842a24f6d4debe306fb8c6f280c"
+        },
+        {
+          "label": "projection marks spokes two",
+          "path": ".work/gallery-quality/native-deformation-marks/projection-marks-spokes-two.png",
+          "sha256": "79cbe253defe19d588251befe770e5b77ecb58ed449190c261b49bc7b79931af"
+        }
+      ]
+    },
+    {
+      "id": "path-clip-web-next-draft-20260917",
+      "title": "Editable path clipping",
+      "category": "Root visual review \u2014 next draft batch",
+      "description": "Real p5 compositions reviewed for source/geometry edits and clear layer areas. No target acceptance claim.",
+      "evidence": ".work/gallery-quality/effects-clip-field/review.json",
+      "images": [
+        {
+          "label": "rows portal default",
+          "path": ".work/gallery-quality/effects-clip-field/rows-portal-default.png",
+          "sha256": "3e34f230a02961a7202f575292f752d20ce06f6d6df98576f0206a1f22255431"
+        },
+        {
+          "label": "fan bay",
+          "path": ".work/gallery-quality/effects-clip-field/fan-bay.png",
+          "sha256": "8eba44e8e54302cf58d6301205a9e3b122f859c994f2d47db66552d454f5c0da"
+        },
+        {
+          "label": "wander regular no outline",
+          "path": ".work/gallery-quality/effects-clip-field/wander-regular-no-outline.png",
+          "sha256": "daa580b2e04805b9c9232f0f062a78d6432495455f2ba15145936c05afedac48"
+        },
+        {
+          "label": "clip over path",
+          "path": ".work/gallery-quality/effects-clip-field/clip-over-path.png",
+          "sha256": "286c249ba96d41f688e73ec299184060a667f5b9dabb92290f671d05095ca069"
+        }
+      ]
+    },
+    {
+      "id": "loop-marks-web-next-draft-20260917",
+      "title": "Editable closed loops and contour marks",
+      "category": "Root visual review \u2014 next draft batch",
+      "description": "Real p5 row, grid and nested compositions reviewed for geometric and treatment range; blank canvas areas are alpha-clear. Native parity and target acceptance are separate.",
+      "evidence": ".work/gallery-quality/loop-marks-renders/report.json",
+      "images": [
+        {
+          "label": "row outline",
+          "path": ".work/gallery-quality/loop-marks-renders/row-outline.png",
+          "sha256": "65e9f8548e275f95ce704e6b0d3a25618d344a8e169eb7278e850c9cdf8804c6"
+        },
+        {
+          "label": "grid ticks",
+          "path": ".work/gallery-quality/loop-marks-renders/grid-ticks.png",
+          "sha256": "eab266157ee69f5a452f8022497a773029a4b65f0ff2699443249080de8f5203"
+        },
+        {
+          "label": "high lobes",
+          "path": ".work/gallery-quality/loop-marks-renders/high-lobes.png",
+          "sha256": "97347269d0b3d234809ad058df98733ab2ccb618d6f414dec1c3fa28972e345f"
+        },
+        {
+          "label": "nested fans",
+          "path": ".work/gallery-quality/loop-marks-renders/nested-fans.png",
+          "sha256": "67e5abc2eae5f696039cfac93214e74999a25c8271b3fe208b4da4c23026510b"
         }
       ]
     }

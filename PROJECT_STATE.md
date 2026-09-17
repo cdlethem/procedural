@@ -8,7 +8,7 @@ This is a current snapshot. Historical plans and reviews are not an active assig
 - Java implementation objective: **31 operations, 37 editable workflows**. Java 0.35 runtime
   baseline remains `d7f95a06f55fd0937ebb2c12bb2192c7644922c4`; see the
   [completion review](evidence/distribution/java-completion-review.json).
-- p5.js: **69 conformant cores, 69 operations with scoped native coverage, 111 editable
+- p5.js: **84 conformant cores, 84 operations with scoped native coverage, 121 editable
   package workflows**, and five scoped technique attestations. These dimensions are separate.
   [Port status](docs/port-integration-status.md) links the historical integrations.
 - [Survey coverage batch 1](evidence/coverage/batch1/integration-review.json) adds exactly
@@ -22,6 +22,10 @@ This is a current snapshot. Historical plans and reviews are not an active assig
 - [External expansion batch A/B](evidence/expansion/first-batch/root-review.json) adds radius-pair
   queries, synchronous pair-force steps and five original editable studies. Source and installed
   package lifecycle checks pass; no artist recreation or new technique attestation is claimed.
+- [Dynamics and fields batch](evidence/expansion/second-batch/root-review.json) adds 15 p5 cores,
+  a retained-frame WEBGL adapter and ten package studies: contact memory, sensing/flocking,
+  width-aware geometry, connected/elastic growth and periodic dye transport. Source and
+  installed package checks pass across83 paired frames; new web integration is still pending.
 - Packages are reviewed local artifacts, not registry publications. This work does not imply
   a portable recipe executor, full-corpus certification or equivalent target ports.
 
@@ -33,7 +37,7 @@ old example headers are not current support authority.
 | Target | Conformant core | Scoped native | Scoped technique |
 |---|---:|---:|---:|
 | Processing Java | 31 | 31 | 26 |
-| p5.js | 69 | 69 | 5 |
+| p5.js | 84 | 84 | 5 |
 | py5 | 10 | 10 | 4 |
 | Processing Android | 10 | 10 | 4 |
 
@@ -46,19 +50,27 @@ The report includes all69 family dispositions and all three denominators:800 ass
 ## Web application
 
 - The [web app](apps/README.md) has95 gallery/Studio studies and generated API pages for69
-  operations. The three coverage studies are packaged native examples; the web study count
-  is95 after the five external expansion studies. The app compositor remains separate from portable recipes/MCP.
+  operations. Five external-expansion studies are integrated; the three survey coverage studies
+  remain packaged native examples. The app compositor remains separate from portable recipes/MCP.
+- The [draft creative-quality checkpoint](docs/creative-quality-draft-checkpoint.md) revises26
+  of those studies. It passed58 focused web tests, native p5 checks, 95 gallery previews and
+  the full browser suite. Live8443 serves `eb2bdfdc`; the historical catalog binding gate
+  remains red, so the checkpoint makes no new target-acceptance claim.
 - Layer editing, custom palettes, source inspection, undo/redo, local recovery, JSON/PNG export
   and Go storage are reviewed. [Workspace review](evidence/web/studio-workspace-review.json),
   [v3 review](evidence/web/app-v3-review.json) and [architecture](docs/web-app-architecture.md)
   describe layout, persistence and boundaries.
-- The [UI integration review](evidence/web/ui-main-integration.json) binds the redesign,
-  procedural identity, About page and final **Art with knobs** hero copy for main.
-  Clean-checkout production, workspace and palette/prompt browser checks passed.
-  Historical [design](evidence/web/ui-design-audit-2026-09-17.json) and
-  [brand](evidence/web/procedural-brand-review.json) reviews retain their original bindings.
+- The [logo-led site identity review](evidence/web/logo-led-site-identity.json) binds the current
+  working preview: **art with knobs**, IBM Plex typography, brick-red accents and stepped
+  square-corner geometry across the landing, gallery, Studio, palettes, Explorations and reference.
+  Individual studies now use open artwork/control layouts and editorial method/source sections.
+  The production build and eight-route desktop/mobile review passed (1440,768,390,320px).
+  Three-second rotation, 500ms crossfades and five-second inactivity resume remain verified.
+  The sterile rollback and earlier warm/logo experiments retain historical evidence only.
+  The prior [UI integration](evidence/web/ui-main-integration.json), [design](evidence/web/ui-design-audit-2026-09-17.json)
+  and [brand](evidence/web/procedural-brand-review.json) records retain their historical bindings.
   Preview: https://eunoia.tailf03dad.ts.net:8444/ (persistent `ui-design-preview`, Next3016).
-  This working-checkout preview is separate from the unchanged8443 release below.
+  This working-checkout preview is separate from the established8443 release below.
 - Prompt drafts and applied source/layer revisions are covered by the
   [prompt integration](evidence/web/prompt-web-integration-review.json) and
   [saved-layer successor](evidence/web/generated-layer-review.json). See the
@@ -67,11 +79,12 @@ The report includes all69 family dispositions and all three denominators:800 ass
   The [50 default palettes](docs/default-palettes.md) now have a separate
   [local data/UI review](evidence/external-art/2026-09/default-palette-review.json), including
   the JavaScript export, offline defaults, editable copies and scoped browser checks.
-- Live8443 serves the completed merged redesign plus five new studies and 50 default palettes
-  from clean main revision `6d4759b8`, immutable release `.work/external-gallery-review`
-  (Next3002, Go8088). The [release review](evidence/web/external-expansion-live-release.json)
-  records actual HTTPS verification; the [restoration review](evidence/web/completed-redesign-restoration.json)
-  retains the source reconciliation and recovery checks.
+- Live8443 serves the completed merged redesign, 26 revised studies, five external studies
+  and 50 default palettes from `eb2bdfdc` in immutable `.work/study-quality-release`
+  (Next3002, Go8088). The [quality release review](evidence/web/creative-quality-live-release.json)
+  records the scoped checks and actual HTTPS verification. The earlier
+  [copy release](evidence/web/study-copy-live-release.json) remains the rollback baseline;
+  the [restoration review](evidence/web/completed-redesign-restoration.json) retains its recovery.
   The in-progress landing page remains separate. Future releases must preserve this completed UI
   baseline; see [live release procedure](docs/live-web-release.md).
 - Named projects live in `.work/web-projects`. The current release links shared prompt
@@ -98,8 +111,10 @@ The survey batch and first [external expansion batch](docs/external-expansion-fi
 are complete at their declared scope. The maintainer now requires the **entire external expansion
 plan implemented**. [Execution scope](docs/external-expansion-execution.md) tracks active B–I
 and deeper-audit work; batch completion is an integration checkpoint, not the task endpoint.
-Contact/sensor/flock, width-aware regions, connected growth and periodic fluid contracts are
-in design. These pending slices do not change the accepted counts above.
+Contact/sensor/flock, width-aware regions, connected growth and periodic fluid cores/package
+studies are accepted. Their nine Canvas2D gallery adapters are under web review. Weighted
+image marks, recorded controls, mesh attributes and implicit rays have frozen contracts;
+implementation/acceptance remains in progress. Later I families and deeper-audit gaps remain.
 
 - Other-target ports remain separate. The [port handoff](docs/porting-resume.md) tracks Python
   attestation reconciliation, Android ProfileMarks lifecycle validation and Java backlog.

@@ -1,8 +1,8 @@
-# Procedurals gallery and studio
+# Procedurals web app
 
-A Next.js gallery of interactive p5.js studies, a layered canvas studio, and a searchable
-API reference generated from the package catalog. A Go service saves projects as JSON.
-Rendering runs locally in the browser and uses the existing package.
+A playable landing page, a searchable gallery of interactive p5.js studies, a layered canvas
+studio, and an API reference generated from the package catalog. The Next.js frontend uses
+the existing JavaScript package; a Go service saves projects as JSON.
 
 The **About** page (`/about`) explains the procedural approach: visible rules, deliberate
 edits, and seeded variation instead of black-box image generation. Optional AI tools
@@ -43,9 +43,42 @@ Voronoi cells, polyline resampling and marching squares.
 
 ## Explore and compose
 
-Search or filter the numbered study index, then open a study for an interactive canvas,
-sliders, exact numeric inputs, color controls, and a technique guide. On narrow screens,
-use the **Category** menu; **Clear filters** returns to the complete collection.
+Start at **/**, **art with knobs**, with six live studies: Agent trails, Cut branch marks, Cell mosaic,
+Distance halos, Warp marks, and Contact network. Each starts with a different palette.
+Continue to **Studio** or the full **Gallery** at **/gallery**.
+
+| Landing control | What changes on the page |
+|---|---|
+| Cells, Disorder, Tile inset | Change the mosaic's cell count, site arrangement, and space between tiles. |
+| Strength, Scale, Stripe | Change the warped bands' displacement, field scale, and stripe spacing. |
+| Ticks, Radius, Avoidance | Replay the trails or contact network, change nearby relationships, and adjust short-range repulsion. |
+| Cuts, Cut angle, Stroke weight | Change the branching line pool and its drawing weight. |
+| Scale, Radius, Stroke weight | Change the distance-halo field and its ring treatment. |
+| Palette | Recolor the current study without changing its geometry. |
+| Reseed | Generate another arrangement for seed-dependent studies. Agent trails and Contact network replay fixed initial states and omit this control. |
+| Reset | Restore the current study's original controls, palette, and seed. |
+
+The carousel advances every three seconds, including a half-second sliding crossfade.
+Control activity delays the next transition until five seconds after the latest interaction;
+holding a pointer keeps the study still until release, which starts a fresh five-second delay.
+Stationary hover or focus does not prevent resuming. **Pause rotation** remains paused until
+**Resume rotation** is chosen. Reduced motion starts paused and disables transitions.
+Offscreen or hidden-tab carousels do not advance.
+Each study retains its edits while you browse; nothing replaces a saved Studio document.
+**Open study** opens the matching full study, not a copy of the preview's edits.
+Without JavaScript, palette-matched artwork previews and ordinary links remain visible;
+live controls are disabled with an explanation.
+
+Regenerate the ignored landing previews from the running app with
+`WEB_BASE_URL=http://localhost:3016 npm run capture:previews -- --landing` in `apps/web`.
+The command uses the shared native-render lease and captures the actual default landing
+documents, including their palettes. Restart a production server after adding new public assets.
+
+Search or filter the numbered study index, then open a study for an interactive canvas.
+**Make it yours** groups the procedure's sliders and exact inputs beside the artwork;
+**Color & finish** contains opacity and palette controls. The section links jump between the
+playground, method, and source. The guide's control tables use open rows rather than boxed cells.
+On narrow screens, use the gallery's **Category** menu; **Clear filters** returns to the full collection.
 **Sketch source** starts open with a formatted, highlighted view of the actual drawing code
 and a copy button. Source panes accept keyboard focus for scrolling.
 

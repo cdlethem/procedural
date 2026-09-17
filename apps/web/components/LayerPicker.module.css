@@ -1,15 +1,15 @@
 .dialog {
   width: min(960px, calc(100vw - 40px)); height: min(800px, calc(100dvh - 48px)); max-width: none; max-height: none; margin: auto; padding: 0; overflow: hidden;
-  color: var(--ink, #252923); background: var(--panel, #fcfbf7); border: 1px solid var(--line, #cccfc4); border-radius: 2px;
+  color: var(--ink, #252923); background: var(--panel, #fffefa); border: 1px solid var(--line, #cccfc4); border-top: 2px solid var(--teal, #a43c2f); border-radius: var(--radius-ui, 2px);
   font: 13px/1.5 var(--font-ui, Arial, Helvetica, sans-serif);
 }
 .dialog::backdrop { background: #25292366; }
 .content { height: 100%; min-height: 0; padding: 22px; display: flex; flex-direction: column; overflow: hidden; }
-.header { display: flex; gap: 16px; align-items: start; justify-content: space-between; flex-shrink: 0; }
+.header { display: flex; gap: 16px; align-items: start; justify-content: space-between; flex-shrink: 0; border-bottom: 2px solid var(--teal, #a43c2f); padding-bottom: 12px; }
+.header > div { min-width: 0; padding-right: 38px; background-image: var(--brand-corners); background-position: right top; background-repeat: no-repeat; background-size: 30px 30px; }
 .header h2 { margin: 3px 0 0; font-size: 24px; font-weight: 700; letter-spacing: -.03em; text-wrap: balance; }
 .header p { max-width: 62ch; margin: 6px 0 0; color: var(--muted, #60645b); font-size: 12px; }
 .eyebrow, .category { color: var(--teal, #a43c2f); font-size: 12px; font-weight: 700; letter-spacing: .035em; }
-.header .eyebrow { margin: 0; }
 .close, .chip, .activeChip {
   min-height: 40px; padding: 7px 11px; color: inherit; background: transparent; border: 1px solid var(--line, #cccfc4); border-radius: 2px;
   font: 600 14px/1.25 var(--font-ui, Arial, Helvetica, sans-serif); cursor: pointer; flex-shrink: 0;
@@ -21,11 +21,11 @@
 .search { display: grid; gap: 6px; margin-top: 20px; color: var(--ink, #252923); font-size: 12px; font-weight: 600; flex-shrink: 0; }
 .search input { width: 100%; min-height: 42px; padding: 9px 11px; color: inherit; background: var(--panel, #fcfbf7); border: 1px solid var(--line, #cccfc4); border-radius: 2px; font: 14px var(--font-ui, Arial, Helvetica, sans-serif); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; flex-shrink: 0; }
-.activeChip { color: var(--panel, #fcfbf7); background: var(--teal, #a43c2f); border-color: var(--teal, #a43c2f); }
+.dialog .activeChip { color: var(--ink, #252923); background: var(--brand-soft, #f1e4df); border-color: var(--teal, #a43c2f); box-shadow: inset 3px 0 var(--teal, #a43c2f); }
 .count { margin: 16px 0 10px; color: var(--muted, #60645b); font: 12px var(--font-mono, ui-monospace, monospace); flex-shrink: 0; }
 .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: start; grid-auto-rows: max-content; gap: 12px; flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; padding: 3px; scrollbar-width: thin; }
-.card { display: flex !important; flex-direction: column; min-width: 0; overflow: hidden; padding: 0 !important; text-align: left; color: inherit; cursor: pointer; background: var(--panel, #fcfbf7) !important; border: 1px solid var(--line, #cccfc4); border-radius: 2px; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; }
-.card:hover, .card:focus-visible { border-color: var(--teal, #a43c2f); background: #f9f0ed !important; }
+.card { display: flex !important; flex-direction: column; min-width: 0; overflow: hidden; padding: 0 !important; text-align: left; color: inherit; cursor: pointer; background: var(--panel, #fffefa) !important; border: 1px solid var(--line, #cccfc4); border-top: 2px solid var(--teal, #a43c2f); border-radius: var(--radius-ui, 2px); transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; }
+.card:hover, .card:focus-visible { border-color: var(--teal, #a43c2f); background: var(--brand-soft, #f1e4df) !important; }
 .card img { flex-shrink: 0; width: 100%; aspect-ratio: 1.5; object-fit: contain; background: var(--surface-muted, #e8e9e1); border-bottom: 1px solid var(--line, #cccfc4); }
 .cardBody { flex: 1; width: 100%; display: grid; align-content: start; gap: 6px; padding: 13px; }
 .card strong { font-size: 14px; font-weight: 700; }
@@ -37,6 +37,7 @@
 @media (max-width: 640px) {
   .dialog { width: calc(100vw - 20px); height: calc(100dvh - 28px); }
   .content { padding: 16px; }
+  .header > div { padding-right: 0; background-image: none; }
   .header h2 { font-size: 21px; }
   .header p { font-size: 12px; }
   .close, .chip, .activeChip { min-height: 44px; }

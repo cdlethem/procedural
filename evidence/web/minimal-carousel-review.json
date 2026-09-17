@@ -1,0 +1,187 @@
+{
+  "kind": "root-reviewed-minimal-carousel",
+  "date": "2026-09-17",
+  "scope": "Working-checkout landing preview on HTTPS 8444; not a release integration or expanded native support.",
+  "previousReview": "evidence/web/landing-carousel-review.json",
+  "historyNote": "Supersedes the three-study, eight-second, permanently pinned carousel presentation. Historical evidence stays unchanged.",
+  "studies": [
+    {
+      "id": "agent-trails",
+      "palette": "fern-mauve"
+    },
+    {
+      "id": "cut-branch-marks",
+      "palette": "ochre-plum"
+    },
+    {
+      "id": "cell-mosaic",
+      "palette": "cyan-frost"
+    },
+    {
+      "id": "distance-halos",
+      "palette": "lemon-garnet"
+    },
+    {
+      "id": "warp-marks",
+      "palette": "rose-citrus"
+    },
+    {
+      "id": "contact-network",
+      "palette": "deep-teal"
+    }
+  ],
+  "decisions": [
+    "Repeated cell mosaic/cell mosaics request treated as one study.",
+    "Replace slogans, promotional sections, floating tilted cards and dark controls slab with factual copy and quiet flat surfaces.",
+    "Three-second cadence includes the half-second sliding crossfade; five seconds of inactivity causes the next transition directly.",
+    "Explicit Pause and reduced-motion pause remain until explicit Resume; idle hover/focus do not permanently pin a study.",
+    "Hold pointer activity until release without taking pointer capture away from native range inputs or buttons.",
+    "Snapshot the actual outgoing edited frame into a reusable canvas, then crossfade once the next native render is ready; keep one p5 instance.",
+    "Generate palette-matched static previews with the existing capture-previews.mjs --landing command."
+  ],
+  "verification": {
+    "productionBuild": {
+      "status": "passed",
+      "command": "node node_modules/next/dist/bin/next build",
+      "cwd": "apps/web",
+      "warning": "Existing lib/harness/jobs.ts:58 dynamic filesystem tracing warning remains."
+    },
+    "smoke": {
+      "path": ".work/minimal-carousel-review/report.json",
+      "sha256": "893f0ba90460e78041c224bb9411fecc6253c14f4a14ffaa33a21f28ddb3f14f",
+      "status": "passed",
+      "coverage": [
+        "real rotation and refreshed inactivity deadlines",
+        "held-pointer release delay and persistent explicit pause",
+        "all eighteen numeric controls change actual native pixels",
+        "palette selection and exact reset for all six studies",
+        "retained outgoing-frame pixels and real CSS midpoint transforms/opacity",
+        "responsive widths320–1440, reduced-motion and no-JavaScript paths",
+        "Open study reaches the matching native study"
+      ],
+      "timing": [
+        {
+          "scenario": "automatic rotation",
+          "intervalMs": 2999.5
+        },
+        {
+          "scenario": "five seconds after latest keyboard control activity",
+          "elapsedMs": 5010
+        },
+        {
+          "scenario": "explicit pause remains paused after editing and inactivity",
+          "passed": true
+        },
+        {
+          "scenario": "pointer release begins five-second inactivity delay",
+          "elapsedMs": 5009
+        }
+      ],
+      "motion": [
+        {
+          "name": "LandingStudy-module__Ds7ALW__study-exit-next",
+          "duration": 500,
+          "opacity": "0.5",
+          "transform": "matrix(1, 0, 0, 1, -11.4, 0)"
+        },
+        {
+          "name": "LandingStudy-module__Ds7ALW__study-enter-next",
+          "duration": 500,
+          "opacity": "0.5",
+          "transform": "matrix(1, 0, 0, 1, 11.4, 0)"
+        }
+      ]
+    },
+    "accessibility": {
+      "path": ".work/minimal-carousel-review/accessibility.json",
+      "sha256": "9c3e177631d960dd38cfaa9244e0bb34f7332ab4aa38fef22e7eacdc6c4b4fbb",
+      "scope": "axe4.10.3 WCAG2A/AA and2.1AA scans on actual HTTPS page at1440,390,320px",
+      "violations": 0
+    },
+    "previews": {
+      "path": ".work/web-app-review/previews/landing/report.json",
+      "sha256": "8401cc9b7b0cfa1cceba2cf75bb24e4c39275399a6f87f045c1cfda93efb0339"
+    },
+    "visualReview": "Root inspected all six default native studies, desktop composition, narrow mobile page and sliding-crossfade midpoint.",
+    "lease": "Every browser/native render used tools/with_native_render_lock.py."
+  },
+  "preview": {
+    "url": "https://eunoia.tailf03dad.ts.net:8444/",
+    "process": "ui-design-preview",
+    "port": 3016,
+    "release8443": "Unchanged by this work."
+  },
+  "limits": [
+    "Chromium153 browser verification; no physical-device or cross-browser certification.",
+    "Tab visibility and rapid-navigation cancellation were source-reviewed, not independently stress-tested.",
+    "Landing edits remain in page memory and do not transfer through Open study or overwrite Studio storage.",
+    "No new core operation, technique attestation, target acceptance or corpus recreation."
+  ],
+  "images": [
+    {
+      "label": "Six native palettes",
+      "path": ".work/minimal-carousel-review/curation.png",
+      "sha256": "5ddc79c4d3688f057da11b8c89898d255fe18f1c6f9d25c4a5301f477019e48f"
+    },
+    {
+      "label": "Minimal desktop landing",
+      "path": ".work/minimal-carousel-review/landing-1440.png",
+      "sha256": "0436050efd2ba4067ed930c08672faba59b5eea26ca6164d55c954ab8d725def"
+    },
+    {
+      "label": "Minimal mobile landing",
+      "path": ".work/minimal-carousel-review/landing-390.png",
+      "sha256": "bd3d9e7e4df582f910271795f9542dcc6ba25c3e8bcf37ac568550abaf21f6a4"
+    },
+    {
+      "label": "Narrow mobile landing",
+      "path": ".work/minimal-carousel-review/landing-320.png",
+      "sha256": "d951288331bfe047cf016c96eb165ed7f6e7a92626ccdff328872f12b2a24caf"
+    },
+    {
+      "label": "Sliding crossfade midpoint",
+      "path": ".work/minimal-carousel-review/transition-midpoint.png",
+      "sha256": "22379661e3e200e8ade681331a94c00060927a9df38de0439ccdc27aee848fcc"
+    },
+    {
+      "label": "Reduced motion",
+      "path": ".work/minimal-carousel-review/reduced-motion.png",
+      "sha256": "8bc1d8338ca917d6e75cae7adb6943cffd5c56c16960df76963c824fe95ee427"
+    },
+    {
+      "label": "No JavaScript",
+      "path": ".work/minimal-carousel-review/no-javascript.png",
+      "sha256": "dd7f52135d5d12d789bceb6dcbc9a2208135f7669806ce4ce47d3d2a37fdc80a"
+    }
+  ],
+  "sourceBindings": [
+    {
+      "path": "apps/web/components/LandingStudy.tsx",
+      "sha256": "5da693e652e788603ebbbbca73eaaee2e67c60e2f879eec43e019a6ee9f43762"
+    },
+    {
+      "path": "apps/web/components/LandingStudy.module.css",
+      "sha256": "70944ab8d127bb307fc0e28a40e74aa78fb4b8c6910fc12685c08636a411a0c6"
+    },
+    {
+      "path": "apps/web/components/LandingPage.tsx",
+      "sha256": "01ab0654b5e3ca5a3883c264559f799948c10d80edea2b1e73f161145822127b"
+    },
+    {
+      "path": "apps/web/components/LandingPage.module.css",
+      "sha256": "b82028d30612ec6e6b08246f60cb949a1b09f1387531db2e216dd6edc5550c7c"
+    },
+    {
+      "path": "apps/web/app/page.tsx",
+      "sha256": "9c9456048f73e12fcaa4d81c18226ccfb05875c4c1238793b6c783caf06beeb0"
+    },
+    {
+      "path": "apps/web/scripts/capture-previews.mjs",
+      "sha256": "4c9657cfad17645f61106b7af5444bbbe4d166be06173c6f63475fdb5dcf961f"
+    },
+    {
+      "path": "apps/web/components/SketchCanvas.tsx",
+      "sha256": "8121e15a564a11ac00c2226accfaa362c79ecb5c668145a1111059c0a7f7f6f6"
+    }
+  ]
+}

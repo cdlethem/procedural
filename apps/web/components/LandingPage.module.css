@@ -1,0 +1,270 @@
+.landing {
+  max-width: none;
+  overflow-x: clip;
+}
+
+.opening,
+.processInner,
+.footer {
+  width: min(100%, 1120px);
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 48px);
+}
+
+.intro {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, .7fr);
+  align-items: end;
+  gap: clamp(24px, 5vw, 72px);
+  padding: clamp(48px, 7vw, 96px) 0 32px clamp(30px, 4vw, 58px);
+}
+
+.intro::before,
+.processIntro::before {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  content: "";
+  background-image: var(--brand-corners);
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+
+.intro::before {
+  top: clamp(48px, 7vw, 96px);
+  left: 0;
+}
+
+.intro h1,
+.process h2 {
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: -.055em;
+}
+
+.intro h1 {
+  display: grid;
+  justify-items: start;
+  font-size: clamp(3rem, 7.2vw, 6.5rem);
+  line-height: .88;
+}
+
+.intro h1 > span + span {
+  margin-left: clamp(18px, 4vw, 64px);
+}
+
+.heroAccent {
+  color: var(--teal);
+}
+
+.introNote {
+  position: relative;
+  max-width: 390px;
+  padding: 0 0 0 18px;
+  border-left: 1px solid var(--line);
+}
+
+.introNote::before {
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 34px;
+  height: 1px;
+  content: "";
+  background: var(--teal);
+}
+
+.introNote > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.introLinks,
+.footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+}
+
+.introLinks {
+  margin-top: 16px;
+}
+
+.introLinks a,
+.footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink);
+  font-size: 14px;
+  text-decoration-color: var(--teal);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.introLinks a:hover,
+.footer a:hover {
+  color: var(--teal);
+}
+
+.introLinks span {
+  margin-left: 8px;
+}
+
+.process {
+  margin-top: clamp(24px, 4vw, 48px);
+  color: var(--ink);
+  background: var(--surface-muted);
+  scroll-margin-top: 24px;
+}
+
+.process:focus {
+  outline: none;
+}
+
+.processInner {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: clamp(32px, 7vw, 96px);
+  padding-block: clamp(48px, 6vw, 80px);
+}
+
+.processIntro {
+  position: sticky;
+  top: 32px;
+  padding: 28px 0 0 30px;
+}
+
+.processIntro::before {
+  top: 0;
+  left: 0;
+}
+
+.process h2 {
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  line-height: .98;
+}
+
+.processIntro > p {
+  max-width: 34ch;
+  margin: 16px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.steps {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.steps li {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 14px;
+  padding: 20px 0 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.steps li:nth-child(2) {
+  margin-left: clamp(12px, 2vw, 28px);
+}
+
+.steps li:nth-child(3) {
+  margin-left: clamp(24px, 4vw, 56px);
+}
+
+.stepNumber {
+  padding-top: 3px;
+  color: var(--teal);
+  font: 12px/1.5 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.steps h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -.025em;
+}
+
+.steps p {
+  max-width: 44ch;
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer {
+  padding-block: 32px 40px;
+}
+
+:global(html):has(.landing) {
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 720px) {
+  .intro {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 24px;
+    padding: 44px 0 26px 30px;
+  }
+
+  .intro::before {
+    top: 44px;
+  }
+
+  .intro h1 {
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+
+  .introNote {
+    max-width: 540px;
+  }
+
+  .processInner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-block: 40px;
+  }
+
+  .processIntro {
+    position: relative;
+  }
+}
+
+@media (max-width: 400px) {
+  .opening,
+  .processInner,
+  .footer {
+    padding-inline: 16px;
+  }
+
+  .intro {
+    padding-left: 28px;
+  }
+
+  .intro h1 {
+    font-size: 2.9rem;
+  }
+
+  .steps li:nth-child(n) {
+    margin-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html):has(.landing) {
+    scroll-behavior: auto;
+  }
+}

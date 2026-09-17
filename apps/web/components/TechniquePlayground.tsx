@@ -42,7 +42,13 @@ export function TechniquePlayground({ techniqueId }: { techniqueId: string }) {
       return state;
     },
     techniqueId as TechniqueId,
-    (id): History => ({ document: createDocument(id), past: [], future: [] }),
+    (id): History => {
+      const document = createDocument(id);
+      // The preview is one layer. A stable ID keeps server and browser control
+      // labels in agreement even when other requests have created layers.
+      document.layers[0].id = `preview-${id}`;
+      return { document, past: [], future: [] };
+    },
   );
   const document = history.document;
   const [error, setError] = useState<string | null>(null);
@@ -77,6 +83,7 @@ export function TechniquePlayground({ techniqueId }: { techniqueId: string }) {
   };
   return (
     <section
+      id="study-playground"
       className="technique-playground"
       aria-label={`${technique.title} playground`}
     >
@@ -98,8 +105,13 @@ export function TechniquePlayground({ techniqueId }: { techniqueId: string }) {
         )}
       </div>
       <aside className="playground-controls">
-        <h2>Controls</h2>
-        <LayerControls layer={layer} technique={technique} onChange={change} />
+        <div className="playground-heading">
+          <h2>Make it yours</h2>
+          <p>Adjust a rule. Watch the image respond.</p>
+        </div>
+        <LayerControls layer={layer} technique={technique} onChange={change} section="technique" />
+        <h3 className="playground-style-heading">Color &amp; finish</h3>
+        <LayerControls layer={layer} technique={technique} onChange={change} section="style" />
       </aside>
     </section>
   );

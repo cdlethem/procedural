@@ -13,7 +13,7 @@ export function SavedLayerView({ id }: { id: string }) {
     return () => { active = false; };
   }, [id]);
   const layer = saved?.document.layers[0];
-  return <main id="main-content" tabIndex={-1} className="detail saved-layer"><p className="eyebrow"><Link href="/">Gallery</Link> / Saved layers</p><h1>{saved?.title ?? "Saved layer"}</h1>
+  return <main id="main-content" tabIndex={-1} className="detail saved-layer"><p className="eyebrow"><Link href="/gallery">Gallery</Link> / Saved layers</p><h1>{saved?.title ?? "Saved layer"}</h1>
     {error && <p className="service-error" role="alert">{error}</p>}
     {saved && layer?.kind === "source" ? <>
       <p>{saved.description}</p><p><Link className="button" href={`/studio?savedLayer=${saved.id}`}>Add to studio</Link></p>

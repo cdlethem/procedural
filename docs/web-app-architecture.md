@@ -5,12 +5,29 @@ workflows; it does not change operation contracts or target acceptance.
 
 ## Artist experience
 
-The gallery leads with rendered artwork, search, and technique families. All 24 browser
-techniques open an interactive p5 canvas with shared studio controls, an adapted artist
-guide, and links to formatted operation documentation. An initially open, collapsible, highlighted Sketch
-source component displays the actual adapter function and its local dependencies. Source
-excerpts are extracted from TypeScript syntax trees, so they track the renderer. No raw
-repository files are navigation targets. The API reference covers all 31 operations.
+The landing page at `/` leads with **art with knobs**, a six-study artwork carousel and a direct
+Studio entry. The full collection lives at `/gallery`, with artwork, search, and technique families.
+Browser studies open an interactive p5 canvas with shared studio controls, an adapted artist
+guide, and links to formatted operation documentation. An initially open, collapsible,
+highlighted Sketch source component displays the actual adapter function and its local
+dependencies. Source excerpts are extracted from TypeScript syntax trees, so they track the
+renderer. No raw repository files are navigation targets. API pages derive from the catalog.
+
+The shared identity takes its stepped alignment and square-corner rules from the existing
+three-stroke logo. `globals.css` owns the brick-red accent, paper/ink surfaces, corner motif,
+and UI font tokens. IBM Plex Sans is loaded through `next/font/google` in the root layout,
+downloaded at build time and served by Next.js without a runtime Google Fonts request.
+Normal and italic variable faces support Latin and Latin Extended; other scripts use the
+declared system fallback. The [font's SIL Open Font License](https://github.com/google/fonts/blob/main/ofl/ibmplexsans/OFL.txt)
+applies; downloaded binaries remain build artifacts rather than copied repository assets.
+CSS modules carry the same identity into landing controls, Studio panes, palettes, and
+Explorations. Artwork palettes and renderer semantics are independent of these UI tokens.
+
+Individual `/techniques/*` pages use a split title/description header, an open artwork area,
+and rule-separated controls instead of enclosing panels. `LayerControls` renders its existing
+`technique` and `style` sections once each; state and history remain in `TechniquePlayground`.
+Method headings are demoted below the page h1, control tables use row rules, and the source
+section follows the guide and reusable operation links. All controls stay in document flow.
 
 The studio is an ordered stack of independently generated artwork layers. A searchable
 thumbnail picker presents the available techniques when adding a layer. Add, select,
@@ -23,10 +40,10 @@ undoes (Shift redoes). CutMarks supports selecting a region, X/Y midpoint cuts, 
 and clearing selection. Hints explain these actions beside the canvas. Numeric parameters
 use their controls, without redundant preset-toggle shortcuts. Inputs retain normal typing.
 Undo/redo, local autosave, JSON import/export, PNG download, and server save/load preserve
-edits. The studio inspector separates Placement, Technique and Style into tabs. Its compact
-three-column workspace is centered and capped in width, keeping the inspector next to
-the canvas. Controls stay in normal page flow without nested scroll areas. Mobile panels stack;
-only tall desktop viewports keep the canvas sticky. The canvas renders at 640 square and scales for display.
+edits. The studio inspector separates Placement, Technique and Style into tabs. A fitted
+canvas sits between independently scrolling layer and inspector panels. Mobile and short
+viewports use drawers with focus containment and return. The canvas renders at 640 square
+and scales for display.
 
 Layer order is array order, back to front. Each layer draws into a transparent buffer;
 source-over group opacity is rounded to nearest 8-bit alpha before composition. 3D
@@ -42,6 +59,28 @@ TechniquePlayground/LayerControls and renderer are used for gallery studies and 
 layers. p5 runs client-side with explicit mount/unmount lifecycle. A failed render reports
 its error and leaves the last successful canvas intact. Full recomputation is allowed;
 future retained geometry optimizations require invalidation tests.
+
+The landing carousel reuses one persistent `SketchCanvas` and the existing p5 renderer for
+Agent trails, Cut branch marks, Cell mosaic, Distance halos, Warp marks, and Contact network.
+Six validated documents retain independent edits in page memory, with no Studio storage
+writes. Each has a distinct starting palette from the shared palette library. Parameter bounds
+and descriptions come from the existing technique registry. Palette changes and resets use
+the same document path; reseed is omitted for the fixed proximity replays. Opening a full
+study does not transfer preview edits.
+
+A deadline-based timeout starts successive transitions three seconds apart. Control activity
+replaces that deadline with five seconds from the latest interaction; held pointers suspend it
+until release. Stationary focus and hover do not pin a study. Explicit pause and reduced-motion
+pause require explicit resume. Readiness, errors, offscreen state and tab visibility guard
+advancement. A reusable overlay canvas copies the outgoing edited frame before a study switch.
+Once the next native render is ready, CSS transforms and opacity perform a 500ms directional
+crossfade without remounting p5. Reduced motion switches immediately. Listeners, observers and
+timers are cleaned up on unmount; rapid selection clears prior transition timers.
+
+Server-rendered image previews remain visible without JavaScript; live controls enable after
+hydration. `scripts/capture-previews.mjs --landing` generates palette-matched public previews
+from the actual landing documents under the native-render lease. This presentation adds no
+operation, native technique attestation, or persisted Studio recipe.
 
 Adapters under `apps/web/lib/adapters/` declare parameters, app defaults, renderer needs,
 and cross-parameter validation. Drawing functions consume validated layers through existing

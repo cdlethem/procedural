@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
+import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { SiteNav } from "@/components/SiteNav";
 
+const plex = IBM_Plex_Sans({
+  subsets: ["latin", "latin-ext"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-plex",
+});
+
 export const metadata: Metadata = {
   title: "Procedurals — art with knobs",
-  description: "An alternative to black-box image generation. Make procedural art with visible rules, editable code, and seeded variation.",
+  description: "Craft procedurally generated images with visible rules, editable code, and seeded variation.",
 };
 export default function RootLayout({
   children,
@@ -12,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={plex.variable}>
       <body>
         <SiteNav />
         {children}

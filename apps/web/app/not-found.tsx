@@ -4,7 +4,7 @@ export default function NotFound() {
     <main id="main-content" tabIndex={-1} className="not-found">
       <p className="eyebrow">Missing study</p>
       <h1>This work is not in the collection.</h1>
-      <Link className="button" href="/">
+      <Link className="button" href="/gallery">
         Return to gallery
       </Link>
     </main>

@@ -5,6 +5,10 @@
 
 .header {
   max-width: 48rem;
+  background-image: var(--brand-corners);
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: 38px 38px;
 }
 
 .header h1 {
@@ -43,6 +47,7 @@
 .panel {
   min-width: 0;
   border: 1px solid var(--line);
+  border-top: 2px solid var(--teal);
   background: var(--panel);
   padding: clamp(1.25rem, 2.5vw, 2rem);
 }
@@ -54,8 +59,13 @@
 
 .panelHeading {
   border-bottom: 1px solid var(--line);
+  box-shadow: inset 0 -2px var(--teal);
   margin-bottom: 1.5rem;
-  padding-bottom: 0.85rem;
+  padding: 0 38px 0.85rem 0;
+  background-image: var(--brand-corners);
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: 28px 28px;
 }
 
 .kicker,
@@ -342,6 +352,15 @@
 @media (max-width: 480px) {
   .explorations {
     padding-inline: 1rem;
+  }
+
+  .header {
+    background-image: none;
+  }
+
+  .panelHeading {
+    padding-right: 0;
+    background-image: none;
   }
 
   .actions > button {

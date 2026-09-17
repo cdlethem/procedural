@@ -14,33 +14,44 @@ export default async function TechniquePage({
   const technique = gallery.techniques.find((t) => t.slug === slug);
   if (!technique) notFound();
   return (
-    <main id="main-content" tabIndex={-1} className="detail">
-      <Link href="/" className="back">
+    <main id="main-content" tabIndex={-1} className="detail study-detail">
+      <Link href="/gallery" className="back">
         ← Gallery
       </Link>
-      <header className="detail-head">
-        <p className="eyebrow">{technique.category}</p>
-        <h1>{technique.title}</h1>
-        <p>{technique.description}</p>
-        {technique.studio && (
-          <Link className="button" href={`/studio?technique=${technique.slug}`}>
-            Open in studio <span>→</span>
-          </Link>
-        )}
+      <header className="study-head">
+        <div>
+          <p className="eyebrow">{technique.category}</p>
+          <h1>{technique.title}</h1>
+        </div>
+        <div className="study-intro">
+          <p>{technique.description}</p>
+          {technique.studio && (
+            <Link className="button" href={`/studio?technique=${technique.slug}`}>
+              Open in studio <span aria-hidden="true">↗</span>
+            </Link>
+          )}
+        </div>
       </header>
+      <nav className="study-sections" aria-label="Study sections">
+        <a href="#study-playground"><span>01</span> Make it yours</a>
+        <a href="#study-method"><span>02</span> The method</a>
+        <a href="#study-source"><span>03</span> Source code</a>
+      </nav>
       <TechniquePlayground techniqueId={technique.slug} />
-      <div className="detail-grid">
+      <div id="study-method" className="detail-grid study-method">
         <article className="markdown">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          <p className="eyebrow">Inside the procedure</p>
+          <ReactMarkdown remarkPlugins={[remarkGfm]} components={{
+            h1: ({ children }) => <h2>{children}</h2>,
+            h2: ({ children }) => <h3>{children}</h3>,
+            h3: ({ children }) => <h4>{children}</h4>,
+          }}>
             {technique.markdown}
           </ReactMarkdown>
-          <SourcePanel
-            source={(technique as { sketchSource?: string }).sketchSource}
-            path={(technique as { sketchSourcePath?: string }).sketchSourcePath}
-          />
         </article>
         <aside className="operations">
-          <p className="eyebrow">Operations</p>
+          <h2>Building blocks</h2>
+          <p className="operations-note">Use these computations in your own work.</p>
           {technique.operations.map((op) => (
             <Link key={op.id} href={`/api-reference/${op.id}`}>
               <strong>{op.id}</strong>
@@ -49,6 +60,12 @@ export default async function TechniquePage({
             </Link>
           ))}
         </aside>
+      </div>
+      <div id="study-source" className="study-source">
+          <SourcePanel
+            source={(technique as { sketchSource?: string }).sketchSource}
+            path={(technique as { sketchSourcePath?: string }).sketchSourcePath}
+          />
       </div>
     </main>
   );

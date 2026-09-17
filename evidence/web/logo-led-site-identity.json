@@ -1,0 +1,249 @@
+{
+  "date": "2026-09-17",
+  "reviewStage": "Root reviewed working preview",
+  "scope": "Logo-led web identity and individual study presentation; not native technique acceptance.",
+  "preview": "https://eunoia.tailf03dad.ts.net:8444/",
+  "release8443": "Unchanged",
+  "supersedes": "evidence/web/sterile-landing-rollback.json",
+  "design": {
+    "hero": "art with knobs",
+    "basis": "Existing three offset square-corner strokes; stepped typography, precise rules, brick-red accent, neutral artwork stage.",
+    "mcp": "https://www.ui-skills.com/mcp",
+    "skills": [
+      "zeke/swiss-design",
+      "jakubkrehel/better-typography"
+    ],
+    "font": "IBM Plex Sans variable normal/italic via next/font/google, build-time download and self-hosted delivery; Latin and Latin Extended.",
+    "fontLicense": "https://github.com/google/fonts/blob/main/ofl/ibmplexsans/OFL.txt"
+  },
+  "changes": [
+    "Shared typography, paper/ink/accent tokens and logo-derived geometry across navigation, gallery, API, About and CSS-module application surfaces.",
+    "Individual study pages: split header, open artwork, technique and color/finish sections, anchor navigation, row-ruled method tables and full-width source.",
+    "Carousel rendering and scheduling source unchanged."
+  ],
+  "build": {
+    "command": "node node_modules/next/dist/bin/next build",
+    "cwd": "apps/web",
+    "status": "passed",
+    "buildId": "DtdhVzpZ7cFDwpefixMo6",
+    "warning": "Existing dynamic filesystem trace warning in lib/harness/jobs.ts:58. Initial concurrent orbital validator/test-import errors resolved by separate work; not changed by this UI slice."
+  },
+  "verification": {
+    "routes": [
+      "/",
+      "/gallery",
+      "/techniques/cell-mosaic",
+      "/studio?technique=cell-mosaic",
+      "/palettes",
+      "/explorations",
+      "/api-reference",
+      "/about"
+    ],
+    "widths": [
+      1440,
+      768,
+      390,
+      320
+    ],
+    "horizontalOverflow": false,
+    "pageErrors": [],
+    "fontLoaded": "IBM Plex Sans",
+    "carousel": {
+      "crossfades": [
+        [
+          "0s",
+          "0.5s"
+        ],
+        [
+          "0s",
+          "0.5s"
+        ],
+        [
+          "0s",
+          "0.5s"
+        ],
+        [
+          "0s",
+          "0.5s"
+        ]
+      ],
+      "choices": 6,
+      "liveCanvases": 1,
+      "hero": "art with knobs",
+      "cadenceMs": [
+        2995,
+        2999.4000000953674
+      ],
+      "idleResumeMs": 4993.600000143051,
+      "manualPause": true
+    },
+    "study": {
+      "h1s": 1,
+      "controlBorders": "0px",
+      "allInputsLabelled": true,
+      "editChangesImage": true,
+      "undoRestoresImage": true,
+      "sourceAvailable": true,
+      "methodAnchor": true
+    },
+    "studio": {
+      "pickerSearch": true,
+      "addLayer": true,
+      "styleTab": true,
+      "layers": 2,
+      "opacityControlVisible": true
+    },
+    "navigation": {
+      "gallerySearch": "/techniques/cell-mosaic",
+      "apiSearch": [
+        "/api-reference/layout.lloyd-relaxation-2d",
+        "/api-reference/geometry.voronoi-cells-2d"
+      ],
+      "apiDetail": true
+    },
+    "motion": {
+      "reducedMotionPaused": true
+    },
+    "final": {
+      "selected": {
+        "background": "rgb(241, 228, 223)",
+        "border": "rgb(164, 60, 47)"
+      },
+      "publicPreview": {
+        "title": "art with knobs — Procedurals",
+        "hero": "art with knobs",
+        "ready": true
+      }
+    }
+  },
+  "limits": [
+    "Responsive review covers eight primary routes and representative Cell mosaic study, not all95 individual artwork algorithms.",
+    "API detail navigation exercised; prompt generation, server persistence and exports were not re-certified by this visual pass.",
+    "Full existing automated test suite not run; production build and actual browser interaction/visual review provide scoped verification."
+  ],
+  "report": {
+    "path": ".work/logo-led-identity-report.json",
+    "sha256": "3bcbdb75785ed03fbcddccd02105b2d6190364378fc0f629fa14185d39a29ba1"
+  },
+  "sources": [
+    {
+      "path": "apps/web/app/layout.tsx",
+      "sha256": "d616d1a32f5e6974ea063f9fc97443e7b46bb0327f85451ac5570cce43683230"
+    },
+    {
+      "path": "apps/web/app/globals.css",
+      "sha256": "e58a94b6ac996d1281012b15a5d31efe43a7be7726f74409d12df175ab4da78d"
+    },
+    {
+      "path": "apps/web/app/page.tsx",
+      "sha256": "a75b28a86b67cf3179c8933467ae46e1caa325a8a20e05317c6d3cf4c0074010"
+    },
+    {
+      "path": "apps/web/app/techniques/[slug]/page.tsx",
+      "sha256": "72d340a95ca754e44e37d7e3b1cac1546e6651391cf91ed3b2a4434a4aa5cb76"
+    },
+    {
+      "path": "apps/web/components/LandingPage.tsx",
+      "sha256": "168787b5558b58fa235bf306c403d398b3920c63b4fa384678bc5b96753f5f8f"
+    },
+    {
+      "path": "apps/web/components/LandingPage.module.css",
+      "sha256": "2c22667dc28095265e6f13354239ab02353906230b9f0a8e83e9daeb8eb7767f"
+    },
+    {
+      "path": "apps/web/components/LandingStudy.tsx",
+      "sha256": "5da693e652e788603ebbbbca73eaaee2e67c60e2f879eec43e019a6ee9f43762"
+    },
+    {
+      "path": "apps/web/components/LandingStudy.module.css",
+      "sha256": "9cbe75d671b8508ae0aff6274b1a5a62a49636689dc4869fd3d16cf882cc7e03"
+    },
+    {
+      "path": "apps/web/components/TechniquePlayground.tsx",
+      "sha256": "eb6318736b8189ccdf58c92ef1a00f08c2da72e02f5f1d10e860a559f8534b4d"
+    },
+    {
+      "path": "apps/web/components/Studio.module.css",
+      "sha256": "7951e19833604db25f9f0a43a005bdd6d8ff45c8a714cd3319601b3c6b68f1c1"
+    },
+    {
+      "path": "apps/web/components/Explorations.module.css",
+      "sha256": "ec712d5e583596d4483e874bc051d9b714b890d919847a4f86beec1666c90885"
+    },
+    {
+      "path": "apps/web/components/PaletteLibrary.module.css",
+      "sha256": "0b472023f4578cf0674c227aff21dc14452b05b61a6be116d023a3ef42e56293"
+    },
+    {
+      "path": "apps/web/components/LayerPicker.module.css",
+      "sha256": "70a24360e46e3da819763361773033a578cc4a4c47fbf8d2229c532e9535b088"
+    }
+  ],
+  "images": [
+    {
+      "label": "Landing desktop",
+      "path": ".work/identity-landing-1440.png",
+      "sha256": "7148f6be3e011b6252de54d5bee10c0ac9ef091fa101391bb69b7beb2775a8f2"
+    },
+    {
+      "label": "Landing mobile",
+      "path": ".work/identity-landing-390.png",
+      "sha256": "79100113f87027b7a8061d1a8319529b454d90032d5fba9181070c08516dde83"
+    },
+    {
+      "label": "Study desktop",
+      "path": ".work/identity-techniques-cell-mosaic-1440.png",
+      "sha256": "3c8d1bcf032b7ad3a0884934ecbe8403921bdb6b78b6bb973140cf762aa33642"
+    },
+    {
+      "label": "Study mobile",
+      "path": ".work/identity-techniques-cell-mosaic-390.png",
+      "sha256": "cd94266f1ec6abceace8044fe582d6b3ef0c711accded886d2b195fe48cc894d"
+    },
+    {
+      "label": "Method and source",
+      "path": ".work/identity-study-method.png",
+      "sha256": "56ceb9bfd1d8fcd189838a8b984795d5f9ad3a61207d1aed3b246f0694f06fb4"
+    },
+    {
+      "label": "Gallery",
+      "path": ".work/identity-gallery-1440.png",
+      "sha256": "494c822dfb04a216881483b451fb70d36ffa62b64b97fa816bad35edf6dbc324"
+    },
+    {
+      "label": "Studio",
+      "path": ".work/identity-studio-1440.png",
+      "sha256": "3175eec8481de2b463c85cb2c515cf5017dce3f6f65ac73bc64467eab1362a85"
+    },
+    {
+      "label": "Studio mobile",
+      "path": ".work/identity-studio-390.png",
+      "sha256": "6385c3ef859bc472e467e43c46d0b7e80f47ca971719c85fe062c850996831f5"
+    },
+    {
+      "label": "Layer picker",
+      "path": ".work/identity-picker-desktop.png",
+      "sha256": "421dfd8dc0285e39829574921d6be1a350c69fcb68b0496fa91e7b7f5ffee9c0"
+    },
+    {
+      "label": "Palettes",
+      "path": ".work/identity-palettes-1440.png",
+      "sha256": "f7e3be1b70400c6ee77a432d3360efbd93c91017d5e3f3334f6887f99572f2c0"
+    },
+    {
+      "label": "Explorations",
+      "path": ".work/identity-explorations-1440.png",
+      "sha256": "8c2be709a18035b69784400f0e02dec1f4e2576e3c64633bdf2e4afd8c15a24d"
+    },
+    {
+      "label": "API reference",
+      "path": ".work/identity-api-reference-1440.png",
+      "sha256": "84a31aa07525fd3afde180d3aa36a6767020537111a1d91d88188cf254ff2ae0"
+    },
+    {
+      "label": "About",
+      "path": ".work/identity-about-1440.png",
+      "sha256": "45e2f7941b577c0777501f67cdbb3336b118f05eca4d697e3209bec9416f0e99"
+    }
+  ]
+}

@@ -1,0 +1,314 @@
+{
+  "kind": "root-reviewed-landing-carousel",
+  "date": "2026-09-17",
+  "scope": "Working-checkout landing page on HTTPS 8444; not a release integration or new technique acceptance.",
+  "previousReview": "evidence/web/landing-page-review.json",
+  "historyNote": "Successor replaces the sparse SVG field with a native three-study carousel. Prior reviews and images retain their historical bindings.",
+  "design": {
+    "skills": [
+      "mengto/landing-page",
+      "mengto/animation-on-scroll",
+      "ibelick/fixing-motion-performance"
+    ],
+    "studies": [
+      "cell-mosaic",
+      "warp-marks",
+      "profile-marks"
+    ],
+    "decisions": [
+      "Art-first open stage with adjacent tilted previews; integrated controls below the artwork, not a sidebar.",
+      "Remove thin interface framing and retain the approved headline, supporting copy, identity, and scroll narrative.",
+      "Three registry-derived numeric controls per study, palette choices, exact reset, and reseed only where meaningful.",
+      "One persistent p5 canvas; independent in-memory edits, no Studio storage writes.",
+      "Eight-second automatic rotation while untouched; interaction pins the current study until explicit resume. Hover, visibility, renderer readiness and reduced motion govern rotation."
+    ],
+    "contrastFix": "Removed foreground/background color transitions from controls after an axe scan caught transient low-contrast intermediate colors; unchanged scans pass afterward."
+  },
+  "verification": {
+    "build": {
+      "command": "node node_modules/next/dist/bin/next build",
+      "cwd": "apps/web",
+      "status": "passed",
+      "warning": "Existing lib/harness/jobs.ts:58 dynamic filesystem tracing warning remains."
+    },
+    "nativeLease": "tools/with_native_render_lock.py",
+    "browser": "153.0.8010.12",
+    "smoke": {
+      "path": ".work/landing-carousel-review/report.json",
+      "sha256": "347f2853401adbaa739b89edd85283e5fee82e589bfab87a23d75dca0093bc18",
+      "status": "passed",
+      "scenarios": [
+        "Untouched artwork advances Cell → Warp → Profile on real eight-second timers; hovering holds it and leaving resumes.",
+        "Keyboard editing pins the current study beyond a complete rotation period.",
+        "Every study has three working numeric controls and palette changes; meaningful reseeds change pixels; all three resets restore exact native canvas pixels; selecting the active study keeps it ready.",
+        "Manual selection preserves per-study edits and leaves Studio storage untouched.",
+        "Explicit Resume is required after interaction; offscreen rotation waits, then restarts when visible.",
+        "Open study reaches the matching real renderer; gallery and home navigation dispose and restore the live canvas.",
+        "Reduced motion starts paused and stays on the initial artwork without entrance or scroll animations.",
+        "Mobile touch changes a real range and palette while retaining the selected study.",
+        "No-JavaScript visitors see real artwork previews with disabled live controls and an explanation."
+      ]
+    },
+    "workspace": {
+      "path": ".work/landing-carousel-review/workspace-report.json",
+      "sha256": "5362c769a7cb1e07f5836eaf24af646dd321c001248444e896bb94dd3ede3771",
+      "command": "WEB_BASE_URL=http://127.0.0.1:3016 python3 tools/with_native_render_lock.py --timeout 240 -- node apps/web/scripts/test-browser.mjs --workspace-only",
+      "status": "passed"
+    },
+    "accessibility": [
+      {
+        "label": "cell-mosaic",
+        "violations": []
+      },
+      {
+        "label": "warp-marks",
+        "violations": []
+      },
+      {
+        "label": "profile-marks",
+        "violations": []
+      },
+      {
+        "label": "width-1440",
+        "violations": []
+      },
+      {
+        "label": "width-390",
+        "violations": []
+      },
+      {
+        "label": "width-320",
+        "violations": []
+      }
+    ],
+    "layouts": [
+      {
+        "width": 1440,
+        "overflow": false,
+        "headlineLines": 1,
+        "artworkBottom": 752.375,
+        "firstControlTop": 956.140625,
+        "controlsBelowArtwork": true,
+        "headerBorder": "0px"
+      },
+      {
+        "width": 1024,
+        "overflow": false,
+        "headlineLines": 1,
+        "artworkBottom": 661.5625,
+        "firstControlTop": 848.65625,
+        "controlsBelowArtwork": true,
+        "headerBorder": "0px"
+      },
+      {
+        "width": 850,
+        "overflow": false,
+        "headlineLines": 1,
+        "artworkBottom": 698.15625,
+        "firstControlTop": 876.3125,
+        "controlsBelowArtwork": true,
+        "headerBorder": "0px"
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "headlineLines": 1,
+        "artworkBottom": 691.890625,
+        "firstControlTop": 868.078125,
+        "controlsBelowArtwork": true,
+        "headerBorder": "0px"
+      },
+      {
+        "width": 760,
+        "overflow": false,
+        "headlineLines": 1,
+        "artworkBottom": 685.109375,
+        "firstControlTop": 803.34375,
+        "controlsBelowArtwork": true,
+        "headerBorder": "0px"
+      },
+      {
+        "width": 560,
+        "overflow": false,
+        "headlineLines": 1,
+        "artworkBottom": 692.640625,
+        "firstControlTop": 828.640625,
+        "controlsBelowArtwork": true,
+        "headerBorder": "0px"
+      },
+      {
+        "width": 390,
+        "overflow": false,
+        "headlineLines": 1,
+        "artworkBottom": 689.015625,
+        "firstControlTop": 825.015625,
+        "controlsBelowArtwork": true,
+        "headerBorder": "0px"
+      },
+      {
+        "width": 320,
+        "overflow": false,
+        "headlineLines": 1,
+        "artworkBottom": 689.1875,
+        "firstControlTop": 825.1875,
+        "controlsBelowArtwork": true,
+        "headerBorder": "0px"
+      }
+    ],
+    "visualReview": "Root inspected desktop and narrow mobile composition, touch controls, edited native warped bands and 3D profile, scroll narrative and artwork invitations.",
+    "performance": {
+      "scope": "Observed input-to-render revision times on this Chromium run; not a benchmark or device-wide guarantee.",
+      "samplesMs": [
+        {
+          "study": "cell-mosaic",
+          "ms": 8
+        },
+        {
+          "study": "cell-mosaic",
+          "ms": 5.400000095367432
+        },
+        {
+          "study": "cell-mosaic",
+          "ms": 4.900000095367432
+        },
+        {
+          "study": "warp-marks",
+          "ms": 14.399999856948853
+        },
+        {
+          "study": "warp-marks",
+          "ms": 20.40000009536743
+        },
+        {
+          "study": "warp-marks",
+          "ms": 13.900000095367432
+        },
+        {
+          "study": "profile-marks",
+          "ms": 75.39999985694885
+        },
+        {
+          "study": "profile-marks",
+          "ms": 82.60000014305115
+        },
+        {
+          "study": "profile-marks",
+          "ms": 94.59999990463257
+        },
+        {
+          "study": "cell-mosaic",
+          "ms": 4.5
+        }
+      ]
+    }
+  },
+  "preview": {
+    "url": "https://eunoia.tailf03dad.ts.net:8444/",
+    "process": "ui-design-preview",
+    "port": 3016,
+    "existingRelease": "8443 unchanged by this landing work"
+  },
+  "limits": [
+    "Chromium desktop and mobile touch emulation, not physical-device or cross-browser certification.",
+    "No new operation, expanded target support, or corpus recreation is claimed.",
+    "No-JavaScript uses labelled static previews; live rendering requires JavaScript and the existing p5 renderer.",
+    "Open study starts its full default study; landing edits are intentionally not transferred.",
+    "Visibility listener was reviewed; this smoke exercises hover/offscreen holding, not a physical browser-tab switch."
+  ],
+  "images": [
+    {
+      "label": "Desktop carousel",
+      "path": ".work/landing-carousel-review/landing-1440.png",
+      "sha256": "0f7a9ba9537e5cd1e25805480872a370fbfac6956e3d04be4040a285e3ba82ed"
+    },
+    {
+      "label": "Mobile landing",
+      "path": ".work/landing-carousel-review/landing-320.png",
+      "sha256": "a35544bf3c2669cce76cee31289829b925336b82d91e91f4dbda9640bcea7510"
+    },
+    {
+      "label": "Mobile touch controls",
+      "path": ".work/landing-carousel-review/touch-controls.png",
+      "sha256": "a872371dac741a206b2eff2180d396829680d0ec53f7e58f68f5b93e6a4f38b3"
+    },
+    {
+      "label": "Warped bands",
+      "path": ".work/landing-carousel-review/desktop-warp.png",
+      "sha256": "a4fff4088130cee0731ea9c38529fd57a144b7f41bedd0cbee6efb7391766237"
+    },
+    {
+      "label": "Three-dimensional profile",
+      "path": ".work/landing-carousel-review/desktop-profile.png",
+      "sha256": "48cc334aee9e0eaa50ff3b8068dd55cc294e14804a012f002ffa6b3ab1c8c49f"
+    },
+    {
+      "label": "Edited mosaic",
+      "path": ".work/landing-carousel-review/cell-mosaic-edited.png",
+      "sha256": "ff6a11e1e8acfb6e164bedad2e8e2dc67f8299b3a7d03105f52b777aec108b45"
+    },
+    {
+      "label": "Edited warped bands",
+      "path": ".work/landing-carousel-review/warp-marks-edited.png",
+      "sha256": "b9b6baabbe9fe0273098e6afd335ecc771a68be5e8177bfed5575e3e2ebe4a54"
+    },
+    {
+      "label": "Edited profile",
+      "path": ".work/landing-carousel-review/profile-marks-edited.png",
+      "sha256": "80f1c0c7f343f1ff998d74bb6df53e363126efa79b46d950b8b9568499450889"
+    },
+    {
+      "label": "Scroll narrative",
+      "path": ".work/landing-carousel-review/process.png",
+      "sha256": "294640a58c784a8e5617c7928b9c06f98602cf32bb5f61150a2ec70bcf713f28"
+    },
+    {
+      "label": "Artwork invitations",
+      "path": ".work/landing-carousel-review/examples.png",
+      "sha256": "5dde69908fb518966440fa21995f968b769e347b199771a29f698bf6274d421b"
+    },
+    {
+      "label": "Reduced motion",
+      "path": ".work/landing-carousel-review/reduced-motion.png",
+      "sha256": "a353a69b1087394e3d93298e922a729fd2c46354d53e1a52d9ad844684760b27"
+    },
+    {
+      "label": "No JavaScript",
+      "path": ".work/landing-carousel-review/no-javascript.png",
+      "sha256": "cd299048f74eb5648ccdd6403ff690b422213f969101f23689edff8301e77ec2"
+    }
+  ],
+  "sourceBindings": [
+    {
+      "path": "apps/web/components/LandingStudy.tsx",
+      "sha256": "c95ac3d649838a795d2a14c2473ddee95ffac7f22b4ccfae7e2faf7c4f4dfb99"
+    },
+    {
+      "path": "apps/web/components/LandingStudy.module.css",
+      "sha256": "c108c865af4322e859cdb742a3f5ce984cef357d422ae6ccc1522746332a2b23"
+    },
+    {
+      "path": "apps/web/components/LandingPage.tsx",
+      "sha256": "22343bb32db8fe9822011085699decce34c9bdf38498810130fa75a2fb6d3a45"
+    },
+    {
+      "path": "apps/web/components/LandingPage.module.css",
+      "sha256": "703ae5c3e8707e3568fe8b1b19fec7f0b45941e534ef51ca3411b0609d015fea"
+    },
+    {
+      "path": "apps/web/components/SiteNav.tsx",
+      "sha256": "e63e5e8e452d3561803aa03bf44b9b464568eec7748313210abd7bd8a7e255a8"
+    },
+    {
+      "path": "apps/web/app/globals.css",
+      "sha256": "fb3fa0ab3370108a4eaf4bcbb00aa7c597f6c8ca910cf3288c07bf27488d2a9b"
+    },
+    {
+      "path": "apps/web/components/SketchCanvas.tsx",
+      "sha256": "8121e15a564a11ac00c2226accfaa362c79ecb5c668145a1111059c0a7f7f6f6"
+    },
+    {
+      "path": "apps/web/lib/render-studio.ts",
+      "sha256": "c74d2646223ab80dab81f4beb33b6ada76d15db2fa90af450676271260b3b0c8"
+    }
+  ]
+}

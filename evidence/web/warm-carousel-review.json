@@ -1,0 +1,150 @@
+{
+  "kind": "root-reviewed-warm-carousel-presentation",
+  "date": "2026-09-17",
+  "scope": "Visual successor for the working-checkout landing preview on HTTPS8444; behavior and native capability scope remain unchanged.",
+  "previousReview": "evidence/web/minimal-carousel-review.json",
+  "problem": "The minimal successor left too much neutral empty space and washed out neighboring art, producing a sterile, liminal first impression.",
+  "decision": [
+    "Keep factual copy and the six-study carousel; do not add slogans or promotional sections.",
+    "Place the artwork on a stable warm geometric poster stage with full-color neighboring studies.",
+    "Use editorial serif headings, an oxide Studio action, cream controls, vertical palette swatches, and warmer study tiles.",
+    "Retain whitespace and controls below artwork, but add depth through restrained shadows, color blocking, and asymmetric neighboring prints.",
+    "Keep the stage stable across study changes so the existing native-frame crossfade remains smooth and cheap."
+  ],
+  "verification": {
+    "productionBuild": {
+      "status": "passed",
+      "command": "node node_modules/next/dist/bin/next build",
+      "cwd": "apps/web",
+      "warning": "Existing lib/harness/jobs.ts:58 dynamic filesystem tracing warning remains."
+    },
+    "browser": {
+      "path": ".work/warm-landing-review/report.json",
+      "sha256": "cad9b4f09dc56db7b6e3e5b46d42396c61e4a743252ac7990de48caf5380e3fe",
+      "version": "Chromium153",
+      "results": {
+        "layouts": [
+          {
+            "width": 1440,
+            "overflow": false,
+            "previewOpacity": "1"
+          },
+          {
+            "width": 1024,
+            "overflow": false,
+            "previewOpacity": "1"
+          },
+          {
+            "width": 768,
+            "overflow": false,
+            "previewOpacity": "1"
+          },
+          {
+            "width": 560,
+            "overflow": false,
+            "previewOpacity": "1"
+          },
+          {
+            "width": 390,
+            "overflow": false,
+            "previewOpacity": "1"
+          },
+          {
+            "width": 320,
+            "overflow": false,
+            "previewOpacity": "1"
+          }
+        ],
+        "timing": [
+          {
+            "scenario": "unchanged automatic cadence",
+            "ms": 3030
+          }
+        ],
+        "motion": [
+          {
+            "name": "LandingStudy-module__Ds7ALW__study-exit-next",
+            "duration": 500
+          },
+          {
+            "name": "LandingStudy-module__Ds7ALW__study-enter-next",
+            "duration": 500
+          }
+        ],
+        "accessibility": [
+          {
+            "width": 1440,
+            "violations": []
+          },
+          {
+            "width": 390,
+            "violations": []
+          },
+          {
+            "width": 320,
+            "violations": []
+          }
+        ],
+        "control": {
+          "renderChanged": true,
+          "inactivityResumeMs": 4951
+        }
+      }
+    },
+    "observed": [
+      "No horizontal overflow at1440,1024,768,560,390,320px.",
+      "Existing automatic cadence measured3030ms and both transition animations remained500ms.",
+      "Keyboard range edit changed actual native canvas pixels; automatic rotation resumed4951ms after activity.",
+      "axe4.10.3 WCAG2A/AA and2.1AA scans reported zero violations at1440,390,320px.",
+      "Root inspected the wide Cell mosaic composition, narrow Warp marks composition, controls, study picker, and process handoff."
+    ]
+  },
+  "preview": {
+    "url": "https://eunoia.tailf03dad.ts.net:8444/",
+    "release8443": "Unchanged."
+  },
+  "limits": [
+    "Chromium desktop/mobile emulation, not cross-browser or physical-device certification.",
+    "No native operation, target support, persistence, timer, or carousel content changes in this successor."
+  ],
+  "images": [
+    {
+      "label": "Warm poster stage",
+      "path": ".work/warm-landing-review/desktop.png",
+      "sha256": "33698c6c687f828b6b02587763f0e89312c68bdaf77cb4a0733eefd0d729816d"
+    },
+    {
+      "label": "Warm mobile landing",
+      "path": ".work/warm-landing-review/mobile-390.png",
+      "sha256": "635dc35486ed67110755243a49ffa92d6bd41b592f9140cf478443f5a65e81ea"
+    },
+    {
+      "label": "Narrow mobile landing",
+      "path": ".work/warm-landing-review/mobile-320.png",
+      "sha256": "5de67e1b3de2137025f3442c4dd0d16c6da3b7c3f4e91ee879ac3c2703eb3b0b"
+    },
+    {
+      "label": "Tactile controls and study picker",
+      "path": ".work/warm-landing-review/mobile-controls.png",
+      "sha256": "e2730f3da3f0cbe9ba339cd920057e3414e2b6523719e375db1e5c079a5b9818"
+    }
+  ],
+  "sourceBindings": [
+    {
+      "path": "apps/web/components/LandingPage.module.css",
+      "sha256": "ea197c8e4a58f09127493c57380a1c8f1ef7790a096ac690b2fe0aec51088957"
+    },
+    {
+      "path": "apps/web/components/LandingStudy.module.css",
+      "sha256": "063f77e5d6b28f3efb31e7392ed40c26c1d960c152a233dc6b6e3ec81941ac2d"
+    },
+    {
+      "path": "apps/web/components/LandingPage.tsx",
+      "sha256": "01ab0654b5e3ca5a3883c264559f799948c10d80edea2b1e73f161145822127b"
+    },
+    {
+      "path": "apps/web/components/LandingStudy.tsx",
+      "sha256": "5da693e652e788603ebbbbca73eaaee2e67c60e2f879eec43e019a6ee9f43762"
+    }
+  ]
+}

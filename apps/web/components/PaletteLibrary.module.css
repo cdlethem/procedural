@@ -9,16 +9,18 @@
 .library .primary { color: var(--panel); background: var(--teal); border-color: var(--teal); }
 .library .primary:hover:not(:disabled) { background: var(--accent-hover); }
 .library input, .library textarea, .library select { width: 100%; max-width: 100%; min-width: 0; min-height: 44px; font: inherit; padding: 9px 10px; border: 1px solid var(--line); background: var(--panel); border-radius: 2px; color: var(--ink); }
-.library input[aria-invalid="true"] { border-color: #a2442d; }
+.library input[aria-invalid="true"] { border-color: var(--accent-hover); }
 .library label { display: grid; gap: 6px; font-weight: 500; }
 .library textarea { resize: vertical; min-height: 78px; max-height: 200px; }
 .library :focus-visible, .dialog :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
 .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 20px; }
 .toolbar p { margin: 5px 0 0; }
 .toolbar button { flex-shrink: 0; }
+.toolbar h2 { position: relative; padding-left: 12px; }
+.toolbar h2::before { position: absolute; top: 0.15em; bottom: 0.15em; left: 0; width: 2px; background: var(--teal); content: ""; }
 .search { display: flex; gap: 10px; margin: 20px 0; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 16px; align-items: start; }
-.card { border: 1px solid var(--line); border-radius: 2px; overflow: hidden; background: var(--panel); }
+.card { border: 1px solid var(--line); border-top: 2px solid var(--teal); border-radius: var(--radius-ui, 2px); overflow: hidden; background: var(--panel); }
 .swatches { display: flex; height: 88px; overflow: hidden; border-radius: 2px; }
 .swatches span { flex: 1; min-width: 0; }
 .card > .swatches { border-radius: 0; }
@@ -48,8 +50,8 @@
 .saveBar { position: sticky; bottom: -24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; background: var(--panel); border-top: 1px solid var(--line); padding: 16px 0; }
 .saveBar span { color: var(--muted); font-size: 12px; }
 .saveBar button { flex-shrink: 0; }
-.library .error { color: #943f29; background: #fff0e8; padding: 12px; border-radius: 6px; }
-.library .notice { color: #285b45; background: #eaf1e5; padding: 12px; border-radius: 6px; }
+.library .error { color: var(--accent-hover); background: var(--brand-soft); border-left: 2px solid var(--teal); padding: 12px; border-radius: 0; }
+.library .notice { color: #285b45; background: #eaf1e5; padding: 12px; border-left: 2px solid #285b45; border-radius: 0; }
 .confirm { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 12px; }
 .empty { padding: 28px 16px; text-align: left; border-block: 1px solid var(--line); }
 .dialog { width: min(760px, calc(100vw - 24px)); max-width: none; max-height: calc(100dvh - 32px); padding: 0; margin: auto; border: 1px solid var(--line); border-radius: 2px; background: var(--panel); overflow: hidden; }
@@ -62,10 +64,12 @@
 .promptPalette .actions { justify-content: space-between; font-size: 12px; }
 .promptPalette .actions span { overflow-wrap: anywhere; min-width: 0; }
 .promptPalette .actions button { font-size: 13px; padding: 8px 10px; min-height: 44px; }
-.page { max-width: 1440px; padding: 48px clamp(20px, 4vw, 64px) 80px; }
+.page { position: relative; max-width: 1440px; padding: 48px clamp(20px, 4vw, 64px) 80px; }
+.page::after { position: absolute; top: 48px; right: clamp(20px, 4vw, 64px); width: 44px; height: 44px; background-image: var(--brand-corners); background-position: center; background-repeat: no-repeat; background-size: contain; content: ""; pointer-events: none; }
 .page > h1 { font: 500 clamp(2.75rem, 5vw, 4.5rem)/1 var(--font-ui); letter-spacing: -.055em; margin: 8px 0 20px; }
-.page > p { max-width: 65ch; color: var(--muted); margin-bottom: 32px; }
+.page > p:not(:global(.eyebrow)) { max-width: 65ch; color: var(--muted); line-height: 1.65; margin-bottom: 32px; }
 @media (max-width: 600px) {
+  .page::after { display: none; }
   .dialogScroll { padding: 18px 14px; }
   .dialog > header { padding: 12px 14px; }
   .generator, .editor { padding: 12px; }

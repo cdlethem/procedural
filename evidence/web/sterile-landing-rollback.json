@@ -1,0 +1,98 @@
+{
+  "kind": "root-reviewed-sterile-landing-rollback",
+  "date": "2026-09-17",
+  "scope": "Working-checkout presentation rollback on HTTPS8444; retains the corrected six-study carousel behavior.",
+  "supersedesPresentation": [
+    "evidence/web/warm-carousel-review.json",
+    "evidence/web/logo-hero-review.json"
+  ],
+  "restoredFrom": "evidence/web/minimal-carousel-review.json",
+  "decision": [
+    "Restore the Procedural studies heading, neutral open stage, flat muted controls and subdued neighboring previews.",
+    "Remove warm geometric backdrop, serif/editorial styling, logo-derived hero experiment and carousel gallery CTA.",
+    "Preserve six curated studies and palettes, one persistent p5 renderer, 3s cadence, 5s interaction inactivity deadline, explicit pause, reduced motion and500ms outgoing-frame crossfade."
+  ],
+  "verification": {
+    "productionBuild": {
+      "status": "passed",
+      "command": "node node_modules/next/dist/bin/next build",
+      "cwd": "apps/web",
+      "warning": "Existing lib/harness/jobs.ts:58 dynamic filesystem tracing warning remains."
+    },
+    "browser": {
+      "path": ".work/sterile-rollback-report.json",
+      "sha256": "a845e15531a1c2db5d49f0d95604c43f399f40815f94f66207c6cd2da865b473",
+      "results": {
+        "status": "passed",
+        "browser": "Chromium 153.0.8010.12",
+        "presentation": {
+          "stageBackgroundImage": "none",
+          "stagePadding": "0px",
+          "controlsBackground": "rgb(232, 233, 225)",
+          "controlsShadow": "none",
+          "neighborOpacity": "0.42"
+        },
+        "cadenceMs": 2999.600000143051,
+        "inactivityResumeMs": 5001,
+        "layouts": [
+          {
+            "width": 1440,
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "overflow": false
+          }
+        ]
+      },
+      "observed": [
+        "Exact h1 Procedural studies and no carousel gallery CTA.",
+        "Neutral stage has no image or padding; flat controls have no shadow; neighbors render at opacity.42.",
+        "Automatic cadence measured2999.6ms; control inactivity resumed at5001ms.",
+        "No horizontal overflow at1440,768,390,320px.",
+        "Root inspected the restored desktop surface."
+      ]
+    }
+  },
+  "preview": {
+    "url": "https://eunoia.tailf03dad.ts.net:8444/",
+    "release8443": "Unchanged."
+  },
+  "images": [
+    {
+      "label": "Restored sterile desktop",
+      "path": ".work/sterile-rollback-desktop.png",
+      "sha256": "6fd3195c9c1853d4e4d68b6712d7a7a43a3924ade56fe560c29f3bae49625e61"
+    }
+  ],
+  "sourceBindings": [
+    {
+      "path": "apps/web/components/LandingPage.tsx",
+      "sha256": "01ab0654b5e3ca5a3883c264559f799948c10d80edea2b1e73f161145822127b"
+    },
+    {
+      "path": "apps/web/components/LandingPage.module.css",
+      "sha256": "73927e63402c8c5bc0e539c09709594a15333370bf0d29c7ddcc370ec4455b68"
+    },
+    {
+      "path": "apps/web/components/LandingStudy.tsx",
+      "sha256": "5da693e652e788603ebbbbca73eaaee2e67c60e2f879eec43e019a6ee9f43762"
+    },
+    {
+      "path": "apps/web/components/LandingStudy.module.css",
+      "sha256": "b319b5af6dcbd60e4fa041f3e5591a04bd88c8c47bf670b080b67c15d855dde9"
+    }
+  ],
+  "limits": [
+    "Scoped Chromium verification, not cross-browser certification.",
+    "Historical warm/logo experiments remain recorded but are not current."
+  ]
+}
