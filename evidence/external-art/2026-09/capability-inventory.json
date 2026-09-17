@@ -1,0 +1,140 @@
+{
+  "as_of": "2026-09-17",
+  "evidence": {
+    "catalog_operations": "catalog/operations/*.json",
+    "catalog_validation": "catalog/validation/*.json",
+    "javascript_exports": "packages/javascript/src/index.js",
+    "scope": "67 accepted p5 operation contracts with checked hashes;64-operation research baseline plus three separately accepted survey-batch successors."
+  },
+  "target_support": {
+    "p5js": {
+      "core": 67,
+      "native": 67,
+      "technique": 4
+    },
+    "processing-java": {
+      "core": 31,
+      "native": 31,
+      "technique": 26
+    },
+    "py5": {
+      "core": 10,
+      "native": 10,
+      "technique": 4
+    },
+    "processing-android": {
+      "core": 10,
+      "native": 10,
+      "technique": 4
+    }
+  },
+  "groups": {
+    "fields/state": [
+      "field.damped-wave-step-2d",
+      "field.elementary-cellular-rows",
+      "field.euclidean-distance-transform-2d",
+      "field.gradient-noise-2d-01",
+      "field.gradient-noise-3d-01",
+      "field.gray-scott-step-2d",
+      "field.life-like-step-2d",
+      "field.scalar-grid-curl-2d",
+      "field.displace-points-2d",
+      "field.octave-gradient-noise"
+    ],
+    "paths/tracing": [
+      "path.cost-grid-paths-2d",
+      "path.gradient-trace-2d",
+      "path.noise-band-trace-2d",
+      "path.occupied-lattice-paths-2d",
+      "path.rk4-vector-grid-trace-2d"
+    ],
+    "geometry": [
+      "geometry.assemble-segment-chains-2d",
+      "geometry.chaikin-polyline-2d",
+      "geometry.clip-segments-simple-polygon-2d",
+      "geometry.closed-spline-2d",
+      "geometry.convex-hull-2d",
+      "geometry.marching-squares-2d",
+      "geometry.nearest-segment-contact-2d",
+      "geometry.offset-polyline-2d",
+      "geometry.radial-pull-2d",
+      "geometry.resample-polyline-2d",
+      "geometry.sequential-disc-projection-2d",
+      "geometry.simplify-polyline-2d",
+      "geometry.token-turtle-2d",
+      "geometry.triangulate-simple-polygon-2d",
+      "geometry.voronoi-cells-2d"
+    ],
+    "topology": [
+      "topology.delaunay-2d",
+      "topology.seeded-depth-first-spanning-tree",
+      "topology.seeded-endpoint-branches-2d",
+      "topology.seeded-line-pool-2d"
+    ],
+    "meshes": [
+      "mesh.annular-solid-3d",
+      "mesh.extrude-simple-polygon-3d",
+      "mesh.loop-subdivide-triangles-3d",
+      "mesh.parallel-transport-ribbon-3d",
+      "mesh.radial-profile-surface-3d"
+    ],
+    "raster": [
+      "raster.bayer-dither",
+      "raster.bilinear-remap-2d",
+      "raster.binary-morphology-2d",
+      "raster.convolve-2d-signed",
+      "raster.floyd-steinberg-dither",
+      "raster.masked-source-over-2d",
+      "raster.crossfade-2d",
+      "raster.separable-blur-2d",
+      "raster.seeded-pixel-grain"
+    ],
+    "color": [
+      "color.cyclic-palette",
+      "color.median-cut-quantize",
+      "color.oklab-ramp",
+      "color.stop-ramp"
+    ],
+    "sampling": [
+      "sampling.ordered-circle-filter-2d",
+      "sampling.ordered-convex-polygon-filter-2d",
+      "sampling.poisson-disc-2d",
+      "sampling.seeded-circle-placement-2d",
+      "sampling.seeded-triangle-points-2d",
+      "sampling.triangle-coordinate-map-2d"
+    ],
+    "layout": [
+      "layout.adjacency-tile-collapse-2d",
+      "layout.binary-cell-partition-2d",
+      "layout.lloyd-relaxation-2d",
+      "layout.regular-grid",
+      "layout.retained-rectangle-cuts-2d",
+      "layout.seeded-quadrant-partition-2d",
+      "layout.skyline-pack-2d"
+    ],
+    "symbolic grammar": [
+      "grammar.parallel-token-rewrite"
+    ],
+    "motion": [
+      "motion.target-springs-2d"
+    ]
+  },
+  "javascript_modules": {
+    "shared_alias_modules": {
+      "seeded-circle-placement-2d": "circle-placements.js",
+      "ordered-circle-filter-2d": "circle-placements.js",
+      "seeded-triangle-points-2d": "triangle-points.js",
+      "triangle-coordinate-map-2d": "triangle-points.js",
+      "seeded-endpoint-branches-2d": "branch-tree.js",
+      "seeded-line-pool-2d": "line-pool.js",
+      "gradient-trace-2d": "gradient-path.js",
+      "annular-solid-3d": "annular-mesh.js",
+      "ordered-convex-polygon-filter-2d": "convex-polygon-placements.js",
+      "bilinear-remap-2d": "raster-remap.js",
+      "clip-segments-simple-polygon-2d": "segment-clip.js"
+    },
+    "otherwise": "The remaining IDs map to same-stem files under packages/javascript/src/."
+  },
+  "baseline_commit": "c7071577110b271c7a1a295d93729dbf3b737bd0",
+  "successor_review": "evidence/coverage/batch1/integration-review.json"
+}

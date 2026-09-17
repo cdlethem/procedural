@@ -63,3 +63,7 @@ export { triangulateSimplePolygon2D } from "./triangulate-simple-polygon-2d.js";
 export { seededPixelGrain, SeededPixelGrainError } from "./seeded-pixel-grain.js";
 export { fieldDisplace2D, FieldDisplace2DError } from "./field-displace-2d.js";
 export { octaveGradientNoise, OctaveGradientNoiseError } from "./octave-gradient-noise.js";
+
+export { defaultPalettes } from "./default-palettes.js";
+export { radiusPairs2D, RadiusPairs2DError } from "./radius-pairs-2d.js";
+export { pairForceStep2D, PairForceStep2DError } from "./pair-force-step-2d.js";

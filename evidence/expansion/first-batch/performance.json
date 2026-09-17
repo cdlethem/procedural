@@ -1,0 +1,375 @@
+{
+  "status": "observed",
+  "operations": [
+    "spatial.radius-pairs-2d",
+    "motion.pair-force-step-2d"
+  ],
+  "input_sha256_before": {
+    "catalog/operations/radius-pairs-2d.json": "638f8d69aaae5f16a425a48f63b4c2133892aea2b931b84ae2986966d0b3125b",
+    "catalog/operations/pair-force-step-2d.json": "61fff3a5ef7b6b5d5c90c92bdcdb9fe4bf0927980c2d1acaf59f3e45a42884b5",
+    "fixtures/operations/radius-pairs-2d.json": "ed980fc40923aa52f73939cc54dd201f732429330fd495ab7b8ed82f19317e26",
+    "fixtures/operations/pair-force-step-2d.json": "c129666ca0bb162089b6e983e7179be8b57697a28698cf9350c4d7b1dc72d5aa",
+    "packages/javascript/src/radius-pairs-2d.js": "0e2fe20f0c03d9d93bd7e92a2eb50b28a3a18967111c38ffcddc41b3eff1b551",
+    "packages/javascript/src/pair-force-step-2d.js": "f5066eb907c4bba004b8439e87458636dd0bc8ad61e241246ab8069f5670fbfa",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "tests/native/proximity-interactions-javascript.mjs": "8e1c5421f06564a19d8501cad1cbd850c79ba9dc747faa5a45a314a7cf210d07"
+  },
+  "input_sha256_after": {
+    "catalog/operations/radius-pairs-2d.json": "638f8d69aaae5f16a425a48f63b4c2133892aea2b931b84ae2986966d0b3125b",
+    "catalog/operations/pair-force-step-2d.json": "61fff3a5ef7b6b5d5c90c92bdcdb9fe4bf0927980c2d1acaf59f3e45a42884b5",
+    "fixtures/operations/radius-pairs-2d.json": "ed980fc40923aa52f73939cc54dd201f732429330fd495ab7b8ed82f19317e26",
+    "fixtures/operations/pair-force-step-2d.json": "c129666ca0bb162089b6e983e7179be8b57697a28698cf9350c4d7b1dc72d5aa",
+    "packages/javascript/src/radius-pairs-2d.js": "0e2fe20f0c03d9d93bd7e92a2eb50b28a3a18967111c38ffcddc41b3eff1b551",
+    "packages/javascript/src/pair-force-step-2d.js": "f5066eb907c4bba004b8439e87458636dd0bc8ad61e241246ab8069f5670fbfa",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "tests/native/proximity-interactions-javascript.mjs": "8e1c5421f06564a19d8501cad1cbd850c79ba9dc747faa5a45a314a7cf210d07"
+  },
+  "runtime": {
+    "node": "v22.22.1",
+    "platform": "linux",
+    "architecture": "x64"
+  },
+  "methodology": "Two warmups and three timed fresh calls per workload; checksum is SHA-256 of exact JSON output. Timings cover validation, sorting/query or pair stepping, and retained output construction.",
+  "query": [
+    {
+      "label": "query-tiny",
+      "input": {
+        "points": {
+          "generator": "lcg32",
+          "count": 16,
+          "seed": 31,
+          "scale": 100
+        },
+        "radius": 22,
+        "max_work": 136
+      },
+      "warmups": [
+        {
+          "elapsed_ms": 0.034,
+          "checksum": "ec53e91b3e922a2df3ff887273cea785b207688eb11e07287dc1d27e150ebb19",
+          "retained_json_bytes": 24
+        },
+        {
+          "elapsed_ms": 0.019,
+          "checksum": "ec53e91b3e922a2df3ff887273cea785b207688eb11e07287dc1d27e150ebb19",
+          "retained_json_bytes": 24
+        }
+      ],
+      "repetitions": [
+        {
+          "elapsed_ms": 0.016,
+          "checksum": "ec53e91b3e922a2df3ff887273cea785b207688eb11e07287dc1d27e150ebb19",
+          "retained_json_bytes": 24
+        },
+        {
+          "elapsed_ms": 0.015,
+          "checksum": "ec53e91b3e922a2df3ff887273cea785b207688eb11e07287dc1d27e150ebb19",
+          "retained_json_bytes": 24
+        },
+        {
+          "elapsed_ms": 0.017,
+          "checksum": "ec53e91b3e922a2df3ff887273cea785b207688eb11e07287dc1d27e150ebb19",
+          "retained_json_bytes": 24
+        }
+      ],
+      "checksum": "ec53e91b3e922a2df3ff887273cea785b207688eb11e07287dc1d27e150ebb19"
+    },
+    {
+      "label": "query-study",
+      "input": {
+        "points": {
+          "generator": "lcg32",
+          "count": 256,
+          "seed": 32,
+          "scale": 1000
+        },
+        "radius": 55,
+        "max_work": 32896
+      },
+      "warmups": [
+        {
+          "elapsed_ms": 0.505,
+          "checksum": "ddec155419b17969ea844a387c806048e79ee9fa40de9f75cf9a5a1e85a4f938",
+          "retained_json_bytes": 893
+        },
+        {
+          "elapsed_ms": 0.302,
+          "checksum": "ddec155419b17969ea844a387c806048e79ee9fa40de9f75cf9a5a1e85a4f938",
+          "retained_json_bytes": 893
+        }
+      ],
+      "repetitions": [
+        {
+          "elapsed_ms": 0.293,
+          "checksum": "ddec155419b17969ea844a387c806048e79ee9fa40de9f75cf9a5a1e85a4f938",
+          "retained_json_bytes": 893
+        },
+        {
+          "elapsed_ms": 0.49,
+          "checksum": "ddec155419b17969ea844a387c806048e79ee9fa40de9f75cf9a5a1e85a4f938",
+          "retained_json_bytes": 893
+        },
+        {
+          "elapsed_ms": 0.267,
+          "checksum": "ddec155419b17969ea844a387c806048e79ee9fa40de9f75cf9a5a1e85a4f938",
+          "retained_json_bytes": 893
+        }
+      ],
+      "checksum": "ddec155419b17969ea844a387c806048e79ee9fa40de9f75cf9a5a1e85a4f938"
+    },
+    {
+      "label": "query-stress",
+      "input": {
+        "points": {
+          "generator": "lcg32",
+          "count": 2048,
+          "seed": 33,
+          "scale": 100000
+        },
+        "radius": 20,
+        "max_work": 2098176
+      },
+      "warmups": [
+        {
+          "elapsed_ms": 1.717,
+          "checksum": "f405c6c4372b5562ae3573863b8d265b641849eb646239514dfcc5cd47ce6f46",
+          "retained_json_bytes": 12
+        },
+        {
+          "elapsed_ms": 1.864,
+          "checksum": "f405c6c4372b5562ae3573863b8d265b641849eb646239514dfcc5cd47ce6f46",
+          "retained_json_bytes": 12
+        }
+      ],
+      "repetitions": [
+        {
+          "elapsed_ms": 1.384,
+          "checksum": "f405c6c4372b5562ae3573863b8d265b641849eb646239514dfcc5cd47ce6f46",
+          "retained_json_bytes": 12
+        },
+        {
+          "elapsed_ms": 1.519,
+          "checksum": "f405c6c4372b5562ae3573863b8d265b641849eb646239514dfcc5cd47ce6f46",
+          "retained_json_bytes": 12
+        },
+        {
+          "elapsed_ms": 1.416,
+          "checksum": "f405c6c4372b5562ae3573863b8d265b641849eb646239514dfcc5cd47ce6f46",
+          "retained_json_bytes": 12
+        }
+      ],
+      "checksum": "f405c6c4372b5562ae3573863b8d265b641849eb646239514dfcc5cd47ce6f46"
+    }
+  ],
+  "step": [
+    {
+      "label": "step-tiny",
+      "input": {
+        "points": {
+          "generator": "lcg32",
+          "count": 16,
+          "seed": 31,
+          "scale": 100
+        },
+        "velocities": "positive-zero pairs",
+        "pairs": {
+          "topology": "ascending-chain",
+          "count": 15
+        },
+        "attraction": 0.001,
+        "repulsion": 0.1,
+        "repulsion_radius": 20,
+        "damping": 0.99,
+        "dt": 1,
+        "max_speed": 10,
+        "max_work": 31
+      },
+      "warmups": [
+        {
+          "elapsed_ms": 0.084,
+          "checksum": "1221a12471e2223b721e92003a91fff31cab7888abf88fbecdf72e9cf08e3963",
+          "retained_json_bytes": 2040
+        },
+        {
+          "elapsed_ms": 0.059,
+          "checksum": "1221a12471e2223b721e92003a91fff31cab7888abf88fbecdf72e9cf08e3963",
+          "retained_json_bytes": 2040
+        }
+      ],
+      "repetitions": [
+        {
+          "elapsed_ms": 0.067,
+          "checksum": "1221a12471e2223b721e92003a91fff31cab7888abf88fbecdf72e9cf08e3963",
+          "retained_json_bytes": 2040
+        },
+        {
+          "elapsed_ms": 0.056,
+          "checksum": "1221a12471e2223b721e92003a91fff31cab7888abf88fbecdf72e9cf08e3963",
+          "retained_json_bytes": 2040
+        },
+        {
+          "elapsed_ms": 0.15,
+          "checksum": "1221a12471e2223b721e92003a91fff31cab7888abf88fbecdf72e9cf08e3963",
+          "retained_json_bytes": 2040
+        }
+      ],
+      "checksum": "1221a12471e2223b721e92003a91fff31cab7888abf88fbecdf72e9cf08e3963"
+    },
+    {
+      "label": "step-study",
+      "input": {
+        "points": {
+          "generator": "lcg32",
+          "count": 256,
+          "seed": 32,
+          "scale": 1000
+        },
+        "velocities": "positive-zero pairs",
+        "pairs": {
+          "topology": "ascending-chain",
+          "count": 255
+        },
+        "attraction": 0.001,
+        "repulsion": 0.1,
+        "repulsion_radius": 20,
+        "damping": 0.99,
+        "dt": 1,
+        "max_speed": 10,
+        "max_work": 511
+      },
+      "warmups": [
+        {
+          "elapsed_ms": 0.875,
+          "checksum": "a60acd0723c3835f7ab6efe91f30326b7e937e02f15e638cd57e6afcb7e2eb04",
+          "retained_json_bytes": 31041
+        },
+        {
+          "elapsed_ms": 0.781,
+          "checksum": "a60acd0723c3835f7ab6efe91f30326b7e937e02f15e638cd57e6afcb7e2eb04",
+          "retained_json_bytes": 31041
+        }
+      ],
+      "repetitions": [
+        {
+          "elapsed_ms": 0.932,
+          "checksum": "a60acd0723c3835f7ab6efe91f30326b7e937e02f15e638cd57e6afcb7e2eb04",
+          "retained_json_bytes": 31041
+        },
+        {
+          "elapsed_ms": 0.653,
+          "checksum": "a60acd0723c3835f7ab6efe91f30326b7e937e02f15e638cd57e6afcb7e2eb04",
+          "retained_json_bytes": 31041
+        },
+        {
+          "elapsed_ms": 0.832,
+          "checksum": "a60acd0723c3835f7ab6efe91f30326b7e937e02f15e638cd57e6afcb7e2eb04",
+          "retained_json_bytes": 31041
+        }
+      ],
+      "checksum": "a60acd0723c3835f7ab6efe91f30326b7e937e02f15e638cd57e6afcb7e2eb04"
+    },
+    {
+      "label": "step-stress",
+      "input": {
+        "points": {
+          "generator": "lcg32",
+          "count": 2048,
+          "seed": 33,
+          "scale": 100000
+        },
+        "velocities": "positive-zero pairs",
+        "pairs": {
+          "topology": "ascending-chain",
+          "count": 2047
+        },
+        "attraction": 0.001,
+        "repulsion": 0.1,
+        "repulsion_radius": 20,
+        "damping": 0.99,
+        "dt": 1,
+        "max_speed": 10,
+        "max_work": 4095
+      },
+      "warmups": [
+        {
+          "elapsed_ms": 5.906,
+          "checksum": "84fbaf56694c21bba7861de61fd41884df5883be9360d7427385395c6096d6cc",
+          "retained_json_bytes": 242678
+        },
+        {
+          "elapsed_ms": 5.552,
+          "checksum": "84fbaf56694c21bba7861de61fd41884df5883be9360d7427385395c6096d6cc",
+          "retained_json_bytes": 242678
+        }
+      ],
+      "repetitions": [
+        {
+          "elapsed_ms": 5.279,
+          "checksum": "84fbaf56694c21bba7861de61fd41884df5883be9360d7427385395c6096d6cc",
+          "retained_json_bytes": 242678
+        },
+        {
+          "elapsed_ms": 5.902,
+          "checksum": "84fbaf56694c21bba7861de61fd41884df5883be9360d7427385395c6096d6cc",
+          "retained_json_bytes": 242678
+        },
+        {
+          "elapsed_ms": 10.151,
+          "checksum": "84fbaf56694c21bba7861de61fd41884df5883be9360d7427385395c6096d6cc",
+          "retained_json_bytes": 242678
+        }
+      ],
+      "checksum": "84fbaf56694c21bba7861de61fd41884df5883be9360d7427385395c6096d6cc"
+    }
+  ],
+  "worst_case": {
+    "label": "query-dense-worstcase",
+    "input": {
+      "points": {
+        "generator": "constant",
+        "count": 512,
+        "value": [
+          0,
+          0
+        ]
+      },
+      "radius": 0,
+      "max_work": 131328
+    },
+    "warmups": [
+      {
+        "elapsed_ms": 14.517,
+        "checksum": "5b0059e25129214206405adf07cd0600c293ef6faf657b10af2bc0cef339ea4c",
+        "retained_json_bytes": 1251961
+      },
+      {
+        "elapsed_ms": 6.118,
+        "checksum": "5b0059e25129214206405adf07cd0600c293ef6faf657b10af2bc0cef339ea4c",
+        "retained_json_bytes": 1251961
+      }
+    ],
+    "repetitions": [
+      {
+        "elapsed_ms": 15.607,
+        "checksum": "5b0059e25129214206405adf07cd0600c293ef6faf657b10af2bc0cef339ea4c",
+        "retained_json_bytes": 1251961
+      },
+      {
+        "elapsed_ms": 5.686,
+        "checksum": "5b0059e25129214206405adf07cd0600c293ef6faf657b10af2bc0cef339ea4c",
+        "retained_json_bytes": 1251961
+      },
+      {
+        "elapsed_ms": 12.234,
+        "checksum": "5b0059e25129214206405adf07cd0600c293ef6faf657b10af2bc0cef339ea4c",
+        "retained_json_bytes": 1251961
+      }
+    ],
+    "checksum": "5b0059e25129214206405adf07cd0600c293ef6faf657b10af2bc0cef339ea4c",
+    "count": 512,
+    "candidate_count": 130816,
+    "work_budget": 131328
+  },
+  "host_allocation_scope": "The contract's finite-domain limits and maxWork govern validation; this observation adds no hidden allocation quota. A host allocation failure at a permitted descriptor remains a host failure outside these measurements.",
+  "scope": "Node pure-core observation only; it does not claim browser/native-renderer performance, target support, or acceptance."
+}

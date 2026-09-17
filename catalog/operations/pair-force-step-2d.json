@@ -1,0 +1,262 @@
+{
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability_decision": "design/capabilities/proximity-interactions.md",
+  "design_review": "design/operations/proximity-interactions-contract-review.md",
+  "provenance": [],
+  "fixture_format": "exact-json-output",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original design studies, not an external artist recreation. Reas contact persistence and sensor-motor behavior remain excluded."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture challenge",
+    "status": "Contract reviewed before implementation; target acceptance pending."
+  },
+  "id": "motion.pair-force-step-2d",
+  "decision_cluster": "motion.pair-force-step-2d",
+  "description": "Synchronously advance equal-unit-mass 2D bodies under supplied reciprocal attraction and short-range repulsion pairs.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 2147483647
+      },
+      "velocities": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 2147483647
+      },
+      "pairs": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483646
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 2147483647
+      },
+      "attraction": {
+        "type": "number",
+        "minimum": 0
+      },
+      "repulsion": {
+        "type": "number",
+        "minimum": 0
+      },
+      "repulsionRadius": {
+        "type": "number",
+        "minimum": 0
+      },
+      "damping": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "dt": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "maxSpeed": {
+        "type": "number",
+        "minimum": 0
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "points",
+      "velocities",
+      "pairs",
+      "attraction",
+      "repulsion",
+      "repulsionRadius",
+      "damping",
+      "dt",
+      "maxSpeed",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 2147483647
+      },
+      "velocities": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 2147483647
+      },
+      "forces": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 2147483647
+      }
+    },
+    "required": [
+      "points",
+      "velocities",
+      "forces"
+    ],
+    "additionalProperties": false
+  },
+  "output_invariants": "All three arrays have N fresh finite pairs; state advances synchronously from supplied old points/velocities. Forces are uncapped pair-force sums, not acceleration reconstructed from capped/damped velocities.",
+  "behavior": {
+    "validation": "Exact passive Object/null-prototype record; no classes, accessors, symbols, extras or coercion. Dense ordinary arrays with own data slots and no extras; proxies outside interchange. Point arrays contain finite binary64 pairs, length at most2147483647. Canonicalize accepted zero values. Validate all fields and correspondence in input-schema order before work checks, including empty/identity cases. No input mutation or aliasing; all output arrays and pairs detached. Velocities length equals points. Pairs are integer indices 0<=i<j<N in strict lex order, no duplicates. Coefficients finite nonnegative; damping in[0,1], dt strictly positive, maxSpeed nonnegative, maxWork nonnegative safe integer.",
+    "work": "After complete static validation require N+P<=maxWork, before arithmetic/output allocation. O(N+P) time and storage. No partial state on error.",
+    "algorithm": "Initialize N force pairs to positive zero. Visit supplied pairs lex order. Compute dx=xj-xi then dy=yj-yi, length=fdlibmHypot(dx,dy); check finite after each. Compute fx=attraction*dx then fy=attraction*dy. If 0<length<repulsionRadius compute ratio=length/repulsionRadius, falloff=1-ratio, strength=repulsion*falloff, ux=dx/length, uy=dy/length, rx=strength*ux, ry=strength*uy, then fx=fx-rx and fy=fy-ry; check every primitive finite. Coincident pairs have zero repulsion and attraction; no direction invented. Accumulate Fi.x+=fx, Fi.y+=fy, Fj.x-=fx, Fj.y-=fy, in that order, checking each sum. Then visit agents ascending: for x then y compute impulse=dt*force, kicked=oldVelocity+impulse, v=kicked*damping, each finite. speed=fdlibmHypot(vx,vy), finite. If speed>maxSpeed compute scale=maxSpeed/speed then multiply vx and vy, each finite. For x then y compute travel=dt*v then position=oldPosition+travel, each finite. Canonicalize all returned zeros. Return detached points,velocities,forces, never shared pair storage.",
+    "numerics": "Binary64 ordered primitives, no FMA/reassociation; fdlibmHypot existing audited profile, correctly rounded native arithmetic otherwise. No epsilon in computation. Exact fixture integer/index/error comparison; specified floating fixtures permit absolute1e-12 relative0 only. Nonfinite intermediate raises NUMERIC_OVERFLOW even if later multiplication/damping would cancel it.",
+    "environment": "No randomness, clock or renderer. dt in caller time units, no inferred frame rate. No boundary policy, speed floors, mass, force normalization by degree, pinning, alignment, sensors, contact memory or collision resolution. Damping is per call, after acceleration and before movement; zero damping prevents movement.",
+    "native_surface": "pairForceStep2D(input), PairForceStep2DError from pair-force-step-2d.js and package index."
+  },
+  "errors": {
+    "INVALID_INPUT": "Static carrier, shape, correspondence, canonical pair or domain failure.",
+    "WORK_LIMIT": "N+P exceeds maxWork after static validation.",
+    "NUMERIC_OVERFLOW": "Nonfinite intermediate force, norm, velocity or position, no partial output."
+  },
+  "parameters": {
+    "points": {
+      "unit": "Cartesian coordinates; arbitrary consistent units.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design semantics; no corpus-derived default or measured recommended range."
+    },
+    "velocities": {
+      "unit": "Coordinate units per time unit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design semantics; no corpus-derived default or measured recommended range."
+    },
+    "pairs": {
+      "unit": "Strict lexicographic unordered original-index pairs, i<j.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design semantics; no corpus-derived default or measured recommended range."
+    },
+    "attraction": {
+      "unit": "Inverse time squared for linear zero-rest-length attraction.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design semantics; no corpus-derived default or measured recommended range."
+    },
+    "repulsion": {
+      "unit": "Coordinate units per time squared, maximal tapered repulsive acceleration.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design semantics; no corpus-derived default or measured recommended range."
+    },
+    "repulsionRadius": {
+      "unit": "Coordinate units; zero disables repulsion.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design semantics; no corpus-derived default or measured recommended range."
+    },
+    "damping": {
+      "unit": "Dimensionless velocity multiplier per invocation, not time-normalized.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design semantics; no corpus-derived default or measured recommended range."
+    },
+    "dt": {
+      "unit": "Strictly positive time interval.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design semantics; no corpus-derived default or measured recommended range."
+    },
+    "maxSpeed": {
+      "unit": "Coordinate units per time unit; zero prevents movement.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design semantics; no corpus-derived default or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "Nonnegative safe-integer event budget, design bound rather than an artistic range.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design semantics; no corpus-derived default or measured recommended range."
+    }
+  },
+  "fixtures": "fixtures/operations/pair-force-step-2d.json"
+}

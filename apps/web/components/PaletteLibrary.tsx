@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { paletteRequest, validatePalette, type PaletteDraft, type SavedPalette } from "@/lib/palettes";
+import { defaultPalettes, type DefaultPalette } from "@/lib/default-palettes";
 import styles from "./PaletteLibrary.module.css";
 
 const initialColors = ["#172522", "#146b5e", "#e9b874", "#f5f1e9"];
@@ -77,7 +78,12 @@ export function PaletteLibrary({ onUse, useLabel = "Apply to layer", currentColo
     const colors = [...value.colors]; [colors[index], colors[index + direction]] = [colors[index + direction], colors[index]];
     return { ...value, colors };
   });
-  const filtered = palettes.filter((palette) => palette.name.toLowerCase().includes(search.toLowerCase()));
+  const searchTerms = search.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const matches = (palette: { name: string; tags?: readonly string[] }) => searchTerms.every((term) => [palette.name, ...(palette.tags ?? [])].some((value) => value.toLowerCase().includes(term)));
+  const filtered = palettes.filter(matches);
+  const filteredDefaults = defaultPalettes.filter(matches);
+  const useDefault = (palette: DefaultPalette) => onUse?.({ name: palette.name, colors: [...palette.colors] });
+  const customizeDefault = (palette: DefaultPalette) => begin({ name: palette.name, colors: [...palette.colors] });
   return <section className={styles.library} aria-label="Palette library">
     {error && <p className={styles.error} role="alert">{error}</p>}
     {notice && <p className={styles.notice} role="status">{notice}</p>}
@@ -110,13 +116,20 @@ export function PaletteLibrary({ onUse, useLabel = "Apply to layer", currentColo
       <div className={styles.toolbar}><div><h2>Your palettes</h2><p>Color collections for every sketch.</p></div><button className={styles.primary} type="button" onClick={() => begin()}>Create palette</button></div>
       {currentColors && <button type="button" onClick={() => begin({ name: "", colors: [...currentColors] })}>Save current layer colors</button>}
       <div className={styles.search}><input type="search" aria-label="Search palettes" placeholder="Find a palette…" value={search} onChange={(event) => setSearch(event.target.value)} /><button type="button" disabled={loading || busy} onClick={() => { setError(""); void refresh(); }}>Refresh</button></div>
-      {loading && <p role="status">Loading palettes…</p>}
+      {loading && <p role="status">Loading your palettes…</p>}
       {!loading && !filtered.length && <div className={styles.empty}><p>{palettes.length ? "No palettes match your search." : "A color collection starts with a few colors you love."}</p>{!palettes.length && <p>Create one with the color picker or a prompt, then use it in any sketch.</p>}</div>}
       <div className={styles.grid}>{filtered.map((palette) => <article key={palette.id} className={styles.card} aria-label={palette.name}>
         <PaletteSwatches colors={palette.colors} /><div className={styles.cardBody}><h3>{palette.name}</h3><p>{palette.colors.length} colors</p>
         {onUse && <button className={styles.primary} type="button" onClick={() => onUse({ name: palette.name, colors: [...palette.colors] })}>{useLabel}</button>}
         <div className={styles.actions}><button type="button" disabled={busy} onClick={() => begin(palette, palette)}>Edit</button><button type="button" disabled={busy} onClick={() => begin({ name: `${palette.name.slice(0, 73)} copy`, colors: [...palette.colors] })}>Duplicate</button><button type="button" disabled={busy} onClick={() => setDeleting(palette.id)}>Delete</button></div>
         {deleting === palette.id && <div className={styles.confirm}><p>Delete this palette from the library? Existing sketches keep their colors.</p><div className={styles.actions}><button type="button" disabled={busy} onClick={() => void remove(palette)}>Delete palette</button><button type="button" disabled={busy} onClick={() => setDeleting(null)}>Keep palette</button></div></div>}
+        </div></article>)}</div>
+      <div className={styles.defaultHeader}><h2>Default palettes</h2><p>Ready-to-use color directions. Customize one to make it yours.</p></div>
+      {!filteredDefaults.length && <div className={styles.empty}><p>No default palettes match your search.</p></div>}
+      <div className={styles.grid}>{filteredDefaults.map((palette) => <article key={palette.id} className={styles.card} aria-label={palette.name}>
+        <PaletteSwatches colors={[...palette.colors]} /><div className={styles.cardBody}><h3>{palette.name}</h3><p>{palette.description}</p><div className={styles.tags} aria-label={`${palette.name} color tags`}>{palette.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+        {onUse && <button className={styles.primary} type="button" onClick={() => useDefault(palette)}>{useLabel}</button>}
+        <div className={styles.actions}><button type="button" onClick={() => customizeDefault(palette)}>Customize</button></div>
         </div></article>)}</div>
     </>}
   </section>;

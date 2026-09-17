@@ -1,0 +1,321 @@
+{
+  "schema_version": 1,
+  "owner": "root",
+  "date": "2026-09-17T16:55:13.790300+00:00",
+  "status": "reviewed research and planning deliverables; explicit source-access gaps",
+  "scope": "Collection-led external-art research and p5 capability planning. No external artwork recreation, new computation, target acceptance or deployment is asserted.",
+  "baseline_commit": "c7071577110b271c7a1a295d93729dbf3b737bd0",
+  "collection": "download-summary.json",
+  "source_sha256": {
+    "tools/collect_external_art.py": "1af17bef06796c74f47669f8ae57c671629cfe6276f850f1e0ff1c0d96c7f815",
+    "docs/external-art-corpus.md": "f0def78a8bf8d8b04e958f1cfc47146ee96cac40a1c840612c9056312fe47fdd",
+    "docs/external-art-current-capabilities.md": "50bce06e58edff3a470871983ab55e9f697365550a2695b5c7e5b446980d787b",
+    "docs/external-art-browser-constraints.md": "e0d45979b1b42b8e0ba065811c05c2cab4f2de6ad3c79cc25ce9412b4560d841",
+    "docs/external-art-p5-expansion-plan.md": "f9f77a3986ff5c00b9e95e5c1d123091d4eb87bac46681750fa4eac6396a21bf",
+    "evidence/external-art/2026-09/corpus.json": "c25caa8edf07e11bf1f97cc5a1d70dd65a915620992bc0b3d3746c80ae59d209",
+    "evidence/external-art/2026-09/collection-census.json": "571e9a72007a1e1711509737d2825f7297659fa2612aa1798e5736bdcabdd324",
+    "evidence/external-art/2026-09/download-summary.json": "b88570c657e3228985ffd1939f609609567f6f83a8f0f12ccd809c8bfba50e87",
+    "evidence/external-art/2026-09/capability-binding-check.json": "af02c91d8c648ed937079633ba112a8025114673efdb9c2f82e5984aee203025"
+  },
+  "root_visual_scope": {
+    "anchors": "216 Davis image-bearing project representatives and all 554 Reas canonical index representatives in 25 sheets.",
+    "graphic": "422 first available raster representatives across six graphic artists in 15 sheets; one SVG-only Hoff record outside this overview, 35 Flickr-blocked records have no local image.",
+    "quilez": "80 first representatives across 54 productions and 26 articles in three sheets. The photographed animation-reference diagram was excluded and its retained generated-process image was viewed directly.",
+    "animations": "Later-frame navigation previews for all 141 retained animated assets inspected in five sheets. This does not establish motion or simulation behavior.",
+    "other": "Selected decisive simulation, plotter, map, installation, fractal and historical-art sheets listed below. Worker reviews cover additional representative selections.",
+    "existing_package": "All 60 original tenfold p5 baseline images were inspected during the comparison; no fresh implementation support follows from this research.",
+    "limits": "Overview/contact-sheet review is narrower than individual full-resolution inspection of every variant. The numbered scopes overlap and must not be summed as distinct assets."
+  },
+  "root_viewed_sheets": [
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-01.png",
+      "sha256": "0871c8500c79a6eeb81048f67bd178488d2c9d4f69cfffc3d13e49d99b9335ea"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-02.png",
+      "sha256": "576b177518527c0c2e57b799db8da0392ec64181704fc5958aee23bf42d46305"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-03.png",
+      "sha256": "0ab40245f8741f8256d8377dadae98ed911b293a3fb59fdc13813f57e48b0270"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-04.png",
+      "sha256": "2e50c2fe8686409f6a0400447b61338e1f35d2b8cd646a9e3993093588e12615"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-05.png",
+      "sha256": "1b40376fccd2de72273628c67a3a03d2424dfb7c464ac50b35865645c74f5e6d"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-06.png",
+      "sha256": "c865a425b12f34f2072b460755cf1546d355f5b3a856cfb97f1628bc331cf8ab"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-07.png",
+      "sha256": "56083484cf09d2fd3582d3ab451289a1767bfc70075892b88b28dae94758f82c"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-08.png",
+      "sha256": "5034c6115077f3565fe494ba3f98db8bfe939377d92b834f710430536b971d6c"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-09.png",
+      "sha256": "4d66fbe8e7fb0f218a6c246e983c99ed4b40bdf12ad881083626178dc6d8e6aa"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-10.png",
+      "sha256": "596e70e1cea063e78a917f5b47617aa44d61a32ea5b6ec95069a61c0a452ef9a"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-11.png",
+      "sha256": "c730d57cbe8833884277843b05f1ffc6407980f7f320bb2641aff25e7a0c0efa"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-12.png",
+      "sha256": "542462cacb0bc9e0525268ada74ab95ce212995580a9f2705e701c95d4c979bb"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-13.png",
+      "sha256": "bb8e1b7a4b6c82e3e0c51b39698e8562b457ad68c6731dd72b32d54f30fe27ae"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-14.png",
+      "sha256": "1fe5f7533057ae9a18cb8a751da114f662eed300f3f4d6157c518ca5c3f38b16"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-15.png",
+      "sha256": "500f9c8f9b9715f8261a6bdf04b580e86f0d80908f1aca32044b3becbb9c2aa2"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-16.png",
+      "sha256": "977c314523a24519cb830873b17f16f24628d9965612122ec10c087d268e3d3e"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-17.png",
+      "sha256": "dc3b9f88bd210e66002145dfd23d764c75f386ef5014a4ce3e5fca182daa6cf9"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/casey-reas-18.png",
+      "sha256": "18b84fbddb359d50372c557b100ac28e9b6f0a23ac9732c02cddb53b2fff4112"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/joshua-davis-01.png",
+      "sha256": "2e31860a74ac95908fa54f022797dcf60a75c8d97129a6c66642f2c63c0b0f4c"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/joshua-davis-02.png",
+      "sha256": "6971b24b33236e6b6cfa15fdff27316ce9d121755e522c4bc11eddc7b3758aa0"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/joshua-davis-03.png",
+      "sha256": "6de2bad67d15f7b167437aadd577af27f08720a295b9252c89f3cb78cae974d5"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/joshua-davis-04.png",
+      "sha256": "6c920b4e958c4c558990c606418699f84edd8bd0669ab87da67cbbad7d90e6a5"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/joshua-davis-05.png",
+      "sha256": "8af0a2c84dc032b7c5cc6b30709c5b83f5e54f86e936068cc64670dad2d943ab"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/joshua-davis-06.png",
+      "sha256": "c0c8efb5d828e5a3ee7409d41000e9faa452f3f5ecb09fe59f8a7b9ba61eea14"
+    },
+    {
+      "path": ".work/external-art-corpus/overview/joshua-davis-07.png",
+      "sha256": "8a3e648b584384aa77db49f0667ba8839ac99befb9e0b2f53ad82b3e39e9c26c"
+    },
+    {
+      "path": ".work/external-art-corpus/quilez-overview/inigo-quilez-01.png",
+      "sha256": "e65ad8b85db9e0e94ff8038ab19a64cfdc5b72e93ca6d6c19ac7f34a71b6dba4"
+    },
+    {
+      "path": ".work/external-art-corpus/quilez-overview/inigo-quilez-02.png",
+      "sha256": "d66c19c335c162829de8837806cd85b3d653dd4c408afb0f038dc9dea77cf936"
+    },
+    {
+      "path": ".work/external-art-corpus/quilez-overview/inigo-quilez-03.png",
+      "sha256": "ff05327b2944659fbcd46ec7f417983c7f409087d8931fa6e0ecac733af78aa0"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/anders-hoff-inconvergent-01.png",
+      "sha256": "cd60812af74f1593af21dcc11fde587f94fd523c29b1a4b20c506da23ced0dfd"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/anders-hoff-inconvergent-02.png",
+      "sha256": "127f083ad391cc07ddeed9ba8106ed96c1aaeb3bc13caad7680b37b955b347eb"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/jonathan-mccabe-01.png",
+      "sha256": "afa7959355574ae08efeb2719272f898e86479614337c6ffec55bf726682fe66"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/jonathan-mccabe-02.png",
+      "sha256": "5c59fe46c27a64e09225ff3cc0c3a234a8c1e0bcc0da4afe4e06fb182d4735e0"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/sighack-manohar-vanga-01.png",
+      "sha256": "7b7a5fa1fcf5013ee580643a3059c50fb5517fe8361388796fc667c802a89ae2"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/takahiro-kurashima-01.png",
+      "sha256": "c5a58f3732dd4d36bc5aa062fc6d10cecc0d60c1e419ae1a6688b0d7ce11a329"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/takahiro-kurashima-02.png",
+      "sha256": "238820b50b54a286bf695500294c30d7f66dbea4a54360caed5f5c5e9518bf60"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/tomasz-sulej-generateme-01.png",
+      "sha256": "640542026583130799e4d1bf3d81703fe490b68e0eb204a63f8f5689fca9099b"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/tomasz-sulej-generateme-02.png",
+      "sha256": "095f9a45d6d527dd36add47719f5c2e6f7401d008d03365f08e21d876668b070"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/tomasz-sulej-generateme-03.png",
+      "sha256": "e13f5a8da017b7c1651c78eed766461c7c583e4f714fc58e849159a794995d12"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/tomasz-sulej-generateme-04.png",
+      "sha256": "34d26c0dc4e6adaca737e136ea8cb4c7d21abd3d04972022a69db75225dd45d0"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/tyler-hobbs-01.png",
+      "sha256": "36c06d67bf2f23ada30882a5c5a746db45931c7cede2d7cd1143ca24408c8759"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/tyler-hobbs-02.png",
+      "sha256": "11f0d50a3cfe0f2745b3b456feb01a287421d42712f90274ab65b98bb4129451"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/tyler-hobbs-03.png",
+      "sha256": "d0bc5ae4792d85729c1d1a371401cd2c919e8aa9aad2a7d9592397704899d46b"
+    },
+    {
+      "path": ".work/external-art-corpus/graphic-overview/tyler-hobbs-04.png",
+      "sha256": "c68b1fb4b7701875a5bd6e54b33f4f0e3ffd10cb55a0900cfd894b1e7cc163c5"
+    },
+    {
+      "path": ".work/external-art-corpus/animated-review/animated-01.png",
+      "sha256": "fe94a8a5cab5426e7dd8d71a072abe162814c51b2e1203a9ec2a3e6f3605ee4f"
+    },
+    {
+      "path": ".work/external-art-corpus/animated-review/animated-02.png",
+      "sha256": "a9ab8385aa1ec0bcb253aeab0129aca8bda41419fe6e9a64d8b6b81c95127914"
+    },
+    {
+      "path": ".work/external-art-corpus/animated-review/animated-03.png",
+      "sha256": "4f26f4a5f0b862a6cf2b737a8cf7017c76ed650c908848de3313b97487d68b75"
+    },
+    {
+      "path": ".work/external-art-corpus/animated-review/animated-04.png",
+      "sha256": "c5447d0ab3bf4bc6804b50ed9932ec7f2f9e0ac1696fa498dcd09cdbe2923faa"
+    },
+    {
+      "path": ".work/external-art-corpus/animated-review/animated-05.png",
+      "sha256": "ca649a5025bb712b2eb1f128f1f996b1d6c584e18fdf09a4f48c02cb85cdac11"
+    },
+    {
+      "path": ".work/external-art-research/simulationv2-review/targeted-input-audit.png",
+      "sha256": "3501c92e61c1b11c2a030affa9f29928e78a2d07e1942918229d1521be79aefa"
+    },
+    {
+      "path": ".work/external-art-research/simulationv2-review/Andy-Lomas-3628f860.png",
+      "sha256": "a960845e49d933d41529fe3e40df7088cae2c1601ff8e76bde8b003032cb3048"
+    },
+    {
+      "path": ".work/external-art-research/simulationv2-review/Nervous-System-0725848f.png",
+      "sha256": "e25dc920e059f9e91ed219aa1b8b0b68fab1ffe3d4baa3f36ca3af077f7dd051"
+    },
+    {
+      "path": ".work/external-art-research/simulationv2-review/Deskriptiv-48a16b60.png",
+      "sha256": "b016cebe3218657cbc2fedf7a69a58bc21c6a25ff365e177c4159555572385eb"
+    },
+    {
+      "path": ".work/external-art-research/simulationv2-review/Quayola-c0cbf58c.png",
+      "sha256": "99329611a21f3e2b936c74d87d0887c6559a9b86145b5fdfb7499d5beb45e055"
+    },
+    {
+      "path": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "sha256": "f52f858c721b9060b4d813400e0d3593680f2c7ad0a46bef032b66233ced1595"
+    },
+    {
+      "path": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "sha256": "b2a9338623c2b8e16c63b12b5395d0520d027b44fc4bc9cf8e5bb035251bd1d6"
+    },
+    {
+      "path": ".work/external-art-research/graphicv2-qc-friezes.jpg",
+      "sha256": "af195a214cf7d4126e0a44c3a396a04f7609cdbf43c72ad3a0e285d87355f5fd"
+    },
+    {
+      "path": ".work/external-art-research/otherv2/Vera-Molnar-0.jpg",
+      "sha256": "b768d06e4a7605c0d824db6ebc6b7e2a975599bc0e7ceeafe17b19c9bcff8515"
+    },
+    {
+      "path": ".work/external-art-research/otherv2/Raven-Kwok-0.jpg",
+      "sha256": "14959aff07c965393595fdfb2ecce0f63b9c44d0b2c79c0aefb337150d4a5231"
+    },
+    {
+      "path": ".work/external-art-research/otherv2/Watabou-0.jpg",
+      "sha256": "2965fabb87356d932b46204882285f22e33e92301e9cd3fa928208802439282c"
+    },
+    {
+      "path": ".work/external-art-research/otherv2/Scott-Draves-0.jpg",
+      "sha256": "d303927dff6551f9b4b4f96c8f1539713bb92c97b2100034416527e66dfec8e2"
+    },
+    {
+      "path": ".work/external-art-research/otherv2/Golan-Levin-0.jpg",
+      "sha256": "887616cbac1affde3e02456bc43c1f5222d10c463a0f1423106e6c5ec4b7fd60"
+    }
+  ],
+  "direct_reviewed_corrections": [
+    {
+      "path": ".work/external-art-corpus/images/169bccc23a414c2477cefa1110b49da782e94bff734256ea0c194a6def9b9b1e.jpg",
+      "sha256": "169bccc23a414c2477cefa1110b49da782e94bff734256ea0c194a6def9b9b1e"
+    },
+    {
+      "path": ".work/external-art-corpus/images/24e903587c689f6d2f95f9e06416ee92ddaa4bc34cdecd41103e04b3dbe53655.jpg",
+      "sha256": "24e903587c689f6d2f95f9e06416ee92ddaa4bc34cdecd41103e04b3dbe53655"
+    }
+  ],
+  "worker_evidence": [
+    "graphic-worker-review.json",
+    "simulation-worker-review.json",
+    "other-worker-review.json"
+  ],
+  "root_decisions": [
+    "Use accessible collection indexes and explicit exclusions instead of per-artist image quotas.",
+    "Keep 58 overlapping computation families/research boundaries distinct from artwork support.",
+    "Prioritize composed motif examples plus a narrowly contracted neighborhood/contact slice, then thick paths, elastic growth and selected image/media capabilities. No port sequencing.",
+    "Median-cut quantization is already present; image clustering, spatial regions and decoding are separate boundaries.",
+    "Independent target springs do not supply elastic bodies; normalized vector relaxation is not automatically a Hooke-law simulation.",
+    "Retain 43 excluded-image decisions and separate 29 removed source metadata entries from selected assets; two exact source URL repairs are recorded.",
+    "Stop Flickr retries after persistent HTTP 429 responses and retain 383 unavailable URLs explicitly.",
+    "Use later animated preview frames to make growth output legible without changing original media."
+  ],
+  "validation": [
+    "Every selected downloaded file hash and byte count checked; source record IDs/census references audited.",
+    "Gallery browser passed: 2,023 records, 24 artist filters, Davis 216, Reas 554, text search, a local original-image link and no overflow at 390px.",
+    "Before-fix mobile overflow is retained as historical failed evidence."
+  ],
+  "limits": [
+    "24 chosen primary groups are deeply indexed; the remaining thread links are screened rather than fully enumerated.",
+    "Local collected evidence reaches 1,988 of 2,023 selected records; 31 McCabe and four GenerateMe records have no local image.",
+    "First-frame and later-frame previews do not establish dynamics; exact algorithms remain unassessed for many works.",
+    "Palette UI and package acceptance are in a separate bounded review."
+  ],
+  "current_capability_reconciliation": {
+    "core": 67,
+    "scoped_native": 67,
+    "scoped_technique": 4,
+    "editable_package_workflows": 106,
+    "web_studies": 90,
+    "bindings": "capability-binding-check.json",
+    "successor_integration": "evidence/coverage/batch1/integration-review.json",
+    "scope": "Existing batch acceptance read and catalog hash bindings checked; this research does not independently accept those implementations or their native images."
+  }
+}

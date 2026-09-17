@@ -5,7 +5,16 @@ import { parse } from "@babel/parser";
 /** Extract the actual technique function and its local dependencies, not a second demo. */
 export function sketchSources(root) {
   const results = new Map();
-  for (const group of ["basic", "geometry", "effects", "expansion", "paths", "systems", "materials"]) {
+  for (const [group, dispatchName] of [
+    ["basic", "basic"],
+    ["geometry", "geometry"],
+    ["effects", "effects"],
+    ["expansion", "expansion"],
+    ["external-expansion", "externalExpansion"],
+    ["paths", "paths"],
+    ["systems", "systems"],
+    ["materials", "materials"],
+  ]) {
     const path = `apps/web/lib/adapters/${group}.ts`;
     if (["paths", "systems", "materials"].includes(group) && !existsSync(join(root, path))) continue;
     const source = readFileSync(join(root, path), "utf8");
@@ -18,7 +27,7 @@ export function sketchSources(root) {
       if (node.type === "ImportDeclaration") imports.push(node);
       if (node.type === "FunctionDeclaration" || node.type === "TSTypeAliasDeclaration") {
         declarations.set(node.id.name, node);
-        if (node.id.name === `draw${group[0].toUpperCase()}${group.slice(1)}`) dispatch = node;
+        if (node.id.name === `draw${dispatchName[0].toUpperCase()}${dispatchName.slice(1)}`) dispatch = node;
       }
       if (node.type === "VariableDeclaration") {
         for (const declaration of node.declarations) {

@@ -3605,6 +3605,130 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/ordered-convex-polygon-filter-2d.json).
 
+## motion.pair-force-step-2d (0.1.0)
+
+Synchronously advance equal-unit-mass 2D bodies under supplied reciprocal attraction and short-range repulsion pairs.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "maxItems": 2147483647
+    },
+    "velocities": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "maxItems": 2147483647
+    },
+    "pairs": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483646
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "maxItems": 2147483647
+    },
+    "attraction": {
+      "type": "number",
+      "minimum": 0
+    },
+    "repulsion": {
+      "type": "number",
+      "minimum": 0
+    },
+    "repulsionRadius": {
+      "type": "number",
+      "minimum": 0
+    },
+    "damping": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "dt": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "maxSpeed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "points",
+    "velocities",
+    "pairs",
+    "attraction",
+    "repulsion",
+    "repulsionRadius",
+    "damping",
+    "dt",
+    "maxSpeed",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | Cartesian coordinates; arbitrary consistent units. | null | null | Independent design semantics; no corpus-derived default or measured recommended range. |
+| velocities | Coordinate units per time unit. | null | null | Independent design semantics; no corpus-derived default or measured recommended range. |
+| pairs | Strict lexicographic unordered original-index pairs, i<j. | null | null | Independent design semantics; no corpus-derived default or measured recommended range. |
+| attraction | Inverse time squared for linear zero-rest-length attraction. | null | null | Independent design semantics; no corpus-derived default or measured recommended range. |
+| repulsion | Coordinate units per time squared, maximal tapered repulsive acceleration. | null | null | Independent design semantics; no corpus-derived default or measured recommended range. |
+| repulsionRadius | Coordinate units; zero disables repulsion. | null | null | Independent design semantics; no corpus-derived default or measured recommended range. |
+| damping | Dimensionless velocity multiplier per invocation, not time-normalized. | null | null | Independent design semantics; no corpus-derived default or measured recommended range. |
+| dt | Strictly positive time interval. | null | null | Independent design semantics; no corpus-derived default or measured recommended range. |
+| maxSpeed | Coordinate units per time unit; zero prevents movement. | null | null | Independent design semantics; no corpus-derived default or measured recommended range. |
+| maxWork | Nonnegative safe-integer event budget, design bound rather than an artistic range. | null | null | Independent design semantics; no corpus-derived default or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/first-batch/root-review.json) | [validated-scoped](../../evidence/expansion/first-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/first-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/pair-force-step-2d.json).
+
 ## grammar.parallel-token-rewrite (0.1.0)
 
 Rewrite explicit token productions in simultaneous generations with bounded token and work counts.
@@ -4094,6 +4218,69 @@ Motivating evidence:
 - [`2018/Generativos/curvespace#0`](../../survey/out/2018/Generativos/curvespace/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/radial-pull-2d.json).
+
+## spatial.radius-pairs-2d (0.1.0)
+
+Enumerate all unordered point-index pairs within an inclusive Euclidean radius using a deterministic x sweep.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "maxItems": 2147483647
+    },
+    "radius": {
+      "type": "number",
+      "minimum": 0
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "points",
+    "radius",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | Cartesian coordinates; arbitrary consistent units. | null | null | Independent design semantics; no corpus-derived default or measured recommended range. |
+| radius | Inclusive distance in coordinate units. | null | null | Independent design semantics; no corpus-derived default or measured recommended range. |
+| maxWork | Nonnegative safe-integer event budget, design bound rather than an artistic range. | null | null | Independent design semantics; no corpus-derived default or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/first-batch/root-review.json) | [validated-scoped](../../evidence/expansion/first-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/first-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/radius-pairs-2d.json).
 
 ## raster.crossfade-2d (0.1.0)
 

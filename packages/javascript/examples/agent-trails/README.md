@@ -1,0 +1,10 @@
+# Agent Trails
+
+Follow three rings of moving points as local attraction and avoidance bend their paths. The drawing retains every sampled position, so color and marks can change without replaying the motion.
+
+Run from the repository with `node tools/serve_survey_coverage_studies.mjs`, then open
+`http://127.0.0.1:8789/packages/javascript/examples/agent-trails/index.html`. The server uses the existing pinned p5 2.3.2 runtime. In another static server, provide p5 2.3.2 at `/p5.js` and preserve the relative package paths.
+
+The two proximity studies share private `../contact-network/study.js`. Both use the public `radiusPairs2D` and `pairForceStep2D` exports. Canvas2D, density1, 720×720; explicit initial state; no host RNG; one time unit per logical tick; up to240 ticks.
+
+See [the artist guide](../../../../docs/proximity-interactions.md) for controls and the computation. These are original studies; no external artwork recreation or persistent contact state is claimed.

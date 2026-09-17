@@ -1,0 +1,397 @@
+{
+  "operation": "spatial.radius-pairs-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "638f8d69aaae5f16a425a48f63b4c2133892aea2b931b84ae2986966d0b3125b",
+  "oracle": "Root analytical geometry and force arithmetic, authored before implementation; brute-force and mutation challenges supplement these vectors.",
+  "cases": [
+    {
+      "id": "empty",
+      "input": {
+        "points": [],
+        "radius": 0,
+        "maxWork": 0
+      },
+      "output": {
+        "pairs": []
+      }
+    },
+    {
+      "id": "singleton",
+      "input": {
+        "points": [
+          [
+            9,
+            -3
+          ]
+        ],
+        "radius": 0,
+        "maxWork": 1
+      },
+      "output": {
+        "pairs": []
+      }
+    },
+    {
+      "id": "inclusive-three-four-five",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "radius": 5,
+        "maxWork": 6
+      },
+      "output": {
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "just-outside-hypotenuse",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "radius": 4.999999999999999,
+        "maxWork": 3
+      },
+      "output": {
+        "pairs": []
+      }
+    },
+    {
+      "id": "original-index-order",
+      "input": {
+        "points": [
+          [
+            2,
+            3
+          ],
+          [
+            -1,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "radius": 3,
+        "maxWork": 6
+      },
+      "output": {
+        "pairs": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "zero-radius-coincidences",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            -0.0,
+            0
+          ],
+          [
+            0,
+            5e-324
+          ]
+        ],
+        "radius": 0,
+        "maxWork": 6
+      },
+      "output": {
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "vertical-budget-includes-rejections",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            10
+          ],
+          [
+            0,
+            20
+          ]
+        ],
+        "radius": 1,
+        "maxWork": 6
+      },
+      "output": {
+        "pairs": []
+      }
+    },
+    {
+      "id": "vertical-budget-fails",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            10
+          ],
+          [
+            0,
+            20
+          ]
+        ],
+        "radius": 1,
+        "maxWork": 5
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "horizontal-window-budget",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            10,
+            0
+          ],
+          [
+            20,
+            0
+          ]
+        ],
+        "radius": 1,
+        "maxWork": 3
+      },
+      "output": {
+        "pairs": []
+      }
+    },
+    {
+      "id": "negative-coordinates",
+      "input": {
+        "points": [
+          [
+            -5,
+            -4
+          ],
+          [
+            -2,
+            0
+          ],
+          [
+            1,
+            4
+          ]
+        ],
+        "radius": 5,
+        "maxWork": 100
+      },
+      "output": {
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "overflow-x-screen",
+      "input": {
+        "points": [
+          [
+            -1e+308,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ]
+        ],
+        "radius": 1e+308,
+        "maxWork": 2
+      },
+      "output": {
+        "pairs": []
+      }
+    },
+    {
+      "id": "overflow-y-screen",
+      "input": {
+        "points": [
+          [
+            0,
+            -1e+308
+          ],
+          [
+            0,
+            1e+308
+          ]
+        ],
+        "radius": 1e+308,
+        "maxWork": 3
+      },
+      "output": {
+        "pairs": []
+      }
+    },
+    {
+      "id": "overflow-hypot-screen",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1.3e+308,
+            1.3e+308
+          ]
+        ],
+        "radius": 1.5e+308,
+        "maxWork": 3
+      },
+      "output": {
+        "pairs": []
+      }
+    },
+    {
+      "id": "subnormal-radius",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            5e-324,
+            0
+          ],
+          [
+            1e-323,
+            0
+          ]
+        ],
+        "radius": 5e-324,
+        "maxWork": 5
+      },
+      "output": {
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "initial-work",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ],
+        "radius": 0,
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "negative-radius",
+      "input": {
+        "points": [],
+        "radius": -1,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "bad-pair-before-work",
+      "input": {
+        "points": [
+          [
+            1
+          ]
+        ],
+        "radius": 1,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "fractional-work",
+      "input": {
+        "points": [],
+        "radius": 1,
+        "maxWork": 0.5
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

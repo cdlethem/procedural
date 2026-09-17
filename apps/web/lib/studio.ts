@@ -21,6 +21,10 @@ import { pathsDefinitions } from "./adapters/paths";
 import { systemsDefinitions } from "./adapters/systems";
 import { materialsDefinitions } from "./adapters/materials";
 import { expansionDefinitions } from "./adapters/expansion";
+import {
+  externalExpansionDefinitions,
+  externalExpansionPalette,
+} from "./adapters/external-expansion";
 import type { StudioDefinition } from "./adapters/types";
 
 export const MAX_LAYERS = 8;
@@ -30,6 +34,7 @@ const definitions: readonly StudioDefinition[] = [
   ...geometryDefinitions,
   ...effectsDefinitions,
   ...expansionDefinitions,
+  ...externalExpansionDefinitions,
   ...materialsDefinitions,
   ...systemsDefinitions,
   ...pathsDefinitions,
@@ -61,6 +66,8 @@ export function definition(id: TechniqueId): StudioDefinition {
   return found;
 }
 function paletteFor(id: string): number[] {
+  const external = externalExpansionPalette(id);
+  if (external) return external;
   return id === "lattice-marks" ? [...LATTICE_ORIGINAL] : [...ORIGINAL];
 }
 export function createLayer(id: TechniqueId): Layer {

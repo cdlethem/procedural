@@ -7,6 +7,10 @@ import { basicDefinitions, drawBasic } from "./adapters/basic";
 import { drawGeometry, geometryDefinitions } from "./adapters/geometry";
 import { drawEffects, effectsDefinitions } from "./adapters/effects";
 import { drawExpansion, expansionDefinitions } from "./adapters/expansion";
+import {
+  drawExternalExpansion,
+  externalExpansionDefinitions,
+} from "./adapters/external-expansion";
 
 const basicIds = new Set(basicDefinitions.map((definition) => definition.id));
 const geometryIds = new Set(
@@ -19,6 +23,9 @@ const pathsIds = new Set(pathsDefinitions.map(item => item.id));
 const systemsIds = new Set(systemsDefinitions.map(item => item.id));
 const materialsIds = new Set(materialsDefinitions.map(item => item.id));
 const expansionIds = new Set(expansionDefinitions.map((definition) => definition.id));
+const externalExpansionIds = new Set(
+  externalExpansionDefinitions.map((definition) => definition.id),
+);
 const drawingConstants = ["CLOSE", "CORNER", "CENTER", "ROUND", "TRIANGLES"] as const;
 
 /** Draws a whole document to a candidate graphics buffer, publishing it only after success. */
@@ -105,5 +112,6 @@ function drawLayer(p: any, layer: Layer): void {
   if (systemsIds.has(layer.technique)) return drawSystems(p, layer);
   if (materialsIds.has(layer.technique)) return drawMaterials(p, layer);
   if (expansionIds.has(layer.technique)) return drawExpansion(p, layer);
+  if (externalExpansionIds.has(layer.technique)) return drawExternalExpansion(p, layer);
   throw new Error(`Unknown studio technique: ${String(layer.technique)}`);
 }

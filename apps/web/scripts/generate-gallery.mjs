@@ -1,4 +1,5 @@
 import { tenfoldStudies } from "../content/tenfold-studies.mjs";
+import { externalExpansionStudies } from "../content/external-expansion-studies.mjs";
 /** Deterministic catalog/docs consumer. No operation defaults or acceptance are authored here. */
 import {
   readFileSync,
@@ -126,6 +127,7 @@ definitions.push(
   ["contour-blobs", "Fields & paths", ["marching-squares-2d"]],
 );
 definitions.push(...tenfoldStudies.map(study => [study.slug, study.category, study.operations]));
+definitions.push(...externalExpansionStudies.map(study => [study.slug, study.category, study.operations]));
 const slugs = new Set(definitions.map((d) => d[0]));
 // Reviewed p5 completion includes editable native examples without studio adapters.
 // Keep their membership explicit so an unreviewed addition still fails generation.
@@ -133,6 +135,23 @@ const nativeOnlySlugs = new Set([
   "body-marks", "city-marks", "clip-marks", "contact-marks", "glyph-marks",
   "image-field-marks", "landscape-marks", "layer-marks", "mask-marks",
   "masked-partition-marks", "placement-image-marks", "pointer-marks", "relief-marks",
+]);
+// Present package examples that are either private layout helpers or pending separate
+// review. Listing them here prevents a directory from becoming a gallery workflow merely
+// because it exists; accepted registrations above remain the source of gallery membership.
+const pendingExampleSlugs = new Set([
+  "motif-compositions",
+  "dye-currents",
+  "field-displacement",
+  "flocking-marks",
+  "lingering-links",
+  "octave-noise",
+  "pixel-grain",
+  "sensing-trails",
+  "guarded-bands",
+  "hatched-islands",
+  "bridge-web",
+  "neighborhood-growth",
 ]);
 const sources = sketchSources(root);
 const browserGuidePath = "apps/web/content/browser-guides.json";
@@ -159,10 +178,16 @@ const dirs = readdirSync(join(root, "packages/javascript/examples"), {
 })
   .filter((d) => d.isDirectory())
   .map((d) => d.name);
+const declaredExampleSlugs = new Set([
+  ...slugs,
+  ...nativeOnlySlugs,
+  ...pendingExampleSlugs,
+]);
 if (
-  dirs.length !== slugs.size + nativeOnlySlugs.size ||
-  dirs.some((d) => !slugs.has(d) && !nativeOnlySlugs.has(d)) ||
-  [...slugs, ...nativeOnlySlugs].some((slug) => !dirs.includes(slug))
+  dirs.some((directory) => !declaredExampleSlugs.has(directory)) ||
+  [...slugs, ...nativeOnlySlugs].some(
+    (slug) => !dirs.includes(slug),
+  )
 )
   throw Error(
     "Workflow membership drift: review new/missing example before regenerating",

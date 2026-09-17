@@ -6,6 +6,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { apiGuides } from "../content/api-guides.mjs";
 import { surveyCoverageApiGuides } from "../content/survey-coverage-api.mjs";
+import { externalExpansionApiGuides } from "../content/external-expansion-api.mjs";
 
 const app = resolve(dirname(fileURLToPath(import.meta.url)), ".."),
   root = resolve(app, "../..");
@@ -17,6 +18,8 @@ const packageBindings = await import(
   pathToFileURL(join(root, "packages/javascript/src/index.js")).href
 );
 const bindings = {
+  "radius-pairs-2d": ["radius-pairs-2d", "radiusPairs2D"],
+  "pair-force-step-2d": ["pair-force-step-2d", "pairForceStep2D"],
   "seeded-pixel-grain": ["seeded-pixel-grain", "seededPixelGrain"],
   "field-displace-2d": ["field-displace-2d", "fieldDisplace2D"],
   "octave-gradient-noise": ["octave-gradient-noise", "octaveGradientNoise"],
@@ -135,7 +138,7 @@ const entries = readdirSync(join(root, "catalog/operations"))
       throw Error(
         `JavaScript module drift: ${catalog.id} expects ${binding[1]} in ${binding[0]}.js`,
       );
-    const guide = surveyCoverageApiGuides[catalog.id] ?? apiGuides[catalog.id];
+    const guide = externalExpansionApiGuides[catalog.id] ?? surveyCoverageApiGuides[catalog.id] ?? apiGuides[catalog.id];
     if (!guide) throw Error(`Missing human API guide: ${catalog.id}`);
     const topLevel = Object.keys(catalog.input_schema?.properties ?? {});
     if (

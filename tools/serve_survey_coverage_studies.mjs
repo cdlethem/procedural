@@ -1,10 +1,11 @@
-/** Serve the three coverage studies with the existing pinned p5 runtime. */
+/** Serve the reviewed coverage and external-expansion studies with the existing pinned p5 runtime. */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import http from 'node:http';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-export async function startCoverageStudiesServer(port=0){
+export async function startCoverageStudiesServer(port=0,{packageRoot=path.join(root,'packages/javascript')}={}){
+ const packageDirectory=path.resolve(packageRoot);
  const runtime='.work/environments/p5js/node_modules/p5';
  const meta=JSON.parse(await fs.readFile(path.join(root,runtime,'package.json'),'utf8'));
  if(meta.version!=='2.3.2')throw Error('Expected existing p5 2.3.2 runtime');
@@ -12,8 +13,9 @@ export async function startCoverageStudiesServer(port=0){
   const pathname=new URL(req.url,'http://localhost').pathname;
   const relative=pathname==='/p5.js'?runtime+'/lib/p5.min.js':pathname.slice(1);
   const reproductionFile=/^tests\/native\/pixel-grain-reproduction\/(index\.html|sketch\.js|layout\.mjs)$/.test(relative);
-  if(pathname!=='/p5.js'&&!reproductionFile&&!/^packages\/javascript\/(src\/(internal\/)?[a-z0-9-]+\.js|examples\/(pixel-grain|field-displacement|octave-noise)\/(index\.html|sketch\.js))$/.test(relative)){res.writeHead(404);res.end();return;}
-  res.setHeader('Content-Type',relative.endsWith('.html')?'text/html; charset=utf-8':'text/javascript; charset=utf-8');res.end(await fs.readFile(path.join(root,relative)));
+  if(pathname!=='/p5.js'&&!reproductionFile&&!/^packages\/javascript\/(src\/(internal\/)?[a-z0-9-]+\.js|examples\/(pixel-grain|field-displacement|octave-noise|ornament-poster|geometric-panel|orbital-brush|contact-network|agent-trails)\/(index\.html|sketch\.js|study\.js)|examples\/motif-compositions\/[a-z0-9-]+\.js)$/.test(relative)){res.writeHead(404);res.end();return;}
+  res.setHeader('Content-Type',relative.endsWith('.html')?'text/html; charset=utf-8':'text/javascript; charset=utf-8');const file=(pathname==='/p5.js'||reproductionFile)?path.join(root,relative):path.join(packageDirectory,relative.slice('packages/javascript/'.length));
+  res.end(await fs.readFile(file));
  }catch{res.writeHead(500);res.end('Study file unavailable');}});
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',resolve);});return server;
 }

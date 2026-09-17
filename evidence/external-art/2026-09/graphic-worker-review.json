@@ -1,0 +1,1383 @@
+{
+  "schema": "external-art-bounded-visual-review/v1",
+  "reviewer": "deep_graphic_audit research agent",
+  "scope": "Source-asset content and role QC, not root acceptance, reproduction validation or complete visual inspection. No native rendering performed.",
+  "method": "Viewed the named contact sheets and three detail views with view_image. Contact sheets fit source images to 200×170, event images to 240×175, palette composites to 300×230 and frieze details to240×240; standalone source-tile views are at up to600px. Source content was read from existing downloaded originals when present, otherwise exact public source URLs. GIFs were inspected at frame0 only.",
+  "reviewed_image_instances": 86,
+  "reviewed_unique_urls": 84,
+  "reviewed_retained_unique_urls": 70,
+  "selected_unique_urls_total": 2156,
+  "sheets": [
+    {
+      "path": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "sha256": "f52f858c721b9060b4d813400e0d3593680f2c7ad0a46bef032b66233ced1595"
+    },
+    {
+      "path": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "sha256": "b2a9338623c2b8e16c63b12b5395d0520d027b44fc4bc9cf8e5bb035251bd1d6"
+    },
+    {
+      "path": ".work/external-art-research/graphicv2-qc-2.jpg",
+      "sha256": "72bb10844310ae5acc06f4acd2024aba104a00cdf6dab9885b524a89db27818b"
+    },
+    {
+      "path": ".work/external-art-research/graphicv2-qc-Cellularity.jpg",
+      "sha256": "ccbb3f0754eac18079424350389c986674ccd820fd347b0ef41ece6d8e403d14"
+    },
+    {
+      "path": ".work/external-art-research/graphicv2-qc-Evotrees.jpg",
+      "sha256": "c41d075bc31f9ceda5723038b621083ef28c0b4d6ab405debf4fe01e70bd11ac"
+    },
+    {
+      "path": ".work/external-art-research/graphicv2-qc-Origami.jpg",
+      "sha256": "14d687adcab4c5248285ede25f59992f4445b4305b68c76acbec6bc73b7dd931"
+    },
+    {
+      "path": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "sha256": "9676523c1f1728dc1a2d9cdf64f767477e9a4c989d02af8c3584c877ba89ff92"
+    },
+    {
+      "path": ".work/external-art-research/graphicv2-qc-friezes.jpg",
+      "sha256": "af195a214cf7d4126e0a44c3a396a04f7609cdbf43c72ad3a0e285d87355f5fd"
+    },
+    {
+      "path": ".work/external-art-research/graphicv2-qc-palettes.jpg",
+      "sha256": "4898e0dca3c123cc105cc06ca462408e9c5298956545a836d2fd8d7ebf80db9a"
+    }
+  ],
+  "images": [
+    {
+      "id": "graphic-v2-49bff5d7cc7d",
+      "url": "https://inconvergent.net/img/writing/graph/20231110-232150.png",
+      "error": null,
+      "work_id": "graphic-v2-49bff5d7cc7d",
+      "artist": "Anders Hoff (inconvergent)",
+      "title": "Let's write a DSL",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/4e9bd8cebdd4e2145371209ea30c6835e8bf4eddb0ab159dc4beac7ab2910d27.png",
+        "sha256": "4e9bd8cebdd4e2145371209ea30c6835e8bf4eddb0ab159dc4beac7ab2910d27",
+        "width": 1400,
+        "height": 990,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-7aafaf1ad4e1",
+      "url": "https://inconvergent.net/img/writing/veq/d9559cd.jpg",
+      "error": null,
+      "work_id": "graphic-v2-7aafaf1ad4e1",
+      "artist": "Anders Hoff (inconvergent)",
+      "title": "Vectors & Symbols",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/f2970d972d4571ce1d7d7de15c9ec805132f4a04f07e59e73e1a6534ed67e542.jpg",
+        "sha256": "f2970d972d4571ce1d7d7de15c9ec805132f4a04f07e59e73e1a6534ed67e542",
+        "width": 1500,
+        "height": 1500,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-9cdeb57435cd",
+      "url": "https://inconvergent.net/img/writing/asemic/ab17902d.jpg",
+      "error": null,
+      "work_id": "graphic-v2-9cdeb57435cd",
+      "artist": "Anders Hoff (inconvergent)",
+      "title": "More Asemic Writing",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/1c0bb86cd25e1f35c0196a1b18a88f4ec9811bdd0b0e0df2c84ffa1c37554e7d.jpg",
+        "sha256": "1c0bb86cd25e1f35c0196a1b18a88f4ec9811bdd0b0e0df2c84ffa1c37554e7d",
+        "width": 1054,
+        "height": 1500,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-31f5f153f130",
+      "url": "https://img.inconvergent.net/img/plot/0a1c88a.jpg",
+      "error": null,
+      "work_id": "graphic-v2-31f5f153f130",
+      "artist": "Anders Hoff (inconvergent)",
+      "title": "Mechanical Plotter Drawings—6",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/f1c8231c5711b3008adb4456d1a2d92e6b40f3d78f985a354682f3cd0473f757.jpg",
+        "sha256": "f1c8231c5711b3008adb4456d1a2d92e6b40f3d78f985a354682f3cd0473f757",
+        "width": 1500,
+        "height": 1315,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-8e9c41221475",
+      "url": "https://inconvergent.net/img/writing/sand/20170624-211610-543014-2da8177-a22f9c9.png",
+      "error": null,
+      "work_id": "graphic-v2-8e9c41221475",
+      "artist": "Anders Hoff (inconvergent)",
+      "title": "Grains of Sand",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/b0fa337dea4e9d76ced655440782d14342590b3b0eb01b831038475483246ab9.png",
+        "sha256": "b0fa337dea4e9d76ced655440782d14342590b3b0eb01b831038475483246ab9",
+        "width": 1000,
+        "height": 1000,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-26ea3e0febb0",
+      "url": "https://inconvergent.net/img/writing/bots/genbot1.png",
+      "error": null,
+      "work_id": "graphic-v2-26ea3e0febb0",
+      "artist": "Anders Hoff (inconvergent)",
+      "title": "A Barrel of Bots",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/58bfdcc1777bb4f683e4ea2642449a6711158c6c1a2b1984f3c1ab4aab5f28f0.png",
+        "sha256": "58bfdcc1777bb4f683e4ea2642449a6711158c6c1a2b1984f3c1ab4aab5f28f0",
+        "width": 1000,
+        "height": 1000,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-f2e4afd14a1d",
+      "url": "https://inconvergent.net/img/generative/differential-mesh-3d-a.png",
+      "error": null,
+      "work_id": "graphic-v2-f2e4afd14a1d",
+      "artist": "Anders Hoff (inconvergent)",
+      "title": "Differential Mesh 3d",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/48dc19337340098e6bb61ea71c3d235be567edb93ee1c9690e67101f95df56d1.png",
+        "sha256": "48dc19337340098e6bb61ea71c3d235be567edb93ee1c9690e67101f95df56d1",
+        "width": 800,
+        "height": 800,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-0e62ed04a48a",
+      "url": "https://img.inconvergent.net/img/plot/23-ink001.jpg",
+      "error": null,
+      "work_id": "graphic-v2-0e62ed04a48a",
+      "artist": "Anders Hoff (inconvergent)",
+      "title": "Plotter drawing archive",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/992240a2fb439f877d5314e28ed1c2de2a7beb43235baa4ee398db0cf2da5670.jpg",
+        "sha256": "992240a2fb439f877d5314e28ed1c2de2a7beb43235baa4ee398db0cf2da5670",
+        "width": 1406,
+        "height": 2000,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-4c3ab0e9a368",
+      "url": "https://live.staticflickr.com/6082/6126656099_d681e42318_o.jpg",
+      "error": null,
+      "work_id": "graphic-v2-4c3ab0e9a368",
+      "artist": "Jonathan McCabe",
+      "title": "Cyclical Flowpi",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/0d85602357383c233b94df278353eafcec522c3db2f255255fd0281ffb84055b.jpg",
+        "sha256": "0d85602357383c233b94df278353eafcec522c3db2f255255fd0281ffb84055b",
+        "width": 1434,
+        "height": 1305,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-a49067d1d581",
+      "url": "https://live.staticflickr.com/7557/15697056067_2a2ab76bb1_o.jpg",
+      "error": null,
+      "work_id": "graphic-v2-a49067d1d581",
+      "artist": "Jonathan McCabe",
+      "title": "MultiScale BZ",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/7e874a886ee626256f2acc0d10efc895e000afce3854875fbeab3bdc90fe2b5a.jpg",
+        "sha256": "7e874a886ee626256f2acc0d10efc895e000afce3854875fbeab3bdc90fe2b5a",
+        "width": 2187,
+        "height": 2187,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-cdd803b7ec25",
+      "url": "https://live.staticflickr.com/7587/17223491715_b789ab0637_o.jpg",
+      "error": null,
+      "work_id": "graphic-v2-cdd803b7ec25",
+      "artist": "Jonathan McCabe",
+      "title": "Typography",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/c3b04965a862e10e36ebd0a62b35a47a218490e128f329fbb4193f3db178d42e.jpg",
+        "sha256": "c3b04965a862e10e36ebd0a62b35a47a218490e128f329fbb4193f3db178d42e",
+        "width": 4000,
+        "height": 1000,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-1c5b703b70fe",
+      "url": "https://live.staticflickr.com/6001/5980861913_f56143e6a6_o.jpg",
+      "error": null,
+      "work_id": "graphic-v2-1c5b703b70fe",
+      "artist": "Jonathan McCabe",
+      "title": "Turing patterns with 6 morphogens",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/7d2164c21bc0546b4521922548901362b87662b527db4039d435ce6f23fa5741.jpg",
+        "sha256": "7d2164c21bc0546b4521922548901362b87662b527db4039d435ce6f23fa5741",
+        "width": 1000,
+        "height": 1000,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-bb3f587cdb36",
+      "url": "https://live.staticflickr.com/5188/5663125123_7377650378_o.jpg",
+      "error": null,
+      "work_id": "graphic-v2-bb3f587cdb36",
+      "artist": "Jonathan McCabe",
+      "title": "lattice",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/d2f27fe55008c880c50cffc5949ed47336ee63844e1558da745b7dc45b327363.jpg",
+        "sha256": "d2f27fe55008c880c50cffc5949ed47336ee63844e1558da745b7dc45b327363",
+        "width": 1000,
+        "height": 1000,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-7e9c4b080df5",
+      "url": "https://live.staticflickr.com/4117/4745680718_b164323f02_o.jpg",
+      "error": null,
+      "work_id": "graphic-v2-7e9c4b080df5",
+      "artist": "Jonathan McCabe",
+      "title": "Turing Flowers",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/223649d51bc1273ea46937965cdb72d5d81ef40b322b25407fde062e69cc6dc5.jpg",
+        "sha256": "223649d51bc1273ea46937965cdb72d5d81ef40b322b25407fde062e69cc6dc5",
+        "width": 4096,
+        "height": 4096,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-5c42bfca43a4",
+      "url": "https://live.staticflickr.com/3416/3344437096_c1d779ee70_o.jpg",
+      "error": null,
+      "work_id": "graphic-v2-5c42bfca43a4",
+      "artist": "Jonathan McCabe",
+      "title": "RSMSTI 2",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/d751d8f15ce6622dac07b47cd0e4ecd12fd626ce1507fc70a1f01152c79fd3ac.jpg",
+        "sha256": "d751d8f15ce6622dac07b47cd0e4ecd12fd626ce1507fc70a1f01152c79fd3ac",
+        "width": 500,
+        "height": 500,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-29216ab3eefe",
+      "url": "https://jonathanmccabe.com/wp-content/uploads/zooms/zoom_d_0068/d_0068_files/8/0_0.jpg",
+      "error": null,
+      "work_id": "graphic-v2-29216ab3eefe",
+      "artist": "Jonathan McCabe",
+      "title": "Evotrees",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/69378ba22679efbabacc6339fd4d911c19d3a14df81afb9fb4fb4df37dfd5bc5.jpg",
+        "sha256": "69378ba22679efbabacc6339fd4d911c19d3a14df81afb9fb4fb4df37dfd5bc5",
+        "width": 196,
+        "height": 196,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-1942b8381896",
+      "url": "https://sighack.com/public/images/generative-sketch-winter-sunrise/highres.png",
+      "error": null,
+      "work_id": "graphic-v2-1942b8381896",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Sketch - Winter Sunrise",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/065577ca0f2a2be5e211d22748896170d4c48614bc51ae3a82fd0bd7b1c68400.png",
+        "sha256": "065577ca0f2a2be5e211d22748896170d4c48614bc51ae3a82fd0bd7b1c68400",
+        "width": 2500,
+        "height": 2500,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-296f06801912",
+      "url": "https://sighack.com/public/images/generative-sketch-needlepoint/needlepoint-highres.png",
+      "error": null,
+      "work_id": "graphic-v2-296f06801912",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Sketch - Needlepoint",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/0db14bd2b8eef31560565eb83f679e3ca5b86b252fc0609a91b3682b79bf7417.png",
+        "sha256": "0db14bd2b8eef31560565eb83f679e3ca5b86b252fc0609a91b3682b79bf7417",
+        "width": 2500,
+        "height": 2500,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-dfbe9953885c",
+      "url": "https://sighack.com/public/images/2018-02-11-generative-color-algorithms/cw-hsb.png",
+      "error": null,
+      "work_id": "graphic-v2-dfbe9953885c",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Procedural Color - HSB vs. RYB",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/8de8abca7a032a6b4e3e39650004f24f161aaca22f58a6697e9e74cb944aedbf.png",
+        "sha256": "8de8abca7a032a6b4e3e39650004f24f161aaca22f58a6697e9e74cb944aedbf",
+        "width": 250,
+        "height": 250,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-c0357bdac268",
+      "url": "https://sighack.com/public/images/simple-stippling-via-circle-packing/example.png",
+      "error": null,
+      "work_id": "graphic-v2-c0357bdac268",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Simple Stippling Using Circle Packing",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/1f382f536a3f6246c3b40d31e5400b022b556fbc11261802952145196ee3157d.png",
+        "sha256": "1f382f536a3f6246c3b40d31e5400b022b556fbc11261802952145196ee3157d",
+        "width": 500,
+        "height": 500,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-fedcb9f7cab2",
+      "url": "https://sighack.com/public/images/averaging-rgb-colors-the-right-way/final.gif",
+      "error": null,
+      "work_id": "graphic-v2-fedcb9f7cab2",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Averaging RGB Colors the Right Way",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/ced59da4f8b04c166b9ae0f59a3c4699f9e6d38381bb0d1e71b58a148ac539bc.gif",
+        "sha256": "ced59da4f8b04c166b9ae0f59a3c4699f9e6d38381bb0d1e71b58a148ac539bc",
+        "width": 500,
+        "height": 500,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-058c2ab7d390",
+      "url": "https://sighack.com/public/images/circle-packing-using-stochastic-search/tight.gif",
+      "error": null,
+      "work_id": "graphic-v2-058c2ab7d390",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Circle Packing Using Stochastic Search",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/08e3c735b999ea72d6bd952829244fc50fe7b2d616b31d76e279e34cc993462a.gif",
+        "sha256": "08e3c735b999ea72d6bd952829244fc50fe7b2d616b31d76e279e34cc993462a",
+        "width": 500,
+        "height": 500,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-03059efc8a96",
+      "url": "https://sighack.com/public/images/2018-02-03-generative-sketch-planetscape/final-small.png",
+      "error": null,
+      "work_id": "graphic-v2-03059efc8a96",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Sketch - Planetscape",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/650ccf877a5f0811f8de05f36231d5062090c863e62ddcea348f50d92e59a288.png",
+        "sha256": "650ccf877a5f0811f8de05f36231d5062090c863e62ddcea348f50d92e59a288",
+        "width": 800,
+        "height": 800,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-74e08d93fcc7",
+      "url": "https://sighack.com/public/images/2018-01-03-getting-creative-with-perlin-noise-fields/random_force_field.png",
+      "error": null,
+      "work_id": "graphic-v2-74e08d93fcc7",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Getting Creative with Perlin Noise Fields",
+      "sheet": ".work/external-art-research/graphicv2-qc-0.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/e95b883ca6c9af3671bd898aeb74f03a3b593467e362ad1ab34bcbfdc8f676e1.png",
+        "sha256": "e95b883ca6c9af3671bd898aeb74f03a3b593467e362ad1ab34bcbfdc8f676e1",
+        "width": 504,
+        "height": 525,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-4aaebd004992",
+      "url": "https://takahirokurashima.com/wp-content/uploads/2026/05/Art-Fair-Tokyo-2023_1-1.jpg",
+      "error": null,
+      "work_id": "graphic-v2-4aaebd004992",
+      "artist": "Takahiro Kurashima",
+      "title": "ART FAIR TOKYO 2023",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "status": "failed"
+      }
+    },
+    {
+      "id": "graphic-v2-d7d098d81483",
+      "url": "https://takahirokurashima.com/wp-content/uploads/2025/01/hermes_crafting_time_1.jpg",
+      "error": null,
+      "work_id": "graphic-v2-d7d098d81483",
+      "artist": "Takahiro Kurashima",
+      "title": "Hermès: L’heure de la lune – installation",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "status": "failed"
+      }
+    },
+    {
+      "id": "graphic-v2-82710d87f312",
+      "url": "https://takahirokurashima.com/wp-content/uploads/2020/07/swissdesignstories_2.jpg",
+      "error": null,
+      "work_id": "graphic-v2-82710d87f312",
+      "artist": "Takahiro Kurashima",
+      "title": "Swiss Design Stories",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": false,
+      "available_download_receipt": {}
+    },
+    {
+      "id": "graphic-v2-dad4bad0328a",
+      "url": "https://takahirokurashima.com/wp-content/uploads/2024/05/hermes_book_1.jpg",
+      "error": null,
+      "work_id": "graphic-v2-dad4bad0328a",
+      "artist": "Takahiro Kurashima",
+      "title": "night",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/6680eb3efffea13fe24a33ab9a8405e404033022cb90b2581e130442e910d066.jpg",
+        "sha256": "6680eb3efffea13fe24a33ab9a8405e404033022cb90b2581e130442e910d066",
+        "width": 5616,
+        "height": 3744,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-7237bcf077c5",
+      "url": "https://takahirokurashima.com/wp-content/uploads/slider42/shapes.jpeg",
+      "error": null,
+      "work_id": "graphic-v2-7237bcf077c5",
+      "artist": "Takahiro Kurashima",
+      "title": "Shapes of Rules",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/5a67b6aa1cbeaf96528187d7c23d9db7bf27d208332bc629053eef2ce7aeb58b.jpg",
+        "sha256": "5a67b6aa1cbeaf96528187d7c23d9db7bf27d208332bc629053eef2ce7aeb58b",
+        "width": 2000,
+        "height": 1333,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-e3c89596ff82",
+      "url": "https://takahirokurashima.com/wp-content/uploads/slider38/electromagnetic-wave_4.jpeg",
+      "error": null,
+      "work_id": "graphic-v2-e3c89596ff82",
+      "artist": "Takahiro Kurashima",
+      "title": "Electromagnetic-Wave",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/e4c4d5741a1a3ff4c47aa57a6d0b0c03ac45fe9aa65e44eda1302cd6677e05b9.jpg",
+        "sha256": "e4c4d5741a1a3ff4c47aa57a6d0b0c03ac45fe9aa65e44eda1302cd6677e05b9",
+        "width": 4000,
+        "height": 4000,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-903e87eb93a5",
+      "url": "https://takahirokurashima.com/wp-content/uploads/2024/05/penrose-triangle.jpg",
+      "error": null,
+      "work_id": "graphic-v2-903e87eb93a5",
+      "artist": "Takahiro Kurashima",
+      "title": "Penrose Triangle",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/08344583d5d60e6c77d07be01a7adaa0497eb4e1f975ab6dd8d3fdf5d23f581b.jpg",
+        "sha256": "08344583d5d60e6c77d07be01a7adaa0497eb4e1f975ab6dd8d3fdf5d23f581b",
+        "width": 2953,
+        "height": 2953,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-98b340123387",
+      "url": "https://videos.files.wordpress.com/OroWrb85/tessellation_framed_mp4_vp9_2160p.original.jpg",
+      "error": null,
+      "work_id": "graphic-v2-98b340123387",
+      "artist": "Takahiro Kurashima",
+      "title": "Tessellation",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/47d4e5fddaaa82279a6211b4dea349cfb20ab5acb48b07a4d105b95c963a87e4.jpg",
+        "sha256": "47d4e5fddaaa82279a6211b4dea349cfb20ab5acb48b07a4d105b95c963a87e4",
+        "width": 1500,
+        "height": 1500,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-11efce72b9c1",
+      "url": "https://generateme.wordpress.com/wp-content/uploads/2018/10/0000bf4a_001021.png",
+      "error": null,
+      "work_id": "graphic-v2-11efce72b9c1",
+      "artist": "Tomasz Sulej (GenerateMe)",
+      "title": "(WIP) Smooth rendering – log density mapping",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/1b624d56108c6ef9a30d26b079e59c5f72dfb7bf90ce3e879240e11d60fd2441.png",
+        "sha256": "1b624d56108c6ef9a30d26b079e59c5f72dfb7bf90ce3e879240e11d60fd2441",
+        "width": 800,
+        "height": 800,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-7d68dcb592c2",
+      "url": "https://64.media.tumblr.com/e76856025d115502505ff796bc198e3d/tumblr_o858uuwVmJ1tcszaao1_1280.jpg",
+      "error": null,
+      "work_id": "graphic-v2-7d68dcb592c2",
+      "artist": "Tomasz Sulej (GenerateMe)",
+      "title": "generateme / dirac",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/1c43cd21d8db554adfab6ce25aa3f771503762bc5e01eb456931e166cbde9e4c.jpg",
+        "sha256": "1c43cd21d8db554adfab6ce25aa3f771503762bc5e01eb456931e166cbde9e4c",
+        "width": 1280,
+        "height": 720,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-9b199b92ff72",
+      "url": "https://64.media.tumblr.com/eed66dfbf34dfbd2f7adf867fccc95db/tumblr_oa43xhLigu1tcszaao1_500.jpg",
+      "error": null,
+      "work_id": "graphic-v2-9b199b92ff72",
+      "artist": "Tomasz Sulej (GenerateMe)",
+      "title": "generateme / intra prediction",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/7f27d97725794d2da787c4a1c365cff7ba467f90343814cb4dfe7213111a6b8d.jpg",
+        "sha256": "7f27d97725794d2da787c4a1c365cff7ba467f90343814cb4dfe7213111a6b8d",
+        "width": 493,
+        "height": 743,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-050bb905199e",
+      "url": "https://64.media.tumblr.com/d1946e0806fcc2855923bcd3f204d517/tumblr_opothhTEKV1tcszaao1_1280.jpg",
+      "error": null,
+      "work_id": "graphic-v2-050bb905199e",
+      "artist": "Tomasz Sulej (GenerateMe)",
+      "title": "generateme / vector fields",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/8064cde25ae61a7c3cacd3cca699ce63a57de97a0ce07eeb3739edb9ab5ca139.jpg",
+        "sha256": "8064cde25ae61a7c3cacd3cca699ce63a57de97a0ce07eeb3739edb9ab5ca139",
+        "width": 1080,
+        "height": 1500,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-0c87ef73b431",
+      "url": "https://64.media.tumblr.com/e9b97e54b43c991d3cbdc8510d1afc84/tumblr_njkmqhPtyY1tcszaao1_640.jpg",
+      "error": null,
+      "work_id": "graphic-v2-0c87ef73b431",
+      "artist": "Tomasz Sulej (GenerateMe)",
+      "title": "Folds X",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/f43c7ab54bca0af0dcdf1904c7b14b51519a23bd455121e358edfd4e5cfa429c.jpg",
+        "sha256": "f43c7ab54bca0af0dcdf1904c7b14b51519a23bd455121e358edfd4e5cfa429c",
+        "width": 600,
+        "height": 600,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-d3cf8fcb800b",
+      "url": "https://64.media.tumblr.com/1353d748951e233320023ea2e0a5bde8/tumblr_n5vami9XRE1tcszaao1_540.png",
+      "error": null,
+      "work_id": "graphic-v2-d3cf8fcb800b",
+      "artist": "Tomasz Sulej (GenerateMe)",
+      "title": "This is my approach to square/rectangle packing algorithm with few random parameters. Which are:",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/15492dda36309ad1bc9775c4aeedee60c684a9998e19d417b89f507ed375f4e7.png",
+        "sha256": "15492dda36309ad1bc9775c4aeedee60c684a9998e19d417b89f507ed375f4e7",
+        "width": 400,
+        "height": 800,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-01d924f59d97",
+      "url": "https://64.media.tumblr.com/cb6e4869767ddebad4cf7607a8780d0c/bf9fe21b6fca8592-97/s1280x1920/2dcbf33f3790e3a134326a71bcff199391dad9c1.png",
+      "error": null,
+      "work_id": "graphic-v2-01d924f59d97",
+      "artist": "Tomasz Sulej (GenerateMe)",
+      "title": "surfaces3d",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/cab73d3e944ffebeb00c5969c2dbe15ae4644ebbd7727060aa4cc3cd4a77d53d.png",
+        "sha256": "cab73d3e944ffebeb00c5969c2dbe15ae4644ebbd7727060aa4cc3cd4a77d53d",
+        "width": 800,
+        "height": 800,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-b98819ed4fd0",
+      "url": "https://live.staticflickr.com/7571/15848383588_fa5f94741f_o.png",
+      "error": null,
+      "work_id": "graphic-v2-b98819ed4fd0",
+      "artist": "Tomasz Sulej (GenerateMe)",
+      "title": "Flickr / Processing",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/049d402437532c1199ab125009d75e426b7e129a93bdbd00dda34a9293cdb56e.png",
+        "sha256": "049d402437532c1199ab125009d75e426b7e129a93bdbd00dda34a9293cdb56e",
+        "width": 600,
+        "height": 600,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-0d9340f2f9a3",
+      "url": "https://cdn.sanity.io/images/6e7gp05s/production/1daeddf3395c4efc7137c1ffea36853a493cd7fd-3999x4999.png",
+      "error": null,
+      "work_id": "graphic-v2-0d9340f2f9a3",
+      "artist": "Tyler Hobbs",
+      "title": "Please Respond",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/555e68e33a338a721beee679894beb3dfd4ce9eca967afa602ff846c9ccaf6e2.png",
+        "sha256": "555e68e33a338a721beee679894beb3dfd4ce9eca967afa602ff846c9ccaf6e2",
+        "width": 3999,
+        "height": 4999,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-1d95afb86a85",
+      "url": "https://cdn.sanity.io/images/6e7gp05s/production/d04bfdecb5cce619913f2a342c584824e4d86e42-5660x5660.jpg",
+      "error": null,
+      "work_id": "graphic-v2-1d95afb86a85",
+      "artist": "Tyler Hobbs",
+      "title": "Return One [Blue]",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/3dcc95e8215c034e2c394632c8369fcf489e7370d9d6e305731dc9b01195cf23.jpg",
+        "sha256": "3dcc95e8215c034e2c394632c8369fcf489e7370d9d6e305731dc9b01195cf23",
+        "width": 5660,
+        "height": 5660,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-841e22ebdfb5",
+      "url": "https://cdn.sanity.io/images/6e7gp05s/production/eab046e422b615e42c1c4f91f75f7b9f59e69237-4800x6000.jpg",
+      "error": null,
+      "work_id": "graphic-v2-841e22ebdfb5",
+      "artist": "Tyler Hobbs",
+      "title": "Regrowth",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/a46c6b36e17bda9cbb040749079502f36f224bfff06c5830596490c453c93864.jpg",
+        "sha256": "a46c6b36e17bda9cbb040749079502f36f224bfff06c5830596490c453c93864",
+        "width": 4800,
+        "height": 6000,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-7b90de791375",
+      "url": "https://cdn.sanity.io/images/6e7gp05s/production/c37a5caf23778a43e52f10a9564de9f3b1155436-3000x6000.jpg",
+      "error": null,
+      "work_id": "graphic-v2-7b90de791375",
+      "artist": "Tyler Hobbs",
+      "title": "Orchids 0",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/6c5741fff1cbdd24301b839556e2bf6a2a8a222cddb44dd03f7724f5e1314805.jpg",
+        "sha256": "6c5741fff1cbdd24301b839556e2bf6a2a8a222cddb44dd03f7724f5e1314805",
+        "width": 3000,
+        "height": 6000,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-008cb9bee527",
+      "url": "https://cdn.sanity.io/images/6e7gp05s/production/da3670dd7c2575dfa481534a6a4a565f215140bb-4500x6000.jpg",
+      "error": null,
+      "work_id": "graphic-v2-008cb9bee527",
+      "artist": "Tyler Hobbs",
+      "title": "Repetition",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/eab35fb84b50aaf0cff84c6b654262c05db3dddfd39f7b6fadec47a25194a025.jpg",
+        "sha256": "eab35fb84b50aaf0cff84c6b654262c05db3dddfd39f7b6fadec47a25194a025",
+        "width": 4500,
+        "height": 6000,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-ffb4492a011e",
+      "url": "https://cdn.sanity.io/images/6e7gp05s/production/1cf0c9620b1a061c6870483358eed455547bcb12-6000x6000.jpg",
+      "error": null,
+      "work_id": "graphic-v2-ffb4492a011e",
+      "artist": "Tyler Hobbs",
+      "title": "Afterwards",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/4a54ef22d7a7c463325140ac35ccd0b714a0f057f1768de09710a4c5e94f33a8.jpg",
+        "sha256": "4a54ef22d7a7c463325140ac35ccd0b714a0f057f1768de09710a4c5e94f33a8",
+        "width": 6000,
+        "height": 6000,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-e775e1ea381f",
+      "url": "https://cdn.sanity.io/images/6e7gp05s/production/098673d8af2d03cf3ee1cfd7d3e5670c5b4b8c52-1960x1960.jpg",
+      "error": null,
+      "work_id": "graphic-v2-e775e1ea381f",
+      "artist": "Tyler Hobbs",
+      "title": "Waves",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/85fcbb650d1da225aa9dea76cfd5c9d7b5e8ebf405d8744365c7ae0f4a5f192f.jpg",
+        "sha256": "85fcbb650d1da225aa9dea76cfd5c9d7b5e8ebf405d8744365c7ae0f4a5f192f",
+        "width": 1960,
+        "height": 1960,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-1fcb9556fd3e",
+      "url": "https://cdn.sanity.io/images/6e7gp05s/production/ef8d1b9b8f4068aacf060a4168c0771fbf7c5158-6000x6000.jpg",
+      "error": null,
+      "work_id": "graphic-v2-1fcb9556fd3e",
+      "artist": "Tyler Hobbs",
+      "title": "Community",
+      "sheet": ".work/external-art-research/graphicv2-qc-1.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/2c9eb3abd27a3d3fb0a17c73627a3ff41a06e90387b8364bebad24f4a9609f49.jpg",
+        "sha256": "2c9eb3abd27a3d3fb0a17c73627a3ff41a06e90387b8364bebad24f4a9609f49",
+        "width": 6000,
+        "height": 6000,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-078e2e537568",
+      "url": "https://sighack.com/public/images/2018-02-04-generative-value-sketches-using-k-means-clustering/example4.png",
+      "error": null,
+      "work_id": "graphic-v2-078e2e537568",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Value Sketches Using k-Means Clustering",
+      "sheet": ".work/external-art-research/graphicv2-qc-2.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/c5287d64794830605dc4b7601dbc469f9bae64646c2135e0b80bd820f6b5af76.png",
+        "sha256": "c5287d64794830605dc4b7601dbc469f9bae64646c2135e0b80bd820f6b5af76",
+        "width": 500,
+        "height": 500,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-5603ba1f7a69",
+      "url": "https://sighack.com/public/images/fun-with-poisson-disk-sampling/portrait6.jpg",
+      "error": null,
+      "work_id": "graphic-v2-5603ba1f7a69",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Fun With Poisson Disk Sampling",
+      "sheet": ".work/external-art-research/graphicv2-qc-2.jpg",
+      "retained_in_final_selection": false,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/88b651e1b8e5a54b36c9226b0ae8855cbab42e46272ee27c128d1892487f6e50.jpg",
+        "sha256": "88b651e1b8e5a54b36c9226b0ae8855cbab42e46272ee27c128d1892487f6e50",
+        "width": 500,
+        "height": 500,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-be66d4aab4d4",
+      "url": "https://64.media.tumblr.com/9b4ce9271325cf0ec0474ba775e2a19b/tumblr_phq9v8SuDl1vpr1mto1_1280.png",
+      "error": null,
+      "work_id": "graphic-v2-be66d4aab4d4",
+      "artist": "Tomasz Sulej (GenerateMe)",
+      "title": "folds2d / echo",
+      "sheet": ".work/external-art-research/graphicv2-qc-2.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/62f243f5bf6351df9b22ee8ff6aaf0a41cca85d71bc76338ad2cf14b7f65da47.png",
+        "sha256": "62f243f5bf6351df9b22ee8ff6aaf0a41cca85d71bc76338ad2cf14b7f65da47",
+        "width": 1280,
+        "height": 1280,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-7dce6ce181d0",
+      "url": "https://takahirokurashima.com/wp-content/uploads/2024/05/poemotion3_Gyorgy.jpg",
+      "error": null,
+      "work_id": "graphic-v2-7dce6ce181d0",
+      "artist": "Takahiro Kurashima",
+      "title": "Poemotion 3",
+      "sheet": ".work/external-art-research/graphicv2-qc-2.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/0b03cbeca3f9656525fe7f0b9dc8a08ec256a8bfeb08099afb8eb1ed7894949b.jpg",
+        "sha256": "0b03cbeca3f9656525fe7f0b9dc8a08ec256a8bfeb08099afb8eb1ed7894949b",
+        "width": 2956,
+        "height": 3941,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-5e93276a3612",
+      "url": "https://takahirokurashima.com/wp-content/uploads/2025/01/19277.jpg",
+      "error": null,
+      "work_id": "graphic-v2-5e93276a3612",
+      "artist": "Takahiro Kurashima",
+      "title": "Kinetic Sculpture",
+      "sheet": ".work/external-art-research/graphicv2-qc-2.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/7d805bb98965ae919b0ed1a8c965ce1eefd876be73233f1a5fc00f698bca1bd2.jpg",
+        "sha256": "7d805bb98965ae919b0ed1a8c965ce1eefd876be73233f1a5fc00f698bca1bd2",
+        "width": 1600,
+        "height": 2000,
+        "status": "downloaded"
+      }
+    },
+    {
+      "title": "Fintech at Fifty: Conference and Gala",
+      "image_index": 0,
+      "url": "https://takahirokurashima.com/wp-content/uploads/2025/01/Instinet-50th-Gala_02.jpg",
+      "work_id": "graphic-v2-4c7b12a80c8b",
+      "artist": "Takahiro Kurashima",
+      "sheet": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "retained_in_final_selection": false,
+      "available_download_receipt": {}
+    },
+    {
+      "title": "Fintech at Fifty: Conference and Gala",
+      "image_index": 1,
+      "url": "https://takahirokurashima.com/wp-content/uploads/2025/01/Instinet-50th-Gala_09.jpg",
+      "work_id": "graphic-v2-4c7b12a80c8b",
+      "artist": "Takahiro Kurashima",
+      "sheet": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/188d6bc139a6be535808ebe5da533bb847d0fe279e2b62642bcc56c592ec9b8a.jpg",
+        "sha256": "188d6bc139a6be535808ebe5da533bb847d0fe279e2b62642bcc56c592ec9b8a",
+        "width": 3960,
+        "height": 2640,
+        "status": "downloaded"
+      }
+    },
+    {
+      "title": "Fintech at Fifty: Conference and Gala",
+      "image_index": 2,
+      "url": "https://takahirokurashima.com/wp-content/uploads/2025/01/Instinet-50th-Gala_06.jpg",
+      "work_id": "graphic-v2-4c7b12a80c8b",
+      "artist": "Takahiro Kurashima",
+      "sheet": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "retained_in_final_selection": false,
+      "available_download_receipt": {}
+    },
+    {
+      "title": "Fintech at Fifty: Conference and Gala",
+      "image_index": 3,
+      "url": "https://takahirokurashima.com/wp-content/uploads/2025/01/Instinet-50th-Gala_08.jpg",
+      "work_id": "graphic-v2-4c7b12a80c8b",
+      "artist": "Takahiro Kurashima",
+      "sheet": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "retained_in_final_selection": false,
+      "available_download_receipt": {}
+    },
+    {
+      "title": "Fintech at Fifty: Conference and Gala",
+      "image_index": 4,
+      "url": "https://takahirokurashima.com/wp-content/uploads/2025/01/Instinet-Fintech-at-Fifty-Conference_10.jpg",
+      "work_id": "graphic-v2-4c7b12a80c8b",
+      "artist": "Takahiro Kurashima",
+      "sheet": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/875f824e6f0ab5f1fc523af19eb7531acc55cad7b4b48f55626fa47fd11175b6.jpg",
+        "sha256": "875f824e6f0ab5f1fc523af19eb7531acc55cad7b4b48f55626fa47fd11175b6",
+        "width": 2500,
+        "height": 1667,
+        "status": "downloaded"
+      }
+    },
+    {
+      "title": "Fintech at Fifty: Conference and Gala",
+      "image_index": 5,
+      "url": "https://takahirokurashima.com/wp-content/uploads/2025/01/Instinet-Fintech-at-Fifty-Conference_16.jpg",
+      "work_id": "graphic-v2-4c7b12a80c8b",
+      "artist": "Takahiro Kurashima",
+      "sheet": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "retained_in_final_selection": false,
+      "available_download_receipt": {}
+    },
+    {
+      "title": "Fintech at Fifty: Conference and Gala",
+      "image_index": 6,
+      "url": "https://takahirokurashima.com/wp-content/uploads/2025/01/Instinet-Fintech-at-Fifty-Conference_17.jpg",
+      "work_id": "graphic-v2-4c7b12a80c8b",
+      "artist": "Takahiro Kurashima",
+      "sheet": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "retained_in_final_selection": false,
+      "available_download_receipt": {}
+    },
+    {
+      "title": "Fintech at Fifty: Conference and Gala",
+      "image_index": 7,
+      "url": "https://takahirokurashima.com/wp-content/uploads/2025/01/Instinet-Fintech-at-Fifty-Conference_20.jpg",
+      "work_id": "graphic-v2-4c7b12a80c8b",
+      "artist": "Takahiro Kurashima",
+      "sheet": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "retained_in_final_selection": false,
+      "available_download_receipt": {}
+    },
+    {
+      "title": "Swiss Design Stories",
+      "image_index": 0,
+      "url": "https://takahirokurashima.com/wp-content/uploads/2020/07/swissdesignstories_2.jpg",
+      "work_id": "graphic-v2-82710d87f312",
+      "artist": "Takahiro Kurashima",
+      "sheet": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "retained_in_final_selection": false,
+      "available_download_receipt": {}
+    },
+    {
+      "title": "Swiss Design Stories",
+      "image_index": 1,
+      "url": "https://takahirokurashima.com/wp-content/uploads/2020/07/swissdesignstories_4.jpg",
+      "work_id": "graphic-v2-82710d87f312",
+      "artist": "Takahiro Kurashima",
+      "sheet": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "retained_in_final_selection": false,
+      "available_download_receipt": {}
+    },
+    {
+      "title": "Swiss Design Stories",
+      "image_index": 2,
+      "url": "https://takahirokurashima.com/wp-content/uploads/2020/07/swissdesignstories_7.jpg",
+      "work_id": "graphic-v2-82710d87f312",
+      "artist": "Takahiro Kurashima",
+      "sheet": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "retained_in_final_selection": false,
+      "available_download_receipt": {}
+    },
+    {
+      "title": "Swiss Design Stories",
+      "image_index": 3,
+      "url": "https://takahirokurashima.com/wp-content/uploads/2020/07/swissdesignstories_8.jpg",
+      "work_id": "graphic-v2-82710d87f312",
+      "artist": "Takahiro Kurashima",
+      "sheet": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "retained_in_final_selection": false,
+      "available_download_receipt": {}
+    },
+    {
+      "title": "Swiss Design Stories",
+      "image_index": 4,
+      "url": "https://takahirokurashima.com/wp-content/uploads/2020/07/swissdesignstories_9.jpg",
+      "work_id": "graphic-v2-82710d87f312",
+      "artist": "Takahiro Kurashima",
+      "sheet": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "retained_in_final_selection": false,
+      "available_download_receipt": {}
+    },
+    {
+      "title": "Swiss Design Stories",
+      "image_index": 5,
+      "url": "https://takahirokurashima.com/wp-content/uploads/2020/07/swissdesignstory_b1_low.jpg",
+      "work_id": "graphic-v2-82710d87f312",
+      "artist": "Takahiro Kurashima",
+      "sheet": ".work/external-art-research/graphicv2-qc-events.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/84b7a65460dac07145cf87d571f01faf0f82c98d239d429a1c2a8f0fd6088286.jpg",
+        "sha256": "84b7a65460dac07145cf87d571f01faf0f82c98d239d429a1c2a8f0fd6088286",
+        "width": 2504,
+        "height": 3543,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-588d9071f469",
+      "url": "https://sighack.com/public/images/2018-02-04-image-based-palettes-using-k-means-clustering/l1.png",
+      "error": null,
+      "work_id": "graphic-v2-588d9071f469",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Image-Based Palettes Using k-Means Clustering",
+      "sheet": ".work/external-art-research/graphicv2-qc-palettes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/053ffa771f5a1308d8640bffa1816430ee62d0b33d0d641e1e8930b5618c5ce1.png",
+        "sha256": "053ffa771f5a1308d8640bffa1816430ee62d0b33d0d641e1e8930b5618c5ce1",
+        "width": 500,
+        "height": 600,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-588d9071f469",
+      "url": "https://sighack.com/public/images/2018-02-04-image-based-palettes-using-k-means-clustering/l2.png",
+      "error": null,
+      "work_id": "graphic-v2-588d9071f469",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Image-Based Palettes Using k-Means Clustering",
+      "sheet": ".work/external-art-research/graphicv2-qc-palettes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/18d92b71c3763d5b3cbb9ed1d5338d9486b68fc79b55468bb4efc370222c4d72.png",
+        "sha256": "18d92b71c3763d5b3cbb9ed1d5338d9486b68fc79b55468bb4efc370222c4d72",
+        "width": 500,
+        "height": 600,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-588d9071f469",
+      "url": "https://sighack.com/public/images/2018-02-04-image-based-palettes-using-k-means-clustering/l3.png",
+      "error": null,
+      "work_id": "graphic-v2-588d9071f469",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Image-Based Palettes Using k-Means Clustering",
+      "sheet": ".work/external-art-research/graphicv2-qc-palettes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/8afb6b0eadfe9d338e8dbafa6538f1e3946822668f1c792f490da5bddc8bf9e9.png",
+        "sha256": "8afb6b0eadfe9d338e8dbafa6538f1e3946822668f1c792f490da5bddc8bf9e9",
+        "width": 500,
+        "height": 600,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-588d9071f469",
+      "url": "https://sighack.com/public/images/2018-02-04-image-based-palettes-using-k-means-clustering/l4.png",
+      "error": null,
+      "work_id": "graphic-v2-588d9071f469",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Image-Based Palettes Using k-Means Clustering",
+      "sheet": ".work/external-art-research/graphicv2-qc-palettes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/bc7a6f48db8dbb5cd9498ede33eba1df8d7228b91d3bda45c72823d926fb0918.png",
+        "sha256": "bc7a6f48db8dbb5cd9498ede33eba1df8d7228b91d3bda45c72823d926fb0918",
+        "width": 500,
+        "height": 600,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-588d9071f469",
+      "url": "https://sighack.com/public/images/2018-02-04-image-based-palettes-using-k-means-clustering/p1.png",
+      "error": null,
+      "work_id": "graphic-v2-588d9071f469",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Image-Based Palettes Using k-Means Clustering",
+      "sheet": ".work/external-art-research/graphicv2-qc-palettes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/c74a2dff4460f2ec2ab9e8ed774488a6a471015139b4a5d3abe05eab0a035bc3.png",
+        "sha256": "c74a2dff4460f2ec2ab9e8ed774488a6a471015139b4a5d3abe05eab0a035bc3",
+        "width": 500,
+        "height": 600,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-588d9071f469",
+      "url": "https://sighack.com/public/images/2018-02-04-image-based-palettes-using-k-means-clustering/p2.png",
+      "error": null,
+      "work_id": "graphic-v2-588d9071f469",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Image-Based Palettes Using k-Means Clustering",
+      "sheet": ".work/external-art-research/graphicv2-qc-palettes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/05b1d0094f7efd63970668a9a1ea9f222ed8b6d5ed2f4285c70b3c5b1748e1fb.png",
+        "sha256": "05b1d0094f7efd63970668a9a1ea9f222ed8b6d5ed2f4285c70b3c5b1748e1fb",
+        "width": 500,
+        "height": 600,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-588d9071f469",
+      "url": "https://sighack.com/public/images/2018-02-04-image-based-palettes-using-k-means-clustering/p3.png",
+      "error": null,
+      "work_id": "graphic-v2-588d9071f469",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Image-Based Palettes Using k-Means Clustering",
+      "sheet": ".work/external-art-research/graphicv2-qc-palettes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/9900584229855289661f58d9878ce25ba25ed31c74ee3e50bbb6ec7f50bbcb3b.png",
+        "sha256": "9900584229855289661f58d9878ce25ba25ed31c74ee3e50bbb6ec7f50bbcb3b",
+        "width": 500,
+        "height": 600,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-588d9071f469",
+      "url": "https://sighack.com/public/images/2018-02-04-image-based-palettes-using-k-means-clustering/p4.png",
+      "error": null,
+      "work_id": "graphic-v2-588d9071f469",
+      "artist": "Sighack / Manohar Vanga",
+      "title": "Image-Based Palettes Using k-Means Clustering",
+      "sheet": ".work/external-art-research/graphicv2-qc-palettes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {
+        "path": ".work/external-art-corpus/images/46bcf9dc45f184b0ade727302449c1fe05b9ffc87110bc1b342b3b8cc0f3065e.png",
+        "sha256": "46bcf9dc45f184b0ade727302449c1fe05b9ffc87110bc1b342b3b8cc0f3065e",
+        "width": 500,
+        "height": 600,
+        "status": "downloaded"
+      }
+    },
+    {
+      "id": "graphic-v2-515cec5dc5ea",
+      "url": "https://jonathanmccabe.com/wp-content/uploads/zooms/frieze_y_0001/frieze_y_0001_files/20/500_0.jpg",
+      "error": null,
+      "work_id": "graphic-v2-515cec5dc5ea",
+      "artist": "Jonathan McCabe",
+      "title": "Origami Butterfly Friezes",
+      "sheet": ".work/external-art-research/graphicv2-qc-friezes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {}
+    },
+    {
+      "id": "graphic-v2-515cec5dc5ea",
+      "url": "https://jonathanmccabe.com/wp-content/uploads/zooms/frieze_y_0002/frieze_y_0002_files/20/500_0.jpg",
+      "error": null,
+      "work_id": "graphic-v2-515cec5dc5ea",
+      "artist": "Jonathan McCabe",
+      "title": "Origami Butterfly Friezes",
+      "sheet": ".work/external-art-research/graphicv2-qc-friezes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {}
+    },
+    {
+      "id": "graphic-v2-515cec5dc5ea",
+      "url": "https://jonathanmccabe.com/wp-content/uploads/zooms/frieze_y_0003/frieze_y_0003_files/20/500_0.jpg",
+      "error": null,
+      "work_id": "graphic-v2-515cec5dc5ea",
+      "artist": "Jonathan McCabe",
+      "title": "Origami Butterfly Friezes",
+      "sheet": ".work/external-art-research/graphicv2-qc-friezes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {}
+    },
+    {
+      "id": "graphic-v2-515cec5dc5ea",
+      "url": "https://jonathanmccabe.com/wp-content/uploads/zooms/frieze_y_0004/frieze_y_0004_files/20/500_0.jpg",
+      "error": null,
+      "work_id": "graphic-v2-515cec5dc5ea",
+      "artist": "Jonathan McCabe",
+      "title": "Origami Butterfly Friezes",
+      "sheet": ".work/external-art-research/graphicv2-qc-friezes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {}
+    },
+    {
+      "id": "graphic-v2-515cec5dc5ea",
+      "url": "https://jonathanmccabe.com/wp-content/uploads/zooms/frieze_y_0006/frieze_y_0006_files/20/500_0.jpg",
+      "error": null,
+      "work_id": "graphic-v2-515cec5dc5ea",
+      "artist": "Jonathan McCabe",
+      "title": "Origami Butterfly Friezes",
+      "sheet": ".work/external-art-research/graphicv2-qc-friezes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {}
+    },
+    {
+      "id": "graphic-v2-515cec5dc5ea",
+      "url": "https://jonathanmccabe.com/wp-content/uploads/zooms/frieze_y_0007/frieze_y_0007_files/20/500_0.jpg",
+      "error": null,
+      "work_id": "graphic-v2-515cec5dc5ea",
+      "artist": "Jonathan McCabe",
+      "title": "Origami Butterfly Friezes",
+      "sheet": ".work/external-art-research/graphicv2-qc-friezes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {}
+    },
+    {
+      "id": "graphic-v2-515cec5dc5ea",
+      "url": "https://jonathanmccabe.com/wp-content/uploads/zooms/frieze_y_0008/frieze_y_0008_files/20/500_0.jpg",
+      "error": null,
+      "work_id": "graphic-v2-515cec5dc5ea",
+      "artist": "Jonathan McCabe",
+      "title": "Origami Butterfly Friezes",
+      "sheet": ".work/external-art-research/graphicv2-qc-friezes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {}
+    },
+    {
+      "id": "graphic-v2-515cec5dc5ea",
+      "url": "https://jonathanmccabe.com/wp-content/uploads/zooms/frieze_y_0009/frieze_y_0009_files/20/500_0.jpg",
+      "error": null,
+      "work_id": "graphic-v2-515cec5dc5ea",
+      "artist": "Jonathan McCabe",
+      "title": "Origami Butterfly Friezes",
+      "sheet": ".work/external-art-research/graphicv2-qc-friezes.jpg",
+      "retained_in_final_selection": true,
+      "available_download_receipt": {}
+    },
+    {
+      "work_id": "graphic-v2-515cec5dc5ea",
+      "artist": "Jonathan McCabe",
+      "title": "Origami Butterfly Friezes",
+      "url": "https://jonathanmccabe.com/wp-content/uploads/zooms/frieze_y_0001/frieze_y_0001_files/20/500_0.jpg",
+      "sheet": ".work/external-art-research/graphicv2-qc-Origami.jpg",
+      "retained_in_final_selection": true,
+      "review_note": "Detailed source-tile inspection; Cellularity/Evotrees level10 crops were inspected to verify why only level8 is a whole-artwork overview, and these crops are not selected."
+    },
+    {
+      "work_id": "graphic-v2-ab774c35ff24",
+      "artist": "Jonathan McCabe",
+      "title": "Cellularity",
+      "url": "https://jonathanmccabe.com/wp-content/uploads/zooms/zoom_d_0020/d_0020_files/10/0_0.jpg",
+      "sheet": ".work/external-art-research/graphicv2-qc-Cellularity.jpg",
+      "retained_in_final_selection": false,
+      "review_note": "Detailed source-tile inspection; Cellularity/Evotrees level10 crops were inspected to verify why only level8 is a whole-artwork overview, and these crops are not selected."
+    },
+    {
+      "work_id": "graphic-v2-29216ab3eefe",
+      "artist": "Jonathan McCabe",
+      "title": "Evotrees",
+      "url": "https://jonathanmccabe.com/wp-content/uploads/zooms/zoom_d_0068/d_0068_files/10/0_0.jpg",
+      "sheet": ".work/external-art-research/graphicv2-qc-Evotrees.jpg",
+      "retained_in_final_selection": false,
+      "review_note": "Detailed source-tile inspection; Cellularity/Evotrees level10 crops were inspected to verify why only level8 is a whole-artwork overview, and these crops are not selected."
+    }
+  ],
+  "findings_and_repairs": [
+    {
+      "finding": "Unprocessed reference portrait in Sighack Poisson tutorial was a source input, not generated output.",
+      "action": "Removed portrait6.jpg; retained generated Poisson drawings."
+    },
+    {
+      "finding": "Source portrait l4.jpg in RGB averaging article was a source input.",
+      "action": "Removed source photo; kept final.gif computed circle reconstruction comparison."
+    },
+    {
+      "finding": "All eight restored k-means palette figures pair a photograph with five computed palette swatches.",
+      "action": "Retained all eight with explicit input-plus-palette process roles. Visually verified all eight."
+    },
+    {
+      "finding": "Fintech gala and Swiss Design Stories galleries mixed design outputs with distant/event photographs.",
+      "action": "Removed six Fintech event/signing views and five Swiss generic event views; retained design boards, packages and poster. Attribution names collaboration; no computational technique claimed."
+    },
+    {
+      "finding": "McCabe friezes are 1024000×1024 panoramas; complete overview source tiles become1000×1.",
+      "action": "Replaced eight unusable strips with source-provided centre 1024×1024 detail tiles. Visually reviewed all eight and explicitly labelled partial-artwork detail scope."
+    },
+    {
+      "finding": "Current McCabe Cellularity/Evotrees use256px Deep Zoom tiles. Level10 files are cropped tiles rather than larger whole-artwork previews.",
+      "action": "Retained level8 full overview tiles with resolution limitation, inspected one level10 crop of each but did not mislabel crops as whole artworks."
+    },
+    {
+      "finding": "Sighack utility equation SVGs are not artwork. Hoff selected graph SVGs contain substantive generated graph illustrations.",
+      "action": "Removed equation/utility SVGs; retain six Hoff artwork/debug SVGs for collector SVG handling."
+    }
+  ],
+  "limits": [
+    "Most selected images remain unviewed individually. Complete index adjudication is not complete visual acceptance.",
+    "Only still/frame0 images were inspected; optical/kinetic behavior and temporal variation remain unassessed.",
+    "Physical output, process/reference composites, gallery installations and generated digital images have different explicit roles.",
+    "Contemporaneous downloader receipts may be absent or failed during collection; final corpus receipts determine download success.",
+    "No undocumented algorithm is inferred solely from visual similarity."
+  ]
+}

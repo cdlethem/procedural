@@ -307,7 +307,7 @@ def _validate_batch1_surface(root, snapshots):
     prior_names = {HELPER, test, JS_INDEX, BATCH1_GENERATOR}
     required = prior_names | {BATCH1_GUIDES} | {f'packages/javascript/src/{stem}.js' for stem, _, _ in BATCH1_BINDINGS}
     evidence = {P5_TENFOLD, BATCH1_PRIOR_WEB, *BATCH1_ROOT_REVIEWS}
-    if (not _accepted(review) or not _bindings(root, review, {})
+    if (not _accepted(review) or not _bindings(root, review, snapshots)
             or not required.issubset(review['implementation_sha256'])
             or not evidence.issubset(review['evidence_sha256'])
             or review.get('previous_review_sha256') != _digest(_read(root, P5_TENFOLD))):
@@ -324,11 +324,204 @@ def _validate_batch1_surface(root, snapshots):
     for name in expected:
         entry = review['extensions'][name]
         if (set(entry) != {'before', 'after'} or entry['before'] != prior[name]
-                or entry['after'] != expected[name] or entry['after'].encode() != _read(root, name)):
+                or entry['after'] != expected[name] or entry['after'].encode() != snapshots.get(name, _read(root, name))):
             return False
     for name in BATCH1_ROOT_REVIEWS:
         accepted = json.loads(_read(root, name))
         if not _accepted(accepted) or not _bindings(root, accepted, {}):
+            return False
+    snapshots.update({name: value.encode() for name, value in prior.items()})
+    return True
+
+
+EXPANSION_SURFACE = 'evidence/conformance/external-expansion-surface-review.json'
+EXPANSION_GUIDES = 'apps/web/content/external-expansion-api.mjs'
+EXPANSION_ROOT = 'evidence/expansion/first-batch/root-review.json'
+EXPANSION_BINDINGS = (('radius-pairs-2d', 'radiusPairs2D', 'RadiusPairs2DError'),
+                      ('pair-force-step-2d', 'pairForceStep2D', 'PairForceStep2DError'))
+EXPANSION_ADDITIONS = '\nexport { defaultPalettes } from "./default-palettes.js";\n' + ''.join(
+    f'export {{ {name}, {error} }} from "./{stem}.js";\n' for stem, name, error in EXPANSION_BINDINGS)
+
+
+def expansion_generator_successor(before):
+    """Exactly two expansion guides/bindings; existing guide meanings stay unchanged."""
+    changes = (
+        ('import { surveyCoverageApiGuides } from "../content/survey-coverage-api.mjs";\n',
+         'import { surveyCoverageApiGuides } from "../content/survey-coverage-api.mjs";\nimport { externalExpansionApiGuides } from "../content/external-expansion-api.mjs";\n'),
+        ('const bindings = {\n', 'const bindings = {\n' + ''.join(
+            f'  "{stem}": ["{stem}", "{name}"],\n' for stem, name, _ in EXPANSION_BINDINGS)),
+        ('const guide = surveyCoverageApiGuides[catalog.id] ?? apiGuides[catalog.id];',
+         'const guide = externalExpansionApiGuides[catalog.id] ?? surveyCoverageApiGuides[catalog.id] ?? apiGuides[catalog.id];'),
+    )
+    result = before
+    for old, new in changes:
+        if result.count(old) != 1:
+            return None
+        result = result.replace(old, new)
+    return result
+
+
+def _validate_expansion_surface(root, snapshots):
+    review = json.loads(_read(root, EXPANSION_SURFACE))
+    older = json.loads(_read(root, BATCH1_SURFACE))
+    accepted = json.loads(_read(root, EXPANSION_ROOT))
+    prior_names = {HELPER, 'tests/test_reviewed_export_extension.py', JS_INDEX, BATCH1_GENERATOR}
+    required = prior_names | {EXPANSION_GUIDES, 'packages/javascript/src/default-palettes.js'} | {
+        f'packages/javascript/src/{stem}.js' for stem, _, _ in EXPANSION_BINDINGS}
+    if (not _accepted(review) or not _bindings(root, review, snapshots)
+            or not _accepted(accepted) or not _bindings(root, accepted, snapshots)
+            or not required.issubset(accepted['implementation_sha256'])
+            or not required.issubset(review['implementation_sha256'])
+            or not {BATCH1_SURFACE, EXPANSION_ROOT}.issubset(review['evidence_sha256'])
+            or review.get('previous_review_sha256') != _digest(_read(root, BATCH1_SURFACE))):
+        return False
+    prior = review['previous_bytes']
+    if set(prior) != prior_names or set(review['extensions']) != {JS_INDEX, BATCH1_GENERATOR}:
+        return False
+    for name in prior:
+        if _digest(prior[name].encode()) != older['implementation_sha256'][name]:
+            return False
+    expected = {JS_INDEX: prior[JS_INDEX] + EXPANSION_ADDITIONS,
+                BATCH1_GENERATOR: expansion_generator_successor(prior[BATCH1_GENERATOR])}
+    for name in expected:
+        entry = review['extensions'][name]
+        if (set(entry) != {'before', 'after'} or entry['before'] != prior[name]
+                or entry['after'] != expected[name]
+                or entry['after'].encode() != snapshots.get(name, _read(root, name))):
+            return False
+    snapshots.update({name: value.encode() for name, value in prior.items()})
+    return True
+
+
+WEB_GALLERY = 'evidence/conformance/external-expansion-gallery-compatibility-review.json'
+WEB_GALLERY_ROOT = 'evidence/web/external-expansion-gallery-review.json'
+WEB_GALLERY_PREVIOUS = 'evidence/web/p5-tenfold/root-review.json'
+WEB_GALLERY_FILES = frozenset((
+    'apps/web/lib/studio.ts', 'apps/web/lib/render-studio.ts', 'apps/web/lib/harness-render.ts',
+    'apps/web/scripts/generate-gallery.mjs', 'apps/web/scripts/sketch-source.mjs', 'apps/web/tests/studio.test.ts',
+))
+WEB_GALLERY_DEPENDENCIES = frozenset((
+    'apps/web/lib/adapters/external-expansion.ts',
+    'apps/web/content/external-expansion-studies.mjs',
+    'apps/web/content/agent-trails.md',
+    'apps/web/content/contact-network.md',
+    'apps/web/content/geometric-panel.md',
+    'apps/web/content/orbital-brush.md',
+    'apps/web/content/ornament-poster.md',
+))
+
+
+def web_gallery_successor(name, before):
+    """Apply only the reviewed five-study registration and source extraction edits."""
+    if name == 'apps/web/lib/studio.ts':
+        changes = (
+            ('import { expansionDefinitions } from "./adapters/expansion";\n',
+             'import { expansionDefinitions } from "./adapters/expansion";\n'
+             'import {\n  externalExpansionDefinitions,\n  externalExpansionPalette,\n'
+             '} from "./adapters/external-expansion";\n'),
+            ('  ...expansionDefinitions,\n',
+             '  ...expansionDefinitions,\n  ...externalExpansionDefinitions,\n'),
+            ('function paletteFor(id: string): number[] {\n',
+             'function paletteFor(id: string): number[] {\n'
+             '  const external = externalExpansionPalette(id);\n'
+             '  if (external) return external;\n'),
+        )
+    elif name == 'apps/web/lib/render-studio.ts':
+        changes = (
+            ('import { drawExpansion, expansionDefinitions } from "./adapters/expansion";\n',
+             'import { drawExpansion, expansionDefinitions } from "./adapters/expansion";\n'
+             'import {\n  drawExternalExpansion,\n  externalExpansionDefinitions,\n'
+             '} from "./adapters/external-expansion";\n'),
+            ('const expansionIds = new Set(expansionDefinitions.map((definition) => definition.id));\n',
+             'const expansionIds = new Set(expansionDefinitions.map((definition) => definition.id));\n'
+             'const externalExpansionIds = new Set(\n'
+             '  externalExpansionDefinitions.map((definition) => definition.id),\n);\n'),
+            ('  if (expansionIds.has(layer.technique)) return drawExpansion(p, layer);\n',
+             '  if (expansionIds.has(layer.technique)) return drawExpansion(p, layer);\n'
+             '  if (externalExpansionIds.has(layer.technique)) return drawExternalExpansion(p, layer);\n'),
+        )
+    elif name == 'apps/web/lib/harness-render.ts':
+        changes = (('import { drawExpansion, expansionDefinitions } from "./adapters/expansion";\n', 'import { drawExpansion, expansionDefinitions } from "./adapters/expansion";\nimport {\n  drawExternalExpansion,\n  externalExpansionDefinitions,\n} from "./adapters/external-expansion";\n'), ('const expansionIds = new Set(expansionDefinitions.map((item) => item.id));\n', 'const expansionIds = new Set(expansionDefinitions.map((item) => item.id));\nconst externalExpansionIds = new Set(externalExpansionDefinitions.map((item) => item.id));\n'), ('  if (expansionIds.has(workflow.technique)) return drawExpansion(p, workflow);\n', '  if (expansionIds.has(workflow.technique)) return drawExpansion(p, workflow);\n  if (externalExpansionIds.has(workflow.technique)) return drawExternalExpansion(p, workflow);\n'))
+    elif name == 'apps/web/tests/studio.test.ts':
+        changes = (('all 90 studio definitions', 'all 95 studio definitions'),
+                   ('assert.equal(techniques.length, 90);', 'assert.equal(techniques.length, 95);'))
+    elif name == 'apps/web/scripts/generate-gallery.mjs':
+        changes = (
+            ('import { tenfoldStudies } from "../content/tenfold-studies.mjs";\n',
+             'import { tenfoldStudies } from "../content/tenfold-studies.mjs";\n'
+             'import { externalExpansionStudies } from "../content/external-expansion-studies.mjs";\n'),
+            ('definitions.push(...tenfoldStudies.map(study => [study.slug, study.category, study.operations]));\n',
+             'definitions.push(...tenfoldStudies.map(study => [study.slug, study.category, study.operations]));\n'
+             'definitions.push(...externalExpansionStudies.map(study => [study.slug, study.category, study.operations]));\n'),
+            ('  "masked-partition-marks", "placement-image-marks", "pointer-marks", "relief-marks",\n]);\n',
+             '  "masked-partition-marks", "placement-image-marks", "pointer-marks", "relief-marks",\n]);\n'
+             '// Present package examples that are either private layout helpers or pending separate\n'
+             '// review. Listing them here prevents a directory from becoming a gallery workflow merely\n'
+             '// because it exists; accepted registrations above remain the source of gallery membership.\n'
+             'const pendingExampleSlugs = new Set([\n'
+             '  "motif-compositions",\n  "dye-currents",\n  "field-displacement",\n'
+             '  "flocking-marks",\n  "lingering-links",\n  "octave-noise",\n'
+             '  "pixel-grain",\n  "sensing-trails",\n  "guarded-bands",\n'
+             '  "hatched-islands",\n  "bridge-web",\n  "neighborhood-growth",\n]);\n'),
+            ('if (\n  dirs.length !== slugs.size + nativeOnlySlugs.size ||\n'
+             '  dirs.some((d) => !slugs.has(d) && !nativeOnlySlugs.has(d)) ||\n'
+             '  [...slugs, ...nativeOnlySlugs].some((slug) => !dirs.includes(slug))\n)',
+             'const declaredExampleSlugs = new Set([\n'
+             '  ...slugs,\n  ...nativeOnlySlugs,\n  ...pendingExampleSlugs,\n]);\n'
+             'if (\n  dirs.some((directory) => !declaredExampleSlugs.has(directory)) ||\n'
+             '  [...slugs, ...nativeOnlySlugs].some(\n'
+             '    (slug) => !dirs.includes(slug),\n  )\n)'),
+        )
+    elif name == 'apps/web/scripts/sketch-source.mjs':
+        changes = (
+            ('  for (const group of ["basic", "geometry", "effects", "expansion", "paths", "systems", "materials"]) {',
+             '  for (const [group, dispatchName] of [\n'
+             '    ["basic", "basic"],\n    ["geometry", "geometry"],\n'
+             '    ["effects", "effects"],\n    ["expansion", "expansion"],\n'
+             '    ["external-expansion", "externalExpansion"],\n'
+             '    ["paths", "paths"],\n    ["systems", "systems"],\n'
+             '    ["materials", "materials"],\n  ]) {'),
+            ('`draw${group[0].toUpperCase()}${group.slice(1)}`',
+             '`draw${dispatchName[0].toUpperCase()}${dispatchName.slice(1)}`'),
+        )
+    else:
+        return None
+    result = before
+    for old, new in changes:
+        if result.count(old) != 1:
+            return None
+        result = result.replace(old, new)
+    return result
+
+
+def _validate_web_gallery(root, snapshots):
+    review = json.loads(_read(root, WEB_GALLERY))
+    older = json.loads(_read(root, EXPANSION_SURFACE))
+    previous_web = json.loads(_read(root, WEB_GALLERY_PREVIOUS))
+    web = json.loads(_read(root, WEB_GALLERY_ROOT))
+    test = 'tests/test_reviewed_export_extension.py'
+    prior_names = WEB_GALLERY_FILES | {HELPER, test}
+    required = prior_names | WEB_GALLERY_DEPENDENCIES
+    if (not _accepted(review) or not _accepted(web)
+            or not _bindings(root, review, snapshots)
+            or not _bindings(root, web, snapshots)
+            or not required.issubset(review['implementation_sha256'])
+            or not (WEB_GALLERY_FILES | WEB_GALLERY_DEPENDENCIES).issubset(web['implementation_sha256'])
+            or not {EXPANSION_SURFACE, WEB_GALLERY_ROOT, WEB_GALLERY_PREVIOUS}.issubset(review['evidence_sha256'])
+            or review.get('previous_review_sha256') != _digest(_read(root, EXPANSION_SURFACE))):
+        return False
+    prior = review['previous_bytes']
+    if set(prior) != prior_names or set(review['extensions']) != WEB_GALLERY_FILES:
+        return False
+    for name in prior:
+        source = previous_web if name in WEB_GALLERY_FILES else older
+        if _digest(prior[name].encode()) != source['implementation_sha256'][name]:
+            return False
+    for name in WEB_GALLERY_FILES:
+        entry = review['extensions'][name]
+        if (set(entry) != {'before', 'after'} or entry['before'] != prior[name]
+                or entry['after'] != web_gallery_successor(name, prior[name])
+                or entry['after'].encode() != snapshots.get(name, _read(root, name))):
             return False
     snapshots.update({name: value.encode() for name, value in prior.items()})
     return True
@@ -343,11 +536,22 @@ def historical_export_bytes(root, relative, expected):
     are always entrypoints; runtime operation validation never uses these snapshots.
     """
     batch1_archival_paths = {JS_INDEX, BATCH1_GENERATOR, HELPER, 'tests/test_reviewed_export_extension.py'}
-    if relative not in PATHS and relative not in batch1_archival_paths:
+    archival_paths = batch1_archival_paths | WEB_GALLERY_FILES
+    if relative not in PATHS and relative not in archival_paths:
         return None
     try:
         snapshots = {}
         successor_match = None
+        if (root / WEB_GALLERY).exists():
+            if not _validate_web_gallery(root, snapshots):
+                return None
+            if relative in snapshots and _digest(snapshots[relative]) == expected:
+                successor_match = snapshots[relative]
+        if (root / EXPANSION_SURFACE).exists():
+            if not _validate_expansion_surface(root, snapshots):
+                return None
+            if relative in batch1_archival_paths and _digest(snapshots[relative]) == expected:
+                successor_match = snapshots[relative]
         if (root / BATCH1_SURFACE).exists():
             if not _validate_batch1_surface(root, snapshots):
                 return None

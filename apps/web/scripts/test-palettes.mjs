@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { chromium } from 'playwright';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { defaultPalettes } from '../../../packages/javascript/src/default-palettes.js';
 const base = process.env.WEB_BASE_URL ?? 'http://127.0.0.1:3010';
 const out = resolve('.work/palettes/browser'); await mkdir(out, { recursive: true });
 const browser = await chromium.launch({ headless: true, args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--disable-accelerated-2d-canvas'] });
@@ -13,12 +14,37 @@ page.on('pageerror', error => errors.push(String(error)));
 page.on('response', async response => { if (response.url().endsWith('/harness/palettes') && response.request().method() === 'POST' && response.ok()) { const body = await response.json(); ids.add(body.palette.id); } });
 const name = 'Coastal verification ' + Date.now();
 const colors = ['#113355', '#7a9e9f', '#d9c7a9', '#d98a7e'];
+const builtIn = defaultPalettes[0];
+const representativeDefaults = [defaultPalettes[0], defaultPalettes[1], defaultPalettes[2]];
 const doc = () => page.evaluate(() => JSON.parse(localStorage.getItem('procedurals-studio-v1')));
 const ready = async () => { await page.locator('[data-render-status="ready"]').waitFor({ timeout: 45000 }); if (await page.locator('.studio-workspace').count()) await page.locator('.studio-workspace[data-hydrated="true"]').waitFor(); };
 const save = async () => { const response = page.waitForResponse(r => r.url().endsWith('/harness/palettes') && ['POST', 'PUT'].includes(r.request().method())); await page.getByRole('button', { name: 'Save palette', exact: true }).click(); assert.ok((await response).ok()); await page.getByRole('heading', { name: 'Your palettes', exact: true }).waitFor(); };
 const choose = async (paletteName, action = 'Apply to layer') => { await page.getByRole('dialog', { name: 'Saved palettes', exact: true }).getByRole('article', { name: paletteName, exact: true }).getByRole('button', { name: action, exact: true }).click(); };
 const capture = async name => page.screenshot({ path: resolve(out, name + '.png') });
 try {
+  // Defaults are source data, so they remain useful while the optional saved-palette
+  // service is unavailable and never create a record until the user saves a draft.
+  await page.route('**/harness/palettes', route => route.request().method() === 'GET'
+    ? route.fulfill({ status: 503, json: { error: 'Palette service unavailable for offline check' } })
+    : route.continue());
+  await page.goto(base + '/palettes');
+  const defaultCard = page.getByRole('article', { name: builtIn.name, exact: true });
+  await defaultCard.waitFor();
+  assert.equal(await page.getByRole('heading', { name: 'Default palettes', exact: true }).count(), 1);
+  assert.equal(await defaultCard.getByRole('button', { name: 'Edit', exact: true }).count(), 0);
+  assert.equal(await defaultCard.getByRole('button', { name: 'Delete', exact: true }).count(), 0);
+  await page.getByLabel('Search palettes', { exact: true }).fill(builtIn.tags[0]);
+  assert.equal(await defaultCard.count(), 1);
+  await defaultCard.getByRole('button', { name: 'Customize', exact: true }).click();
+  assert.equal(await page.getByLabel('Palette name', { exact: true }).inputValue(), builtIn.name);
+  for (let i = 0; i < builtIn.colors.length; i++) assert.equal(await page.getByLabel(`Library color ${i + 1} hex`, { exact: true }).inputValue(), builtIn.colors[i]);
+  await page.getByLabel('Library color 1 hex', { exact: true }).fill('#000000');
+  assert.deepEqual(builtIn.colors, defaultPalettes[0].colors);
+  assert.equal(ids.size, 0, 'customizing a built-in does not write to the palette store');
+  await page.getByRole('button', { name: 'Back to library', exact: true }).click();
+  await page.unroute('**/harness/palettes');
+  scenarios.push('Built-in defaults stay available when the saved service fails; tag search and Customize use detached unsaved copies without store writes');
+
   await page.goto(base + '/palettes');
   await page.getByRole('button', { name: 'Create palette', exact: true }).click();
   await page.getByLabel('Palette name', { exact: true }).fill(name);
@@ -61,12 +87,23 @@ try {
   scenarios.push('Saved palette changes actual workflow pixels; geometry unchanged; undo/redo, recovery and JSON export preserve exact colors');
 
   await page.getByRole('tab', { name: 'Style', exact: true }).click();
+  await page.getByRole('button', { name: 'Saved palettes', exact: true }).click(); await choose(builtIn.name);
+  const builtinNumbers = builtIn.colors.map(color => parseInt(color.slice(1), 16));
+  await page.waitForFunction(colors => JSON.stringify(JSON.parse(localStorage.getItem('procedurals-studio-v1')).layers[0].content.palette) === JSON.stringify(colors), builtinNumbers);
+  const builtinApplied = await doc();
+  assert.deepEqual({ ...builtinApplied.layers[0].content, palette: applied.layers[0].content.palette }, applied.layers[0].content);
+  await page.getByLabel('Palette color 1 hex', { exact: true }).fill('#000000');
+  assert.deepEqual(builtIn.colors, defaultPalettes[0].colors);
+  scenarios.push('A built-in palette applies as detached colors to a Studio layer; later layer edits leave immutable default data unchanged');
+
+  await page.getByRole('tab', { name: 'Style', exact: true }).click();
   await page.getByRole('button', { name: 'Saved palettes', exact: true }).click();
   await page.getByRole('button', { name: 'Save current layer colors', exact: true }).click();
-  for (let i = 0; i < colors.length; i++) assert.equal(await page.getByLabel(`Library color ${i + 1} hex`, { exact: true }).inputValue(), colors[i]);
+  const currentLayerColors = ['#000000', ...builtIn.colors.slice(1)];
+  for (let i = 0; i < currentLayerColors.length; i++) assert.equal(await page.getByLabel(`Library color ${i + 1} hex`, { exact: true }).inputValue(), currentLayerColors[i]);
   await page.setViewportSize({ width: 390, height: 844 }); await capture('mobile-editor');
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-  for (let i = 0; i < 8; i++) await page.getByRole('button', { name: 'Add palette color', exact: true }).click();
+  for (let i = currentLayerColors.length; i < 12; i++) await page.getByRole('button', { name: 'Add palette color', exact: true }).click();
   await page.getByLabel('Library color 12 hex', { exact: true }).fill('#ff8844');
   await page.getByLabel('Library color 12 hex', { exact: true }).scrollIntoViewIfNeeded();
   const last = await page.getByLabel('Library color 12 hex', { exact: true }).boundingBox(); assert.ok(last.y + last.height <= 844);
@@ -98,7 +135,31 @@ try {
   assert.equal(await page.getByLabel('Palette color 1 hex', { exact: true }).inputValue(), colors[0]);
   scenarios.push('Same saved palette applies in standalone gallery study controls');
 
+  for (const [index, study] of ['cell-mosaic', 'flow-needles', 'rounded-panels'].entries()) {
+    const palette = representativeDefaults[index];
+    await page.goto(base + `/techniques/${study}`); await ready();
+    const beforePixels = await page.locator('canvas').first().evaluate(canvas => canvas.toDataURL());
+    await page.getByRole('button', { name: 'Saved palettes', exact: true }).click(); await choose(palette.name);
+    for (let color = 0; color < palette.colors.length; color++) assert.equal(await page.getByLabel(`Palette color ${color + 1} hex`, { exact: true }).inputValue(), palette.colors[color]);
+    await page.waitForFunction(before => document.querySelector('canvas')?.toDataURL() !== before, beforePixels);
+    await capture(`default-${study}`);
+  }
+  scenarios.push('Three representative gallery studies render after applying three distinct built-in defaults');
+
+  await page.goto(base + '/palettes');
+  await page.setViewportSize({ width: 390, height: 844 });
+  const defaultCards = page.getByRole('article').filter({ has: page.getByRole('button', { name: 'Customize', exact: true }) });
+  assert.equal(await defaultCards.count(), defaultPalettes.length);
+  await capture('mobile-defaults');
+  await defaultCards.last().scrollIntoViewIfNeeded();
+  const finalDefault = await defaultCards.last().boundingBox(); assert.ok(finalDefault && finalDefault.y >= 0 && finalDefault.y < 844);
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await capture('mobile-defaults-last');
+  await page.setViewportSize({ width: 1440, height: 900 });
+  scenarios.push('All built-in default cards remain reachable without horizontal overflow on a 390px viewport');
+
   let captured;
+  await page.route('**/harness/tool', route => route.fulfill({ json: { ok: true, documentHandle: 'palette-browser-context' } }));
   await page.route('**/harness/run', route => { captured = route.request().postDataJSON(); return route.fulfill({ json: { ok: false, error: { message: 'Prompt payload captured for UI test' } } }); });
   await page.goto(base + '/studio'); await ready();
   if (process.env.PALETTE_SOURCE_DOCUMENT) {
@@ -123,7 +184,7 @@ try {
   for (const color of colors) assert.ok(captured.prompt.includes(color)); assert.match(captured.prompt, /Coastal circles/);
   scenarios.push('Explorations includes exact saved colors alongside artist request');
   assert.deepEqual(errors, []);
-  await writeFile(resolve(out, 'report.json'), JSON.stringify({ status: 'passed', scenarios, errors, limits: 'Palette generation UI replays a validated response; generated-art run is intercepted to inspect its request. Library storage, workflow drawing, export and document contexts are live.' }, null, 2));
+  await writeFile(resolve(out, 'report.json'), JSON.stringify({ status: 'passed', scenarios, errors, limits: 'Palette generation UI replays a validated response. Prompt request checks use a mocked document-context response and intercepted run request; palette storage, workflow drawing and export are live.' }, null, 2));
   console.log(JSON.stringify({ status: 'passed', scenarios }, null, 2));
 } catch (error) { await capture('failure'); throw error; }
 finally {

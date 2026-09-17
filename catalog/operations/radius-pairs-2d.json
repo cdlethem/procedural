@@ -1,0 +1,141 @@
+{
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability_decision": "design/capabilities/proximity-interactions.md",
+  "design_review": "design/operations/proximity-interactions-contract-review.md",
+  "provenance": [],
+  "fixture_format": "exact-json-output",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original design studies, not an external artist recreation. Reas contact persistence and sensor-motor behavior remain excluded."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture challenge",
+    "status": "Contract reviewed before implementation; target acceptance pending."
+  },
+  "id": "spatial.radius-pairs-2d",
+  "decision_cluster": "spatial.radius-pairs-2d",
+  "description": "Enumerate all unordered point-index pairs within an inclusive Euclidean radius using a deterministic x sweep.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 2147483647
+      },
+      "radius": {
+        "type": "number",
+        "minimum": 0
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "points",
+      "radius",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "pairs": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483646
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 2147483647
+      }
+    },
+    "required": [
+      "pairs"
+    ],
+    "additionalProperties": false
+  },
+  "output_invariants": "Strict lexicographic original-index pairs 0<=i<j<N, no duplicates/self pairs; fully detached. Empty input returns no pairs.",
+  "behavior": {
+    "validation": "Exact passive Object/null-prototype record; no classes, accessors, symbols, extras or coercion. Dense ordinary arrays with own data slots and no extras; proxies outside interchange. Point arrays contain finite binary64 pairs, length at most2147483647. Canonicalize accepted zero values. Validate all fields and correspondence in input-schema order before work checks, including empty/identity cases. No input mutation or aliasing; all output arrays and pairs detached.",
+    "work": "After static validation charge N events before sorting/output; then one event per unordered pair whose rounded absolute x difference<=radius, including y/distance rejections. Charge candidate before y/hypot arithmetic. If next event exceeds maxWork, WORK_LIMIT, no partial result. Sorting/static validation are not budget events. O(N log N+C+K log K), O(N+K) storage; C may be N(N-1)/2 for vertical or dense points. Budget behavior depends on orientation.",
+    "algorithm": "Sort indices by ascending point x with original index tie break (compare values, do not use subtraction as comparator). For each sorted index a visit subsequent sorted indices b ascending. Compute dx=x[b]-x[a]; if dx>radius break (positive infinity is an outside screen). Otherwise charge candidate; compute dy=abs(y[b]-y[a]); if dy>radius skip, including infinity. If radius==0 accept only exact x and y equality. Otherwise accept iff existing fdlibmHypot(dx,dy)<=radius; an infinite hypot is outside. Store [min(originalA,originalB),max(...)]. Sort output pairs lexicographically by integer indices.",
+    "numerics": "Binary64 primitive rounding, no FMA, no epsilon. fdlibmHypot is the existing audited profile in packages/javascript/src/internal/fdlibm-hypot.js (including its subnormal correction). Topology compares exactly under that profile, not abstract exact-real geometry. Input numbers finite; subtraction/hypot infinity is allowed only as an outside screen.",
+    "environment": "No RNG, clock, renderer, wrapping, domain, persistent index or hidden identity. Coordinate units arbitrary consistent Cartesian units; query independent of axis handedness.",
+    "native_surface": "radiusPairs2D(input), RadiusPairs2DError from radius-pairs-2d.js and package index."
+  },
+  "errors": {
+    "INVALID_INPUT": "Carrier, shape or finite-domain failure before work.",
+    "WORK_LIMIT": "Next event exceeds maxWork, no partial output."
+  },
+  "parameters": {
+    "points": {
+      "unit": "Cartesian coordinates; arbitrary consistent units.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design semantics; no corpus-derived default or measured recommended range."
+    },
+    "radius": {
+      "unit": "Inclusive distance in coordinate units.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design semantics; no corpus-derived default or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "Nonnegative safe-integer event budget, design bound rather than an artistic range.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design semantics; no corpus-derived default or measured recommended range."
+    }
+  },
+  "fixtures": "fixtures/operations/radius-pairs-2d.json"
+}

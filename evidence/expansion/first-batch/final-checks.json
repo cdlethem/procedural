@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "scope": "Final metadata/integration verification after native and package acceptance. No broad whole-app or corpus certification.",
+  "commands": {
+    "contract_prerequisites": "Both check_phase2_design --contract-cluster invocations passed before implementation.",
+    "core": "42 frozen vectors,16 brute-force distributions and carrier/ownership/state challenges passed; core.json.",
+    "export_compatibility": "python3 -m unittest tests.test_reviewed_export_extension passed, including exact successor and fail-closed mutations.",
+    "catalog": "uv run python tools/check_catalog.py --write-reference passed with zero errors; .work/expansion-first/catalog-check.log.",
+    "api": "node apps/web/scripts/generate-api.mjs and --check passed;69 entries. New examples execute through actual public exports; support metadata is scoped.",
+    "typecheck": "npm run typecheck in apps/web passed.",
+    "visual_navigation": "python3 tools/build_visual_review.py passed;96 groups746 images,no missing/changed images.",
+    "bindings": "Every final root implementation/evidence hash and new guide local link checked."
+  },
+  "p5_current_counts": {
+    "core": 69,
+    "native": 69,
+    "technique": 5
+  },
+  "editable_package_workflows": 111,
+  "web_gallery_studies": 90,
+  "limits": [
+    "No deployment, registry publication or cross-browser/platform claim.",
+    "First A/narrow B batch complete; remaining expansion stages stay planned."
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "date": "2026-09-17T18:49:04.942638+00:00",
+  "scope": "First prescribed external-art implementation batch: A original motif compositions plus narrow B radius pairs and synchronous pair-force response; p5 package only. No source-artwork recreation, target parity or deployment.",
+  "operations": [
+    "spatial.radius-pairs-2d",
+    "motion.pair-force-step-2d"
+  ],
+  "new_native_studies": [
+    "ornament-poster",
+    "geometric-panel",
+    "orbital-brush",
+    "contact-network",
+    "agent-trails"
+  ],
+  "implementation_sha256": {
+    "packages/javascript/src/radius-pairs-2d.js": "0e2fe20f0c03d9d93bd7e92a2eb50b28a3a18967111c38ffcddc41b3eff1b551",
+    "packages/javascript/src/pair-force-step-2d.js": "f5066eb907c4bba004b8439e87458636dd0bc8ad61e241246ab8069f5670fbfa",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "tests/native/proximity-interactions-javascript.mjs": "8e1c5421f06564a19d8501cad1cbd850c79ba9dc747faa5a45a314a7cf210d07",
+    "tests/native/motif-compositions-javascript.mjs": "d4e6883c851129261c5bebaea4d7189e29e341e3ecfc4e298620fae08d8c46dc",
+    "tools/serve_survey_coverage_studies.mjs": "95688496fa8e245101b05f0765889263727d75aaf9db9bcdf569c611bedaad37",
+    "packages/javascript/examples/motif-compositions/compositions.js": "2010c0d71478646a180c5541879399b32ca01bc99806009a2426a5ea33406df9",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/javascript/src/default-palettes.js": "17b7ae9166e35a266998a182f62e8dc0ad0d00db1e8c5934ff6e0034f4bcf8d1",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/src/resample-polyline-2d.js": "0cadef92e1a999ebe8f58bc17b7dc82341db03b190cf4ebf8087058657b0ff42",
+    "packages/javascript/examples/ornament-poster/index.html": "5339b460976f7300f6ce5484266bc2072441e858e4cc0af69aa83743e60ba842",
+    "packages/javascript/examples/ornament-poster/sketch.js": "548642ee799d64f6fb211a07e0ddb53419db2300ec3309a8d6bf4f879b36a16d",
+    "packages/javascript/examples/geometric-panel/index.html": "6d5790173a1584ee85921a2fce5a2a9ebcff0540d7c926dba5d98313b9038de6",
+    "packages/javascript/examples/geometric-panel/sketch.js": "262d90ac419b34d5aa1534604ed642ba3c0f0404d7ac80b6438f2abd91e78e00",
+    "packages/javascript/examples/orbital-brush/index.html": "86e8597099e1748cb5ff607336e4f6cb33cd5b5350808d45a9a99555526310b9",
+    "packages/javascript/examples/orbital-brush/sketch.js": "b76c693d8aec9390f1b85683c832277be1e329821758079d280979ec58b26cc7",
+    "tests/native/proximity-studies-javascript.mjs": "536eb9770bf13a397e601e8ebf3dd689679f22681951544e4fd5ae9b1e07e49a",
+    "packages/javascript/src/adjacency-tile-collapse-2d.js": "ad70df385f1066de90fdb0b04ac84535cd9370a522b3ed91b996235d936c51e4",
+    "packages/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
+    "packages/javascript/src/assemble-segment-chains-2d.js": "8ab83d01e0dcff42e6e75b183aa26596511ed5bc5a1a734c2791ff2455096291",
+    "packages/javascript/src/bayer-dither.js": "2c6b749115c51e0569be56612fb9a1edcf1f5906718389a0157f5d8c2dcf4a43",
+    "packages/javascript/src/binary-cell-partition.js": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00",
+    "packages/javascript/src/binary-morphology-2d.js": "112b2e90fae068250c8cf16b2906cabf463b21e3138bb0be164c9b68e3198151",
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "packages/javascript/src/chaikin-polyline-2d.js": "5f7dd247985be361679e15f4fb2a7bd5e033927b53e1d6a1a85d2a30685ebb97",
+    "packages/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    "packages/javascript/src/convex-hull-2d.js": "d156a22647adb5fe931c8740ee2c74eae7f4b243de8bc6fedc714e49139c0075",
+    "packages/javascript/src/convex-polygon-placements.js": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52",
+    "packages/javascript/src/convolve-2d-signed.js": "88a639ede86d5f656ad83fddc3f4063da7b97c824cf6afd77344038aac03309d",
+    "packages/javascript/src/cost-grid-paths-2d.js": "73f133373556969568b16baab369aedd944c7fa08671bbf418db319e32f364b6",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/damped-wave-step-2d.js": "6d309ed8b0bf78d5abb5097d24839f62019e57a0c4aadac41e2d9d51d96aeeaa",
+    "packages/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    "packages/javascript/src/disc-projection.js": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1",
+    "packages/javascript/src/elementary-cellular-rows.js": "cf99a0c8cea6f0f645df343765218bf91c372a3aeaefe7fb8cbb2c3aaffd4af6",
+    "packages/javascript/src/euclidean-distance-transform-2d.js": "d23b9f390d8f5bf2b913b9d046671969226cc4d0062d799035c715d6b5f23fb7",
+    "packages/javascript/src/extrude-simple-polygon-3d.js": "7b13ac647e6115dbcdd29ae1346eb7df84894af97fa4def05624b34e37e16740",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/field-displace-2d.js": "cda0d26f09f511d6f3abb2be26908600ab01d1baa4487fb7fe765686f424b090",
+    "packages/javascript/src/floyd-steinberg-dither.js": "9ff206e74a55a799e9cecb7844b8f7640ec1a20cf726b8e2ed30f547e7f73283",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-noise-3d-01.js": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c",
+    "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    "packages/javascript/src/gray-scott-step-2d.js": "3106ec4ffbb2b8a2bab29406f9d49a62e4831ccf67af18a320b899cd494adfbc",
+    "packages/javascript/src/index.js": "8e4172b8f46b5f02efdf4cfd22be1009e4ccd2cee00e7e5270f2dda84262ef1d",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+    "packages/javascript/src/internal/geometry-a-utils.js": "b13eec1218c84e3758c8b831182518a2b069be6fb355561bd512a259c3c94a45",
+    "packages/javascript/src/internal/geometry-b-utils.js": "72e6dae1c98dc48285764908c38999127390520902d69a2dadebf7fa2b53c773",
+    "packages/javascript/src/internal/mesh-study-utils.js": "3e7f9501ece2259c768e296978b2d9c9292437ea561a4120566211a4a14561bd",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+    "packages/javascript/src/internal/systems-a-utils.js": "c6e4920c72648b559fb70395a51ead4deb47e972cd91ae54145d1b1c1e5d5204",
+    "packages/javascript/src/life-like-step-2d.js": "37b145560381679290e862addbff05ed4adf94b1b90fdfd90400116132c1fd4f",
+    "packages/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    "packages/javascript/src/lloyd-relaxation-2d.js": "85d30436973e1010a49ae159f10ca00e0c0b6b546d95345b175c5b55bf6ff5b3",
+    "packages/javascript/src/loop-subdivide-triangles-3d.js": "848f5258859d0fafa0ac82a4b71dc04612f5c219fa926c2e3d9f4f24f229eab0",
+    "packages/javascript/src/marching-squares-2d.js": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d",
+    "packages/javascript/src/masked-source-over.js": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d",
+    "packages/javascript/src/median-cut-quantize.js": "10c334b0897c28a6ea722407a50f30dc74c4e6da2d7134322155266950d3ccf8",
+    "packages/javascript/src/nearest-segment-contact.js": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d",
+    "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    "packages/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    "packages/javascript/src/octave-gradient-noise.js": "ea3556c22d7d8ae04b5863011ad9f59dfd7d2a2583ba1b6e6e9dbe7641faca10",
+    "packages/javascript/src/offset-polyline-2d.js": "eb42f6a1bba9bf15cfc6d873fba8896bce09a5b5f9168ffd199119e643c38382",
+    "packages/javascript/src/oklab-ramp.js": "b0523d44f8556694f9c81bb8c561a9d2550a9f309ead76f4aa67400811bd44de",
+    "packages/javascript/src/parallel-token-rewrite.js": "0801534342dafd5b394e900a19edf051645a1f0666bf9f52744d6ae28936c7c9",
+    "packages/javascript/src/parallel-transport-ribbon-3d.js": "9f5d099e4777ffeb2e897c5155466fe797d010dc31b96edb4d5d9a7c59393fdf",
+    "packages/javascript/src/poisson-disc-2d.js": "ccdf5f339ad29589ad44ae5a1585283a52bb033c1240ba86314a83254df4cb19",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/javascript/src/radial-pull.js": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c",
+    "packages/javascript/src/raster-crossfade.js": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19",
+    "packages/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    "packages/javascript/src/retained-rectangle-cuts.js": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866",
+    "packages/javascript/src/rk4-vector-grid-trace-2d.js": "f29ad04d1629d04c1d21cc15f901abb6404c6b6afc9af1699f1c070e99f0e281",
+    "packages/javascript/src/scalar-grid-curl-2d.js": "6b3237010420fbe77d2770aa8d71436c223522506e68244944bb053e8b1eef89",
+    "packages/javascript/src/seeded-depth-first-spanning-tree.js": "7b2d71cef7caad248bc511d715a68ac379addc6bed3adc22605502bc05b82c57",
+    "packages/javascript/src/seeded-pixel-grain.js": "cdc5961f7ac0cf09cbd15b443de06e1777fccdf2b3ccb222a4ad06ddf24b8ce2",
+    "packages/javascript/src/segment-clip.js": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4",
+    "packages/javascript/src/separable-blur.js": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632",
+    "packages/javascript/src/simplify-polyline-2d.js": "b874b18cf0ee75397f09676d5bfe4f66fbeb8987e260577a0579a613799b1feb",
+    "packages/javascript/src/skyline-pack-2d.js": "427c4ebd2d16b163abdc31e8ffe1348b0d9e10e96f6b7dfdd2524fbebe763de7",
+    "packages/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    "packages/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+    "packages/javascript/src/token-turtle-2d.js": "24ecdf07d999153c7f611e2c743553450d15e7be929dff4c31edf210b57026fb",
+    "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "packages/javascript/src/triangulate-simple-polygon-2d.js": "bfbf0df2fd29df8590daa74c629312e14b36342e8577078e1e2f369362ed2760",
+    "packages/javascript/src/voronoi-cells-2d.js": "e711b13d660c6c1020daca2bc7d58f655cd614238e0fd0f4155af524ac3fe1a6",
+    "packages/javascript/examples/contact-network/README.md": "65659aa0ae9980567219350147f069f039af1e5832662f480a9388d290b200af",
+    "packages/javascript/examples/contact-network/index.html": "b9b3f9c815045fed7dc873cc794bdee0a275dd6b6b52b820de37b9bb75e082bc",
+    "packages/javascript/examples/contact-network/sketch.js": "a346d49ae19a3fa56d0431746afe430b0ebb21309a074cfa3b653883097d0d4c",
+    "packages/javascript/examples/contact-network/study.js": "6be3faba285b4d12eb6b1d845a5d3981cc6ab1d90298ca2b33a790edd55e871f",
+    "packages/javascript/examples/agent-trails/README.md": "fa5f6e75c2f2b6f8bab168f246b69e6c5dd10bbebae3b3efa02dbfaa70c255f6",
+    "packages/javascript/examples/agent-trails/index.html": "3b6af1df317dc25549493b0c98ddad2bd2017a485c65e257615c622a331a9410",
+    "packages/javascript/examples/agent-trails/sketch.js": "50fe3382dca0951038efff003819e5bf0265d827e2fde436c07ad21ef3219452",
+    "tools/reviewed_export_extension.py": "bd48d9ddc34b8634f6f9099b02c828bbd5a2c2f3e2c9053ca44f34bc746cb8f6",
+    "tests/test_reviewed_export_extension.py": "d4527ab40c625155ca453758547aef66ba18705885a4741f591dd74fee32abeb",
+    "apps/web/scripts/generate-api.mjs": "aa429b80f7b4eb86ff789290f832126e6869b7387d62076fc500a587dd5e6701",
+    "apps/web/content/external-expansion-api.mjs": "8e580287669f841e33b4d564f9cd5872c6be3de18393e996e17080d924dd984c",
+    "docs/motif-compositions.md": "96bd1985f61a1344d58767c750da1cc3795ea73032b133f8884c03c517423dcf",
+    "docs/proximity-interactions.md": "810b07d4e8dfb49206a6376f0c085418e6e9b9d7b6809c6a23b9198c49077a39",
+    "docs/external-expansion-first-batch.md": "f4c4fc466526dec8e16389990ea7188f496d5293e1b19f767c2ffa27a8669ac8",
+    "design/capabilities/proximity-interactions.md": "34b6ea6d96a76ec88ee76b8341c945f87ecdf05d970c0c188aa6331d7545a8b9",
+    "design/capabilities/external-motif-compositions.md": "4ac0ae8d7edec6f9d25cc49466ee337552b97f59769427796066c275ea68b00b",
+    "design/operations/proximity-interactions-contract-review.md": "54d58598d6c134f6378f28835ff2e5807ee310af66a603643f0b4abd3583ea6a"
+  },
+  "evidence_sha256": {
+    "evidence/expansion/first-batch/core.json": "e26735493b30b1b1b807ab8b1ccfcc6bffe57a509c628188c81cbd23fea2856a",
+    "evidence/expansion/first-batch/motifs/native.json": "fb786627d2a7bfabdd99033e808a6824a934b42f8be566d9c251ebf71f35fe91",
+    "evidence/expansion/first-batch/motifs/installed-native.json": "b4b599a2e23e1bea233326bc268eded10e044deb776d6f8e828c595a34dcdb46",
+    "evidence/expansion/first-batch/proximity/native.json": "4eccc5866256fffb99ed064acb734f41f84af9ddd0df3795c35d8b9f9fe2efd0",
+    "evidence/expansion/first-batch/proximity/installed-native.json": "b5090098c0cdebb03769e5e8b91d254d4f904d75ef2482fdc87af0a47f6d3866",
+    "evidence/expansion/first-batch/package.json": "bd3a8f9f5535c1aab02b390d78859490212499393550f8bdbeb1d02502038916",
+    "evidence/expansion/first-batch/performance.json": "b225e31dc624b48d2584fc4803d02d36535775f1376644209c0cacb0f2a9f1ed",
+    "evidence/expansion/first-batch/installed-comparison.json": "20e6d401a34b958da7fe82a6d657ef8b0c0fe503db5baf00e8d43f9033ba43b1",
+    "evidence/expansion/first-batch/design-challenge.md": "66668706062aff88951eb54023a43b30e5844c166910e5394239290da49ff99b",
+    "evidence/expansion/first-batch/motifs/worker-review.json": "c3021fe6851156e684e8fefabc8f8a74e358694c12676c256017dc1cfa324303",
+    "evidence/expansion/first-batch/proximity/worker-review.json": "52bb33d54e218064c7b58539ffa00293c82612bb1969d1beb41d712170c9c0ac",
+    "catalog/operations/radius-pairs-2d.json": "638f8d69aaae5f16a425a48f63b4c2133892aea2b931b84ae2986966d0b3125b",
+    "fixtures/operations/radius-pairs-2d.json": "ed980fc40923aa52f73939cc54dd201f732429330fd495ab7b8ed82f19317e26",
+    "catalog/operations/pair-force-step-2d.json": "61fff3a5ef7b6b5d5c90c92bdcdb9fe4bf0927980c2d1acaf59f3e45a42884b5",
+    "fixtures/operations/pair-force-step-2d.json": "c129666ca0bb162089b6e983e7179be8b57697a28698cf9350c4d7b1dc72d5aa"
+  },
+  "root_review": {
+    "design": "Root froze capability decisions, contracts and42 analytical fixtures before implementation; independent architecture challenge resolved units, exact arithmetic order, query overflow screening, update order, graph substitution and contact-history deferral.",
+    "implementation": "Root read both cores, examples and focused tests. Requested exact velocity/validation order and independent valid carrier cases; final code/report bindings reviewed.",
+    "visual": "Root inspected source baseline and decisive appearance/structural variants; source and installed PNG/state identity separately checked. Network condensation remains visible and reported.",
+    "surface": "Exact successor adds only two core/error exports plus already reviewed defaultPalettes data and two API guides. Independent review found missing mandatory child bindings; root required the whole surface and added rehashed/missing-guide and palette mutations. Existing historical records remain unchanged."
+  },
+  "root_viewed_images": [
+    {
+      "path": ".work/expansion-first/motifs-v2/ornament-poster-baseline.png",
+      "sha256": "b7f606e4cf3d04b377c6153af9e75dc50e0d40abf4a82d621c1604d573c1dc7c"
+    },
+    {
+      "path": ".work/expansion-first/motifs-v2/ornament-poster-emblem-transfer.png",
+      "sha256": "774a6c74ae530922b1e1713d5891e4a78215a25547d7c55ee2e106017a553ac5"
+    },
+    {
+      "path": ".work/expansion-first/motifs-v2/ornament-poster-uniform-scale.png",
+      "sha256": "bc94dcb95cbc7baede0c101d0e6b1cdf53c0bd8aa234f3b959c5bafb0edc879e"
+    },
+    {
+      "path": ".work/expansion-first/motifs-v2/ornament-poster-full-field.png",
+      "sha256": "ddc0cda349d49dc38fd6dc5c0e76d793118567c5c81e1453a7cc011e403e1f1e"
+    },
+    {
+      "path": ".work/expansion-first/motifs-v2/geometric-panel-baseline.png",
+      "sha256": "e89befef63106f71da8e3ae503773376c4091d44e5ff7302cd714b445cf30fd5"
+    },
+    {
+      "path": ".work/expansion-first/motifs-v2/geometric-panel-motif.png",
+      "sha256": "93dd76d0b129086d5671d502a25e507871237675366c8dbf8335e90e5f56c2a1"
+    },
+    {
+      "path": ".work/expansion-first/motifs-v2/geometric-panel-palette.png",
+      "sha256": "3cd25332fc31285ca4a0fe0104066845015e6a0fefff804c3aa7dbd27e4f8ff0"
+    },
+    {
+      "path": ".work/expansion-first/motifs-v2/orbital-brush-baseline.png",
+      "sha256": "a500d127fc6aaaa11a6c5e32beb4b5aa192706161d3d34a5fd083a6c0ddd10ef"
+    },
+    {
+      "path": ".work/expansion-first/motifs-v2/orbital-brush-motif.png",
+      "sha256": "7e6f9ae2231961a8146a61208940ec967aea6e063ef32c57fd61bb6e5d01d545"
+    },
+    {
+      "path": ".work/expansion-first/motifs-v2/orbital-brush-palette.png",
+      "sha256": "ba27f507f814cda97ac356802eb0b755ac3d94626a487348b62c1292da736192"
+    },
+    {
+      "path": ".work/expansion-first/proximity/native-02/contact-network/startup.png",
+      "sha256": "11f45447c1de7bebad80a07cdab12d002c59cfb4c0a429cb5332c791dab2bcd6"
+    },
+    {
+      "path": ".work/expansion-first/proximity/native-02/contact-network/tick-120.png",
+      "sha256": "425c455d626599cca39cf1dfca2e808d00699d333ab0f48c412d1ffa0ff787c6"
+    },
+    {
+      "path": ".work/expansion-first/proximity/native-02/contact-network/tick-240.png",
+      "sha256": "e737094de3b0839dab080de014f536b68473557ee40fc2f74bb2405feda0a70d"
+    },
+    {
+      "path": ".work/expansion-first/proximity/native-02/contact-network/open-chain-tick-120.png",
+      "sha256": "d90dd1ea0049edfd195c728be4eaa4ff8e0987a8367df8e7ac297357e3a5ca94"
+    },
+    {
+      "path": ".work/expansion-first/proximity/native-02/contact-network/radius-edit-tick-060.png",
+      "sha256": "a870e8b091f2f2c8fc0d372739d46d65aeed7f8e7949c604fdcfe21ff3f31341"
+    },
+    {
+      "path": ".work/expansion-first/proximity/native-02/contact-network/avoidance-edit-tick-060.png",
+      "sha256": "c7cc3b052cd9e5feb033bd9c03af68a25583cd3246621c52d2296eb3d372a57f"
+    },
+    {
+      "path": ".work/expansion-first/proximity/native-02/contact-network/marks.png",
+      "sha256": "12940d9ea168f61dd7244052a184f1df14dc611583b10e1f2ddb53f2f703ca45"
+    },
+    {
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/startup.png",
+      "sha256": "9f470a99b1fe2090825650fa3c9dc95f3ef0339d8ce342100dc349c068b748f3"
+    },
+    {
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/tick-120.png",
+      "sha256": "826f191bb26afbb195cdeb173972a1f7fa2d91327f846ed67ecd0fc046e44b04"
+    },
+    {
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/tick-240.png",
+      "sha256": "e4ddc9dd5910721ac09df891d87e0d5c057395164ec208d48a74fcdd9ca614cf"
+    },
+    {
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/open-chain-tick-120.png",
+      "sha256": "bbd2f3accc44f5ccef5f74bee214871a06574c2e17086fc5bbf8a927b66129d4"
+    },
+    {
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/radius-edit-tick-060.png",
+      "sha256": "3d87a885125b8696af99a36d83416f9eeb9a9ad4d3845118a5703bd2990fc208"
+    },
+    {
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/avoidance-edit-tick-060.png",
+      "sha256": "8a05aca7ffff55c7737c49eaf80abf7732cca3d2007f42ca940ae7c0588956e1"
+    },
+    {
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/marks.png",
+      "sha256": "4be9004f6714b7c824fd30542b376712f1e66cfaca9444e93df3ca9909a7e511"
+    }
+  ],
+  "checks": {
+    "core": "42 frozen fixtures, 16 independent brute-force query sets, invalid carriers, frozen-input ownership, no output aliasing, reciprocal/synchronous state and overflow distinctions.",
+    "native": "Five actual p5 Canvas2D studies; meaningful structure/style edits; full retained geometry/state comparisons; reset/reload/save; interaction startup, 60, 120, 240 ticks and play/pause; fixed 75-point, 72-edge graph substitution.",
+    "package": "Fresh tarball packed and offline installed; byte-for-byte inventory and public imports; identical complete browser lifecycle suite run against installed package paths.",
+    "performance": "Node and browser observations for tiny, study, stress and dense/vertical query cases; checksums and retained payload sizes. No target-wide realtime/heap claim."
+  },
+  "limits": [
+    "No original artist recreation credit or new technique attestation.",
+    "Stable indices require unchanged population ordering; no insertion/deletion, contact-age memory, collisions, boundary forces, sensors, alignment or physical spring rest lengths.",
+    "Query can be quadratic for dense/vertical inputs; work budget does not cap sorting/validation milliseconds.",
+    "Only p5 2.3.2 Chromium153 Canvas2D density1 is executed. Other browsers/targets and production app integration are unassessed.",
+    "The 50-palette data export remains independently curated; this surface review does not reaccept unrelated web palette UI.",
+    "Full roadmap C-I and remainder of B are not implemented by this batch."
+  ],
+  "follow_on": "Width-aware strip occupancy and connected elastic growth require separate exact boundaries; no automatic public admission."
+}

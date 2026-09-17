@@ -16,6 +16,11 @@ const fixedGeometry = new Set([
   "ramp-marks",
   "profile-marks",
   "annular-marks",
+  "ornament-poster",
+  "geometric-panel",
+  "orbital-brush",
+  "contact-network",
+  "agent-trails",
 ]);
 type ControlsSection = "all" | "technique" | "style";
 

@@ -1,0 +1,123 @@
+{
+  "kind": "native-study-worker-review",
+  "status": "worker-checks-passed-root-review-pending",
+  "owner": "neighbor_design_challenge",
+  "date": "2026-09-17",
+  "scope": "Two original p5 2.3.2 Canvas2D studies and a fixed-edge open-chain design transfer. No source-artwork recreation, pair persistence, other-target support or root acceptance.",
+  "report": "evidence/expansion/first-batch/proximity/native.json",
+  "report_sha256": "4eccc5866256fffb99ed064acb734f41f84af9ddd0df3795c35d8b9f9fe2efd0",
+  "native_output_directory": ".work/expansion-first/proximity/native-02",
+  "command": "python3 tools/with_native_render_lock.py -- node tests/native/proximity-studies-javascript.mjs .work/expansion-first/proximity/native-02",
+  "shared_render_lease": "/home/colin/dev/procedural/.work/native-render-machine.lock",
+  "visual_review_stage": "worker inspected actual images; root review pending",
+  "visually_inspected_images": [
+    {
+      "label": "contact-network / startup",
+      "path": ".work/expansion-first/proximity/native-02/contact-network/startup.png",
+      "sha256": "11f45447c1de7bebad80a07cdab12d002c59cfb4c0a429cb5332c791dab2bcd6"
+    },
+    {
+      "label": "contact-network / tick-060",
+      "path": ".work/expansion-first/proximity/native-02/contact-network/tick-060.png",
+      "sha256": "68b6f41cee123fa2ec2d258df7a06c757ff3dee85799c7cf61b695bffe26c5f8"
+    },
+    {
+      "label": "contact-network / tick-120",
+      "path": ".work/expansion-first/proximity/native-02/contact-network/tick-120.png",
+      "sha256": "425c455d626599cca39cf1dfca2e808d00699d333ab0f48c412d1ffa0ff787c6"
+    },
+    {
+      "label": "contact-network / tick-240",
+      "path": ".work/expansion-first/proximity/native-02/contact-network/tick-240.png",
+      "sha256": "e737094de3b0839dab080de014f536b68473557ee40fc2f74bb2405feda0a70d"
+    },
+    {
+      "label": "contact-network / marks",
+      "path": ".work/expansion-first/proximity/native-02/contact-network/marks.png",
+      "sha256": "12940d9ea168f61dd7244052a184f1df14dc611583b10e1f2ddb53f2f703ca45"
+    },
+    {
+      "label": "contact-network / radius-edit-tick-060",
+      "path": ".work/expansion-first/proximity/native-02/contact-network/radius-edit-tick-060.png",
+      "sha256": "a870e8b091f2f2c8fc0d372739d46d65aeed7f8e7949c604fdcfe21ff3f31341"
+    },
+    {
+      "label": "contact-network / avoidance-edit-tick-060",
+      "path": ".work/expansion-first/proximity/native-02/contact-network/avoidance-edit-tick-060.png",
+      "sha256": "c7cc3b052cd9e5feb033bd9c03af68a25583cd3246621c52d2296eb3d372a57f"
+    },
+    {
+      "label": "contact-network / open-chain-tick-120",
+      "path": ".work/expansion-first/proximity/native-02/contact-network/open-chain-tick-120.png",
+      "sha256": "d90dd1ea0049edfd195c728be4eaa4ff8e0987a8367df8e7ac297357e3a5ca94"
+    },
+    {
+      "label": "agent-trails / startup",
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/startup.png",
+      "sha256": "9f470a99b1fe2090825650fa3c9dc95f3ef0339d8ce342100dc349c068b748f3"
+    },
+    {
+      "label": "agent-trails / tick-060",
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/tick-060.png",
+      "sha256": "b48681a5c234f7398dea04528d5a8453784019b69425ee2a93e3b9d03f625211"
+    },
+    {
+      "label": "agent-trails / tick-120",
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/tick-120.png",
+      "sha256": "826f191bb26afbb195cdeb173972a1f7fa2d91327f846ed67ecd0fc046e44b04"
+    },
+    {
+      "label": "agent-trails / tick-240",
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/tick-240.png",
+      "sha256": "e4ddc9dd5910721ac09df891d87e0d5c057395164ec208d48a74fcdd9ca614cf"
+    },
+    {
+      "label": "agent-trails / palette",
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/palette.png",
+      "sha256": "a1990a4e6e595503f09674ce8590adf26db70b7cbdf17f0a47c2135374e42451"
+    },
+    {
+      "label": "agent-trails / marks",
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/marks.png",
+      "sha256": "4be9004f6714b7c824fd30542b376712f1e66cfaca9444e93df3ca9909a7e511"
+    },
+    {
+      "label": "agent-trails / radius-edit-tick-060",
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/radius-edit-tick-060.png",
+      "sha256": "3d87a885125b8696af99a36d83416f9eeb9a9ad4d3845118a5703bd2990fc208"
+    },
+    {
+      "label": "agent-trails / open-chain-tick-120",
+      "path": ".work/expansion-first/proximity/native-02/agent-trails/open-chain-tick-120.png",
+      "sha256": "bbd2f3accc44f5ccef5f74bee214871a06574c2e17086fc5bbf8a927b66129d4"
+    }
+  ],
+  "visual_observations": [
+    "Contact Network begins as three overlapping, differently colored neighborhoods; each current graph is drawn after the position update. By tick240 the center is substantially denser, with distinct outer fragments.",
+    "The wider-radius edit produces more concentrated connection bundles by tick60; stronger avoidance produces a visibly more open network. Central condensation is an observed behavior, not hidden or labelled a collision solver.",
+    "Agent Trails starts as three rings with short velocity marks and develops curving retained paths around an open center at ticks60,120,240. Midnight and dotted styles preserve complete simulation and history state.",
+    "The75-point72-edge transfer keeps three original open glyph strokes connected while they bend. Agent Trails draws the same fixed graph and its recorded movement; no topology editing or closure is introduced.",
+    "Inspected baseline, structural edit and transfer frames stay inside the720x720 canvas. Continuous operation after the declared bounds, untested parameter combinations and alternate viewports are not certified.",
+    "The full-page Agent Trails interface was inspected at1180px; the canvas, controls, status and control explanation table are legible."
+  ],
+  "inspection_binding": "First native run images were viewed. Every one of30 final native-02 PNG and complete-state hashes matches native-01 exactly; final artifacts remain identical to the viewed files.",
+  "verification": [
+    "Full points, velocities, forces, current pairs, every history frame, group assignment and tick compare exactly for appearance edits and replay.",
+    "Actual browser play advances and pause leaves complete state unchanged. Reset and reload reproduce initial state and PNG. Save does not redraw or tick and downloaded PNG equals the displayed canvas exactly.",
+    "Current query graph matches the displayed updated positions. Fixed-edge transfer bypasses the query and preserves all72 edges at0,60,120 ticks, then replays exactly.",
+    "Browser timing binds actual study initial arrays, tiny2, study126, stress512 and vertical512 workloads, with separated public query/step timings and output checksums. Includes public validation/allocation; excludes p5 drawing, setup and PNG work.",
+    "All actual served package source files, both study directories, server, runner, frozen contracts and pinned p5 source are hashed before and after the native run with no changes."
+  ],
+  "limitations": [
+    "No numerical default or useful range is inferred from these authored presets.",
+    "The x-sweep budget is orientation-dependent and can be quadratic. Browser timings are local observations, not realtime or allocation guarantees; retained output JSON bytes and scalar/index slots are not peak heap measurements.",
+    "No wrapping, bounds enforcement, collision response, mass variation, sensor/motor logic, stable identity across population changes or pair relationship persistence.",
+    "No external reference image similarity test. Reas Process18 and Tissue remain non-recreated.",
+    "Installed-package rerun is supported via PROCEDURALS_PACKAGE_ROOT but is not included in this source-checkout worker report."
+  ],
+  "requires_root": [
+    "Inspect decisive original native frames and fixed-edge transfer.",
+    "Register chosen outputs in docs/visual-review.json and build the gallery; proposed group provided separately.",
+    "Run installed-package replay and decide scoped support/acceptance."
+  ]
+}

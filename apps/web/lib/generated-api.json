@@ -7586,6 +7586,233 @@
       "sha256": "64ec6cbf60c04c612cbf2f8ad0c427853b48c3c7585ebf2cdd0938151604599e"
     },
     {
+      "id": "motion.pair-force-step-2d",
+      "version": "0.1.0",
+      "role": "transform",
+      "description": "Synchronously advance equal-unit-mass 2D bodies under supplied reciprocal attraction and short-range repulsion pairs.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "maxItems": 2147483647
+          },
+          "velocities": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "maxItems": 2147483647
+          },
+          "pairs": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2147483646
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "maxItems": 2147483647
+          },
+          "attraction": {
+            "type": "number",
+            "minimum": 0
+          },
+          "repulsion": {
+            "type": "number",
+            "minimum": 0
+          },
+          "repulsionRadius": {
+            "type": "number",
+            "minimum": 0
+          },
+          "damping": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "dt": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "maxSpeed": {
+            "type": "number",
+            "minimum": 0
+          },
+          "maxWork": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "points",
+          "velocities",
+          "pairs",
+          "attraction",
+          "repulsion",
+          "repulsionRadius",
+          "damping",
+          "dt",
+          "maxSpeed",
+          "maxWork"
+        ],
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "maxItems": 2147483647
+          },
+          "velocities": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "maxItems": 2147483647
+          },
+          "forces": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "maxItems": 2147483647
+          }
+        },
+        "required": [
+          "points",
+          "velocities",
+          "forces"
+        ],
+        "additionalProperties": false
+      },
+      "errors": {
+        "INVALID_INPUT": "Static carrier, shape, correspondence, canonical pair or domain failure.",
+        "WORK_LIMIT": "N+P exceeds maxWork after static validation.",
+        "NUMERIC_OVERFLOW": "Nonfinite intermediate force, norm, velocity or position, no partial output."
+      },
+      "errorOrder": [],
+      "behavior": {
+        "validation": "Exact passive Object/null-prototype record; no classes, accessors, symbols, extras or coercion. Dense ordinary arrays with own data slots and no extras; proxies outside interchange. Point arrays contain finite binary64 pairs, length at most2147483647. Canonicalize accepted zero values. Validate all fields and correspondence in input-schema order before work checks, including empty/identity cases. No input mutation or aliasing; all output arrays and pairs detached. Velocities length equals points. Pairs are integer indices 0<=i<j<N in strict lex order, no duplicates. Coefficients finite nonnegative; damping in[0,1], dt strictly positive, maxSpeed nonnegative, maxWork nonnegative safe integer.",
+        "work": "After complete static validation require N+P<=maxWork, before arithmetic/output allocation. O(N+P) time and storage. No partial state on error.",
+        "algorithm": "Initialize N force pairs to positive zero. Visit supplied pairs lex order. Compute dx=xj-xi then dy=yj-yi, length=fdlibmHypot(dx,dy); check finite after each. Compute fx=attraction*dx then fy=attraction*dy. If 0<length<repulsionRadius compute ratio=length/repulsionRadius, falloff=1-ratio, strength=repulsion*falloff, ux=dx/length, uy=dy/length, rx=strength*ux, ry=strength*uy, then fx=fx-rx and fy=fy-ry; check every primitive finite. Coincident pairs have zero repulsion and attraction; no direction invented. Accumulate Fi.x+=fx, Fi.y+=fy, Fj.x-=fx, Fj.y-=fy, in that order, checking each sum. Then visit agents ascending: for x then y compute impulse=dt*force, kicked=oldVelocity+impulse, v=kicked*damping, each finite. speed=fdlibmHypot(vx,vy), finite. If speed>maxSpeed compute scale=maxSpeed/speed then multiply vx and vy, each finite. For x then y compute travel=dt*v then position=oldPosition+travel, each finite. Canonicalize all returned zeros. Return detached points,velocities,forces, never shared pair storage.",
+        "numerics": "Binary64 ordered primitives, no FMA/reassociation; fdlibmHypot existing audited profile, correctly rounded native arithmetic otherwise. No epsilon in computation. Exact fixture integer/index/error comparison; specified floating fixtures permit absolute1e-12 relative0 only. Nonfinite intermediate raises NUMERIC_OVERFLOW even if later multiplication/damping would cancel it.",
+        "environment": "No randomness, clock or renderer. dt in caller time units, no inferred frame rate. No boundary policy, speed floors, mass, force normalization by degree, pinning, alignment, sensors, contact memory or collision resolution. Damping is per call, after acceleration and before movement; zero damping prevents movement.",
+        "native_surface": "pairForceStep2D(input), PairForceStep2DError from pair-force-step-2d.js and package index."
+      },
+      "provenance": [],
+      "javascript": {
+        "exports": [
+          "pairForceStep2D"
+        ],
+        "module": "packages/javascript/src/pair-force-step-2d.js",
+        "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Move a network with pair forces",
+        "summary": "Let connected points pull together and resist crowding, then draw their motion as trails or changing relationships.",
+        "useWhen": "Supply a proximity graph or a fixed graph; the same synchronous step works with either.",
+        "inputs": {
+          "points": "Finite [x,y] positions; one per equal-unit-mass body.",
+          "velocities": "Finite [vx,vy] values in coordinate units per time unit, matching points.",
+          "pairs": "Canonical unique [i,j] pairs with i<j in strict lexicographic order.",
+          "attraction": "Nonnegative linear attraction coefficient, in inverse time squared.",
+          "repulsion": "Nonnegative peak repulsive acceleration, tapered to zero at repulsionRadius.",
+          "repulsionRadius": "Short-range repulsion distance; zero disables repulsion.",
+          "damping": "Per-call velocity multiplier from zero to one, applied before movement.",
+          "dt": "Strictly positive logical time step; the operation never reads a clock.",
+          "maxSpeed": "Nonnegative speed cap in coordinate units per time unit.",
+          "maxWork": "Budget of at least point count plus supplied pair count."
+        },
+        "output": "{points,velocities,forces}: three detached arrays. Forces are the summed pre-damping, pre-speed-cap force vectors.",
+        "code": "const next = pairForceStep2D({points:[[0,0],[2,0]],velocities:[[0,0],[0,0]],pairs:[[0,1]],attraction:0.5,repulsion:0,repulsionRadius:0,damping:1,dt:1,maxSpeed:10,maxWork:3});\nconsole.log(next.points);",
+        "tryThis": "Replace proximity pairs with a fixed chain, or change repulsion while retaining the initial state. Requery next positions before drawing current proximity edges.",
+        "pitfalls": [
+          "Coincident points have no invented separation direction.",
+          "Damping is per call, so changing dt alone does not preserve the trajectory.",
+          "There are no walls, collisions, flock alignment or retained contact ages.",
+          "This authored force law does not recreate Reas Process 18 or Tissue."
+        ],
+        "importLine": "import { pairForceStep2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        ]
+      },
+      "support": [
+        {
+          "target": "processing-java",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "p5js",
+          "core": "conformant",
+          "native": "validated-scoped",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "py5",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "processing-android",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        }
+      ],
+      "sha256": "61fff3a5ef7b6b5d5c90c92bdcdb9fe4bf0927980c2d1acaf59f3e45a42884b5"
+    },
+    {
       "id": "grammar.parallel-token-rewrite",
       "version": "0.1.0",
       "role": "transform",
@@ -8666,6 +8893,142 @@
         }
       ],
       "sha256": "63e089d2ab61b4a4e8cb1f48684cb69e7268574ebebd15d34e405b9595366788"
+    },
+    {
+      "id": "spatial.radius-pairs-2d",
+      "version": "0.1.0",
+      "role": "transform",
+      "description": "Enumerate all unordered point-index pairs within an inclusive Euclidean radius using a deterministic x sweep.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "maxItems": 2147483647
+          },
+          "radius": {
+            "type": "number",
+            "minimum": 0
+          },
+          "maxWork": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "points",
+          "radius",
+          "maxWork"
+        ],
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "pairs": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2147483646
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "maxItems": 2147483647
+          }
+        },
+        "required": [
+          "pairs"
+        ],
+        "additionalProperties": false
+      },
+      "errors": {
+        "INVALID_INPUT": "Carrier, shape or finite-domain failure before work.",
+        "WORK_LIMIT": "Next event exceeds maxWork, no partial output."
+      },
+      "errorOrder": [],
+      "behavior": {
+        "validation": "Exact passive Object/null-prototype record; no classes, accessors, symbols, extras or coercion. Dense ordinary arrays with own data slots and no extras; proxies outside interchange. Point arrays contain finite binary64 pairs, length at most2147483647. Canonicalize accepted zero values. Validate all fields and correspondence in input-schema order before work checks, including empty/identity cases. No input mutation or aliasing; all output arrays and pairs detached.",
+        "work": "After static validation charge N events before sorting/output; then one event per unordered pair whose rounded absolute x difference<=radius, including y/distance rejections. Charge candidate before y/hypot arithmetic. If next event exceeds maxWork, WORK_LIMIT, no partial result. Sorting/static validation are not budget events. O(N log N+C+K log K), O(N+K) storage; C may be N(N-1)/2 for vertical or dense points. Budget behavior depends on orientation.",
+        "algorithm": "Sort indices by ascending point x with original index tie break (compare values, do not use subtraction as comparator). For each sorted index a visit subsequent sorted indices b ascending. Compute dx=x[b]-x[a]; if dx>radius break (positive infinity is an outside screen). Otherwise charge candidate; compute dy=abs(y[b]-y[a]); if dy>radius skip, including infinity. If radius==0 accept only exact x and y equality. Otherwise accept iff existing fdlibmHypot(dx,dy)<=radius; an infinite hypot is outside. Store [min(originalA,originalB),max(...)]. Sort output pairs lexicographically by integer indices.",
+        "numerics": "Binary64 primitive rounding, no FMA, no epsilon. fdlibmHypot is the existing audited profile in packages/javascript/src/internal/fdlibm-hypot.js (including its subnormal correction). Topology compares exactly under that profile, not abstract exact-real geometry. Input numbers finite; subtraction/hypot infinity is allowed only as an outside screen.",
+        "environment": "No RNG, clock, renderer, wrapping, domain, persistent index or hidden identity. Coordinate units arbitrary consistent Cartesian units; query independent of axis handedness.",
+        "native_surface": "radiusPairs2D(input), RadiusPairs2DError from radius-pairs-2d.js and package index."
+      },
+      "provenance": [],
+      "javascript": {
+        "exports": [
+          "radiusPairs2D"
+        ],
+        "module": "packages/javascript/src/radius-pairs-2d.js",
+        "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Find nearby point pairs",
+        "summary": "Connect nearby marks while keeping their positions and drawing treatment separate.",
+        "useWhen": "Use the returned pairs to draw a proximity network or drive the pair-force step.",
+        "inputs": {
+          "points": "Finite [x,y] positions. Array indices identify the points for this call.",
+          "radius": "Inclusive distance threshold in the same units as the positions; zero finds exact coincidences.",
+          "maxWork": "Budget for one event per point plus every pair in the x-distance window. Dense or vertical sets can still need quadratic work."
+        },
+        "output": "{pairs}: detached [i,j] indices, i<j, in strict lexicographic order. There is no self-pair or duplicate.",
+        "code": "const result = radiusPairs2D({points:[[0,0],[3,4],[20,0]],radius:5,maxWork:6});\nconsole.log(result.pairs);",
+        "tryThis": "Change the radius without changing the positions, then draw the same pair list with a different mark or opacity.",
+        "pitfalls": [
+          "Indices do not retain identity after insertion or reordering.",
+          "There is no wrapping, collision resolution or persistent contact state.",
+          "A deterministic x sweep can still be quadratic for vertical point sets."
+        ],
+        "importLine": "import { radiusPairs2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          [
+            [
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "support": [
+        {
+          "target": "processing-java",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "p5js",
+          "core": "conformant",
+          "native": "validated-scoped",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "py5",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "processing-android",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        }
+      ],
+      "sha256": "638f8d69aaae5f16a425a48f63b4c2133892aea2b931b84ae2986966d0b3125b"
     },
     {
       "id": "raster.crossfade-2d",

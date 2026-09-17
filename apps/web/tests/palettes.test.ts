@@ -6,8 +6,26 @@ import { validatePalette, paletteNumbers, withPalettePrompt } from "../lib/palet
 import { paletteStore, PaletteConflict } from "../lib/harness/palettes";
 import { WORK_ROOT } from "../lib/harness/core";
 import { generatePalette, validatePalettePrompt } from "../lib/harness/palette-generation";
+import { defaultPalettes } from "../lib/default-palettes";
 
 const draft = { name: "  Sea glass  ", colors: ["#113355", "#AABBCC", "#f5f1e9"] };
+test("default palettes are valid immutable browser data and consumer copies detach", () => {
+  assert.ok(Object.isFrozen(defaultPalettes));
+  assert.ok(defaultPalettes.length >= 2);
+  const ids = new Set<string>();
+  for (const palette of defaultPalettes) {
+    assert.match(palette.id, /^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+    assert.ok(palette.name.length > 0 && palette.description.length > 0 && palette.tags.length > 0);
+    assert.ok(Object.isFrozen(palette)); assert.ok(Object.isFrozen(palette.colors)); assert.ok(Object.isFrozen(palette.tags));
+    assert.ok(palette.colors.length >= 2 && palette.colors.length <= 12);
+    assert.ok(palette.colors.every((color) => /^#[0-9a-f]{6}$/.test(color)));
+    assert.equal(ids.has(palette.id), false); ids.add(palette.id);
+  }
+  const selected = { name: defaultPalettes[0].name, colors: [...defaultPalettes[0].colors] };
+  selected.colors[0] = "#000000";
+  assert.notEqual(defaultPalettes[0].colors[0], selected.colors[0]);
+});
+
 test("palette storage persists detached colors and protects concurrent edits/deletion", () => {
   mkdirSync(join(WORK_ROOT, "palette-tests"), { recursive: true });
   const root = mkdtempSync(join(WORK_ROOT, "palette-tests", "store-"));

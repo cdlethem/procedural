@@ -3,23 +3,23 @@
   "groups": [
     {
       "id": "ui-main-integration",
-      "title": "Art with knobs — reviewed main integration",
+      "title": "Art with knobs \u2014 reviewed main integration",
       "category": "Root reviewed clean-checkout UI integration",
       "description": "Final hero copy, procedural identity and UI redesign tested without unrelated default-palette, research or Android working changes. Production build, workspace and palette/prompt scenarios passed. Source and image bindings are in the integration review.",
       "evidence": "evidence/web/ui-main-integration.json",
       "images": [
         {
-          "label": "Gallery — desktop",
+          "label": "Gallery \u2014 desktop",
           "path": ".work/ui-integration-state/gallery-1440.png",
           "sha256": "8ebecd00e110da5e4222189f52effb3cc51c2333c28a54101a3c2bf41d470e37"
         },
         {
-          "label": "Gallery — mobile",
+          "label": "Gallery \u2014 mobile",
           "path": ".work/ui-integration-state/gallery-390.png",
           "sha256": "911c2f56dbc37f3fc189665a0880dfc351dd8cd55657c4a9e458dae08bc048b5"
         },
         {
-          "label": "About — mobile",
+          "label": "About \u2014 mobile",
           "path": ".work/ui-integration-state/about-390.png",
           "sha256": "3cffb03318516b247b95687090589311ab2442b4e84abd962ddaf1a1ad801655"
         }
@@ -27,7 +27,7 @@
     },
     {
       "id": "compact-gallery-hero",
-      "title": "Art with knobs — compact single-line hero",
+      "title": "Art with knobs \u2014 compact single-line hero",
       "category": "Root reviewed tailnet UI preview",
       "description": "Removes the eyebrow and forced line break from the previous art-with-knobs hero. Reviewed fluid typography, balanced desktop columns and stacked tablet/mobile copy. One heading line and no horizontal overflow at nine widths from 320 to 1440px.",
       "evidence": ".work/ui-brand-review/compact-hero-checks.json",
@@ -56,18 +56,18 @@
     },
     {
       "id": "art-with-knobs",
-      "title": "Procedurals — art with knobs",
+      "title": "Procedurals \u2014 art with knobs",
       "category": "Root reviewed tailnet UI preview",
       "description": "User-selected gallery headline and matching browser title. Supersedes the headline in the procedural-brand review; supporting copy, logo and About page unchanged. Production build and desktop/mobile tailnet checks passed.",
       "evidence": ".work/ui-brand-review/art-with-knobs-checks.json",
       "images": [
         {
-          "label": "Gallery — desktop",
+          "label": "Gallery \u2014 desktop",
           "path": ".work/ui-brand-review/art-with-knobs-1440.png",
           "sha256": "3b469431135ada2067a10d655f5716aa0b7c8d014e95a5603b9c2e635ec899f6"
         },
         {
-          "label": "Gallery — mobile",
+          "label": "Gallery \u2014 mobile",
           "path": ".work/ui-brand-review/art-with-knobs-390.png",
           "sha256": "b7532790f8918cb7b42591c7575656645996790940c8227c276b2ccc0d494bf7"
         }
@@ -75,33 +75,33 @@
     },
     {
       "id": "procedural-brand-review",
-      "title": "Procedurals — make art, keep the method",
+      "title": "Procedurals \u2014 make art, keep the method",
       "category": "Root reviewed tailnet UI preview",
       "description": "Procedural philosophy, gallery hero and rule-built mark. About page explains visible source, deliberate edits, seeded variation and optional AI code assistance. Identity successor to the print-workshop audit; not an operation or target acceptance.",
       "evidence": "evidence/web/procedural-brand-review.json",
       "images": [
         {
-          "label": "Gallery — desktop",
+          "label": "Gallery \u2014 desktop",
           "path": ".work/ui-brand-review/gallery-1440.png",
           "sha256": "b50a76e662e81fd04e9846f7e934498c70dbf8838d5ef8b31fba9ced34b4a20e"
         },
         {
-          "label": "Gallery — mobile",
+          "label": "Gallery \u2014 mobile",
           "path": ".work/ui-brand-review/gallery-390.png",
           "sha256": "8b7a3b916d466026d1f7f9f523434f4b8d12d8c8f640d1193f6dad176905026e"
         },
         {
-          "label": "Gallery — narrow two-line hero",
+          "label": "Gallery \u2014 narrow two-line hero",
           "path": ".work/ui-brand-review/gallery-320.png",
           "sha256": "5f4fc835f1aaf0894f0a082a312575e6aae0c2170da49a23227efd50f77b516f"
         },
         {
-          "label": "About — desktop",
+          "label": "About \u2014 desktop",
           "path": ".work/ui-brand-review/about-1440.png",
           "sha256": "2fa5d7fe79725edec243a2307292a77d9d2b32ac4d034df35919ed39acfcb95d"
         },
         {
-          "label": "About — mobile",
+          "label": "About \u2014 mobile",
           "path": ".work/ui-brand-review/about-390.png",
           "sha256": "3cffb03318516b247b95687090589311ab2442b4e84abd962ddaf1a1ad801655"
         }
@@ -109,43 +109,43 @@
     },
     {
       "id": "ui-design-audit-2026-09-17",
-      "title": "Procedurals — indexed print workshop",
-      "category": "Root reviewed local production UI — not deployed",
+      "title": "Procedurals \u2014 indexed print workshop",
+      "category": "Root reviewed local production UI \u2014 not deployed",
       "description": "UI Skills MCP audit and interface revision. Desktop/mobile navigation, artwork-first index, fitted Studio, accessible drawers, palettes and prompts. Gallery inclusion is navigation, not target support.",
       "evidence": "evidence/web/ui-design-audit-2026-09-17.json",
       "images": [
         {
-          "label": "Gallery — desktop",
+          "label": "Gallery \u2014 desktop",
           "path": ".work/ui-design-audit/gallery-desktop.png",
           "sha256": "c0c164e97a8038b2bf04528f4c00b96a83ed116ef679a73bd305026af61ccfc0"
         },
         {
-          "label": "Gallery — mobile",
+          "label": "Gallery \u2014 mobile",
           "path": ".work/ui-design-audit/gallery-mobile.png",
           "sha256": "b65a1544029f0047b55301f99430c5eb5cd4732aa060c8b51c1905a40f03d098"
         },
         {
-          "label": "Studio — desktop",
+          "label": "Studio \u2014 desktop",
           "path": ".work/ui-design-audit/studio-desktop.png",
           "sha256": "3dea7179b7acc087fae3ab153a38116f561b59349021f568d5c9b0a832e02a02"
         },
         {
-          "label": "Studio — mobile",
+          "label": "Studio \u2014 mobile",
           "path": ".work/ui-design-audit/studio-mobile.png",
           "sha256": "87a584f07db50707ba4eeaa60878d57b5603b29f3b98273cf3a94aaaef71d23b"
         },
         {
-          "label": "Studio — mobile inspector",
+          "label": "Studio \u2014 mobile inspector",
           "path": ".work/ui-design-audit/studio-mobile-inspector.png",
           "sha256": "20f656c48cc9fac515a118c327cb5485ce6ad7f73801aada7d95fd77f3089870"
         },
         {
-          "label": "Studio — prompt editor",
+          "label": "Studio \u2014 prompt editor",
           "path": ".work/ui-design-audit/studio-prompt.png",
           "sha256": "c1f698f0a9bb0c22bf0079cdb2cc7aaa0f91da838d6cc7b879ebf35002fb605d"
         },
         {
-          "label": "Layer picker — mobile",
+          "label": "Layer picker \u2014 mobile",
           "path": ".work/ui-design-audit/layer-picker-mobile.png",
           "sha256": "8cc501673d8c55d9b6a8159d070e71c100ad798d0a8736385ce8fff4fb948b03"
         },
@@ -155,17 +155,17 @@
           "sha256": "78bef22b8a11d94ef5866f66b144f3c02250a56dcc05c1aeda4c8f523076d072"
         },
         {
-          "label": "Palette library — desktop",
+          "label": "Palette library \u2014 desktop",
           "path": ".work/ui-design-audit/palettes-desktop.png",
           "sha256": "848e6753568e3def410cb37732964e34b734b7ed1da837c86167bc31f4772bf0"
         },
         {
-          "label": "Palette editor — mobile",
+          "label": "Palette editor \u2014 mobile",
           "path": ".work/ui-design-audit/palette-editor-mobile.png",
           "sha256": "0e4b25f869717265ad39afca9af8c757048b305c737f2d452780c146a4eff888"
         },
         {
-          "label": "Explorations — desktop",
+          "label": "Explorations \u2014 desktop",
           "path": ".work/ui-design-audit/explorations-desktop.png",
           "sha256": "71fe66634693cbd79ffce0ad17e3edef1fb91ac53682ae1cfa8bcc3008489453"
         },
@@ -4121,6 +4121,474 @@
           "label": "strength-edit",
           "path": ".work/survey-coverage-batch1/integration/.work/grain-replay-native/strength-edit.png",
           "sha256": "8db36e44547ecd47fc31ce5f4535a9cc2a263e576ab6b38ed92c83901022d3c8"
+        }
+      ]
+    },
+    {
+      "id": "external-art-anchor-research",
+      "title": "External references \u2014 Davis, Reas and Quilez",
+      "category": "Root reviewed reference research",
+      "description": "Collection representatives; contact-sheet review supports research selection, not full-resolution inspection of every variant or artwork recreation.",
+      "evidence": "evidence/external-art/2026-09/root-review.json",
+      "images": [
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-01.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-01.png",
+          "sha256": "0871c8500c79a6eeb81048f67bd178488d2c9d4f69cfffc3d13e49d99b9335ea"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-02.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-02.png",
+          "sha256": "576b177518527c0c2e57b799db8da0392ec64181704fc5958aee23bf42d46305"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-03.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-03.png",
+          "sha256": "0ab40245f8741f8256d8377dadae98ed911b293a3fb59fdc13813f57e48b0270"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-04.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-04.png",
+          "sha256": "2e50c2fe8686409f6a0400447b61338e1f35d2b8cd646a9e3993093588e12615"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-05.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-05.png",
+          "sha256": "1b40376fccd2de72273628c67a3a03d2424dfb7c464ac50b35865645c74f5e6d"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-06.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-06.png",
+          "sha256": "c865a425b12f34f2072b460755cf1546d355f5b3a856cfb97f1628bc331cf8ab"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-07.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-07.png",
+          "sha256": "56083484cf09d2fd3582d3ab451289a1767bfc70075892b88b28dae94758f82c"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-08.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-08.png",
+          "sha256": "5034c6115077f3565fe494ba3f98db8bfe939377d92b834f710430536b971d6c"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-09.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-09.png",
+          "sha256": "4d66fbe8e7fb0f218a6c246e983c99ed4b40bdf12ad881083626178dc6d8e6aa"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-10.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-10.png",
+          "sha256": "596e70e1cea063e78a917f5b47617aa44d61a32ea5b6ec95069a61c0a452ef9a"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-11.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-11.png",
+          "sha256": "c730d57cbe8833884277843b05f1ffc6407980f7f320bb2641aff25e7a0c0efa"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-12.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-12.png",
+          "sha256": "542462cacb0bc9e0525268ada74ab95ce212995580a9f2705e701c95d4c979bb"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-13.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-13.png",
+          "sha256": "bb8e1b7a4b6c82e3e0c51b39698e8562b457ad68c6731dd72b32d54f30fe27ae"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-14.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-14.png",
+          "sha256": "1fe5f7533057ae9a18cb8a751da114f662eed300f3f4d6157c518ca5c3f38b16"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-15.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-15.png",
+          "sha256": "500f9c8f9b9715f8261a6bdf04b580e86f0d80908f1aca32044b3becbb9c2aa2"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-16.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-16.png",
+          "sha256": "977c314523a24519cb830873b17f16f24628d9965612122ec10c087d268e3d3e"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-17.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-17.png",
+          "sha256": "dc3b9f88bd210e66002145dfd23d764c75f386ef5014a4ce3e5fca182daa6cf9"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 casey-reas-18.png",
+          "path": ".work/external-art-corpus/overview/casey-reas-18.png",
+          "sha256": "18b84fbddb359d50372c557b100ac28e9b6f0a23ac9732c02cddb53b2fff4112"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 joshua-davis-01.png",
+          "path": ".work/external-art-corpus/overview/joshua-davis-01.png",
+          "sha256": "2e31860a74ac95908fa54f022797dcf60a75c8d97129a6c66642f2c63c0b0f4c"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 joshua-davis-02.png",
+          "path": ".work/external-art-corpus/overview/joshua-davis-02.png",
+          "sha256": "6971b24b33236e6b6cfa15fdff27316ce9d121755e522c4bc11eddc7b3758aa0"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 joshua-davis-03.png",
+          "path": ".work/external-art-corpus/overview/joshua-davis-03.png",
+          "sha256": "6de2bad67d15f7b167437aadd577af27f08720a295b9252c89f3cb78cae974d5"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 joshua-davis-04.png",
+          "path": ".work/external-art-corpus/overview/joshua-davis-04.png",
+          "sha256": "6c920b4e958c4c558990c606418699f84edd8bd0669ab87da67cbbad7d90e6a5"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 joshua-davis-05.png",
+          "path": ".work/external-art-corpus/overview/joshua-davis-05.png",
+          "sha256": "8af0a2c84dc032b7c5cc6b30709c5b83f5e54f86e936068cc64670dad2d943ab"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 joshua-davis-06.png",
+          "path": ".work/external-art-corpus/overview/joshua-davis-06.png",
+          "sha256": "c0c8efb5d828e5a3ee7409d41000e9faa452f3f5ecb09fe59f8a7b9ba61eea14"
+        },
+        {
+          "label": "external-art-corpus \u2014 overview \u2014 joshua-davis-07.png",
+          "path": ".work/external-art-corpus/overview/joshua-davis-07.png",
+          "sha256": "8a3e648b584384aa77db49f0667ba8839ac99befb9e0b2f53ad82b3e39e9c26c"
+        },
+        {
+          "label": "external-art-corpus \u2014 quilez-overview \u2014 inigo-quilez-01.png",
+          "path": ".work/external-art-corpus/quilez-overview/inigo-quilez-01.png",
+          "sha256": "e65ad8b85db9e0e94ff8038ab19a64cfdc5b72e93ca6d6c19ac7f34a71b6dba4"
+        },
+        {
+          "label": "external-art-corpus \u2014 quilez-overview \u2014 inigo-quilez-02.png",
+          "path": ".work/external-art-corpus/quilez-overview/inigo-quilez-02.png",
+          "sha256": "d66c19c335c162829de8837806cd85b3d653dd4c408afb0f038dc9dea77cf936"
+        },
+        {
+          "label": "external-art-corpus \u2014 quilez-overview \u2014 inigo-quilez-03.png",
+          "path": ".work/external-art-corpus/quilez-overview/inigo-quilez-03.png",
+          "sha256": "ff05327b2944659fbcd46ec7f417983c7f409087d8931fa6e0ecac733af78aa0"
+        }
+      ]
+    },
+    {
+      "id": "external-art-graphic-research",
+      "title": "External references \u2014 graphic collections and animated previews",
+      "category": "Root reviewed reference research",
+      "description": "Six graphic artists and later-frame animated navigation previews. A still frame does not establish dynamics or identify an algorithm.",
+      "evidence": "evidence/external-art/2026-09/root-review.json",
+      "images": [
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 anders-hoff-inconvergent-01.png",
+          "path": ".work/external-art-corpus/graphic-overview/anders-hoff-inconvergent-01.png",
+          "sha256": "cd60812af74f1593af21dcc11fde587f94fd523c29b1a4b20c506da23ced0dfd"
+        },
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 anders-hoff-inconvergent-02.png",
+          "path": ".work/external-art-corpus/graphic-overview/anders-hoff-inconvergent-02.png",
+          "sha256": "127f083ad391cc07ddeed9ba8106ed96c1aaeb3bc13caad7680b37b955b347eb"
+        },
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 jonathan-mccabe-01.png",
+          "path": ".work/external-art-corpus/graphic-overview/jonathan-mccabe-01.png",
+          "sha256": "afa7959355574ae08efeb2719272f898e86479614337c6ffec55bf726682fe66"
+        },
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 jonathan-mccabe-02.png",
+          "path": ".work/external-art-corpus/graphic-overview/jonathan-mccabe-02.png",
+          "sha256": "5c59fe46c27a64e09225ff3cc0c3a234a8c1e0bcc0da4afe4e06fb182d4735e0"
+        },
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 sighack-manohar-vanga-01.png",
+          "path": ".work/external-art-corpus/graphic-overview/sighack-manohar-vanga-01.png",
+          "sha256": "7b7a5fa1fcf5013ee580643a3059c50fb5517fe8361388796fc667c802a89ae2"
+        },
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 takahiro-kurashima-01.png",
+          "path": ".work/external-art-corpus/graphic-overview/takahiro-kurashima-01.png",
+          "sha256": "c5a58f3732dd4d36bc5aa062fc6d10cecc0d60c1e419ae1a6688b0d7ce11a329"
+        },
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 takahiro-kurashima-02.png",
+          "path": ".work/external-art-corpus/graphic-overview/takahiro-kurashima-02.png",
+          "sha256": "238820b50b54a286bf695500294c30d7f66dbea4a54360caed5f5c5e9518bf60"
+        },
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 tomasz-sulej-generateme-01.png",
+          "path": ".work/external-art-corpus/graphic-overview/tomasz-sulej-generateme-01.png",
+          "sha256": "640542026583130799e4d1bf3d81703fe490b68e0eb204a63f8f5689fca9099b"
+        },
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 tomasz-sulej-generateme-02.png",
+          "path": ".work/external-art-corpus/graphic-overview/tomasz-sulej-generateme-02.png",
+          "sha256": "095f9a45d6d527dd36add47719f5c2e6f7401d008d03365f08e21d876668b070"
+        },
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 tomasz-sulej-generateme-03.png",
+          "path": ".work/external-art-corpus/graphic-overview/tomasz-sulej-generateme-03.png",
+          "sha256": "e13f5a8da017b7c1651c78eed766461c7c583e4f714fc58e849159a794995d12"
+        },
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 tomasz-sulej-generateme-04.png",
+          "path": ".work/external-art-corpus/graphic-overview/tomasz-sulej-generateme-04.png",
+          "sha256": "34d26c0dc4e6adaca737e136ea8cb4c7d21abd3d04972022a69db75225dd45d0"
+        },
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 tyler-hobbs-01.png",
+          "path": ".work/external-art-corpus/graphic-overview/tyler-hobbs-01.png",
+          "sha256": "36c06d67bf2f23ada30882a5c5a746db45931c7cede2d7cd1143ca24408c8759"
+        },
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 tyler-hobbs-02.png",
+          "path": ".work/external-art-corpus/graphic-overview/tyler-hobbs-02.png",
+          "sha256": "11f0d50a3cfe0f2745b3b456feb01a287421d42712f90274ab65b98bb4129451"
+        },
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 tyler-hobbs-03.png",
+          "path": ".work/external-art-corpus/graphic-overview/tyler-hobbs-03.png",
+          "sha256": "d0bc5ae4792d85729c1d1a371401cd2c919e8aa9aad2a7d9592397704899d46b"
+        },
+        {
+          "label": "external-art-corpus \u2014 graphic-overview \u2014 tyler-hobbs-04.png",
+          "path": ".work/external-art-corpus/graphic-overview/tyler-hobbs-04.png",
+          "sha256": "c68b1fb4b7701875a5bd6e54b33f4f0e3ffd10cb55a0900cfd894b1e7cc163c5"
+        },
+        {
+          "label": "external-art-corpus \u2014 animated-review \u2014 animated-01.png",
+          "path": ".work/external-art-corpus/animated-review/animated-01.png",
+          "sha256": "fe94a8a5cab5426e7dd8d71a072abe162814c51b2e1203a9ec2a3e6f3605ee4f"
+        },
+        {
+          "label": "external-art-corpus \u2014 animated-review \u2014 animated-02.png",
+          "path": ".work/external-art-corpus/animated-review/animated-02.png",
+          "sha256": "a9ab8385aa1ec0bcb253aeab0129aca8bda41419fe6e9a64d8b6b81c95127914"
+        },
+        {
+          "label": "external-art-corpus \u2014 animated-review \u2014 animated-03.png",
+          "path": ".work/external-art-corpus/animated-review/animated-03.png",
+          "sha256": "4f26f4a5f0b862a6cf2b737a8cf7017c76ed650c908848de3313b97487d68b75"
+        },
+        {
+          "label": "external-art-corpus \u2014 animated-review \u2014 animated-04.png",
+          "path": ".work/external-art-corpus/animated-review/animated-04.png",
+          "sha256": "c5447d0ab3bf4bc6804b50ed9932ec7f2f9e0ac1696fa498dcd09cdbe2923faa"
+        },
+        {
+          "label": "external-art-corpus \u2014 animated-review \u2014 animated-05.png",
+          "path": ".work/external-art-corpus/animated-review/animated-05.png",
+          "sha256": "ca649a5025bb712b2eb1f128f1f996b1d6c584e18fdf09a4f48c02cb85cdac11"
+        }
+      ]
+    },
+    {
+      "id": "external-art-gallery",
+      "title": "External reference gallery \u2014 desktop and mobile",
+      "category": "Root reviewed corpus navigation",
+      "description": "Searchable local corpus gallery. Source references and unavailable images remain explicit; no horizontal overflow at 390px.",
+      "evidence": "evidence/external-art/2026-09/root-review.json",
+      "images": [
+        {
+          "label": "external-art-corpus \u2014 browser-desktop.png",
+          "path": ".work/external-art-corpus/browser-desktop.png",
+          "sha256": "3204271b1563ce353e9285dc4388d5e9e60369cb6aa102b69944273777601b80"
+        },
+        {
+          "label": "external-art-corpus \u2014 browser-mobile.png",
+          "path": ".work/external-art-corpus/browser-mobile.png",
+          "sha256": "98d90938796c8c996862a69e41c1485acd639815e165fbe125c9d7ecefbf0c7e"
+        },
+        {
+          "label": "external-art-corpus \u2014 browser-mobile-art.png",
+          "path": ".work/external-art-corpus/browser-mobile-art.png",
+          "sha256": "2c9ce41f9df1e73364ba7c9e5569905c5fd1dcd5a2df6899a1313c531011db8d"
+        }
+      ]
+    },
+    {
+      "id": "external-expansion-motifs",
+      "title": "Motif compositions \u2014 original p5 studies",
+      "category": "Root accepted original p5 studies \u2014 no artist recreation",
+      "description": "Reviewed source renders with exact full-geometry/state and PNG replay from an offline-installed package. New palette/mark controls preserve retained state; structure changes are separate.",
+      "evidence": "evidence/expansion/first-batch/root-review.json",
+      "images": [
+        {
+          "label": "ornament-poster-baseline",
+          "path": ".work/expansion-first/motifs-v2/ornament-poster-baseline.png",
+          "sha256": "b7f606e4cf3d04b377c6153af9e75dc50e0d40abf4a82d621c1604d573c1dc7c"
+        },
+        {
+          "label": "ornament-poster-emblem-transfer",
+          "path": ".work/expansion-first/motifs-v2/ornament-poster-emblem-transfer.png",
+          "sha256": "774a6c74ae530922b1e1713d5891e4a78215a25547d7c55ee2e106017a553ac5"
+        },
+        {
+          "label": "ornament-poster-uniform-scale",
+          "path": ".work/expansion-first/motifs-v2/ornament-poster-uniform-scale.png",
+          "sha256": "bc94dcb95cbc7baede0c101d0e6b1cdf53c0bd8aa234f3b959c5bafb0edc879e"
+        },
+        {
+          "label": "ornament-poster-full-field",
+          "path": ".work/expansion-first/motifs-v2/ornament-poster-full-field.png",
+          "sha256": "ddc0cda349d49dc38fd6dc5c0e76d793118567c5c81e1453a7cc011e403e1f1e"
+        },
+        {
+          "label": "geometric-panel-baseline",
+          "path": ".work/expansion-first/motifs-v2/geometric-panel-baseline.png",
+          "sha256": "e89befef63106f71da8e3ae503773376c4091d44e5ff7302cd714b445cf30fd5"
+        },
+        {
+          "label": "geometric-panel-motif",
+          "path": ".work/expansion-first/motifs-v2/geometric-panel-motif.png",
+          "sha256": "93dd76d0b129086d5671d502a25e507871237675366c8dbf8335e90e5f56c2a1"
+        },
+        {
+          "label": "geometric-panel-palette",
+          "path": ".work/expansion-first/motifs-v2/geometric-panel-palette.png",
+          "sha256": "3cd25332fc31285ca4a0fe0104066845015e6a0fefff804c3aa7dbd27e4f8ff0"
+        },
+        {
+          "label": "orbital-brush-baseline",
+          "path": ".work/expansion-first/motifs-v2/orbital-brush-baseline.png",
+          "sha256": "a500d127fc6aaaa11a6c5e32beb4b5aa192706161d3d34a5fd083a6c0ddd10ef"
+        },
+        {
+          "label": "orbital-brush-motif",
+          "path": ".work/expansion-first/motifs-v2/orbital-brush-motif.png",
+          "sha256": "7e6f9ae2231961a8146a61208940ec967aea6e063ef32c57fd61bb6e5d01d545"
+        },
+        {
+          "label": "orbital-brush-palette",
+          "path": ".work/expansion-first/motifs-v2/orbital-brush-palette.png",
+          "sha256": "ba27f507f814cda97ac356802eb0b755ac3d94626a487348b62c1292da736192"
+        }
+      ]
+    },
+    {
+      "id": "external-expansion-proximity",
+      "title": "Moving relationships \u2014 radius graphs and pair response",
+      "category": "Root accepted original p5 studies \u2014 no artist recreation",
+      "description": "Reviewed source renders with exact full-geometry/state and PNG replay from an offline-installed package. New palette/mark controls preserve retained state; structure changes are separate.",
+      "evidence": "evidence/expansion/first-batch/root-review.json",
+      "images": [
+        {
+          "label": "native-02 \u2014 contact-network \u2014 startup",
+          "path": ".work/expansion-first/proximity/native-02/contact-network/startup.png",
+          "sha256": "11f45447c1de7bebad80a07cdab12d002c59cfb4c0a429cb5332c791dab2bcd6"
+        },
+        {
+          "label": "native-02 \u2014 contact-network \u2014 tick-120",
+          "path": ".work/expansion-first/proximity/native-02/contact-network/tick-120.png",
+          "sha256": "425c455d626599cca39cf1dfca2e808d00699d333ab0f48c412d1ffa0ff787c6"
+        },
+        {
+          "label": "native-02 \u2014 contact-network \u2014 tick-240",
+          "path": ".work/expansion-first/proximity/native-02/contact-network/tick-240.png",
+          "sha256": "e737094de3b0839dab080de014f536b68473557ee40fc2f74bb2405feda0a70d"
+        },
+        {
+          "label": "native-02 \u2014 contact-network \u2014 open-chain-tick-120",
+          "path": ".work/expansion-first/proximity/native-02/contact-network/open-chain-tick-120.png",
+          "sha256": "d90dd1ea0049edfd195c728be4eaa4ff8e0987a8367df8e7ac297357e3a5ca94"
+        },
+        {
+          "label": "native-02 \u2014 contact-network \u2014 radius-edit-tick-060",
+          "path": ".work/expansion-first/proximity/native-02/contact-network/radius-edit-tick-060.png",
+          "sha256": "a870e8b091f2f2c8fc0d372739d46d65aeed7f8e7949c604fdcfe21ff3f31341"
+        },
+        {
+          "label": "native-02 \u2014 contact-network \u2014 avoidance-edit-tick-060",
+          "path": ".work/expansion-first/proximity/native-02/contact-network/avoidance-edit-tick-060.png",
+          "sha256": "c7cc3b052cd9e5feb033bd9c03af68a25583cd3246621c52d2296eb3d372a57f"
+        },
+        {
+          "label": "native-02 \u2014 contact-network \u2014 marks",
+          "path": ".work/expansion-first/proximity/native-02/contact-network/marks.png",
+          "sha256": "12940d9ea168f61dd7244052a184f1df14dc611583b10e1f2ddb53f2f703ca45"
+        },
+        {
+          "label": "native-02 \u2014 agent-trails \u2014 startup",
+          "path": ".work/expansion-first/proximity/native-02/agent-trails/startup.png",
+          "sha256": "9f470a99b1fe2090825650fa3c9dc95f3ef0339d8ce342100dc349c068b748f3"
+        },
+        {
+          "label": "native-02 \u2014 agent-trails \u2014 tick-120",
+          "path": ".work/expansion-first/proximity/native-02/agent-trails/tick-120.png",
+          "sha256": "826f191bb26afbb195cdeb173972a1f7fa2d91327f846ed67ecd0fc046e44b04"
+        },
+        {
+          "label": "native-02 \u2014 agent-trails \u2014 tick-240",
+          "path": ".work/expansion-first/proximity/native-02/agent-trails/tick-240.png",
+          "sha256": "e4ddc9dd5910721ac09df891d87e0d5c057395164ec208d48a74fcdd9ca614cf"
+        },
+        {
+          "label": "native-02 \u2014 agent-trails \u2014 open-chain-tick-120",
+          "path": ".work/expansion-first/proximity/native-02/agent-trails/open-chain-tick-120.png",
+          "sha256": "bbd2f3accc44f5ccef5f74bee214871a06574c2e17086fc5bbf8a927b66129d4"
+        },
+        {
+          "label": "native-02 \u2014 agent-trails \u2014 radius-edit-tick-060",
+          "path": ".work/expansion-first/proximity/native-02/agent-trails/radius-edit-tick-060.png",
+          "sha256": "3d87a885125b8696af99a36d83416f9eeb9a9ad4d3845118a5703bd2990fc208"
+        },
+        {
+          "label": "native-02 \u2014 agent-trails \u2014 avoidance-edit-tick-060",
+          "path": ".work/expansion-first/proximity/native-02/agent-trails/avoidance-edit-tick-060.png",
+          "sha256": "8a05aca7ffff55c7737c49eaf80abf7732cca3d2007f42ca940ae7c0588956e1"
+        },
+        {
+          "label": "native-02 \u2014 agent-trails \u2014 marks",
+          "path": ".work/expansion-first/proximity/native-02/agent-trails/marks.png",
+          "sha256": "4be9004f6714b7c824fd30542b376712f1e66cfaca9444e93df3ca9909a7e511"
+        }
+      ]
+    },
+    {
+      "id": "completed-redesign-restoration",
+      "title": "Completed gallery and Studio restored on 8443",
+      "category": "Root reviewed release",
+      "description": "Completed merged UI served from a clean isolated main checkout; separate landing-page preview preserved.",
+      "evidence": "evidence/web/completed-redesign-restoration.json",
+      "images": [
+        {
+          "label": "Gallery",
+          "path": ".work/expansion-full/redesign-restoration/live/gallery.png",
+          "sha256": "3cec7e9a46ce5fa13faef8ad1f05c48c140ad4c532d51096cde8e4afce0f0fd1"
+        },
+        {
+          "label": "Studio",
+          "path": ".work/expansion-full/redesign-restoration/live/studio.png",
+          "sha256": "b562092d027b9d09822cdd970ebadf15cf09b3d87645939d4a5f1908b13eca99"
+        }
+      ]
+    },
+    {
+      "id": "external-gallery-first-batch",
+      "title": "Five new studies in the completed gallery and Studio",
+      "category": "Root reviewed web integration",
+      "description": "95-study isolated release preserves completed UI, adds original editable motifs and proximity studies. Landing-page work remains separate.",
+      "evidence": "evidence/web/external-expansion-gallery-review.json",
+      "images": [
+        {
+          "label": "gallery-ornament-filter",
+          "path": ".work/external-gallery-review/.work/browser-review/screens/gallery-ornament-filter.png",
+          "sha256": "2eaffb2bebd24ebaa134dae3033f008a6021591ce714438fa89a7b2fc3cbc783"
+        },
+        {
+          "label": "studio-agent-trails",
+          "path": ".work/external-gallery-review/.work/browser-review/screens/studio-agent-trails.png",
+          "sha256": "32cef0b91b3f4b5f7f7fcf37de9fecbce7a94f2f77679c36e1f2546d8961e87f"
+        },
+        {
+          "label": "techniques-geometric-panel",
+          "path": ".work/external-gallery-review/.work/browser-review/screens/techniques-geometric-panel.png",
+          "sha256": "4f584a8027ba504fa7dab32b3721d1876b290c8bb5b256b5860f14557836e284"
+        },
+        {
+          "label": "techniques-orbital-brush",
+          "path": ".work/external-gallery-review/.work/browser-review/screens/techniques-orbital-brush.png",
+          "sha256": "4b7d3cf65d6bc36f8de707a2946009f20fbaa76e41fc98c3811fb50427b9df4c"
         }
       ]
     }

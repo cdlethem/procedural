@@ -8,7 +8,7 @@ This is a current snapshot. Historical plans and reviews are not an active assig
 - Java implementation objective: **31 operations, 37 editable workflows**. Java 0.35 runtime
   baseline remains `d7f95a06f55fd0937ebb2c12bb2192c7644922c4`; see the
   [completion review](evidence/distribution/java-completion-review.json).
-- p5.js: **67 conformant cores, 67 operations with scoped native coverage, 106 editable
+- p5.js: **69 conformant cores, 69 operations with scoped native coverage, 111 editable
   package workflows**, and five scoped technique attestations. These dimensions are separate.
   [Port status](docs/port-integration-status.md) links the historical integrations.
 - [Survey coverage batch 1](evidence/coverage/batch1/integration-review.json) adds exactly
@@ -19,6 +19,9 @@ This is a current snapshot. Historical plans and reviews are not an active assig
   restores the recorded source-layout RNG and passes the unchanged gate at **SSIM0.995**,
   adding one demonstrated structural recreation. Both field studies remain independent
   components. All three withheld transfers remain source walkthroughs.
+- [External expansion batch A/B](evidence/expansion/first-batch/root-review.json) adds radius-pair
+  queries, synchronous pair-force steps and five original editable studies. Source and installed
+  package lifecycle checks pass; no artist recreation or new technique attestation is claimed.
 - Packages are reviewed local artifacts, not registry publications. This work does not imply
   a portable recipe executor, full-corpus certification or equivalent target ports.
 
@@ -30,7 +33,7 @@ old example headers are not current support authority.
 | Target | Conformant core | Scoped native | Scoped technique |
 |---|---:|---:|---:|
 | Processing Java | 31 | 31 | 26 |
-| p5.js | 67 | 67 | 5 |
+| p5.js | 69 | 69 | 5 |
 | py5 | 10 | 10 | 4 |
 | Processing Android | 10 | 10 | 4 |
 
@@ -42,9 +45,9 @@ The report includes all69 family dispositions and all three denominators:800 ass
 
 ## Web application
 
-- The [web app](apps/README.md) has90 gallery/Studio studies and generated API pages for67
+- The [web app](apps/README.md) has95 gallery/Studio studies and generated API pages for69
   operations. The three coverage studies are packaged native examples; the web study count
-  stays90. The app compositor remains separate from portable recipes/MCP.
+  is95 after the five external expansion studies. The app compositor remains separate from portable recipes/MCP.
 - Layer editing, custom palettes, source inspection, undo/redo, local recovery, JSON/PNG export
   and Go storage are reviewed. [Workspace review](evidence/web/studio-workspace-review.json),
   [v3 review](evidence/web/app-v3-review.json) and [architecture](docs/web-app-architecture.md)
@@ -60,31 +63,43 @@ The report includes all69 family dispositions and all three denominators:800 ass
   [prompt integration](evidence/web/prompt-web-integration-review.json) and
   [saved-layer successor](evidence/web/generated-layer-review.json). See the
   [artist guide](docs/prompt-studio-guide.md). Generated artifact JSON needs the harness service.
-- Named manual/generated palettes are covered by the
-  [palette review](evidence/web/palette-library-review.json). This does not accept concurrent
-  default-palette work or additional API exports.
-- Reviewed live deployment remains the prior90-study release at
-  https://eunoia.tailf03dad.ts.net:8443/ (Next3002, Go8088), from `.work/p5-tenfold-release`.
-  `procedurals-web` and `procedurals-api` user services own the processes. The
-  [deployment review](evidence/web/p5-tenfold/deployment.json) records its HTTPS checks;
-  this coverage batch has not been deployed.
+- Named manual/generated palettes retain their [review](evidence/web/palette-library-review.json).
+  The [50 default palettes](docs/default-palettes.md) now have a separate
+  [local data/UI review](evidence/external-art/2026-09/default-palette-review.json), including
+  the JavaScript export, offline defaults, editable copies and scoped browser checks.
+- Live8443 now serves the completed merged redesign from clean main revision `f30c95b4`,
+  release `.work/main-redesign-release-20260917` (Next3002, Go8088). The
+  [restoration review](evidence/web/completed-redesign-restoration.json) records source
+  reconciliation, production/workspace checks and browser verification through the actual HTTPS URL.
+  The in-progress landing page remains separate. Future releases must preserve this completed UI
+  baseline; see [live release procedure](docs/live-web-release.md).
 - Named projects live in `.work/web-projects`. The current release links shared prompt
   artifacts, saved layers and palettes under `.work/web-palettes-release/.work/harness`.
 
+## External reference research
+
+The [corpus](docs/external-art-corpus.md) contains 6,497 distinct local images across 24 artist/studio
+groups, representing 1,988 of 2,023 selected records; 383 source URLs remain unavailable. The
+[58-family p5 expansion plan](docs/external-art-p5-expansion-plan.md) compares current capabilities
+and prioritizes future work. [Root review](evidence/external-art/2026-09/root-review.json) records
+visual scope and access gaps; no external artwork recreation is accepted by this research.
+
 ## Remaining work and ownership
 
-The [batch-1 handoff](docs/handoff-survey-coverage-batch1.md) is implemented to the scoped
-acceptance above. Stop after these three capabilities. [Roadmap](docs/roadmap.md) owns future
-sequencing; rectangle partitions, heading wander, simplex noise and shader work are not
-part of this batch. Reproduction failures and residual families are retained in its review.
+The survey batch and first [external expansion batch](docs/external-expansion-first-batch.md)
+are complete at their declared scope. The maintainer now requires the **entire external expansion
+plan implemented**. [Execution scope](docs/external-expansion-execution.md) tracks active B–I
+and deeper-audit work; batch completion is an integration checkpoint, not the task endpoint.
+Contact/sensor/flock, width-aware regions, connected growth and periodic fluid contracts are
+in design. These pending slices do not change the accepted counts above.
 
 - Other-target ports remain separate. The [port handoff](docs/porting-resume.md) tracks Python
   attestation reconciliation, Android ProfileMarks lifecycle validation and Java backlog.
   Three Python cores remain pending source; older Python/Android work at `2f9418e3` requires
   explicit transplant and review. SpringMarks p5 has scoped animation acceptance.
-- Preserve concurrent Android ProfileMarks edits and `.gradle/` directories, external-art
-  research, and web/default-palette work. The batch was checked in an isolated copy and its
-  entrypoint review binds only its three exports. A later export needs its own successor.
+- Preserve concurrent Android ProfileMarks edits, `.gradle/` directories and unrelated work.
+  The [export successor](evidence/conformance/external-expansion-surface-review.json) binds the
+  two new operations and default palette data while preserving historical acceptance bytes.
 - The [Java recipe preview](docs/java-recipe-preview.md) is a prototype. Before natural-language
   recipe planning/its first prompt benchmark, create the missing prompt-to-recipe evaluation
   skill after catalog/executor work, as required by AGENTS.md.

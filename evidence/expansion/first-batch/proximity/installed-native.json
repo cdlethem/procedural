@@ -1,0 +1,855 @@
+{
+  "status": "passed",
+  "scope": "Original p5 Canvas2D interaction studies; full-state replay, current query graph, edit controls, fixed-edge design transfer and browser operation timings. No artist recreation or contact-history claim.",
+  "runtime": "p5 2.3.2, Canvas2D, density1,720x720",
+  "package_root": ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript",
+  "input_sha256_before": {
+    "tests/native/proximity-studies-javascript.mjs": "536eb9770bf13a397e601e8ebf3dd689679f22681951544e4fd5ae9b1e07e49a",
+    "tools/serve_survey_coverage_studies.mjs": "95688496fa8e245101b05f0765889263727d75aaf9db9bcdf569c611bedaad37",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/adjacency-tile-collapse-2d.js": "ad70df385f1066de90fdb0b04ac84535cd9370a522b3ed91b996235d936c51e4",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/assemble-segment-chains-2d.js": "8ab83d01e0dcff42e6e75b183aa26596511ed5bc5a1a734c2791ff2455096291",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/bayer-dither.js": "2c6b749115c51e0569be56612fb9a1edcf1f5906718389a0157f5d8c2dcf4a43",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/binary-cell-partition.js": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/binary-morphology-2d.js": "112b2e90fae068250c8cf16b2906cabf463b21e3138bb0be164c9b68e3198151",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/chaikin-polyline-2d.js": "5f7dd247985be361679e15f4fb2a7bd5e033927b53e1d6a1a85d2a30685ebb97",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/convex-hull-2d.js": "d156a22647adb5fe931c8740ee2c74eae7f4b243de8bc6fedc714e49139c0075",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/convex-polygon-placements.js": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/convolve-2d-signed.js": "88a639ede86d5f656ad83fddc3f4063da7b97c824cf6afd77344038aac03309d",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/cost-grid-paths-2d.js": "73f133373556969568b16baab369aedd944c7fa08671bbf418db319e32f364b6",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/damped-wave-step-2d.js": "6d309ed8b0bf78d5abb5097d24839f62019e57a0c4aadac41e2d9d51d96aeeaa",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/default-palettes.js": "17b7ae9166e35a266998a182f62e8dc0ad0d00db1e8c5934ff6e0034f4bcf8d1",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/disc-projection.js": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/elementary-cellular-rows.js": "cf99a0c8cea6f0f645df343765218bf91c372a3aeaefe7fb8cbb2c3aaffd4af6",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/euclidean-distance-transform-2d.js": "d23b9f390d8f5bf2b913b9d046671969226cc4d0062d799035c715d6b5f23fb7",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/extrude-simple-polygon-3d.js": "7b13ac647e6115dbcdd29ae1346eb7df84894af97fa4def05624b34e37e16740",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/field-displace-2d.js": "cda0d26f09f511d6f3abb2be26908600ab01d1baa4487fb7fe765686f424b090",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/floyd-steinberg-dither.js": "9ff206e74a55a799e9cecb7844b8f7640ec1a20cf726b8e2ed30f547e7f73283",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/gradient-noise-3d-01.js": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/gray-scott-step-2d.js": "3106ec4ffbb2b8a2bab29406f9d49a62e4831ccf67af18a320b899cd494adfbc",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/index.js": "8e4172b8f46b5f02efdf4cfd22be1009e4ccd2cee00e7e5270f2dda84262ef1d",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/geometry-a-utils.js": "b13eec1218c84e3758c8b831182518a2b069be6fb355561bd512a259c3c94a45",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/geometry-b-utils.js": "72e6dae1c98dc48285764908c38999127390520902d69a2dadebf7fa2b53c773",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/mesh-study-utils.js": "3e7f9501ece2259c768e296978b2d9c9292437ea561a4120566211a4a14561bd",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/systems-a-utils.js": "c6e4920c72648b559fb70395a51ead4deb47e972cd91ae54145d1b1c1e5d5204",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/life-like-step-2d.js": "37b145560381679290e862addbff05ed4adf94b1b90fdfd90400116132c1fd4f",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/lloyd-relaxation-2d.js": "85d30436973e1010a49ae159f10ca00e0c0b6b546d95345b175c5b55bf6ff5b3",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/loop-subdivide-triangles-3d.js": "848f5258859d0fafa0ac82a4b71dc04612f5c219fa926c2e3d9f4f24f229eab0",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/marching-squares-2d.js": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/masked-source-over.js": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/median-cut-quantize.js": "10c334b0897c28a6ea722407a50f30dc74c4e6da2d7134322155266950d3ccf8",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/nearest-segment-contact.js": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/octave-gradient-noise.js": "ea3556c22d7d8ae04b5863011ad9f59dfd7d2a2583ba1b6e6e9dbe7641faca10",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/offset-polyline-2d.js": "eb42f6a1bba9bf15cfc6d873fba8896bce09a5b5f9168ffd199119e643c38382",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/oklab-ramp.js": "b0523d44f8556694f9c81bb8c561a9d2550a9f309ead76f4aa67400811bd44de",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/pair-force-step-2d.js": "f5066eb907c4bba004b8439e87458636dd0bc8ad61e241246ab8069f5670fbfa",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/parallel-token-rewrite.js": "0801534342dafd5b394e900a19edf051645a1f0666bf9f52744d6ae28936c7c9",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/parallel-transport-ribbon-3d.js": "9f5d099e4777ffeb2e897c5155466fe797d010dc31b96edb4d5d9a7c59393fdf",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/poisson-disc-2d.js": "ccdf5f339ad29589ad44ae5a1585283a52bb033c1240ba86314a83254df4cb19",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/radial-pull.js": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/radius-pairs-2d.js": "0e2fe20f0c03d9d93bd7e92a2eb50b28a3a18967111c38ffcddc41b3eff1b551",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/raster-crossfade.js": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/resample-polyline-2d.js": "0cadef92e1a999ebe8f58bc17b7dc82341db03b190cf4ebf8087058657b0ff42",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/retained-rectangle-cuts.js": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/rk4-vector-grid-trace-2d.js": "f29ad04d1629d04c1d21cc15f901abb6404c6b6afc9af1699f1c070e99f0e281",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/scalar-grid-curl-2d.js": "6b3237010420fbe77d2770aa8d71436c223522506e68244944bb053e8b1eef89",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/seeded-depth-first-spanning-tree.js": "7b2d71cef7caad248bc511d715a68ac379addc6bed3adc22605502bc05b82c57",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/seeded-pixel-grain.js": "cdc5961f7ac0cf09cbd15b443de06e1777fccdf2b3ccb222a4ad06ddf24b8ce2",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/segment-clip.js": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/separable-blur.js": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/simplify-polyline-2d.js": "b874b18cf0ee75397f09676d5bfe4f66fbeb8987e260577a0579a613799b1feb",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/skyline-pack-2d.js": "427c4ebd2d16b163abdc31e8ffe1348b0d9e10e96f6b7dfdd2524fbebe763de7",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/token-turtle-2d.js": "24ecdf07d999153c7f611e2c743553450d15e7be929dff4c31edf210b57026fb",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/triangulate-simple-polygon-2d.js": "bfbf0df2fd29df8590daa74c629312e14b36342e8577078e1e2f369362ed2760",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/voronoi-cells-2d.js": "e711b13d660c6c1020daca2bc7d58f655cd614238e0fd0f4155af524ac3fe1a6",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/examples/contact-network/README.md": "65659aa0ae9980567219350147f069f039af1e5832662f480a9388d290b200af",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/examples/contact-network/index.html": "b9b3f9c815045fed7dc873cc794bdee0a275dd6b6b52b820de37b9bb75e082bc",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/examples/contact-network/sketch.js": "a346d49ae19a3fa56d0431746afe430b0ebb21309a074cfa3b653883097d0d4c",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/examples/contact-network/study.js": "6be3faba285b4d12eb6b1d845a5d3981cc6ab1d90298ca2b33a790edd55e871f",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/examples/agent-trails/README.md": "fa5f6e75c2f2b6f8bab168f246b69e6c5dd10bbebae3b3efa02dbfaa70c255f6",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/examples/agent-trails/index.html": "3b6af1df317dc25549493b0c98ddad2bd2017a485c65e257615c622a331a9410",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/examples/agent-trails/sketch.js": "50fe3382dca0951038efff003819e5bf0265d827e2fde436c07ad21ef3219452",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    "catalog/operations/radius-pairs-2d.json": "638f8d69aaae5f16a425a48f63b4c2133892aea2b931b84ae2986966d0b3125b",
+    "catalog/operations/pair-force-step-2d.json": "61fff3a5ef7b6b5d5c90c92bdcdb9fe4bf0927980c2d1acaf59f3e45a42884b5"
+  },
+  "studies": [
+    {
+      "slug": "contact-network",
+      "frames": [
+        {
+          "label": "startup",
+          "tick": 0,
+          "point_count": 126,
+          "pair_count": 436,
+          "history_count": 1,
+          "png_sha256": "11f45447c1de7bebad80a07cdab12d002c59cfb4c0a429cb5332c791dab2bcd6",
+          "state_sha256": "d9857396b3c45200e5a3f9f6ea7bf18b9c2b0111fb9ab2b161e78466230d2925",
+          "path": ".work/expansion-first/installed-proximity/contact-network/startup.png",
+          "bounds": [
+            113.29176094933885,
+            171.1801721040414,
+            605.287632810602,
+            597.5397684921804
+          ]
+        },
+        {
+          "label": "tick-060",
+          "tick": 60,
+          "point_count": 126,
+          "pair_count": 506,
+          "history_count": 61,
+          "png_sha256": "68b6f41cee123fa2ec2d258df7a06c757ff3dee85799c7cf61b695bffe26c5f8",
+          "state_sha256": "4f88bc4a3e03760cc482d40b036cc4dd99703c63a2d9be7f6ea4d10dcb41e8fd",
+          "path": ".work/expansion-first/installed-proximity/contact-network/tick-060.png",
+          "bounds": [
+            131.27023194257472,
+            189.77773002621663,
+            585.5723672809157,
+            586.3045045120803
+          ]
+        },
+        {
+          "label": "tick-120",
+          "tick": 120,
+          "point_count": 126,
+          "pair_count": 675,
+          "history_count": 121,
+          "png_sha256": "425c455d626599cca39cf1dfca2e808d00699d333ab0f48c412d1ffa0ff787c6",
+          "state_sha256": "0b7612b9a1014fc95b5ec04e4c2aa7cfebf0654bbd7a61048e5bb87ed2bb425b",
+          "path": ".work/expansion-first/installed-proximity/contact-network/tick-120.png",
+          "bounds": [
+            137.74618479666168,
+            197.6407561093387,
+            576.1411933335836,
+            574.3458474850717
+          ]
+        },
+        {
+          "label": "tick-240",
+          "tick": 240,
+          "point_count": 126,
+          "pair_count": 1671,
+          "history_count": 241,
+          "png_sha256": "e737094de3b0839dab080de014f536b68473557ee40fc2f74bb2405feda0a70d",
+          "state_sha256": "6b37ed3401a57403916f0316718f34c71e53fda5ca919a1eff455d4b592a47c3",
+          "path": ".work/expansion-first/installed-proximity/contact-network/tick-240.png",
+          "bounds": [
+            157.13564936523295,
+            210.17771177187225,
+            565.0637977705775,
+            545.4479162544633
+          ]
+        },
+        {
+          "label": "palette",
+          "tick": 240,
+          "point_count": 126,
+          "pair_count": 1671,
+          "history_count": 241,
+          "png_sha256": "1cce773ce937f1960978fefffe94d270e0e9e51ae5fe3dea7c432a921bf657ea",
+          "state_sha256": "b8dc42e12add02da7983cb9ad064381b39112cac707ba8ffc1dc09f22a983a57",
+          "path": ".work/expansion-first/installed-proximity/contact-network/palette.png",
+          "bounds": [
+            157.13564936523295,
+            210.17771177187225,
+            565.0637977705775,
+            545.4479162544633
+          ]
+        },
+        {
+          "label": "marks",
+          "tick": 240,
+          "point_count": 126,
+          "pair_count": 1671,
+          "history_count": 241,
+          "png_sha256": "12940d9ea168f61dd7244052a184f1df14dc611583b10e1f2ddb53f2f703ca45",
+          "state_sha256": "a7ce643e08fa2ff54bb6033a67021365f14bdd8182887fc64b6190350b201207",
+          "path": ".work/expansion-first/installed-proximity/contact-network/marks.png",
+          "bounds": [
+            157.13564936523295,
+            210.17771177187225,
+            565.0637977705775,
+            545.4479162544633
+          ]
+        },
+        {
+          "label": "radius-edit-tick-060",
+          "tick": 60,
+          "point_count": 126,
+          "pair_count": 3778,
+          "history_count": 61,
+          "png_sha256": "a870e8b091f2f2c8fc0d372739d46d65aeed7f8e7949c604fdcfe21ff3f31341",
+          "state_sha256": "27b9475e26f96d0c22edb7f7aa738168731c20d3c2b8fe8f2a9af658f08e3cad",
+          "path": ".work/expansion-first/installed-proximity/contact-network/radius-edit-tick-060.png",
+          "bounds": [
+            201.15580966700645,
+            258.2444305163663,
+            515.7874077237577,
+            490.8163898330607
+          ]
+        },
+        {
+          "label": "avoidance-edit-tick-060",
+          "tick": 60,
+          "point_count": 126,
+          "pair_count": 353,
+          "history_count": 61,
+          "png_sha256": "c7cc3b052cd9e5feb033bd9c03af68a25583cd3246621c52d2296eb3d372a57f",
+          "state_sha256": "f1317d11f68e20ba1a1f85fc11c72ef82a35395cff85deadfb150ac9ce6a8981",
+          "path": ".work/expansion-first/installed-proximity/contact-network/avoidance-edit-tick-060.png",
+          "bounds": [
+            118.05081510500163,
+            174.30800992574225,
+            603.5281864957752,
+            601.4811633663647
+          ]
+        },
+        {
+          "label": "replay-tick-060",
+          "tick": 60,
+          "point_count": 126,
+          "pair_count": 506,
+          "history_count": 61,
+          "png_sha256": "68b6f41cee123fa2ec2d258df7a06c757ff3dee85799c7cf61b695bffe26c5f8",
+          "state_sha256": "4f88bc4a3e03760cc482d40b036cc4dd99703c63a2d9be7f6ea4d10dcb41e8fd",
+          "path": ".work/expansion-first/installed-proximity/contact-network/replay-tick-060.png",
+          "bounds": [
+            131.27023194257472,
+            189.77773002621663,
+            585.5723672809157,
+            586.3045045120803
+          ]
+        },
+        {
+          "label": "reset",
+          "tick": 0,
+          "point_count": 126,
+          "pair_count": 436,
+          "history_count": 1,
+          "png_sha256": "11f45447c1de7bebad80a07cdab12d002c59cfb4c0a429cb5332c791dab2bcd6",
+          "state_sha256": "d9857396b3c45200e5a3f9f6ea7bf18b9c2b0111fb9ab2b161e78466230d2925",
+          "path": ".work/expansion-first/installed-proximity/contact-network/reset.png",
+          "bounds": [
+            113.29176094933885,
+            171.1801721040414,
+            605.287632810602,
+            597.5397684921804
+          ]
+        },
+        {
+          "label": "reload",
+          "tick": 0,
+          "point_count": 126,
+          "pair_count": 436,
+          "history_count": 1,
+          "png_sha256": "11f45447c1de7bebad80a07cdab12d002c59cfb4c0a429cb5332c791dab2bcd6",
+          "state_sha256": "d9857396b3c45200e5a3f9f6ea7bf18b9c2b0111fb9ab2b161e78466230d2925",
+          "path": ".work/expansion-first/installed-proximity/contact-network/reload.png",
+          "bounds": [
+            113.29176094933885,
+            171.1801721040414,
+            605.287632810602,
+            597.5397684921804
+          ]
+        },
+        {
+          "label": "open-chain-tick-000",
+          "tick": 0,
+          "point_count": 75,
+          "pair_count": 72,
+          "history_count": 1,
+          "png_sha256": "6caea306a56e07a9f7020dede95b210afe9fe325f51630a148855db65d1d031d",
+          "state_sha256": "79780a82f1f1e260d341b719bd07ab408abeca35654c6aa27fec5dacc8e242ce",
+          "path": ".work/expansion-first/installed-proximity/contact-network/open-chain-tick-000.png",
+          "bounds": [
+            132,
+            140,
+            587.9331011791515,
+            580
+          ]
+        },
+        {
+          "label": "open-chain-tick-060",
+          "tick": 60,
+          "point_count": 75,
+          "pair_count": 72,
+          "history_count": 61,
+          "png_sha256": "552fda48e325f436d8fbcf97f507bcd984f7c568ea80461e438441d7913f0294",
+          "state_sha256": "e072099bd9d25bd11386e41dba6c58e21be3568c8d63dfba9dbf6afcf086750c",
+          "path": ".work/expansion-first/installed-proximity/contact-network/open-chain-tick-060.png",
+          "bounds": [
+            117.33142496398895,
+            110.32093332442001,
+            603.2120753264498,
+            606.6825386682372
+          ]
+        },
+        {
+          "label": "open-chain-tick-120",
+          "tick": 120,
+          "point_count": 75,
+          "pair_count": 72,
+          "history_count": 121,
+          "png_sha256": "d90dd1ea0049edfd195c728be4eaa4ff8e0987a8367df8e7ac297357e3a5ca94",
+          "state_sha256": "cd230bbdf0ea3997031e9c265decc86e43640743966e3739ad09feeb9e262636",
+          "path": ".work/expansion-first/installed-proximity/contact-network/open-chain-tick-120.png",
+          "bounds": [
+            90.21306377465315,
+            101.58359151067349,
+            620.9695769815836,
+            618.810694985961
+          ]
+        },
+        {
+          "label": "open-chain-replay",
+          "tick": 120,
+          "point_count": 75,
+          "pair_count": 72,
+          "history_count": 121,
+          "png_sha256": "d90dd1ea0049edfd195c728be4eaa4ff8e0987a8367df8e7ac297357e3a5ca94",
+          "state_sha256": "cd230bbdf0ea3997031e9c265decc86e43640743966e3739ad09feeb9e262636",
+          "path": ".work/expansion-first/installed-proximity/contact-network/open-chain-replay.png",
+          "bounds": [
+            90.21306377465315,
+            101.58359151067349,
+            620.9695769815836,
+            618.810694985961
+          ]
+        }
+      ],
+      "checks": [
+        "startup,60,120,240 ticks; post-step relationship graph; bounded241-sample history; no step beyond240",
+        "palette and marks preserve complete points,velocities,forces,pairs,history,groups,tick",
+        "radius and avoidance separately change subsequent state from the same initial conditions",
+        "full-state and PNG replay; reset/reload exact; downloaded PNG exactly equals displayed canvas with no tick/redraw",
+        "actual animation advances; pause retains complete state",
+        "fixed-edge transfer preserves edges as positions change; radius edit has no graph effect; exact state and PNG replay"
+      ],
+      "native_transfer": "Fixed75-point72-edge open-chain graph replaces query; unchanged public step; exact replay to120; visual review recorded separately."
+    },
+    {
+      "slug": "agent-trails",
+      "frames": [
+        {
+          "label": "startup",
+          "tick": 0,
+          "point_count": 108,
+          "pair_count": 282,
+          "history_count": 1,
+          "png_sha256": "9f470a99b1fe2090825650fa3c9dc95f3ef0339d8ce342100dc349c068b748f3",
+          "state_sha256": "f50453413764883edf0f5c32301f6de57fb408419f305e044aa46cd87ff19131",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/startup.png",
+          "bounds": [
+            136.4798536209217,
+            165.5374726502019,
+            583.5201463790783,
+            554.4625273497982
+          ]
+        },
+        {
+          "label": "tick-060",
+          "tick": 60,
+          "point_count": 108,
+          "pair_count": 458,
+          "history_count": 61,
+          "png_sha256": "b48681a5c234f7398dea04528d5a8453784019b69425ee2a93e3b9d03f625211",
+          "state_sha256": "3669a3fc9d1c4aa3fa626991f70662e9337bb8edb86f361ba3ca286dd2fc9fef",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/tick-060.png",
+          "bounds": [
+            153.37899481824817,
+            175.92462747193275,
+            566.6210051817518,
+            544.0753725280675
+          ]
+        },
+        {
+          "label": "tick-120",
+          "tick": 120,
+          "point_count": 108,
+          "pair_count": 292,
+          "history_count": 121,
+          "png_sha256": "826f191bb26afbb195cdeb173972a1f7fa2d91327f846ed67ecd0fc046e44b04",
+          "state_sha256": "85e414b741fb1badf278da75b7adb02ed01e1a13df0e0878a4c9dc729796d15d",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/tick-120.png",
+          "bounds": [
+            79.93807242518429,
+            120.44779879989025,
+            640.0619275748141,
+            599.552201200109
+          ]
+        },
+        {
+          "label": "tick-240",
+          "tick": 240,
+          "point_count": 108,
+          "pair_count": 314,
+          "history_count": 241,
+          "png_sha256": "e4ddc9dd5910721ac09df891d87e0d5c057395164ec208d48a74fcdd9ca614cf",
+          "state_sha256": "0575f67b1f490914d2730028947dad08634a0713a49e97805c4423323ed3dfbe",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/tick-240.png",
+          "bounds": [
+            80.88323561250928,
+            97.66233705280611,
+            639.1167643871435,
+            622.3376629471884
+          ]
+        },
+        {
+          "label": "palette",
+          "tick": 240,
+          "point_count": 108,
+          "pair_count": 314,
+          "history_count": 241,
+          "png_sha256": "a1990a4e6e595503f09674ce8590adf26db70b7cbdf17f0a47c2135374e42451",
+          "state_sha256": "577f71af95a38f9828a8c112d903c6ca09587727012328f60bb4adb609de9bc2",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/palette.png",
+          "bounds": [
+            80.88323561250928,
+            97.66233705280611,
+            639.1167643871435,
+            622.3376629471884
+          ]
+        },
+        {
+          "label": "marks",
+          "tick": 240,
+          "point_count": 108,
+          "pair_count": 314,
+          "history_count": 241,
+          "png_sha256": "4be9004f6714b7c824fd30542b376712f1e66cfaca9444e93df3ca9909a7e511",
+          "state_sha256": "626c4006a8ab49865fbb9f9980e864291dbaa148437d39f8292195df5a1a3720",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/marks.png",
+          "bounds": [
+            80.88323561250928,
+            97.66233705280611,
+            639.1167643871435,
+            622.3376629471884
+          ]
+        },
+        {
+          "label": "radius-edit-tick-060",
+          "tick": 60,
+          "point_count": 108,
+          "pair_count": 1176,
+          "history_count": 61,
+          "png_sha256": "3d87a885125b8696af99a36d83416f9eeb9a9ad4d3845118a5703bd2990fc208",
+          "state_sha256": "b3083c1d4796479e0794216213fe29ec6f931f33f290fce61cd1fb157dd87a9b",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/radius-edit-tick-060.png",
+          "bounds": [
+            184.83386827806305,
+            201.25269679259057,
+            535.166131721937,
+            518.7473032074106
+          ]
+        },
+        {
+          "label": "avoidance-edit-tick-060",
+          "tick": 60,
+          "point_count": 108,
+          "pair_count": 280,
+          "history_count": 61,
+          "png_sha256": "8a05aca7ffff55c7737c49eaf80abf7732cca3d2007f42ca940ae7c0588956e1",
+          "state_sha256": "384a5de67a5f9f5639cba520283d241c9270770b12399bbb50ec07334c9c1a7c",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/avoidance-edit-tick-060.png",
+          "bounds": [
+            117.37334985294893,
+            140.98521329109838,
+            602.6266501470517,
+            579.0147867089013
+          ]
+        },
+        {
+          "label": "replay-tick-060",
+          "tick": 60,
+          "point_count": 108,
+          "pair_count": 458,
+          "history_count": 61,
+          "png_sha256": "b48681a5c234f7398dea04528d5a8453784019b69425ee2a93e3b9d03f625211",
+          "state_sha256": "3669a3fc9d1c4aa3fa626991f70662e9337bb8edb86f361ba3ca286dd2fc9fef",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/replay-tick-060.png",
+          "bounds": [
+            153.37899481824817,
+            175.92462747193275,
+            566.6210051817518,
+            544.0753725280675
+          ]
+        },
+        {
+          "label": "reset",
+          "tick": 0,
+          "point_count": 108,
+          "pair_count": 282,
+          "history_count": 1,
+          "png_sha256": "9f470a99b1fe2090825650fa3c9dc95f3ef0339d8ce342100dc349c068b748f3",
+          "state_sha256": "f50453413764883edf0f5c32301f6de57fb408419f305e044aa46cd87ff19131",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/reset.png",
+          "bounds": [
+            136.4798536209217,
+            165.5374726502019,
+            583.5201463790783,
+            554.4625273497982
+          ]
+        },
+        {
+          "label": "reload",
+          "tick": 0,
+          "point_count": 108,
+          "pair_count": 282,
+          "history_count": 1,
+          "png_sha256": "9f470a99b1fe2090825650fa3c9dc95f3ef0339d8ce342100dc349c068b748f3",
+          "state_sha256": "f50453413764883edf0f5c32301f6de57fb408419f305e044aa46cd87ff19131",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/reload.png",
+          "bounds": [
+            136.4798536209217,
+            165.5374726502019,
+            583.5201463790783,
+            554.4625273497982
+          ]
+        },
+        {
+          "label": "open-chain-tick-000",
+          "tick": 0,
+          "point_count": 75,
+          "pair_count": 72,
+          "history_count": 1,
+          "png_sha256": "97e8f013d79662be0a92d61871bd6a4c1d1abbbb5238985d981882538354298b",
+          "state_sha256": "0a5c646a4f7bfcf2a414186cfaf7bf782a6b5ccbcd0d0bb49d319adc524a4be0",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/open-chain-tick-000.png",
+          "bounds": [
+            132,
+            140,
+            587.9331011791515,
+            580
+          ]
+        },
+        {
+          "label": "open-chain-tick-060",
+          "tick": 60,
+          "point_count": 75,
+          "pair_count": 72,
+          "history_count": 61,
+          "png_sha256": "ab794a8d0ffa7ad4121a7e87f00e0554a5b6aac575505d2edc446fba5c3c0d42",
+          "state_sha256": "2c783e6af7d1596037fa2097754e3896763fbec1649d55203972945fe2f8d026",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/open-chain-tick-060.png",
+          "bounds": [
+            102.42052793440199,
+            92.11215379142506,
+            617.2024781911031,
+            619.7512815003344
+          ]
+        },
+        {
+          "label": "open-chain-tick-120",
+          "tick": 120,
+          "point_count": 75,
+          "pair_count": 72,
+          "history_count": 121,
+          "png_sha256": "bbd2f3accc44f5ccef5f74bee214871a06574c2e17086fc5bbf8a927b66129d4",
+          "state_sha256": "785710a17c15f7485199305b5989bff9ca5734d96f0af1f5fe5337dc317e8712",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/open-chain-tick-120.png",
+          "bounds": [
+            42.22546765710721,
+            68.33262529468527,
+            647.4226267127134,
+            650.7047623180855
+          ]
+        },
+        {
+          "label": "open-chain-replay",
+          "tick": 120,
+          "point_count": 75,
+          "pair_count": 72,
+          "history_count": 121,
+          "png_sha256": "bbd2f3accc44f5ccef5f74bee214871a06574c2e17086fc5bbf8a927b66129d4",
+          "state_sha256": "785710a17c15f7485199305b5989bff9ca5734d96f0af1f5fe5337dc317e8712",
+          "path": ".work/expansion-first/installed-proximity/agent-trails/open-chain-replay.png",
+          "bounds": [
+            42.22546765710721,
+            68.33262529468527,
+            647.4226267127134,
+            650.7047623180855
+          ]
+        }
+      ],
+      "checks": [
+        "startup,60,120,240 ticks; post-step relationship graph; bounded241-sample history; no step beyond240",
+        "palette and marks preserve complete points,velocities,forces,pairs,history,groups,tick",
+        "radius and avoidance separately change subsequent state from the same initial conditions",
+        "full-state and PNG replay; reset/reload exact; downloaded PNG exactly equals displayed canvas with no tick/redraw",
+        "actual animation advances; pause retains complete state",
+        "fixed-edge transfer preserves edges as positions change; radius edit has no graph effect; exact state and PNG replay"
+      ],
+      "native_transfer": "Fixed75-point72-edge open-chain graph replaces query; unchanged public step; exact replay to120; visual review recorded separately."
+    }
+  ],
+  "errors": [],
+  "browser": "153.0.8010.12",
+  "performance": {
+    "scope": "Public browser calls including static validation and allocation; excludes point construction, p5 drawing, canvas readback and PNG encoding. Study case uses exact Contact Network initial positions/velocities. Timings are observations, not realtime guarantees. Five measured batches after two warmup calls per operation; per-call timings divide total batch time.",
+    "cases": [
+      {
+        "name": "tiny",
+        "count": 2,
+        "pairs": 1,
+        "maxWork": 3,
+        "query": {
+          "batch_calls": 200,
+          "per_call_samples_ms": [
+            0.0015000009536743164,
+            0.0014999997615814209,
+            0.0010000002384185792,
+            0.0014999997615814209,
+            0.0004999995231628418
+          ],
+          "median_per_call_ms": 0.0014999997615814209
+        },
+        "step": {
+          "batch_calls": 200,
+          "per_call_samples_ms": [
+            0.0034999990463256835,
+            0.0025,
+            0.0030000007152557375,
+            0.0025,
+            0.0029999995231628418
+          ],
+          "median_per_call_ms": 0.0029999995231628418
+        },
+        "output_sha256": "c57d92dcd0c96da2818e31054a8a93dc6fc92b05b9f7bb0f3e7173ed4ddbd005",
+        "retained_output": {
+          "pair_index_slots": 2,
+          "state_scalar_slots": 12,
+          "json_bytes": 197,
+          "scope": "Output payload size, not heap allocation or peak-memory measurement."
+        }
+      },
+      {
+        "name": "study",
+        "count": 126,
+        "pairs": 436,
+        "maxWork": 8001,
+        "query": {
+          "batch_calls": 20,
+          "per_call_samples_ms": [
+            0.1,
+            0.1,
+            0.10499999523162842,
+            0.1100000023841858,
+            0.1100000023841858
+          ],
+          "median_per_call_ms": 0.10499999523162842
+        },
+        "step": {
+          "batch_calls": 20,
+          "per_call_samples_ms": [
+            0.23499999046325684,
+            0.24000000953674316,
+            0.24499999284744262,
+            0.23000000715255736,
+            0.23499999046325684
+          ],
+          "median_per_call_ms": 0.23499999046325684
+        },
+        "output_sha256": "ea561c9ea70cf077ca710ba86f981bf0a3fe4b58861fb40817d9c765e2332dc7",
+        "retained_output": {
+          "pair_index_slots": 872,
+          "state_scalar_slots": 756,
+          "json_bytes": 19415,
+          "scope": "Output payload size, not heap allocation or peak-memory measurement."
+        }
+      },
+      {
+        "name": "stress",
+        "count": 512,
+        "pairs": 14264,
+        "maxWork": 131328,
+        "query": {
+          "batch_calls": 5,
+          "per_call_samples_ms": [
+            2.759999990463257,
+            2.6800000190734865,
+            2.6,
+            2.6199999809265138,
+            2.759999990463257
+          ],
+          "median_per_call_ms": 2.6800000190734865
+        },
+        "step": {
+          "batch_calls": 5,
+          "per_call_samples_ms": [
+            5.380000019073487,
+            5.4,
+            5.380000019073487,
+            5.3599999904632565,
+            5.259999990463257
+          ],
+          "median_per_call_ms": 5.380000019073487
+        },
+        "output_sha256": "ac3758e9dd771dcbbff45830436e430275411b336e7653b853872b7a568b8b7e",
+        "retained_output": {
+          "pair_index_slots": 28528,
+          "state_scalar_slots": 3072,
+          "json_bytes": 193790,
+          "scope": "Output payload size, not heap allocation or peak-memory measurement."
+        }
+      },
+      {
+        "name": "vertical-worst-case",
+        "count": 512,
+        "pairs": 0,
+        "maxWork": 131328,
+        "query": {
+          "batch_calls": 5,
+          "per_call_samples_ms": [
+            0.3599999904632568,
+            0.31999998092651366,
+            0.34000000953674314,
+            0.34000000953674314,
+            0.34000000953674314
+          ],
+          "median_per_call_ms": 0.34000000953674314
+        },
+        "step": {
+          "batch_calls": 5,
+          "per_call_samples_ms": [
+            0.38000001907348635,
+            0.34000000953674314,
+            0.31999998092651366,
+            0.3,
+            0.3
+          ],
+          "median_per_call_ms": 0.31999998092651366
+        },
+        "output_sha256": "5ca67c6fc66ea7745bb427f979a3914cce3cddf64cf948e228cefff18df21625",
+        "retained_output": {
+          "pair_index_slots": 0,
+          "state_scalar_slots": 3072,
+          "json_bytes": 11201,
+          "scope": "Output payload size, not heap allocation or peak-memory measurement."
+        }
+      }
+    ]
+  },
+  "input_sha256_after": {
+    "tests/native/proximity-studies-javascript.mjs": "536eb9770bf13a397e601e8ebf3dd689679f22681951544e4fd5ae9b1e07e49a",
+    "tools/serve_survey_coverage_studies.mjs": "95688496fa8e245101b05f0765889263727d75aaf9db9bcdf569c611bedaad37",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/adjacency-tile-collapse-2d.js": "ad70df385f1066de90fdb0b04ac84535cd9370a522b3ed91b996235d936c51e4",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/assemble-segment-chains-2d.js": "8ab83d01e0dcff42e6e75b183aa26596511ed5bc5a1a734c2791ff2455096291",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/bayer-dither.js": "2c6b749115c51e0569be56612fb9a1edcf1f5906718389a0157f5d8c2dcf4a43",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/binary-cell-partition.js": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/binary-morphology-2d.js": "112b2e90fae068250c8cf16b2906cabf463b21e3138bb0be164c9b68e3198151",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/chaikin-polyline-2d.js": "5f7dd247985be361679e15f4fb2a7bd5e033927b53e1d6a1a85d2a30685ebb97",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/convex-hull-2d.js": "d156a22647adb5fe931c8740ee2c74eae7f4b243de8bc6fedc714e49139c0075",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/convex-polygon-placements.js": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/convolve-2d-signed.js": "88a639ede86d5f656ad83fddc3f4063da7b97c824cf6afd77344038aac03309d",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/cost-grid-paths-2d.js": "73f133373556969568b16baab369aedd944c7fa08671bbf418db319e32f364b6",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/damped-wave-step-2d.js": "6d309ed8b0bf78d5abb5097d24839f62019e57a0c4aadac41e2d9d51d96aeeaa",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/default-palettes.js": "17b7ae9166e35a266998a182f62e8dc0ad0d00db1e8c5934ff6e0034f4bcf8d1",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/disc-projection.js": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/elementary-cellular-rows.js": "cf99a0c8cea6f0f645df343765218bf91c372a3aeaefe7fb8cbb2c3aaffd4af6",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/euclidean-distance-transform-2d.js": "d23b9f390d8f5bf2b913b9d046671969226cc4d0062d799035c715d6b5f23fb7",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/extrude-simple-polygon-3d.js": "7b13ac647e6115dbcdd29ae1346eb7df84894af97fa4def05624b34e37e16740",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/field-displace-2d.js": "cda0d26f09f511d6f3abb2be26908600ab01d1baa4487fb7fe765686f424b090",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/floyd-steinberg-dither.js": "9ff206e74a55a799e9cecb7844b8f7640ec1a20cf726b8e2ed30f547e7f73283",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/gradient-noise-3d-01.js": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/gray-scott-step-2d.js": "3106ec4ffbb2b8a2bab29406f9d49a62e4831ccf67af18a320b899cd494adfbc",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/index.js": "8e4172b8f46b5f02efdf4cfd22be1009e4ccd2cee00e7e5270f2dda84262ef1d",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/geometry-a-utils.js": "b13eec1218c84e3758c8b831182518a2b069be6fb355561bd512a259c3c94a45",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/geometry-b-utils.js": "72e6dae1c98dc48285764908c38999127390520902d69a2dadebf7fa2b53c773",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/mesh-study-utils.js": "3e7f9501ece2259c768e296978b2d9c9292437ea561a4120566211a4a14561bd",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/internal/systems-a-utils.js": "c6e4920c72648b559fb70395a51ead4deb47e972cd91ae54145d1b1c1e5d5204",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/life-like-step-2d.js": "37b145560381679290e862addbff05ed4adf94b1b90fdfd90400116132c1fd4f",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/lloyd-relaxation-2d.js": "85d30436973e1010a49ae159f10ca00e0c0b6b546d95345b175c5b55bf6ff5b3",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/loop-subdivide-triangles-3d.js": "848f5258859d0fafa0ac82a4b71dc04612f5c219fa926c2e3d9f4f24f229eab0",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/marching-squares-2d.js": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/masked-source-over.js": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/median-cut-quantize.js": "10c334b0897c28a6ea722407a50f30dc74c4e6da2d7134322155266950d3ccf8",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/nearest-segment-contact.js": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/octave-gradient-noise.js": "ea3556c22d7d8ae04b5863011ad9f59dfd7d2a2583ba1b6e6e9dbe7641faca10",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/offset-polyline-2d.js": "eb42f6a1bba9bf15cfc6d873fba8896bce09a5b5f9168ffd199119e643c38382",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/oklab-ramp.js": "b0523d44f8556694f9c81bb8c561a9d2550a9f309ead76f4aa67400811bd44de",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/pair-force-step-2d.js": "f5066eb907c4bba004b8439e87458636dd0bc8ad61e241246ab8069f5670fbfa",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/parallel-token-rewrite.js": "0801534342dafd5b394e900a19edf051645a1f0666bf9f52744d6ae28936c7c9",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/parallel-transport-ribbon-3d.js": "9f5d099e4777ffeb2e897c5155466fe797d010dc31b96edb4d5d9a7c59393fdf",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/poisson-disc-2d.js": "ccdf5f339ad29589ad44ae5a1585283a52bb033c1240ba86314a83254df4cb19",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/radial-pull.js": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/radius-pairs-2d.js": "0e2fe20f0c03d9d93bd7e92a2eb50b28a3a18967111c38ffcddc41b3eff1b551",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/raster-crossfade.js": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/resample-polyline-2d.js": "0cadef92e1a999ebe8f58bc17b7dc82341db03b190cf4ebf8087058657b0ff42",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/retained-rectangle-cuts.js": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/rk4-vector-grid-trace-2d.js": "f29ad04d1629d04c1d21cc15f901abb6404c6b6afc9af1699f1c070e99f0e281",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/scalar-grid-curl-2d.js": "6b3237010420fbe77d2770aa8d71436c223522506e68244944bb053e8b1eef89",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/seeded-depth-first-spanning-tree.js": "7b2d71cef7caad248bc511d715a68ac379addc6bed3adc22605502bc05b82c57",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/seeded-pixel-grain.js": "cdc5961f7ac0cf09cbd15b443de06e1777fccdf2b3ccb222a4ad06ddf24b8ce2",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/segment-clip.js": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/separable-blur.js": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/simplify-polyline-2d.js": "b874b18cf0ee75397f09676d5bfe4f66fbeb8987e260577a0579a613799b1feb",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/skyline-pack-2d.js": "427c4ebd2d16b163abdc31e8ffe1348b0d9e10e96f6b7dfdd2524fbebe763de7",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/token-turtle-2d.js": "24ecdf07d999153c7f611e2c743553450d15e7be929dff4c31edf210b57026fb",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/triangulate-simple-polygon-2d.js": "bfbf0df2fd29df8590daa74c629312e14b36342e8577078e1e2f369362ed2760",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/src/voronoi-cells-2d.js": "e711b13d660c6c1020daca2bc7d58f655cd614238e0fd0f4155af524ac3fe1a6",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/examples/contact-network/README.md": "65659aa0ae9980567219350147f069f039af1e5832662f480a9388d290b200af",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/examples/contact-network/index.html": "b9b3f9c815045fed7dc873cc794bdee0a275dd6b6b52b820de37b9bb75e082bc",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/examples/contact-network/sketch.js": "a346d49ae19a3fa56d0431746afe430b0ebb21309a074cfa3b653883097d0d4c",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/examples/contact-network/study.js": "6be3faba285b4d12eb6b1d845a5d3981cc6ab1d90298ca2b33a790edd55e871f",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/examples/agent-trails/README.md": "fa5f6e75c2f2b6f8bab168f246b69e6c5dd10bbebae3b3efa02dbfaa70c255f6",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/examples/agent-trails/index.html": "3b6af1df317dc25549493b0c98ddad2bd2017a485c65e257615c622a331a9410",
+    ".work/dist/external-expansion-first/consumer/node_modules/@procedurals/javascript/examples/agent-trails/sketch.js": "50fe3382dca0951038efff003819e5bf0265d827e2fde436c07ad21ef3219452",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    "catalog/operations/radius-pairs-2d.json": "638f8d69aaae5f16a425a48f63b4c2133892aea2b931b84ae2986966d0b3125b",
+    "catalog/operations/pair-force-step-2d.json": "61fff3a5ef7b6b5d5c90c92bdcdb9fe4bf0927980c2d1acaf59f3e45a42884b5"
+  }
+}

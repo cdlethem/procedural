@@ -13,6 +13,10 @@ import { basicDefinitions, drawBasic } from "./adapters/basic";
 import { drawGeometry, geometryDefinitions } from "./adapters/geometry";
 import { drawEffects, effectsDefinitions } from "./adapters/effects";
 import { drawExpansion, expansionDefinitions } from "./adapters/expansion";
+import {
+  drawExternalExpansion,
+  externalExpansionDefinitions,
+} from "./adapters/external-expansion";
 
 const basicIds = new Set(basicDefinitions.map((item) => item.id));
 const geometryIds = new Set(geometryDefinitions.map((item) => item.id));
@@ -21,6 +25,7 @@ const pathsIds = new Set(pathsDefinitions.map(item => item.id));
 const systemsIds = new Set(systemsDefinitions.map(item => item.id));
 const materialsIds = new Set(materialsDefinitions.map(item => item.id));
 const expansionIds = new Set(expansionDefinitions.map((item) => item.id));
+const externalExpansionIds = new Set(externalExpansionDefinitions.map((item) => item.id));
 const constants = ["CLOSE", "CORNER", "CENTER", "ROUND", "TRIANGLES"] as const;
 
 /** Isolated harness compositor. Generated source is represented only by its trusted raster. */
@@ -102,6 +107,7 @@ function drawWorkflow(p: any, layer: Extract<DocumentLayer, { kind: "workflow" }
   if (systemsIds.has(workflow.technique)) return drawSystems(p, workflow);
   if (materialsIds.has(workflow.technique)) return drawMaterials(p, workflow);
   if (expansionIds.has(workflow.technique)) return drawExpansion(p, workflow);
+  if (externalExpansionIds.has(workflow.technique)) return drawExternalExpansion(p, workflow);
   throw new Error(`Unknown studio technique: ${String(workflow.technique)}`);
 }
 function drawSource(p: any, layer: Extract<DocumentLayer, { kind: "source" }>, images: Record<string, unknown>): void {

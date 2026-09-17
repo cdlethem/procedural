@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "owner": "root",
+  "status": "accepted for local JavaScript data library and scoped web integration",
+  "date": "2026-09-17T16:55:13.873509+00:00",
+  "palette_count": 50,
+  "colors_per_palette": "4–6",
+  "source_sha256": {
+    "packages/javascript/src/default-palettes.js": "17b7ae9166e35a266998a182f62e8dc0ad0d00db1e8c5934ff6e0034f4bcf8d1",
+    "apps/web/lib/default-palettes.ts": "e098635ef200b201b879a6a831d13e124413f86b627e3281bb4a1e00df248606",
+    "apps/web/components/PaletteLibrary.tsx": "453c9cfa321b41e3ebc06423273093a1e97c79cf2d7440b76348aaa577994e6d",
+    "apps/web/components/PaletteLibrary.module.css": "9cf7c97c5170f8c413a07290d7fd61bea780bc39cc1a9c1a062e7612c49b432b",
+    "apps/web/scripts/test-palettes.mjs": "0bc70114982f3b98d09cbb4e56c364cae23b2d6ab1afb9a49a51a5e157ebdab1",
+    "apps/web/tests/palettes.test.ts": "7e6f49556095205c11ecb5b279cba54fcdc9cb777c8a97cc5547d826bc190cc9",
+    "design/default-palette-library.md": "26db55fdedfe70514da47a40099fed02597cb0da087622f745188a6531a22d1c",
+    "docs/default-palettes.md": "516975f31df6b542abae09099621177a1303f6744b1bbfcc5e02fb32db3285c3"
+  },
+  "public_export": "defaultPalettes from packages/javascript/src/index.js",
+  "data_semantics": "Frozen records and nested arrays; caller copies colors for edits. Names and descriptions are color-led, with inspiration provenance separate. No new algorithm operation.",
+  "curation": "default-palette-curation.json",
+  "root_visual_review": [
+    {
+      "path": ".work/external-art-research/default-palette-swatches-0.png",
+      "sha256": "62a506ad082d490f581956a30cb436ad3d9c62a9abac04d97466bb2badc08e89"
+    },
+    {
+      "path": ".work/external-art-research/default-palette-swatches-1.png",
+      "sha256": "d1893253000e7688a598f7ca2d14ba979e0f5a504428a8da0a50d5aab1d8db3b"
+    },
+    {
+      "path": ".work/external-art-research/default-palette-source-comparisons-0.jpg",
+      "sha256": "767bc224b05455a70435cb16565a5088455c0f7d13e70f69da8c661d1b1e7cc1"
+    },
+    {
+      "path": ".work/external-art-research/default-palette-source-comparisons-1.jpg",
+      "sha256": "b5b562d04c5284ba053f36d7877a11961f3bc78f4bd7e1c67f0c19334ca41384"
+    },
+    {
+      "path": ".work/external-art-research/default-palette-source-comparisons-2.jpg",
+      "sha256": "53acb6c9722c1fe6d0ffddda9b5c48fddb0891e06577d2ab4ced4ba8ebe2375b"
+    },
+    {
+      "path": ".work/default-palettes-app/apps/web/.work/palettes/browser/default-cell-mosaic.png",
+      "sha256": "76fa156ba1096bf88b0ef3316c926cea679d8827737fc483c99d941404ac49e2"
+    },
+    {
+      "path": ".work/default-palettes-app/apps/web/.work/palettes/browser/default-flow-needles.png",
+      "sha256": "deb0938274812e8d37a4977f304a7f98121c5b51f862e3c42be2f730f3e8b349"
+    },
+    {
+      "path": ".work/default-palettes-app/apps/web/.work/palettes/browser/default-rounded-panels.png",
+      "sha256": "33552fb0c3eb87c28f818db489e7b9a01d4a30b150e48441b7e8867bc0edd56e"
+    },
+    {
+      "path": ".work/default-palettes-app/apps/web/.work/palettes/browser/mobile-defaults-last.png",
+      "sha256": "32dedbd772240b0592375a7e28d98260d74fe0a7d7e6da8a33b770b87ef41eaa"
+    }
+  ],
+  "root_findings": [
+    "All 50 swatch palettes and source comparisons inspected; names describe colors rather than creators or works.",
+    "Teal mosaic, cobalt field needles and citron rounded panels show actual selected colors. The two sparse studies retain their original sparse geometry; palette application is not a composition improvement claim.",
+    "All 50 defaults reachable at 390px; final cards and controls visible without horizontal overflow.",
+    "All 50 source IDs, selected URLs and original image hashes match the retained corpus."
+  ],
+  "checks": {
+    "unit_tests": "114 passed; .work/external-art-research/palette-tests.log",
+    "typecheck": "passed; .work/external-art-research/palette-typecheck.log",
+    "browser": "palette-browser.json: storage failure/default availability, search, Customize no-write, actual Studio apply, detached edits, existing CRUD/undo/export,three actual canvas pixel changes, 50 mobile cards",
+    "package": "palette-package.json: offline tarball installation and public defaultPalettes export; direct installed import verifies 50 distinct frozen palettes",
+    "failure_resolution": "An intermediate isolated-app run failed because the test expected the concurrently renamed prompt action. Resynchronizing the isolated app to current sources resolved the label mismatch. The final run preserves strict zero page-errors; no failure filter remains."
+  },
+  "limits": [
+    "Browser run uses an isolated current-source Next development app and Chromium/software renderer; no production deployment or cross-browser claim.",
+    "Prompt generation/context/run are mocked as described in browser evidence; no live model-quality claim.",
+    "Default palette data is accepted independently of concurrent algorithm and whole-app redesign work.",
+    "Sources in the local package artifact include other operations; this review accepts only the palette addition and does not change operation attestations."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "scenarios": [
+    "Built-in defaults stay available when the saved service fails; tag search and Customize use detached unsaved copies without store writes",
+    "Manual hex/picker editor, ordering, invalid color guard, save and reload",
+    "Duplicate, rename, and delete through real collection storage",
+    "Saved palette changes actual workflow pixels; geometry unchanged; undo/redo, recovery and JSON export preserve exact colors",
+    "A built-in palette applies as detached colors to a Studio layer; later layer edits leave immutable default data unchanged",
+    "Save current layer colors; twelve-color modal scroll stays bounded on mobile and Escape closes it",
+    "Prompt response populates editable unsaved draft; model failure preserves it",
+    "Same saved palette applies in standalone gallery study controls",
+    "Three representative gallery studies render after applying three distinct built-in defaults",
+    "All built-in default cards remain reachable without horizontal overflow on a 390px viewport",
+    "Explorations includes exact saved colors alongside artist request"
+  ],
+  "errors": [],
+  "limits": "Palette generation UI replays a validated response. Prompt request checks use a mocked document-context response and intercepted run request; palette storage, workflow drawing and export are live."
+}

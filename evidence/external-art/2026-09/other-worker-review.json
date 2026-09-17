@@ -1,0 +1,239 @@
+{
+  "scope": "Representative output coverage of eight source-indexed artist portfolios, not catalogue-raisonne or lifetime completeness. Inigo Quilez is handled independently by root.",
+  "date": "2026-09-17",
+  "artists": [
+    {
+      "artist": "Golan Levin",
+      "source_indices": [
+        "https://www.flong.com/archive/projects/index.html",
+        "https://www.flong.com/archive/projects/interval/index.html"
+      ],
+      "source_entries": 78,
+      "denominator_note": "74 named top-level entries plus four named Interval children. Interval parent expanded rather than counted as a separate artwork; nine curatorial/non-output entries excluded.",
+      "collection_unit": "named project or child project",
+      "selected_collections": 68,
+      "images": 115,
+      "census_statuses": {
+        "selected": 68,
+        "excluded": 10
+      }
+    },
+    {
+      "artist": "Ben Fry",
+      "source_indices": [
+        "https://www.benfry.com/projects/"
+      ],
+      "source_entries": 51,
+      "denominator_note": "51 distinct named projects in accessible primary index; fourteen legacy applet/canvas entries have only unusably small public thumbnail images in this pass.",
+      "collection_unit": "named project",
+      "selected_collections": 37,
+      "images": 55,
+      "census_statuses": {
+        "selected": 37,
+        "inaccessible": 14
+      }
+    },
+    {
+      "artist": "Watabou",
+      "source_indices": [
+        "https://watabou.itch.io/"
+      ],
+      "source_entries": 47,
+      "denominator_note": "47 creator-owned project cards. Dedicated generators plus one procedural dungeon-game example retained; thirteen other games/textual simulations explicitly excluded.",
+      "collection_unit": "named generator/project",
+      "selected_collections": 34,
+      "images": 88,
+      "census_statuses": {
+        "selected": 34,
+        "excluded": 13
+      }
+    },
+    {
+      "artist": "Benjamin Bardou",
+      "source_indices": [
+        "https://benjaminbardou.com/"
+      ],
+      "source_entries": 98,
+      "denominator_note": "All 98 work tiles, including named film works nested in series; nine series navigation labels group these works and are not additional works.",
+      "collection_unit": "named film/work",
+      "selected_collections": 98,
+      "images": 287,
+      "census_statuses": {
+        "selected": 98
+      }
+    },
+    {
+      "artist": "Raven Kwok",
+      "source_indices": [
+        "https://ravenkwok.com/category/works/",
+        "https://ravenkwok.com/category/works/page/2/",
+        "https://ravenkwok.com/category/works/page/3/",
+        "https://ravenkwok.com/category/works/page/4/",
+        "https://ravenkwok.com/category/works/page/5/",
+        "https://ravenkwok.com/category/works/page/6/",
+        "https://ravenkwok.com/category/works/page/7/",
+        "https://ravenkwok.com/category/works/page/8/",
+        "https://ravenkwok.com/category/works/page/9/"
+      ],
+      "source_entries": 89,
+      "denominator_note": "Full Works archive paginated to final page9: eight pages of ten and one page of nine. Includes installations, physical realizations, animation and collaborative projects.",
+      "collection_unit": "named work/project",
+      "selected_collections": 89,
+      "images": 249,
+      "census_statuses": {
+        "selected": 89
+      }
+    },
+    {
+      "artist": "Tim Rodenbroeker",
+      "source_indices": [
+        "https://trcc.timrodenbroeker.de/category/projects/",
+        "https://trcc.timrodenbroeker.de/category/projects/page/2/"
+      ],
+      "source_entries": 29,
+      "denominator_note": "18+11 public project cards. Page2 HTML title says of6, but linked pagination ends at2 and directly checked pages3–6 contain zero cards. Ten articles/tool covers/community sites excluded after visual review.",
+      "collection_unit": "named project article",
+      "selected_collections": 19,
+      "images": 19,
+      "census_statuses": {
+        "excluded": 10,
+        "selected": 19
+      }
+    },
+    {
+      "artist": "Vera Molnar",
+      "source_indices": [
+        "https://dam.org/museum/artists_ui/artists/molnar-vera/"
+      ],
+      "source_entries": 17,
+      "denominator_note": "All seventeen linked named series/period groups from DAM artist presentation, each with its detail gallery. Not a census of all museum holdings or her entire lifetime oeuvre.",
+      "collection_unit": "named series/period gallery",
+      "selected_collections": 17,
+      "images": 49,
+      "census_statuses": {
+        "selected": 17
+      }
+    },
+    {
+      "artist": "Scott Draves",
+      "source_indices": [
+        "https://scottdraves.com/portfolio",
+        "https://draves.org/art.html",
+        "https://draves.org/dub/"
+      ],
+      "source_entries": 19,
+      "denominator_note": "Current portfolio has twelve slots: eight visual collections and four resource/documentation/product exclusions. Historical index adds two named Dub works and five non-output/compilation exclusions after deduplicating shared collections.",
+      "collection_unit": "named collection or historical output group",
+      "selected_collections": 10,
+      "images": 32,
+      "census_statuses": {
+        "selected": 10,
+        "excluded": 9
+      }
+    }
+  ],
+  "removed_invalid_legacy_inventory": [
+    {
+      "artist": "Vera Molnar",
+      "title": "Bonne Annee 1987",
+      "page_url": "https://www.vam.ac.uk/exhibitions/degrees-of-disruption-vera-molnar-and-generative-art",
+      "source_index_url": "https://www.vam.ac.uk/exhibitions/degrees-of-disruption-vera-molnar-and-generative-art",
+      "status": "excluded",
+      "reason": "Superseded provisional inventory association; not present in rebuilt artwork-card census or source replaced by named-series primary collection.",
+      "work_ids": []
+    },
+    {
+      "artist": "Vera Molnar",
+      "title": "Untitled (Imaginer, Construire)",
+      "page_url": "https://www.vam.ac.uk/exhibitions/degrees-of-disruption-vera-molnar-and-generative-art",
+      "source_index_url": "https://www.vam.ac.uk/exhibitions/degrees-of-disruption-vera-molnar-and-generative-art",
+      "status": "excluded",
+      "reason": "Superseded provisional inventory association; not present in rebuilt artwork-card census or source replaced by named-series primary collection.",
+      "work_ids": []
+    },
+    {
+      "artist": "Vera Molnar",
+      "title": "(Des)Ordres",
+      "page_url": "https://www.vam.ac.uk/exhibitions/degrees-of-disruption-vera-molnar-and-generative-art",
+      "source_index_url": "https://www.vam.ac.uk/exhibitions/degrees-of-disruption-vera-molnar-and-generative-art",
+      "status": "excluded",
+      "reason": "Superseded provisional inventory association; not present in rebuilt artwork-card census or source replaced by named-series primary collection.",
+      "work_ids": []
+    },
+    {
+      "artist": "Vera Molnar",
+      "title": "Interruptions",
+      "page_url": "https://www.vam.ac.uk/exhibitions/degrees-of-disruption-vera-molnar-and-generative-art",
+      "source_index_url": "https://www.vam.ac.uk/exhibitions/degrees-of-disruption-vera-molnar-and-generative-art",
+      "status": "excluded",
+      "reason": "Superseded provisional inventory association; not present in rebuilt artwork-card census or source replaced by named-series primary collection.",
+      "work_ids": []
+    },
+    {
+      "artist": "Tim Rodenbroeker",
+      "title": "Courses",
+      "page_url": "https://trcc.timrodenbroeker.de/courses",
+      "source_index_url": "https://trcc.timrodenbroeker.de/category/projects/",
+      "status": "excluded",
+      "reason": "Superseded provisional inventory association; not present in rebuilt artwork-card census or source replaced by named-series primary collection.",
+      "work_ids": []
+    },
+    {
+      "artist": "Tim Rodenbroeker",
+      "title": "Demos",
+      "page_url": "https://trcc.timrodenbroeker.de/demos",
+      "source_index_url": "https://trcc.timrodenbroeker.de/category/projects/",
+      "status": "excluded",
+      "reason": "Superseded provisional inventory association; not present in rebuilt artwork-card census or source replaced by named-series primary collection.",
+      "work_ids": []
+    },
+    {
+      "artist": "Tim Rodenbroeker",
+      "title": "About",
+      "page_url": "https://trcc.timrodenbroeker.de/about/",
+      "source_index_url": "https://trcc.timrodenbroeker.de/category/projects/",
+      "status": "excluded",
+      "reason": "Superseded provisional inventory association; not present in rebuilt artwork-card census or source replaced by named-series primary collection.",
+      "work_ids": []
+    },
+    {
+      "artist": "Tim Rodenbroeker",
+      "title": "FAQ",
+      "page_url": "https://trcc.timrodenbroeker.de/faq",
+      "source_index_url": "https://trcc.timrodenbroeker.de/category/projects/",
+      "status": "excluded",
+      "reason": "Superseded provisional inventory association; not present in rebuilt artwork-card census or source replaced by named-series primary collection.",
+      "work_ids": []
+    },
+    {
+      "artist": "Tim Rodenbroeker",
+      "title": "Login",
+      "page_url": "https://trcc.timrodenbroeker.de/wp-login.php",
+      "source_index_url": "https://trcc.timrodenbroeker.de/category/projects/",
+      "status": "excluded",
+      "reason": "Superseded provisional inventory association; not present in rebuilt artwork-card census or source replaced by named-series primary collection.",
+      "work_ids": []
+    },
+    {
+      "artist": "Tim Rodenbroeker",
+      "title": "Sign up",
+      "page_url": "https://trcc.timrodenbroeker.de/join/",
+      "source_index_url": "https://trcc.timrodenbroeker.de/category/projects/",
+      "status": "excluded",
+      "reason": "Superseded provisional inventory association; not present in rebuilt artwork-card census or source replaced by named-series primary collection.",
+      "work_ids": []
+    }
+  ],
+  "limits": [
+    "First representative per project/collection visually inspected in contact sheets; additional selected stills verified by source placement and decoding, not an exhaustive visual audit of every image.",
+    "Ben Fry source thumbnails under100x75 excluded instead of upscaled; live applet/canvas/video-only output remains a named gap.",
+    "Some sources contain collaborators, transformed historical imagery or AI outputs. Attribution is to the documented digital work, not exclusive authorship of every input.",
+    "Images remain local research evidence; no rights to republish are implied."
+  ],
+  "outputs": {
+    "records": 372,
+    "images": 894,
+    "census_entries": 428
+  },
+  "reproduction": "No runtime, algorithm or target-support claim is made."
+}

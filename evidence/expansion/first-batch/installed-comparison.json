@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "scope": "All five source-checkout and offline-installed study lifecycles produce identical compared full-state/geometry and PNG results under the same pinned renderer.",
+  "motif_studies": 3,
+  "interaction_studies": 2,
+  "interaction_frame_pairs": 30,
+  "package": "package.json",
+  "reports": [
+    "core.json",
+    "motifs/native.json",
+    "motifs/installed-native.json",
+    "proximity/native.json",
+    "proximity/installed-native.json",
+    "package.json"
+  ]
+}

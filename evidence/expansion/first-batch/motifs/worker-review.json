@@ -1,0 +1,73 @@
+{
+  "status": "worker-complete-pending-root-acceptance",
+  "scope": "Three original, p5-only motif compositions under the approved example boundary. This is evidence of implementation and browser behavior, not recreation or target support acceptance.",
+  "source_motivations": [
+    {
+      "study": "ornament-poster",
+      "corpus_id": "joshua-davis-artblocks-organized-disruption",
+      "local_review_image": ".work/external-art-corpus/review-final/001-1-Joshua Davis-ArtBlocks Organized Disruption.png",
+      "local_image_sha256": "970cf74a18926289ad25f02cd1dd48295e7b39e1da5a4c29efa3e6d6b96c4b35",
+      "inspected": "2026-09-17",
+      "observed_scope": "Layered, varied-scale graphic composition; no motif, algorithm, interaction, or animation is reproduced."
+    },
+    {
+      "study": "geometric-panel",
+      "corpus_id": "casey-reas-recwkydebcguthhwg",
+      "title": "METASOTO",
+      "local_review_image": ".work/external-art-corpus/review-final/021-1-Casey Reas-METASOTO - METAVASARELY - METAJUDD.png",
+      "local_image_sha256": "8bb163ffe6b11214dae62388f6278a7faa288e2f6b6780c11a888026d117f627",
+      "inspected": "2026-09-17",
+      "observed_scope": "Dense linear/geometric field; individual-work technique is unassessed and this study uses an original grid composition."
+    },
+    {
+      "study": "orbital-brush",
+      "corpus_id": "joshua-davis-fx-hash-orbit-of-influence",
+      "local_review_image": ".work/external-art-corpus/review-final/008-1-Joshua Davis-fx hash Orbit of Influence.png",
+      "local_image_sha256": "9593fe917f945ae656151d194e42aac869ac7cb07a7c6ca08ae6c4390030dede",
+      "inspected": "2026-09-17",
+      "observed_scope": "Orbiting line/motif composition; the source's p5/SVG motion system is not reproduced."
+    }
+  ],
+  "implementation": {
+    "retained_geometry": {
+      "ornament-poster": "seededCirclePlacement2D centres, radii, and source indices",
+      "geometric-panel": "regularGrid positions with authored scale and kind attributes",
+      "orbital-brush": "resamplePolyline2D closed path samples"
+    },
+    "appearance_only_edits": ["motif treatment", "palette"],
+    "ornament_layout_edits": ["tiered/uniform scale hierarchy", "cropped/full field; both preserve retained anchors"],
+    "structural_edits": ["packing density", "grid density", "path count"],
+    "palette_source": "packages/javascript/src/default-palettes.js"
+  },
+  "historical_browser_check": {
+    "command": "python3 tools/with_native_render_lock.py -- node tests/native/motif-compositions-javascript.mjs .work/expansion-first/motifs",
+    "report": ".work/expansion-first/motifs/report.json",
+    "result": "passed",
+    "runtime": "p5 2.3.2 Canvas2D; Chromium 153.0.8010.12",
+    "assertions": ["motif and palette substitutions preserve geometry", "structural edit changes geometry", "reset and reload reproduce baseline pixels", "save exports the displayed canvas", "source stability"],
+    "baselines": {
+      "ornament-poster": "90995bf91c5839bc536e72d5eda74cade1287e16f5d946b920368bc714d76212",
+      "geometric-panel": "e89befef63106f71da8e3ae503773376c4091d44e5ff7302cd714b445cf30fd5",
+      "orbital-brush": "a500d127fc6aaaa11a6c5e32beb4b5aa192706161d3d34a5fd083a6c0ddd10ef"
+    }
+  },
+  "current_browser_check": {
+    "command": "python3 tools/with_native_render_lock.py -- node tests/native/motif-compositions-javascript.mjs .work/expansion-first/motifs-v2",
+    "report": ".work/expansion-first/motifs-v2/report.json",
+    "status": "passed",
+    "runtime": "p5 2.3.2 Canvas2D; Chromium 153.0.8010.12",
+    "package_root": "packages/javascript",
+    "assertions": ["full unrounded geometry equality", "separate full-anchor equality", "emblem transfer on the same ornament placements", "hierarchy/crop changes full geometry while preserving anchors", "all transitive core-helper and pinned-p5 source hashes", "reset/reload/save and deterministic replay"],
+    "baseline_sha256": {
+      "ornament-poster": "b7f606e4cf3d04b377c6153af9e75dc50e0d40abf4a82d621c1604d573c1dc7c",
+      "geometric-panel": "e89befef63106f71da8e3ae503773376c4091d44e5ff7302cd714b445cf30fd5",
+      "orbital-brush": "a500d127fc6aaaa11a6c5e32beb4b5aa192706161d3d34a5fd083a6c0ddd10ef"
+    },
+    "input_hashes": "Full before/after hashes for the browser runner, server, pinned p5 bundle, motif helper, all four imported core modules, and all example entry files are in the linked report."
+  },
+  "limitations": [
+    "No artist-owned visual assets, code, SVGs, or inferred algorithms were reused.",
+    "The sources motivate composition tasks only; this work makes no exact, structural, perceptual, animation, interaction, or demonstrated-recreation claim.",
+    "Browser Canvas2D behavior does not establish web-gallery integration, other-target parity, or package support acceptance."
+  ]
+}

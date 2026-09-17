@@ -25,6 +25,10 @@
 .cardBody { padding: 16px; }
 .cardBody p { font-size: 13px; margin: 4px 0 14px; }
 .cardBody > button { width: 100%; margin-bottom: 10px; }
+.defaultHeader { margin-top: 40px; }
+.defaultHeader p { margin-bottom: 16px; }
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin: -4px 0 14px; }
+.tags span { color: var(--muted); font: 11px/1.5 var(--font-mono); padding: 2px 5px; background: var(--surface-muted); }
 .actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .actions button { flex-shrink: 0; }
 .actions label { display: flex; align-items: center; gap: 8px; margin-right: auto; }

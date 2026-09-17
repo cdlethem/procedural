@@ -1,0 +1,80 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "date": "2026-09-17T19:54:36.855967+00:00",
+  "scope": "Five additional gallery/Studio adapters on the completed merged redesign; original studies, not artist recreations.",
+  "baseline_commit": "cd1d7d4816ccac8adb4e5693fce96f3f398ee876",
+  "studies": [
+    "ornament-poster",
+    "geometric-panel",
+    "orbital-brush",
+    "contact-network",
+    "agent-trails"
+  ],
+  "implementation_sha256": {
+    "apps/web/lib/studio.ts": "3234718fc1ce5c2a2bf5cd0c0f956fe2b05e79e0fd6e3c78c9c5c617136eb833",
+    "apps/web/lib/render-studio.ts": "c74d2646223ab80dab81f4beb33b6ada76d15db2fa90af450676271260b3b0c8",
+    "apps/web/lib/harness-render.ts": "0ecce43266b068779397563db321e94cfb41db32314ebd755366cda7751f0533",
+    "apps/web/components/LayerControls.tsx": "95f56e42b34fcb8102e8cfeb5807a480dfd5677ac3836070573165b1635e994a",
+    "apps/web/scripts/generate-gallery.mjs": "efcd284c1fbb41ef31083d8588dcde1149ea11c348cdf33213715fc760996bf5",
+    "apps/web/scripts/sketch-source.mjs": "67b3ac3c5fc289a9f5a47e23fb0ae56ae1232d6df9d5f149d85c16ce261a1f4b",
+    "apps/web/lib/adapters/external-expansion.ts": "49ef6a7c150b2cc896f2477acf64e046168f28746fdef1f6832271db149da5d2",
+    "apps/web/content/external-expansion-studies.mjs": "e7019a443b9c4c7384d9720b1c869bf68a3ce3a0cd33198e54573b76f7de496a",
+    "apps/web/lib/default-palettes.ts": "e098635ef200b201b879a6a831d13e124413f86b627e3281bb4a1e00df248606",
+    "apps/web/lib/generated-gallery.json": "036e13f32ee55ca40c8a1f0e800daa3517ff6f0caff0b5efe13f7cdaadbb8d13",
+    "apps/web/tests/external-expansion-adapters.test.ts": "338b67a1820198ff7e262bd346a067166b763efdbb52fc4f76e2d01922ab3180",
+    "packages/javascript/examples/motif-compositions/compositions.js": "2010c0d71478646a180c5541879399b32ca01bc99806009a2426a5ea33406df9",
+    "packages/javascript/src/default-palettes.js": "17b7ae9166e35a266998a182f62e8dc0ad0d00db1e8c5934ff6e0034f4bcf8d1",
+    "packages/javascript/src/radius-pairs-2d.js": "0e2fe20f0c03d9d93bd7e92a2eb50b28a3a18967111c38ffcddc41b3eff1b551",
+    "packages/javascript/src/pair-force-step-2d.js": "f5066eb907c4bba004b8439e87458636dd0bc8ad61e241246ab8069f5670fbfa",
+    "apps/web/content/ornament-poster.md": "1cefb554b08f483fb3dd5e1f0795241a8740e554614584a57894ab3670ea67ad",
+    "apps/web/content/geometric-panel.md": "587ce13fa1cf602833a1909925a33a41a19c1e68db6ba7d3093538e899338780",
+    "apps/web/content/orbital-brush.md": "8228142c20a1eecffd5270700b3f8fb9c18a53c4bedee979dab678586ca4ad82",
+    "apps/web/content/contact-network.md": "faacbba1ffe71be9d15db78385dc8b75da32b3e6fa80d34a6606de11d3b54da1",
+    "apps/web/content/agent-trails.md": "f4b1ffe061624aad17e9056e52addefd947f901abef2d10fc513ab661257c0ed",
+    "apps/web/tests/studio.test.ts": "0fe5ebc54ac8d9c4529e8fd155d00f2ae10e0c00a8c47d85a0c31b4a9eac03d4"
+  },
+  "evidence_sha256": {
+    "evidence/web/completed-redesign-restoration.json": "8c50ac81e16f0e352da49e24dc6b1ad9ea78566c9649e0946f30beaee8d0452a",
+    "evidence/expansion/first-batch/root-review.json": "fb775159dbe1d08d91ba331927ddb156a631c9ae3704cd5e44983c531ee7d86b",
+    ".work/external-gallery-review/.work/browser-review/results.json": "3147e07b66b67c684978338b169a5d77c5e0b95c26451e2819e0c0c3de09d075",
+    ".work/external-gallery-review/.work/browser-review/report.md": "3f5502ec89837d49cbfe717165eeee9d5f8d1cfaa3098a9b33c6c34140b62794",
+    ".work/external-gallery-review/.work/web-app-review/previews/report.json": "9e9bf440c78d5cc3887947e72e3795aa4b8eb21a08efdee7e481d0e11f01f425",
+    ".work/expansion-full/gallery-build.log": "204e3c08fcc0e99ef81b364868562bb09347f9b6281bb4cc10f13d0fcef85b28",
+    ".work/expansion-full/gallery-unit-final.log": "0e5c6e6bef632be8b9d6ef539948cdcc553da03411e238d8cd4b9f2abb88f992",
+    ".work/expansion-full/gallery-final-build.log": "652251730988f7029281244f1bc4e73d6290666ba3d5d32726b184545acb70e1"
+  },
+  "root_review": [
+    "Inspected adapter compositions and fixed import/dispatch additions in both renderers; existing IDs retain their dispatch and palette behavior.",
+    "Read independent browser report and reviewed representative gallery, Studio and two technique page screenshots.",
+    "All declared adapter edits/replay/palette isolation tests pass; actual browser control edits alter pixels for each of five studies.",
+    "Regenerated all 95 app-adapter previews under the shared lease; all succeeded.",
+    "Isolated production build succeeds with 69 generated API entries; no landing-page source overlay.",
+    "Final isolated assembly also includes the separately reviewed 50-palette UI: all119 web tests pass, followed by successful normal npm build/generation. Initial unit failures identified the obsolete90-study assertion and a missing isolated browser-toolchain path; both repaired without weakening assertions."
+  ],
+  "root_viewed_images": [
+    {
+      "path": ".work/external-gallery-review/.work/browser-review/screens/gallery-ornament-filter.png",
+      "sha256": "2eaffb2bebd24ebaa134dae3033f008a6021591ce714438fa89a7b2fc3cbc783"
+    },
+    {
+      "path": ".work/external-gallery-review/.work/browser-review/screens/studio-agent-trails.png",
+      "sha256": "32cef0b91b3f4b5f7f7fcf37de9fecbce7a94f2f77679c36e1f2546d8961e87f"
+    },
+    {
+      "path": ".work/external-gallery-review/.work/browser-review/screens/techniques-geometric-panel.png",
+      "sha256": "4f584a8027ba504fa7dab32b3721d1876b290c8bb5b256b5860f14557836e284"
+    },
+    {
+      "path": ".work/external-gallery-review/.work/browser-review/screens/techniques-orbital-brush.png",
+      "sha256": "4b7d3cf65d6bc36f8de707a2946009f20fbaa76e41fc98c3811fb50427b9df4c"
+    }
+  ],
+  "limits": [
+    "Scoped Chromium review; no cross-browser guarantee.",
+    "In-progress landing-page files are outside this review and release.",
+    "No additional operation support beyond the independently accepted first batch.",
+    "Preview build originally lacked backend configuration; final build routes to existing Go API. Live service verification belongs to release review."
+  ]
+}

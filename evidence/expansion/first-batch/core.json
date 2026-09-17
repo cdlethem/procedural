@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "operations": [
+    "spatial.radius-pairs-2d",
+    "motion.pair-force-step-2d"
+  ],
+  "node_version": "v22.22.1",
+  "scope": "Actual independent JavaScript proximity cores against frozen analytical fixtures, brute-force sweep oracle, passive-carrier, ownership, synchronous-force and overflow-semantics checks. No renderer or acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/radius-pairs-2d.json": "638f8d69aaae5f16a425a48f63b4c2133892aea2b931b84ae2986966d0b3125b",
+    "catalog/operations/pair-force-step-2d.json": "61fff3a5ef7b6b5d5c90c92bdcdb9fe4bf0927980c2d1acaf59f3e45a42884b5",
+    "fixtures/operations/radius-pairs-2d.json": "ed980fc40923aa52f73939cc54dd201f732429330fd495ab7b8ed82f19317e26",
+    "fixtures/operations/pair-force-step-2d.json": "c129666ca0bb162089b6e983e7179be8b57697a28698cf9350c4d7b1dc72d5aa",
+    "packages/javascript/src/radius-pairs-2d.js": "0e2fe20f0c03d9d93bd7e92a2eb50b28a3a18967111c38ffcddc41b3eff1b551",
+    "packages/javascript/src/pair-force-step-2d.js": "f5066eb907c4bba004b8439e87458636dd0bc8ad61e241246ab8069f5670fbfa",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "tests/native/proximity-interactions-javascript.mjs": "8e1c5421f06564a19d8501cad1cbd850c79ba9dc747faa5a45a314a7cf210d07"
+  },
+  "input_sha256_after": {
+    "catalog/operations/radius-pairs-2d.json": "638f8d69aaae5f16a425a48f63b4c2133892aea2b931b84ae2986966d0b3125b",
+    "catalog/operations/pair-force-step-2d.json": "61fff3a5ef7b6b5d5c90c92bdcdb9fe4bf0927980c2d1acaf59f3e45a42884b5",
+    "fixtures/operations/radius-pairs-2d.json": "ed980fc40923aa52f73939cc54dd201f732429330fd495ab7b8ed82f19317e26",
+    "fixtures/operations/pair-force-step-2d.json": "c129666ca0bb162089b6e983e7179be8b57697a28698cf9350c4d7b1dc72d5aa",
+    "packages/javascript/src/radius-pairs-2d.js": "0e2fe20f0c03d9d93bd7e92a2eb50b28a3a18967111c38ffcddc41b3eff1b551",
+    "packages/javascript/src/pair-force-step-2d.js": "f5066eb907c4bba004b8439e87458636dd0bc8ad61e241246ab8069f5670fbfa",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "tests/native/proximity-interactions-javascript.mjs": "8e1c5421f06564a19d8501cad1cbd850c79ba9dc747faa5a45a314a7cf210d07"
+  },
+  "scenarios": {
+    "fixture_cases": 42,
+    "sweep_oracle": {
+      "independent_bruteforce_cases": 16,
+      "candidate_budget_case": {
+        "points": 9,
+        "candidates": 36
+      }
+    },
+    "ownership_carriers": [
+      "frozen input remains unchanged",
+      "fresh non-aliased nested output arrays",
+      "class/accessor/symbol/extra-array/typed/sparse/nonfinite/bigint carriers",
+      "static validation precedes work"
+    ],
+    "force_semantics": [
+      "synchronous chain",
+      "single-pair reciprocal force symmetry",
+      "query-screen versus force-step overflow distinction"
+    ]
+  }
+}

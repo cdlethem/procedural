@@ -1,0 +1,1311 @@
+{
+  "operation": "motion.pair-force-step-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "61fff3a5ef7b6b5d5c90c92bdcdb9fe4bf0927980c2d1acaf59f3e45a42884b5",
+  "oracle": "Root analytical geometry and force arithmetic, authored before implementation; brute-force and mutation challenges supplement these vectors.",
+  "cases": [
+    {
+      "id": "symmetric-attraction",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 3
+      },
+      "output": {
+        "points": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            1,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ],
+        "forces": [
+          [
+            1,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "synchronous-three-chain",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 5
+      },
+      "output": {
+        "points": [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ],
+        "forces": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "chain-second-step",
+      "input": {
+        "points": [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 5
+      },
+      "output": {
+        "points": [
+          [
+            2.5,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            1.5,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            1.5,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            -1.5,
+            0
+          ]
+        ],
+        "forces": [
+          [
+            0.5,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            -0.5,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "tapered-repulsion",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 0,
+        "repulsion": 2,
+        "repulsionRadius": 4,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 3
+      },
+      "output": {
+        "points": [
+          [
+            -1,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            -1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "forces": [
+          [
+            -1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "force-cancellation",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 2,
+        "repulsionRadius": 4,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 3
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "forces": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "radius-exclusive-force-boundary",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 0,
+        "repulsion": 7,
+        "repulsionRadius": 2,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 3
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "forces": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "coincident-no-invented-direction",
+      "input": {
+        "points": [
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 100,
+        "repulsionRadius": 2,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 3
+      },
+      "output": {
+        "points": [
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "forces": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "no-neighbor-drift",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            1,
+            2
+          ],
+          [
+            -1,
+            -2
+          ]
+        ],
+        "pairs": [],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 2
+      },
+      "output": {
+        "points": [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            -2
+          ]
+        ],
+        "velocities": [
+          [
+            1,
+            2
+          ],
+          [
+            -1,
+            -2
+          ]
+        ],
+        "forces": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "zero-damping-before-movement",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            7,
+            9
+          ],
+          [
+            3,
+            2
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 0,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 3
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "forces": [
+          [
+            1,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "zero-speed-retains-force",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 0,
+        "maxWork": 3
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "forces": [
+          [
+            1,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "speed-cap-direction",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            3,
+            4
+          ]
+        ],
+        "pairs": [],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 2,
+        "maxWork": 1
+      },
+      "output": {
+        "points": [
+          [
+            1.2000000000000002,
+            1.6
+          ]
+        ],
+        "velocities": [
+          [
+            1.2000000000000002,
+            1.6
+          ]
+        ],
+        "forces": [
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "dt-and-damping-order",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            1,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 0.5,
+        "dt": 0.5,
+        "maxSpeed": 100,
+        "maxWork": 3
+      },
+      "output": {
+        "points": [
+          [
+            0.5,
+            0
+          ],
+          [
+            3.5,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            1,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ],
+        "forces": [
+          [
+            2,
+            0
+          ],
+          [
+            -2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "empty",
+      "input": {
+        "points": [],
+        "velocities": [],
+        "pairs": [],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 0
+      },
+      "output": {
+        "points": [],
+        "velocities": [],
+        "forces": []
+      }
+    },
+    {
+      "id": "pair-order-invalid",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "duplicate-pair",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 3
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "self-pair",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            0
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 3
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "reversed-pair",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            1,
+            0
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 3
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "out-of-range",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            2
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 3
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "length-mismatch-before-work",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero-dt",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 0,
+        "maxSpeed": 100,
+        "maxWork": 3
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "work-before-overflow",
+      "input": {
+        "points": [
+          [
+            -1e+308,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 2
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "step-overflow-unlike-query",
+      "input": {
+        "points": [
+          [
+            -1e+308,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 0,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 3
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "damping-does-not-hide-overflow",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "attraction": 1e+308,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 0,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxWork": 3
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "position-overflow",
+      "input": {
+        "points": [
+          [
+            1e+308,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            1e+308,
+            0
+          ]
+        ],
+        "pairs": [],
+        "attraction": 0.5,
+        "repulsion": 0,
+        "repulsionRadius": 0,
+        "damping": 1,
+        "dt": 2,
+        "maxSpeed": 1e+308,
+        "maxWork": 3
+      },
+      "error": "NUMERIC_OVERFLOW"
+    }
+  ]
+}
