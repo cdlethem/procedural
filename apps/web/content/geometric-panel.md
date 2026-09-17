@@ -1,6 +1,6 @@
 # Geometric panel
 
-An offset grid holds an asymmetric field of wedges or crossed bars. This is an original study, not a recreation of a surveyed artwork.
+An offset grid holds an asymmetric field of wedges or crossed bars.
 
 | Control | Canvas effect |
 | --- | --- |

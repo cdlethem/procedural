@@ -1,5 +1,5 @@
 # Relaxed stones
-Lloyd passes settle sites before their Voronoi outlines are drawn. This is an original design, not a corpus recreation.
+Lloyd passes settle sites before their Voronoi outlines are drawn.
 
 | Control | Canvas effect |
 |---|---|

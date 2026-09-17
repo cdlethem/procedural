@@ -1,5 +1,5 @@
 # Blue-noise stipple
-Explicit-state Poisson sampling distributes dots with a minimum separation. This is an original design, not a corpus recreation.
+Explicit-state Poisson sampling distributes dots with a minimum separation.
 
 | Control | Canvas effect |
 |---|---|

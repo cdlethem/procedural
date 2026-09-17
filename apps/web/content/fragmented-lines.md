@@ -1,5 +1,5 @@
 # Fragmented lines
-Broken source segments become short ordered chains. Gap rhythm changes the visible topology. This is an original design, not a corpus recreation.
+Broken source segments become short ordered chains. Gap rhythm changes the visible topology.
 
 | Control | Canvas effect |
 |---|---|

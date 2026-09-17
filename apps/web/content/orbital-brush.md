@@ -1,6 +1,6 @@
 # Orbital brush
 
-Resampled closed paths gather around three quiet centres. Draw them as ribbons or beads without changing the current path samples. This is an original study, not a recreation of a surveyed artwork.
+Resampled closed paths gather around three quiet centres. Draw them as ribbons or beads without changing the current path samples.
 
 | Control | Canvas effect |
 | --- | --- |

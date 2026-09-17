@@ -1,6 +1,6 @@
 # Nested contour strokes
 
-Repeated offsets turn one boundary into layered contour ink. This is an original design study, not a recreation of a surveyed original.
+Repeated offsets turn one boundary into layered contour ink.
 
 | Control | Visible effect |
 | --- | --- |

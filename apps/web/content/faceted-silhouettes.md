@@ -1,6 +1,6 @@
 # Faceted silhouettes
 
-A simple silhouette becomes colored triangular paper planes. This is an original design study, not a recreation of a surveyed original.
+A simple silhouette becomes colored triangular paper planes.
 
 | Control | Visible effect |
 | --- | --- |

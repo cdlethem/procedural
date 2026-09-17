@@ -33,7 +33,6 @@ console.log(result);`,
     [
       "The operation has no defaults and does not read a renderer or ambient RNG.",
       "ALPHA_MULTIPLY preserves straight RGB bytes and changes only alpha.",
-      "This is a pixel transform component; it does not reproduce a source shader hash or an entire sketch.",
     ],
   ),
   "field.displace-points-2d": guide(

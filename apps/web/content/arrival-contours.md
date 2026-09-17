@@ -1,5 +1,5 @@
 # Arrival contours
-Marching squares traces levels of grid-path arrival cost. This is an original design, not a corpus recreation.
+Marching squares traces levels of grid-path arrival cost.
 
 | Control | Canvas effect |
 |---|---|

@@ -1,6 +1,6 @@
 # Road margins
 
-Paired offsets make route margins with visible join behavior. This is an original design study, not a recreation of a surveyed original.
+Paired offsets make route margins with visible join behavior.
 
 | Control | Visible effect |
 | --- | --- |

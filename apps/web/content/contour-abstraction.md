@@ -1,6 +1,6 @@
 # Contour abstraction
 
-One sampled contour becomes a stacked family of simplified lines. This is an original design study, not a recreation of a surveyed original.
+One sampled contour becomes a stacked family of simplified lines.
 
 | Control | Visible effect |
 | --- | --- |

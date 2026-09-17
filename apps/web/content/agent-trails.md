@@ -1,6 +1,6 @@
 # Agent trails
 
-Three rings of points retain their sampled movement paths as nearby relationships pull and separate them. The frame at each tick is replayed from explicit state, so its history is deterministic and editable. This is an original study, not a recreation of a surveyed artwork.
+Three rings of points retain their sampled movement paths as nearby relationships pull and separate them. The frame at each tick is replayed from explicit state, so its history is deterministic and editable.
 
 | Control | Canvas effect |
 | --- | --- |

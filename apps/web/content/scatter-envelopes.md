@@ -1,6 +1,6 @@
 # Scatter envelopes
 
-A convex hull frames a varied field of source sites. This is an original design study, not a recreation of a surveyed original.
+A convex hull frames a varied field of source sites.
 
 | Control | Visible effect |
 | --- | --- |

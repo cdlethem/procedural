@@ -1,6 +1,6 @@
 # Ornament poster
 
-A retained packed field carries petals, leaves, or abstract emblems around an authored title block. This is an original study, not a recreation of a surveyed artwork.
+A retained packed field carries petals, leaves, or abstract emblems around an authored title block.
 
 | Control | Canvas effect |
 | --- | --- |

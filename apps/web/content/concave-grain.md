@@ -1,6 +1,6 @@
 # Concave grain
 
-A notched silhouette exposes deterministic triangulated grain. This is an original design study, not a recreation of a surveyed original.
+A notched silhouette exposes deterministic triangulated grain.
 
 | Control | Visible effect |
 | --- | --- |

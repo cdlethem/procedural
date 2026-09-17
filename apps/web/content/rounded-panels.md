@@ -1,6 +1,6 @@
 # Rounded panels
 
-Rounded Chaikin-cut panels make a quilt of softened square routes. This is an original design study, not a recreation of a surveyed original.
+Rounded Chaikin-cut panels make a quilt of softened square routes.
 
 | Control | Visible effect |
 | --- | --- |

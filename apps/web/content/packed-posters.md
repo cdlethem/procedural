@@ -1,5 +1,5 @@
 # Packed posters
-Ordered rectangles fill a skyline as poster blocks. This is an original design, not a corpus recreation.
+Ordered rectangles fill a skyline as poster blocks.
 
 | Control | Canvas effect |
 |---|---|
