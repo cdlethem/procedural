@@ -1,3 +1,4 @@
-import { createStudySketch } from "../study-controls.js";
-import { drawOrganicCells, systemsASettings } from "../systems-a-studies.js";
-createStudySketch({ slug: "organic-cells", title: "Organic cells", ...systemsASettings["organic-cells"], draw: drawOrganicCells });
+import { createCellularStudySketch } from "../cellular-quality-controls.js";
+import { drawOrganicCells } from "../systems-a-studies.js";
+
+createCellularStudySketch({ slug: "organic-cells", title: "Organic cells", legacyDraw: drawOrganicCells });

@@ -1,0 +1,220 @@
+{
+  "operation": "geometry.hatch-region-lines-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "fe5ef3bfaef5b9b86bcfc8ebeb0f1283daf165a5ab9d8f5e8e07db8cef814d97",
+  "oracle": "Root-frozen analytical shapes and state after independent Sol draft review; supplemental preimplementation oracles in tests/native/fixtures/region-oracles.json.",
+  "cases": [
+    {
+      "id": "rectangle_horizontal",
+      "input": {
+        "region": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "holes": []
+        },
+        "origin": [
+          0,
+          0
+        ],
+        "direction": [
+          1,
+          0
+        ],
+        "spacing": 2,
+        "phase": 1,
+        "maxWork": 100000,
+        "maxOutputPaths": 10
+      },
+      "output": {
+        "paths": [
+          [
+            [
+              0,
+              1
+            ],
+            [
+              4,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              3
+            ],
+            [
+              4,
+              3
+            ]
+          ]
+        ],
+        "lineIndices": [
+          0,
+          1
+        ],
+        "intervals": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "small_hole_splits_one_line",
+      "input": {
+        "region": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "holes": [
+            [
+              [
+                2,
+                2
+              ],
+              [
+                4,
+                2
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                2,
+                4
+              ]
+            ]
+          ]
+        },
+        "origin": [
+          0,
+          0
+        ],
+        "direction": [
+          1,
+          0
+        ],
+        "spacing": 6,
+        "phase": 3,
+        "maxWork": 100000,
+        "maxOutputPaths": 10
+      },
+      "output": {
+        "paths": [
+          [
+            [
+              0,
+              3
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          [
+            [
+              4,
+              3
+            ],
+            [
+              6,
+              3
+            ]
+          ]
+        ],
+        "lineIndices": [
+          0,
+          0
+        ],
+        "intervals": [
+          [
+            0,
+            0.3333333333333333
+          ],
+          [
+            0.6666666666666666,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "budget-before-geometry",
+      "input": {
+        "region": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "holes": []
+        },
+        "origin": [
+          0,
+          0
+        ],
+        "direction": [
+          1,
+          0
+        ],
+        "spacing": 2,
+        "phase": 1,
+        "maxWork": 0,
+        "maxOutputPaths": 10
+      },
+      "error": "WORK_LIMIT"
+    }
+  ]
+}

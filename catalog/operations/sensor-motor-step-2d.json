@@ -1,0 +1,325 @@
+{
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability_decision": "design/capabilities/agent-behaviors.md",
+  "design_review": "design/operations/agent-behaviors-contract-review.md",
+  "provenance": [],
+  "fixture_format": "exact-json-output",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original contact, sensing and flock studies plus graph/field substitution; no source artwork recreation."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture challenge",
+    "status": "Contract reviewed before implementation; target acceptance pending."
+  },
+  "id": "motion.sensor-motor-step-2d",
+  "decision_cluster": "motion.sensor-motor-step-2d",
+  "description": "Synchronously sense a scalar grid with two lateral probes and turn moving agents.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "agents": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "position": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "headingTurns": {
+              "type": "number"
+            },
+            "speed": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "position",
+            "headingTurns",
+            "speed"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 4294967295
+      },
+      "field": {
+        "type": "object",
+        "properties": {
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 4294967295
+          },
+          "columns": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4294967295
+          },
+          "rows": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4294967295
+          },
+          "origin": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "spacing": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "boundary": {
+            "type": "string",
+            "enum": [
+              "clamp",
+              "wrap",
+              "zero"
+            ]
+          }
+        },
+        "required": [
+          "values",
+          "columns",
+          "rows",
+          "origin",
+          "spacing",
+          "boundary"
+        ],
+        "additionalProperties": false
+      },
+      "sensorDistance": {
+        "type": "number",
+        "minimum": 0
+      },
+      "sensorAngleTurns": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 0.5
+      },
+      "turnGain": {
+        "type": "number"
+      },
+      "dt": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "agents",
+      "field",
+      "sensorDistance",
+      "sensorAngleTurns",
+      "turnGain",
+      "dt",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "agents": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "position": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "headingTurns": {
+              "type": "number"
+            },
+            "speed": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "position",
+            "headingTurns",
+            "speed"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 4294967295
+      },
+      "probes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "left": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "right": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "required": [
+            "left",
+            "right"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 4294967295
+      },
+      "samples": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "left": {
+              "type": "number"
+            },
+            "right": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "left",
+            "right"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "agents",
+      "probes",
+      "samples"
+    ],
+    "additionalProperties": false
+  },
+  "output_invariants": "Agents are fresh {position:[x,y],headingTurns:[0,1),speed} records. Probes and samples align one-for-one with old agents. Field values are row-major finite binary64 values with exact columns*rows length; origin is the first cell center, positive spacing and explicit clamp/wrap/zero boundary. Canvas axes are +x right, +y down; increasing heading turns toward +y. All output zeroes are positive and output containers do not alias inputs.",
+  "behavior": {
+    "validation": "Exact passive plain/null-prototype records and dense ordinary arrays with own data slots only. Validate all agents, the complete scalar grid, controls, and maxWork before work. Input heading and all scalar values must be finite; speed and sensorDistance are nonnegative, sensorAngleTurns in [0,0.5], dt strictly positive. Each array length<=4294967295; columns*rows must be a safe integer<=4294967295 with exact value-array correspondence. Full numeric validation before work; no aliases/mutation/partial output. Exposed zeros canonical positive. Proxies outside interchange.",
+    "sampling": "Compute and finite-check gx=(x-originX)/spacingX and gy analog first, even for zero boundary. Zero returns +0 outside inclusive [0,columns-1]\u00d7[0,rows-1]; clamp clamps coordinates before interpolation; wrap uses binary64 remainder r=u%extent, if r<0 add extent, and if rounded r>=extent set +0, matching the existing periodic-grid profile; wrap upper indices. Finite-check all primitives. Use row-major bilinear primitives bottom=a+(b-a)*tx, top=c+(d-c)*tx, sample=bottom+(top-bottom)*ty; singleton dimensions reuse their one endpoint. Huge finite wrapped coordinates may lose spatial phase under binary64 arithmetic; do not otherwise repair or reject them if intermediates remain finite.",
+    "order": "TAU is the binary64 literal 6.283185307179586. For each old agent in array order, normalize h0=h-floor(h); emit left then right probe at angle TAU*(h0\u2213sensorAngleTurns) with fdlibm sin/cos and +x-right/+y-down axes; sample left then right; difference=right-left; turn=turnGain*difference; unwrapped=h0+dt*turn; h1=unwrapped-floor(unwrapped); velocity x then y from speed*cos/sin(TAU*h1); position x then y from old position+dt*velocity. Every primitive is finite-checked. Large finite headings or turns may lose phase through binary64 rounding; no silent repair.",
+    "work": "Static grid scan is validation. Charge 3N after static validation and before output allocation: two bilinear samples and one advance per agent. Time is O(columns*rows+N), retained output O(N).",
+    "environment": "No callback, host image/pixel access, RNG, clock, renderer, agent wrapping, collision, neighbor graph or hidden y inversion.",
+    "numerics": "Ordered separate binary64 primitives; finite-check every computed primitive. fdlibm sin/cos/hypot existing audited implementations. Exact shared fixture outputs; independent trigonometric analytical oracles abs1e-12 relative0, indices/errors/counters exact. No epsilon in classification.",
+    "native_surface": "sensorMotorStep2D(input); p5-only initial target, named package export; errors carry stable code."
+  },
+  "errors": {
+    "INVALID_INPUT": "carrier, grid shape/domain, finite input or control failure",
+    "WORK_LIMIT": "3N exceeds maxWork",
+    "NUMERIC_OVERFLOW": "nonfinite interpolation, motion or trig intermediate"
+  },
+  "parameters": {
+    "agents": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    },
+    "field": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    },
+    "sensorDistance": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    },
+    "sensorAngleTurns": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    },
+    "turnGain": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    },
+    "dt": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    },
+    "maxWork": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    }
+  },
+  "fixtures": "fixtures/operations/sensor-motor-step-2d.json"
+}

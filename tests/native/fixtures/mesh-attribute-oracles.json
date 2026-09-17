@@ -1,0 +1,355 @@
+{
+  "operation": "mesh.prepare-surface-attributes-3d",
+  "version": "0.1.0",
+  "catalog_sha256": "c4930d35825ad6b9148b34ae4779ac53a68ac899f31f7417363351e09fecd94b",
+  "comparison": {
+    "exact": [
+      "positions",
+      "triangles",
+      "uvs",
+      "sourceVertexIndices",
+      "axis-aligned normal components",
+      "error codes"
+    ],
+    "normals": {
+      "absolute": 1e-12,
+      "relative": 0
+    },
+    "note": "Use componentwise absolute tolerance only for non-axis normals; every output field/key, topology, coordinate, UV and error remains exact. -0 must be tested with Object.is in target tests."
+  },
+  "cases": [
+    {
+      "id": "different-area-faces-equal-unit-weight-smooth-crease",
+      "input": {
+        "positions": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            3,
+            1
+          ]
+        ],
+        "normalMode": "smooth",
+        "smoothingGroups": [
+          0,
+          0
+        ],
+        "cornerUVs": null,
+        "maxVertices": 6,
+        "maxWork": 58
+      },
+      "output": {
+        "positions": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            3,
+            1
+          ]
+        ],
+        "normals": [
+          [
+            0,
+            0.7071067811865475,
+            0.7071067811865475
+          ],
+          [
+            0,
+            0.7071067811865475,
+            0.7071067811865475
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "uvs": null,
+        "sourceVertexIndices": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "id": "reordering-middle-faces-preserves-perturbation-and-first-corner-order",
+      "input": {
+        "positions": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            -1.1102230246251565e-16,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            5,
+            6
+          ],
+          [
+            0,
+            3,
+            4
+          ],
+          [
+            0,
+            7,
+            8
+          ]
+        ],
+        "normalMode": "smooth",
+        "smoothingGroups": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "cornerUVs": null,
+        "maxVertices": 12,
+        "maxWork": 117
+      },
+      "output": {
+        "positions": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            -1.1102230246251565e-16,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            3,
+            4
+          ],
+          [
+            0,
+            5,
+            6
+          ],
+          [
+            0,
+            7,
+            8
+          ]
+        ],
+        "normals": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            1.1102230246251565e-16,
+            1,
+            0
+          ],
+          [
+            1.1102230246251565e-16,
+            1,
+            0
+          ],
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ],
+        "uvs": null,
+        "sourceVertexIndices": [
+          0,
+          1,
+          2,
+          5,
+          6,
+          3,
+          4,
+          7,
+          8
+        ]
+      }
+    }
+  ],
+  "non_json_runtime_checks": [
+    "Reject accessors, symbols, sparse arrays and extra array/record keys without invoking accessor values; proxies are outside interchange.",
+    "Check Object.is(component,-0) is false for every output coordinate, normal and UV, and check canonical -0 UV keys reuse the same smooth vertex.",
+    "Mutate returned positions/normals/uvs/triangles/sourceVertexIndices and verify input and a second call are unchanged; no hidden exact-rational property on output.",
+    "A one-group smooth mesh may emit fewer vertices, but 3F must still fit maxVertices before geometry.",
+    "Compare source face order shuffles and different smoothing-group IDs to confirm first-corner vertex order and ascending-face normal sum; do not sort source indices or positions."
+  ]
+}

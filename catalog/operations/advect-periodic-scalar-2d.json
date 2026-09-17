@@ -1,0 +1,199 @@
+{
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability_decision": "design/capabilities/periodic-fluid-fields.md",
+  "design_review": "design/operations/periodic-fluid-fields-contract-review.md",
+  "provenance": [],
+  "fixture_format": "exact-json-output",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original fluid and transported texture studies; no Zephyr recreation or fabrication claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture challenge",
+    "status": "Contract reviewed before implementation; target acceptance pending."
+  },
+  "id": "field.advect-periodic-scalar-2d",
+  "decision_cluster": "field.advect-periodic-scalar-2d",
+  "description": "Transport a scalar grid through a supplied periodic staggered velocity using a first-order explicit backward characteristic trace and bilinear sampling.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "columns": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "values": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 4294967295
+      },
+      "u": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 4294967295
+      },
+      "v": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 4294967295
+      },
+      "offset": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 1
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "dt": {
+        "type": "number",
+        "minimum": 0
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "columns",
+      "rows",
+      "values",
+      "u",
+      "v",
+      "offset",
+      "dt",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "values": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "values"
+    ],
+    "additionalProperties": false
+  },
+  "output_invariants": "Fresh finite row-major fields of length columns*rows; every field detached.",
+  "behavior": {
+    "validation": "Exact passive Object/null-prototype records and dense ordinary arrays; reject classes, accessors, symbols, extra keys, holes and coercion. All numbers finite binary64, integer fields safe. Validate every field and correspondence in schema order, then work preflight before arithmetic/output allocation. columns*rows must be safe <=4294967295 and each field array must have that length. No mutation, retained aliases or partial output; canonicalize output zero. Host allocation failure remains a host error.",
+    "environment": "No RNG, clock, renderer, assets or host state. Row-major periodic rectangular domain, cell spacing1, x right and y down. Scalar centers(x,y), u right face(x+.5,y), v lower face(x,y+.5). Velocity in cell units per caller time. Other targets deferred; no original artist recreation claim.",
+    "numerics": "IEEE754 binary64 separate ordered primitives, every arithmetic intermediate checked finite (NUMERIC_OVERFLOW), no FMA/reassociation or epsilon. Exact analytical JSON fixtures; additional analytical comparisons abs1e-9+rel1e-12, topology/indices/errors exact. Modulo indices wrap positively. No convergence or mass conservation inferred from an image.",
+    "work": "3*N interpolation events precharged; O(N) time/storage.",
+    "algorithm": "At row-major destination X=x+offset[0],Y=y+offset[1], sample U=bilinear(u,X-.5,Y), V=bilinear(v,X,Y-.5). Trace Bx=X-dt*U,By=Y-dt*V. Output bilinear(values,Bx-offset[0],By-offset[1]). For each bilinear sample wrap coordinates using r=q%extent; if r<0 add extent; if rounded r>=extent set r=0; then floor, next index wraps, tx and ty remainders; h0=(1-tx)*a+tx*b; h1=(1-tx)*c+tx*d; result=(1-ty)*h0+ty*h1. Corners a top-left,b top-right,c bottom-left,d bottom-right. Each multiplication/subtraction/addition checked finite separately. After complete validation and work preflight, dt0 returns a detached exact values copy without interpolation. offset[0,0] cell-centered dye; [.5,0] u and [0,.5] v. Velocity advection requires both calls read same old u/v. This first-order interpolation dissipates detail and is not globally mass conserving.",
+    "native_surface": "advectPeriodicScalar2D(input), error with stable code; package named export, p5 study."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed carrier, dimension, shape or parameter domain; validation before work.",
+    "WORK_LIMIT": "Safe event budget exceeded before computation.",
+    "NUMERIC_OVERFLOW": "Nonfinite arithmetic intermediate, no partial output."
+  },
+  "parameters": {
+    "columns": {
+      "unit": "Cell grid count.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; stable diffusion bound mathematical, not a visual recommended range."
+    },
+    "rows": {
+      "unit": "Cell grid count.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; stable diffusion bound mathematical, not a visual recommended range."
+    },
+    "values": {
+      "unit": "See exact algorithm for coordinate/time/state units.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; stable diffusion bound mathematical, not a visual recommended range."
+    },
+    "u": {
+      "unit": "See exact algorithm for coordinate/time/state units.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; stable diffusion bound mathematical, not a visual recommended range."
+    },
+    "v": {
+      "unit": "See exact algorithm for coordinate/time/state units.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; stable diffusion bound mathematical, not a visual recommended range."
+    },
+    "offset": {
+      "unit": "See exact algorithm for coordinate/time/state units.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; stable diffusion bound mathematical, not a visual recommended range."
+    },
+    "dt": {
+      "unit": "See exact algorithm for coordinate/time/state units.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; stable diffusion bound mathematical, not a visual recommended range."
+    },
+    "maxWork": {
+      "unit": "See exact algorithm for coordinate/time/state units.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; stable diffusion bound mathematical, not a visual recommended range."
+    }
+  },
+  "fixtures": "fixtures/operations/advect-periodic-scalar-2d.json"
+}

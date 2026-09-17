@@ -1,0 +1,56 @@
+{
+  "operation": "export.svg-plot-plan-01",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "218ce901b5b14746c15d0f17bafb9166859d742b4bd967d1dd69c9fcc3fe5e94",
+  "oracle": "Root-frozen analytical shapes and state after independent Sol draft review; supplemental preimplementation oracles in tests/native/fixtures/region-oracles.json.",
+  "cases": [
+    {
+      "id": "one_path_mm",
+      "input": {
+        "widthMm": 10,
+        "heightMm": 5,
+        "paths": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              10,
+              5
+            ]
+          ]
+        ],
+        "strokeWidthMm": 0.2,
+        "maxOutputBytes": 1000
+      },
+      "output": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10mm\" height=\"5mm\" viewBox=\"0 0 10 5\"><g fill=\"none\" stroke=\"black\" stroke-width=\"0.2\"><path d=\"M 0 0 L 10 5\"/></g></svg>"
+      }
+    },
+    {
+      "id": "budget-before-geometry",
+      "input": {
+        "widthMm": 10,
+        "heightMm": 5,
+        "paths": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              10,
+              5
+            ]
+          ]
+        ],
+        "strokeWidthMm": 0.2,
+        "maxOutputBytes": 0
+      },
+      "error": "OUTPUT_LIMIT"
+    }
+  ]
+}

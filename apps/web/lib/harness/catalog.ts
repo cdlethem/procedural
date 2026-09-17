@@ -85,7 +85,7 @@ export function searchCatalog(
       score(technique.title, 6) +
       score(technique.id, 5) +
       score(technique.description, 2) +
-      score(technique.parameters.map((parameter) => parameter.key).join(" "), 1);
+      score(technique.parameters.filter((parameter) => !parameter.hidden).map((parameter) => parameter.key).join(" "), 1);
     if (total === 0) continue;
     hits.push({
       kind: "workflow",
@@ -178,6 +178,9 @@ export type WorkflowDetail = {
     min?: number;
     max?: number;
     step?: number;
+    hardMin?: number;
+    hardMax?: number;
+    integer?: boolean;
     options?: string[];
   }[];
   operations: string[];
@@ -227,7 +230,7 @@ export function describeHandles(handles: string[]): {
         id: technique.id,
         title: technique.title,
         description: technique.description,
-        parameters: technique.parameters.map((parameter) => ({
+        parameters: technique.parameters.filter((parameter) => !parameter.hidden).map((parameter) => ({
           key: parameter.key,
           label: parameter.label,
           description: parameter.description,
@@ -235,6 +238,9 @@ export function describeHandles(handles: string[]): {
           min: parameter.min,
           max: parameter.max,
           step: parameter.step,
+          hardMin: parameter.hardMin,
+          hardMax: parameter.hardMax,
+          integer: parameter.integer,
           options: parameter.options?.map((option) => option.value),
         })),
         operations: [],

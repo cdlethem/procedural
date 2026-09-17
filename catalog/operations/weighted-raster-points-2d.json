@@ -1,0 +1,190 @@
+{
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability_decision": "design/capabilities/weighted-image-marks.md",
+  "design_review": "design/operations/weighted-image-contract-review.md",
+  "provenance": [],
+  "fixture_format": "exact-json-output",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original image-density study and independent raster transfer; no source artwork recreation."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture challenge",
+    "status": "Contract reviewed before implementation; target acceptance pending."
+  },
+  "id": "sampling.weighted-raster-points-2d",
+  "decision_cluster": "sampling.weighted-raster-points-2d",
+  "description": "Draw positions from caller-supplied integer raster density with explicit deterministic random state.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "width": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 65536
+      },
+      "height": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 65536
+      },
+      "weights": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "maxItems": 2147483647
+      },
+      "count": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483647
+      },
+      "rngState": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "width",
+      "height",
+      "weights",
+      "count",
+      "rngState",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 2147483647
+      },
+      "pixelIndices": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483646
+        },
+        "maxItems": 2147483647
+      },
+      "rngState": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      }
+    },
+    "required": [
+      "points",
+      "pixelIndices",
+      "rngState"
+    ],
+    "additionalProperties": false
+  },
+  "output_invariants": "Detached arrays in draw order with source pixels and final RNG.",
+  "behavior": {
+    "validation": "Exact required own string keys on passive ordinary/null-prototype records; dense ordinary arrays with own data slots only, no extras, symbols, accessors or coercion. Proxies outside interchange. Validate all fields in schema order, every weight/site, and dimensions before budget; width*height<=2147483647 and equals weights.length. Arrays/count<=2147483647. All scalars finite. No partial result or input mutation/retention. Canonicalize exposed -0. Host allocation failures remain host errors.",
+    "environment": "Raster row-major: flat index=row*width+column, pixel area [column,column+1]x[row,row+1], center (column+0.5,row+0.5), x right/y down. Weight is dimensionless relative mass, zero has none. No asset, renderer, luminance conversion, clock or host RNG; caller supplies weights.",
+    "native_surface": "weightedRasterPoints2D(input), WeightedRasterPoints2DError with stable code. First target p5.js package; other targets deferred.",
+    "order": "After all validation, sum integer mass exactly (at most 140735340806145); zero total or count=0 returns empty arrays and unchanged rngState after paying P work. Otherwise build cumulative integer weights in row-major order. For each output: advance LCG32 twice high word then low word, U=high*2^32+low; q=floor(U*totalMass/2^64) using exact integer product. Find first prefix>q using lo=0,hi=P, while lo<hi: mid=floor((lo+hi)/2); prefix[mid]>q sets hi=mid, else lo=mid+1. Select index lo. Advance LCG twice ux then uy; x=column+(ux+0.5)/2^32, y=row+(uy+0.5)/2^32. Append point and index in draw order; sampling with replacement. There is no rejection loop.",
+    "rng": "LCG32 version1: advanced state=(1664525*state+1013904223) modulo2^32, each draw returns new unsigned word. Exactly4 draws per output, no ambient state; return final state. Consecutive words are correlated; no claim of statistical unbiasedness, independence or blue-noise quality.",
+    "work": "P=width*height. After validation require P+4*count<=maxWork when mass>0, else P<=maxWork, with exact integer arithmetic. Total charge P+4 per produced point+one per actual binary-search comparison. Charge each comparison before performing it; WORK_LIMIT if budget exceeded. All output is local and discarded on failure, so input rngState is unchanged. Time O(P+count*log P), storage O(P+count).",
+    "numerics": "All mass/prefix/product/ticket arithmetic exact integer; U is uint64, product up to111 bits. Jitter expression as specified binary64 is exact under dimension cap, strictly inside pixel. No tolerance for points, indices, RNG or error codes."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed carrier, dimensions, weights, sites or scalar domain.",
+    "WORK_LIMIT": "Specified deterministic event count exceeds maxWork or safe-integer work."
+  },
+  "parameters": {
+    "width": {
+      "unit": "raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored portable representation and resource policy; no source-derived recommended range."
+    },
+    "height": {
+      "unit": "raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored portable representation and resource policy; no source-derived recommended range."
+    },
+    "weights": {
+      "unit": "raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored portable representation and resource policy; no source-derived recommended range."
+    },
+    "count": {
+      "unit": "raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored portable representation and resource policy; no source-derived recommended range."
+    },
+    "rngState": {
+      "unit": "raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored portable representation and resource policy; no source-derived recommended range."
+    },
+    "maxWork": {
+      "unit": "raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored portable representation and resource policy; no source-derived recommended range."
+    }
+  },
+  "fixtures": "fixtures/operations/weighted-raster-points-2d.json"
+}

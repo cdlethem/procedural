@@ -67,3 +67,20 @@ export { octaveGradientNoise, OctaveGradientNoiseError } from "./octave-gradient
 export { defaultPalettes } from "./default-palettes.js";
 export { radiusPairs2D, RadiusPairs2DError } from "./radius-pairs-2d.js";
 export { pairForceStep2D, PairForceStep2DError } from "./pair-force-step-2d.js";
+
+export { contactHistory2D, ContactHistory2DError } from "./contact-history-2d.js";
+export { sensorMotorStep2D, SensorMotorStep2DError } from "./sensor-motor-step-2d.js";
+export { flockSteer2D, FlockSteer2DError } from "./flock-steer-2d.js";
+export { regionClearance2D, RegionClearance2DError } from "./region-clearance-2d.js";
+export { taperedStrokeStrip2D, TaperedStrokeStrip2DError } from "./tapered-stroke-strip-2d.js";
+export { selectTaperedStrokeStrips2D, SelectTaperedStrokeStrips2DError } from "./select-tapered-stroke-strips-2d.js";
+export { hatchRegionLines2D, HatchRegionLines2DError } from "./hatch-region-lines-2d.js";
+export { svgPlotPlan01, SvgPlotPlan01Error } from "./svg-plot-plan-01.js";
+export { insertSegmentBridge2D, InsertSegmentBridge2DError } from "./insert-segment-bridge-2d.js";
+export { relativeNeighborhoodPairs2D, RelativeNeighborhoodPairs2DError } from "./relative-neighborhood-pairs-2d.js";
+export { thresholdEdgeRelaxation2D, ThresholdEdgeRelaxation2DError } from "./threshold-edge-relaxation-2d.js";
+export { elasticCurveGrowStep2D, ElasticCurveGrowStep2DError } from "./elastic-curve-grow-step-2d.js";
+export { projectPeriodicVelocity2D } from "./project-periodic-velocity-2d.js";
+export { advectPeriodicScalar2D } from "./advect-periodic-scalar-2d.js";
+export { diffusePeriodicScalar2D } from "./diffuse-periodic-scalar-2d.js";
+export { createP5FeedbackSurface, P5FeedbackSurfaceError } from "./p5-feedback-surface.js";

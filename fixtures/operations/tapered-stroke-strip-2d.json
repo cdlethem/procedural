@@ -1,0 +1,247 @@
+{
+  "operation": "geometry.tapered-stroke-strip-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "b948a7896f4d4b619e3418184d1923e4b505f6b29c05845c108852260d92ca15",
+  "oracle": "Root-frozen analytical shapes and state after independent Sol draft review; supplemental preimplementation oracles in tests/native/fixtures/region-oracles.json.",
+  "cases": [
+    {
+      "id": "open_linear_taper_butt",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "widths": [
+          2,
+          4
+        ],
+        "closed": false,
+        "cap": "BUTT",
+        "join": "BEVEL",
+        "miterLimit": 1,
+        "maxWork": 10000
+      },
+      "output": {
+        "status": "ACCEPTED",
+        "visible": {
+          "outer": [
+            [
+              0,
+              -1
+            ],
+            [
+              4,
+              -2
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "holes": []
+        },
+        "leftBoundary": [
+          [
+            0,
+            1
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "rightBoundary": [
+          [
+            0,
+            -1
+          ],
+          [
+            4,
+            -2
+          ]
+        ],
+        "resolvedJoins": [],
+        "centerline": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "witness": {
+          "kind": "NONE",
+          "aRing": -1,
+          "aEdge": -1,
+          "bRing": -1,
+          "bEdge": -1,
+          "vertex": -1
+        }
+      }
+    },
+    {
+      "id": "left_turn_outer_bevel_inner_trim",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        "widths": [
+          2,
+          2,
+          2
+        ],
+        "closed": false,
+        "cap": "BUTT",
+        "join": "BEVEL",
+        "miterLimit": 1,
+        "maxWork": 10000
+      },
+      "output": {
+        "status": "ACCEPTED",
+        "visible": {
+          "outer": [
+            [
+              0,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "holes": []
+        },
+        "leftBoundary": [
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "rightBoundary": [
+          [
+            0,
+            -1
+          ],
+          [
+            4,
+            -1
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            5,
+            4
+          ]
+        ],
+        "resolvedJoins": [
+          {
+            "left": "INNER",
+            "right": "BEVEL"
+          }
+        ],
+        "centerline": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        "witness": {
+          "kind": "NONE",
+          "aRing": -1,
+          "aEdge": -1,
+          "bRing": -1,
+          "bEdge": -1,
+          "vertex": -1
+        }
+      }
+    },
+    {
+      "id": "budget-before-geometry",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "widths": [
+          2,
+          4
+        ],
+        "closed": false,
+        "cap": "BUTT",
+        "join": "BEVEL",
+        "miterLimit": 1,
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    }
+  ]
+}

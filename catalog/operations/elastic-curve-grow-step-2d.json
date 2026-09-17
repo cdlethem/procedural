@@ -1,0 +1,589 @@
+{
+  "id": "motion.elastic-curve-grow-step-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "description": "Advance connected planar curves through target growth, synchronous elastic/contact response, bounded embedding backtracking and identity-preserving bisection.",
+  "decision_cluster": "motion.elastic-curve-grow-step-2d",
+  "capability_decision": "design/capabilities/connected-growth-and-graphs.md",
+  "design_review": "design/operations/connected-growth-and-graphs-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "state": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "maxItems": 2,
+                  "minItems": 2
+                },
+                "velocity": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "maxItems": 2,
+                  "minItems": 2
+                },
+                "pinned": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "position",
+                "velocity",
+                "pinned"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 4294967295
+          },
+          "curves": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "closed": {
+                  "type": "boolean"
+                },
+                "nodeIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "maxItems": 4294967295
+                },
+                "edgeIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "maxItems": 4294967295
+                },
+                "restLengths": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "maxItems": 4294967295
+                },
+                "restTurns": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "exclusiveMinimum": -3.141592653589793,
+                    "maximum": 3.141592653589793
+                  },
+                  "maxItems": 4294967295
+                }
+              },
+              "required": [
+                "id",
+                "closed",
+                "nodeIds",
+                "edgeIds",
+                "restLengths",
+                "restTurns"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 4294967295
+          },
+          "nextNodeId": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "nextEdgeId": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "nodes",
+          "curves",
+          "nextNodeId",
+          "nextEdgeId"
+        ],
+        "additionalProperties": false
+      },
+      "restGrowth": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 4294967295
+        },
+        "maxItems": 4294967295
+      },
+      "turnRates": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 4294967295
+        },
+        "maxItems": 4294967295
+      },
+      "externalAccelerations": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 2,
+          "minItems": 2
+        },
+        "maxItems": 4294967295
+      },
+      "stretchStiffness": {
+        "type": "number",
+        "minimum": 0
+      },
+      "bendStiffness": {
+        "type": "number",
+        "minimum": 0
+      },
+      "contactRange": {
+        "type": "number",
+        "minimum": 0
+      },
+      "contactStrength": {
+        "type": "number",
+        "minimum": 0
+      },
+      "damping": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "dt": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "maxSpeed": {
+        "type": "number",
+        "minimum": 0
+      },
+      "maxSegmentLength": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "maxNodes": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "maxEdges": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "maxBacktracks": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "state",
+      "restGrowth",
+      "turnRates",
+      "externalAccelerations",
+      "stretchStiffness",
+      "bendStiffness",
+      "contactRange",
+      "contactStrength",
+      "damping",
+      "dt",
+      "maxSpeed",
+      "maxSegmentLength",
+      "maxNodes",
+      "maxEdges",
+      "maxWork",
+      "maxBacktracks"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "state": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "maxItems": 2,
+                  "minItems": 2
+                },
+                "velocity": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "maxItems": 2,
+                  "minItems": 2
+                },
+                "pinned": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "position",
+                "velocity",
+                "pinned"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 4294967295
+          },
+          "curves": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "closed": {
+                  "type": "boolean"
+                },
+                "nodeIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "maxItems": 4294967295
+                },
+                "edgeIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "maxItems": 4294967295
+                },
+                "restLengths": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "maxItems": 4294967295
+                },
+                "restTurns": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "exclusiveMinimum": -3.141592653589793,
+                    "maximum": 3.141592653589793
+                  },
+                  "maxItems": 4294967295
+                }
+              },
+              "required": [
+                "id",
+                "closed",
+                "nodeIds",
+                "edgeIds",
+                "restLengths",
+                "restTurns"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 4294967295
+          },
+          "nextNodeId": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "nextEdgeId": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "nodes",
+          "curves",
+          "nextNodeId",
+          "nextEdgeId"
+        ],
+        "additionalProperties": false
+      },
+      "events": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "parentEdgeId": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "nodeId": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "childEdgeIds": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "parentT": {
+              "const": 0.5
+            }
+          },
+          "required": [
+            "parentEdgeId",
+            "nodeId",
+            "childEdgeIds",
+            "parentT"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 4294967295
+      },
+      "acceptedMotionScale": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "maximum": 1
+      }
+    },
+    "required": [
+      "state",
+      "events",
+      "acceptedMotionScale"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached finite canonical data; stable identity/order as specified; no partial result on failure.",
+  "behavior": {
+    "validation": "Exact passive Object/null-prototype records, dense ordinary arrays with own data slots, no classes/accessors/symbols/extras/coercion; proxies outside interchange. Numeric values finite binary64; booleans never numbers. Validate complete input in input-schema field order, arrays in order, then correspondence/topology structure, then exact-integer work preflight before geometric predicates or result allocation. Normalize accepted/exposed zero to +0. Inputs unchanged and all outputs deeply detached. Host allocation failure remains a host error.",
+    "environment": "No RNG, clock, renderer or assets. Caller Cartesian coordinates; signed turns use algebraic counterclockwise orientation in x/y coordinates, visually clockwise when y points down. Explicit caller dt where present. p5-only initial delivery; no physical collision, source solver or other-target equivalence.",
+    "numerics": "Binary64 separately rounded primitives, no FMA or reassociation. Check each computed floating arithmetic primitive finite or NUMERIC_OVERFLOW. Exact dyadic/rational predicates use existing internal/exact-rational.js without converting before classification. Existing fdlibmHypot and fdlibmAtan2 profiles for stated norms/angles. Compare IDs, topology, ordering, counters and errors exactly; analytical floating fixtures may explicitly allow absolute1e-12 relative0. No global epsilon.",
+    "topology": "Nodes/curves sorted unique stable IDs. Each node belongs to exactly one curve. Open curve has n>=2 unique nodeIds,n-1 edgeIds/restLengths,n-2 restTurns in traversal-center order. Closed curve has n>=3 unique nodes, n edgeIds/restLengths/restTurns, with implicit closing edge and turns centered on each traversal node. Edge IDs globally unique. next counters exceed all current node/edge IDs. maxNodes>=N,maxEdges>=E or INVALID_INPUT. Nonexistent/repeated ownership/connectivity/ID errors are INVALID_TOPOLOGY. restGrowth has one curve-ordered array per curve with one rate per edge; turnRates matches restTurns; externalAccelerations matches globally ID-sorted nodes. Complete all before budgets.",
+    "work": "Let N=state.nodes.length,E=sum(curve.edgeIds.length),B=sum(curve.restTurns.length),S=min(maxNodes-N,maxEdges-E). Reserve exact W=8*N+8*E+4*B+(maxBacktracks+3)*E*E+maxEdges*maxEdges+8*S. Reject W>maxWork or any unrepresentable requested work as WORK_LIMIT before geometry. S is the maximum possible successful binary split count under output caps; no undefined actual output count enters preflight. Reservation includes old geometry, contact, every allowed candidate barrier and final refined geometry using maxEdges^2. No refund for early success. Exact rational bit costs/sorting are not events; O(N+E+S) retained storage with streaming contacts, quadratic predicate work per candidate.",
+    "embedding": "After preflight validate original nonzero finite edges with exact dyadic predicates. Nonincident edges may not intersect/touch. Incident edges may share only their designated endpoint and may not overlap/backtrack collinearly. Reject INVALID_GEOMETRY. During candidate tests the same conditions determine pass/retry. Final returned states are embedded centerlines only; no continuous/swept collision, isotopy, hard-width clearance or fabrication guarantee. contactRange is a force radius, not a proved clearance.",
+    "targets": "Process grown rest lengths in ascending stable edge ID: delta=dt*rate then Lnew=Lold+delta, each finite; nonpositive finite result is INVALID_GROWTH. Update preferred turns by ascending curve ID then traversal center: delta=dt*rate,value=oldTurn+delta, then r=value%TAU; if r<=-PI,r=r+TAU; if r>PI,r=r-TAU. PI=3.141592653589793,TAU=2*PI separately computed; all primitives finite. Output principal(-PI,PI]. These new targets are used in this call, but committed only after full success.",
+    "stretch": "Initialize force arrays from externalAccelerations. Visit edges in stable ID order with orientation determined by curve traversal. dx=xb-xa,dy=yb-ya,L=fdlibmHypot(dx,dy),ux=dx/L,uy=dy/L,extension=L-grownRest,m=stretchStiffness*extension,fx=m*ux,fy=m*uy. Every primitive finite; L0 cannot reach this stage from valid geometry. Add Fa.x+=fx,Fa.y+=fy,Fb.x-=fx,Fb.y-=fy, separately checked.",
+    "bend": "Visit curve IDs ascending, then interior/cyclic centers in traversal order. At a,b,c compute incoming dx,dy,La=norm,unit ux,uy, then outgoing dx,dy,Lc=norm,unit vx,vy. cross=ux*vy-uy*vx and dot=ux*vx+uy*vy, checking products before sum. theta=fdlibmAtan2(cross,dot). delta=principal(theta-grownTarget) using the targets reduction rule. q=bendStiffness*delta,qa=q/La,qc=q/Lc; Fa.x=qa*uy,Fa.y=-(qa*ux),Fc.x=qc*vy,Fc.y=-(qc*vx),Fb.x=-(Fa.x+Fc.x),Fb.y=-(Fa.y+Fc.y). Accumulate a.x,a.y,b.x,b.y,c.x,c.y. Check every primitive. Exact antiparallel turn chooses principal positivePI, including signed-zero cases. No degree normalization or random kick.",
+    "contact": "Visit unordered nonincident edge pairs lexicographically by edge IDs; incident means sharing any node ID. First edge A->B,second C->D retain curve orientation. Exact closest-point candidates are intersections plus each endpoint projected/clamped to the other closed segment; evaluate exact squared distance, choose least distance then least exact first t then second s. Exact parallel ties obey the same rule. Compare exact distanceSquared with exact contactRange^2. If not strictly smaller or range0, contribute nothing. Valid original geometry excludes zero distance. Round exact separation vector firstClosest-secondClosest and t,s once to binary64. If positive exact distance produces zero rounded norm, fail REPRESENTATION_COLLAPSE. D=fdlibmHypot(dx,dy), finite and positive; ratio=D/contactRange,rawFalloff=1-ratio,falloff=max(0,rawFalloff),strength=contactStrength*falloff,ux=dx/D,uy=dy/D,fx=strength*ux,fy=strength*uy. Check ratio and subtraction finite before max. Root freeze: if exact distance is inside but rounded D>=contactRange, contribute zero; the clamped nonnegative falloff never turns repulsion into attraction. wa=1-t,wb=t,wc=1-s,wd=s. Add weighted force to A.x,A.y,B.x,B.y; subtract weighted force from C.x,C.y,D.x,D.y, product then sum at each slot. Every primitive checked finite. Pins still contribute/react in force computation.",
+    "integrate": "Visit node IDs ascending. For x then y: impulse=dt*force,kicked=oldVelocity+impulse,v=kicked*damping. Compute speed=fdlibmHypot(vx,vy); if speed>maxSpeed,scale=maxSpeed/speed then vx*=scale,vy*=scale. Check each primitive even when pinned or a coefficient0; then pinned proposed velocity is[0,0]. No position updates have yet been committed.",
+    "barrier": "Try alpha1 and at most maxBacktracks halvings, alpha=alpha*.5 each retry. Candidate velocity=alpha*proposedVelocity x then y, travel=dt*velocity,point=oldPoint+travel, in node/axis order. Pins retain exact old point and zero velocity. If alpha becomes0, STEP_STALLED. If any proposed unpinned travel is nonzero but every candidate point equals the old point, STEP_STALLED before geometry (actual zero travel succeeds). If candidate embedding passes, retain its points and scaled velocities; otherwise retry from old points. After last invalid candidate STEP_BLOCKED. Grown targets are not scaled by alpha; acceptedMotionScale reports the movement reduction. No output on any failure.",
+    "refine": "After accepted movement, visit pre-refinement edges ascending ID. Recursively bisect an edge while either its current geometric fdlibm length or grown rest length exceeds maxSegmentLength; visit left child subtree before right. Each split requires one live node and one net live edge; exceeding maxNodes/maxEdges yields OUTPUT_LIMIT atomically. Allocate one node ID then two edge IDs monotonically; prospective counters must stay safe or ID_EXHAUSTED. Parent edge retires. Position and velocity midpoint are exact rational averages rounded once; midpoint equal to either endpoint fails REPRESENTATION_COLLAPSE. Child rest length is the exact parent half; require exactly representable positive binary64 half, else REPRESENTATION_COLLAPSE (including odd subnormal parents). New node is unpinned. Insert zero preferred turn at new material vertex; keep old preferred turns at old vertex IDs. Update curve traversal node/edge lists, preserve closed seam, sort global node records byID. Emit preorder {parentEdgeId,nodeId,childEdgeIds,parentT:.5}. New nodes take part only next call. Revalidate final refined embedded geometry; invalidity due rounding is REPRESENTATION_COLLAPSE. Return all state/lineage detached; no retained event history. Rest total and total preferred turn preserved under splitting; mass/energy/resolution-independent stiffness are not promised.",
+    "native_surface": "elasticCurveGrowStep2D(input), ElasticCurveGrowStep2DError; elastic-curve-grow-step-2d.js and package index."
+  },
+  "errors": {
+    "INVALID_INPUT": "Static carrier/shape/domain/correspondence failure.",
+    "WORK_LIMIT": "Exact declared work reservation exceeds maxWork.",
+    "NUMERIC_OVERFLOW": "Nonfinite checked arithmetic; no partial result.",
+    "INVALID_TOPOLOGY": "ID/ownership/connectivity inconsistency.",
+    "INVALID_GEOMETRY": "Original curve embedding invalid.",
+    "INVALID_GROWTH": "Finite grown rest length is not positive.",
+    "OUTPUT_LIMIT": "Required live refinement exceeds supplied node/edge caps.",
+    "ID_EXHAUSTED": "A new ID/counter would exceed the safe integer domain.",
+    "REPRESENTATION_COLLAPSE": "Closest point or refinement rounding loses required nonzero geometry/material.",
+    "STEP_BLOCKED": "Every allowed candidate has forbidden contact/overlap.",
+    "STEP_STALLED": "Nonzero intended movement cannot produce a distinct candidate or alpha underflows."
+  },
+  "parameters": {
+    "state": {
+      "unit": "Owned-value curve topology, coordinates, velocities and material targets.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "restGrowth": {
+      "unit": "Coordinate units/time per edge, signed.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "turnRates": {
+      "unit": "Radians/time per bend center, signed.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "externalAccelerations": {
+      "unit": "Coordinate units/time squared per globally ID-sorted node.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "stretchStiffness": {
+      "unit": "Inverse time squared.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "bendStiffness": {
+      "unit": "Coordinate units squared/time squared, unit node mass.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "contactRange": {
+      "unit": "Finite-segment repulsion range in coordinate units; not hard clearance.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "contactStrength": {
+      "unit": "Coordinate units/time squared.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "damping": {
+      "unit": "Per-call velocity fraction before movement.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "dt": {
+      "unit": "Positive caller time interval.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "maxSpeed": {
+      "unit": "Coordinate units/time.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "maxSegmentLength": {
+      "unit": "Maximum geometric/rest edge length before midpoint refinement.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "maxNodes": {
+      "unit": "Final live-node cap.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "maxEdges": {
+      "unit": "Final live-edge cap and final geometry reservation.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "maxWork": {
+      "unit": "Exact conservative operation-event allowance.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "maxBacktracks": {
+      "unit": "Maximum number of synchronous motion halvings after alpha1.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    }
+  },
+  "fixtures": "fixtures/operations/elastic-curve-grow-step-2d.json",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original native studies and withheld design transfer, with exact scoped invariants; no Hodgin/Hoff recreation automatically implied."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after Astra/Sol independent reviews",
+    "status": "Reviewed before implementation; target acceptance pending."
+  }
+}

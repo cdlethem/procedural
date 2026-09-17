@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "scope": "Source and offline-installed p5 workflow replays under the same pinned renderer. Package contains exactly the reviewed prior workflows plus ten new ones; unrelated pending E/G sources are excluded.",
+  "package_checkout": ".work/external-dynamics-integration",
+  "groups": [
+    {
+      "group": "b",
+      "frame_pairs": 21,
+      "result": "Equal complete retained-state and PNG checksums wherever emitted; feedback additionally matches full source/history replay and transfer."
+    },
+    {
+      "group": "feedback",
+      "frame_pairs": 7,
+      "result": "Equal complete retained-state and PNG checksums wherever emitted; feedback additionally matches full source/history replay and transfer."
+    },
+    {
+      "group": "graph",
+      "frame_pairs": 19,
+      "result": "Equal complete retained-state and PNG checksums wherever emitted; feedback additionally matches full source/history replay and transfer."
+    },
+    {
+      "group": "elastic",
+      "frame_pairs": 13,
+      "result": "Equal complete retained-state and PNG checksums wherever emitted; feedback additionally matches full source/history replay and transfer."
+    },
+    {
+      "group": "fluid",
+      "frame_pairs": 9,
+      "result": "Equal complete retained-state and PNG checksums wherever emitted; feedback additionally matches full source/history replay and transfer."
+    },
+    {
+      "group": "regions",
+      "frame_pairs": 14,
+      "result": "Equal complete retained-state and PNG checksums wherever emitted; feedback additionally matches full source/history replay and transfer."
+    }
+  ]
+}

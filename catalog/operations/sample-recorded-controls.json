@@ -1,0 +1,237 @@
+{
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability_decision": "design/capabilities/recorded-controls-and-type.md",
+  "design_review": "design/operations/recorded-controls-contract-review.md",
+  "provenance": [],
+  "fixture_format": "exact-json-output",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original synthesized-signal contour-mark study with non-audio and path-mark transfers; no source artwork recreation."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture challenge",
+    "status": "Contract reviewed before implementation; target acceptance pending."
+  },
+  "id": "signal.sample-recorded-controls",
+  "decision_cluster": "signal.sample-recorded-controls",
+  "description": "Query recorded scalar channels at explicit time with declared gap, interpolation and value-mapping policies.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "times": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "minimum": 0
+        },
+        "minItems": 1,
+        "maxItems": 2147483647
+      },
+      "channels": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+        },
+        "minItems": 1,
+        "maxItems": 2147483647
+      },
+      "samples": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1,
+          "maxItems": 2147483647
+        },
+        "minItems": 1,
+        "maxItems": 2147483647
+      },
+      "time": {
+        "type": "number",
+        "minimum": 0
+      },
+      "maxGap": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "mappings": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+            },
+            "interpolation": {
+              "type": "string",
+              "enum": [
+                "LINEAR",
+                "STEP"
+              ]
+            },
+            "domain": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "range": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "clamp": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "channel",
+            "interpolation",
+            "domain",
+            "range",
+            "clamp"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1,
+        "maxItems": 2147483647
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "times",
+      "channels",
+      "samples",
+      "time",
+      "maxGap",
+      "mappings",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "values": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 1,
+        "maxItems": 2147483647
+      }
+    },
+    "required": [
+      "values"
+    ],
+    "additionalProperties": false
+  },
+  "output_invariants": "One detached finite value per mapping, in input mapping order. Input arrays/records never mutate; no retained state, aliases or partial output. All exposed zeros are +0.",
+  "behavior": {
+    "validation": "Required exact own string keys on passive ordinary/null-prototype records; dense ordinary arrays with own data slots only, no extra/symbol properties or accessors. Proxies outside interchange. Every numeric value finite; arrays <=2147483647 elements. Times strictly increasing nonnegative, channels unique ASCII identifiers matching schema, sample row count equals time count, each row length equals channel count. Mappings refer to existing channels, domain[0]<domain[1], range may ascend, descend or be constant. Validate every field in schema order, and every value even for unused channels, before work. No coercion or defaults.",
+    "work": "Let T=times.length,C=channels.length,M=mappings.length. Reserve exact integer T*C+M after complete static validation; WORK_LIMIT if above maxWork or safe integer. This counts sample/mapping events, not every validation instruction. Time O(T*C+M+log T), retained scratch O(T*C+M) at most. No cross-call cache or allocation guarantee.",
+    "query": "Hold first row for time<=times[0] and last for time>=times[T-1]. Otherwise find largest i with times[i]<=time. Exact knot returns that row. Strict interior computes gap=times[i+1]-times[i]; gap>maxGap throws TIME_GAP before any mapping, including STEP. Each mapping uses its own source channel. STEP chooses row i. LINEAR computes q=(time-times[i])/gap; v=left+q*(right-left) in that order. Exact knots and endpoint holds skip interpolation only. STEP is right-continuous at knots.",
+    "mapping": "For each mapping in order: delta=v-domain[0]; span=domain[1]-domain[0]; n=delta/span; when clamp=true replace n with min(1,max(0,n)); extent=range[1]-range[0]; scaled=n*extent; result=range[0]+scaled. Do not bypass any of these primitives at exact endpoints or constant ranges. Independent mappings may reuse a channel.",
+    "numerics": "Separate ordered IEEE754 binary64 primitives, no fused operations or algebraic reassociation. Finite-check every computed primitive before continuing/clamping; NUMERIC_OVERFLOW on nonfinite result, including intermediate subtractions. Underflow to zero is permitted. No epsilon in time/gap decisions. Exact shared numeric outputs; canonicalize exposed -0.",
+    "environment": "No media, FFT/RMS extraction, renderer, font, RNG, clock, frame, host callback or retained state. Query time and data are explicit.",
+    "native_surface": "sampleRecordedControls(input), SampleRecordedControlsError with stable code. Initial implementation target p5.js package; other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed carrier, dimensions, identifier, time ordering, domain or scalar.",
+    "WORK_LIMIT": "Exact T*C+M exceeds maxWork or portable safe-integer work.",
+    "TIME_GAP": "Strict interior bracket exceeds maxGap.",
+    "NUMERIC_OVERFLOW": "Specified binary64 primitive yields nonfinite value."
+  },
+  "parameters": {
+    "times": {
+      "unit": "seconds from caller recording origin",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored control policy; no source-derived recommended range."
+    },
+    "channels": {
+      "unit": "explicit scalar channels and caller-selected output units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored control policy; no source-derived recommended range."
+    },
+    "samples": {
+      "unit": "explicit scalar channels and caller-selected output units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored control policy; no source-derived recommended range."
+    },
+    "time": {
+      "unit": "seconds from caller recording origin",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored control policy; no source-derived recommended range."
+    },
+    "maxGap": {
+      "unit": "seconds from caller recording origin",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored control policy; no source-derived recommended range."
+    },
+    "mappings": {
+      "unit": "explicit scalar channels and caller-selected output units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored control policy; no source-derived recommended range."
+    },
+    "maxWork": {
+      "unit": "deterministic sample and mapping events",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored control policy; no source-derived recommended range."
+    }
+  },
+  "fixtures": "fixtures/operations/sample-recorded-controls.json"
+}

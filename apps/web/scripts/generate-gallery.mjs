@@ -1,5 +1,6 @@
 import { tenfoldStudies } from "../content/tenfold-studies.mjs";
 import { externalExpansionStudies } from "../content/external-expansion-studies.mjs";
+import { externalDynamicsStudies } from "../content/external-dynamics-studies.mjs";
 /** Deterministic catalog/docs consumer. No operation defaults or acceptance are authored here. */
 import {
   readFileSync,
@@ -128,6 +129,7 @@ definitions.push(
 );
 definitions.push(...tenfoldStudies.map(study => [study.slug, study.category, study.operations]));
 definitions.push(...externalExpansionStudies.map(study => [study.slug, study.category, study.operations]));
+definitions.push(...externalDynamicsStudies.map(study => [study.slug, study.category, study.operations]));
 const slugs = new Set(definitions.map((d) => d[0]));
 // Reviewed p5 completion includes editable native examples without studio adapters.
 // Keep their membership explicit so an unreviewed addition still fails generation.
@@ -141,17 +143,14 @@ const nativeOnlySlugs = new Set([
 // because it exists; accepted registrations above remain the source of gallery membership.
 const pendingExampleSlugs = new Set([
   "motif-compositions",
-  "dye-currents",
+  "feedback-print",
+  "weighted-image-atlas",
+  "word-echo",
+  "surface-attribute-vessel",
+  "implicit-volumes",
   "field-displacement",
-  "flocking-marks",
-  "lingering-links",
   "octave-noise",
   "pixel-grain",
-  "sensing-trails",
-  "guarded-bands",
-  "hatched-islands",
-  "bridge-web",
-  "neighborhood-growth",
 ]);
 const sources = sketchSources(root);
 const browserGuidePath = "apps/web/content/browser-guides.json";
@@ -199,10 +198,16 @@ const attestations = readdirSync(join(root, "catalog/validation"))
     data: JSON.parse(read(`catalog/validation/${n}`)),
   }));
 const techniques = definitions.map(([slug, category, contracts], index) => {
-  const sourcePath = `packages/javascript/examples/${slug}/README.md`;
-  const guidePath = existsSync(join(root, `docs/${slug}.md`))
-    ? `docs/${slug}.md`
-    : `apps/web/content/${slug}.md`;
+  const readmePath = `packages/javascript/examples/${slug}/README.md`;
+  const sketchPath = `packages/javascript/examples/${slug}/sketch.js`;
+  const sourcePath = existsSync(join(root, readmePath)) ? readmePath : sketchPath;
+  if (!existsSync(join(root, sourcePath))) throw Error(`Missing source for ${slug}`);
+  const webGuidePath = `apps/web/content/${slug}.md`;
+  const guidePath = ["warp-marks", "blur-marks"].includes(slug) && existsSync(join(root, webGuidePath))
+    ? webGuidePath
+    : existsSync(join(root, `docs/${slug}.md`))
+      ? `docs/${slug}.md`
+      : webGuidePath;
   let markdown = browserGuides[slug] ?? read(guidePath);
   // Adapt the existing artist copy to browser controls, with no raw-file navigation.
   markdown = markdown.replace(
@@ -257,7 +262,7 @@ const techniques = definitions.map(([slug, category, contracts], index) => {
   });
   return {
     slug,
-    title: slug
+    title: ({ "ornament-poster": "Ornament Field", "geometric-panel": "Shape Matrix" })[slug] ?? slug
       .split("-")
       .map((w) => w[0].toUpperCase() + w.slice(1))
       .join(" "),

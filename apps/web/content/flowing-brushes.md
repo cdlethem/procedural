@@ -1,6 +1,6 @@
 # Flowing brushes
 
-Chaikin refinement turns angular rows into flowing ink ribbons. This is an original design study, not a recreation of a surveyed original.
+Chaikin refinement turns angular rows into flowing ink ribbons.
 
 | Control | Visible effect |
 | --- | --- |

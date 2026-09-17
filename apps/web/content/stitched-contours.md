@@ -1,5 +1,5 @@
 # Stitched contours
-Joined exact segments make flowing contour lines. Change Lines or Waves to alter the chain structure. This is an original design, not a corpus recreation.
+Joined exact segments make flowing contour lines. Change Lines or Waves to alter the chain structure.
 
 | Control | Canvas effect |
 |---|---|

@@ -13,8 +13,8 @@ import {
   validateDocument,
 } from "../lib/studio.ts";
 
-test("all 95 studio definitions create detached bounded v3 layers", () => {
-  assert.equal(techniques.length, 95);
+test("all 104 studio definitions create detached bounded v3 layers", () => {
+  assert.equal(techniques.length, 104);
   assert.equal(MAX_LAYERS, 8);
   for (const technique of techniques) {
     const document = createDocument(technique.id);
@@ -43,6 +43,110 @@ test("v3 admission requires a strict owned RGB palette and technique parameters"
       validateDocument({ ...createDocument(), bindingVersion: "studio-v1" }),
     /catalogSha256 is stale|technique is not supported/,
   );
+});
+test("exact numeric values use semantic domains rather than slider ticks", () => {
+  const continuous = createDocument("band-marks");
+  continuous.layers[0].params.weight = 0.837;
+  assert.equal(validateDocument(continuous).layers[0].params.weight, 0.837);
+  const count = createDocument("band-marks");
+  count.layers[0].params.count = 24.5;
+  assert.throws(() => validateDocument(count), /integer/);
+  const matrix = createDocument("geometric-panel");
+  matrix.layers[0].params.rows = 30;
+  matrix.layers[0].params.offsetX = -37.25;
+  assert.equal(validateDocument(matrix).layers[0].params.offsetX, -37.25);
+  matrix.layers[0].params.columns = 100;
+  assert.throws(() => validateDocument(matrix), /2048-cell/);
+});
+test("saved two-control studies migrate without losing their original drawing mode", () => {
+  const ornament = createDocument("ornament-poster");
+  ornament.layers[0].params = { motif: "leaves", tiered: false, cropped: true, dense: true };
+  const restoredOrnament = validateDocument(ornament).layers[0].params;
+  assert.equal(restoredOrnament.legacy, true);
+  assert.deepEqual([restoredOrnament.motif, restoredOrnament.tiered,
+    restoredOrnament.cropped, restoredOrnament.dense], ["leaves", false, true, true]);
+  const panel = createDocument("geometric-panel");
+  panel.layers[0].params = { marks: "bars", tight: true };
+  const restoredPanel = validateDocument(panel).layers[0].params;
+  assert.equal(restoredPanel.legacy, true);
+  assert.deepEqual([restoredPanel.marks, restoredPanel.tight], ["bars", true]);
+});
+test("saved path and mesh study controls retain their historical drawing mode", () => {
+  const originals: [string, Record<string, number>][] = [
+    ["pull-marks", { radius: 170, power: 1.65, lines: 26, jitter: 1.25, weight: 1.35 }],
+    ["projection-marks", { radius: 105, strength: 0.67, lines: 18, weight: 1.2 }],
+    ["path-clip-marks", { paths: 8, steps: 70, wander: 9, notch: 300, weight: 1.25 }],
+    ["ripple-interference", { passes: 18, scale: 22, weight: 1.3 }],
+    ["pinned-waves", { passes: 22, scale: 20, weight: 1.7 }],
+    ["rounded-panels", { iterations: 3, panels: 5, weight: 2 }],
+    ["road-margins", { distance: 13, routes: 5, weight: 2 }],
+    ["nested-contour-strokes", { distance: 10, rings: 7, weight: 2 }],
+    ["faceted-silhouettes", { scale: 220, grain: 16, weight: 2 }],
+    ["concave-grain", { scale: 230, grain: 34, weight: 1 }],
+    ["extruded-seals", { height: 110, rotation: 0.55, weight: 1 }],
+    ["stepped-blocks", { height: 80, rotation: 0.7, weight: 1 }],
+    ["transported-ribbons", { segments: 12, width: 54, rotation: 0.5 }],
+    ["twisting-streamers", { segments: 16, width: 38, rotation: 0.8 }],
+    ["rounded-polyhedra", { levels: 1, rotation: 0.6, weight: 1 }],
+    ["subdivided-shells", { levels: 1, rotation: 1.1, weight: 1 }],
+  ];
+  for (const [id, params] of originals) {
+    const document = createDocument(id);
+    assert.equal(document.layers[0].params.legacy, false, `${id}: new layers use editable controls`);
+    document.layers[0].params = params;
+    const restored = validateDocument(document).layers[0].params;
+    assert.equal(restored.legacy, true, `${id}: exact predecessor uses historical renderer`);
+    for (const [key, value] of Object.entries(params)) assert.equal(restored[key], value);
+  }
+  const invalid = createDocument("rounded-panels");
+  invalid.layers[0].params = { iterations: 3, panels: 5, weight: 2, extra: 1 };
+  assert.throws(() => validateDocument(invalid), /unknown key/);
+  invalid.layers[0].params = { iterations: 3, panels: 5, weight: 2.1 };
+  assert.equal(validateDocument(invalid).layers[0].params.weight, 2.1);
+  invalid.layers[0].params = { iterations: 3.5, panels: 5, weight: 2.1 };
+  assert.throws(() => validateDocument(invalid), /missing|unknown key|must be an integer|between/);
+});
+test("saved loop composition retains its exact historical layout", () => {
+  const document = createDocument("loop-marks");
+  document.layers[0].params = {
+    tileScale: 1.35, outlineWeight: 0.9, opacity: 123, fans: true, moved: false,
+  };
+  const restored = validateDocument(document).layers[0].params;
+  assert.equal(restored.legacy, true);
+  assert.equal(restored.tileScale, 1.35);
+  assert.equal(restored.fans, true);
+  document.layers[0].params = { ...document.layers[0].params, extra: 1 };
+  assert.throws(() => validateDocument(document), /unknown key/);
+});
+test("saved cellular and full-field studies acquire only the new controls they need", () => {
+  const cellular: [string, Record<string, number>][] = [
+    ["reaction-spots", { passes: 12, scale: 18, weight: 1.35 }],
+    ["reaction-stripes", { passes: 16, scale: 13, weight: 1.5 }],
+    ["organic-cells", { passes: 8, cellSize: 18, weight: 1.25 }],
+    ["geometric-generations", { passes: 6, cellSize: 22, weight: 1.75 }],
+  ];
+  for (const [id, params] of cellular) {
+    const old = createDocument(id);
+    old.layers[0].params = params;
+    const restored = validateDocument(old).layers[0].params;
+    assert.equal(restored.legacy, true, `${id}: old state remains on its historical branch`);
+    for (const [key, value] of Object.entries(params)) assert.equal(restored[key], value);
+  }
+  const additive: [string, Record<string, number | boolean>][] = [
+    ["warp-marks", { strength: 14, scale: 34, stripe: 12 }],
+    ["blur-marks", { radius: 5, stripe: 10, horizontal: false }],
+    ["quantized-stripes", { stripes: 24, count: 5 }],
+    ["perceptual-bands", { bands: 19, phase: 0.37 }],
+    ["reduced-mosaic", { scale: 16.25, count: 5 }],
+    ["nearest-feature-mosaic", { scale: 14.7, features: 13 }],
+  ];
+  for (const [id, params] of additive) {
+    const old = createDocument(id);
+    old.layers[0].params = params;
+    const restored = validateDocument(old).layers[0].params;
+    for (const [key, value] of Object.entries(params)) assert.equal(restored[key], value);
+    assert.deepEqual(Object.keys(restored).sort(), Object.keys(createDocument(id).layers[0].params).sort());
+  }
 });
 test("v3 layers require detached bounded transforms with exact fields", () => {
   const document = createDocument();
@@ -164,15 +268,27 @@ test("frozen v1 documents migrate palette and lattice controls only after exact 
   );
 });
 
-test("exact v2 documents migrate all techniques without changing their drawing settings", () => {
+test("exact v2 documents retain their drawing settings", () => {
+  const revisedLegacy = new Set([
+    "loop-marks", "pull-marks", "projection-marks", "path-clip-marks",
+    "ripple-interference", "pinned-waves",
+  ]);
   for (const technique of legacyV2.techniques) {
     const current = createDocument(technique.id);
     const old: any = structuredClone(current);
+    old.layers[0].params = structuredClone(technique.defaults);
     old.bindingVersion = legacyV2.bindingVersion;
     old.catalogSha256 = legacyV2.catalogSha256;
     delete old.layers[0].cutEdits;
     delete old.layers[0].transform;
-    assert.deepEqual(validateDocument(old), current);
+    const migrated = validateDocument(old);
+    if (revisedLegacy.has(technique.id)) {
+      assert.equal(migrated.layers[0].params.legacy, true, technique.id);
+      for (const [key, value] of Object.entries(technique.defaults))
+        assert.deepEqual(migrated.layers[0].params[key], value, `${technique.id}.${key}`);
+    } else {
+      assert.deepEqual(migrated, current);
+    }
     old.layers[0].cutEdits = [];
     assert.throws(() => validateDocument(old), /unknown key/);
   }

@@ -1,0 +1,33 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Requested public copy cleanup on established HTTPS gallery, preserving completed merged design and keeping landing preview separate.",
+  "source_commit": "d76e204cf11c0fa6370e28da381062429e68bdb3",
+  "source_baseline": "3a50907a",
+  "immutable_checkout": ".work/study-copy-release",
+  "build_id": "LjsxE9rurvsFgZjhXsDQ7",
+  "url": "https://eunoia.tailf03dad.ts.net:8443/",
+  "prior_release": "evidence/web/external-expansion-live-release.json",
+  "checks": {
+    "build": "passed with existing dynamic-filesystem tracing warning",
+    "generated": "95 workflows,69 API pages",
+    "candidate": "passed",
+    "actual_https": "passed",
+    "gallery_previews": "decoded existing images",
+    "studio": "render ready and project service reachable",
+    "default_palettes": 50,
+    "removed_copy": "Four representative study pages contain no removed disclaimer variants"
+  },
+  "evidence_sha256": {
+    ".work/expansion-full/study-copy-release/candidate-final/report.json": "0af55779b3df4fc4d0401c696a957cee3847ba6e9215df3baf2b67a0a53977f4",
+    ".work/expansion-full/study-copy-release/live/report.json": "24d5b29f8eb40bc744252c7450492dbfaac14e1df5bedcedfa09a75b9fb17b14",
+    ".work/expansion-full/study-copy-release-check.mjs": "e3ecfb09d7e631ffc3bb145ff5d193642109baeea6bc68b92380a3a0c225e262"
+  },
+  "notes": [
+    "Only 27 authored copy sources and their two generated metadata files changed from the release baseline.",
+    "Existing preview assets copied from prior release; build explicitly binds API8088. Root inspected final gallery and Studio screenshots.",
+    "An initial candidate omitted preview assets and baked the default API8080; root corrected both and rebuilt before the final candidate/HTTPS checks. A brief initial service switch was rolled back while correcting these assets/settings.",
+    "Main working changes and in-progress landing preview were preserved. This release source commit is an isolated copy patch; combined main integration continues."
+  ]
+}

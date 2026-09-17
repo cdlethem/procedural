@@ -7,6 +7,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { apiGuides } from "../content/api-guides.mjs";
 import { surveyCoverageApiGuides } from "../content/survey-coverage-api.mjs";
 import { externalExpansionApiGuides } from "../content/external-expansion-api.mjs";
+import { externalDynamicsApiGuides } from "../content/external-dynamics-api.mjs";
 
 const app = resolve(dirname(fileURLToPath(import.meta.url)), ".."),
   root = resolve(app, "../..");
@@ -18,6 +19,21 @@ const packageBindings = await import(
   pathToFileURL(join(root, "packages/javascript/src/index.js")).href
 );
 const bindings = {
+  "contact-history-2d": ["contact-history-2d", "contactHistory2D"],
+  "sensor-motor-step-2d": ["sensor-motor-step-2d", "sensorMotorStep2D"],
+  "flock-steer-2d": ["flock-steer-2d", "flockSteer2D"],
+  "region-clearance-2d": ["region-clearance-2d", "regionClearance2D"],
+  "tapered-stroke-strip-2d": ["tapered-stroke-strip-2d", "taperedStrokeStrip2D"],
+  "select-tapered-stroke-strips-2d": ["select-tapered-stroke-strips-2d", "selectTaperedStrokeStrips2D"],
+  "hatch-region-lines-2d": ["hatch-region-lines-2d", "hatchRegionLines2D"],
+  "svg-plot-plan-01": ["svg-plot-plan-01", "svgPlotPlan01"],
+  "insert-segment-bridge-2d": ["insert-segment-bridge-2d", "insertSegmentBridge2D"],
+  "relative-neighborhood-pairs-2d": ["relative-neighborhood-pairs-2d", "relativeNeighborhoodPairs2D"],
+  "threshold-edge-relaxation-2d": ["threshold-edge-relaxation-2d", "thresholdEdgeRelaxation2D"],
+  "elastic-curve-grow-step-2d": ["elastic-curve-grow-step-2d", "elasticCurveGrowStep2D"],
+  "project-periodic-velocity-2d": ["project-periodic-velocity-2d", "projectPeriodicVelocity2D"],
+  "advect-periodic-scalar-2d": ["advect-periodic-scalar-2d", "advectPeriodicScalar2D"],
+  "diffuse-periodic-scalar-2d": ["diffuse-periodic-scalar-2d", "diffusePeriodicScalar2D"],
   "radius-pairs-2d": ["radius-pairs-2d", "radiusPairs2D"],
   "pair-force-step-2d": ["pair-force-step-2d", "pairForceStep2D"],
   "seeded-pixel-grain": ["seeded-pixel-grain", "seededPixelGrain"],
@@ -138,7 +154,7 @@ const entries = readdirSync(join(root, "catalog/operations"))
       throw Error(
         `JavaScript module drift: ${catalog.id} expects ${binding[1]} in ${binding[0]}.js`,
       );
-    const guide = externalExpansionApiGuides[catalog.id] ?? surveyCoverageApiGuides[catalog.id] ?? apiGuides[catalog.id];
+    const guide = externalDynamicsApiGuides[catalog.id] ?? externalExpansionApiGuides[catalog.id] ?? surveyCoverageApiGuides[catalog.id] ?? apiGuides[catalog.id];
     if (!guide) throw Error(`Missing human API guide: ${catalog.id}`);
     const topLevel = Object.keys(catalog.input_schema?.properties ?? {});
     if (

@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Surface attribute vessel</title>
+<style>
+  :root{color-scheme:light}body{margin:0;background:#e8e2d4;color:#25343b;font:15px/1.45 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:24px}h1{font:600 clamp(28px,4vw,48px)/1.1 Georgia,serif;margin:0 0 8px}p{max-width:65ch}#controls{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}button{border:1px solid #697779;background:#faf8f0;color:#25343b;padding:9px 12px;font:inherit;cursor:pointer}button:hover{background:#dce9e4}.stage{display:grid;grid-template-columns:minmax(0,760px) 180px;gap:16px;align-items:start}#art canvas{display:block;max-width:100%;height:auto}aside{background:#faf8f0;padding:12px}#texture-preview{width:156px;height:156px;display:block;margin:8px auto}small{display:block;color:#58696d}@media(max-width:760px){.stage{grid-template-columns:1fr}aside{max-width:280px}}
+</style>
+<main><h1>Surface attribute vessel</h1><p>One triangle mesh, two normal treatments, and deliberately placed image corners. The color seam and the hard top rim remain tied to source vertices while you edit the shape.</p>
+<div id="controls"><button data-action="g">G reshape vessel</button><button data-action="n">N flat / smooth</button><button data-action="u">U change image</button><button data-action="t">T ribbon transfer</button><button data-action="0">0 reset</button><button data-action="s">S save PNG</button></div>
+<div class="stage"><div id="art"></div><aside><strong>Upright source image</strong><canvas id="texture-preview" width="256" height="256"></canvas><small>UV (0,0) is the top left. Four asymmetric fields reveal orientation and the seam.</small></aside></div><p id="status">Preparing geometry…</p></main>
+<script src="/p5.js"></script><script type="module" src="./sketch.js"></script>
+</html>

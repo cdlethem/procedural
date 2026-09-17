@@ -11,6 +11,10 @@ import {
   drawExternalExpansion,
   externalExpansionDefinitions,
 } from "./adapters/external-expansion";
+import {
+  drawExternalDynamics,
+  externalDynamicsDefinitions,
+} from "./adapters/external-dynamics";
 
 const basicIds = new Set(basicDefinitions.map((definition) => definition.id));
 const geometryIds = new Set(
@@ -26,6 +30,7 @@ const expansionIds = new Set(expansionDefinitions.map((definition) => definition
 const externalExpansionIds = new Set(
   externalExpansionDefinitions.map((definition) => definition.id),
 );
+const externalDynamicsIds = new Set(externalDynamicsDefinitions.map((definition) => definition.id));
 const drawingConstants = ["CLOSE", "CORNER", "CENTER", "ROUND", "TRIANGLES"] as const;
 
 /** Draws a whole document to a candidate graphics buffer, publishing it only after success. */
@@ -47,7 +52,16 @@ export function renderStudio(p: any, document: StudioDocument): void {
         forwardDrawingConstants(p, layerBuffer);
         prepare(layerBuffer, renderer);
         layerBuffer.clear();
-        drawLayer(layerBuffer, layer);
+        // A study may still call background() for its standalone example. In
+        // Studio the document owns the paper; each layer starts transparent.
+        // Restore the method before the buffer is released, including on errors.
+        const background = layerBuffer.background;
+        layerBuffer.background = () => {};
+        try {
+          drawLayer(layerBuffer, layer);
+        } finally {
+          layerBuffer.background = background;
+        }
         candidate.push();
         candidate.drawingContext.globalCompositeOperation = "source-over";
         candidate.tint(255, Math.round(layer.opacity * 255));
@@ -113,5 +127,6 @@ function drawLayer(p: any, layer: Layer): void {
   if (materialsIds.has(layer.technique)) return drawMaterials(p, layer);
   if (expansionIds.has(layer.technique)) return drawExpansion(p, layer);
   if (externalExpansionIds.has(layer.technique)) return drawExternalExpansion(p, layer);
+  if (externalDynamicsIds.has(layer.technique)) return drawExternalDynamics(p, layer);
   throw new Error(`Unknown studio technique: ${String(layer.technique)}`);
 }

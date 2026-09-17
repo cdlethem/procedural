@@ -16,5 +16,17 @@ canvas; `sketch.js` owns drawing those two source rasters via `p.createGraphics`
 and converting between p5's straight RGBA pixel buffers and Processing's packed
 ARGB `PImage.pixels` format.
 
+The **Source coverage** slider adds a second, transparent composition path.
+At 100% the original retained blur/blend/ground composition is unchanged.
+Below 100%, the source artwork is first composited with its authored ground,
+then a diagonal mask cuts clear gutters through 96-pixel source-space bands before the
+same separable filters run. **M** selects sharp, soft, horizontal-only or
+vertical-only; **B** blends the selected treatment with sharp; **0** restores
+the starting mode, blend and full coverage. Release the slider to render.
+**S** saves the displayed canvas with transparency. The mask and rendered
+ground are example-level source choices, not portable blur defaults. The
+masked path returns the filtered image directly so no opaque ground is painted
+behind its clear areas; the core blur handles premultiplied color internally.
+
 This starter is not a browser-native conformance or reproduction claim; it is a
 scoped port of the accepted BlurMarks composition's mechanism to p5.js.

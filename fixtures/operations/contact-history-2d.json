@@ -1,0 +1,374 @@
+{
+  "operation": "spatial.contact-history-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "95a9075cc72c1bc409f722e7e3600e147170c7daac717c04f19b42157c2ccaaf",
+  "oracle": "Analytical state/geometry vectors authored and Sol-reviewed before implementation; root froze exact cases, with separate trig oracles.",
+  "cases": [
+    {
+      "id": "new-and-active",
+      "input": {
+        "ids": [
+          10,
+          20
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "contacts": [],
+        "lingerSteps": 2,
+        "maxWork": 3
+      },
+      "output": {
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 1,
+            "missingTicks": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "reordered-ids-revive-history",
+      "input": {
+        "ids": [
+          20,
+          10
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 4,
+            "missingTicks": 2
+          }
+        ],
+        "lingerSteps": 2,
+        "maxWork": 4
+      },
+      "output": {
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 5,
+            "missingTicks": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "linger-then-expire",
+      "input": {
+        "ids": [
+          10,
+          20
+        ],
+        "pairs": [],
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 2,
+            "missingTicks": 1
+          }
+        ],
+        "lingerSteps": 2,
+        "maxWork": 3
+      },
+      "output": {
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 2,
+            "missingTicks": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "shortened-linger-drops-stale-without-overflow",
+      "input": {
+        "ids": [
+          10,
+          20
+        ],
+        "pairs": [],
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 9007199254740991,
+            "missingTicks": 9007199254740991
+          }
+        ],
+        "lingerSteps": 1,
+        "maxWork": 3
+      },
+      "output": {
+        "contacts": []
+      }
+    },
+    {
+      "id": "deleted-id-drops",
+      "input": {
+        "ids": [
+          10
+        ],
+        "pairs": [],
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 1,
+            "missingTicks": 0
+          }
+        ],
+        "lingerSteps": 4,
+        "maxWork": 2
+      },
+      "output": {
+        "contacts": []
+      }
+    },
+    {
+      "id": "noncanonical-pair",
+      "input": {
+        "ids": [
+          10,
+          20
+        ],
+        "pairs": [
+          [
+            1,
+            0
+          ]
+        ],
+        "contacts": [],
+        "lingerSteps": 0,
+        "maxWork": 9
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "work",
+      "input": {
+        "ids": [
+          10,
+          20
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 1,
+            "missingTicks": 0
+          }
+        ],
+        "lingerSteps": 0,
+        "maxWork": 3
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "first-missing",
+      "input": {
+        "ids": [
+          10,
+          20
+        ],
+        "pairs": [],
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 2,
+            "missingTicks": 0
+          }
+        ],
+        "lingerSteps": 2,
+        "maxWork": 3
+      },
+      "output": {
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 2,
+            "missingTicks": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "third-absence-expires",
+      "input": {
+        "ids": [
+          10,
+          20
+        ],
+        "pairs": [],
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 2,
+            "missingTicks": 2
+          }
+        ],
+        "lingerSteps": 2,
+        "maxWork": 3
+      },
+      "output": {
+        "contacts": []
+      }
+    },
+    {
+      "id": "zero-linger-expires-immediately",
+      "input": {
+        "ids": [
+          10,
+          20
+        ],
+        "pairs": [],
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 1,
+            "missingTicks": 0
+          }
+        ],
+        "lingerSteps": 0,
+        "maxWork": 3
+      },
+      "output": {
+        "contacts": []
+      }
+    },
+    {
+      "id": "active-overflow",
+      "input": {
+        "ids": [
+          10,
+          20
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 9007199254740991,
+            "missingTicks": 0
+          }
+        ],
+        "lingerSteps": 2,
+        "maxWork": 4
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "invalid-duplicate-ids-before-work",
+      "input": {
+        "ids": [
+          10,
+          10
+        ],
+        "pairs": [],
+        "contacts": [],
+        "lingerSteps": 0,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "id-reuse-is-same-identity",
+      "input": {
+        "ids": [
+          10,
+          20
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 3,
+            "missingTicks": 1
+          }
+        ],
+        "lingerSteps": 0,
+        "maxWork": 4
+      },
+      "output": {
+        "contacts": [
+          {
+            "ids": [
+              10,
+              20
+            ],
+            "activeTicks": 4,
+            "missingTicks": 0
+          }
+        ]
+      }
+    }
+  ]
+}

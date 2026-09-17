@@ -1,3 +1,4 @@
-import { createStudySketch } from "../study-controls.js";
-import { drawConcaveGrain, pathsASettings } from "../paths-a-studies.js";
-createStudySketch({ slug: "concave-grain", title: "Concave grain", ...pathsASettings["concave-grain"], draw: drawConcaveGrain });
+import { createPathStudySketch } from "../paths-a-quality-controls.js";
+import { drawConcaveGrain } from "../paths-a-studies.js";
+
+createPathStudySketch({ slug: "concave-grain", title: "Concave grain", legacyDraw: drawConcaveGrain });

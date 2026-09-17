@@ -43,6 +43,12 @@ rows and columns, spacing or offsets, and orientation. A convolution study needs
 source structure and intelligible filter behavior; scale and display gain on one hidden
 field are insufficient.
 
+The Studio document owns the canvas background. A reusable study layer paints transparent
+space around its marks, so artists can place layers above or below it. A palette swatch may
+color a mark or an intentional bounded shape; it must not silently become a full-canvas
+paper fill. Review full-size rectangles, images and shader outputs as well as explicit
+`background()` calls when checking this boundary.
+
 ## Ranges support exploration
 
 | Decision | Meaning |
@@ -127,7 +133,7 @@ review, gallery integration and live deployment. Counts are inventory, never rel
 ## Current corrective sequence
 
 1. Audit all gallery definitions for limited construction choices, hidden sources,
-   misleading controls, arbitrary limits and slow interaction. Group shared causes and
+   misleading controls, arbitrary limits, opaque layer fills and slow interaction. Group shared causes and
    compare with the strongest existing studies.
 2. Redesign ornament poster and geometric panel; redesign embossed field and signed edge
    print; separate slider intervals from numeric domains. Include orbital brush and the

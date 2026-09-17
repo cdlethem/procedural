@@ -1,0 +1,570 @@
+{
+  "operation": "motion.flock-steer-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "ac8ff73a22d8573b0c9c34686f0c5870794ebe467d4450f080744dc88c32fb1b",
+  "oracle": "Analytical state/geometry vectors authored and Sol-reviewed before implementation; root froze exact cases, with separate trig oracles.",
+  "cases": [
+    {
+      "id": "alignment-only",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "cohesion": 0,
+        "alignment": 0.5,
+        "separation": 0,
+        "maxSteer": 100,
+        "maxWork": 3
+      },
+      "output": {
+        "steering": [
+          [
+            2,
+            1
+          ],
+          [
+            -2,
+            -1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "cohesion-and-separation",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "cohesion": 1,
+        "alignment": 0,
+        "separation": 0.5,
+        "maxSteer": 100,
+        "maxWork": 3
+      },
+      "output": {
+        "steering": [
+          [
+            1.5,
+            0
+          ],
+          [
+            -1.5,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "coincident-aligns-without-separation",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "cohesion": 1,
+        "alignment": 1,
+        "separation": 99,
+        "maxSteer": 100,
+        "maxWork": 3
+      },
+      "output": {
+        "steering": [
+          [
+            2,
+            0
+          ],
+          [
+            -2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "max-steer",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            10,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "cohesion": 1,
+        "alignment": 0,
+        "separation": 0,
+        "maxSteer": 2,
+        "maxWork": 3
+      },
+      "output": {
+        "steering": [
+          [
+            2,
+            0
+          ],
+          [
+            -2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "no-neighbors",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            3,
+            4
+          ]
+        ],
+        "pairs": [],
+        "cohesion": 1,
+        "alignment": 1,
+        "separation": 1,
+        "maxSteer": 1,
+        "maxWork": 1
+      },
+      "output": {
+        "steering": [
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "pair-order",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cohesion": 0,
+        "alignment": 0,
+        "separation": 0,
+        "maxSteer": 1,
+        "maxWork": 5
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "work",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "cohesion": 0,
+        "alignment": 0,
+        "separation": 0,
+        "maxSteer": 0,
+        "maxWork": 2
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "chain-degree-normalization",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "cohesion": 1,
+        "alignment": 0.5,
+        "separation": 0,
+        "maxSteer": 100,
+        "maxWork": 5
+      },
+      "output": {
+        "steering": [
+          [
+            3,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            -5,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "separation-noncoincident-degree",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "cohesion": 0,
+        "alignment": 0,
+        "separation": 1,
+        "maxSteer": 100,
+        "maxWork": 5
+      },
+      "output": {
+        "steering": [
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "sum-overflow-with-zero-weight",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "cohesion": 0,
+        "alignment": 0,
+        "separation": 0,
+        "maxSteer": 100,
+        "maxWork": 5
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "invalid-last-velocity-before-work",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            null,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "cohesion": 0,
+        "alignment": 0,
+        "separation": 0,
+        "maxSteer": 0,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "cap-norm-overflow",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "velocities": [
+          [
+            0,
+            0
+          ],
+          [
+            1.3e+308,
+            1.3e+308
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "cohesion": 0,
+        "alignment": 1,
+        "separation": 0,
+        "maxSteer": 1,
+        "maxWork": 3
+      },
+      "error": "NUMERIC_OVERFLOW"
+    }
+  ]
+}

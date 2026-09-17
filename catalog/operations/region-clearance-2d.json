@@ -1,0 +1,289 @@
+{
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability_decision": "design/capabilities/thick-regions-and-plotting.md",
+  "design_review": "design/operations/thick-regions-and-plotting-contract-review.md",
+  "provenance": [],
+  "fixture_format": "exact-json-output",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original guarded bands and hatch/plot studies; no Fidenza, weaving, artist recreation or physical plotting acceptance."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture challenge",
+    "status": "Contract reviewed before implementation; target acceptance pending."
+  },
+  "id": "geometry.region-clearance-2d",
+  "decision_cluster": "geometry.region-clearance-2d",
+  "description": "Classify two strict regions and return their closest boundary witness and display distance.",
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "a": {
+        "type": "object",
+        "properties": {
+          "outer": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 3,
+            "maxItems": 4294967295
+          },
+          "holes": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "minItems": 3,
+              "maxItems": 4294967295
+            },
+            "maxItems": 4294967295
+          }
+        },
+        "required": [
+          "outer",
+          "holes"
+        ],
+        "additionalProperties": false
+      },
+      "b": {
+        "type": "object",
+        "properties": {
+          "outer": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 3,
+            "maxItems": 4294967295
+          },
+          "holes": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "minItems": 3,
+              "maxItems": 4294967295
+            },
+            "maxItems": 4294967295
+          }
+        },
+        "required": [
+          "outer",
+          "holes"
+        ],
+        "additionalProperties": false
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "a",
+      "b",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "relation": {
+        "type": "string",
+        "enum": [
+          "INTERSECTS",
+          "DISJOINT"
+        ]
+      },
+      "minimumDistance": {
+        "anyOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "witness": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "NONE",
+              "EDGE_CROSSING",
+              "EDGE_CONTACT",
+              "A_CONTAINS_B",
+              "B_CONTAINS_A",
+              "MINIMUM_PAIR",
+              "INVALID_RING",
+              "RING_CONTACT",
+              "RING_CONTAINMENT",
+              "LIMIT"
+            ]
+          },
+          "aRing": {
+            "type": "integer",
+            "minimum": -1
+          },
+          "aEdge": {
+            "type": "integer",
+            "minimum": -1
+          },
+          "bRing": {
+            "type": "integer",
+            "minimum": -1
+          },
+          "bEdge": {
+            "type": "integer",
+            "minimum": -1
+          },
+          "vertex": {
+            "type": "integer",
+            "minimum": -1
+          }
+        },
+        "required": [
+          "kind",
+          "aRing",
+          "aEdge",
+          "bRing",
+          "bEdge",
+          "vertex"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "relation",
+      "minimumDistance",
+      "witness"
+    ],
+    "additionalProperties": false
+  },
+  "output_invariants": "Detached canonical finite data; deterministic declared order and no partial result. Region query witnesses refer supplied ring order, constructed visible rings canonical winding/start.",
+  "behavior": {
+    "validation": "Exact passive Object/null-prototype records, dense ordinary arrays with own data slots, no extras/accessors/symbols/coercion; finite binary64 inputs. Validate full carrier/domain before budget. Proxies outside interchange. Every ring has >=3 distinct vertices, implicit closure, nonzero signed area, no duplicate seam/vertex, adjacent backtracking, self-contact, or self-crossing. Holes are strictly inside outer and pairwise disjoint/non-touching. Either winding input; owned output outer CCW/hole CW. Filled membership is outer minus holes. Static validation checks shape/domain, including strip duplicate/reversal rules; exact region topology follows work preflight. Hatch projection/count arithmetic is needed before its budget as explicitly specified. Errors atomic, no mutation/aliases; output zeros positive. Work sums/products use exact integers and compare before allocation; runtime/allocation guarantees do not follow from budgets.",
+    "algorithm": "Validate both Regions after preflight. In exact dyadic arithmetic, scan a rings/edges then b rings/edges for first contact/crossing; if none, test filled-set containment in a then b order, considering holes. Boundary contact and overlap are INTERSECTS with null minimumDistance. For DISJOINT, enumerate all boundary edge pairs in supplied input ring/edge order; compute exact rational squared endpoint-to-segment distances, clamping exact projection to [0,1]. Select least exact squared distance; ties by aRing,aEdge,bRing,bEdge, then endpoint/projection test order. Round the selected exact closest-point pair coordinates independently to nearest-even binary64, subtract components in binary64, and return Math.hypot(dx,dy), canonicalizing zero. This display value is not guaranteed to be correctly rounded from the exact distance and never decides selection. Nonfinite display is NUMERIC_OVERFLOW. All query witnesses index the supplied rings/edges without reordering or winding normalization; disjoint closest-vector rounding to zero is permitted as a display value only, never relation or selection authority.",
+    "work": "Let E(R)=total ring edges and Q(R)=1+holes.length. VR(R)=E(R)^2+8*E(R)*Q(R)+4*Q(R)^2. W=VR(a)+VR(b)+12*E(a)*E(b)+E(a)+E(b), exact nonnegative integer; WORK_LIMIT iff W>maxWork before topology.",
+    "environment": "No RNG, clock, host renderer, file IO or implicit assets. Consistent caller coordinate units; SVG input explicitly millimetres. Other targets deferred.",
+    "numerics": "Topology and clearance thresholds use exact rational arithmetic on supplied binary64 dyadics. Constructed offsets and stated display arithmetic use ordered binary64 with finite checks; no epsilon, snap or repair. Exact shared JSON vectors; additional analytic shape tests compare declared floating arithmetic abs1e-9+rel1e-12 while topology/IDs/order remain exact. Optional outer miter failure falls back exactly as specified.",
+    "native_surface": "regionClearance2D(input), named p5-package export with stable-code errors."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed carrier, domain or static correspondence.",
+    "WORK_LIMIT": "Exact declared event reservation exceeds maxWork.",
+    "INVALID_REGION": "Input rings or hole relationships invalid.",
+    "NUMERIC_OVERFLOW": "Nonfinite required arithmetic/display output.",
+    "REPRESENTATION_COLLAPSE": "Required distinct exact geometry cannot be represented distinctly."
+  },
+  "parameters": {
+    "a": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    },
+    "b": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    },
+    "maxWork": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    }
+  },
+  "fixtures": "fixtures/operations/region-clearance-2d.json"
+}

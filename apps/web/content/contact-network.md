@@ -1,6 +1,6 @@
 # Contact network
 
-Three point neighbourhoods expose their current nearby relationships. The frame at each tick is recomputed from the same explicit initial state, so a style change can redraw it without advancing time. This is an original study, not a recreation of a surveyed artwork.
+Three point neighbourhoods expose their current nearby relationships. The frame at each tick is recomputed from the same explicit initial state, so a style change can redraw it without advancing time.
 
 | Control | Canvas effect |
 | --- | --- |

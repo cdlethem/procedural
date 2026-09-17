@@ -264,7 +264,7 @@ export function snapshot(): CapabilitySnapshot {
       id: technique.id,
       title: technique.title,
       description: technique.description,
-      parameters: technique.parameters.map((parameter) => parameter.key),
+      parameters: technique.parameters.filter((parameter) => !parameter.hidden).map((parameter) => parameter.key),
     })),
     operations: operations.map((operation) => ({
       id: operation.id,

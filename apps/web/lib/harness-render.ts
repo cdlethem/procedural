@@ -17,6 +17,10 @@ import {
   drawExternalExpansion,
   externalExpansionDefinitions,
 } from "./adapters/external-expansion";
+import {
+  drawExternalDynamics,
+  externalDynamicsDefinitions,
+} from "./adapters/external-dynamics";
 
 const basicIds = new Set(basicDefinitions.map((item) => item.id));
 const geometryIds = new Set(geometryDefinitions.map((item) => item.id));
@@ -26,6 +30,7 @@ const systemsIds = new Set(systemsDefinitions.map(item => item.id));
 const materialsIds = new Set(materialsDefinitions.map(item => item.id));
 const expansionIds = new Set(expansionDefinitions.map((item) => item.id));
 const externalExpansionIds = new Set(externalExpansionDefinitions.map((item) => item.id));
+const externalDynamicsIds = new Set(externalDynamicsDefinitions.map((item) => item.id));
 const constants = ["CLOSE", "CORNER", "CENTER", "ROUND", "TRIANGLES"] as const;
 
 /** Isolated harness compositor. Generated source is represented only by its trusted raster. */
@@ -54,8 +59,17 @@ export function renderHarness(
         forwardConstants(p, buffer);
         prepare(buffer, renderer);
         buffer.clear();
-        if (layer.kind === "workflow") drawWorkflow(buffer, layer);
-        else drawSource(buffer, layer, images);
+        if (layer.kind === "workflow") {
+          // The document supplies paper once. A standalone study's background()
+          // call must not turn a reusable workflow into an opaque sheet.
+          const background = buffer.background;
+          buffer.background = () => {};
+          try {
+            drawWorkflow(buffer, layer);
+          } finally {
+            buffer.background = background;
+          }
+        } else drawSource(buffer, layer, images);
         candidate.push();
         candidate.drawingContext.globalCompositeOperation = "source-over";
         candidate.tint(255, Math.round(layer.opacity * 255));
@@ -108,6 +122,7 @@ function drawWorkflow(p: any, layer: Extract<DocumentLayer, { kind: "workflow" }
   if (materialsIds.has(workflow.technique)) return drawMaterials(p, workflow);
   if (expansionIds.has(workflow.technique)) return drawExpansion(p, workflow);
   if (externalExpansionIds.has(workflow.technique)) return drawExternalExpansion(p, workflow);
+  if (externalDynamicsIds.has(workflow.technique)) return drawExternalDynamics(p, workflow);
   throw new Error(`Unknown studio technique: ${String(workflow.technique)}`);
 }
 function drawSource(p: any, layer: Extract<DocumentLayer, { kind: "source" }>, images: Record<string, unknown>): void {

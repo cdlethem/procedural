@@ -1,12 +1,17 @@
-# Nearest Feature Mosaic
+# Nearest feature mosaic
 
-This editable raster study turns a synthetic field into a distinct printed composition. Its structural control changes the actual operation input, while the palette recolors the retained output.
+Seeded sites divide a grid into regions owned by the nearest feature. Fill those regions as a color map, trace only their true boundaries, or combine both views.
 
 | Control | Canvas effect |
 | --- | --- |
-| First control | Changes the field scale or operation structure. |
-| Second control | Changes the operation threshold, count, radius, or gain. |
-| Palette | Changes the colors used to draw the computed result. |
-| Reset | Restores the baseline composition. |
+| Cell size | Changes the resolution of the region grid and the stepping of its edges. |
+| Features | Changes the density of seeded sites that own regions. |
+| Region display | **Regions** paints the existing translucent cells; **boundaries** leaves their interiors clear; **both** draws edges over the cells. |
+| Boundary width | Sets the thickness of lines only where neighboring cells have different owners. Zero hides these lines. |
+| Show sites | Marks the actual seeded feature cells, not every cell assigned to them. |
+| Site size | Sets the diameter of those feature marks. |
+| Palette | Colors the region IDs and the optional boundary and site marks. |
 
-The study uses its named frozen operation through the shared Materials A drawing module. Replace the generated field with a same-shaped plain raster to explore another source without changing the drawing recipe.
+Use **boundaries** above another artwork to expose its colors through the region interiors. The region view uses translucent ink, so it still covers much of a lower layer; lowering overall layer opacity fades the entire map. Increasing **Features** makes smaller regions and generally more boundary segments.
+
+The ownership grid comes from `raster.euclidean-distance-transform-2d`. The boundary lines simply compare adjacent owner IDs in that result.

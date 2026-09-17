@@ -1,0 +1,5 @@
+.mesh-fields{width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:8px}
+.mesh-fields fieldset{min-width:0;border:1px solid #b7b0a3;padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px}
+.mesh-fields legend{font-weight:700;padding:0 4px}
+.mesh-fields label{display:grid;gap:3px;font-size:13px;line-height:1.3}
+.mesh-fields input,.mesh-fields select{box-sizing:border-box;width:100%;padding:5px 6px;font:inherit}

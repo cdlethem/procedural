@@ -1,5 +1,5 @@
 # Centroid trails
-Each site leaves a trail through synchronous Lloyd relaxation. This is an original design, not a corpus recreation.
+Each site leaves a trail through synchronous Lloyd relaxation.
 
 | Control | Canvas effect |
 |---|---|

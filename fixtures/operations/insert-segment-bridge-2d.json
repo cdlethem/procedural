@@ -1,0 +1,1577 @@
+{
+  "operation": "graph.insert-segment-bridge-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "d0fb0413c303b5a7fdc6a2670defaa598fffb1904f0e1286654b3e08b72e6f0b",
+  "oracle": "Analytical vectors authored before implementation, independently reviewed by Sol, frozen by root. Transcendental tolerance checks are separate.",
+  "cases": [
+    {
+      "id": "two-interior-hits",
+      "input": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 21
+        },
+        "candidate": [
+          [
+            -1,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "gapIndex": 0,
+        "maxNodes": 6,
+        "maxEdges": 5,
+        "maxWork": 53
+      },
+      "output": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            },
+            {
+              "id": 4,
+              "point": [
+                0,
+                0
+              ]
+            },
+            {
+              "id": 5,
+              "point": [
+                2,
+                0
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 21,
+              "a": 0,
+              "b": 4
+            },
+            {
+              "id": 22,
+              "a": 4,
+              "b": 1
+            },
+            {
+              "id": 23,
+              "a": 2,
+              "b": 5
+            },
+            {
+              "id": 24,
+              "a": 5,
+              "b": 3
+            },
+            {
+              "id": 25,
+              "a": 4,
+              "b": 5
+            }
+          ],
+          "nextNodeId": 6,
+          "nextEdgeId": 26
+        },
+        "events": [
+          {
+            "type": "split",
+            "parentEdgeId": 10,
+            "nodeId": 4,
+            "childEdgeIds": [
+              21,
+              22
+            ],
+            "parentT": 0.5
+          },
+          {
+            "type": "split",
+            "parentEdgeId": 20,
+            "nodeId": 5,
+            "childEdgeIds": [
+              23,
+              24
+            ],
+            "parentT": 0.5
+          },
+          {
+            "type": "link",
+            "edgeId": 25,
+            "nodeIds": [
+              4,
+              5
+            ]
+          }
+        ],
+        "inserted": true,
+        "reason": null
+      }
+    },
+    {
+      "id": "no-hits",
+      "input": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 21
+        },
+        "candidate": [
+          [
+            -2,
+            -2
+          ],
+          [
+            -1,
+            -2
+          ]
+        ],
+        "gapIndex": 9007199254740991,
+        "maxNodes": 6,
+        "maxEdges": 5,
+        "maxWork": 53
+      },
+      "output": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 21
+        },
+        "events": [],
+        "inserted": false,
+        "reason": "INSUFFICIENT_HITS"
+      }
+    },
+    {
+      "id": "one-hit",
+      "input": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 21
+        },
+        "candidate": [
+          [
+            -1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "gapIndex": 9007199254740991,
+        "maxNodes": 6,
+        "maxEdges": 5,
+        "maxWork": 53
+      },
+      "output": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 21
+        },
+        "events": [],
+        "inserted": false,
+        "reason": "INSUFFICIENT_HITS"
+      }
+    },
+    {
+      "id": "gap-range-after-hits",
+      "input": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 21
+        },
+        "candidate": [
+          [
+            -1,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "gapIndex": 1,
+        "maxNodes": 6,
+        "maxEdges": 5,
+        "maxWork": 53
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "collinear-overlap",
+      "input": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 21
+        },
+        "candidate": [
+          [
+            0,
+            -2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "gapIndex": 0,
+        "maxNodes": 6,
+        "maxEdges": 5,
+        "maxWork": 53
+      },
+      "error": "AMBIGUOUS_OVERLAP"
+    },
+    {
+      "id": "repeat-is-overlap-error",
+      "input": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            },
+            {
+              "id": 4,
+              "point": [
+                0,
+                0
+              ]
+            },
+            {
+              "id": 5,
+              "point": [
+                2,
+                0
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 21,
+              "a": 0,
+              "b": 4
+            },
+            {
+              "id": 22,
+              "a": 4,
+              "b": 1
+            },
+            {
+              "id": 23,
+              "a": 2,
+              "b": 5
+            },
+            {
+              "id": 24,
+              "a": 5,
+              "b": 3
+            },
+            {
+              "id": 25,
+              "a": 4,
+              "b": 5
+            }
+          ],
+          "nextNodeId": 6,
+          "nextEdgeId": 26
+        },
+        "candidate": [
+          [
+            -1,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "gapIndex": 0,
+        "maxNodes": 6,
+        "maxEdges": 5,
+        "maxWork": 82
+      },
+      "error": "AMBIGUOUS_OVERLAP"
+    },
+    {
+      "id": "node-cap-atomic",
+      "input": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 21
+        },
+        "candidate": [
+          [
+            -1,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "gapIndex": 0,
+        "maxNodes": 5,
+        "maxEdges": 5,
+        "maxWork": 53
+      },
+      "error": "OUTPUT_LIMIT"
+    },
+    {
+      "id": "budget",
+      "input": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 21
+        },
+        "candidate": [
+          [
+            -1,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "gapIndex": 0,
+        "maxNodes": 6,
+        "maxEdges": 5,
+        "maxWork": 52
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "zero-candidate",
+      "input": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 21
+        },
+        "candidate": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ],
+        "gapIndex": 0,
+        "maxNodes": 6,
+        "maxEdges": 5,
+        "maxWork": 53
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "id-exhaustion",
+      "input": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            }
+          ],
+          "nextNodeId": 9007199254740991,
+          "nextEdgeId": 21
+        },
+        "candidate": [
+          [
+            -1,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "gapIndex": 0,
+        "maxNodes": 6,
+        "maxEdges": 5,
+        "maxWork": 53
+      },
+      "error": "ID_EXHAUSTED"
+    },
+    {
+      "id": "existing-endpoints-reused",
+      "input": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                0
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                0
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 21
+        },
+        "candidate": [
+          [
+            -1,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "gapIndex": 0,
+        "maxNodes": 6,
+        "maxEdges": 5,
+        "maxWork": 53
+      },
+      "output": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                0
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                0
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            },
+            {
+              "id": 21,
+              "a": 0,
+              "b": 2
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 22
+        },
+        "events": [
+          {
+            "type": "link",
+            "edgeId": 21,
+            "nodeIds": [
+              0,
+              2
+            ]
+          }
+        ],
+        "inserted": true,
+        "reason": null
+      }
+    },
+    {
+      "id": "reversed-candidate-allocates-hit-order",
+      "input": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 21
+        },
+        "candidate": [
+          [
+            3,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ],
+        "gapIndex": 0,
+        "maxNodes": 6,
+        "maxEdges": 5,
+        "maxWork": 53
+      },
+      "output": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            },
+            {
+              "id": 4,
+              "point": [
+                2,
+                0
+              ]
+            },
+            {
+              "id": 5,
+              "point": [
+                0,
+                0
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 21,
+              "a": 0,
+              "b": 5
+            },
+            {
+              "id": 22,
+              "a": 5,
+              "b": 1
+            },
+            {
+              "id": 23,
+              "a": 2,
+              "b": 4
+            },
+            {
+              "id": 24,
+              "a": 4,
+              "b": 3
+            },
+            {
+              "id": 25,
+              "a": 4,
+              "b": 5
+            }
+          ],
+          "nextNodeId": 6,
+          "nextEdgeId": 26
+        },
+        "events": [
+          {
+            "type": "split",
+            "parentEdgeId": 10,
+            "nodeId": 5,
+            "childEdgeIds": [
+              21,
+              22
+            ],
+            "parentT": 0.5
+          },
+          {
+            "type": "split",
+            "parentEdgeId": 20,
+            "nodeId": 4,
+            "childEdgeIds": [
+              23,
+              24
+            ],
+            "parentT": 0.5
+          },
+          {
+            "type": "link",
+            "edgeId": 25,
+            "nodeIds": [
+              4,
+              5
+            ]
+          }
+        ],
+        "inserted": true,
+        "reason": null
+      }
+    },
+    {
+      "id": "select-second-adjacent-gap",
+      "input": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            },
+            {
+              "id": 4,
+              "point": [
+                4,
+                -1
+              ]
+            },
+            {
+              "id": 5,
+              "point": [
+                4,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 2,
+              "b": 3
+            },
+            {
+              "id": 30,
+              "a": 4,
+              "b": 5
+            }
+          ],
+          "nextNodeId": 6,
+          "nextEdgeId": 31
+        },
+        "candidate": [
+          [
+            -1,
+            0
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "gapIndex": 1,
+        "maxNodes": 8,
+        "maxEdges": 6,
+        "maxWork": 73
+      },
+      "output": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                2,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                1
+              ]
+            },
+            {
+              "id": 4,
+              "point": [
+                4,
+                -1
+              ]
+            },
+            {
+              "id": 5,
+              "point": [
+                4,
+                1
+              ]
+            },
+            {
+              "id": 6,
+              "point": [
+                2,
+                0
+              ]
+            },
+            {
+              "id": 7,
+              "point": [
+                4,
+                0
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 31,
+              "a": 2,
+              "b": 6
+            },
+            {
+              "id": 32,
+              "a": 6,
+              "b": 3
+            },
+            {
+              "id": 33,
+              "a": 4,
+              "b": 7
+            },
+            {
+              "id": 34,
+              "a": 7,
+              "b": 5
+            },
+            {
+              "id": 35,
+              "a": 6,
+              "b": 7
+            }
+          ],
+          "nextNodeId": 8,
+          "nextEdgeId": 36
+        },
+        "events": [
+          {
+            "type": "split",
+            "parentEdgeId": 20,
+            "nodeId": 6,
+            "childEdgeIds": [
+              31,
+              32
+            ],
+            "parentT": 0.5
+          },
+          {
+            "type": "split",
+            "parentEdgeId": 30,
+            "nodeId": 7,
+            "childEdgeIds": [
+              33,
+              34
+            ],
+            "parentT": 0.5
+          },
+          {
+            "type": "link",
+            "edgeId": 35,
+            "nodeIds": [
+              6,
+              7
+            ]
+          }
+        ],
+        "inserted": true,
+        "reason": null
+      }
+    },
+    {
+      "id": "incident-edges-group-one-vertex-hit",
+      "input": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                0
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                0
+              ]
+            },
+            {
+              "id": 4,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 0,
+              "b": 2
+            },
+            {
+              "id": 30,
+              "a": 3,
+              "b": 4
+            }
+          ],
+          "nextNodeId": 5,
+          "nextEdgeId": 31
+        },
+        "candidate": [
+          [
+            -1,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "gapIndex": 0,
+        "maxNodes": 5,
+        "maxEdges": 4,
+        "maxWork": 52
+      },
+      "output": {
+        "graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "point": [
+                0,
+                0
+              ]
+            },
+            {
+              "id": 1,
+              "point": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": 2,
+              "point": [
+                0,
+                -1
+              ]
+            },
+            {
+              "id": 3,
+              "point": [
+                2,
+                0
+              ]
+            },
+            {
+              "id": 4,
+              "point": [
+                2,
+                1
+              ]
+            }
+          ],
+          "edges": [
+            {
+              "id": 10,
+              "a": 0,
+              "b": 1
+            },
+            {
+              "id": 20,
+              "a": 0,
+              "b": 2
+            },
+            {
+              "id": 30,
+              "a": 3,
+              "b": 4
+            },
+            {
+              "id": 31,
+              "a": 0,
+              "b": 3
+            }
+          ],
+          "nextNodeId": 5,
+          "nextEdgeId": 32
+        },
+        "events": [
+          {
+            "type": "link",
+            "edgeId": 31,
+            "nodeIds": [
+              0,
+              3
+            ]
+          }
+        ],
+        "inserted": true,
+        "reason": null
+      }
+    }
+  ]
+}

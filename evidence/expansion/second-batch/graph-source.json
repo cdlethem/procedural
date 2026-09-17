@@ -1,0 +1,241 @@
+{
+  "status": "passed",
+  "packageRoot": "/home/colin/dev/procedural/packages/javascript",
+  "runtime": "p5 2.3.2 Canvas2D density1",
+  "scope": "Original bridge-web sequence and neighborhood transfer; real graph edits, source bindings, pixels, reset/reload/save and bounded browser-step timing. No target acceptance.",
+  "input_sha256_before": {
+    "tests/native/graph-growth-studies-javascript.mjs": "2d2c2207e2bdfaaeb1c86d02f0b0dd3291c0127938f287b7da95e292ee47e68e",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    "packages/javascript/src/insert-segment-bridge-2d.js": "fc4ba22f7c73f98609c8a53f1bafc6bb0fed91feae538a53de359fe3d7b7928a",
+    "packages/javascript/src/relative-neighborhood-pairs-2d.js": "897ba752901a2d48d43a3ce458bcd9c09870b7a503e2a2b17b8b8da2bd6fbd91",
+    "packages/javascript/src/threshold-edge-relaxation-2d.js": "50a38d4b5134ba52a2ff1470254c22278b4e9058a34c64613718220e4b1e28a3",
+    "packages/javascript/src/internal/graph-growth-utils.js": "db09a94fbed91d28913f56e989b369ca9150237feb7d1420b0442a6d643e9ac2",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/examples/bridge-web/index.html": "0c9ff6dbb9ba4e014df797d41f50064083f227a294b156d4b7d6fbfe8bcf985e",
+    "packages/javascript/examples/bridge-web/sketch.js": "fc6489ee03d002f4bc17999fa4adb5529e655e285a9c6dcb44237bafbff097e7",
+    "packages/javascript/examples/neighborhood-growth/index.html": "09c67cf2de454bed7085cea0d1d4bff249a7d6c167c911b58a98182d6ed19024",
+    "packages/javascript/examples/neighborhood-growth/sketch.js": "a8b2d3a1f9f3e6f90e14aef459e6b6251ec82edbfa7330d086de5f1685ea0f8a",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  },
+  "studies": [
+    {
+      "slug": "bridge-web",
+      "transfer": "independent five-strand graph receives a new selected bridge",
+      "step_wall_time": {
+        "samples": 53,
+        "median_ms": 101.7813470000001,
+        "p95_ms": 317.37463300000036,
+        "max_ms": 363.6279029999996
+      },
+      "frames": [
+        {
+          "label": "baseline",
+          "png_sha256": "ae065101b5fe388783ee374eb91b8eb51a423c3016a0ff479d76c0bb2c1b0eb3",
+          "png_path": ".work/expansion-full/second-final/source/graph/bridge-web/baseline.png",
+          "png_bytes": 62145,
+          "state_sha256": "9631832002778106c897f1b5f7ee73c22fb2879aa4b119abe3facb1d4f3091df",
+          "tick": 0,
+          "nodes": 42,
+          "edges": 35
+        },
+        {
+          "label": "early-tick-001",
+          "png_sha256": "faf13c21ed32793911c6cd08c7c85dd70d3723fd579d5d21b165593032ad7c43",
+          "png_path": ".work/expansion-full/second-final/source/graph/bridge-web/early-tick-001.png",
+          "png_bytes": 63632,
+          "state_sha256": "ed082dfa51124035acf2396fd26a551d31f7dbe380a5de3b53421c81157164fd",
+          "tick": 1,
+          "nodes": 44,
+          "edges": 38
+        },
+        {
+          "label": "intermediate-tick-012",
+          "png_sha256": "1a86e1eb06a1564d53b9792fbbbc3d5d2d1ced3380da9f94ac07f8aea8727b6b",
+          "png_path": ".work/expansion-full/second-final/source/graph/bridge-web/intermediate-tick-012.png",
+          "png_bytes": 75008,
+          "state_sha256": "b02190d37b19837e9ed886636c27d0eb2e865cb0c1d742ac33240c3c9c6019ce",
+          "tick": 12,
+          "nodes": 66,
+          "edges": 71
+        },
+        {
+          "label": "route-edit-no-tick",
+          "png_sha256": "2a92f9d0c65d7d9b8c7c9eae3a000299958ea9bae09e2e714a8eff0f2910086d",
+          "png_path": ".work/expansion-full/second-final/source/graph/bridge-web/route-edit-no-tick.png",
+          "png_bytes": 75062,
+          "state_sha256": "2b75b6aad8b5919875cac6b953187c844b10fd258e39804a4e9e2c2f8dbbf780",
+          "tick": 12,
+          "nodes": 66,
+          "edges": 71
+        },
+        {
+          "label": "route-next-tick-013",
+          "png_sha256": "c732af1f4e068aac54105e7c18c46673415955a860ac0474505f74520b731c22",
+          "png_path": ".work/expansion-full/second-final/source/graph/bridge-web/route-next-tick-013.png",
+          "png_bytes": 75919,
+          "state_sha256": "e033888381ed88ce268645d6c756725c261797893a307a66ca17ddb49f54484c",
+          "tick": 13,
+          "nodes": 68,
+          "edges": 74
+        },
+        {
+          "label": "mature-tick-024",
+          "png_sha256": "123bcf88555c95ed4f1f2e7205a3c71f039effe3b28b409ef8162e3dd72db787",
+          "png_path": ".work/expansion-full/second-final/source/graph/bridge-web/mature-tick-024.png",
+          "png_bytes": 87021,
+          "state_sha256": "c380880bd863327f348a3fb96f32c4111e9fa17ff8a4c9ee526a5c6fc13a4b47",
+          "tick": 24,
+          "nodes": 90,
+          "edges": 107
+        },
+        {
+          "label": "full-web-tick-042",
+          "png_sha256": "c227fa35444d035fe6cf95b2609a621341517ebe3b0d0be2f84d2d23666bc46c",
+          "png_path": ".work/expansion-full/second-final/source/graph/bridge-web/full-web-tick-042.png",
+          "png_bytes": 102875,
+          "state_sha256": "777db5abc389ad26b290c05d3ef86d489e9915f18b16af9239e6835e2081dd61",
+          "tick": 42,
+          "nodes": 126,
+          "edges": 161
+        },
+        {
+          "label": "before-graph-transfer",
+          "png_sha256": "2300f9771f320a94d5d7b97d44643776ea02e44386b7a9acf8527b4e7a101b64",
+          "png_path": ".work/expansion-full/second-final/source/graph/bridge-web/before-graph-transfer.png",
+          "png_bytes": 72427,
+          "state_sha256": "29cebbb25e324dd2cc89080d0c4331b184fec2e8a1fde205646d790b79c523a8",
+          "tick": 10,
+          "nodes": 62,
+          "edges": 65
+        },
+        {
+          "label": "supplied-graph",
+          "png_sha256": "d5106211629a091f6ac2e85763e56db8dd9eaaf84425a892e372ac578504274a",
+          "png_path": ".work/expansion-full/second-final/source/graph/bridge-web/supplied-graph.png",
+          "png_bytes": 27414,
+          "state_sha256": "c997d95511dc16d98687b85d1d81f8380076fb6a11e551b626e14e6614fc4d93",
+          "tick": 10,
+          "nodes": 10,
+          "edges": 5
+        },
+        {
+          "label": "transfer-next-tick",
+          "png_sha256": "fcccabece858b3a5a26696c350e1437db714d4790efe36e9272b7d0882309e70",
+          "png_path": ".work/expansion-full/second-final/source/graph/bridge-web/transfer-next-tick.png",
+          "png_bytes": 32695,
+          "state_sha256": "84033ae0de597393e9739be8f696c4caf193f3dcce99d51d85ddd55699b54081",
+          "tick": 11,
+          "nodes": 12,
+          "edges": 8
+        },
+        {
+          "label": "reset",
+          "png_sha256": "ae065101b5fe388783ee374eb91b8eb51a423c3016a0ff479d76c0bb2c1b0eb3",
+          "png_path": ".work/expansion-full/second-final/source/graph/bridge-web/reset.png",
+          "png_bytes": 62145,
+          "state_sha256": "9631832002778106c897f1b5f7ee73c22fb2879aa4b119abe3facb1d4f3091df",
+          "tick": 0,
+          "nodes": 42,
+          "edges": 35
+        },
+        {
+          "label": "reload",
+          "png_sha256": "ae065101b5fe388783ee374eb91b8eb51a423c3016a0ff479d76c0bb2c1b0eb3",
+          "png_path": ".work/expansion-full/second-final/source/graph/bridge-web/reload.png",
+          "png_bytes": 62145,
+          "state_sha256": "9631832002778106c897f1b5f7ee73c22fb2879aa4b119abe3facb1d4f3091df",
+          "tick": 0,
+          "nodes": 42,
+          "edges": 35
+        }
+      ],
+      "saved_png_sha256": "ae065101b5fe388783ee374eb91b8eb51a423c3016a0ff479d76c0bb2c1b0eb3"
+    },
+    {
+      "slug": "neighborhood-growth",
+      "transfer": "independent ordered pair graph changes one relaxation",
+      "step_wall_time": {
+        "samples": 2,
+        "median_ms": 37.497746999999436,
+        "p95_ms": 34.99101800000062,
+        "max_ms": 37.497746999999436
+      },
+      "frames": [
+        {
+          "label": "baseline",
+          "png_sha256": "c5032826bc0ea11290f6517aaa3bef24d09d1a7d379849523c2c135cc44ddfc9",
+          "png_path": ".work/expansion-full/second-final/source/graph/neighborhood-growth/baseline.png",
+          "png_bytes": 24904,
+          "state_sha256": "1d70774a577bd29572342827f7c5811d321224b5851abb9624bd4665bf9a9c3a",
+          "tick": 0
+        },
+        {
+          "label": "early-tick-001",
+          "png_sha256": "1edc116e6eeeeebcb796b1a054f4fd3b17fb51b052697a0f58ee60fca3e81346",
+          "png_path": ".work/expansion-full/second-final/source/graph/neighborhood-growth/early-tick-001.png",
+          "png_bytes": 25120,
+          "state_sha256": "6ad01f913827b7ad47ef053533af1ba13a1e00c761354bf102e05975d3c854f0",
+          "tick": 1
+        },
+        {
+          "label": "appearance-edit",
+          "png_sha256": "02363f170295ba2501699ee06164a0d7d790e26431b62ea9af16b136d69bae25",
+          "png_path": ".work/expansion-full/second-final/source/graph/neighborhood-growth/appearance-edit.png",
+          "png_bytes": 26381,
+          "state_sha256": "f3a861245b94a02f9baf37d88bdcf2b1227c9b454cd792a7a631c0adafd51b28",
+          "tick": 1
+        },
+        {
+          "label": "supplied-graph",
+          "png_sha256": "3d921aab0f77d0d180c80d43cb2c64180add94dd87530196ea0ae4b1ce4fcdfb",
+          "png_path": ".work/expansion-full/second-final/source/graph/neighborhood-growth/supplied-graph.png",
+          "png_bytes": 66252,
+          "state_sha256": "313f066eee3956e86c57f4956c7064e1784528f775caf577e1fda83bb308fb30",
+          "tick": 1
+        },
+        {
+          "label": "transfer-next-tick",
+          "png_sha256": "0ee13b23481b57c66df780d03bf727a295b75d3d788adba74a4e745cfa7970dc",
+          "png_path": ".work/expansion-full/second-final/source/graph/neighborhood-growth/transfer-next-tick.png",
+          "png_bytes": 65574,
+          "state_sha256": "6b6af066bde1c107c16f51c3fdac2a9253682ebd4d8a518ec4cc964c9747732c",
+          "tick": 2
+        },
+        {
+          "label": "reset",
+          "png_sha256": "c5032826bc0ea11290f6517aaa3bef24d09d1a7d379849523c2c135cc44ddfc9",
+          "png_path": ".work/expansion-full/second-final/source/graph/neighborhood-growth/reset.png",
+          "png_bytes": 24904,
+          "state_sha256": "1d70774a577bd29572342827f7c5811d321224b5851abb9624bd4665bf9a9c3a",
+          "tick": 0
+        },
+        {
+          "label": "reload",
+          "png_sha256": "c5032826bc0ea11290f6517aaa3bef24d09d1a7d379849523c2c135cc44ddfc9",
+          "png_path": ".work/expansion-full/second-final/source/graph/neighborhood-growth/reload.png",
+          "png_bytes": 24904,
+          "state_sha256": "1d70774a577bd29572342827f7c5811d321224b5851abb9624bd4665bf9a9c3a",
+          "tick": 0
+        }
+      ],
+      "saved_png_sha256": "c5032826bc0ea11290f6517aaa3bef24d09d1a7d379849523c2c135cc44ddfc9"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "input_sha256_after": {
+    "tests/native/graph-growth-studies-javascript.mjs": "2d2c2207e2bdfaaeb1c86d02f0b0dd3291c0127938f287b7da95e292ee47e68e",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    "packages/javascript/src/insert-segment-bridge-2d.js": "fc4ba22f7c73f98609c8a53f1bafc6bb0fed91feae538a53de359fe3d7b7928a",
+    "packages/javascript/src/relative-neighborhood-pairs-2d.js": "897ba752901a2d48d43a3ce458bcd9c09870b7a503e2a2b17b8b8da2bd6fbd91",
+    "packages/javascript/src/threshold-edge-relaxation-2d.js": "50a38d4b5134ba52a2ff1470254c22278b4e9058a34c64613718220e4b1e28a3",
+    "packages/javascript/src/internal/graph-growth-utils.js": "db09a94fbed91d28913f56e989b369ca9150237feb7d1420b0442a6d643e9ac2",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/examples/bridge-web/index.html": "0c9ff6dbb9ba4e014df797d41f50064083f227a294b156d4b7d6fbfe8bcf985e",
+    "packages/javascript/examples/bridge-web/sketch.js": "fc6489ee03d002f4bc17999fa4adb5529e655e285a9c6dcb44237bafbff097e7",
+    "packages/javascript/examples/neighborhood-growth/index.html": "09c67cf2de454bed7085cea0d1d4bff249a7d6c167c911b58a98182d6ed19024",
+    "packages/javascript/examples/neighborhood-growth/sketch.js": "a8b2d3a1f9f3e6f90e14aef459e6b6251ec82edbfa7330d086de5f1685ea0f8a",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  }
+}

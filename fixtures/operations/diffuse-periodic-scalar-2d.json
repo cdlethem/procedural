@@ -1,0 +1,264 @@
+{
+  "operation": "field.diffuse-periodic-scalar-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "d7978248029bea2ed94b9b050fdea2fcccb2606e43852179945e58e8837d707a",
+  "oracle": "Root analytical vectors authored before implementation: dyadic shifts/stencils and exact checkerboard cancellation. Independent residual and sampling oracles supplement these vectors.",
+  "cases": [
+    {
+      "id": "impulse",
+      "input": {
+        "columns": 3,
+        "rows": 3,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "rate": 0.125,
+        "retention": 1,
+        "maxWork": 9
+      },
+      "output": {
+        "values": [
+          0,
+          0.125,
+          0,
+          0.125,
+          0.5,
+          0.125,
+          0,
+          0.125,
+          0
+        ]
+      }
+    },
+    {
+      "id": "maximum-stable-rate",
+      "input": {
+        "columns": 3,
+        "rows": 3,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "rate": 0.25,
+        "retention": 1,
+        "maxWork": 9
+      },
+      "output": {
+        "values": [
+          0,
+          0.25,
+          0,
+          0.25,
+          0,
+          0.25,
+          0,
+          0.25,
+          0
+        ]
+      }
+    },
+    {
+      "id": "no-diffusion",
+      "input": {
+        "columns": 3,
+        "rows": 3,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "rate": 0,
+        "retention": 1,
+        "maxWork": 9
+      },
+      "output": {
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "decay",
+      "input": {
+        "columns": 3,
+        "rows": 3,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "rate": 0,
+        "retention": 0.5,
+        "maxWork": 9
+      },
+      "output": {
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0.5,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "periodic-corner",
+      "input": {
+        "columns": 3,
+        "rows": 3,
+        "values": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "rate": 0.125,
+        "retention": 1,
+        "maxWork": 9
+      },
+      "output": {
+        "values": [
+          0.5,
+          0.125,
+          0.125,
+          0.125,
+          0,
+          0,
+          0.125,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "single-cell",
+      "input": {
+        "columns": 1,
+        "rows": 1,
+        "values": [
+          4
+        ],
+        "rate": 0.25,
+        "retention": 0.5,
+        "maxWork": 1
+      },
+      "output": {
+        "values": [
+          2
+        ]
+      }
+    },
+    {
+      "id": "over-stable-rate",
+      "input": {
+        "columns": 3,
+        "rows": 3,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "rate": 0.251,
+        "retention": 1,
+        "maxWork": 9
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "negative-retention",
+      "input": {
+        "columns": 3,
+        "rows": 3,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "rate": 0.125,
+        "retention": -0.1,
+        "maxWork": 9
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "budget",
+      "input": {
+        "columns": 3,
+        "rows": 3,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "rate": 0.125,
+        "retention": 1,
+        "maxWork": 8
+      },
+      "error": "WORK_LIMIT"
+    }
+  ]
+}

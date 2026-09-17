@@ -1,0 +1,543 @@
+{
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability_decision": "design/capabilities/thick-regions-and-plotting.md",
+  "design_review": "design/operations/thick-regions-and-plotting-contract-review.md",
+  "provenance": [],
+  "fixture_format": "exact-json-output",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original guarded bands and hatch/plot studies; no Fidenza, weaving, artist recreation or physical plotting acceptance."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture challenge",
+    "status": "Contract reviewed before implementation; target acceptance pending."
+  },
+  "id": "geometry.select-tapered-stroke-strips-2d",
+  "decision_cluster": "geometry.select-tapered-stroke-strips-2d",
+  "description": "Greedily select supplied tapered strips against actual regions using exact clearance comparisons.",
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "candidates": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "points": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "minItems": 2,
+              "maxItems": 4294967295
+            },
+            "widths": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "minItems": 2,
+              "maxItems": 4294967295
+            },
+            "closed": {
+              "type": "boolean"
+            },
+            "cap": {
+              "type": "string",
+              "enum": [
+                "BUTT",
+                "SQUARE"
+              ]
+            },
+            "join": {
+              "type": "string",
+              "enum": [
+                "BEVEL",
+                "MITER"
+              ]
+            },
+            "miterLimit": {
+              "type": "number",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "id",
+            "points",
+            "widths",
+            "closed",
+            "cap",
+            "join",
+            "miterLimit"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 4294967295
+      },
+      "clearance": {
+        "type": "number",
+        "minimum": 0
+      },
+      "exclusions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "outer": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "minItems": 3,
+              "maxItems": 4294967295
+            },
+            "holes": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "items": false,
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "minItems": 3,
+                "maxItems": 4294967295
+              },
+              "maxItems": 4294967295
+            }
+          },
+          "required": [
+            "outer",
+            "holes"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "maxAccepted": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "candidates",
+      "clearance",
+      "exclusions",
+      "maxWork",
+      "maxAccepted"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "accepted": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "visible": {
+              "type": "object",
+              "properties": {
+                "outer": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "prefixItems": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ],
+                    "items": false,
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "minItems": 3,
+                  "maxItems": 4294967295
+                },
+                "holes": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "prefixItems": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ],
+                      "items": false,
+                      "minItems": 2,
+                      "maxItems": 2
+                    },
+                    "minItems": 3,
+                    "maxItems": 4294967295
+                  },
+                  "maxItems": 4294967295
+                }
+              },
+              "required": [
+                "outer",
+                "holes"
+              ],
+              "additionalProperties": false
+            },
+            "centerline": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "minItems": 2,
+              "maxItems": 4294967295
+            },
+            "resolvedJoins": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "left": {
+                    "type": "string",
+                    "enum": [
+                      "BEVEL",
+                      "MITER",
+                      "INNER",
+                      "CONTINUOUS"
+                    ]
+                  },
+                  "right": {
+                    "type": "string",
+                    "enum": [
+                      "BEVEL",
+                      "MITER",
+                      "INNER",
+                      "CONTINUOUS"
+                    ]
+                  }
+                },
+                "required": [
+                  "left",
+                  "right"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "witness": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "NONE",
+                    "LIMIT",
+                    "INVALID_RING",
+                    "RING_CONTACT",
+                    "RING_CONTAINMENT",
+                    "EDGE_CROSSING",
+                    "EDGE_CONTACT",
+                    "A_CONTAINS_B",
+                    "B_CONTAINS_A",
+                    "MINIMUM_PAIR"
+                  ]
+                },
+                "againstKind": {
+                  "type": "string",
+                  "enum": [
+                    "NONE",
+                    "EXCLUSION",
+                    "ACCEPTED"
+                  ]
+                },
+                "againstIndex": {
+                  "type": "integer",
+                  "minimum": -1,
+                  "maximum": 9007199254740991
+                },
+                "aRing": {
+                  "type": "integer",
+                  "minimum": -1
+                },
+                "aEdge": {
+                  "type": "integer",
+                  "minimum": -1
+                },
+                "bRing": {
+                  "type": "integer",
+                  "minimum": -1
+                },
+                "bEdge": {
+                  "type": "integer",
+                  "minimum": -1
+                },
+                "vertex": {
+                  "type": "integer",
+                  "minimum": -1
+                }
+              },
+              "required": [
+                "kind",
+                "againstKind",
+                "againstIndex",
+                "aRing",
+                "aEdge",
+                "bRing",
+                "bEdge",
+                "vertex"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "id",
+            "visible",
+            "centerline",
+            "resolvedJoins",
+            "witness"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "rejected": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string",
+              "enum": [
+                "INVALID_STRIP_TOPOLOGY",
+                "INTERSECTS",
+                "CLEARANCE",
+                "LIMIT"
+              ]
+            },
+            "witness": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "NONE",
+                    "LIMIT",
+                    "INVALID_RING",
+                    "RING_CONTACT",
+                    "RING_CONTAINMENT",
+                    "EDGE_CROSSING",
+                    "EDGE_CONTACT",
+                    "A_CONTAINS_B",
+                    "B_CONTAINS_A",
+                    "MINIMUM_PAIR"
+                  ]
+                },
+                "againstKind": {
+                  "type": "string",
+                  "enum": [
+                    "NONE",
+                    "EXCLUSION",
+                    "ACCEPTED"
+                  ]
+                },
+                "againstIndex": {
+                  "type": "integer",
+                  "minimum": -1,
+                  "maximum": 9007199254740991
+                },
+                "aRing": {
+                  "type": "integer",
+                  "minimum": -1
+                },
+                "aEdge": {
+                  "type": "integer",
+                  "minimum": -1
+                },
+                "bRing": {
+                  "type": "integer",
+                  "minimum": -1
+                },
+                "bEdge": {
+                  "type": "integer",
+                  "minimum": -1
+                },
+                "vertex": {
+                  "type": "integer",
+                  "minimum": -1
+                }
+              },
+              "required": [
+                "kind",
+                "againstKind",
+                "againstIndex",
+                "aRing",
+                "aEdge",
+                "bRing",
+                "bEdge",
+                "vertex"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "id",
+            "reason",
+            "witness"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "accepted",
+      "rejected"
+    ],
+    "additionalProperties": false
+  },
+  "output_invariants": "Detached canonical finite data; deterministic declared order and no partial result. Region query witnesses refer supplied ring order, constructed visible rings canonical winding/start.",
+  "behavior": {
+    "validation": "Exact passive Object/null-prototype records, dense ordinary arrays with own data slots, no extras/accessors/symbols/coercion; finite binary64 inputs. Validate full carrier/domain before budget. Proxies outside interchange. Every ring has >=3 distinct vertices, implicit closure, nonzero signed area, no duplicate seam/vertex, adjacent backtracking, self-contact, or self-crossing. Holes are strictly inside outer and pairwise disjoint/non-touching. Either winding input; owned output outer CCW/hole CW. Filled membership is outer minus holes. Static validation checks shape/domain, including strip duplicate/reversal rules; exact region topology follows work preflight. Hatch projection/count arithmetic is needed before its budget as explicitly specified. Errors atomic, no mutation/aliases; output zeros positive. Work sums/products use exact integers and compare before allocation; runtime/allocation guarantees do not follow from budgets.",
+    "algorithm": "Static-validate all candidate records using strip static rules, IDs (nonempty, unique), clearance, and all exclusion carrier shapes before preflight. Validate exclusion topology after preflight. Visit candidates in input order. If accepted count already equals maxAccepted, append LIMIT with witness kind LIMIT/againstKind NONE/againstIndex -1 and all geometry fields -1 without building candidate. Otherwise construct strip; a rejected strip produces INVALID_STRIP_TOPOLOGY and its witness. Compare actual visible Region2D to exclusions in input order, then accepted actual regions in acceptance order. First INTERSECTS or exact squared distance < exact clearance^2 rejects, with witness copied from comparison, againstKind and zero-based againstIndex. Equality accepts. Accepted witness is NONE with all indices -1. No retries, split, trim, shuffle or guard inflation.",
+    "work": "Let C candidates, X exclusions. For candidate i let Ni=point count, Ei=4Ni+4, Qi=2, Vi=Ei^2+8EiQi+4Qi^2. For exclusion j let Fj=total ring edges, Rj=ring count, Uj=Fj^2+8FjRj+4Rj^2. Pair(A,B)=VA+VB+12EAEB+EA+EB. W=sum_i(32Ni+Vi)+sum_j Uj+sum_i sum_j Pair(candidate_i,exclusion_j)+sum_{0<=k<i<C} Pair(candidate_i,candidate_k). Compute W with exact integers after static validation, charging every possible candidate build and comparison regardless of maxAccepted. WORK_LIMIT iff W>maxWork before exclusion topology or candidate construction. This charges repeated region validation within every pair query and varies with exclusion topology.",
+    "environment": "No RNG, clock, host renderer, file IO or implicit assets. Consistent caller coordinate units; SVG input explicitly millimetres. Other targets deferred.",
+    "numerics": "Topology and clearance thresholds use exact rational arithmetic on supplied binary64 dyadics. Constructed offsets and stated display arithmetic use ordered binary64 with finite checks; no epsilon, snap or repair. Exact shared JSON vectors; additional analytic shape tests compare declared floating arithmetic abs1e-9+rel1e-12 while topology/IDs/order remain exact. Optional outer miter failure falls back exactly as specified.",
+    "native_surface": "selectTaperedStrokeStrips2D(input), named p5-package export with stable-code errors."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed carrier, domain or static correspondence.",
+    "WORK_LIMIT": "Exact declared event reservation exceeds maxWork.",
+    "INVALID_REGION": "An exclusion region has invalid topology after preflight.",
+    "NUMERIC_OVERFLOW": "Nonfinite required arithmetic/display output.",
+    "REPRESENTATION_COLLAPSE": "Required distinct exact geometry cannot be represented distinctly."
+  },
+  "parameters": {
+    "candidates": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    },
+    "clearance": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    },
+    "exclusions": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    },
+    "maxWork": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    },
+    "maxAccepted": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    }
+  },
+  "fixtures": "fixtures/operations/select-tapered-stroke-strips-2d.json"
+}

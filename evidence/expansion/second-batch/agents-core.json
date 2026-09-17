@@ -1,0 +1,83 @@
+{
+  "status": "passed",
+  "node_version": "v22.22.1",
+  "scope": "Three p5-only pure cores: frozen fixtures, tolerated fdlibm trig vectors, passive carriers, state/substitution and bounded-output observations. No rendering or support acceptance claim.",
+  "operations": [
+    "spatial.contact-history-2d",
+    "motion.sensor-motor-step-2d",
+    "motion.flock-steer-2d"
+  ],
+  "input_sha256_before": {
+    "catalog/operations/contact-history-2d.json": "95a9075cc72c1bc409f722e7e3600e147170c7daac717c04f19b42157c2ccaaf",
+    "fixtures/operations/contact-history-2d.json": "15338fb0eff7b5b0fb238bea3f6a5b31c8e7cbb87d353a5f8760996d29a7c50e",
+    "packages/javascript/src/contact-history-2d.js": "c0d4b60f020c6d88474b8e7106ce434883680885b59328176c344afc00b32bec",
+    "catalog/operations/sensor-motor-step-2d.json": "09bb7b91e1b8467285ae8a539843cd492414c515fa70b01023d129709019f8f2",
+    "fixtures/operations/sensor-motor-step-2d.json": "efb196c219c269fbc9448b1e414c7187351bdde6c122fc9b43c26c3d5d2e5cd7",
+    "packages/javascript/src/sensor-motor-step-2d.js": "b053e8d7129e37dc45d6ada4ddbed03547d5783d3f0e663323b4d5b9d7a8580e",
+    "catalog/operations/flock-steer-2d.json": "ac8ff73a22d8573b0c9c34686f0c5870794ebe467d4450f080744dc88c32fb1b",
+    "fixtures/operations/flock-steer-2d.json": "b43aead64d7c4fc7d86611d78a92ee87b73703a5e23d8bfc24d81b61e4c8ad8d",
+    "packages/javascript/src/flock-steer-2d.js": "c948f9334d9c283d52699d6e82656fcb3cf4a97cc865f605d0e0a4f1b7411abc",
+    "packages/javascript/src/internal/agent-behavior-utils.js": "39831681236febcb31e48de1e4a42713fb89c603c24d3c7b80cf1d4b9e8a9416",
+    "tests/native/agent-behaviors-javascript.mjs": "85c21c770b1741d02d445b923216d2f5af27e7442d904778a49871ff2cb05a97"
+  },
+  "input_sha256_after": {
+    "catalog/operations/contact-history-2d.json": "95a9075cc72c1bc409f722e7e3600e147170c7daac717c04f19b42157c2ccaaf",
+    "fixtures/operations/contact-history-2d.json": "15338fb0eff7b5b0fb238bea3f6a5b31c8e7cbb87d353a5f8760996d29a7c50e",
+    "packages/javascript/src/contact-history-2d.js": "c0d4b60f020c6d88474b8e7106ce434883680885b59328176c344afc00b32bec",
+    "catalog/operations/sensor-motor-step-2d.json": "09bb7b91e1b8467285ae8a539843cd492414c515fa70b01023d129709019f8f2",
+    "fixtures/operations/sensor-motor-step-2d.json": "efb196c219c269fbc9448b1e414c7187351bdde6c122fc9b43c26c3d5d2e5cd7",
+    "packages/javascript/src/sensor-motor-step-2d.js": "b053e8d7129e37dc45d6ada4ddbed03547d5783d3f0e663323b4d5b9d7a8580e",
+    "catalog/operations/flock-steer-2d.json": "ac8ff73a22d8573b0c9c34686f0c5870794ebe467d4450f080744dc88c32fb1b",
+    "fixtures/operations/flock-steer-2d.json": "b43aead64d7c4fc7d86611d78a92ee87b73703a5e23d8bfc24d81b61e4c8ad8d",
+    "packages/javascript/src/flock-steer-2d.js": "c948f9334d9c283d52699d6e82656fcb3cf4a97cc865f605d0e0a4f1b7411abc",
+    "packages/javascript/src/internal/agent-behavior-utils.js": "39831681236febcb31e48de1e4a42713fb89c603c24d3c7b80cf1d4b9e8a9416",
+    "tests/native/agent-behaviors-javascript.mjs": "85c21c770b1741d02d445b923216d2f5af27e7442d904778a49871ff2cb05a97"
+  },
+  "scenarios": {
+    "exact_fixture_cases": 34,
+    "tolerated_trig_cases": 12,
+    "carriers": [
+      "frozen inputs",
+      "accessor-free passive validation",
+      "symbol/typed/sparse/extra carriers",
+      "detached nested outputs"
+    ],
+    "state_and_substitution": [
+      "three consecutive contact states",
+      "scalar field substitution",
+      "fixed supplied graph"
+    ],
+    "performance": [
+      {
+        "label": "contact-study",
+        "elapsed_ms": [
+          0.421,
+          0.614,
+          0.619
+        ],
+        "checksum": "e7957d1c6ca5ababd829361865423897d5f625df01021d7c4c009323df6a0d7e",
+        "retained_json_bytes": 11985
+      },
+      {
+        "label": "sensor-study",
+        "elapsed_ms": [
+          2.721,
+          1.784,
+          1.975
+        ],
+        "checksum": "8bf33ebbb632a801195d06017fcad50f2bb82878b9dca0ccfd4cdbb5b742fa13",
+        "retained_json_bytes": 58922
+      },
+      {
+        "label": "flock-study",
+        "elapsed_ms": [
+          1.119,
+          1.049,
+          0.821
+        ],
+        "checksum": "b7fea7bf5c81a092c259eeee1eddeed833428c01f40cb14e62a2b4ba3a91e223",
+        "retained_json_bytes": 2393
+      }
+    ]
+  }
+}

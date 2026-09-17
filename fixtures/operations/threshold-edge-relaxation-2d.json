@@ -1,0 +1,361 @@
+{
+  "operation": "motion.threshold-edge-relaxation-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "799d0ef708f7e2b6b686ab36d04474292e58b104844673ebb10d341be174eb8b",
+  "oracle": "Analytical vectors authored before implementation, independently reviewed by Sol, frozen by root. Transcendental tolerance checks are separate.",
+  "cases": [
+    {
+      "id": "empty",
+      "input": {
+        "points": [],
+        "pairs": [],
+        "pinned": [],
+        "minLength": 0,
+        "stepScale": 1,
+        "maxWork": 0
+      },
+      "output": {
+        "points": [],
+        "displacements": []
+      }
+    },
+    {
+      "id": "unequal-length-star-is-unit-weighted",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          false
+        ],
+        "minLength": 0,
+        "stepScale": 1,
+        "maxWork": 5
+      },
+      "output": {
+        "points": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "displacements": [
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            -1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "strict-threshold",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "pinned": [
+          false,
+          false
+        ],
+        "minLength": 2,
+        "stepScale": 1,
+        "maxWork": 3
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "displacements": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "pin-still-attracts",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "pinned": [
+          true,
+          false
+        ],
+        "minLength": 0,
+        "stepScale": 1,
+        "maxWork": 3
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "displacements": [
+          [
+            0,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "coincidence",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "pinned": [
+          false,
+          false
+        ],
+        "minLength": 0,
+        "stepScale": 1,
+        "maxWork": 3
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "displacements": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "no-edges",
+      "input": {
+        "points": [
+          [
+            3,
+            4
+          ]
+        ],
+        "pairs": [],
+        "pinned": [
+          false
+        ],
+        "minLength": 0,
+        "stepScale": 1,
+        "maxWork": 1
+      },
+      "output": {
+        "points": [
+          [
+            3,
+            4
+          ]
+        ],
+        "displacements": [
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "pinned": [
+          false,
+          false
+        ],
+        "minLength": 0,
+        "stepScale": 1,
+        "maxWork": 2
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "reversed-pair",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            1,
+            0
+          ]
+        ],
+        "pinned": [
+          false,
+          false
+        ],
+        "minLength": 0,
+        "stepScale": 1,
+        "maxWork": 3
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero-scale-still-overflows",
+      "input": {
+        "points": [
+          [
+            -1e+308,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ]
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "pinned": [
+          false,
+          false
+        ],
+        "minLength": 0,
+        "stepScale": 0,
+        "maxWork": 3
+      },
+      "error": "NUMERIC_OVERFLOW"
+    }
+  ]
+}

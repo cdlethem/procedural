@@ -1,5 +1,5 @@
 # Spaced symbols
-Poisson sites carry rotated square symbols. This is an original design, not a corpus recreation.
+Poisson sites carry rotated square symbols.
 
 | Control | Canvas effect |
 |---|---|

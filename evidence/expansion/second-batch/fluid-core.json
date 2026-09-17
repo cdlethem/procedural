@@ -1,0 +1,76 @@
+{
+  "status": "passed",
+  "scope": "Pure periodic field computations; no native or artist recreation acceptance.",
+  "analyticalVectors": 29,
+  "scenarios": [
+    "MAC projection signs and checkerboard convergence",
+    "discrete-curl invariance",
+    "periodic and staggered transport",
+    "mass/retention and stable endpoint",
+    "carrier/ownership/work/overflow"
+  ],
+  "convergence": [
+    {
+      "iterations": 0,
+      "residual": 28.431290020525296
+    },
+    {
+      "iterations": 8,
+      "residual": 4.698049126104893
+    },
+    {
+      "iterations": 64,
+      "residual": 0.7866786472547195
+    },
+    {
+      "iterations": 512,
+      "residual": 0.000007371743467699718
+    }
+  ],
+  "timings": [
+    {
+      "dimensions": [
+        8,
+        8
+      ],
+      "iterations": 64,
+      "elapsedMs": 0.1028090000000006,
+      "residual": 0.00042019083061806356,
+      "jsonBytes": 6696
+    },
+    {
+      "dimensions": [
+        48,
+        48
+      ],
+      "iterations": 64,
+      "elapsedMs": 2.8919779999999946,
+      "residual": 0.017175948396252836,
+      "jsonBytes": 236669
+    },
+    {
+      "dimensions": [
+        128,
+        128
+      ],
+      "iterations": 64,
+      "elapsedMs": 20.075466000000006,
+      "residual": 0.019702606407989518,
+      "jsonBytes": 1608950
+    }
+  ],
+  "implementation_sha256": {
+    "packages/javascript/src/project-periodic-velocity-2d.js": "34fdcdcc6d91543e1ec5b2f948d2f63db2037f8ccb159357b7cb5da0e64e4370",
+    "catalog/operations/project-periodic-velocity-2d.json": "13fbfb4f852cbe93f999ce1727f4200055285186a9d26ef4d48e0386d7e903c3",
+    "fixtures/operations/project-periodic-velocity-2d.json": "f3faf0d8776ccc8070e56bd6b420ea7cd88bfd646de10f4985618d67354c057d",
+    "packages/javascript/src/advect-periodic-scalar-2d.js": "993acb08fbd4e3acb5f07dd7a0a9e5cbe2b8c46f3ab0098ebfabe55e6827179b",
+    "catalog/operations/advect-periodic-scalar-2d.json": "57228a2af65a44e5cc7855afe2a9b41f2ba7eb5e94c80e0692d12c1c1bc24162",
+    "fixtures/operations/advect-periodic-scalar-2d.json": "5519acf00edae9fafebd5275c5d79b0bdce35ac999241cfcdcadfc9e87f1cfcb",
+    "packages/javascript/src/diffuse-periodic-scalar-2d.js": "69c6d87e9ab4157450a12288bb4c82797e6ca213676bc6a48e0a7657e6df496e",
+    "catalog/operations/diffuse-periodic-scalar-2d.json": "d7978248029bea2ed94b9b050fdea2fcccb2606e43852179945e58e8837d707a",
+    "fixtures/operations/diffuse-periodic-scalar-2d.json": "ada903bb3c1af23e0ec6417916defcb590ed8c74351eb475d8d4d0c8d896b3c2",
+    "packages/javascript/src/internal/periodic-grid.js": "f24de55bf6a503552a8a8529dd512796f518733ec6e2e0d8972609460df891f3",
+    "packages/javascript/src/internal/systems-a-utils.js": "c6e4920c72648b559fb70395a51ead4deb47e972cd91ae54145d1b1c1e5d5204",
+    "tests/native/periodic-fluid-javascript.mjs": "ae48eaa1dc06bc3d486f1a73a4fa9c32ef348580f2361e7aad772fd9c1c6f442"
+  }
+}

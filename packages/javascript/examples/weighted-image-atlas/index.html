@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Weighted image atlas</title>
+<style>
+  body { margin: 24px; background: #eeeae2; color: #26353a; font: 16px system-ui, sans-serif; }
+  main { max-width: 860px; margin: auto; }
+  button { padding: 8px 11px; margin: 3px; border: 1px solid #74898a; border-radius: 3px; background: #fffaf0; color: inherit; cursor: pointer; }
+  button:hover { background: #dae5e2; }
+  canvas { display: block; max-width: 100%; box-shadow: 0 3px 18px #0003; }
+  #status { font-size: 14px; }
+</style>
+<main>
+  <h1>Weighted image atlas</h1>
+  <p>The left panel is an authored density image; the right panel replaces pixels with sampled marks. Invert density, increase count, or take a weighted centroid step to change placement. Mark shape and ink leave the retained positions fixed. Swap the relief image for an independently drawn thermal mask.</p>
+  <div>
+    <button data-action="d">D invert density</button><button data-action="n">N count</button><button data-action="r">R relax</button>
+    <button data-action="t">T transfer image</button><button data-action="m">M mark</button><button data-action="i">I ink</button>
+    <button data-action="0">0 reset</button><button data-action="s">S save PNG</button>
+  </div>
+  <div id="art"></div><p id="status"></p>
+</main>
+<script src="/p5.js"></script><script type="module" src="./sketch.js"></script>

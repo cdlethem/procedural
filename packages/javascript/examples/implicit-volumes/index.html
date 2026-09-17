@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implicit Volumes</title>
+<style>
+body{margin:0;background:#111b25;color:#e9dfca;font:15px system-ui,sans-serif}main{max-width:970px;margin:auto;padding:24px}h1{font-size:36px;margin:8px 0}p{line-height:1.5;max-width:720px}#art canvas{display:block;max-width:100%;box-shadow:0 16px 45px #0008}button{background:#283d4e;color:#f8eacb;border:1px solid #6b8791;border-radius:4px;padding:9px 12px;margin:4px 6px 4px 0;cursor:pointer}button:hover{background:#3b586b}#status{font-variant-numeric:tabular-nums}
+</style>
+<main><small>PROCEDURAL / IMPLICIT GEOMETRY</small><h1>Implicit Volumes</h1>
+<p>A soft welded form sits beside a cut vessel. CPU ray queries shape the silhouette and depth; ordinary canvas light and color make the surfaces readable.</p>
+<div id="art"></div>
+<p><button data-action="b">Blend edge</button><button data-action="c">Open cut</button><button data-action="a">Rotate view</button><button data-action="v">Perforated shell</button><button data-action="0">Reset</button><button data-action="s">Save PNG</button></p>
+<p id="status" aria-live="polite"></p><p>Edit scene trees, light and camera settings in <code>sketch.js</code>, or supply a different scene with <code>implicitVolumes.setScene(scene)</code>.</p></main>
+<script src="/p5.js"></script><script type="module" src="./sketch.js"></script>
+</html>

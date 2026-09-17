@@ -68,7 +68,6 @@ many points share a narrow x range.
 
 [Reas's Process](https://reas.com/process/) motivates drawing relationships, while
 [Tissue](https://reas.com/microimage/) motivates drawing through responsive motion.
-These original studies use independently specified point interactions. They do not
-implement Process18's persistent relationship opacity or Tissue's sensor/motor
-behavior. A retained path is a point's movement history, not memory of a pair's
-contact.
+The studies use independently specified point interactions. Persistent pair-opacity
+and sensor/motor feedback are separate computations. A retained path is a point's
+movement history, not memory of a pair's contact.

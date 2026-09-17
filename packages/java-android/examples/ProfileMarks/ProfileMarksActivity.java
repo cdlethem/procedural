@@ -212,7 +212,13 @@ public class ProfileMarksActivity extends FragmentActivity {
             registerMethod("post", this);
             noLoop();
         }
-        @Override public void resume() { super.resume(); redraw(); }
+        /** Pinned Android4.12 PApplet.onResume() invokes this hook before g.restoreState() and
+         * surface.resumeThread(). When the EGL surface is preserved across HOME/resume the
+         * native surfaceChanged callback does not fire, so PGraphicsOpenGL.restoreSurface()
+         * never arms its two-frame restoreCount and restoringState() swallows every redraw.
+         * Arm the change flag here so the cached-frame restore completes and the redraw below
+         * renders the retained composition. */
+        @Override public void resume() { super.resume(); g.surfaceChanged(); redraw(); }
 
         @Override public void draw() {
             State state = requested.get();

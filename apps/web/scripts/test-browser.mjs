@@ -21,6 +21,9 @@ const { chromium } = await import(existsSync(legacy) ? legacy : "playwright");
 const out = join(root, ".work/web-app-review/integration");
 await mkdir(out, { recursive: true });
 const base = process.env.WEB_BASE_URL ?? "http://127.0.0.1:3000";
+const expectedApiEntries = JSON.parse(
+  await readFile(join(app, "lib/generated-api.json"), "utf8"),
+).operations.length;
 const browser = await chromium.launch({
   headless: true,
   args: [
@@ -663,7 +666,7 @@ try {
   } else if (interactionsOnly) {
     await interactionChecks();
   } else {
-    await page.goto(base);
+    await page.goto(base + "/gallery");
     await page.locator(".study-card").first().waitFor();
     assert.equal(await page.locator('.study-card[href^="/techniques/"]').count(), techniqueIds.length, "every catalog study appears in the gallery");
     await page.getByRole("searchbox", { name: "Search techniques", exact: true }).fill("lattice");
@@ -1041,8 +1044,8 @@ try {
     await page.locator(".api-list a").first().waitFor();
     assert.equal(
       await page.locator(".api-list a").count(),
-      34,
-      "34 API entries",
+      expectedApiEntries,
+      "API index matches generated operation metadata",
     );
     const operationLinks = await page
       .locator(".api-list a")
@@ -1065,10 +1068,10 @@ try {
       );
     }
     scenarios.push(
-      "34 API index entries and rendered operation details without raw repository links",
+      `${expectedApiEntries} API index entries and rendered operation details without raw repository links`,
     );
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto(base);
+    await page.goto(base + "/gallery");
     await page.locator(".study-card").first().waitFor();
     assert.ok(
       await page.evaluate(

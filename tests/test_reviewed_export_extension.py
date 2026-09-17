@@ -1,3 +1,4 @@
+import base64
 import hashlib
 import json
 from pathlib import Path
@@ -12,6 +13,75 @@ from tools.reviewed_export_extension import (CORRECTION, HELPER, PATHS, REVIEW,
 
 
 class ReviewedExportTests(unittest.TestCase):
+    def test_dynamics_gallery_requires_exact_changes_and_root_bindings(self):
+        import shutil
+        from tools.reviewed_export_extension import (
+            DYNAMICS_WEB, DYNAMICS_WEB_ROOT, DYNAMICS_WEB_FILES,
+            DYNAMICS_WEB_REQUIRED, COPY_SURFACE, SECOND_ROOT, WEB_GALLERY,
+            _validate_dynamics_web,
+        )
+        repository = Path(__file__).resolve().parents[1]
+        predecessor = repository / '.work/expansion-full/web-second-predecessor'
+        if (repository / DYNAMICS_WEB).exists():
+            prior = json.loads((repository / DYNAMICS_WEB).read_text())['previous_bytes']
+        elif predecessor.exists():
+            prior = {name: (predecessor / name).read_text()
+                     for name in DYNAMICS_WEB_FILES | {HELPER, 'tests/test_reviewed_export_extension.py'}}
+        else:
+            self.skipTest('web predecessor not yet recorded')
+        with tempfile.TemporaryDirectory(dir=repository / '.work') as temporary:
+            root = Path(temporary)
+            for name in DYNAMICS_WEB_REQUIRED | {COPY_SURFACE, SECOND_ROOT, WEB_GALLERY}:
+                (root / name).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(repository / name, root / name)
+            digest = lambda name: hashlib.sha256((root / name).read_bytes()).hexdigest()
+            accepted = {
+                'status': 'accepted', 'owner': 'root', 'reviewer': 'root',
+                'implementation_sha256': {name: digest(name) for name in DYNAMICS_WEB_REQUIRED},
+                'evidence_sha256': {name: digest(name) for name in (COPY_SURFACE, SECOND_ROOT)},
+            }
+            (root / DYNAMICS_WEB_ROOT).parent.mkdir(parents=True, exist_ok=True)
+            (root / DYNAMICS_WEB_ROOT).write_text(json.dumps(accepted))
+            review = {
+                'status': 'accepted', 'owner': 'root', 'reviewer': 'root',
+                'previous_review_sha256': digest(COPY_SURFACE),
+                'implementation_sha256': dict(accepted['implementation_sha256']),
+                'evidence_sha256': {name: digest(name) for name in (COPY_SURFACE, DYNAMICS_WEB_ROOT)},
+                'previous_bytes': prior,
+                'extensions': {name: {'before': prior[name], 'after': (root / name).read_text()}
+                               for name in DYNAMICS_WEB_FILES},
+            }
+            (root / DYNAMICS_WEB).write_text(json.dumps(review))
+            snapshots = {}
+            self.assertTrue(_validate_dynamics_web(root, snapshots))
+            self.assertEqual(snapshots, {name: text.encode() for name, text in prior.items()})
+            for name in DYNAMICS_WEB_FILES:
+                original = (root / name).read_text()
+                changed = original + '\n// unrelated edit\n'
+                (root / name).write_text(changed)
+                forged_root = json.loads(json.dumps(accepted))
+                forged_root['implementation_sha256'][name] = digest(name)
+                (root / DYNAMICS_WEB_ROOT).write_text(json.dumps(forged_root))
+                forged = json.loads(json.dumps(review))
+                forged['implementation_sha256'][name] = digest(name)
+                forged['evidence_sha256'][DYNAMICS_WEB_ROOT] = digest(DYNAMICS_WEB_ROOT)
+                forged['extensions'][name]['after'] = changed
+                (root / DYNAMICS_WEB).write_text(json.dumps(forged))
+                self.assertFalse(_validate_dynamics_web(root, {}))
+                (root / name).write_text(original)
+            (root / DYNAMICS_WEB_ROOT).write_text(json.dumps(accepted))
+            for name in DYNAMICS_WEB_REQUIRED:
+                forged = json.loads(json.dumps(review))
+                forged['implementation_sha256'].pop(name)
+                (root / DYNAMICS_WEB).write_text(json.dumps(forged))
+                self.assertFalse(_validate_dynamics_web(root, {}))
+            (root / DYNAMICS_WEB).write_text(json.dumps(review))
+            accepted['reviewer'] = 'worker'
+            (root / DYNAMICS_WEB_ROOT).write_text(json.dumps(accepted))
+            review['evidence_sha256'][DYNAMICS_WEB_ROOT] = digest(DYNAMICS_WEB_ROOT)
+            (root / DYNAMICS_WEB).write_text(json.dumps(review))
+            self.assertFalse(_validate_dynamics_web(root, {}))
+
     def test_web_gallery_successor_has_fixed_transforms_and_root_bindings(self):
         import shutil
         from tools.reviewed_export_extension import (
@@ -26,7 +96,8 @@ class ReviewedExportTests(unittest.TestCase):
                 ['git', 'show', f'cd1d7d48:{name}'], cwd=repository,
             ).decode() for name in WEB_GALLERY_FILES
         }
-        after = {name: (repository / name).read_text() for name in WEB_GALLERY_FILES}
+        accepted_gallery = json.loads((repository / WEB_GALLERY).read_text())
+        after = {name: accepted_gallery['extensions'][name]['after'] for name in WEB_GALLERY_FILES}
         for name in WEB_GALLERY_FILES:
             self.assertEqual(web_gallery_successor(name, before[name]), after[name], name)
             self.assertNotEqual(web_gallery_successor(name, before[name] + '// unrelated\n'), after[name])
@@ -41,6 +112,8 @@ class ReviewedExportTests(unittest.TestCase):
             for name in WEB_GALLERY_FILES | WEB_GALLERY_DEPENDENCIES:
                 (root / name).parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(repository / name, root / name)
+            for name in WEB_GALLERY_FILES:
+                (root / name).write_text(after[name])
             old_helper, old_test = 'reviewed helper preimage', 'reviewed test preimage'
             prior = {**before, HELPER: old_helper,
                      'tests/test_reviewed_export_extension.py': old_test}
@@ -219,11 +292,28 @@ class ReviewedExportTests(unittest.TestCase):
             self.assertIsNone(historical_export_bytes(root, relative, digest('before')))
 
     def test_successor_preserves_both_historical_exports_and_rejects_mutation(self):
-        from tools.reviewed_export_extension import SUCCESSOR, HELPER, TRIANGLE, BRANCH, PROFILE, JS_PORTS, P5_BATCH, P5_GALLERY, P5_TENFOLD, BATCH1_SURFACE, BATCH1_GENERATOR, BATCH1_ROOT_REVIEWS, BATCH1_BINDINGS, EXPANSION_SURFACE, EXPANSION_ROOT, EXPANSION_GUIDES, EXPANSION_BINDINGS, WEB_GALLERY, WEB_GALLERY_ROOT, WEB_GALLERY_PREVIOUS, WEB_GALLERY_FILES, WEB_GALLERY_DEPENDENCIES
+        from tools.reviewed_export_extension import SUCCESSOR, HELPER, TRIANGLE, BRANCH, PROFILE, JS_PORTS, P5_BATCH, P5_GALLERY, P5_TENFOLD, BATCH1_SURFACE, BATCH1_GENERATOR, BATCH1_ROOT_REVIEWS, BATCH1_BINDINGS, EXPANSION_SURFACE, EXPANSION_ROOT, EXPANSION_GUIDES, EXPANSION_BINDINGS, WEB_GALLERY, WEB_GALLERY_ROOT, WEB_GALLERY_PREVIOUS, WEB_GALLERY_FILES, WEB_GALLERY_DEPENDENCIES, SECOND_SURFACE, SECOND_ROOT, SECOND_REQUIRED, SECOND_TRANSITIVE, SECOND_GUIDES, SECOND_MODULES, JS_INDEX, SECOND_ADDITIONS, second_generator_successor, COPY_SURFACE, COPY_ROOT, COPY_PATHS, copy_cleanup_successor
         import shutil
         repository = Path(__file__).resolve().parents[1]
         if not (repository / WEB_GALLERY).exists():
             self.skipTest('five-study web gallery successor awaits root acceptance')
+        if (repository / COPY_SURFACE).exists():
+            copy_prior = json.loads((repository / COPY_SURFACE).read_text())['previous_bytes']
+        else:
+            manifest_path = repository / '.work/expansion-full/copy-cleanup.json'
+            predecessor = repository / '.work/expansion-full/copy-predecessor'
+            if not manifest_path.exists() or not (predecessor / HELPER).exists():
+                self.skipTest('copy successor awaits root review or local draft preimages')
+            manifest = json.loads(manifest_path.read_text())
+            copy_prior = {entry['path']: base64.b64decode(entry['prior_bytes_base64']).decode()
+                          for entry in manifest['entries']}
+            copy_prior.update({name: (predecessor / name).read_text()
+                               for name in (HELPER, 'tests/test_reviewed_export_extension.py')})
+        self.assertEqual(set(copy_prior), COPY_PATHS | {HELPER, 'tests/test_reviewed_export_extension.py'})
+        for name in COPY_PATHS:
+            self.assertEqual(copy_cleanup_successor(name, copy_prior[name]), (repository / name).read_text())
+            self.assertIsNone(copy_cleanup_successor(name, copy_prior[name] + '\nUnrelated text.\n'))
+        self.assertIsNone(copy_cleanup_successor('unlisted.md', 'anything'))
         previous = json.loads((repository / REVIEW).read_text())
         successor = json.loads((repository / SUCCESSOR).read_text())
         triangle = json.loads((repository / TRIANGLE).read_text())
@@ -240,7 +330,7 @@ class ReviewedExportTests(unittest.TestCase):
         expansion_root = json.loads((repository / EXPANSION_ROOT).read_text())
         web_gallery = json.loads((repository / WEB_GALLERY).read_text())
         web_root = json.loads((repository / WEB_GALLERY_ROOT).read_text())
-        files = {REVIEW, SUCCESSOR, TRIANGLE, BRANCH, CORRECTION, ROOT_CORRECTION, SOURCE_COMPARISON, PROFILE, JS_PORTS, P5_BATCH, P5_GALLERY, P5_TENFOLD, BATCH1_SURFACE, EXPANSION_SURFACE, EXPANSION_ROOT, WEB_GALLERY, WEB_GALLERY_ROOT, WEB_GALLERY_PREVIOUS, *WEB_GALLERY_FILES, *WEB_GALLERY_DEPENDENCIES, *PATHS}
+        files = {REVIEW, SUCCESSOR, TRIANGLE, BRANCH, CORRECTION, ROOT_CORRECTION, SOURCE_COMPARISON, PROFILE, JS_PORTS, P5_BATCH, P5_GALLERY, P5_TENFOLD, BATCH1_SURFACE, EXPANSION_SURFACE, EXPANSION_ROOT, WEB_GALLERY, WEB_GALLERY_ROOT, WEB_GALLERY_PREVIOUS, *WEB_GALLERY_FILES, *WEB_GALLERY_DEPENDENCIES, *SECOND_REQUIRED, *COPY_PATHS, *PATHS}
         for record in (correction, root_correction, profile, ports, batch, gallery, tenfold, coverage, expansion, expansion_root, web_gallery, web_root):
             files.update(record['implementation_sha256'])
             files.update(record['evidence_sha256'])
@@ -261,8 +351,204 @@ class ReviewedExportTests(unittest.TestCase):
             for name in files:
                 (root / name).parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(repository / name, root / name)
+            # This historical-chain test begins before the later nine-study registration.
+            for name in WEB_GALLERY_FILES:
+                (root / name).write_text(web_gallery['extensions'][name]['after'])
             relative = 'packages/javascript/src/index.js'
             digest = lambda value: hashlib.sha256(value.encode()).hexdigest()
+            # Synthetic acceptance stays inside .work. The exact predecessor bytes
+            # come from the bound reviews, including the web-gallery helper/test.
+            second_prior = {name: expansion['extensions'][name]['after']
+                            for name in (JS_INDEX, BATCH1_GENERATOR)}
+            for name in (HELPER, 'tests/test_reviewed_export_extension.py'):
+                second_prior[name] = subprocess.check_output(
+                    ['git', 'show', f'6d4759b8:{name}'], cwd=repository).decode()
+            for name, prior in second_prior.items():
+                predecessor = expansion if name in (JS_INDEX, BATCH1_GENERATOR) else web_gallery
+                self.assertEqual(digest(prior), predecessor['implementation_sha256'][name])
+            second_expected = {
+                JS_INDEX: second_prior[JS_INDEX] + SECOND_ADDITIONS,
+                BATCH1_GENERATOR: second_generator_successor(second_prior[BATCH1_GENERATOR]),
+            }
+            for name, after in second_expected.items():
+                self.assertEqual((root / name).read_text(), after)
+            second_root = {
+                'status': 'accepted', 'owner': 'root', 'reviewer': 'root',
+                'implementation_sha256': {name: digest(copy_prior[name] if name in copy_prior else (root / name).read_text())
+                                          for name in SECOND_REQUIRED | COPY_PATHS},
+                'evidence_sha256': {WEB_GALLERY: digest((root / WEB_GALLERY).read_text())},
+            }
+            (root / SECOND_ROOT).parent.mkdir(parents=True, exist_ok=True)
+            (root / SECOND_ROOT).write_text(json.dumps(second_root))
+            second = {
+                'status': 'accepted', 'owner': 'root', 'reviewer': 'root',
+                'previous_review_sha256': digest((root / WEB_GALLERY).read_text()),
+                'implementation_sha256': dict(second_root['implementation_sha256']),
+                'evidence_sha256': {
+                    WEB_GALLERY: digest((root / WEB_GALLERY).read_text()),
+                    EXPANSION_SURFACE: digest((root / EXPANSION_SURFACE).read_text()),
+                    SECOND_ROOT: digest((root / SECOND_ROOT).read_text()),
+                },
+                'previous_bytes': second_prior,
+                'extensions': {name: {'before': second_prior[name], 'after': after}
+                               for name, after in second_expected.items()},
+            }
+            (root / SECOND_SURFACE).parent.mkdir(parents=True, exist_ok=True)
+            (root / SECOND_SURFACE).write_text(json.dumps(second))
+            copy_root = {
+                'status': 'accepted', 'owner': 'root', 'reviewer': 'root',
+                'implementation_sha256': {name: digest((root / name).read_text())
+                                          for name in COPY_PATHS | {HELPER, 'tests/test_reviewed_export_extension.py'}},
+                'evidence_sha256': {
+                    SECOND_ROOT: digest((root / SECOND_ROOT).read_text()),
+                    SECOND_SURFACE: digest((root / SECOND_SURFACE).read_text()),
+                },
+            }
+            (root / COPY_ROOT).parent.mkdir(parents=True, exist_ok=True)
+            (root / COPY_ROOT).write_text(json.dumps(copy_root))
+            copy = {
+                'status': 'accepted', 'owner': 'root', 'reviewer': 'root',
+                'previous_review_sha256': digest((root / SECOND_SURFACE).read_text()),
+                'implementation_sha256': dict(copy_root['implementation_sha256']),
+                'evidence_sha256': {
+                    SECOND_SURFACE: digest((root / SECOND_SURFACE).read_text()),
+                    COPY_ROOT: digest((root / COPY_ROOT).read_text()),
+                },
+                'previous_bytes': copy_prior,
+                'extensions': {name: {'before': copy_prior[name], 'after': (root / name).read_text()}
+                               for name in COPY_PATHS},
+            }
+            (root / COPY_SURFACE).parent.mkdir(parents=True, exist_ok=True)
+            (root / COPY_SURFACE).write_text(json.dumps(copy))
+            for name in COPY_PATHS:
+                self.assertEqual(historical_export_bytes(root, name, digest(copy_prior[name])),
+                                 copy_prior[name].encode())
+            for mutate in (
+                lambda r: r.update(status='draft'),
+                lambda r: r.update(owner='worker'),
+                lambda r: r.update(previous_review_sha256='0' * 64),
+                lambda r: r['evidence_sha256'].pop(COPY_ROOT),
+                lambda r: r['previous_bytes'].update({HELPER: 'forged'}),
+                lambda r: r['previous_bytes'].update({'unlisted.md': 'forged'}),
+                lambda r: r['extensions'].pop(next(iter(sorted(COPY_PATHS)))),
+            ):
+                forged = json.loads(json.dumps(copy)); mutate(forged)
+                (root / COPY_SURFACE).write_text(json.dumps(forged))
+                self.assertIsNone(historical_export_bytes(root, JS_INDEX, digest(second_prior[JS_INDEX])))
+            (root / COPY_SURFACE).write_text(json.dumps(copy))
+            prose = next(iter(sorted(COPY_PATHS)))
+            original_prose = (root / prose).read_text()
+            changed_prose = original_prose + '\nUnrelated prose.\n'
+            (root / prose).write_text(changed_prose)
+            forged_root = json.loads(json.dumps(copy_root))
+            forged_root['implementation_sha256'][prose] = digest(changed_prose)
+            (root / COPY_ROOT).write_text(json.dumps(forged_root))
+            forged = json.loads(json.dumps(copy))
+            forged['implementation_sha256'][prose] = digest(changed_prose)
+            forged['evidence_sha256'][COPY_ROOT] = digest((root / COPY_ROOT).read_text())
+            forged['extensions'][prose]['after'] = changed_prose
+            (root / COPY_SURFACE).write_text(json.dumps(forged))
+            self.assertIsNone(historical_export_bytes(root, prose, digest(copy_prior[prose])))
+            (root / prose).write_text(original_prose)
+            (root / COPY_ROOT).write_text(json.dumps(copy_root))
+            (root / COPY_SURFACE).write_text(json.dumps(copy))
+            (root / prose).unlink()
+            self.assertIsNone(historical_export_bytes(root, JS_INDEX, digest(second_prior[JS_INDEX])))
+            (root / prose).write_text(original_prose)
+            for name in COPY_PATHS | {HELPER, 'tests/test_reviewed_export_extension.py'}:
+                child = json.loads(json.dumps(copy_root))
+                child['implementation_sha256'].pop(name)
+                (root / COPY_ROOT).write_text(json.dumps(child))
+                forged = json.loads(json.dumps(copy))
+                forged['evidence_sha256'][COPY_ROOT] = digest((root / COPY_ROOT).read_text())
+                (root / COPY_SURFACE).write_text(json.dumps(forged))
+                self.assertIsNone(historical_export_bytes(root, JS_INDEX, digest(second_prior[JS_INDEX])), name)
+            (root / COPY_ROOT).write_text(json.dumps(copy_root))
+            (root / COPY_SURFACE).write_text(json.dumps(copy))
+            for name in second_prior:
+                self.assertEqual(historical_export_bytes(root, name, digest(second_prior[name])),
+                                 second_prior[name].encode())
+            # Isolate the second-stage failure tests from the newer copy stage.
+            (root / COPY_SURFACE).unlink()
+            for name, prior in copy_prior.items():
+                (root / name).write_text(prior)
+            for name in second_prior:
+                self.assertEqual(historical_export_bytes(root, name, digest(second_prior[name])),
+                                 second_prior[name].encode())
+            for mutate in (
+                lambda r: r.update(status='draft'),
+                lambda r: r.update(owner='worker'),
+                lambda r: r.update(reviewer='worker'),
+                lambda r: r.update(previous_review_sha256='0' * 64),
+                lambda r: r['evidence_sha256'].pop(WEB_GALLERY),
+                lambda r: r['evidence_sha256'].pop(EXPANSION_SURFACE),
+                lambda r: r['evidence_sha256'].pop(SECOND_ROOT),
+                lambda r: r['previous_bytes'].update({HELPER: 'forged'}),
+                lambda r: r['previous_bytes'].update({'unrelated.py': 'forged'}),
+                lambda r: r['extensions'][JS_INDEX].update(after='forged'),
+                lambda r: r['extensions'][BATCH1_GENERATOR].update(before='forged'),
+            ):
+                forged = json.loads(json.dumps(second)); mutate(forged)
+                (root / SECOND_SURFACE).write_text(json.dumps(forged))
+                self.assertIsNone(historical_export_bytes(root, JS_INDEX, digest(second_prior[JS_INDEX])))
+            (root / SECOND_SURFACE).write_text(json.dumps(second))
+            # Even rehashing the child review cannot turn an unrelated entrypoint
+            # or API generator edit into the exact successor transform.
+            for name in (JS_INDEX, BATCH1_GENERATOR):
+                original = (root / name).read_text()
+                changed = original + '\n// unrelated replacement\n'
+                (root / name).write_text(changed)
+                child = json.loads(json.dumps(second_root))
+                child['implementation_sha256'][name] = digest(changed)
+                (root / SECOND_ROOT).write_text(json.dumps(child))
+                forged = json.loads(json.dumps(second))
+                forged['implementation_sha256'][name] = digest(changed)
+                forged['evidence_sha256'][SECOND_ROOT] = digest((root / SECOND_ROOT).read_text())
+                forged['extensions'][name]['after'] = changed
+                (root / SECOND_SURFACE).write_text(json.dumps(forged))
+                self.assertIsNone(historical_export_bytes(root, name, digest(second_prior[name])))
+                (root / name).write_text(original)
+                (root / SECOND_ROOT).write_text(json.dumps(second_root))
+                (root / SECOND_SURFACE).write_text(json.dumps(second))
+            for name in (next(iter(sorted(SECOND_MODULES))), SECOND_GUIDES,
+                         next(iter(sorted(SECOND_TRANSITIVE)))):
+                original = (root / name).read_bytes()
+                (root / name).unlink()
+                self.assertIsNone(historical_export_bytes(root, JS_INDEX, digest(second_prior[JS_INDEX])))
+                (root / name).write_bytes(original)
+            for name in SECOND_REQUIRED:
+                child = json.loads(json.dumps(second_root))
+                child['implementation_sha256'].pop(name)
+                (root / SECOND_ROOT).write_text(json.dumps(child))
+                forged = json.loads(json.dumps(second))
+                forged['evidence_sha256'][SECOND_ROOT] = digest((root / SECOND_ROOT).read_text())
+                (root / SECOND_SURFACE).write_text(json.dumps(forged))
+                self.assertIsNone(historical_export_bytes(root, JS_INDEX, digest(second_prior[JS_INDEX])), name)
+            (root / SECOND_ROOT).write_text(json.dumps(second_root))
+            (root / SECOND_SURFACE).write_text(json.dumps(second))
+            for name in (SECOND_GUIDES, *sorted(SECOND_MODULES), *sorted(SECOND_TRANSITIVE)):
+                forged = json.loads(json.dumps(second))
+                forged['implementation_sha256'].pop(name)
+                (root / SECOND_SURFACE).write_text(json.dumps(forged))
+                self.assertIsNone(historical_export_bytes(root, JS_INDEX, digest(second_prior[JS_INDEX])), name)
+            (root / SECOND_SURFACE).write_text(json.dumps(second))
+            for key in ('status', 'owner', 'reviewer'):
+                child = json.loads(json.dumps(second_root)); child[key] = 'worker'
+                (root / SECOND_ROOT).write_text(json.dumps(child))
+                forged = json.loads(json.dumps(second))
+                forged['evidence_sha256'][SECOND_ROOT] = digest((root / SECOND_ROOT).read_text())
+                (root / SECOND_SURFACE).write_text(json.dumps(forged))
+                self.assertIsNone(historical_export_bytes(root, JS_INDEX, digest(second_prior[JS_INDEX])))
+            (root / SECOND_ROOT).write_text(json.dumps(second_root))
+            (root / SECOND_SURFACE).write_text(json.dumps(second))
+            # Keep the older mutation battery independent: it now starts from
+            # the verified predecessor files with no newer review in the chain.
+            (root / SECOND_SURFACE).unlink()
+            for name, prior in second_prior.items():
+                (root / name).write_text(prior)
+            older_index = expansion['previous_bytes'][JS_INDEX]
+            self.assertEqual(historical_export_bytes(root, JS_INDEX, digest(older_index)),
+                             older_index.encode())
             # The newest surface accepts exactly two operation exports plus palette data.
             for name in (relative, BATCH1_GENERATOR, HELPER, 'tests/test_reviewed_export_extension.py'):
                 retained = expansion['previous_bytes'][name]
@@ -460,7 +746,7 @@ class ReviewedExportTests(unittest.TestCase):
             (root / relative).write_text(changed)
             (root / JS_PORTS).write_text(json.dumps(record))
             self.assertIsNone(historical_export_bytes(root, relative, digest(retained)))
-            (root / relative).write_bytes((repository / relative).read_bytes())
+            (root / relative).write_text(second_prior[relative])
             (root / JS_PORTS).write_bytes((repository / JS_PORTS).read_bytes())
             old = previous['extensions'][relative]['before']
             middle = successor['extensions'][relative]['before']

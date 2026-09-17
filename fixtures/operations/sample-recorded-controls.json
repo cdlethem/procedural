@@ -1,0 +1,1307 @@
+{
+  "operation": "signal.sample-recorded-controls",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "85bc6d12ebbbfbb352baba5a26556087c700f19d52bf97e80dfc61318a72288b",
+  "oracle": "Root-authored analytical timestamp and scalar mapping cases frozen before implementation.",
+  "cases": [
+    {
+      "id": "linear-and-left-interval-step",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 1,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "output": {
+        "values": [
+          8,
+          2
+        ]
+      }
+    },
+    {
+      "id": "exact-knot-selects-current-row",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 2,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "output": {
+        "values": [
+          12,
+          10
+        ]
+      }
+    },
+    {
+      "id": "held-last",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 9,
+        "maxGap": 0.01,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "output": {
+        "values": [
+          4,
+          2
+        ]
+      }
+    },
+    {
+      "id": "held-first-before-origin-knot",
+      "input": {
+        "times": [
+          2,
+          4,
+          6
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 0,
+        "maxGap": 0.01,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "output": {
+        "values": [
+          4,
+          2
+        ]
+      }
+    },
+    {
+      "id": "gap-check-even-step",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 1,
+        "maxGap": 1,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "error": "TIME_GAP"
+    },
+    {
+      "id": "knot-bypasses-gap",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 2,
+        "maxGap": 0.01,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "output": {
+        "values": [
+          12,
+          10
+        ]
+      }
+    },
+    {
+      "id": "work-before-gap",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 1,
+        "maxGap": 1,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 7
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "duplicate-times-before-work",
+      "input": {
+        "times": [
+          0,
+          0,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 1,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "duplicate-channels",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "level"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 1,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "sample-row-width",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            0
+          ]
+        ],
+        "time": 1,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "unknown-channel",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 1,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "missing",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "empty-domain",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 1,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              1,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "descending-range",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 1,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              12,
+              4
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "output": {
+        "values": [
+          8,
+          2
+        ]
+      }
+    },
+    {
+      "id": "extrapolate-before-second-mapping",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 1,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              0.25
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": false
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "output": {
+        "values": [
+          20,
+          2
+        ]
+      }
+    },
+    {
+      "id": "clamp-normalized-value",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 1,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              0.25
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "output": {
+        "values": [
+          12,
+          2
+        ]
+      }
+    },
+    {
+      "id": "duplicate-source-independent-output",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 1,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "output": {
+        "values": [
+          8,
+          6
+        ]
+      }
+    },
+    {
+      "id": "span-overflow-before-clamp-even-held-knot",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 0,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              -1e+308,
+              1e+308
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "range-subtraction-overflow-at-zero",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 0,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              -1e+308,
+              1e+308
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "interpolation-subtraction-overflow",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            -1e+308,
+            1
+          ],
+          [
+            1e+308,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": 1,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 8
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "one-knot-held",
+      "input": {
+        "times": [
+          2
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0.25,
+            0.75
+          ]
+        ],
+        "time": 1,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 4
+      },
+      "output": {
+        "values": [
+          6,
+          4
+        ]
+      }
+    },
+    {
+      "id": "negative-query",
+      "input": {
+        "times": [
+          0,
+          2,
+          4
+        ],
+        "channels": [
+          "level",
+          "accent"
+        ],
+        "samples": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "time": -1,
+        "maxGap": 2,
+        "mappings": [
+          {
+            "channel": "level",
+            "interpolation": "LINEAR",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              4,
+              12
+            ],
+            "clamp": true
+          },
+          {
+            "channel": "accent",
+            "interpolation": "STEP",
+            "domain": [
+              0,
+              1
+            ],
+            "range": [
+              10,
+              2
+            ],
+            "clamp": true
+          }
+        ],
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

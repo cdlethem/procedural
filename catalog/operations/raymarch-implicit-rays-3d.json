@@ -1,0 +1,501 @@
+{
+  "id": "field.raymarch-implicit-rays-3d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "decision_cluster": "field.raymarch-implicit-rays-3d",
+  "description": "Evaluate a bounded typed implicit scene along explicit CPU rays and return primary hit or miss records.",
+  "capability_decision": "design/capabilities/implicit-ray-queries.md",
+  "design_review": "design/operations/implicit-ray-contract-review.md",
+  "provenance": [],
+  "evidence": {
+    "motivation": "docs/external-art-p5-expansion-plan.md#h-real-3d-presentation-then-implicit-geometry",
+    "external_context": "https://iquilezles.org/articles/nvscene2008/rwwtt.pdf",
+    "prior_design": "design/capabilities/implicit-ray-queries.md",
+    "limits": "No source-algorithm or named-original recreation claim; CPU primary-ray output only."
+  },
+  "fixture_format": "exact-json-output",
+  "input_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "scene",
+      "rays",
+      "maxDistance",
+      "hitEpsilon",
+      "normalStep",
+      "maxSteps",
+      "maxRays",
+      "maxSceneNodes",
+      "maxWork"
+    ],
+    "properties": {
+      "scene": {
+        "$ref": "#/$defs/sceneNode"
+      },
+      "rays": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/ray"
+        }
+      },
+      "maxDistance": {
+        "$ref": "#/$defs/positiveFinite"
+      },
+      "hitEpsilon": {
+        "$ref": "#/$defs/positiveFinite"
+      },
+      "normalStep": {
+        "$ref": "#/$defs/positiveFinite"
+      },
+      "maxSteps": {
+        "$ref": "#/$defs/positiveSafeInteger"
+      },
+      "maxRays": {
+        "$ref": "#/$defs/nonnegativeSafeInteger"
+      },
+      "maxSceneNodes": {
+        "$ref": "#/$defs/positiveSafeInteger"
+      },
+      "maxWork": {
+        "$ref": "#/$defs/nonnegativeSafeInteger"
+      }
+    },
+    "$defs": {
+      "finite": {
+        "type": "number",
+        "x-binary64": "finite; negative zero normalized to positive zero"
+      },
+      "positiveFinite": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/finite"
+          },
+          {
+            "exclusiveMinimum": 0
+          }
+        ]
+      },
+      "nonnegativeSafeInteger": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "positiveSafeInteger": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      },
+      "vector3": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "prefixItems": [
+          {
+            "$ref": "#/$defs/finite"
+          },
+          {
+            "$ref": "#/$defs/finite"
+          },
+          {
+            "$ref": "#/$defs/finite"
+          }
+        ]
+      },
+      "positiveVector3": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "prefixItems": [
+          {
+            "$ref": "#/$defs/positiveFinite"
+          },
+          {
+            "$ref": "#/$defs/positiveFinite"
+          },
+          {
+            "$ref": "#/$defs/positiveFinite"
+          }
+        ]
+      },
+      "ray": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "origin",
+          "direction"
+        ],
+        "properties": {
+          "origin": {
+            "$ref": "#/$defs/vector3"
+          },
+          "direction": {
+            "$ref": "#/$defs/vector3",
+            "x-constraint": "at least one nonzero component"
+          }
+        }
+      },
+      "sceneNode": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "center",
+              "radius"
+            ],
+            "properties": {
+              "kind": {
+                "const": "sphere"
+              },
+              "center": {
+                "$ref": "#/$defs/vector3"
+              },
+              "radius": {
+                "$ref": "#/$defs/positiveFinite"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "center",
+              "halfExtents"
+            ],
+            "properties": {
+              "kind": {
+                "const": "axisBox"
+              },
+              "center": {
+                "$ref": "#/$defs/vector3"
+              },
+              "halfExtents": {
+                "$ref": "#/$defs/positiveVector3"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "left",
+              "right"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "union",
+                  "intersection",
+                  "difference"
+                ]
+              },
+              "left": {
+                "$ref": "#/$defs/sceneNode"
+              },
+              "right": {
+                "$ref": "#/$defs/sceneNode"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "left",
+              "right",
+              "k"
+            ],
+            "properties": {
+              "kind": {
+                "const": "smoothUnion"
+              },
+              "left": {
+                "$ref": "#/$defs/sceneNode"
+              },
+              "right": {
+                "$ref": "#/$defs/sceneNode"
+              },
+              "k": {
+                "$ref": "#/$defs/positiveFinite"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "translation",
+              "scale",
+              "child"
+            ],
+            "properties": {
+              "kind": {
+                "const": "translateUniform"
+              },
+              "translation": {
+                "$ref": "#/$defs/vector3"
+              },
+              "scale": {
+                "$ref": "#/$defs/positiveFinite"
+              },
+              "child": {
+                "$ref": "#/$defs/sceneNode"
+              }
+            }
+          }
+        ],
+        "x-constraint": "root depth 1; at most 64 nodes on any root-to-leaf path; no cycles or shared object identities in scene records or arrays"
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "results"
+    ],
+    "properties": {
+      "results": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/rayResult"
+        }
+      }
+    },
+    "$defs": {
+      "finite": {
+        "type": "number",
+        "x-binary64": "finite; negative zero normalized to positive zero"
+      },
+      "vector3": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "prefixItems": [
+          {
+            "$ref": "#/$defs/finite"
+          },
+          {
+            "$ref": "#/$defs/finite"
+          },
+          {
+            "$ref": "#/$defs/finite"
+          }
+        ]
+      },
+      "rayResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "distance",
+          "traveled",
+          "position",
+          "fieldValue",
+          "normal",
+          "normalStatus",
+          "overshot",
+          "samples",
+          "normalSamples"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "hit_epsilon",
+              "inside_start",
+              "miss_range",
+              "miss_steps",
+              "miss_stalled"
+            ]
+          },
+          "distance": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/finite"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-constraint": "hit: sampled t; miss: null"
+          },
+          "traveled": {
+            "$ref": "#/$defs/finite",
+            "x-constraint": "sampled t for every status"
+          },
+          "position": {
+            "$ref": "#/$defs/vector3",
+            "x-constraint": "last sampled point, including misses"
+          },
+          "fieldValue": {
+            "$ref": "#/$defs/finite",
+            "x-constraint": "field at last sampled point"
+          },
+          "normal": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/vector3"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "normalStatus": {
+            "enum": [
+              "estimated",
+              "undefined_nonsmooth",
+              "undefined_zero",
+              "not_applicable"
+            ]
+          },
+          "overshot": {
+            "type": "boolean",
+            "x-constraint": "true only for a later negative field sample classified hit_epsilon"
+          },
+          "samples": {
+            "type": "integer",
+            "minimum": 1,
+            "x-constraint": "primary field evaluations, including t=0 and boundary; at most maxSteps"
+          },
+          "normalSamples": {
+            "enum": [
+              0,
+              6
+            ]
+          }
+        }
+      }
+    }
+  },
+  "output_invariants": "Exactly one detached result record per input ray in order. Each record always has kind,distance,traveled,position,fieldValue,normal,normalStatus,overshot,samples,normalSamples. All numeric outputs finite with +0 canonicalization. distance is null exactly for misses; normal is present exactly when normalStatus=estimated. samples in [1,maxSteps], normalSamples in {0,6}. No partial output or input alias.",
+  "behavior": {
+    "validation": "Top-level exact fields in schema order, then scene preorder left-before-right and rays in input order. Ordinary/null-prototype passive records and dense ordinary arrays with exact own data slots only; no accessors, symbols, extra fields, coercion, defaults, or retained aliases. Valid plain data invoke no user callback. Proxies are outside interchange because JavaScript reflection may invoke their traps; no universal Proxy rejection/code/no-side-effect claim. Complete supported static validation before caps or work. Scene identity graph must be a tree with no shared scene record or coordinate array and no cycle; root depth1, depth<=64. Static first fault is INVALID_INPUT or LIMIT_DEPTH. All input numbers finite binary64; zero canonicalized; direction not all zero; all positive fields strictly positive. Then LIMIT_RAYS, LIMIT_SCENE_NODES, WORK_LIMIT. Every later nonfinite computed result is NUMERIC_OVERFLOW; no partial output.",
+    "environment": "Right-handed world xyz; distances, radii, extents, k, epsilon and normalStep share world units. Explicit rays; no camera, material, light, raster, host callback, RNG, time, GPU, asset, global state, or default scene.",
+    "native_surface": "Pure raymarchImplicitRays3D(input) with RaymarchImplicitRays3DError.code. CPU primary hit records only; a future pinned-p5 example may rasterize those records without adding shader or mesh extraction to this operation.",
+    "field": "H3(x,y,z)=fdlibmHypot(fdlibmHypot(x,y),z). Sphere q=p-center; d=H3(q)-radius. AxisBox q_i=abs(p_i-center_i)-halfExtents_i; outside=H3(max(q_i,0)); inside=min(max(q_x,max(q_y,q_z)),0); d=outside+inside. Union=min(a,b), intersection=max(a,b), difference=max(a,-b), left on exact ties. SmoothUnion: delta=a-b checked; absDelta=abs(delta); if absDelta>=k return hard min left-tied. Else h=1-absDelta/k, m=min(a,b) left-tied, d=m-(((k*h)*h)/4), with each primitive checked. TranslateUniform p_i=(p_i-translation_i)/scale, then scale*dChild. Both children of a binary node evaluate left then right even where a winner is known.",
+    "trace": "Normalize every nonzero ray direction in input order with H3 and component division after work reservation. Trace rays in input order. Initial point is captured origin; later p_i=origin_i+(t*unit_i) with product and sum checked separately. At each primary sample increment samples. Initial negative d=>inside_start; otherwise d<=hitEpsilon=>hit_epsilon, with overshot true iff a later sample is negative. Positive outside-epsilon sample: if t===maxDistance miss_range; else if samples===maxSteps miss_steps; else remaining=maxDistance-t; if d>remaining miss_range; else next=maxDistance when d===remaining, otherwise checked t+d; next===t miss_stalled; next>maxDistance miss_range; otherwise sample next. Exact boundary is sampled once. No unsampled boundary or root interpolation.",
+    "normal": "Base field carries conservative nonsmooth flag: sphere center; axisBox with all q_i<=0 and tied maximum or selected center axis; hard CSG equal-operand tie or selected child; smoothUnion propagates both children inside absDelta<k, selected child otherwise; transform passes child. On a hit with nonsmooth flag return null/undefined_nonsmooth and normalSamples0. Otherwise evaluate p+normalStep and p-normalStep for x,y,z in that order, exactly six field samples. g_i=((fPlus-fMinus)/normalStep)/2, checked after each primitive. H3(g)==0 returns null/undefined_zero; otherwise normalize each component with H3(g) and status estimated. Nonfinite arithmetic is NUMERIC_OVERFLOW, not undefined. Miss normal null/not_applicable/0.",
+    "order": "All field operations are binary64 nearest-even in the stated order with no FMA or reassociation, finite checked after each primitive, computed -0 canonicalized. At a hit, distance=traveled=t, position and fieldValue are the last sampled values. At a miss, distance=null, with traveled, position and fieldValue still from the last actual primary sample. The same ten result keys appear for every ray; results preserve ray order and own detached storage.",
+    "work": "Let R=rays.length, S=maxSteps, N=scene node count. Preflight BigInt W=BigInt(R)*(BigInt(S)+6n)*BigInt(N), requiring W<=BigInt(maxWork) before ray normalization or field evaluation. Each primary sample and each normal offset evaluates all N nodes, no short circuit; at most S+6 samples per ray. maxRays and maxSceneNodes are safe integers, depth hard64. Output size O(R), evaluation O(R*S*N) aside from fdlibm and host allocation. Host allocation exhaustion is not recoded as a semantic partial result.",
+    "numerics": "Sphere/axisBox are exact real 1-Lipschitz signed distances; hard CSG and polynomial smooth union are sign-correct 1-Lipschitz fields for their resulting zero sets, not generally exact Euclidean distances. In smooth transition when a<=b, partial weights are 1-h/2 and h/2, nonnegative and summing to1; symmetric case swaps them. Positive exact field is a conservative zero-set distance lower bound. Binary64 rounding, finite hitEpsilon, finite sample count, and potential underflow/overshoot remove any exact root or thin-feature guarantee. Structural/status/count/overshot and all exact-fixture numerics compare exactly; only two named numeric fixture cases have per-field tolerances."
+  },
+  "errors": {
+    "INVALID_INPUT": "Unsupported or malformed passive carrier, scene tag/shape/identity, scalar domain, ray direction, extra/missing field, accessor, or array correspondence. Proxy behavior is outside portable interchange.",
+    "LIMIT_DEPTH": "Scene root-to-leaf depth exceeds64 during static preorder traversal.",
+    "LIMIT_RAYS": "After full static validation, rays.length exceeds maxRays.",
+    "LIMIT_SCENE_NODES": "After full static validation and ray cap, scene node count exceeds maxSceneNodes.",
+    "WORK_LIMIT": "After caps, exact BigInt R*(S+6)*N exceeds maxWork.",
+    "NUMERIC_OVERFLOW": "After work reservation, a checked computed binary64 ray, field, advance, offset, gradient or normalization primitive is nonfinite, or a nonzero input direction has zero/nonfinite represented norm."
+  },
+  "error_order": [
+    "INVALID_INPUT or LIMIT_DEPTH at first static fault",
+    "LIMIT_RAYS",
+    "LIMIT_SCENE_NODES",
+    "WORK_LIMIT",
+    "NUMERIC_OVERFLOW"
+  ],
+  "parameters": {
+    "scene": {
+      "unit": "typed implicit tree in caller world coordinates",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "The tree supplies geometry and CSG; no source-derived scene bounds."
+    },
+    "rays": {
+      "unit": "ordered world-space origin/direction pairs",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit primary-ray selection, independent of camera and raster."
+    },
+    "maxDistance": {
+      "unit": "world-space ray travel",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Caller resource/view range; no source-derived default or useful interval."
+    },
+    "hitEpsilon": {
+      "unit": "world-space field threshold",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit approximate-hit decision; no universal geometry epsilon."
+    },
+    "normalStep": {
+      "unit": "world-space central-difference offset",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Controls estimate scale, not an exact surface derivative."
+    },
+    "maxSteps": {
+      "unit": "maximum primary field samples per ray",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Deterministic reservation and termination bound."
+    },
+    "maxRays": {
+      "unit": "maximum input ray count",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Output-size bound, not an image-resolution recommendation."
+    },
+    "maxSceneNodes": {
+      "unit": "maximum tree-node count",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Evaluation/memory bound; independent of depth hard cap64."
+    },
+    "maxWork": {
+      "unit": "reserved node-evaluation units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "BigInt R*(S+6)*N reservation; not milliseconds."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Portable contract draft only; no Java support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Proposed CPU core and independent p5 raster study after root freeze."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "No py5 support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "No Android support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/raymarch-implicit-rays-3d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Future anisotropic silhouette/occlusion and asymmetric normal-color study; no named artwork recreation, GPU identity, mesh extraction or fabrication."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Root froze the contract before implementation; target acceptance pending."
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Nine Canvas2D gallery/Studio adapters for accepted p5 operations; completed UI baseline preserved.",
+  "gallery_studies": 104,
+  "api_operations": 84,
+  "new_studies": [
+    "lingering-links",
+    "sensing-trails",
+    "flocking-marks",
+    "guarded-bands",
+    "hatched-islands",
+    "bridge-web",
+    "neighborhood-growth",
+    "elastic-loops",
+    "dye-currents"
+  ],
+  "implementation_sha256": {
+    "apps/web/tests/external-dynamics-adapters.test.ts": "c3898663a68d518d433436b0cea946093c5cf4eac6841174a3f6c88ce9475c58",
+    "apps/web/content/lingering-links.md": "996725aec2f7952657bc88c6b37971f98d5fd6bcae44ccdbdcc001ead64b1dab",
+    "apps/web/content/hatched-islands.md": "08d13947ea699869a32ee19a025e8b699ff9722bae22deced4c7bc5664dd2592",
+    "apps/web/lib/render-studio.ts": "df2bbd69e2c8f7d65d326890cf21aea92c3a2bef3a57809e0110bdaee87d7e68",
+    "apps/web/content/dye-currents.md": "d1e68ae963670935c9522c97758ac45d90b85f079b73e60fc5479f23cba4b8f1",
+    "apps/web/scripts/generate-gallery.mjs": "85f282dd557424bdcc5ba9a3805c856ae8565c111ab2874b32acb167289bf363",
+    "tests/test_reviewed_export_extension.py": "d337884fa87a5d4c96143d66a2ba40fcc8b1f7943c4cef03d016442e27e64487",
+    "apps/web/content/flocking-marks.md": "c86796c3104bb8225641daa067b3e9d7ddf41a5f1f67cf9f3bc3ca6c41a0dad1",
+    "apps/web/content/sensing-trails.md": "9cff0e528fa2aba7d9f4f960420ebb7e8944d47ecbe5b7191c1d234b92c2b3e4",
+    "apps/web/lib/harness-render.ts": "cb0d8654c82032c3dab3e8fc6be1d89bf5c948433f22c5c27d02cf7cfcef58bc",
+    "apps/web/content/elastic-loops.md": "096ac744b29c68fa303df78d71fdfb0645b0d355ae73efd9f04875c0a0611a97",
+    "apps/web/tests/studio.test.ts": "79acf30947255223e05c72a8a4e271c1e20702411ae8273a0d178eea4e22cd1b",
+    "tools/reviewed_export_extension.py": "eba8cd112ab023e4aac2f9ed6a57aa82e7cd0b7ccb36cb48b806a434a6cd384b",
+    "apps/web/content/external-dynamics-studies.mjs": "08f5a7e109273e5ae8e31e6095bb53064430cc7e524591a20ad417bb38614d37",
+    "apps/web/lib/studio.ts": "e8f77dc25bc5b254f115f6181ece0b24287bbaac9d8351ca2ffcfe61838b6f7a",
+    "apps/web/content/neighborhood-growth.md": "be5ff21222f18e3878856c82be2eae8073a14adde7ef62ad36fd2d76cafe8119",
+    "apps/web/content/guarded-bands.md": "74b106dc606141456878bd846e12056fb58ddb457cef5304b9edb2dcb9d8f46a",
+    "apps/web/content/bridge-web.md": "afb2d32c2fd3fa5860ec89d0fff1cba5402c9685da592867b76b86e90eb94bb3",
+    "apps/web/lib/adapters/external-dynamics.ts": "81b70ab8c234e2202a5f4082751de219e8059b18d785e5504e2d6d3df5a7fec9"
+  },
+  "evidence_sha256": {
+    "evidence/web/external-dynamics/results-initial-nine.json": "94b3af998384d196535eedde19a56efc7756250625e97238f558770350bc100f",
+    "evidence/web/external-dynamics/studio-results.json": "474d3bef568e4ed90d9f67304e3b01fe1d24894ae5b4d719c2c7cdbb856ff3d2",
+    "evidence/web/external-dynamics/preview-results.json": "b70993db4ad2f8774790238fc717ce81445c035fcd9268f342ff8b63efe08f09",
+    "evidence/web/external-dynamics/preview-manifest.json": "4321a16c2d19ee89b10f51868f2bb90ab167138d4a31d8b8f9dc04fd86152a3e",
+    "evidence/web/external-dynamics/results.json": "b79e1cd72c9ed88ced51714580bc7e87eab65f8c1be6d8a509ee8323c3a2c9e9",
+    "evidence/web/external-dynamics/studio-results-initial-nine.json": "b21a29eaa4966d7bdcb48966c2503ca3f59a063368c14067a74805ca7febe3f5",
+    "evidence/web/external-dynamics/final-results.json": "e984673e0837bc582d56b679f8b52b6148cade92b7e3b571960055a13635f1fe",
+    "evidence/conformance/external-expansion-copy-compatibility-review.json": "af89915ef1d6f21d8796f2c78e4d6933c2f1ead888737f1c18f33c679a2a8b58",
+    "evidence/expansion/second-batch/root-review.json": "e5a9e91fbfcf474157fe6c5cf88b19dc1588c951fdd796c305c59abea15339b1"
+  },
+  "review": [
+    "Root read complete adapter implementation and all five legacy file diffs. The compositor, layer model and existing UI design are preserved.",
+    "Root inspected both contact sheets and selected bridge42/elastic36 defaults to show distributed links and folding. The candidate-guide control remains visible at bridge42.",
+    "All nine real browser canvases contain visible marks, change on structural edits, undo to identical pixels, respond to palettes and replay on reload. Downloaded Studio PNGs equal full displayed640x640 canvases.",
+    "All nine previews decode and API8088 is reachable. A final isolated production build and generated metadata check passed.",
+    "Full web suite passed129/130; sole failure was the historical95-study expectation. Root changed it to104; the focused Studio suite passed8/8. All nine adapter scenarios and bounds passed in the full run.",
+    "Independent review found no compatibility-stage blocker. Five Python tests pass, including rejection of rehashed unrelated registration edits, missing bindings and worker-authored acceptance."
+  ],
+  "limits": [
+    "Cold browser navigation including replay measured5.9s for bridge42 and8.7s for elastic36. Cached palette redraw measured10ms and7ms. These bounded replay studies do not promise real-time simulation.",
+    "Feedback WEBGL remains a native package study; its Studio adapter is not claimed.",
+    "No new artist recreation or other-target support is accepted by this web review.",
+    "Live deployment is separate from this isolated build review."
+  ],
+  "images": {
+    "contact_sheet": ".work/expansion-full/external-dynamics-web-native/contact-sheet.png",
+    "sha256": "c415af51d91219b58be8374e0fff96f2d24771189a10b62bc20464d9bc55116c"
+  }
+}

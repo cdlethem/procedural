@@ -1,0 +1,2816 @@
+{
+  "operation": "motion.elastic-curve-grow-step-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "a2aa5940d92ee07769663d405dd8d2868a10286df841d10633dc484be9bea102",
+  "oracle": "Analytical vectors authored before implementation, independently reviewed by Sol, frozen by root. Transcendental tolerance checks are separate.",
+  "cases": [
+    {
+      "id": "straight-rest-equilibrium",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                1,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                2,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1,
+                2
+              ],
+              "edgeIds": [
+                10,
+                11
+              ],
+              "restLengths": [
+                1.0,
+                1.0
+              ],
+              "restTurns": [
+                0
+              ]
+            }
+          ],
+          "nextNodeId": 3,
+          "nextEdgeId": 12
+        },
+        "restGrowth": [
+          [
+            0,
+            0
+          ]
+        ],
+        "turnRates": [
+          [
+            0
+          ]
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 1,
+        "bendStiffness": 1,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 100,
+        "maxNodes": 3,
+        "maxEdges": 2,
+        "maxWork": 60,
+        "maxBacktracks": 0
+      },
+      "output": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                1,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                2,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1,
+                2
+              ],
+              "edgeIds": [
+                10,
+                11
+              ],
+              "restLengths": [
+                1.0,
+                1.0
+              ],
+              "restTurns": [
+                0
+              ]
+            }
+          ],
+          "nextNodeId": 3,
+          "nextEdgeId": 12
+        },
+        "events": [],
+        "acceptedMotionScale": 1
+      }
+    },
+    {
+      "id": "stretch-synchronous",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                2,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                1
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 2,
+          "nextEdgeId": 11
+        },
+        "restGrowth": [
+          [
+            0
+          ]
+        ],
+        "turnRates": [
+          []
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0.25,
+        "bendStiffness": 0,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 100,
+        "maxNodes": 2,
+        "maxEdges": 1,
+        "maxWork": 28,
+        "maxBacktracks": 0
+      },
+      "output": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0.25,
+                0
+              ],
+              "velocity": [
+                0.25,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                1.75,
+                0
+              ],
+              "velocity": [
+                -0.25,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                1
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 2,
+          "nextEdgeId": 11
+        },
+        "events": [],
+        "acceptedMotionScale": 1
+      }
+    },
+    {
+      "id": "growth-used-this-tick",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                2,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                1
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 2,
+          "nextEdgeId": 11
+        },
+        "restGrowth": [
+          [
+            2
+          ]
+        ],
+        "turnRates": [
+          []
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0.25,
+        "bendStiffness": 0,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 100,
+        "maxNodes": 2,
+        "maxEdges": 1,
+        "maxWork": 28,
+        "maxBacktracks": 0
+      },
+      "output": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                -0.25,
+                0
+              ],
+              "velocity": [
+                -0.25,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                2.25,
+                0
+              ],
+              "velocity": [
+                0.25,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                3
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 2,
+          "nextEdgeId": 11
+        },
+        "events": [],
+        "acceptedMotionScale": 1
+      }
+    },
+    {
+      "id": "preferred-right-angle-equilibrium",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                1,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                1,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1,
+                2
+              ],
+              "edgeIds": [
+                10,
+                11
+              ],
+              "restLengths": [
+                1.0,
+                1.0
+              ],
+              "restTurns": [
+                1.5707963267948966
+              ]
+            }
+          ],
+          "nextNodeId": 3,
+          "nextEdgeId": 12
+        },
+        "restGrowth": [
+          [
+            0,
+            0
+          ]
+        ],
+        "turnRates": [
+          [
+            0
+          ]
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0,
+        "bendStiffness": 1,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 100,
+        "maxNodes": 3,
+        "maxEdges": 2,
+        "maxWork": 60,
+        "maxBacktracks": 0
+      },
+      "output": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                1,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                1,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1,
+                2
+              ],
+              "edgeIds": [
+                10,
+                11
+              ],
+              "restLengths": [
+                1.0,
+                1.0
+              ],
+              "restTurns": [
+                1.5707963267948966
+              ]
+            }
+          ],
+          "nextNodeId": 3,
+          "nextEdgeId": 12
+        },
+        "events": [],
+        "acceptedMotionScale": 1
+      }
+    },
+    {
+      "id": "segment-interior-contact-not-point-query",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                -2,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                2,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                0,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 3,
+              "position": [
+                0,
+                3
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                4.0
+              ],
+              "restTurns": []
+            },
+            {
+              "id": 1,
+              "closed": false,
+              "nodeIds": [
+                2,
+                3
+              ],
+              "edgeIds": [
+                11
+              ],
+              "restLengths": [
+                2.0
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 12
+        },
+        "restGrowth": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "turnRates": [
+          [],
+          []
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0,
+        "bendStiffness": 0,
+        "contactRange": 2,
+        "contactStrength": 2,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 100,
+        "maxNodes": 4,
+        "maxEdges": 2,
+        "maxWork": 64,
+        "maxBacktracks": 0
+      },
+      "output": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                -2,
+                -0.5
+              ],
+              "velocity": [
+                0,
+                -0.5
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                2,
+                -0.5
+              ],
+              "velocity": [
+                0,
+                -0.5
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                0,
+                2
+              ],
+              "velocity": [
+                0,
+                1
+              ],
+              "pinned": false
+            },
+            {
+              "id": 3,
+              "position": [
+                0,
+                3
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                4.0
+              ],
+              "restTurns": []
+            },
+            {
+              "id": 1,
+              "closed": false,
+              "nodeIds": [
+                2,
+                3
+              ],
+              "edgeIds": [
+                11
+              ],
+              "restLengths": [
+                2.0
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 12
+        },
+        "events": [],
+        "acceptedMotionScale": 1
+      }
+    },
+    {
+      "id": "crossing-backtracks-all-motion",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                -1,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                1,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                0,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": true
+            },
+            {
+              "id": 3,
+              "position": [
+                0,
+                3
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": true
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                2.0
+              ],
+              "restTurns": []
+            },
+            {
+              "id": 1,
+              "closed": false,
+              "nodeIds": [
+                2,
+                3
+              ],
+              "edgeIds": [
+                11
+              ],
+              "restLengths": [
+                2.0
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 12
+        },
+        "restGrowth": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "turnRates": [
+          [],
+          []
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0,
+        "bendStiffness": 0,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 100,
+        "maxNodes": 4,
+        "maxEdges": 2,
+        "maxWork": 72,
+        "maxBacktracks": 2
+      },
+      "output": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                -1,
+                0.5
+              ],
+              "velocity": [
+                0,
+                0.5
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                1,
+                0.5
+              ],
+              "velocity": [
+                0,
+                0.5
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                0,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": true
+            },
+            {
+              "id": 3,
+              "position": [
+                0,
+                3
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": true
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                2.0
+              ],
+              "restTurns": []
+            },
+            {
+              "id": 1,
+              "closed": false,
+              "nodeIds": [
+                2,
+                3
+              ],
+              "edgeIds": [
+                11
+              ],
+              "restLengths": [
+                2.0
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 12
+        },
+        "events": [],
+        "acceptedMotionScale": 0.25
+      }
+    },
+    {
+      "id": "blocked-atomic",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                -1,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                1,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                0,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": true
+            },
+            {
+              "id": 3,
+              "position": [
+                0,
+                3
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": true
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                2.0
+              ],
+              "restTurns": []
+            },
+            {
+              "id": 1,
+              "closed": false,
+              "nodeIds": [
+                2,
+                3
+              ],
+              "edgeIds": [
+                11
+              ],
+              "restLengths": [
+                2.0
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 12
+        },
+        "restGrowth": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "turnRates": [
+          [],
+          []
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0,
+        "bendStiffness": 0,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 100,
+        "maxNodes": 4,
+        "maxEdges": 2,
+        "maxWork": 68,
+        "maxBacktracks": 1
+      },
+      "error": "STEP_BLOCKED"
+    },
+    {
+      "id": "recursive-midpoint-lineage",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                8,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                8.0
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 2,
+          "nextEdgeId": 11
+        },
+        "restGrowth": [
+          [
+            0
+          ]
+        ],
+        "turnRates": [
+          []
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0,
+        "bendStiffness": 0,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 3,
+        "maxNodes": 5,
+        "maxEdges": 4,
+        "maxWork": 67,
+        "maxBacktracks": 0
+      },
+      "output": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                8,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                4,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 3,
+              "position": [
+                2,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 4,
+              "position": [
+                6,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                3,
+                2,
+                4,
+                1
+              ],
+              "edgeIds": [
+                13,
+                14,
+                15,
+                16
+              ],
+              "restLengths": [
+                2,
+                2,
+                2,
+                2
+              ],
+              "restTurns": [
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "nextNodeId": 5,
+          "nextEdgeId": 17
+        },
+        "events": [
+          {
+            "parentEdgeId": 10,
+            "nodeId": 2,
+            "childEdgeIds": [
+              11,
+              12
+            ],
+            "parentT": 0.5
+          },
+          {
+            "parentEdgeId": 11,
+            "nodeId": 3,
+            "childEdgeIds": [
+              13,
+              14
+            ],
+            "parentT": 0.5
+          },
+          {
+            "parentEdgeId": 12,
+            "nodeId": 4,
+            "childEdgeIds": [
+              15,
+              16
+            ],
+            "parentT": 0.5
+          }
+        ],
+        "acceptedMotionScale": 1
+      }
+    },
+    {
+      "id": "refinement-cap-atomic",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                8,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                8.0
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 2,
+          "nextEdgeId": 11
+        },
+        "restGrowth": [
+          [
+            0
+          ]
+        ],
+        "turnRates": [
+          []
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0,
+        "bendStiffness": 0,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 3,
+        "maxNodes": 4,
+        "maxEdges": 3,
+        "maxWork": 52,
+        "maxBacktracks": 0
+      },
+      "error": "OUTPUT_LIMIT"
+    },
+    {
+      "id": "threshold-no-split",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                8,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                8.0
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 2,
+          "nextEdgeId": 11
+        },
+        "restGrowth": [
+          [
+            0
+          ]
+        ],
+        "turnRates": [
+          []
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0,
+        "bendStiffness": 0,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 8,
+        "maxNodes": 2,
+        "maxEdges": 1,
+        "maxWork": 28,
+        "maxBacktracks": 0
+      },
+      "output": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                8,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                8.0
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 2,
+          "nextEdgeId": 11
+        },
+        "events": [],
+        "acceptedMotionScale": 1
+      }
+    },
+    {
+      "id": "nonpositive-grown-rest",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                8,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                8.0
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 2,
+          "nextEdgeId": 11
+        },
+        "restGrowth": [
+          [
+            -8
+          ]
+        ],
+        "turnRates": [
+          []
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0,
+        "bendStiffness": 0,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 100,
+        "maxNodes": 2,
+        "maxEdges": 1,
+        "maxWork": 28,
+        "maxBacktracks": 0
+      },
+      "error": "INVALID_GROWTH"
+    },
+    {
+      "id": "budget",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                8,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                8.0
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 2,
+          "nextEdgeId": 11
+        },
+        "restGrowth": [
+          [
+            0
+          ]
+        ],
+        "turnRates": [
+          []
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0,
+        "bendStiffness": 0,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 100,
+        "maxNodes": 2,
+        "maxEdges": 1,
+        "maxWork": 27,
+        "maxBacktracks": 0
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "collapsed-initial-edge",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                1
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 2,
+          "nextEdgeId": 11
+        },
+        "restGrowth": [
+          [
+            0
+          ]
+        ],
+        "turnRates": [
+          []
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0,
+        "bendStiffness": 0,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 100,
+        "maxNodes": 2,
+        "maxEdges": 1,
+        "maxWork": 28,
+        "maxBacktracks": 0
+      },
+      "error": "INVALID_GEOMETRY"
+    },
+    {
+      "id": "rounded-away-motion",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                1,
+                1
+              ],
+              "velocity": [
+                5e-324,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                2,
+                1
+              ],
+              "velocity": [
+                5e-324,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                1.0
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 2,
+          "nextEdgeId": 11
+        },
+        "restGrowth": [
+          [
+            0
+          ]
+        ],
+        "turnRates": [
+          []
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0,
+        "bendStiffness": 0,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 100,
+        "maxNodes": 2,
+        "maxEdges": 1,
+        "maxWork": 28,
+        "maxBacktracks": 0
+      },
+      "error": "STEP_STALLED"
+    },
+    {
+      "id": "turn-target-wrap",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                1,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                2,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1,
+                2
+              ],
+              "edgeIds": [
+                10,
+                11
+              ],
+              "restLengths": [
+                1.0,
+                1.0
+              ],
+              "restTurns": [
+                3.141592653589793
+              ]
+            }
+          ],
+          "nextNodeId": 3,
+          "nextEdgeId": 12
+        },
+        "restGrowth": [
+          [
+            0,
+            0
+          ]
+        ],
+        "turnRates": [
+          [
+            3.141592653589793
+          ]
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0,
+        "bendStiffness": 0,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 100,
+        "maxNodes": 3,
+        "maxEdges": 2,
+        "maxWork": 60,
+        "maxBacktracks": 0
+      },
+      "output": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                1,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                2,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1,
+                2
+              ],
+              "edgeIds": [
+                10,
+                11
+              ],
+              "restLengths": [
+                1.0,
+                1.0
+              ],
+              "restTurns": [
+                0
+              ]
+            }
+          ],
+          "nextNodeId": 3,
+          "nextEdgeId": 12
+        },
+        "events": [],
+        "acceptedMotionScale": 1
+      }
+    },
+    {
+      "id": "pin-zero-velocity",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                7,
+                9
+              ],
+              "pinned": true
+            },
+            {
+              "id": 1,
+              "position": [
+                2,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                2.0
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 2,
+          "nextEdgeId": 11
+        },
+        "restGrowth": [
+          [
+            0
+          ]
+        ],
+        "turnRates": [
+          []
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0,
+        "bendStiffness": 0,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 100,
+        "maxNodes": 2,
+        "maxEdges": 1,
+        "maxWork": 28,
+        "maxBacktracks": 0
+      },
+      "output": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": true
+            },
+            {
+              "id": 1,
+              "position": [
+                2,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": false,
+              "nodeIds": [
+                0,
+                1
+              ],
+              "edgeIds": [
+                10
+              ],
+              "restLengths": [
+                2.0
+              ],
+              "restTurns": []
+            }
+          ],
+          "nextNodeId": 2,
+          "nextEdgeId": 11
+        },
+        "events": [],
+        "acceptedMotionScale": 1
+      }
+    },
+    {
+      "id": "closed-square-equilibrium",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                1,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                1,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 3,
+              "position": [
+                0,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": true,
+              "nodeIds": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "edgeIds": [
+                10,
+                11,
+                12,
+                13
+              ],
+              "restLengths": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "restTurns": [
+                1.5707963267948966,
+                1.5707963267948966,
+                1.5707963267948966,
+                1.5707963267948966
+              ]
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 14
+        },
+        "restGrowth": [
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "turnRates": [
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 1,
+        "bendStiffness": 1,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 100,
+        "maxNodes": 4,
+        "maxEdges": 4,
+        "maxWork": 144,
+        "maxBacktracks": 0
+      },
+      "output": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                1,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                1,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 3,
+              "position": [
+                0,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": true,
+              "nodeIds": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "edgeIds": [
+                10,
+                11,
+                12,
+                13
+              ],
+              "restLengths": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "restTurns": [
+                1.5707963267948966,
+                1.5707963267948966,
+                1.5707963267948966,
+                1.5707963267948966
+              ]
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 14
+        },
+        "events": [],
+        "acceptedMotionScale": 1
+      }
+    },
+    {
+      "id": "closed-seam-refinement-preserves-turn",
+      "input": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                1,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                1,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 3,
+              "position": [
+                0,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": true,
+              "nodeIds": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "edgeIds": [
+                10,
+                11,
+                12,
+                13
+              ],
+              "restLengths": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "restTurns": [
+                1.5707963267948966,
+                1.5707963267948966,
+                1.5707963267948966,
+                1.5707963267948966
+              ]
+            }
+          ],
+          "nextNodeId": 4,
+          "nextEdgeId": 14
+        },
+        "restGrowth": [
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "turnRates": [
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "externalAccelerations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stretchStiffness": 0,
+        "bendStiffness": 0,
+        "contactRange": 0,
+        "contactStrength": 0,
+        "damping": 1,
+        "dt": 1,
+        "maxSpeed": 100,
+        "maxSegmentLength": 0.75,
+        "maxNodes": 8,
+        "maxEdges": 8,
+        "maxWork": 224,
+        "maxBacktracks": 0
+      },
+      "output": {
+        "state": {
+          "nodes": [
+            {
+              "id": 0,
+              "position": [
+                0,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 1,
+              "position": [
+                1,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 2,
+              "position": [
+                1,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 3,
+              "position": [
+                0,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 4,
+              "position": [
+                0.5,
+                0
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 5,
+              "position": [
+                1,
+                0.5
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 6,
+              "position": [
+                0.5,
+                1
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            },
+            {
+              "id": 7,
+              "position": [
+                0,
+                0.5
+              ],
+              "velocity": [
+                0,
+                0
+              ],
+              "pinned": false
+            }
+          ],
+          "curves": [
+            {
+              "id": 0,
+              "closed": true,
+              "nodeIds": [
+                0,
+                4,
+                1,
+                5,
+                2,
+                6,
+                3,
+                7
+              ],
+              "edgeIds": [
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21
+              ],
+              "restLengths": [
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ],
+              "restTurns": [
+                1.5707963267948966,
+                0,
+                1.5707963267948966,
+                0,
+                1.5707963267948966,
+                0,
+                1.5707963267948966,
+                0
+              ]
+            }
+          ],
+          "nextNodeId": 8,
+          "nextEdgeId": 22
+        },
+        "events": [
+          {
+            "parentEdgeId": 10,
+            "nodeId": 4,
+            "childEdgeIds": [
+              14,
+              15
+            ],
+            "parentT": 0.5
+          },
+          {
+            "parentEdgeId": 11,
+            "nodeId": 5,
+            "childEdgeIds": [
+              16,
+              17
+            ],
+            "parentT": 0.5
+          },
+          {
+            "parentEdgeId": 12,
+            "nodeId": 6,
+            "childEdgeIds": [
+              18,
+              19
+            ],
+            "parentT": 0.5
+          },
+          {
+            "parentEdgeId": 13,
+            "nodeId": 7,
+            "childEdgeIds": [
+              20,
+              21
+            ],
+            "parentT": 0.5
+          }
+        ],
+        "acceptedMotionScale": 1
+      }
+    }
+  ]
+}

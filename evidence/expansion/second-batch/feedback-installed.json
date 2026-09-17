@@ -1,0 +1,224 @@
+{
+  "status": "passed",
+  "scope": "p5 2.3.2 software WebGL retained-feedback host adapter; native profile only, no shared target acceptance",
+  "packageRoot": "/home/colin/dev/procedural/.work/external-dynamics-integration/.work/dist/second/consumer/node_modules/@procedurals/javascript",
+  "input_sha256_before": {
+    ".work/external-dynamics-integration/.work/dist/second/consumer/node_modules/@procedurals/javascript/src/p5-feedback-surface.js": "08e55c34f12292dde46ec9e2a99f3b47f65c6d8a3e2b8613c2fe6a0278fd068c",
+    ".work/external-dynamics-integration/.work/dist/second/consumer/node_modules/@procedurals/javascript/examples/feedback-print/index.html": "6d313a57e7cf073c4aecab5910f4d84cf5445bb362bbca2f95657554ef451edf",
+    ".work/external-dynamics-integration/.work/dist/second/consumer/node_modules/@procedurals/javascript/examples/feedback-print/sketch.js": "054b4c90f3db986ff706958027b227c377bdd0d296d9cdd740deedace77486b4",
+    ".work/external-dynamics-integration/.work/dist/second/consumer/node_modules/@procedurals/javascript/examples/feedback-print/study.js": "f4c38ee8a754b49333f83e285d75f0bdd606bd532ca65c9b963580bc1ea3a18b",
+    "tests/native/p5-feedback-surface-javascript.mjs": "277eeeb29246c136c8e707db317bc3d34977be78ff3bb480099da870347b4670",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    ".work/environments/p5js/node_modules/p5/lib/p5.js": "354b31a0d81ce0ddb24afe1a5b035f938417248c64f0c81112092b224d1bbdbb",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  },
+  "checks": [
+    "premultiplied alpha and ping-pong",
+    "strict passive records and dense transform",
+    "orientation, source classes, affine translation",
+    "domain and independent decay/opacity",
+    "density, stretch, live source, replacement and interleaving",
+    "reset and replacement resize",
+    "input, disposal and borrowed lifetime",
+    "caller state, external target, clipping, pass failure, allocation failure and replay",
+    "editable study startup/steps/controls/reset/reload/save",
+    "withheld open glyph and anisotropic affine full-byte replay",
+    "study full source/history replay"
+  ],
+  "captures": [
+    {
+      "name": "startup",
+      "image": ".work/expansion-full/second-final/installed/feedback/startup.png",
+      "sha256": "08e32f4fca196a0da6a3e505c22106038a19e26ba25c0631187c5033b57b848d",
+      "state": {
+        "tick": 0,
+        "warp": false,
+        "fade": false,
+        "alternate": false
+      }
+    },
+    {
+      "name": "step-1",
+      "image": ".work/expansion-full/second-final/installed/feedback/step-1.png",
+      "sha256": "967624edda029db00c4c13613e602d38d9ed38b43023ecf4f85d42ba323364fa",
+      "state": {
+        "tick": 1,
+        "warp": false,
+        "fade": false,
+        "alternate": false
+      }
+    },
+    {
+      "name": "step-25",
+      "image": ".work/expansion-full/second-final/installed/feedback/step-25.png",
+      "sha256": "1d288664b2cffee3999cf51f01d4d40b0abca0f41822d711ed4b76688da47e02",
+      "state": {
+        "tick": 25,
+        "warp": false,
+        "fade": false,
+        "alternate": false
+      }
+    },
+    {
+      "name": "warp-26",
+      "image": ".work/expansion-full/second-final/installed/feedback/warp-26.png",
+      "sha256": "8e696b2cea5545100da6d634c8e96eb2bf0dc7c1c746a853fff35394da3e433d",
+      "state": {
+        "tick": 26,
+        "warp": true,
+        "fade": false,
+        "alternate": false
+      }
+    },
+    {
+      "name": "edited-27",
+      "image": ".work/expansion-full/second-final/installed/feedback/edited-27.png",
+      "sha256": "f28ccd9687ba1b44bd8fa57756f0830ab83aa27da1aafda3465c3623bb0c11e1",
+      "state": {
+        "tick": 27,
+        "warp": true,
+        "fade": true,
+        "alternate": true
+      }
+    },
+    {
+      "name": "reset",
+      "image": ".work/expansion-full/second-final/installed/feedback/reset.png",
+      "sha256": "08e32f4fca196a0da6a3e505c22106038a19e26ba25c0631187c5033b57b848d",
+      "state": {
+        "tick": 0,
+        "warp": true,
+        "fade": true,
+        "alternate": true
+      }
+    },
+    {
+      "name": "withheld-open-glyph",
+      "image": ".work/expansion-full/second-final/installed/feedback/withheld-open-glyph.png",
+      "sha256": "7e5c122db1f104453c277664b8c11d5cb5abf2bfd9b3c48cdf2ffacc0f07e8fa"
+    }
+  ],
+  "errors": [],
+  "browser": "153.0.8010.12",
+  "gl": {
+    "p5": "2.3.2",
+    "renderer": "WebKit WebGL",
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "attributes": {
+      "alpha": true,
+      "antialias": true,
+      "depth": true,
+      "desynchronized": false,
+      "failIfMajorPerformanceCaveat": false,
+      "powerPreference": "default",
+      "premultipliedAlpha": true,
+      "preserveDrawingBuffer": true,
+      "stencil": true,
+      "xrCompatible": false
+    },
+    "maxTextureSize": 8192
+  },
+  "shaderSourceSha256": "23f9be211778457e9d623c2d90bca01db668e4cb78be4376dc1beac574e80017",
+  "framebufferProfile": {
+    "rgba8Linear": true,
+    "physicalDestinations": [
+      [
+        8,
+        6
+      ],
+      [
+        16,
+        12
+      ],
+      [
+        12,
+        4
+      ],
+      [
+        10,
+        14
+      ]
+    ],
+    "sourceCases": [
+      {
+        "kind": "p5.Image",
+        "physical": [
+          8,
+          6
+        ],
+        "density": 1
+      },
+      {
+        "kind": "p5.Graphics Canvas2D",
+        "physical": [
+          8,
+          6
+        ],
+        "density": 1
+      },
+      {
+        "kind": "p5.Graphics Canvas2D",
+        "physical": [
+          16,
+          12
+        ],
+        "density": 2
+      }
+    ]
+  },
+  "studyReplay": {
+    "ticks": 3,
+    "sourceBytes": 1440000,
+    "historyBytes": 1440000,
+    "sourceSha256": "469483837d94eb1115dba1347fa1556f436d7dfe30561aca5ff024b3f52588d5",
+    "historySha256": "2ff7aafc2bae51f610ab9681c66a476ffde51547dd372d65730e8a942cdf6dd8"
+  },
+  "transfer": {
+    "size": [
+      32,
+      24
+    ],
+    "ticks": 7,
+    "equalBytes": 3072,
+    "nonzeroBytes": 1920
+  },
+  "performance": [
+    {
+      "physical": [
+        16,
+        16
+      ],
+      "attachmentBytes": 2048,
+      "steps": 3,
+      "elapsedMs": 0.2999999523162842
+    },
+    {
+      "physical": [
+        256,
+        256
+      ],
+      "attachmentBytes": 524288,
+      "steps": 3,
+      "elapsedMs": 0.20000004768371582
+    },
+    {
+      "physical": [
+        768,
+        768
+      ],
+      "attachmentBytes": 4718592,
+      "steps": 3,
+      "elapsedMs": 0.2999999523162842
+    }
+  ],
+  "input_sha256_after": {
+    ".work/external-dynamics-integration/.work/dist/second/consumer/node_modules/@procedurals/javascript/src/p5-feedback-surface.js": "08e55c34f12292dde46ec9e2a99f3b47f65c6d8a3e2b8613c2fe6a0278fd068c",
+    ".work/external-dynamics-integration/.work/dist/second/consumer/node_modules/@procedurals/javascript/examples/feedback-print/index.html": "6d313a57e7cf073c4aecab5910f4d84cf5445bb362bbca2f95657554ef451edf",
+    ".work/external-dynamics-integration/.work/dist/second/consumer/node_modules/@procedurals/javascript/examples/feedback-print/sketch.js": "054b4c90f3db986ff706958027b227c377bdd0d296d9cdd740deedace77486b4",
+    ".work/external-dynamics-integration/.work/dist/second/consumer/node_modules/@procedurals/javascript/examples/feedback-print/study.js": "f4c38ee8a754b49333f83e285d75f0bdd606bd532ca65c9b963580bc1ea3a18b",
+    "tests/native/p5-feedback-surface-javascript.mjs": "277eeeb29246c136c8e707db317bc3d34977be78ff3bb480099da870347b4670",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    ".work/environments/p5js/node_modules/p5/lib/p5.js": "354b31a0d81ce0ddb24afe1a5b035f938417248c64f0c81112092b224d1bbdbb",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  }
+}

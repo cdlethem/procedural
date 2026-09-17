@@ -1,0 +1,398 @@
+{
+  "operation": "field.advect-periodic-scalar-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "57228a2af65a44e5cc7855afe2a9b41f2ba7eb5e94c80e0692d12c1c1bc24162",
+  "oracle": "Root analytical vectors authored before implementation: dyadic shifts/stencils and exact checkerboard cancellation. Independent residual and sampling oracles supplement these vectors.",
+  "cases": [
+    {
+      "id": "whole-cell-shift",
+      "input": {
+        "columns": 3,
+        "rows": 1,
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "u": [
+          1,
+          1,
+          1
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "dt": 1,
+        "maxWork": 9
+      },
+      "output": {
+        "values": [
+          3,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "id": "half-cell-shift",
+      "input": {
+        "columns": 3,
+        "rows": 1,
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "u": [
+          1,
+          1,
+          1
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "dt": 0.5,
+        "maxWork": 9
+      },
+      "output": {
+        "values": [
+          2,
+          1.5,
+          2.5
+        ]
+      }
+    },
+    {
+      "id": "zero-dt",
+      "input": {
+        "columns": 3,
+        "rows": 1,
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "u": [
+          1,
+          1,
+          1
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "offset": [
+          0.3,
+          0.7
+        ],
+        "dt": 0,
+        "maxWork": 9
+      },
+      "output": {
+        "values": [
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "id": "face-offset",
+      "input": {
+        "columns": 3,
+        "rows": 1,
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "u": [
+          1,
+          1,
+          1
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "offset": [
+          0.5,
+          0
+        ],
+        "dt": 1,
+        "maxWork": 9
+      },
+      "output": {
+        "values": [
+          3,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "id": "reverse-shift",
+      "input": {
+        "columns": 3,
+        "rows": 1,
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "u": [
+          -1,
+          -1,
+          -1
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "dt": 1,
+        "maxWork": 9
+      },
+      "output": {
+        "values": [
+          2,
+          3,
+          1
+        ]
+      }
+    },
+    {
+      "id": "multiple-period-shift",
+      "input": {
+        "columns": 3,
+        "rows": 1,
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "u": [
+          1,
+          1,
+          1
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "dt": 7,
+        "maxWork": 9
+      },
+      "output": {
+        "values": [
+          3,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "id": "constant-preserved",
+      "input": {
+        "columns": 3,
+        "rows": 1,
+        "values": [
+          4,
+          4,
+          4
+        ],
+        "u": [
+          0.5,
+          1,
+          1.5
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "dt": 1,
+        "maxWork": 9
+      },
+      "output": {
+        "values": [
+          4,
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "id": "single-cell",
+      "input": {
+        "columns": 1,
+        "rows": 1,
+        "values": [
+          -3
+        ],
+        "u": [
+          8
+        ],
+        "v": [
+          -2
+        ],
+        "offset": [
+          0.5,
+          0.5
+        ],
+        "dt": 2,
+        "maxWork": 3
+      },
+      "output": {
+        "values": [
+          -3
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "columns": 3,
+        "rows": 1,
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "u": [
+          1,
+          1,
+          1
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "dt": 1,
+        "maxWork": 8
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "invalid-offset",
+      "input": {
+        "columns": 3,
+        "rows": 1,
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "u": [
+          1,
+          1,
+          1
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "offset": [
+          1,
+          0
+        ],
+        "dt": 1,
+        "maxWork": 9
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "negative-dt",
+      "input": {
+        "columns": 3,
+        "rows": 1,
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "u": [
+          1,
+          1,
+          1
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "dt": -1,
+        "maxWork": 9
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "backtrace-overflow",
+      "input": {
+        "columns": 3,
+        "rows": 1,
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "u": [
+          1.7976931348623157e+308,
+          1.7976931348623157e+308,
+          1.7976931348623157e+308
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "dt": 2,
+        "maxWork": 9
+      },
+      "error": "NUMERIC_OVERFLOW"
+    }
+  ]
+}

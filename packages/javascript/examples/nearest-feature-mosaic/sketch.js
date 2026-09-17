@@ -1,3 +1,3 @@
-import { createStudySketch } from "../study-controls.js";
-import { drawNearestFeatureMosaic, materialsASettings } from "../materials-a-studies.js";
-createStudySketch({ slug: "nearest-feature-mosaic", title: "Nearest feature mosaic", ...materialsASettings["nearest-feature-mosaic"], draw: drawNearestFeatureMosaic });
+import { createFieldStudySketch } from "../materials-a-fields-controls.js";
+import { drawNearestFeatureMosaic } from "../materials-a-studies.js";
+createFieldStudySketch({ slug: "nearest-feature-mosaic", title: "Nearest feature mosaic", draw: drawNearestFeatureMosaic });

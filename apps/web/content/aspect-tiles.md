@@ -1,5 +1,5 @@
 # Aspect tiles
-Varied rectangle proportions expose the skyline heuristic. This is an original design, not a corpus recreation.
+Varied rectangle proportions expose the skyline heuristic.
 
 | Control | Canvas effect |
 |---|---|

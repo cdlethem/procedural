@@ -1,12 +1,13 @@
 # Perceptual bands
 
-An original editable p5 study. Serve this directory so `/p5.js` is available and open `index.html`.
+An Oklab color ramp becomes staggered horizontal bands. Band coverage leaves transparent gaps between the samples.
 
-| Control | Effect |
+| Control | Canvas effect |
 | --- | --- |
-| T | Applies the structural edit. |
-| C | Changes the packed RGB palette. |
-| 0 | Restores the baseline. |
-| S | Saves the canvas as PNG. |
+| Bands | Number and height of colors along the ramp. |
+| Edge phase | Horizontal shift of each band’s side edges; large angles repeat the cycle. |
+| Band coverage | Painted fraction of each band; zero leaves the canvas transparent. |
 
-The synthetic raster is computed through [`oklab-ramp`](../../../catalog/operations/oklab-ramp.json). Edit `../materials-a-studies.js` to change the visible input field or drawing; this example makes no native-support claim.
+The page provides sliders for quick exploration and exact number fields for supported values. **T** applies alternate settings, **C** swaps the palette, **0** resets, and **S** saves a transparent PNG. The canvas shows paper through CSS for preview only.
+
+The reusable computation is [`color.oklab-ramp`](../../../catalog/operations/oklab-ramp.json). The generated source field and mark treatment remain editable drawing choices in `../materials-a-studies.js`.

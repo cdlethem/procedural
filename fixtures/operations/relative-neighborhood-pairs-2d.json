@@ -1,0 +1,318 @@
+{
+  "operation": "spatial.relative-neighborhood-pairs-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "6ddd751558602b2f6714b5b2a7eebf97f31a77a6934899ad8308b80a651cf1b3",
+  "oracle": "Analytical vectors authored before implementation, independently reviewed by Sol, frozen by root. Transcendental tolerance checks are separate.",
+  "cases": [
+    {
+      "id": "empty",
+      "input": {
+        "points": [],
+        "maxWork": 0
+      },
+      "output": {
+        "pairs": []
+      }
+    },
+    {
+      "id": "two",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            9,
+            3
+          ]
+        ],
+        "maxWork": 2
+      },
+      "output": {
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "collinear",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "maxWork": 6
+      },
+      "output": {
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "strict-boundary-tie",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "maxWork": 6
+      },
+      "output": {
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "right-triangle",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "maxWork": 6
+      },
+      "output": {
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "square",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "maxWork": 16
+      },
+      "output": {
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "id": "duplicates",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "maxWork": 6
+      },
+      "output": {
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "subnormal",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            5e-324,
+            0
+          ],
+          [
+            1e-323,
+            0
+          ]
+        ],
+        "maxWork": 6
+      },
+      "output": {
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "huge-exact",
+      "input": {
+        "points": [
+          [
+            1e+308,
+            0
+          ],
+          [
+            -1e+308,
+            0
+          ]
+        ],
+        "maxWork": 2
+      },
+      "output": {
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "maxWork": 5
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "late-invalid-before-budget",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            false
+          ]
+        ],
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

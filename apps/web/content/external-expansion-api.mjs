@@ -38,6 +38,6 @@ console.log(result.pairs);`,
     `const next = pairForceStep2D({points:[[0,0],[2,0]],velocities:[[0,0],[0,0]],pairs:[[0,1]],attraction:0.5,repulsion:0,repulsionRadius:0,damping:1,dt:1,maxSpeed:10,maxWork:3});
 console.log(next.points);`,
     "Replace proximity pairs with a fixed chain, or change repulsion while retaining the initial state. Requery next positions before drawing current proximity edges.",
-    ["Coincident points have no invented separation direction.", "Damping is per call, so changing dt alone does not preserve the trajectory.", "There are no walls, collisions, flock alignment or retained contact ages.", "This authored force law does not recreate Reas Process 18 or Tissue."],
+    ["Coincident points have no invented separation direction.", "Damping is per call, so changing dt alone does not preserve the trajectory.", "There are no walls, collisions, flock alignment or retained contact ages."],
   ),
 };

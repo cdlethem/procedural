@@ -1,0 +1,244 @@
+{
+  "operation": "simulation.project-periodic-velocity-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "13fbfb4f852cbe93f999ce1727f4200055285186a9d26ef4d48e0386d7e903c3",
+  "oracle": "Root analytical vectors authored before implementation: dyadic shifts/stencils and exact checkerboard cancellation. Independent residual and sampling oracles supplement these vectors.",
+  "cases": [
+    {
+      "id": "one-step-checkerboard",
+      "input": {
+        "columns": 2,
+        "rows": 1,
+        "u": [
+          3,
+          -3
+        ],
+        "v": [
+          0,
+          0
+        ],
+        "iterations": 1,
+        "maxWork": 8
+      },
+      "output": {
+        "u": [
+          1,
+          -1
+        ],
+        "v": [
+          0,
+          0
+        ],
+        "pressure": [
+          -1,
+          1
+        ],
+        "divergenceBefore": [
+          6,
+          -6
+        ],
+        "divergenceAfter": [
+          2,
+          -2
+        ]
+      }
+    },
+    {
+      "id": "zero-iterations",
+      "input": {
+        "columns": 2,
+        "rows": 1,
+        "u": [
+          3,
+          -3
+        ],
+        "v": [
+          0,
+          0
+        ],
+        "iterations": 0,
+        "maxWork": 8
+      },
+      "output": {
+        "u": [
+          3,
+          -3
+        ],
+        "v": [
+          0,
+          0
+        ],
+        "pressure": [
+          0,
+          0
+        ],
+        "divergenceBefore": [
+          6,
+          -6
+        ],
+        "divergenceAfter": [
+          6,
+          -6
+        ]
+      }
+    },
+    {
+      "id": "constant-flow",
+      "input": {
+        "columns": 2,
+        "rows": 2,
+        "u": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "v": [
+          -3,
+          -3,
+          -3,
+          -3
+        ],
+        "iterations": 12,
+        "maxWork": 60
+      },
+      "output": {
+        "u": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "v": [
+          -3,
+          -3,
+          -3,
+          -3
+        ],
+        "pressure": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "divergenceBefore": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "divergenceAfter": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "single-cell",
+      "input": {
+        "columns": 1,
+        "rows": 1,
+        "u": [
+          2
+        ],
+        "v": [
+          -3
+        ],
+        "iterations": 4,
+        "maxWork": 7
+      },
+      "output": {
+        "u": [
+          2
+        ],
+        "v": [
+          -3
+        ],
+        "pressure": [
+          0
+        ],
+        "divergenceBefore": [
+          0
+        ],
+        "divergenceAfter": [
+          0
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "columns": 2,
+        "rows": 1,
+        "u": [
+          3,
+          -3
+        ],
+        "v": [
+          0,
+          0
+        ],
+        "iterations": 1,
+        "maxWork": 7
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "wrong-shape-before-budget",
+      "input": {
+        "columns": 2,
+        "rows": 1,
+        "u": [
+          3
+        ],
+        "v": [
+          0,
+          0
+        ],
+        "iterations": 1,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "negative-iterations",
+      "input": {
+        "columns": 2,
+        "rows": 1,
+        "u": [
+          3,
+          -3
+        ],
+        "v": [
+          0,
+          0
+        ],
+        "iterations": -1,
+        "maxWork": 8
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "divergence-overflow",
+      "input": {
+        "columns": 2,
+        "rows": 1,
+        "u": [
+          1.7976931348623157e+308,
+          -1.7976931348623157e+308
+        ],
+        "v": [
+          0,
+          0
+        ],
+        "iterations": 1,
+        "maxWork": 8
+      },
+      "error": "NUMERIC_OVERFLOW"
+    }
+  ]
+}

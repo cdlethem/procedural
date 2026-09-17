@@ -1,1 +1,65 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Geometric panel — Procedurals</title><link rel="icon" href="data:,"><style>body{margin:0;padding:24px;background:#eaedf0;color:#273038;font:16px system-ui,sans-serif}main{max-width:980px;margin:auto}p{max-width:68ch;line-height:1.5}#controls{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}button{font:inherit;padding:8px 10px;border:1px solid #607080;border-radius:4px;background:#fff;cursor:pointer}canvas{display:block;width:min(720px,100%);height:auto;box-shadow:0 3px 16px #26302722}#status{min-height:1.5em}</style></head><body><main><h1>Geometric panel</h1><p>An offset grid holds an asymmetric hierarchy of original geometric marks. Switch the mark treatment or palette without rebuilding the grid record.</p><div id="controls"><button data-action="m">M wedges / bars</button><button data-action="c">C palette</button><button data-action="d">D open / tight grid</button><button data-action="0">0 reset</button><button data-action="s">S save PNG</button></div><div id="art" aria-label="Generated asymmetric geometric panel"></div><p id="status" role="status">Preparing panel…</p><p>Edit the grid record in <code>examples/motif-compositions/compositions.js</code> or replace <code>drawMark()</code> here. The composition uses only local p5 geometry.</p></main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shape matrix — Procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body { margin: 0; padding: 24px; background: #e9eceb; color: #273038; font: 16px system-ui, sans-serif; }
+    main { max-width: 1200px; margin: auto; }
+    p { max-width: 75ch; line-height: 1.5; }
+    .workspace { display: grid; grid-template-columns: minmax(0, 720px) minmax(260px, 1fr); gap: 24px; align-items: start; }
+    canvas { display: block; width: min(720px, 100%); height: auto; background: #fbfaf6; box-shadow: 0 3px 16px #26302722; }
+    #controls { display: grid; gap: 12px; }
+    fieldset { margin: 0; padding: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; border: 1px solid #adbcc0; border-radius: 6px; }
+    legend { font-weight: 650; }
+    label { display: grid; gap: 3px; font-size: 0.9rem; }
+    input, select, button { font: inherit; min-width: 0; padding: 6px; }
+    input[type=checkbox] { width: 20px; height: 20px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    button { cursor: pointer; padding: 8px 12px; border: 1px solid #607080; border-radius: 4px; background: white; }
+    #status { min-height: 1.5em; }
+    @media (max-width: 950px) { .workspace { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Shape matrix</h1>
+  <p>Arrange wedges, bars, discs and arcs on an adjustable grid. Change their relative frequency, stagger the rows and columns, or rotate successive marks. The canvas previews a transparent layer on paper; saved PNGs retain transparency.</p>
+  <div class="workspace">
+    <div><div id="art" aria-label="Editable matrix of geometric shapes"></div><p id="status" role="status">Preparing matrix…</p></div>
+    <div id="controls">
+      <fieldset><legend>Grid</legend>
+        <label>Columns<input data-key="columns" type="number" min="1" max="2048" step="1"></label>
+        <label>Rows<input data-key="rows" type="number" min="1" max="2048" step="1"></label>
+        <label>Density %<input data-key="density" type="number" min="0" max="100" step="1"></label>
+        <label>Guides<input data-key="guides" type="checkbox"></label>
+      </fieldset>
+      <fieldset><legend>Shape mix</legend>
+        <label>Wedge weight<input data-key="wedgeWeight" type="number" min="0" max="10" step="1"></label>
+        <label>Bar weight<input data-key="barWeight" type="number" min="0" max="10" step="1"></label>
+        <label>Disc weight<input data-key="discWeight" type="number" min="0" max="10" step="1"></label>
+        <label>Arc weight<input data-key="arcWeight" type="number" min="0" max="10" step="1"></label>
+        <label>Mark scale<input data-key="scale" type="number" min="0" max="32" step="any"></label>
+      </fieldset>
+      <fieldset><legend>Position and rotation</legend>
+        <label>Horizontal offset<input data-key="offsetX" type="number" min="-10000" max="10000" step="any"></label>
+        <label>Vertical offset<input data-key="offsetY" type="number" min="-10000" max="10000" step="any"></label>
+        <label>Alternate row shift (cells)<input data-key="rowShift" type="number" min="-100" max="100" step="any"></label>
+        <label>Alternate column shift (cells)<input data-key="columnShift" type="number" min="-100" max="100" step="any"></label>
+        <label>Angle °<input data-key="angle" type="number" min="-36000" max="36000" step="any"></label>
+        <label>Angle step °<input data-key="angleStep" type="number" min="-36000" max="36000" step="any"></label>
+      </fieldset>
+      <fieldset><legend>Colour</legend>
+        <label>Palette<select data-key="paletteId"><option value="ochre-plum">Ochre Plum</option><option value="cobalt-chalk">Cobalt Chalk</option><option value="orchid-chalk">Orchid Chalk</option></select></label>
+      </fieldset>
+      <div class="actions"><button type="button" data-action="reset">Reset (0)</button><button type="button" data-action="save">Save transparent PNG (S)</button></div>
+    </div>
+  </div>
+  <p>Change <code>drawMark()</code> in this sketch to replace the local p5 shapes. The anchor matrix comes from the package’s regular grid operation and is limited to 2,048 cells for responsive editing.</p>
+</main>
+<script src="/p5.js"></script>
+<script type="module" src="./sketch.js"></script>
+</body>
+</html>

@@ -1,0 +1,459 @@
+{
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability_decision": "design/capabilities/thick-regions-and-plotting.md",
+  "design_review": "design/operations/thick-regions-and-plotting-contract-review.md",
+  "provenance": [],
+  "fixture_format": "exact-json-output",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original guarded bands and hatch/plot studies; no Fidenza, weaving, artist recreation or physical plotting acceptance."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture challenge",
+    "status": "Contract reviewed before implementation; target acceptance pending."
+  },
+  "id": "geometry.tapered-stroke-strip-2d",
+  "decision_cluster": "geometry.tapered-stroke-strip-2d",
+  "description": "Construct a retained variable-width strip with explicit inner trims and outer joins, rejecting invalid topology.",
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "minItems": 2,
+        "maxItems": 4294967295
+      },
+      "widths": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "minItems": 2,
+        "maxItems": 4294967295
+      },
+      "closed": {
+        "type": "boolean"
+      },
+      "cap": {
+        "type": "string",
+        "enum": [
+          "BUTT",
+          "SQUARE"
+        ]
+      },
+      "join": {
+        "type": "string",
+        "enum": [
+          "BEVEL",
+          "MITER"
+        ]
+      },
+      "miterLimit": {
+        "type": "number",
+        "minimum": 1
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "points",
+      "widths",
+      "closed",
+      "cap",
+      "join",
+      "miterLimit",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "status": {
+            "const": "ACCEPTED"
+          },
+          "visible": {
+            "type": "object",
+            "properties": {
+              "outer": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "items": false,
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "minItems": 3,
+                "maxItems": 4294967295
+              },
+              "holes": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "prefixItems": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ],
+                    "items": false,
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "minItems": 3,
+                  "maxItems": 4294967295
+                },
+                "maxItems": 4294967295
+              }
+            },
+            "required": [
+              "outer",
+              "holes"
+            ],
+            "additionalProperties": false
+          },
+          "centerline": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 2,
+            "maxItems": 4294967295
+          },
+          "leftBoundary": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 2,
+            "maxItems": 4294967295
+          },
+          "rightBoundary": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 2,
+            "maxItems": 4294967295
+          },
+          "resolvedJoins": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "left": {
+                  "type": "string",
+                  "enum": [
+                    "BEVEL",
+                    "MITER",
+                    "INNER",
+                    "CONTINUOUS"
+                  ]
+                },
+                "right": {
+                  "type": "string",
+                  "enum": [
+                    "BEVEL",
+                    "MITER",
+                    "INNER",
+                    "CONTINUOUS"
+                  ]
+                }
+              },
+              "required": [
+                "left",
+                "right"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "witness": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "NONE",
+                  "EDGE_CROSSING",
+                  "EDGE_CONTACT",
+                  "A_CONTAINS_B",
+                  "B_CONTAINS_A",
+                  "MINIMUM_PAIR",
+                  "INVALID_RING",
+                  "RING_CONTACT",
+                  "RING_CONTAINMENT",
+                  "LIMIT"
+                ]
+              },
+              "aRing": {
+                "type": "integer",
+                "minimum": -1
+              },
+              "aEdge": {
+                "type": "integer",
+                "minimum": -1
+              },
+              "bRing": {
+                "type": "integer",
+                "minimum": -1
+              },
+              "bEdge": {
+                "type": "integer",
+                "minimum": -1
+              },
+              "vertex": {
+                "type": "integer",
+                "minimum": -1
+              }
+            },
+            "required": [
+              "kind",
+              "aRing",
+              "aEdge",
+              "bRing",
+              "bEdge",
+              "vertex"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "status",
+          "visible",
+          "centerline",
+          "leftBoundary",
+          "rightBoundary",
+          "resolvedJoins",
+          "witness"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "status": {
+            "const": "REJECTED"
+          },
+          "reason": {
+            "const": "INVALID_STRIP_TOPOLOGY"
+          },
+          "witness": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "NONE",
+                  "EDGE_CROSSING",
+                  "EDGE_CONTACT",
+                  "A_CONTAINS_B",
+                  "B_CONTAINS_A",
+                  "MINIMUM_PAIR",
+                  "INVALID_RING",
+                  "RING_CONTACT",
+                  "RING_CONTAINMENT",
+                  "LIMIT"
+                ]
+              },
+              "aRing": {
+                "type": "integer",
+                "minimum": -1
+              },
+              "aEdge": {
+                "type": "integer",
+                "minimum": -1
+              },
+              "bRing": {
+                "type": "integer",
+                "minimum": -1
+              },
+              "bEdge": {
+                "type": "integer",
+                "minimum": -1
+              },
+              "vertex": {
+                "type": "integer",
+                "minimum": -1
+              }
+            },
+            "required": [
+              "kind",
+              "aRing",
+              "aEdge",
+              "bRing",
+              "bEdge",
+              "vertex"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "status",
+          "reason",
+          "witness"
+        ],
+        "additionalProperties": false
+      }
+    ]
+  },
+  "output_invariants": "Detached canonical finite data; deterministic declared order and no partial result. Region query witnesses refer supplied ring order, constructed visible rings canonical winding/start.",
+  "behavior": {
+    "validation": "Exact passive Object/null-prototype records, dense ordinary arrays with own data slots, no extras/accessors/symbols/coercion; finite binary64 inputs. Validate full carrier/domain before budget. Proxies outside interchange. Every ring has >=3 distinct vertices, implicit closure, nonzero signed area, no duplicate seam/vertex, adjacent backtracking, self-contact, or self-crossing. Holes are strictly inside outer and pairwise disjoint/non-touching. Either winding input; owned output outer CCW/hole CW. Filled membership is outer minus holes. Static validation checks shape/domain, including strip duplicate/reversal rules; exact region topology follows work preflight. Hatch projection/count arithmetic is needed before its budget as explicitly specified. Errors atomic, no mutation/aliases; output zeros positive. Work sums/products use exact integers and compare before allocation; runtime/allocation guarantees do not follow from budgets.",
+    "algorithm": "Static validation requires open points length>=2 or closed length>=3, widths.length=points.length, positive finite widths, finite coordinates, supported cap/join, finite miterLimit>=1, and no adjacent equal centerline points (including closure) or exact reversal; then preflight. Each nonzero edge has a checked binary64 unit tangent and left normal. Compute side endpoint samples from width[i]/2. Straight tapered side sections connect adjacent samples linearly. At a noncollinear turn, classify inside and outside by the exact sign of the centerline cross product: a left turn has left inner/right outer; a right turn has right inner/left outer. The inner side intersects supporting tapered-side lines in exact dyadic/rational arithmetic. Its intersection must lie within both adjoining finite tapered-side sections, including endpoints; a parallel noncoincident pair or out-of-range intersection rejects INVALID_STRIP_TOPOLOGY. A coincident parallel pair shares its common vertex sample if one exists, otherwise rejects. Round the exact intersection once to nearest-even binary64, emit one trim sample and record INNER. If rounding is nonfinite, coincides with a required distinct neighboring sample, or makes topology invalid, reject INVALID_STRIP_TOPOLOGY. The outer side BEVEL emits incoming and outgoing samples. Outer MITER uses the exact rational supporting-line intersection only when the rounded point is distinct and exact squared distance from center vertex <= exact (halfWidth*miterLimit)^2; otherwise it falls back to BEVEL, including nonfinite or representation failure of the optional miter. Collinear same-direction edges share one side sample and mark CONTINUOUS; exact reversal or adjacent coincident centerline points is INVALID_INPUT. A nonfinite base tangent/normal/sample is NUMERIC_OVERFLOW. Validate each assembled ring with exact dyadic topology; only equal consecutive join samples are deduplicated. Invalid open outer ring, or closed output other than exactly one disjoint enclosing outer plus one hole, returns REJECTED INVALID_STRIP_TOPOLOGY. Output ring outer is CCW, hole CW; each normalized ring rotates to its lexicographically least [x,y] vertex (ties impossible in a valid ring). Left/rightBoundary keep traversal order, not ring winding. Accepted witness is NONE/all -1. Rejected witness is first invalid ring/edge/vertex in ring order; unavailable fields -1. LeftBoundary and rightBoundary both follow original centerline forward traversal, with incoming then outgoing samples at each outer bevel; neither boundary is reversed. Only visible rings are winding-normalized and lex-rotated. Exact left turn means positive cross under x/y coordinates, independent of canvas handedness.",
+    "work": "N=points.length. One side can emit two samples at each join, so a closed pair of sides has at most 4N edges total; an open joined outer ring has at most 4N+4 edges including caps. Use conservative Emax=4N+4, Qmax=2, VRmax=Emax^2+8*Emax*Qmax+4*Qmax^2. W=32N+VRmax in exact integers. WORK_LIMIT iff W>maxWork before geometry/allocation. Counts are abstract allowances, not time/bytes.",
+    "environment": "No RNG, clock, host renderer, file IO or implicit assets. Consistent caller coordinate units; SVG input explicitly millimetres. Other targets deferred.",
+    "numerics": "Topology and clearance thresholds use exact rational arithmetic on supplied binary64 dyadics. Constructed offsets and stated display arithmetic use ordered binary64 with finite checks; no epsilon, snap or repair. Exact shared JSON vectors; additional analytic shape tests compare declared floating arithmetic abs1e-9+rel1e-12 while topology/IDs/order remain exact. Optional outer miter failure falls back exactly as specified.",
+    "native_surface": "taperedStrokeStrip2D(input), named p5-package export with stable-code errors."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed carrier, domain or static correspondence.",
+    "WORK_LIMIT": "Exact declared event reservation exceeds maxWork.",
+    "NUMERIC_OVERFLOW": "Nonfinite required arithmetic/display output."
+  },
+  "parameters": {
+    "points": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    },
+    "widths": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    },
+    "closed": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    },
+    "cap": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    },
+    "join": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    },
+    "miterLimit": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    },
+    "maxWork": {
+      "unit": "See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choices and topology/resource limits; no corpus-derived recommended ranges."
+    }
+  },
+  "fixtures": "fixtures/operations/tapered-stroke-strip-2d.json"
+}

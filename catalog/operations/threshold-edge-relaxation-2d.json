@@ -1,0 +1,196 @@
+{
+  "id": "motion.threshold-edge-relaxation-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "description": "Displace a supplied graph synchronously along sufficiently long edges, using reciprocal unit vectors.",
+  "decision_cluster": "motion.threshold-edge-relaxation-2d",
+  "capability_decision": "design/capabilities/connected-growth-and-graphs.md",
+  "design_review": "design/operations/connected-growth-and-graphs-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 2,
+          "minItems": 2
+        },
+        "maxItems": 4294967295
+      },
+      "pairs": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "maxItems": 2,
+          "minItems": 2
+        },
+        "maxItems": 4294967295
+      },
+      "pinned": {
+        "type": "array",
+        "items": {
+          "type": "boolean"
+        },
+        "maxItems": 4294967295
+      },
+      "minLength": {
+        "type": "number",
+        "minimum": 0
+      },
+      "stepScale": {
+        "type": "number",
+        "minimum": 0
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "points",
+      "pairs",
+      "pinned",
+      "minLength",
+      "stepScale",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 2,
+          "minItems": 2
+        },
+        "maxItems": 4294967295
+      },
+      "displacements": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 2,
+          "minItems": 2
+        },
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "points",
+      "displacements"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached finite canonical data; stable identity/order as specified; no partial result on failure.",
+  "behavior": {
+    "validation": "Exact passive Object/null-prototype records, dense ordinary arrays with own data slots, no classes/accessors/symbols/extras/coercion; proxies outside interchange. Numeric values finite binary64; booleans never numbers. Validate complete input in input-schema field order, arrays in order, then correspondence/topology structure, then exact-integer work preflight before geometric predicates or result allocation. Normalize accepted/exposed zero to +0. Inputs unchanged and all outputs deeply detached. Host allocation failure remains a host error.",
+    "environment": "No RNG, clock, renderer or assets. Caller Cartesian coordinates; signed turns use algebraic counterclockwise orientation in x/y coordinates, visually clockwise when y points down. Explicit caller dt where present. p5-only initial delivery; no physical collision, source solver or other-target equivalence.",
+    "numerics": "Binary64 separately rounded primitives, no FMA or reassociation. Check each computed floating arithmetic primitive finite or NUMERIC_OVERFLOW. Exact dyadic/rational predicates use existing internal/exact-rational.js without converting before classification. Existing fdlibmHypot and fdlibmAtan2 profiles for stated norms/angles. Compare IDs, topology, ordering, counters and errors exactly; analytical floating fixtures may explicitly allow absolute1e-12 relative0. No global epsilon.",
+    "correspondence": "pinned length N. pairs have 0<=i<j<N in strict lexicographic order, without duplicates. Check every pair and pin before work. Pair indices are array indices, not arbitrary persistent IDs.",
+    "work": "N=points.length,P=pairs.length; W=N+P in exact integers, precharged. O(N+P) work/storage.",
+    "algorithm": "Initialize sums [0,0]. For each pair compute dx=xj-xi,dy=yj-yi,L=fdlibmHypot(dx,dy), checking all finite even if stepScale0. If L>minLength, ux=dx/L then uy=dy/L; add sum_i.x+=ux,sum_i.y+=uy,sum_j.x-=ux,sum_j.y-=uy in that order. Otherwise no contribution; zero length never passes nonnegative threshold. All pairs use old points. Visit points ascending: compute displacement x=stepScale*sum.x then y=stepScale*sum.y, checking finite before pin override. If pinned set both displacement components0. Compute output x=oldX+dx then y=oldY+dy. Canonicalize outputs. No degree normalization, velocity, damping, rest length, boundary or hidden clock.",
+    "native_surface": "thresholdEdgeRelaxation2D(input), ThresholdEdgeRelaxation2DError; threshold-edge-relaxation-2d.js and package index."
+  },
+  "errors": {
+    "INVALID_INPUT": "Static carrier/shape/domain/correspondence failure.",
+    "WORK_LIMIT": "Exact declared work reservation exceeds maxWork.",
+    "NUMERIC_OVERFLOW": "Nonfinite checked arithmetic; no partial result."
+  },
+  "parameters": {
+    "points": {
+      "unit": "Caller coordinate pairs.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "pairs": {
+      "unit": "Canonical unordered point indices.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "pinned": {
+      "unit": "Per-point fixed-position flags.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "minLength": {
+      "unit": "Strict edge activation threshold in coordinate units.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "stepScale": {
+      "unit": "Coordinate displacement per unit-vector sum per call.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "maxWork": {
+      "unit": "Point plus edge-event allowance.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    }
+  },
+  "fixtures": "fixtures/operations/threshold-edge-relaxation-2d.json",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original native studies and withheld design transfer, with exact scoped invariants; no Hodgin/Hoff recreation automatically implied."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after Astra/Sol independent reviews",
+    "status": "Reviewed before implementation; target acceptance pending."
+  }
+}

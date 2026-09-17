@@ -1,79 +1,151 @@
-import { createPathClipMarks, PATH_COLORS } from "./path-clip-marks.js";
+import { buildPathClipComposition, PATH_CLIP_COLORS, PATH_CLIP_DEFAULTS } from "./path-clip-quality.js";
 
+const art = document.querySelector("#art");
 const status = document.querySelector("#status");
 const controls = document.querySelector("#controls");
-const art = document.querySelector("#art");
-let composition = null;
+const specs = [
+  { key: "sourceMode", label: "Source paths", options: ["rows", "wander", "fan"] },
+  { key: "pathCount", label: "Paths", min: 1, max: 80, step: 1 },
+  { key: "steps", label: "Segments per path", min: 2, max: 160, step: 1 },
+  { key: "wander", label: "Wander", min: 0, max: 80, step: .5, only: "wander" },
+  { key: "seed", label: "Wander seed", min: 0, max: 4294967295, step: 1, only: "wander" },
+  { key: "regionMode", label: "Clip boundary", options: ["rectangle", "portal", "bay", "regular"] },
+  { key: "centerX", label: "Boundary center X", min: -320, max: 960, step: 5 },
+  { key: "centerY", label: "Boundary center Y", min: -320, max: 960, step: 5 },
+  { key: "regionWidth", label: "Boundary width", min: 10, max: 1000, step: 5 },
+  { key: "regionHeight", label: "Boundary height", min: 10, max: 1000, step: 5 },
+  { key: "notchWidth", label: "Notch opening", min: 0, max: 1000, step: 5, only: "notch" },
+  { key: "notchDepth", label: "Notch depth", min: 0, max: 1000, step: 5, only: "notch" },
+  { key: "sides", label: "Polygon sides", min: 3, max: 12, step: 1, only: "regular" },
+  { key: "angle", label: "Polygon angle", min: -180, max: 180, step: 5, only: "regular" },
+  { key: "weight", label: "Stroke weight", min: .1, max: 12, step: .1 },
+  { key: "showOutline", label: "Show boundary", checkbox: true },
+];
+const fields = new Map();
+let settings = { ...PATH_CLIP_DEFAULTS };
+let composition;
 let revision = 0;
+let sketch;
 
-/** Immutable browser-test observation only; it exposes no mutation or redraw capability. */
-export function observePathClipMarks() {
-  return Object.freeze({ composition, revision });
+for (const spec of specs) {
+  const label = document.createElement("label");
+  label.textContent = spec.label;
+  label.dataset.only = spec.only ?? "";
+  const input = document.createElement(spec.options ? "select" : "input");
+  input.name = spec.key;
+  input.setAttribute("aria-label", spec.label);
+  if (spec.options) {
+    for (const value of spec.options) {
+      const option = document.createElement("option");
+      option.value = value; option.textContent = value;
+      input.append(option);
+    }
+  } else {
+    input.type = spec.checkbox ? "checkbox" : "number";
+    if (!spec.checkbox) {
+      input.min = String(spec.min); input.max = String(spec.max); input.step = String(spec.step);
+    }
+  }
+  label.append(input);
+  controls.append(label);
+  fields.set(spec.key, input);
+}
+for (const [action, name] of [["reset", "Reset defaults"], ["reload", "Reload"], ["save", "Save transparent PNG"]]) {
+  const button = document.createElement("button");
+  button.type = "button"; button.dataset.action = action; button.textContent = name;
+  controls.append(button);
 }
 
-function channels(rgb) {
-  return [(rgb >>> 16) & 0xff, (rgb >>> 8) & 0xff, rgb & 0xff];
+function writeFields() {
+  for (const spec of specs) {
+    const input = fields.get(spec.key);
+    if (spec.checkbox) input.checked = settings[spec.key];
+    else input.value = String(settings[spec.key]);
+  }
+  showRelevantFields();
 }
+
+function showRelevantFields() {
+  for (const spec of specs) {
+    const input = fields.get(spec.key);
+    const only = spec.only;
+    input.parentElement.hidden = only === "wander" && settings.sourceMode !== "wander" ||
+      only === "notch" && !["portal", "bay"].includes(settings.regionMode) ||
+      only === "regular" && settings.regionMode !== "regular";
+  }
+}
+
+function readFields() {
+  const next = {};
+  for (const spec of specs) {
+    const input = fields.get(spec.key);
+    next[spec.key] = spec.checkbox ? input.checked : spec.options ? input.value :
+      input.value.trim() === "" ? NaN : Number(input.value);
+  }
+  return next;
+}
+
+function channels(rgb) { return [(rgb >>> 16) & 255, (rgb >>> 8) & 255, rgb & 255]; }
+
+function paint() {
+  try {
+    const next = readFields();
+    const built = buildPathClipComposition(next);
+    settings = next;
+    composition = built;
+    showRelevantFields();
+    sketch.clear();
+    sketch.noFill();
+    sketch.strokeWeight(settings.weight);
+    const piece = [0, 0, 0, 0];
+    for (let i = 0; i < built.clipped.size; i++) {
+      built.clipped.segmentInto(i, piece, 0);
+      const path = Math.floor(built.clipped.sourceIndexAt(i) / settings.steps);
+      sketch.stroke(...channels(PATH_CLIP_COLORS[path % PATH_CLIP_COLORS.length]));
+      sketch.line(...piece);
+    }
+    if (settings.showOutline) {
+      sketch.stroke(...channels(PATH_CLIP_COLORS.at(-1)), 150);
+      sketch.strokeWeight(Math.min(settings.weight, 2));
+      sketch.beginShape();
+      for (const [x, y] of built.polygon) sketch.vertex(x, y);
+      sketch.endShape(sketch.CLOSE);
+    }
+    revision++;
+    art.dataset.revision = String(revision);
+    art.dataset.renderStatus = "ready";
+    art.dataset.clippedSize = String(built.clipped.size);
+    art.dataset.sourceSize = String(built.sources.length);
+    status.textContent = `${built.clipped.size} retained pieces from ${built.sources.length} source segments · ${settings.sourceMode} through ${settings.regionMode}`;
+  } catch (error) {
+    art.dataset.renderStatus = "error";
+    status.textContent = error.message;
+  }
+}
+
+controls.addEventListener("change", event => {
+  if (event.target.matches("input,select")) paint();
+});
+controls.addEventListener("click", event => {
+  const action = event.target.closest("button[data-action]")?.dataset.action;
+  if (action === "reset") { settings = { ...PATH_CLIP_DEFAULTS }; writeFields(); paint(); }
+  else if (action === "reload") location.reload();
+  else if (action === "save") sketch.saveCanvas("path-clip-marks", "png");
+});
+
+window.pathClipMarksStudy = Object.freeze({
+  get settings() { return { ...settings }; },
+  get composition() { return composition; },
+  get revision() { return revision; },
+});
 
 new window.p5((p) => {
+  sketch = p;
   p.setup = () => {
     p.createCanvas(640, 640, p.P2D).parent("art");
     p.pixelDensity(1);
     p.noLoop();
-    composition = createPathClipMarks();
+    writeFields();
     paint();
   };
-
-  function paint() {
-    p.background(247, 243, 233);
-    p.noFill();
-    if (composition.showUnclipped) {
-      p.stroke(189, 184, 176, 72);
-      p.strokeWeight(0.7);
-      for (const [x1, y1, x2, y2] of composition.sources) p.line(x1, y1, x2, y2);
-    }
-    p.strokeWeight(1.5);
-    const clipped = composition.clipped;
-    const segment = [0, 0, 0, 0];
-    for (let piece = 0; piece < clipped.size; piece += 1) {
-      clipped.segmentInto(piece, segment, 0);
-      const source = clipped.sourceIndexAt(piece);
-      const path = composition.sourceToPath[source];
-      // Every split piece retains its source path's palette identity.
-      if (composition.alternateColors) {
-        const [r, g, b] = channels(PATH_COLORS[path]);
-        p.stroke(r, g, b);
-      } else {
-        p.stroke(37, 89, 107);
-      }
-      p.line(segment[0], segment[1], segment[2], segment[3]);
-    }
-    p.noFill();
-    p.stroke(68, 64, 60);
-    p.strokeWeight(1.5);
-    p.beginShape();
-    for (const [x, y] of composition.polygon) p.vertex(x, y);
-    p.endShape(p.CLOSE);
-
-    revision += 1;
-    art.dataset.revision = String(revision);
-    art.dataset.clippedSize = String(clipped.size);
-    status.textContent = `${clipped.size} clipped pieces of ${composition.sources.length} source segments · ${composition.shallowNotch ? "shallow" : "deep"} notch · ${composition.alternateColors ? "path colors" : "single color"} · ${composition.showUnclipped ? "source shown" : "source hidden"}`;
-  }
-
-  function action(name) {
-    if (name === "n") composition.toggleNotch();
-    else if (name === "c") composition.toggleAlternateColors();
-    else if (name === "o") composition.toggleShowUnclipped();
-    else if (name === "0") composition.reset();
-    else if (name === "s") { p.saveCanvas("path-clip-marks", "png"); return; }
-    else return;
-    paint();
-  }
-
-  controls.addEventListener("click", (event) => {
-    const button = event.target.closest("button[data-action]");
-    if (button) action(button.dataset.action);
-  });
-  p.keyPressed = () => action(String(p.key).toLowerCase());
 }, art);

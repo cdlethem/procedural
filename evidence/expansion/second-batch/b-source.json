@@ -1,0 +1,315 @@
+{
+  "status": "passed",
+  "packageRoot": "/home/colin/dev/procedural/packages/javascript",
+  "runtime": "p5 2.3.2 Canvas2D density1",
+  "scope": "Three original editable p5 studies. Baseline/early/late frames, one-tick behavior, edit transfer, reset/reload/save and source stability. No recreation or support acceptance claim.",
+  "input_sha256_before": {
+    "tests/native/agent-behavior-studies-javascript.mjs": "bb4900838566ea82cc526754d36aaf271ab0815f804d0f72ae86110059516840",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    "packages/javascript/src/contact-history-2d.js": "c0d4b60f020c6d88474b8e7106ce434883680885b59328176c344afc00b32bec",
+    "packages/javascript/src/sensor-motor-step-2d.js": "b053e8d7129e37dc45d6ada4ddbed03547d5783d3f0e663323b4d5b9d7a8580e",
+    "packages/javascript/src/flock-steer-2d.js": "c948f9334d9c283d52699d6e82656fcb3cf4a97cc865f605d0e0a4f1b7411abc",
+    "packages/javascript/src/internal/agent-behavior-utils.js": "39831681236febcb31e48de1e4a42713fb89c603c24d3c7b80cf1d4b9e8a9416",
+    "packages/javascript/src/radius-pairs-2d.js": "0e2fe20f0c03d9d93bd7e92a2eb50b28a3a18967111c38ffcddc41b3eff1b551",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/examples/lingering-links/index.html": "3d3de89bf16a9121027046b0949939f70098334da84981c1a8c83ad88f8a49c3",
+    "packages/javascript/examples/lingering-links/sketch.js": "42c1745769e2fdfd86e10ec7f9a374050dd51ab53fa91cd91e5239ab73cd0f7a",
+    "packages/javascript/examples/sensing-trails/index.html": "afb74bc367f66733aa5bdc2ece385f61b41907be827c1d9b19c8c81b27080c48",
+    "packages/javascript/examples/sensing-trails/sketch.js": "aab61ff9799d5e9ea050fb5e5abaca943d0112f30a67b3e677195f213291004a",
+    "packages/javascript/examples/flocking-marks/index.html": "926437c852be123ef7160f115603d69d5be0f492299a95efe990cae1a926e167",
+    "packages/javascript/examples/flocking-marks/sketch.js": "453c289eed21c7319c8f87821c3f0f4cc1ee8784372ea6300031f3dd804411c4",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  },
+  "studies": [
+    {
+      "slug": "lingering-links",
+      "frames": [
+        {
+          "label": "baseline",
+          "tick": 0,
+          "state_sha256": "b2c86971dedf44b11258ca504c0714c224978279a33c56371ba514cceeba6597",
+          "pixel_fingerprint": "640x640:1122426072",
+          "png_sha256": "37b2fb226ebf8ecf160e2756a53d03d66dbbed9ca312143118783c58bc7ad3a6",
+          "png_bytes": 17290,
+          "png_path": ".work/expansion-full/second-final/source/b/lingering-links/baseline.png",
+          "state_path": ".work/expansion-full/second-final/source/b/lingering-links/baseline.json"
+        },
+        {
+          "label": "early-tick-001",
+          "tick": 1,
+          "state_sha256": "36c974156e54a6c5f34fe1a7d28eeb4fc8da5569075a47a0e58a602914a2ce7b",
+          "pixel_fingerprint": "640x640:227281782",
+          "png_sha256": "fdbbdfad88397b5d0430e275534c872dd3d602e064e28e9b20407a0b1b37e2bd",
+          "png_bytes": 102027,
+          "png_path": ".work/expansion-full/second-final/source/b/lingering-links/early-tick-001.png",
+          "state_path": ".work/expansion-full/second-final/source/b/lingering-links/early-tick-001.json"
+        },
+        {
+          "label": "late-tick-030",
+          "tick": 30,
+          "state_sha256": "af345f8018760a7fc9d5419b25765588815ef87260d9d345054d7c314f3cc638",
+          "pixel_fingerprint": "640x640:2243773011",
+          "png_sha256": "ab0f8bfa4e7ef2a832aa853377557220367532aa318258620996f3e5475e311e",
+          "png_bytes": 110113,
+          "png_path": ".work/expansion-full/second-final/source/b/lingering-links/late-tick-030.png",
+          "state_path": ".work/expansion-full/second-final/source/b/lingering-links/late-tick-030.json"
+        },
+        {
+          "label": "edited-without-tick",
+          "tick": 30,
+          "state_sha256": "19e3c839cabd5daa79a67b0739b13fd3bfa0d7cf9c87fc1eea566d91e76eabc2",
+          "pixel_fingerprint": "640x640:2243773011",
+          "png_sha256": "ab0f8bfa4e7ef2a832aa853377557220367532aa318258620996f3e5475e311e",
+          "png_bytes": 110113,
+          "png_path": ".work/expansion-full/second-final/source/b/lingering-links/edited-without-tick.png",
+          "state_path": ".work/expansion-full/second-final/source/b/lingering-links/edited-without-tick.json"
+        },
+        {
+          "label": "transfer-next-tick",
+          "tick": 31,
+          "state_sha256": "a16d595db10015a866e112e3ca93df35e839fabc48b35f7b171195da980d389d",
+          "pixel_fingerprint": "640x640:1060965904",
+          "png_sha256": "53a1f1dc8bb0dd4c306171513166eb0776616d36372bc0303e85342ee412b1b5",
+          "png_bytes": 148036,
+          "png_path": ".work/expansion-full/second-final/source/b/lingering-links/transfer-next-tick.png",
+          "state_path": ".work/expansion-full/second-final/source/b/lingering-links/transfer-next-tick.json"
+        },
+        {
+          "label": "reset",
+          "tick": 0,
+          "state_sha256": "b2c86971dedf44b11258ca504c0714c224978279a33c56371ba514cceeba6597",
+          "pixel_fingerprint": "640x640:2213426359",
+          "png_sha256": "a87dc8c835759f034acf39dee88c5883d461a086cdc1ccb4dea1e2c43ef2c6db",
+          "png_bytes": 17286,
+          "png_path": ".work/expansion-full/second-final/source/b/lingering-links/reset.png",
+          "state_path": ".work/expansion-full/second-final/source/b/lingering-links/reset.json"
+        },
+        {
+          "label": "reload",
+          "tick": 0,
+          "state_sha256": "b2c86971dedf44b11258ca504c0714c224978279a33c56371ba514cceeba6597",
+          "pixel_fingerprint": "640x640:1122426072",
+          "png_sha256": "37b2fb226ebf8ecf160e2756a53d03d66dbbed9ca312143118783c58bc7ad3a6",
+          "png_bytes": 17290,
+          "png_path": ".work/expansion-full/second-final/source/b/lingering-links/reload.png",
+          "state_path": ".work/expansion-full/second-final/source/b/lingering-links/reload.json"
+        }
+      ],
+      "transfer": "radius changes only the caller-supplied next contact graph",
+      "saved_png": {
+        "path": ".work/expansion-full/second-final/source/b/lingering-links/saved.png",
+        "sha256": "37b2fb226ebf8ecf160e2756a53d03d66dbbed9ca312143118783c58bc7ad3a6",
+        "bytes": 17290
+      },
+      "checks": [
+        "baseline",
+        "early and late logical ticks",
+        "edit without implicit tick",
+        "input transfer",
+        "exact reset and reload state",
+        "reset/reload canvas captures",
+        "save equals displayed canvas"
+      ]
+    },
+    {
+      "slug": "sensing-trails",
+      "frames": [
+        {
+          "label": "baseline",
+          "tick": 0,
+          "state_sha256": "fb12b0ed75534d4f20cec2fe793f383579822ed90ce8f0ed96c8a90361100981",
+          "pixel_fingerprint": "640x640:1275999674",
+          "png_sha256": "b1f3207a3e404823f30de014751fac8557e7a2870458abfbc7ed1e0b1c4037ea",
+          "png_bytes": 32000,
+          "png_path": ".work/expansion-full/second-final/source/b/sensing-trails/baseline.png",
+          "state_path": ".work/expansion-full/second-final/source/b/sensing-trails/baseline.json"
+        },
+        {
+          "label": "early-tick-001",
+          "tick": 1,
+          "state_sha256": "a24145148080b791963cbc6ee5dddbac5084accf28cfc937fab83d5f1363169b",
+          "pixel_fingerprint": "640x640:293893692",
+          "png_sha256": "abd84feb12ee32de0f87cb60469283cb75113700a9d61313c6f0ee86139f834e",
+          "png_bytes": 34062,
+          "png_path": ".work/expansion-full/second-final/source/b/sensing-trails/early-tick-001.png",
+          "state_path": ".work/expansion-full/second-final/source/b/sensing-trails/early-tick-001.json"
+        },
+        {
+          "label": "late-tick-030",
+          "tick": 30,
+          "state_sha256": "f279fdd6a39aa7d4da41be57d9d894c5ac3cfc77c497e977d0bed9733b96f52e",
+          "pixel_fingerprint": "640x640:991811417",
+          "png_sha256": "432f9f6c3ce046dafd3b147d435f0fe5bad3d8272050e6e749326c5c78313a80",
+          "png_bytes": 63372,
+          "png_path": ".work/expansion-full/second-final/source/b/sensing-trails/late-tick-030.png",
+          "state_path": ".work/expansion-full/second-final/source/b/sensing-trails/late-tick-030.json"
+        },
+        {
+          "label": "edited-without-tick",
+          "tick": 30,
+          "state_sha256": "a685b93acda823ebfe5a966295dfa11bc8932b7ba4a3d9de04239388dca597cc",
+          "pixel_fingerprint": "640x640:3837058724",
+          "png_sha256": "9804f891947aceaa295600ffea8df7c9b95810255120f0a0d6a5af3b06f17679",
+          "png_bytes": 61998,
+          "png_path": ".work/expansion-full/second-final/source/b/sensing-trails/edited-without-tick.png",
+          "state_path": ".work/expansion-full/second-final/source/b/sensing-trails/edited-without-tick.json"
+        },
+        {
+          "label": "transfer-next-tick",
+          "tick": 31,
+          "state_sha256": "ff32b633100b63f9d4ee13e8e8fa9ab1388256e737e5677124256dad77e125ae",
+          "pixel_fingerprint": "640x640:3178820256",
+          "png_sha256": "36ffec7e563fd9605d6a00857541cd003d0a66296fefa2ff04d2e4043e1d2d66",
+          "png_bytes": 62805,
+          "png_path": ".work/expansion-full/second-final/source/b/sensing-trails/transfer-next-tick.png",
+          "state_path": ".work/expansion-full/second-final/source/b/sensing-trails/transfer-next-tick.json"
+        },
+        {
+          "label": "reset",
+          "tick": 0,
+          "state_sha256": "fb12b0ed75534d4f20cec2fe793f383579822ed90ce8f0ed96c8a90361100981",
+          "pixel_fingerprint": "640x640:1275999674",
+          "png_sha256": "b1f3207a3e404823f30de014751fac8557e7a2870458abfbc7ed1e0b1c4037ea",
+          "png_bytes": 32000,
+          "png_path": ".work/expansion-full/second-final/source/b/sensing-trails/reset.png",
+          "state_path": ".work/expansion-full/second-final/source/b/sensing-trails/reset.json"
+        },
+        {
+          "label": "reload",
+          "tick": 0,
+          "state_sha256": "fb12b0ed75534d4f20cec2fe793f383579822ed90ce8f0ed96c8a90361100981",
+          "pixel_fingerprint": "640x640:1275999674",
+          "png_sha256": "b1f3207a3e404823f30de014751fac8557e7a2870458abfbc7ed1e0b1c4037ea",
+          "png_bytes": 32000,
+          "png_path": ".work/expansion-full/second-final/source/b/sensing-trails/reload.png",
+          "state_path": ".work/expansion-full/second-final/source/b/sensing-trails/reload.json"
+        }
+      ],
+      "transfer": "explicit scalar field substitution changes the next paired-probe input",
+      "saved_png": {
+        "path": ".work/expansion-full/second-final/source/b/sensing-trails/saved.png",
+        "sha256": "b1f3207a3e404823f30de014751fac8557e7a2870458abfbc7ed1e0b1c4037ea",
+        "bytes": 32000
+      },
+      "checks": [
+        "baseline",
+        "early and late logical ticks",
+        "edit without implicit tick",
+        "input transfer",
+        "exact reset and reload state",
+        "reset/reload canvas captures",
+        "save equals displayed canvas"
+      ]
+    },
+    {
+      "slug": "flocking-marks",
+      "frames": [
+        {
+          "label": "baseline",
+          "tick": 0,
+          "state_sha256": "7288f8fbbcd846ea6af8e91f7e38c3b8fdd05ada12ef021b35bba0c9caaa1fed",
+          "pixel_fingerprint": "640x640:2432787613",
+          "png_sha256": "d66a611e76ca801fe7bd73d74afdfd40559624bb91b29f8caa45f41c163125aa",
+          "png_bytes": 100033,
+          "png_path": ".work/expansion-full/second-final/source/b/flocking-marks/baseline.png",
+          "state_path": ".work/expansion-full/second-final/source/b/flocking-marks/baseline.json"
+        },
+        {
+          "label": "early-tick-001",
+          "tick": 1,
+          "state_sha256": "db01edc69222b00ed4da826dbd88e3b56108c20c2b78ab847a8dd24a1cdb9abd",
+          "pixel_fingerprint": "640x640:1644375414",
+          "png_sha256": "38567bf5a022fe80b48e9acd47084a7050e30704b35a7868fd648133dbf3c8b2",
+          "png_bytes": 98896,
+          "png_path": ".work/expansion-full/second-final/source/b/flocking-marks/early-tick-001.png",
+          "state_path": ".work/expansion-full/second-final/source/b/flocking-marks/early-tick-001.json"
+        },
+        {
+          "label": "late-tick-030",
+          "tick": 30,
+          "state_sha256": "e1217f98a3c643856f436578d542576500f9b50092caaa1f3aede7a57da50f80",
+          "pixel_fingerprint": "640x640:2333899824",
+          "png_sha256": "f8bc8a0dbadbee99f9dcd6597441eb3f07cbe856a23a3d14abaa9f4603452897",
+          "png_bytes": 81973,
+          "png_path": ".work/expansion-full/second-final/source/b/flocking-marks/late-tick-030.png",
+          "state_path": ".work/expansion-full/second-final/source/b/flocking-marks/late-tick-030.json"
+        },
+        {
+          "label": "edited-without-tick",
+          "tick": 30,
+          "state_sha256": "af0a4a506a7dd00867c7ee7ad7ba9e1ce820acd26afd670f5a8f22ff6a59c283",
+          "pixel_fingerprint": "640x640:3187263874",
+          "png_sha256": "4fd24d7cb4e93f10615deabc32d36fbae52b189609961607de687b7fe6535f51",
+          "png_bytes": 77740,
+          "png_path": ".work/expansion-full/second-final/source/b/flocking-marks/edited-without-tick.png",
+          "state_path": ".work/expansion-full/second-final/source/b/flocking-marks/edited-without-tick.json"
+        },
+        {
+          "label": "transfer-next-tick",
+          "tick": 31,
+          "state_sha256": "b7e0bf70dac40c4c73a677cb8e35e9a797a2425616e532cae8ea8e900b914e52",
+          "pixel_fingerprint": "640x640:2866582249",
+          "png_sha256": "253c7b65471d7d1dba6b6e76798eb4ecda7368314423cfe3afbb3f99b79fddba",
+          "png_bytes": 77058,
+          "png_path": ".work/expansion-full/second-final/source/b/flocking-marks/transfer-next-tick.png",
+          "state_path": ".work/expansion-full/second-final/source/b/flocking-marks/transfer-next-tick.json"
+        },
+        {
+          "label": "reset",
+          "tick": 0,
+          "state_sha256": "7288f8fbbcd846ea6af8e91f7e38c3b8fdd05ada12ef021b35bba0c9caaa1fed",
+          "pixel_fingerprint": "640x640:2432787613",
+          "png_sha256": "d66a611e76ca801fe7bd73d74afdfd40559624bb91b29f8caa45f41c163125aa",
+          "png_bytes": 100033,
+          "png_path": ".work/expansion-full/second-final/source/b/flocking-marks/reset.png",
+          "state_path": ".work/expansion-full/second-final/source/b/flocking-marks/reset.json"
+        },
+        {
+          "label": "reload",
+          "tick": 0,
+          "state_sha256": "7288f8fbbcd846ea6af8e91f7e38c3b8fdd05ada12ef021b35bba0c9caaa1fed",
+          "pixel_fingerprint": "640x640:2432787613",
+          "png_sha256": "d66a611e76ca801fe7bd73d74afdfd40559624bb91b29f8caa45f41c163125aa",
+          "png_bytes": 100033,
+          "png_path": ".work/expansion-full/second-final/source/b/flocking-marks/reload.png",
+          "state_path": ".work/expansion-full/second-final/source/b/flocking-marks/reload.json"
+        }
+      ],
+      "transfer": "fixed supplied graph changes without an implicit neighbor query",
+      "saved_png": {
+        "path": ".work/expansion-full/second-final/source/b/flocking-marks/saved.png",
+        "sha256": "d66a611e76ca801fe7bd73d74afdfd40559624bb91b29f8caa45f41c163125aa",
+        "bytes": 100033
+      },
+      "checks": [
+        "baseline",
+        "early and late logical ticks",
+        "edit without implicit tick",
+        "input transfer",
+        "exact reset and reload state",
+        "reset/reload canvas captures",
+        "save equals displayed canvas"
+      ]
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "input_sha256_after": {
+    "tests/native/agent-behavior-studies-javascript.mjs": "bb4900838566ea82cc526754d36aaf271ab0815f804d0f72ae86110059516840",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    "packages/javascript/src/contact-history-2d.js": "c0d4b60f020c6d88474b8e7106ce434883680885b59328176c344afc00b32bec",
+    "packages/javascript/src/sensor-motor-step-2d.js": "b053e8d7129e37dc45d6ada4ddbed03547d5783d3f0e663323b4d5b9d7a8580e",
+    "packages/javascript/src/flock-steer-2d.js": "c948f9334d9c283d52699d6e82656fcb3cf4a97cc865f605d0e0a4f1b7411abc",
+    "packages/javascript/src/internal/agent-behavior-utils.js": "39831681236febcb31e48de1e4a42713fb89c603c24d3c7b80cf1d4b9e8a9416",
+    "packages/javascript/src/radius-pairs-2d.js": "0e2fe20f0c03d9d93bd7e92a2eb50b28a3a18967111c38ffcddc41b3eff1b551",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/examples/lingering-links/index.html": "3d3de89bf16a9121027046b0949939f70098334da84981c1a8c83ad88f8a49c3",
+    "packages/javascript/examples/lingering-links/sketch.js": "42c1745769e2fdfd86e10ec7f9a374050dd51ab53fa91cd91e5239ab73cd0f7a",
+    "packages/javascript/examples/sensing-trails/index.html": "afb74bc367f66733aa5bdc2ece385f61b41907be827c1d9b19c8c81b27080c48",
+    "packages/javascript/examples/sensing-trails/sketch.js": "aab61ff9799d5e9ea050fb5e5abaca943d0112f30a67b3e677195f213291004a",
+    "packages/javascript/examples/flocking-marks/index.html": "926437c852be123ef7160f115603d69d5be0f492299a95efe990cae1a926e167",
+    "packages/javascript/examples/flocking-marks/sketch.js": "453c289eed21c7319c8f87821c3f0f4cc1ee8784372ea6300031f3dd804411c4",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  }
+}

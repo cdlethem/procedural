@@ -1,10 +1,18 @@
-# Pull marks in the browser
+# Pull marks
 
-This source-checkout starter deforms a straight scanline grid or three retained
-closed-spline contours through two radial pull influences (`geometry.radial-pull-2d`),
-sharing one transform across both draw modes. Cross-checked the grid/contour
-transform outputs against a real `RadialPull2D` + `ClosedSpline2D` Java reference
-run before writing the JS model test (byte-identical first grid and contour points).
+The standalone p5 page composes 96-sample source paths as rows, columns or spokes,
+then applies `radialPull2D` to every sample. Choose 4–80 paths and one or two
+independent pulls. Each pull has an editable center, radius and falloff power;
+source jitter, stroke weight, seed and palette are separate choices. Reset restores
+the authored starting composition. Save PNG exports transparent space around marks.
 
-This starter is not a browser-native conformance or reproduction claim; it is a
-scoped port of the accepted PullMarks composition's mechanism to p5.js.
+The page uses the private `deformation-marks-studies.js` draw adapter and shared
+`deformation-marks-controls.js` form. Its 640-pixel coordinates and seed schedule
+match the modern Studio study. Path count × 96 samples × active influences is
+bounded to 16,000 before drawing. The earlier `pull-marks.js` composition remains
+in the package as historical source for its grid/closed-spline transfer and Java
+cross-check; the new page does not claim that old composition has the same image.
+The portable operation remains in `src/radial-pull.js`.
+
+Radial pulling may fold a line near a center. It is a deformation, not an inverse
+mapping or a guarantee against self-intersection.

@@ -1,0 +1,129 @@
+{
+  "status": "passed",
+  "scope": "Original p5 Canvas2D periodic dye and texture study; no original artist recreation or GPU solver claim.",
+  "packageRoot": "/home/colin/dev/procedural/packages/javascript",
+  "input_sha256_before": {
+    "packages/javascript/examples/dye-currents/index.html": "e5a9dde97e1bb4342c4ed33c67fe47baf7e66c0f521f6261ad862eaa4454b503",
+    "packages/javascript/examples/dye-currents/sketch.js": "dddc7afa91f9a3a8d3d071563f4203b935e60dc1661be1e2f251cb949161cadd",
+    "packages/javascript/examples/dye-currents/study.js": "47c8eb1e58dd45ed934765c711cc78b927906ab30471346f380b15b7fc19272d",
+    "packages/javascript/src/project-periodic-velocity-2d.js": "34fdcdcc6d91543e1ec5b2f948d2f63db2037f8ccb159357b7cb5da0e64e4370",
+    "packages/javascript/src/advect-periodic-scalar-2d.js": "993acb08fbd4e3acb5f07dd7a0a9e5cbe2b8c46f3ab0098ebfabe55e6827179b",
+    "packages/javascript/src/diffuse-periodic-scalar-2d.js": "69c6d87e9ab4157450a12288bb4c82797e6ca213676bc6a48e0a7657e6df496e",
+    "packages/javascript/src/internal/periodic-grid.js": "f24de55bf6a503552a8a8529dd512796f518733ec6e2e0d8972609460df891f3",
+    "packages/javascript/src/marching-squares-2d.js": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d",
+    "packages/javascript/src/internal/systems-a-utils.js": "c6e4920c72648b559fb70395a51ead4deb47e972cd91ae54145d1b1c1e5d5204",
+    "packages/javascript/src/default-palettes.js": "17b7ae9166e35a266998a182f62e8dc0ad0d00db1e8c5934ff6e0034f4bcf8d1",
+    "tests/native/periodic-fluid-studies-javascript.mjs": "6fd65f5b0168a671584cd7442f330ae181deab49d6b9c4ed3e9f08e6375653d9",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  },
+  "captures": [
+    {
+      "name": "startup",
+      "image": ".work/expansion-full/fluid/native-final-04/startup.png",
+      "png_sha256": "023781cb3c3251c115dc19230035a34404144d2a54be948ccc0dda91457989db",
+      "state_sha256": "f6be72a676ac485d2080e56b28d5d399c375e88e0c6e28ae0d02041b0fda05c1",
+      "tick": 0,
+      "residualBefore": 0,
+      "residualAfter": 0
+    },
+    {
+      "name": "flow-30",
+      "image": ".work/expansion-full/fluid/native-final-04/flow-30.png",
+      "png_sha256": "13f9c848c2b31c439ca738305fde136ca894510eedfef777b5dc7e60a4b7cf6c",
+      "state_sha256": "7a45793b19e57be9ea9d382698ebc6d54ba03c97bec004bc76571b29b42945c0",
+      "tick": 30,
+      "residualBefore": 2.162990297841157,
+      "residualAfter": 1.9422186471620289
+    },
+    {
+      "name": "flow-120",
+      "image": ".work/expansion-full/fluid/native-final-04/flow-120.png",
+      "png_sha256": "fda3439fcaeeffabb711ecffa1dd8733a336de1e69d38d650f8570dec7593d6c",
+      "state_sha256": "264ee83157835f5170aaa9ffd8ecb768c5781e22b45957156c192bdd0d2e2c31",
+      "tick": 120,
+      "residualBefore": 4.897784212840193,
+      "residualAfter": 4.479054682847178
+    },
+    {
+      "name": "soft-120",
+      "image": ".work/expansion-full/fluid/native-final-04/soft-120.png",
+      "png_sha256": "fb6d1aac8e99495389f0bd8fa8ff5a3ad23e59091fe273e3f341fd3eabbcff9d",
+      "state_sha256": "264ee83157835f5170aaa9ffd8ecb768c5781e22b45957156c192bdd0d2e2c31",
+      "tick": 120,
+      "residualBefore": 4.897784212840193,
+      "residualAfter": 4.479054682847178
+    },
+    {
+      "name": "midnight-120",
+      "image": ".work/expansion-full/fluid/native-final-04/midnight-120.png",
+      "png_sha256": "d0ed2b918ece2f197d0288b0af10c4b95d3c4c0645eb9ff8f39b1210359d8d82",
+      "state_sha256": "264ee83157835f5170aaa9ffd8ecb768c5781e22b45957156c192bdd0d2e2c31",
+      "tick": 120,
+      "residualBefore": 4.897784212840193,
+      "residualAfter": 4.479054682847178
+    },
+    {
+      "name": "viscous-30",
+      "image": ".work/expansion-full/fluid/native-final-04/viscous-30.png",
+      "png_sha256": "8b7e8cfd14d68622a45475a9f1ea7e4375a4061210c8d8269016b3ff75b78c8c",
+      "state_sha256": "c9cc4b0b890f3999196b2af0541f399e42caf5f1f923f0de1b429cec94b83d3b",
+      "tick": 30,
+      "residualBefore": 2.0778754673929365,
+      "residualAfter": 1.871598539238796
+    },
+    {
+      "name": "strong-30",
+      "image": ".work/expansion-full/fluid/native-final-04/strong-30.png",
+      "png_sha256": "f2766f39d0885f07bc50cce26773e44a874546a1804d93c0ffefa753f6c9e063",
+      "state_sha256": "1116b92c170c15a8647384b379ec533b26c5f0405468b1c035e03639620591b1",
+      "tick": 30,
+      "residualBefore": 8.42843942295184,
+      "residualAfter": 7.721087874630103
+    },
+    {
+      "name": "unprojected-30",
+      "image": ".work/expansion-full/fluid/native-final-04/unprojected-30.png",
+      "png_sha256": "8c453c4bc92fed4ef580bd47a137121ef52582adb389111c44e9b3dce3d1a17e",
+      "state_sha256": "38094ce308c0db2e0ea13a1a7d2954373f4429ade02512cb2c8f554a7aeb682e",
+      "tick": 30,
+      "residualBefore": 6.447890254499699,
+      "residualAfter": 6.447890254499699
+    },
+    {
+      "name": "striped-30",
+      "image": ".work/expansion-full/fluid/native-final-04/striped-30.png",
+      "png_sha256": "12d23f9af2b5db57915e0457267d6989f7d52aab0d556571a4c7dba8e5ba50e9",
+      "state_sha256": "75b2d46028fca061ef827da6711a34d0908c06684fa863209c701f0cd43de16d",
+      "tick": 30,
+      "residualBefore": 2.162990297841157,
+      "residualAfter": 1.9422186471620289
+    }
+  ],
+  "checks": [
+    "startup/30/120 state and residual",
+    "appearance preserves complete numerical state",
+    "injection and viscosity alter future flow",
+    "projection bypass retains divergence",
+    "texture substitution preserves velocity",
+    "reset/reload/exact replay",
+    "completed 720px PNG equals displayed canvas"
+  ],
+  "errors": [],
+  "browser": "153.0.8010.12",
+  "input_sha256_after": {
+    "packages/javascript/examples/dye-currents/index.html": "e5a9dde97e1bb4342c4ed33c67fe47baf7e66c0f521f6261ad862eaa4454b503",
+    "packages/javascript/examples/dye-currents/sketch.js": "dddc7afa91f9a3a8d3d071563f4203b935e60dc1661be1e2f251cb949161cadd",
+    "packages/javascript/examples/dye-currents/study.js": "47c8eb1e58dd45ed934765c711cc78b927906ab30471346f380b15b7fc19272d",
+    "packages/javascript/src/project-periodic-velocity-2d.js": "34fdcdcc6d91543e1ec5b2f948d2f63db2037f8ccb159357b7cb5da0e64e4370",
+    "packages/javascript/src/advect-periodic-scalar-2d.js": "993acb08fbd4e3acb5f07dd7a0a9e5cbe2b8c46f3ab0098ebfabe55e6827179b",
+    "packages/javascript/src/diffuse-periodic-scalar-2d.js": "69c6d87e9ab4157450a12288bb4c82797e6ca213676bc6a48e0a7657e6df496e",
+    "packages/javascript/src/internal/periodic-grid.js": "f24de55bf6a503552a8a8529dd512796f518733ec6e2e0d8972609460df891f3",
+    "packages/javascript/src/marching-squares-2d.js": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d",
+    "packages/javascript/src/internal/systems-a-utils.js": "c6e4920c72648b559fb70395a51ead4deb47e972cd91ae54145d1b1c1e5d5204",
+    "packages/javascript/src/default-palettes.js": "17b7ae9166e35a266998a182f62e8dc0ad0d00db1e8c5934ff6e0034f4bcf8d1",
+    "tests/native/periodic-fluid-studies-javascript.mjs": "6fd65f5b0168a671584cd7442f330ae181deab49d6b9c4ed3e9f08e6375653d9",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  }
+}

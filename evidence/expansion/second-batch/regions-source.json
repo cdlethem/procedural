@@ -1,0 +1,223 @@
+{
+  "status": "passed",
+  "runtime": "p5 2.3.2 Canvas2D density1",
+  "scope": "Two original p5 studies: full retained state and pixels, independent appearance, geometry substitution, reset/reload, saved PNG and parsed SVG. No artist recreation or support acceptance claim.",
+  "package_root": "/home/colin/dev/procedural/packages/javascript",
+  "input_sha256_before": {
+    "tests/native/thick-regions-javascript.mjs": "81c73de23a9e1855476cc6e5d85f539dd18dd5bf604a10a94c8946db81eb5512",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    "tests/native/fixtures/region-oracles.json": "e8628ebf5acabe4683c2c9e960c60cc544cea993adfc472b56e6375f19743e4c",
+    "packages/javascript/src/internal/region-utils.js": "b61230427fa77d2c242371521958908b274dca4e996d1842fe93954ab33b457d",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/region-clearance-2d.js": "b91ac1d6a5202059ae7e2b7ec6ac42a691e8c78876acaa58cb2739290e7153e6",
+    "packages/javascript/src/tapered-stroke-strip-2d.js": "cd483631a4da5c78a61df2d706f515f7a8c6a66e483965fed4ed64359c71bdf2",
+    "packages/javascript/src/select-tapered-stroke-strips-2d.js": "02ffaddd4f0cfe26197f7eec07d62c524b2a1c8e1cf3e5694ce3ce352f8079ee",
+    "packages/javascript/src/hatch-region-lines-2d.js": "c171fd8218b94813758d1cbb2b1c073fc82faac2f972251a4e2f8da833cc52a4",
+    "packages/javascript/src/svg-plot-plan-01.js": "7d2f3d38328e928f6549114e856e9de2d1f5163551ab1c1fcc1b918bce513dbd",
+    "catalog/operations/region-clearance-2d.json": "0fd5f82eec3932172575763e8d19f4a7ccf3f369fcb069d5ca44867e8da8e20e",
+    "fixtures/operations/region-clearance-2d.json": "c0560985bfcb79b6a86838c905d9e9b7545bb8eca98c2c39a40bb438bb8100f1",
+    "catalog/operations/tapered-stroke-strip-2d.json": "b948a7896f4d4b619e3418184d1923e4b505f6b29c05845c108852260d92ca15",
+    "fixtures/operations/tapered-stroke-strip-2d.json": "d8985be36ab224e526a474e5d2681d516636632af12ddea9fee6eb9a0c31a098",
+    "catalog/operations/select-tapered-stroke-strips-2d.json": "26403f5c856cc5df92e49555cc0912190b43c2a25f4f1b525c2ece367b45258c",
+    "fixtures/operations/select-tapered-stroke-strips-2d.json": "f1c267e9ab3e82969ba1bec56288c0fa97df3ac66f985ea0243e1351fc1eb1d9",
+    "catalog/operations/hatch-region-lines-2d.json": "fe5ef3bfaef5b9b86bcfc8ebeb0f1283daf165a5ab9d8f5e8e07db8cef814d97",
+    "fixtures/operations/hatch-region-lines-2d.json": "22fa732a9f0d79701e8f97006cfc7c218e0c7ae2ada2b5e0bb88e7585f3ff580",
+    "catalog/operations/svg-plot-plan-01.json": "218ce901b5b14746c15d0f17bafb9166859d742b4bd967d1dd69c9fcc3fe5e94",
+    "fixtures/operations/svg-plot-plan-01.json": "8636573a04c79e5c10e61c803a32d0a735f239064c4e3979c2a793f398cfa4a6",
+    "packages/javascript/examples/guarded-bands/README.md": "61b23ac5488aad6a0b1421b84c0756d993f5c6a26b50df521fb2c9b0386d44f3",
+    "packages/javascript/examples/guarded-bands/index.html": "53ca624d9936e6f67d795404cef05323901cad804a4885792f8e175e58aaeae5",
+    "packages/javascript/examples/guarded-bands/sketch.js": "2f42253337033fb66602a4421583e3fbaf1377e018cdc80ff7cf3262e10ed432",
+    "packages/javascript/examples/hatched-islands/README.md": "4c038eb6d8883227c3fe3ad4246e4612045908b6ba1be9306b2dcc77c932049d",
+    "packages/javascript/examples/hatched-islands/index.html": "aaca7f4a0ae0ee0a2f45af0fafa2a3a6d5e7e0282fc14f8fa8460840d248b44d",
+    "packages/javascript/examples/hatched-islands/sketch.js": "bdc5d2d538e1eebadf963d5df8a0b21a5d2b5a2c7c17ec5fb44013f2a2fdd34e",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  },
+  "pure_cases": 49,
+  "studies": [
+    {
+      "slug": "guarded-bands",
+      "frames": [
+        {
+          "label": "baseline",
+          "state_sha256": "0c89d2b0459a60c57c27d38b4e37fee453cad5e058e69a43ef0e43b51b519a9e",
+          "png_sha256": "b9d4d67dd223e870da0ecd9dc98bd9379fe5ba7741e9b43bebfedf0d37410065",
+          "png_bytes": 148931,
+          "png_path": ".work/thick-regions-native-MNq2vX/guarded-bands/baseline.png",
+          "state_path": ".work/thick-regions-native-MNq2vX/guarded-bands/baseline.json"
+        },
+        {
+          "label": "first-control",
+          "state_sha256": "5e739006d8e2325a9e6e7631fbbd02ca06f199eb3eb319aee1be3ad9f304fcb5",
+          "png_sha256": "b5c3279de79b32e6a2bdd58f1d5e1d1ee00e10493db3e0af7a0d9586e30cf836",
+          "png_bytes": 138968,
+          "png_path": ".work/thick-regions-native-MNq2vX/guarded-bands/first-control.png",
+          "state_path": ".work/thick-regions-native-MNq2vX/guarded-bands/first-control.json"
+        },
+        {
+          "label": "second-control",
+          "state_sha256": "fd639f6e5f116b9df2d66c1947f3d454a55e188d139ab0c92e389da5f3d72904",
+          "png_sha256": "9d0c79942fa55e8b1c6f5dffde0aebb840ed1e376340b073b8ef728630160009",
+          "png_bytes": 114394,
+          "png_path": ".work/thick-regions-native-MNq2vX/guarded-bands/second-control.png",
+          "state_path": ".work/thick-regions-native-MNq2vX/guarded-bands/second-control.json"
+        },
+        {
+          "label": "appearance",
+          "state_sha256": "1cd767c6ded3289d491970846b6a3c4b103032de35b6536861499098a06d1022",
+          "png_sha256": "85497b79f5d6a52aabe1233344c48bdf7388d5b5ef2e7a264bf86a9cb29b3b72",
+          "png_bytes": 148753,
+          "png_path": ".work/thick-regions-native-MNq2vX/guarded-bands/appearance.png",
+          "state_path": ".work/thick-regions-native-MNq2vX/guarded-bands/appearance.json"
+        },
+        {
+          "label": "geometry-transfer",
+          "state_sha256": "7beb31886db9cfbd44150256e025e9fb5abe583172d541d6579e8e733036ba90",
+          "png_sha256": "d1df69e524cf31734611e3121f150a746236ef435649179ae9f82136816ad172",
+          "png_bytes": 112268,
+          "png_path": ".work/thick-regions-native-MNq2vX/guarded-bands/geometry-transfer.png",
+          "state_path": ".work/thick-regions-native-MNq2vX/guarded-bands/geometry-transfer.json"
+        },
+        {
+          "label": "reset",
+          "state_sha256": "0c89d2b0459a60c57c27d38b4e37fee453cad5e058e69a43ef0e43b51b519a9e",
+          "png_sha256": "b9d4d67dd223e870da0ecd9dc98bd9379fe5ba7741e9b43bebfedf0d37410065",
+          "png_bytes": 148931,
+          "png_path": ".work/thick-regions-native-MNq2vX/guarded-bands/reset.png",
+          "state_path": ".work/thick-regions-native-MNq2vX/guarded-bands/reset.json"
+        },
+        {
+          "label": "reload",
+          "state_sha256": "0c89d2b0459a60c57c27d38b4e37fee453cad5e058e69a43ef0e43b51b519a9e",
+          "png_sha256": "b9d4d67dd223e870da0ecd9dc98bd9379fe5ba7741e9b43bebfedf0d37410065",
+          "png_bytes": 148931,
+          "png_path": ".work/thick-regions-native-MNq2vX/guarded-bands/reload.png",
+          "state_path": ".work/thick-regions-native-MNq2vX/guarded-bands/reload.json"
+        }
+      ],
+      "transfer": "candidates",
+      "saved_png": {
+        "path": ".work/thick-regions-native-MNq2vX/guarded-bands/saved.png",
+        "sha256": "b9d4d67dd223e870da0ecd9dc98bd9379fe5ba7741e9b43bebfedf0d37410065",
+        "bytes": 148931
+      },
+      "svg": null,
+      "checks": [
+        "complete state/pixels under geometry controls",
+        "appearance retains complete geometry",
+        "supplied geometry substitution",
+        "exact reset and reload",
+        "saved PNG matches displayed canvas"
+      ]
+    },
+    {
+      "slug": "hatched-islands",
+      "frames": [
+        {
+          "label": "baseline",
+          "state_sha256": "69d6717810cf56458cb70f6caaa9854499d04a546af2941e201d8036285d632b",
+          "png_sha256": "8885cbe55cc4a60967452067b4135e95c9fa01200f77cd53e5314f4e255e962e",
+          "png_bytes": 142101,
+          "png_path": ".work/thick-regions-native-MNq2vX/hatched-islands/baseline.png",
+          "state_path": ".work/thick-regions-native-MNq2vX/hatched-islands/baseline.json"
+        },
+        {
+          "label": "first-control",
+          "state_sha256": "c263c8b2ea846142208355ce8d45920b7786ae31ca87deb7fdf293ae8d548953",
+          "png_sha256": "b9bf299a62b4a7eaf6a34dd33d90f7314134a62538754dbcadeecc0fb46c3714",
+          "png_bytes": 118061,
+          "png_path": ".work/thick-regions-native-MNq2vX/hatched-islands/first-control.png",
+          "state_path": ".work/thick-regions-native-MNq2vX/hatched-islands/first-control.json"
+        },
+        {
+          "label": "second-control",
+          "state_sha256": "3f823f7c82cf1a478514617b5d561f683b5ef16158e87cf83e9d17f4f0c4b0ba",
+          "png_sha256": "10b002f5d0dccab595929d1d3a00bd8a1ca45295468c971968721b8f3781e333",
+          "png_bytes": 156089,
+          "png_path": ".work/thick-regions-native-MNq2vX/hatched-islands/second-control.png",
+          "state_path": ".work/thick-regions-native-MNq2vX/hatched-islands/second-control.json"
+        },
+        {
+          "label": "appearance",
+          "state_sha256": "b49714d9119e4f6b8d62b9a78e14ab4722c18985511f98a3a574e942f7e6b73d",
+          "png_sha256": "7c630996feea10c914118c9a52f47ede53d7e8028787bcacc661a9af62704f85",
+          "png_bytes": 141279,
+          "png_path": ".work/thick-regions-native-MNq2vX/hatched-islands/appearance.png",
+          "state_path": ".work/thick-regions-native-MNq2vX/hatched-islands/appearance.json"
+        },
+        {
+          "label": "geometry-transfer",
+          "state_sha256": "28a16f75a7a3af6ec8747d3321cbfef691f7bd424cdc5675431a2326964c4c36",
+          "png_sha256": "a1e09ba0a88969fc1f698cf3c54eb725608546af46075032ddd8e6d103dda0ff",
+          "png_bytes": 121767,
+          "png_path": ".work/thick-regions-native-MNq2vX/hatched-islands/geometry-transfer.png",
+          "state_path": ".work/thick-regions-native-MNq2vX/hatched-islands/geometry-transfer.json"
+        },
+        {
+          "label": "reset",
+          "state_sha256": "69d6717810cf56458cb70f6caaa9854499d04a546af2941e201d8036285d632b",
+          "png_sha256": "8885cbe55cc4a60967452067b4135e95c9fa01200f77cd53e5314f4e255e962e",
+          "png_bytes": 142101,
+          "png_path": ".work/thick-regions-native-MNq2vX/hatched-islands/reset.png",
+          "state_path": ".work/thick-regions-native-MNq2vX/hatched-islands/reset.json"
+        },
+        {
+          "label": "reload",
+          "state_sha256": "69d6717810cf56458cb70f6caaa9854499d04a546af2941e201d8036285d632b",
+          "png_sha256": "8885cbe55cc4a60967452067b4135e95c9fa01200f77cd53e5314f4e255e962e",
+          "png_bytes": 142101,
+          "png_path": ".work/thick-regions-native-MNq2vX/hatched-islands/reload.png",
+          "state_path": ".work/thick-regions-native-MNq2vX/hatched-islands/reload.json"
+        }
+      ],
+      "transfer": "region",
+      "saved_png": {
+        "path": ".work/thick-regions-native-MNq2vX/hatched-islands/saved.png",
+        "sha256": "8885cbe55cc4a60967452067b4135e95c9fa01200f77cd53e5314f4e255e962e",
+        "bytes": 142101
+      },
+      "svg": {
+        "path": ".work/thick-regions-native-MNq2vX/hatched-islands/saved.svg",
+        "sha256": "173e28735ac6c59c92b3a944a70877cda06da7c3bbec4fd6c41118363f30d16d",
+        "paths": 50
+      },
+      "checks": [
+        "complete state/pixels under geometry controls",
+        "appearance retains complete geometry",
+        "supplied geometry substitution",
+        "exact reset and reload",
+        "saved PNG matches displayed canvas",
+        "downloaded SVG parses and equals core path stream"
+      ]
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "input_sha256_after": {
+    "tests/native/thick-regions-javascript.mjs": "81c73de23a9e1855476cc6e5d85f539dd18dd5bf604a10a94c8946db81eb5512",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    "tests/native/fixtures/region-oracles.json": "e8628ebf5acabe4683c2c9e960c60cc544cea993adfc472b56e6375f19743e4c",
+    "packages/javascript/src/internal/region-utils.js": "b61230427fa77d2c242371521958908b274dca4e996d1842fe93954ab33b457d",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/region-clearance-2d.js": "b91ac1d6a5202059ae7e2b7ec6ac42a691e8c78876acaa58cb2739290e7153e6",
+    "packages/javascript/src/tapered-stroke-strip-2d.js": "cd483631a4da5c78a61df2d706f515f7a8c6a66e483965fed4ed64359c71bdf2",
+    "packages/javascript/src/select-tapered-stroke-strips-2d.js": "02ffaddd4f0cfe26197f7eec07d62c524b2a1c8e1cf3e5694ce3ce352f8079ee",
+    "packages/javascript/src/hatch-region-lines-2d.js": "c171fd8218b94813758d1cbb2b1c073fc82faac2f972251a4e2f8da833cc52a4",
+    "packages/javascript/src/svg-plot-plan-01.js": "7d2f3d38328e928f6549114e856e9de2d1f5163551ab1c1fcc1b918bce513dbd",
+    "catalog/operations/region-clearance-2d.json": "0fd5f82eec3932172575763e8d19f4a7ccf3f369fcb069d5ca44867e8da8e20e",
+    "fixtures/operations/region-clearance-2d.json": "c0560985bfcb79b6a86838c905d9e9b7545bb8eca98c2c39a40bb438bb8100f1",
+    "catalog/operations/tapered-stroke-strip-2d.json": "b948a7896f4d4b619e3418184d1923e4b505f6b29c05845c108852260d92ca15",
+    "fixtures/operations/tapered-stroke-strip-2d.json": "d8985be36ab224e526a474e5d2681d516636632af12ddea9fee6eb9a0c31a098",
+    "catalog/operations/select-tapered-stroke-strips-2d.json": "26403f5c856cc5df92e49555cc0912190b43c2a25f4f1b525c2ece367b45258c",
+    "fixtures/operations/select-tapered-stroke-strips-2d.json": "f1c267e9ab3e82969ba1bec56288c0fa97df3ac66f985ea0243e1351fc1eb1d9",
+    "catalog/operations/hatch-region-lines-2d.json": "fe5ef3bfaef5b9b86bcfc8ebeb0f1283daf165a5ab9d8f5e8e07db8cef814d97",
+    "fixtures/operations/hatch-region-lines-2d.json": "22fa732a9f0d79701e8f97006cfc7c218e0c7ae2ada2b5e0bb88e7585f3ff580",
+    "catalog/operations/svg-plot-plan-01.json": "218ce901b5b14746c15d0f17bafb9166859d742b4bd967d1dd69c9fcc3fe5e94",
+    "fixtures/operations/svg-plot-plan-01.json": "8636573a04c79e5c10e61c803a32d0a735f239064c4e3979c2a793f398cfa4a6",
+    "packages/javascript/examples/guarded-bands/README.md": "61b23ac5488aad6a0b1421b84c0756d993f5c6a26b50df521fb2c9b0386d44f3",
+    "packages/javascript/examples/guarded-bands/index.html": "53ca624d9936e6f67d795404cef05323901cad804a4885792f8e175e58aaeae5",
+    "packages/javascript/examples/guarded-bands/sketch.js": "2f42253337033fb66602a4421583e3fbaf1377e018cdc80ff7cf3262e10ed432",
+    "packages/javascript/examples/hatched-islands/README.md": "4c038eb6d8883227c3fe3ad4246e4612045908b6ba1be9306b2dcc77c932049d",
+    "packages/javascript/examples/hatched-islands/index.html": "aaca7f4a0ae0ee0a2f45af0fafa2a3a6d5e7e0282fc14f8fa8460840d248b44d",
+    "packages/javascript/examples/hatched-islands/sketch.js": "bdc5d2d538e1eebadf963d5df8a0b21a5d2b5a2c7c17ec5fb44013f2a2fdd34e",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  }
+}

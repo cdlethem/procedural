@@ -22,9 +22,12 @@ if (existsSync(legacy))
     ".work/toolchains/playwright",
   );
 const { chromium } = await import(existsSync(legacy) ? legacy : "playwright");
-const out = join(root, ".work/web-app-review/previews");
+const landingOnly = process.argv.includes("--landing");
+const variant = landingOnly ? "landing" : "";
+const out = join(root, ".work/web-app-review/previews", variant);
+const previewDir = join(app, "public/previews", variant);
 await mkdir(out, { recursive: true });
-await mkdir(join(app, "public/previews"), { recursive: true });
+await mkdir(previewDir, { recursive: true });
 const gallery = JSON.parse(
   await readFile(join(app, "lib/generated-gallery.json"), "utf8"),
 );
@@ -46,6 +49,41 @@ try {
 }
 const results = [];
 try {
+  if (landingOnly) {
+    const page = await browser.newPage({ viewport: { width: 1440, height: 1100 } });
+    const errors = [];
+    page.on("pageerror", (error) => errors.push(String(error)));
+    try {
+      const response = await page.goto(base, { waitUntil: "networkidle", timeout: 45000 });
+      if (!response?.ok()) throw new Error(`Landing page returned HTTP ${response?.status()}`);
+      await page.locator('[data-render-status="ready"]').waitFor({ timeout: 45000 });
+      await page.getByRole("button", { name: "Pause rotation", exact: true }).click();
+      const choices = page.getByRole("group", { name: "Choose a live study", exact: true }).getByRole("button");
+      const count = await choices.count();
+      if (!count) throw new Error("Landing carousel has no studies");
+      for (let index = 0; index < count; index += 1) {
+        await choices.nth(index).click();
+        await page.locator('[data-active-study] [data-ready="true"]').waitFor({ timeout: 45000 });
+        const slug = await page.locator("[data-active-study]").getAttribute("data-active-study");
+        const encoded = await page.locator('[data-render-status="ready"] canvas').evaluate((canvas) => {
+          if (canvas.width !== 640 || canvas.height !== 640) throw new Error("Expected native 640px canvas");
+          return canvas.toDataURL("image/png");
+        });
+        if (errors.length) throw new Error(errors.join("\n"));
+        const image = Buffer.from(encoded.slice(encoded.indexOf(",") + 1), "base64");
+        await writeFile(join(out, `${slug}.png`), image);
+        await writeFile(join(previewDir, `${slug}.png`), image);
+        results.push({
+          slug, status: "passed",
+          sha256: createHash("sha256").update(image).digest("hex"),
+          image: `.work/web-app-review/previews/landing/${slug}.png`,
+        });
+        console.log(`${slug}: rendered with landing palette`);
+      }
+    } finally {
+      await page.close();
+    }
+  } else {
   for (const technique of gallery.techniques) {
     const page = await browser.newPage({
       viewport: { width: 1000, height: 1100 },
@@ -83,7 +121,7 @@ try {
       );
       await writeFile(join(out, `${technique.slug}.png`), image);
       await writeFile(
-        join(app, "public/previews", `${technique.slug}.png`),
+        join(previewDir, `${technique.slug}.png`),
         image,
       );
       results.push({
@@ -105,6 +143,7 @@ try {
       await page.close();
     }
   }
+  }
 } finally {
   await browser.close();
 }
@@ -113,11 +152,14 @@ await writeFile(
   JSON.stringify(
     {
       scope:
-        "Default app-adapter renders captured from running technique pages as native 640px canvas PNGs; this is preview evidence, not native-example or corpus acceptance.",
+        landingOnly
+          ? "Default landing studies with their curated palettes, captured from the real 640px renderer; not corpus acceptance."
+          : "Default app-adapter renders captured from running technique pages as native 640px canvas PNGs; this is preview evidence, not native-example or corpus acceptance.",
       browser: "Chromium",
       sourceBinding: {
         version: gallery.studioBinding.version,
         catalogSha256: gallery.studioBinding.catalogSha256,
+        ...(landingOnly ? { landingSourceSha256: createHash("sha256").update(await readFile(join(app, "components/LandingStudy.tsx"))).digest("hex") } : {}),
       },
       results,
     },
@@ -126,7 +168,7 @@ await writeFile(
   ) + "\n",
 );
 await writeFile(
-  join(app, "public/previews", "manifest.json"),
+  join(previewDir, "manifest.json"),
   JSON.stringify(
     {
       sourceBinding: {

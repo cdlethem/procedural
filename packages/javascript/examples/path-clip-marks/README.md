@@ -1,13 +1,14 @@
-# Path clip marks in the browser
+# Path clip marks in p5.js
 
-This source-checkout starter traces six seeded `field.gradient-noise-2d-01`-driven
-paths into 960 short segments, then clips them against a notched polygon
-(`geometry.clip-segments-simple-polygon-2d`). The notch depth toggle rebuilds the
-retained clip; per-path palette and the unclipped-source overlay are redraw-only
-treatments, matching the Java example's own reclip/redraw separation. Cross-checked
-the full trace+clip pipeline against a real `GradientPath2D` + `SegmentClip2D` Java
-reference run before writing the JS model test (960 sources, 405 clipped pieces,
-byte-identical first clipped segment and its source index).
+This standalone example composes editable source paths with
+`geometry.clip-segments-simple-polygon-2d`. Choose straight rows, seeded wander or
+a fan, then independently position and reshape a rectangle, bottom portal, right
+bay or regular polygon. The controls expose path density, source variation,
+boundary geometry, line weight and optional boundary outline. Reset restores the
+defaults, reload restores the page, and PNG export retains transparent space.
 
-This starter is not a browser-native conformance or reproduction claim; it is a
-scoped port of the accepted PathClipMarks composition's mechanism to p5.js.
+`path-clip-quality.js` holds this example's source layout, boundary construction
+and explicit combined-work preflight. The portable clipping computation remains in
+`src/segment-clip.js`. The historical six-trace Java comparison model remains in
+`path-clip-marks.js`, with its focused test unchanged; it is separate from this
+new editable composition.

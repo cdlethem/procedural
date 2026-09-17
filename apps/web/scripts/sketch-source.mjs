@@ -45,6 +45,30 @@ export function sketchSources(root) {
     };
     visit(dispatch, (node) => {
       if (node.type !== "SwitchCase" || node.test?.type !== "StringLiteral") return;
+      if (group === "paths" && ["rounded-panels", "road-margins", "nested-contour-strokes", "faceted-silhouettes", "concave-grain"].includes(node.test.value)) {
+        const target = resolve(root, "apps/web/lib/adapters/paths-a-quality.ts");
+        results.set(node.test.value, exampleDrawingSource(root, target, "drawPathsAQuality"));
+        return;
+      }
+      if (group === "systems" && ["reaction-spots", "reaction-stripes", "organic-cells", "geometric-generations"].includes(node.test.value)) {
+        const target = resolve(root, "apps/web/lib/adapters/systems-a-quality.ts");
+        results.set(node.test.value, exampleDrawingSource(root, target, "drawSystemsAQuality"));
+        return;
+      }
+      if (group === "materials") {
+        const fields = {
+          "quantized-stripes": "drawQuantizedStripesField",
+          "perceptual-bands": "drawPerceptualBandsField",
+          "reduced-mosaic": "drawReducedMosaicField",
+          "nearest-feature-mosaic": "drawNearestFeatureField",
+        };
+        const entrypoint = fields[node.test.value];
+        if (entrypoint) {
+          const target = resolve(root, "apps/web/lib/adapters/materials-a-fields.ts");
+          results.set(node.test.value, exampleDrawingSource(root, target, entrypoint));
+          return;
+        }
+      }
       const call = node.consequent.find((value) => value.type === "ReturnStatement")?.argument;
       if (call?.type !== "CallExpression" || call.callee.type !== "Identifier")
         throw Error(`Unsupported source dispatch for ${node.test.value}`);
@@ -56,8 +80,10 @@ export function sketchSources(root) {
         if (specifier?.type !== "ImportSpecifier") throw Error(`Missing drawing declaration for ${node.test.value}`);
         const target = resolve(root, dirname(path), statement.source.value);
         const examples = resolve(root, "packages/javascript/examples") + sep;
-        if (!target.startsWith(examples) || !target.endsWith(".js"))
-          throw Error(`Drawing source must be an editable JavaScript example: ${node.test.value}`);
+        const adapters = resolve(root, "apps/web/lib/adapters") + sep;
+        if (!(target.startsWith(examples) && target.endsWith(".js")) &&
+            !(target.startsWith(adapters) && target.endsWith(".ts")))
+          throw Error(`Drawing source must be an editable example or adapter: ${node.test.value}`);
         const importedName = specifier.imported.name ?? specifier.imported.value;
         results.set(node.test.value, exampleDrawingSource(root, target, importedName));
         return;
@@ -92,7 +118,7 @@ export function sketchSources(root) {
 /** Follow local declarations only; public operation/RNG imports remain visible imports. */
 function exampleDrawingSource(root, target, entrypoint) {
   const source = readFileSync(target, "utf8");
-  const ast = parse(source, { sourceType: "module" });
+  const ast = parse(source, { sourceType: "module", plugins: target.endsWith(".ts") ? ["typescript"] : [] });
   const declarations = new Map(), imports = [];
   for (const statement of ast.program.body) {
     const node = statement.declaration ?? statement;
@@ -116,17 +142,13 @@ function exampleDrawingSource(root, target, entrypoint) {
     selected.add(declaration); visit(declaration);
   };
   collect(entrypoint);
-  const importText = imports.flatMap((statement) => {
-    const bindings = statement.specifiers.filter((specifier) => names.has(specifier.local.name));
-    if (!bindings.length) return [];
-    if (bindings.some((specifier) => specifier.type !== "ImportSpecifier"))
-      throw Error(`Example drawing dependencies require named imports: ${target}`);
-    return [`import { ${bindings.map((specifier) => source.slice(specifier.start, specifier.end)).join(", ")} } from ${JSON.stringify(statement.source.value)};`];
-  });
+  const importText = imports.flatMap((statement) =>
+    statement.specifiers.some((specifier) => names.has(specifier.local.name))
+      ? [source.slice(statement.start, statement.end)] : []);
   const body = [...selected].sort((a, b) => a.start - b.start).map((node) => source.slice(node.start, node.end));
   const path = relative(root, target).split(sep).join("/");
   return {
     sketchSourcePath: path,
-    sketchSource: `// Actual shared native and app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to ${path}.\n\n${importText.join("\n")}\n\n${body.join("\n\n")}\n`,
+    sketchSource: `// Actual ${target.endsWith(".ts") ? "app" : "shared native and app"} drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to ${path}.\n\n${importText.join("\n")}\n\n${body.join("\n\n")}\n`,
   };
 }

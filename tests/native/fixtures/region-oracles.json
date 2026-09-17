@@ -1,0 +1,1963 @@
+{
+  "status": "draft-analytical-fixtures",
+  "notes": "Analytical draft vectors. Expected records are partial only where invariant checks are explicitly named; root will split into catalog fixtures after freeze. All region outer rings CCW, holes CW, and begin at lexicographically least vertex.",
+  "region_clearance": [
+    {
+      "id": "parallel_rectangles_exact_distance",
+      "input": {
+        "a": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "holes": []
+        },
+        "b": {
+          "outer": [
+            [
+              5,
+              0
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              7,
+              2
+            ],
+            [
+              5,
+              2
+            ]
+          ],
+          "holes": []
+        },
+        "maxWork": 10000
+      },
+      "expected": {
+        "relation": "DISJOINT",
+        "minimumDistance": 3,
+        "witness": {
+          "kind": "MINIMUM_PAIR",
+          "aRing": 0,
+          "aEdge": 0,
+          "bRing": 0,
+          "bEdge": 0,
+          "vertex": -1
+        }
+      }
+    },
+    {
+      "id": "filled_region_inside_other_hole_is_disjoint",
+      "input": {
+        "a": {
+          "outer": [
+            [
+              -0.5,
+              -0.5
+            ],
+            [
+              0.5,
+              -0.5
+            ],
+            [
+              0.5,
+              0.5
+            ],
+            [
+              -0.5,
+              0.5
+            ]
+          ],
+          "holes": []
+        },
+        "b": {
+          "outer": [
+            [
+              -4,
+              -4
+            ],
+            [
+              4,
+              -4
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              -4,
+              4
+            ]
+          ],
+          "holes": [
+            [
+              [
+                -1,
+                -1
+              ],
+              [
+                1,
+                -1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                -1,
+                1
+              ]
+            ]
+          ]
+        },
+        "maxWork": 10000
+      },
+      "expected": {
+        "relation": "DISJOINT",
+        "minimumDistance": 0.5
+      }
+    },
+    {
+      "id": "boundary_touch_intersects",
+      "input": {
+        "a": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "holes": []
+        },
+        "b": {
+          "outer": [
+            [
+              2,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              2,
+              2
+            ]
+          ],
+          "holes": []
+        },
+        "maxWork": 10000
+      },
+      "expected": {
+        "relation": "INTERSECTS",
+        "minimumDistance": null,
+        "witnessKind": "EDGE_CONTACT"
+      }
+    }
+  ],
+  "tapered_strip": [
+    {
+      "id": "open_linear_taper_butt",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "widths": [
+          2,
+          4
+        ],
+        "closed": false,
+        "cap": "BUTT",
+        "join": "BEVEL",
+        "miterLimit": 1,
+        "maxWork": 10000
+      },
+      "expected": {
+        "status": "ACCEPTED",
+        "visible": {
+          "outer": [
+            [
+              0,
+              -1
+            ],
+            [
+              4,
+              -2
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "holes": []
+        },
+        "leftBoundary": [
+          [
+            0,
+            1
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "rightBoundary": [
+          [
+            0,
+            -1
+          ],
+          [
+            4,
+            -2
+          ]
+        ],
+        "resolvedJoins": []
+      }
+    },
+    {
+      "id": "open_linear_taper_square",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "widths": [
+          2,
+          4
+        ],
+        "closed": false,
+        "cap": "SQUARE",
+        "join": "BEVEL",
+        "miterLimit": 1,
+        "maxWork": 10000
+      },
+      "expected": {
+        "status": "ACCEPTED",
+        "visible": {
+          "outer": [
+            [
+              -1,
+              -1
+            ],
+            [
+              6,
+              -2
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              -1,
+              1
+            ]
+          ],
+          "holes": []
+        }
+      }
+    },
+    {
+      "id": "left_turn_outer_bevel_inner_trim",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        "widths": [
+          2,
+          2,
+          2
+        ],
+        "closed": false,
+        "cap": "BUTT",
+        "join": "BEVEL",
+        "miterLimit": 1,
+        "maxWork": 10000
+      },
+      "expected": {
+        "status": "ACCEPTED",
+        "visible": {
+          "outer": [
+            [
+              0,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "holes": []
+        },
+        "leftBoundary": [
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "rightBoundary": [
+          [
+            0,
+            -1
+          ],
+          [
+            4,
+            -1
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            5,
+            4
+          ]
+        ],
+        "resolvedJoins": [
+          {
+            "left": "INNER",
+            "right": "BEVEL"
+          }
+        ]
+      }
+    },
+    {
+      "id": "left_turn_outer_miter_limit_fallback",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        "widths": [
+          2,
+          2,
+          2
+        ],
+        "closed": false,
+        "cap": "BUTT",
+        "join": "MITER",
+        "miterLimit": 1,
+        "maxWork": 10000
+      },
+      "expected": {
+        "status": "ACCEPTED",
+        "resolvedJoins": [
+          {
+            "left": "INNER",
+            "right": "BEVEL"
+          }
+        ]
+      }
+    },
+    {
+      "id": "left_turn_outer_miter_accepted",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        "widths": [
+          2,
+          2,
+          2
+        ],
+        "closed": false,
+        "cap": "BUTT",
+        "join": "MITER",
+        "miterLimit": 2,
+        "maxWork": 10000
+      },
+      "expected": {
+        "status": "ACCEPTED",
+        "resolvedJoins": [
+          {
+            "left": "INNER",
+            "right": "MITER"
+          }
+        ],
+        "visible": {
+          "outer": [
+            [
+              0,
+              -1
+            ],
+            [
+              5,
+              -1
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "holes": []
+        }
+      }
+    },
+    {
+      "id": "closed_rectangle_outer_and_hole",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "widths": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "closed": true,
+        "cap": "BUTT",
+        "join": "BEVEL",
+        "miterLimit": 1,
+        "maxWork": 10000
+      },
+      "expected": {
+        "status": "ACCEPTED",
+        "visible": {
+          "outer": [
+            [
+              -1,
+              0
+            ],
+            [
+              0,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              -1,
+              4
+            ]
+          ],
+          "holes": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                3,
+                3
+              ],
+              [
+                3,
+                1
+              ]
+            ]
+          ]
+        },
+        "resolvedJoins": [
+          {
+            "left": "INNER",
+            "right": "BEVEL"
+          },
+          {
+            "left": "INNER",
+            "right": "BEVEL"
+          },
+          {
+            "left": "INNER",
+            "right": "BEVEL"
+          },
+          {
+            "left": "INNER",
+            "right": "BEVEL"
+          }
+        ]
+      }
+    },
+    {
+      "id": "closed_collapse_rejects",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "widths": [
+          4,
+          4,
+          4,
+          4
+        ],
+        "closed": true,
+        "cap": "BUTT",
+        "join": "BEVEL",
+        "miterLimit": 1,
+        "maxWork": 10000
+      },
+      "expected": {
+        "status": "REJECTED",
+        "reason": "INVALID_STRIP_TOPOLOGY"
+      }
+    }
+  ],
+  "selection": [
+    {
+      "id": "actual_region_clearance_equal_accepts",
+      "input": {
+        "candidates": [
+          {
+            "id": "a",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ]
+            ],
+            "widths": [
+              2,
+              2
+            ],
+            "closed": false,
+            "cap": "BUTT",
+            "join": "BEVEL",
+            "miterLimit": 1
+          },
+          {
+            "id": "b",
+            "points": [
+              [
+                0,
+                3
+              ],
+              [
+                4,
+                3
+              ]
+            ],
+            "widths": [
+              2,
+              2
+            ],
+            "closed": false,
+            "cap": "BUTT",
+            "join": "BEVEL",
+            "miterLimit": 1
+          }
+        ],
+        "clearance": 1,
+        "exclusions": [],
+        "maxAccepted": 2,
+        "maxWork": 100000
+      },
+      "expected": {
+        "acceptedIds": [
+          "a",
+          "b"
+        ],
+        "rejectedIds": []
+      }
+    },
+    {
+      "id": "max_accepted_limits_remaining_without_build",
+      "input": {
+        "candidates": [
+          {
+            "id": "a",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ]
+            ],
+            "widths": [
+              2,
+              2
+            ],
+            "closed": false,
+            "cap": "BUTT",
+            "join": "BEVEL",
+            "miterLimit": 1
+          },
+          {
+            "id": "b",
+            "points": [
+              [
+                0,
+                3
+              ],
+              [
+                4,
+                3
+              ]
+            ],
+            "widths": [
+              2,
+              2
+            ],
+            "closed": false,
+            "cap": "BUTT",
+            "join": "BEVEL",
+            "miterLimit": 1
+          }
+        ],
+        "clearance": 0,
+        "exclusions": [],
+        "maxAccepted": 1,
+        "maxWork": 100000
+      },
+      "expected": {
+        "acceptedIds": [
+          "a"
+        ],
+        "rejected": [
+          {
+            "id": "b",
+            "reason": "LIMIT",
+            "witness": {
+              "kind": "LIMIT",
+              "aRing": -1,
+              "aEdge": -1,
+              "bRing": -1,
+              "bEdge": -1,
+              "vertex": -1
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "hatch": [
+    {
+      "id": "rectangle_horizontal",
+      "input": {
+        "region": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "holes": []
+        },
+        "origin": [
+          0,
+          0
+        ],
+        "direction": [
+          1,
+          0
+        ],
+        "spacing": 2,
+        "phase": 1,
+        "maxWork": 100000,
+        "maxOutputPaths": 10
+      },
+      "expected": {
+        "paths": [
+          [
+            [
+              0,
+              1
+            ],
+            [
+              4,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              3
+            ],
+            [
+              4,
+              3
+            ]
+          ]
+        ],
+        "lineIndices": [
+          0,
+          1
+        ],
+        "intervals": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "small_hole_splits_one_line",
+      "input": {
+        "region": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "holes": [
+            [
+              [
+                2,
+                2
+              ],
+              [
+                4,
+                2
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                2,
+                4
+              ]
+            ]
+          ]
+        },
+        "origin": [
+          0,
+          0
+        ],
+        "direction": [
+          1,
+          0
+        ],
+        "spacing": 6,
+        "phase": 3,
+        "maxWork": 100000,
+        "maxOutputPaths": 10
+      },
+      "expected": {
+        "paths": [
+          [
+            [
+              0,
+              3
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          [
+            [
+              4,
+              3
+            ],
+            [
+              6,
+              3
+            ]
+          ]
+        ],
+        "lineIndices": [
+          0,
+          0
+        ],
+        "intervals": [
+          [
+            0,
+            0.3333333333333333
+          ],
+          [
+            0.6666666666666666,
+            1
+          ]
+        ]
+      }
+    }
+  ],
+  "svg": [
+    {
+      "id": "one_path_mm",
+      "input": {
+        "widthMm": 10,
+        "heightMm": 5,
+        "paths": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              10,
+              5
+            ]
+          ]
+        ],
+        "strokeWidthMm": 0.2,
+        "maxOutputBytes": 1000
+      },
+      "expected": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10mm\" height=\"5mm\" viewBox=\"0 0 10 5\"><g fill=\"none\" stroke=\"black\" stroke-width=\"0.2\"><path d=\"M 0 0 L 10 5\"/></g></svg>"
+      }
+    }
+  ],
+  "adversarial": [
+    {
+      "id": "original_edge_crossing_witness",
+      "operation": "region-clearance-2d",
+      "input": {
+        "a": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "holes": []
+        },
+        "b": {
+          "outer": [
+            [
+              2,
+              -1
+            ],
+            [
+              3,
+              -1
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "holes": []
+        },
+        "maxWork": 10000
+      },
+      "expected": {
+        "relation": "INTERSECTS",
+        "minimumDistance": null,
+        "witness": {
+          "kind": "EDGE_CROSSING",
+          "aRing": 0,
+          "aEdge": 0,
+          "bRing": 0,
+          "bEdge": 1,
+          "vertex": -1
+        }
+      }
+    },
+    {
+      "id": "clockwise_supplied_ring_witness_order",
+      "operation": "region-clearance-2d",
+      "input": {
+        "a": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          "holes": []
+        },
+        "b": {
+          "outer": [
+            [
+              5,
+              0
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              7,
+              2
+            ],
+            [
+              5,
+              2
+            ]
+          ],
+          "holes": []
+        },
+        "maxWork": 10000
+      },
+      "expected": {
+        "relation": "DISJOINT",
+        "minimumDistance": 3,
+        "witness": {
+          "kind": "MINIMUM_PAIR",
+          "aRing": 0,
+          "aEdge": 1,
+          "bRing": 0,
+          "bEdge": 2,
+          "vertex": -1
+        }
+      }
+    },
+    {
+      "id": "strict_filled_containment",
+      "operation": "region-clearance-2d",
+      "input": {
+        "a": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "holes": []
+        },
+        "b": {
+          "outer": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "holes": []
+        },
+        "maxWork": 10000
+      },
+      "expected": {
+        "relation": "INTERSECTS",
+        "minimumDistance": null,
+        "witness": {
+          "kind": "A_CONTAINS_B",
+          "aRing": -1,
+          "aEdge": -1,
+          "bRing": -1,
+          "bEdge": -1,
+          "vertex": -1
+        }
+      }
+    },
+    {
+      "id": "clearance_budget_before_invalid_topology",
+      "operation": "region-clearance-2d",
+      "input": {
+        "a": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "holes": []
+        },
+        "b": {
+          "outer": [
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "holes": []
+        },
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "closed_seam_reversal_static",
+      "operation": "tapered-stroke-strip-2d",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "widths": [
+          2,
+          2,
+          2
+        ],
+        "closed": true,
+        "cap": "BUTT",
+        "join": "BEVEL",
+        "miterLimit": 1,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "candidate_static_even_when_cap_zero",
+      "operation": "select-tapered-stroke-strips-2d",
+      "input": {
+        "candidates": [
+          {
+            "id": "a",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ]
+            ],
+            "widths": [
+              -2,
+              2
+            ],
+            "closed": false,
+            "cap": "BUTT",
+            "join": "BEVEL",
+            "miterLimit": 1
+          }
+        ],
+        "clearance": 0,
+        "exclusions": [],
+        "maxAccepted": 0,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "exclusion_topology_after_budget",
+      "operation": "select-tapered-stroke-strips-2d",
+      "input": {
+        "candidates": [],
+        "clearance": 0,
+        "exclusions": [
+          {
+            "outer": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "holes": []
+          }
+        ],
+        "maxAccepted": 0,
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "outer_boundary_positive_extent",
+      "operation": "hatch-region-lines-2d",
+      "input": {
+        "region": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "holes": []
+        },
+        "origin": [
+          0,
+          0
+        ],
+        "direction": [
+          1,
+          0
+        ],
+        "spacing": 10,
+        "phase": 0,
+        "maxWork": 100000,
+        "maxOutputPaths": 10
+      },
+      "expected": {
+        "paths": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ]
+        ],
+        "lineIndices": [
+          0
+        ],
+        "intervals": [
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "collinear_adjacent_edges_union_before_cap",
+      "operation": "hatch-region-lines-2d",
+      "input": {
+        "region": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "holes": []
+        },
+        "origin": [
+          0,
+          0
+        ],
+        "direction": [
+          1,
+          0
+        ],
+        "spacing": 10,
+        "phase": 0,
+        "maxWork": 100000,
+        "maxOutputPaths": 1
+      },
+      "expected": {
+        "paths": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ]
+        ],
+        "lineIndices": [
+          0
+        ],
+        "intervals": [
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "vertex_hits_span_diamond",
+      "operation": "hatch-region-lines-2d",
+      "input": {
+        "region": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              2,
+              -2
+            ]
+          ],
+          "holes": []
+        },
+        "origin": [
+          0,
+          0
+        ],
+        "direction": [
+          1,
+          0
+        ],
+        "spacing": 10,
+        "phase": 0,
+        "maxWork": 100000,
+        "maxOutputPaths": 10
+      },
+      "expected": {
+        "paths": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ]
+        ],
+        "lineIndices": [
+          0
+        ],
+        "intervals": [
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "hole_boundary_retained_and_unioned",
+      "operation": "hatch-region-lines-2d",
+      "input": {
+        "region": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "holes": [
+            [
+              [
+                2,
+                2
+              ],
+              [
+                4,
+                2
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                2,
+                4
+              ]
+            ]
+          ]
+        },
+        "origin": [
+          0,
+          0
+        ],
+        "direction": [
+          1,
+          0
+        ],
+        "spacing": 10,
+        "phase": 2,
+        "maxWork": 100000,
+        "maxOutputPaths": 10
+      },
+      "expected": {
+        "paths": [
+          [
+            [
+              0,
+              2
+            ],
+            [
+              6,
+              2
+            ]
+          ]
+        ],
+        "lineIndices": [
+          0
+        ],
+        "intervals": [
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "interior_hole_two_fragments_cap",
+      "operation": "hatch-region-lines-2d",
+      "input": {
+        "region": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "holes": [
+            [
+              [
+                2,
+                2
+              ],
+              [
+                4,
+                2
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                2,
+                4
+              ]
+            ]
+          ]
+        },
+        "origin": [
+          0,
+          0
+        ],
+        "direction": [
+          1,
+          0
+        ],
+        "spacing": 10,
+        "phase": 3,
+        "maxWork": 100000,
+        "maxOutputPaths": 1
+      },
+      "error": "OUTPUT_LIMIT"
+    },
+    {
+      "id": "hatch_budget_before_invalid_topology",
+      "operation": "hatch-region-lines-2d",
+      "input": {
+        "region": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "holes": []
+        },
+        "origin": [
+          0,
+          0
+        ],
+        "direction": [
+          1,
+          0
+        ],
+        "spacing": 10,
+        "phase": 0,
+        "maxWork": 0,
+        "maxOutputPaths": 10
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "svg_negative_zero_and_empty_pen_lift",
+      "operation": "svg-plot-plan-01",
+      "input": {
+        "widthMm": 2,
+        "heightMm": 1,
+        "paths": [
+          [],
+          [
+            [
+              -0.0,
+              -0.0
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        ],
+        "strokeWidthMm": 0.1,
+        "maxOutputBytes": 1000
+      },
+      "expected": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2mm\" height=\"1mm\" viewBox=\"0 0 2 1\"><g fill=\"none\" stroke=\"black\" stroke-width=\"0.1\"><path d=\"M 0 0 L 2 1\"/></g></svg>"
+      }
+    },
+    {
+      "id": "exact_hole_gap_rounds_closed",
+      "operation": "hatch-region-lines-2d",
+      "input": {
+        "region": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              1e+101
+            ],
+            [
+              0,
+              1e+101
+            ]
+          ],
+          "holes": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1.5,
+                1e+100
+              ],
+              [
+                0.5,
+                1e+100
+              ]
+            ]
+          ]
+        },
+        "origin": [
+          0,
+          0
+        ],
+        "direction": [
+          1,
+          0
+        ],
+        "spacing": 1e+102,
+        "phase": 2,
+        "maxWork": 100000,
+        "maxOutputPaths": 10
+      },
+      "error": "REPRESENTATION_COLLAPSE"
+    },
+    {
+      "id": "svg_exact_168_byte_cap",
+      "operation": "svg-plot-plan-01",
+      "input": {
+        "widthMm": 10,
+        "heightMm": 5,
+        "paths": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              10,
+              5
+            ]
+          ]
+        ],
+        "strokeWidthMm": 0.2,
+        "maxOutputBytes": 168
+      },
+      "expected": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10mm\" height=\"5mm\" viewBox=\"0 0 10 5\"><g fill=\"none\" stroke=\"black\" stroke-width=\"0.2\"><path d=\"M 0 0 L 10 5\"/></g></svg>"
+      }
+    },
+    {
+      "id": "svg_167_byte_cap_rejects",
+      "operation": "svg-plot-plan-01",
+      "input": {
+        "widthMm": 10,
+        "heightMm": 5,
+        "paths": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              10,
+              5
+            ]
+          ]
+        ],
+        "strokeWidthMm": 0.2,
+        "maxOutputBytes": 167
+      },
+      "error": "OUTPUT_LIMIT"
+    },
+    {
+      "id": "svg_static_before_tiny_byte_cap",
+      "operation": "svg-plot-plan-01",
+      "input": {
+        "widthMm": 10,
+        "heightMm": 5,
+        "paths": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "strokeWidthMm": 0.2,
+        "maxOutputBytes": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "square_end_cap_overflow_stable_code",
+      "operation": "tapered-stroke-strip-2d",
+      "input": {
+        "points": [
+          [
+            1.4e+308,
+            0
+          ],
+          [
+            1.7e+308,
+            0
+          ]
+        ],
+        "widths": [
+          1.7e+308,
+          1.7e+308
+        ],
+        "closed": false,
+        "cap": "SQUARE",
+        "join": "BEVEL",
+        "miterLimit": 1,
+        "maxWork": 10000
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "open_crossing_ring_first_edge_witness",
+      "operation": "tapered-stroke-strip-2d",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "widths": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "closed": false,
+        "cap": "BUTT",
+        "join": "BEVEL",
+        "miterLimit": 1,
+        "maxWork": 10000
+      },
+      "expected": {
+        "status": "REJECTED",
+        "reason": "INVALID_STRIP_TOPOLOGY",
+        "witness": {
+          "kind": "INVALID_RING",
+          "aRing": 0,
+          "aEdge": 0,
+          "bRing": -1,
+          "bEdge": -1,
+          "vertex": -1
+        }
+      }
+    },
+    {
+      "id": "closed_invalid_hole_first_edge_witness",
+      "operation": "tapered-stroke-strip-2d",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            -1,
+            2
+          ]
+        ],
+        "widths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "closed": true,
+        "cap": "BUTT",
+        "join": "BEVEL",
+        "miterLimit": 1,
+        "maxWork": 10000
+      },
+      "expected": {
+        "status": "REJECTED",
+        "reason": "INVALID_STRIP_TOPOLOGY",
+        "witness": {
+          "kind": "INVALID_RING",
+          "aRing": 1,
+          "aEdge": 0,
+          "bRing": -1,
+          "bEdge": -1,
+          "vertex": -1
+        }
+      }
+    }
+  ]
+}

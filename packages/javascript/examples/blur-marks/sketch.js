@@ -5,6 +5,8 @@ const WIDTH = 720, HEIGHT = 480;
 const status = document.querySelector("#status");
 const controls = document.querySelector("#controls");
 const art = document.querySelector("#art");
+const coverageInput = document.querySelector("#source-coverage");
+const coverageOutput = document.querySelector("#coverage-output");
 let composition = null;
 let revision = 0;
 
@@ -89,17 +91,20 @@ new window.p5((p) => {
 
   function paint() {
     fromArgbRaster(outputImage, composition.displayed);
+    if (composition.sourceCoverage < 1) p.clear();
     p.image(outputImage, 0, 0);
     revision += 1;
     art.dataset.revision = String(revision);
     art.dataset.filterCalls = String(composition.filterCalls);
     const modeName = ["sharp", "soft", "horizontal", "vertical"][composition.mode];
-    status.textContent = `mode ${modeName} · ${composition.blended ? "blended with sharp" : "not blended"} · filter calls ${composition.filterCalls}`;
+    coverageOutput.textContent = `${Math.round(composition.sourceCoverage * 100)}%`;
+    status.textContent = `mode ${modeName} · ${composition.blended ? "blended with sharp" : "not blended"} · coverage ${coverageOutput.textContent} · filter calls ${composition.filterCalls}`;
   }
 
   function action(name) {
     if (name === "m") composition.cycleMode();
     else if (name === "b") composition.toggleBlended();
+    else if (name === "0") { composition.reset(); coverageInput.value = "1"; }
     else if (name === "s") { p.saveCanvas("blur-marks", "png"); return; }
     else return;
     paint();
@@ -108,6 +113,13 @@ new window.p5((p) => {
   controls.addEventListener("click", (event) => {
     const button = event.target.closest("button[data-action]");
     if (button) action(button.dataset.action);
+  });
+  coverageInput.addEventListener("input", () => {
+    coverageOutput.textContent = `${Math.round(Number(coverageInput.value) * 100)}%`;
+  });
+  coverageInput.addEventListener("change", () => {
+    composition.setSourceCoverage(Number(coverageInput.value));
+    paint();
   });
   p.keyPressed = () => action(String(p.key).toLowerCase());
 }, art);

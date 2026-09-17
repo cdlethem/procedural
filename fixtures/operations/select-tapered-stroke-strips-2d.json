@@ -1,0 +1,212 @@
+{
+  "operation": "geometry.select-tapered-stroke-strips-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "26403f5c856cc5df92e49555cc0912190b43c2a25f4f1b525c2ece367b45258c",
+  "oracle": "Root-frozen analytical shapes and state after independent Sol draft review; supplemental preimplementation oracles in tests/native/fixtures/region-oracles.json.",
+  "cases": [
+    {
+      "id": "actual_region_clearance_equal_accepts",
+      "input": {
+        "candidates": [
+          {
+            "id": "a",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ]
+            ],
+            "widths": [
+              2,
+              2
+            ],
+            "closed": false,
+            "cap": "BUTT",
+            "join": "BEVEL",
+            "miterLimit": 1
+          },
+          {
+            "id": "b",
+            "points": [
+              [
+                0,
+                3
+              ],
+              [
+                4,
+                3
+              ]
+            ],
+            "widths": [
+              2,
+              2
+            ],
+            "closed": false,
+            "cap": "BUTT",
+            "join": "BEVEL",
+            "miterLimit": 1
+          }
+        ],
+        "clearance": 1,
+        "exclusions": [],
+        "maxAccepted": 2,
+        "maxWork": 100000
+      },
+      "output": {
+        "accepted": [
+          {
+            "id": "a",
+            "visible": {
+              "outer": [
+                [
+                  0,
+                  -1
+                ],
+                [
+                  4,
+                  -1
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "holes": []
+            },
+            "centerline": [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ]
+            ],
+            "resolvedJoins": [],
+            "witness": {
+              "kind": "NONE",
+              "aRing": -1,
+              "aEdge": -1,
+              "bRing": -1,
+              "bEdge": -1,
+              "vertex": -1,
+              "againstKind": "NONE",
+              "againstIndex": -1
+            }
+          },
+          {
+            "id": "b",
+            "visible": {
+              "outer": [
+                [
+                  0,
+                  2
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  0,
+                  4
+                ]
+              ],
+              "holes": []
+            },
+            "centerline": [
+              [
+                0,
+                3
+              ],
+              [
+                4,
+                3
+              ]
+            ],
+            "resolvedJoins": [],
+            "witness": {
+              "kind": "NONE",
+              "aRing": -1,
+              "aEdge": -1,
+              "bRing": -1,
+              "bEdge": -1,
+              "vertex": -1,
+              "againstKind": "NONE",
+              "againstIndex": -1
+            }
+          }
+        ],
+        "rejected": []
+      }
+    },
+    {
+      "id": "budget-before-geometry",
+      "input": {
+        "candidates": [
+          {
+            "id": "a",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ]
+            ],
+            "widths": [
+              2,
+              2
+            ],
+            "closed": false,
+            "cap": "BUTT",
+            "join": "BEVEL",
+            "miterLimit": 1
+          },
+          {
+            "id": "b",
+            "points": [
+              [
+                0,
+                3
+              ],
+              [
+                4,
+                3
+              ]
+            ],
+            "widths": [
+              2,
+              2
+            ],
+            "closed": false,
+            "cap": "BUTT",
+            "join": "BEVEL",
+            "miterLimit": 1
+          }
+        ],
+        "clearance": 1,
+        "exclusions": [],
+        "maxAccepted": 2,
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "operation": "geometry.region-clearance-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "0fd5f82eec3932172575763e8d19f4a7ccf3f369fcb069d5ca44867e8da8e20e",
+  "oracle": "Root-frozen analytical shapes and state after independent Sol draft review; supplemental preimplementation oracles in tests/native/fixtures/region-oracles.json.",
+  "cases": [
+    {
+      "id": "parallel_rectangles_exact_distance",
+      "input": {
+        "a": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "holes": []
+        },
+        "b": {
+          "outer": [
+            [
+              5,
+              0
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              7,
+              2
+            ],
+            [
+              5,
+              2
+            ]
+          ],
+          "holes": []
+        },
+        "maxWork": 10000
+      },
+      "output": {
+        "relation": "DISJOINT",
+        "minimumDistance": 3,
+        "witness": {
+          "kind": "MINIMUM_PAIR",
+          "aRing": 0,
+          "aEdge": 0,
+          "bRing": 0,
+          "bEdge": 0,
+          "vertex": -1
+        }
+      }
+    },
+    {
+      "id": "budget-before-geometry",
+      "input": {
+        "a": {
+          "outer": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "holes": []
+        },
+        "b": {
+          "outer": [
+            [
+              5,
+              0
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              7,
+              2
+            ],
+            [
+              5,
+              2
+            ]
+          ],
+          "holes": []
+        },
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    }
+  ]
+}

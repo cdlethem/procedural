@@ -44,11 +44,15 @@ async function coreDependencyFiles(entry) {
 }
 
 const helper = path.join(packageRoot, "examples/motif-compositions/compositions.js");
+const fieldHelper = path.join(packageRoot, "examples/motif-compositions/field-records.js");
+const orbitalHelper = path.join(packageRoot, "examples/motif-compositions/orbital-records.js");
 const sourceFiles = [
   fileURLToPath(import.meta.url),
   path.join(root, "tools/serve_survey_coverage_studies.mjs"),
   p5Bundle,
   ...await coreDependencyFiles(helper),
+  ...await coreDependencyFiles(fieldHelper),
+  ...await coreDependencyFiles(orbitalHelper),
   ...slugs.flatMap((slug) => [
     path.join(packageRoot, "examples", slug, "index.html"),
     path.join(packageRoot, "examples", slug, "sketch.js"),
@@ -108,59 +112,138 @@ try {
     };
 
     const baseline = await capture("baseline");
-    const motif = await action("m", "motif");
-    let transfer = null;
-    if (slug === "ornament-poster") transfer = await action("m", "emblem-transfer");
-    const palette = await action("c", "palette");
-    assert.equal(motif.geometry, baseline.geometry, `${slug}: motif substitution preserves full geometry`);
-    assert.equal(motif.anchors, baseline.anchors, `${slug}: motif substitution preserves every anchor`);
-    assert.equal(palette.geometry, baseline.geometry, `${slug}: palette substitution preserves full geometry`);
-    assert.equal(palette.anchors, baseline.anchors, `${slug}: palette substitution preserves every anchor`);
-    assert.notEqual(motif.sha256, baseline.sha256, `${slug}: motif redraw changes pixels`);
-    assert.notEqual(palette.sha256, motif.sha256, `${slug}: palette redraw changes pixels`);
-    if (transfer) {
-      assert.equal(transfer.geometry, baseline.geometry, "ornament: emblem transfer preserves full geometry");
-      assert.equal(transfer.anchors, baseline.anchors, "ornament: emblem transfer preserves anchors");
-      assert.notEqual(transfer.sha256, motif.sha256, "ornament: emblem transfer changes pixels");
-    }
+    if (slug !== "orbital-brush") {
+      const edit = async (key, value, label) => {
+        const old = Number(await page.locator("#art").getAttribute("data-revision"));
+        const input = page.locator(`[data-key="${key}"]`);
+        if (typeof value === "boolean") value ? await input.check() : await input.uncheck();
+        else if (await input.evaluate((node) => node.tagName === "SELECT")) await input.selectOption(String(value));
+        else { await input.fill(String(value)); await input.press("Tab"); }
+        await ready(old);
+        return capture(label);
+      };
+      const unchanged = (value, expected, label) => assert.equal(value, expected, `${slug}: ${label}`);
+      const alpha = await page.locator("#art canvas").evaluate((canvas) => canvas.getContext("2d").getImageData(0, 0, 1, 1).data[3]);
+      assert.equal(alpha, 0, `${slug}: saved artwork remains transparent`);
+      const palette = await edit("paletteId", "orchid-chalk", "palette");
+      unchanged(palette.geometry, baseline.geometry, "palette edit retains mark geometry");
+      unchanged(palette.anchors, baseline.anchors, "palette edit retains anchors");
+      assert.notEqual(palette.sha256, baseline.sha256, `${slug}: palette changes pixels`);
 
-    let hierarchy = null;
-    let crop = null;
-    if (slug === "ornament-poster") {
-      hierarchy = await action("h", "uniform-scale");
-      assert.equal(hierarchy.anchors, baseline.anchors, "ornament: scale edit preserves anchors");
-      assert.notEqual(hierarchy.geometry, baseline.geometry, "ornament: scale edit changes full geometry");
-      crop = await action("x", "full-field");
-      assert.equal(crop.anchors, baseline.anchors, "ornament: crop edit preserves anchors");
-      assert.notEqual(crop.geometry, hierarchy.geometry, "ornament: crop edit changes full geometry");
-    }
+      const shapeKey = slug === "ornament-poster" ? "petalWeight" : "wedgeWeight";
+      const shape = await edit(shapeKey, 0, "shape-mix");
+      unchanged(shape.anchors, baseline.anchors, "shape weights retain anchors");
+      assert.notEqual(shape.geometry, baseline.geometry, `${slug}: shape weights change selected families`);
+      const turned = await edit("angle", 83.5, "turned");
+      unchanged(turned.anchors, baseline.anchors, "angle retains anchors");
+      assert.notEqual(turned.geometry, shape.geometry, `${slug}: angle changes local mark orientation`);
+      const shifted = await edit("offsetX", 76.25, "shifted");
+      assert.notEqual(shifted.anchors, baseline.anchors, `${slug}: x offset moves anchors`);
+      const beforePoints = JSON.parse(turned.anchors), afterPoints = JSON.parse(shifted.anchors);
+      assert.ok(afterPoints.every((point, index) => point.at(-1) === beforePoints[index].at(-1) &&
+        point.at(-2) === beforePoints[index].at(-2) + 76.25), `${slug}: x offset changes only x`);
 
-    const structural = await action("d", "structural");
-    assert.notEqual(structural.geometry, baseline.geometry, `${slug}: structural edit rebuilds full geometry`);
-    assert.notEqual(structural.anchors, baseline.anchors, `${slug}: structural edit rebuilds anchors`);
-    const reset = await action("0", "reset");
-    assert.equal(reset.sha256, baseline.sha256, `${slug}: reset returns baseline`);
+      const structural = slug === "ornament-poster"
+        ? await edit("layout", "grid", "ordered-grid")
+        : await edit("columns", 11, "eleven-columns");
+      assert.notEqual(structural.anchors, shifted.anchors, `${slug}: layout structure changes anchors`);
+      let transfer;
+      if (slug === "ornament-poster") {
+        await edit("emblemWeight", 10, "some-emblems");
+        transfer = await edit("leafWeight", 0, "emblem-transfer");
+        assert.ok(JSON.parse(transfer.geometry).every((mark) => mark.kind === "emblems"), "ornament: emblem-only transfer");
+      } else {
+        await edit("rows", 4, "four-rows");
+        await edit("barWeight", 1, "few-bars");
+        transfer = await edit("arcWeight", 3, "arc-transfer");
+        const marks = JSON.parse(transfer.geometry);
+        assert.ok(marks.some((mark) => mark.kind === "arcs") && marks.every((mark) =>
+          mark.kind === "bars" || mark.kind === "arcs"), "panel: asymmetric bar/arc transfer");
+      }
+      assert.notEqual(transfer.sha256, baseline.sha256, `${slug}: transfer changes full image`);
+
+      const reset = await action("reset", "reset");
+      unchanged(reset.sha256, baseline.sha256, "reset restores initial image");
+      await page.reload();
+      await ready();
+      const reload = await capture("reload");
+      unchanged(reload.sha256, baseline.sha256, "reload deterministic");
+      const revision = await page.locator("#art").getAttribute("data-revision");
+      const download = page.waitForEvent("download");
+      await page.locator('button[data-action="save"]').click();
+      await (await download).saveAs(path.join(out, `${slug}-saved.png`));
+      unchanged(await page.locator("#art").getAttribute("data-revision"), revision, "save does not repaint");
+      unchanged(sha(await fs.readFile(path.join(out, `${slug}-saved.png`))), baseline.sha256, "save matches displayed image");
+      assert.deepEqual(errors, []);
+      await page.close();
+      results.push({ slug, baseline, palette, shape, turned, shifted, structural, transfer, reset, reload, alpha });
+      continue;
+    }
+    const edit = async (key, value, label) => {
+      const old = Number(await page.locator("#art").getAttribute("data-revision"));
+      const input = page.locator(`[data-key="${key}"]`);
+      if (typeof value === "boolean") value ? await input.check() : await input.uncheck();
+      else if (await input.evaluate((node) => node.tagName === "SELECT")) await input.selectOption(String(value));
+      else { await input.fill(String(value)); await input.press("Tab"); }
+      await ready(old);
+      return capture(label);
+    };
+    const alpha = await page.locator("#art canvas").evaluate((canvas) => canvas.getContext("2d").getImageData(0, 0, 1, 1).data[3]);
+    assert.equal(alpha, 0, "orbital: transparent canvas corner");
+    const palette = await edit("paletteId", "electric-citrus", "palette");
+    assert.equal(palette.geometry, baseline.geometry, "orbital: palette retains sampled path geometry");
+    assert.notEqual(palette.sha256, baseline.sha256, "orbital: palette changes pixels");
+    const ribbons = await edit("marks", "ribbons", "ribbons");
+    assert.equal(ribbons.geometry, baseline.geometry, "orbital: ribbon brush retains sampled paths");
+    assert.notEqual(ribbons.sha256, palette.sha256, "orbital: ribbon treatment changes pixels");
+    const wide = await edit("markSize", 5, "wide-ribbons");
+    assert.equal(wide.geometry, baseline.geometry, "orbital: mark size retains sampled paths");
+    assert.notEqual(wide.sha256, ribbons.sha256, "orbital: mark size changes pixels");
+    const shifted = await edit("centerX", 410, "shifted");
+    assert.notEqual(shifted.geometry, wide.geometry, "orbital: moving centre changes sampled paths");
+    const beforePoints = JSON.parse(wide.anchors), afterPoints = JSON.parse(shifted.anchors);
+    assert.ok(afterPoints.every((path, pathIndex) => path.every((point, index) =>
+      Math.abs(point[0] - beforePoints[pathIndex][index][0] - 50) < 1e-9 &&
+      Math.abs(point[1] - beforePoints[pathIndex][index][1]) < 1e-9)),
+      "orbital: moving centre X translates every sampled point only horizontally");
+    const ellipse = await edit("source", "ellipse", "ellipses");
+    assert.notEqual(ellipse.geometry, shifted.geometry, "orbital: source shape changes sampled paths");
+    await edit("source", "wave", "waves");
+    await edit("lobes", 11, "eleven-lobes");
+    await edit("depth", -0.38, "negative-depth");
+    await edit("marks", "dashes", "dashes");
+    const transfer = await edit("markSpacing", 0, "every-sample-dashes");
+    assert.notEqual(transfer.geometry, ellipse.geometry, "orbital: wave transfer changes retained paths");
+    assert.notEqual(transfer.sha256, ellipse.sha256, "orbital: transfer changes image");
+    const beforeInvalid = Number(await page.locator("#art").getAttribute("data-revision"));
+    await page.locator('[data-key="paths"]').fill("2048");
+    await page.locator('[data-key="paths"]').press("Tab");
+    assert.equal(Number(await page.locator("#art").getAttribute("data-revision")), beforeInvalid,
+      "orbital: combined work overflow does not repaint");
+    assert.match(await page.locator("#status").textContent(), /64000-point/);
+    const reset = await action("reset", "reset");
+    assert.equal(reset.sha256, baseline.sha256, "orbital: reset returns baseline");
     await page.reload();
     await ready();
     const reload = await capture("reload");
-    assert.equal(reload.sha256, baseline.sha256, `${slug}: reload deterministic`);
+    assert.equal(reload.sha256, baseline.sha256, "orbital: reload deterministic");
 
     const revision = await page.locator("#art").getAttribute("data-revision");
     const download = page.waitForEvent("download");
-    await page.keyboard.press("s");
+    await page.locator('button[data-action="save"]').click();
     await (await download).saveAs(path.join(out, `${slug}-saved.png`));
     assert.equal(await page.locator("#art").getAttribute("data-revision"), revision);
-    assert.equal(sha(await fs.readFile(path.join(out, `${slug}-saved.png`))), baseline.sha256, `${slug}: save preserves displayed baseline`);
+    assert.equal(sha(await fs.readFile(path.join(out, `${slug}-saved.png`))), baseline.sha256, "orbital: save preserves displayed baseline");
     assert.deepEqual(errors, []);
     await page.close();
-    results.push({ slug, baseline, motif, transfer, palette, hierarchy, crop, structural, reset, reload });
+    results.push({ slug, baseline, palette, ribbons, wide, shifted, ellipse, transfer, reset, reload, alpha });
   }
 
   const after = await hashes();
   assert.deepEqual(after, before, "source files remain stable");
   await fs.writeFile(path.join(out, "report.json"), JSON.stringify({
     status: "passed",
-    scope: "Actual p5 2.3.2 Canvas2D motifs: full unrounded retained-record comparison, anchor comparison, motif/palette substitutions, ornament transfer/scale/crop edits, structural edit, reset, reload, save and deterministic replay.",
+    scope: "Actual p5 2.3.2 Canvas2D motifs: field/matrix weights and structural transfer; orbital source paths, resampled geometry, mark substitution, center translation, work-budget rejection; transparent canvases, reset/reload/save.",
     package_root: packageRoot,
     browser: browser.version(),
     input_sha256_before: before,

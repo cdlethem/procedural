@@ -393,6 +393,54 @@ def _validate_expansion_surface(root, snapshots):
     return True
 
 
+COPY_SURFACE = 'evidence/conformance/external-expansion-copy-compatibility-review.json'
+COPY_ROOT = 'evidence/web/study-copy-review.json'
+# Fixed byte preimages and only the prose replacements in the reviewed cleanup manifest.
+# The manifest is a drafting aid in .work; this table is the durable whitelist.
+COPY_EDITS = {
+    "apps/web/content/agent-trails.md": ("f4b1ffe061624aad17e9056e52addefd947f901abef2d10fc513ab661257c0ed", ((" This is an original study, not a recreation of a surveyed artwork.", ""),)),
+    "apps/web/content/arrival-contours.md": ("0a074f02a563b59ea94cd1d9ff21f81f26b7471558ecf737203dcafd04d8cbec", ((" This is an original design, not a corpus recreation.", ""),)),
+    "apps/web/content/aspect-tiles.md": ("a30db1385cd352bf40e4c774d904fc1d13f906d7afd1fbe5fb5d1cd12c20343b", ((" This is an original design, not a corpus recreation.", ""),)),
+    "apps/web/content/blue-noise-stipple.md": ("91413e6b1511794291b5eb300fc06a880fef4833e7e26538b66f41c3eaa59d92", ((" This is an original design, not a corpus recreation.", ""),)),
+    "apps/web/content/centroid-trails.md": ("ee294a9703201894f40c9b050bc45d36ab61937fd5aff44c8fb8bba9088e56e0", ((" This is an original design, not a corpus recreation.", ""),)),
+    "apps/web/content/concave-grain.md": ("32a1c92884c6efe7a5484035715c8126f0fdf1316100d8ce017accc661a7abbd", ((" This is an original design study, not a recreation of a surveyed original.", ""),)),
+    "apps/web/content/contact-network.md": ("faacbba1ffe71be9d15db78385dc8b75da32b3e6fa80d34a6606de11d3b54da1", ((" This is an original study, not a recreation of a surveyed artwork.", ""),)),
+    "apps/web/content/contour-abstraction.md": ("c8aea509ae4e082368bfb877abda1e4905350a58f92c4b17eb666e6118b5f2f3", ((" This is an original design study, not a recreation of a surveyed original.", ""),)),
+    "apps/web/content/faceted-silhouettes.md": ("4a514732317afa0f798937bddbfcf96f0876904031d28d4d798d03efca41ccca", ((" This is an original design study, not a recreation of a surveyed original.", ""),)),
+    "apps/web/content/flowing-brushes.md": ("68a9c7a2e36e293e89bb334fd8cdb38d1f7747b517ae3933ed81b0c063a5f3fc", ((" This is an original design study, not a recreation of a surveyed original.", ""),)),
+    "apps/web/content/fragmented-lines.md": ("28eb055ef8e440c6ff7054ab055a1edcf94aff93505ddba1fee423b94cd2dac8", ((" This is an original design, not a corpus recreation.", ""),)),
+    "apps/web/content/geometric-panel.md": ("587ce13fa1cf602833a1909925a33a41a19c1e68db6ba7d3093538e899338780", ((" This is an original study, not a recreation of a surveyed artwork.", ""),)),
+    "apps/web/content/gesture-skeletons.md": ("475f5ba6ea8ef468e3f859aca24a247b4f23e8c99e1d0f152b65d2395bdf35b2", ((" This is an original design study, not a recreation of a surveyed original.", ""),)),
+    "apps/web/content/nested-contour-strokes.md": ("5c8d0833958062790c6c8ddfbab7ce92478b77a4261cf6b62bc5161af80df32c", ((" This is an original design study, not a recreation of a surveyed original.", ""),)),
+    "apps/web/content/obstacle-roads.md": ("41dbde4ea4ee10dd6389837359911360c6cc737e39ee6c2d85ae5d38ca219310", ((" This is an original design, not a corpus recreation.", ""),)),
+    "apps/web/content/orbital-brush.md": ("8228142c20a1eecffd5270700b3f8fb9c18a53c4bedee979dab678586ca4ad82", ((" This is an original study, not a recreation of a surveyed artwork.", ""),)),
+    "apps/web/content/ornament-poster.md": ("1cefb554b08f483fb3dd5e1f0795241a8740e554614584a57894ab3670ea67ad", ((" This is an original study, not a recreation of a surveyed artwork.", ""),)),
+    "apps/web/content/packed-posters.md": ("014c4b0d492b97c3909217594010a04993343ddc611fd8dcef184d38b349fd1c", ((" This is an original design, not a corpus recreation.", ""),)),
+    "apps/web/content/relaxed-stones.md": ("072e1250f5f5b2ef29b0f2f4b99c1de3e771f0e3ec1404e4fe601f3fd99690fa", ((" This is an original design, not a corpus recreation.", ""),)),
+    "apps/web/content/road-margins.md": ("a23a4277eefdcbaa1642f6daea318ec180af81b6f65e18c97f33afcd3bac05af", ((" This is an original design study, not a recreation of a surveyed original.", ""),)),
+    "apps/web/content/rounded-panels.md": ("40ed1756bcef0047f4748d665b2abca3709e46109513641f32a22dc1faadb260", ((" This is an original design study, not a recreation of a surveyed original.", ""),)),
+    "apps/web/content/scatter-envelopes.md": ("012d4cdd58f9e3c3b18ca6cdcf9987a1af108cf835e3956d82b509e2d488dd16", ((" This is an original design study, not a recreation of a surveyed original.", ""),)),
+    "apps/web/content/spaced-symbols.md": ("262a13774861c923a7cf9ecdd5a639f5c629a72a2c834de1bf15fedd5b5ff6cd", ((" This is an original design, not a corpus recreation.", ""),)),
+    "apps/web/content/stitched-contours.md": ("bbe6a7af29ebccdaa95246fbd8d3109f0f23aaa8e0fdf9efb7cfe487e51d0ae1", ((" This is an original design, not a corpus recreation.", ""),)),
+    "apps/web/content/terraced-islands.md": ("989e5b2a4d17442e6c742d0b4454414c2c68fee586f3cafa1f7f4b5c88e3f571", ((" This is an original design study, not a recreation of a surveyed original.", ""),)),
+    "docs/agent-behavior-studies.md": ("60f4c24be6954d384b3ca98db296a377110bc0cd832e3595e7b9b4c1bba7abb0", (("links the external motivations and distinguishes these original studies from source recreations.", "links the external motivations and operation boundaries."),)),
+    "docs/bridge-web.md": ("1737d7b11a5caf58ede8c572b7db799469aacea32a98e1044037a03bb7a45cc4", (("The composition is motivated by [Hoff's *A Tangle of Webs*](https://inconvergent.net/2019/a-tangle-of-webs/); this is an original planar web rather than a recreation of that source.", "For related composition context, see [Hoff's *A Tangle of Webs*](https://inconvergent.net/2019/a-tangle-of-webs/)."),)),
+    "docs/motif-compositions.md": ("96bd1985f61a1344d58767c750da1cc3795ea73032b133f8884c03c517423dcf", (("They are original compositions, motivated by the composition tasks documented\nin the local external-art research. They do not recreate an artist's work or use artwork,\nSVGs, code, or other assets from those sources.", "They explore composition tasks from the local external-art research through\neditable placements and mark treatments."), (" The examples use original marks and make no claim to\nreproduce those artists' algorithms or artworks.", ""))),
+    "docs/p5-feedback-surface.md": ("5bd817884aee09df7763f009d6aeba77d9f5c229fd2ad7f116ed4ce54946a67e", (("It is an original study motivated by the retained-image questions", "The example explores retained-image questions"), ("; this example does not claim to reproduce those artists' algorithms.", "."))),
+    "docs/periodic-fluid-fields.md": ("1e4372a1b1c62b28330e983b85bffee2fcb601f9e87d33dfd0e72f3134a0817f", (("The study's other settings are authored choices,\nnot corpus-derived recommended ranges. This CPU grid workflow is an original study, with\nno claim of a GPU fluid solver or recreation of a specific source artwork.", "The study's other settings are authored choices,\nnot corpus-derived recommended ranges. The operations use a CPU grid, with no GPU solver."),)),
+    "docs/proximity-interactions.md": ("810b07d4e8dfb49206a6376f0c085418e6e9b9d7b6809c6a23b9198c49077a39", (("These original studies use independently specified point interactions. They do not\nimplement Process18's persistent relationship opacity or Tissue's sensor/motor\nbehavior. A retained path is a point's movement history, not memory of a pair's\ncontact.", "The studies use independently specified point interactions. Persistent pair-opacity\nand sensor/motor feedback are separate computations. A retained path is a point's\nmovement history, not memory of a pair's contact."),)),
+    "docs/thick-regions-and-plotting.md": ("04d03f43962fca826b92db49360e54d966bbbcdb2f1b05c8a5570814e2f7c300", (("Both are original studies, motivated by the tasks described in the [capability decision](../design/capabilities/thick-regions-and-plotting.md). They do not recreate a named artist work.", "The [capability decision](../design/capabilities/thick-regions-and-plotting.md) explains the reusable geometry behind both studies."),)),
+    "docs/weighted-image-marks.md": ("57b48933b1c533d3b8012edd536923de6b36a2915e18c50c21d38c6e0aba3912", ((" Neither source is a borrowed artwork or a recreation of a reference piece.", ""), ("The [capability decision](../design/capabilities/weighted-image-marks.md) separates this task from Sighack's brightness-to-circle-radius packing and Secord's continuous weighted Voronoi precedent.", "The [capability decision](../design/capabilities/weighted-image-marks.md) discusses Sighack's brightness-to-circle-radius packing and Secord's continuous weighted Voronoi method as related context."))),
+    "docs/word-echo.md": ("2c752581ff201c5e9b87774176bc54a9511de1fb8e5202c8a824134b1da85241", (("These are original transfer\nstudies, not recreations of the Davis tennis work that motivates the broader\nrecorded-control task. Open the local", "Davis's tennis work motivates the broader recorded-control task.\nOpen the local"),)),
+    "apps/web/content/external-expansion-api.mjs": ("8e580287669f841e33b4d564f9cd5872c6be3de18393e996e17080d924dd984c", ((', "This authored force law does not recreate Reas Process 18 or Tissue."', ''),)),
+    "apps/web/content/survey-coverage-api.mjs": ("af5001ad2fccb27d7b5c608bee85daf1b35f2d0e1ee1cc16fe31e26c11ae0771", (('      "This is a pixel transform component; it does not reproduce a source shader hash or an entire sketch.",\n', ''),)),
+    'packages/javascript/examples/contact-network/index.html': ('b9b3f9c815045fed7dc873cc794bdee0a275dd6b6b52b820de37b9bb75e082bc', (('; this is an independent study, not a recreation of their rules.', '.'),)),
+    'packages/javascript/examples/agent-trails/index.html': ('3b6af1df317dc25549493b0c98ddad2bd2017a485c65e257615c622a331a9410', (('; this is an independent study, not a recreation of their rules.', '.'),)),
+    'packages/javascript/examples/feedback-print/index.html': ('6d313a57e7cf073c4aecab5910f4d84cf5445bb362bbca2f95657554ef451edf', (("; this is not a recreation of either artist's method.", '.'),)),
+}
+COPY_PATHS = frozenset(COPY_EDITS)
+
+
 WEB_GALLERY = 'evidence/conformance/external-expansion-gallery-compatibility-review.json'
 WEB_GALLERY_ROOT = 'evidence/web/external-expansion-gallery-review.json'
 WEB_GALLERY_PREVIOUS = 'evidence/web/p5-tenfold/root-review.json'
@@ -409,6 +457,143 @@ WEB_GALLERY_DEPENDENCIES = frozenset((
     'apps/web/content/orbital-brush.md',
     'apps/web/content/ornament-poster.md',
 ))
+
+SECOND_SURFACE = 'evidence/conformance/external-dynamics-surface-review.json'
+SECOND_ROOT = 'evidence/expansion/second-batch/root-review.json'
+SECOND_GUIDES = 'apps/web/content/external-dynamics-api.mjs'
+SECOND_BINDINGS = (
+    ('contact-history-2d', 'contactHistory2D', 'ContactHistory2DError'),
+    ('sensor-motor-step-2d', 'sensorMotorStep2D', 'SensorMotorStep2DError'),
+    ('flock-steer-2d', 'flockSteer2D', 'FlockSteer2DError'),
+    ('region-clearance-2d', 'regionClearance2D', 'RegionClearance2DError'),
+    ('tapered-stroke-strip-2d', 'taperedStrokeStrip2D', 'TaperedStrokeStrip2DError'),
+    ('select-tapered-stroke-strips-2d', 'selectTaperedStrokeStrips2D', 'SelectTaperedStrokeStrips2DError'),
+    ('hatch-region-lines-2d', 'hatchRegionLines2D', 'HatchRegionLines2DError'),
+    ('svg-plot-plan-01', 'svgPlotPlan01', 'SvgPlotPlan01Error'),
+    ('insert-segment-bridge-2d', 'insertSegmentBridge2D', 'InsertSegmentBridge2DError'),
+    ('relative-neighborhood-pairs-2d', 'relativeNeighborhoodPairs2D', 'RelativeNeighborhoodPairs2DError'),
+    ('threshold-edge-relaxation-2d', 'thresholdEdgeRelaxation2D', 'ThresholdEdgeRelaxation2DError'),
+    ('elastic-curve-grow-step-2d', 'elasticCurveGrowStep2D', 'ElasticCurveGrowStep2DError'),
+    ('project-periodic-velocity-2d', 'projectPeriodicVelocity2D', None),
+    ('advect-periodic-scalar-2d', 'advectPeriodicScalar2D', None),
+    ('diffuse-periodic-scalar-2d', 'diffusePeriodicScalar2D', None),
+)
+SECOND_HOST = 'packages/javascript/src/p5-feedback-surface.js'
+SECOND_MODULES = frozenset(f'packages/javascript/src/{stem}.js' for stem, _, _ in SECOND_BINDINGS) | {SECOND_HOST}
+SECOND_TRANSITIVE = frozenset(f'packages/javascript/src/internal/{stem}.js' for stem in (
+    'agent-behavior-utils', 'region-utils', 'graph-growth-utils', 'elastic-growth-utils',
+    'periodic-grid', 'systems-a-utils', 'exact-rational', 'fdlibm-hypot')) | {
+        'packages/javascript/src/fdlibm-trig.js'}
+SECOND_REQUIRED = frozenset({HELPER, 'tests/test_reviewed_export_extension.py', JS_INDEX,
+                              BATCH1_GENERATOR, SECOND_GUIDES}) | SECOND_MODULES | SECOND_TRANSITIVE
+SECOND_ADDITIONS = '\n' + ''.join(
+    f'export {{ {name}{", " + error if error else ""} }} from "./{stem}.js";\n'
+    for stem, name, error in SECOND_BINDINGS
+) + 'export { createP5FeedbackSurface, P5FeedbackSurfaceError } from "./p5-feedback-surface.js";\n'
+
+
+def second_generator_successor(before):
+    """Add exactly the approved 15 guide bindings, preserving all prior entries."""
+    changes = (
+        ('import { externalExpansionApiGuides } from "../content/external-expansion-api.mjs";\n',
+         'import { externalExpansionApiGuides } from "../content/external-expansion-api.mjs";\n'
+         'import { externalDynamicsApiGuides } from "../content/external-dynamics-api.mjs";\n'),
+        ('const bindings = {\n', 'const bindings = {\n' + ''.join(
+            f'  "{stem}": ["{stem}", "{name}"],\n' for stem, name, _ in SECOND_BINDINGS)),
+        ('const guide = externalExpansionApiGuides[catalog.id] ?? surveyCoverageApiGuides[catalog.id] ?? apiGuides[catalog.id];',
+         'const guide = externalDynamicsApiGuides[catalog.id] ?? externalExpansionApiGuides[catalog.id] ?? surveyCoverageApiGuides[catalog.id] ?? apiGuides[catalog.id];'),
+    )
+    result = before
+    for old, new in changes:
+        if result.count(old) != 1:
+            return None
+        result = result.replace(old, new)
+    return result
+
+
+def _validate_second_surface(root, snapshots):
+    review = json.loads(_read(root, SECOND_SURFACE))
+    accepted = json.loads(_read(root, SECOND_ROOT))
+    expansion = json.loads(_read(root, EXPANSION_SURFACE))
+    gallery = json.loads(_read(root, WEB_GALLERY))
+    prior_names = {HELPER, 'tests/test_reviewed_export_extension.py', JS_INDEX, BATCH1_GENERATOR}
+    if (not _accepted(review) or not _accepted(accepted)
+            or not SECOND_REQUIRED.issubset(review['implementation_sha256'])
+            or not SECOND_REQUIRED.issubset(accepted['implementation_sha256'])
+            or not {WEB_GALLERY, EXPANSION_SURFACE, SECOND_ROOT}.issubset(review['evidence_sha256'])
+            or review.get('previous_review_sha256') != _digest(_read(root, WEB_GALLERY))
+            or not _bindings(root, review, snapshots) or not _bindings(root, accepted, snapshots)):
+        return False
+    prior = review['previous_bytes']
+    if set(prior) != prior_names or set(review['extensions']) != {JS_INDEX, BATCH1_GENERATOR}:
+        return False
+    for name in prior:
+        source = expansion if name in {JS_INDEX, BATCH1_GENERATOR} else gallery
+        if _digest(prior[name].encode()) != source['implementation_sha256'][name]:
+            return False
+    expected = {JS_INDEX: prior[JS_INDEX] + SECOND_ADDITIONS,
+                BATCH1_GENERATOR: second_generator_successor(prior[BATCH1_GENERATOR])}
+    if expected[BATCH1_GENERATOR] is None:
+        return False
+    for name in expected:
+        entry = review['extensions'][name]
+        if (set(entry) != {'before', 'after'} or entry['before'] != prior[name]
+                or entry['after'] != expected[name]
+                or entry['after'].encode() != snapshots.get(name, _read(root, name))):
+            return False
+    snapshots.update({name: value.encode() for name, value in prior.items()})
+    return True
+
+
+def copy_cleanup_successor(name, before):
+    """Apply only the reviewed prose replacements to an exact preimage."""
+    specification = COPY_EDITS.get(name)
+    if specification is None or _digest(before.encode()) != specification[0]:
+        return None
+    result = before
+    for old, new in specification[1]:
+        if result.count(old) != 1:
+            return None
+        result = result.replace(old, new)
+    return result
+
+
+def _validate_copy_surface(root, snapshots):
+    review = json.loads(_read(root, COPY_SURFACE))
+    accepted = json.loads(_read(root, COPY_ROOT))
+    second = json.loads(_read(root, SECOND_SURFACE))
+    second_root = json.loads(_read(root, SECOND_ROOT))
+    verifier = {HELPER, 'tests/test_reviewed_export_extension.py'}
+    required = COPY_PATHS | verifier
+    if (not _accepted(review) or not _accepted(accepted)
+            or not required.issubset(review['implementation_sha256'])
+            or not required.issubset(accepted['implementation_sha256'])
+            or not {SECOND_SURFACE, COPY_ROOT}.issubset(review['evidence_sha256'])
+            or not {SECOND_SURFACE, SECOND_ROOT}.issubset(accepted['evidence_sha256'])
+            or review.get('previous_review_sha256') != _digest(_read(root, SECOND_SURFACE))
+            or not _bindings(root, review, snapshots) or not _bindings(root, accepted, snapshots)):
+        return False
+    prior = review['previous_bytes']
+    if set(prior) != required or set(review['extensions']) != COPY_PATHS:
+        return False
+    for name in verifier:
+        if (_digest(prior[name].encode()) != second['implementation_sha256'][name]
+                or _digest(prior[name].encode()) != second_root['implementation_sha256'][name]):
+            return False
+    for name in COPY_PATHS:
+        before = prior[name]
+        after = copy_cleanup_successor(name, before)
+        entry = review['extensions'][name]
+        if (after is None or set(entry) != {'before', 'after'}
+                or entry['before'] != before or entry['after'] != after
+                or after.encode() != snapshots.get(name, _read(root, name))):
+            return False
+        for predecessor in (second, second_root):
+            if name in predecessor['implementation_sha256']:
+                if _digest(before.encode()) != predecessor['implementation_sha256'][name]:
+                    return False
+    snapshots.update({name: text.encode() for name, text in prior.items()})
+    return True
 
 
 def web_gallery_successor(name, before):
@@ -527,6 +712,44 @@ def _validate_web_gallery(root, snapshots):
     return True
 
 
+
+DYNAMICS_WEB = 'evidence/conformance/external-dynamics-gallery-compatibility-review.json'
+DYNAMICS_WEB_ROOT = 'evidence/web/external-dynamics-gallery-review.json'
+DYNAMICS_WEB_PAIRS = {'apps/web/lib/studio.ts': ('3234718fc1ce5c2a2bf5cd0c0f956fe2b05e79e0fd6e3c78c9c5c617136eb833', 'e8f77dc25bc5b254f115f6181ece0b24287bbaac9d8351ca2ffcfe61838b6f7a'), 'apps/web/lib/render-studio.ts': ('c74d2646223ab80dab81f4beb33b6ada76d15db2fa90af450676271260b3b0c8', 'df2bbd69e2c8f7d65d326890cf21aea92c3a2bef3a57809e0110bdaee87d7e68'), 'apps/web/lib/harness-render.ts': ('0ecce43266b068779397563db321e94cfb41db32314ebd755366cda7751f0533', 'cb0d8654c82032c3dab3e8fc6be1d89bf5c948433f22c5c27d02cf7cfcef58bc'), 'apps/web/scripts/generate-gallery.mjs': ('efcd284c1fbb41ef31083d8588dcde1149ea11c348cdf33213715fc760996bf5', '85f282dd557424bdcc5ba9a3805c856ae8565c111ab2874b32acb167289bf363'), 'apps/web/tests/studio.test.ts': ('0fe5ebc54ac8d9c4529e8fd155d00f2ae10e0c00a8c47d85a0c31b4a9eac03d4', '79acf30947255223e05c72a8a4e271c1e20702411ae8273a0d178eea4e22cd1b')}
+DYNAMICS_WEB_FILES = frozenset(DYNAMICS_WEB_PAIRS)
+DYNAMICS_WEB_REQUIRED = DYNAMICS_WEB_FILES | frozenset(['apps/web/lib/adapters/external-dynamics.ts', 'apps/web/content/external-dynamics-studies.mjs', 'apps/web/tests/external-dynamics-adapters.test.ts', 'apps/web/content/lingering-links.md', 'apps/web/content/sensing-trails.md', 'apps/web/content/flocking-marks.md', 'apps/web/content/guarded-bands.md', 'apps/web/content/hatched-islands.md', 'apps/web/content/bridge-web.md', 'apps/web/content/neighborhood-growth.md', 'apps/web/content/elastic-loops.md', 'apps/web/content/dye-currents.md', 'tools/reviewed_export_extension.py', 'tests/test_reviewed_export_extension.py'])
+
+def _validate_dynamics_web(root, snapshots):
+    review = json.loads(_read(root, DYNAMICS_WEB))
+    accepted = json.loads(_read(root, DYNAMICS_WEB_ROOT))
+    previous = json.loads(_read(root, COPY_SURFACE))
+    gallery = json.loads(_read(root, WEB_GALLERY))
+    verifier = {HELPER, 'tests/test_reviewed_export_extension.py'}
+    if (not _accepted(review) or not _accepted(accepted)
+            or not DYNAMICS_WEB_REQUIRED.issubset(review['implementation_sha256'])
+            or not DYNAMICS_WEB_REQUIRED.issubset(accepted['implementation_sha256'])
+            or not {COPY_SURFACE, DYNAMICS_WEB_ROOT}.issubset(review['evidence_sha256'])
+            or not {COPY_SURFACE, SECOND_ROOT}.issubset(accepted['evidence_sha256'])
+            or review.get('previous_review_sha256') != _digest(_read(root, COPY_SURFACE))
+            or not _bindings(root, review, snapshots) or not _bindings(root, accepted, snapshots)):
+        return False
+    prior = review['previous_bytes']
+    if set(prior) != DYNAMICS_WEB_FILES | verifier or set(review['extensions']) != DYNAMICS_WEB_FILES:
+        return False
+    for name in verifier:
+        if _digest(prior[name].encode()) != previous['implementation_sha256'][name]:
+            return False
+    for name, (old_hash, new_hash) in DYNAMICS_WEB_PAIRS.items():
+        entry = review['extensions'][name]
+        if (set(entry) != {'before', 'after'} or entry['before'] != prior[name]
+                or _digest(prior[name].encode()) != old_hash
+                or old_hash != gallery['implementation_sha256'][name]
+                or _digest(entry['after'].encode()) != new_hash
+                or entry['after'].encode() != snapshots.get(name, _read(root, name))):
+            return False
+    snapshots.update({name: text.encode() for name, text in prior.items()})
+    return True
+
 def historical_export_bytes(root, relative, expected):
     """Return only exact reviewed historical entrypoint bytes.
 
@@ -536,12 +759,27 @@ def historical_export_bytes(root, relative, expected):
     are always entrypoints; runtime operation validation never uses these snapshots.
     """
     batch1_archival_paths = {JS_INDEX, BATCH1_GENERATOR, HELPER, 'tests/test_reviewed_export_extension.py'}
-    archival_paths = batch1_archival_paths | WEB_GALLERY_FILES
+    archival_paths = batch1_archival_paths | WEB_GALLERY_FILES | COPY_PATHS
     if relative not in PATHS and relative not in archival_paths:
         return None
     try:
         snapshots = {}
         successor_match = None
+        if (root / DYNAMICS_WEB).exists():
+            if not _validate_dynamics_web(root, snapshots):
+                return None
+            if relative in snapshots and _digest(snapshots[relative]) == expected:
+                successor_match = snapshots[relative]
+        if (root / COPY_SURFACE).exists():
+            if not _validate_copy_surface(root, snapshots):
+                return None
+            if relative in snapshots and _digest(snapshots[relative]) == expected:
+                successor_match = snapshots[relative]
+        if (root / SECOND_SURFACE).exists():
+            if not _validate_second_surface(root, snapshots):
+                return None
+            if relative in snapshots and _digest(snapshots[relative]) == expected:
+                successor_match = snapshots[relative]
         if (root / WEB_GALLERY).exists():
             if not _validate_web_gallery(root, snapshots):
                 return None

@@ -22,6 +22,7 @@ import {
 } from "../../../../packages/javascript/examples/loop-marks/loop-marks.js";
 import { createGrainComposition } from "../../../../packages/javascript/examples/grain-marks/grain-marks.js";
 import { createCutModel } from "../cut-model";
+import { drawLoopMarksModern, validateLoopMarks } from "./loop-marks-quality";
 
 type Q = Record<string, any>;
 const colors = (layer: Layer): number[] => layer.palette;
@@ -118,39 +119,66 @@ export const geometryDefinitions: StudioDefinition[] = [
   {
     id: "loop-marks",
     title: "Loop marks",
-    description: "Closed spline loops with tiles or translucent triangle fans.",
+    description: "Construct closed loops, then choose outlines, edge tiles, or triangle fans.",
     parameters: [
-      numeric(
-        "tileScale",
-        "Tile scale",
-        "Scale of each oriented tile.",
-        0.3,
-        2.5,
-        0.05,
-      ),
-      numeric(
-        "outlineWeight",
-        "Outline weight",
-        "Spline outline stroke width.",
-        0.2,
-        3,
-        0.05,
-      ),
-      numeric("opacity", "Fan opacity", "Triangle-fan opacity.", 20, 220, 1),
-      toggle("fans", "Fans", "Fill loops with triangle fans."),
-      toggle(
-        "moved",
-        "Moved control",
-        "Offset one control point in each loop.",
-      ),
+      choice("layout", "Layout", "Arrange loops along a row, in a grid, or concentrically.", ["row", "grid", "nested"]),
+      numeric("loopCount", "Loops", "Number of loops in the chosen layout.", 1, 16, 1, { integer: true }),
+      numeric("columns", "Grid columns", "Number of columns when Layout is grid.", 1, 8, 1, { integer: true }),
+      numeric("spacingX", "Spacing X", "Horizontal step between loop centers.", 10, 500, 1),
+      numeric("spacingY", "Spacing Y", "Vertical step between loop centers.", 10, 500, 1),
+      numeric("centerX", "Center X", "Horizontal center of the loop arrangement.", -320, 960, 1),
+      numeric("centerY", "Center Y", "Vertical center of the loop arrangement.", -320, 960, 1),
+      numeric("radiusX", "Radius X", "Horizontal radius of each base spline.", 4, 500, 1),
+      numeric("radiusY", "Radius Y", "Vertical radius of each base spline.", 4, 500, 1),
+      numeric("nestedScale", "Nested scale", "Scale factor between concentric loops.", .2, 1, .01),
+      numeric("knotCount", "Base knots", "Control points in the base closed spline.", 5, 16, 1, { integer: true }),
+      numeric("lobes", "Lobes", "Number of radial waves around the sampled contour; zero keeps the base spline.", 0, 12, 1, { integer: true }),
+      numeric("lobeDepth", "Lobe depth", "Strength of the radial waves.", 0, .8, .01),
+      numeric("phase", "Lobe phase", "Rotates the radial wave pattern in degrees.", -180, 180, 1),
+      numeric("subdivisions", "Subdivisions", "Samples per base spline span.", 8, 64, 1, { integer: true }),
+      choice("treatment", "Treatment", "Draw outlines, edge tiles, fans, or outlines with tiles.", ["outline", "tiles", "fans", "outline-tiles"]),
+      choice("tileShape", "Tile shape", "Bar, diamond, or perpendicular tick along the contour.", ["bar", "diamond", "tick"]),
+      numeric("tileSpacing", "Tile spacing", "Distance between edge marks along the contour.", 4, 80, 1),
+      numeric("tileWidth", "Tile width", "Along-contour tile width, or tick stroke width.", 1, 80, 1),
+      numeric("tileHeight", "Tile height", "Across-contour tile height.", 1, 80, 1),
+      numeric("outlineWeight", "Outline weight", "Width of the closed contour stroke.", .1, 12, .1),
+      numeric("fanOpacity", "Fan opacity", "Opacity of triangle fans.", 0, 255, 1),
+      { ...numeric("tileScale", "Legacy tile scale", "Saved earlier tile scaling.", .3, 2.5, .05), hidden: true },
+      { ...numeric("opacity", "Legacy fan opacity", "Saved earlier fan opacity.", 20, 220, 1), hidden: true },
+      { ...toggle("fans", "Legacy fans", "Saved earlier fan treatment."), hidden: true },
+      { ...toggle("moved", "Legacy moved control", "Saved earlier control offset."), hidden: true },
+      { ...toggle("legacy", "Legacy layout", "Retains the earlier saved composition."), hidden: true },
     ],
     defaults: {
+      layout: "row",
+      loopCount: 3,
+      columns: 3,
+      spacingX: 200,
+      spacingY: 20,
+      centerX: 320,
+      centerY: 320,
+      radiusX: 78,
+      radiusY: 105,
+      nestedScale: .78,
+      knotCount: 8,
+      lobes: 4,
+      lobeDepth: .25,
+      phase: 0,
+      subdivisions: 24,
+      treatment: "outline-tiles",
+      tileShape: "diamond",
+      tileSpacing: 28,
+      tileWidth: 8,
+      tileHeight: 14,
+      fanOpacity: 120,
       tileScale: 1,
-      outlineWeight: 0.8,
+      outlineWeight: 1.5,
       opacity: 120,
       fans: false,
       moved: false,
+      legacy: false,
     },
+    validate: validateLoopMarks,
   },
   {
     id: "region-marks",
@@ -369,7 +397,7 @@ export function drawGeometry(p: any, layer: Layer): void {
       case "cut-branch-marks":
         return cutBranch(p, layer);
       case "loop-marks":
-        return loops(p, layer);
+        return layer.params.legacy === true ? loops(p, layer) : drawLoopMarksModern(p, layer);
       case "region-marks":
         return regions(p, layer);
       case "panel-marks":

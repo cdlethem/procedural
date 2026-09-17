@@ -1,0 +1,172 @@
+{
+  "status": "passed",
+  "packageRoot": "/home/colin/dev/procedural/packages/javascript",
+  "runtime": "p5 2.3.2 Canvas2D density1",
+  "scope": "Original three-strand open-curve composition through tick36, controlled curl branch, structure edit, independent acceleration transfer, source stability and reset/reload/save. Browser step timing includes click and redraw; no target acceptance.",
+  "input_sha256_before": {
+    "tests/native/elastic-growth-studies-javascript.mjs": "e44698b4f325dc208700889cc1d216b5702f7dc1f13c75aa10697e3ecf57b33d",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    "packages/javascript/src/elastic-curve-grow-step-2d.js": "1159dd90d3af485ac0d608d8ff422fac6b2b2728b07974b09c49ed6cb4a64812",
+    "packages/javascript/src/internal/elastic-growth-utils.js": "b85e70104f79a92f46995a43d596650c57b737b647c78b5f3da469cb132fca21",
+    "packages/javascript/src/internal/graph-growth-utils.js": "db09a94fbed91d28913f56e989b369ca9150237feb7d1420b0442a6d643e9ac2",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/examples/elastic-loops/index.html": "dc84a7b4603b0a6bd5518786b0da2e06c469e139f02d8b9691c291b0a36cd04f",
+    "packages/javascript/examples/elastic-loops/sketch.js": "0cc1c52166800c034cdae5611fd0fac81261b4931079eeb4c61bf68ffe8203eb",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  },
+  "frames": [
+    {
+      "label": "baseline",
+      "tick": 0,
+      "nodes": 30,
+      "edges": 27,
+      "state_sha256": "7b073174e2fa41171517c745a19cd5237d822f06fec0d767eb1fc97be1340f94",
+      "png_sha256": "1df7808de956e49588ed51a4d05f2f0d4970242afb7344a538a0ddc9db797fd2",
+      "png_path": ".work/expansion-full/second-final/source/elastic/baseline.png",
+      "png_bytes": 55022
+    },
+    {
+      "label": "early-tick-001",
+      "tick": 1,
+      "nodes": 57,
+      "edges": 54,
+      "state_sha256": "c8c1757d56fb32e71e8aa61bd6ed0c55aab34b4870fe9b6b3df720d1a31dbd61",
+      "png_sha256": "9fe7232ce5e868be37f4c1448d4ce850dae04f542005e93d3f28aee2c6492e68",
+      "png_path": ".work/expansion-full/second-final/source/elastic/early-tick-001.png",
+      "png_bytes": 57550
+    },
+    {
+      "label": "intermediate-tick-012",
+      "tick": 12,
+      "nodes": 58,
+      "edges": 55,
+      "state_sha256": "6644c8f6a603cc3e4ec89fba5765ca59560c578d86b6dfff88caa353fa38ed5f",
+      "png_sha256": "161bc035a210fd06858bc535d4daf5fc2237293385e5ea4337d8b4b516e367cc",
+      "png_path": ".work/expansion-full/second-final/source/elastic/intermediate-tick-012.png",
+      "png_bytes": 71301
+    },
+    {
+      "label": "unedited-tick-013",
+      "tick": 13,
+      "nodes": 58,
+      "edges": 55,
+      "state_sha256": "2858f3501d81afd5aa681cc50d18868e78ac59f7c224fca2ad3690b937b22a03",
+      "png_sha256": "c51a35a7d32cfc17bed73197bc3078b819c2067959481f1e744ebb96c593530c",
+      "png_path": ".work/expansion-full/second-final/source/elastic/unedited-tick-013.png",
+      "png_bytes": 72882
+    },
+    {
+      "label": "mature-tick-024",
+      "tick": 24,
+      "nodes": 76,
+      "edges": 73,
+      "state_sha256": "0f5ad8a375081a0d0d65193a9b361e3c29c7566e9d255f654661992a9e665218",
+      "png_sha256": "ea2f285435f748be93a442ebc297f7b48a3c63e72767567b529852436d469aae",
+      "png_path": ".work/expansion-full/second-final/source/elastic/mature-tick-024.png",
+      "png_bytes": 98320
+    },
+    {
+      "label": "folded-tick-036",
+      "tick": 36,
+      "nodes": 115,
+      "edges": 112,
+      "state_sha256": "50e9a4046d3cedbe78c75d6638bc7def192768a80f60105657a9d1ea5468b0df",
+      "png_sha256": "e58f6119734f5ad0509979fb88a9a2b6345c8fe321035995221eebcdc2cdbb7b",
+      "png_path": ".work/expansion-full/second-final/source/elastic/folded-tick-036.png",
+      "png_bytes": 139004
+    },
+    {
+      "label": "reverse-curl-no-tick",
+      "tick": 12,
+      "nodes": 58,
+      "edges": 55,
+      "state_sha256": "112ec568ba7742310b87d71d5090eececc17f40d317e8be06e96b5a4c833fa2c",
+      "png_sha256": "161bc035a210fd06858bc535d4daf5fc2237293385e5ea4337d8b4b516e367cc",
+      "png_path": ".work/expansion-full/second-final/source/elastic/reverse-curl-no-tick.png",
+      "png_bytes": 71301
+    },
+    {
+      "label": "reverse-curl-tick-013",
+      "tick": 13,
+      "nodes": 58,
+      "edges": 55,
+      "state_sha256": "351210836b35ff7d273709fcaaacae9b35235450ef774b167f405bc28fbfaa00",
+      "png_sha256": "04d82f50fc12c2de0dce41339a0a99b08d3bfa10b9a66358d089da92f1159c4c",
+      "png_path": ".work/expansion-full/second-final/source/elastic/reverse-curl-tick-013.png",
+      "png_bytes": 73663
+    },
+    {
+      "label": "structure-edit-no-tick",
+      "tick": 13,
+      "nodes": 58,
+      "edges": 55,
+      "state_sha256": "9c6e36f6037905635664ea9fe082bd5eebd2c522fb338a7f6a7e609d873e89d6",
+      "png_sha256": "1bab82ebb3d21c2a9598c8ae8d413e6399e0e4ddac2ebc63a4744daf52782084",
+      "png_path": ".work/expansion-full/second-final/source/elastic/structure-edit-no-tick.png",
+      "png_bytes": 74494
+    },
+    {
+      "label": "supplied-acceleration",
+      "tick": 13,
+      "nodes": 58,
+      "edges": 55,
+      "state_sha256": "299aa77174dd9982f63724653edfb12d9faea2378b8ea9201b19d43f657bba97",
+      "png_sha256": "1bab82ebb3d21c2a9598c8ae8d413e6399e0e4ddac2ebc63a4744daf52782084",
+      "png_path": ".work/expansion-full/second-final/source/elastic/supplied-acceleration.png",
+      "png_bytes": 74494
+    },
+    {
+      "label": "wind-transfer-tick-019",
+      "tick": 19,
+      "nodes": 58,
+      "edges": 55,
+      "state_sha256": "7f3c7ed90e5eb41c4be0f64310766cc3de830aedbfe5a475f8c768869d11a89e",
+      "png_sha256": "da53af393ca602d3cbddf7998bfeb204e1b0b45fd53276cf5f49ab9ae0694adc",
+      "png_path": ".work/expansion-full/second-final/source/elastic/wind-transfer-tick-019.png",
+      "png_bytes": 84032
+    },
+    {
+      "label": "reset",
+      "tick": 0,
+      "nodes": 30,
+      "edges": 27,
+      "state_sha256": "7b073174e2fa41171517c745a19cd5237d822f06fec0d767eb1fc97be1340f94",
+      "png_sha256": "1df7808de956e49588ed51a4d05f2f0d4970242afb7344a538a0ddc9db797fd2",
+      "png_path": ".work/expansion-full/second-final/source/elastic/reset.png",
+      "png_bytes": 55022
+    },
+    {
+      "label": "reload",
+      "tick": 0,
+      "nodes": 30,
+      "edges": 27,
+      "state_sha256": "7b073174e2fa41171517c745a19cd5237d822f06fec0d767eb1fc97be1340f94",
+      "png_sha256": "1df7808de956e49588ed51a4d05f2f0d4970242afb7344a538a0ddc9db797fd2",
+      "png_path": ".work/expansion-full/second-final/source/elastic/reload.png",
+      "png_bytes": 55022
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "step_wall_time": {
+    "samples": 55,
+    "median_ms": 180.06273799999872,
+    "p95_ms": 462.4748119999995,
+    "max_ms": 631.3392270000004
+  },
+  "saved_png_sha256": "1df7808de956e49588ed51a4d05f2f0d4970242afb7344a538a0ddc9db797fd2",
+  "input_sha256_after": {
+    "tests/native/elastic-growth-studies-javascript.mjs": "e44698b4f325dc208700889cc1d216b5702f7dc1f13c75aa10697e3ecf57b33d",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    "packages/javascript/src/elastic-curve-grow-step-2d.js": "1159dd90d3af485ac0d608d8ff422fac6b2b2728b07974b09c49ed6cb4a64812",
+    "packages/javascript/src/internal/elastic-growth-utils.js": "b85e70104f79a92f46995a43d596650c57b737b647c78b5f3da469cb132fca21",
+    "packages/javascript/src/internal/graph-growth-utils.js": "db09a94fbed91d28913f56e989b369ca9150237feb7d1420b0442a6d643e9ac2",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/examples/elastic-loops/index.html": "dc84a7b4603b0a6bd5518786b0da2e06c469e139f02d8b9691c291b0a36cd04f",
+    "packages/javascript/examples/elastic-loops/sketch.js": "0cc1c52166800c034cdae5611fd0fac81261b4931079eeb4c61bf68ffe8203eb",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  }
+}

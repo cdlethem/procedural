@@ -1,6 +1,6 @@
 # Gesture skeletons
 
-Simplified gestures retain a visible set of decisive joints. This is an original design study, not a recreation of a surveyed original.
+Simplified gestures retain a visible set of decisive joints.
 
 | Control | Visible effect |
 | --- | --- |

@@ -1,0 +1,2693 @@
+{
+  "operation": "field.raymarch-implicit-rays-3d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "fc2ce3b83aa2acb5b3b5e2143a637460d154af945d025d4a732c4ee0fadd6cae",
+  "cases": [
+    {
+      "id": "sphere_axis_normalized_direction",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 1
+        },
+        "rays": [
+          {
+            "origin": [
+              -3,
+              0,
+              0
+            ],
+            "direction": [
+              2,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "hit_epsilon",
+            "distance": 2,
+            "traveled": 2,
+            "position": [
+              -1,
+              0,
+              0
+            ],
+            "fieldValue": 0,
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "normalStatus": "estimated",
+            "overshot": false,
+            "samples": 2,
+            "normalSamples": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ordered_two_rays_independent_normals",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 1
+        },
+        "rays": [
+          {
+            "origin": [
+              -3,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": [
+              3,
+              0,
+              0
+            ],
+            "direction": [
+              -1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 2,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "hit_epsilon",
+            "distance": 2,
+            "traveled": 2,
+            "position": [
+              -1,
+              0,
+              0
+            ],
+            "fieldValue": 0,
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "normalStatus": "estimated",
+            "overshot": false,
+            "samples": 2,
+            "normalSamples": 6
+          },
+          {
+            "kind": "hit_epsilon",
+            "distance": 2,
+            "traveled": 2,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "fieldValue": 0,
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "normalStatus": "estimated",
+            "overshot": false,
+            "samples": 2,
+            "normalSamples": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "axis_box_face",
+      "input": {
+        "scene": {
+          "kind": "axisBox",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            1,
+            2,
+            3
+          ]
+        },
+        "rays": [
+          {
+            "origin": [
+              -3,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "hit_epsilon",
+            "distance": 2,
+            "traveled": 2,
+            "position": [
+              -1,
+              0,
+              0
+            ],
+            "fieldValue": 0,
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "normalStatus": "estimated",
+            "overshot": false,
+            "samples": 2,
+            "normalSamples": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "axis_box_corner_undefined",
+      "input": {
+        "scene": {
+          "kind": "axisBox",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            1,
+            2,
+            3
+          ]
+        },
+        "rays": [
+          {
+            "origin": [
+              1,
+              2,
+              3
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "hit_epsilon",
+            "distance": 0,
+            "traveled": 0,
+            "position": [
+              1,
+              2,
+              3
+            ],
+            "fieldValue": 0,
+            "normal": null,
+            "normalStatus": "undefined_nonsmooth",
+            "overshot": false,
+            "samples": 1,
+            "normalSamples": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "translated_uniform_scaled_sphere",
+      "input": {
+        "scene": {
+          "kind": "translateUniform",
+          "translation": [
+            3,
+            0,
+            0
+          ],
+          "scale": 2,
+          "child": {
+            "kind": "sphere",
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "radius": 1
+          }
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "hit_epsilon",
+            "distance": 1,
+            "traveled": 1,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "fieldValue": 0,
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "normalStatus": "estimated",
+            "overshot": false,
+            "samples": 2,
+            "normalSamples": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "hard_union_contact_tie",
+      "input": {
+        "scene": {
+          "kind": "union",
+          "left": {
+            "kind": "sphere",
+            "center": [
+              -1,
+              0,
+              0
+            ],
+            "radius": 1
+          },
+          "right": {
+            "kind": "sphere",
+            "center": [
+              1,
+              0,
+              0
+            ],
+            "radius": 1
+          }
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "hit_epsilon",
+            "distance": 0,
+            "traveled": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "fieldValue": 0,
+            "normal": null,
+            "normalStatus": "undefined_nonsmooth",
+            "overshot": false,
+            "samples": 1,
+            "normalSamples": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "intersection_outside_sign",
+      "input": {
+        "scene": {
+          "kind": "intersection",
+          "left": {
+            "kind": "sphere",
+            "center": [
+              -1,
+              0,
+              0
+            ],
+            "radius": 1
+          },
+          "right": {
+            "kind": "sphere",
+            "center": [
+              1,
+              0,
+              0
+            ],
+            "radius": 1
+          }
+        },
+        "rays": [
+          {
+            "origin": [
+              -1,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 1,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "miss_steps",
+            "distance": null,
+            "traveled": 0,
+            "position": [
+              -1,
+              0,
+              0
+            ],
+            "fieldValue": 1,
+            "normal": null,
+            "normalStatus": "not_applicable",
+            "overshot": false,
+            "samples": 1,
+            "normalSamples": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "difference_hole_outside",
+      "input": {
+        "scene": {
+          "kind": "difference",
+          "left": {
+            "kind": "sphere",
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "radius": 2
+          },
+          "right": {
+            "kind": "sphere",
+            "center": [
+              1,
+              0,
+              0
+            ],
+            "radius": 0.5
+          }
+        },
+        "rays": [
+          {
+            "origin": [
+              1,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 1,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "miss_steps",
+            "distance": null,
+            "traveled": 0,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "fieldValue": 0.5,
+            "normal": null,
+            "normalStatus": "not_applicable",
+            "overshot": false,
+            "samples": 1,
+            "normalSamples": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "difference_solid_inside",
+      "input": {
+        "scene": {
+          "kind": "difference",
+          "left": {
+            "kind": "sphere",
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "radius": 2
+          },
+          "right": {
+            "kind": "sphere",
+            "center": [
+              1,
+              0,
+              0
+            ],
+            "radius": 0.5
+          }
+        },
+        "rays": [
+          {
+            "origin": [
+              -1.5,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 1,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "inside_start",
+            "distance": 0,
+            "traveled": 0,
+            "position": [
+              -1.5,
+              0,
+              0
+            ],
+            "fieldValue": -0.5,
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "normalStatus": "estimated",
+            "overshot": false,
+            "samples": 1,
+            "normalSamples": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "smooth_union_midpoint_negative_blend",
+      "input": {
+        "scene": {
+          "kind": "smoothUnion",
+          "left": {
+            "kind": "sphere",
+            "center": [
+              -1,
+              0,
+              0
+            ],
+            "radius": 1
+          },
+          "right": {
+            "kind": "sphere",
+            "center": [
+              1,
+              0,
+              0
+            ],
+            "radius": 1
+          },
+          "k": 2
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 1,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "inside_start",
+            "distance": 0,
+            "traveled": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "fieldValue": -0.5,
+            "normal": null,
+            "normalStatus": "undefined_zero",
+            "overshot": false,
+            "samples": 1,
+            "normalSamples": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "sphere_center_inside_precedes_epsilon",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 1
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 1,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "inside_start",
+            "distance": 0,
+            "traveled": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "fieldValue": -1,
+            "normal": null,
+            "normalStatus": "undefined_nonsmooth",
+            "overshot": false,
+            "samples": 1,
+            "normalSamples": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "exact_boundary_sample_hits",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            2,
+            0,
+            0
+          ],
+          "radius": 1
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 1,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 2,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "hit_epsilon",
+            "distance": 1,
+            "traveled": 1,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "fieldValue": 0,
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "normalStatus": "estimated",
+            "overshot": false,
+            "samples": 2,
+            "normalSamples": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "advance_beyond_range_unsampled",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            4,
+            0,
+            0
+          ],
+          "radius": 1
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 2,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 2,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "miss_range",
+            "distance": null,
+            "traveled": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "fieldValue": 3,
+            "normal": null,
+            "normalStatus": "not_applicable",
+            "overshot": false,
+            "samples": 1,
+            "normalSamples": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "boundary_positive_range_beats_steps",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 1
+        },
+        "rays": [
+          {
+            "origin": [
+              2,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 1,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 2,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "miss_range",
+            "distance": null,
+            "traveled": 1,
+            "position": [
+              3,
+              0,
+              0
+            ],
+            "fieldValue": 2,
+            "normal": null,
+            "normalStatus": "not_applicable",
+            "overshot": false,
+            "samples": 2,
+            "normalSamples": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "single_sample_steps_before_proposal",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            4,
+            0,
+            0
+          ],
+          "radius": 1
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 2,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 1,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "miss_steps",
+            "distance": null,
+            "traveled": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "fieldValue": 3,
+            "normal": null,
+            "normalStatus": "not_applicable",
+            "overshot": false,
+            "samples": 1,
+            "normalSamples": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "stalled_addition_at_large_t",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            10000000000000000,
+            3,
+            0
+          ],
+          "radius": 1
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              1,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10000000000000010,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 3,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "miss_stalled",
+            "distance": null,
+            "traveled": 10000000000000000,
+            "position": [
+              10000000000000000,
+              1,
+              0
+            ],
+            "fieldValue": 1,
+            "normal": null,
+            "normalStatus": "not_applicable",
+            "overshot": false,
+            "samples": 2,
+            "normalSamples": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "finite_overshoot_is_flagged",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            1,
+            0,
+            0
+          ],
+          "radius": 5e-324
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 2,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "hit_epsilon",
+            "distance": 1,
+            "traveled": 1,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "fieldValue": -5e-324,
+            "normal": null,
+            "normalStatus": "undefined_nonsmooth",
+            "overshot": true,
+            "samples": 2,
+            "normalSamples": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "empty_rays_zero_work",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 1
+        },
+        "rays": [],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 0,
+        "maxSceneNodes": 10,
+        "maxWork": 0
+      },
+      "output": {
+        "results": []
+      }
+    },
+    {
+      "id": "bad_radius_before_work",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "unknown_nonuniform_transform_rejected",
+      "input": {
+        "scene": {
+          "kind": "scale",
+          "scale": [
+            2,
+            1,
+            1
+          ],
+          "child": {
+            "kind": "sphere",
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "radius": 1
+          }
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero_direction_rejected",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 1
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "ray_cap_precedes_scene_cap_and_work",
+      "input": {
+        "scene": {
+          "kind": "union",
+          "left": {
+            "kind": "sphere",
+            "center": [
+              -1,
+              0,
+              0
+            ],
+            "radius": 1
+          },
+          "right": {
+            "kind": "sphere",
+            "center": [
+              1,
+              0,
+              0
+            ],
+            "radius": 1
+          }
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 0,
+        "maxSceneNodes": 1,
+        "maxWork": 0
+      },
+      "error": "LIMIT_RAYS"
+    },
+    {
+      "id": "scene_cap_precedes_work",
+      "input": {
+        "scene": {
+          "kind": "union",
+          "left": {
+            "kind": "sphere",
+            "center": [
+              -1,
+              0,
+              0
+            ],
+            "radius": 1
+          },
+          "right": {
+            "kind": "sphere",
+            "center": [
+              1,
+              0,
+              0
+            ],
+            "radius": 1
+          }
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 1,
+        "maxSceneNodes": 2,
+        "maxWork": 0
+      },
+      "error": "LIMIT_SCENE_NODES"
+    },
+    {
+      "id": "exact_bigint_work_preflight",
+      "input": {
+        "scene": {
+          "kind": "union",
+          "left": {
+            "kind": "sphere",
+            "center": [
+              -1,
+              0,
+              0
+            ],
+            "radius": 1
+          },
+          "right": {
+            "kind": "sphere",
+            "center": [
+              1,
+              0,
+              0
+            ],
+            "radius": 1
+          }
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 29
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "field_subtraction_overflow",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            1e+308,
+            0,
+            0
+          ],
+          "radius": 1
+        },
+        "rays": [
+          {
+            "origin": [
+              -1e+308,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 1,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "direction_hypot_overflow_after_work",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 1
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1.7e+308,
+              1.7e+308,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 1,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "tree_depth_64_accepted",
+      "input": {
+        "scene": {
+          "kind": "translateUniform",
+          "translation": [
+            0,
+            0,
+            0
+          ],
+          "scale": 1,
+          "child": {
+            "kind": "translateUniform",
+            "translation": [
+              0,
+              0,
+              0
+            ],
+            "scale": 1,
+            "child": {
+              "kind": "translateUniform",
+              "translation": [
+                0,
+                0,
+                0
+              ],
+              "scale": 1,
+              "child": {
+                "kind": "translateUniform",
+                "translation": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": 1,
+                "child": {
+                  "kind": "translateUniform",
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": 1,
+                  "child": {
+                    "kind": "translateUniform",
+                    "translation": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "scale": 1,
+                    "child": {
+                      "kind": "translateUniform",
+                      "translation": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": 1,
+                      "child": {
+                        "kind": "translateUniform",
+                        "translation": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "scale": 1,
+                        "child": {
+                          "kind": "translateUniform",
+                          "translation": [
+                            0,
+                            0,
+                            0
+                          ],
+                          "scale": 1,
+                          "child": {
+                            "kind": "translateUniform",
+                            "translation": [
+                              0,
+                              0,
+                              0
+                            ],
+                            "scale": 1,
+                            "child": {
+                              "kind": "translateUniform",
+                              "translation": [
+                                0,
+                                0,
+                                0
+                              ],
+                              "scale": 1,
+                              "child": {
+                                "kind": "translateUniform",
+                                "translation": [
+                                  0,
+                                  0,
+                                  0
+                                ],
+                                "scale": 1,
+                                "child": {
+                                  "kind": "translateUniform",
+                                  "translation": [
+                                    0,
+                                    0,
+                                    0
+                                  ],
+                                  "scale": 1,
+                                  "child": {
+                                    "kind": "translateUniform",
+                                    "translation": [
+                                      0,
+                                      0,
+                                      0
+                                    ],
+                                    "scale": 1,
+                                    "child": {
+                                      "kind": "translateUniform",
+                                      "translation": [
+                                        0,
+                                        0,
+                                        0
+                                      ],
+                                      "scale": 1,
+                                      "child": {
+                                        "kind": "translateUniform",
+                                        "translation": [
+                                          0,
+                                          0,
+                                          0
+                                        ],
+                                        "scale": 1,
+                                        "child": {
+                                          "kind": "translateUniform",
+                                          "translation": [
+                                            0,
+                                            0,
+                                            0
+                                          ],
+                                          "scale": 1,
+                                          "child": {
+                                            "kind": "translateUniform",
+                                            "translation": [
+                                              0,
+                                              0,
+                                              0
+                                            ],
+                                            "scale": 1,
+                                            "child": {
+                                              "kind": "translateUniform",
+                                              "translation": [
+                                                0,
+                                                0,
+                                                0
+                                              ],
+                                              "scale": 1,
+                                              "child": {
+                                                "kind": "translateUniform",
+                                                "translation": [
+                                                  0,
+                                                  0,
+                                                  0
+                                                ],
+                                                "scale": 1,
+                                                "child": {
+                                                  "kind": "translateUniform",
+                                                  "translation": [
+                                                    0,
+                                                    0,
+                                                    0
+                                                  ],
+                                                  "scale": 1,
+                                                  "child": {
+                                                    "kind": "translateUniform",
+                                                    "translation": [
+                                                      0,
+                                                      0,
+                                                      0
+                                                    ],
+                                                    "scale": 1,
+                                                    "child": {
+                                                      "kind": "translateUniform",
+                                                      "translation": [
+                                                        0,
+                                                        0,
+                                                        0
+                                                      ],
+                                                      "scale": 1,
+                                                      "child": {
+                                                        "kind": "translateUniform",
+                                                        "translation": [
+                                                          0,
+                                                          0,
+                                                          0
+                                                        ],
+                                                        "scale": 1,
+                                                        "child": {
+                                                          "kind": "translateUniform",
+                                                          "translation": [
+                                                            0,
+                                                            0,
+                                                            0
+                                                          ],
+                                                          "scale": 1,
+                                                          "child": {
+                                                            "kind": "translateUniform",
+                                                            "translation": [
+                                                              0,
+                                                              0,
+                                                              0
+                                                            ],
+                                                            "scale": 1,
+                                                            "child": {
+                                                              "kind": "translateUniform",
+                                                              "translation": [
+                                                                0,
+                                                                0,
+                                                                0
+                                                              ],
+                                                              "scale": 1,
+                                                              "child": {
+                                                                "kind": "translateUniform",
+                                                                "translation": [
+                                                                  0,
+                                                                  0,
+                                                                  0
+                                                                ],
+                                                                "scale": 1,
+                                                                "child": {
+                                                                  "kind": "translateUniform",
+                                                                  "translation": [
+                                                                    0,
+                                                                    0,
+                                                                    0
+                                                                  ],
+                                                                  "scale": 1,
+                                                                  "child": {
+                                                                    "kind": "translateUniform",
+                                                                    "translation": [
+                                                                      0,
+                                                                      0,
+                                                                      0
+                                                                    ],
+                                                                    "scale": 1,
+                                                                    "child": {
+                                                                      "kind": "translateUniform",
+                                                                      "translation": [
+                                                                        0,
+                                                                        0,
+                                                                        0
+                                                                      ],
+                                                                      "scale": 1,
+                                                                      "child": {
+                                                                        "kind": "translateUniform",
+                                                                        "translation": [
+                                                                          0,
+                                                                          0,
+                                                                          0
+                                                                        ],
+                                                                        "scale": 1,
+                                                                        "child": {
+                                                                          "kind": "translateUniform",
+                                                                          "translation": [
+                                                                            0,
+                                                                            0,
+                                                                            0
+                                                                          ],
+                                                                          "scale": 1,
+                                                                          "child": {
+                                                                            "kind": "translateUniform",
+                                                                            "translation": [
+                                                                              0,
+                                                                              0,
+                                                                              0
+                                                                            ],
+                                                                            "scale": 1,
+                                                                            "child": {
+                                                                              "kind": "translateUniform",
+                                                                              "translation": [
+                                                                                0,
+                                                                                0,
+                                                                                0
+                                                                              ],
+                                                                              "scale": 1,
+                                                                              "child": {
+                                                                                "kind": "translateUniform",
+                                                                                "translation": [
+                                                                                  0,
+                                                                                  0,
+                                                                                  0
+                                                                                ],
+                                                                                "scale": 1,
+                                                                                "child": {
+                                                                                  "kind": "translateUniform",
+                                                                                  "translation": [
+                                                                                    0,
+                                                                                    0,
+                                                                                    0
+                                                                                  ],
+                                                                                  "scale": 1,
+                                                                                  "child": {
+                                                                                    "kind": "translateUniform",
+                                                                                    "translation": [
+                                                                                      0,
+                                                                                      0,
+                                                                                      0
+                                                                                    ],
+                                                                                    "scale": 1,
+                                                                                    "child": {
+                                                                                      "kind": "translateUniform",
+                                                                                      "translation": [
+                                                                                        0,
+                                                                                        0,
+                                                                                        0
+                                                                                      ],
+                                                                                      "scale": 1,
+                                                                                      "child": {
+                                                                                        "kind": "translateUniform",
+                                                                                        "translation": [
+                                                                                          0,
+                                                                                          0,
+                                                                                          0
+                                                                                        ],
+                                                                                        "scale": 1,
+                                                                                        "child": {
+                                                                                          "kind": "translateUniform",
+                                                                                          "translation": [
+                                                                                            0,
+                                                                                            0,
+                                                                                            0
+                                                                                          ],
+                                                                                          "scale": 1,
+                                                                                          "child": {
+                                                                                            "kind": "translateUniform",
+                                                                                            "translation": [
+                                                                                              0,
+                                                                                              0,
+                                                                                              0
+                                                                                            ],
+                                                                                            "scale": 1,
+                                                                                            "child": {
+                                                                                              "kind": "translateUniform",
+                                                                                              "translation": [
+                                                                                                0,
+                                                                                                0,
+                                                                                                0
+                                                                                              ],
+                                                                                              "scale": 1,
+                                                                                              "child": {
+                                                                                                "kind": "translateUniform",
+                                                                                                "translation": [
+                                                                                                  0,
+                                                                                                  0,
+                                                                                                  0
+                                                                                                ],
+                                                                                                "scale": 1,
+                                                                                                "child": {
+                                                                                                  "kind": "translateUniform",
+                                                                                                  "translation": [
+                                                                                                    0,
+                                                                                                    0,
+                                                                                                    0
+                                                                                                  ],
+                                                                                                  "scale": 1,
+                                                                                                  "child": {
+                                                                                                    "kind": "translateUniform",
+                                                                                                    "translation": [
+                                                                                                      0,
+                                                                                                      0,
+                                                                                                      0
+                                                                                                    ],
+                                                                                                    "scale": 1,
+                                                                                                    "child": {
+                                                                                                      "kind": "translateUniform",
+                                                                                                      "translation": [
+                                                                                                        0,
+                                                                                                        0,
+                                                                                                        0
+                                                                                                      ],
+                                                                                                      "scale": 1,
+                                                                                                      "child": {
+                                                                                                        "kind": "translateUniform",
+                                                                                                        "translation": [
+                                                                                                          0,
+                                                                                                          0,
+                                                                                                          0
+                                                                                                        ],
+                                                                                                        "scale": 1,
+                                                                                                        "child": {
+                                                                                                          "kind": "translateUniform",
+                                                                                                          "translation": [
+                                                                                                            0,
+                                                                                                            0,
+                                                                                                            0
+                                                                                                          ],
+                                                                                                          "scale": 1,
+                                                                                                          "child": {
+                                                                                                            "kind": "translateUniform",
+                                                                                                            "translation": [
+                                                                                                              0,
+                                                                                                              0,
+                                                                                                              0
+                                                                                                            ],
+                                                                                                            "scale": 1,
+                                                                                                            "child": {
+                                                                                                              "kind": "translateUniform",
+                                                                                                              "translation": [
+                                                                                                                0,
+                                                                                                                0,
+                                                                                                                0
+                                                                                                              ],
+                                                                                                              "scale": 1,
+                                                                                                              "child": {
+                                                                                                                "kind": "translateUniform",
+                                                                                                                "translation": [
+                                                                                                                  0,
+                                                                                                                  0,
+                                                                                                                  0
+                                                                                                                ],
+                                                                                                                "scale": 1,
+                                                                                                                "child": {
+                                                                                                                  "kind": "translateUniform",
+                                                                                                                  "translation": [
+                                                                                                                    0,
+                                                                                                                    0,
+                                                                                                                    0
+                                                                                                                  ],
+                                                                                                                  "scale": 1,
+                                                                                                                  "child": {
+                                                                                                                    "kind": "translateUniform",
+                                                                                                                    "translation": [
+                                                                                                                      0,
+                                                                                                                      0,
+                                                                                                                      0
+                                                                                                                    ],
+                                                                                                                    "scale": 1,
+                                                                                                                    "child": {
+                                                                                                                      "kind": "translateUniform",
+                                                                                                                      "translation": [
+                                                                                                                        0,
+                                                                                                                        0,
+                                                                                                                        0
+                                                                                                                      ],
+                                                                                                                      "scale": 1,
+                                                                                                                      "child": {
+                                                                                                                        "kind": "translateUniform",
+                                                                                                                        "translation": [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                        ],
+                                                                                                                        "scale": 1,
+                                                                                                                        "child": {
+                                                                                                                          "kind": "translateUniform",
+                                                                                                                          "translation": [
+                                                                                                                            0,
+                                                                                                                            0,
+                                                                                                                            0
+                                                                                                                          ],
+                                                                                                                          "scale": 1,
+                                                                                                                          "child": {
+                                                                                                                            "kind": "translateUniform",
+                                                                                                                            "translation": [
+                                                                                                                              0,
+                                                                                                                              0,
+                                                                                                                              0
+                                                                                                                            ],
+                                                                                                                            "scale": 1,
+                                                                                                                            "child": {
+                                                                                                                              "kind": "translateUniform",
+                                                                                                                              "translation": [
+                                                                                                                                0,
+                                                                                                                                0,
+                                                                                                                                0
+                                                                                                                              ],
+                                                                                                                              "scale": 1,
+                                                                                                                              "child": {
+                                                                                                                                "kind": "translateUniform",
+                                                                                                                                "translation": [
+                                                                                                                                  0,
+                                                                                                                                  0,
+                                                                                                                                  0
+                                                                                                                                ],
+                                                                                                                                "scale": 1,
+                                                                                                                                "child": {
+                                                                                                                                  "kind": "translateUniform",
+                                                                                                                                  "translation": [
+                                                                                                                                    0,
+                                                                                                                                    0,
+                                                                                                                                    0
+                                                                                                                                  ],
+                                                                                                                                  "scale": 1,
+                                                                                                                                  "child": {
+                                                                                                                                    "kind": "translateUniform",
+                                                                                                                                    "translation": [
+                                                                                                                                      0,
+                                                                                                                                      0,
+                                                                                                                                      0
+                                                                                                                                    ],
+                                                                                                                                    "scale": 1,
+                                                                                                                                    "child": {
+                                                                                                                                      "kind": "translateUniform",
+                                                                                                                                      "translation": [
+                                                                                                                                        0,
+                                                                                                                                        0,
+                                                                                                                                        0
+                                                                                                                                      ],
+                                                                                                                                      "scale": 1,
+                                                                                                                                      "child": {
+                                                                                                                                        "kind": "sphere",
+                                                                                                                                        "center": [
+                                                                                                                                          0,
+                                                                                                                                          0,
+                                                                                                                                          0
+                                                                                                                                        ],
+                                                                                                                                        "radius": 1
+                                                                                                                                      }
+                                                                                                                                    }
+                                                                                                                                  }
+                                                                                                                                }
+                                                                                                                              }
+                                                                                                                            }
+                                                                                                                          }
+                                                                                                                        }
+                                                                                                                      }
+                                                                                                                    }
+                                                                                                                  }
+                                                                                                                }
+                                                                                                              }
+                                                                                                            }
+                                                                                                          }
+                                                                                                        }
+                                                                                                      }
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "rays": [],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 0,
+        "maxSceneNodes": 64,
+        "maxWork": 0
+      },
+      "output": {
+        "results": []
+      }
+    },
+    {
+      "id": "tree_depth_65_rejected",
+      "input": {
+        "scene": {
+          "kind": "translateUniform",
+          "translation": [
+            0,
+            0,
+            0
+          ],
+          "scale": 1,
+          "child": {
+            "kind": "translateUniform",
+            "translation": [
+              0,
+              0,
+              0
+            ],
+            "scale": 1,
+            "child": {
+              "kind": "translateUniform",
+              "translation": [
+                0,
+                0,
+                0
+              ],
+              "scale": 1,
+              "child": {
+                "kind": "translateUniform",
+                "translation": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": 1,
+                "child": {
+                  "kind": "translateUniform",
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": 1,
+                  "child": {
+                    "kind": "translateUniform",
+                    "translation": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "scale": 1,
+                    "child": {
+                      "kind": "translateUniform",
+                      "translation": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": 1,
+                      "child": {
+                        "kind": "translateUniform",
+                        "translation": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "scale": 1,
+                        "child": {
+                          "kind": "translateUniform",
+                          "translation": [
+                            0,
+                            0,
+                            0
+                          ],
+                          "scale": 1,
+                          "child": {
+                            "kind": "translateUniform",
+                            "translation": [
+                              0,
+                              0,
+                              0
+                            ],
+                            "scale": 1,
+                            "child": {
+                              "kind": "translateUniform",
+                              "translation": [
+                                0,
+                                0,
+                                0
+                              ],
+                              "scale": 1,
+                              "child": {
+                                "kind": "translateUniform",
+                                "translation": [
+                                  0,
+                                  0,
+                                  0
+                                ],
+                                "scale": 1,
+                                "child": {
+                                  "kind": "translateUniform",
+                                  "translation": [
+                                    0,
+                                    0,
+                                    0
+                                  ],
+                                  "scale": 1,
+                                  "child": {
+                                    "kind": "translateUniform",
+                                    "translation": [
+                                      0,
+                                      0,
+                                      0
+                                    ],
+                                    "scale": 1,
+                                    "child": {
+                                      "kind": "translateUniform",
+                                      "translation": [
+                                        0,
+                                        0,
+                                        0
+                                      ],
+                                      "scale": 1,
+                                      "child": {
+                                        "kind": "translateUniform",
+                                        "translation": [
+                                          0,
+                                          0,
+                                          0
+                                        ],
+                                        "scale": 1,
+                                        "child": {
+                                          "kind": "translateUniform",
+                                          "translation": [
+                                            0,
+                                            0,
+                                            0
+                                          ],
+                                          "scale": 1,
+                                          "child": {
+                                            "kind": "translateUniform",
+                                            "translation": [
+                                              0,
+                                              0,
+                                              0
+                                            ],
+                                            "scale": 1,
+                                            "child": {
+                                              "kind": "translateUniform",
+                                              "translation": [
+                                                0,
+                                                0,
+                                                0
+                                              ],
+                                              "scale": 1,
+                                              "child": {
+                                                "kind": "translateUniform",
+                                                "translation": [
+                                                  0,
+                                                  0,
+                                                  0
+                                                ],
+                                                "scale": 1,
+                                                "child": {
+                                                  "kind": "translateUniform",
+                                                  "translation": [
+                                                    0,
+                                                    0,
+                                                    0
+                                                  ],
+                                                  "scale": 1,
+                                                  "child": {
+                                                    "kind": "translateUniform",
+                                                    "translation": [
+                                                      0,
+                                                      0,
+                                                      0
+                                                    ],
+                                                    "scale": 1,
+                                                    "child": {
+                                                      "kind": "translateUniform",
+                                                      "translation": [
+                                                        0,
+                                                        0,
+                                                        0
+                                                      ],
+                                                      "scale": 1,
+                                                      "child": {
+                                                        "kind": "translateUniform",
+                                                        "translation": [
+                                                          0,
+                                                          0,
+                                                          0
+                                                        ],
+                                                        "scale": 1,
+                                                        "child": {
+                                                          "kind": "translateUniform",
+                                                          "translation": [
+                                                            0,
+                                                            0,
+                                                            0
+                                                          ],
+                                                          "scale": 1,
+                                                          "child": {
+                                                            "kind": "translateUniform",
+                                                            "translation": [
+                                                              0,
+                                                              0,
+                                                              0
+                                                            ],
+                                                            "scale": 1,
+                                                            "child": {
+                                                              "kind": "translateUniform",
+                                                              "translation": [
+                                                                0,
+                                                                0,
+                                                                0
+                                                              ],
+                                                              "scale": 1,
+                                                              "child": {
+                                                                "kind": "translateUniform",
+                                                                "translation": [
+                                                                  0,
+                                                                  0,
+                                                                  0
+                                                                ],
+                                                                "scale": 1,
+                                                                "child": {
+                                                                  "kind": "translateUniform",
+                                                                  "translation": [
+                                                                    0,
+                                                                    0,
+                                                                    0
+                                                                  ],
+                                                                  "scale": 1,
+                                                                  "child": {
+                                                                    "kind": "translateUniform",
+                                                                    "translation": [
+                                                                      0,
+                                                                      0,
+                                                                      0
+                                                                    ],
+                                                                    "scale": 1,
+                                                                    "child": {
+                                                                      "kind": "translateUniform",
+                                                                      "translation": [
+                                                                        0,
+                                                                        0,
+                                                                        0
+                                                                      ],
+                                                                      "scale": 1,
+                                                                      "child": {
+                                                                        "kind": "translateUniform",
+                                                                        "translation": [
+                                                                          0,
+                                                                          0,
+                                                                          0
+                                                                        ],
+                                                                        "scale": 1,
+                                                                        "child": {
+                                                                          "kind": "translateUniform",
+                                                                          "translation": [
+                                                                            0,
+                                                                            0,
+                                                                            0
+                                                                          ],
+                                                                          "scale": 1,
+                                                                          "child": {
+                                                                            "kind": "translateUniform",
+                                                                            "translation": [
+                                                                              0,
+                                                                              0,
+                                                                              0
+                                                                            ],
+                                                                            "scale": 1,
+                                                                            "child": {
+                                                                              "kind": "translateUniform",
+                                                                              "translation": [
+                                                                                0,
+                                                                                0,
+                                                                                0
+                                                                              ],
+                                                                              "scale": 1,
+                                                                              "child": {
+                                                                                "kind": "translateUniform",
+                                                                                "translation": [
+                                                                                  0,
+                                                                                  0,
+                                                                                  0
+                                                                                ],
+                                                                                "scale": 1,
+                                                                                "child": {
+                                                                                  "kind": "translateUniform",
+                                                                                  "translation": [
+                                                                                    0,
+                                                                                    0,
+                                                                                    0
+                                                                                  ],
+                                                                                  "scale": 1,
+                                                                                  "child": {
+                                                                                    "kind": "translateUniform",
+                                                                                    "translation": [
+                                                                                      0,
+                                                                                      0,
+                                                                                      0
+                                                                                    ],
+                                                                                    "scale": 1,
+                                                                                    "child": {
+                                                                                      "kind": "translateUniform",
+                                                                                      "translation": [
+                                                                                        0,
+                                                                                        0,
+                                                                                        0
+                                                                                      ],
+                                                                                      "scale": 1,
+                                                                                      "child": {
+                                                                                        "kind": "translateUniform",
+                                                                                        "translation": [
+                                                                                          0,
+                                                                                          0,
+                                                                                          0
+                                                                                        ],
+                                                                                        "scale": 1,
+                                                                                        "child": {
+                                                                                          "kind": "translateUniform",
+                                                                                          "translation": [
+                                                                                            0,
+                                                                                            0,
+                                                                                            0
+                                                                                          ],
+                                                                                          "scale": 1,
+                                                                                          "child": {
+                                                                                            "kind": "translateUniform",
+                                                                                            "translation": [
+                                                                                              0,
+                                                                                              0,
+                                                                                              0
+                                                                                            ],
+                                                                                            "scale": 1,
+                                                                                            "child": {
+                                                                                              "kind": "translateUniform",
+                                                                                              "translation": [
+                                                                                                0,
+                                                                                                0,
+                                                                                                0
+                                                                                              ],
+                                                                                              "scale": 1,
+                                                                                              "child": {
+                                                                                                "kind": "translateUniform",
+                                                                                                "translation": [
+                                                                                                  0,
+                                                                                                  0,
+                                                                                                  0
+                                                                                                ],
+                                                                                                "scale": 1,
+                                                                                                "child": {
+                                                                                                  "kind": "translateUniform",
+                                                                                                  "translation": [
+                                                                                                    0,
+                                                                                                    0,
+                                                                                                    0
+                                                                                                  ],
+                                                                                                  "scale": 1,
+                                                                                                  "child": {
+                                                                                                    "kind": "translateUniform",
+                                                                                                    "translation": [
+                                                                                                      0,
+                                                                                                      0,
+                                                                                                      0
+                                                                                                    ],
+                                                                                                    "scale": 1,
+                                                                                                    "child": {
+                                                                                                      "kind": "translateUniform",
+                                                                                                      "translation": [
+                                                                                                        0,
+                                                                                                        0,
+                                                                                                        0
+                                                                                                      ],
+                                                                                                      "scale": 1,
+                                                                                                      "child": {
+                                                                                                        "kind": "translateUniform",
+                                                                                                        "translation": [
+                                                                                                          0,
+                                                                                                          0,
+                                                                                                          0
+                                                                                                        ],
+                                                                                                        "scale": 1,
+                                                                                                        "child": {
+                                                                                                          "kind": "translateUniform",
+                                                                                                          "translation": [
+                                                                                                            0,
+                                                                                                            0,
+                                                                                                            0
+                                                                                                          ],
+                                                                                                          "scale": 1,
+                                                                                                          "child": {
+                                                                                                            "kind": "translateUniform",
+                                                                                                            "translation": [
+                                                                                                              0,
+                                                                                                              0,
+                                                                                                              0
+                                                                                                            ],
+                                                                                                            "scale": 1,
+                                                                                                            "child": {
+                                                                                                              "kind": "translateUniform",
+                                                                                                              "translation": [
+                                                                                                                0,
+                                                                                                                0,
+                                                                                                                0
+                                                                                                              ],
+                                                                                                              "scale": 1,
+                                                                                                              "child": {
+                                                                                                                "kind": "translateUniform",
+                                                                                                                "translation": [
+                                                                                                                  0,
+                                                                                                                  0,
+                                                                                                                  0
+                                                                                                                ],
+                                                                                                                "scale": 1,
+                                                                                                                "child": {
+                                                                                                                  "kind": "translateUniform",
+                                                                                                                  "translation": [
+                                                                                                                    0,
+                                                                                                                    0,
+                                                                                                                    0
+                                                                                                                  ],
+                                                                                                                  "scale": 1,
+                                                                                                                  "child": {
+                                                                                                                    "kind": "translateUniform",
+                                                                                                                    "translation": [
+                                                                                                                      0,
+                                                                                                                      0,
+                                                                                                                      0
+                                                                                                                    ],
+                                                                                                                    "scale": 1,
+                                                                                                                    "child": {
+                                                                                                                      "kind": "translateUniform",
+                                                                                                                      "translation": [
+                                                                                                                        0,
+                                                                                                                        0,
+                                                                                                                        0
+                                                                                                                      ],
+                                                                                                                      "scale": 1,
+                                                                                                                      "child": {
+                                                                                                                        "kind": "translateUniform",
+                                                                                                                        "translation": [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                        ],
+                                                                                                                        "scale": 1,
+                                                                                                                        "child": {
+                                                                                                                          "kind": "translateUniform",
+                                                                                                                          "translation": [
+                                                                                                                            0,
+                                                                                                                            0,
+                                                                                                                            0
+                                                                                                                          ],
+                                                                                                                          "scale": 1,
+                                                                                                                          "child": {
+                                                                                                                            "kind": "translateUniform",
+                                                                                                                            "translation": [
+                                                                                                                              0,
+                                                                                                                              0,
+                                                                                                                              0
+                                                                                                                            ],
+                                                                                                                            "scale": 1,
+                                                                                                                            "child": {
+                                                                                                                              "kind": "translateUniform",
+                                                                                                                              "translation": [
+                                                                                                                                0,
+                                                                                                                                0,
+                                                                                                                                0
+                                                                                                                              ],
+                                                                                                                              "scale": 1,
+                                                                                                                              "child": {
+                                                                                                                                "kind": "translateUniform",
+                                                                                                                                "translation": [
+                                                                                                                                  0,
+                                                                                                                                  0,
+                                                                                                                                  0
+                                                                                                                                ],
+                                                                                                                                "scale": 1,
+                                                                                                                                "child": {
+                                                                                                                                  "kind": "translateUniform",
+                                                                                                                                  "translation": [
+                                                                                                                                    0,
+                                                                                                                                    0,
+                                                                                                                                    0
+                                                                                                                                  ],
+                                                                                                                                  "scale": 1,
+                                                                                                                                  "child": {
+                                                                                                                                    "kind": "translateUniform",
+                                                                                                                                    "translation": [
+                                                                                                                                      0,
+                                                                                                                                      0,
+                                                                                                                                      0
+                                                                                                                                    ],
+                                                                                                                                    "scale": 1,
+                                                                                                                                    "child": {
+                                                                                                                                      "kind": "translateUniform",
+                                                                                                                                      "translation": [
+                                                                                                                                        0,
+                                                                                                                                        0,
+                                                                                                                                        0
+                                                                                                                                      ],
+                                                                                                                                      "scale": 1,
+                                                                                                                                      "child": {
+                                                                                                                                        "kind": "translateUniform",
+                                                                                                                                        "translation": [
+                                                                                                                                          0,
+                                                                                                                                          0,
+                                                                                                                                          0
+                                                                                                                                        ],
+                                                                                                                                        "scale": 1,
+                                                                                                                                        "child": {
+                                                                                                                                          "kind": "sphere",
+                                                                                                                                          "center": [
+                                                                                                                                            0,
+                                                                                                                                            0,
+                                                                                                                                            0
+                                                                                                                                          ],
+                                                                                                                                          "radius": 1
+                                                                                                                                        }
+                                                                                                                                      }
+                                                                                                                                    }
+                                                                                                                                  }
+                                                                                                                                }
+                                                                                                                              }
+                                                                                                                            }
+                                                                                                                          }
+                                                                                                                        }
+                                                                                                                      }
+                                                                                                                    }
+                                                                                                                  }
+                                                                                                                }
+                                                                                                              }
+                                                                                                            }
+                                                                                                          }
+                                                                                                        }
+                                                                                                      }
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "rays": [],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 0,
+        "maxSceneNodes": 64,
+        "maxWork": 0
+      },
+      "error": "LIMIT_DEPTH"
+    },
+    {
+      "id": "exact_work_budget_equality",
+      "input": {
+        "scene": {
+          "kind": "union",
+          "left": {
+            "kind": "sphere",
+            "center": [
+              -1,
+              0,
+              0
+            ],
+            "radius": 1
+          },
+          "right": {
+            "kind": "sphere",
+            "center": [
+              1,
+              0,
+              0
+            ],
+            "radius": 1
+          }
+        },
+        "rays": [
+          {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 4,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 30
+      },
+      "output": {
+        "results": [
+          {
+            "kind": "hit_epsilon",
+            "distance": 0,
+            "traveled": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "fieldValue": 0,
+            "normal": null,
+            "normalStatus": "undefined_nonsmooth",
+            "overshot": false,
+            "samples": 1,
+            "normalSamples": 0
+          }
+        ]
+      }
+    }
+  ]
+}

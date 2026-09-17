@@ -1,0 +1,127 @@
+{
+  "id": "spatial.relative-neighborhood-pairs-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "description": "Build the exact relative-neighborhood graph of supplied 2D points.",
+  "decision_cluster": "spatial.relative-neighborhood-pairs-2d",
+  "capability_decision": "design/capabilities/connected-growth-and-graphs.md",
+  "design_review": "design/operations/connected-growth-and-graphs-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 2,
+          "minItems": 2
+        },
+        "maxItems": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "points",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "pairs": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "maxItems": 2,
+          "minItems": 2
+        },
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "pairs"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached finite canonical data; stable identity/order as specified; no partial result on failure.",
+  "behavior": {
+    "validation": "Exact passive Object/null-prototype records, dense ordinary arrays with own data slots, no classes/accessors/symbols/extras/coercion; proxies outside interchange. Numeric values finite binary64; booleans never numbers. Validate complete input in input-schema field order, arrays in order, then correspondence/topology structure, then exact-integer work preflight before geometric predicates or result allocation. Normalize accepted/exposed zero to +0. Inputs unchanged and all outputs deeply detached. Host allocation failure remains a host error.",
+    "environment": "No RNG, clock, renderer or assets. Caller Cartesian coordinates; signed turns use algebraic counterclockwise orientation in x/y coordinates, visually clockwise when y points down. Explicit caller dt where present. p5-only initial delivery; no physical collision, source solver or other-target equivalence.",
+    "numerics": "Binary64 separately rounded primitives, no FMA or reassociation. Check each computed floating arithmetic primitive finite or NUMERIC_OVERFLOW. Exact dyadic/rational predicates use existing internal/exact-rational.js without converting before classification. Existing fdlibmHypot and fdlibmAtan2 profiles for stated norms/angles. Compare IDs, topology, ordering, counters and errors exactly; analytical floating fixtures may explicitly allow absolute1e-12 relative0. No global epsilon.",
+    "work": "Let N=points.length, Q=N*(N-1)/2, H=max(0,N-2). Reserve exact integer W=N+Q*H. WORK_LIMIT if W>maxWork, including unsafe-to-binary64 W. Do not reclaim skipped witnesses. O(N^3) exact predicate work, O(N^2) cached distances plus output; exact arithmetic bit costs not counted as events.",
+    "algorithm": "For i ascending then j=i+1 ascending, retain [i,j] iff no k ascending other than i,j satisfies both exact squaredDistance(i,k)<squaredDistance(i,j) and squaredDistance(j,k)<squaredDistance(i,j). Distances are exact rationals of supplied binary64 coordinates, including extreme/subnormal inputs. Equality does not block. Zero-distance pairs survive. Do not deduplicate coincident points, normalize, add a radius cutoff or infer a planar geometric embedding for duplicate inputs. Output lexicographic original-index pairs.",
+    "native_surface": "relativeNeighborhoodPairs2D(input), RelativeNeighborhoodPairs2DError; relative-neighborhood-pairs-2d.js and package index."
+  },
+  "errors": {
+    "INVALID_INPUT": "Static carrier/shape/domain/correspondence failure.",
+    "WORK_LIMIT": "Exact declared work reservation exceeds maxWork.",
+    "NUMERIC_OVERFLOW": "Nonfinite checked arithmetic; no partial result."
+  },
+  "parameters": {
+    "points": {
+      "unit": "Caller coordinate pairs; original index identity.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "maxWork": {
+      "unit": "Conservative pair/witness-event allowance.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    }
+  },
+  "fixtures": "fixtures/operations/relative-neighborhood-pairs-2d.json",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original native studies and withheld design transfer, with exact scoped invariants; no Hodgin/Hoff recreation automatically implied."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after Astra/Sol independent reviews",
+    "status": "Reviewed before implementation; target acceptance pending."
+  }
+}

@@ -130,6 +130,108 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/adjacency-tile-collapse-2d.json).
 
+## field.advect-periodic-scalar-2d (0.1.0)
+
+Transport a scalar grid through a supplied periodic staggered velocity using a first-order explicit backward characteristic trace and bilinear sampling.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "columns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "values": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 4294967295
+    },
+    "u": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 4294967295
+    },
+    "v": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 4294967295
+    },
+    "offset": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "exclusiveMaximum": 1
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "dt": {
+      "type": "number",
+      "minimum": 0
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "columns",
+    "rows",
+    "values",
+    "u",
+    "v",
+    "offset",
+    "dt",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| columns | Cell grid count. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| rows | Cell grid count. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| values | See exact algorithm for coordinate/time/state units. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| u | See exact algorithm for coordinate/time/state units. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| v | See exact algorithm for coordinate/time/state units. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| offset | See exact algorithm for coordinate/time/state units. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| dt | See exact algorithm for coordinate/time/state units. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| maxWork | See exact algorithm for coordinate/time/state units. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/advect-periodic-scalar-2d.json).
+
 ## mesh.annular-solid-3d (0.1.0)
 
 Generate an owned indexed-triangle closed annular solid from explicit inner and outer radii, two axial planes, angular subdivision, and a required face budget. It retains local positions, flat unit normals, face kinds, and angular-cell identity; it does not draw.
@@ -952,6 +1054,119 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/closed-spline-2d.json).
 
+## spatial.contact-history-2d (0.1.0)
+
+Advance caller-ID contact histories with explicit active and missing tick counters.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "ids": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "maxItems": 4294967295
+    },
+    "pairs": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "maxItems": 4294967295
+    },
+    "contacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "activeTicks": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "missingTicks": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "ids",
+          "activeTicks",
+          "missingTicks"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 4294967295
+    },
+    "lingerSteps": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "ids",
+    "pairs",
+    "contacts",
+    "lingerSteps",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| ids | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| pairs | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| contacts | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| lingerSteps | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| maxWork | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/contact-history-2d.json).
+
 ## geometry.convex-hull-2d (0.1.0)
 
 Return a positive-winding hull with source identities.
@@ -1471,6 +1686,364 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/delaunay-2d.json).
 
+## field.diffuse-periodic-scalar-2d (0.1.0)
+
+Diffuse and retain a scalar periodic field with a bounded five-point convex update.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "columns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "values": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 4294967295
+    },
+    "rate": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 0.25
+    },
+    "retention": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "columns",
+    "rows",
+    "values",
+    "rate",
+    "retention",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| columns | Cell grid count. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| rows | Cell grid count. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| values | See exact algorithm for coordinate/time/state units. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| rate | See exact algorithm for coordinate/time/state units. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| retention | See exact algorithm for coordinate/time/state units. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| maxWork | See exact algorithm for coordinate/time/state units. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/diffuse-periodic-scalar-2d.json).
+
+## motion.elastic-curve-grow-step-2d (0.1.0)
+
+Advance connected planar curves through target growth, synchronous elastic/contact response, bounded embedding backtracking and identity-preserving bisection.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "state": {
+      "type": "object",
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "position": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "maxItems": 2,
+                "minItems": 2
+              },
+              "velocity": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "maxItems": 2,
+                "minItems": 2
+              },
+              "pinned": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "position",
+              "velocity",
+              "pinned"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 4294967295
+        },
+        "curves": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "closed": {
+                "type": "boolean"
+              },
+              "nodeIds": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "maxItems": 4294967295
+              },
+              "edgeIds": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "maxItems": 4294967295
+              },
+              "restLengths": {
+                "type": "array",
+                "items": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "maxItems": 4294967295
+              },
+              "restTurns": {
+                "type": "array",
+                "items": {
+                  "type": "number",
+                  "exclusiveMinimum": -3.141592653589793,
+                  "maximum": 3.141592653589793
+                },
+                "maxItems": 4294967295
+              }
+            },
+            "required": [
+              "id",
+              "closed",
+              "nodeIds",
+              "edgeIds",
+              "restLengths",
+              "restTurns"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 4294967295
+        },
+        "nextNodeId": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "nextEdgeId": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "nodes",
+        "curves",
+        "nextNodeId",
+        "nextEdgeId"
+      ],
+      "additionalProperties": false
+    },
+    "restGrowth": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 4294967295
+      },
+      "maxItems": 4294967295
+    },
+    "turnRates": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 4294967295
+      },
+      "maxItems": 4294967295
+    },
+    "externalAccelerations": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 2,
+        "minItems": 2
+      },
+      "maxItems": 4294967295
+    },
+    "stretchStiffness": {
+      "type": "number",
+      "minimum": 0
+    },
+    "bendStiffness": {
+      "type": "number",
+      "minimum": 0
+    },
+    "contactRange": {
+      "type": "number",
+      "minimum": 0
+    },
+    "contactStrength": {
+      "type": "number",
+      "minimum": 0
+    },
+    "damping": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "dt": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "maxSpeed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "maxSegmentLength": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "maxNodes": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "maxEdges": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "maxBacktracks": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "state",
+    "restGrowth",
+    "turnRates",
+    "externalAccelerations",
+    "stretchStiffness",
+    "bendStiffness",
+    "contactRange",
+    "contactStrength",
+    "damping",
+    "dt",
+    "maxSpeed",
+    "maxSegmentLength",
+    "maxNodes",
+    "maxEdges",
+    "maxWork",
+    "maxBacktracks"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| state | Owned-value curve topology, coordinates, velocities and material targets. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| restGrowth | Coordinate units/time per edge, signed. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| turnRates | Radians/time per bend center, signed. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| externalAccelerations | Coordinate units/time squared per globally ID-sorted node. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| stretchStiffness | Inverse time squared. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| bendStiffness | Coordinate units squared/time squared, unit node mass. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| contactRange | Finite-segment repulsion range in coordinate units; not hard clearance. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| contactStrength | Coordinate units/time squared. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| damping | Per-call velocity fraction before movement. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| dt | Positive caller time interval. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| maxSpeed | Coordinate units/time. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| maxSegmentLength | Maximum geometric/rest edge length before midpoint refinement. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| maxNodes | Final live-node cap. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| maxEdges | Final live-edge cap and final geometry reservation. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| maxWork | Exact conservative operation-event allowance. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| maxBacktracks | Maximum number of synchronous motion halvings after alpha1. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/elastic-curve-grow-step-2d.json).
+
 ## field.elementary-cellular-rows (0.1.0)
 
 Generate ordered space-time rows from an explicit elementary three-cell binary rule.
@@ -1805,6 +2378,116 @@ Motivating evidence:
 - [`2019/generativos/cirnoi#0`](../../survey/out/2019/generativos/cirnoi/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/field-displace-2d.json).
+
+## motion.flock-steer-2d (0.1.0)
+
+Compute separately weighted cohesion, alignment and separation steering over supplied neighbor pairs.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": {
+          "type": "number"
+        }
+      },
+      "maxItems": 4294967295
+    },
+    "velocities": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": {
+          "type": "number"
+        }
+      },
+      "maxItems": 4294967295
+    },
+    "pairs": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "maxItems": 4294967295
+    },
+    "cohesion": {
+      "type": "number",
+      "minimum": 0
+    },
+    "alignment": {
+      "type": "number",
+      "minimum": 0
+    },
+    "separation": {
+      "type": "number",
+      "minimum": 0
+    },
+    "maxSteer": {
+      "type": "number",
+      "minimum": 0
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "points",
+    "velocities",
+    "pairs",
+    "cohesion",
+    "alignment",
+    "separation",
+    "maxSteer",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| velocities | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| pairs | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| cohesion | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| alignment | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| separation | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| maxSteer | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| maxWork | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/flock-steer-2d.json).
 
 ## raster.floyd-steinberg-dither (0.1.0)
 
@@ -2297,6 +2980,314 @@ Motivating evidence:
 
 
 Full behavioral contract: [catalog](../../catalog/operations/gray-scott-step-2d.json).
+
+## geometry.hatch-region-lines-2d (0.1.0)
+
+Generate ordered straight hatch fragments clipped to a simple region with disjoint holes.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "region": {
+      "type": "object",
+      "properties": {
+        "outer": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 3,
+          "maxItems": 4294967295
+        },
+        "holes": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 3,
+            "maxItems": 4294967295
+          },
+          "maxItems": 4294967295
+        }
+      },
+      "required": [
+        "outer",
+        "holes"
+      ],
+      "additionalProperties": false
+    },
+    "origin": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "direction": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "spacing": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "phase": {
+      "type": "number"
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "maxOutputPaths": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "region",
+    "origin",
+    "direction",
+    "spacing",
+    "phase",
+    "maxWork",
+    "maxOutputPaths"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| region | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| origin | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| direction | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| spacing | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| phase | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| maxWork | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| maxOutputPaths | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/hatch-region-lines-2d.json).
+
+## graph.insert-segment-bridge-2d (0.1.0)
+
+Insert one bridge between adjacent exact intersections with an embedded segment graph, retaining stable split/link ancestry.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "graph": {
+      "type": "object",
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "point": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "maxItems": 2,
+                "minItems": 2
+              }
+            },
+            "required": [
+              "id",
+              "point"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 4294967295
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "a": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "b": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "id",
+              "a",
+              "b"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 4294967295
+        },
+        "nextNodeId": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "nextEdgeId": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "nodes",
+        "edges",
+        "nextNodeId",
+        "nextEdgeId"
+      ],
+      "additionalProperties": false
+    },
+    "candidate": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 2,
+        "minItems": 2
+      },
+      "maxItems": 2,
+      "minItems": 2
+    },
+    "gapIndex": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "maxNodes": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "maxEdges": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "graph",
+    "candidate",
+    "gapIndex",
+    "maxNodes",
+    "maxEdges",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| graph | Stable node/edge graph in caller coordinates. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| candidate | Directed finite segment endpoints in caller coordinates. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| gapIndex | Zero-based adjacent-hit gap, dynamically checked when at least2hits exist. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| maxNodes | Final live-node cap. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| maxEdges | Final live-edge cap and conservative final-predicate reservation. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| maxWork | Exact conservative predicate/event allowance. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/insert-segment-bridge-2d.json).
 
 ## field.life-like-step-2d (0.1.0)
 
@@ -3998,6 +4989,215 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/poisson-disc-2d.json).
 
+## mesh.prepare-surface-attributes-3d (0.1.0)
+
+Prepare indexed triangle positions, flat or smoothing-group normals, and caller-supplied corner UV seams as detached attributed geometry.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "positions": {
+      "type": "array",
+      "maxItems": 2147483647,
+      "items": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "triangles": {
+      "type": "array",
+      "maxItems": 2147483647,
+      "items": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "number",
+          "description": "Finite numeric carrier; noninteger, out-of-range and repeated face indices are INVALID_TOPOLOGY."
+        }
+      }
+    },
+    "normalMode": {
+      "type": "string",
+      "enum": [
+        "flat",
+        "smooth"
+      ]
+    },
+    "smoothingGroups": {
+      "type": "array",
+      "maxItems": 2147483647,
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "cornerUVs": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "array",
+          "maxItems": 2147483647,
+          "items": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "maxVertices": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "positions",
+    "triangles",
+    "normalMode",
+    "smoothingGroups",
+    "cornerUVs",
+    "maxVertices",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| positions | caller-local coordinate units | null | null | Authored representation; no source-derived numeric range. |
+| triangles | indices into positions | null | null | Authored indexed-mesh carrier. |
+| normalMode | flat or smooth key policy | null | null | Explicit artistic hard/smooth edit. |
+| smoothingGroups | face-level nonnegative integer IDs | null | null | Explicit sharp-edge control; no angle heuristic. |
+| cornerUVs | normalized upright-source image coordinates | null | null | Artist-supplied chart; no implicit mapping. |
+| maxVertices | conservative output vertex cap | null | null | Resource policy, not visual parameter. |
+| maxWork | deterministic V+27F reservation | null | null | Resource policy, not visual parameter. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | not attested | not attested | not attested | not attested |
+| p5js | not attested | not attested | not attested | not attested |
+| py5 | not attested | not attested | not attested | not attested |
+| processing-android | not attested | not attested | not attested | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/prepare-surface-attributes-3d.json).
+
+## simulation.project-periodic-velocity-2d (0.1.0)
+
+Project a periodic staggered velocity grid through a bounded weighted-Jacobi pressure solve.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "columns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "u": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 4294967295
+    },
+    "v": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 4294967295
+    },
+    "iterations": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "columns",
+    "rows",
+    "u",
+    "v",
+    "iterations",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| columns | Cell grid count. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| rows | Cell grid count. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| u | See exact algorithm for coordinate/time/state units. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| v | See exact algorithm for coordinate/time/state units. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| iterations | See exact algorithm for coordinate/time/state units. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+| maxWork | See exact algorithm for coordinate/time/state units. | null | null | Independent design choice; stable diffusion bound mathematical, not a visual recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/project-periodic-velocity-2d.json).
+
 ## mesh.radial-profile-surface-3d (0.1.0)
 
 Generate an owned indexed-triangle radial surface from a caller-supplied ordered local axial radius profile, angular subdivision, independent endpoint closures, and explicit face bound. It computes retained local geometry, topology metadata, and flat unit normals only.
@@ -4392,6 +5592,158 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/raster-crossfade.json).
 
+## geometry.region-clearance-2d (0.1.0)
+
+Classify two strict regions and return their closest boundary witness and display distance.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "a": {
+      "type": "object",
+      "properties": {
+        "outer": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 3,
+          "maxItems": 4294967295
+        },
+        "holes": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 3,
+            "maxItems": 4294967295
+          },
+          "maxItems": 4294967295
+        }
+      },
+      "required": [
+        "outer",
+        "holes"
+      ],
+      "additionalProperties": false
+    },
+    "b": {
+      "type": "object",
+      "properties": {
+        "outer": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 3,
+          "maxItems": 4294967295
+        },
+        "holes": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 3,
+            "maxItems": 4294967295
+          },
+          "maxItems": 4294967295
+        }
+      },
+      "required": [
+        "outer",
+        "holes"
+      ],
+      "additionalProperties": false
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "a",
+    "b",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| a | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| b | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| maxWork | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/region-clearance-2d.json).
+
 ## layout.regular-grid (0.1.0)
 
 An immutable row-major rectangular sequence of planar positions with explicit point counts and spacing.
@@ -4478,6 +5830,63 @@ Motivating evidence:
 - [`2019/generativos/paraisooscuro#3`](../../survey/out/2019/generativos/paraisooscuro/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/regular-grid.json).
+
+## spatial.relative-neighborhood-pairs-2d (0.1.0)
+
+Build the exact relative-neighborhood graph of supplied 2D points.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 2,
+        "minItems": 2
+      },
+      "maxItems": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "points",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | Caller coordinate pairs; original index identity. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| maxWork | Conservative pair/witness-event allowance. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/relative-neighborhood-pairs-2d.json).
 
 ## geometry.resample-polyline-2d (0.1.0)
 
@@ -4732,6 +6141,148 @@ Motivating evidence:
 
 
 Full behavioral contract: [catalog](../../catalog/operations/rk4-vector-grid-trace-2d.json).
+
+## signal.sample-recorded-controls (0.1.0)
+
+Query recorded scalar channels at explicit time with declared gap, interpolation and value-mapping policies.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "times": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      },
+      "minItems": 1,
+      "maxItems": 2147483647
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+      },
+      "minItems": 1,
+      "maxItems": 2147483647
+    },
+    "samples": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 1,
+        "maxItems": 2147483647
+      },
+      "minItems": 1,
+      "maxItems": 2147483647
+    },
+    "time": {
+      "type": "number",
+      "minimum": 0
+    },
+    "maxGap": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "channel": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+          },
+          "interpolation": {
+            "type": "string",
+            "enum": [
+              "LINEAR",
+              "STEP"
+            ]
+          },
+          "domain": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "range": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "clamp": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "channel",
+          "interpolation",
+          "domain",
+          "range",
+          "clamp"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 2147483647
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "times",
+    "channels",
+    "samples",
+    "time",
+    "maxGap",
+    "mappings",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| times | seconds from caller recording origin | null | null | Authored control policy; no source-derived recommended range. |
+| channels | explicit scalar channels and caller-selected output units | null | null | Authored control policy; no source-derived recommended range. |
+| samples | explicit scalar channels and caller-selected output units | null | null | Authored control policy; no source-derived recommended range. |
+| time | seconds from caller recording origin | null | null | Authored control policy; no source-derived recommended range. |
+| maxGap | seconds from caller recording origin | null | null | Authored control policy; no source-derived recommended range. |
+| mappings | explicit scalar channels and caller-selected output units | null | null | Authored control policy; no source-derived recommended range. |
+| maxWork | deterministic sample and mapping events | null | null | Authored control policy; no source-derived recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | not attested | not attested | not attested | not attested |
+| p5js | not attested | not attested | not attested | not attested |
+| py5 | not attested | not attested | not attested | not attested |
+| processing-android | not attested | not attested | not attested | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/sample-recorded-controls.json).
 
 ## field.scalar-grid-curl-2d (0.1.0)
 
@@ -5596,6 +7147,352 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/seeded-triangle-points.json).
 
+## geometry.select-tapered-stroke-strips-2d (0.1.0)
+
+Greedily select supplied tapered strips against actual regions using exact clearance comparisons.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 2,
+            "maxItems": 4294967295
+          },
+          "widths": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "minItems": 2,
+            "maxItems": 4294967295
+          },
+          "closed": {
+            "type": "boolean"
+          },
+          "cap": {
+            "type": "string",
+            "enum": [
+              "BUTT",
+              "SQUARE"
+            ]
+          },
+          "join": {
+            "type": "string",
+            "enum": [
+              "BEVEL",
+              "MITER"
+            ]
+          },
+          "miterLimit": {
+            "type": "number",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "id",
+          "points",
+          "widths",
+          "closed",
+          "cap",
+          "join",
+          "miterLimit"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 4294967295
+    },
+    "clearance": {
+      "type": "number",
+      "minimum": 0
+    },
+    "exclusions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "outer": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 3,
+            "maxItems": 4294967295
+          },
+          "holes": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "minItems": 3,
+              "maxItems": 4294967295
+            },
+            "maxItems": 4294967295
+          }
+        },
+        "required": [
+          "outer",
+          "holes"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "maxAccepted": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "candidates",
+    "clearance",
+    "exclusions",
+    "maxWork",
+    "maxAccepted"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| candidates | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| clearance | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| exclusions | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| maxWork | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| maxAccepted | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/select-tapered-stroke-strips-2d.json).
+
+## motion.sensor-motor-step-2d (0.1.0)
+
+Synchronously sense a scalar grid with two lateral probes and turn moving agents.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "position": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "headingTurns": {
+            "type": "number"
+          },
+          "speed": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "position",
+          "headingTurns",
+          "speed"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 4294967295
+    },
+    "field": {
+      "type": "object",
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 4294967295
+        },
+        "columns": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4294967295
+        },
+        "rows": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4294967295
+        },
+        "origin": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "spacing": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "boundary": {
+          "type": "string",
+          "enum": [
+            "clamp",
+            "wrap",
+            "zero"
+          ]
+        }
+      },
+      "required": [
+        "values",
+        "columns",
+        "rows",
+        "origin",
+        "spacing",
+        "boundary"
+      ],
+      "additionalProperties": false
+    },
+    "sensorDistance": {
+      "type": "number",
+      "minimum": 0
+    },
+    "sensorAngleTurns": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 0.5
+    },
+    "turnGain": {
+      "type": "number"
+    },
+    "dt": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "agents",
+    "field",
+    "sensorDistance",
+    "sensorAngleTurns",
+    "turnGain",
+    "dt",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| agents | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| field | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| sensorDistance | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| sensorAngleTurns | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| turnGain | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| dt | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+| maxWork | See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns. | null | null | Independent design; no corpus-derived default or recommended visual range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/sensor-motor-step-2d.json).
+
 ## raster.separable-blur-2d (0.1.0)
 
 Normalize two caller-supplied one-dimensional kernels and filter a straight ARGB8 raster horizontally then vertically in premultiplied encoded RGB.
@@ -6027,6 +7924,198 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/stop-ramp.json).
 
+## export.svg-plot-plan-01 (0.1.0)
+
+Serialize millimetre pen-down paths as a bounded, self-contained SVG document.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "widthMm": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "heightMm": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "paths": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "minItems": 2,
+        "maxItems": 4294967295
+      },
+      "maxItems": 4294967295
+    },
+    "strokeWidthMm": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "maxOutputBytes": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "widthMm",
+    "heightMm",
+    "paths",
+    "strokeWidthMm",
+    "maxOutputBytes"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| widthMm | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| heightMm | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| paths | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| strokeWidthMm | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| maxOutputBytes | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/svg-plot-plan-01.json).
+
+## geometry.tapered-stroke-strip-2d (0.1.0)
+
+Construct a retained variable-width strip with explicit inner trims and outer joins, rejecting invalid topology.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "minItems": 2,
+      "maxItems": 4294967295
+    },
+    "widths": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "minItems": 2,
+      "maxItems": 4294967295
+    },
+    "closed": {
+      "type": "boolean"
+    },
+    "cap": {
+      "type": "string",
+      "enum": [
+        "BUTT",
+        "SQUARE"
+      ]
+    },
+    "join": {
+      "type": "string",
+      "enum": [
+        "BEVEL",
+        "MITER"
+      ]
+    },
+    "miterLimit": {
+      "type": "number",
+      "minimum": 1
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "points",
+    "widths",
+    "closed",
+    "cap",
+    "join",
+    "miterLimit",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| widths | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| closed | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| cap | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| join | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| miterLimit | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+| maxWork | See normative algorithm; geometry in caller coordinate units, SVG lengths in millimetres; caps/counts explicit. | null | null | Independent design choices and topology/resource limits; no corpus-derived recommended ranges. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/tapered-stroke-strip-2d.json).
+
 ## motion.target-springs-2d (0.1.0)
 
 Advance an ordered independent target-spring state by one explicit logical step: target force, position using updated velocity, then velocity retention. State carries each body's position, velocity and coefficients. Native execution owns a mutable fixed-size batch with atomic steps and detached observations; no pointer, clock, RNG, renderer, topology or convergence guarantee.
@@ -6154,6 +8243,100 @@ Motivating evidence:
 - [`2018/Generativos/araniaaas#1`](../../survey/out/2018/Generativos/araniaaas/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/target-springs-2d.json).
+
+## motion.threshold-edge-relaxation-2d (0.1.0)
+
+Displace a supplied graph synchronously along sufficiently long edges, using reciprocal unit vectors.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 2,
+        "minItems": 2
+      },
+      "maxItems": 4294967295
+    },
+    "pairs": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "maxItems": 2,
+        "minItems": 2
+      },
+      "maxItems": 4294967295
+    },
+    "pinned": {
+      "type": "array",
+      "items": {
+        "type": "boolean"
+      },
+      "maxItems": 4294967295
+    },
+    "minLength": {
+      "type": "number",
+      "minimum": 0
+    },
+    "stepScale": {
+      "type": "number",
+      "minimum": 0
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "points",
+    "pairs",
+    "pinned",
+    "minLength",
+    "stepScale",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | Caller coordinate pairs. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| pairs | Canonical unordered point indices. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| pinned | Per-point fixed-position flags. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| minLength | Strict edge activation threshold in coordinate units. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| stepScale | Coordinate displacement per unit-vector sum per call. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+| maxWork | Point plus edge-event allowance. | null | null | Independently specified design. No artist-source default or visually measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/expansion/second-batch/root-review.json) | [validated-scoped](../../evidence/expansion/second-batch/root-review.json) | unvalidated | [review](../../evidence/expansion/second-batch/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/threshold-edge-relaxation-2d.json).
 
 ## geometry.token-turtle-2d (0.1.0)
 
@@ -6568,3 +8751,167 @@ Motivating evidence:
 
 
 Full behavioral contract: [catalog](../../catalog/operations/voronoi-cells-2d.json).
+
+## layout.weighted-raster-centroids-2d (0.1.0)
+
+Move sites synchronously to exact pixel-mass centroids of their nearest-site assignments.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "width": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 65536
+    },
+    "height": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 65536
+    },
+    "weights": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 65535
+      },
+      "maxItems": 2147483647
+    },
+    "sites": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "maxItems": 2147483647
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "width",
+    "height",
+    "weights",
+    "sites",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| width | raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior | null | null | Authored portable representation and resource policy; no source-derived recommended range. |
+| height | raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior | null | null | Authored portable representation and resource policy; no source-derived recommended range. |
+| weights | raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior | null | null | Authored portable representation and resource policy; no source-derived recommended range. |
+| sites | raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior | null | null | Authored portable representation and resource policy; no source-derived recommended range. |
+| maxWork | raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior | null | null | Authored portable representation and resource policy; no source-derived recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | not attested | not attested | not attested | not attested |
+| p5js | not attested | not attested | not attested | not attested |
+| py5 | not attested | not attested | not attested | not attested |
+| processing-android | not attested | not attested | not attested | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/weighted-raster-centroids-2d.json).
+
+## sampling.weighted-raster-points-2d (0.1.0)
+
+Draw positions from caller-supplied integer raster density with explicit deterministic random state.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "width": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 65536
+    },
+    "height": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 65536
+    },
+    "weights": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 65535
+      },
+      "maxItems": 2147483647
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "rngState": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "width",
+    "height",
+    "weights",
+    "count",
+    "rngState",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| width | raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior | null | null | Authored portable representation and resource policy; no source-derived recommended range. |
+| height | raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior | null | null | Authored portable representation and resource policy; no source-derived recommended range. |
+| weights | raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior | null | null | Authored portable representation and resource policy; no source-derived recommended range. |
+| count | raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior | null | null | Authored portable representation and resource policy; no source-derived recommended range. |
+| rngState | raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior | null | null | Authored portable representation and resource policy; no source-derived recommended range. |
+| maxWork | raster pixel coordinate / relative integer mass / explicit RNG word / deterministic events, as defined by behavior | null | null | Authored portable representation and resource policy; no source-derived recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | not attested | not attested | not attested | not attested |
+| p5js | not attested | not attested | not attested | not attested |
+| py5 | not attested | not attested | not attested | not attested |
+| processing-android | not attested | not attested | not attested | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/weighted-raster-points-2d.json).

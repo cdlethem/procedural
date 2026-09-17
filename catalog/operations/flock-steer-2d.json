@@ -1,0 +1,213 @@
+{
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability_decision": "design/capabilities/agent-behaviors.md",
+  "design_review": "design/operations/agent-behaviors-contract-review.md",
+  "provenance": [],
+  "fixture_format": "exact-json-output",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Original scoped p5 studies only; other targets deferred."
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original contact, sensing and flock studies plus graph/field substitution; no source artwork recreation."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture challenge",
+    "status": "Contract reviewed before implementation; target acceptance pending."
+  },
+  "id": "motion.flock-steer-2d",
+  "decision_cluster": "motion.flock-steer-2d",
+  "description": "Compute separately weighted cohesion, alignment and separation steering over supplied neighbor pairs.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "maxItems": 4294967295
+      },
+      "velocities": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "maxItems": 4294967295
+      },
+      "pairs": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "maxItems": 4294967295
+      },
+      "cohesion": {
+        "type": "number",
+        "minimum": 0
+      },
+      "alignment": {
+        "type": "number",
+        "minimum": 0
+      },
+      "separation": {
+        "type": "number",
+        "minimum": 0
+      },
+      "maxSteer": {
+        "type": "number",
+        "minimum": 0
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "points",
+      "velocities",
+      "pairs",
+      "cohesion",
+      "alignment",
+      "separation",
+      "maxSteer",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "steering": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "steering"
+    ],
+    "additionalProperties": false
+  },
+  "output_invariants": "points and velocities have equal N and finite pairs. Pairs are strict lexicographic i<j original indices. Output has N fresh finite positive-zero canonical pairs. It is a steering transform, not an integrator or retained graph.",
+  "behavior": {
+    "validation": "Exact passive plain/null-prototype records, dense arrays with own data slots, finite point/velocity/coefficient values, nonnegative cohesion/alignment/separation/maxSteer and safe maxWork. Full validation precedes work. Each array length<=4294967295; columns*rows must be a safe integer<=4294967295 with exact value-array correspondence. Full numeric validation before work; no aliases/mutation/partial output. Exposed zeros canonical positive. Proxies outside interchange.",
+    "law": "For each agent: cohesion*(mean neighbor position-own position) plus alignment*(mean neighbor velocity-own velocity) plus separation*mean over noncoincident normalized outward vectors. Position/velocity means use total degree; separation mean uses noncoincident degree only. Zero degree returns positive zero; coincident neighbors contribute alignment/cohesion but no invented separation direction. Cap raw steering by fdlibmHypot and maxSteer. Zero coefficients do not skip arithmetic. Any intermediate sum, difference or norm that overflows fails, even if a real-number mean, zero-weight result, or capped vector would be finite.",
+    "order": "After N+P work approval, visit canonical pairs. For each [i,j], accumulate j position x,y then velocity x,y and degree into i; accumulate i values in the same x/y order into j; calculate dx then dy then fdlibm length; for nonzero length add normalized outward x,y/noncoincident degree to i then negated x,y/count to j. Visit agents ascending; calculate cohesion x,y, alignment x,y, separation x,y, raw x/y, then cap scale/x/y. Canonical order fixes observable binary64 accumulation.",
+    "work": "Charge N+P after static validation and before output allocation. Time/storage O(N+P).",
+    "environment": "No neighbor query, integration, speed cap, field, boundary, clock, RNG, renderer or species policy.",
+    "numerics": "Ordered separate binary64 primitives; finite-check every computed primitive. fdlibm sin/cos/hypot existing audited implementations. Exact shared fixture outputs; independent trigonometric analytical oracles abs1e-12 relative0, indices/errors/counters exact. No epsilon in classification.",
+    "native_surface": "flockSteer2D(input); p5-only initial target, named package export; errors carry stable code."
+  },
+  "errors": {
+    "INVALID_INPUT": "carrier, finite/domain, correspondence or canonical pair failure",
+    "WORK_LIMIT": "N+P exceeds maxWork",
+    "NUMERIC_OVERFLOW": "nonfinite subtraction, norm, divide, accumulation, term or cap primitive"
+  },
+  "parameters": {
+    "points": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    },
+    "velocities": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    },
+    "pairs": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    },
+    "cohesion": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    },
+    "alignment": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    },
+    "separation": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    },
+    "maxSteer": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    },
+    "maxWork": {
+      "unit": "See normative state/control units in algorithm; counts in logical ticks, positions in caller coordinates, heading in turns.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design; no corpus-derived default or recommended visual range."
+    }
+  },
+  "fixtures": "fixtures/operations/flock-steer-2d.json"
+}

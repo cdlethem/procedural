@@ -1,0 +1,196 @@
+{
+  "status": "reviewed",
+  "contract": "field.raymarch-implicit-rays-3d",
+  "comparison": "only named numeric fields have explicit tolerance; all structure and other numbers exact",
+  "cases": [
+    {
+      "id": "off_axis_sphere_central_difference",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 5
+        },
+        "rays": [
+          {
+            "origin": [
+              3,
+              4,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 1,
+        "maxSteps": 1,
+        "maxRays": 1,
+        "maxSceneNodes": 1,
+        "maxWork": 7
+      },
+      "expected": {
+        "results": [
+          {
+            "kind": "hit_epsilon",
+            "distance": 0,
+            "traveled": 0,
+            "position": [
+              3,
+              4,
+              0
+            ],
+            "fieldValue": 0,
+            "normal": [
+              0.5978936098905061,
+              0.8015754682199919,
+              0.0
+            ],
+            "normalStatus": "estimated",
+            "overshot": false,
+            "samples": 1,
+            "normalSamples": 6
+          }
+        ]
+      },
+      "derivation": "At (3,4,0), h=1: gx=(sqrt(32)-sqrt(20))/2, gy=(sqrt(34)-sqrt(18))/2, gz=0; normalize this sampled gradient, not the analytic (3/5,4/5,0).",
+      "numeric_comparison": {
+        "distance": "exact",
+        "traveled": "exact",
+        "position": "exact",
+        "fieldValue": "exact",
+        "normal": {
+          "component_absolute": 1e-12,
+          "relative": 0
+        }
+      },
+      "structural_comparison": "exact for all keys, nulls, status, overshot and counts"
+    },
+    {
+      "id": "positive_epsilon_initial_hit",
+      "input": {
+        "scene": {
+          "kind": "sphere",
+          "center": [
+            2,
+            0,
+            0
+          ],
+          "radius": 1
+        },
+        "rays": [
+          {
+            "origin": [
+              0.995,
+              0,
+              0
+            ],
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "maxDistance": 10,
+        "hitEpsilon": 0.01,
+        "normalStep": 0.25,
+        "maxSteps": 1,
+        "maxRays": 1,
+        "maxSceneNodes": 10,
+        "maxWork": 1000
+      },
+      "expected": {
+        "results": [
+          {
+            "kind": "hit_epsilon",
+            "distance": 0,
+            "traveled": 0,
+            "position": [
+              0.995,
+              0,
+              0
+            ],
+            "fieldValue": 0.004999999999999893,
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "normalStatus": "estimated",
+            "overshot": false,
+            "samples": 1,
+            "normalSamples": 6
+          }
+        ]
+      },
+      "numeric_comparison": {
+        "distance": "exact",
+        "traveled": "exact",
+        "position": "exact",
+        "fieldValue": {
+          "absolute": 2e-16,
+          "relative": 0
+        },
+        "normal": "exact"
+      },
+      "structural_comparison": "exact for all keys, nulls, status, overshot and counts"
+    }
+  ],
+  "operation": "field.raymarch-implicit-rays-3d",
+  "version": "0.1.0",
+  "catalog_sha256": "fc2ce3b83aa2acb5b3b5e2143a637460d154af945d025d4a732c4ee0fadd6cae",
+  "non_json_host_cases": [
+    {
+      "id": "scene_cycle",
+      "construction": "assign a transform child to the transform object itself",
+      "expected": {
+        "error": "INVALID_INPUT"
+      }
+    },
+    {
+      "id": "scene_shared_leaf",
+      "construction": "use the same passive sphere object as both left and right child of a union",
+      "expected": {
+        "error": "INVALID_INPUT"
+      }
+    },
+    {
+      "id": "scene_shared_coordinate_array",
+      "construction": "use the same passive center array in two distinct sphere records",
+      "expected": {
+        "error": "INVALID_INPUT"
+      }
+    },
+    {
+      "id": "accessor_not_invoked",
+      "construction": "make sphere radius an accessor that throws if read",
+      "expected": {
+        "error": "INVALID_INPUT",
+        "accessorCalls": 0
+      }
+    },
+    {
+      "id": "nonfinite_supplied_before_work",
+      "construction": "supply maxDistance=Infinity and maxWork=0 with otherwise valid sphere/ray",
+      "expected": {
+        "error": "INVALID_INPUT"
+      }
+    },
+    {
+      "id": "nonfinite_ray_component",
+      "construction": "supply NaN in direction vector",
+      "expected": {
+        "error": "INVALID_INPUT"
+      }
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 # Obstacle roads
-Shortest-path predecessors create a road tree around blocked cells. This is an original design, not a corpus recreation.
+Shortest-path predecessors create a road tree around blocked cells.
 
 | Control | Canvas effect |
 |---|---|

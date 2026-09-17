@@ -1,12 +1,13 @@
 # Quantized stripes
 
-An original editable p5 study. Serve this directory so `/p5.js` is available and open `index.html`.
+Generated stripe colors are reduced to a smaller palette. Band coverage controls how much of each output stripe is painted, revealing the transparent canvas between bands.
 
-| Control | Effect |
+| Control | Canvas effect |
 | --- | --- |
-| T | Applies the structural edit. |
-| C | Changes the packed RGB palette. |
-| 0 | Restores the baseline. |
-| S | Saves the canvas as PNG. |
+| Stripes | Number and height of source/output bands. |
+| Colors | Requested number of reduced colors. |
+| Band coverage | Painted fraction of each band; zero leaves the entire canvas transparent. |
 
-The synthetic raster is computed through [`median-cut-quantize`](../../../catalog/operations/median-cut-quantize.json). Edit `../materials-a-studies.js` to change the visible input field or drawing; this example makes no native-support claim.
+The page provides sliders for quick exploration and exact number fields for supported values. **T** applies alternate settings, **C** swaps the palette, **0** resets, and **S** saves a transparent PNG. The canvas shows paper through CSS for preview only.
+
+The reusable computation is [`color.median-cut-quantize`](../../../catalog/operations/median-cut-quantize.json). The generated source field and mark treatment remain editable drawing choices in `../materials-a-studies.js`.

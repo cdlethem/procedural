@@ -1,1 +1,62 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ornament poster — Procedurals</title><link rel="icon" href="data:,"><style>body{margin:0;padding:24px;background:#f1eee6;color:#263027;font:16px system-ui,sans-serif}main{max-width:980px;margin:auto}p{max-width:68ch;line-height:1.5}#controls{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}button{font:inherit;padding:8px 10px;border:1px solid #60705e;border-radius:4px;background:#fff;cursor:pointer}canvas{display:block;width:min(720px,100%);height:auto;box-shadow:0 3px 16px #26302722}#status{min-height:1.5em}</style></head><body><main><h1>Ornament poster</h1><p>A packed field of original petals carries a framed botanical title block. Change the motif or palette while keeping every retained centre and radius in place.</p><div id="controls"><button data-action="m">M petals / leaves / emblems</button><button data-action="c">C palette</button><button data-action="h">H tiered / uniform scale</button><button data-action="x">X cropped / full field</button><button data-action="d">D airy / dense layout</button><button data-action="0">0 reset</button><button data-action="s">S save PNG</button></div><div id="art" aria-label="Generated botanical ornament poster"></div><p id="status" role="status">Preparing ornament…</p><p>Edit the retained anchors in <code>examples/motif-compositions/compositions.js</code> or replace <code>drawMotif()</code> in this sketch. Scale hierarchy and crop redraw the same anchors; the colors are copied from shipped default palettes.</p></main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ornament field — Procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body { margin: 0; padding: 24px; background: #eeeae1; color: #263027; font: 16px system-ui, sans-serif; }
+    main { max-width: 1200px; margin: auto; }
+    p { max-width: 75ch; line-height: 1.5; }
+    .workspace { display: grid; grid-template-columns: minmax(0, 720px) minmax(260px, 1fr); gap: 24px; align-items: start; }
+    canvas { display: block; width: min(720px, 100%); height: auto; background: #fbfaf6; box-shadow: 0 3px 16px #26302722; }
+    #controls { display: grid; gap: 12px; }
+    fieldset { margin: 0; padding: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; border: 1px solid #bdc5b3; border-radius: 6px; }
+    legend { font-weight: 650; }
+    label { display: grid; gap: 3px; font-size: 0.9rem; }
+    input, select, button { font: inherit; min-width: 0; padding: 6px; }
+    input[type=checkbox] { width: 20px; height: 20px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    button { cursor: pointer; padding: 8px 12px; border: 1px solid #60705e; border-radius: 4px; background: white; }
+    #status { min-height: 1.5em; }
+    @media (max-width: 950px) { .workspace { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Ornament field</h1>
+  <p>Compose petals, leaves and emblems as a seeded scatter or an ordered repeat. The canvas previews a transparent layer on paper; saved PNGs retain transparency.</p>
+  <div class="workspace">
+    <div><div id="art" aria-label="Editable botanical ornament field"></div><p id="status" role="status">Preparing field…</p></div>
+    <div id="controls">
+      <fieldset><legend>Placement</legend>
+        <label>Layout<select data-key="layout"><option value="packed">Packed</option><option value="grid">Grid</option></select></label>
+        <label>Seed<input data-key="seed" type="number" min="0" max="4294967295" step="1"></label>
+        <label>Density %<input data-key="density" type="number" min="0" max="100" step="1"></label>
+        <label>Guides<input data-key="guides" type="checkbox"></label>
+      </fieldset>
+      <fieldset><legend>Mark mix</legend>
+        <label>Petal weight<input data-key="petalWeight" type="number" min="0" max="10" step="1"></label>
+        <label>Leaf weight<input data-key="leafWeight" type="number" min="0" max="10" step="1"></label>
+        <label>Emblem weight<input data-key="emblemWeight" type="number" min="0" max="10" step="1"></label>
+        <label>Mark scale<input data-key="scale" type="number" min="0" max="32" step="any"></label>
+      </fieldset>
+      <fieldset><legend>Direction and position</legend>
+        <label>Angle °<input data-key="angle" type="number" min="-36000" max="36000" step="any"></label>
+        <label>Angle stride °<input data-key="angleStride" type="number" min="-36000" max="36000" step="any"></label>
+        <label>Horizontal offset<input data-key="offsetX" type="number" min="-10000" max="10000" step="any"></label>
+        <label>Vertical offset<input data-key="offsetY" type="number" min="-10000" max="10000" step="any"></label>
+      </fieldset>
+      <fieldset><legend>Colour</legend>
+        <label>Palette<select data-key="paletteId"><option value="sage-linen">Sage Linen</option><option value="fern-mauve">Fern Mauve</option><option value="orchid-chalk">Orchid Chalk</option></select></label>
+      </fieldset>
+      <div class="actions"><button type="button" data-action="reset">Reset (0)</button><button type="button" data-action="save">Save transparent PNG (S)</button></div>
+    </div>
+  </div>
+  <p>Edit <code>drawMotif()</code> in this sketch to supply other marks. The retained field comes from the package’s circle placement or regular grid operation.</p>
+</main>
+<script src="/p5.js"></script>
+<script type="module" src="./sketch.js"></script>
+</body>
+</html>

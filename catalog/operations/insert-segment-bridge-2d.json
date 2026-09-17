@@ -1,0 +1,412 @@
+{
+  "id": "graph.insert-segment-bridge-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "description": "Insert one bridge between adjacent exact intersections with an embedded segment graph, retaining stable split/link ancestry.",
+  "decision_cluster": "graph.insert-segment-bridge-2d",
+  "capability_decision": "design/capabilities/connected-growth-and-graphs.md",
+  "design_review": "design/operations/connected-growth-and-graphs-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "graph": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "point": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "maxItems": 2,
+                  "minItems": 2
+                }
+              },
+              "required": [
+                "id",
+                "point"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 4294967295
+          },
+          "edges": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "a": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "b": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "id",
+                "a",
+                "b"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 4294967295
+          },
+          "nextNodeId": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "nextEdgeId": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "nodes",
+          "edges",
+          "nextNodeId",
+          "nextEdgeId"
+        ],
+        "additionalProperties": false
+      },
+      "candidate": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 2,
+          "minItems": 2
+        },
+        "maxItems": 2,
+        "minItems": 2
+      },
+      "gapIndex": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "maxNodes": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "maxEdges": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "graph",
+      "candidate",
+      "gapIndex",
+      "maxNodes",
+      "maxEdges",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "graph": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "point": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "maxItems": 2,
+                  "minItems": 2
+                }
+              },
+              "required": [
+                "id",
+                "point"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 4294967295
+          },
+          "edges": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "a": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "b": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "id",
+                "a",
+                "b"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 4294967295
+          },
+          "nextNodeId": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "nextEdgeId": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "nodes",
+          "edges",
+          "nextNodeId",
+          "nextEdgeId"
+        ],
+        "additionalProperties": false
+      },
+      "events": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "const": "split"
+                },
+                "parentEdgeId": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "nodeId": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "childEdgeIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "maxItems": 2,
+                  "minItems": 2
+                },
+                "parentT": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "type",
+                "parentEdgeId",
+                "nodeId",
+                "childEdgeIds",
+                "parentT"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "const": "link"
+                },
+                "edgeId": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "nodeIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "maxItems": 2,
+                  "minItems": 2
+                }
+              },
+              "required": [
+                "type",
+                "edgeId",
+                "nodeIds"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "maxItems": 4294967295
+      },
+      "inserted": {
+        "type": "boolean"
+      },
+      "reason": {
+        "enum": [
+          null,
+          "INSUFFICIENT_HITS"
+        ]
+      }
+    },
+    "required": [
+      "graph",
+      "events",
+      "inserted",
+      "reason"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached finite canonical data; stable identity/order as specified; no partial result on failure.",
+  "behavior": {
+    "validation": "Exact passive Object/null-prototype records, dense ordinary arrays with own data slots, no classes/accessors/symbols/extras/coercion; proxies outside interchange. Numeric values finite binary64; booleans never numbers. Validate complete input in input-schema field order, arrays in order, then correspondence/topology structure, then exact-integer work preflight before geometric predicates or result allocation. Normalize accepted/exposed zero to +0. Inputs unchanged and all outputs deeply detached. Host allocation failure remains a host error.",
+    "environment": "No RNG, clock, renderer or assets. Caller Cartesian coordinates; signed turns use algebraic counterclockwise orientation in x/y coordinates, visually clockwise when y points down. Explicit caller dt where present. p5-only initial delivery; no physical collision, source solver or other-target equivalence.",
+    "numerics": "Binary64 separately rounded primitives, no FMA or reassociation. Check each computed floating arithmetic primitive finite or NUMERIC_OVERFLOW. Exact dyadic/rational predicates use existing internal/exact-rational.js without converting before classification. Existing fdlibmHypot and fdlibmAtan2 profiles for stated norms/angles. Compare IDs, topology, ordering, counters and errors exactly; analytical floating fixtures may explicitly allow absolute1e-12 relative0. No global epsilon.",
+    "topology": "Node and edge records strictly ascending unique IDs; all edge endpoint IDs exist and differ. Edge orientation is retained as a,b, but connectivity is undirected: duplicate unordered endpoint pairs are INVALID_TOPOLOGY. Isolated nodes allowed. next counters exceed existing respective IDs. maxNodes>=N,maxEdges>=E or INVALID_INPUT. Distinct nodes cannot have equal exact coordinates. Original edges nonzero; edge intersections are allowed only at their shared endpoint node; adjacent collinear positive overlap is invalid. INVALID_GEOMETRY after work preflight. Candidate endpoints must differ exactly or INVALID_INPUT during static validation.",
+    "work": "N=graph.nodes.length,E=graph.edges.length. Reserve exact W=N+2*E+E*E+maxEdges*maxEdges+16. Terms cover node capture, edges/candidate tests, old/final embedding predicates and bounded split/link administration; sorting and rational bit costs are not events. WORK_LIMIT before geometry. O(N+E^2+maxEdges^2) reserved predicate work; actual geometry O(E^2), O(N+E) storage. All caps count final live records, not retired IDs.",
+    "enumeration": "Against old graph visit edges by ID. Collect exact closed nonparallel segment intersections along directed candidate. Parallel noncollinear miss. Any positive-length collinear candidate/edge overlap is AMBIGUOUS_OVERLAP, including a previously inserted identical connector; single-point collinear contact is allowed. Group hits by exact candidate parameter; one graph vertex with many incident edges is one hit and reuses that node. In a valid embedded graph an interior hit belongs to exactly one edge. Sort distinct hits by exact t. If fewer than2 distinct hits, return detached unchanged graph,events[],inserted false,reason INSUFFICIENT_HITS, irrespective of gapIndex. Otherwise require gapIndex<hits.length-1; failing this is dynamic INVALID_INPUT after enumeration, before output planning.",
+    "edit": "Select hits gapIndex and gapIndex+1 only. Candidate t order allocates each needed new interior-hit node from nextNodeId. Endpoint hits reuse IDs without allocation. Then visit the at-most-two split old edges by stable edge ID; allocate two child edge IDs, preserving parent a->newNode->b orientation; remove parent. Emit split event with parentEdgeId,nodeId,childEdgeIds,parentT (parameter on parent a->b). Allocate connector edge last, from first selected hit node to second; emit link event. New nodes/edges are returned sorted by stable IDs. Old nodes and unaffected edges unchanged. inserted true,reason null. No stochastic choice or mutation. IDs never recycled; prospective counters above9007199254740991 fail ID_EXHAUSTED. Before constructing output require actual N+newNodeCount<=maxNodes and E+splitCount+1<=maxEdges or OUTPUT_LIMIT.",
+    "rounding": "Exact hit coordinates and parentT round once to nearest-even binary64. A proper interior parent parameter rounding to0/1, a new point equal to any other output node after rounding, or a zero-length child is REPRESENTATION_COLLAPSE. Revalidate final embedded geometry after rounding using exact predicates over output binary64 values; any new forbidden contact/overlap is REPRESENTATION_COLLAPSE. No output on any failure. An already existing connector necessarily overlaps the candidate, so strict overlap error takes precedence; there is no unreachable EXISTS no-op.",
+    "native_surface": "insertSegmentBridge2D(input), InsertSegmentBridge2DError; insert-segment-bridge-2d.js and package index."
+  },
+  "errors": {
+    "INVALID_INPUT": "Static carrier/shape/domain/correspondence failure.",
+    "WORK_LIMIT": "Exact declared work reservation exceeds maxWork.",
+    "NUMERIC_OVERFLOW": "Nonfinite checked arithmetic; no partial result.",
+    "INVALID_TOPOLOGY": "Duplicate/inconsistent IDs or connectivity.",
+    "INVALID_GEOMETRY": "Initial embedded graph invalid.",
+    "AMBIGUOUS_OVERLAP": "Positive-length candidate overlap with an old edge.",
+    "OUTPUT_LIMIT": "Required live nodes/edges exceed explicit caps.",
+    "ID_EXHAUSTED": "Allocation would make an ID counter unsafe.",
+    "REPRESENTATION_COLLAPSE": "Rounded intersection or final graph loses exact distinctness/embedding."
+  },
+  "parameters": {
+    "graph": {
+      "unit": "Stable node/edge graph in caller coordinates.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "candidate": {
+      "unit": "Directed finite segment endpoints in caller coordinates.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "gapIndex": {
+      "unit": "Zero-based adjacent-hit gap, dynamically checked when at least2hits exist.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "maxNodes": {
+      "unit": "Final live-node cap.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "maxEdges": {
+      "unit": "Final live-edge cap and conservative final-predicate reservation.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "maxWork": {
+      "unit": "Exact conservative predicate/event allowance.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    }
+  },
+  "fixtures": "fixtures/operations/insert-segment-bridge-2d.json",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original native studies and withheld design transfer, with exact scoped invariants; no Hodgin/Hoff recreation automatically implied."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after Astra/Sol independent reviews",
+    "status": "Reviewed before implementation; target acceptance pending."
+  }
+}

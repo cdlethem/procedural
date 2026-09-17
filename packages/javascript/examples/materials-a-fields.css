@@ -1,0 +1,9 @@
+*{box-sizing:border-box}body{margin:0;padding:24px;background:#f8f5ee;color:#242324;font:16px/1.5 system-ui,sans-serif}
+main{max-width:960px;margin:auto}h1{font:normal clamp(32px,5vw,56px)/1.05 Georgia,serif;margin:0 0 12px}
+p{max-width:72ch}.actions{display:flex;gap:9px;flex-wrap:wrap;margin:22px 0 15px}
+button{padding:8px 12px;border:1px solid #777;background:#fff;cursor:pointer}
+.parameter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-bottom:22px}
+.control{display:grid;grid-template-columns:minmax(0,1fr) 80px;align-items:center;gap:5px;padding:9px;background:#fff;border:1px solid #d4d0c8}
+.control span{grid-column:1/-1;font-size:14px}.control input[type=range]{width:100%}.control input[type=number]{width:74px}
+.control select{grid-column:1/-1;max-width:100%}.control input[type=checkbox]{justify-self:start}
+canvas{display:block;width:min(640px,100%);height:auto;background:#ece7da}#status{min-height:1.5em}

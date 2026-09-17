@@ -1,6 +1,6 @@
 # Terraced islands
 
-Nested hulls create stepped island perimeters. This is an original design study, not a recreation of a surveyed original.
+Nested hulls create stepped island perimeters.
 
 | Control | Visible effect |
 | --- | --- |
