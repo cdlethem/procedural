@@ -48,6 +48,11 @@ The report includes all69 family dispositions and all three denominators:800 ass
 - The [web app](apps/README.md) has95 gallery/Studio studies and generated API pages for69
   operations. The three coverage studies are packaged native examples; the web study count
   is95 after the five external expansion studies. The app compositor remains separate from portable recipes/MCP.
+- A [draft source checkpoint](docs/creative-quality-draft-checkpoint.md) revises26 of those
+  studies for structural controls, saved-work compatibility and layer transparency. Focused
+  web/native checks and a production build pass. The historical catalog binding check remains
+  red, so this is not a new target-acceptance or live-release claim; live8443 remains at
+  `d76e204c` pending a reviewed release.
 - Layer editing, custom palettes, source inspection, undo/redo, local recovery, JSON/PNG export
   and Go storage are reviewed. [Workspace review](evidence/web/studio-workspace-review.json),
   [v3 review](evidence/web/app-v3-review.json) and [architecture](docs/web-app-architecture.md)
