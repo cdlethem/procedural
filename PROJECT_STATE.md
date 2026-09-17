@@ -87,6 +87,13 @@ visual scope and access gaps; no external artwork recreation is accepted by this
 
 ## Remaining work and ownership
 
+Current priority is the maintainer's creative-quality correction. Follow
+[the working standard](docs/creative-quality.md): revise the named ornament/panel and
+embossed/signed-edge studies, separate slider intervals from valid numeric domains, and
+review the existing gallery by family. Pending dynamics gallery work needs renewed creative
+and responsiveness review before release. Historical technical acceptance remains scoped
+evidence; it does not grandfather creative quality. Preserve both web redesigns.
+
 The survey batch and first [external expansion batch](docs/external-expansion-first-batch.md)
 are complete at their declared scope. The maintainer now requires the **entire external expansion
 plan implemented**. [Execution scope](docs/external-expansion-execution.md) tracks active B–I

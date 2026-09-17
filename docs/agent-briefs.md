@@ -15,6 +15,11 @@ is a task-brief template, not an execution queue. Use the current user assignmen
 | Validation | Existing commands and observable acceptance scenarios; state read-only limits |
 | Handoff | Changes/findings, checks actually run, evidence paths and unresolved blockers |
 
+For artist-facing work, apply [creative quality](creative-quality.md). The brief names
+the artist's construction choices, replaceable inputs, hidden constants, intended distinct
+outcomes and the reasons for hard limits. Handoffs include configurations actually explored
+through the interface and initial/structural/appearance costs. Root retains creative admission.
+
 Give only task-relevant context. Independent assignments need disjoint file ownership.
 Workers resolve ordinary bugs; root decides API ambiguity and conflicting evidence.
 Do not silently shrink an assignment to its first stage or call a prepared build validated.

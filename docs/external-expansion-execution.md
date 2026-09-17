@@ -6,6 +6,20 @@ integration checkpoints, not permission to end the overall assignment. This exec
 record supersedes that document's immediate-handoff scheduling, while preserving the
 research snapshot and its evidence hashes.
 
+## Current priority: creative quality
+
+The maintainer's subsequent quality feedback changes the order of work. Apply
+[creative quality](creative-quality.md) to existing and new components, techniques and
+studies. Correct the shared range model and the ornament/panel and embossed/signed-edge
+studies first, then address the broader gallery audit by computational family. Reopen
+creative review of the pending dynamics gallery batch, including interaction latency,
+before its release. Preserve all completed implementation and historical technical evidence.
+The delivery table below records expansion scope; its earlier acceptance and design labels
+do not establish current creative approval or live deployment. The full expansion remains
+required after this corrective work; adding entries is not the immediate release objective.
+
+## Expansion scope
+
 The corpus and 50 default palettes are delivered. Batch A and the first B slice are
 accepted in [their review](../evidence/expansion/first-batch/root-review.json). Remaining
 work below is active; a proposal, passing core test or generated image alone is not completion.

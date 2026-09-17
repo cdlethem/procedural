@@ -19,6 +19,12 @@ before adding public surface. One-off aesthetic choices belong in examples.
 Useful compound conveniences are allowed when they preserve
 substitution points and share the underlying contracts. Function counts are not a quota.
 
+Artist-facing work follows [creative-quality.md](docs/creative-quality.md): root freezes
+meaningful construction controls, separates slider intervals from hard limits, then
+personally explores the real interface and reviews diverse outcomes and responsiveness.
+Rendering/replay/export checks alone do not admit a study. Existing entries are subject
+to the same standard; preserve historical technical evidence without grandfathering quality.
+
 Root owns capability selection, public boundaries, important semantics and final integration.
 Personally inspect decisive reports, implementation and representative native images.
 Workers propose or implement frozen behavior; they do not independently admit public APIs,
