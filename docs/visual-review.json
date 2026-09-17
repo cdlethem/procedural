@@ -2,6 +2,30 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "external-expansion-live-release",
+      "title": "Completed redesign with five new studies",
+      "category": "Root reviewed live HTTPS release",
+      "description": "Actual 8443 gallery and Studio; 95 studies and 50 default palettes. In-progress landing page remains separate.",
+      "evidence": "evidence/web/external-expansion-live-release.json",
+      "images": [
+        {
+          "label": "Gallery",
+          "path": ".work/expansion-full/gallery-release/live/gallery.png",
+          "sha256": "24c3c38773fbe738966008e69a003ff2f207d629cd30881532a99165def68307"
+        },
+        {
+          "label": "Studio",
+          "path": ".work/expansion-full/gallery-release/live/studio.png",
+          "sha256": "7eeab2c056b515c0870b12c1fc86a1af1f4205f88c3e1a0c5a01aa4373093112"
+        },
+        {
+          "label": "Palettes",
+          "path": ".work/expansion-full/gallery-release/live/palettes.png",
+          "sha256": "76aabf686bd6b2f3ca42a87fbb5af2bab30e9c3e7195d30aaef65c693b648076"
+        }
+      ]
+    },
+    {
       "id": "ui-main-integration",
       "title": "Art with knobs \u2014 reviewed main integration",
       "category": "Root reviewed clean-checkout UI integration",

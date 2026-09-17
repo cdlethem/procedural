@@ -1,0 +1,47 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "date": "2026-09-17T20:15:05.823080+00:00",
+  "scope": "Deploy five original studies and 50 default palettes while retaining the completed gallery/Studio redesign.",
+  "source_revision": "6d4759b8bf09180719d41293c6f637283c8b1018",
+  "release": ".work/external-gallery-review",
+  "build_id": "FUYIyFnx-T2P93H1PyYoc",
+  "live_url": "https://eunoia.tailf03dad.ts.net:8443/",
+  "service": "procedurals-web.service",
+  "port": 3002,
+  "predecessor": "evidence/web/completed-redesign-restoration.json",
+  "verification": [
+    "Release checkout is clean at the exact source revision.",
+    "119 web tests and isolated normal production build pass.",
+    "Actual HTTPS browser check: completed Art with knobs gallery, 95 study cards, 50 Customize palette controls, contact-network Studio canvas ready, no browser page errors.",
+    "Root visually inspected actual HTTPS gallery and Studio screenshots.",
+    "Actual HTTPS API health returns status ok.",
+    "Shared persisted storage references preserved. In-progress landing page files are outside this release."
+  ],
+  "evidence_sha256": {
+    ".work/expansion-full/gallery-release/live/report.json": "24d5b29f8eb40bc744252c7450492dbfaac14e1df5bedcedfa09a75b9fb17b14",
+    ".work/expansion-full/gallery-release-check.mjs": "5bc4dfd54c320f92ddcb5ccc6c5b90efa2a4770acd05cd9c52eb59b039e267b3",
+    "evidence/web/external-expansion-gallery-review.json": "f4a170122e8bc28d584a5bc1d9372b8efdf900f3cfdd0319dbf876e4a402fc39",
+    ".work/expansion-full/gallery-final-build.log": "652251730988f7029281244f1bc4e73d6290666ba3d5d32726b184545acb70e1",
+    ".work/expansion-full/gallery-unit-final.log": "0e5c6e6bef632be8b9d6ef539948cdcc553da03411e238d8cd4b9f2abb88f992"
+  },
+  "images": [
+    {
+      "path": ".work/expansion-full/gallery-release/live/gallery.png",
+      "sha256": "24c3c38773fbe738966008e69a003ff2f207d629cd30881532a99165def68307"
+    },
+    {
+      "path": ".work/expansion-full/gallery-release/live/studio.png",
+      "sha256": "7eeab2c056b515c0870b12c1fc86a1af1f4205f88c3e1a0c5a01aa4373093112"
+    },
+    {
+      "path": ".work/expansion-full/gallery-release/live/palettes.png",
+      "sha256": "76aabf686bd6b2f3ca42a87fbb5af2bab30e9c3e7195d30aaef65c693b648076"
+    }
+  ],
+  "limits": [
+    "Scoped Chromium verification, not cross-browser certification.",
+    "The release directory name is historical: this is now an immutable production checkout; do not edit or build inside it."
+  ]
+}

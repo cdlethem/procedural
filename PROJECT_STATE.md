@@ -67,10 +67,11 @@ The report includes all69 family dispositions and all three denominators:800 ass
   The [50 default palettes](docs/default-palettes.md) now have a separate
   [local data/UI review](evidence/external-art/2026-09/default-palette-review.json), including
   the JavaScript export, offline defaults, editable copies and scoped browser checks.
-- Live8443 now serves the completed merged redesign from clean main revision `f30c95b4`,
-  release `.work/main-redesign-release-20260917` (Next3002, Go8088). The
-  [restoration review](evidence/web/completed-redesign-restoration.json) records source
-  reconciliation, production/workspace checks and browser verification through the actual HTTPS URL.
+- Live8443 serves the completed merged redesign plus five new studies and 50 default palettes
+  from clean main revision `6d4759b8`, immutable release `.work/external-gallery-review`
+  (Next3002, Go8088). The [release review](evidence/web/external-expansion-live-release.json)
+  records actual HTTPS verification; the [restoration review](evidence/web/completed-redesign-restoration.json)
+  retains the source reconciliation and recovery checks.
   The in-progress landing page remains separate. Future releases must preserve this completed UI
   baseline; see [live release procedure](docs/live-web-release.md).
 - Named projects live in `.work/web-projects`. The current release links shared prompt
