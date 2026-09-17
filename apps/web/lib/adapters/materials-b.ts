@@ -16,8 +16,10 @@ const footprintControls: Parameter[] = [
   numeric("footprintWidth", "Footprint width", "Sets the x span of the polygon before extrusion.", 80, 420, 1, { hardMin: 20, hardMax: 600 }),
   numeric("footprintDepth", "Footprint depth", "Sets the y span of the polygon before extrusion.", 80, 420, 1, { hardMin: 20, hardMax: 600 }),
   numeric("inset", "Corner inset", "Cuts or skews the footprint corners.", 0, 100, 1, { hardMin: 0, hardMax: 150 }),
-  numeric("stepDepth", "Step depth", "Moves the upper shoulder or the stepped cut.", 0, 160, 1, { hardMin: 0, hardMax: 300 }),
-  numeric("shoulder", "Shoulder width", "Changes the upper slope or the horizontal step.", 0, 160, 1, { hardMin: 0, hardMax: 300 }),
+  // A stepped footprint needs a positive ledge, so the slider interval starts above zero
+  // while the hard domain still accepts an exact zero for beveled outlines.
+  numeric("stepDepth", "Step depth", "Moves the upper shoulder or the stepped cut.", 1, 160, 1, { hardMin: 0, hardMax: 300 }),
+  numeric("shoulder", "Shoulder width", "Changes the upper slope or the horizontal step.", 1, 160, 1, { hardMin: 0, hardMax: 300 }),
   numeric("height", "Extrusion height", "Pushes the polygon into depth at the current fixed camera zoom.", 10, 300, 1, { hardMin: .001, hardMax: 1000 }),
 ];
 const ribbonControls: Parameter[] = [

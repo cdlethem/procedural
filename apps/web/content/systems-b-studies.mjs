@@ -1,6 +1,6 @@
 export const systemsBStudies = [
  ["ripple-interference","Ripple interference","Fields & paths",["damped-wave-step-2d"],"drawRippleInterference","Passes",34],
- ["pinned-waves","Pinned waves","Fields & paths",["damped-wave-step-2d"],"drawPinnedWaves","Scale",13],
+ ["pinned-waves","Pinned waves","Fields & paths",["damped-wave-step-2d"],"drawPinnedWaves","Cell spacing",13],
  ["branching-sentences","Branching sentences","Fields & paths",["parallel-token-rewrite","token-turtle-2d"],"drawBranchingSentences","Iterations",5],
  ["woven-grammar","Woven grammar","Shapes & space",["parallel-token-rewrite","token-turtle-2d"],"drawWovenGrammar","Angle",38],
  ["turtle-canopies","Turtle canopies","Fields & paths",["token-turtle-2d","parallel-token-rewrite"],"drawTurtleCanopies","Depth",6],

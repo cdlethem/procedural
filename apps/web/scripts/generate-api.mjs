@@ -8,6 +8,7 @@ import { apiGuides } from "../content/api-guides.mjs";
 import { surveyCoverageApiGuides } from "../content/survey-coverage-api.mjs";
 import { externalExpansionApiGuides } from "../content/external-expansion-api.mjs";
 import { externalDynamicsApiGuides } from "../content/external-dynamics-api.mjs";
+import { externalVisualApiGuides } from "../content/external-visual-api.mjs";
 
 const app = resolve(dirname(fileURLToPath(import.meta.url)), ".."),
   root = resolve(app, "../..");
@@ -36,6 +37,11 @@ const bindings = {
   "diffuse-periodic-scalar-2d": ["diffuse-periodic-scalar-2d", "diffusePeriodicScalar2D"],
   "radius-pairs-2d": ["radius-pairs-2d", "radiusPairs2D"],
   "pair-force-step-2d": ["pair-force-step-2d", "pairForceStep2D"],
+  "weighted-raster-points-2d": ["weighted-raster-points-2d", "weightedRasterPoints2D"],
+  "weighted-raster-centroids-2d": ["weighted-raster-centroids-2d", "weightedRasterCentroids2D"],
+  "sample-recorded-controls": ["sample-recorded-controls", "sampleRecordedControls"],
+  "prepare-surface-attributes-3d": ["prepare-surface-attributes-3d", "prepareSurfaceAttributes3D"],
+  "raymarch-implicit-rays-3d": ["raymarch-implicit-rays-3d", "raymarchImplicitRays3D"],
   "seeded-pixel-grain": ["seeded-pixel-grain", "seededPixelGrain"],
   "field-displace-2d": ["field-displace-2d", "fieldDisplace2D"],
   "octave-gradient-noise": ["octave-gradient-noise", "octaveGradientNoise"],
@@ -154,7 +160,7 @@ const entries = readdirSync(join(root, "catalog/operations"))
       throw Error(
         `JavaScript module drift: ${catalog.id} expects ${binding[1]} in ${binding[0]}.js`,
       );
-    const guide = externalDynamicsApiGuides[catalog.id] ?? externalExpansionApiGuides[catalog.id] ?? surveyCoverageApiGuides[catalog.id] ?? apiGuides[catalog.id];
+    const guide = externalDynamicsApiGuides[catalog.id] ?? externalVisualApiGuides[catalog.id] ?? externalExpansionApiGuides[catalog.id] ?? surveyCoverageApiGuides[catalog.id] ?? apiGuides[catalog.id];
     if (!guide) throw Error(`Missing human API guide: ${catalog.id}`);
     const topLevel = Object.keys(catalog.input_schema?.properties ?? {});
     if (

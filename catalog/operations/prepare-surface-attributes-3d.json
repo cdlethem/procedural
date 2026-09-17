@@ -1,0 +1,289 @@
+{
+  "id": "mesh.prepare-surface-attributes-3d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "decision_cluster": "mesh.prepare-surface-attributes-3d",
+  "description": "Prepare indexed triangle positions, flat or smoothing-group normals, and caller-supplied corner UV seams as detached attributed geometry.",
+  "capability_decision": "design/capabilities/mesh-surface-attributes.md",
+  "design_review": "design/operations/mesh-surface-attributes-contract-review.md",
+  "provenance": [],
+  "fixture_format": "exact-json-output",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "positions": {
+        "type": "array",
+        "maxItems": 2147483647,
+        "items": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "triangles": {
+        "type": "array",
+        "maxItems": 2147483647,
+        "items": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "number",
+            "description": "Finite numeric carrier; noninteger, out-of-range and repeated face indices are INVALID_TOPOLOGY."
+          }
+        }
+      },
+      "normalMode": {
+        "type": "string",
+        "enum": [
+          "flat",
+          "smooth"
+        ]
+      },
+      "smoothingGroups": {
+        "type": "array",
+        "maxItems": 2147483647,
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "cornerUVs": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "array",
+            "maxItems": 2147483647,
+            "items": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              }
+            }
+          }
+        ]
+      },
+      "maxVertices": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483647
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "positions",
+      "triangles",
+      "normalMode",
+      "smoothingGroups",
+      "cornerUVs",
+      "maxVertices",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "positions": {
+        "type": "array",
+        "maxItems": 2147483647,
+        "items": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "triangles": {
+        "type": "array",
+        "maxItems": 2147483647,
+        "items": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483646
+          }
+        }
+      },
+      "normals": {
+        "type": "array",
+        "maxItems": 2147483647,
+        "items": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "uvs": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "array",
+            "maxItems": 2147483647,
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        ]
+      },
+      "sourceVertexIndices": {
+        "type": "array",
+        "maxItems": 2147483647,
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483646
+        }
+      }
+    },
+    "required": [
+      "positions",
+      "triangles",
+      "normals",
+      "uvs",
+      "sourceVertexIndices"
+    ],
+    "additionalProperties": false
+  },
+  "output_invariants": "Output positions, normals, sourceVertexIndices and optional uvs have equal length O<=3F; output triangles length F. Face/corner order and input winding are retained. Detached plain arrays, no unreferenced source positions, no hidden metadata.",
+  "behavior": {
+    "validation": "Input is exactly required own string keys on an ordinary or null-prototype passive record, with dense ordinary arrays and own data slots only; no symbols, extra keys, accessors, coercion, defaults or retained aliases. Proxies are outside interchange. Validate positions, triangles and their in-range distinct integer corners, mode, groups, all UV triples/pairs, maxVertices and maxWork in schema order, fully before budget or geometry. V,F,nested lengths<=2147483647; groups are nonnegative safe integers; all coordinates finite; UV components in [0,1]. -0 canonicalizes to +0. Malformed carriers/scalars INVALID_INPUT; out-of-range, noninteger or repeated face corners INVALID_TOPOLOGY. Face indices must first be finite numeric scalars, otherwise INVALID_INPUT. Finite noninteger/out-of-range or repeated indices are INVALID_TOPOLOGY.",
+    "environment": "Right-handed caller-local xyz. Triangle [i,j,k] has outward face normal (p_j-p_i)x(p_k-p_i). Supplied normalized corner UV convention u increases right, v increases down in an upright image; no host texture flip, implicit chart, winding repair, coordinate weld, material, light, renderer, asset, RNG, clock or mutable state in core.",
+    "native_surface": "prepareSurfaceAttributes3D(input), PrepareSurfaceAttributes3DError with stable code. First target p5.js pure core and a private pinned-p5 Geometry study; no additional public renderer adapter is admitted.",
+    "order": "After complete static validation, O=3F BigInt must be <=maxVertices (conservative flat/worst-smooth cap), else OUTPUT_LIMIT. W=V+27F BigInt must be <=maxWork, else WORK_LIMIT. Both before exact geometry or output allocation. Compute all face normals in face order. For each face, use exact dyadic source-coordinate differences/cross to test exact zero, DEGENERATE_FACE before rounded arithmetic. Then binary64 difference components ax,ay,az,bx,by,bz, each finite-checked; cross cx=ay*bz-az*by, cy=az*bx-ax*bz, cz=ax*by-ay*bx, checking each multiply/subtract. Nonfinite primitive NUMERIC_OVERFLOW; represented all-zero cross with exact nonzero cross REPRESENTATION_COLLAPSE. Unitize using fdlibmHypot(fdlibmHypot(cx,cy),cz), then x/y/z division once, finite-checked and -0 canonicalized. In smooth mode, sum each incident unit face normal once by (source index,group), traversing faces ascending and corners 0,1,2, adding x/y/z in order with finite checks. Normalize group sums in first key-encounter order; all represented components zero AMBIGUOUS_NORMAL. Complete face/group normals before output expansion. Flat emits three new vertices per face. Smooth traverses corners in input order, reusing first encounter of (source index, group, exact canonical binary64 UV pair), with a single untextured sentinel when cornerUVs=null. Distinct UV pairs create seam twins with identical group normal; different source indices are never welded. Output triangles retain face/corner order, uvs null iff input null, and unreferenced input positions are omitted.",
+    "work": "Deterministic full reservation V+27F with BigInt arithmetic; no runtime event charging or hidden quadratic weld scan. maxWork is nonnegative safe integer. Worst output vertices 3F must fit maxVertices<=2147483647 even when smooth reuse could reduce actual count. Time O(V+F) aside from exact arithmetic bit cost; storage O(V+F). Host allocation exhaustion remains host error.",
+    "numerics": "Exact dyadic zero-cross topology test precedes binary64 cross; binary64 operations follow the stated primitive order with finite checks. fdlibmHypot is the pinned internal fdlibm algorithm for both nested magnitudes. General normal components compare with per-component absolute tolerance 1e-12, relative tolerance 0; topology, copied represented coordinates, UVs, axis normals, indices and errors compare exactly. A rounded all-zero smooth sum is AMBIGUOUS_NORMAL; no epsilon or arbitrary fallback."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed passive carrier, finite/domain scalar or array correspondence.",
+    "INVALID_TOPOLOGY": "A face index is noninteger/out of range or repeats another corner of that face.",
+    "OUTPUT_LIMIT": "Conservative 3F output-vertex reservation exceeds maxVertices.",
+    "WORK_LIMIT": "BigInt V+27F exceeds maxWork.",
+    "DEGENERATE_FACE": "Exact dyadic face cross is zero.",
+    "REPRESENTATION_COLLAPSE": "Exact nonzero face cross becomes represented all-zero cross.",
+    "NUMERIC_OVERFLOW": "A checked binary64 difference, product, subtraction, sum, magnitude or division is nonfinite.",
+    "AMBIGUOUS_NORMAL": "A represented smooth normal sum is exactly zero."
+  },
+  "parameters": {
+    "positions": {
+      "unit": "caller-local coordinate units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored representation; no source-derived numeric range."
+    },
+    "triangles": {
+      "unit": "indices into positions",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Authored indexed-mesh carrier."
+    },
+    "normalMode": {
+      "unit": "flat or smooth key policy",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit artistic hard/smooth edit."
+    },
+    "smoothingGroups": {
+      "unit": "face-level nonnegative integer IDs",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit sharp-edge control; no angle heuristic."
+    },
+    "cornerUVs": {
+      "unit": "normalized upright-source image coordinates",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Artist-supplied chart; no implicit mapping."
+    },
+    "maxVertices": {
+      "unit": "conservative output vertex cap",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Resource policy, not visual parameter."
+    },
+    "maxWork": {
+      "unit": "deterministic V+27F reservation",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Resource policy, not visual parameter."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Language-neutral contract first; no Java support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Pure attributed geometry plus original pinned-p5 study after root freeze."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "No py5 support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "No Android support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/prepare-surface-attributes-3d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original lit/textured indexed-mesh study, independent geometry/texture edits and extrusion/ribbon transfer; no named artwork recreation."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent Sol proposal",
+    "status": "Contract frozen before implementation; target acceptance pending."
+  }
+}

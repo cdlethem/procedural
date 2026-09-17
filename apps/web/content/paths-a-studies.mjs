@@ -1,7 +1,7 @@
 export const pathsAStudies = [
   ["rounded-panels", "Rounded panels", "Shapes & space", "chaikin-polyline-2d", "drawRoundedPanels", "Panels", 8], ["flowing-brushes", "Flowing brushes", "Fields & paths", "chaikin-polyline-2d", "drawFlowingBrushes", "Rows", 13],
   ["contour-abstraction", "Contour abstraction", "Fields & paths", "simplify-polyline-2d", "drawContourAbstraction", "Tolerance", 28], ["gesture-skeletons", "Gesture skeletons", "Fields & paths", "simplify-polyline-2d", "drawGestureSkeletons", "Gestures", 11],
-  ["road-margins", "Road margins", "Fields & paths", "offset-polyline-2d", "drawRoadMargins", "Margin", 24], ["nested-contour-strokes", "Nested contour strokes", "Shapes & space", "offset-polyline-2d", "drawNestedContourStrokes", "Rings", 11],
+  ["road-margins", "Road margins", "Fields & paths", "offset-polyline-2d", "drawRoadMargins", "Signed margin", 24], ["nested-contour-strokes", "Nested contour strokes", "Shapes & space", "offset-polyline-2d", "drawNestedContourStrokes", "Rings", 11],
   ["scatter-envelopes", "Scatter envelopes", "Layouts", "convex-hull-2d", "drawScatterEnvelopes", "Sites", 80], ["terraced-islands", "Terraced islands", "Layouts", "convex-hull-2d", "drawTerracedIslands", "Terraces", 10],
-  ["faceted-silhouettes", "Faceted silhouettes", "Shapes & space", "triangulate-simple-polygon-2d", "drawFacetedSilhouettes", "Grain lines", 28], ["concave-grain", "Concave grain", "Shapes & space", "triangulate-simple-polygon-2d", "drawConcaveGrain", "Grain lines", 58],
+  ["faceted-silhouettes", "Faceted silhouettes", "Shapes & space", "triangulate-simple-polygon-2d", "drawFacetedSilhouettes", "Outer sides", 10], ["concave-grain", "Concave grain", "Shapes & space", "triangulate-simple-polygon-2d", "drawConcaveGrain", "Grain marks", 40],
 ].map(([slug, title, category, operation, draw, label, value]) => ({ slug, title, category, operations: [operation], draw, structuralControl: { label, value } }));

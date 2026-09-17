@@ -84,3 +84,8 @@ export { projectPeriodicVelocity2D } from "./project-periodic-velocity-2d.js";
 export { advectPeriodicScalar2D } from "./advect-periodic-scalar-2d.js";
 export { diffusePeriodicScalar2D } from "./diffuse-periodic-scalar-2d.js";
 export { createP5FeedbackSurface, P5FeedbackSurfaceError } from "./p5-feedback-surface.js";
+export { weightedRasterPoints2D, WeightedRasterPoints2DError } from "./weighted-raster-points-2d.js";
+export { weightedRasterCentroids2D, WeightedRasterCentroids2DError } from "./weighted-raster-centroids-2d.js";
+export { sampleRecordedControls, SampleRecordedControlsError } from "./sample-recorded-controls.js";
+export { prepareSurfaceAttributes3D, PrepareSurfaceAttributes3DError } from "./prepare-surface-attributes-3d.js";
+export { raymarchImplicitRays3D, RaymarchImplicitRays3DError } from "./raymarch-implicit-rays-3d.js";
