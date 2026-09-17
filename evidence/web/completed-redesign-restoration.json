@@ -1,0 +1,47 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "date": "2026-09-17T19:32:14.413193+00:00",
+  "scope": "Restore the completed merged gallery/Studio redesign to the established 8443 URL; distinct in-progress landing-page redesign remains separate.",
+  "source_revision": "f30c95b4f635238b58aea972d2d53188755bbd8f",
+  "redesign_commit": "0a8849a2",
+  "release": ".work/main-redesign-release-20260917",
+  "build_id": "1C3twTlAVkQ_o5QGKjgyz",
+  "live_url": "https://eunoia.tailf03dad.ts.net:8443/",
+  "service": "procedurals-web.service",
+  "port": 3002,
+  "persistent_service_override": "/home/colin/.config/systemd/user/procedurals-web.service.d/zzzzzzzz-current-release.conf",
+  "previous_release": ".work/p5-tenfold-release",
+  "verification": [
+    "All completed UI review sourceBindings match committed main bytes.",
+    "Isolated production build and typecheck passed.",
+    "Existing workspace browser suite passed under machine lease: eight layers, twelve colors, independent scrolling, persistent prompt, mobile/short-screen drawers, export focus and picker.",
+    "Root inspected gallery and Studio browser screenshots.",
+    "Exact HTTPS 8443 browser check passed: Art with knobs gallery, 90 studies, Studio canvas, no page errors.",
+    "API health, saved projects, palettes, saved layers, About and API reference return HTTP200.",
+    "Shared persisted harness directories retained; no artwork data migration or overwrite."
+  ],
+  "evidence_sha256": {
+    "evidence/web/ui-main-integration.json": "72b35b619922951c18dd2b03444a7f7cac59ba4688954f2d5873cb5a58e2a2dc",
+    ".work/main-redesign-release-20260917/.work/release-build.json": "da39dbf245bc25b4dfda85658cd943262759bfc6aeaca83beec62b99d19104a0",
+    ".work/main-redesign-release-20260917/.work/web-app-review/integration/report.json": "5362c769a7cb1e07f5836eaf24af646dd321c001248444e896bb94dd3ede3771",
+    ".work/expansion-full/redesign-restoration/candidate/report.json": "22f6c2e45f62eda6f682ea7c15205b3fbdc56d54e5f894c4843fd20ab25a4adc",
+    ".work/expansion-full/redesign-restoration/live/report.json": "e813fd96be86de1bb5c676a25134bcd453c3a64d7d64e180a4c4f5d1f17af7b7"
+  },
+  "images": [
+    {
+      "path": ".work/expansion-full/redesign-restoration/live/gallery.png",
+      "sha256": "3cec7e9a46ce5fa13faef8ad1f05c48c140ad4c532d51096cde8e4afce0f0fd1"
+    },
+    {
+      "path": ".work/expansion-full/redesign-restoration/live/studio.png",
+      "sha256": "b562092d027b9d09822cdd970ebadf15cf09b3d87645939d4a5f1908b13eca99"
+    }
+  ],
+  "limits": [
+    "Scoped Chromium checks, not cross-browser certification.",
+    "The in-progress landing page, new default palette integration and five new gallery studies are not deployed by this restoration.",
+    "The committed gallery generator rejects three pre-existing native-only examples; it was not modified for restoration. Reviewed previews were retained and native assets copied from the exact clean checkout before direct Next build."
+  ]
+}
