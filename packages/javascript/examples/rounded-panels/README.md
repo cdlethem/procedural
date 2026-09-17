@@ -1,14 +1,15 @@
 # Rounded panels
 
-An original editable p5 design study. Serve the examples so `/p5.js` is available, then open `index.html`.
+Repeat polygon outlines with editable shape, spacing, corner cuts and fill. Serve the package examples so `/p5.js` is available, then open `index.html`.
 
-Edit `../paths-a-studies.js` to change the composition; `sketch.js` wires the shared drawing function into the study controls.
+The native controls expose the same construction and mark parameters as the web study. Sliders are convenient preview intervals; exact number fields accept the wider supported domains and the same combined work budget. The canvas shows neutral paper through CSS, while the drawing itself is transparent for layered compositions and PNG export.
 
-| Control | Effect |
+| Control | Canvas effect |
 | --- | --- |
-| T | Applies the study's structural edit. |
-| C | Changes the packed RGB palette. |
-| 0 | Restores baseline parameters and palette. |
-| S | Saves the current canvas as PNG. |
+| Source and construction fields | Change the geometry fed into the named path operation. |
+| Mark fields and palette | Change outlines, fills or grain without changing source geometry. |
+| Original composition | Restores the historical fixed composition for comparison; T toggles its historical structural variant. |
+| 0 | Restores the modern defaults and first palette. |
+| S | Saves the current transparent canvas as PNG. |
 
-The drawing calls [geometry.chaikin-polyline-2d](../../../catalog/operations/chaikin-polyline-2d.json) through `chaikinPolyline2D`. This README describes an editable example only; it makes no native-support claim.
+The reusable computation remains in the p5 core. `../paths-a-quality.js` is an example-private composition mirror of the web adapter, not a new portable operation or a claim of recreating a surveyed artwork.

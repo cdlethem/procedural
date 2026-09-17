@@ -46,7 +46,9 @@ export function displacementAt(model, x, y, strength, alternateField) {
  * field. sourcePixels must be a row-major array of SIDE*SIDE unsigned32 ARGB8 values
  * (matching the shared raster.bilinear-remap-2d contract exactly).
  */
-export function remapSource(sourcePixels, model, strength, alternateField) {
+export function remapSource(sourcePixels, model, strength, alternateField, sourceCoverage = 1) {
+  if (!Number.isFinite(sourceCoverage) || sourceCoverage < 0 || sourceCoverage > 1)
+    throw new RangeError("sourceCoverage must be between 0 and 1");
   const coordinates = new Array(SIDE * SIDE);
   let index = 0;
   for (let y = 0; y < SIDE; y += 1) {
@@ -55,8 +57,33 @@ export function remapSource(sourcePixels, model, strength, alternateField) {
       index += 1;
     }
   }
-  return bilinearRasterRemap2D({
-    source: { width: SIDE, height: SIDE, pixels: sourcePixels },
+  // Leave the original opaque raster untouched at full coverage. The mask is
+  // authored in source space, so its clear gutters follow the displacement.
+  const source = sourceCoverage === 1 ? sourcePixels : sourcePixels.map((pixel, index) => {
+    const y = Math.floor(index / SIDE), x = index - y * SIDE;
+    const band = (x + y * 0.55) / 96;
+    const phase = band - Math.floor(band);
+    return Math.abs(phase - 0.5) < sourceCoverage / 2 ? pixel : 0;
+  });
+  const encoded = sourceCoverage === 1 ? source : source.map((pixel) => {
+    const alpha = pixel >>> 24;
+    const channel = shift => Math.round(((pixel >>> shift) & 255) * alpha / 255);
+    return ((alpha << 24) | (channel(16) << 16) | (channel(8) << 8) | channel(0)) >>> 0;
+  });
+  const result = bilinearRasterRemap2D({
+    source: { width: SIDE, height: SIDE, pixels: encoded },
     outputWidth: SIDE, outputHeight: SIDE, sourceCoordinates: coordinates,
+  });
+  if (sourceCoverage === 1) return result;
+  const pixels = result.pixels().map((pixel) => {
+    const alpha = pixel >>> 24;
+    if (alpha === 0) return 0;
+    const channel = shift => Math.min(255, Math.round(((pixel >>> shift) & 255) * 255 / alpha));
+    return ((alpha << 24) | (channel(16) << 16) | (channel(8) << 8) | channel(0)) >>> 0;
+  });
+  return Object.freeze({
+    pixelAt: index => pixels[index],
+    pixels: () => pixels.slice(),
+    toValues: () => ({ width: SIDE, height: SIDE, pixels: pixels.slice() }),
   });
 }

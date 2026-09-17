@@ -1,12 +1,18 @@
 # Signed edge print
 
-An original editable p5 study. Serve this directory so `/p5.js` is available and open `index.html`.
+Serve this directory so `/p5.js` is available and open `index.html`.
 
 | Control | Effect |
 | --- | --- |
-| T | Applies the structural edit. |
-| C | Changes the packed RGB palette. |
-| 0 | Restores the baseline. |
-| S | Saves the canvas as PNG. |
+| Source field | Changes the scalar image: waves, mounds, or cutout. |
+| Response axis | Selects vertical, horizontal, or diagonal edges. |
+| Mark treatment | Prints full tiles or short bars along the edges. |
+| Pixel size | Changes sampling density and mark size from 4 to 120 pixels. |
+| Edge cutoff | Keeps responses above the chosen magnitude from 0 to 4. |
+| Seed | Moves the source pattern while keeping other choices fixed. |
+| Palette | Recolors the two edge inks. |
+| Reset | Restores the baseline controls and image. |
+| Save PNG | Downloads the marks on a transparent canvas. |
 
-The synthetic raster is computed through [`convolve-2d-signed`](../../../catalog/operations/convolve-2d-signed.json). Edit `../materials-a-studies.js` to change the visible input field or drawing; this example makes no native-support claim.
+The scalar image is processed through [`convolve-2d-signed`](../../../catalog/operations/convolve-2d-signed.json). Edit `../materials-a-studies.js` to supply another row-major scalar image or change how response marks are drawn.
+The page shows paper behind the canvas for preview; the exported PNG retains transparent space around the marks.

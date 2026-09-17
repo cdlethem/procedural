@@ -9,6 +9,13 @@ export type Parameter = {
   min?: number;
   max?: number;
   step?: number;
+  /** Valid exact-entry limits; min/max remain the convenient slider interval. */
+  hardMin?: number;
+  hardMax?: number;
+  /** Counts and other discrete values must be integral; slider step is not validation. */
+  integer?: boolean;
+  /** Retained saved-document parameters which are not part of the current controls. */
+  hidden?: boolean;
   options?: { value: string; label: string }[];
 };
 import type { LayerTransform } from "./layer-transform";

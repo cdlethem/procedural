@@ -1,41 +1,48 @@
-import { botanicalLayout, CANVAS, palette, rgb } from "../motif-compositions/compositions.js";
+import { CANVAS, palette, rgb } from "../motif-compositions/compositions.js";
+import { ornamentFieldRecords } from "../motif-compositions/field-records.js";
 
 const art = document.querySelector("#art");
 const status = document.querySelector("#status");
 const controls = document.querySelector("#controls");
-const settings = { motif: 0, alternate: false, dense: false, hierarchy: true, crop: true };
-let layout;
+const defaults = Object.freeze({
+  seed: 42, layout: "packed", petalWeight: 5, leafWeight: 3, emblemWeight: 0,
+  density: 72, scale: 1.4, angle: 0, angleStride: 13, offsetX: 0, offsetY: 0,
+  guides: false, paletteId: "sage-linen",
+});
+let settings = { ...defaults };
+let marks = [];
 let revision = 0;
 
-/** Browser-only observation for the complete retained anchor/layout checks. */
 export function observeOrnamentPoster() {
-  return Object.freeze({ layout, settings: Object.freeze({ ...settings }), revision });
+  return Object.freeze({ marks: structuredClone(marks), settings: Object.freeze({ ...settings }), revision });
 }
 
-function colours() {
-  return palette(settings.alternate ? "fern-mauve" : "sage-linen");
+function checked(next) {
+  const weights = [next.petalWeight, next.leafWeight, next.emblemWeight];
+  if (weights.some((weight) => !Number.isInteger(weight) || weight < 0 || weight > 10) ||
+    weights.every((weight) => weight === 0)) throw new Error("Give at least one mark family a positive weight.");
+  if (!Number.isInteger(next.seed) || next.seed < 0 || next.seed > 0xffff_ffff)
+    throw new Error("Seed must be a nonnegative 32-bit integer.");
+  if (!Number.isInteger(next.density) || next.density < 0 || next.density > 100)
+    throw new Error("Density must be between 0 and 100 percent.");
+  for (const key of ["scale", "angle", "angleStride", "offsetX", "offsetY"])
+    if (!Number.isFinite(next[key])) throw new Error(`${key} must be finite.`);
+  if (next.scale < 0 || next.scale > 32 || Math.abs(next.angle) > 36000 ||
+    Math.abs(next.angleStride) > 36000 || Math.abs(next.offsetX) > 10000 ||
+    Math.abs(next.offsetY) > 10000) throw new Error("A drawing value is outside its safety domain.");
+  return next;
 }
 
-function cropBounds() {
-  return settings.crop ? [112, 132, 496, 432] : [78, 78, 564, 564];
+function syncControls() {
+  for (const input of controls.querySelectorAll("[data-key]")) {
+    const value = settings[input.dataset.key];
+    if (input.type === "checkbox") input.checked = Boolean(value);
+    else input.value = String(value);
+  }
 }
 
-function scaleAt(radius, index) {
-  if (!settings.hierarchy) return radius;
-  return radius * (index % 7 === 0 ? 1.55 : index % 3 === 0 ? 1.18 : 0.72);
-}
-
-function anchorRecord() {
-  return layout.rows;
-}
-
-function fullGeometryRecord() {
-  const [x, y, width, height] = cropBounds();
-  return {
-    anchors: anchorRecord(),
-    crop: [x, y, width, height],
-    motifs: layout.rows.map(([cx, cy, radius, index]) => [cx, cy, scaleAt(radius, index), index]),
-  };
+function anchors() {
+  return marks.map(({ sourceIndex, x, y }) => [sourceIndex, x, y]);
 }
 
 new window.p5((p) => {
@@ -43,137 +50,101 @@ new window.p5((p) => {
     p.createCanvas(CANVAS, CANVAS, p.P2D).parent(art);
     p.pixelDensity(1);
     p.noLoop();
-    rebuild();
+    syncControls();
     paint();
   };
 
-  function rebuild() {
-    layout = botanicalLayout(settings.dense);
-  }
-
-  function drawPetals(radius, index, colors) {
-    for (let petal = 0; petal < 5; petal += 1) {
-      p.fill(...rgb(colors[(index + petal) % colors.length]), 210);
-      p.ellipse(
-        Math.cos(petal * p.TWO_PI / 5) * radius * 0.34,
-        Math.sin(petal * p.TWO_PI / 5) * radius * 0.34,
-        radius * 0.72,
-        radius * 0.44,
-      );
-    }
-    p.fill(...rgb(colors[(index + 2) % colors.length]));
-    p.circle(0, 0, Math.max(5, radius * 0.34));
-  }
-
-  function drawLeaf(radius, index, colors) {
-    p.fill(...rgb(colors[(index + 1) % colors.length]), 220);
-    p.ellipse(0, 0, radius * 0.76, radius * 1.8);
-    p.stroke(...rgb(colors[(index + 3) % colors.length]), 160);
-    p.strokeWeight(1);
-    p.line(0, -radius * 0.75, 0, radius * 0.75);
-  }
-
-  /** A deliberately abstract, letter-like emblem with no source asset dependency. */
-  function drawEmblem(radius, index, colors) {
-    const accent = rgb(colors[(index + 2) % colors.length]);
-    p.noFill();
-    p.stroke(...accent, 230);
-    p.strokeWeight(Math.max(2, radius * 0.13));
-    p.strokeCap(p.SQUARE);
-    p.line(-radius * 0.42, -radius * 0.54, -radius * 0.42, radius * 0.52);
-    p.line(-radius * 0.42, -radius * 0.54, radius * 0.42, -radius * 0.54);
-    if (index % 2 === 0) {
-      p.line(-radius * 0.1, 0, radius * 0.42, 0);
-      p.line(-radius * 0.1, 0, radius * 0.42, radius * 0.52);
-    } else {
-      p.arc(-radius * 0.08, 0, radius * 0.72, radius * 0.86, -p.HALF_PI, p.HALF_PI);
-      p.line(-radius * 0.08, radius * 0.43, radius * 0.38, radius * 0.52);
-    }
-    p.noStroke();
-    p.fill(...rgb(colors[(index + 4) % colors.length]), 210);
-    p.circle(radius * 0.44, -radius * 0.54, Math.max(4, radius * 0.16));
-  }
-
-  function drawMotif(x, y, radius, index, colors) {
+  function drawMotif(mark, colors) {
+    const { sourceIndex: index, x, y, radius, kind, angle } = mark;
     p.push();
     p.translate(x, y);
-    p.rotate(index * 0.618);
+    p.rotate(angle);
     p.noStroke();
-    if (settings.motif === 0) drawPetals(radius, index, colors);
-    else if (settings.motif === 1) drawLeaf(radius, index, colors);
-    else drawEmblem(radius, index, colors);
+    if (kind === "petals") {
+      for (let petal = 0; petal < 5; petal += 1) {
+        p.fill(...rgb(colors[(index + petal) % colors.length]), 210);
+        p.ellipse(Math.cos(petal * p.TWO_PI / 5) * radius * 0.34,
+          Math.sin(petal * p.TWO_PI / 5) * radius * 0.34, radius * 0.72, radius * 0.44);
+      }
+      p.fill(...rgb(colors[(index + 2) % colors.length]));
+      p.circle(0, 0, Math.max(5, radius * 0.34));
+    } else if (kind === "leaves") {
+      p.fill(...rgb(colors[(index + 1) % colors.length]), 220);
+      p.ellipse(0, 0, radius * 0.76, radius * 1.8);
+      p.stroke(...rgb(colors[(index + 3) % colors.length]), 160);
+      p.strokeWeight(1);
+      p.line(0, -radius * 0.75, 0, radius * 0.75);
+    } else {
+      p.noFill();
+      p.stroke(...rgb(colors[(index + 2) % colors.length]), 230);
+      p.strokeWeight(Math.max(2, radius * 0.13));
+      p.strokeCap(p.SQUARE);
+      p.line(-radius * 0.42, -radius * 0.54, -radius * 0.42, radius * 0.52);
+      p.line(-radius * 0.42, -radius * 0.54, radius * 0.42, -radius * 0.54);
+      if (index % 2 === 0) {
+        p.line(-radius * 0.1, 0, radius * 0.42, 0);
+        p.line(-radius * 0.1, 0, radius * 0.42, radius * 0.52);
+      } else {
+        p.arc(-radius * 0.08, 0, radius * 0.72, radius * 0.86, -p.HALF_PI, p.HALF_PI);
+        p.line(-radius * 0.08, radius * 0.43, radius * 0.38, radius * 0.52);
+      }
+      p.noStroke();
+      p.fill(...rgb(colors[(index + 4) % colors.length]), 210);
+      p.circle(radius * 0.44, -radius * 0.54, Math.max(4, radius * 0.16));
+    }
     p.pop();
   }
 
   function paint() {
-    const colors = colours();
-    const [cropX, cropY, cropWidth, cropHeight] = cropBounds();
-    p.background(...rgb(colors[5 % colors.length]));
-    p.noStroke();
-    p.fill(...rgb(colors[0]), 30);
-    for (let y = 40; y < CANVAS; y += 28) p.rect(0, y, CANVAS, 1);
-    p.fill(...rgb(colors[0]));
-    p.rect(45, 45, CANVAS - 90, CANVAS - 90);
-    p.fill(...rgb(colors[4 % colors.length]));
-    p.rect(60, 60, CANVAS - 120, CANVAS - 120);
-
-    p.drawingContext.save();
-    p.drawingContext.beginPath();
-    p.drawingContext.rect(cropX, cropY, cropWidth, cropHeight);
-    p.drawingContext.clip();
-    for (const [x, y, radius, index] of layout.rows) {
-      drawMotif(x, y, scaleAt(radius, index), index, colors);
+    const started = performance.now();
+    marks = ornamentFieldRecords({ seed: settings.seed, params: settings });
+    const colors = palette(settings.paletteId);
+    p.clear();
+    for (const mark of marks) drawMotif(mark, colors);
+    if (settings.guides) {
+      p.noFill();
+      p.stroke(...rgb(colors[0]), 110);
+      p.strokeWeight(1);
+      p.rect(72, 72, 576, 576);
     }
-    p.drawingContext.restore();
-
-    p.noFill();
-    p.stroke(...rgb(colors[0]));
-    p.strokeWeight(2);
-    p.rect(78, 78, CANVAS - 156, CANVAS - 156);
-    p.push();
-    p.noStroke();
-    p.fill(...rgb(colors[0]));
-    p.rect(168, 306, 384, 108);
-    p.fill(247, 247, 235);
-    p.textAlign(p.CENTER, p.CENTER);
-    p.textStyle(p.BOLD);
-    p.textSize(36);
-    p.text("WILD ORNAMENT", 360, 346);
-    p.textStyle(p.NORMAL);
-    p.textSize(13);
-    p.text("FIELD NOTES / EDITION 08", 360, 380);
-    p.pop();
-
     revision += 1;
     art.dataset.revision = String(revision);
-    art.dataset.anchors = JSON.stringify(anchorRecord());
-    art.dataset.geometry = JSON.stringify(fullGeometryRecord());
+    art.dataset.anchors = JSON.stringify(anchors());
+    art.dataset.geometry = JSON.stringify(marks);
     art.dataset.renderStatus = "ready";
-    const motifName = ["petals", "leaves", "emblems"][settings.motif];
-    status.textContent = `${layout.rows.length} anchors · ${motifName} · ${settings.hierarchy ? "tiered" : "uniform"} scale · ${settings.crop ? "cropped" : "full"} field`;
+    art.dataset.drawMs = String(performance.now() - started);
+    status.textContent = `${marks.length} marks · ${settings.layout} anchors · transparent layer`;
   }
 
-  function action(name) {
-    let structural = false;
-    if (name === "m") settings.motif = (settings.motif + 1) % 3;
-    else if (name === "c") settings.alternate = !settings.alternate;
-    else if (name === "h") settings.hierarchy = !settings.hierarchy;
-    else if (name === "x") settings.crop = !settings.crop;
-    else if (name === "d") { settings.dense = !settings.dense; structural = true; }
-    else if (name === "0") {
-      Object.assign(settings, { motif: 0, alternate: false, dense: false, hierarchy: true, crop: true });
-      structural = true;
-    } else if (name === "s") {
-      p.saveCanvas("ornament-poster", "png");
-      return;
-    } else return;
-    if (structural) rebuild();
-    paint();
-  }
-
-  controls.addEventListener("click", (event) => {
-    const button = event.target.closest("button[data-action]");
-    if (button) action(button.dataset.action);
+  controls.addEventListener("change", (event) => {
+    const input = event.target.closest("[data-key]");
+    if (!input) return;
+    const key = input.dataset.key;
+    const value = input.type === "checkbox" ? input.checked : input.type === "number" ? Number(input.value) : input.value;
+    try {
+      if (input.type === "number" && input.value.trim() === "") throw new Error(`${key} needs a value.`);
+      settings = checked({ ...settings, [key]: value });
+      status.textContent = "";
+      paint();
+    } catch (error) {
+      status.textContent = error.message;
+      syncControls();
+    }
   });
-  p.keyPressed = () => action(String(p.key).toLowerCase());
+  controls.addEventListener("click", (event) => {
+    const action = event.target.closest("button[data-action]")?.dataset.action;
+    if (action === "reset") {
+      settings = { ...defaults };
+      syncControls();
+      paint();
+    } else if (action === "save") p.saveCanvas("ornament-field", "png");
+  });
+  p.keyPressed = () => {
+    const key = String(p.key).toLowerCase();
+    if (key === "0") {
+      settings = { ...defaults };
+      syncControls();
+      paint();
+    } else if (key === "s") p.saveCanvas("ornament-field", "png");
+  };
 }, art);

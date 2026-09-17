@@ -1,12 +1,15 @@
-# Embossed Field
+# Embossed field
 
-This editable raster study turns a synthetic field into a distinct printed composition. Its structural control changes the actual operation input, while the palette recolors the retained output.
+Turn a grayscale field into a raised-looking impression. Light and shadow inks follow the **signed response** of a directional 3×3 convolution. Choose the image beneath the effect, the direction that reveals its changes, and whether each response becomes a tile or a dot.
 
 | Control | Canvas effect |
 | --- | --- |
-| First control | Changes the field scale or operation structure. |
-| Second control | Changes the operation threshold, count, radius, or gain. |
-| Palette | Changes the colors used to draw the computed result. |
-| Reset | Restores the baseline composition. |
+| Pixel size | Sets the source sampling density and the size of printed marks. Smaller values reveal finer relief; larger values produce coarse blocks. The slider covers 6–48, while the study accepts 4–120. |
+| Source field | **Waves** gives broad ripples, **mounds** gives two hills and a ridge, and **cutout** gives a disk, arch and sloped band. This changes the image supplied to convolution. |
+| Response axis | Vertical, horizontal or diagonal selects which direction of change makes positive and negative relief. |
+| Relief strength | Controls ink opacity from no relief at zero to stronger light and shadow. It does not change the source or convolution result. |
+| Mark treatment | Full tiles make continuous printed regions; dots expose the sampled structure and vary in diameter with response strength. |
+| Seed | Moves the waves or shifts the authored shapes while keeping other controls fixed. |
+| Palette | Slots 1 and 2 color negative and positive responses; changing them does not change the source values or mark positions. |
 
-The study uses its named frozen operation through the shared Materials A drawing module. Replace the generated field with a same-shaped plain raster to explore another source without changing the drawing recipe.
+The area outside response marks stays transparent so the Studio document background and other layers remain visible. For a different image, replace the row-major scalar values made by `reliefSource` in `packages/javascript/examples/materials-a-studies.js`; the same `convolve2DSigned` call then processes those values. This is a study composition using the reusable [signed convolution operation](/techniques/convolve-2d-signed).

@@ -1,3 +1,4 @@
-import { createStudySketch } from "../study-controls.js";
-import { drawReactionStripes, systemsASettings } from "../systems-a-studies.js";
-createStudySketch({ slug: "reaction-stripes", title: "Reaction stripes", ...systemsASettings["reaction-stripes"], draw: drawReactionStripes });
+import { createCellularStudySketch } from "../cellular-quality-controls.js";
+import { drawReactionStripes } from "../systems-a-studies.js";
+
+createCellularStudySketch({ slug: "reaction-stripes", title: "Reaction stripes", legacyDraw: drawReactionStripes });

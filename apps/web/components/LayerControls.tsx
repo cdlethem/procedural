@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { PalettePicker } from "./PaletteLibrary";
 import { paletteHex, paletteNumbers } from "@/lib/palettes";
-import type { Layer, Technique } from "@/lib/studio-types";
+import type { Layer, Parameter, Technique } from "@/lib/studio-types";
 
 const hex = (value: number) =>
   `#${(value >>> 0).toString(16).padStart(6, "0").slice(-6)}`;
@@ -16,13 +17,53 @@ const fixedGeometry = new Set([
   "ramp-marks",
   "profile-marks",
   "annular-marks",
-  "ornament-poster",
   "geometric-panel",
   "orbital-brush",
   "contact-network",
   "agent-trails",
 ]);
 type ControlsSection = "all" | "technique" | "style";
+
+function ExactNumberInput({ parameter, value, onCommit }: {
+  parameter: Parameter;
+  value: number;
+  onCommit: (next: number) => void;
+}) {
+  const [draft, setDraft] = useState(String(value));
+  const [error, setError] = useState("");
+  useEffect(() => { setDraft(String(value)); setError(""); }, [value]);
+  const hardMin = parameter.hardMin ?? parameter.min!;
+  const hardMax = parameter.hardMax ?? parameter.max!;
+  const integral = parameter.integer ?? parameter.step === 1;
+  const commit = () => {
+    const next = Number(draft);
+    if (draft.trim() === "" || !Number.isFinite(next) || next < hardMin || next > hardMax ||
+        (integral && !Number.isInteger(next))) {
+      setError(integral
+        ? `Enter a whole number from ${hardMin} to ${hardMax}.`
+        : `Enter a number from ${hardMin} to ${hardMax}.`);
+      return;
+    }
+    setError("");
+    setDraft(String(next));
+    onCommit(next);
+  };
+  return <span>
+    <input
+      aria-label={`Exact ${parameter.label}`}
+      aria-invalid={error !== ""}
+      type="number"
+      min={hardMin}
+      max={hardMax}
+      step={integral ? 1 : "any"}
+      value={draft}
+      onChange={(event) => { setDraft(event.target.value); setError(""); }}
+      onBlur={commit}
+      onKeyDown={(event) => { if (event.key === "Enter") event.currentTarget.blur(); }}
+    />
+    {error && <small role="alert">{error}</small>}
+  </span>;
+}
 
 export const canReseed = (layer: Layer) =>
   !fixedGeometry.has(layer.technique) &&
@@ -42,7 +83,7 @@ export function LayerControls({
 }) {
   const params = layer.params;
   const changeParam = (key: string, value: number | string | boolean) =>
-    onChange({ params: { ...params, [key]: value } });
+    onChange({ params: { ...params, [key]: value, ...(params.legacy === true ? { legacy: false } : {}) } });
   const changeColor = (index: number, value: string) => {
     const color = rgb(value);
     if (color === null) return;
@@ -54,6 +95,9 @@ export function LayerControls({
     <div className="layer-controls">
       {section !== "style" && (
         <p className="control-description">{technique.description}</p>
+      )}
+      {section !== "style" && params.legacy === true && (
+        <p className="control-description">This saved composition keeps its earlier layout. Changing a control switches it to the editable field.</p>
       )}
       {section !== "style" && canReseed(layer) && (
         <div className="control">
@@ -113,7 +157,7 @@ export function LayerControls({
         </div>
       )}
       {section !== "style" &&
-        technique.parameters.map((parameter) => {
+        technique.parameters.filter((parameter) => !parameter.hidden).map((parameter) => {
           const value = params[parameter.key];
           if (parameter.type === "boolean")
             return (
@@ -165,29 +209,19 @@ export function LayerControls({
                   min={parameter.min}
                   max={parameter.max}
                   step={parameter.step}
-                  value={Number(value)}
+                  value={Math.min(parameter.max!, Math.max(parameter.min!, Number(value)))}
                   onChange={(event) =>
                     changeParam(parameter.key, Number(event.target.value))
                   }
                 />
-                <input
-                  aria-label={`Exact ${parameter.label}`}
-                  type="number"
-                  min={parameter.min}
-                  max={parameter.max}
-                  step={parameter.step}
+                <ExactNumberInput
+                  parameter={parameter}
                   value={Number(value)}
-                  onChange={(event) => {
-                    const next = Number(event.target.value);
-                    if (
-                      Number.isFinite(next) &&
-                      next >= parameter.min! &&
-                      next <= parameter.max!
-                    )
-                      changeParam(parameter.key, next);
-                  }}
+                  onCommit={(next) => changeParam(parameter.key, next)}
                 />
               </div>
+              {(Number(value) < parameter.min! || Number(value) > parameter.max!) &&
+                <small>The exact value is outside the slider range.</small>}
               <small>{parameter.description}</small>
             </div>
           );

@@ -183,22 +183,104 @@ function parameters(
         throw new Error(`${parameterPath} is not an available option`);
     } else {
       const number = finite(entry, parameterPath);
-      if (number < parameter.min! || number > parameter.max!)
+      const hardMin = parameter.hardMin ?? parameter.min!;
+      const hardMax = parameter.hardMax ?? parameter.max!;
+      if (number < hardMin || number > hardMax)
         throw new Error(
-          `${parameterPath} must be between ${parameter.min} and ${parameter.max}`,
+          `${parameterPath} must be between ${hardMin} and ${hardMax}`,
         );
-      if (
-        Math.abs(
-          (number - parameter.min!) / parameter.step! -
-            Math.round((number - parameter.min!) / parameter.step!),
-        ) > 1e-9
-      )
-        throw new Error(`${parameterPath} must use step ${parameter.step}`);
+      if ((parameter.integer ?? parameter.step === 1) && !Number.isInteger(number))
+        throw new Error(`${parameterPath} must be an integer`);
     }
     copied[parameter.key] = entry as Value;
   }
   item.validate?.(copied);
   return copied;
+}
+/** Upgrade only exact predecessor shapes; unknown or partial payloads still fail admission. */
+function upgradedStudyParams(value: unknown, item: StudioDefinition): unknown {
+  if (value === null || typeof value !== "object" || Array.isArray(value)) return value;
+  const old = value as Record<string, unknown>;
+  const keys = Object.keys(old).sort().join(",");
+  if (item.id === "ornament-poster" && keys === "cropped,dense,motif,tiered") {
+    if (!["petals", "leaves", "emblems"].includes(String(old.motif)) ||
+        typeof old.tiered !== "boolean" || typeof old.cropped !== "boolean" ||
+        typeof old.dense !== "boolean") return value;
+    return { ...item.defaults, ...old, legacy: true };
+  }
+  if (item.id === "geometric-panel" && keys === "marks,tight") {
+    if (!["wedges", "bars"].includes(String(old.marks)) ||
+        typeof old.tight !== "boolean") return value;
+    return { ...item.defaults, ...old, legacy: true };
+  }
+  if (item.id === "orbital-brush" && keys === "brush,more") {
+    if (!["ribbons", "beads"].includes(String(old.brush)) ||
+        typeof old.more !== "boolean") return value;
+    return { ...item.defaults, ...old, legacy: true };
+  }
+  if ((item.id === "embossed-field" || item.id === "signed-edge-print") &&
+      keys === "gain,scale") {
+    if (typeof old.scale !== "number" || !Number.isFinite(old.scale) ||
+        old.scale < 5 || old.scale > 16 ||
+        typeof old.gain !== "number" || !Number.isFinite(old.gain) ||
+        old.gain < 0.4 || old.gain > 3) return value;
+    if (item.id === "embossed-field")
+      return { ...item.defaults, ...old, source: "waves", axis: "vertical", treatment: "tiles" };
+    return { ...item.defaults, scale: old.scale, cutoff: 0.24 / old.gain,
+      source: "waves", axis: "vertical", treatment: "tiles" };
+  }
+  if (item.id === "warp-marks" && item.defaults.sourceCoverage === 1 &&
+      keys === "scale,strength,stripe" &&
+      [["strength", 0, 40], ["scale", 8, 80], ["stripe", 3, 30]].every(([name, min, max]) => {
+        const number = old[String(name)];
+        return typeof number === "number" && Number.isInteger(number) &&
+          number >= Number(min) && number <= Number(max);
+      })) return { ...item.defaults, ...old };
+  if (item.id === "blur-marks" && item.defaults.sourceCoverage === 1 &&
+      keys === "horizontal,radius,stripe" && typeof old.horizontal === "boolean" &&
+      [["radius", 1, 12], ["stripe", 3, 30]].every(([name, min, max]) => {
+        const number = old[String(name)];
+        return typeof number === "number" && Number.isInteger(number) &&
+          number >= Number(min) && number <= Number(max);
+      })) return { ...item.defaults, ...old };
+  const historicalShapes: Record<string, Record<string, readonly [number, number, number]>> = {
+    "rounded-panels": { iterations: [1, 5, 1], panels: [2, 9, 1], weight: [0.5, 6, 0.25] },
+    "road-margins": { distance: [2, 30, 1], routes: [2, 8, 1], weight: [0.5, 6, 0.25] },
+    "nested-contour-strokes": { distance: [2, 18, 1], rings: [3, 12, 1], weight: [0.5, 6, 0.25] },
+    "faceted-silhouettes": { scale: [120, 270, 1], grain: [0, 36, 1], weight: [0.5, 6, 0.25] },
+    "concave-grain": { scale: [120, 280, 1], grain: [0, 70, 1], weight: [0.5, 6, 0.25] },
+    "extruded-seals": { height: [40, 210, 0.01], rotation: [0, 2, 0.01], weight: [0.5, 4, 0.01] },
+    "stepped-blocks": { height: [40, 210, 0.01], rotation: [0, 2, 0.01], weight: [0.5, 4, 0.01] },
+    "transported-ribbons": { segments: [6, 24, 1], width: [15, 100, 1], rotation: [0, 2, 0.01] },
+    "twisting-streamers": { segments: [6, 24, 1], width: [15, 100, 1], rotation: [0, 2, 0.01] },
+    "rounded-polyhedra": { levels: [0, 2, 1], rotation: [0, 2, 0.01], weight: [0.5, 4, 0.01] },
+    "subdivided-shells": { levels: [0, 2, 1], rotation: [0, 2, 0.01], weight: [0.5, 4, 0.01] },
+    "reaction-spots": { passes: [1, 24, 1], scale: [8, 20, 1], weight: [0.5, 5, 0.25] },
+    "reaction-stripes": { passes: [1, 24, 1], scale: [7, 18, 1], weight: [0.5, 5, 0.25] },
+    "organic-cells": { passes: [1, 16, 1], cellSize: [10, 22, 1], weight: [0.5, 5, 0.25] },
+    "geometric-generations": { passes: [1, 16, 1], cellSize: [10, 24, 1], weight: [0.5, 5, 0.25] },
+  };
+  const additiveShapes: Record<string, Record<string, readonly [number, number, number]>> = {
+    "quantized-stripes": { stripes: [8, 52, 1], count: [2, 10, 1] },
+    "perceptual-bands": { bands: [6, 40, 1], phase: [0, 6.28, 0.01] },
+    "reduced-mosaic": { scale: [12, 20, 0.01], count: [2, 10, 1] },
+    "nearest-feature-mosaic": { scale: [8, 20, 0.01], features: [4, 30, 1] },
+  };
+  const matches = (shape: Record<string, readonly [number, number, number]>): boolean =>
+    keys === Object.keys(shape).sort().join(",") &&
+      Object.entries(shape).every(([name, [min, max, step]]) => {
+        const number = old[name];
+        return typeof number === "number" && Number.isFinite(number) &&
+          number >= min && number <= max &&
+          (step !== 1 || Number.isInteger(number));
+      });
+  const shape = historicalShapes[item.id];
+  if (shape && item.defaults.legacy === false && matches(shape))
+    return { ...item.defaults, ...old, legacy: true };
+  const additiveShape = additiveShapes[item.id];
+  if (additiveShape && Object.keys(item.defaults).length > Object.keys(additiveShape).length &&
+      matches(additiveShape)) return { ...item.defaults, ...old };
+  return value;
 }
 function validateEnvelope(
   input: unknown,
@@ -364,7 +446,7 @@ export function validateDocument(input: unknown): StudioDocument {
   const layers = current.layers.map((layer, index): Layer => {
     const path = `Document layers[${index}]`,
       item = definition(layer.technique as string),
-      checked = parameters(layer.params, item, `${path}.params`),
+      checked = parameters(upgradedStudyParams(layer.params, item), item, `${path}.params`),
       id = layer.id as string;
     if (fromPreviousV3 && !previousV3!.techniques.some(
       (entry) => entry.technique === item.id,

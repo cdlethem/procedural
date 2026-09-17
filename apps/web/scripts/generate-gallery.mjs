@@ -199,10 +199,16 @@ const attestations = readdirSync(join(root, "catalog/validation"))
     data: JSON.parse(read(`catalog/validation/${n}`)),
   }));
 const techniques = definitions.map(([slug, category, contracts], index) => {
-  const sourcePath = `packages/javascript/examples/${slug}/README.md`;
-  const guidePath = existsSync(join(root, `docs/${slug}.md`))
-    ? `docs/${slug}.md`
-    : `apps/web/content/${slug}.md`;
+  const readmePath = `packages/javascript/examples/${slug}/README.md`;
+  const sketchPath = `packages/javascript/examples/${slug}/sketch.js`;
+  const sourcePath = existsSync(join(root, readmePath)) ? readmePath : sketchPath;
+  if (!existsSync(join(root, sourcePath))) throw Error(`Missing source for ${slug}`);
+  const webGuidePath = `apps/web/content/${slug}.md`;
+  const guidePath = ["warp-marks", "blur-marks"].includes(slug) && existsSync(join(root, webGuidePath))
+    ? webGuidePath
+    : existsSync(join(root, `docs/${slug}.md`))
+      ? `docs/${slug}.md`
+      : webGuidePath;
   let markdown = browserGuides[slug] ?? read(guidePath);
   // Adapt the existing artist copy to browser controls, with no raw-file navigation.
   markdown = markdown.replace(
@@ -257,7 +263,7 @@ const techniques = definitions.map(([slug, category, contracts], index) => {
   });
   return {
     slug,
-    title: slug
+    title: ({ "ornament-poster": "Ornament Field", "geometric-panel": "Shape Matrix" })[slug] ?? slug
       .split("-")
       .map((w) => w[0].toUpperCase() + w.slice(1))
       .join(" "),

@@ -1,3 +1,4 @@
-import { createStudySketch } from "../study-controls.js";
-import { drawRoundedPanels, pathsASettings } from "../paths-a-studies.js";
-createStudySketch({ slug: "rounded-panels", title: "Rounded panels", ...pathsASettings["rounded-panels"], draw: drawRoundedPanels });
+import { createPathStudySketch } from "../paths-a-quality-controls.js";
+import { drawRoundedPanels } from "../paths-a-studies.js";
+
+createPathStudySketch({ slug: "rounded-panels", title: "Rounded panels", legacyDraw: drawRoundedPanels });

@@ -226,25 +226,53 @@ function generatedRaster(
   layer: Layer,
   size: number,
   stripe: number,
+  coverage = 1,
 ): { width: number; height: number; pixels: number[] } {
+  if (!Number.isFinite(coverage) || coverage < 0 || coverage > 1)
+    throw Error("Source coverage must be between 0 and 1");
   const random = rng(layer.seed),
     pixels = new Array<number>(size * size);
   const colors = palette(layer);
   for (let y = 0; y < size; y += 1)
     for (let x = 0; x < size; x += 1) {
+      const band = (x + y * 0.55 + random() * stripe) / stripe;
       const index =
-        ((Math.floor((x + y * 0.55 + random() * stripe) / stripe) %
+        ((Math.floor(band) %
           colors.length) +
           colors.length) %
         colors.length;
-      pixels[y * size + x] = packed(paletteAt(layer, index));
+      // Keep the source color and RNG schedule. A coherent mask group spans
+      // three source stripes, leaving gutters wide enough to survive blur.
+      const maskBand = (x + y * 0.55) / (stripe * 3);
+      const phase = maskBand - Math.floor(maskBand);
+      pixels[y * size + x] = coverage === 1 || Math.abs(phase - 0.5) < coverage / 2
+        ? packed(paletteAt(layer, index)) : 0;
     }
   return { width: size, height: size, pixels };
+}
+function premultiplyRaster(raster: { width: number; height: number; pixels: number[] }) {
+  return { ...raster, pixels: raster.pixels.map(pixel => {
+    const alpha = pixel >>> 24;
+    const channel = (shift: number) => Math.round(((pixel >>> shift) & 255) * alpha / 255);
+    return ((alpha << 24) | (channel(16) << 16) | (channel(8) << 8) | channel(0)) >>> 0;
+  }) };
+}
+function unpremultiplyRaster(raster: { width: number; height: number; pixels: number[] }) {
+  return { ...raster, pixels: raster.pixels.map(pixel => {
+    const alpha = pixel >>> 24;
+    if (alpha === 0) return 0;
+    const channel = (shift: number) => Math.min(255, Math.round(((pixel >>> shift) & 255) * 255 / alpha));
+    return ((alpha << 24) | (channel(16) << 16) | (channel(8) << 8) | channel(0)) >>> 0;
+  }) };
+}
+function sourceCoverage(query: Query): number {
+  return query.sourceCoverage === undefined ? 1 : n(query, "sourceCoverage");
 }
 function drawWarp(p: any, layer: Layer): void {
   const x = q(layer),
     size = 160,
-    source = generatedRaster(layer, size, n(x, "stripe")),
+    coverage = sourceCoverage(x),
+    source = generatedRaster(layer, size, n(x, "stripe"), coverage),
     noise = gradientNoise3D01({ seed: layer.seed }),
     coordinates: number[][] = [];
   for (let py = 0; py < size; py += 1)
@@ -256,20 +284,18 @@ function drawWarp(p: any, layer: Layer): void {
         py + Math.sin(angle) * n(x, "strength"),
       ]);
     }
-  putRaster(
-    p,
-    bilinearRasterRemap2D({
-      source,
+  const remapped = bilinearRasterRemap2D({
+      source: coverage === 1 ? source : premultiplyRaster(source),
       outputWidth: size,
       outputHeight: size,
       sourceCoordinates: coordinates,
-    }).toValues(),
-  );
+    }).toValues();
+  putRaster(p, coverage === 1 ? remapped : unpremultiplyRaster(remapped));
 }
 function drawBlur(p: any, layer: Layer): void {
   const x = q(layer),
     size = 128,
-    source = generatedRaster(layer, size, n(x, "stripe")),
+    source = generatedRaster(layer, size, n(x, "stripe"), sourceCoverage(x)),
     radius = n(x, "radius"),
     kernel = Array.from(
       { length: radius * 2 + 1 },
@@ -281,7 +307,7 @@ function drawBlur(p: any, layer: Layer): void {
       source,
       kernelX: kernel,
       kernelY: b(x, "horizontal") ? [1] : kernel,
-      maxSamples: size * size * (kernel.length * (b(x, "horizontal") ? 1 : 2)),
+      maxSamples: size * size * (kernel.length + (b(x, "horizontal") ? 1 : kernel.length)),
     }).toValues(),
   );
 }
@@ -459,8 +485,9 @@ export const effectsDefinitions: StudioDefinition[] = [
       numeric("strength", "Strength", "Pixel displacement.", 0, 40),
       numeric("scale", "Scale", "Noise field scale.", 8, 80),
       numeric("stripe", "Stripe", "Generated source band width.", 3, 30),
+      numeric("sourceCoverage", "Source coverage", "The filled fraction of each source stripe group; clear gutters bend with the image.", 0, 1, 0.01, { hardMin: 0, hardMax: 1 }),
     ],
-    defaults: { strength: 14, scale: 34, stripe: 12 },
+    defaults: { strength: 14, scale: 34, stripe: 12, sourceCoverage: 1 },
   },
   {
     id: "blur-marks" as any,
@@ -469,13 +496,14 @@ export const effectsDefinitions: StudioDefinition[] = [
     parameters: [
       numeric("radius", "Radius", "Blur-kernel radius.", 1, 12),
       numeric("stripe", "Stripe", "Generated source band width.", 3, 30),
+      numeric("sourceCoverage", "Source coverage", "The filled fraction of each source stripe group before blur; clear gutters become soft alpha edges.", 0, 1, 0.01, { hardMin: 0, hardMax: 1 }),
       toggle(
         "horizontal",
         "Horizontal only",
         "Restrict blur to horizontal pass.",
       ),
     ],
-    defaults: { radius: 5, stripe: 10, horizontal: false },
+    defaults: { radius: 5, stripe: 10, horizontal: false, sourceCoverage: 1 },
   },
   {
     id: "profile-marks" as any,

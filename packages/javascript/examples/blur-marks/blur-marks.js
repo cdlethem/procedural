@@ -22,7 +22,8 @@ export function triangular(radius) {
  * owns drawing those two source rasters.
  */
 class BlurComposition {
-  #width; #height; #ground; #layers; #transition; #coverage;
+  #width; #height; #ground; #artwork; #layers; #maskedLayers = null; #transition; #coverage;
+  #sourceCoverage = 1;
   #mode = 0;
   #blended = false;
   #filterCalls = 0;
@@ -34,6 +35,7 @@ class BlurComposition {
     this.#width = groundRaster.width;
     this.#height = groundRaster.height;
     this.#ground = groundRaster;
+    this.#artwork = artworkRaster;
 
     const softKernel = triangular(12);
     const directionalKernel = triangular(24);
@@ -64,18 +66,57 @@ class BlurComposition {
   get blended() { return this.#blended; }
   get filterCalls() { return this.#filterCalls; }
   get layerCount() { return this.#layers.length; }
+  get sourceCoverage() { return this.#sourceCoverage; }
+
+  /** Mask the combined source image before filtering; full coverage keeps the old path. */
+  setSourceCoverage(value) {
+    if (!Number.isFinite(value) || value < 0 || value > 1)
+      throw new RangeError("sourceCoverage must be between 0 and 1");
+    if (value === this.#sourceCoverage) return;
+    if (value === 1) { this.#maskedLayers = null; this.#sourceCoverage = 1; return; }
+    const combined = maskedSourceOver2D({
+      source: this.#artwork, destination: this.#ground, mask: this.#coverage,
+    }).toValues();
+    const pixels = combined.pixels.map((pixel, index) => {
+      const y = Math.floor(index / this.#width), x = index - y * this.#width;
+      const band = (x + y * 0.55) / 96;
+      const phase = band - Math.floor(band);
+      return Math.abs(phase - 0.5) < value / 2 ? pixel : 0;
+    });
+    const source = { width: this.#width, height: this.#height, pixels };
+    const soft = triangular(12), directional = triangular(24);
+    const filtered = (kernelX, kernelY) => {
+      return separableBlur2D({
+        source, kernelX, kernelY,
+        maxSamples: this.#width * this.#height * (kernelX.length + kernelY.length),
+      }).toValues();
+    };
+    const maskedLayers = [
+      source,
+      filtered(soft, soft),
+      filtered(directional, [1]),
+      filtered([1], directional),
+    ];
+    this.#maskedLayers = maskedLayers;
+    this.#sourceCoverage = value;
+    this.#filterCalls += 3;
+  }
 
   /** Recomputes the currently displayed raster from the retained layers; pure, no caching. */
   get displayed() {
-    let selected = this.#layers[this.#mode];
+    const layers = this.#sourceCoverage === 1 ? this.#layers : this.#maskedLayers;
+    let selected = layers[this.#mode];
     if (this.#blended) {
-      selected = rasterCrossfade2D({ first: this.#layers[0], second: selected, weights: this.#transition }).toValues();
+      selected = rasterCrossfade2D({ first: layers[0], second: selected, weights: this.#transition }).toValues();
     }
-    return maskedSourceOver2D({ source: selected, destination: this.#ground, mask: this.#coverage }).toValues();
+    return this.#sourceCoverage === 1
+      ? maskedSourceOver2D({ source: selected, destination: this.#ground, mask: this.#coverage }).toValues()
+      : selected;
   }
 
   cycleMode() { this.#mode = (this.#mode + 1) % this.#layers.length; }
   toggleBlended() { this.#blended = !this.#blended; }
+  reset() { this.#mode = 0; this.#blended = false; this.setSourceCoverage(1); }
 }
 
 export function createBlurMarks(groundRaster, artworkRaster) {

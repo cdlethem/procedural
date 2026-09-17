@@ -1,3 +1,3 @@
-import { createStudySketch } from "../study-controls.js";
+import { createMeshStudySketch } from "../mesh-study-controls.js";
 import { drawSubdividedShells, materialsBSettings } from "../materials-b-studies.js";
-createStudySketch({slug:"subdivided-shells",title:"Subdivided shells",...materialsBSettings["subdivided-shells"],draw:drawSubdividedShells});
+createMeshStudySketch({slug:"subdivided-shells",title:"Subdivided shells",...materialsBSettings["subdivided-shells"],draw:drawSubdividedShells});

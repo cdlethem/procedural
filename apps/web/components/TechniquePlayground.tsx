@@ -42,7 +42,13 @@ export function TechniquePlayground({ techniqueId }: { techniqueId: string }) {
       return state;
     },
     techniqueId as TechniqueId,
-    (id): History => ({ document: createDocument(id), past: [], future: [] }),
+    (id): History => {
+      const document = createDocument(id);
+      // The preview is one layer. A stable ID keeps server and browser control
+      // labels in agreement even when other requests have created layers.
+      document.layers[0].id = `preview-${id}`;
+      return { document, past: [], future: [] };
+    },
   );
   const document = history.document;
   const [error, setError] = useState<string | null>(null);

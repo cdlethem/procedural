@@ -88,6 +88,7 @@ for (const definition of externalExpansionDefinitions) {
     assert.notEqual(recolored.styled, baseline.styled, "palette edits recolor marks");
 
     for (const parameter of definition.parameters) {
+      if (parameter.hidden) continue;
       const params = { ...layer.params };
       if (parameter.type === "boolean") params[parameter.key] = !Boolean(params[parameter.key]);
       else if (parameter.type === "select") params[parameter.key] = parameter.options![1].value;

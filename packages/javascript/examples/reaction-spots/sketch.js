@@ -1,3 +1,4 @@
-import { createStudySketch } from "../study-controls.js";
-import { drawReactionSpots, systemsASettings } from "../systems-a-studies.js";
-createStudySketch({ slug: "reaction-spots", title: "Reaction spots", ...systemsASettings["reaction-spots"], draw: drawReactionSpots });
+import { createCellularStudySketch } from "../cellular-quality-controls.js";
+import { drawReactionSpots } from "../systems-a-studies.js";
+
+createCellularStudySketch({ slug: "reaction-spots", title: "Reaction spots", legacyDraw: drawReactionSpots });

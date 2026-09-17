@@ -8,8 +8,9 @@
   <style>
     body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
     main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
-    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
-    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(720px,100%);height:auto}#status{min-height:1.5em}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    #controls label{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#fff;border:1px solid #777;border-radius:4px}#source-coverage{width:125px}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(720px,100%);height:auto;background:conic-gradient(#e4ded3 25%,#fffdf8 0 50%,#e4ded3 0 75%,#fffdf8 0) 0 0/24px 24px}#status{min-height:1.5em}
     code{font-size:.9em}a{color:#254b7e}
   </style>
 </head>
@@ -18,10 +19,13 @@
   <p>Filter one semi-transparent artwork layer three ways (isotropic soft, horizontal
     streak, vertical streak) with a normalized separable convolution, optionally
     crossfade left-to-right back toward the sharp original, then composite the
-    result over a striped ground.</p>
+    result over a striped ground. Source coverage cuts transparent gutters in
+    the combined source before the masked filters run.</p>
   <div id="controls" aria-label="Blur marks controls">
     <button data-action="m"><kbd>M</kbd> sharp / soft / horizontal / vertical</button>
     <button data-action="b"><kbd>B</kbd> blend with sharp (left-to-right)</button>
+    <label for="source-coverage">Source coverage <input id="source-coverage" type="range" min="0" max="1" step="0.05" value="1"><output id="coverage-output" for="source-coverage">100%</output></label>
+    <button data-action="0"><kbd>0</kbd> reset</button>
     <button data-action="s"><kbd>S</kbd> save PNG</button>
   </div>
   <div id="art" aria-label="Generated blur/blend/composite result"></div>

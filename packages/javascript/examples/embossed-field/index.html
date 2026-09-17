@@ -1,1 +1,36 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Embossed field</title><style>body{margin:0;padding:24px;background:#f8f5ee;font:16px system-ui;color:#242324}main{max-width:900px;margin:auto}#controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{padding:8px;border:1px solid #777;background:#fff}canvas{display:block;width:min(640px,100%);height:auto}#status{min-height:1.5em}</style><main><h1>Embossed field</h1><p>A synthetic raster study with an editable structural change and palette.</p><div id="controls"><button data-action="t">T structural edit</button><button data-action="c">C palette</button><button data-action="0">0 reset</button><button data-action="s">S save PNG</button></div><div id="art" aria-label="Embossed field generated artwork"></div><p id="status" role="status">Preparing Embossed field…</p></main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></html>
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Embossed field</title>
+<style>
+  body { margin: 0; padding: 24px; background: #f8f5ee; color: #242324; font: 16px system-ui, sans-serif; }
+  main { max-width: 980px; margin: auto; }
+  p { max-width: 70ch; line-height: 1.5; }
+  #controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin: 22px 0; }
+  label { display: grid; gap: 5px; font-size: 14px; font-weight: 600; }
+  input, select, button { min-height: 39px; padding: 7px 9px; border: 1px solid #888; border-radius: 4px; background: white; color: inherit; font: inherit; }
+  button { cursor: pointer; align-self: end; }
+  button:hover { background: #eae7df; }
+  canvas { display: block; width: min(640px, 100%); height: auto; background: #ece7da; box-shadow: 0 2px 14px #0002; }
+  #status { min-height: 1.5em; font-size: 14px; }
+</style>
+<main>
+  <h1>Embossed field</h1>
+  <p>Choose a scalar image and the direction that reveals its light and shadow. Change relief strength and mark shape without replacing the source.</p>
+  <form id="controls" aria-label="Embossed field controls" onsubmit="return false">
+    <label>Source field<select name="source"><option value="waves">Waves</option><option value="mounds">Mounds</option><option value="cutout">Cutout</option></select></label>
+    <label>Response axis<select name="axis"><option value="vertical">Vertical</option><option value="horizontal">Horizontal</option><option value="diagonal">Diagonal</option></select></label>
+    <label>Mark treatment<select name="treatment"><option value="tiles">Tiles</option><option value="dots">Dots</option></select></label>
+    <label>Pixel size<input name="scale" type="number" min="4" max="120" step="1" value="9"></label>
+    <label>Relief strength<input name="gain" type="number" min="0" max="20" step="any" value="1.2"></label>
+    <label>Seed<input name="seed" type="number" min="0" max="4294967295" step="1" value="42"></label>
+    <label>Palette<select name="palette"><option value="0">Garden ink</option><option value="1">Electric ink</option></select></label>
+    <button type="button" data-action="reset">Reset</button>
+    <button type="button" data-action="save">Save PNG</button>
+  </form>
+  <div id="art" aria-label="Embossed field artwork"></div>
+  <p id="status" role="status">Preparing embossed field…</p>
+</main>
+<script src="/p5.js"></script>
+<script type="module" src="./sketch.js"></script>

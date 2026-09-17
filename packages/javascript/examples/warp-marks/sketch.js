@@ -3,7 +3,9 @@ import { BACKGROUND_RGB, SIDE, createWarpMarks, dotColorAt, remapSource, stripeC
 const status = document.querySelector("#status");
 const controls = document.querySelector("#controls");
 const art = document.querySelector("#art");
-const settings = { strength: 32, alternateField: false, stripes: false };
+const coverageInput = document.querySelector("#source-coverage");
+const coverageOutput = document.querySelector("#coverage-output");
+const settings = { strength: 32, alternateField: false, stripes: false, sourceCoverage: 1 };
 let model = null;
 let revision = 0;
 
@@ -58,7 +60,7 @@ new window.p5((p) => {
   let displayedImage = null;
 
   function remapAndDisplay() {
-    const result = remapSource(sourcePixels, model, settings.strength, settings.alternateField);
+    const result = remapSource(sourcePixels, model, settings.strength, settings.alternateField, settings.sourceCoverage);
     displayedImage = p.createImage(SIDE, SIDE);
     displayedImage.loadPixels();
     const out = displayedImage.pixels;
@@ -74,11 +76,13 @@ new window.p5((p) => {
   }
 
   function paint() {
-    p.background(...rgbColor(BACKGROUND_RGB));
+    if (settings.sourceCoverage === 1) p.background(...rgbColor(BACKGROUND_RGB));
+    else p.clear();
     p.image(displayedImage, 0, 0);
     revision += 1;
     art.dataset.revision = String(revision);
-    status.textContent = `strength ${settings.strength} · ${settings.alternateField ? "paired-sine" : "gradient-noise"} field · ${settings.stripes ? "stripes" : "dots"} source`;
+    coverageOutput.textContent = `${Math.round(settings.sourceCoverage * 100)}%`;
+    status.textContent = `strength ${settings.strength} · ${settings.alternateField ? "paired-sine" : "gradient-noise"} field · ${settings.stripes ? "stripes" : "dots"} source · coverage ${coverageOutput.textContent}`;
   }
 
   p.setup = () => {
@@ -104,7 +108,8 @@ new window.p5((p) => {
       captureSource();
       remapAndDisplay();
     } else if (name === "0") {
-      settings.strength = 32; settings.alternateField = false; settings.stripes = false;
+      settings.strength = 32; settings.alternateField = false; settings.stripes = false; settings.sourceCoverage = 1;
+      coverageInput.value = "1";
       captureSource();
       remapAndDisplay();
     } else return;
@@ -114,6 +119,14 @@ new window.p5((p) => {
   controls.addEventListener("click", (event) => {
     const button = event.target.closest("button[data-action]");
     if (button) action(button.dataset.action);
+  });
+  coverageInput.addEventListener("input", () => {
+    settings.sourceCoverage = Number(coverageInput.value);
+    coverageOutput.textContent = `${Math.round(settings.sourceCoverage * 100)}%`;
+  });
+  coverageInput.addEventListener("change", () => {
+    remapAndDisplay();
+    paint();
   });
   p.keyPressed = () => action(String(p.key).toLowerCase());
 }, art);

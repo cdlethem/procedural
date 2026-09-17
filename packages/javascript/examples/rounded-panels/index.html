@@ -1,1 +1,21 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rounded panels</title><style>body{margin:0;padding:24px;background:#f8f5ee;font:16px system-ui;color:#242324}main{max-width:900px;margin:auto}#controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{padding:8px;border:1px solid #777;background:#fff}canvas{display:block;width:min(640px,100%);height:auto}#status{min-height:1.5em}</style><main><h1>Rounded panels</h1><p>Rounded Chaikin-cut panels make a quilt of softened square routes.</p><div id="controls"><button data-action="t">T structural edit</button><button data-action="c">C palette</button><button data-action="0">0 reset</button><button data-action="s">S save PNG</button></div><div id="art" aria-label="Rounded panels generated artwork"></div><p id="status" role="status">Preparing Rounded panels…</p></main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></html>
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rounded panels</title>
+<style>
+  body{margin:0;padding:24px;background:#f8f5ee;font:16px system-ui;color:#242324}
+  main{max-width:940px;margin:auto} #controls{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}
+  button{padding:8px;border:1px solid #777;background:#fff;cursor:pointer}
+  button[aria-pressed="true"]{background:#d7e3d2} .parameter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin-bottom:20px}
+  .control{display:grid;grid-template-columns:minmax(0,1fr) 76px;align-items:center;gap:5px;padding:8px;background:#fff;border:1px solid #d4d0c8}
+  .control span{grid-column:1/-1;font-size:14px} .control input[type="range"]{width:100%} .control input[type="number"]{width:67px}
+  .control select{grid-column:1/-1;max-width:100%} .control input[type="checkbox"]{justify-self:start}
+  canvas{display:block;width:min(640px,100%);height:auto;background:#ece7da} #status{min-height:1.5em}
+</style>
+<main><h1>Rounded panels</h1><p>Repeat polygon outlines with editable shape, spacing, corner cuts and fill.</p>
+<div id="controls">
+  <button data-action="c">C palette</button><button data-action="legacy" aria-pressed="false">Original composition</button>
+  <button data-action="t" hidden>T original variant</button><button data-action="0">0 reset</button><button data-action="s">S save transparent PNG</button>
+</div>
+<div id="art" aria-label="Rounded panels generated artwork"></div><p id="status" role="status">Preparing Rounded panels…</p></main>
+<script src="/p5.js"></script><script type="module" src="./sketch.js"></script>

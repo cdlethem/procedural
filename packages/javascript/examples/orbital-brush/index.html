@@ -1,1 +1,65 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Orbital brush — Procedurals</title><link rel="icon" href="data:,"><style>body{margin:0;padding:24px;background:#f4f2ed;color:#343039;font:16px system-ui,sans-serif}main{max-width:980px;margin:auto}p{max-width:68ch;line-height:1.5}#controls{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}button{font:inherit;padding:8px 10px;border:1px solid #786f80;border-radius:4px;background:#fff;cursor:pointer}canvas{display:block;width:min(720px,100%);height:auto;box-shadow:0 3px 16px #26302722}#status{min-height:1.5em}</style></head><body><main><h1>Orbital brush</h1><p>Resampled orbital paths form a quiet brush drawing around three invisible centres. Change the brush treatment or palette while preserving every path sample.</p><div id="controls"><button data-action="m">M ribbon / beads</button><button data-action="c">C palette</button><button data-action="d">D fewer / more paths</button><button data-action="0">0 reset</button><button data-action="s">S save PNG</button></div><div id="art" aria-label="Generated orbital brush drawing"></div><p id="status" role="status">Preparing paths…</p><p>Edit the resampled path record in <code>examples/motif-compositions/compositions.js</code> or replace <code>drawPath()</code> here. This is a static composition, not a reconstruction of animated source work.</p></main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orbital brush — Procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body { margin: 0; padding: 24px; background: #eeedf0; color: #343039; font: 16px system-ui, sans-serif; }
+    main { max-width: 1200px; margin: auto; }
+    p { max-width: 75ch; line-height: 1.5; }
+    .workspace { display: grid; grid-template-columns: minmax(0, 720px) minmax(260px, 1fr); gap: 24px; align-items: start; }
+    canvas { display: block; width: min(720px, 100%); height: auto; background: #fbfaf6; box-shadow: 0 3px 16px #26302722; }
+    #controls { display: grid; gap: 12px; }
+    fieldset { margin: 0; padding: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; border: 1px solid #c4bdca; border-radius: 6px; }
+    legend { font-weight: 650; }
+    label { display: grid; gap: 3px; font-size: 0.9rem; }
+    input, select, button { font: inherit; min-width: 0; padding: 6px; }
+    input[type=checkbox] { width: 20px; height: 20px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    button { cursor: pointer; padding: 8px 12px; border: 1px solid #786f80; border-radius: 4px; background: white; }
+    #status { min-height: 1.5em; }
+    @media (max-width: 950px) { .workspace { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Orbital brush</h1>
+  <p>Build ellipses or lobed closed paths, sample each at equal travel distances, then paint beads, ribbons or dashes. The canvas previews a transparent layer on paper; saved PNGs retain transparency.</p>
+  <div class="workspace">
+    <div><div id="art" aria-label="Editable family of sampled orbital paths"></div><p id="status" role="status">Preparing paths…</p></div>
+    <div id="controls">
+      <fieldset><legend>Path family</legend>
+        <label>Path shape<select data-key="source"><option value="wave">Radial wave</option><option value="ellipse">Ellipse</option></select></label>
+        <label>Paths<input data-key="paths" type="number" min="1" max="2048" step="1"></label>
+        <label>Center X<input data-key="centerX" type="number" min="-10000" max="10000" step="any"></label>
+        <label>Center Y<input data-key="centerY" type="number" min="-10000" max="10000" step="any"></label>
+        <label>Center step X<input data-key="centerStepX" type="number" min="-10000" max="10000" step="any"></label>
+        <label>Center step Y<input data-key="centerStepY" type="number" min="-10000" max="10000" step="any"></label>
+        <label>Horizontal radius<input data-key="radiusX" type="number" min="0" max="10000" step="any"></label>
+        <label>Vertical radius<input data-key="radiusY" type="number" min="0" max="10000" step="any"></label>
+        <label>Radius step<input data-key="radialSpacing" type="number" min="-10000" max="10000" step="any"></label>
+        <label>First angle °<input data-key="angle" type="number" min="-36000" max="36000" step="any"></label>
+        <label>Angle step °<input data-key="angleStep" type="number" min="-36000" max="36000" step="any"></label>
+        <label>Lobes<input data-key="lobes" type="number" min="1" max="2048" step="1"></label>
+        <label>Wave depth<input data-key="depth" type="number" min="-100" max="100" step="any"></label>
+        <label>Samples per path<input data-key="samples" type="number" min="1" max="16384" step="1"></label>
+      </fieldset>
+      <fieldset><legend>Marks</legend>
+        <label>Treatment<select data-key="marks"><option value="beads">Beads</option><option value="ribbons">Ribbons</option><option value="dashes">Dashes</option></select></label>
+        <label>Mark size<input data-key="markSize" type="number" min="0" max="10000" step="any"></label>
+        <label>Mark spacing<input data-key="markSpacing" type="number" min="0" max="10000" step="any"></label>
+        <label>Mark opacity<input data-key="markOpacity" type="number" min="0" max="255" step="1"></label>
+        <label>Path guides<input data-key="guides" type="checkbox"></label>
+        <label>Palette<select data-key="paletteId"><option value="mauve-mist">Mauve Mist</option><option value="electric-citrus">Electric Citrus</option><option value="cobalt-chalk">Cobalt Chalk</option></select></label>
+      </fieldset>
+      <div class="actions"><button type="button" data-action="reset">Reset (0)</button><button type="button" data-action="save">Save transparent PNG (S)</button></div>
+    </div>
+  </div>
+  <p>Change the mark painter in <code>sketch.js</code> to try another drawing treatment. The example-private path helper feeds explicit source vertices into the package's <code>resamplePolyline2D</code> operation. Large path and sample combinations share a 64,000-point generation budget.</p>
+</main>
+<script src="/p5.js"></script>
+<script type="module" src="./sketch.js"></script>
+</body>
+</html>

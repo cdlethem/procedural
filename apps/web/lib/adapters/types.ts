@@ -12,7 +12,8 @@ export const numeric = (
   min: number,
   max: number,
   step = 1,
-): Parameter => ({ key, label, description, type: "number", min, max, step });
+  options: Pick<Parameter, "hardMin" | "hardMax" | "integer" | "hidden"> = {},
+): Parameter => ({ key, label, description, type: "number", min, max, step, ...options });
 export const choice = (
   key: string,
   label: string,

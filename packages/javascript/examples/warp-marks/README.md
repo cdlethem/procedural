@@ -18,12 +18,19 @@ the p5 script to `/p5.js`. Open `index.html`, then use the visible controls or k
 - **F** switches the displacement field between the gradient-noise angle and a pair of
   sine waves.
 - **P** switches the source pattern between dots and stripes.
-- **0** resets to strength 32, the noise field, and the dot source.
-- **S** saves the already displayed canvas.
+- **Source coverage** cuts coherent diagonal gutters through 96-pixel bands in
+  the captured source before remapping. At 100% it keeps the original opaque
+  pattern; at 0% the canvas and saved PNG are transparent. Release the slider to
+  render an intermediate value.
+- **0** resets to strength 32, the noise field, the dot source and full coverage.
+- **S** saves the already displayed canvas, including its alpha channel.
 
 `warp-marks.js` keeps the retained palette/noise field in `createWarpMarks()`, and
 `displacementAt()` is the place to invent another displacement field. `remapSource()`
 composes the exact per-pixel field with the public `bilinearRasterRemap2D` operation.
+The optional source mask is example composition code: for masked pixels it
+premultiplies RGB before the single remap and unpremultiplies its result to
+avoid dark edge halos. Full coverage retains the original source and pixel path.
 
 Motivation and native acceptance for the reference Java composition are recorded in
 `catalog/validation/bilinear-raster-remap.json` (`targets.processing-java.technique`).

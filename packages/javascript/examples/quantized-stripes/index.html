@@ -1,1 +1,9 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quantized stripes</title><style>body{margin:0;padding:24px;background:#f8f5ee;font:16px system-ui;color:#242324}main{max-width:900px;margin:auto}#controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{padding:8px;border:1px solid #777;background:#fff}canvas{display:block;width:min(640px,100%);height:auto}#status{min-height:1.5em}</style><main><h1>Quantized stripes</h1><p>A synthetic raster study with an editable structural change and palette.</p><div id="controls"><button data-action="t">T structural edit</button><button data-action="c">C palette</button><button data-action="0">0 reset</button><button data-action="s">S save PNG</button></div><div id="art" aria-label="Quantized stripes generated artwork"></div><p id="status" role="status">Preparing Quantized stripes…</p></main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></html>
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quantized stripes</title><link rel="stylesheet" href="../materials-a-fields.css">
+<main><h1>Quantized stripes</h1><p>Reduce generated stripe colors, then open transparent gaps between the bands. The preview shows paper behind a transparent p5 canvas.</p>
+<div id="controls" class="actions"><button type="button" data-action="t">T alternate settings</button><button type="button" data-action="c">C palette</button><button type="button" data-action="0">0 reset</button><button type="button" data-action="s">S save transparent PNG</button></div>
+<div id="art" aria-label="Quantized stripes generated artwork"></div><p id="status" role="status">Preparing Quantized stripes…</p></main>
+<script src="/p5.js"></script><script type="module" src="./sketch.js"></script>
+</html>

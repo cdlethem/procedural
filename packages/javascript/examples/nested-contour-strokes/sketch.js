@@ -1,3 +1,4 @@
-import { createStudySketch } from "../study-controls.js";
-import { drawNestedContourStrokes, pathsASettings } from "../paths-a-studies.js";
-createStudySketch({ slug: "nested-contour-strokes", title: "Nested contour strokes", ...pathsASettings["nested-contour-strokes"], draw: drawNestedContourStrokes });
+import { createPathStudySketch } from "../paths-a-quality-controls.js";
+import { drawNestedContourStrokes } from "../paths-a-studies.js";
+
+createPathStudySketch({ slug: "nested-contour-strokes", title: "Nested contour strokes", legacyDraw: drawNestedContourStrokes });

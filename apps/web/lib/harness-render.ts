@@ -54,8 +54,17 @@ export function renderHarness(
         forwardConstants(p, buffer);
         prepare(buffer, renderer);
         buffer.clear();
-        if (layer.kind === "workflow") drawWorkflow(buffer, layer);
-        else drawSource(buffer, layer, images);
+        if (layer.kind === "workflow") {
+          // The document supplies paper once. A standalone study's background()
+          // call must not turn a reusable workflow into an opaque sheet.
+          const background = buffer.background;
+          buffer.background = () => {};
+          try {
+            drawWorkflow(buffer, layer);
+          } finally {
+            buffer.background = background;
+          }
+        } else drawSource(buffer, layer, images);
         candidate.push();
         candidate.drawingContext.globalCompositeOperation = "source-over";
         candidate.tint(255, Math.round(layer.opacity * 255));
