@@ -4,9 +4,11 @@ Two line families are clipped to a filled island with holes. The island silhouet
 
 | Control | Canvas effect |
 | --- | --- |
-| Rotate hatches | Changes both supplied line directions. |
-| Dense hatches | Reduces both perpendicular line spacings. |
-| Other island | Replaces the outer ring and hole geometry. |
+| Spacing | Sets the primary field's line spacing. |
+| Cross | Sets the secondary field's line spacing. |
+| Rotation | Turns the primary field's direction. |
+| Twist | Turns the secondary field relative to the primary; zero makes the fields parallel. |
+| Region | Replaces the outer ring and hole geometry. |
 | Outline | Shows or hides the existing boundary drawing. |
 
 The browser adapter draws the clipped fragments as Canvas2D marks. Palette and outline changes preserve the clipped geometry. The editable source sketch also offers an SVG export action.

@@ -267,6 +267,37 @@ function upgradedStudyParams(value: unknown, item: StudioDefinition): unknown {
         return typeof number === "number" && Number.isInteger(number) &&
           number >= Number(min) && number <= Number(max);
       })) return { ...item.defaults, ...old };
+  if (item.id === "sensing-trails" && keys === "dotMarks,field,gain,ticks" &&
+      typeof old.dotMarks === "boolean" &&
+      ["upper-right", "lower-left"].includes(String(old.field)) &&
+      typeof old.gain === "number" && Number.isFinite(old.gain) &&
+      old.gain >= -0.1 && old.gain <= 0.1 &&
+      typeof old.ticks === "number" && Number.isInteger(old.ticks) &&
+      old.ticks >= 0 && old.ticks <= 80)
+    return { ...item.defaults, ticks: old.ticks, field: old.field, gain: old.gain, dotMarks: old.dotMarks, reach: 13 };
+  if (item.id === "bridge-web" && keys === "candidate,ticks,weave" &&
+      typeof old.candidate === "boolean" && typeof old.weave === "boolean" &&
+      typeof old.ticks === "number" && Number.isInteger(old.ticks) &&
+      old.ticks >= 0 && old.ticks <= 42)
+    return { ...item.defaults, ticks: old.ticks, candidate: old.candidate, strain: 25, slant: old.weave ? -31 : 31, stride: 5 };
+  if (item.id === "neighborhood-growth" && keys === "chain,largeMarks,minLength,ticks" &&
+      typeof old.chain === "boolean" && typeof old.largeMarks === "boolean" &&
+      typeof old.ticks === "number" && Number.isInteger(old.ticks) &&
+      old.ticks >= 0 && old.ticks <= 24 &&
+      typeof old.minLength === "number" && Number.isInteger(old.minLength) &&
+      old.minLength >= 0 && old.minLength <= 100)
+    return { ...item.defaults, ticks: old.ticks, chain: old.chain, minLength: old.minLength, step: 0.35 };
+  if (item.id === "elastic-loops" && keys === "reverseCurl,structure,ticks,windX" &&
+      typeof old.reverseCurl === "boolean" && typeof old.structure === "boolean" &&
+      typeof old.ticks === "number" && Number.isInteger(old.ticks) &&
+      old.ticks >= 0 && old.ticks <= 36 &&
+      typeof old.windX === "number" && Number.isFinite(old.windX) &&
+      old.windX >= -2 && old.windX <= 2)
+     return { ...item.defaults, ticks: old.ticks, windX: old.windX, structure: old.structure, growth: 0.018, curl: old.reverseCurl ? -0.09 : 0.09, range: 55, strength: 18 };
+  if (item.id === "hatched-islands" && keys === "angle,dense,outline,transfer" &&
+      typeof old.angle === "boolean" && typeof old.dense === "boolean" &&
+      typeof old.transfer === "boolean" && typeof old.outline === "boolean")
+    return { ...item.defaults, spacing: old.dense ? 14 : 24, cross: old.dense ? 27 : 40, rotation: old.angle ? 71 : 16, twist: old.angle ? -85 : 110, region: old.transfer ? "island-b" : "island-a", outline: old.outline };
   const historicalShapes: Record<string, Record<string, readonly [number, number, number]>> = {
     "pull-marks": { radius: [80, 280, 1], power: [0.3, 4, 0.1], lines: [8, 48, 1], jitter: [0, 8, 0.5], weight: [0.5, 4, 0.5] },
     "projection-marks": { radius: [40, 180, 1], strength: [0, 1, 0.05], lines: [6, 32, 1], weight: [0.5, 4, 0.5] },

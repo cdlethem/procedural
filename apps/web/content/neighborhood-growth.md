@@ -1,12 +1,12 @@
 # Neighborhood growth
 
-Twenty-six points form an exact relative-neighborhood graph, then relax synchronously along edges longer than a threshold. The graph is requeried after each step unless an explicit chain is chosen.
+Twenty-six points on a loose spiral form an exact relative-neighborhood graph, then relax synchronously: each step pulls points along their eligible edges, and the graph is requeried after each step unless an explicit chain is chosen.
 
 | Control | Canvas effect |
 | --- | --- |
 | Ticks | Replays graph queries and point displacement. |
 | Open chain | Supplies fixed adjacent-index edges instead of querying the neighborhood. |
 | Length threshold | Changes which edges contribute to later displacement. |
-| Large marks | Enlarges the drawn points without changing their positions. |
+| Step | Sets how strongly eligible edges move points per tick. |
 
-`relative-neighborhood-pairs-2d` and `threshold-edge-relaxation-2d` do the graph and motion work. The adapter adds no collision handling, boundary constraints, or hidden spring force.
+Faint spokes connect each point to its seed position, showing accumulated displacement; point radius reflects graph degree. `relative-neighborhood-pairs-2d` and `threshold-edge-relaxation-2d` do the graph and motion work. The adapter adds no collision handling, boundary constraints, or hidden spring force.

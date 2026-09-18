@@ -23,10 +23,10 @@ const edits:Record<string,Record<string,number|string|boolean>>={
   'sensing-trails':{ticks:45,field:'lower-left',gain:-.05,dotMarks:true},
   'flocking-marks':{ticks:45,chain:true,separation:.6,dotMarks:true},
   'guarded-bands':{wide:true,clearance:32,transfer:true,showRejected:false},
-  'hatched-islands':{angle:true,dense:true,transfer:true,outline:false},
-  'bridge-web':{ticks:26,weave:true,candidate:false},
-  'neighborhood-growth':{ticks:9,chain:true,minLength:50,largeMarks:true},
-  'elastic-loops':{ticks:13,reverseCurl:true,windX:.5,structure:true},
+  'hatched-islands':{spacing:8,cross:80,twist:0,rotation:71,region:'island-b',outline:false},
+  'bridge-web':{ticks:26,strain:60,slant:-31,stride:2,candidate:false},
+  'neighborhood-growth':{ticks:9,chain:true,minLength:50,step:1},
+  'elastic-loops':{ticks:13,growth:0,curl:-.15,windX:2,range:0,strength:24,structure:true},
   'dye-currents':{ticks:60,injection:.2,viscosity:.08,projection:false,texture:true,contours:false},
 };
 test('nine new definitions and content records are complete and distinct',()=>{
