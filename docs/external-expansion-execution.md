@@ -109,6 +109,32 @@ returns early on any error, the `docs/reference/operations.md` regeneration — 
 `raymarch-implicit-rays-3d` entry that postdates the reference's last write — stays blocked
 until that backlog is reconciled.
 
+18 September 2026 — step 4 design complete (the Design family). The "intersection graph
+editing; relative-neighborhood graph evolution" row was at Design. Research across the
+corpus, the ledger and the delivered studies confirms the family's value is delivered as
+**compositions** of the four already-accepted
+[connected-growth-and-graphs](../design/capabilities/connected-growth-and-graphs.md)
+operations, not new core operations:
+
+- **Intersection graph editing** (Hoff's *A Tangle of Webs*) is the
+  [bridge-web](bridge-web.md) study: repeated `graph.insert-segment-bridge-2d` splits and
+  links with retained split/link ancestry, plus normalized-vector relaxation. The survey
+  corpus computes intersection points only and never a retained arrangement; the accepted
+  boundary is the one-bridge-at-a-time edit over a supplied embedded graph, so no
+  batch-arrangement operation is admitted.
+- **RNG evolution** (Hoff's *Differential Lattice*) is the
+  [neighborhood-growth](neighborhood-growth.md) study: a per-tick exact
+  `spatial.relative-neighborhood-pairs-2d` requery plus `motion.threshold-edge-relaxation-2d`,
+  with a `setPairs` substitution point. The remaining gap is the Differential Lattice
+  node-insertion coupling ("attraction/repulsion and node insertion are coupled"); per the
+  capability decision it composes from existing operations (candidate sampling plus an
+  explicit old-density filter), so no new operation is admitted and no source-specific
+  growth threshold is inferred.
+
+The delivery table state moves from Design to "Cores accepted; studies draft." Next: extend
+the neighborhood-growth study with the node-insertion coupling, and finalize both studies'
+creative quality (both were flagged as reading like technical diagrams in step 2).
+
 ## Standing priority
 
 Apply [creative quality](creative-quality.md) to existing and new components, techniques and
@@ -149,7 +175,7 @@ exist with no `catalog/validation` record yet.
 | Audit | Coupled agent deposition/diffusion/sensing | Pending |
 | Audit | Crossing/stitch topology, hinged panels, periodic identified domains | Pending |
 | Audit | River migration/cutoffs; visibility-aware projected lines | Pending |
-| Audit | Intersection graph editing; relative-neighborhood graph evolution | Design |
+| Audit | Intersection graph editing; relative-neighborhood graph evolution | Cores accepted; studies draft. RNG-evolution study still missing the node-insertion coupling |
 | Audit | Density/color accumulation and independent exposure; bounded analytic maps | Pending |
 | Audit | Image k-means; seeded color-front growth; moving-spline deposition | Pending |
 | Audit | Retained graph subset queries; separate Hilbert, Ulam and Penrose constructions | Pending |
