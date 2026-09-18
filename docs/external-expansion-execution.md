@@ -6,14 +6,57 @@ integration checkpoints, not permission to end the overall assignment. This exec
 record supersedes that document's immediate-handoff scheduling, while preserving the
 research snapshot and its evidence hashes.
 
-## Current priority: creative quality
+## Starting point, 17 September 2026
 
-The maintainer's subsequent quality feedback changes the order of work. Apply
-[creative quality](creative-quality.md) to existing and new components, techniques and
-studies. Correct the shared range model and the ornament/panel and embossed/signed-edge
-studies first, then address the broader gallery audit by computational family. Reopen
-creative review of the pending dynamics gallery batch, including interaction latency,
-before its release. Preserve all completed implementation and historical technical evidence.
+Everything below is on `main`. The last integration merged the web identity redesign with the
+previously uncommitted expansion work, so there is no separate branch to recover: the local
+`integration/*` and `web/studio-ui-refinements` branches were fully contained in `main` and have
+been deleted. `origin/porting/backlog` is also contained in `main`; **`origin/porting/batch-01`
+still holds eight unique commits** and belongs to the port handoff, not to this work.
+
+What this checkpoint settled, with evidence in
+[the integration record](../evidence/web/main-integration-checkpoint.json):
+
+- The nine dynamics studies are integrated in the gallery (104 generated workflows) and are now
+  interactive. A retained replay snapshot chain replaced full recomputation, so a single slider
+  press costs 5–635ms instead of up to 9.2s, with drawing output unchanged across 62 command
+  hashes. They remain **drafts**: no web review record, no release.
+- The weighted-image, recorded-controls, mesh-attribute and implicit-ray operations are exported
+  from the JavaScript package index, bound in the reference generator and published in the
+  generated reference (89 operations). Their pure fixtures pass (30, 43, 38 and 21 cases) and
+  their native browser harnesses pass today.
+- `apps/web`: 208 tests pass, typecheck passes, generated-metadata check passes, production build
+  passes. Twelve stale study manifests were repaired and the stepped-footprint sliders now expose
+  only valid ledges.
+
+## Next actions, in order
+
+1. **Accept or reject the five surfaced operations.** They have contracts, fixtures, editable
+   examples, passing harnesses and reference pages, but `catalog/validation` holds no record, so
+   support is unvalidated. Re-run the four harnesses under the shared render lease, review their
+   images, then author the attestations the way
+   [flock-steer-2d](../catalog/validation/flock-steer-2d.json) does.
+2. **Art-direct the nine dynamics studies, then review them.** Latency is resolved; composition is
+   not. Dye currents and guarded bands read as artwork. Bridge web, elastic loops and neighborhood
+   growth still read as technical diagrams, and hatched islands exposes no continuous structural
+   control. Apply [creative quality](creative-quality.md) before proposing a release.
+3. **Reconcile the catalog binding check.** `tools/check_catalog.py` reports stale implementation
+   hashes for warp-marks, blur-marks and several py5 records that the creative-quality revision
+   changed. Decide per record whether to re-attest or to mark the binding superseded.
+4. **Then continue the delivery table below**, starting with the families marked Design.
+
+Working state that is deliberately not on `main`: `.work/web-ui-release` still holds an old
+release worktree with an uncommitted 21-file diff, captured as
+`.work/handoff/web-ui-release-uncommitted.patch`. Its branch content is an ancestor of `main`;
+discard the worktree once you have confirmed nothing there is still wanted. Measurement scripts
+and harness reports from this checkpoint live under `.work/handoff/`.
+
+## Standing priority
+
+Apply [creative quality](creative-quality.md) to existing and new components, techniques and
+studies. Correct the shared range model and the ornament/panel and embossed/signed-edge studies
+first, then address the broader gallery audit by computational family.
+Preserve all completed implementation and historical technical evidence.
 The delivery table below records expansion scope; its earlier acceptance and design labels
 do not establish current creative approval or live deployment. The full expansion remains
 required after this corrective work; adding entries is not the immediate release objective.
@@ -27,17 +70,23 @@ Every implemented slice needs reviewed semantics, distinguishing checks, an edit
 workflow, structural and appearance edits, substitution, package replay and root review.
 No new port or original-artist recreation is implied.
 
+`Accepted` means a root acceptance record exists. `Cores accepted; studies draft` means the
+operations carry acceptance in [the second batch review](../evidence/expansion/second-batch/root-review.json)
+while their gallery studies are tracked drafts without a web review. `Implemented; acceptance
+open` means contracts, fixtures, package exports, reference pages and passing native harnesses
+exist with no `catalog/validation` record yet.
+
 | Delivery | Required remaining result | State |
 |---|---|---|
 | A | Three compositions, retained motifs and independent controls | Accepted |
 | B | Radius pairs and reciprocal synchronous response | Accepted |
-| B | Stable contact history; separate sensor and flock rules; bounded gravity/contact model | Design |
-| C | Width-aware strip regions, collision/negative-space acceptance, caps/joins | Design |
-| D | Connected elastic evolution, growth and stable split ancestry | Design |
-| E | Image-weighted sampling/centroids, region hatching, related wash layers, plot/SVG output | Design |
-| F | Explicit framebuffer history; projected fluid velocity and dye transport | Design |
-| G | Known-font geometry, recorded signals and mapping; scoped live input lifecycle | Pending |
-| H | Mesh normals/UV/p5 presentation and bounded implicit fields/mesh or shader output | Pending |
+| B | Stable contact history; separate sensor and flock rules; bounded gravity/contact model | Cores accepted; studies draft. Bounded gravity/contact model still missing |
+| C | Width-aware strip regions, collision/negative-space acceptance, caps/joins | Cores accepted; studies draft |
+| D | Connected elastic evolution, growth and stable split ancestry | Cores accepted; studies draft |
+| E | Image-weighted sampling/centroids, region hatching, related wash layers, plot/SVG output | Hatching and plot/SVG accepted; weighted sampling/centroids implemented, acceptance open; wash layers pending |
+| F | Explicit framebuffer history; projected fluid velocity and dye transport | Cores accepted; studies draft |
+| G | Known-font geometry, recorded signals and mapping; scoped live input lifecycle | Recorded signals and mapping implemented, acceptance open; font geometry limited to the bundled GlyphMarks face; live input lifecycle pending |
+| H | Mesh normals/UV/p5 presentation and bounded implicit fields/mesh or shader output | Mesh attributes and implicit rays implemented, acceptance open; shader output pending |
 | I | Attractor-consumption veins, DLA, multiscale competition, flames, complex dynamics, maps | Pending |
 | Audit | Coupled agent deposition/diffusion/sensing | Pending |
 | Audit | Crossing/stitch topology, hinged panels, periodic identified domains | Pending |

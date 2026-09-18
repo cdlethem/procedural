@@ -1,0 +1,126 @@
+{
+  "date": "2026-09-17",
+  "reviewStage": "Root reviewed integration checkpoint",
+  "scope": "Main integration of the web identity redesign with concurrent expansion work, completion of the visual operation web surface, and interaction latency of the nine dynamics studies. No new target acceptance, no live release.",
+  "completed": {
+    "merge": "origin/main 45c8e478 merged; creative-quality study revisions preserved, in-flight tree tracked.",
+    "operationSurface": "weighted-raster-points-2d, weighted-raster-centroids-2d, sample-recorded-controls, prepare-surface-attributes-3d and raymarch-implicit-rays-3d exported from the package index, bound in the reference generator and tracked with catalog and fixture records; generated reference covers 89 operations.",
+    "manifests": "Twelve stale structural-control labels repaired; step depth and shoulder sliders start at one while hard domains keep zero.",
+    "latency": "Retained replay snapshots for bridge web, elastic loops and dye currents; identical drawing output across 62 command hashes."
+  },
+  "verification": {
+    "webTests": "208 pass, 0 fail (apps/web, tsx --test tests/*.test.ts)",
+    "typecheck": "passed",
+    "generated": "npm run check:generated passed; 104 gallery workflows, 89 operations",
+    "productionBuild": "passed",
+    "pureFixtures": {
+      "weighted-image": 30,
+      "implicit-rays": 43,
+      "mesh-surface-attributes": 38,
+      "sample-recorded-controls": 21
+    },
+    "nativeHarnesses": {
+      "weighted-image-javascript.mjs": "passed",
+      "mesh-surface-attributes-javascript.mjs": "passed",
+      "implicit-rays-javascript.mjs": "passed (8 frames)",
+      "word-echo-javascript.mjs": "passed (5 groups)"
+    },
+    "dynamicsLatencyMsBefore": {
+      "lingering-links": 17,
+      "sensing-trails": 38,
+      "flocking-marks": 15,
+      "guarded-bands": 237,
+      "hatched-islands": 8,
+      "bridge-web": 6068,
+      "neighborhood-growth": 22,
+      "elastic-loops": 9204,
+      "dye-currents": 3431
+    },
+    "dynamicsLatencyMsAfter": {
+      "lingering-links": [
+        23,
+        19,
+        17
+      ],
+      "sensing-trails": [
+        33,
+        30,
+        79
+      ],
+      "flocking-marks": [
+        21,
+        15,
+        10
+      ],
+      "guarded-bands": [
+        235,
+        231,
+        225
+      ],
+      "hatched-islands": [
+        7,
+        5,
+        5
+      ],
+      "bridge-web": [
+        11,
+        7,
+        5
+      ],
+      "neighborhood-growth": [
+        23,
+        23,
+        27
+      ],
+      "elastic-loops": [
+        8,
+        9,
+        6
+      ],
+      "dye-currents": [
+        635,
+        623,
+        549
+      ]
+    },
+    "browserErrors": "none observed on the nine study pages"
+  },
+  "openFindings": [
+    "catalog/validation has no acceptance record for the five newly surfaced operations; their target support stays unvalidated.",
+    "tools/check_catalog.py still reports stale implementation hashes for warp-marks, blur-marks and py5 records changed by the creative-quality revision.",
+    "Creative read of the nine dynamics studies: dye currents and guarded bands read as artwork; bridge web, elastic loops and neighborhood growth still read as technical diagrams and need art direction before release.",
+    "hatched-islands exposes only toggles plus opacity, so it has no continuous structural control."
+  ],
+  "sources": {
+    "packages/javascript/src/index.js": "00da65244242c79d43a3d87303d844f6930b4608ea55c738d7abe936d2a4552a",
+    "apps/web/scripts/generate-api.mjs": "6de1201d9b7ed8cd91a4978effe91c45cdb7427a3eaf7aeb8ec00f46b85aa58a",
+    "apps/web/lib/adapters/external-dynamics.ts": "40e1a35add7df6161770c602ff30c52d227ac7d35b6af76b9a5da8757170294c",
+    "apps/web/lib/adapters/materials-b.ts": "00f106b13bf775ec18722ab61dc0d512bf50900874bd6a13bbc5a148bd62865e",
+    "apps/web/content/materials-b-studies.mjs": "47a9e34baf7eef4c8f428c3973f27cd948344155c73e7f49d814fceb36e58af5",
+    "apps/web/content/paths-a-studies.mjs": "1922d7657e5b1d8ceba47b738a65b9d56304527a5828b6523fdbacf3e345094b",
+    "apps/web/content/systems-a-studies.mjs": "639cf615fcfca20a2750a8e18a651f36f775fc4303f6bfe12cbf3934c3bf4137",
+    "apps/web/content/systems-b-studies.mjs": "801c449942f5590e590a0bcd459bd41823b46f6931008aa48ab7b6c6f4731749",
+    "apps/web/content/materials-a-studies.mjs": "34b212475c69cc9e9199c93f3500c2ba3d3614eb04a760cadc1235a510894d2f",
+    "apps/web/scripts/sketch-source.mjs": "821974346642c7c021cf22bd470407073b9c8d181634636acbdf799187e5c404"
+  },
+  "evidence": {
+    ".work/handoff/weighted-image-native.json": "411c9e44f36b34c48452803f5b687d39c6179bc88e5e54ea87c3df175c855086",
+    ".work/handoff/mesh-surface-attributes-native.json": "0f11972ece2b04765d05ec5f95c30d191d9d9b3db526595f793afc81bef4c674",
+    ".work/handoff/implicit-rays-native.json": "63dab1fec2e0aea30adbf1c311502dfa6c9f80cf32e30c6646e33c5cdea80497",
+    ".work/handoff/sample-recorded-controls.json": "bfa17343e0dc0b2c1ad04210c0c3dea1c411b5a2e4b5b6a27b741a10ec51e191",
+    ".work/handoff/word-echo-native/report.json": "0faf2736ed754c3a5aad64cf24aa58c20b2422bc89b78e89de6d212c7488db0d",
+    ".work/handoff/dynamics-hashes-baseline.json": "10c3bff526b1516071d709f1e09f72d12425ac5eb61c077d829e56c8542db883",
+    ".work/handoff/dynamics-hashes-final.json": "0f89d3ef2e61aca24e4d64c63bb3cceb92efa11fb10873ccb2582ee7e210c1c7"
+  },
+  "images": {
+    ".work/handoff/draft-lingering-links.png": "6676588a11d601f5ec75cd29e6a2d90550ac2e234e1c69e6895fbfa83394797f",
+    ".work/handoff/draft-sensing-trails.png": "f029160b94e1630935ef252b9bb0977ac2c960c3215569243694682dc7a54ef9",
+    ".work/handoff/draft-flocking-marks.png": "42ae49c680175184ee4569a7abe4db2487c23353310ecbff546f6db2b2212372",
+    ".work/handoff/draft-guarded-bands.png": "5bc890d7213a5fd65319588033458689b251fcb2fc301c79cf96dabb8b3fdc75",
+    ".work/handoff/draft-hatched-islands.png": "6b655fd5799fd2eaecc8235c06eba3aa5456ab76282af3133b0188739c16e57a",
+    ".work/handoff/draft-bridge-web.png": "3748ef8584400f6a54a85c547b1a457fe031b97af4a559ef02f10fa8058e2ebc",
+    ".work/handoff/draft-neighborhood-growth.png": "8b8f4f4d9026b3406ff04ef0206e9adf6b70fb57f152040b35f6471839cdbd98",
+    ".work/handoff/draft-elastic-loops.png": "07836cf3e720763bf47d2a91852b32078711ed2839805380035e9c8400f8b818",
+    ".work/handoff/draft-dye-currents.png": "b91cb88bf9f0300564a6dabac908954701d3b7f13f190735b350e82bcb54d4cd"
+  }
+}

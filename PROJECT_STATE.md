@@ -57,6 +57,11 @@ The report includes all69 family dispositions and all three denominators:800 ass
   web/native checks, 95 gallery previews, the full browser suite and a production build pass.
   Live8443 serves the checked `eb2bdfdc` source from `.work/study-quality-release` while
   the historical catalog binding check remains red. This is not new target acceptance.
+- Nine external-dynamics studies (contact memory, sensing/flocking, width-aware regions,
+  connected/elastic growth and periodic dye transport) are now tracked as drafts, so the
+  generator reports 104 gallery workflows. They carry no web review yet. The weighted-image,
+  recorded-controls, mesh-attribute and implicit-ray operations stay untracked until their
+  package index bindings and API guides land; their drafts remain in working checkouts.
 - Layer editing, custom palettes, source inspection, undo/redo, local recovery, JSON/PNG export
   and Go storage are reviewed. [Workspace review](evidence/web/studio-workspace-review.json),
   [v3 review](evidence/web/app-v3-review.json) and [architecture](docs/web-app-architecture.md)
@@ -105,18 +110,21 @@ visual scope and access gaps; no external artwork recreation is accepted by this
 Current priority is the maintainer's creative-quality correction. Follow
 [the working standard](docs/creative-quality.md): revise the named ornament/panel and
 embossed/signed-edge studies, separate slider intervals from valid numeric domains, and
-review the existing gallery by family. Pending dynamics gallery work needs renewed creative
-and responsiveness review before release. Historical technical acceptance remains scoped
+review the existing gallery by family. Historical technical acceptance remains scoped
 evidence; it does not grandfather creative quality. Preserve both web redesigns.
 
 The survey batch and first [external expansion batch](docs/external-expansion-first-batch.md)
 are complete at their declared scope. The maintainer now requires the **entire external expansion
-plan implemented**. [Execution scope](docs/external-expansion-execution.md) tracks active B–I
-and deeper-audit work; batch completion is an integration checkpoint, not the task endpoint.
-Contact/sensor/flock, width-aware regions, connected growth and periodic fluid cores/package
-studies are accepted. Their nine Canvas2D gallery adapters are under web review. Weighted
-image marks, recorded controls, mesh attributes and implicit rays have frozen contracts;
-implementation/acceptance remains in progress. Later I families and deeper-audit gaps remain.
+plan implemented**. [Execution scope](docs/external-expansion-execution.md) carries the current
+starting point, the ranked next actions and the open findings; batch completion is an
+integration checkpoint, not the task endpoint. The
+[integration checkpoint](evidence/web/main-integration-checkpoint.json) records what this merge
+settled: the nine dynamics studies are now interactive (worst single edit 635ms, was 9.2s) and
+the weighted-image, recorded-controls, mesh-attribute and implicit-ray operations are exported,
+bound and documented in the generated reference. Those five still have **no acceptance record**
+in `catalog/validation`, so their target support stays unvalidated, and the nine studies still
+need art direction and a root creative verdict before any release. Later I families and
+deeper-audit gaps remain.
 
 - Other-target ports remain separate. The [port handoff](docs/porting-resume.md) tracks Python
   attestation reconciliation, Android ProfileMarks lifecycle validation and Java backlog.
