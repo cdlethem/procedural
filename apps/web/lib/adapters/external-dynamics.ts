@@ -24,7 +24,7 @@ export const externalDynamicsDefinitions:StudioDefinition[]=[
   {id:'bridge-web',title:'Bridge web',description:'Selected candidate gaps accumulate as stable graph bridges.',parameters:[numeric('ticks','Bridges','Replay selected graph insertions from the authored strands.',0,42,1),toggle('weave','Cross route','Change candidate slant and selected gap order.'),toggle('candidate','Candidate guide','Show the next potential cross-strand segment.')],defaults:{ticks:42,weave:false,candidate:true}},
   {id:'neighborhood-growth',title:'Neighborhood growth',description:'An exact local graph guides synchronous point relaxation.',parameters:[numeric('ticks','Ticks','Replay point relaxation and graph queries.',0,24,1),toggle('chain','Open chain','Substitute a supplied chain for the exact neighborhood graph.'),numeric('minLength','Length threshold','Edges at or below this length do not move points.',0,100,1),toggle('largeMarks','Large marks','Change point size without changing the graph.')],defaults:{ticks:8,chain:false,minLength:38,largeMarks:false}},
   {id:'elastic-loops',title:'Elastic loops',description:'Growing elastic strands refine while preserving a noncrossing embedding.',parameters:[numeric('ticks','Ticks','Replay bounded elastic growth and refinement.',0,36,1),toggle('reverseCurl','Reverse curl','Reverse the authored bend-target changes.'),numeric('windX','Wind','Apply horizontal external acceleration.',-2,2,.25),toggle('structure','Structure','Reveal retained nodes over the same curve state.')],defaults:{ticks:36,reverseCurl:false,windX:0,structure:false}},
-  {id:'dye-currents',title:'Dye currents',description:'Dye and texture travel through a periodic projected velocity field.',parameters:[numeric('ticks','Frames','Replay the explicit transport/projection system.',0,120,30),numeric('injection','Injection','Change the externally supplied vortex force.',0,.3,.01),numeric('viscosity','Viscosity','Change explicit velocity diffusion.',0,.24,.01),toggle('projection','Projection','Apply bounded pressure projection.'),toggle('texture','Stripe source','Replace the initial soft dye disks with striped disks.'),toggle('contours','Contours','Draw measured dye isolines over the same flow state.')],defaults:{ticks:30,injection:.1,viscosity:.01,projection:true,texture:false,contours:true}},
+  {id:'dye-currents',title:'Dye currents',description:'Dye and texture travel through a periodic projected velocity field.',parameters:[numeric('ticks','Frames','Replay the explicit transport/projection system.',0,120,10),numeric('injection','Injection','Change the externally supplied vortex force.',0,.3,.01),numeric('viscosity','Viscosity','Change explicit velocity diffusion.',0,.24,.01),toggle('projection','Projection','Apply bounded pressure projection.'),toggle('texture','Stripe source','Replace the initial soft dye disks with striped disks.'),toggle('contours','Contours','Draw measured dye isolines over the same flow state.')],defaults:{ticks:30,injection:.1,viscosity:.01,projection:true,texture:false,contours:true}},
 ];
 
 const paletteIds:Record<string,string>={
@@ -40,6 +40,19 @@ const cache=new Map<string,any>();
 function retained<T>(key:string,make:()=>T):T{
   if(cache.has(key)){const value=cache.get(key);cache.delete(key);cache.set(key,value);return value;}
   const value=make();cache.set(key,value);if(cache.size>12)cache.delete(cache.keys().next().value!);return value;
+}
+/** Retains replayed step snapshots so one control edit extends the chain instead of restarting it.
+ *  Each snapshot is the exact state after that many steps, so drawings stay identical. */
+function replayed<S>(key:string,ticks:number,seed:()=>S,step:(state:S,tick:number)=>S,stride=1,limit=64):S{
+  const entry=retained(`replay:${key}`,()=>({snapshots:new Map<number,S>([[0,seed()]])}));
+  let from=0;
+  for(const tick of entry.snapshots.keys())if(tick<=ticks&&tick>from)from=tick;
+  let state:S=entry.snapshots.get(from) as S;
+  for(let tick=from;tick<ticks;tick++){
+    state=step(state,tick);
+    if((tick+1)%stride===0&&entry.snapshots.size<limit)entry.snapshots.set(tick+1,state);
+  }
+  return state;
 }
 const v=(layer:Layer,key:string)=>layer.params[key];
 const rgb=(layer:Layer,index:number):[number,number,number]=>channels(layer.palette[((index%layer.palette.length)+layer.palette.length)%layer.palette.length]);
@@ -146,10 +159,20 @@ const BRIDGE_LEVELS=[54,162,268,374,480,586];
 function initialBridge(){const nodes:any[]=[],edges:any[]=[];let edgeId=0;for(let strand=0;strand<7;strand++){let previous:number|undefined;for(const y of BRIDGE_LEVELS){const x=78+strand*80+25*Math.sin(y*.015+strand*1.1)+13*Math.cos(y*.029+strand*.65);const id=nodes.length;nodes.push({id,point:[x,y]});if(previous!==undefined)edges.push({id:edgeId++,a:previous,b:id});previous=id;}}return {nodes,edges,nextNodeId:nodes.length,nextEdgeId:edgeId};}
 const bridgeCandidate=(tick:number,weave:boolean)=>{const y=110+tick*9.8,slant=(weave?-1:1)*(31+23*Math.sin(tick*.53));return [[24,y-slant],[616,y+slant]];};
 const bridgeGap=(tick:number,weave:boolean)=>weave?(tick*5+2+Math.floor(tick/5))%6:(tick*5+Math.floor(tick/7))%6;
-function bridgeModel(ticks:number,weave:boolean){let graph=initialBridge();const kinds=new Map<number,string>(graph.edges.map(edge=>[edge.id,'strand']));let lastEvents:any[]=[];
-  for(let tick=0;tick<ticks;tick++){const result=insertSegmentBridge2D({graph,candidate:bridgeCandidate(tick,weave),gapIndex:bridgeGap(tick,weave),maxNodes:160,maxEdges:200,maxWork:90000});for(const event of result.events as any[]){if(event.type==='split'){const kind=kinds.get(event.parentEdgeId)??'strand';kinds.delete(event.parentEdgeId);for(const id of event.childEdgeIds)kinds.set(id,kind);}else kinds.set(event.edgeId,'bridge');}graph=result.graph;lastEvents=result.events;}
-  return {graph,kinds,lastEvents,candidate:bridgeCandidate(ticks,weave)};}
-function drawBridge(p:any,l:Layer){const q=l.params,m=retained(`bridge:${q.ticks}:${q.weave}`,()=>bridgeModel(Number(q.ticks),Boolean(q.weave)));
+type BridgeGraph={nodes:{id:number,point:number[]}[],edges:{id:number,a:number,b:number}[],nextNodeId:number,nextEdgeId:number};
+type BridgeState={graph:BridgeGraph,kinds:Map<number,string>,lastEvents:any[]};
+function bridgeSeed():BridgeState{const graph=initialBridge();return {graph,kinds:new Map<number,string>(graph.edges.map(edge=>[edge.id,'strand'])),lastEvents:[]};}
+function bridgeStep(state:BridgeState,tick:number,weave:boolean):BridgeState{
+  const result=insertSegmentBridge2D({graph:state.graph,candidate:bridgeCandidate(tick,weave),gapIndex:bridgeGap(tick,weave),maxNodes:160,maxEdges:200,maxWork:90000});
+  const kinds=new Map(state.kinds);
+  for(const event of result.events as any[]){if(event.type==='split'){const kind=kinds.get(event.parentEdgeId)??'strand';kinds.delete(event.parentEdgeId);for(const id of event.childEdgeIds)kinds.set(id,kind);}else kinds.set(event.edgeId,'bridge');}
+  return {graph:result.graph,kinds,lastEvents:result.events};
+}
+function bridgeModel(ticks:number,weave:boolean){
+  const state=replayed(`bridge:${weave}`,ticks,bridgeSeed,(current,tick)=>bridgeStep(current,tick,weave));
+  return {...state,candidate:bridgeCandidate(ticks,weave)};
+}
+function drawBridge(p:any,l:Layer){const q=l.params,m=bridgeModel(Number(q.ticks),Boolean(q.weave));
   scale(p,640,()=>{const byId=new Map<number,number[]>(m.graph.nodes.map((node:any)=>[node.id,node.point]));p.noFill();color(p,l,2,75);p.strokeWeight(1);for(const edge of m.graph.edges)if(m.kinds.get(edge.id)==='strand')p.line(...byId.get(edge.a)!,...byId.get(edge.b)!);
     color(p,l,1,220);p.strokeWeight(2.2);for(const edge of m.graph.edges)if(m.kinds.get(edge.id)==='strand')p.line(...byId.get(edge.a)!,...byId.get(edge.b)!);
     color(p,l,0,230);p.strokeWeight(3.4);for(const edge of m.graph.edges)if(m.kinds.get(edge.id)==='bridge')p.line(...byId.get(edge.a)!,...byId.get(edge.b)!);
@@ -169,11 +192,18 @@ function initialElastic(){const nodes:any[]=[],curves:any[]=[];let nextEdgeId=0;
     for(let index=1;index<9;index++){const a=nodes[nodeIds[index-1]].position,b=nodes[nodeIds[index]].position,c=nodes[nodeIds[index+1]].position;const incoming=[b[0]-a[0],b[1]-a[1]],outgoing=[c[0]-b[0],c[1]-b[1]];restTurns.push(Math.atan2(incoming[0]*outgoing[1]-incoming[1]*outgoing[0],incoming[0]*outgoing[0]+incoming[1]*outgoing[1]));}
     curves.push({id:curveIndex,closed:false,nodeIds,edgeIds,restLengths,restTurns});}
   return {nodes,curves,nextNodeId:nodes.length,nextEdgeId};}
-function elasticModel(ticks:number,reverseCurl:boolean,windX:number){const seed=initialElastic();let state:any=seed;
-  for(let tick=0;tick<ticks;tick++){const restGrowth=state.curves.map((curve:any)=>curve.restLengths.map((length:number)=>length*.018));const turnRates=state.curves.map((curve:any)=>curve.restTurns.map((_:number,index:number)=>{const id=curve.nodeIds[index+1];if(id>=seed.nodes.length)return 0;const direction=curve.id===1?-1:1,profile=.7+.3*Math.sin(Math.PI*(id%10)/9);return (reverseCurl?-1:1)*direction*.09*profile;}));
-    const externalAccelerations=state.nodes.map(()=>[windX,0]);state=elasticCurveGrowStep2D({state,restGrowth,turnRates,externalAccelerations,stretchStiffness:.03,bendStiffness:80,contactRange:55,contactStrength:18,damping:.88,dt:.4,maxSpeed:6,maxSegmentLength:42,maxNodes:160,maxEdges:160,maxWork:400000,maxBacktracks:8}).state;}
-  return {state,seed};}
-function drawElastic(p:any,l:Layer){const q=l.params,m=retained(`elastic:${q.ticks}:${q.reverseCurl}:${q.windX}`,()=>elasticModel(Number(q.ticks),Boolean(q.reverseCurl),Number(q.windX)));
+function elasticStep(state:any,seedNodeCount:number,reverseCurl:boolean,windX:number){
+  const restGrowth=state.curves.map((curve:any)=>curve.restLengths.map((length:number)=>length*.018));
+  const turnRates=state.curves.map((curve:any)=>curve.restTurns.map((_:number,index:number)=>{const id=curve.nodeIds[index+1];if(id>=seedNodeCount)return 0;const direction=curve.id===1?-1:1,profile=.7+.3*Math.sin(Math.PI*(id%10)/9);return (reverseCurl?-1:1)*direction*.09*profile;}));
+  const externalAccelerations=state.nodes.map(()=>[windX,0]);
+  return elasticCurveGrowStep2D({state,restGrowth,turnRates,externalAccelerations,stretchStiffness:.03,bendStiffness:80,contactRange:55,contactStrength:18,damping:.88,dt:.4,maxSpeed:6,maxSegmentLength:42,maxNodes:160,maxEdges:160,maxWork:400000,maxBacktracks:8}).state;
+}
+function elasticModel(ticks:number,reverseCurl:boolean,windX:number){
+  const seed=retained('elastic-seed',initialElastic);
+  const state=replayed(`elastic:${reverseCurl}:${windX}`,ticks,()=>seed,current=>elasticStep(current,seed.nodes.length,reverseCurl,windX),1,48);
+  return {state,seed};
+}
+function drawElastic(p:any,l:Layer){const q=l.params,m=elasticModel(Number(q.ticks),Boolean(q.reverseCurl),Number(q.windX));
   scale(p,640,()=>{p.strokeCap(p.ROUND);const initial=new Map<number,number[]>(m.seed.nodes.map((node:any)=>[node.id,node.position]));const current=new Map<number,number[]>(m.state.nodes.map((node:any)=>[node.id,node.position]));
     color(p,l,2,80);p.strokeWeight(1.2);for(const curve of m.seed.curves)for(let i=1;i<curve.nodeIds.length;i++)p.line(...initial.get(curve.nodeIds[i-1])!,...initial.get(curve.nodeIds[i])!);
     for(const curve of m.state.curves){color(p,l,0);p.strokeWeight(13);for(let i=1;i<curve.nodeIds.length;i++)p.line(...current.get(curve.nodeIds[i-1])!,...current.get(curve.nodeIds[i])!);
@@ -183,9 +213,13 @@ function drawElastic(p:any,l:Layer){const q=l.params,m=retained(`elastic:${q.tic
     p.noStroke();for(const curve of m.state.curves){fill(p,l,4);p.circle(...current.get(curve.nodeIds[0])!,10);fill(p,l,curve.id+1);p.circle(...current.get(curve.nodeIds.at(-1))!,9);}
   });}
 
-function fluidModel(ticks:number,injection:number,viscosity:number,projection:boolean,texture:boolean){let state=initialFluid(texture);for(let tick=0;tick<ticks;tick++)state=stepFluid(state,{injection,viscosity,projection});return state;}
+function fluidModel(ticks:number,injection:number,viscosity:number,projection:boolean,texture:boolean){
+  // Fluid frames are large, so snapshots are kept every tenth step instead of every step.
+  return replayed(`fluid:${injection}:${viscosity}:${projection}:${texture}`,ticks,
+    ()=>initialFluid(texture),state=>stepFluid(state,{injection,viscosity,projection}),10,16);
+}
 function drawFluid(p:any,l:Layer){const q=l.params,key=`fluid:${q.ticks}:${q.injection}:${q.viscosity}:${q.projection}:${q.texture}`;
-  const state=retained(key,()=>fluidModel(Number(q.ticks),Number(q.injection),Number(q.viscosity),Boolean(q.projection),Boolean(q.texture)));
+  const state=fluidModel(Number(q.ticks),Number(q.injection),Number(q.viscosity),Boolean(q.projection),Boolean(q.texture));
   scale(p,720,()=>{const inks=[rgb(l,2),rgb(l,4),rgb(l,1)];p.noStroke();const image=p.createImage(FLUID_SIZE,FLUID_SIZE);image.loadPixels();
     for(let i=0;i<CELLS;i++){const amounts=state.dyes.map((dye:number[])=>Math.min(1,Math.max(0,dye[i]))),total=amounts[0]+amounts[1]+amounts[2],opacity=Math.min(.98,total*1.7);
       for(let c=0;c<3;c++)image.pixels[4*i+c]=total?amounts.reduce((sum:number,weight:number,k:number)=>sum+weight*inks[k][c],0)/total:0;
