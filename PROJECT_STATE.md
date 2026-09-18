@@ -131,10 +131,15 @@ merge settled: the nine dynamics studies are now interactive (worst single edit 
 The [visual operations acceptance](evidence/expansion/visual-operations/root-review.json) now
 records root acceptance for the five exported operations (weighted-image, recorded-controls,
 mesh-attribute, implicit-ray), with conformant p5.js cores and four scoped native studies. The
-nine dynamics studies still need art direction and a root creative verdict before any release,
-and the catalog binding reconciliation (stale hashes for the shared web surface, the package
-index and py5 records) is the next gate before the generated reference can be rewritten.
-Later I families and deeper-audit gaps remain.
+nine dynamics studies are art-directed (see the
+[creative review](docs/dynamics-creative-review.md)); the catalog
+binding reconciliation (stale hashes for the shared web surface, the package index and py5
+records) is complete, and the Design-family decision is recorded: the intersection-graph
+editing and RNG-evolution studies deliver as compositions of the four accepted
+connected-growth-and-graphs operations, with the neighborhood-growth study still missing its
+node-insertion coupling. The next gate is that study extension plus the creative-quality
+finalization of the bridge-web and neighborhood-growth studies. Later I families and
+deeper-audit gaps remain.
 
 - Other-target ports remain separate. The [port handoff](docs/porting-resume.md) tracks Python
   attestation reconciliation, Android ProfileMarks lifecycle validation and Java backlog.
