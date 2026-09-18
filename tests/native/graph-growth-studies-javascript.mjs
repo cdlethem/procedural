@@ -16,7 +16,7 @@ const relativePath = path => relative(root, path).split(sep).join("/");
 const files = path => readdirSync(path, { withFileTypes: true }).flatMap(entry =>
   entry.isDirectory() ? files(join(path, entry.name)) : [join(path, entry.name)]);
 const sources = [fileURLToPath(import.meta.url), join(root, "tools/serve_external_expansion_studies.mjs"),
-  ...["insert-segment-bridge-2d", "relative-neighborhood-pairs-2d", "threshold-edge-relaxation-2d"].map(name => join(packageRoot, `src/${name}.js`)),
+  ...["insert-segment-bridge-2d", "relative-neighborhood-pairs-2d", "threshold-edge-relaxation-2d", "radius-pairs-2d"].map(name => join(packageRoot, `src/${name}.js`)),
   join(packageRoot, "src/internal/graph-growth-utils.js"),
   join(packageRoot, "src/internal/exact-rational.js"), join(packageRoot, "src/internal/fdlibm-hypot.js"),
   ...["bridge-web", "neighborhood-growth"].flatMap(name => files(join(packageRoot, `examples/${name}`))),
@@ -29,7 +29,7 @@ const before = sourceHashes();
 const { chromium } = await import(join(root, ".work/environments/p5js/node_modules/playwright/index.mjs"));
 process.env.PLAYWRIGHT_BROWSERS_PATH = join(root, ".work/toolchains/playwright");
 const server = await startExternalExpansionServer(0, { packageRoot }); let browser;
-const report = { status: "running", packageRoot, runtime: "p5 2.3.2 Canvas2D density1", scope: "Original bridge-web sequence and neighborhood transfer; real graph edits, source bindings, pixels, reset/reload/save and bounded browser-step timing. No target acceptance.", input_sha256_before: before, studies: [] };
+const report = { status: "running", packageRoot, runtime: "p5 2.3.2 Canvas2D density1", scope: "Original bridge-web sequence and coupled neighborhood growth: density-filtered insertion, growth toggle, real graph edits, source bindings, pixels, reset/reload/save and bounded browser-step timing. No target acceptance.", input_sha256_before: before, studies: [] };
 try {
   browser = await chromium.launch({ headless: true, args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--disable-accelerated-2d-canvas"] });
   report.browser = browser.version();
@@ -95,15 +95,24 @@ try {
       assert.equal(transferred.state.tick, 11); assert.ok(transferred.state.lastEvents.some(event => event.type === 'link'));
       transfer = "independent five-strand graph receives a new selected bridge";
     } else {
+      assert.ok(early.state.inserted > 0, "growth inserts nodes on the first tick");
+      await action('n'); const growthOff = await capture("growth-off"); frames.push(growthOff);
+      assert.equal(growthOff.state.growth, false); assert.equal(growthOff.state.tick, 1);
+      await action('.'); const frozen = await capture("growth-off-step"); frames.push(frozen);
+      assert.equal(frozen.state.tick, 2);
+      assert.equal(frozen.state.points.length, early.state.points.length, "growth off freezes the point set");
+      assert.notEqual(frozen.png_sha256, growthOff.png_sha256, "relaxation still moves points");
+      await action('n'); const growthOn = await capture("growth-on"); frames.push(growthOn);
+      assert.equal(growthOn.state.growth, true); assert.equal(growthOn.state.tick, 2);
       await action('g'); const edit = await capture("appearance-edit"); frames.push(edit);
-      assert.equal(edit.state.tick, 1); assert.notEqual(edit.png_sha256, early.png_sha256);
+      assert.equal(edit.state.tick, 2); assert.notEqual(edit.png_sha256, growthOn.png_sha256);
       const pairs = Array.from({ length: edit.state.points.length - 1 }, (_, i) => [i, i + 1]);
       await page.evaluate(value => window.neighborhoodGrowth.setPairs(value), pairs);
       const supplied = await capture("supplied-graph"); frames.push(supplied);
       assert.deepEqual(supplied.state.pairs, pairs); assert.deepEqual(supplied.state.points, edit.state.points);
       await action('.'); const transferred = await capture("transfer-next-tick"); frames.push(transferred);
-      assert.equal(transferred.state.tick, 2); assert.notEqual(transferred.png_sha256, supplied.png_sha256);
-      transfer = "independent ordered pair graph changes one relaxation";
+      assert.equal(transferred.state.tick, 3); assert.notEqual(transferred.png_sha256, supplied.png_sha256);
+      transfer = "coupled density-filtered insertion and relaxation; independent ordered pair graph changes one relaxation";
     }
     await action('0'); const reset = await capture("reset"); frames.push(reset);
     assert.deepEqual(reset.state, baseline.state); assert.equal(reset.png_sha256, baseline.png_sha256);

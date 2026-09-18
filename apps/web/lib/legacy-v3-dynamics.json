@@ -1,0 +1,1216 @@
+{
+  "bindingVersion": "studio-v3",
+  "catalogSha256": "ee83bbc6ae7fb6fffdb1e293bbf5ab7e41b6d983903bacc55b00270fe5998b40",
+  "techniques": [
+    {
+      "technique": "field-marks",
+      "operations": [
+        {
+          "id": "layout.regular-grid",
+          "version": "0.1.0",
+          "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734"
+        },
+        {
+          "id": "field.gradient-noise-2d-01",
+          "version": "0.1.0",
+          "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+        },
+        {
+          "id": "color.cyclic-palette",
+          "version": "0.1.0",
+          "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9"
+        }
+      ]
+    },
+    {
+      "technique": "path-marks",
+      "operations": [
+        {
+          "id": "layout.regular-grid",
+          "version": "0.1.0",
+          "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734"
+        },
+        {
+          "id": "field.gradient-noise-2d-01",
+          "version": "0.1.0",
+          "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+        },
+        {
+          "id": "path.gradient-trace-2d",
+          "version": "0.1.0",
+          "sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c"
+        }
+      ]
+    },
+    {
+      "technique": "placement-marks",
+      "operations": [
+        {
+          "id": "sampling.seeded-circle-placement-2d",
+          "version": "0.1.0",
+          "sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267"
+        },
+        {
+          "id": "sampling.ordered-circle-filter-2d",
+          "version": "0.1.0",
+          "sha256": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083"
+        }
+      ]
+    },
+    {
+      "technique": "lattice-marks",
+      "operations": [
+        {
+          "id": "path.occupied-lattice-paths-2d",
+          "version": "0.1.0",
+          "sha256": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d"
+        },
+        {
+          "id": "color.cyclic-palette",
+          "version": "0.1.0",
+          "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9"
+        }
+      ]
+    },
+    {
+      "technique": "band-marks",
+      "operations": [
+        {
+          "id": "path.noise-band-trace-2d",
+          "version": "0.1.0",
+          "sha256": "245c3350d3cc139d9f208fa768f14e5439bd434c58afaf2e4f63d6f66763588f"
+        }
+      ]
+    },
+    {
+      "technique": "branch-marks",
+      "operations": [
+        {
+          "id": "topology.seeded-endpoint-branches-2d",
+          "version": "0.1.0",
+          "sha256": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881"
+        },
+        {
+          "id": "sampling.seeded-circle-placement-2d",
+          "version": "0.1.0",
+          "sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267"
+        }
+      ]
+    },
+    {
+      "technique": "cut-branch-marks",
+      "operations": [
+        {
+          "id": "topology.seeded-line-pool-2d",
+          "version": "0.1.0",
+          "sha256": "7236eaf10bdd8cb21107096f7962e248967c9aa6813573f11784a63ba0007e4a"
+        }
+      ]
+    },
+    {
+      "technique": "loop-marks",
+      "operations": [
+        {
+          "id": "geometry.closed-spline-2d",
+          "version": "0.1.0",
+          "sha256": "59a28d5feee19597ebfd97eb9ca5a1ecc77c5f06d4cc57dc2b39a70998a10b3b"
+        }
+      ]
+    },
+    {
+      "technique": "region-marks",
+      "operations": [
+        {
+          "id": "layout.seeded-quadrant-partition-2d",
+          "version": "0.1.0",
+          "sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1"
+        }
+      ]
+    },
+    {
+      "technique": "panel-marks",
+      "operations": [
+        {
+          "id": "layout.binary-cell-partition-2d",
+          "version": "0.1.0",
+          "sha256": "62f7b5c8c0dc020a639d821c9e2114e1792cb3da29623035491255294c89e345"
+        }
+      ]
+    },
+    {
+      "technique": "cut-marks",
+      "operations": [
+        {
+          "id": "layout.retained-rectangle-cuts-2d",
+          "version": "0.1.0",
+          "sha256": "e8797eb0b44201752042091b568090d1355a9f2338ae27164b1671a505829e4c"
+        },
+        {
+          "id": "field.gradient-noise-2d-01",
+          "version": "0.1.0",
+          "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+        }
+      ]
+    },
+    {
+      "technique": "polygon-marks",
+      "operations": [
+        {
+          "id": "sampling.ordered-convex-polygon-filter-2d",
+          "version": "0.1.0",
+          "sha256": "64ec6cbf60c04c612cbf2f8ad0c427853b48c3c7585ebf2cdd0938151604599e"
+        },
+        {
+          "id": "sampling.seeded-triangle-points-2d",
+          "version": "0.1.0",
+          "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+        }
+      ]
+    },
+    {
+      "technique": "facet-marks",
+      "operations": [
+        {
+          "id": "topology.delaunay-2d",
+          "version": "0.1.0",
+          "sha256": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf"
+        },
+        {
+          "id": "sampling.seeded-triangle-points-2d",
+          "version": "0.1.0",
+          "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+        }
+      ]
+    },
+    {
+      "technique": "grain-marks",
+      "operations": [
+        {
+          "id": "sampling.seeded-triangle-points-2d",
+          "version": "0.1.0",
+          "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+        },
+        {
+          "id": "sampling.triangle-coordinate-map-2d",
+          "version": "0.1.0",
+          "sha256": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f"
+        },
+        {
+          "id": "layout.seeded-quadrant-partition-2d",
+          "version": "0.1.0",
+          "sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1"
+        }
+      ]
+    },
+    {
+      "technique": "pull-marks",
+      "operations": [
+        {
+          "id": "geometry.radial-pull-2d",
+          "version": "0.1.0",
+          "sha256": "63e089d2ab61b4a4e8cb1f48684cb69e7268574ebebd15d34e405b9595366788"
+        }
+      ]
+    },
+    {
+      "technique": "projection-marks",
+      "operations": [
+        {
+          "id": "geometry.sequential-disc-projection-2d",
+          "version": "0.1.0",
+          "sha256": "f7e90d17f37d87fe1ae63975ed5fcae3e79e3d1d59d0eb7b78da6114078dd206"
+        }
+      ]
+    },
+    {
+      "technique": "path-clip-marks",
+      "operations": [
+        {
+          "id": "geometry.clip-segments-simple-polygon-2d",
+          "version": "0.1.0",
+          "sha256": "c10f0619f16d5aca4bce2f7ab6a02f2693f7d59e2177b39521410959b27a4292"
+        }
+      ]
+    },
+    {
+      "technique": "ramp-marks",
+      "operations": [
+        {
+          "id": "color.stop-ramp",
+          "version": "0.1.0",
+          "sha256": "7a2d7c1e2e1df26e07a4b88012f8164bef611b76eb8920f22ce0bc1167b95fc6"
+        }
+      ]
+    },
+    {
+      "technique": "warp-marks",
+      "operations": [
+        {
+          "id": "raster.bilinear-remap-2d",
+          "version": "0.1.0",
+          "sha256": "b8fe845f220644ee7c3bf24e7df9c3aecf5195edcce7b69f51fe530f176ee176"
+        },
+        {
+          "id": "field.gradient-noise-3d-01",
+          "version": "0.1.0",
+          "sha256": "b8fbe28e287089f21c2cd590af3eec36be077bb77cb18d717a1778c380be7d82"
+        }
+      ]
+    },
+    {
+      "technique": "blur-marks",
+      "operations": [
+        {
+          "id": "raster.separable-blur-2d",
+          "version": "0.1.0",
+          "sha256": "f17c33f68218f36bdbecf131377bc868d409b0c1db9844cad39e6f6f1c59743f"
+        }
+      ]
+    },
+    {
+      "technique": "profile-marks",
+      "operations": [
+        {
+          "id": "mesh.radial-profile-surface-3d",
+          "version": "0.1.0",
+          "sha256": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa"
+        }
+      ]
+    },
+    {
+      "technique": "annular-marks",
+      "operations": [
+        {
+          "id": "mesh.annular-solid-3d",
+          "version": "0.1.0",
+          "sha256": "856da2ea0449233334c5e152f9eae1c589a9b2b6656ced8af93e73daac39ee6a"
+        }
+      ]
+    },
+    {
+      "technique": "depth-marks",
+      "operations": [
+        {
+          "id": "field.gradient-noise-3d-01",
+          "version": "0.1.0",
+          "sha256": "b8fbe28e287089f21c2cd590af3eec36be077bb77cb18d717a1778c380be7d82"
+        },
+        {
+          "id": "mesh.radial-profile-surface-3d",
+          "version": "0.1.0",
+          "sha256": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa"
+        }
+      ]
+    },
+    {
+      "technique": "spring-marks",
+      "operations": [
+        {
+          "id": "motion.target-springs-2d",
+          "version": "0.1.0",
+          "sha256": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3"
+        }
+      ]
+    },
+    {
+      "technique": "cell-mosaic",
+      "operations": [
+        {
+          "id": "geometry.voronoi-cells-2d",
+          "version": "0.1.0",
+          "sha256": "dda5746cfd2ad4181bafde90011ed40158369f8c124ae822547dab5e37732298"
+        }
+      ]
+    },
+    {
+      "technique": "cell-echoes",
+      "operations": [
+        {
+          "id": "geometry.voronoi-cells-2d",
+          "version": "0.1.0",
+          "sha256": "dda5746cfd2ad4181bafde90011ed40158369f8c124ae822547dab5e37732298"
+        }
+      ]
+    },
+    {
+      "technique": "stitched-paths",
+      "operations": [
+        {
+          "id": "geometry.resample-polyline-2d",
+          "version": "0.1.0",
+          "sha256": "fa2cb4d64c9ed2b38022e9d5bbaa4b3be8e70782642e826c954acc5b2f6e4a6e"
+        }
+      ]
+    },
+    {
+      "technique": "orbit-beads",
+      "operations": [
+        {
+          "id": "geometry.resample-polyline-2d",
+          "version": "0.1.0",
+          "sha256": "fa2cb4d64c9ed2b38022e9d5bbaa4b3be8e70782642e826c954acc5b2f6e4a6e"
+        }
+      ]
+    },
+    {
+      "technique": "contour-terrain",
+      "operations": [
+        {
+          "id": "geometry.marching-squares-2d",
+          "version": "0.1.0",
+          "sha256": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676"
+        },
+        {
+          "id": "field.gradient-noise-2d-01",
+          "version": "0.1.0",
+          "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+        }
+      ]
+    },
+    {
+      "technique": "contour-blobs",
+      "operations": [
+        {
+          "id": "geometry.marching-squares-2d",
+          "version": "0.1.0",
+          "sha256": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676"
+        }
+      ]
+    },
+    {
+      "technique": "rounded-panels",
+      "operations": [
+        {
+          "id": "geometry.chaikin-polyline-2d",
+          "version": "0.1.0",
+          "sha256": "09af54b33d4653f004e650b6c7db0ffdff7b5c25a9d885d7ec1f4d6ecfc126e9"
+        }
+      ]
+    },
+    {
+      "technique": "flowing-brushes",
+      "operations": [
+        {
+          "id": "geometry.chaikin-polyline-2d",
+          "version": "0.1.0",
+          "sha256": "09af54b33d4653f004e650b6c7db0ffdff7b5c25a9d885d7ec1f4d6ecfc126e9"
+        }
+      ]
+    },
+    {
+      "technique": "contour-abstraction",
+      "operations": [
+        {
+          "id": "geometry.simplify-polyline-2d",
+          "version": "0.1.0",
+          "sha256": "e0012dd8edad7be850d36d38da7945506107f8afaa8aa30ab2665a25bb84cb47"
+        }
+      ]
+    },
+    {
+      "technique": "gesture-skeletons",
+      "operations": [
+        {
+          "id": "geometry.simplify-polyline-2d",
+          "version": "0.1.0",
+          "sha256": "e0012dd8edad7be850d36d38da7945506107f8afaa8aa30ab2665a25bb84cb47"
+        }
+      ]
+    },
+    {
+      "technique": "road-margins",
+      "operations": [
+        {
+          "id": "geometry.offset-polyline-2d",
+          "version": "0.1.0",
+          "sha256": "5ef8d7371f5a92165e2217de0b6f932a1763a736cbb01e9e65901c8d5ae265cd"
+        }
+      ]
+    },
+    {
+      "technique": "nested-contour-strokes",
+      "operations": [
+        {
+          "id": "geometry.offset-polyline-2d",
+          "version": "0.1.0",
+          "sha256": "5ef8d7371f5a92165e2217de0b6f932a1763a736cbb01e9e65901c8d5ae265cd"
+        }
+      ]
+    },
+    {
+      "technique": "scatter-envelopes",
+      "operations": [
+        {
+          "id": "geometry.convex-hull-2d",
+          "version": "0.1.0",
+          "sha256": "80bd320181da0436b907edc0956f4bd171063189f3a7a5b7aa562c335a3945d6"
+        }
+      ]
+    },
+    {
+      "technique": "terraced-islands",
+      "operations": [
+        {
+          "id": "geometry.convex-hull-2d",
+          "version": "0.1.0",
+          "sha256": "80bd320181da0436b907edc0956f4bd171063189f3a7a5b7aa562c335a3945d6"
+        }
+      ]
+    },
+    {
+      "technique": "faceted-silhouettes",
+      "operations": [
+        {
+          "id": "geometry.triangulate-simple-polygon-2d",
+          "version": "0.1.0",
+          "sha256": "c0a2a5a14b43e659408568ed6a0d1e291d169a0bd0177607f926ed589c32e7fe"
+        }
+      ]
+    },
+    {
+      "technique": "concave-grain",
+      "operations": [
+        {
+          "id": "geometry.triangulate-simple-polygon-2d",
+          "version": "0.1.0",
+          "sha256": "c0a2a5a14b43e659408568ed6a0d1e291d169a0bd0177607f926ed589c32e7fe"
+        }
+      ]
+    },
+    {
+      "technique": "stitched-contours",
+      "operations": [
+        {
+          "id": "geometry.assemble-segment-chains-2d",
+          "version": "0.1.0",
+          "sha256": "0bcca5f3566425488335e16b27225831f37e1f923c4b473b8211c974432a18d5"
+        }
+      ]
+    },
+    {
+      "technique": "fragmented-lines",
+      "operations": [
+        {
+          "id": "geometry.assemble-segment-chains-2d",
+          "version": "0.1.0",
+          "sha256": "0bcca5f3566425488335e16b27225831f37e1f923c4b473b8211c974432a18d5"
+        }
+      ]
+    },
+    {
+      "technique": "blue-noise-stipple",
+      "operations": [
+        {
+          "id": "sampling.poisson-disc-2d",
+          "version": "0.1.0",
+          "sha256": "1524ff9322eb4f9219de7666dd086fcba8c2a248aefab7784f74d0d5d4456678"
+        }
+      ]
+    },
+    {
+      "technique": "spaced-symbols",
+      "operations": [
+        {
+          "id": "sampling.poisson-disc-2d",
+          "version": "0.1.0",
+          "sha256": "1524ff9322eb4f9219de7666dd086fcba8c2a248aefab7784f74d0d5d4456678"
+        }
+      ]
+    },
+    {
+      "technique": "relaxed-stones",
+      "operations": [
+        {
+          "id": "layout.lloyd-relaxation-2d",
+          "version": "0.1.0",
+          "sha256": "a9d3fbc46feecb704985901e0c98fa084ff2949a6d45600f4e95a5983867700b"
+        },
+        {
+          "id": "geometry.voronoi-cells-2d",
+          "version": "0.1.0",
+          "sha256": "dda5746cfd2ad4181bafde90011ed40158369f8c124ae822547dab5e37732298"
+        }
+      ]
+    },
+    {
+      "technique": "centroid-trails",
+      "operations": [
+        {
+          "id": "layout.lloyd-relaxation-2d",
+          "version": "0.1.0",
+          "sha256": "a9d3fbc46feecb704985901e0c98fa084ff2949a6d45600f4e95a5983867700b"
+        }
+      ]
+    },
+    {
+      "technique": "packed-posters",
+      "operations": [
+        {
+          "id": "layout.skyline-pack-2d",
+          "version": "0.1.0",
+          "sha256": "3a18b6431b1cc1f75ba4fee400f4edc45ed046f90c584f7410d60a76660b4a89"
+        }
+      ]
+    },
+    {
+      "technique": "aspect-tiles",
+      "operations": [
+        {
+          "id": "layout.skyline-pack-2d",
+          "version": "0.1.0",
+          "sha256": "3a18b6431b1cc1f75ba4fee400f4edc45ed046f90c584f7410d60a76660b4a89"
+        }
+      ]
+    },
+    {
+      "technique": "obstacle-roads",
+      "operations": [
+        {
+          "id": "path.cost-grid-paths-2d",
+          "version": "0.1.0",
+          "sha256": "8a8661ac5c683e0a174c9afe1013bcd455be6cb05b76524d970a6646730d671c"
+        }
+      ]
+    },
+    {
+      "technique": "arrival-contours",
+      "operations": [
+        {
+          "id": "path.cost-grid-paths-2d",
+          "version": "0.1.0",
+          "sha256": "8a8661ac5c683e0a174c9afe1013bcd455be6cb05b76524d970a6646730d671c"
+        },
+        {
+          "id": "geometry.marching-squares-2d",
+          "version": "0.1.0",
+          "sha256": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676"
+        }
+      ]
+    },
+    {
+      "technique": "stream-ribbons",
+      "operations": [
+        {
+          "id": "path.rk4-vector-grid-trace-2d",
+          "version": "0.1.0",
+          "sha256": "c628a93303f8c18cb5719d7d5202d9059f1e9a07109c398328f0b991ab14f277"
+        }
+      ]
+    },
+    {
+      "technique": "curved-trajectories",
+      "operations": [
+        {
+          "id": "path.rk4-vector-grid-trace-2d",
+          "version": "0.1.0",
+          "sha256": "c628a93303f8c18cb5719d7d5202d9059f1e9a07109c398328f0b991ab14f277"
+        }
+      ]
+    },
+    {
+      "technique": "reaction-spots",
+      "operations": [
+        {
+          "id": "field.gray-scott-step-2d",
+          "version": "0.1.0",
+          "sha256": "b7930b8a02939cfa742810f3e66f370b698e71d0408873bb81d4f47c41334a54"
+        }
+      ]
+    },
+    {
+      "technique": "reaction-stripes",
+      "operations": [
+        {
+          "id": "field.gray-scott-step-2d",
+          "version": "0.1.0",
+          "sha256": "b7930b8a02939cfa742810f3e66f370b698e71d0408873bb81d4f47c41334a54"
+        }
+      ]
+    },
+    {
+      "technique": "organic-cells",
+      "operations": [
+        {
+          "id": "field.life-like-step-2d",
+          "version": "0.1.0",
+          "sha256": "7843f5f141b92ae9225fb137809f02aa40222fa9605b307408112e019709e102"
+        }
+      ]
+    },
+    {
+      "technique": "geometric-generations",
+      "operations": [
+        {
+          "id": "field.life-like-step-2d",
+          "version": "0.1.0",
+          "sha256": "7843f5f141b92ae9225fb137809f02aa40222fa9605b307408112e019709e102"
+        }
+      ]
+    },
+    {
+      "technique": "woven-rows",
+      "operations": [
+        {
+          "id": "field.elementary-cellular-rows",
+          "version": "0.1.0",
+          "sha256": "8b3409e8fef51e936d5b776197bfb46ddefcdfcb964d410e3eb04d12e36294ab"
+        }
+      ]
+    },
+    {
+      "technique": "triangle-glyphs",
+      "operations": [
+        {
+          "id": "field.elementary-cellular-rows",
+          "version": "0.1.0",
+          "sha256": "8b3409e8fef51e936d5b776197bfb46ddefcdfcb964d410e3eb04d12e36294ab"
+        }
+      ]
+    },
+    {
+      "technique": "swirling-particles",
+      "operations": [
+        {
+          "id": "field.scalar-grid-curl-2d",
+          "version": "0.1.0",
+          "sha256": "98243d349977f758fe8afd75f9c661e1e38123ae4062b2c54926ce551e80ade2"
+        },
+        {
+          "id": "path.rk4-vector-grid-trace-2d",
+          "version": "0.1.0",
+          "sha256": "c628a93303f8c18cb5719d7d5202d9059f1e9a07109c398328f0b991ab14f277"
+        }
+      ]
+    },
+    {
+      "technique": "flow-needles",
+      "operations": [
+        {
+          "id": "field.scalar-grid-curl-2d",
+          "version": "0.1.0",
+          "sha256": "98243d349977f758fe8afd75f9c661e1e38123ae4062b2c54926ce551e80ade2"
+        }
+      ]
+    },
+    {
+      "technique": "ripple-interference",
+      "operations": [
+        {
+          "id": "field.damped-wave-step-2d",
+          "version": "0.1.0",
+          "sha256": "382ac13f0ae6f075adc5e800c74533c50b65cccc476b6bf269efeff612b31fa0"
+        }
+      ]
+    },
+    {
+      "technique": "pinned-waves",
+      "operations": [
+        {
+          "id": "field.damped-wave-step-2d",
+          "version": "0.1.0",
+          "sha256": "382ac13f0ae6f075adc5e800c74533c50b65cccc476b6bf269efeff612b31fa0"
+        }
+      ]
+    },
+    {
+      "technique": "branching-sentences",
+      "operations": [
+        {
+          "id": "grammar.parallel-token-rewrite",
+          "version": "0.1.0",
+          "sha256": "b17e54d9ec73483b73be6c18590f61e8d03a3372d83c25a8a93c4ca8f2e1751f"
+        },
+        {
+          "id": "geometry.token-turtle-2d",
+          "version": "0.1.0",
+          "sha256": "e4ead6839381eedc688f6998b81f88764298d1a7f0abcf9a1ada4e9c89abdd6c"
+        }
+      ]
+    },
+    {
+      "technique": "woven-grammar",
+      "operations": [
+        {
+          "id": "grammar.parallel-token-rewrite",
+          "version": "0.1.0",
+          "sha256": "b17e54d9ec73483b73be6c18590f61e8d03a3372d83c25a8a93c4ca8f2e1751f"
+        },
+        {
+          "id": "geometry.token-turtle-2d",
+          "version": "0.1.0",
+          "sha256": "e4ead6839381eedc688f6998b81f88764298d1a7f0abcf9a1ada4e9c89abdd6c"
+        }
+      ]
+    },
+    {
+      "technique": "turtle-canopies",
+      "operations": [
+        {
+          "id": "geometry.token-turtle-2d",
+          "version": "0.1.0",
+          "sha256": "e4ead6839381eedc688f6998b81f88764298d1a7f0abcf9a1ada4e9c89abdd6c"
+        },
+        {
+          "id": "grammar.parallel-token-rewrite",
+          "version": "0.1.0",
+          "sha256": "b17e54d9ec73483b73be6c18590f61e8d03a3372d83c25a8a93c4ca8f2e1751f"
+        }
+      ]
+    },
+    {
+      "technique": "recursive-tiles",
+      "operations": [
+        {
+          "id": "geometry.token-turtle-2d",
+          "version": "0.1.0",
+          "sha256": "e4ead6839381eedc688f6998b81f88764298d1a7f0abcf9a1ada4e9c89abdd6c"
+        },
+        {
+          "id": "grammar.parallel-token-rewrite",
+          "version": "0.1.0",
+          "sha256": "b17e54d9ec73483b73be6c18590f61e8d03a3372d83c25a8a93c4ca8f2e1751f"
+        }
+      ]
+    },
+    {
+      "technique": "compatible-mosaics",
+      "operations": [
+        {
+          "id": "layout.adjacency-tile-collapse-2d",
+          "version": "0.1.0",
+          "sha256": "62e4a9196e96f258b15851400104dbb1d5af4463fe67927f432340849baf8181"
+        }
+      ]
+    },
+    {
+      "technique": "tiled-circuits",
+      "operations": [
+        {
+          "id": "layout.adjacency-tile-collapse-2d",
+          "version": "0.1.0",
+          "sha256": "62e4a9196e96f258b15851400104dbb1d5af4463fe67927f432340849baf8181"
+        }
+      ]
+    },
+    {
+      "technique": "maze-gardens",
+      "operations": [
+        {
+          "id": "topology.seeded-depth-first-spanning-tree",
+          "version": "0.1.0",
+          "sha256": "cda68a463c55e0960ff04811c996dc24f81c257f6aa1222ce4ffeddc34471b12"
+        }
+      ]
+    },
+    {
+      "technique": "branching-networks",
+      "operations": [
+        {
+          "id": "topology.seeded-depth-first-spanning-tree",
+          "version": "0.1.0",
+          "sha256": "cda68a463c55e0960ff04811c996dc24f81c257f6aa1222ce4ffeddc34471b12"
+        }
+      ]
+    },
+    {
+      "technique": "diffusion-engraving",
+      "operations": [
+        {
+          "id": "raster.floyd-steinberg-dither",
+          "version": "0.1.0",
+          "sha256": "a934c941ad3768e5696456c33e1ad6dbefb7163adee18e97a3b412aeec11a384"
+        }
+      ]
+    },
+    {
+      "technique": "dithered-ribbons",
+      "operations": [
+        {
+          "id": "raster.floyd-steinberg-dither",
+          "version": "0.1.0",
+          "sha256": "a934c941ad3768e5696456c33e1ad6dbefb7163adee18e97a3b412aeec11a384"
+        }
+      ]
+    },
+    {
+      "technique": "ordered-halftone",
+      "operations": [
+        {
+          "id": "raster.bayer-dither",
+          "version": "0.1.0",
+          "sha256": "3b033745983a2e8c09b7a65b5b9356b2f448c8383247255ea628264848fb3c1d"
+        }
+      ]
+    },
+    {
+      "technique": "bayer-weave",
+      "operations": [
+        {
+          "id": "raster.bayer-dither",
+          "version": "0.1.0",
+          "sha256": "3b033745983a2e8c09b7a65b5b9356b2f448c8383247255ea628264848fb3c1d"
+        }
+      ]
+    },
+    {
+      "technique": "embossed-field",
+      "operations": [
+        {
+          "id": "raster.convolve-2d-signed",
+          "version": "0.1.0",
+          "sha256": "7a2ba3fa1248fea4882e3aa995900be5712a8acab8e92626baafb87d1a5b8046"
+        }
+      ]
+    },
+    {
+      "technique": "signed-edge-print",
+      "operations": [
+        {
+          "id": "raster.convolve-2d-signed",
+          "version": "0.1.0",
+          "sha256": "7a2ba3fa1248fea4882e3aa995900be5712a8acab8e92626baafb87d1a5b8046"
+        }
+      ]
+    },
+    {
+      "technique": "distance-halos",
+      "operations": [
+        {
+          "id": "field.euclidean-distance-transform-2d",
+          "version": "0.1.0",
+          "sha256": "0fb09c95dd2aaa5d1ef8c9d69e2d1e9de4e2191e39bec0acdc727e5a1bf039d8"
+        }
+      ]
+    },
+    {
+      "technique": "nearest-feature-mosaic",
+      "operations": [
+        {
+          "id": "field.euclidean-distance-transform-2d",
+          "version": "0.1.0",
+          "sha256": "0fb09c95dd2aaa5d1ef8c9d69e2d1e9de4e2191e39bec0acdc727e5a1bf039d8"
+        }
+      ]
+    },
+    {
+      "technique": "eroded-lace",
+      "operations": [
+        {
+          "id": "raster.binary-morphology-2d",
+          "version": "0.1.0",
+          "sha256": "16333d923094ea8a4f6c6b7593e7630bc99d498586a8a841542c2430898838fd"
+        }
+      ]
+    },
+    {
+      "technique": "dilated-stamps",
+      "operations": [
+        {
+          "id": "raster.binary-morphology-2d",
+          "version": "0.1.0",
+          "sha256": "16333d923094ea8a4f6c6b7593e7630bc99d498586a8a841542c2430898838fd"
+        }
+      ]
+    },
+    {
+      "technique": "perceptual-bands",
+      "operations": [
+        {
+          "id": "color.oklab-ramp",
+          "version": "0.1.0",
+          "sha256": "c76e82bb32b75ba1734a4351d97c064ecdcec3ef118b939e4279d2ff407565c4"
+        }
+      ]
+    },
+    {
+      "technique": "oklab-orbits",
+      "operations": [
+        {
+          "id": "color.oklab-ramp",
+          "version": "0.1.0",
+          "sha256": "c76e82bb32b75ba1734a4351d97c064ecdcec3ef118b939e4279d2ff407565c4"
+        }
+      ]
+    },
+    {
+      "technique": "reduced-mosaic",
+      "operations": [
+        {
+          "id": "color.median-cut-quantize",
+          "version": "0.1.0",
+          "sha256": "461a0d5411043dfa8e06d84781a1ab8f952262ac2e369eb976c3831409039593"
+        }
+      ]
+    },
+    {
+      "technique": "quantized-stripes",
+      "operations": [
+        {
+          "id": "color.median-cut-quantize",
+          "version": "0.1.0",
+          "sha256": "461a0d5411043dfa8e06d84781a1ab8f952262ac2e369eb976c3831409039593"
+        }
+      ]
+    },
+    {
+      "technique": "extruded-seals",
+      "operations": [
+        {
+          "id": "mesh.extrude-simple-polygon-3d",
+          "version": "0.1.0",
+          "sha256": "0ad42afef703a17709ecf2b7495ee495befa4e018c83ebfe7f18b85ca9c60647"
+        }
+      ]
+    },
+    {
+      "technique": "stepped-blocks",
+      "operations": [
+        {
+          "id": "mesh.extrude-simple-polygon-3d",
+          "version": "0.1.0",
+          "sha256": "0ad42afef703a17709ecf2b7495ee495befa4e018c83ebfe7f18b85ca9c60647"
+        }
+      ]
+    },
+    {
+      "technique": "transported-ribbons",
+      "operations": [
+        {
+          "id": "mesh.parallel-transport-ribbon-3d",
+          "version": "0.1.0",
+          "sha256": "e3ed1e14c5648715b462c396825ffc4bf4bf779a00a17fa7932aef2d676ce625"
+        }
+      ]
+    },
+    {
+      "technique": "twisting-streamers",
+      "operations": [
+        {
+          "id": "mesh.parallel-transport-ribbon-3d",
+          "version": "0.1.0",
+          "sha256": "e3ed1e14c5648715b462c396825ffc4bf4bf779a00a17fa7932aef2d676ce625"
+        }
+      ]
+    },
+    {
+      "technique": "rounded-polyhedra",
+      "operations": [
+        {
+          "id": "mesh.loop-subdivide-triangles-3d",
+          "version": "0.1.0",
+          "sha256": "e1b346acede73a53671396ddb3355ab2126d9e1960cf2e79935d7a2e046fa8c6"
+        }
+      ]
+    },
+    {
+      "technique": "subdivided-shells",
+      "operations": [
+        {
+          "id": "mesh.loop-subdivide-triangles-3d",
+          "version": "0.1.0",
+          "sha256": "e1b346acede73a53671396ddb3355ab2126d9e1960cf2e79935d7a2e046fa8c6"
+        }
+      ]
+    },
+    {
+      "technique": "ornament-poster",
+      "operations": [
+        {
+          "id": "sampling.seeded-circle-placement-2d",
+          "version": "0.1.0",
+          "sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267"
+        }
+      ]
+    },
+    {
+      "technique": "geometric-panel",
+      "operations": [
+        {
+          "id": "layout.regular-grid",
+          "version": "0.1.0",
+          "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734"
+        }
+      ]
+    },
+    {
+      "technique": "orbital-brush",
+      "operations": [
+        {
+          "id": "geometry.resample-polyline-2d",
+          "version": "0.1.0",
+          "sha256": "fa2cb4d64c9ed2b38022e9d5bbaa4b3be8e70782642e826c954acc5b2f6e4a6e"
+        }
+      ]
+    },
+    {
+      "technique": "contact-network",
+      "operations": [
+        {
+          "id": "spatial.radius-pairs-2d",
+          "version": "0.1.0",
+          "sha256": "638f8d69aaae5f16a425a48f63b4c2133892aea2b931b84ae2986966d0b3125b"
+        },
+        {
+          "id": "motion.pair-force-step-2d",
+          "version": "0.1.0",
+          "sha256": "61fff3a5ef7b6b5d5c90c92bdcdb9fe4bf0927980c2d1acaf59f3e45a42884b5"
+        }
+      ]
+    },
+    {
+      "technique": "agent-trails",
+      "operations": [
+        {
+          "id": "spatial.radius-pairs-2d",
+          "version": "0.1.0",
+          "sha256": "638f8d69aaae5f16a425a48f63b4c2133892aea2b931b84ae2986966d0b3125b"
+        },
+        {
+          "id": "motion.pair-force-step-2d",
+          "version": "0.1.0",
+          "sha256": "61fff3a5ef7b6b5d5c90c92bdcdb9fe4bf0927980c2d1acaf59f3e45a42884b5"
+        }
+      ]
+    },
+    {
+      "technique": "lingering-links",
+      "operations": [
+        {
+          "id": "spatial.radius-pairs-2d",
+          "version": "0.1.0",
+          "sha256": "638f8d69aaae5f16a425a48f63b4c2133892aea2b931b84ae2986966d0b3125b"
+        },
+        {
+          "id": "spatial.contact-history-2d",
+          "version": "0.1.0",
+          "sha256": "95a9075cc72c1bc409f722e7e3600e147170c7daac717c04f19b42157c2ccaaf"
+        }
+      ]
+    },
+    {
+      "technique": "sensing-trails",
+      "operations": [
+        {
+          "id": "motion.sensor-motor-step-2d",
+          "version": "0.1.0",
+          "sha256": "09bb7b91e1b8467285ae8a539843cd492414c515fa70b01023d129709019f8f2"
+        }
+      ]
+    },
+    {
+      "technique": "flocking-marks",
+      "operations": [
+        {
+          "id": "motion.flock-steer-2d",
+          "version": "0.1.0",
+          "sha256": "ac8ff73a22d8573b0c9c34686f0c5870794ebe467d4450f080744dc88c32fb1b"
+        }
+      ]
+    },
+    {
+      "technique": "guarded-bands",
+      "operations": [
+        {
+          "id": "geometry.select-tapered-stroke-strips-2d",
+          "version": "0.1.0",
+          "sha256": "26403f5c856cc5df92e49555cc0912190b43c2a25f4f1b525c2ece367b45258c"
+        }
+      ]
+    },
+    {
+      "technique": "hatched-islands",
+      "operations": [
+        {
+          "id": "geometry.hatch-region-lines-2d",
+          "version": "0.1.0",
+          "sha256": "fe5ef3bfaef5b9b86bcfc8ebeb0f1283daf165a5ab9d8f5e8e07db8cef814d97"
+        }
+      ]
+    },
+    {
+      "technique": "bridge-web",
+      "operations": [
+        {
+          "id": "graph.insert-segment-bridge-2d",
+          "version": "0.1.0",
+          "sha256": "d0fb0413c303b5a7fdc6a2670defaa598fffb1904f0e1286654b3e08b72e6f0b"
+        }
+      ]
+    },
+    {
+      "technique": "neighborhood-growth",
+      "operations": [
+        {
+          "id": "spatial.relative-neighborhood-pairs-2d",
+          "version": "0.1.0",
+          "sha256": "6ddd751558602b2f6714b5b2a7eebf97f31a77a6934899ad8308b80a651cf1b3"
+        },
+        {
+          "id": "motion.threshold-edge-relaxation-2d",
+          "version": "0.1.0",
+          "sha256": "799d0ef708f7e2b6b686ab36d04474292e58b104844673ebb10d341be174eb8b"
+        }
+      ]
+    },
+    {
+      "technique": "elastic-loops",
+      "operations": [
+        {
+          "id": "motion.elastic-curve-grow-step-2d",
+          "version": "0.1.0",
+          "sha256": "a2aa5940d92ee07769663d405dd8d2868a10286df841d10633dc484be9bea102"
+        }
+      ]
+    },
+    {
+      "technique": "dye-currents",
+      "operations": [
+        {
+          "id": "simulation.project-periodic-velocity-2d",
+          "version": "0.1.0",
+          "sha256": "13fbfb4f852cbe93f999ce1727f4200055285186a9d26ef4d48e0386d7e903c3"
+        },
+        {
+          "id": "field.advect-periodic-scalar-2d",
+          "version": "0.1.0",
+          "sha256": "57228a2af65a44e5cc7855afe2a9b41f2ba7eb5e94c80e0692d12c1c1bc24162"
+        },
+        {
+          "id": "field.diffuse-periodic-scalar-2d",
+          "version": "0.1.0",
+          "sha256": "d7978248029bea2ed94b9b050fdea2fcccb2606e43852179945e58e8837d707a"
+        },
+        {
+          "id": "geometry.marching-squares-2d",
+          "version": "0.1.0",
+          "sha256": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676"
+        }
+      ]
+    },
+    {
+      "technique": "weighted-image-atlas",
+      "operations": [
+        {
+          "id": "sampling.weighted-raster-points-2d",
+          "version": "0.1.0",
+          "sha256": "9060fb34f83fe67fb0e1bcd012a127996b55307c75053231695128659358a9b8"
+        },
+        {
+          "id": "layout.weighted-raster-centroids-2d",
+          "version": "0.1.0",
+          "sha256": "095de293fb29bb0677915f8cf8898b1bcc42178ecfc48d637ba07f43d4e57cbc"
+        }
+      ]
+    },
+    {
+      "technique": "word-echo",
+      "operations": [
+        {
+          "id": "signal.sample-recorded-controls",
+          "version": "0.1.0",
+          "sha256": "85bc6d12ebbbfbb352baba5a26556087c700f19d52bf97e80dfc61318a72288b"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Current project state
 
-Updated 2026-09-17. Read with [AGENTS.md](AGENTS.md); open other documents only for the task.
+Updated 2026-09-18. Read with [AGENTS.md](AGENTS.md); open other documents only for the task.
 This is a current snapshot. Historical plans and reviews are not an active assignment queue.
 
 ## Accepted capabilities
@@ -131,15 +131,17 @@ merge settled: the nine dynamics studies are now interactive (worst single edit 
 The [visual operations acceptance](evidence/expansion/visual-operations/root-review.json) now
 records root acceptance for the five exported operations (weighted-image, recorded-controls,
 mesh-attribute, implicit-ray), with conformant p5.js cores and four scoped native studies. The
-nine dynamics studies are art-directed (see the
+nine dynamics studies are art-directed and pass creative review (see the
 [creative review](docs/dynamics-creative-review.md)); the catalog
 binding reconciliation (stale hashes for the shared web surface, the package index and py5
-records) is complete, and the Design-family decision is recorded: the intersection-graph
-editing and RNG-evolution studies deliver as compositions of the four accepted
-connected-growth-and-graphs operations, with the neighborhood-growth study still missing its
-node-insertion coupling. The next gate is that study extension plus the creative-quality
-finalization of the bridge-web and neighborhood-growth studies. Later I families and
-deeper-audit gaps remain.
+records) is complete. The Design-family gate is settled: the intersection-graph editing
+and RNG-evolution studies deliver as compositions of the four accepted
+connected-growth-and-graphs operations; the neighborhood-growth study carries the
+node-insertion coupling (deterministic proposal pool plus an explicit old-density interval),
+both studies pass the 18 September creative review, and the four replay-model studies now
+prepare their step chains cooperatively, with every edit answering under 0.2s in the
+measured interface (worst cold-cache key change 1.0s, main thread responsive). The
+remaining delivery-table work is the later I families and the deeper-audit gaps.
 
 - Other-target ports remain separate. The [port handoff](docs/porting-resume.md) tracks Python
   attestation reconciliation, Android ProfileMarks lifecycle validation and Java backlog.

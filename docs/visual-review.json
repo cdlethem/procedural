@@ -5738,6 +5738,75 @@
           "sha256": "b91cb88bf9f0300564a6dabac908954701d3b7f13f190735b350e82bcb54d4cd"
         }
       ]
+    },
+    {
+      "id": "growth-extension-explore-20260918",
+      "title": "Neighborhood-growth node-insertion extension, real-interface exploration",
+      "category": "Root visual review — creative quality",
+      "description": "The extended neighborhood-growth study explored through its actual web interface after the node-insertion coupling: default (insert 1, 76 circle marks: ghost seeds and spokes), static web (insert 0, 52 marks, pixel-identical to the pre-expansion default), min-neighbors 0 (every candidate admitted), max-neighbors 1 and 7 (sparse versus broad candidate graphs), insert 3 (fast fill, 122 marks), combined maxima at all hard limits (ticks 36, insert 3, minNeighbors 0, maxNeighbors 7: 122 marks), open chain growth (supplied chain, 100 marks after 24 ticks), step 1 (stretched spokes), and frozen minLength 100 (static seed arrangement). Studio and technique-page canvases render pixel-identically; PNG export downloads the displayed canvas for both studies.",
+      "evidence": ".work/growth-explore-20260918/report.json",
+      "images": [
+        {
+          "label": "growth default, insert 1",
+          "path": ".work/growth-explore-20260918/01-default-insert1.png",
+          "sha256": "96772e43b5c33c7cca1ea1976d19e49e8754af49afe7d80d921662dbe13c8996"
+        },
+        {
+          "label": "growth insert 0, static web",
+          "path": ".work/growth-explore-20260918/02-insert0-static.png",
+          "sha256": "81f6ba78338a5f4bd62fc77136312f375e36f3c375252dcba625bdcb08bdee7e"
+        },
+        {
+          "label": "growth min-neighbors 0",
+          "path": ".work/growth-explore-20260918/03-min-neighbors-0.png",
+          "sha256": "d8b6a3bc6d21bb4a8bd42eb5ccf1026b2470969329a6deb030767c398590012e"
+        },
+        {
+          "label": "growth max-neighbors 1",
+          "path": ".work/growth-explore-20260918/04-max-neighbors-1.png",
+          "sha256": "8f336c430983ddb0bc96937593c132c328ff7b09fc9a6c4722e393b14bddf263"
+        },
+        {
+          "label": "growth max-neighbors 7",
+          "path": ".work/growth-explore-20260918/05-max-neighbors-7.png",
+          "sha256": "41e5739f4424ea36afb4097d81a4e5219d14d30266512e9f58cb96d27d8ccbf9"
+        },
+        {
+          "label": "growth insert 3 fast fill",
+          "path": ".work/growth-explore-20260918/06-insert3-fastfill.png",
+          "sha256": "1c54ec8b19b4fbd7af53cefa491a9e06ffba8f673593eec451fc45eac597d2a9"
+        },
+        {
+          "label": "growth combined maxima",
+          "path": ".work/growth-explore-20260918/07-combined-max.png",
+          "sha256": "3e0904226cf9f2117a5c9a43b682a5b8aa795a36dc058558f8764915968eccfc"
+        },
+        {
+          "label": "growth open chain",
+          "path": ".work/growth-explore-20260918/08-open-chain-growth.png",
+          "sha256": "23204b0a63d0d59cb5fe3d199657a22a85467055a4e890295c5076c22311d59b"
+        },
+        {
+          "label": "growth step 1 stretched",
+          "path": ".work/growth-explore-20260918/09-step1-stretched.png",
+          "sha256": "b3c624613cebf12bcab40862c4f3099c2feae158d4c5904ee7c0973809575967"
+        },
+        {
+          "label": "growth frozen minLength 100",
+          "path": ".work/growth-explore-20260918/10-length100-frozen.png",
+          "sha256": "832f9ac8d80c9008e59560fcb57edd2ad13dc6a32df1a66504e8a5b03d00d9fe"
+        },
+        {
+          "label": "growth studio PNG export",
+          "path": ".work/growth-explore-20260918/14-studio-export-png.png",
+          "sha256": "96772e43b5c33c7cca1ea1976d19e49e8754af49afe7d80d921662dbe13c8996"
+        },
+        {
+          "label": "bridge-web studio PNG export",
+          "path": ".work/growth-explore-20260918/14-studio-export-bridge-web.png",
+          "sha256": "375824ec899d66ec93285169f01b2a538f824811e22a09b6886c4261d4f675e4"
+        }
+      ]
     }
   ]
 }

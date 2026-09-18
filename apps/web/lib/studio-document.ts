@@ -10,6 +10,7 @@ import { createDocument, definition, MAX_LAYERS, validateDocument } from "./stud
 import type { Layer } from "./studio-types";
 import legacyV3 from "./legacy-v3.json";
 import legacyV3Expansion from "./legacy-v3-expansion.json";
+import legacyV3Dynamics from "./legacy-v3-dynamics.json";
 
 export const STUDIO_BINDING = "harness-v1";
 export const P5_RUNNER_PROFILE = "p5-static-640-v1";
@@ -237,7 +238,7 @@ export function validateDocumentV3(input: unknown): StudioDocumentV3 {
   if (source.schemaVersion !== 2) throw new Error("Document schemaVersion must be 2");
   if (source.bindingVersion !== STUDIO_BINDING)
     throw new Error(`Document bindingVersion must be ${STUDIO_BINDING}`);
-  const previousV3 = [legacyV3, legacyV3Expansion].find(previous => source.catalogSha256 === previous.catalogSha256);
+  const previousV3 = [legacyV3, legacyV3Expansion, legacyV3Dynamics].find(previous => source.catalogSha256 === previous.catalogSha256);
   const fromPreviousV3 = previousV3 !== undefined;
   if (source.catalogSha256 !== catalogDigest() && !fromPreviousV3)
     throw new Error("Document catalogSha256 is stale or unsupported");

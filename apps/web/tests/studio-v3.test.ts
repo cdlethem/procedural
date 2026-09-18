@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import legacyV3 from "../lib/legacy-v3.json";
-import { createDocument } from "../lib/studio";
+import legacyV3Dynamics from "../lib/legacy-v3-dynamics.json";
+import { createDocument, validateDocument } from "../lib/studio";
 import { renderHarness, computeRebaseDelta } from "../lib/harness-render";
 import { createDocumentV3, STUDIO_BINDING, P5_RUNNER_PROFILE, validateStudioDocument, type StudioDocumentV3 } from "../lib/studio-document";
 
@@ -80,4 +81,80 @@ test("rebase delta returns added, edited, and complete composition layers", () =
   const edited = { ...base, layers: [editedLayer] };
   assert.deepEqual(computeRebaseDelta(base, edited, "edit-layer", baseLayer.id), [editedLayer]);
   assert.deepEqual(computeRebaseDelta(base, added, "composition"), added.layers);
+});
+
+test("pre-expansion dynamics documents admit and migrate every revised study shape", () => {
+  const saved = createDocumentV3("neighborhood-growth");
+  saved.catalogSha256 = legacyV3Dynamics.catalogSha256;
+  const savedLayer = saved.layers[0];
+  if (savedLayer.kind !== "workflow") throw new Error("fixture must start with a workflow");
+  savedLayer.content.params = { ticks: 24, chain: false, minLength: 38, step: 0.5 };
+  const imported = validateStudioDocument(saved);
+  const importedLayer = imported.layers[0];
+  const fresh = createDocumentV3("neighborhood-growth");
+  const freshLayer = fresh.layers[0];
+  if (importedLayer.kind !== "workflow" || freshLayer.kind !== "workflow") throw new Error("migrated layer must stay a workflow");
+  assert.deepEqual(importedLayer.content.params, {
+    ...freshLayer.content.params,
+    ticks: 24,
+    chain: false,
+    minLength: 38,
+    step: 0.5,
+    insert: 0,
+  });
+  assert.equal(imported.catalogSha256, fresh.catalogSha256);
+
+  const appSaved = createDocument("neighborhood-growth");
+  appSaved.catalogSha256 = legacyV3Dynamics.catalogSha256;
+  appSaved.layers[0].params = { ticks: 24, chain: false, minLength: 38, step: 0.5 };
+  const appImported = validateDocument(appSaved);
+  assert.equal(appImported.layers[0].params.insert, 0);
+  assert.equal(appImported.catalogSha256, createDocument().catalogSha256);
+
+  const defaults = (technique: string) =>
+    createDocument(technique).layers[0].params as Record<string, unknown>;
+  const migrate = (technique: string, params: Record<string, unknown>) => {
+    const document = createDocument(technique);
+    document.catalogSha256 = legacyV3Dynamics.catalogSha256;
+    document.layers[0].params = params as never;
+    return validateDocument(document).layers[0].params as Record<string, unknown>;
+  };
+  // pre-revision shapes migrate to the revised defaults with saved settings preserved
+  assert.deepEqual(
+    migrate("neighborhood-growth", { ticks: 8, chain: true, largeMarks: true, minLength: 16 }),
+    { ...defaults("neighborhood-growth"), ticks: 8, chain: true, minLength: 16, step: 0.35, insert: 0 },
+  );
+  assert.deepEqual(
+    migrate("sensing-trails", { ticks: 43, field: "lower-left", gain: -0.05, dotMarks: true }),
+    { ...defaults("sensing-trails"), ticks: 43, field: "lower-left", gain: -0.05, dotMarks: true, reach: 13 },
+  );
+  assert.deepEqual(
+    migrate("bridge-web", { ticks: 26, weave: true, candidate: true }),
+    { ...defaults("bridge-web"), ticks: 26, candidate: true, strain: 25, slant: -31, stride: 5 },
+  );
+  assert.deepEqual(
+    migrate("elastic-loops", { ticks: 13, reverseCurl: true, windX: 2, structure: false }),
+    { ...defaults("elastic-loops"), ticks: 13, windX: 2, structure: false, growth: 0.018, curl: -0.09, range: 55, strength: 18 },
+  );
+  assert.deepEqual(
+    migrate("hatched-islands", { angle: true, dense: true, transfer: true, outline: false }),
+    { ...defaults("hatched-islands"), spacing: 14, cross: 27, rotation: 71, twist: -85, region: "island-b", outline: false },
+  );
+  // post-revision shapes pass through unchanged
+  assert.deepEqual(
+    migrate("sensing-trails", { ticks: 40, field: "upper-right", gain: 0.1, reach: 30, dotMarks: false }),
+    { ...defaults("sensing-trails"), ticks: 40, field: "upper-right", gain: 0.1, reach: 30, dotMarks: false },
+  );
+  assert.deepEqual(
+    migrate("bridge-web", { ticks: 42, strain: 60, slant: -31, stride: 2, candidate: false }),
+    { ...defaults("bridge-web"), ticks: 42, strain: 60, slant: -31, stride: 2, candidate: false },
+  );
+  assert.deepEqual(
+    migrate("elastic-loops", { ticks: 36, growth: 0.04, curl: 0.15, windX: -2, range: 120, strength: 24, structure: true }),
+    { ...defaults("elastic-loops"), ticks: 36, growth: 0.04, curl: 0.15, windX: -2, range: 120, strength: 24, structure: true },
+  );
+  assert.deepEqual(
+    migrate("hatched-islands", { spacing: 8, cross: 80, rotation: 360, twist: -180, region: "island-b", outline: true }),
+    { ...defaults("hatched-islands"), spacing: 8, cross: 80, rotation: 360, twist: -180, region: "island-b", outline: true },
+  );
 });

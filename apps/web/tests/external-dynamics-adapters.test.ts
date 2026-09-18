@@ -1,22 +1,13 @@
 import assert from 'node:assert/strict';
-import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import test from 'node:test';
-import {drawExternalDynamics,externalDynamicsDefinitions,externalDynamicsPalette} from '../lib/adapters/external-dynamics';
+import {externalDynamicsDefinitions,externalDynamicsPalette} from '../lib/adapters/external-dynamics';
 import {externalDynamicsStudies} from '../content/external-dynamics-studies.mjs';
 import type {Layer} from '../lib/studio-types';
-
-const sha=(value:string|Uint8Array|Uint8ClampedArray)=>createHash('sha256').update(value).digest('hex');
+import {drawDynamics as draw} from './helpers/draw-recorder';
 function layerFor(id:string):Layer{
   const definition=externalDynamicsDefinitions.find(item=>item.id===id)!;
   return {id:`layer-${id}`,technique:id,visible:true,opacity:1,seed:42,palette:externalDynamicsPalette(id)!,cutEdits:[],transform:{x:320,y:320,scale:1,rotation:0},params:{...definition.defaults}};
-}
-function draw(layer:Layer){const styled=createHash('sha256'),geometry=createHash('sha256');let marks=0,backgrounds=0;let imageAlpha:{transparent:number;partial:number;opaque:number}|null=null;
-  const record=(name:string,args:unknown[])=>{for(const x of args)if(typeof x==='number')assert.ok(Number.isFinite(x),`${name} finite`);const encoded=JSON.stringify([name,...args]);styled.update(encoded);if(['line','vertex','circle','rect','point','ellipse','imageGeometry'].includes(name)){geometry.update(encoded);marks++;}};
-  const context=new Proxy({setLineDash:(value:number[])=>record('setLineDash',value)} as Record<string,any>,{get(target,key:string){if(key in target)return target[key];return (...args:unknown[])=>record(`context.${key}`,args);}});
-  const p=new Proxy({CLOSE:'close',ROUND:'round',drawingContext:context,background:(...args:unknown[])=>{backgrounds++;record('background',args);},createImage:(width:number,height:number)=>({width,height,pixels:new Uint8ClampedArray(width*height*4),loadPixels(){},updatePixels(){}}),image:(image:{width:number,height:number,pixels:Uint8ClampedArray},...args:number[])=>{record('imageGeometry',[image.width,image.height,...args]);record('imagePixels',[sha(image.pixels)]);imageAlpha={transparent:0,partial:0,opaque:0};for(let i=3;i<image.pixels.length;i+=4){const alpha=image.pixels[i];if(alpha===0)imageAlpha.transparent++;else if(alpha===255)imageAlpha.opaque++;else imageAlpha.partial++;}}} as Record<string,any>,{get(target,key:string){if(key in target)return target[key];return (...args:unknown[])=>record(key,args);}});
-  drawExternalDynamics(p,layer);
-  return {styled:styled.digest('hex'),geometry:geometry.digest('hex'),marks,backgrounds,imageAlpha:imageAlpha as {transparent:number;partial:number;opaque:number}|null};
 }
 const edits:Record<string,Record<string,number|string|boolean>>={
   'lingering-links':{ticks:30,radius:118,linger:3,dotMarks:true},
@@ -25,7 +16,7 @@ const edits:Record<string,Record<string,number|string|boolean>>={
   'guarded-bands':{wide:true,clearance:32,transfer:true,showRejected:false},
   'hatched-islands':{spacing:8,cross:80,twist:0,rotation:71,region:'island-b',outline:false},
   'bridge-web':{ticks:26,strain:60,slant:-31,stride:2,candidate:false},
-  'neighborhood-growth':{ticks:9,chain:true,minLength:50,step:1},
+  'neighborhood-growth':{ticks:9,chain:true,minLength:50,step:1,insert:3,minNeighbors:0,maxNeighbors:7},
   'elastic-loops':{ticks:13,growth:0,curl:-.15,windX:2,range:0,strength:24,structure:true},
   'dye-currents':{ticks:60,injection:.2,viscosity:.08,projection:false,texture:true,contours:false},
 };

@@ -9,6 +9,7 @@ import legacy from "./legacy-v1.json";
 import legacyV2 from "./legacy-v2.json";
 import legacyV3 from "./legacy-v3.json";
 import legacyV3Expansion from "./legacy-v3-expansion.json";
+import legacyV3Dynamics from "./legacy-v3-dynamics.json";
 import { validateCutEdits } from "./cut-model";
 import {
   IDENTITY_LAYER_TRANSFORM,
@@ -286,7 +287,15 @@ function upgradedStudyParams(value: unknown, item: StudioDefinition): unknown {
       old.ticks >= 0 && old.ticks <= 24 &&
       typeof old.minLength === "number" && Number.isInteger(old.minLength) &&
       old.minLength >= 0 && old.minLength <= 100)
-    return { ...item.defaults, ticks: old.ticks, chain: old.chain, minLength: old.minLength, step: 0.35 };
+    return { ...item.defaults, ticks: old.ticks, chain: old.chain, minLength: old.minLength, step: 0.35, insert: 0 };
+  if (item.id === "neighborhood-growth" && keys === "chain,minLength,step,ticks" &&
+      typeof old.chain === "boolean" && typeof old.ticks === "number" &&
+      Number.isInteger(old.ticks) && old.ticks >= 0 && old.ticks <= 36 &&
+      typeof old.minLength === "number" && Number.isInteger(old.minLength) &&
+      old.minLength >= 0 && old.minLength <= 100 &&
+      typeof old.step === "number" && Number.isFinite(old.step) &&
+      old.step >= 0 && old.step <= 1)
+    return { ...item.defaults, ticks: old.ticks, chain: old.chain, minLength: old.minLength, step: old.step, insert: 0 };
   if (item.id === "elastic-loops" && keys === "reverseCurl,structure,ticks,windX" &&
       typeof old.reverseCurl === "boolean" && typeof old.structure === "boolean" &&
       typeof old.ticks === "number" && Number.isInteger(old.ticks) &&
@@ -493,7 +502,7 @@ export function validateDocument(input: unknown): StudioDocument {
   const probe = object(input, "Document");
   if (probe.bindingVersion === legacy.bindingVersion) return migrateV1(input);
   const fromV2 = probe.bindingVersion === legacyV2.bindingVersion;
-  const previousV3 = [legacyV3, legacyV3Expansion].find(previous => probe.bindingVersion === previous.bindingVersion && probe.catalogSha256 === previous.catalogSha256);
+  const previousV3 = [legacyV3, legacyV3Expansion, legacyV3Dynamics].find(previous => probe.bindingVersion === previous.bindingVersion && probe.catalogSha256 === previous.catalogSha256);
   const fromPreviousV3 = previousV3 !== undefined;
   const current = validateEnvelope(
     input,

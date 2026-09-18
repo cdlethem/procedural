@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "studioBinding": {
     "version": "studio-v3",
-    "catalogSha256": "ee83bbc6ae7fb6fffdb1e293bbf5ab7e41b6d983903bacc55b00270fe5998b40",
+    "catalogSha256": "66da2c7f786aec46853cfb811a694e3dac29bac5039cba2f0da0b746104de634",
     "techniques": [
       {
         "technique": "field-marks",
@@ -1151,6 +1151,11 @@
             "id": "motion.threshold-edge-relaxation-2d",
             "version": "0.1.0",
             "sha256": "799d0ef708f7e2b6b686ab36d04474292e58b104844673ebb10d341be174eb8b"
+          },
+          {
+            "id": "spatial.radius-pairs-2d",
+            "version": "0.1.0",
+            "sha256": "638f8d69aaae5f16a425a48f63b4c2133892aea2b931b84ae2986966d0b3125b"
           }
         ]
       },
@@ -1244,7 +1249,7 @@
             "technique": "validated-scoped"
           },
           "attestationPath": "catalog/validation/regular-grid.json",
-          "attestationSha256": "ae10c758b2076da46598946c62e87f894fb8a27bd91369c7717b475165f8bfbc"
+          "attestationSha256": "8e5d5d740331266bb12c8c6b1fe37ce3f3f0d3390c1f6074fe74a727afd87303"
         },
         {
           "id": "field.gradient-noise-2d-01",
@@ -1258,7 +1263,7 @@
             "technique": "validated-scoped"
           },
           "attestationPath": "catalog/validation/gradient-noise-2d-01.json",
-          "attestationSha256": "e5da67f86b528624e95faf8129aa515accaef18e21e29a04241e5e9857bc813d"
+          "attestationSha256": "70c8c1528c5cb82d22f7882bf08fc8b2882a3ad1936634ca4056a30f87ac87d6"
         },
         {
           "id": "color.cyclic-palette",
@@ -1272,7 +1277,7 @@
             "technique": "validated-scoped"
           },
           "attestationPath": "catalog/validation/cyclic-palette.json",
-          "attestationSha256": "e46e0f6305e33bac990c79b47c8450fbef4ae2bc10ddce107d079d700222028c"
+          "attestationSha256": "1e27a360e1cf4040ed497015884fcff66d7770cbb22b655d9bccaae6a4afd72c"
         }
       ],
       "studio": true
@@ -1304,7 +1309,7 @@
             "technique": "validated-scoped"
           },
           "attestationPath": "catalog/validation/regular-grid.json",
-          "attestationSha256": "ae10c758b2076da46598946c62e87f894fb8a27bd91369c7717b475165f8bfbc"
+          "attestationSha256": "8e5d5d740331266bb12c8c6b1fe37ce3f3f0d3390c1f6074fe74a727afd87303"
         },
         {
           "id": "field.gradient-noise-2d-01",
@@ -1318,7 +1323,7 @@
             "technique": "validated-scoped"
           },
           "attestationPath": "catalog/validation/gradient-noise-2d-01.json",
-          "attestationSha256": "e5da67f86b528624e95faf8129aa515accaef18e21e29a04241e5e9857bc813d"
+          "attestationSha256": "70c8c1528c5cb82d22f7882bf08fc8b2882a3ad1936634ca4056a30f87ac87d6"
         },
         {
           "id": "path.gradient-trace-2d",
@@ -1332,7 +1337,7 @@
             "technique": "validated-scoped"
           },
           "attestationPath": "catalog/validation/gradient-path.json",
-          "attestationSha256": "6c9bcfb81a652e971a4ad832676bd055570e169bd9abd5dd6583b13f63fa3ebb"
+          "attestationSha256": "fe6f0e89cb362b88cdf50c0b6afb8aa25c70984f346820aa605a8806bcbabfc1"
         }
       ],
       "studio": true
@@ -1364,7 +1369,7 @@
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/seeded-circle-placement.json",
-          "attestationSha256": "4745c2c5c75ceeeef5ce71c775a08ff5f0b7c18e9c9caed9325f289ef4cc1c9b"
+          "attestationSha256": "09281ea1384f444cfad1211974bc939c5034268518287f3caddc01311bac194f"
         },
         {
           "id": "sampling.ordered-circle-filter-2d",
@@ -1378,7 +1383,7 @@
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/ordered-circle-filter.json",
-          "attestationSha256": "ee8be84d0c4215fd7ef44187fd17c4dba8c17db151d34d3206d9d93cfc24e0ef"
+          "attestationSha256": "c1282109bb0a92cb7b86d0f826e354e50fc391a7120eb475d73d6f8ee2a24563"
         }
       ],
       "studio": true
@@ -1406,11 +1411,11 @@
           "sha256": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d",
           "support": {
             "core": "conformant",
-            "native": "validated-scoped",
+            "native": "unvalidated",
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/occupied-lattice-paths-2d.json",
-          "attestationSha256": "3870a1e7899bbcd3d9095d4df2700e6fc0867a36f46f78f1fd0c1c522800d99e"
+          "attestationSha256": "5fae4524a740019cdec6dc0700294ebf6c42341d832882d0ff730fd6691915e0"
         },
         {
           "id": "color.cyclic-palette",
@@ -1424,7 +1429,7 @@
             "technique": "validated-scoped"
           },
           "attestationPath": "catalog/validation/cyclic-palette.json",
-          "attestationSha256": "e46e0f6305e33bac990c79b47c8450fbef4ae2bc10ddce107d079d700222028c"
+          "attestationSha256": "1e27a360e1cf4040ed497015884fcff66d7770cbb22b655d9bccaae6a4afd72c"
         }
       ],
       "studio": true
@@ -1502,7 +1507,7 @@
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/seeded-circle-placement.json",
-          "attestationSha256": "4745c2c5c75ceeeef5ce71c775a08ff5f0b7c18e9c9caed9325f289ef4cc1c9b"
+          "attestationSha256": "09281ea1384f444cfad1211974bc939c5034268518287f3caddc01311bac194f"
         }
       ],
       "studio": true
@@ -1626,11 +1631,11 @@
           "sha256": "62f7b5c8c0dc020a639d821c9e2114e1792cb3da29623035491255294c89e345",
           "support": {
             "core": "conformant",
-            "native": "validated-scoped",
+            "native": "unvalidated",
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/binary-cell-partition-2d.json",
-          "attestationSha256": "7b2f021174461b6298fba31cb8ba00e4132d099e63ae080accf23a3457f49c75"
+          "attestationSha256": "0c741a5a2d8bdcfbad6d61ca14c835f145a9450d160bc27e59f9b49c896812ba"
         }
       ],
       "studio": true
@@ -1658,11 +1663,11 @@
           "sha256": "e8797eb0b44201752042091b568090d1355a9f2338ae27164b1671a505829e4c",
           "support": {
             "core": "conformant",
-            "native": "validated-scoped",
+            "native": "unvalidated",
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/retained-rectangle-cuts-2d.json",
-          "attestationSha256": "cf6471d861eae774696a0aa9c11ea139920ef430e911cc54d727aed7338a81b2"
+          "attestationSha256": "bdb2fa29aa8bb67d07f7bb16fa261539471734eecc7c162a4797f65a7bb94045"
         },
         {
           "id": "field.gradient-noise-2d-01",
@@ -1676,7 +1681,7 @@
             "technique": "validated-scoped"
           },
           "attestationPath": "catalog/validation/gradient-noise-2d-01.json",
-          "attestationSha256": "e5da67f86b528624e95faf8129aa515accaef18e21e29a04241e5e9857bc813d"
+          "attestationSha256": "70c8c1528c5cb82d22f7882bf08fc8b2882a3ad1936634ca4056a30f87ac87d6"
         }
       ],
       "studio": true
@@ -1704,11 +1709,11 @@
           "sha256": "64ec6cbf60c04c612cbf2f8ad0c427853b48c3c7585ebf2cdd0938151604599e",
           "support": {
             "core": "conformant",
-            "native": "validated-scoped",
+            "native": "unvalidated",
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/ordered-convex-polygon-filter-2d.json",
-          "attestationSha256": "57ff92b4325d989713361cab588db7fa6a7462a7c155626584fedfb527b80735"
+          "attestationSha256": "1ed61327c6ae78a18c624c54e3ebf8222b49e4751266d4c3ea5eac7e67f585b3"
         },
         {
           "id": "sampling.seeded-triangle-points-2d",
@@ -1750,11 +1755,11 @@
           "sha256": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf",
           "support": {
             "core": "conformant",
-            "native": "validated-scoped",
+            "native": "unvalidated",
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/delaunay-2d.json",
-          "attestationSha256": "15c54d5d6b7a411a30a1c67806ebe91ff566d22ebda73f4f80a86c933f4f3d44"
+          "attestationSha256": "418171864f76a33598634ae74f58eac45a6591a1bdb8a92f3f231aaaba9055bd"
         },
         {
           "id": "sampling.seeded-triangle-points-2d",
@@ -1856,11 +1861,11 @@
           "sha256": "63e089d2ab61b4a4e8cb1f48684cb69e7268574ebebd15d34e405b9595366788",
           "support": {
             "core": "conformant",
-            "native": "validated-scoped",
+            "native": "unvalidated",
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/radial-pull-2d.json",
-          "attestationSha256": "65c4792fb72f914612a3f03cbefca975f850c4bde52cb32e75efc8e1cc905e31"
+          "attestationSha256": "14885512b0fdbcd3c1cc77746020877cbb9fc75bd6d2487ef0d86faf4e792cfb"
         }
       ],
       "studio": true
@@ -1888,11 +1893,11 @@
           "sha256": "f7e90d17f37d87fe1ae63975ed5fcae3e79e3d1d59d0eb7b78da6114078dd206",
           "support": {
             "core": "conformant",
-            "native": "validated-scoped",
+            "native": "unvalidated",
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/sequential-disc-projection-2d.json",
-          "attestationSha256": "305d5056bba660da2dbbcea48aaa3ecc99ede44b78def4427959179856ff9e5c"
+          "attestationSha256": "fe5c66856adb552fb4781beccdaf45c30c0ef46b37e6a11fd1d6b8407863f584"
         }
       ],
       "studio": true
@@ -1920,11 +1925,11 @@
           "sha256": "c10f0619f16d5aca4bce2f7ab6a02f2693f7d59e2177b39521410959b27a4292",
           "support": {
             "core": "conformant",
-            "native": "validated-scoped",
+            "native": "unvalidated",
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/clip-segments-simple-polygon-2d.json",
-          "attestationSha256": "95455c1778e05966357f810ca8a184584ae9e59db36b9fcac4ba91aacfd5d03f"
+          "attestationSha256": "fbaee3020acda5542681de898edfba1b9627e1fbe8cc78e9f0603df9ae9cadf6"
         }
       ],
       "studio": true
@@ -1983,12 +1988,12 @@
           "catalogPath": "catalog/operations/bilinear-raster-remap.json",
           "sha256": "b8fe845f220644ee7c3bf24e7df9c3aecf5195edcce7b69f51fe530f176ee176",
           "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
+            "core": "unvalidated",
+            "native": "unvalidated",
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/bilinear-raster-remap.json",
-          "attestationSha256": "07a12dbb7bde2c7143f5843d468ad902499983ff3336bd040134701aa59260af"
+          "attestationSha256": "9e10983077df8b92966aeccc6cc89ed1b091e547f9aa18f54964e25ee5a1f19e"
         },
         {
           "id": "field.gradient-noise-3d-01",
@@ -1998,11 +2003,11 @@
           "sha256": "b8fbe28e287089f21c2cd590af3eec36be077bb77cb18d717a1778c380be7d82",
           "support": {
             "core": "conformant",
-            "native": "validated-scoped",
+            "native": "unvalidated",
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/gradient-noise-3d-01.json",
-          "attestationSha256": "fb9e9a21c90e5692f19a9a78d6c557e29d3c4d99e93054f9042ba6839e690bb0"
+          "attestationSha256": "9c96c73d1e14b06e04d86f26310fce36836bc03801cfa5111165755e34135b64"
         }
       ],
       "studio": true
@@ -2030,11 +2035,11 @@
           "sha256": "f17c33f68218f36bdbecf131377bc868d409b0c1db9844cad39e6f6f1c59743f",
           "support": {
             "core": "conformant",
-            "native": "validated-scoped",
+            "native": "unvalidated",
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/separable-blur-2d.json",
-          "attestationSha256": "8d197b1870594e55c2963420fa8a7d3168fa91cacd51eaa35f8173cb64ace0a8"
+          "attestationSha256": "244d095394ee424e902a26afdfba956bcbbb519954660265bd4ed7984a2af427"
         }
       ],
       "studio": true
@@ -2094,11 +2099,11 @@
           "sha256": "856da2ea0449233334c5e152f9eae1c589a9b2b6656ced8af93e73daac39ee6a",
           "support": {
             "core": "conformant",
-            "native": "validated-scoped",
+            "native": "unvalidated",
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/annular-solid-3d.json",
-          "attestationSha256": "6a9aff83092541c0281368c4af4f50e6fc97b74d7d3440a858b4fd8bc11ffa16"
+          "attestationSha256": "3660cb036dd548e856b678db795243ca250a1e512341b3d27703e84b838964c4"
         }
       ],
       "studio": true
@@ -2126,11 +2131,11 @@
           "sha256": "b8fbe28e287089f21c2cd590af3eec36be077bb77cb18d717a1778c380be7d82",
           "support": {
             "core": "conformant",
-            "native": "validated-scoped",
+            "native": "unvalidated",
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/gradient-noise-3d-01.json",
-          "attestationSha256": "fb9e9a21c90e5692f19a9a78d6c557e29d3c4d99e93054f9042ba6839e690bb0"
+          "attestationSha256": "9c96c73d1e14b06e04d86f26310fce36836bc03801cfa5111165755e34135b64"
         },
         {
           "id": "mesh.radial-profile-surface-3d",
@@ -2172,11 +2177,11 @@
           "sha256": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3",
           "support": {
             "core": "conformant",
-            "native": "validated-scoped",
+            "native": "unvalidated",
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/target-springs-2d.json",
-          "attestationSha256": "55f33c74d2849c7c98f5246db0f42306f0d68930ec6c80878f7349d0c222e810"
+          "attestationSha256": "149cbf34e86d30bfb23432e29b221225af266ed35e13f49943b38a473c40b07f"
         }
       ],
       "studio": true
@@ -2340,7 +2345,7 @@
             "technique": "validated-scoped"
           },
           "attestationPath": "catalog/validation/gradient-noise-2d-01.json",
-          "attestationSha256": "e5da67f86b528624e95faf8129aa515accaef18e21e29a04241e5e9857bc813d"
+          "attestationSha256": "70c8c1528c5cb82d22f7882bf08fc8b2882a3ad1936634ca4056a30f87ac87d6"
         }
       ],
       "studio": true
@@ -4298,7 +4303,7 @@
             "technique": "unvalidated"
           },
           "attestationPath": "catalog/validation/seeded-circle-placement.json",
-          "attestationSha256": "4745c2c5c75ceeeef5ce71c775a08ff5f0b7c18e9c9caed9325f289ef4cc1c9b"
+          "attestationSha256": "09281ea1384f444cfad1211974bc939c5034268518287f3caddc01311bac194f"
         }
       ],
       "studio": true
@@ -4328,7 +4333,7 @@
             "technique": "validated-scoped"
           },
           "attestationPath": "catalog/validation/regular-grid.json",
-          "attestationSha256": "ae10c758b2076da46598946c62e87f894fb8a27bd91369c7717b475165f8bfbc"
+          "attestationSha256": "8e5d5d740331266bb12c8c6b1fe37ce3f3f0d3390c1f6074fe74a727afd87303"
         }
       ],
       "studio": true
@@ -4498,10 +4503,10 @@
       "title": "Sensing Trails",
       "description": "Seventy-two marks steer through an authored scalar field using paired left and right probes. Each field choice replays explicit logical steps from the same initial population.",
       "category": "Motion",
-      "markdown": "# Sensing trails\n\nSeventy-two marks steer through an authored scalar field using paired left and right probes. Each field choice replays explicit logical steps from the same initial population.\n\n| Control | Canvas effect |\n| --- | --- |\n| Ticks | Extends the sampled trails through deterministic sensing steps. |\n| Field source | Moves the field's two bright attractors. |\n| Turn gain | Changes signed response to right-minus-left probe values. |\n| Dot marks | Stamps retained trail samples instead of joining paths. |\n\n`sensor-motor-step-2d` computes probe samples, heading, and movement. The grid and mark treatment are explicit example choices; no deposition or hidden field evolution occurs.\n",
+      "markdown": "# Sensing trails\n\nSeventy-two marks steer through an authored scalar field using paired left and right probes. Each field choice replays explicit logical steps from the same initial population.\n\n| Control | Canvas effect |\n| --- | --- |\n| Ticks | Extends the sampled trails through deterministic sensing steps. |\n| Field source | Moves the field's two bright attractors. |\n| Turn gain | Changes signed response to right-minus-left probe values. |\n| Reach | Sets how far ahead each probe samples; short reaches turn locally, long reaches trace smooth wide arcs. |\n| Dot marks | Stamps retained trail samples instead of joining paths. |\n\n`sensor-motor-step-2d` computes probe samples, heading, and movement. The field wash and mark treatment are explicit example choices; no deposition or hidden field evolution occurs.\n",
       "sourcePath": "packages/javascript/examples/sensing-trails/sketch.js",
       "guidePath": "apps/web/content/sensing-trails.md",
-      "guideSha256": "9cff0e528fa2aba7d9f4f960420ebb7e8944d47ecbe5b7191c1d234b92c2b3e4",
+      "guideSha256": "ff8fe591da94cf6936def0caf42276fcf2e08248f71631d5d73359ee375be9d5",
       "exampleUrl": "/native/examples/sensing-trails/index.html",
       "operations": [
         {
@@ -4582,10 +4587,10 @@
       "title": "Hatched Islands",
       "description": "Two line families are clipped to a filled island with holes. The island silhouette and every hatch fragment come from explicit polygon input and hatch-region-lines-2d.",
       "category": "Geometry",
-      "markdown": "# Hatched islands\n\nTwo line families are clipped to a filled island with holes. The island silhouette and every hatch fragment come from explicit polygon input and `hatch-region-lines-2d`.\n\n| Control | Canvas effect |\n| --- | --- |\n| Rotate hatches | Changes both supplied line directions. |\n| Dense hatches | Reduces both perpendicular line spacings. |\n| Other island | Replaces the outer ring and hole geometry. |\n| Outline | Shows or hides the existing boundary drawing. |\n\nThe browser adapter draws the clipped fragments as Canvas2D marks. Palette and outline changes preserve the clipped geometry. The editable source sketch also offers an SVG export action.\n",
+      "markdown": "# Hatched islands\n\nTwo line families are clipped to a filled island with holes. The island silhouette and every hatch fragment come from explicit polygon input and `hatch-region-lines-2d`.\n\n| Control | Canvas effect |\n| --- | --- |\n| Spacing | Sets the primary field's line spacing. |\n| Cross | Sets the secondary field's line spacing. |\n| Rotation | Turns the primary field's direction. |\n| Twist | Turns the secondary field relative to the primary; zero makes the fields parallel. |\n| Region | Replaces the outer ring and hole geometry. |\n| Outline | Shows or hides the existing boundary drawing. |\n\nThe browser adapter draws the clipped fragments as Canvas2D marks. Palette and outline changes preserve the clipped geometry. The editable source sketch also offers an SVG export action.\n",
       "sourcePath": "packages/javascript/examples/hatched-islands/README.md",
       "guidePath": "apps/web/content/hatched-islands.md",
-      "guideSha256": "08d13947ea699869a32ee19a025e8b699ff9722bae22deced4c7bc5664dd2592",
+      "guideSha256": "38bdf43c0ac3372c277fbf98d4c53ac7ec27a5ec88b023e12671f3b6ec0d93f2",
       "exampleUrl": "/native/examples/hatched-islands/index.html",
       "operations": [
         {
@@ -4636,12 +4641,12 @@
     {
       "slug": "neighborhood-growth",
       "title": "Neighborhood Growth",
-      "description": "Connect two points when no third point is strictly closer to both, then move points along the resulting links. **Step** runs an exact relative-neighborhood query and one reciprocal relaxation. **Graph marks** changes point appearance; **Reset** restores the initial points; **Save** downloads the displayed canvas.",
+      "description": "Connect two points when no third point is strictly closer to both, then move points along the resulting links. **Step** runs one reciprocal relaxation along the current graph, then a density-filtered candidate may join the web; the graph is requeried next tick, so relaxation and node insertion structure each other. **Growth** toggles the insertion half of each step; **Graph marks** changes point appearance; **Reset** restores the initial points; **Save** downloads the displayed canvas.",
       "category": "Graphs",
-      "markdown": "# Neighborhood Growth\n\nConnect two points when no third point is strictly closer to both, then move points along the resulting links. **Step** runs an exact relative-neighborhood query and one reciprocal relaxation. **Graph marks** changes point appearance; **Reset** restores the initial points; **Save** downloads the displayed canvas.\n\n| Editable control | Effect on canvas |\n|---|---|\n| Seed points in `packages/javascript/examples/neighborhood-growth/sketch.js` | Set the starting arrangement and graph. |\n| `minLength` | Links at or below this length stop moving their endpoints. |\n| `stepScale` | Change each active link's contribution to the next point positions. |\n| Pinned flags | Keep selected points fixed while their neighbors may move. |\n| Supplied pairs | Replace the neighborhood query with an independently chosen graph through `neighborhoodGrowth.setPairs(pairs)`. |\n\nThe query and relaxation are separate operations; the supplied graph is an explicit input to the motion step.\n",
+      "markdown": "# Neighborhood Growth\n\nConnect two points when no third point is strictly closer to both, then move points along the resulting links. **Step** runs one reciprocal relaxation along the current graph, then a density-filtered candidate may join the web; the graph is requeried next tick, so relaxation and node insertion structure each other. **Growth** toggles the insertion half of each step; **Graph marks** changes point appearance; **Reset** restores the initial points; **Save** downloads the displayed canvas.\n\n| Editable control | Effect on canvas |\n|---|---|\n| Seed points in `packages/javascript/examples/neighborhood-growth/sketch.js` | Set the starting arrangement and graph. |\n| `INSERT` | New nodes appended per step from the fixed proposal pool; 0 keeps the 26-point web fixed (the former study). |\n| `MIN_NEIGHBORS`, `MAX_NEIGHBORS` | The interval of existing points within the 70px density radius a candidate may have; 0 minimum starts growth in empty space, 1 propagates from the web only; a low maximum keeps growth sparse, a high one clusters it near the web. |\n| `minLength` | Links at or below this length stop moving their endpoints. |\n| `stepScale` | Change each active link's contribution to the next point positions. |\n| Pinned flags | Keep selected points fixed while their neighbors may move. |\n| Supplied pairs | Replace the neighborhood query with an independently chosen graph through `neighborhoodGrowth.setPairs(pairs)`. |\n\nThe pool (a 14x14 jittered grid in a fixed deterministic order), the 70px density radius, the 48-candidate judgment cap and the 96-point cap are fixed measured execution bounds of the exact O(N^3) query, not artistic choices; the interval, not the radius, chooses where growth happens. Seed points keep their dark tone while inserted nodes use the pale slot, so new material reads apart from the original web. The query, relaxation and density counting are separate operations; the supplied graph is an explicit input to the motion step.\n",
       "sourcePath": "packages/javascript/examples/neighborhood-growth/sketch.js",
       "guidePath": "docs/neighborhood-growth.md",
-      "guideSha256": "7d3412308bba9949b01a1f1e91cf4ed178b589e8fe92556e7ebc846ee6be5e75",
+      "guideSha256": "9ab69efd0c7ee70a5b7ae023872f25aa098c602caa7ec06ffb0681950ab497ac",
       "exampleUrl": "/native/examples/neighborhood-growth/index.html",
       "operations": [
         {
@@ -4671,6 +4676,20 @@
           },
           "attestationPath": "catalog/validation/threshold-edge-relaxation-2d.json",
           "attestationSha256": "13b7d0e7ba4ffe00aa460d67e611ace0a43571439f2cdb25cdde125efb467773"
+        },
+        {
+          "id": "spatial.radius-pairs-2d",
+          "version": "0.1.0",
+          "description": "Enumerate all unordered point-index pairs within an inclusive Euclidean radius using a deterministic x sweep.",
+          "catalogPath": "catalog/operations/radius-pairs-2d.json",
+          "sha256": "638f8d69aaae5f16a425a48f63b4c2133892aea2b931b84ae2986966d0b3125b",
+          "support": {
+            "core": "conformant",
+            "native": "validated-scoped",
+            "technique": "unvalidated"
+          },
+          "attestationPath": "catalog/validation/radius-pairs-2d.json",
+          "attestationSha256": "d1e7e74c9d8789fb22683d1c617d8034a51068784bea7d5952cea3ad7a516f46"
         }
       ],
       "studio": true
@@ -4678,12 +4697,12 @@
     {
       "slug": "elastic-loops",
       "title": "Elastic Loops",
-      "description": "Three open strands grow material rest lengths, change bend targets, and refine long edges. The bounded replay begins from the same pinned 30-node state and draws the returned noncrossing embedding.",
+      "description": " Three open strands grow material rest lengths, change bend targets, and refine long edges. The bounded replay begins from the same pinned 30-node state and draws the returned noncrossing embedding.",
       "category": "Motion",
-      "markdown": "# Elastic loops\n\nThree open strands grow material rest lengths, change bend targets, and refine long edges. The bounded replay begins from the same pinned 30-node state and draws the returned noncrossing embedding.\n\n| Control | Canvas effect |\n| --- | --- |\n| Ticks | Replays growth and midpoint refinement through at most 36 steps. |\n| Reverse curl | Reverses the authored bend-target change. |\n| Wind | Supplies horizontal external acceleration independent of growth. |\n| Structure | Reveals retained initial and split nodes without changing the material state. |\n\n`elastic-curve-grow-step-2d` computes the material update and split events. Palette and structure visibility redraw the same computed state.\n",
+      "markdown": "# Elastic loops\n\n Three open strands grow material rest lengths, change bend targets, and refine long edges. The bounded replay begins from the same pinned 30-node state and draws the returned noncrossing embedding.\n\n| Control | Canvas effect |\n| --- | --- |\n| Ticks | Replays growth and midpoint refinement through at most 36 steps. |\n| Growth | Sets the rest-length growth rate for new material. |\n| Curl | Sets the signed bend-target rate; negative values reverse the authored curl. |\n| Wind | Supplies horizontal external acceleration independent of growth. |\n| Range | Distance within which nonincident strand segments push apart. |\n| Strength | Force applied as two strands enter the avoidance range. |\n| Structure | Reveals retained initial and split nodes without changing the material state. |\n\n`elastic-curve-grow-step-2d` computes the material update and split events. Palette and structure visibility redraw the same computed state.\n",
       "sourcePath": "packages/javascript/examples/elastic-loops/sketch.js",
       "guidePath": "apps/web/content/elastic-loops.md",
-      "guideSha256": "096ac744b29c68fa303df78d71fdfb0645b0d355ae73efd9f04875c0a0611a97",
+      "guideSha256": "6a00078816aff8dcabefe03b6421ae58c43d5d21453f484f1ad8eb3785b5eb4f",
       "exampleUrl": "/native/examples/elastic-loops/index.html",
       "operations": [
         {

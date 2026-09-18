@@ -131,9 +131,11 @@ operations, not new core operations:
   explicit old-density filter), so no new operation is admitted and no source-specific
   growth threshold is inferred.
 
-The delivery table state moves from Design to "Cores accepted; studies draft." Next: extend
-the neighborhood-growth study with the node-insertion coupling, and finalize both studies'
-creative quality (both were flagged as reading like technical diagrams in step 2).
+The delivery table state moves from Design to "Cores accepted; studies draft." The
+neighborhood-growth study now carries the node-insertion coupling (frozen in the
+[creative review](dynamics-creative-review.md), 18 September 2026) and both studies pass
+creative review; the four replay-model studies prepare their step chains cooperatively so
+the slow cold replays no longer block the page (measured in the same record).
 
 ## Standing priority
 
@@ -175,7 +177,7 @@ exist with no `catalog/validation` record yet.
 | Audit | Coupled agent deposition/diffusion/sensing | Pending |
 | Audit | Crossing/stitch topology, hinged panels, periodic identified domains | Pending |
 | Audit | River migration/cutoffs; visibility-aware projected lines | Pending |
-| Audit | Intersection graph editing; relative-neighborhood graph evolution | Cores accepted; studies draft. RNG-evolution study still missing the node-insertion coupling |
+| Audit | Intersection graph editing; relative-neighborhood graph evolution | Cores accepted; studies draft. Node-insertion coupling delivered; both studies pass creative review |
 | Audit | Density/color accumulation and independent exposure; bounded analytic maps | Pending |
 | Audit | Image k-means; seeded color-front growth; moving-spline deposition | Pending |
 | Audit | Retained graph subset queries; separate Hilbert, Ulam and Penrose constructions | Pending |

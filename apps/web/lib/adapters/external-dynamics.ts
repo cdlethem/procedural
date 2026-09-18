@@ -22,7 +22,7 @@ export const externalDynamicsDefinitions:StudioDefinition[]=[
   {id:'guarded-bands',title:'Guarded bands',description:'Select shaped tidal ribbons by actual filled-region clearance.',parameters:[toggle('wide','Wide ribbons','Expand the candidate width profile.'),numeric('clearance','Clearance','Required separation between retained ribbons.',0,40,1),toggle('transfer','Crossing path','Substitute the sloped candidate family.'),toggle('showRejected','Rejected paths','Show rejected centerlines as dashed paths.')],defaults:{wide:false,clearance:10,transfer:false,showRejected:true}},
   {id:'hatched-islands',title:'Hatched islands',description:'Two clipped hatch fields trace a region and its holes.',parameters:[numeric('spacing','Spacing','Primary hatch field line spacing.',6,60,1),numeric('cross','Cross','Secondary hatch field line spacing.',6,80,1),numeric('rotation','Rotation','Primary hatch field direction in degrees.',0,360,1),numeric('twist','Twist','Secondary field direction relative to primary, in degrees.',-180,180,1),choice('region','Region','Replace the filled region and its holes.',['island-a','island-b']),toggle('outline','Outline','Draw the region and hole boundaries over hatching.')],defaults:{spacing:24,cross:40,rotation:16,twist:110,region:'island-a',outline:true}},
   {id:'bridge-web',title:'Bridge web',description:'Selected candidate gaps accumulate as stable graph bridges.',parameters:[numeric('ticks','Bridges','Replay selected graph insertions from the authored strands.',0,42,1),numeric('strain','Strain','Waviness of the authored strands.',0,60,1),numeric('slant','Slant','Base candidate slant; negative is the cross route.',-60,60,1),numeric('stride','Stride','Gap selection step; shares the six gap slots by common divisor.',1,8,1),toggle('candidate','Candidate guide','Show the next potential cross-strand segment.')],defaults:{ticks:42,strain:25,slant:31,stride:5,candidate:true}},
-  {id:'neighborhood-growth',title:'Neighborhood growth',description:'An exact local graph guides synchronous point relaxation.',parameters:[numeric('ticks','Ticks','Replay point relaxation and graph queries.',0,36,1),toggle('chain','Open chain','Substitute a supplied chain for the exact neighborhood graph.'),numeric('minLength','Length threshold','Edges at or below this length do not move points.',0,100,1),numeric('step','Step','Relaxation strength applied to eligible edges.',0,1,.05)],defaults:{ticks:24,chain:false,minLength:38,step:.5}},
+  {id:'neighborhood-growth',title:'Neighborhood growth',description:'An exact local graph guides synchronous point relaxation while a density-filtered pool grows the web.',parameters:[numeric('ticks','Ticks','Replay point relaxation and graph queries.',0,36,1),toggle('chain','Open chain','Substitute a supplied chain for the exact neighborhood graph.'),numeric('minLength','Length threshold','Edges at or below this length do not move points.',0,100,1),numeric('step','Step','Relaxation strength applied to eligible edges.',0,1,.05),numeric('insert','Insert','New nodes appended per tick from the fixed proposal pool.',0,3,1),numeric('minNeighbors','Min neighbors','Fewest existing points within the 70px density radius a candidate needs.',0,3,1),numeric('maxNeighbors','Max neighbors','Most existing points within the density radius a candidate may have.',1,7,1)],defaults:{ticks:24,chain:false,minLength:38,step:.5,insert:1,minNeighbors:1,maxNeighbors:3}},
  {id:'elastic-loops',title:'Elastic loops',description:'Growing elastic strands refine while preserving a noncrossing embedding.',parameters:[numeric('ticks','Ticks','Replay bounded elastic growth and refinement.',0,36,1),numeric('growth','Growth','Rest-length growth rate for new material.',0,.04,.002),numeric('curl','Curl','Signed bend-target rate; negative reverses the authored curl.',-.15,.15,.01),numeric('windX','Wind','Apply horizontal external acceleration.',-2,2,.25),numeric('range','Range','Distance within which strands push apart.',0,120,1),numeric('strength','Strength','Force applied when strands enter the avoidance range.',0,24,1),toggle('structure','Structure','Reveal retained nodes over the same curve state.')],defaults:{ticks:36,growth:.018,curl:.09,windX:0,range:55,strength:18,structure:false}},
   {id:'dye-currents',title:'Dye currents',description:'Dye and texture travel through a periodic projected velocity field.',parameters:[numeric('ticks','Frames','Replay the explicit transport/projection system.',0,120,10),numeric('injection','Injection','Change the externally supplied vortex force.',0,.3,.01),numeric('viscosity','Viscosity','Change explicit velocity diffusion.',0,.24,.01),toggle('projection','Projection','Apply bounded pressure projection.'),toggle('texture','Stripe source','Replace the initial soft dye disks with striped disks.'),toggle('contours','Contours','Draw measured dye isolines over the same flow state.')],defaults:{ticks:30,injection:.1,viscosity:.01,projection:true,texture:false,contours:true}},
 ];
@@ -53,6 +53,61 @@ function replayed<S>(key:string,ticks:number,seed:()=>S,step:(state:S,tick:numbe
     if((tick+1)%stride===0&&entry.snapshots.size<limit)entry.snapshots.set(tick+1,state);
   }
   return state;
+}
+/** Thrown when a cooperative preparation is cancelled before it finishes.
+ *  Snapshots already stored remain resumable by later runs. */
+export class PreparationCancelledError extends Error{
+  constructor(){super('preparation cancelled');this.name='PreparationCancelledError';}
+}
+const yieldToUi=()=>new Promise<void>((resolve)=>setTimeout(resolve,0));
+/** Cooperative twin of `replayed`: runs the same step chain across macrotasks so the
+ *  page stays responsive, storing the same resumable snapshots. Cancelling between
+ *  steps leaves the chain resumable; it never changes what a completed run produces. */
+async function replayedAsync<S>(key:string,ticks:number,seed:()=>S,step:(state:S,tick:number)=>S,isCancelled:()=>boolean,stride=1,limit=64):Promise<S>{
+  const entry=retained(`replay:${key}`,()=>({snapshots:new Map<number,S>([[0,seed()]])}));
+  let from=0;
+  for(const tick of entry.snapshots.keys())if(tick<=ticks&&tick>from)from=tick;
+  let state:S=entry.snapshots.get(from) as S;
+  for(let tick=from;tick<ticks;tick++){
+    if(isCancelled())throw new PreparationCancelledError();
+    state=step(state,tick);
+    if((tick+1)%stride===0&&entry.snapshots.size<limit)entry.snapshots.set(tick+1,state);
+    if(tick+1<ticks)await yieldToUi();
+  }
+  return state;
+}
+const growthReplayKey=(q:Record<string,unknown>)=>`neighborhood:${q.chain}:${q.minLength}:${q.step}:${q.insert}:${q.minNeighbors}:${q.maxNeighbors}`;
+const growthModelKey=(q:Record<string,unknown>)=>`neighborhood:${q.ticks}:${q.chain}:${q.minLength}:${q.step}:${q.insert}:${q.minNeighbors}:${q.maxNeighbors}`;
+/** Studies whose model work is replayed step chains and can be prepared cooperatively. */
+export const externalDynamicsPreparable=new Set(['bridge-web','neighborhood-growth','elastic-loops','dye-currents']);
+/** Warms the module caches for a study's model so the following synchronous draw is
+ *  a cache hit. Runs step work across macrotasks and stops when isCancelled() is true;
+ *  the last successful image is never touched by preparation. */
+export async function prepareExternalDynamics(layer:Layer,isCancelled:()=>boolean):Promise<void>{
+  const q=layer.params as Record<string,any>;
+  switch(layer.technique){
+    case 'bridge-web':
+      await replayedAsync(`bridge:${q.strain}:${q.slant}:${q.stride}`,Number(q.ticks),
+        ()=>bridgeSeed(Number(q.strain)),(current,tick)=>bridgeStep(current,tick,Number(q.slant),Number(q.stride)),isCancelled);
+      return;
+    case 'neighborhood-growth':
+      await replayedAsync(growthReplayKey(q),Number(q.ticks),neighborhoodSeedState,
+        (current)=>neighborhoodStep(current,Boolean(q.chain),Number(q.minLength),Number(q.step),Number(q.insert),Number(q.minNeighbors),Number(q.maxNeighbors)),isCancelled);
+      retained(growthModelKey(q),()=>neighborhoodModel(Number(q.ticks),Boolean(q.chain),Number(q.minLength),Number(q.step),Number(q.insert),Number(q.minNeighbors),Number(q.maxNeighbors)));
+      return;
+    case 'elastic-loops':{
+      const seed=retained('elastic-seed',initialElastic);
+      await replayedAsync(`elastic:${q.growth}:${q.curl}:${q.windX}:${q.range}:${q.strength}`,Number(q.ticks),
+        ()=>seed,(current)=>elasticStep(current,seed.nodes.length,Number(q.growth),Number(q.curl),Number(q.windX),Number(q.range),Number(q.strength)),isCancelled,1,48);
+      return;
+    }
+    case 'dye-currents':
+      await replayedAsync(`fluid:${q.injection}:${q.viscosity}:${q.projection}:${q.texture}`,Number(q.ticks),
+        ()=>initialFluid(Boolean(q.texture)),(state)=>stepFluid(state,{injection:Number(q.injection),viscosity:Number(q.viscosity),projection:Boolean(q.projection)}),isCancelled,10,16);
+      return;
+    default:
+      throw Error(`No cooperative preparation for ${String(layer.technique)}`);
+  }
 }
 const v=(layer:Layer,key:string)=>layer.params[key];
 const rgb=(layer:Layer,index:number):[number,number,number]=>channels(layer.palette[((index%layer.palette.length)+layer.palette.length)%layer.palette.length]);
@@ -180,19 +235,63 @@ function drawBridge(p:any,l:Layer){const q=l.params,m=bridgeModel(Number(q.ticks
     p.noStroke();fill(p,l,1);for(const node of m.graph.nodes)p.circle(...node.point,3.7);fill(p,l,0);for(const event of m.lastEvents)if(event.type==='link')for(const id of event.nodeIds)p.circle(...byId.get(id)!,7);
   });}
 
+const NEIGHBORHOOD_CELL=640/14;
+const NEIGHBORHOOD_POOL=(()=>{
+  const fract=(x:number)=>x-Math.floor(x);
+  const jitter=(row:number,col:number,salt:number)=>fract(Math.sin(row*127.1+col*311.7+salt*74.7)*43758.5453);
+  const points:number[][]=[];
+  const keyed: {index:number;key:number}[]=[];
+  for(let row=0;row<14;row++)for(let col=0;col<14;col++){
+    const index=row*14+col;
+    points.push([NEIGHBORHOOD_CELL*(col+0.5)+(jitter(row,col,1)-0.5)*NEIGHBORHOOD_CELL*0.7,
+      NEIGHBORHOOD_CELL*(row+0.5)+(jitter(row,col,2)-0.5)*NEIGHBORHOOD_CELL*0.7]);
+    keyed.push({index,key:jitter(row,col,3)});
+  }
+  keyed.sort((a,b)=>a.key-b.key||a.index-b.index);
+  return {points,order:keyed.map(item=>item.index)};
+})();
+const NEIGHBORHOOD_DENSITY_RADIUS=70;
+const NEIGHBORHOOD_POINT_CAP=96;
+const NEIGHBORHOOD_JUDGE_CAP=48;
 function neighborhoodSeed(){return Array.from({length:26},(_,i)=>[320+190*Math.cos(i*2.4)*(0.6+i%5/10),320+190*Math.sin(i*2.4)*(0.6+i%4/10)]);}
-const neighborhoodChain=Array.from({length:25},(_,i)=>[i,i+1]);
-function neighborhoodPairs(points:number[][],chain:boolean){return chain?neighborhoodChain:relativeNeighborhoodPairs2D({points,maxWork:points.length+points.length*(points.length-1)/2*Math.max(0,points.length-2)}).pairs;}
-function neighborhoodModel(ticks:number,chain:boolean,minLength:number,step:number){const seed=neighborhoodSeed();let points=seed;
-  for(let tick=0;tick<ticks;tick++){const pairs=neighborhoodPairs(points,chain);points=thresholdEdgeRelaxation2D({points,pairs,pinned:points.map(()=>false),minLength,stepScale:step,maxWork:points.length+pairs.length}).points;}
-  return {seed,points,pairs:neighborhoodPairs(points,chain)};}
-function drawNeighborhood(p:any,l:Layer){const q=l.params,m=retained(`neighborhood:${q.ticks}:${q.chain}:${q.minLength}:${q.step}`,()=>neighborhoodModel(Number(q.ticks),Boolean(q.chain),Number(q.minLength),Number(q.step)));
+function neighborhoodChainOver(points:number[][]){return Array.from({length:Math.max(0,points.length-1)},(_,i)=>[i,i+1]);}
+function neighborhoodPairs(points:number[][],chain:boolean){return chain?neighborhoodChainOver(points):relativeNeighborhoodPairs2D({points,maxWork:points.length+points.length*(points.length-1)/2*Math.max(0,points.length-2)}).pairs;}
+type NeighborhoodState={points:number[][];used:boolean[];cursor:number};
+function neighborhoodSeedState():NeighborhoodState{return {points:neighborhoodSeed(),used:NEIGHBORHOOD_POOL.order.map(()=>false),cursor:0};}
+function neighborhoodStep(state:NeighborhoodState,chain:boolean,minLength:number,step:number,insert:number,minNeighbors:number,maxNeighbors:number):NeighborhoodState{
+  const start=state.points;
+  const pairs=neighborhoodPairs(start,chain);
+  const points=thresholdEdgeRelaxation2D({points:start,pairs,pinned:start.map(()=>false),minLength,stepScale:step,maxWork:start.length+pairs.length}).points;
+  const used=state.used.slice();let cursor=state.cursor;
+  if(insert>0&&points.length<NEIGHBORHOOD_POINT_CAP){
+    const target=Math.min(NEIGHBORHOOD_POINT_CAP,start.length+insert);
+    for(let judged=0;judged<NEIGHBORHOOD_JUDGE_CAP&&points.length<target;judged++){
+      const poolIndex=NEIGHBORHOOD_POOL.order[cursor];cursor=(cursor+1)%NEIGHBORHOOD_POOL.order.length;
+      if(used[poolIndex])continue;
+      const candidate=NEIGHBORHOOD_POOL.points[poolIndex];
+      const extended=[...points,candidate];
+      const count=radiusPairs2D({points:extended,radius:NEIGHBORHOOD_DENSITY_RADIUS,maxWork:extended.length*extended.length}).pairs.filter(pair=>pair[0]===points.length||pair[1]===points.length).length;
+      if(count<minNeighbors||count>maxNeighbors)continue;
+      points.push(candidate);used[poolIndex]=true;
+    }
+  }
+  return {points,used,cursor};
+}
+function neighborhoodModel(ticks:number,chain:boolean,minLength:number,step:number,insert:number,minNeighbors:number,maxNeighbors:number){
+  const state=replayed(growthReplayKey({chain,minLength,step,insert,minNeighbors,maxNeighbors}),ticks,
+    neighborhoodSeedState,current=>neighborhoodStep(current,chain,minLength,step,insert,minNeighbors,maxNeighbors));
+  const seed=neighborhoodSeed();
+  return {seed,points:state.points,pairs:neighborhoodPairs(state.points,chain),inserted:state.points.length-seed.length};
+}
+function drawNeighborhood(p:any,l:Layer){const q=l.params,m=retained(growthModelKey(q),
+  ()=>neighborhoodModel(Number(q.ticks),Boolean(q.chain),Number(q.minLength),Number(q.step),Number(q.insert),Number(q.minNeighbors),Number(q.maxNeighbors)));
   const degree=m.points.map(()=>0);for(const [a,b] of m.pairs){degree[a]+=1;degree[b]+=1;}
   scale(p,640,()=>{p.noFill();
-    color(p,l,3,200);p.strokeWeight(1.4);for(let i=0;i<m.points.length;i++)p.line(...m.seed[i],...m.points[i]);
+    color(p,l,3,200);p.strokeWeight(1.4);for(let i=0;i<m.seed.length;i++)p.line(...m.seed[i],...m.points[i]);
     color(p,l,2,190);p.strokeWeight(1.1);for(const [a,b] of m.pairs)p.line(...m.points[a],...m.points[b]);
     p.noStroke();fill(p,l,1,150);for(const point of m.seed)p.circle(...point,3);
-    fill(p,l,1);for(let i=0;i<m.points.length;i++)p.circle(...m.points[i],3+Math.min(7,degree[i]*1.1));});}
+    fill(p,l,1);for(let i=0;i<m.seed.length;i++)p.circle(...m.points[i],3+Math.min(7,degree[i]*1.1));
+    fill(p,l,4);for(let i=m.seed.length;i<m.points.length;i++)p.circle(...m.points[i],3+Math.min(7,degree[i]*1.1));});}
 
  function initialElastic(){const nodes:any[]=[],curves:any[]=[];let nextEdgeId=0;for(let curveIndex=0;curveIndex<3;curveIndex++){const nodeIds:number[]=[],edgeIds:number[]=[],restLengths:number[]=[],restTurns:number[]=[];
      for(let index=0;index<10;index++){const y=88+49*index,x=145+175*curveIndex+27*Math.sin(index*0.72+curveIndex*0.85),id=nodes.length;nodes.push({id,position:[x,y],velocity:[0,0],pinned:index===0});nodeIds.push(id);if(index>0){edgeIds.push(nextEdgeId++);const a=nodes[nodeIds[index-1]].position,b=nodes[id].position;restLengths.push(Math.hypot(b[0]-a[0],b[1]-a[1]));}}

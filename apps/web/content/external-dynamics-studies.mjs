@@ -6,7 +6,7 @@ export const externalDynamicsStudies=[
   {slug:'guarded-bands',category:'Geometry',operations:['select-tapered-stroke-strips-2d']},
   {slug:'hatched-islands',category:'Geometry',operations:['hatch-region-lines-2d']},
   {slug:'bridge-web',category:'Graphs',operations:['insert-segment-bridge-2d']},
-  {slug:'neighborhood-growth',category:'Graphs',operations:['relative-neighborhood-pairs-2d','threshold-edge-relaxation-2d']},
+  {slug:'neighborhood-growth',category:'Graphs',operations:['relative-neighborhood-pairs-2d','threshold-edge-relaxation-2d','radius-pairs-2d']},
   {slug:'elastic-loops',category:'Motion',operations:['elastic-curve-grow-step-2d']},
   {slug:'dye-currents',category:'Fields & paths',operations:['project-periodic-velocity-2d','advect-periodic-scalar-2d','diffuse-periodic-scalar-2d','marching-squares-2d']},
 ];
