@@ -66,6 +66,18 @@ image-and-controls adapter wired into the studio, gallery and API generator (106
 blocks the `docs/reference/operations.md` regeneration, which is also where the
 raymarch-implicit-rays-3d entry (added after the reference's last write) lands.
 
+18 September 2026 — step 2 complete. The nine dynamics studies were art-directed and
+reviewed in the real web interface: the five flagged studies (sensing-trails, bridge-web,
+neighborhood-growth, elastic-loops, hatched-islands) now expose continuous structural
+controls with visible, distinct outcomes across each range; the other four (dye-currents,
+guarded-bands, lingering-links, flocking-marks) passed unchanged. Elastic loops was
+realigned to the accepted native sketch geometry and collision regime, with range and
+strength as two controls and combined upper bounds verified runnable. The control model,
+exploration and root verdict are recorded in
+[docs/dynamics-creative-review.md](dynamics-creative-review.md); the renders are registered
+as `dynamics-web-quality-draft-20260918` in the visual review. The studies remain drafts:
+saved-work migration, reset/reload and export checks still precede release.
+
 ## Standing priority
 
 Apply [creative quality](creative-quality.md) to existing and new components, techniques and
