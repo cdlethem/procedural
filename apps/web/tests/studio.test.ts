@@ -13,8 +13,8 @@ import {
   validateDocument,
 } from "../lib/studio.ts";
 
-test("all 104 studio definitions create detached bounded v3 layers", () => {
-  assert.equal(techniques.length, 104);
+test("all 106 studio definitions create detached bounded v3 layers", () => {
+  assert.equal(techniques.length, 106);
   assert.equal(MAX_LAYERS, 8);
   for (const technique of techniques) {
     const document = createDocument(technique.id);

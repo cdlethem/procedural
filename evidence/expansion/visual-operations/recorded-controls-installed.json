@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "scope": "frozen analytical fixtures and passive input/numeric/ownership checks; not native workflow acceptance",
+  "fixtures": 21,
+  "checks": [
+    "passive exact carriers, no getter calls",
+    "null-prototype input",
+    "detached output",
+    "numeric/work precedence",
+    "positive zero"
+  ],
+  "input_sha256": {
+    "catalog/operations/sample-recorded-controls.json": "85bc6d12ebbbfbb352baba5a26556087c700f19d52bf97e80dfc61318a72288b",
+    "fixtures/operations/sample-recorded-controls.json": "fa6dd18655be780512f6cc9744ef225cfa33bcf14603a6c820e50a2c53abfb05",
+    "packages/javascript/src/sample-recorded-controls.js": "0599831602730cbd23d6a202e60a46f3a3e8e422b8f7d3cf6154367eef78ff59",
+    "tests/native/sample-recorded-controls-javascript.mjs": "755078007157ca4e9d6dbaa0f7098deb866e83e38da817308d11e1531a6567a3"
+  }
+}

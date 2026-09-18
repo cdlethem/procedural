@@ -1,0 +1,119 @@
+{
+  "status": "passed",
+  "scope": "Pure CPU hit records and editable p5 raster study with independently supplied perforated-shell scene; no target acceptance.",
+  "runtime": "p5 2.3.2 Canvas2D density1",
+  "package_root": "/home/colin/dev/procedural/.work/dist/visual-accept/consumer/node_modules/@procedurals/javascript",
+  "pure_cases": 43,
+  "input_sha256_before": {
+    "tests/native/implicit-rays-javascript.mjs": "50061b3b04c6a73aed18c2496410939f58a4d382b4bb21170ffdcd16e40dadde",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/src/raymarch-implicit-rays-3d.js": "d953d47ed3da77c4bdbf9af8f9075232a2adae1b99e92ba3b1914f841ba83608",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/examples/implicit-volumes/index.html": "741eec6a15d062f95c9245e12c87eed3955e01e54ba65c53ebf69822133872db",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/examples/implicit-volumes/sketch.js": "f23a3e0f99b58ac884797cc393a71e774c1ea464f1be600ebf25a05ae3336cf4",
+    "catalog/operations/raymarch-implicit-rays-3d.json": "fc2ce3b83aa2acb5b3b5e2143a637460d154af945d025d4a732c4ee0fadd6cae",
+    "fixtures/operations/raymarch-implicit-rays-3d.json": "5c2f76ba5c02f234a75a72dbf639f64daf8692662e9443e8fb9c848bb7cb8ac4",
+    "tests/native/fixtures/implicit-ray-oracles.json": "f3fca246d8b7d116f5e3db01b7a5adb7bdbdabf4fb3ea301e39dc1f4cd649406",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  },
+  "frames": [
+    {
+      "label": "baseline",
+      "png_sha256": "027efcf36d1a52830cd65ebb7b3a2e1fa10d2289506f0d37f0d5d976b5d55025",
+      "png_path": ".work/handoff/accept/installed/implicit-rays/baseline.png",
+      "png_bytes": 60922,
+      "state_sha256": "b1c7cc9b74a54bc3ba7c090160653d54d22a4f3775582456a0283d97a1e80de4",
+      "query_ms": 240.59999990463257
+    },
+    {
+      "label": "hard-union",
+      "png_sha256": "ad6c29783b97ab02e765df65ebc83958d033b615799b2758d0345c9bc59549b9",
+      "png_path": ".work/handoff/accept/installed/implicit-rays/hard-union.png",
+      "png_bytes": 56798,
+      "state_sha256": "c55391d07fe1f1de400b23c0e44c987565dab4adf000b451ca2e68c6375221e9",
+      "query_ms": 223.69999980926514
+    },
+    {
+      "label": "uncut-vessel",
+      "png_sha256": "ce652412a26f36e933372932d997a5f4b246916748afd6d9085d47121c953c6b",
+      "png_path": ".work/handoff/accept/installed/implicit-rays/uncut-vessel.png",
+      "png_bytes": 61470,
+      "state_sha256": "cb4edbff876b9d9d2710b63799ec33b40f4e3654afaf6af970c2275a14956b93",
+      "query_ms": 176.59999990463257
+    },
+    {
+      "label": "rotated-view",
+      "png_sha256": "c74fee046a9cc27f2f9851942d3a2b5290e74e927a99a2b33b8b5a056264b4bf",
+      "png_path": ".work/handoff/accept/installed/implicit-rays/rotated-view.png",
+      "png_bytes": 61812,
+      "state_sha256": "7c228c2fbfa16b554e70706e4c035548cec4ef76395a763b24e1dc8044a82bca",
+      "query_ms": 228.29999995231628
+    },
+    {
+      "label": "perforated-shell",
+      "png_sha256": "74fb5a640a3e4fbf1dcd53d0217462e585bb87b5614ee4a8b507be37ef7dcee3",
+      "png_path": ".work/handoff/accept/installed/implicit-rays/perforated-shell.png",
+      "png_bytes": 62539,
+      "state_sha256": "1a3a102150dfd8de15025a39182f937f1e40c397d103d3f214c845c143ed0344",
+      "query_ms": 203.79999995231628
+    },
+    {
+      "label": "supplied-scene-transfer",
+      "png_sha256": "233f9071bf966f2882ccbd2eb95400e427e4c4d7b5db2caf30a8a010bb8e8bff",
+      "png_path": ".work/handoff/accept/installed/implicit-rays/supplied-scene-transfer.png",
+      "png_bytes": 60546,
+      "state_sha256": "7b686f3f83f162e2983a1364834f90755aaa3b4824f28f184f9126926d8d97dd",
+      "query_ms": 200
+    },
+    {
+      "label": "reset",
+      "png_sha256": "027efcf36d1a52830cd65ebb7b3a2e1fa10d2289506f0d37f0d5d976b5d55025",
+      "png_path": ".work/handoff/accept/installed/implicit-rays/reset.png",
+      "png_bytes": 60922,
+      "state_sha256": "b1c7cc9b74a54bc3ba7c090160653d54d22a4f3775582456a0283d97a1e80de4",
+      "query_ms": 226.89999985694885
+    },
+    {
+      "label": "reload",
+      "png_sha256": "027efcf36d1a52830cd65ebb7b3a2e1fa10d2289506f0d37f0d5d976b5d55025",
+      "png_path": ".work/handoff/accept/installed/implicit-rays/reload.png",
+      "png_bytes": 60922,
+      "state_sha256": "b1c7cc9b74a54bc3ba7c090160653d54d22a4f3775582456a0283d97a1e80de4",
+      "query_ms": 231.90000009536743
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "structure": {
+    "total": 32256,
+    "occupied": 12044,
+    "centerDepth": 5.012937500541311,
+    "statuses": [
+      "miss_range",
+      "hit_epsilon",
+      "miss_steps"
+    ],
+    "normals": 12044,
+    "nonemptyColumns": 144
+  },
+  "cut_changed_depths": 1423,
+  "transfer_structure": {
+    "hits": 11466,
+    "depth_min": 4.242045074333725,
+    "depth_max": 5.341248210410156,
+    "central_kind": "hit_epsilon"
+  },
+  "saved_png_sha256": "027efcf36d1a52830cd65ebb7b3a2e1fa10d2289506f0d37f0d5d976b5d55025",
+  "browser_errors": [],
+  "input_sha256_after": {
+    "tests/native/implicit-rays-javascript.mjs": "50061b3b04c6a73aed18c2496410939f58a4d382b4bb21170ffdcd16e40dadde",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/src/raymarch-implicit-rays-3d.js": "d953d47ed3da77c4bdbf9af8f9075232a2adae1b99e92ba3b1914f841ba83608",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/examples/implicit-volumes/index.html": "741eec6a15d062f95c9245e12c87eed3955e01e54ba65c53ebf69822133872db",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/examples/implicit-volumes/sketch.js": "f23a3e0f99b58ac884797cc393a71e774c1ea464f1be600ebf25a05ae3336cf4",
+    "catalog/operations/raymarch-implicit-rays-3d.json": "fc2ce3b83aa2acb5b3b5e2143a637460d154af945d025d4a732c4ee0fadd6cae",
+    "fixtures/operations/raymarch-implicit-rays-3d.json": "5c2f76ba5c02f234a75a72dbf639f64daf8692662e9443e8fb9c848bb7cb8ac4",
+    "tests/native/fixtures/implicit-ray-oracles.json": "f3fca246d8b7d116f5e3db01b7a5adb7bdbdabf4fb3ea301e39dc1f4cd649406",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  }
+}

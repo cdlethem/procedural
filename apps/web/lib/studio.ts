@@ -29,6 +29,10 @@ import {
   externalDynamicsDefinitions,
   externalDynamicsPalette,
 } from "./adapters/external-dynamics";
+import {
+  imageAndControlsDefinitions,
+  imageAndControlsPalette,
+} from "./adapters/image-and-controls";
 import type { StudioDefinition } from "./adapters/types";
 
 export const MAX_LAYERS = 8;
@@ -40,6 +44,7 @@ const definitions: readonly StudioDefinition[] = [
   ...expansionDefinitions,
   ...externalExpansionDefinitions,
   ...externalDynamicsDefinitions,
+  ...imageAndControlsDefinitions,
   ...materialsDefinitions,
   ...systemsDefinitions,
   ...pathsDefinitions,
@@ -71,6 +76,8 @@ export function definition(id: TechniqueId): StudioDefinition {
   return found;
 }
 function paletteFor(id: string): number[] {
+  const image = imageAndControlsPalette(id);
+  if (image) return image;
   const dynamics = externalDynamicsPalette(id);
   if (dynamics) return dynamics;
   const external = externalExpansionPalette(id);

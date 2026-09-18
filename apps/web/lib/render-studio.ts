@@ -15,6 +15,10 @@ import {
   drawExternalDynamics,
   externalDynamicsDefinitions,
 } from "./adapters/external-dynamics";
+import {
+  drawImageAndControls,
+  imageAndControlsDefinitions,
+} from "./adapters/image-and-controls";
 
 const basicIds = new Set(basicDefinitions.map((definition) => definition.id));
 const geometryIds = new Set(
@@ -31,6 +35,7 @@ const externalExpansionIds = new Set(
   externalExpansionDefinitions.map((definition) => definition.id),
 );
 const externalDynamicsIds = new Set(externalDynamicsDefinitions.map((definition) => definition.id));
+const imageAndControlsIds = new Set(imageAndControlsDefinitions.map((definition) => definition.id));
 const drawingConstants = ["CLOSE", "CORNER", "CENTER", "ROUND", "TRIANGLES"] as const;
 
 /** Draws a whole document to a candidate graphics buffer, publishing it only after success. */
@@ -128,5 +133,6 @@ function drawLayer(p: any, layer: Layer): void {
   if (expansionIds.has(layer.technique)) return drawExpansion(p, layer);
   if (externalExpansionIds.has(layer.technique)) return drawExternalExpansion(p, layer);
   if (externalDynamicsIds.has(layer.technique)) return drawExternalDynamics(p, layer);
+  if (imageAndControlsIds.has(layer.technique)) return drawImageAndControls(p, layer);
   throw new Error(`Unknown studio technique: ${String(layer.technique)}`);
 }

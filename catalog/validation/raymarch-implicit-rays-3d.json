@@ -1,0 +1,132 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "field.raymarch-implicit-rays-3d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/raymarch-implicit-rays-3d.json",
+    "catalog_sha256": "fc2ce3b83aa2acb5b3b5e2143a637460d154af945d025d4a732c4ee0fadd6cae"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "apps/web/content/external-visual-api.mjs": "afb23fb3fb6d3ef0cf9f3313216697631054f0bb5690883139ddbdcbcc8498e8",
+          "apps/web/scripts/generate-api.mjs": "6de1201d9b7ed8cd91a4978effe91c45cdb7427a3eaf7aeb8ec00f46b85aa58a",
+          "packages/javascript/src/index.js": "00da65244242c79d43a3d87303d844f6930b4608ea55c738d7abe936d2a4552a",
+          "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+          "packages/javascript/src/raymarch-implicit-rays-3d.js": "d953d47ed3da77c4bdbf9af8f9075232a2adae1b99e92ba3b1914f841ba83608",
+          "tools/build_ported_javascript_package.mjs": "f6b19a0a2c73759c1b392fbc14a7153c58728a13c4478bf5db22bb77e47fdfe3"
+        },
+        "evidence_sha256": {
+          "evidence/expansion/visual-operations/implicit-rays-source.json": "a7517b1cc438ac0f9d697372e45a35800708e288d31fbd120b61035e8ce8e8bd",
+          "evidence/expansion/visual-operations/package.json": "3b201c3f037e33e362b4aaa6f140322f13d41663df87081dd338f622b8a4e2a7",
+          "catalog/operations/raymarch-implicit-rays-3d.json": "fc2ce3b83aa2acb5b3b5e2143a637460d154af945d025d4a732c4ee0fadd6cae",
+          "fixtures/operations/raymarch-implicit-rays-3d.json": "5c2f76ba5c02f234a75a72dbf639f64daf8692662e9443e8fb9c848bb7cb8ac4"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/expansion/visual-operations/implicit-rays-source.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/expansion/visual-operations/implicit-rays-source.json",
+            "pointer": "/pure_cases",
+            "equals": 43
+          },
+          {
+            "path": "evidence/expansion/visual-operations/package.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/expansion/visual-operations/root-review.json",
+          "sha256": "dc9abb956a3089a8bc1b5802e2251b3df9268d87649e395ce4286d7e66832b6f"
+        },
+        "runtime_profile": {
+          "name": "Node v22.22.1 pure fixtures; p5 2.3.2 / Chromium153 for study-bound runs",
+          "scope": "Frozen pure fixtures run against the source tree and a fresh offline-installed package; no other-target port."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "design/capabilities/implicit-ray-queries.md": "b3e77517ed3f7fd18e2ddd95b95436c0521eea04dc433ceb4d1dfa131047b1e3",
+          "design/operations/implicit-ray-contract-review.md": "2585784e71dfa821a9fb951f227efa883653ffd5487f62e4e1b9c2f5561cdd44",
+          "docs/implicit-volumes.md": "1e7047325654f64cb3672e24113a7a4f657fca1961c719d633ce96813ef48127",
+          "packages/javascript/examples/implicit-volumes/index.html": "741eec6a15d062f95c9245e12c87eed3955e01e54ba65c53ebf69822133872db",
+          "packages/javascript/examples/implicit-volumes/sketch.js": "f23a3e0f99b58ac884797cc393a71e774c1ea464f1be600ebf25a05ae3336cf4",
+          "tests/native/implicit-rays-javascript.mjs": "50061b3b04c6a73aed18c2496410939f58a4d382b4bb21170ffdcd16e40dadde",
+          "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad"
+        },
+        "evidence_sha256": {
+          "evidence/expansion/visual-operations/implicit-rays-source.json": "a7517b1cc438ac0f9d697372e45a35800708e288d31fbd120b61035e8ce8e8bd",
+          "evidence/expansion/visual-operations/implicit-rays-installed.json": "889e0a0c225f4afda47ae561cc47620c6f697230d9f5248c424284728858a3d7",
+          "evidence/expansion/visual-operations/package.json": "3b201c3f037e33e362b4aaa6f140322f13d41663df87081dd338f622b8a4e2a7"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/expansion/visual-operations/implicit-rays-source.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/expansion/visual-operations/implicit-rays-installed.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/expansion/visual-operations/root-review.json",
+          "sha256": "dc9abb956a3089a8bc1b5802e2251b3df9268d87649e395ce4286d7e66832b6f"
+        },
+        "runtime_profile": {
+          "name": "p5 2.3.2 / Chromium153 / Canvas2D density1",
+          "scope": "Original implicit-volumes study with independent perforated-shell scene; source/installed retained-state and pixel replay; no artist recreation."
+        }
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

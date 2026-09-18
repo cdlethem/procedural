@@ -1,0 +1,175 @@
+{
+  "status": "passed",
+  "scope": "Original p5 image-density study and independent thermal mask transfer; exact pure fixtures, structural/appearance edits, full-state replay, installed package browser imports and observed performance. No external artwork recreation or support acceptance claim.",
+  "package_root": "/home/colin/dev/procedural/.work/dist/visual-accept/consumer/node_modules/@procedurals/javascript",
+  "runtime": "p5 2.3.2 Canvas2D density1",
+  "pure_cases": 30,
+  "input_sha256_before": {
+    "tests/native/weighted-image-javascript.mjs": "271858598c5a709024c99bb494fbc2818abf30eb0e2b1fa6557ec48ab680a218",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    "packages/javascript/src/internal/geometry-b-utils.js": "72e6dae1c98dc48285764908c38999127390520902d69a2dadebf7fa2b53c773",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/weighted-raster-utils.js": "ddc74babee05134fee820d0fef6e7181b678c7e2f8242da2e112824aa010a9b0",
+    "packages/javascript/src/weighted-raster-points-2d.js": "98a76bb8b856491299b76e280596c578f5462cd0ecdfe3ef88ccece3ffdbb982",
+    "packages/javascript/src/weighted-raster-centroids-2d.js": "7b1503241bf6643956d443c8b935f5757715ad9d759c2f8976c1ddd5528f2a78",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/src/internal/geometry-b-utils.js": "72e6dae1c98dc48285764908c38999127390520902d69a2dadebf7fa2b53c773",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/src/internal/weighted-raster-utils.js": "ddc74babee05134fee820d0fef6e7181b678c7e2f8242da2e112824aa010a9b0",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/src/weighted-raster-points-2d.js": "98a76bb8b856491299b76e280596c578f5462cd0ecdfe3ef88ccece3ffdbb982",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/src/weighted-raster-centroids-2d.js": "7b1503241bf6643956d443c8b935f5757715ad9d759c2f8976c1ddd5528f2a78",
+    "catalog/operations/weighted-raster-points-2d.json": "9060fb34f83fe67fb0e1bcd012a127996b55307c75053231695128659358a9b8",
+    "fixtures/operations/weighted-raster-points-2d.json": "ca86ec289d41682c05221b1bad83cec4b11ff7742f561a3312e35c81a0081ab2",
+    "catalog/operations/weighted-raster-centroids-2d.json": "095de293fb29bb0677915f8cf8898b1bcc42178ecfc48d637ba07f43d4e57cbc",
+    "fixtures/operations/weighted-raster-centroids-2d.json": "b9434b36a53bf582e0bc803257c9e7681220c540c454ba7b94bb51338330ce04",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/examples/weighted-image-atlas/README.md": "28fb9e699c23fb8eddf99afcd38c7dd027de3c767c1407bc9faa4d55482d919c",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/examples/weighted-image-atlas/index.html": "3fb1f274dfabbe2df65776c182fd7618eace063eafc0da75e30cfa2c2ae653e3",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/examples/weighted-image-atlas/sketch.js": "7dc53fa1be4a39c5152bef16510ef3e5c30c4e32e35aa2a0940510a28e3f0d36",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  },
+  "frames": [
+    {
+      "label": "baseline",
+      "state_sha256": "95e2148ac165521967364e422928a5ad05c944743e559d95514aaafb2c17f0bf",
+      "png_sha256": "3c2601fd5c46798b186522e55a07b56f82de5090b0077e94a118847d62fe0183",
+      "png_bytes": 105549,
+      "png_path": ".work/handoff/accept/installed/weighted-image/baseline.png",
+      "state_path": ".work/handoff/accept/installed/weighted-image/baseline.json"
+    },
+    {
+      "label": "inverted-density",
+      "state_sha256": "9a4fe7b306c8078a832f51f2c30bd73f64a428737180c952e5456202230a1eea",
+      "png_sha256": "a52f29e23ce6f9d681e7f6b6f7091f5e84807b5c1c71f49731679fdda6d6ceca",
+      "png_bytes": 107698,
+      "png_path": ".work/handoff/accept/installed/weighted-image/inverted-density.png",
+      "state_path": ".work/handoff/accept/installed/weighted-image/inverted-density.json"
+    },
+    {
+      "label": "more-marks",
+      "state_sha256": "1ad561c31fe9d200cce3b42f48efe8479698e9d7309a450e81233d6288c8b321",
+      "png_sha256": "638322570b0e11f601e3aaf7c6283b0d78f41ac6cf1c0add236bfba0a021a241",
+      "png_bytes": 120707,
+      "png_path": ".work/handoff/accept/installed/weighted-image/more-marks.png",
+      "state_path": ".work/handoff/accept/installed/weighted-image/more-marks.json"
+    },
+    {
+      "label": "weighted-centroids",
+      "state_sha256": "763aefabaedbbcf774d0ebe0fb754101be4f1753d842fef726789cb77a3eb285",
+      "png_sha256": "127abb573849c65ba261f7a26794804b048c5bc8cbe58be81d63b1e2f233bebe",
+      "png_bytes": 108109,
+      "png_path": ".work/handoff/accept/installed/weighted-image/weighted-centroids.png",
+      "state_path": ".work/handoff/accept/installed/weighted-image/weighted-centroids.json"
+    },
+    {
+      "label": "stitches",
+      "state_sha256": "a2b680f8a6821345a8d2901538eb543ef5da3c8eea7ee571126de19a53e2c382",
+      "png_sha256": "95abca9ff14060c751f9ca9eb061e71e1137c853a8be3e2e09cafa2e73629179",
+      "png_bytes": 123633,
+      "png_path": ".work/handoff/accept/installed/weighted-image/stitches.png",
+      "state_path": ".work/handoff/accept/installed/weighted-image/stitches.json"
+    },
+    {
+      "label": "ochre-ink",
+      "state_sha256": "54dc6c3790cda9b08f4c57aff1f4578a08811af3ffd204791b9ac27baea74686",
+      "png_sha256": "5cf1b73e8bc1c8cded07345bf28fc279382d54c349c912523527e5219ee0247d",
+      "png_bytes": 104966,
+      "png_path": ".work/handoff/accept/installed/weighted-image/ochre-ink.png",
+      "state_path": ".work/handoff/accept/installed/weighted-image/ochre-ink.json"
+    },
+    {
+      "label": "thermal-transfer",
+      "state_sha256": "68a742e8072ea88f65dc7800829d397dac6e93c80c36e0661b97f25d118812bd",
+      "png_sha256": "702b33892988eca6d5c57f20ce23b6069ccd05c32065e4c619e9df4837b45bc6",
+      "png_bytes": 98955,
+      "png_path": ".work/handoff/accept/installed/weighted-image/thermal-transfer.png",
+      "state_path": ".work/handoff/accept/installed/weighted-image/thermal-transfer.json"
+    },
+    {
+      "label": "reset",
+      "state_sha256": "95e2148ac165521967364e422928a5ad05c944743e559d95514aaafb2c17f0bf",
+      "png_sha256": "3c2601fd5c46798b186522e55a07b56f82de5090b0077e94a118847d62fe0183",
+      "png_bytes": 105549,
+      "png_path": ".work/handoff/accept/installed/weighted-image/reset.png",
+      "state_path": ".work/handoff/accept/installed/weighted-image/reset.json"
+    },
+    {
+      "label": "reload",
+      "state_sha256": "95e2148ac165521967364e422928a5ad05c944743e559d95514aaafb2c17f0bf",
+      "png_sha256": "3c2601fd5c46798b186522e55a07b56f82de5090b0077e94a118847d62fe0183",
+      "png_bytes": 105549,
+      "png_path": ".work/handoff/accept/installed/weighted-image/reload.png",
+      "state_path": ".work/handoff/accept/installed/weighted-image/reload.json"
+    }
+  ],
+  "checks": [
+    "23 frozen exact fixtures and 7 passive/ownership cases",
+    "density inversion changes sampled tone",
+    "count and one centroid step change structure",
+    "mark and ink edits retain geometry",
+    "independent thermal image transfer",
+    "full reset/reload state and pixels",
+    "downloaded PNG equals displayed canvas",
+    "tiny, study-scale and stress timings in actual browser"
+  ],
+  "browser": "153.0.8010.12",
+  "saved_png": {
+    "path": ".work/handoff/accept/installed/weighted-image/saved.png",
+    "sha256": "3c2601fd5c46798b186522e55a07b56f82de5090b0077e94a118847d62fe0183"
+  },
+  "performance": [
+    {
+      "width": 32,
+      "height": 24,
+      "count": 40,
+      "warmup": 1,
+      "repetitions": 3,
+      "sample_median_ms": 0.10000014305114746,
+      "centroid_median_ms": 1.2999999523162842,
+      "output_checksum": 16408,
+      "memory_bytes": 24500000
+    },
+    {
+      "width": 80,
+      "height": 100,
+      "count": 420,
+      "warmup": 1,
+      "repetitions": 3,
+      "sample_median_ms": 0.8999998569488525,
+      "centroid_median_ms": 52.5,
+      "output_checksum": 1707961,
+      "memory_bytes": 24500000
+    },
+    {
+      "width": 120,
+      "height": 120,
+      "count": 700,
+      "warmup": 1,
+      "repetitions": 3,
+      "sample_median_ms": 2.0999999046325684,
+      "centroid_median_ms": 154.79999995231628,
+      "output_checksum": 5090645,
+      "memory_bytes": 24500000
+    }
+  ],
+  "input_sha256_after": {
+    "tests/native/weighted-image-javascript.mjs": "271858598c5a709024c99bb494fbc2818abf30eb0e2b1fa6557ec48ab680a218",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    "packages/javascript/src/internal/geometry-b-utils.js": "72e6dae1c98dc48285764908c38999127390520902d69a2dadebf7fa2b53c773",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/weighted-raster-utils.js": "ddc74babee05134fee820d0fef6e7181b678c7e2f8242da2e112824aa010a9b0",
+    "packages/javascript/src/weighted-raster-points-2d.js": "98a76bb8b856491299b76e280596c578f5462cd0ecdfe3ef88ccece3ffdbb982",
+    "packages/javascript/src/weighted-raster-centroids-2d.js": "7b1503241bf6643956d443c8b935f5757715ad9d759c2f8976c1ddd5528f2a78",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/src/internal/geometry-b-utils.js": "72e6dae1c98dc48285764908c38999127390520902d69a2dadebf7fa2b53c773",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/src/internal/weighted-raster-utils.js": "ddc74babee05134fee820d0fef6e7181b678c7e2f8242da2e112824aa010a9b0",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/src/weighted-raster-points-2d.js": "98a76bb8b856491299b76e280596c578f5462cd0ecdfe3ef88ccece3ffdbb982",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/src/weighted-raster-centroids-2d.js": "7b1503241bf6643956d443c8b935f5757715ad9d759c2f8976c1ddd5528f2a78",
+    "catalog/operations/weighted-raster-points-2d.json": "9060fb34f83fe67fb0e1bcd012a127996b55307c75053231695128659358a9b8",
+    "fixtures/operations/weighted-raster-points-2d.json": "ca86ec289d41682c05221b1bad83cec4b11ff7742f561a3312e35c81a0081ab2",
+    "catalog/operations/weighted-raster-centroids-2d.json": "095de293fb29bb0677915f8cf8898b1bcc42178ecfc48d637ba07f43d4e57cbc",
+    "fixtures/operations/weighted-raster-centroids-2d.json": "b9434b36a53bf582e0bc803257c9e7681220c540c454ba7b94bb51338330ce04",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/examples/weighted-image-atlas/README.md": "28fb9e699c23fb8eddf99afcd38c7dd027de3c767c1407bc9faa4d55482d919c",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/examples/weighted-image-atlas/index.html": "3fb1f274dfabbe2df65776c182fd7618eace063eafc0da75e30cfa2c2ae653e3",
+    ".work/dist/visual-accept/consumer/node_modules/@procedurals/javascript/examples/weighted-image-atlas/sketch.js": "7dc53fa1be4a39c5152bef16510ef3e5c30c4e32e35aa2a0940510a28e3f0d36",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "layout.weighted-raster-centroids-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/weighted-raster-centroids-2d.json",
+    "catalog_sha256": "095de293fb29bb0677915f8cf8898b1bcc42178ecfc48d637ba07f43d4e57cbc"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "apps/web/content/external-visual-api.mjs": "afb23fb3fb6d3ef0cf9f3313216697631054f0bb5690883139ddbdcbcc8498e8",
+          "apps/web/scripts/generate-api.mjs": "6de1201d9b7ed8cd91a4978effe91c45cdb7427a3eaf7aeb8ec00f46b85aa58a",
+          "packages/javascript/src/index.js": "00da65244242c79d43a3d87303d844f6930b4608ea55c738d7abe936d2a4552a",
+          "packages/javascript/src/internal/weighted-raster-utils.js": "ddc74babee05134fee820d0fef6e7181b678c7e2f8242da2e112824aa010a9b0",
+          "packages/javascript/src/weighted-raster-centroids-2d.js": "7b1503241bf6643956d443c8b935f5757715ad9d759c2f8976c1ddd5528f2a78",
+          "tools/build_ported_javascript_package.mjs": "f6b19a0a2c73759c1b392fbc14a7153c58728a13c4478bf5db22bb77e47fdfe3"
+        },
+        "evidence_sha256": {
+          "evidence/expansion/visual-operations/weighted-image-source.json": "003d755c35894ecd2f7f8cc6a5fde05ab89783fd4e7cab2aa3d841fce10a2654",
+          "evidence/expansion/visual-operations/package.json": "3b201c3f037e33e362b4aaa6f140322f13d41663df87081dd338f622b8a4e2a7",
+          "catalog/operations/weighted-raster-centroids-2d.json": "095de293fb29bb0677915f8cf8898b1bcc42178ecfc48d637ba07f43d4e57cbc",
+          "fixtures/operations/weighted-raster-centroids-2d.json": "b9434b36a53bf582e0bc803257c9e7681220c540c454ba7b94bb51338330ce04"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/expansion/visual-operations/weighted-image-source.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/expansion/visual-operations/weighted-image-source.json",
+            "pointer": "/pure_cases",
+            "equals": 30
+          },
+          {
+            "path": "evidence/expansion/visual-operations/package.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/expansion/visual-operations/root-review.json",
+          "sha256": "dc9abb956a3089a8bc1b5802e2251b3df9268d87649e395ce4286d7e66832b6f"
+        },
+        "runtime_profile": {
+          "name": "Node v22.22.1 pure fixtures; p5 2.3.2 / Chromium153 for study-bound runs",
+          "scope": "Frozen pure fixtures run against the source tree and a fresh offline-installed package; no other-target port."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "apps/web/content/weighted-image-atlas.md": "3289456bff6fc74a1277fd38fae59ec0febac6b23b32e2120ad529048a4e28d6",
+          "apps/web/lib/adapters/image-and-controls.ts": "e736aade98fa34a04c8e15a15a65f7e7b23b33ae0409fa62f8a95b7956d8f380",
+          "design/capabilities/weighted-image-marks.md": "297b146add0d0e81ec17164dd40c21c85a57bb55bafdc33c7c95578d43328233",
+          "design/operations/weighted-image-contract-review.md": "b45f54ec7931225cd193def68a89f17a09aa43225ace4567cca922897ef64b49",
+          "docs/weighted-image-marks.md": "079b55de78df9b360391f5ec3603d0336811f3914ada1544a477610cd13aa8be",
+          "packages/javascript/examples/weighted-image-atlas/README.md": "28fb9e699c23fb8eddf99afcd38c7dd027de3c767c1407bc9faa4d55482d919c",
+          "packages/javascript/examples/weighted-image-atlas/index.html": "3fb1f274dfabbe2df65776c182fd7618eace063eafc0da75e30cfa2c2ae653e3",
+          "packages/javascript/examples/weighted-image-atlas/sketch.js": "7dc53fa1be4a39c5152bef16510ef3e5c30c4e32e35aa2a0940510a28e3f0d36",
+          "tests/native/weighted-image-javascript.mjs": "271858598c5a709024c99bb494fbc2818abf30eb0e2b1fa6557ec48ab680a218",
+          "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad"
+        },
+        "evidence_sha256": {
+          "evidence/expansion/visual-operations/weighted-image-source.json": "003d755c35894ecd2f7f8cc6a5fde05ab89783fd4e7cab2aa3d841fce10a2654",
+          "evidence/expansion/visual-operations/weighted-image-installed.json": "92892f3695a1b329561e6479e14068d851fa7d965f9805ff10e08d484fbbfcae",
+          "evidence/expansion/visual-operations/package.json": "3b201c3f037e33e362b4aaa6f140322f13d41663df87081dd338f622b8a4e2a7"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/expansion/visual-operations/weighted-image-source.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/expansion/visual-operations/weighted-image-installed.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/expansion/visual-operations/root-review.json",
+          "sha256": "dc9abb956a3089a8bc1b5802e2251b3df9268d87649e395ce4286d7e66832b6f"
+        },
+        "runtime_profile": {
+          "name": "p5 2.3.2 / Chromium153 / Canvas2D density1",
+          "scope": "Original weighted-image-atlas centroid-step control with live Studio web review; source/installed retained-state and pixel replay; no artist recreation."
+        }
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

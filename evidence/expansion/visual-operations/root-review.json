@@ -1,0 +1,166 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "date": "2026-09-18T03:14:09.768210+00:00",
+  "scope": "Five independently specified p5 cores (weighted-raster points and centroids, sample-recorded-controls, prepare-surface-attributes-3d and raymarch-implicit-rays-3d), four original editable package studies, the two new web Studio studies (weighted-image-atlas and word-echo) and their gallery registration. Source and fresh offline-installed package lifecycles pass; no other-target port, artist recreation or technique attestation by this review.",
+  "operations": [
+    "sampling.weighted-raster-points-2d",
+    "layout.weighted-raster-centroids-2d",
+    "signal.sample-recorded-controls",
+    "mesh.prepare-surface-attributes-3d",
+    "field.raymarch-implicit-rays-3d"
+  ],
+  "new_web_studies": [
+    "weighted-image-atlas",
+    "word-echo"
+  ],
+  "new_native_studies": [
+    "surface-attribute-vessel",
+    "implicit-volumes"
+  ],
+  "implementation_sha256": {
+    "apps/web/content/external-visual-api.mjs": "afb23fb3fb6d3ef0cf9f3313216697631054f0bb5690883139ddbdcbcc8498e8",
+    "apps/web/content/image-and-controls-studies.mjs": "e1e391fb97f2598f56a5d27f5d794eda62f93ef32f15500f4763715120b2a1e2",
+    "apps/web/content/weighted-image-atlas.md": "3289456bff6fc74a1277fd38fae59ec0febac6b23b32e2120ad529048a4e28d6",
+    "apps/web/content/word-echo.md": "052cd5e1e134f73519597c7dbb7200cb68e4cff568f4bb25a7d8483b88ec52a8",
+    "apps/web/lib/adapters/image-and-controls.ts": "e736aade98fa34a04c8e15a15a65f7e7b23b33ae0409fa62f8a95b7956d8f380",
+    "apps/web/lib/harness-render.ts": "090caf153bc8f447ebb65ef6f415a2f40e753bc6e793cdb5e36e180cd0cf99c4",
+    "apps/web/lib/render-studio.ts": "d99f2e29d2db89caea2386251ef73acec52c2a73822c65fce4263ab2a8aaa297",
+    "apps/web/lib/studio.ts": "0174a0c6215b99c4d9754192cef250495fffbe2ec08b9a333215a80bb8ca0071",
+    "apps/web/scripts/generate-gallery.mjs": "95cc6b99f8c6732bc0b90f0d2b131f5091b3943bcee4924377543521a9c95dbc",
+    "apps/web/tests/image-and-controls-adapters.test.ts": "1194334903f2453edfcff0e9e6e516436cde6a96a7fd0cfeffd12913bf4020a5",
+    "apps/web/tests/studio.test.ts": "7713843ae9f7575c71c80c534a8c4562884323bf13f3eb00ec533fc5357752dc",
+    "catalog/operations/prepare-surface-attributes-3d.json": "c4930d35825ad6b9148b34ae4779ac53a68ac899f31f7417363351e09fecd94b",
+    "catalog/operations/raymarch-implicit-rays-3d.json": "fc2ce3b83aa2acb5b3b5e2143a637460d154af945d025d4a732c4ee0fadd6cae",
+    "catalog/operations/sample-recorded-controls.json": "85bc6d12ebbbfbb352baba5a26556087c700f19d52bf97e80dfc61318a72288b",
+    "catalog/operations/weighted-raster-centroids-2d.json": "095de293fb29bb0677915f8cf8898b1bcc42178ecfc48d637ba07f43d4e57cbc",
+    "catalog/operations/weighted-raster-points-2d.json": "9060fb34f83fe67fb0e1bcd012a127996b55307c75053231695128659358a9b8",
+    "design/capabilities/implicit-ray-queries.md": "b3e77517ed3f7fd18e2ddd95b95436c0521eea04dc433ceb4d1dfa131047b1e3",
+    "design/capabilities/mesh-surface-attributes.md": "d81885c694be3988dc447afd5261181c635b360a5ad25a91d2ba9bc4195997bb",
+    "design/capabilities/recorded-controls-and-type.md": "f83332c9a3fd5b729a0cffd1668d199f63054c18edc69a7497a1055b10f225b8",
+    "design/capabilities/weighted-image-marks.md": "297b146add0d0e81ec17164dd40c21c85a57bb55bafdc33c7c95578d43328233",
+    "design/operations/implicit-ray-contract-review.md": "2585784e71dfa821a9fb951f227efa883653ffd5487f62e4e1b9c2f5561cdd44",
+    "design/operations/mesh-surface-attributes-contract-review.md": "3dadd0a1d1866345666977ced086c31571174b227c361fb521269b7cfc36dc49",
+    "design/operations/recorded-controls-contract-review.md": "fb4d00897ee2d8c823cd1f41c3d7135c77a19b7cdbd2b3681264b5c6d2a1746d",
+    "design/operations/weighted-image-contract-review.md": "b45f54ec7931225cd193def68a89f17a09aa43225ace4567cca922897ef64b49",
+    "docs/implicit-volumes.md": "1e7047325654f64cb3672e24113a7a4f657fca1961c719d633ce96813ef48127",
+    "docs/mesh-surface-attributes.md": "7c9325f912760d6d5deb232b8006b089e9f01dafdb2b94c5d1a374050aec102f",
+    "docs/weighted-image-marks.md": "079b55de78df9b360391f5ec3603d0336811f3914ada1544a477610cd13aa8be",
+    "docs/word-echo.md": "2eb304b2f8f347b75bbd11b8dcc5516b3e1458b523237658b352862939b282be",
+    "fixtures/operations/prepare-surface-attributes-3d.json": "58c132b79893c8c672752e851a31bebf03881f5b13227013b3a5b175597904ed",
+    "fixtures/operations/raymarch-implicit-rays-3d.json": "5c2f76ba5c02f234a75a72dbf639f64daf8692662e9443e8fb9c848bb7cb8ac4",
+    "fixtures/operations/sample-recorded-controls.json": "fa6dd18655be780512f6cc9744ef225cfa33bcf14603a6c820e50a2c53abfb05",
+    "fixtures/operations/weighted-raster-centroids-2d.json": "b9434b36a53bf582e0bc803257c9e7681220c540c454ba7b94bb51338330ce04",
+    "fixtures/operations/weighted-raster-points-2d.json": "ca86ec289d41682c05221b1bad83cec4b11ff7742f561a3312e35c81a0081ab2",
+    "packages/javascript/examples/glyph-marks/assets/FONT-LICENSE.txt": "63544717f051095f67c6da4f36776aafd81e561320baf36ae65925f3336ebb8a",
+    "packages/javascript/examples/glyph-marks/assets/GlyphMarks.ttf": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+    "packages/javascript/examples/implicit-volumes/index.html": "741eec6a15d062f95c9245e12c87eed3955e01e54ba65c53ebf69822133872db",
+    "packages/javascript/examples/implicit-volumes/sketch.js": "f23a3e0f99b58ac884797cc393a71e774c1ea464f1be600ebf25a05ae3336cf4",
+    "packages/javascript/examples/surface-attribute-vessel/README.md": "cbaf770ef4c835abc2f5fe42f7dc3c3cafe6b13f999ecacc85a43ae1429546d6",
+    "packages/javascript/examples/surface-attribute-vessel/index.html": "f200269e129051b2f1cc14b3c4fc6041b4b1603fb71b454c990ac9c1f4ea480a",
+    "packages/javascript/examples/surface-attribute-vessel/sketch.js": "38935e33d21d9fe498c1e12df0ee7988bd1a37dae0b242e46b162102e7d86f48",
+    "packages/javascript/examples/weighted-image-atlas/README.md": "28fb9e699c23fb8eddf99afcd38c7dd027de3c767c1407bc9faa4d55482d919c",
+    "packages/javascript/examples/weighted-image-atlas/index.html": "3fb1f274dfabbe2df65776c182fd7618eace063eafc0da75e30cfa2c2ae653e3",
+    "packages/javascript/examples/weighted-image-atlas/sketch.js": "7dc53fa1be4a39c5152bef16510ef3e5c30c4e32e35aa2a0940510a28e3f0d36",
+    "packages/javascript/examples/word-echo/index.html": "3a7ecc393cc3d31fc6070c2abbd94791bf535f988d5c6e737ddfa51efc3a2d34",
+    "packages/javascript/examples/word-echo/sketch.js": "ab151cfcd699dd9b41d9115fc87aea41aa83ba82d2ccefcd9b026730c0bff06e",
+    "packages/javascript/examples/word-echo/study.js": "cb736e47a51b993fc1bbff87fd57ada6770fe99f8b4565c8ab6742773064b524",
+    "packages/javascript/src/index.js": "00da65244242c79d43a3d87303d844f6930b4608ea55c738d7abe936d2a4552a",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/internal/geometry-b-utils.js": "72e6dae1c98dc48285764908c38999127390520902d69a2dadebf7fa2b53c773",
+    "packages/javascript/src/internal/weighted-raster-utils.js": "ddc74babee05134fee820d0fef6e7181b678c7e2f8242da2e112824aa010a9b0",
+    "packages/javascript/src/prepare-surface-attributes-3d.js": "d04f642706a8f7a28215d8a60df326b8e66825430de13014e79d3c3d5c827202",
+    "packages/javascript/src/raymarch-implicit-rays-3d.js": "d953d47ed3da77c4bdbf9af8f9075232a2adae1b99e92ba3b1914f841ba83608",
+    "packages/javascript/src/sample-recorded-controls.js": "0599831602730cbd23d6a202e60a46f3a3e8e422b8f7d3cf6154367eef78ff59",
+    "packages/javascript/src/weighted-raster-centroids-2d.js": "7b1503241bf6643956d443c8b935f5757715ad9d759c2f8976c1ddd5528f2a78",
+    "packages/javascript/src/weighted-raster-points-2d.js": "98a76bb8b856491299b76e280596c578f5462cd0ecdfe3ef88ccece3ffdbb982",
+    "tests/native/fixtures/mesh-attribute-oracles.json": "21a5a3a7c21b5cf286672f8ba680660560d889f80bb9e900ab16006c9c1533da",
+    "tests/native/implicit-rays-javascript.mjs": "50061b3b04c6a73aed18c2496410939f58a4d382b4bb21170ffdcd16e40dadde",
+    "tests/native/mesh-surface-attributes-javascript.mjs": "541646a98609fba987760f0895f09b66f02f8ee34348c621d96e60a07680a93e",
+    "tests/native/sample-recorded-controls-javascript.mjs": "755078007157ca4e9d6dbaa0f7098deb866e83e38da817308d11e1531a6567a3",
+    "tests/native/weighted-image-javascript.mjs": "271858598c5a709024c99bb494fbc2818abf30eb0e2b1fa6557ec48ab680a218",
+    "tests/native/word-echo-javascript.mjs": "82a49af5e15797738976debf743c631304337f25eb94584d150cc5bf558bec51",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad"
+  },
+  "evidence_sha256": {
+    "evidence/expansion/visual-operations/weighted-image-source.json": "003d755c35894ecd2f7f8cc6a5fde05ab89783fd4e7cab2aa3d841fce10a2654",
+    "evidence/expansion/visual-operations/word-echo-source.json": "fd4c7416add60f5b20dbc7017946ff095daa7417af97e495951d7891d11f7929",
+    "evidence/expansion/visual-operations/recorded-controls-core.json": "bfa17343e0dc0b2c1ad04210c0c3dea1c411b5a2e4b5b6a27b741a10ec51e191",
+    "evidence/expansion/visual-operations/mesh-surface-source.json": "66c4e6e6cf43b9a76b99c453a5960afc2d5236f97c2cd19a43122cfbfc1c7db8",
+    "evidence/expansion/visual-operations/implicit-rays-source.json": "a7517b1cc438ac0f9d697372e45a35800708e288d31fbd120b61035e8ce8e8bd",
+    "evidence/expansion/visual-operations/weighted-image-installed.json": "92892f3695a1b329561e6479e14068d851fa7d965f9805ff10e08d484fbbfcae",
+    "evidence/expansion/visual-operations/word-echo-installed.json": "3bebadd9082ee259ab4603c41507658d2311e231fa609fd007ca8c3b034798dd",
+    "evidence/expansion/visual-operations/recorded-controls-installed.json": "bfa17343e0dc0b2c1ad04210c0c3dea1c411b5a2e4b5b6a27b741a10ec51e191",
+    "evidence/expansion/visual-operations/mesh-surface-installed.json": "7a1a761fbd898041dee7745551f9a394186678b636f1fa7c9db209f6d8147026",
+    "evidence/expansion/visual-operations/implicit-rays-installed.json": "889e0a0c225f4afda47ae561cc47620c6f697230d9f5248c424284728858a3d7"
+  },
+  "root_review": [
+    "Root read all five core sources: prefix-sum weighted sampling with a 64-bit LCG ticket and per-pixel jitter; exact dyadic-rational nearest-pixel mass assignment with tie-to-first-site and canonical binary64 centroids; passive-carrier validation with exact T*C+M work preflight and TIME_GAP/NUMERIC_OVERFLOW precedence; exact-rational degeneracy tests, per-(vertex, smoothing group) normal accumulation and UV-seam vertex duplication; sphere-tracing with nonsmooth flags, 6-sample estimated normals and explicit miss classification.",
+    "All 132 pure fixture cases pass against source and the fresh offline-installed package (30 weighted-image, 21 recorded-controls, 38 mesh attributes with 2 independent normal oracles, 43 implicit rays); installed byte inventory equals the packed stage.",
+    "Root ran all five native harnesses under the shared render lease and reviewed the frames: density inversion resamples the same relief; one centroid step visibly collapses marks into mass centers; dot-to-stitch and ink edits retain point geometry; an independent thermal mask transfers without resampling; the vessel shows smooth vs flat lighting, cap UV seams and an independent ribbon transfer; the implicit study distinguishes welded/cut, hard-union and perforated-shell scenes.",
+    "Word echo drives contour and spiral marks from hash-checked bundled-font glyphs and authored deterministic PCM features; the non-audio series changes the sampled control values, later query times change geometry, and reset/reload restores exact canvas pixels.",
+    "Root operated both web studies in the live Studio app over localhost (pinned headless Chromium, 640x640 P2D): weighted-image-atlas re-rendered in 50-211 ms per structural edit (source, invert, count, centroid, mark shape) and word-echo in 43-57 ms (time, word, series, transfer, spacing, scale); no page errors. Export PNG captured from the real export dialog matched the displayed canvas byte-for-byte (150607 and 112205 bytes), and reload restored the exact default canvas for both.",
+    "The dev-only 'Project service unavailable' banner is environmental (the separate Go project service is not running); the studio remains fully editable on its local draft with local recovery, which the app surfaces as status.",
+    "Historical acceptance bytes are preserved; the two 3D studies join native-only gallery membership and the two web studies join the generated gallery with attestation-bound operations."
+  ],
+  "limits": [
+    "Original scoped p5 workflows, not source-artwork recreations or new technique attestations; Java, py5 and Android targets remain deferred by their contracts.",
+    "Weighted sampling is mass-proportional with per-pixel jitter, not minimum-distance packing; multiple marks may originate from one pixel.",
+    "Recorded controls sample caller-supplied explicit records; feature extraction, audio, fonts and media remain host work. The bundled GlyphMarks face does not imply general multilingual shaping.",
+    "Surface attributes are explicit per-corner data for a supplied indexed mesh; no weld, chart or material inference. Degenerate faces are rejected, not repaired.",
+    "Implicit rays are bounded CPU sphere-tracing with estimated or explicitly undefined normals; no GPU raymarching or exact predicate guarantee.",
+    "Only pinned Chromium Canvas2D density1 and software WebGL native profiles executed; cross-browser and other-target behavior is not accepted by this review."
+  ],
+  "root_viewed_images": [
+    {
+      "path": ".work/handoff/accept/weighted-image/baseline.png",
+      "sha256": "3c2601fd5c46798b186522e55a07b56f82de5090b0077e94a118847d62fe0183"
+    },
+    {
+      "path": ".work/handoff/accept/weighted-image/inverted-density.png",
+      "sha256": "a52f29e23ce6f9d681e7f6b6f7091f5e84807b5c1c71f49731679fdda6d6ceca"
+    },
+    {
+      "path": ".work/handoff/accept/weighted-image/weighted-centroids.png",
+      "sha256": "127abb573849c65ba261f7a26794804b048c5bc8cbe58be81d63b1e2f233bebe"
+    },
+    {
+      "path": ".work/handoff/accept/weighted-image/stitches.png",
+      "sha256": "95abca9ff14060c751f9ca9eb061e71e1137c853a8be3e2e09cafa2e73629179"
+    },
+    {
+      "path": ".work/handoff/accept/word-echo/word-echo-initial.png",
+      "sha256": "a12a822a23e15130a5f9d0ebab4cb76cc72f51305426be146969d07d47b513b5"
+    },
+    {
+      "path": ".work/handoff/accept/word-echo/word-echo-path-transfer.png",
+      "sha256": "e10aae3ba660b4518a2d908c325c04f49794d8623a0494c8a0914df6ad3b9741"
+    },
+    {
+      "path": ".work/handoff/accept/mesh-surface-attributes/baseline.png",
+      "sha256": "ae4e629a2ec15398e3343bdf42772cc0cfbb4ae62a160acd3e4cab0c962eb717"
+    },
+    {
+      "path": ".work/handoff/accept/mesh-surface-attributes/flat.png",
+      "sha256": "7f729d696602d0a031f2e1fb9799e95b8e2155dadc8da439849b5d90d950afcf"
+    },
+    {
+      "path": ".work/handoff/accept/mesh-surface-attributes/ribbon-transfer.png",
+      "sha256": "b6ee8dc2ea9bfae8d57add2d46a51cec0b6a689f94a9615d19e77df91b13ae28"
+    },
+    {
+      "path": ".work/handoff/accept/implicit-rays/baseline.png",
+      "sha256": "027efcf36d1a52830cd65ebb7b3a2e1fa10d2289506f0d37f0d5d976b5d55025"
+    },
+    {
+      "path": ".work/handoff/accept/implicit-rays/hard-union.png",
+      "sha256": "ad6c29783b97ab02e765df65ebc83958d033b615799b2758d0345c9bc59549b9"
+    },
+    {
+      "path": ".work/handoff/accept/implicit-rays/perforated-shell.png",
+      "sha256": "74fb5a640a3e4fbf1dcd53d0217462e585bb87b5614ee4a8b507be37ef7dcee3"
+    }
+  ]
+}

@@ -8,7 +8,7 @@ This is a current snapshot. Historical plans and reviews are not an active assig
 - Java implementation objective: **31 operations, 37 editable workflows**. Java 0.35 runtime
   baseline remains `d7f95a06f55fd0937ebb2c12bb2192c7644922c4`; see the
   [completion review](evidence/distribution/java-completion-review.json).
-- p5.js: **84 conformant cores, 84 operations with scoped native coverage, 121 editable
+- p5.js: **89 conformant cores, 89 operations with scoped native coverage, 125 editable
   package workflows**, and five scoped technique attestations. These dimensions are separate.
   [Port status](docs/port-integration-status.md) links the historical integrations.
 - [Survey coverage batch 1](evidence/coverage/batch1/integration-review.json) adds exactly
@@ -26,6 +26,13 @@ This is a current snapshot. Historical plans and reviews are not an active assig
   a retained-frame WEBGL adapter and ten package studies: contact memory, sensing/flocking,
   width-aware geometry, connected/elastic growth and periodic dye transport. Source and
   installed package checks pass across83 paired frames; new web integration is still pending.
+- [Visual operations acceptance](evidence/expansion/visual-operations/root-review.json)
+  attests the five exported operations: weighted-image sampling and centroids,
+  recorded-control sampling, mesh surface attributes and implicit ray marching. Each has a
+  conformant p5.js core and four new scoped native studies (weighted-image-atlas,
+  word-echo, surface-attribute-vessel, implicit-volumes) with re-run harness evidence.
+  Technique attestations are out of scope, and the generated reference file update waits on
+  the catalog binding reconciliation.
 - Packages are reviewed local artifacts, not registry publications. This work does not imply
   a portable recipe executor, full-corpus certification or equivalent target ports.
 
@@ -37,7 +44,7 @@ old example headers are not current support authority.
 | Target | Conformant core | Scoped native | Scoped technique |
 |---|---:|---:|---:|
 | Processing Java | 31 | 31 | 26 |
-| p5.js | 84 | 84 | 5 |
+| p5.js | 89 | 89 | 5 |
 | py5 | 10 | 10 | 4 |
 | Processing Android | 10 | 10 | 4 |
 
@@ -58,10 +65,11 @@ The report includes all69 family dispositions and all three denominators:800 ass
   Live8443 serves the checked `eb2bdfdc` source from `.work/study-quality-release` while
   the historical catalog binding check remains red. This is not new target acceptance.
 - Nine external-dynamics studies (contact memory, sensing/flocking, width-aware regions,
-  connected/elastic growth and periodic dye transport) are now tracked as drafts, so the
-  generator reports 104 gallery workflows. They carry no web review yet. The weighted-image,
-  recorded-controls, mesh-attribute and implicit-ray operations stay untracked until their
-  package index bindings and API guides land; their drafts remain in working checkouts.
+  connected/elastic growth and periodic dye transport) are tracked as drafts and carry no
+  web review yet. The weighted-image-atlas and word-echo studies are now full web studies,
+  so the generator reports 106 gallery workflows; surface-attribute-vessel and
+  implicit-volumes remain native-only package studies. All five operations are attested in
+  `catalog/validation` and bound in the web API generator (89 operations).
 - Layer editing, custom palettes, source inspection, undo/redo, local recovery, JSON/PNG export
   and Go storage are reviewed. [Workspace review](evidence/web/studio-workspace-review.json),
   [v3 review](evidence/web/app-v3-review.json) and [architecture](docs/web-app-architecture.md)
@@ -118,13 +126,15 @@ are complete at their declared scope. The maintainer now requires the **entire e
 plan implemented**. [Execution scope](docs/external-expansion-execution.md) carries the current
 starting point, the ranked next actions and the open findings; batch completion is an
 integration checkpoint, not the task endpoint. The
-[integration checkpoint](evidence/web/main-integration-checkpoint.json) records what this merge
-settled: the nine dynamics studies are now interactive (worst single edit 635ms, was 9.2s) and
-the weighted-image, recorded-controls, mesh-attribute and implicit-ray operations are exported,
-bound and documented in the generated reference. Those five still have **no acceptance record**
-in `catalog/validation`, so their target support stays unvalidated, and the nine studies still
-need art direction and a root creative verdict before any release. Later I families and
-deeper-audit gaps remain.
+[integration checkpoint](evidence/web/main-integration-checkpoint.json) records what the prior
+merge settled: the nine dynamics studies are now interactive (worst single edit 635ms, was 9.2s).
+The [visual operations acceptance](evidence/expansion/visual-operations/root-review.json) now
+records root acceptance for the five exported operations (weighted-image, recorded-controls,
+mesh-attribute, implicit-ray), with conformant p5.js cores and four scoped native studies. The
+nine dynamics studies still need art direction and a root creative verdict before any release,
+and the catalog binding reconciliation (stale hashes for the shared web surface, the package
+index and py5 records) is the next gate before the generated reference can be rewritten.
+Later I families and deeper-audit gaps remain.
 
 - Other-target ports remain separate. The [port handoff](docs/porting-resume.md) tracks Python
   attestation reconciliation, Android ProfileMarks lifecycle validation and Java backlog.

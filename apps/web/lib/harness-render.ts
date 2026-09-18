@@ -21,6 +21,10 @@ import {
   drawExternalDynamics,
   externalDynamicsDefinitions,
 } from "./adapters/external-dynamics";
+import {
+  drawImageAndControls,
+  imageAndControlsDefinitions,
+} from "./adapters/image-and-controls";
 
 const basicIds = new Set(basicDefinitions.map((item) => item.id));
 const geometryIds = new Set(geometryDefinitions.map((item) => item.id));
@@ -31,6 +35,7 @@ const materialsIds = new Set(materialsDefinitions.map(item => item.id));
 const expansionIds = new Set(expansionDefinitions.map((item) => item.id));
 const externalExpansionIds = new Set(externalExpansionDefinitions.map((item) => item.id));
 const externalDynamicsIds = new Set(externalDynamicsDefinitions.map((item) => item.id));
+const imageAndControlsIds = new Set(imageAndControlsDefinitions.map((item) => item.id));
 const constants = ["CLOSE", "CORNER", "CENTER", "ROUND", "TRIANGLES"] as const;
 
 /** Isolated harness compositor. Generated source is represented only by its trusted raster. */
@@ -123,6 +128,7 @@ function drawWorkflow(p: any, layer: Extract<DocumentLayer, { kind: "workflow" }
   if (expansionIds.has(workflow.technique)) return drawExpansion(p, workflow);
   if (externalExpansionIds.has(workflow.technique)) return drawExternalExpansion(p, workflow);
   if (externalDynamicsIds.has(workflow.technique)) return drawExternalDynamics(p, workflow);
+  if (imageAndControlsIds.has(workflow.technique)) return drawImageAndControls(p, workflow);
   throw new Error(`Unknown studio technique: ${String(workflow.technique)}`);
 }
 function drawSource(p: any, layer: Extract<DocumentLayer, { kind: "source" }>, images: Record<string, unknown>): void {

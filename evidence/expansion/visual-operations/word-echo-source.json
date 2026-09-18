@@ -1,0 +1,103 @@
+{
+  "status": "passed",
+  "scope": "original synthesized-signal word contour study and non-audio/path-mark transfer under pinned p5; no shared target acceptance",
+  "packageRoot": "/home/colin/dev/procedural/packages/javascript",
+  "input_sha256_before": {
+    "packages/javascript/src/sample-recorded-controls.js": "0599831602730cbd23d6a202e60a46f3a3e8e422b8f7d3cf6154367eef78ff59",
+    "packages/javascript/examples/word-echo/index.html": "3a7ecc393cc3d31fc6070c2abbd94791bf535f988d5c6e737ddfa51efc3a2d34",
+    "packages/javascript/examples/word-echo/sketch.js": "ab151cfcd699dd9b41d9115fc87aea41aa83ba82d2ccefcd9b026730c0bff06e",
+    "packages/javascript/examples/word-echo/study.js": "cb736e47a51b993fc1bbff87fd57ada6770fe99f8b4565c8ab6742773064b524",
+    "packages/javascript/examples/glyph-marks/assets/GlyphMarks.ttf": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+    "packages/javascript/examples/glyph-marks/assets/FONT-LICENSE.txt": "63544717f051095f67c6da4f36776aafd81e561320baf36ae65925f3336ebb8a",
+    "tests/native/word-echo-javascript.mjs": "82a49af5e15797738976debf743c631304337f25eb94584d150cc5bf558bec51",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    ".work/environments/p5js/node_modules/p5/lib/p5.js": "354b31a0d81ce0ddb24afe1a5b035f938417248c64f0c81112092b224d1bbdbb",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  },
+  "checks": [
+    "bundled hash-checked real font contours; authored deterministic PCM and 128-sample RMS feature provenance",
+    "explicit logical step/back; independent palette, geometry and actual contour re-extraction",
+    "same sampled controls transferred to path marks; non-audio series changes control values",
+    "later explicit query time changes contour geometry from authored RMS",
+    "verified Blob font binding; full contour/control/source reset and reload, exact canvas pixels, completed PNG save equality"
+  ],
+  "captures": [
+    {
+      "file": ".work/handoff/accept/word-echo/word-echo-initial.png",
+      "sha256": "a12a822a23e15130a5f9d0ebab4cb76cc72f51305426be146969d07d47b513b5"
+    },
+    {
+      "file": ".work/handoff/accept/word-echo/word-echo-blue.png",
+      "sha256": "dbe2a8773600ac3d9cf2a829e3d4462335c98e41742f4e5bfec1270572e43f41"
+    },
+    {
+      "file": ".work/handoff/accept/word-echo/word-echo-open.png",
+      "sha256": "7c508bcf2bc938553faf10c4eff20843b87071ab1dc593becb1800ad77274464"
+    },
+    {
+      "file": ".work/handoff/accept/word-echo/word-echo-path-transfer.png",
+      "sha256": "e10aae3ba660b4518a2d908c325c04f49794d8623a0494c8a0914df6ad3b9741"
+    },
+    {
+      "file": ".work/handoff/accept/word-echo/word-echo-non-audio.png",
+      "sha256": "a2581e142fb14e9e97ea17639b67b48dc31a989af8490ac900f4a4c99c03f275"
+    },
+    {
+      "file": ".work/handoff/accept/word-echo/word-echo-signal-peak.png",
+      "sha256": "6e2078e3b03c187e8961dd5ac082e2f1179232f72751fbd8a98c906be1fdd964"
+    }
+  ],
+  "errors": [],
+  "browser": "153.0.8010.12",
+  "start": {
+    "error": null,
+    "snapshot": {
+      "time": 0,
+      "word": "ECHO",
+      "signal": "synth",
+      "transfer": "contour",
+      "spacing": 3,
+      "radiusScale": 1,
+      "palette": "coral",
+      "revision": 1,
+      "ready": true,
+      "contourCount": 5,
+      "contourPoints": 403,
+      "source": "project-authored synthesized PCM / derived RMS",
+      "controls": [
+        3.5135114695740643,
+        18.951328459229522,
+        0.21081068817444387
+      ]
+    },
+    "version": "2.3.2",
+    "fontData": true
+  },
+  "features": {
+    "sampleCount": 5120,
+    "featureCount": 40,
+    "channels": [
+      "level",
+      "accent"
+    ],
+    "firstRMS": 0.08149677143860347,
+    "independentFirstRMS": 0.08149677143860347,
+    "featureSHA256": "916eddedb86fe9c6c933cbdef5ac0791d94e1c1f3913311e8bfaa445d8b363cb",
+    "otherFirst": [
+      0.4,
+      0.8
+    ]
+  },
+  "input_sha256_after": {
+    "packages/javascript/src/sample-recorded-controls.js": "0599831602730cbd23d6a202e60a46f3a3e8e422b8f7d3cf6154367eef78ff59",
+    "packages/javascript/examples/word-echo/index.html": "3a7ecc393cc3d31fc6070c2abbd94791bf535f988d5c6e737ddfa51efc3a2d34",
+    "packages/javascript/examples/word-echo/sketch.js": "ab151cfcd699dd9b41d9115fc87aea41aa83ba82d2ccefcd9b026730c0bff06e",
+    "packages/javascript/examples/word-echo/study.js": "cb736e47a51b993fc1bbff87fd57ada6770fe99f8b4565c8ab6742773064b524",
+    "packages/javascript/examples/glyph-marks/assets/GlyphMarks.ttf": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+    "packages/javascript/examples/glyph-marks/assets/FONT-LICENSE.txt": "63544717f051095f67c6da4f36776aafd81e561320baf36ae65925f3336ebb8a",
+    "tests/native/word-echo-javascript.mjs": "82a49af5e15797738976debf743c631304337f25eb94584d150cc5bf558bec51",
+    "tools/serve_external_expansion_studies.mjs": "33a67b483a4ddb21f3799471bac8a8299355806fe3dca60d6625cc7216b416ad",
+    ".work/environments/p5js/node_modules/p5/lib/p5.js": "354b31a0d81ce0ddb24afe1a5b035f938417248c64f0c81112092b224d1bbdbb",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a"
+  }
+}

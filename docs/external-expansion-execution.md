@@ -51,6 +51,21 @@ release worktree with an uncommitted 21-file diff, captured as
 discard the worktree once you have confirmed nothing there is still wanted. Measurement scripts
 and harness reports from this checkpoint live under `.work/handoff/`.
 
+## Progress
+
+17 September 2026 — step 1 complete. All five surfaced operations are accepted in
+[the visual operations root review](../evidence/expansion/visual-operations/root-review.json).
+The native harness reports were re-run under the shared render lease (weighted-image 30 pure
+cases, implicit-ray 43, mesh-attribute 38, recorded-controls 21, plus the installed-package
+runs and the two web study harnesses), the harness images were reviewed, and five
+`catalog/validation` records were authored in the flock-steer-2d format. `check_catalog.py`
+reports no error for the five new records; the 13,355 remaining lines are the pre-existing
+binding backlog measured against pristine `HEAD`. The web surface lands with the
+image-and-controls adapter wired into the studio, gallery and API generator (106 workflows,
+89 operations); 208 web tests, typecheck and the generated-metadata check pass. Step 3
+blocks the `docs/reference/operations.md` regeneration, which is also where the
+raymarch-implicit-rays-3d entry (added after the reference's last write) lands.
+
 ## Standing priority
 
 Apply [creative quality](creative-quality.md) to existing and new components, techniques and

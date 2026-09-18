@@ -1,6 +1,7 @@
 import { tenfoldStudies } from "../content/tenfold-studies.mjs";
 import { externalExpansionStudies } from "../content/external-expansion-studies.mjs";
 import { externalDynamicsStudies } from "../content/external-dynamics-studies.mjs";
+import { imageAndControlsStudies } from "../content/image-and-controls-studies.mjs";
 /** Deterministic catalog/docs consumer. No operation defaults or acceptance are authored here. */
 import {
   readFileSync,
@@ -130,6 +131,7 @@ definitions.push(
 definitions.push(...tenfoldStudies.map(study => [study.slug, study.category, study.operations]));
 definitions.push(...externalExpansionStudies.map(study => [study.slug, study.category, study.operations]));
 definitions.push(...externalDynamicsStudies.map(study => [study.slug, study.category, study.operations]));
+definitions.push(...imageAndControlsStudies.map(study => [study.slug, study.category, study.operations]));
 const slugs = new Set(definitions.map((d) => d[0]));
 // Reviewed p5 completion includes editable native examples without studio adapters.
 // Keep their membership explicit so an unreviewed addition still fails generation.
@@ -137,6 +139,7 @@ const nativeOnlySlugs = new Set([
   "body-marks", "city-marks", "clip-marks", "contact-marks", "glyph-marks",
   "image-field-marks", "landscape-marks", "layer-marks", "mask-marks",
   "masked-partition-marks", "placement-image-marks", "pointer-marks", "relief-marks",
+  "surface-attribute-vessel", "implicit-volumes",
 ]);
 // Present package examples that are either private layout helpers or pending separate
 // review. Listing them here prevents a directory from becoming a gallery workflow merely
@@ -144,10 +147,6 @@ const nativeOnlySlugs = new Set([
 const pendingExampleSlugs = new Set([
   "motif-compositions",
   "feedback-print",
-  "weighted-image-atlas",
-  "word-echo",
-  "surface-attribute-vessel",
-  "implicit-volumes",
   "field-displacement",
   "octave-noise",
   "pixel-grain",

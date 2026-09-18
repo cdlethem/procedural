@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "studioBinding": {
     "version": "studio-v3",
-    "catalogSha256": "9289b7b1fee4fa42461f75173dca525b8847226f30ffa79c6a988f70fd92b6ff",
+    "catalogSha256": "ee83bbc6ae7fb6fffdb1e293bbf5ab7e41b6d983903bacc55b00270fe5998b40",
     "techniques": [
       {
         "technique": "field-marks",
@@ -1186,6 +1186,31 @@
             "id": "geometry.marching-squares-2d",
             "version": "0.1.0",
             "sha256": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676"
+          }
+        ]
+      },
+      {
+        "technique": "weighted-image-atlas",
+        "operations": [
+          {
+            "id": "sampling.weighted-raster-points-2d",
+            "version": "0.1.0",
+            "sha256": "9060fb34f83fe67fb0e1bcd012a127996b55307c75053231695128659358a9b8"
+          },
+          {
+            "id": "layout.weighted-raster-centroids-2d",
+            "version": "0.1.0",
+            "sha256": "095de293fb29bb0677915f8cf8898b1bcc42178ecfc48d637ba07f43d4e57cbc"
+          }
+        ]
+      },
+      {
+        "technique": "word-echo",
+        "operations": [
+          {
+            "id": "signal.sample-recorded-controls",
+            "version": "0.1.0",
+            "sha256": "85bc6d12ebbbfbb352baba5a26556087c700f19d52bf97e80dfc61318a72288b"
           }
         ]
       }
@@ -4744,6 +4769,76 @@
           },
           "attestationPath": "catalog/validation/marching-squares-2d.json",
           "attestationSha256": "1be0994a86a052fadc87eb151104c5845f6e9190691c1d07f22670de4b6e0cb6"
+        }
+      ],
+      "studio": true
+    },
+    {
+      "slug": "weighted-image-atlas",
+      "title": "Weighted Image Atlas",
+      "description": "A grayscale source raster fills the left panel. The right panel places marks where that raster assigns more weight. Swap the source image, invert its density, or move sampled marks once toward weighted pixel centroids.",
+      "category": "Images",
+      "markdown": "# Weighted image atlas\n\nA grayscale source raster fills the left panel. The right panel places marks where that raster assigns more weight. Swap the source image, invert its density, or move sampled marks once toward weighted pixel centroids.\n\n| Control | Canvas effect |\n| --- | --- |\n| Source raster | Switch between an authored relief ridge and two thermal plumes. |\n| Invert density | Shift sampling preference from dark displayed areas to light ones. |\n| Marks | Change the number of sampled positions while retaining the source raster and mark treatment. |\n| Centroid step | Move each sampled position once toward its weighted nearest-pixel center. |\n| Mark shape | Draw retained positions as dots or short stitches. |\n| Palette | Recolor the page and marks without moving sampled positions. |\n\nThe raster values are generated locally for this study. `weightedRasterPoints2D` samples the explicit integer pixel weights with a fixed random state, then `weightedRasterCentroids2D` performs the optional single synchronous move. The image-to-weight conversion and mark shapes are editable composition choices. Multiple marks can originate from one pixel; this is weighted sampling rather than minimum-distance packing.\n",
+      "sourcePath": "packages/javascript/examples/weighted-image-atlas/README.md",
+      "guidePath": "apps/web/content/weighted-image-atlas.md",
+      "guideSha256": "3289456bff6fc74a1277fd38fae59ec0febac6b23b32e2120ad529048a4e28d6",
+      "exampleUrl": "/native/examples/weighted-image-atlas/index.html",
+      "operations": [
+        {
+          "id": "sampling.weighted-raster-points-2d",
+          "version": "0.1.0",
+          "description": "Draw positions from caller-supplied integer raster density with explicit deterministic random state.",
+          "catalogPath": "catalog/operations/weighted-raster-points-2d.json",
+          "sha256": "9060fb34f83fe67fb0e1bcd012a127996b55307c75053231695128659358a9b8",
+          "support": {
+            "core": "conformant",
+            "native": "validated-scoped",
+            "technique": "unvalidated"
+          },
+          "attestationPath": "catalog/validation/weighted-raster-points-2d.json",
+          "attestationSha256": "7d9d242b22bc1de7e26de4ef997ea40585fc9ff902df3cfea0fcaaa202a865c6"
+        },
+        {
+          "id": "layout.weighted-raster-centroids-2d",
+          "version": "0.1.0",
+          "description": "Move sites synchronously to exact pixel-mass centroids of their nearest-site assignments.",
+          "catalogPath": "catalog/operations/weighted-raster-centroids-2d.json",
+          "sha256": "095de293fb29bb0677915f8cf8898b1bcc42178ecfc48d637ba07f43d4e57cbc",
+          "support": {
+            "core": "conformant",
+            "native": "validated-scoped",
+            "technique": "unvalidated"
+          },
+          "attestationPath": "catalog/validation/weighted-raster-centroids-2d.json",
+          "attestationSha256": "586dfb474f53fe62de09bbfbb96b874277193527197b1e43f284562e2985add7"
+        }
+      ],
+      "studio": true
+    },
+    {
+      "slug": "word-echo",
+      "title": "Word Echo",
+      "description": "Word Echo makes an outlined word vibrate with scalar controls derived from a project-authored synthesized signal. The same sampler also drives a spiral of path marks and a non-audio tide/gust series. Davis's tennis work motivates the broader recorded-control task. Open the local [editable example](../packages/javascript/examples/word-echo/index.html) through node tools/serve_external_expansion_studies.mjs with pinned p5 2.3.2.",
+      "category": "Type",
+      "markdown": "# Word Echo\n\nWord Echo makes an outlined word vibrate with scalar controls derived from a\nproject-authored synthesized signal. The same sampler also drives a spiral of\npath marks and a non-audio tide/gust series. Davis's tennis work motivates the broader recorded-control task.\nOpen the local [editable example](../packages/javascript/examples/word-echo/index.html)\nthrough `node tools/serve_external_expansion_studies.mjs` with pinned p5 2.3.2.\n\n| Control | Canvas effect |\n| --- | --- |\n| Step / Back | Query the next or previous explicit 0.125-second feature time; endpoints hold. |\n| Word | Re-extract `ECHO` or `OPEN` contours from the bundled DejaVu Sans glyph data. |\n| Input series | Swap synthesized PCM-derived RMS/accent for an authored non-audio tide/gust series, retaining mappings. |\n| Contour / path | Use the same sampled radius/accent/opacity values for letter marks or an independent spiral path. |\n| Spacing / Mark size | Change mark density and geometric scale independently of the series. |\n| Palette | Change colors without rebuilding the signal or contours. |\n| Reset / Save | Restore the complete starting control record / download the displayed frame. |\n\n`sampleRecordedControls` accepts exact passive records with `times`, `channels`,\n`samples`, `time`, `maxGap`, `mappings`, and `maxWork`. Its one detached `values`\narray follows mapping order. Each mapping declares a channel, `STEP` or `LINEAR`\ninterpolation, numeric domain/range, and clamp policy. There are no implicit\ndefaults. A strict interior time in a bracket wider than `maxGap` raises\n`TIME_GAP`; exact knots and outside holds do not. The operation validates all\ndata before its exact `T*C+M` work preflight and performs checked ordered\nbinary64 arithmetic. See the [frozen contract](/api-reference/signal.sample-recorded-controls)\nfor all carrier and failure rules. This operation does not read a clock, audio\ndevice, FFT, font, or renderer.\n\nThe study synthesizes 5,120 mono PCM samples in forty 128-sample windows at an\neffective sample rate of 1,024 samples per second. Two\ndeterministic sinusoidal partials share a two-attack envelope. For each window,\n`level = sqrt(sum(sample²)/128)`; `accent` is the positive difference from the\nprevious level multiplied by eight and clamped to `[0,1]`. Sample times are\n`windowIndex * 0.125` seconds. The derived `{times,channels,samples}` JSON has\nSHA-256 `916eddedb86fe9c6c933cbdef5ac0791d94e1c1f3913311e8bfaa445d8b363cb`\nunder the pinned Chromium browser's JavaScript `Math` implementation; the\ntranscendental synthesis is not a cross-runtime byte-identity claim.\nThe PCM is synthesized by [study.js](../packages/javascript/examples/word-echo/study.js),\nnot captured from a real performance. The non-audio series is another authored\ndeterministic array with the same `level` and `accent` channel names. Neither\nseries establishes an artistic parameter range.\n\nThe host asks p5's `Font.textToContours` for known glyphs from the existing\nlicensed [GlyphMarks.ttf](../packages/javascript/examples/glyph-marks/assets/GlyphMarks.ttf),\nafter checking its SHA-256 against the pinned asset. p5 loads the verified\nbytes through a temporary Blob URL, so contour extraction cannot read a\nsecond mutable font response. This example keeps glyph\nsampling and rendering as editable p5 code; it does not supply shaping, hole\nclassification, arbitrary-font support, or a new contour API. The font license\nis [bundled beside the asset](../packages/javascript/examples/glyph-marks/assets/FONT-LICENSE.txt).\nThe example does not acquire a microphone or request media permissions.\n\nRun the pure operation check with\n`node tests/native/sample-recorded-controls-javascript.mjs --output .work/word-echo-core.json`.\nRun the browser study under the shared native lease with\n`python3 tools/with_native_render_lock.py -- node tests/native/word-echo-javascript.mjs .work/word-echo-native`.\nThe browser report and captures are local evidence; root review determines\ntarget acceptance. The checked visual scope is the original synthesized-signal\nstudy plus the non-audio and path-mark transfers, not an entire corpus family.\n",
+      "sourcePath": "packages/javascript/examples/word-echo/sketch.js",
+      "guidePath": "docs/word-echo.md",
+      "guideSha256": "2eb304b2f8f347b75bbd11b8dcc5516b3e1458b523237658b352862939b282be",
+      "exampleUrl": "/native/examples/word-echo/index.html",
+      "operations": [
+        {
+          "id": "signal.sample-recorded-controls",
+          "version": "0.1.0",
+          "description": "Query recorded scalar channels at explicit time with declared gap, interpolation and value-mapping policies.",
+          "catalogPath": "catalog/operations/sample-recorded-controls.json",
+          "sha256": "85bc6d12ebbbfbb352baba5a26556087c700f19d52bf97e80dfc61318a72288b",
+          "support": {
+            "core": "conformant",
+            "native": "validated-scoped",
+            "technique": "unvalidated"
+          },
+          "attestationPath": "catalog/validation/sample-recorded-controls.json",
+          "attestationSha256": "78334137f3df7df112f84a4cfeb52789f7ea5b6b77cace5d311ce5a1e18a51f3"
         }
       ],
       "studio": true
