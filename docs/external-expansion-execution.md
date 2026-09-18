@@ -66,6 +66,49 @@ image-and-controls adapter wired into the studio, gallery and API generator (106
 blocks the `docs/reference/operations.md` regeneration, which is also where the
 raymarch-implicit-rays-3d entry (added after the reference's last write) lands.
 
+18 September 2026 — step 2 complete. The nine dynamics studies were art-directed and
+reviewed in the real web interface: the five flagged studies (sensing-trails, bridge-web,
+neighborhood-growth, elastic-loops, hatched-islands) now expose continuous structural
+controls with visible, distinct outcomes across each range; the other four (dye-currents,
+guarded-bands, lingering-links, flocking-marks) passed unchanged. Elastic loops was
+realigned to the accepted native sketch geometry and collision regime, with range and
+strength as two controls and combined upper bounds verified runnable. The control model,
+exploration and root verdict are recorded in
+[docs/dynamics-creative-review.md](dynamics-creative-review.md); the renders are registered
+as `dynamics-web-quality-draft-20260918` in the visual review. The studies remain drafts:
+saved-work migration, reset/reload and export checks still precede release.
+
+18 September 2026 — step 3 complete. Reconciled the catalog bindings that the
+creative-quality revision and the additive barrel exposure made stale. The per-record
+decision:
+
+- **warp-marks** (`bilinear-raster-remap`) and the **fourteen blur-marks batch records**
+  (annular-solid-3d, binary-cell-partition-2d, clip-segments-simple-polygon-2d, delaunay-2d,
+  gradient-noise-3d-01, masked-source-over, occupied-lattice-paths-2d,
+  ordered-convex-polygon-filter-2d, radial-pull-2d, raster-crossfade,
+  retained-rectangle-cuts-2d, separable-blur-2d, sequential-disc-projection-2d,
+  target-springs-2d): the redesigned native examples are drafts ("not a root acceptance
+  record") and their render evidence predates the new bytes, so the p5js dimensions bound to
+  those example bytes are marked `unvalidated` (superseded), per
+  [creative quality](creative-quality.md) ("preserve historical technical evidence without
+  grandfathering quality"). The core operations and the processing-java reference acceptance
+  are unchanged and remain accepted. These dimensions re-attest with fresh model and render
+  evidence when the drafts pass creative review.
+- **Six py5 records** (cyclic-palette, gradient-noise-2d-01, gradient-path,
+  ordered-circle-filter, regular-grid, seeded-circle-placement): the only staleness was the
+  additive package-barrel exposure (`packages/javascript/src/index.js`,
+  `packages/python/procedurals/__init__.py`); their cores are unchanged. Re-attested by
+  updating the barrel drift-pins in the records and in the four live-bound reviews that pin
+  them (cp2-p5js, cp2-py5, placement-p5js and placement-py5 root reviews). The acceptance
+  decisions and the historical barrel (via the export-compatibility review) are preserved.
+
+`check_catalog.py` now reports zero errors for these 21 records (468 stale lines removed).
+The remaining ~12,900 lines are the pre-existing binding backlog (records and reviews that
+pin the web app, docs and other live files) and are not part of this step. Because the check
+returns early on any error, the `docs/reference/operations.md` regeneration — and with it the
+`raymarch-implicit-rays-3d` entry that postdates the reference's last write — stays blocked
+until that backlog is reconciled.
+
 ## Standing priority
 
 Apply [creative quality](creative-quality.md) to existing and new components, techniques and
