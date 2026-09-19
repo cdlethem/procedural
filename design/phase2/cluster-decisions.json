@@ -3890,6 +3890,27 @@
         "decision": "design/capabilities/implicit-ray-queries.md",
         "rationale": "Evaluate a bounded typed implicit scene along explicit CPU rays and return primary hit or miss records."
       }
+    },
+    {
+      "id": "fractal.flame-accumulate-2d",
+      "status": "reviewed",
+      "reason": "Independent external corpus capability, no Processing candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "transforms,seeds,iterations,density,rngState,maxWork",
+        "outputs": "Detached finite density buffer, plotted/dropped counters and final rngState; no partial result on failure.",
+        "invariants": "Fixed LCG draw order, frozen bilinear splat with boundary clamping, handled nonfinite drop path, provably finite buffer for valid inputs.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root",
+        "decision": "design/capabilities/fractal-flames.md",
+        "rationale": "Iterate a weighted transform set from supplied seeds and accumulate the point process into a bilinear density buffer, retaining exposure-editable output."
+      }
     }
   ],
   "records": {

@@ -89,3 +89,4 @@ export { weightedRasterCentroids2D, WeightedRasterCentroids2DError } from "./wei
 export { sampleRecordedControls, SampleRecordedControlsError } from "./sample-recorded-controls.js";
 export { prepareSurfaceAttributes3D, PrepareSurfaceAttributes3DError } from "./prepare-surface-attributes-3d.js";
 export { raymarchImplicitRays3D, RaymarchImplicitRays3DError } from "./raymarch-implicit-rays-3d.js";
+export { fractalFlameAccumulate2D, FractalFlameAccumulate2DError } from "./fractal-flame-accumulate-2d.js";

@@ -1,0 +1,208 @@
+{
+  "id": "fractal.flame-accumulate-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "description": "Iterate a weighted transform set from supplied seeds and accumulate the point process into a bilinear density buffer.",
+  "decision_cluster": "fractal.flame-accumulate-2d",
+  "capability_decision": "design/capabilities/fractal-flames.md",
+  "design_review": "design/operations/fractal-flames-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "transforms": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 4294967295,
+        "items": {
+          "type": "object",
+          "properties": {
+            "a": {
+              "type": "array",
+              "items": { "type": "number" },
+              "maxItems": 4,
+              "minItems": 4
+            },
+            "t": {
+              "type": "array",
+              "items": { "type": "number" },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "power": {
+              "type": "string",
+              "enum": ["linear", "abs", "sin", "cos", "inv"]
+            },
+            "weight": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": ["a", "t", "power", "weight"],
+          "additionalProperties": false
+        }
+      },
+      "seeds": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 4294967295,
+        "items": {
+          "type": "array",
+          "items": { "type": "number" },
+          "maxItems": 2,
+          "minItems": 2
+        }
+      },
+      "iterations": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      },
+      "density": {
+        "type": "object",
+        "properties": {
+          "width": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+          "height": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+          "origin": {
+            "type": "array",
+            "items": { "type": "number" },
+            "maxItems": 2,
+            "minItems": 2
+          },
+          "cell": {
+            "type": "array",
+            "items": { "type": "number" },
+            "maxItems": 2,
+            "minItems": 2
+          }
+        },
+        "required": ["width", "height", "origin", "cell"],
+        "additionalProperties": false
+      },
+      "rngState": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": ["transforms", "seeds", "iterations", "density", "rngState", "maxWork"],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "density": {
+        "type": "object",
+        "properties": {
+          "width": { "type": "integer", "minimum": 1 },
+          "height": { "type": "integer", "minimum": 1 },
+          "values": { "type": "array", "items": { "type": "number" } }
+        },
+        "required": ["width", "height", "values"],
+        "additionalProperties": false
+      },
+      "plotted": { "type": "integer", "minimum": 0 },
+      "dropped": { "type": "integer", "minimum": 0 },
+      "rngState": { "type": "integer", "minimum": 0, "maximum": 4294967295 }
+    },
+    "required": ["density", "plotted", "dropped", "rngState"],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached finite density buffer; plotted+dropped equals iterations; no partial result on failure.",
+  "behavior": {
+    "validation": "Exact passive Object/null-prototype records, dense ordinary arrays with own data slots, no classes/accessors/symbols/extras/coercion; proxies outside interchange. Numeric values finite binary64; booleans never numbers. Validate complete input in input-schema field order, arrays in order, then correspondence structure, then exact-integer work preflight before result allocation. Normalize accepted/exposed zero to +0. Inputs unchanged and all outputs deeply detached. Host allocation failure remains a host error.",
+    "environment": "Accepted seeded 32-bit LCG, one draw per iterate; no clock, renderer or assets. Caller Cartesian coordinates; y-up or y-down is a presentation choice. p5-only initial delivery; no other-target equivalence, no learned preference or networked voting.",
+    "numerics": "Binary64 separately rounded primitives, no FMA or reassociation. The transform and power evaluation may produce nonfinite values as a handled drop path: the inv power maps 0 to +Infinity by definition and a nonfinite iterate is counted in dropped with the running point reset to the next seed, not raised as NUMERIC_OVERFLOW. sin/cos use the accepted bit-exact fdlibm trig. The accumulated buffer is provably finite for valid inputs (each cell at most iterations), so NUMERIC_OVERFLOW is reserved and defensive. Compare counters, rngState, ordering and errors exactly; the density values are exact binary64.",
+    "correspondence": "transforms is nonempty with a strictly positive finite total weight; each transform is a 2x2 a, a 2-vector t, an enum power and a nonnegative finite weight. seeds is nonempty, each a finite 2-vector. density is a positive width/height grid with a finite origin and a strictly positive 2-vector cell; width*height is a safe integer at most 2^32-1. rngState is a nonnegative safe integer at most 2^32-1.",
+    "work": "W=iterations in exact integers, precharged before allocation; one counted event per iterate (RNG draw plus transform advance). The grid map and bilinear splat are constant-factor per iterate and do not grow work with grid size.",
+    "algorithm": "Initialize the buffer to zero and plotted=dropped=0; cursor=0; running point=seeds[0]. For each iterate: draw the next LCG state, target=(state/2^32)*totalWeight, select the least transform index k with target<cumulative[k]; advance the running point q=A*power(p)+t. If q is nonfinite, count dropped, set cursor=(cursor+1) mod seeds.length and reset the running point to seeds[cursor]. Otherwise map q to grid space, i0=floor(gx), j0=floor(gy); if the containing cell is outside the grid count dropped and keep the running point at q. Otherwise deposit the per-iterate weight bilinearly over the up-to-four surrounding cells in the fixed order (i0,j0),(i0+1,j0),(i0,j0+1),(i0+1,j0+1), discarding out-of-range sub-cells (clamped, not redistributed), and count plotted. Return the detached buffer, counters and final rngState. No hidden normalization: the buffer holds raw accumulated weights.",
+    "native_surface": "fractalFlameAccumulate2D(input), FractalFlameAccumulate2DError; fractal-flame-accumulate-2d.js and package index."
+  },
+  "errors": {
+    "INVALID_INPUT": "Static carrier/shape/domain/correspondence failure, including empty transforms/seeds, nonpositive weight total, unknown power, nonpositive cell, zero iterations or an oversized grid.",
+    "WORK_LIMIT": "Exact declared work reservation (iterations) exceeds maxWork.",
+    "NUMERIC_OVERFLOW": "Reserved; the transform may be nonfinite as a handled drop path and the buffer is provably finite for valid inputs, so this code is defensive, not expected."
+  },
+  "parameters": {
+    "transforms": {
+      "unit": "Weighted affine-plus-power map set; each entry advances the running point and carries a probability mass.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "seeds": {
+      "unit": "Initial running points and the round-robin reset pool after a nonfinite iterate.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "iterations": {
+      "unit": "Total iterates to scatter; also the exact work reservation.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "density": {
+      "unit": "Axis-aligned cell grid (width, height, origin, cell) that receives the bilinear accumulation.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "rngState": {
+      "unit": "Accepted 32-bit LCG seed; the final state is returned.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "maxWork": {
+      "unit": "Iterate-event allowance; must be at least iterations.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    }
+  },
+  "fixtures": "fixtures/operations/fractal-flame-accumulate-2d.json",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original flame study and a withheld agent-history density transfer, with exact scoped invariants; no Draves/Electric Sheep recreation or learned-preference claim implied."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Reviewed before implementation; target acceptance pending."
+  }
+}

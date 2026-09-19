@@ -1,0 +1,1147 @@
+{
+  "operation": "fractal.flame-accumulate-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "fixture_status": "reviewed",
+  "comparison": "exact",
+  "catalog_sha256": "3d15b9197705d9caaa9c7624a9f190630555436866361c5a58fac2a8ab903b0b",
+  "oracle": "Analytic corner/center/boundary/edge deposits hand-verified (50 single-cell, 25 four-way bilinear, 50 clamped, exact-edge drop). RNG-order and power-mix values pinned by the accepted 32-bit LCG (state -> (imul(1664525,state)+1013904223)>>>0, u=state/2^32) and the bit-exact fdlibm sin/abs; transform reordering is a distinguishing fixture. No host Math for powers.",
+  "cases": [
+    {
+      "id": "identity-corner-single-cell",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "linear",
+            "weight": 1
+          }
+        ],
+        "seeds": [
+          [
+            0,
+            0
+          ]
+        ],
+        "iterations": 50,
+        "density": {
+          "width": 5,
+          "height": 5,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 7,
+        "maxWork": 50
+      },
+      "output": {
+        "density": {
+          "width": 5,
+          "height": 5,
+          "values": [
+            50,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "plotted": 50,
+        "dropped": 0,
+        "rngState": 4279313281
+      }
+    },
+    {
+      "id": "identity-center-bilinear",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "linear",
+            "weight": 1
+          }
+        ],
+        "seeds": [
+          [
+            0.5,
+            0.5
+          ]
+        ],
+        "iterations": 100,
+        "density": {
+          "width": 10,
+          "height": 10,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 42,
+        "maxWork": 100
+      },
+      "output": {
+        "density": {
+          "width": 10,
+          "height": 10,
+          "values": [
+            25,
+            25,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            25,
+            25,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "plotted": 100,
+        "dropped": 0,
+        "rngState": 1660412894
+      }
+    },
+    {
+      "id": "boundary-right-clamp",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "linear",
+            "weight": 1
+          }
+        ],
+        "seeds": [
+          [
+            9.5,
+            4.5
+          ]
+        ],
+        "iterations": 100,
+        "density": {
+          "width": 10,
+          "height": 10,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 1,
+        "maxWork": 100
+      },
+      "output": {
+        "density": {
+          "width": 10,
+          "height": 10,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            25,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            25,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "plotted": 100,
+        "dropped": 0,
+        "rngState": 2146152485
+      }
+    },
+    {
+      "id": "edge-exact-right-dropped",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "linear",
+            "weight": 1
+          }
+        ],
+        "seeds": [
+          [
+            10,
+            0
+          ]
+        ],
+        "iterations": 10,
+        "density": {
+          "width": 10,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 5,
+        "maxWork": 10
+      },
+      "output": {
+        "density": {
+          "width": 10,
+          "height": 1,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "plotted": 0,
+        "dropped": 10,
+        "rngState": 3732498439
+      }
+    },
+    {
+      "id": "two-transforms-order-a",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "linear",
+            "weight": 1
+          },
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              2,
+              0
+            ],
+            "power": "linear",
+            "weight": 1
+          }
+        ],
+        "seeds": [
+          [
+            0,
+            0
+          ]
+        ],
+        "iterations": 8,
+        "density": {
+          "width": 8,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 0,
+        "maxWork": 8
+      },
+      "output": {
+        "density": {
+          "width": 8,
+          "height": 1,
+          "values": [
+            2,
+            0,
+            1,
+            0,
+            2,
+            0,
+            2,
+            0
+          ]
+        },
+        "plotted": 7,
+        "dropped": 1,
+        "rngState": 2748932008
+      }
+    },
+    {
+      "id": "two-transforms-order-b",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              2,
+              0
+            ],
+            "power": "linear",
+            "weight": 1
+          },
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "linear",
+            "weight": 1
+          }
+        ],
+        "seeds": [
+          [
+            0,
+            0
+          ]
+        ],
+        "iterations": 8,
+        "density": {
+          "width": 8,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 0,
+        "maxWork": 8
+      },
+      "output": {
+        "density": {
+          "width": 8,
+          "height": 1,
+          "values": [
+            0,
+            0,
+            1,
+            0,
+            3,
+            0,
+            2,
+            0
+          ]
+        },
+        "plotted": 6,
+        "dropped": 2,
+        "rngState": 2748932008
+      }
+    },
+    {
+      "id": "inv-power-nonfinite-drop",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "inv",
+            "weight": 1
+          }
+        ],
+        "seeds": [
+          [
+            0,
+            5
+          ]
+        ],
+        "iterations": 4,
+        "density": {
+          "width": 4,
+          "height": 4,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 3,
+        "maxWork": 4
+      },
+      "output": {
+        "density": {
+          "width": 4,
+          "height": 4,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "plotted": 0,
+        "dropped": 4,
+        "rngState": 3345418727
+      }
+    },
+    {
+      "id": "power-mix-sin-abs",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              3,
+              2
+            ],
+            "power": "sin",
+            "weight": 2
+          },
+          {
+            "a": [
+              2,
+              0,
+              0,
+              2
+            ],
+            "t": [
+              -1,
+              0
+            ],
+            "power": "abs",
+            "weight": 1
+          }
+        ],
+        "seeds": [
+          [
+            0.7,
+            -1.3
+          ],
+          [
+            4,
+            1
+          ]
+        ],
+        "iterations": 30,
+        "density": {
+          "width": 8,
+          "height": 4,
+          "origin": [
+            -4,
+            -2
+          ],
+          "cell": [
+            2,
+            2
+          ]
+        },
+        "rngState": 99,
+        "maxWork": 30
+      },
+      "output": {
+        "density": {
+          "width": 8,
+          "height": 4,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.6614882319776336,
+            0.5494451390814576,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8.808082182590358,
+            8.467904718379936,
+            0.22628313312958273,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3.2573426681128246,
+            3.586879099425017,
+            0.3559470334697467,
+            0,
+            0
+          ]
+        },
+        "plotted": 28,
+        "dropped": 2,
+        "rngState": 1063005289
+      }
+    },
+    {
+      "id": "empty-transforms",
+      "input": {
+        "transforms": [],
+        "seeds": [
+          [
+            0,
+            0
+          ]
+        ],
+        "iterations": 1,
+        "density": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 0,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "empty-seeds",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "linear",
+            "weight": 1
+          }
+        ],
+        "seeds": [],
+        "iterations": 1,
+        "density": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 0,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero-total-weight",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "linear",
+            "weight": 0
+          }
+        ],
+        "seeds": [
+          [
+            0,
+            0
+          ]
+        ],
+        "iterations": 1,
+        "density": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 0,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "negative-weight",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "linear",
+            "weight": -1
+          }
+        ],
+        "seeds": [
+          [
+            0,
+            0
+          ]
+        ],
+        "iterations": 1,
+        "density": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 0,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "bad-power",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "tan",
+            "weight": 1
+          }
+        ],
+        "seeds": [
+          [
+            0,
+            0
+          ]
+        ],
+        "iterations": 1,
+        "density": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 0,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero-cell",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "linear",
+            "weight": 1
+          }
+        ],
+        "seeds": [
+          [
+            0,
+            0
+          ]
+        ],
+        "iterations": 1,
+        "density": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            0,
+            1
+          ]
+        },
+        "rngState": 0,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero-iterations",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "linear",
+            "weight": 1
+          }
+        ],
+        "seeds": [
+          [
+            0,
+            0
+          ]
+        ],
+        "iterations": 0,
+        "density": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 0,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "rng-state-too-large",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "linear",
+            "weight": 1
+          }
+        ],
+        "seeds": [
+          [
+            0,
+            0
+          ]
+        ],
+        "iterations": 1,
+        "density": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 4294967296,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "work-limit",
+      "input": {
+        "transforms": [
+          {
+            "a": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "t": [
+              0,
+              0
+            ],
+            "power": "linear",
+            "weight": 1
+          }
+        ],
+        "seeds": [
+          [
+            0,
+            0
+          ]
+        ],
+        "iterations": 10,
+        "density": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "rngState": 0,
+        "maxWork": 5
+      },
+      "error": "WORK_LIMIT"
+    }
+  ]
+}
