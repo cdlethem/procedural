@@ -154,6 +154,25 @@ implemented; veins, DLA, multiscale competition and maps remain. The additive
 barrel exposure keeps the pre-existing binding backlog stale (measured at step 3),
 so the reference regeneration stays blocked by that same backlog, not by this slice.
 
+19 September 2026 — third I-family slice (attractor-consumption veins). Root admits
+and implements the bounded `growth.space-colonization-step-2d` operation: tips grow
+toward the nearest unconsumed source, a tip that reaches a source consumes it and
+branches into rotated offsets, and one step returns the new tips, the segments grown
+this step, and the updated consumed flags. The p5-first slice is complete: a reviewed
+contract (frozen stage order, the nearest-unconsumed-source query with tie-by-index,
+the branch rotation about the incoming direction, and the 2048-tip size cap), 18 bound
+exact-json fixtures (straight growth, two- and three-way branching, the no-source
+removal, the tie-break, the single-branch passthrough, the size-cap drop, and the error
+carriers), the portable core, the index export, and an editable study (Branches 1-4-way
+and Spread 0.3-1.2 rad as cycling construction controls, plus step/auto/sources/reset).
+Seven lease renders span the 1-way sparse paths, the 2-way default, the 4-way dense web,
+the tight and wide branch fans, and the fully consumed network, registered as
+`space-colonization-study` in the visual review; the package build passes. The I row's
+flames, complex-dynamics and veins sub-families are now implemented; DLA, multiscale
+competition and maps remain. The additive barrel exposure keeps the pre-existing binding
+backlog stale, so the reference regeneration stays blocked by that same backlog, not by
+this slice.
+
 ## Standing priority
 
 Apply [creative quality](creative-quality.md) to existing and new components, techniques and
@@ -190,7 +209,7 @@ exist with no `catalog/validation` record yet.
 | F | Explicit framebuffer history; projected fluid velocity and dye transport | Cores accepted; studies draft |
 | G | Known-font geometry, recorded signals and mapping; scoped live input lifecycle | Recorded signals and mapping implemented, acceptance open; font geometry limited to the bundled GlyphMarks face; live input lifecycle pending |
 | H | Mesh normals/UV/p5 presentation and bounded implicit fields/mesh or shader output | Mesh attributes and implicit rays implemented, acceptance open; shader output pending |
-| I | Attractor-consumption veins, DLA, multiscale competition, flames, complex dynamics, maps | Flames and complex dynamics implemented (p5-first); veins, DLA, multiscale competition and maps pending |
+| I | Attractor-consumption veins, DLA, multiscale competition, flames, complex dynamics, maps | Flames, complex dynamics and veins implemented (p5-first); DLA, multiscale competition and maps pending |
 | Audit | Coupled agent deposition/diffusion/sensing | Pending |
 | Audit | Crossing/stitch topology, hinged panels, periodic identified domains | Pending |
 | Audit | River migration/cutoffs; visibility-aware projected lines | Pending |
