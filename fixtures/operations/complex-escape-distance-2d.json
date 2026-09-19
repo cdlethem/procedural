@@ -1,0 +1,458 @@
+{
+  "operation": "complex.escape-distance-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "fixture_status": "reviewed",
+  "comparison": "exact",
+  "catalog_sha256": "806331f6fa9e3af34771d36d293391ef7063c2723f86f4bb22ebead233e51154",
+  "oracle": "Analytic for the 1x1 escape/interior cases: interior c=0 is the full budget with distance 0; c=3 escapes after one update with distance log(3)*3/1; the two-step Julia case (c=0.5, z0=1) is hand-verified at count 2 with distance log(2.75)*2.75/6. Multi-step and near-boundary values pinned by the verified implementation. The Mandelbrot-vs-Julia pair at the same sampled point distinguishes the derivative recurrences (product-plus-one vs pure product). Error carriers are JSON-representable invalid inputs.",
+  "cases": [
+    {
+      "id": "mandelbrot-interior-origin",
+      "input": {
+        "mapping": "mandelbrot",
+        "constant": [
+          0,
+          0
+        ],
+        "grid": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "iterations": 30,
+        "maxWork": 30
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "iteration": [
+          30
+        ],
+        "distance": [
+          0
+        ]
+      }
+    },
+    {
+      "id": "mandelbrot-exterior-3",
+      "input": {
+        "mapping": "mandelbrot",
+        "constant": [
+          0,
+          0
+        ],
+        "grid": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            3,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "iterations": 30,
+        "maxWork": 30
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "iteration": [
+          1
+        ],
+        "distance": [
+          3.2958368660043287
+        ]
+      }
+    },
+    {
+      "id": "julia-escape-fast",
+      "input": {
+        "mapping": "julia",
+        "constant": [
+          0,
+          0
+        ],
+        "grid": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            3,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "iterations": 30,
+        "maxWork": 30
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "iteration": [
+          1
+        ],
+        "distance": [
+          3.295836866004329
+        ]
+      }
+    },
+    {
+      "id": "julia-escape-two-steps",
+      "input": {
+        "mapping": "julia",
+        "constant": [
+          0.5,
+          0
+        ],
+        "grid": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            1,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "iterations": 30,
+        "maxWork": 30
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "iteration": [
+          2
+        ],
+        "distance": [
+          0.4636504178526366
+        ]
+      }
+    },
+    {
+      "id": "mandelbrot-near-boundary",
+      "input": {
+        "mapping": "mandelbrot",
+        "constant": [
+          0,
+          0
+        ],
+        "grid": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0.28,
+            0.008
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "iterations": 100,
+        "maxWork": 100
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "iteration": [
+          37
+        ],
+        "distance": [
+          0.00007145898451363444
+        ]
+      }
+    },
+    {
+      "id": "mandelbrot-vs-julia-derivative-m",
+      "input": {
+        "mapping": "mandelbrot",
+        "constant": [
+          0,
+          0
+        ],
+        "grid": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            3,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "iterations": 30,
+        "maxWork": 30
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "iteration": [
+          1
+        ],
+        "distance": [
+          3.2958368660043287
+        ]
+      }
+    },
+    {
+      "id": "mandelbrot-vs-julia-derivative-j",
+      "input": {
+        "mapping": "julia",
+        "constant": [
+          3,
+          0
+        ],
+        "grid": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            3,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "iterations": 30,
+        "maxWork": 30
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "iteration": [
+          1
+        ],
+        "distance": [
+          4.969813299576001
+        ]
+      }
+    },
+    {
+      "id": "mandelbrot-interior-seeds",
+      "input": {
+        "mapping": "mandelbrot",
+        "constant": [
+          0,
+          0
+        ],
+        "grid": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            -0.75,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "iterations": 50,
+        "maxWork": 50
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "iteration": [
+          50
+        ],
+        "distance": [
+          0
+        ]
+      }
+    },
+    {
+      "id": "bad-mapping",
+      "input": {
+        "mapping": "x",
+        "constant": [
+          0,
+          0
+        ],
+        "grid": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "iterations": 1,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero-cell",
+      "input": {
+        "mapping": "julia",
+        "constant": [
+          0,
+          0
+        ],
+        "grid": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            0,
+            1
+          ]
+        },
+        "iterations": 1,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "negative-cell",
+      "input": {
+        "mapping": "julia",
+        "constant": [
+          0,
+          0
+        ],
+        "grid": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            -1
+          ]
+        },
+        "iterations": 1,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero-iterations",
+      "input": {
+        "mapping": "julia",
+        "constant": [
+          0,
+          0
+        ],
+        "grid": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "iterations": 0,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "nonnumeric-constant",
+      "input": {
+        "mapping": "julia",
+        "constant": [
+          0,
+          "bad"
+        ],
+        "grid": {
+          "width": 1,
+          "height": 1,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "iterations": 1,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "oversized-grid",
+      "input": {
+        "mapping": "julia",
+        "constant": [
+          0,
+          0
+        ],
+        "grid": {
+          "width": 4294967295,
+          "height": 2,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "iterations": 1,
+        "maxWork": 10
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "work-limit",
+      "input": {
+        "mapping": "julia",
+        "constant": [
+          0,
+          0
+        ],
+        "grid": {
+          "width": 4,
+          "height": 4,
+          "origin": [
+            0,
+            0
+          ],
+          "cell": [
+            1,
+            1
+          ]
+        },
+        "iterations": 10,
+        "maxWork": 100
+      },
+      "error": "WORK_LIMIT"
+    }
+  ]
+}

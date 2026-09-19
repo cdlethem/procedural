@@ -36,6 +36,45 @@
       ]
     },
     {
+      "id": "complex-escape-study",
+      "title": "Complex Escape — quadratic map escape-time and distance",
+      "category": "I-family study (draft)",
+      "description": "One bounded operation iterates z -> z^2 + c over the sampling window and returns a per-pixel escape count plus a derivative distance estimate. The Mandelbrot view samples the constant over the plane; the Julia view samples the start point for a fixed constant. The escape-count bands (default) accumulate at the boundary and read as the classic set; the distance glow is the alternative coloring that showcases the derivative estimate. Controls span mapping, zoom and pan, eight lacy Julia constants, escape budget and exposure; the frames cover the whole Mandelbrot set, a lacy Julia spiral, a seahorse-tail Julia, the seahorse-valley boundary, and the distance glow on both mappings. Gallery inclusion is navigation, not acceptance; the operation contract, fixtures and target acceptance are recorded separately.",
+      "evidence": "design/capabilities/complex-escape.md",
+      "images": [
+        {
+          "label": "Mandelbrot set (escape-count bands)",
+          "path": ".work/complex-escape/ce-01-mandelbrot-bands.png",
+          "sha256": "0378c598b42691ccdc6d7373a95254e8637e0762cc87dca6fb935916eaf1c69f"
+        },
+        {
+          "label": "Julia spiral c=0.355+0.355i (bands)",
+          "path": ".work/complex-escape/ce-02-julia-bands.png",
+          "sha256": "82504ee0e0a2590b8a75fdab419840ff7e0069eaa401cda28c83a4e30ea8fece"
+        },
+        {
+          "label": "Julia seahorse c=0.285+0.01i (bands)",
+          "path": ".work/complex-escape/ce-03-julia-seahorse.png",
+          "sha256": "6ca2c1b4f5977366f343dcd136a34dfa35f486fdf8b5306eac7580e4638bbc3e"
+        },
+        {
+          "label": "Seahorse valley boundary (bands)",
+          "path": ".work/complex-escape/ce-04-mandelbrot-boundary.png",
+          "sha256": "b591f52b1413c472821d117a41e71987c5e404c77a76cdbb790b79dd3fe9b3a8"
+        },
+        {
+          "label": "Mandelbrot (distance glow)",
+          "path": ".work/complex-escape/ce-05-mandelbrot-glow.png",
+          "sha256": "ec9ca3aa6167bbe67dfa4ffe550381b03b879fe48511a51a3904bb883cdda208"
+        },
+        {
+          "label": "Julia (distance glow)",
+          "path": ".work/complex-escape/ce-06-julia-glow.png",
+          "sha256": "3b5104826c02e7a925bb81a77ef860f084eb6ecc6aa03c4b7fc99a27fc981dc5"
+        }
+      ]
+    },
+    {
       "id": "logo-led-site-identity",
       "title": "art with knobs — logo-led site identity",
       "category": "Root reviewed web identity",

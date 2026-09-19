@@ -3911,6 +3911,27 @@
         "decision": "design/capabilities/fractal-flames.md",
         "rationale": "Iterate a weighted transform set from supplied seeds and accumulate the point process into a bilinear density buffer, retaining exposure-editable output."
       }
+    },
+    {
+      "id": "complex.escape-distance-2d",
+      "status": "keep",
+      "title": "Complex escape-time and derivative distance estimate",
+      "family": "I (attractor/field techniques)",
+      "computation": "Bounded complex iteration z->z^2+c over a sampled world: per-pixel escape count plus a derivative distance estimate (Julia pure product, Mandelbrot product-plus-one).",
+      "rationale": "Second I-family slice. New computation not in the accepted 89-operation catalog: escape-time iteration with a derivative distance field. Retains the escape count and distance buffers, reusable for iteration coloring, distance filters and ray-marching. Bounded first slice (basic iteration + escape + simple DE); high-zoom precision deferred.",
+      "evidence": [
+        "quilez-191ebfe225dc",
+        "quilez-0c713507f163",
+        "graphic-v2-c230df849733",
+        "graphic-v2-79df362c3257",
+        "graphic-v2-a2efac831982"
+      ],
+      "decision": "keep",
+      "decision_note": "Admitted as the second I-family slice; distinct from the flame (probabilistic IFS + density) \u2014 this is deterministic complex iteration + escape + distance estimate.",
+      "provenance": [
+        "design/capabilities/complex-escape.md",
+        "design/operations/complex-escape-contract-review.md"
+      ]
     }
   ],
   "records": {

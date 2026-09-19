@@ -137,6 +137,23 @@ neighborhood-growth study now carries the node-insertion coupling (frozen in the
 creative review; the four replay-model studies prepare their step chains cooperatively so
 the slow cold replays no longer block the page (measured in the same record).
 
+19 September 2026 — second I-family slice (complex dynamics). Root admits and
+implements the bounded `complex.escape-distance-2d` operation: it iterates
+`z -> z^2 + c` over a sampled world grid and returns the per-pixel escape count
+plus the derivative distance estimate. The p5-first slice is complete: a reviewed
+contract (frozen stage order, the derivative law and its mapping dependence, and
+the exact integer work reservation), 15 bound exact-json fixtures (analytic
+interior/exterior and the two-step derivative, the Mandelbrot-vs-Julia derivative
+distinguisher, and the error carriers), the portable core, the index export, and an
+editable study (mapping, zoom/pan, eight lacy Julia constants, escape budget, and
+the escape-count bands plus distance-glow colorings). Six lease renders span the
+whole Mandelbrot set, lacy Julia spirals, the seahorse-valley boundary and both
+colorings, registered as `complex-escape-study` in the visual review; the package
+build passes. The I row's flames and complex-dynamics sub-families are now
+implemented; veins, DLA, multiscale competition and maps remain. The additive
+barrel exposure keeps the pre-existing binding backlog stale (measured at step 3),
+so the reference regeneration stays blocked by that same backlog, not by this slice.
+
 ## Standing priority
 
 Apply [creative quality](creative-quality.md) to existing and new components, techniques and
@@ -173,7 +190,7 @@ exist with no `catalog/validation` record yet.
 | F | Explicit framebuffer history; projected fluid velocity and dye transport | Cores accepted; studies draft |
 | G | Known-font geometry, recorded signals and mapping; scoped live input lifecycle | Recorded signals and mapping implemented, acceptance open; font geometry limited to the bundled GlyphMarks face; live input lifecycle pending |
 | H | Mesh normals/UV/p5 presentation and bounded implicit fields/mesh or shader output | Mesh attributes and implicit rays implemented, acceptance open; shader output pending |
-| I | Attractor-consumption veins, DLA, multiscale competition, flames, complex dynamics, maps | Pending |
+| I | Attractor-consumption veins, DLA, multiscale competition, flames, complex dynamics, maps | Flames and complex dynamics implemented (p5-first); veins, DLA, multiscale competition and maps pending |
 | Audit | Coupled agent deposition/diffusion/sensing | Pending |
 | Audit | Crossing/stitch topology, hinged panels, periodic identified domains | Pending |
 | Audit | River migration/cutoffs; visibility-aware projected lines | Pending |
