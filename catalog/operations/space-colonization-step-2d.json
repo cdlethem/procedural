@@ -1,0 +1,184 @@
+{
+  "id": "growth.space-colonization-step-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "description": "One bounded space-colonization growth step: tips aim at the nearest unconsumed source, consume a source a tip reaches, and branch into rotated offsets; returns the new tips, the segments grown this step, and the updated consumed flags.",
+  "decision_cluster": "growth.space-colonization-step-2d",
+  "capability_decision": "design/capabilities/space-colonization.md",
+  "design_review": "design/operations/space-colonization-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "tips": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": { "type": "number" },
+          "maxItems": 2,
+          "minItems": 2
+        },
+        "minItems": 1
+      },
+      "sources": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": { "type": "number" },
+          "maxItems": 2,
+          "minItems": 2
+        },
+        "minItems": 1
+      },
+      "consumed": {
+        "type": "array",
+        "items": { "type": "boolean" }
+      },
+      "step": { "type": "number", "exclusiveMinimum": 0 },
+      "reach": { "type": "number", "exclusiveMinimum": 0 },
+      "branches": { "type": "integer", "minimum": 1, "maximum": 9007199254740991 },
+      "branchAngle": { "type": "number" },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": ["tips", "sources", "consumed", "step", "reach", "branches", "branchAngle", "maxWork"],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "tips": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": { "type": "number" },
+          "maxItems": 2,
+          "minItems": 2
+        }
+      },
+      "segments": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": { "type": "number" },
+          "maxItems": 4,
+          "minItems": 4
+        }
+      },
+      "consumed": {
+        "type": "array",
+        "items": { "type": "boolean" }
+      },
+      "dropped": { "type": "integer", "minimum": 0 }
+    },
+    "required": ["tips", "segments", "consumed", "dropped"],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "tips has at most 2048 finite 2-vectors; segments is a flat list of finite 4-vectors, one per grown or reached input tip; consumed has the same length as the input sources with the newly reached sources set true; dropped counts the new tips dropped by the size cap; no partial result on failure.",
+  "behavior": {
+    "validation": "Exact passive Object/null-prototype records, dense ordinary arrays with own data slots, no classes/accessors/symbols/extras/coercion; proxies outside interchange. Numeric values finite binary64; consumed entries are booleans, never numbers. Validate complete input in input-schema field order, arrays in order, then the consumed/sources correspondence (same length), then exact-integer work preflight before result allocation. Normalize accepted/exposed zero to +0. Inputs unchanged and all outputs deeply detached. Host allocation failure remains a host error.",
+    "environment": "No RNG, clock, renderer or assets; a pure deterministic function of its input. The world is the 2D plane; a tip and a source are finite 2-vectors. p5-only initial delivery; no other-target equivalence, no learned preference.",
+    "numerics": "Binary64 separately rounded primitives, no FMA or reassociation. Distances are compared by squared Euclidean distance (dx*dx + dy*dy) to avoid a sqrt on the nearest query; the growth direction is the unit vector (dx/d, dy/d) with d the Euclidean norm (sqrt). The branch rotation uses cos/sin of the frozen angle. Compare ordering and errors exactly; the returned coordinates are exact binary64.",
+    "correspondence": "tips is a nonempty array of finite 2-vectors. sources is a nonempty array of finite 2-vectors. consumed is an array of booleans with the same length as sources. step and reach are strictly positive finite numbers. branches is a positive safe integer. branchAngle is a finite number (radians).",
+    "work": "W = tips.length * sources.length nearest-source queries in exact integers, precharged before allocation; one counted event per (tip, source) candidate considered. A breach is WORK_LIMIT, atomic, no partial output.",
+    "algorithm": "For each input tip in order: scan all sources in order, skip the consumed ones, and track the nearest unconsumed source by squared Euclidean distance, breaking ties by the lower source index. If none is unconsumed, the tip is removed (no segment, no new tip). Otherwise let (dx, dy) be the vector from the tip to that source and d its Euclidean norm. If d <= reach: set the source consumed, emit the segment from the tip to the source, and replace the tip by `branches` new tips, the k-th (k from 0) placed at source + step * rotate(direction, angle_k) where direction is the unit vector (dx/d, dy/d) and angle_k is 0 for branches == 1 else (k - (branches-1)/2) * (2*branchAngle/(branches-1)). Else emit the segment from the tip to tip + step * direction and keep that single new tip. Append the new tips to the output in emission order; when the output would exceed 2048 tips, drop the excess new tips and count them in dropped. Return the new tips, the segments, the updated consumed, and dropped.",
+    "native_surface": "spaceColonizationStep2D(input), SpaceColonizationStep2DError; space-colonization-step-2d.js and package index."
+  },
+  "errors": {
+    "INVALID_INPUT": "Static carrier/shape/domain/correspondence failure, including a nonfinite tip or source, a consumed length that does not match sources, a nonpositive step or reach, a zero or non-integer branches, or a nonfinite branchAngle.",
+    "WORK_LIMIT": "Exact declared work reservation (tips.length * sources.length) exceeds maxWork.",
+    "NUMERIC_OVERFLOW": "A nonfinite coordinate produced by the growth or branch arithmetic; reserved and defensive for valid inputs."
+  },
+  "parameters": {
+    "tips": {
+      "unit": "The current tip positions; each grows toward its nearest unconsumed source this step.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "sources": {
+      "unit": "The distributed target positions the tips grow toward; a consumed source is never regrown.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "consumed": {
+      "unit": "Per-source consumed flags; a true source is skipped by the nearest query and never regrown.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "step": {
+      "unit": "Growth distance per step; also the branch offset distance from a reached source.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "reach": {
+      "unit": "The distance at or under which a tip consumes its nearest source and branches.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "branches": {
+      "unit": "The number of new tips a tip produces when it reaches a source.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "branchAngle": {
+      "unit": "The half-spread (radians) between the rotated branch directions centered on the incoming growth direction.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    },
+    "maxWork": {
+      "unit": "Nearest-query allowance; must be at least tips.length * sources.length.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independently specified design. No artist-source default or visually measured recommended range."
+    }
+  },
+  "fixtures": "fixtures/operations/space-colonization-step-2d.json",
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    }
+  },
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Original space-colonization study (tips growing toward distributed sources with consumption and branching) with exact scoped invariants; no Nervous System Hyphae or Lomas recreation or learned-preference claim implied. The retained node/edge network is a reusable output."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Reviewed before implementation; target acceptance pending."
+  }
+}

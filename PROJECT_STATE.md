@@ -141,12 +141,14 @@ node-insertion coupling (deterministic proposal pool plus an explicit old-densit
 both studies pass the 18 September creative review, and the four replay-model studies now
 prepare their step chains cooperatively, with every edit answering under 0.2s in the
 measured interface (worst cold-cache key change 1.0s, main thread responsive). The first
-I-family slice, `fractal.flame-accumulate-2d`, and the second, `complex.escape-distance-2d`
-(bounded escape-time iteration plus the derivative distance estimate), are each implemented
-with a reviewed contract, bound fixtures and an editable p5 study; the remaining I-family
-slices (attractor-consumption veins, DLA, multiscale competition, maps) and the deeper-audit
-gaps are next. The additive barrel exposure keeps the pre-existing binding backlog stale, so
-the reference regeneration stays blocked by that backlog, not by either I-family slice.
+I-family slice, `fractal.flame-accumulate-2d`, the second, `complex.escape-distance-2d`
+(bounded escape-time iteration plus the derivative distance estimate), and the third,
+`growth.space-colonization-step-2d` (tips growing toward distributed sources with source
+consumption and branching), are each implemented with a reviewed contract, bound fixtures
+and an editable p5 study; the remaining I-family slices (diffusion-limited aggregation,
+multiscale competition, maps) and the deeper-audit gaps are next. The additive barrel
+exposure keeps the pre-existing binding backlog stale, so the reference regeneration stays
+blocked by that backlog, not by the I-family slices.
 
 - Other-target ports remain separate. The [port handoff](docs/porting-resume.md) tracks Python
   attestation reconciliation, Android ProfileMarks lifecycle validation and Java backlog.

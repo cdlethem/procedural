@@ -3932,6 +3932,27 @@
         "design/capabilities/complex-escape.md",
         "design/operations/complex-escape-contract-review.md"
       ]
+    },
+    {
+      "id": "growth.space-colonization-step-2d",
+      "status": "reviewed",
+      "reason": "Independent external corpus capability, no Processing candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "tips,sources,consumed,step,reach,branches,branchAngle,maxWork",
+        "outputs": "New tips (capped), the segments grown this step, the updated consumed flags, and the dropped count; no partial result on failure.",
+        "invariants": "Nearest unconsumed source by squared distance with ties by index, a reached source consumed exactly once, branches rotated about the incoming direction, finite coordinates for valid inputs, no tip regrows a consumed source.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root",
+        "decision": "design/capabilities/space-colonization.md",
+        "rationale": "Grow each tip toward its nearest unconsumed source, consume a reached source, and branch the tip into rotated offsets; retain the grown node/edge network and the source field for drainage and venation structures."
+      }
     }
   ],
   "records": {

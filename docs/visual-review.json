@@ -5880,6 +5880,45 @@
           "sha256": "375824ec899d66ec93285169f01b2a538f824811e22a09b6886c4261d4f675e4"
         }
       ]
+    },
+    {
+      "id": "space-colonization-study",
+      "title": "Space Colonization — tips growing toward distributed sources",
+      "category": "I-family study (draft)",
+      "description": "One bounded step grows each tip toward its nearest unconsumed source; a tip that reaches a source consumes it and branches into rotated offsets, and the links accumulate into a dendritic network over the step sequence. The study pre-grows to a readable mid network and exposes Branches (1–4-way) and Spread (0.3–1.2 rad) as cycling construction controls; the frames span the 1-way sparse paths, the 2-way default, the 4-way dense web, the tight and wide branch fans, and the fully consumed network with the target grid visible. Gallery inclusion is navigation, not acceptance; the operation contract, fixtures and bound target acceptance are separate.",
+      "evidence": "design/capabilities/space-colonization.md",
+      "images": [
+        {
+          "label": "2-way, spread 0.6 (default, tick 40)",
+          "path": ".work/expansion-full/sc-review/sc-default.png",
+          "sha256": "8f5c5395fb0dde8981c7d6788acec2e6d52365bdf3a36638b6d655bf63f3376f"
+        },
+        {
+          "label": "4-way, spread 0.6 (tick 40)",
+          "path": ".work/expansion-full/sc-review/sc-branches4.png",
+          "sha256": "720ff127d37f281ceb2ac72a70eee6373c911b19a1165d4c220b908726fb032f"
+        },
+        {
+          "label": "1-way, spread 0.6 (no branching, tick 40)",
+          "path": ".work/expansion-full/sc-review/sc-branches1.png",
+          "sha256": "85d29c63f4b974308f7347e38c37a83457bed85685cf8ba6f068b8a13e53aa7a"
+        },
+        {
+          "label": "2-way, spread 0.9 (wide fan, tick 40)",
+          "path": ".work/expansion-full/sc-review/sc-spread09.png",
+          "sha256": "26eac0a64a0745bd0f7fd05378e029af4b4a76c51bb6b6c5bf915d34ebe3feb2"
+        },
+        {
+          "label": "2-way, spread 0.3 (tight fan, tick 40)",
+          "path": ".work/expansion-full/sc-review/sc-spread03.png",
+          "sha256": "2ba6ed33894c768bddd837d84b7f62c36430c3f9a62dd8f8d0efee54422a5f53"
+        },
+        {
+          "label": "2-way, spread 0.6 (all 144 sources consumed)",
+          "path": ".work/expansion-full/sc-review/sc-full.png",
+          "sha256": "9e8f1de7044d47a0a752c6811606857fa6d58eaea9c73c2b0b82bcecec217445"
+        }
+      ]
     }
   ]
 }
