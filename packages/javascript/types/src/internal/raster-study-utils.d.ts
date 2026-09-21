@@ -1,0 +1,10 @@
+export declare const MAX_ARRAY = 4294967295;
+export declare const MAX_SAFE: number;
+export declare function passiveRecord(value: any, keys: any, ErrorType: any): any;
+export declare function passiveArray(value: any, ErrorType: any, length: any): any[];
+export declare function valueAt(record: any, key: any, ErrorType: any): any;
+export declare function number(value: any, ErrorType: any): number;
+export declare function positiveDimension(value: any, ErrorType: any): number;
+export declare function workLimit(value: any, ErrorType: any): number;
+export declare function checkedProduct(values: any, ErrorType: any, code?: string): number;
+export declare function checkedWork(value: any, maxWork: any, ErrorType: any): void;

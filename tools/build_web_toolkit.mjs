@@ -77,7 +77,7 @@ const javascriptStage = join(out, "javascript-stage");
 const catalogStage = join(out, "catalog-stage");
 mkdirSync(javascriptStage);
 mkdirSync(catalogStage);
-for (const name of ["src", "examples", "package.json"]) cpSync(join(root, "packages/javascript", name), join(javascriptStage, name), { recursive: true });
+for (const name of ["src", "examples", "types", "package.json"]) cpSync(join(root, "packages/javascript", name), join(javascriptStage, name), { recursive: true });
 for (const name of ["LICENSE", "THIRD_PARTY_NOTICES.md"]) cpSync(join(root, name), join(javascriptStage, name));
 writeFileSync(join(javascriptStage, "README.md"), "# Procedurals JavaScript\n\nPublic MIT toolkit operations and editable p5.js examples. See the public repository documentation for reviewed target support and capability limits.\n");
 
@@ -143,6 +143,11 @@ const importedExampleSubpaths = [...new Set(appSourceFiles.flatMap((path) => {
   const source = readFileSync(path, "utf8");
   return [...source.matchAll(/["'](@procedurals\/javascript\/examples\/[^"']+)["']/g)].map((match) => match[1]);
 }))].sort();
+assert.ok(existsSync(join(installedJavaScript, "types/src/index.d.ts")), "installed JavaScript root declarations missing");
+for (const specifier of importedExampleSubpaths) {
+  const declaration = `${specifier.slice("@procedurals/javascript/examples/".length, -3)}.d.ts`;
+  assert.ok(existsSync(join(installedJavaScript, "types/examples", declaration)), `installed example declarations missing: ${specifier}`);
+}
 const smokeSource = [
   "import * as api from '@procedurals/javascript';",
   "import manifest from '@procedurals/catalog/manifest.json' with { type: 'json' };",
@@ -178,7 +183,7 @@ const report = {
   },
   inputSha256Before: before,
   inputSha256After: after,
-  scope: "Packed and offline-installed both public packages; verified byte inventories, root import, catalog manifest, and every app-imported example subpath. No registry publication or target-support claim.",
+  scope: "Packed and offline-installed both public packages; verified byte inventories, declarations, root import, catalog manifest, and every app-imported example subpath. No registry publication or target-support claim.",
 };
 writeFileSync(join(out, "report.json"), `${JSON.stringify(report, null, 2)}\n`);
 writeFileSync(join(out, "SHA256SUMS"), `${artifacts.map((item) => `${item.sha256}  ${item.filename}`).join("\n")}\n`);
