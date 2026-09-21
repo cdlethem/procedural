@@ -13,7 +13,7 @@ import {
 } from "../lib/adapters/image-and-controls";
 import { imageAndControlsStudies } from "../content/image-and-controls-studies.mjs";
 import suppliedContours from "../assets/word-echo-contours.json";
-import { controlsAt, nonAudioFeatures, synthesizedFeatures } from "../../../packages/javascript/examples/word-echo/study.js";
+import { controlsAt, nonAudioFeatures, synthesizedFeatures } from "@procedurals/javascript/examples/word-echo/study.js"
 
 const sha = (bytes: Uint8Array | Uint8ClampedArray | string) => createHash("sha256").update(typeof bytes === "string" ? bytes : new Uint8Array(bytes.buffer, bytes.byteOffset, bytes.byteLength)).digest("hex");
 function layerFor(id: string): Layer {

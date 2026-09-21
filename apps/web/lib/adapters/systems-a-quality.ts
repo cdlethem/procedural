@@ -1,6 +1,6 @@
 import type { Layer } from "../studio-types";
-import { grayScottStep2D } from "../../../../packages/javascript/src/gray-scott-step-2d.js";
-import { lifeLikeStep2D } from "../../../../packages/javascript/src/life-like-step-2d.js";
+import { grayScottStep2D } from "@procedurals/javascript"
+import { lifeLikeStep2D } from "@procedurals/javascript"
 
 type CellularStudy = "reaction-spots" | "reaction-stripes" | "organic-cells" | "geometric-generations";
 type Source = "disc" | "bands" | "checker" | "speckle";

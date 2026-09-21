@@ -3,15 +3,15 @@ import { numeric, toggle, channels, type StudioDefinition } from "./types";
 import {
   createMarkField,
   markCommands,
-} from "../../../../packages/javascript/examples/field-marks/mark-field.js";
-import { createPathMarks } from "../../../../packages/javascript/examples/path-marks/path-marks.js";
+} from "@procedurals/javascript/examples/field-marks/mark-field.js"
+import { createPathMarks } from "@procedurals/javascript/examples/path-marks/path-marks.js"
 import {
   createSeededPlacementMarks,
   createRadialPlacementMarks,
   vertexInto,
-} from "../../../../packages/javascript/examples/placement-marks/placement-marks.js";
-import { occupiedLatticePaths2D } from "../../../../packages/javascript/src/occupied-lattice-paths.js";
-import { cyclicPalette } from "../../../../packages/javascript/src/cyclic-palette.js";
+} from "@procedurals/javascript/examples/placement-marks/placement-marks.js"
+import { occupiedLatticePaths2D } from "@procedurals/javascript"
+import { cyclicPalette } from "@procedurals/javascript"
 
 export const basicDefinitions: StudioDefinition[] = [
   {

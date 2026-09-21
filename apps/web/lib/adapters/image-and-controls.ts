@@ -1,8 +1,8 @@
 import type { Layer } from "../studio-types";
 import { defaultPalettes } from "../default-palettes";
-import { weightedRasterPoints2D } from "../../../../packages/javascript/src/weighted-raster-points-2d.js";
-import { weightedRasterCentroids2D } from "../../../../packages/javascript/src/weighted-raster-centroids-2d.js";
-import { controlsAt, nonAudioFeatures, synthesizedFeatures } from "../../../../packages/javascript/examples/word-echo/study.js";
+import { weightedRasterPoints2D } from "@procedurals/javascript"
+import { weightedRasterCentroids2D } from "@procedurals/javascript"
+import { controlsAt, nonAudioFeatures, synthesizedFeatures } from "@procedurals/javascript/examples/word-echo/study.js"
 import suppliedContours from "../../assets/word-echo-contours.json";
 import { choice, numeric, toggle, channels, type StudioDefinition } from "./types";
 

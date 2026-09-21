@@ -19,6 +19,8 @@
     "test:mcp": "tsx --test tests/mcp.test.ts"
   },
   "dependencies": {
+    "@procedurals/catalog": "https://github.com/cdlethem/procedural/releases/download/web-toolkit-v0.2.1/procedurals-catalog-0.2.1.tgz",
+    "@procedurals/javascript": "https://github.com/cdlethem/procedural/releases/download/web-toolkit-v0.2.1/procedurals-javascript-0.2.1.tgz",
     "next": "16.3.4",
     "p5": "2.3.2",
     "react": "19.2.8",

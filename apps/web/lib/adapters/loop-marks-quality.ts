@@ -1,5 +1,5 @@
 import type { Layer } from "../studio-types";
-import { closedSpline2D } from "../../../../packages/javascript/src/closed-spline.js";
+import { closedSpline2D } from "@procedurals/javascript"
 
 type Params = Layer["params"];
 type Point = [number, number];

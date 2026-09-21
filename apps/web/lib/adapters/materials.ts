@@ -1,8 +1,8 @@
 import type { Layer } from "../studio-types";
 import { drawMaterialsA, materialsADefinitions } from "./materials-a";
-import { drawDiffusionEngraving, drawDitheredRibbons, drawOrderedHalftone, drawBayerWeave, drawEmbossedField, drawSignedEdgePrint, drawDistanceHalos, drawErodedLace, drawDilatedStamps, drawOklabOrbits } from "../../../../packages/javascript/examples/materials-a-studies.js";
+import { drawDiffusionEngraving, drawDitheredRibbons, drawOrderedHalftone, drawBayerWeave, drawEmbossedField, drawSignedEdgePrint, drawDistanceHalos, drawErodedLace, drawDilatedStamps, drawOklabOrbits } from "@procedurals/javascript/examples/materials-a-studies.js"
 import { materialsBDefinitions } from "./materials-b";
-import { drawExtrudedSeals, drawSteppedBlocks, drawTransportedRibbons, drawTwistingStreamers, drawRoundedPolyhedra, drawSubdividedShells } from "../../../../packages/javascript/examples/materials-b-studies.js";
+import { drawExtrudedSeals, drawSteppedBlocks, drawTransportedRibbons, drawTwistingStreamers, drawRoundedPolyhedra, drawSubdividedShells } from "@procedurals/javascript/examples/materials-b-studies.js"
 export const materialsDefinitions = [...materialsADefinitions, ...materialsBDefinitions];
 export function drawMaterials(p: any, layer: Layer): void {
  switch(layer.technique) {

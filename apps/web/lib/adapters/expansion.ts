@@ -1,10 +1,10 @@
 import type { Layer } from "../studio-types";
 import { numeric, toggle, channels, type StudioDefinition } from "./types";
-import { voronoiCells2D } from "../../../../packages/javascript/src/voronoi-cells-2d.js";
-import { resamplePolyline2D } from "../../../../packages/javascript/src/resample-polyline-2d.js";
-import { marchingSquares2D } from "../../../../packages/javascript/src/marching-squares-2d.js";
-import { gradientNoise2D01 } from "../../../../packages/javascript/src/gradient-noise-2d-01.js";
-import { JavaRandom } from "../../../../packages/javascript/examples/city-marks/city-marks.js";
+import { voronoiCells2D } from "@procedurals/javascript"
+import { resamplePolyline2D } from "@procedurals/javascript"
+import { marchingSquares2D } from "@procedurals/javascript"
+import { gradientNoise2D01 } from "@procedurals/javascript"
+import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js"
 
 type Point = [number, number];
 type Controls = Record<string, any>;

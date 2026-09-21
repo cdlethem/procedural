@@ -3,7 +3,7 @@ import test from "node:test";
 import { systemsADefinitions } from "../lib/adapters/systems-a";
 import { drawSystems } from "../lib/adapters/systems";
 import { cellularInitialCells, cellularState } from "../lib/adapters/systems-a-quality";
-import { drawReactionSpots, drawReactionStripes, drawOrganicCells, drawGeometricGenerations } from "../../../packages/javascript/examples/systems-a-studies.js";
+import { drawReactionSpots, drawReactionStripes, drawOrganicCells, drawGeometricGenerations } from "@procedurals/javascript/examples/systems-a-studies.js"
 import type { Layer } from "../lib/studio-types";
 
 const ids = ["reaction-spots", "reaction-stripes", "organic-cells", "geometric-generations"] as const;

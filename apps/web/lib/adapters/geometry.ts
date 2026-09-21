@@ -6,21 +6,21 @@ import {
   channels,
   type StudioDefinition,
 } from "./types";
-import { noiseBandPath2D } from "../../../../packages/javascript/src/noise-band-path.js";
-import { seededLinePool2D } from "../../../../packages/javascript/src/line-pool.js";
-import { seededEndpointBranches2D } from "../../../../packages/javascript/src/branch-tree.js";
-import { seededCirclePlacement2D } from "../../../../packages/javascript/src/circle-placements.js";
-import { seededQuadrantPartition2D } from "../../../../packages/javascript/src/quadrant-partition.js";
-import { binaryCellPartition2D } from "../../../../packages/javascript/src/binary-cell-partition.js";
-import { orderedConvexPolygonFilter2D } from "../../../../packages/javascript/src/convex-polygon-placements.js";
-import { delaunay2D } from "../../../../packages/javascript/src/delaunay.js";
-import { seededTrianglePoints2D } from "../../../../packages/javascript/src/triangle-points.js";
+import { noiseBandPath2D } from "@procedurals/javascript"
+import { seededLinePool2D } from "@procedurals/javascript"
+import { seededEndpointBranches2D } from "@procedurals/javascript"
+import { seededCirclePlacement2D } from "@procedurals/javascript"
+import { seededQuadrantPartition2D } from "@procedurals/javascript"
+import { binaryCellPartition2D } from "@procedurals/javascript"
+import { orderedConvexPolygonFilter2D } from "@procedurals/javascript"
+import { delaunay2D } from "@procedurals/javascript"
+import { seededTrianglePoints2D } from "@procedurals/javascript"
 import {
   createLoopMarks,
   loopFanTriangles,
   loopTileCommands,
-} from "../../../../packages/javascript/examples/loop-marks/loop-marks.js";
-import { createGrainComposition } from "../../../../packages/javascript/examples/grain-marks/grain-marks.js";
+} from "@procedurals/javascript/examples/loop-marks/loop-marks.js"
+import { createGrainComposition } from "@procedurals/javascript/examples/grain-marks/grain-marks.js"
 import { createCutModel } from "../cut-model";
 import { drawLoopMarksModern, validateLoopMarks } from "./loop-marks-quality";
 

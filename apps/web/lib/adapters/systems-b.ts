@@ -1,7 +1,7 @@
 import type { Layer } from "../studio-types";
 import { choice, numeric, toggle, type StudioDefinition } from "./types";
 import { drawWaveQuality, validateWaveQuality } from "./systems-b-wave-quality";
-import { systemsBSettings, drawRippleInterference, drawPinnedWaves, drawBranchingSentences, drawWovenGrammar, drawTurtleCanopies, drawRecursiveTiles, drawCompatibleMosaics, drawTiledCircuits, drawMazeGardens, drawBranchingNetworks } from "../../../../packages/javascript/examples/systems-b-studies.js";
+import { systemsBSettings, drawRippleInterference, drawPinnedWaves, drawBranchingSentences, drawWovenGrammar, drawTurtleCanopies, drawRecursiveTiles, drawCompatibleMosaics, drawTiledCircuits, drawMazeGardens, drawBranchingNetworks } from "@procedurals/javascript/examples/systems-b-studies.js";
 const rows=[
 ["ripple-interference","Ripple interference","Damped wave contours.",["passes",4,38],["scale",12,28],["weight",.5,4]], ["pinned-waves","Pinned waves","Pinned-edge wave contours.",["passes",4,38],["scale",10,25],["weight",.5,4]],
 ["branching-sentences","Branching sentences","Rewritten tokens interpreted by a turtle.",["iterations",1,5],["step",5,18],["angle",10,45]], ["woven-grammar","Woven grammar","Square grammar turtle paths.",["iterations",1,6],["step",4,16],["angle",30,100]],

@@ -1,6 +1,6 @@
 import type { Layer } from "../studio-types";
-import { euclideanDistanceTransform2D, medianCutQuantize, oklabRamp } from "../../../../packages/javascript/src/index.js";
-import { drawNearestFeatureMosaic, drawPerceptualBands, drawQuantizedStripes, drawReducedMosaic } from "../../../../packages/javascript/examples/materials-a-studies.js";
+import { euclideanDistanceTransform2D, medianCutQuantize, oklabRamp } from "@procedurals/javascript"
+import { drawNearestFeatureMosaic, drawPerceptualBands, drawQuantizedStripes, drawReducedMosaic } from "@procedurals/javascript/examples/materials-a-studies.js"
 
 const q = (layer: Layer, key: string): number => Number(layer.params[key]);
 const rgb = (layer: Layer, index: number): [number, number, number] => {

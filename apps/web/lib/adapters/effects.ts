@@ -10,7 +10,7 @@ import {
   sequentialDiscProjection2D,
   stopRamp,
   targetSprings2D,
-} from "../../../../packages/javascript/src/index.js";
+} from "@procedurals/javascript"
 import { numeric, toggle, choice, type StudioDefinition } from "./types";
 
 const SIDE = 640;

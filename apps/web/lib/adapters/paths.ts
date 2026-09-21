@@ -1,8 +1,8 @@
 import type { Layer } from "../studio-types";
 import { drawPathsA, pathsADefinitions } from "./paths-a";
-import { drawFlowingBrushes, drawContourAbstraction, drawGestureSkeletons, drawScatterEnvelopes, drawTerracedIslands } from "../../../../packages/javascript/examples/paths-a-studies.js";
+import { drawFlowingBrushes, drawContourAbstraction, drawGestureSkeletons, drawScatterEnvelopes, drawTerracedIslands } from "@procedurals/javascript/examples/paths-a-studies.js"
 import { pathsBDefinitions } from "./paths-b";
-import { drawStitchedContours, drawFragmentedLines, drawBlueNoiseStipple, drawSpacedSymbols, drawRelaxedStones, drawCentroidTrails, drawPackedPosters, drawAspectTiles, drawObstacleRoads, drawArrivalContours } from "../../../../packages/javascript/examples/paths-b-studies.js";
+import { drawStitchedContours, drawFragmentedLines, drawBlueNoiseStipple, drawSpacedSymbols, drawRelaxedStones, drawCentroidTrails, drawPackedPosters, drawAspectTiles, drawObstacleRoads, drawArrivalContours } from "@procedurals/javascript/examples/paths-b-studies.js"
 export const pathsDefinitions = [...pathsADefinitions, ...pathsBDefinitions];
 export function drawPaths(p: any, layer: Layer): void {
  switch(layer.technique) {

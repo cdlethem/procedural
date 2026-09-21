@@ -4,9 +4,9 @@ import { createLayer } from "../lib/studio";
 import { drawExternalExpansion, externalExpansionDefinitions,
   ornamentFieldRecords, shapeMatrixRecords, orbitalBrushRecords } from "../lib/adapters/external-expansion";
 import { ornamentFieldRecords as nativeOrnamentRecords,
-  shapeMatrixRecords as nativeMatrixRecords } from "../../../packages/javascript/examples/motif-compositions/field-records.js";
+  shapeMatrixRecords as nativeMatrixRecords } from "@procedurals/javascript/examples/motif-compositions/field-records.js"
 import { orbitalBrushRecords as nativeOrbitalRecords,
-  validateOrbitalRecordInput } from "../../../packages/javascript/examples/motif-compositions/orbital-records.js";
+  validateOrbitalRecordInput } from "@procedurals/javascript/examples/motif-compositions/orbital-records.js"
 import type { Layer } from "../lib/studio-types";
 
 function withParams(layer: Layer, changes: Record<string, number | string | boolean>): Layer {

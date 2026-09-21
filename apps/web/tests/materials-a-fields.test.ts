@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { drawMaterials, materialsDefinitions } from "../lib/adapters/materials";
-import { drawNearestFeatureMosaic, drawPerceptualBands, drawQuantizedStripes, drawReducedMosaic } from "../../../packages/javascript/examples/materials-a-studies.js";
+import { drawNearestFeatureMosaic, drawPerceptualBands, drawQuantizedStripes, drawReducedMosaic } from "@procedurals/javascript/examples/materials-a-studies.js"
 import type { Layer } from "../lib/studio-types";
 
 type Id = "quantized-stripes" | "perceptual-bands" | "reduced-mosaic" | "nearest-feature-mosaic";

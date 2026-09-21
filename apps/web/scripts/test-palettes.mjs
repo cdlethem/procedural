@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { chromium } from 'playwright';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { defaultPalettes } from '../../../packages/javascript/src/default-palettes.js';
+import { defaultPalettes } from '@procedurals/javascript';
 const base = process.env.WEB_BASE_URL ?? 'http://127.0.0.1:3010';
 const out = resolve('.work/palettes/browser'); await mkdir(out, { recursive: true });
 const browser = await chromium.launch({ headless: true, args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--disable-accelerated-2d-canvas'] });

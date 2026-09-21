@@ -103,5 +103,66 @@ export const externalVisualApiGuides = {
       "Finite steps and epsilon do not certify an exact surface intersection or every thin feature.",
       "A sharp corner or CSG tie can return an undefined normal; the operation does not produce a mesh or GPU image."
     ]
+  },
+  "complex.escape-distance-2d": {
+    title: "Sample a complex escape field",
+    summary: "Compute escape counts and derivative distance estimates over a caller-defined complex-plane grid.",
+    useWhen: "You want deterministic Mandelbrot or Julia structure as reusable scalar fields before choosing colors or marks.",
+    inputs: {
+      mapping: "mandelbrot starts each orbit at zero; julia starts at the sampled point.",
+      constant: "Finite [real,imaginary] Julia constant; still required but unused for Mandelbrot.",
+      grid: "Output width, height, world origin and strictly positive [x,y] cell spacing.",
+      iterations: "Positive maximum orbit steps per sample.",
+      maxWork: "Explicit cap for iterations multiplied by width and height."
+    },
+    output: "{width,height,iteration,distance}: detached row-major escape-count and nonnegative distance buffers.",
+    code: "const result=complexEscapeDistance2D({mapping:'mandelbrot',constant:[0,0],grid:{width:3,height:2,origin:[-2,-1],cell:[0.75,1]},iterations:20,maxWork:120});\nconsole.log(result.iteration, result.distance);",
+    tryThis: "Keep the grid fixed and switch to Julia with a chosen constant, then map iteration and distance to separate visual channels.",
+    pitfalls: [
+      "The operation returns fields, not a palette or rendered fractal.",
+      "Increasing either grid area or iterations consumes the precharged work budget."
+    ]
+  },
+  "fractal.flame-accumulate-2d": {
+    title: "Accumulate a transform flame",
+    summary: "Advance a seeded weighted transform process and splat its points into a reusable density grid.",
+    useWhen: "You want deterministic iterated-transform density without coupling the process to color mapping or drawing.",
+    inputs: {
+      transforms: "Nonempty weighted affine transforms with a, t and one supported component-wise power.",
+      seeds: "Nonempty finite starting points used in order when a nonfinite iterate is reset.",
+      iterations: "Positive number of transform advances and RNG draws.",
+      density: "Output width, height, world origin and strictly positive [x,y] cell spacing.",
+      rngState: "Explicit unsigned 32-bit LCG state; retain the returned state to continue the stream.",
+      maxWork: "Explicit cap for the iteration count."
+    },
+    output: "{density,plotted,dropped,rngState}: a detached row-major density grid, accounting counters and advanced RNG state.",
+    code: "const result=fractalFlameAccumulate2D({transforms:[{a:[0.5,0,0,0.5],t:[-0.4,0],power:'linear',weight:1},{a:[0.5,0,0,0.5],t:[0.4,0.5],power:'linear',weight:1}],seeds:[[0,0]],iterations:12,density:{width:8,height:8,origin:[-1,-1],cell:[0.25,0.25]},rngState:42,maxWork:12});\nconsole.log(result.density, result.plotted, result.dropped, result.rngState);",
+    tryThis: "Change transform translations while preserving weights and rngState, then recolor the same density buffer.",
+    pitfalls: [
+      "The density is raw accumulated weight; normalization and tone mapping belong to the caller.",
+      "Out-of-grid or nonfinite iterates are counted as dropped rather than silently relocated."
+    ]
+  },
+  "growth.space-colonization-step-2d": {
+    title: "Grow tips toward source points",
+    summary: "Advance one bounded nearest-source growth step and return explicit segments and replacement tips.",
+    useWhen: "You want to build branching linework from your own tips and attraction points while controlling each simulation step.",
+    inputs: {
+      tips: "Nonempty finite [x,y] growth fronts in processing order.",
+      sources: "Nonempty finite [x,y] attraction points.",
+      consumed: "One boolean per source, carried between calls.",
+      step: "Strictly positive growth distance for each emitted replacement tip.",
+      reach: "Strictly positive distance at which a source is consumed and branching occurs.",
+      branches: "Positive number of replacement tips emitted at a reached source.",
+      branchAngle: "Finite branch fan half-angle in radians.",
+      maxWork: "Explicit cap for tips multiplied by sources."
+    },
+    output: "{tips,segments,consumed,dropped}: replacement fronts, this step's xyxy segments, updated source flags and bounded-tip drops.",
+    code: "const result=spaceColonizationStep2D({tips:[[0,0]],sources:[[4,0],[4,3]],consumed:[false,false],step:1,reach:0.5,branches:2,branchAngle:0.4,maxWork:2});\nconsole.log(result.tips, result.segments, result.consumed, result.dropped);",
+    tryThis: "Feed the returned tips and consumed flags into another call, or replace sources with points sampled from your own silhouette.",
+    pitfalls: [
+      "One call performs one step; iteration, source creation and segment drawing stay under caller control.",
+      "The output tip cap is 2048; excess branch tips are counted in dropped."
+    ]
   }
 };

@@ -1,4 +1,4 @@
-import { dampedWaveStep2D } from "../../../../packages/javascript/src/damped-wave-step-2d.js";
+import { dampedWaveStep2D } from "@procedurals/javascript"
 import type { Layer } from "../studio-types";
 
 const GRID = 26;

@@ -1,5 +1,5 @@
-import { gradientNoise2D01 } from "../../../packages/javascript/src/gradient-noise-2d-01.js";
-import { retainedRectangleCuts2D } from "../../../packages/javascript/src/retained-rectangle-cuts.js";
+import { gradientNoise2D01 } from "@procedurals/javascript"
+import { retainedRectangleCuts2D } from "@procedurals/javascript"
 import type { CutEdit, Layer } from "./studio-types";
 export type { CutEdit } from "./studio-types";
 

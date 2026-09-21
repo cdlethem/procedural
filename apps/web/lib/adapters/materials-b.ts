@@ -1,6 +1,6 @@
 import type { Layer, Parameter } from "../studio-types";
 import { choice, numeric, type StudioDefinition } from "./types";
-import * as draws from "../../../../packages/javascript/examples/materials-b-studies.js";
+import * as draws from "@procedurals/javascript/examples/materials-b-studies.js"
 
 const cameraAndSurface: Parameter[] = [
   numeric("rotation", "Camera yaw", "Turn the view around the source while keeping its geometry fixed.", -3.14, 3.14, .01, { hardMin: -2 * Math.PI, hardMax: 2 * Math.PI }),

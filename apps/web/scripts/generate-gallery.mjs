@@ -16,12 +16,13 @@ import { resolve, dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
 import { sketchSources } from "./sketch-source.mjs";
-const app = resolve(dirname(fileURLToPath(import.meta.url)), ".."),
-  root = resolve(app, "../..");
-const read = (p) => readFileSync(join(root, p), "utf8");
-const hash = (p) =>
+import { resolveToolkitRoots } from "./toolkit-roots.mjs";
+const app = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const { javascriptRoot, catalogRoot, physicalPath } = resolveToolkitRoots(app);
+const read = (path) => readFileSync(physicalPath(path), "utf8");
+const hash = (path) =>
   createHash("sha256")
-    .update(readFileSync(join(root, p)))
+    .update(readFileSync(physicalPath(path)))
     .digest("hex");
 // Authored workflow membership, not a second operation parameter/support registry.
 const definitions = [
@@ -150,10 +151,13 @@ const pendingExampleSlugs = new Set([
   "field-displacement",
   "octave-noise",
   "pixel-grain",
+  "complex-escape",
+  "fractal-flame",
+  "space-colonization",
 ]);
-const sources = sketchSources(root);
+const sources = sketchSources({ appRoot: app, javascriptRoot });
 const browserGuidePath = "apps/web/content/browser-guides.json";
-const browserGuides = existsSync(join(root, browserGuidePath))
+const browserGuides = existsSync(physicalPath(browserGuidePath))
   ? JSON.parse(read(browserGuidePath)) : {};
 // These compositions expose the operations actually called by the live web adapter.
 // Original native examples have their own separately recorded composition membership.
@@ -171,7 +175,7 @@ const webOperations = {
   "depth-marks": ["gradient-noise-3d-01", "radial-profile-surface"],
   "spring-marks": ["target-springs-2d"],
 };
-const dirs = readdirSync(join(root, "packages/javascript/examples"), {
+const dirs = readdirSync(join(javascriptRoot, "examples"), {
   withFileTypes: true,
 })
   .filter((d) => d.isDirectory())
@@ -181,16 +185,13 @@ const declaredExampleSlugs = new Set([
   ...nativeOnlySlugs,
   ...pendingExampleSlugs,
 ]);
-if (
-  dirs.some((directory) => !declaredExampleSlugs.has(directory)) ||
-  [...slugs, ...nativeOnlySlugs].some(
-    (slug) => !dirs.includes(slug),
-  )
-)
+const unexpectedDirectories = dirs.filter((directory) => !declaredExampleSlugs.has(directory));
+const missingDirectories = [...slugs, ...nativeOnlySlugs].filter((slug) => !dirs.includes(slug));
+if (unexpectedDirectories.length || missingDirectories.length)
   throw Error(
-    "Workflow membership drift: review new/missing example before regenerating",
+    `Workflow membership drift: unexpected ${unexpectedDirectories.join(", ") || "none"}; missing ${missingDirectories.join(", ") || "none"}`,
   );
-const attestations = readdirSync(join(root, "catalog/validation"))
+const attestations = readdirSync(join(catalogRoot, "catalog/validation"))
   .filter((n) => n.endsWith(".json"))
   .map((n) => ({
     path: `catalog/validation/${n}`,
@@ -199,12 +200,12 @@ const attestations = readdirSync(join(root, "catalog/validation"))
 const techniques = definitions.map(([slug, category, contracts], index) => {
   const readmePath = `packages/javascript/examples/${slug}/README.md`;
   const sketchPath = `packages/javascript/examples/${slug}/sketch.js`;
-  const sourcePath = existsSync(join(root, readmePath)) ? readmePath : sketchPath;
-  if (!existsSync(join(root, sourcePath))) throw Error(`Missing source for ${slug}`);
+  const sourcePath = existsSync(physicalPath(readmePath)) ? readmePath : sketchPath;
+  if (!existsSync(physicalPath(sourcePath))) throw Error(`Missing source for ${slug}`);
   const webGuidePath = `apps/web/content/${slug}.md`;
-  const guidePath = ["warp-marks", "blur-marks"].includes(slug) && existsSync(join(root, webGuidePath))
+  const guidePath = ["warp-marks", "blur-marks"].includes(slug) && existsSync(physicalPath(webGuidePath))
     ? webGuidePath
-    : existsSync(join(root, `docs/${slug}.md`))
+    : existsSync(physicalPath(`docs/${slug}.md`))
       ? `docs/${slug}.md`
       : webGuidePath;
   let markdown = browserGuides[slug] ?? read(guidePath);
@@ -225,7 +226,7 @@ const techniques = definitions.map(([slug, category, contracts], index) => {
   );
   markdown = markdown.replace(/\]\(\/api-reference\/([a-z0-9-]+)\)/g, (_, stem) => {
     const catalogPath = `catalog/operations/${stem}.json`;
-    if (!existsSync(join(root, catalogPath))) throw Error(`Unknown operation link: ${stem}`);
+    if (!existsSync(physicalPath(catalogPath))) throw Error(`Unknown operation link: ${stem}`);
     return `](/api-reference/${JSON.parse(read(catalogPath)).id})`;
   });
   const description = markdown
@@ -309,7 +310,7 @@ if (process.argv.includes("--check")) {
   const pub = join(app, "public");
   mkdirSync(pub, { recursive: true });
   for (const name of ["src", "examples"])
-    cpSync(join(root, "packages/javascript", name), join(pub, "native", name), {
+    cpSync(join(javascriptRoot, name), join(pub, "native", name), {
       recursive: true,
     });
   // Presentation-only adaptation: p5's inline dimensions otherwise overflow phones.
@@ -327,7 +328,7 @@ if (process.argv.includes("--check")) {
   // This retired generated directory held raw documentation downloads.
   rmSync(join(pub, "source"), { recursive: true, force: true });
   for (const name of ["LICENSE", "THIRD_PARTY_NOTICES.md"])
-    cpSync(join(root, name), join(pub, "native", name));
+    cpSync(join(javascriptRoot, name), join(pub, "native", name));
   const p5 = join(app, "node_modules/p5/lib/p5.min.js");
   if (!existsSync(p5))
     throw Error("Install web dependencies first (p5 runtime missing).");

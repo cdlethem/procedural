@@ -3,22 +3,21 @@
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
 import { apiGuides } from "../content/api-guides.mjs";
 import { surveyCoverageApiGuides } from "../content/survey-coverage-api.mjs";
 import { externalExpansionApiGuides } from "../content/external-expansion-api.mjs";
 import { externalDynamicsApiGuides } from "../content/external-dynamics-api.mjs";
 import { externalVisualApiGuides } from "../content/external-visual-api.mjs";
+import { resolveToolkitRoots } from "./toolkit-roots.mjs";
 
-const app = resolve(dirname(fileURLToPath(import.meta.url)), ".."),
-  root = resolve(app, "../..");
+const app = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const { javascriptRoot, catalogRoot } = resolveToolkitRoots(app);
 const readJson = (path) => JSON.parse(readFileSync(path, "utf8"));
-const validations = readdirSync(join(root, "catalog/validation"))
+const validations = readdirSync(join(catalogRoot, "catalog/validation"))
   .filter((name) => name.endsWith(".json"))
-  .map((name) => readJson(join(root, "catalog/validation", name)));
-const packageBindings = await import(
-  pathToFileURL(join(root, "packages/javascript/src/index.js")).href
-);
+  .map((name) => readJson(join(catalogRoot, "catalog/validation", name)));
+const packageBindings = await import("@procedurals/javascript");
 const bindings = {
   "contact-history-2d": ["contact-history-2d", "contactHistory2D"],
   "sensor-motor-step-2d": ["sensor-motor-step-2d", "sensorMotorStep2D"],
@@ -134,12 +133,15 @@ const bindings = {
   "stop-ramp": ["stop-ramp", "stopRamp"],
   "target-springs-2d": ["target-springs", "targetSprings2D"],
   "triangle-coordinate-map": ["triangle-points", "mapTriangleCoordinates2D"],
+  "complex-escape-distance-2d": ["complex-escape-distance-2d", "complexEscapeDistance2D"],
+  "fractal-flame-accumulate-2d": ["fractal-flame-accumulate-2d", "fractalFlameAccumulate2D"],
+  "space-colonization-step-2d": ["space-colonization-step-2d", "spaceColonizationStep2D"],
 };
-const entries = readdirSync(join(root, "catalog/operations"))
+const entries = readdirSync(join(catalogRoot, "catalog/operations"))
   .filter((name) => name.endsWith(".json"))
   .sort()
   .map((name) => {
-    const catalogPath = join(root, "catalog/operations", name);
+    const catalogPath = join(catalogRoot, "catalog/operations", name);
     const catalog = readJson(catalogPath);
     const validation = validations.find(
       (entry) => entry.operation?.id === catalog.id,
@@ -153,7 +155,7 @@ const entries = readdirSync(join(root, "catalog/operations"))
     if (
       binding &&
       !readFileSync(
-        join(root, "packages/javascript/src", `${binding[0]}.js`),
+        join(javascriptRoot, "src", `${binding[0]}.js`),
         "utf8",
       ).includes(binding[1])
     )

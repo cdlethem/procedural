@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import test from "node:test";
 import { materialsADefinitions } from "../lib/adapters/materials-a";
-import { drawEmbossedField, drawSignedEdgePrint } from "../../../packages/javascript/examples/materials-a-studies.js";
+import { drawEmbossedField, drawSignedEdgePrint } from "@procedurals/javascript/examples/materials-a-studies.js"
 import { createDocument, validateDocument } from "../lib/studio";
 import type { Layer } from "../lib/studio-types";
 

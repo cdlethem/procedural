@@ -1,18 +1,25 @@
 import type {Layer} from '../studio-types';
 import {defaultPalettes} from '../default-palettes';
 import {choice,numeric,toggle,channels,type StudioDefinition} from './types';
-import {contactHistory2D} from '../../../../packages/javascript/src/contact-history-2d.js';
-import {radiusPairs2D} from '../../../../packages/javascript/src/radius-pairs-2d.js';
-import {sensorMotorStep2D} from '../../../../packages/javascript/src/sensor-motor-step-2d.js';
-import {flockSteer2D} from '../../../../packages/javascript/src/flock-steer-2d.js';
-import {selectTaperedStrokeStrips2D} from '../../../../packages/javascript/src/select-tapered-stroke-strips-2d.js';
-import {hatchRegionLines2D} from '../../../../packages/javascript/src/hatch-region-lines-2d.js';
-import {insertSegmentBridge2D} from '../../../../packages/javascript/src/insert-segment-bridge-2d.js';
-import {relativeNeighborhoodPairs2D} from '../../../../packages/javascript/src/relative-neighborhood-pairs-2d.js';
-import {thresholdEdgeRelaxation2D} from '../../../../packages/javascript/src/threshold-edge-relaxation-2d.js';
-import {elasticCurveGrowStep2D} from '../../../../packages/javascript/src/elastic-curve-grow-step-2d.js';
-import {marchingSquares2D} from '../../../../packages/javascript/src/marching-squares-2d.js';
-import {SIZE as FLUID_SIZE,CELLS,initialFluid,stepFluid} from '../../../../packages/javascript/examples/dye-currents/study.js';
+import {
+  contactHistory2D,
+  elasticCurveGrowStep2D,
+  flockSteer2D,
+  hatchRegionLines2D,
+  insertSegmentBridge2D,
+  marchingSquares2D,
+  radiusPairs2D,
+  relativeNeighborhoodPairs2D,
+  selectTaperedStrokeStrips2D,
+  sensorMotorStep2D,
+  thresholdEdgeRelaxation2D,
+} from "@procedurals/javascript";
+import {
+  SIZE as FLUID_SIZE,
+  CELLS,
+  initialFluid,
+  stepFluid,
+} from "@procedurals/javascript/examples/dye-currents/study.js";
 
 /** App-only controls; the operation contracts retain their own required inputs. */
 export const externalDynamicsDefinitions:StudioDefinition[]=[

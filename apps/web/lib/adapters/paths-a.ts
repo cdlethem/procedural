@@ -1,6 +1,6 @@
 import type { Layer } from "../studio-types";
 import { choice, numeric, toggle, type StudioDefinition } from "./types";
-import { pathsASettings, drawRoundedPanels, drawFlowingBrushes, drawContourAbstraction, drawGestureSkeletons, drawRoadMargins, drawNestedContourStrokes, drawScatterEnvelopes, drawTerracedIslands, drawFacetedSilhouettes, drawConcaveGrain } from "../../../../packages/javascript/examples/paths-a-studies.js";
+import { pathsASettings, drawRoundedPanels, drawFlowingBrushes, drawContourAbstraction, drawGestureSkeletons, drawRoadMargins, drawNestedContourStrokes, drawScatterEnvelopes, drawTerracedIslands, drawFacetedSilhouettes, drawConcaveGrain } from "@procedurals/javascript/examples/paths-a-studies.js"
 import { drawPathsAQuality, validatePathsAQuality } from "./paths-a-quality";
 
 const specs: [string, string, string, [string, string, number, number, number?], [string, string, number, number, number?]][] = [

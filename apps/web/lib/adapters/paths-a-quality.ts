@@ -1,7 +1,7 @@
 import type { Layer } from "../studio-types";
-import { chaikinPolyline2D } from "../../../../packages/javascript/src/chaikin-polyline-2d.js";
-import { offsetPolyline2D } from "../../../../packages/javascript/src/offset-polyline-2d.js";
-import { triangulateSimplePolygon2D } from "../../../../packages/javascript/src/triangulate-simple-polygon-2d.js";
+import { chaikinPolyline2D } from "@procedurals/javascript"
+import { offsetPolyline2D } from "@procedurals/javascript"
+import { triangulateSimplePolygon2D } from "@procedurals/javascript"
 
 type Point = [number, number];
 type Params = Layer["params"];

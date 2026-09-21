@@ -1,8 +1,8 @@
 import type { Layer } from "../studio-types";
 import { drawSystemsA, systemsADefinitions } from "./systems-a";
-import { drawStreamRibbons, drawCurvedTrajectories, drawWovenRows, drawTriangleGlyphs, drawSwirlingParticles, drawFlowNeedles } from "../../../../packages/javascript/examples/systems-a-studies.js";
+import { drawStreamRibbons, drawCurvedTrajectories, drawWovenRows, drawTriangleGlyphs, drawSwirlingParticles, drawFlowNeedles } from "@procedurals/javascript/examples/systems-a-studies.js"
 import { drawSystemsB, systemsBDefinitions } from "./systems-b";
-import { drawBranchingSentences, drawWovenGrammar, drawTurtleCanopies, drawRecursiveTiles, drawCompatibleMosaics, drawTiledCircuits, drawMazeGardens, drawBranchingNetworks } from "../../../../packages/javascript/examples/systems-b-studies.js";
+import { drawBranchingSentences, drawWovenGrammar, drawTurtleCanopies, drawRecursiveTiles, drawCompatibleMosaics, drawTiledCircuits, drawMazeGardens, drawBranchingNetworks } from "@procedurals/javascript/examples/systems-b-studies.js"
 export const systemsDefinitions = [...systemsADefinitions, ...systemsBDefinitions];
 export function drawSystems(p: any, layer: Layer): void {
  switch(layer.technique) {

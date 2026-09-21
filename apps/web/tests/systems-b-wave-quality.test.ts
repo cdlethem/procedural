@@ -3,7 +3,7 @@ import test from "node:test";
 import { drawSystems } from "../lib/adapters/systems";
 import { systemsBDefinitions } from "../lib/adapters/systems-b";
 import { waveInitialState, waveQualityState } from "../lib/adapters/systems-b-wave-quality";
-import { drawRippleInterference, drawPinnedWaves } from "../../../packages/javascript/examples/systems-b-studies.js";
+import { drawRippleInterference, drawPinnedWaves } from "@procedurals/javascript/examples/systems-b-studies.js"
 import type { Layer } from "../lib/studio-types";
 
 type WaveId = "ripple-interference" | "pinned-waves";

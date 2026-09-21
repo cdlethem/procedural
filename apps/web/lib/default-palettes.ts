@@ -1,4 +1,4 @@
-import { defaultPalettes as sourcePalettes } from "../../../packages/javascript/src/default-palettes.js";
+import { defaultPalettes as sourcePalettes } from "@procedurals/javascript"
 
 export type DefaultPalette = Readonly<{
   id: string;

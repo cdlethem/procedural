@@ -5,11 +5,11 @@ import {
   CANVAS,
   orbitalLayout,
   panelLayout,
-} from "../../../../packages/javascript/examples/motif-compositions/compositions.js";
-import { ornamentFieldRecords, shapeMatrixRecords } from "../../../../packages/javascript/examples/motif-compositions/field-records.js";
-import { orbitalBrushRecords, spacedSampleIndices, validateOrbitalRecordInput } from "../../../../packages/javascript/examples/motif-compositions/orbital-records.js";
-import { pairForceStep2D } from "../../../../packages/javascript/src/pair-force-step-2d.js";
-import { radiusPairs2D } from "../../../../packages/javascript/src/radius-pairs-2d.js";
+} from "@procedurals/javascript/examples/motif-compositions/compositions.js"
+import { ornamentFieldRecords, shapeMatrixRecords } from "@procedurals/javascript/examples/motif-compositions/field-records.js"
+import { orbitalBrushRecords, spacedSampleIndices, validateOrbitalRecordInput } from "@procedurals/javascript/examples/motif-compositions/orbital-records.js"
+import { pairForceStep2D } from "@procedurals/javascript"
+import { radiusPairs2D } from "@procedurals/javascript"
 import { choice, numeric, toggle, channels, type StudioDefinition } from "./types";
 
 export { ornamentFieldRecords, shapeMatrixRecords, orbitalBrushRecords };

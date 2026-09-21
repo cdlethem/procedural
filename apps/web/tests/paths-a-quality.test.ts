@@ -3,8 +3,8 @@ import test from "node:test";
 import { pathsADefinitions } from "../lib/adapters/paths-a";
 import { drawPaths } from "../lib/adapters/paths";
 import { facetSource, polygonSource, roadSource, validatePathsAQuality } from "../lib/adapters/paths-a-quality";
-import { drawRoundedPanels } from "../../../packages/javascript/examples/paths-a-studies.js";
-import { triangulateSimplePolygon2D } from "../../../packages/javascript/src/triangulate-simple-polygon-2d.js";
+import { drawRoundedPanels } from "@procedurals/javascript/examples/paths-a-studies.js"
+import { triangulateSimplePolygon2D } from "@procedurals/javascript"
 import type { Layer } from "../lib/studio-types";
 
 const ids = ["rounded-panels", "road-margins", "nested-contour-strokes", "faceted-silhouettes", "concave-grain"] as const;
