@@ -59,8 +59,10 @@ The report includes all69 family dispositions and all three denominators:800 ass
 - Multi-tenant extraction is the current web task. The private successor is
   [cdlethem/procedurals-web](https://github.com/cdlethem/procedurals-web).
   Public toolkit inputs are published as `web-toolkit-v0.2.1`; the private source is
-  recoverable remotely. Checkpoint B clean-image verification and public cutover are
-  still in progress; no tenant or visitor launch acceptance is claimed.
+  recoverable remotely. Checkpoint B extraction passed: clean private image builds,
+  generated artwork packaging, durable private evidence and public-source removal.
+  Checkpoint C persistence/authentication/admission is next; no tenant or visitor
+  launch acceptance is claimed.
 - Checkpoint A containment removed app ingress on 8443 and 8444 and stopped the
   working preview. Legacy storage services remain loopback-only as migration inputs.
   The release/preview URLs in the historical reviews below are not currently served.
