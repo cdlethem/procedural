@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+    "rootDir": ".",
+    "outDir": "types",
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*.js",
+    "examples/city-marks/city-marks.js",
+    "examples/dye-currents/study.js",
+    "examples/field-marks/mark-field.js",
+    "examples/loop-marks/loop-marks.js",
+    "examples/materials-a-studies.js",
+    "examples/materials-b-studies.js",
+    "examples/motif-compositions/**/*.js",
+    "examples/path-marks/path-marks.js",
+    "examples/paths-a-studies.js",
+    "examples/paths-b-studies.js",
+    "examples/systems-a-studies.js",
+    "examples/systems-b-studies.js",
+    "examples/word-echo/study.js"
+  ],
+  "exclude": ["types"]
+}

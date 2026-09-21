@@ -1,7 +1,18 @@
 {
   "name": "@procedurals/javascript",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.1",
   "type": "module",
-  "exports": "./src/index.js"
+  "types": "./types/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./examples/*.js": {
+      "types": "./types/examples/*.d.ts",
+      "default": "./examples/*.js"
+    },
+    "./examples/*": "./examples/*",
+    "./package.json": "./package.json"
+  }
 }

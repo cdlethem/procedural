@@ -1,5 +1,11 @@
 # Procedurals web application
 
+The application is moving to the private
+[procedurals-web repository](https://github.com/cdlethem/procedurals-web). This document
+records the pre-tenancy UI and shared-store architecture, not current multi-user support.
+Public toolkit packages, editable examples, operation contracts and target attestations
+remain here. Private deployment and tenant acceptance belong to the successor repository.
+
 Root architecture, 2026-09-09. This app demonstrates existing JavaScript package
 workflows; it does not change operation contracts or target acceptance.
 

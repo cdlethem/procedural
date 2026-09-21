@@ -1,0 +1,10 @@
+export declare const MAX_ARRAY = 4294967295;
+export declare const MAX_SAFE: number;
+export declare function positiveZero(value: any): any;
+export declare function passiveRecord(value: any, keys: any, ErrorType: any): any;
+export declare function passiveArray(value: any, ErrorType: any, length?: undefined): any[];
+export declare function valueAt(record: any, key: any): any;
+export declare function itemAt(array: any, index: any): any;
+export declare function inputNumber(value: any, ErrorType: any): any;
+export declare function computed(value: any, ErrorType: any): any;
+export declare function safeInteger(value: any, ErrorType: any, minimum: any, maximum?: number): any;

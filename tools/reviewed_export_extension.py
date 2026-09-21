@@ -1,6 +1,11 @@
 """Exact, root-reviewed entrypoint compatibility; never rewrites historical evidence."""
 import hashlib
 import json
+import os
+import re
+import select
+import subprocess
+import time
 
 REVIEW = 'evidence/conformance/placement-export-compatibility-review.json'
 SUCCESSOR = 'evidence/conformance/quadrant-export-compatibility-review.json'
@@ -14,6 +19,15 @@ CORRECTED_SOURCES = frozenset(('packages/javascript/src/branch-tree.js', 'packag
 SOURCE_COMPARISON = 'evidence/conformance/javascript-retained-output-source-comparison.json'
 ROOT_CORRECTION = 'evidence/conformance/javascript-retained-output-root-review.json'
 BASELINE_COMMIT = '4905c054bf6540bdade201f3e64e78423b24d53e'
+PUBLIC_WEB_ARCHIVE_COMMIT = 'ed02f698c9f97139be239a8e7b384ba1484359d1'
+PUBLIC_WEB_ARCHIVE_MANIFEST = 'evidence/conformance/public-web-historical-source-archive.json'
+PUBLIC_WEB_ARCHIVE_REVIEW = 'evidence/conformance/public-web-historical-source-archive-review.json'
+PUBLIC_WEB_ARCHIVE_MAX_BYTES = 4 * 1024 * 1024
+PUBLIC_WEB_ARCHIVE_RUNNERS = frozenset((
+    'tools/run_p5_gallery_expansion.mjs',
+    'tools/run_p5_tenfold_gallery.mjs',
+))
+
 
 _HELPER = """function writableArraySlot(array, index) {
   const key = String(index), own = Object.getOwnPropertyDescriptor(array, key);
@@ -55,13 +69,208 @@ def _digest(value):
 
 
 def _read(root, name):
-    path = (root / name).resolve()
+    original = root / name
+    path = original.resolve()
     path.relative_to(root.resolve())
-    return path.read_bytes()
+    try:
+        return path.read_bytes()
+    except FileNotFoundError:
+        # A dangling symlink is an existing checkout entry, never an archival miss.
+        if os.path.lexists(original):
+            raise
+        archived = _archived_missing_public_web_bytes(root, name)
+        if archived is None:
+            raise
+        return archived
 
 
 def _accepted(review):
     return (review.get('status'), review.get('owner'), review.get('reviewer')) == ('accepted', 'root', 'root')
+
+
+def _public_web_archive_paths():
+    """Only explicitly bound legacy sources that successor validators consume."""
+    return frozenset({
+        BATCH1_GENERATOR,
+        BATCH1_GUIDES,
+        EXPANSION_GUIDES,
+        SECOND_GUIDES,
+        *(name for name in COPY_PATHS if name.startswith('apps/web/')),
+        *WEB_GALLERY_FILES,
+        *WEB_GALLERY_DEPENDENCIES,
+        *(name for name in DYNAMICS_WEB_REQUIRED if name.startswith('apps/web/')),
+        *PUBLIC_WEB_ARCHIVE_RUNNERS,
+    })
+
+
+def _archive_marker(root, manifest_bytes):
+    path = root / PUBLIC_WEB_ARCHIVE_REVIEW
+    try:
+        review = json.loads(path.read_bytes())
+        helper_bytes = (root / HELPER).read_bytes()
+    except (OSError, ValueError, TypeError):
+        return None
+    if not (isinstance(review, dict)
+            and set(review) == {'schema_version', 'status', 'owner', 'reviewer',
+                                'archive_commit', 'manifest_sha256', 'helper_sha256',
+                                'helper_archive_sha256', 'helper_archive_blob'}
+            and review.get('schema_version') == 1
+            and _accepted(review)
+            and review.get('archive_commit') == PUBLIC_WEB_ARCHIVE_COMMIT
+            and review.get('manifest_sha256') == _digest(manifest_bytes)
+            and review.get('helper_sha256') == _digest(helper_bytes)):
+        return None
+    return review
+
+
+def _archive_path(name):
+    return (isinstance(name, str)
+            and (name in PUBLIC_WEB_ARCHIVE_RUNNERS or bool(re.fullmatch(
+                r'apps/web/(?:[A-Za-z0-9][A-Za-z0-9._-]*/)*[A-Za-z0-9][A-Za-z0-9._-]*',
+                name,
+            ))))
+
+
+def _git_output(root, args, limit):
+    process = None
+    try:
+        process = subprocess.Popen(
+            ['git', *args],
+            cwd=root,
+            env={**os.environ, 'GIT_NO_LAZY_FETCH': '1'},
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+        )
+        output = bytearray()
+        deadline = time.monotonic() + 10
+        while True:
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                return None
+            readable, _, _ = select.select([process.stdout], [], [], remaining)
+            if not readable:
+                return None
+            chunk = os.read(process.stdout.fileno(), min(8192, limit + 1 - len(output)))
+            if not chunk:
+                break
+            output.extend(chunk)
+            if len(output) > limit:
+                return None
+        remaining = deadline - time.monotonic()
+        if remaining <= 0 or process.wait(timeout=remaining) != 0:
+            return None
+        return bytes(output)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    finally:
+        if process is not None:
+            process.stdout.close()
+            if process.poll() is None:
+                process.kill()
+                try:
+                    process.wait(timeout=1)
+                except subprocess.SubprocessError:
+                    pass
+
+
+def _git_small_bytes(root, args, limit=128):
+    return _git_output(root, args, limit)
+
+
+def _git_blob_bytes(root, blob, size):
+    value = _git_output(root, ['cat-file', 'blob', blob], size)
+    return value if value is not None and len(value) == size else None
+
+
+def _archived_helper_bytes(root, marker):
+    if (not isinstance(marker.get('helper_archive_sha256'), str)
+            or not re.fullmatch(r'[0-9a-f]{64}', marker['helper_archive_sha256'])
+            or not isinstance(marker.get('helper_archive_blob'), str)
+            or not re.fullmatch(r'[0-9a-f]{40}', marker['helper_archive_blob'])):
+        return None
+    resolved = _git_small_bytes(
+        root, ['rev-parse', '--verify', f'{PUBLIC_WEB_ARCHIVE_COMMIT}:{HELPER}'],
+    )
+    if resolved is None or resolved.decode('ascii', 'ignore').strip() != marker['helper_archive_blob']:
+        return None
+    if _git_small_bytes(root, ['cat-file', '-e', f"{marker['helper_archive_blob']}^{{blob}}"]) is None:
+        return None
+    reported_size = _git_small_bytes(root, ['cat-file', '-s', marker['helper_archive_blob']])
+    if (reported_size is None or not re.fullmatch(rb'[0-9]+\n?', reported_size)
+            or int(reported_size) > PUBLIC_WEB_ARCHIVE_MAX_BYTES):
+        return None
+    bytes_ = _git_blob_bytes(root, marker['helper_archive_blob'], int(reported_size))
+    if bytes_ is None or _digest(bytes_) != marker['helper_archive_sha256']:
+        return None
+    return bytes_
+
+
+def _verified_archive_marker(root, manifest_bytes):
+    marker = _archive_marker(root, manifest_bytes)
+    if marker is None:
+        return None
+    helper_bytes = _archived_helper_bytes(root, marker)
+    return None if helper_bytes is None else (marker, helper_bytes)
+
+
+def _initialize_public_web_archive(root, snapshots):
+    """Install only the reviewed helper preimage before legacy successor checks."""
+    if not (root / PUBLIC_WEB_ARCHIVE_REVIEW).is_file():
+        return True
+    try:
+        manifest_bytes = (root / PUBLIC_WEB_ARCHIVE_MANIFEST).read_bytes()
+    except OSError:
+        return False
+    verified = _verified_archive_marker(root, manifest_bytes)
+    if verified is None:
+        return False
+    snapshots[HELPER] = verified[1]
+    return True
+
+
+def _archived_missing_public_web_bytes(root, name):
+    """Recover only root-reviewed, missing public web bytes from one local commit."""
+    if not _archive_path(name):
+        return None
+    try:
+        manifest_bytes = (root / PUBLIC_WEB_ARCHIVE_MANIFEST).read_bytes()
+        manifest = json.loads(manifest_bytes)
+    except (OSError, ValueError, TypeError):
+        return None
+    if _verified_archive_marker(root, manifest_bytes) is None:
+        return None
+    if (not isinstance(manifest, dict)
+            or set(manifest) != {'schema_version', 'archive_commit', 'files'}
+            or manifest.get('schema_version') != 1
+            or manifest.get('archive_commit') != PUBLIC_WEB_ARCHIVE_COMMIT):
+        return None
+    files = manifest.get('files')
+    if not isinstance(files, dict) or set(files) != _public_web_archive_paths():
+        return None
+    entry = files.get(name)
+    if (not isinstance(entry, dict) or set(entry) != {'bytes', 'sha256', 'git_blob'}
+            or not isinstance(entry['bytes'], int) or isinstance(entry['bytes'], bool)
+            or not 0 <= entry['bytes'] <= PUBLIC_WEB_ARCHIVE_MAX_BYTES
+            or not isinstance(entry['sha256'], str)
+            or not re.fullmatch(r'[0-9a-f]{64}', entry['sha256'])
+            or not isinstance(entry['git_blob'], str)
+            or not re.fullmatch(r'[0-9a-f]{40}', entry['git_blob'])):
+        return None
+    object_name = f'{PUBLIC_WEB_ARCHIVE_COMMIT}:{name}'
+    resolved = _git_small_bytes(root, ['rev-parse', '--verify', object_name])
+    if resolved is None or resolved.decode('ascii', 'ignore').strip() != entry['git_blob']:
+        return None
+    if _git_small_bytes(root, ['cat-file', '-e', f"{entry['git_blob']}^{{blob}}"]) is None:
+        return None
+    reported_size = _git_small_bytes(root, ['cat-file', '-s', entry['git_blob']])
+    if (reported_size is None or not re.fullmatch(rb'[0-9]+\n?', reported_size)
+            or int(reported_size) != entry['bytes']):
+        return None
+    bytes_ = _git_blob_bytes(root, entry['git_blob'], entry['bytes'])
+    if bytes_ is None or _digest(bytes_) != entry['sha256']:
+        return None
+    return bytes_
 
 
 def _bindings(root, review, snapshots):
@@ -764,6 +973,8 @@ def historical_export_bytes(root, relative, expected):
         return None
     try:
         snapshots = {}
+        if not _initialize_public_web_archive(root, snapshots):
+            return None
         successor_match = None
         if (root / DYNAMICS_WEB).exists():
             if not _validate_dynamics_web(root, snapshots):

@@ -1,0 +1,31 @@
+import { ExactRational } from "./exact-rational.js";
+export declare const MAX_ARRAY = 4294967295;
+export declare const MAX_SAFE: number;
+export declare const ZERO: ExactRational;
+export declare const ONE: ExactRational;
+export declare function z(value: any): any;
+export declare function fail(ErrorType: any, code: any): void;
+export declare function num(value: any, ErrorType: any): any;
+export declare function calc(value: any, ErrorType: any): any;
+export declare function integer(value: any, ErrorType: any, min?: number, max?: number): any;
+export declare function record(value: any, keys: any, ErrorType: any): any;
+export declare function array(value: any, ErrorType: any, length: any): any;
+export declare function at(value: any, key: any): any;
+export declare function point(value: any, ErrorType: any): any[];
+export declare function R(value: any): ExactRational;
+export declare function rationalPoint(pointValue: any): ExactRational[];
+export declare function cross(ax: any, ay: any, bx: any, by: any): any;
+export declare function sub(a: any, b: any): any[];
+export declare function samePoint(a: any, b: any): any;
+export declare function squared(a: any, b: any): any;
+export declare function segment(a: any, b: any, c: any, d: any): {
+    kind: string;
+    t?: undefined;
+    u?: undefined;
+    point?: undefined;
+} | {
+    kind: string;
+    t: any;
+    u: any;
+    point: any;
+};

@@ -1,6 +1,13 @@
-# Current live web release
+# Web deployment successor
 
-The established site is https://eunoia.tailf03dad.ts.net:8443/ . It serves the completed
+Application ingress on ports 8443 and 8444 is offline during the multi-tenant cutover.
+The private successor is [cdlethem/procedurals-web](https://github.com/cdlethem/procedurals-web).
+Its deployment instructions and acceptance records own future releases. Do not restart
+the shared-store app for visitors or apply the historical procedure below as a current runbook.
+
+## Historical rollback deployment
+
+Before containment, https://eunoia.tailf03dad.ts.net:8443/ served the established site. It served the completed
 merged gallery/Studio redesign, 26 revised studies, five external studies and 50 default
 palettes from `eb2bdfdc`, using the immutable checkout `.work/study-quality-release`.
 Never edit or build inside the current release. The [quality release review](../evidence/web/creative-quality-live-release.json)
