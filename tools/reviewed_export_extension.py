@@ -23,6 +23,11 @@ PUBLIC_WEB_ARCHIVE_COMMIT = 'ed02f698c9f97139be239a8e7b384ba1484359d1'
 PUBLIC_WEB_ARCHIVE_MANIFEST = 'evidence/conformance/public-web-historical-source-archive.json'
 PUBLIC_WEB_ARCHIVE_REVIEW = 'evidence/conformance/public-web-historical-source-archive-review.json'
 PUBLIC_WEB_ARCHIVE_MAX_BYTES = 4 * 1024 * 1024
+PUBLIC_WEB_ARCHIVE_RUNNERS = frozenset((
+    'tools/run_p5_gallery_expansion.mjs',
+    'tools/run_p5_tenfold_gallery.mjs',
+))
+
 
 _HELPER = """function writableArraySlot(array, index) {
   const key = String(index), own = Object.getOwnPropertyDescriptor(array, key);
@@ -84,7 +89,7 @@ def _accepted(review):
 
 
 def _public_web_archive_paths():
-    """Only current app paths that archived successor validators consume."""
+    """Only explicitly bound legacy sources that successor validators consume."""
     return frozenset({
         BATCH1_GENERATOR,
         BATCH1_GUIDES,
@@ -94,6 +99,7 @@ def _public_web_archive_paths():
         *WEB_GALLERY_FILES,
         *WEB_GALLERY_DEPENDENCIES,
         *(name for name in DYNAMICS_WEB_REQUIRED if name.startswith('apps/web/')),
+        *PUBLIC_WEB_ARCHIVE_RUNNERS,
     })
 
 
@@ -118,10 +124,11 @@ def _archive_marker(root, manifest_bytes):
 
 
 def _archive_path(name):
-    return isinstance(name, str) and bool(re.fullmatch(
-        r'apps/web/(?:[A-Za-z0-9][A-Za-z0-9._-]*/)*[A-Za-z0-9][A-Za-z0-9._-]*',
-        name,
-    ))
+    return (isinstance(name, str)
+            and (name in PUBLIC_WEB_ARCHIVE_RUNNERS or bool(re.fullmatch(
+                r'apps/web/(?:[A-Za-z0-9][A-Za-z0-9._-]*/)*[A-Za-z0-9][A-Za-z0-9._-]*',
+                name,
+            ))))
 
 
 def _git_output(root, args, limit):

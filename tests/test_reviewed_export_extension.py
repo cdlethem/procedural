@@ -24,6 +24,10 @@ class ReviewedExportTests(unittest.TestCase):
         )
         repository = Path(__file__).resolve().parents[1]
         source = 'apps/web/scripts/generate-api.mjs'
+        runners = (
+            'tools/run_p5_gallery_expansion.mjs',
+            'tools/run_p5_tenfold_gallery.mjs',
+        )
         with tempfile.TemporaryDirectory(dir=repository / '.work') as temporary:
             root = Path(temporary)
             manifest_path = root / PUBLIC_WEB_ARCHIVE_MANIFEST
@@ -70,6 +74,22 @@ class ReviewedExportTests(unittest.TestCase):
                 cwd=repository,
             )
             self.assertEqual(_read(root, source), expected)
+            for runner in runners:
+                runner_expected = subprocess.check_output(
+                    ['git', 'show', f'{PUBLIC_WEB_ARCHIVE_COMMIT}:{runner}'],
+                    cwd=repository,
+                )
+                self.assertEqual(_read(root, runner), runner_expected)
+                runner_path = root / runner
+                runner_path.parent.mkdir(parents=True, exist_ok=True)
+                runner_path.write_bytes(b'modified local runner')
+                self.assertEqual(_read(root, runner), b'modified local runner')
+                runner_path.unlink()
+                self.assertEqual(_read(root, runner), runner_expected)
+                runner_path.symlink_to('missing-local-runner')
+                with self.assertRaises(FileNotFoundError):
+                    _read(root, runner)
+                runner_path.unlink()
             snapshots = {}
             self.assertTrue(_initialize_public_web_archive(root, snapshots))
             self.assertEqual(snapshots, {HELPER: helper_archive})

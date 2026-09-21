@@ -84,6 +84,10 @@ The report includes all69 family dispositions and all three denominators:800 ass
   [palette library](evidence/web/palette-library-review.json) retain their exact historical
   source bindings. The [architecture](docs/web-app-architecture.md) documents the old
   shared-store boundary, not tenant authorization.
+- The [historical-source archive review](evidence/conformance/public-web-historical-source-archive-review.json)
+  preserves exact missing-source recovery for 49 bound app files and two app-only
+  render runners. It supersedes the [initial app-only binding](evidence/conformance/public-web-historical-source-archive-review-initial.json),
+  preserved from `f19481fc`; it does not accept changed sources or repair unrelated stale reviews.
 - Preserve migration inputs: named projects in `.work/web-projects`; shared prompt
   artifacts, saved layers and palettes in `.work/web-palettes-release/.work/harness`.
   These remain private/offline migration inputs, never public toolkit assets.
