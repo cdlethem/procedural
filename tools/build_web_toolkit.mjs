@@ -45,6 +45,20 @@ const javascriptPackage = JSON.parse(readFileSync(join(root, "packages/javascrip
 assert.equal(javascriptPackage.name, "@procedurals/javascript");
 assert.match(javascriptPackage.version, /^0\.2\.\d+$/);
 assert.equal(javascriptPackage.private, undefined);
+const exampleSmokeContractPath = "tools/web_toolkit_example_subpaths.json";
+const exampleSmokeContract = JSON.parse(readFileSync(join(root, exampleSmokeContractPath), "utf8"));
+assert.deepEqual(Object.keys(exampleSmokeContract).sort(), ["package", "schemaVersion", "subpaths"]);
+assert.equal(exampleSmokeContract.schemaVersion, 1);
+assert.equal(exampleSmokeContract.package, javascriptPackage.name);
+assert.ok(Array.isArray(exampleSmokeContract.subpaths) && exampleSmokeContract.subpaths.length > 0,
+  "example smoke contract must name at least one public subpath");
+const importedExampleSubpaths = exampleSmokeContract.subpaths;
+assert.deepEqual(importedExampleSubpaths, [...new Set(importedExampleSubpaths)].sort(),
+  "example smoke contract subpaths must be unique and sorted");
+for (const specifier of importedExampleSubpaths) {
+  assert.match(specifier, /^@procedurals\/javascript\/examples\/(?:[A-Za-z0-9][A-Za-z0-9._-]*\/)*[A-Za-z0-9][A-Za-z0-9._-]*\.js$/,
+    `invalid JavaScript example smoke subpath: ${specifier}`);
+}
 
 const exampleDirectories = readdirSync(join(root, "packages/javascript/examples"), { withFileTypes: true })
   .filter((entry) => entry.isDirectory())
@@ -63,6 +77,7 @@ const releaseInputs = [
   "LICENSE",
   "THIRD_PARTY_NOTICES.md",
   "tools/build_web_toolkit.mjs",
+  exampleSmokeContractPath,
 ];
 const dirty = git("status", "--porcelain=v1", "--untracked-files=all", "--", ...releaseInputs);
 assert.equal(dirty, "", `release inputs must be committed and clean:\n${dirty}`);
@@ -138,20 +153,11 @@ for (const entry of manifest.files) {
 }
 assert.deepEqual(JSON.parse(readFileSync(join(installedCatalog, "manifest.json"), "utf8")), manifest);
 
-const appSourceFiles = files(join(root, "apps/web")).filter((path) => {
-  const rel = relative(join(root, "apps/web"), path).split(sep).join("/");
-  return /\.(?:[cm]?js|tsx?)$/.test(rel) &&
-    !rel.startsWith("node_modules/") &&
-    !rel.startsWith(".next/") &&
-    !rel.startsWith("public/");
-});
-const importedExampleSubpaths = [...new Set(appSourceFiles.flatMap((path) => {
-  const source = readFileSync(path, "utf8");
-  return [...source.matchAll(/["'](@procedurals\/javascript\/examples\/[^"']+)["']/g)].map((match) => match[1]);
-}))].sort();
 assert.ok(existsSync(join(installedJavaScript, "types/src/index.d.ts")), "installed JavaScript root declarations missing");
 for (const specifier of importedExampleSubpaths) {
-  const declaration = `${specifier.slice("@procedurals/javascript/examples/".length, -3)}.d.ts`;
+  const examplePath = specifier.slice("@procedurals/javascript/".length);
+  const declaration = `${examplePath.slice("examples/".length, -3)}.d.ts`;
+  assert.ok(existsSync(join(installedJavaScript, examplePath)), `installed example source missing: ${specifier}`);
   assert.ok(existsSync(join(installedJavaScript, "types/examples", declaration)), `installed example declarations missing: ${specifier}`);
 }
 const smokeSource = [
@@ -181,6 +187,7 @@ const report = {
   version: javascriptPackage.version,
   artifacts,
   catalogManifestSha256: hashFile(join(catalogStage, "manifest.json")),
+  exampleSubpathContract: exampleSmokeContractPath,
   importedExampleSubpaths,
   publicGuideCoverage: {
     exampleDirectories: exampleDirectories.length,
@@ -189,7 +196,7 @@ const report = {
   },
   inputSha256Before: before,
   inputSha256After: after,
-  scope: "Packed and offline-installed both public packages; verified byte inventories, declarations, root import, catalog manifest, and every app-imported example subpath. No registry publication or target-support claim.",
+  scope: "Packed and offline-installed both public packages; verified byte inventories, declarations, root import, catalog manifest, and every frozen public consumer example subpath. No registry publication or target-support claim.",
 };
 writeFileSync(join(out, "report.json"), `${JSON.stringify(report, null, 2)}\n`);
 writeFileSync(join(out, "SHA256SUMS"), `${artifacts.map((item) => `${item.sha256}  ${item.filename}`).join("\n")}\n`);
