@@ -138,7 +138,13 @@ for (const entry of manifest.files) {
 }
 assert.deepEqual(JSON.parse(readFileSync(join(installedCatalog, "manifest.json"), "utf8")), manifest);
 
-const appSourceFiles = files(join(root, "apps/web")).filter((path) => /\.(?:[cm]?js|tsx?)$/.test(path));
+const appSourceFiles = files(join(root, "apps/web")).filter((path) => {
+  const rel = relative(join(root, "apps/web"), path).split(sep).join("/");
+  return /\.(?:[cm]?js|tsx?)$/.test(rel) &&
+    !rel.startsWith("node_modules/") &&
+    !rel.startsWith(".next/") &&
+    !rel.startsWith("public/");
+});
 const importedExampleSubpaths = [...new Set(appSourceFiles.flatMap((path) => {
   const source = readFileSync(path, "utf8");
   return [...source.matchAll(/["'](@procedurals\/javascript\/examples\/[^"']+)["']/g)].map((match) => match[1]);
