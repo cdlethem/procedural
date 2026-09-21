@@ -1,5 +1,12 @@
 # Procedurals web app
 
+The application successor is private:
+[cdlethem/procedurals-web](https://github.com/cdlethem/procedurals-web).
+New application, authentication, persistence and deployment work belongs there.
+The instructions below describe the pre-extraction shared-store application and are
+historical, not a visitor-safe deployment procedure. App ingress is offline during cutover.
+The public repository retains the MIT toolkit, editable examples and historical evidence.
+
 A playable landing page, a searchable gallery of interactive p5.js studies, a layered canvas
 studio, and an API reference generated from the package catalog. The Next.js frontend uses
 the existing JavaScript package; a Go service saves projects as JSON.

@@ -1,6 +1,6 @@
 # Current project state
 
-Updated 2026-09-18. Read with [AGENTS.md](AGENTS.md); open other documents only for the task.
+Updated 2026-09-21. Read with [AGENTS.md](AGENTS.md); open other documents only for the task.
 This is a current snapshot. Historical plans and reviews are not an active assignment queue.
 
 ## Accepted capabilities
@@ -56,54 +56,37 @@ The report includes all69 family dispositions and all three denominators:800 ass
 
 ## Web application
 
-- The [web app](apps/README.md) has95 gallery/Studio studies and generated API pages for69
-  operations. The three coverage studies are packaged native examples; the web study count
-  is95 after the five external expansion studies. The app compositor remains separate from portable recipes/MCP.
-- A [draft source checkpoint](docs/creative-quality-draft-checkpoint.md) revises26 of those
-  studies for structural controls, saved-work compatibility and layer transparency. Focused
-  web/native checks, 95 gallery previews, the full browser suite and a production build pass.
-  Live8443 serves the checked `eb2bdfdc` source from `.work/study-quality-release` while
-  the historical catalog binding check remains red. This is not new target acceptance.
-- Nine external-dynamics studies (contact memory, sensing/flocking, width-aware regions,
-  connected/elastic growth and periodic dye transport) are tracked as drafts and carry no
-  web review yet. The weighted-image-atlas and word-echo studies are now full web studies,
-  so the generator reports 106 gallery workflows; surface-attribute-vessel and
-  implicit-volumes remain native-only package studies. All five operations are attested in
-  `catalog/validation` and bound in the web API generator (89 operations).
-- Layer editing, custom palettes, source inspection, undo/redo, local recovery, JSON/PNG export
-  and Go storage are reviewed. [Workspace review](evidence/web/studio-workspace-review.json),
-  [v3 review](evidence/web/app-v3-review.json) and [architecture](docs/web-app-architecture.md)
-  describe layout, persistence and boundaries.
-- The [logo-led site identity review](evidence/web/logo-led-site-identity.json) binds the current
-  working preview: **art with knobs**, IBM Plex typography, brick-red accents and stepped
-  square-corner geometry across the landing, gallery, Studio, palettes, Explorations and reference.
-  Individual studies now use open artwork/control layouts and editorial method/source sections.
-  The production build and eight-route desktop/mobile review passed (1440,768,390,320px).
-  Three-second rotation, 500ms crossfades and five-second inactivity resume remain verified.
-  The sterile rollback and earlier warm/logo experiments retain historical evidence only.
-  The prior [UI integration](evidence/web/ui-main-integration.json), [design](evidence/web/ui-design-audit-2026-09-17.json)
-  and [brand](evidence/web/procedural-brand-review.json) records retain their historical bindings.
-  Preview: https://eunoia.tailf03dad.ts.net:8444/ (persistent `ui-design-preview`, Next3016).
-  This working-checkout preview is separate from the established8443 release below.
-- Prompt drafts and applied source/layer revisions are covered by the
-  [prompt integration](evidence/web/prompt-web-integration-review.json) and
-  [saved-layer successor](evidence/web/generated-layer-review.json). See the
-  [artist guide](docs/prompt-studio-guide.md). Generated artifact JSON needs the harness service.
-- Named manual/generated palettes retain their [review](evidence/web/palette-library-review.json).
-  The [50 default palettes](docs/default-palettes.md) now have a separate
-  [local data/UI review](evidence/external-art/2026-09/default-palette-review.json), including
-  the JavaScript export, offline defaults, editable copies and scoped browser checks.
-- Live8443 serves the completed merged redesign, 26 revised studies, five external studies
-  and 50 default palettes from `eb2bdfdc` in immutable `.work/study-quality-release`
-  (Next3002, Go8088). The [quality release review](evidence/web/creative-quality-live-release.json)
-  records the scoped checks and actual HTTPS verification. The prior
-  [copy release](evidence/web/study-copy-live-release.json) remains the rollback baseline;
-  the [restoration review](evidence/web/completed-redesign-restoration.json) retains its recovery.
-  The landing/identity redesign is merged in source but not published to8443; that release
-  keeps its own reviewed copy. Future releases must preserve this completed UI baseline;
-  see [live release procedure](docs/live-web-release.md).
-- Named projects live in `.work/web-projects`. The current release links shared prompt
-  artifacts, saved layers and palettes under `.work/web-palettes-release/.work/harness`.
+- Multi-tenant extraction is the current web task. The private successor is
+  [cdlethem/procedurals-web](https://github.com/cdlethem/procedurals-web).
+  Public toolkit inputs are published as `web-toolkit-v0.2.1`; the private source is
+  recoverable remotely. Checkpoint B clean-image verification and public cutover are
+  still in progress; no tenant or visitor launch acceptance is claimed.
+- Checkpoint A containment removed app ingress on 8443 and 8444 and stopped the
+  working preview. Legacy storage services remain loopback-only as migration inputs.
+  The release/preview URLs in the historical reviews below are not currently served.
+  Do not reopen the shared-store application for visitors.
+
+- The extracted baseline generates 106 gallery/Studio workflows and 92 API entries,
+  with `studioBinding.catalogSha256` unchanged at
+  `66da2c7f786aec46853cfb811a694e3dac29bac5039cba2f0da0b746104de634`.
+  These app counts are not target-support attestations.
+- Preserve both completed visual baselines. The
+  [logo-led identity review](evidence/web/logo-led-site-identity.json) records **art with knobs**,
+  IBM Plex typography, brick-red accents and stepped geometry. The
+  [quality release review](evidence/web/creative-quality-live-release.json) binds the
+  pre-containment release at `eb2bdfdc` in `.work/study-quality-release`.
+  Its [copy-release predecessor](evidence/web/study-copy-live-release.json) and
+  [restoration review](evidence/web/completed-redesign-restoration.json) remain historical.
+- [Workspace](evidence/web/studio-workspace-review.json),
+  [v3](evidence/web/app-v3-review.json),
+  [prompt integration](evidence/web/prompt-web-integration-review.json),
+  [saved layers](evidence/web/generated-layer-review.json) and
+  [palette library](evidence/web/palette-library-review.json) retain their exact historical
+  source bindings. The [architecture](docs/web-app-architecture.md) documents the old
+  shared-store boundary, not tenant authorization.
+- Preserve migration inputs: named projects in `.work/web-projects`; shared prompt
+  artifacts, saved layers and palettes in `.work/web-palettes-release/.work/harness`.
+  These remain private/offline migration inputs, never public toolkit assets.
 
 ## External reference research
 
@@ -115,11 +98,10 @@ visual scope and access gaps; no external artwork recreation is accepted by this
 
 ## Remaining work and ownership
 
-Current priority is the maintainer's creative-quality correction. Follow
-[the working standard](docs/creative-quality.md): revise the named ornament/panel and
-embossed/signed-edge studies, separate slider intervals from valid numeric domains, and
-review the existing gallery by family. Historical technical acceptance remains scoped
-evidence; it does not grandfather creative quality. Preserve both web redesigns.
+Current assignment is the complete [multi-tenant plan](MULTI_TENANT_WEB_PLAN.md),
+checkpoints A–F, with private application work in its successor repository. Preserve
+both completed web redesigns and the [creative-quality standard](docs/creative-quality.md).
+The capability/port backlog below remains separate from this assignment.
 
 The survey batch and first [external expansion batch](docs/external-expansion-first-batch.md)
 are complete at their declared scope. The maintainer now requires the **entire external expansion
