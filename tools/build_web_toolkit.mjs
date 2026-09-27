@@ -61,8 +61,8 @@ for (const family of instrumentsMetadata.families) {
   for (const preset of family.presets)
     assert.ok(instrumentIds.includes(preset.id), `unknown preset: ${preset.id}`);
 }
-const buildDependencies = ["typescript", "@babel/parser", "@babel/types",
-  "@babel/helper-string-parser", "@babel/helper-validator-identifier"].map(name => {
+const buildDependencies = ["typescript", `@typescript/typescript-${process.platform}-${process.arch}`,
+  "@babel/parser", "@babel/types", "@babel/helper-string-parser", "@babel/helper-validator-identifier"].map(name => {
   const directory = join(instrumentsRoot, "node_modules", name);
   assert.ok(existsSync(join(directory, "package.json")), `Install package build prerequisite: ${name}`);
   return directory;
