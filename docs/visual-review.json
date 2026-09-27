@@ -2,6 +2,133 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "instrument-color-constructions-022",
+      "title": "Editable color constructions — scoped creative review",
+      "category": "Root creative review: three studies",
+      "description": "Perceptual Bands, Oklab Orbits and Quantized Stripes: defaults and nine contrasting real-interface variants, authored sources, local fragments and useful negative space. Exact replay and invalid-input checks are recorded separately; this admits only the reviewed three-study scope.",
+      "evidence": "evidence/web/instrument-library-baseline.json",
+      "images": [
+        {
+          "label": "Defaults and nine construction variants",
+          "path": ".work/instrument-library-baseline/color-construction-contact.png",
+          "sha256": "95f810822d8d433f263c29adf882cd3586f3d5943dfd0ab69090d7d8e6494ac4"
+        },
+        {
+          "label": "Tapered band fragment",
+          "path": ".work/instrument-library-baseline/ui/perceptual-bands-tapered-accent.png",
+          "sha256": "bb8d9f13f41079bba78c51f5dbd94be9afb810a27d85bc619e186ce8ba3e6b93"
+        },
+        {
+          "label": "Eccentric chromatic fan",
+          "path": ".work/instrument-library-baseline/ui/oklab-orbits-chromatic-fan.png",
+          "sha256": "a854d28dcc3414c86b6797e6687d3d26dfcdec53c6cc8a5d6ab0a4a76002f676"
+        },
+        {
+          "label": "Weighted quantized tiles",
+          "path": ".work/instrument-library-baseline/ui/quantized-stripes-weighted-tiles.png",
+          "sha256": "e124afe3c12580ed8de5553a2864613a6a065ad1dca5221a774be87581ef5ac6"
+        },
+        {
+          "label": "Actual weighted-sequence controls",
+          "path": ".work/instrument-library-baseline/ui/weighted-sequence-interface.png",
+          "sha256": "25fc4eb5e4cdc4dc592b475e1fcfd7cc46a5b12f18418c0cdf64115ce94b1637"
+        }
+      ]
+    },
+    {
+      "id": "instrument-color-compositions-022",
+      "title": "Color constructions in layered compositions",
+      "category": "Root creative review: both layer orders",
+      "description": "Bands with Harmonic Traces, arcs with Phyllotactic Whorls, and weighted tiles with Stitched Contours. Both layer orders were inspected and replayed identically through the actual Studio and harness compositors. The orbit partner was moved into meaningful overlap before this final review.",
+      "evidence": "evidence/web/instrument-library-baseline.json",
+      "images": [
+        {
+          "label": "All three pairs in both orders",
+          "path": ".work/instrument-library-baseline/composition-contact.png",
+          "sha256": "f037bfb5d372c9be578f1ec25407834aca79e66d894206b4101bae1be323fbe8"
+        },
+        {
+          "label": "perceptual-bands-partner-over-color",
+          "path": ".work/instrument-library-baseline/compositions/perceptual-bands-partner-over-color.png",
+          "sha256": "0853a14f8cad02a54d0b1d790fc096cbcef9c0a21863d948cbe5ad1aa469d18b"
+        },
+        {
+          "label": "perceptual-bands-color-over-partner",
+          "path": ".work/instrument-library-baseline/compositions/perceptual-bands-color-over-partner.png",
+          "sha256": "7d4e81e76f6df3dff82ced3629ba74344e5e03b0b10bce163d98da87c7c455d7"
+        },
+        {
+          "label": "oklab-orbits-partner-over-color",
+          "path": ".work/instrument-library-baseline/compositions/oklab-orbits-partner-over-color.png",
+          "sha256": "ec97379e780100e305f9734388776566705d016dfe33a1b551db8f618660809b"
+        },
+        {
+          "label": "oklab-orbits-color-over-partner",
+          "path": ".work/instrument-library-baseline/compositions/oklab-orbits-color-over-partner.png",
+          "sha256": "ed2f9699e203f9ca57f568fc419290ed3e253d6605c64ef71e4e3bf2541d7a99"
+        },
+        {
+          "label": "quantized-stripes-partner-over-color",
+          "path": ".work/instrument-library-baseline/compositions/quantized-stripes-partner-over-color.png",
+          "sha256": "bb4a36a33fd4d90504e212f54c0374a5212d239daa6e38007ce2c4aa7446aa9b"
+        },
+        {
+          "label": "quantized-stripes-color-over-partner",
+          "path": ".work/instrument-library-baseline/compositions/quantized-stripes-color-over-partner.png",
+          "sha256": "aad924cfcbab662148b3a30f996e003744186bb6e9af719de76c757383d87cdd"
+        }
+      ]
+    },
+    {
+      "id": "instrument-library-native-baseline-022",
+      "title": "Library-owned instruments — installed native baseline",
+      "category": "Technical smoke only; not whole-gallery creative acceptance",
+      "description": "All 117 released instrument defaults rendered in a standalone p5 host without private app code and matched these reviewed source PNGs exactly. Six sheets cover the roster. The four actual WebGL app surfaces and runnable README example were also inspected. Host-specific WebGL compositing is not cross-host pixel certification.",
+      "evidence": "evidence/web/instrument-library-baseline.json",
+      "images": [
+        {
+          "label": "Default inventory 1 of 6",
+          "path": ".work/instrument-library-baseline/default-contact-1.png",
+          "sha256": "eca28281ae47f77b30ce22c7e92870889317f5a2b5b90ca4ab151aa17e3dd8e4"
+        },
+        {
+          "label": "Default inventory 2 of 6",
+          "path": ".work/instrument-library-baseline/default-contact-2.png",
+          "sha256": "3dcf795d6ee53f7bac0d949a74ac356d7791e4ca9c8bbf80deb673e4321d24f3"
+        },
+        {
+          "label": "Default inventory 3 of 6",
+          "path": ".work/instrument-library-baseline/default-contact-3.png",
+          "sha256": "c88b355ca05f59d455fc8ced50db144f670e34ab3e3fab0548ce259ce2cbd122"
+        },
+        {
+          "label": "Default inventory 4 of 6",
+          "path": ".work/instrument-library-baseline/default-contact-4.png",
+          "sha256": "d3c7292616b3273129d02cfcb3812ade1da93b59ea9182914e9736ae64c99ac2"
+        },
+        {
+          "label": "Default inventory 5 of 6",
+          "path": ".work/instrument-library-baseline/default-contact-5.png",
+          "sha256": "5cde7b761fddd21680f15bd94700ff17f77c6e011625454215ef34cbecc2fcf4"
+        },
+        {
+          "label": "Default inventory 6 of 6",
+          "path": ".work/instrument-library-baseline/default-contact-6.png",
+          "sha256": "c25783cac0cc1f4cc3c2b3cec665bfc7b5ed06bbf54424272e1ea17ae3157e81"
+        },
+        {
+          "label": "Four WebGL app/library host surfaces",
+          "path": ".work/instrument-library-baseline/webgl-host-contact.png",
+          "sha256": "20f1dff1ebc6e99b5ba1b0452d8dea22a02238d5a5027d252ead16f64722f3ba"
+        },
+        {
+          "label": "README band-coverage edit",
+          "path": ".work/instrument-library-baseline/readme-example.png",
+          "sha256": "b4e63352085ce933de966a9e864ad1b51cb9b5a3df9fcd51fdc52e7dc0a40904"
+        }
+      ]
+    },
+    {
       "id": "fractal-flame-study",
       "title": "Fractal Flame — IFS density accumulation",
       "category": "I-family study (draft)",

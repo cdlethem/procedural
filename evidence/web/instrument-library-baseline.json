@@ -1,0 +1,203 @@
+{
+  "id": "instrument-library-baseline-0.2.2",
+  "status": "scoped-root-reviewed",
+  "reviewedAt": "2026-09-27T17:22:14.942Z",
+  "sourceCommit": "189b288e42965d7b2a179103c13160f004216349",
+  "release": "https://github.com/cdlethem/procedural/releases/tag/web-toolkit-v0.2.2",
+  "artifacts": [
+    {
+      "name": "@procedurals/javascript",
+      "version": "0.2.2",
+      "filename": "procedurals-javascript-0.2.2.tgz",
+      "bytes": 817526,
+      "sha256": "17ddb36e7ad78ebf18f995ab7b845c9766067738c8a64961022342abc93aa3c6",
+      "integrity": "sha512-DZWXzy9uPbShS5onU2GIx39piQo4ojEcb//qREW9Xb4C2iLVArIvocO20y/IgbEj/iYDGyEl5szPrbIB03sAuw==",
+      "url": "https://github.com/cdlethem/procedural/releases/download/web-toolkit-v0.2.2/procedurals-javascript-0.2.2.tgz",
+      "downloadVerified": true,
+      "appLockVerified": true,
+      "deploymentPinVerified": true
+    },
+    {
+      "name": "@procedurals/catalog",
+      "version": "0.2.2",
+      "filename": "procedurals-catalog-0.2.2.tgz",
+      "bytes": 1762458,
+      "sha256": "86fd2be9493cc02c1a1068046b6dd0c68eaa3f803fc7735f44662d8ba356c61f",
+      "integrity": "sha512-Xj+R4Uat8SwFYFWnlpwVIKTQkOftY6LG4aEZSYfT5LMs0KxLTZ4/jN+iSCa03pvRIdsS4yMgpCD45LfTHGRMfw==",
+      "url": "https://github.com/cdlethem/procedural/releases/download/web-toolkit-v0.2.2/procedurals-catalog-0.2.2.tgz",
+      "downloadVerified": true,
+      "appLockVerified": true,
+      "deploymentPinVerified": true
+    },
+    {
+      "name": "@procedurals/instruments",
+      "version": "0.2.2",
+      "filename": "procedurals-instruments-0.2.2.tgz",
+      "bytes": 840137,
+      "sha256": "952714cf8f4263fa43a473391bd7e4ea36052e208aa33665d97019af981124e0",
+      "integrity": "sha512-xpjyF39vY5Se84UEG0TEaBGADYBNGizxWpm/LgcxZ1zpBCuEyuUeeemY/u5nnRGwy+GRsqBU/yZvIJsNInXJrg==",
+      "url": "https://github.com/cdlethem/procedural/releases/download/web-toolkit-v0.2.2/procedurals-instruments-0.2.2.tgz",
+      "downloadVerified": true,
+      "appLockVerified": true,
+      "deploymentPinVerified": true
+    }
+  ],
+  "boundary": {
+    "library": "packages/instruments: current definitions, controls, construction, drawing, cooperative preparation, metadata, guides and extracted actual source",
+    "host": "Private app: UI, current document envelopes, transforms, opacity, p5 lifecycle, composition and storage",
+    "savedArtwork": "Disposable; no legacy document migration or compatibility obligation",
+    "inventory": {
+      "workflowIds": 117,
+      "canonicalInstruments": 99,
+      "families": 14,
+      "appApiEntries": 92
+    },
+    "removed": "App-local adapters, copied instrument guides/content, historical Studio snapshots and migration paths; operation teaching copy remains app-owned"
+  },
+  "creativeReview": {
+    "newlyReviewed": [
+      "perceptual-bands",
+      "oklab-orbits",
+      "quantized-stripes"
+    ],
+    "priorScopePreserved": true,
+    "workflowIdsReviewedAcrossPasses": 92,
+    "retainedSourceAssessedOnly": 25,
+    "constructions": [
+      {
+        "id": "perceptual-bands",
+        "artistTask": "Build a shaped, open color field or a local band fragment.",
+        "controls": "Piecewise left/right silhouette, count, coverage, non-restretching global trim, placement and palette/custom Oklab stops.",
+        "outcomes": [
+          "tapered accent",
+          "stepped color field",
+          "four broad cut shapes"
+        ],
+        "partner": "harmonic-traces"
+      },
+      {
+        "id": "oklab-orbits",
+        "artistTask": "Build open fans, eccentric shells or nested color arcs.",
+        "controls": "Radius spacing, aspect, total center drift and twist, signed arc traversal, independent sampling/stroke and rank/arc coloring.",
+        "outcomes": [
+          "chromatic fan",
+          "nested ellipses",
+          "reverse eccentric shell"
+        ],
+        "partner": "phyllotactic-whorls"
+      },
+      {
+        "id": "quantized-stripes",
+        "artistTask": "Reduce authored colors into weighted strips or tiles without losing their area relationships.",
+        "controls": "Palette ramp or weighted sequence, actual median-cut colors, stable grouping/seeded shuffle, columns, footprint, stagger and independent gaps.",
+        "outcomes": [
+          "weighted tiles",
+          "weighted strips",
+          "shuffled weighted patch"
+        ],
+        "partner": "stitched-contours"
+      }
+    ],
+    "observed": "Root used actual controls, inspected defaults and nine contrasting variants, exact entries outside slider ranges, three zero-ink states, five invalid-edit scenarios retaining the last valid canvas, and shuffle reseed/Undo. Root reviewed all six layered results; the orbit partner was moved into meaningful overlap before final review.",
+    "guides": "Package-owned guides updated and reviewed for the library/host boundary; no acceptance bookkeeping added to teaching copy."
+  },
+  "verification": {
+    "publicPackageTests": 15,
+    "publicBuild": "passed",
+    "extractedSources": 117,
+    "offlineReleaseBuild": "passed: three archives installed into an isolated consumer, inventory/default admission/imports and package bytes checked",
+    "nativeInstalled": {
+      "defaults": 117,
+      "failures": 0,
+      "sourcePngIdentical": 117,
+      "maximumMilliseconds": 337,
+      "scope": "Standalone README consumer with caller-supplied p5 2.3.2 and no private app code; cold local timing, not a universal latency guarantee"
+    },
+    "readmeExample": "The documented bandCoverage=0.58 edit rendered successfully.",
+    "actualUiReplay": {
+      "states": 19,
+      "studioEqualsUi": 19,
+      "harnessEqualsStudio": 19,
+      "compositionOrders": 6,
+      "compositionsEqual": 6,
+      "maximumScopedCompositorMilliseconds": 25.8
+    },
+    "webglHost": "All four actual WebGL detail pages reached ready and were visually inspected alongside library output. Host composition differs from the standalone no-tint path; cross-host pixel equality is not claimed for these four.",
+    "privateChecks": "30 initial focused cases plus 231 remaining migrated behavior cases passed across focused runs after retiring five obsolete fixed-source/registry assertions. The final eight public preparation/cancellation cases, typecheck and generated-data checks passed. Not a whole-private-suite claim.",
+    "regression": "Growth coupled limits formerly passed public admission and failed only during drawing. The new admission test failed against the predecessor dist, then passed after binding the existing three growth validators; no budget or algorithm semantics changed.",
+    "publishedPins": "Downloaded assets, app package.json/package-lock and deploy/runtime-inputs agree on URLs, versions, SHA-256 and npm integrity. Only the lock root and the three toolkit package entries changed.",
+    "publishedConsumerSmoke": "Actual app-installed release imports admitted all 117 defaults, rejected the three growth budget violations and reported cooperative cancellation.",
+    "deploymentAcquisition": "The actual deployment download/checksum helper fetched and verified all three published toolkit archives; full renderer/toolchain acquisition was not rerun.",
+    "visualGallery": "Built 135 groups and 967 images with no problems; root opened the real gallery, selected the creative-review stage and inspected its rendered section."
+  },
+  "evidenceFiles": [
+    {
+      "path": ".work/instrument-library-baseline/private-source-bindings.json",
+      "sha256": "c8a223d2d00ef1aad0b3080ef398cdd44d7b3b57ae6635c7daf82abee326a931"
+    },
+    {
+      "path": ".work/instrument-library-baseline/toolkit-acquisition.json",
+      "sha256": "d42fc1c5d56c31255a47b84dbd021f773ab6e25caeb1f11100d79c952f8c8b0e"
+    },
+    {
+      "path": ".work/instrument-library-baseline/preview-manifest.predecessor.json",
+      "sha256": "13faca460f45855b06826e06fbede361b19e619afc85cf01eaf4717e14e1770e"
+    },
+    {
+      "path": ".work/instrument-library-baseline/visual-review-gallery.webp",
+      "sha256": "51225aba6787185728c2fbd11dce78017527c7f0c306cd26696e0c046f37d6b2"
+    },
+    {
+      "path": ".work/instrument-library-baseline/review-cases.json",
+      "sha256": "7cb13599f4d863bf9e64304a36f3fc61e1b534063c11340b872a4b668de2fff7"
+    },
+    {
+      "path": ".work/instrument-library-baseline/ui-cases.json",
+      "sha256": "5ec637f0e97c88f916ef351fa54cb959b766aba935941f42c1d5ce7acdd60682"
+    },
+    {
+      "path": ".work/instrument-library-baseline/ui-boundaries.json",
+      "sha256": "9c23482f2e2ce8b0513a23ac39040f6b0f6647e5c83252b1108d439a6aa6ae65"
+    },
+    {
+      "path": ".work/instrument-library-baseline/seed-transition.json",
+      "sha256": "9524c6e70ee5f4425784d286e16659cd57545a3ed4bab02ba7d843b633f11084"
+    },
+    {
+      "path": ".work/instrument-library-baseline/zero-ink.json",
+      "sha256": "b8e43ce3139989cafd538d5d69e923b354638049ab53683c4ed49b31e1cf7aa2"
+    },
+    {
+      "path": ".work/instrument-library-baseline/replay-composition.json",
+      "sha256": "97f3f93380376787d6a5282388a41e8fda09327a8e2f5b60fc393349ac83cfc7"
+    },
+    {
+      "path": ".work/instrument-library-baseline/installed-defaults.json",
+      "sha256": "b05ec722b702de426ac751deaea2fe760eebb96f55c11b1ef2dbdc9921b51937"
+    },
+    {
+      "path": ".work/instrument-library-baseline/preview-updates.json",
+      "sha256": "a1ceeb8c3bbe87e33a588d23276d9b4141b14f5ffda1f9e4dd43f083993800b2"
+    },
+    {
+      "path": ".work/instrument-library-baseline/published-release.json",
+      "sha256": "eb8f5fccb0d273e1ac61d82357e420c4541162b36b0c068aaac506c1f602c07f"
+    },
+    {
+      "path": ".work/instrument-library-baseline/webgl-host-check.json",
+      "sha256": "253eeed4a4f3f67a266eced44a949f3f034c662b658af6f5582ac5c20afc167e"
+    }
+  ],
+  "limitations": [
+    "No whole-gallery creative acceptance; the remaining 25 IDs retain source-level dispositions only.",
+    "No app deployment, authenticated Studio, persistence/export, tenant or visitor acceptance.",
+    "No new public core algorithm, operation target acceptance, corpus recreation or cross-target parity.",
+    "Historical catalog contract wording and bound target reviews are not reconciled by this release.",
+    "Auth schema-generation provenance remains untouched. Its whole-lock hash already differed before final toolkit pinning; the auth dependency graph did not change."
+  ],
+  "historicalPredecessors": [
+    "Private docs/study-quality-audit.md and .work/instrument-second-pass/ retain their scoped creative evidence.",
+    "The earlier 0.2.2 candidate artifacts remain in .work/dist/web-toolkit-v0.2.2-verified; the released successor is .work/dist/web-toolkit-v0.2.2-final."
+  ],
+  "visualNavigation": ".work/visual-review/index.html"
+}
