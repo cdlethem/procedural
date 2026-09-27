@@ -44,15 +44,27 @@ and which change its appearance.
 Read [Composing drawings, partitions and image effects](docs/composing-java-effects.md)
 for ways to combine these tools in your own sketches.
 
-## Try it in your browser
+## p5.js instruments and web integration
 
-The [web gallery and studio](apps/README.md) includes 24 interactive p5.js studies and a
-no-code canvas for layering fields, flow paths, circle placements and lattice routes.
-Explore the guides, tweak a study, or save a composition as editable JSON or a PNG.
+The [instrument library](packages/instruments/README.md) owns reusable construction,
+controls, drawing code and study guides. A study is a starting recipe for an instrument,
+not another core algorithm. The web app consumes the library rather than maintaining a
+second implementation of those techniques.
+
+| Layer | Responsibility |
+| --- | --- |
+| `@procedurals/javascript` | Computational operations and reference examples. |
+| `@procedurals/instruments` | Current p5.js instruments, parameter validation, defaults, renderer requirements, preparation and study metadata. |
+| `@procedurals/catalog` | Operation contracts, reference material and scoped support evidence. |
+| [Private web app](apps/README.md) | Interactive controls, layer composition, p5 lifecycle, accounts and persistence. |
+
+Use the instrument package's integration guide for the browser-facing baseline. The
+private app is a consumer, not a publicly available demo. Old Studio artwork is not a
+compatibility commitment; current parameter validation and deterministic replay are.
 
 ## Get started
 
-Use **Processing 4 in Java mode** for the full library and all 37 editable examples.
+Use **Processing 4 in Java mode** for the Java implementation and its 37 editable examples.
 Install it once; you do not need a separate package for each example.
 
 1. **Install [Processing 4.5.6](https://github.com/processing/processing4/releases/tag/processing-1434-4.5.6).**
@@ -100,9 +112,11 @@ the [Java API guide](docs/java-api.md) shows how to use the library directly.
 When you want to compare variations, the [rendering tools](docs/rendering-java.md) can
 produce seeded renders, parameter sweeps and frame sequences.
 
-Ports for **p5.js, py5 and Processing for Android** are also underway, with a smaller set
-of available features. For a browser example, try [BandMarks](packages/javascript/examples/band-marks/README.md).
-A visual browser-based composition editor is planned.
+The p5.js instrument package has its own integration boundary and review scope.
+**py5 and Processing for Android** remain separately scoped ports; support is not
+inherited from another target. Native examples such as
+[BandMarks](packages/javascript/examples/band-marks/README.md) remain editable references,
+not the authority for the current instrument controls.
 
 ## Credits and license
 

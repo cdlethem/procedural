@@ -1,0 +1,19 @@
+# Attractor growth
+
+Seed target points first, then place roots independently. Each tick runs `growth.space-colonization-step-2d`: every active tip moves toward its nearest **unconsumed** attractor. A tip that reaches one consumes it and emits the selected number of new tips across the branch spread. The guide dots are targets, not sampled branches. This is directional, finite-source growth rather than a rewrite grammar or a neighbor-relaxed graph.
+
+| Controls | What changes |
+| --- | --- |
+| Attractors / Attractor footprint | Count and choose a filled area, annulus, or unequal two-lobe population. |
+| Source extent / Source aspect / Source direction / Source X / Source Y | Set the population’s local width and height, rotate it and move it without moving the roots. None of these fit to the canvas. |
+| Source disorder / Center exclusion / Ring thickness | Shift sampled angles; clear the middle of areas and lobes; or choose a thin ring versus a broad annulus. Thickness affects rings only; exclusion affects areas and lobes only. |
+| Lobe separation / Left lobe share | Open a gap between the lobes and distribute more targets into either side. These affect two-lobe sources only. |
+| Root tips / Root spread / Root jitter / Root X / Root Y / Root heading | Place a distinct root population, independently of the attractor center. Heading rotates the **root placement axis**, not tip direction: the native step aims each tip at its nearest available target. Jitter uses a separate seeded stream. |
+| Growth ticks / Growth step / Consumption distance | Choose how many full steps to request, how far tips move each step, and when they reach and consume a source. Once all targets are exhausted, growth ends naturally; no tips are silently dropped. |
+| Branches per tip / Branch spread | Choose the number of tips spawned on consumption and their symmetric angular offsets. A single branch continues without an offset. |
+| Growth weight / Generation taper | Draw each generation (one growth tick) with independently controlled thickness; taper multiplies it on successive ticks. Zero weight hides the strokes without changing the computation. |
+| Terminal dots / Terminal size / Attractor guides / Guide size | Optional visual marks independent of the source and growth computations; both toggles are off initially. |
+
+Try **an isolated sprig**: 20 attractors, area extent 110, root (315, 505), source center (330, 365), one root, 2 branches, 35 ticks, guides off. For **an annular fan**, select a ring with thickness 0.12, extent 350, center (340, 315), four roots spread 100 at (330, 420), root heading 0, step 6 and reach 18; turn on guides briefly to inspect the hole. For **a lopsided crown**, use two lobes with left share 0.75, separation 0.55, extent 380, aspect 0.7, source center (340, 265), one root at (360, 540), 2 branches, and a branch spread of 60 degrees. For **competing trees**, keep one broad area of 100 attractors, position four roots across 280 pixels at (320, 525), choose a root heading of 0 degrees and 2 branches. Turn the root heading to 90 degrees to make the roots compete from different vertical positions instead.
+
+The same seed independently chooses target placement and root jitter; appearance controls do not resample either. Worst-case tip count is at most roots + (branches − 1) × attractors, because each increase requires consuming a distinct target. The study rejects settings in advance when that tip bound exceeds the native 2,048-tip cap, or when conservative total segment (16,000) or tip–target query (1,800,000) budgets are exceeded. Reduce ticks, target count, or branches instead of expecting the study to stop early or clip branches. Compact sources placed exactly on a root can make the native direction undefined; move the root or source apart.

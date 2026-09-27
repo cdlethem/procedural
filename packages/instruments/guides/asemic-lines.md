@@ -1,0 +1,11 @@
+# Asemic lines
+
+A seeded **dictionary of abstract paths** is built once from knot geometry and smoothed with the toolkit's Chaikin polyline operation. Those same paths are selected repeatedly and placed in word-like groups; there is no text input, character mapping, font, language, or fixed baseline. Open strokes and loops are source paths, not brush decorations. Dictionary size, strokes, knots, bend, loop character and seed change the dictionary. Glyph scale, spacing, direction, center, row count, layout disorder, color and stroke weight do not redraw it. Dictionary selection and position jitter have separate seeded streams. Motif regularity makes the same dictionary entry recur at corresponding slots in different rows; reducing it loosens this correspondence without generating new glyphs.
+
+| Experiment | Settings | Result to look for |
+|---|---|---|
+| One loose inscription | Rows 1, words 3, glyphs per word 5, center (340, 220), direction -15°, glyph spacing 24, word spacing 27, layout disorder 0.25, dictionary 7, regularity 0.3 | One small run of reused paths with irregular gaps and no drawn baseline. |
+| Repeated textural bands | Rows 8, words 6, glyphs per word 6, row spacing 48, glyph X/Y 17/26, dictionary 5, regularity 0.95, disorder 0.05, weight 0.7 | Related motifs at recurring slots; change only stroke weight or scale to see the same dictionary remain. |
+| Scattered notation | Rows 4, words 3, glyphs per word 3, glyph spacing 52, word spacing 56, row spacing 85, direction 35°, disorder 1.25, dictionary 12, regularity 0.1, loops 0.8, bend 0.9 | Separated local path clusters with loose rather than typographic rhythm. |
+
+The group is centered at the chosen source center in layer-local canvas coordinates, and may intentionally extend off canvas. The default arrangement fits the 640-unit preview. Width and height scale **each placed path**, while glyph spacing sets center-to-center distance (overlap is allowed). Zero stroke weight or zero glyph width/height draws no glyph marks. Exact entry permits 1–32 dictionary motifs, 1–5 strokes, 3–12 control knots, 1–16 rows/words/glyphs per word; the coupled budget limits $(\text{dictionary size}+\text{rows}\times\text{words}\times\text{glyphs})\times\text{strokes}\times\text{knots}\times4$ to 160,000 smoothed vertices before construction. Sliders offer smaller practical ranges.

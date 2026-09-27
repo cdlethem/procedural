@@ -45,6 +45,28 @@ const javascriptPackage = JSON.parse(readFileSync(join(root, "packages/javascrip
 assert.equal(javascriptPackage.name, "@procedurals/javascript");
 assert.match(javascriptPackage.version, /^0\.2\.\d+$/);
 assert.equal(javascriptPackage.private, undefined);
+const instrumentsRoot = join(root, "packages/instruments");
+const instrumentsPackage = JSON.parse(readFileSync(join(instrumentsRoot, "package.json"), "utf8"));
+const instrumentsMetadata = JSON.parse(readFileSync(join(instrumentsRoot, "metadata.json"), "utf8"));
+assert.equal(instrumentsPackage.name, "@procedurals/instruments");
+assert.equal(instrumentsPackage.version, javascriptPackage.version);
+assert.equal(instrumentsPackage.peerDependencies["@procedurals/javascript"], javascriptPackage.version);
+assert.equal(instrumentsMetadata.version, javascriptPackage.version);
+assert.equal(instrumentsMetadata.coreVersion, javascriptPackage.version);
+const instrumentIds = instrumentsMetadata.instruments.map(item => item.id).sort();
+assert.ok(instrumentIds.length > 0, "instrument metadata must not be empty");
+assert.equal(new Set(instrumentIds).size, instrumentIds.length, "duplicate instrument metadata");
+for (const family of instrumentsMetadata.families) {
+  assert.ok(instrumentIds.includes(family.id), `unknown family: ${family.id}`);
+  for (const preset of family.presets)
+    assert.ok(instrumentIds.includes(preset.id), `unknown preset: ${preset.id}`);
+}
+const buildDependencies = ["typescript", "@babel/parser", "@babel/types",
+  "@babel/helper-string-parser", "@babel/helper-validator-identifier"].map(name => {
+  const directory = join(instrumentsRoot, "node_modules", name);
+  assert.ok(existsSync(join(directory, "package.json")), `Install package build prerequisite: ${name}`);
+  return directory;
+});
 const exampleSmokeContractPath = "tools/web_toolkit_example_subpaths.json";
 const exampleSmokeContract = JSON.parse(readFileSync(join(root, exampleSmokeContractPath), "utf8"));
 assert.deepEqual(Object.keys(exampleSmokeContract).sort(), ["package", "schemaVersion", "subpaths"]);
@@ -69,6 +91,16 @@ const publicGuides = exampleDirectories
   .filter((path) => existsSync(join(root, path)));
 const releaseInputs = [
   "packages/javascript",
+  "packages/instruments/package.json",
+  "packages/instruments/metadata.json",
+  "packages/instruments/tsconfig.json",
+  "packages/instruments/README.md",
+  "packages/instruments/LICENSE",
+  "packages/instruments/THIRD_PARTY_NOTICES.md",
+  "packages/instruments/src",
+  "packages/instruments/assets",
+  "packages/instruments/guides",
+  "packages/instruments/tools",
   "catalog/operations",
   "catalog/validation",
   "catalog/drawing",
@@ -135,14 +167,69 @@ const manifest = {
 writeFileSync(join(catalogStage, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
 
 const pack = (stage) => JSON.parse(run("npm", ["pack", "--json", "--ignore-scripts", "--pack-destination", out], { cwd: stage }))[0];
+// Package the actual, clean library sources rather than an app-local snapshot.
+const instrumentsStage = join(out, "instruments-stage");
+mkdirSync(instrumentsStage);
+for (const name of ["src", "tools", "guides", "assets", "package.json", "metadata.json",
+  "tsconfig.json", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md"])
+  cpSync(join(instrumentsRoot, name), join(instrumentsStage, name), { recursive: true });
+
+// Build tools are locally installed prerequisites. The SDK tarball is the exact
+// public peer, installed into the stage; only this isolated stage is compiled.
 const javascriptPack = pack(javascriptStage);
+// Install only explicit local build tools, not unrelated test-runner dev dependencies.
+// Restore the exact authored package metadata before compilation and packaging.
+writeFileSync(join(instrumentsStage, "package.json"),
+  `${JSON.stringify({ ...instrumentsPackage, devDependencies: {} }, null, 2)}\n`);
+run("npm", ["install", "--offline", "--ignore-scripts", "--no-audit", "--no-fund",
+  "--no-package-lock", "--no-save", ...buildDependencies, join(out, javascriptPack.filename)],
+  { cwd: instrumentsStage });
+cpSync(join(instrumentsRoot, "package.json"), join(instrumentsStage, "package.json"));
+run("npm", ["run", "build"], { cwd: instrumentsStage });
+run("npm", ["run", "sources", "--", "--javascript-root", join(root, "packages/javascript")],
+  { cwd: instrumentsStage });
+const sourceMap = JSON.parse(readFileSync(join(instrumentsStage, "sources.json"), "utf8"));
+assert.equal(sourceMap.version, instrumentsPackage.version);
+assert.deepEqual(Object.keys(sourceMap.sources).sort(),
+  instrumentsMetadata.instruments.map(item => item.id).sort());
+for (const item of instrumentsMetadata.instruments) {
+  assert.equal(sourceMap.sources[item.id].path, item.source);
+  assert.ok(sourceMap.sources[item.id].source.includes(item.sourceEntry),
+    `Source extraction did not include ${item.sourceEntry}: ${item.id}`);
+}
+const instrumentsInventory = [
+  ...["src", "dist", "guides", "assets", "tools"].flatMap(directory => files(join(instrumentsStage, directory))),
+  ...["package.json", "metadata.json", "sources.json", "tsconfig.json",
+    "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md"].map(name => join(instrumentsStage, name)),
+].sort().map(path => ({
+    path: relative(instrumentsStage, path).split(sep).join("/"),
+    sha256: hashFile(path),
+    bytes: statSync(path).size,
+  }));
+assert.ok(instrumentsInventory.some(entry => entry.path === "dist/index.js"));
+assert.ok(instrumentsInventory.some(entry => entry.path === "dist/index.d.ts"));
+assert.ok(instrumentsInventory.some(entry => entry.path.startsWith("src/assets/")));
+assert.equal(instrumentsInventory.filter(entry => entry.path.startsWith("guides/")).length,
+  new Set(instrumentsMetadata.instruments.map(item => item.guide)).size);
+const instrumentsManifest = {
+  schemaVersion: 1,
+  sourceCommit,
+  version: instrumentsPackage.version,
+  coreVersion: javascriptPackage.version,
+  files: instrumentsInventory,
+};
+writeFileSync(join(instrumentsStage, "manifest.json"), `${JSON.stringify(instrumentsManifest, null, 2)}\n`);
+const instrumentsPack = pack(instrumentsStage);
 const catalogPack = pack(catalogStage);
+
 const consumer = join(out, "consumer");
 mkdirSync(consumer);
 writeFileSync(join(consumer, "package.json"), `${JSON.stringify({ private: true, type: "module" }, null, 2)}\n`);
-run("npm", ["install", "--offline", "--ignore-scripts", "--no-audit", "--no-fund", join(out, javascriptPack.filename), join(out, catalogPack.filename)], { cwd: consumer });
+run("npm", ["install", "--offline", "--ignore-scripts", "--no-audit", "--no-fund",
+  join(out, javascriptPack.filename), join(out, catalogPack.filename), join(out, instrumentsPack.filename)], { cwd: consumer });
 const installedJavaScript = join(consumer, "node_modules/@procedurals/javascript");
 const installedCatalog = join(consumer, "node_modules/@procedurals/catalog");
+const installedInstruments = join(consumer, "node_modules/@procedurals/instruments");
 for (const path of files(javascriptStage)) {
   const rel = relative(javascriptStage, path);
   assert.equal(hashFile(join(installedJavaScript, rel)), hashFile(path), `installed JavaScript byte drift: ${rel}`);
@@ -152,6 +239,13 @@ for (const entry of manifest.files) {
   assert.equal(statSync(join(installedCatalog, entry.path)).size, entry.bytes, `installed catalog size drift: ${entry.path}`);
 }
 assert.deepEqual(JSON.parse(readFileSync(join(installedCatalog, "manifest.json"), "utf8")), manifest);
+for (const entry of instrumentsManifest.files) {
+  assert.equal(hashFile(join(installedInstruments, entry.path)), entry.sha256,
+    `installed instruments byte drift: ${entry.path}`);
+  assert.equal(statSync(join(installedInstruments, entry.path)).size, entry.bytes,
+    `installed instruments size drift: ${entry.path}`);
+}
+assert.deepEqual(JSON.parse(readFileSync(join(installedInstruments, "manifest.json"), "utf8")), instrumentsManifest);
 
 assert.ok(existsSync(join(installedJavaScript, "types/src/index.d.ts")), "installed JavaScript root declarations missing");
 for (const specifier of importedExampleSubpaths) {
@@ -163,16 +257,25 @@ for (const specifier of importedExampleSubpaths) {
 const smokeSource = [
   "import * as api from '@procedurals/javascript';",
   "import manifest from '@procedurals/catalog/manifest.json' with { type: 'json' };",
+  "import { definitions, createInstrument, validateInstrument } from '@procedurals/instruments';",
+  "import instrumentMetadata from '@procedurals/instruments/metadata.json' with { type: 'json' };",
+  "import instrumentSources from '@procedurals/instruments/sources.json' with { type: 'json' };",
+  "import instrumentManifest from '@procedurals/instruments/manifest.json' with { type: 'json' };",
   ...importedExampleSubpaths.map((specifier, index) => `import * as example${index} from ${JSON.stringify(specifier)};`),
-  `console.log(JSON.stringify({exports:Object.keys(api).sort(),catalogFiles:manifest.files.length,examples:${JSON.stringify(importedExampleSubpaths)}}));`,
+  `const ids = instrumentMetadata.instruments.map(item => item.id).sort(); if (JSON.stringify(definitions.map(item => item.id).sort()) !== JSON.stringify(ids)) throw Error('Runtime and metadata instrument IDs differ');`,
+  `for (const id of ids) validateInstrument(createInstrument(id));`,
+  `console.log(JSON.stringify({exports:Object.keys(api).sort(),catalogFiles:manifest.files.length,examples:${JSON.stringify(importedExampleSubpaths)},instrumentCount:ids.length,instrumentSources:Object.keys(instrumentSources.sources).length,instrumentFiles:instrumentManifest.files.length}));`,
 ].join("\n");
 const smoke = JSON.parse(run(process.execPath, ["--input-type=module", "-e", smokeSource], { cwd: consumer, timeout: 30_000 }));
 assert.ok(smoke.exports.length > 0);
 assert.equal(smoke.catalogFiles, manifest.files.length);
+assert.equal(smoke.instrumentCount, instrumentIds.length);
+assert.equal(smoke.instrumentSources, instrumentIds.length);
+assert.equal(smoke.instrumentFiles, instrumentsManifest.files.length);
 
 const after = Object.fromEntries(inputFiles.map((path) => [relative(root, path).split(sep).join("/"), hashFile(path)]));
 assert.deepEqual(after, before, "release builder modified source inputs");
-const artifacts = [javascriptPack, catalogPack].map((record) => ({
+const artifacts = [javascriptPack, catalogPack, instrumentsPack].map((record) => ({
   name: record.name,
   version: record.version,
   filename: record.filename,
@@ -187,6 +290,7 @@ const report = {
   version: javascriptPackage.version,
   artifacts,
   catalogManifestSha256: hashFile(join(catalogStage, "manifest.json")),
+  instrumentsManifestSha256: hashFile(join(instrumentsStage, "manifest.json")),
   exampleSubpathContract: exampleSmokeContractPath,
   importedExampleSubpaths,
   publicGuideCoverage: {
@@ -196,7 +300,7 @@ const report = {
   },
   inputSha256Before: before,
   inputSha256After: after,
-  scope: "Packed and offline-installed both public packages; verified byte inventories, declarations, root import, catalog manifest, and every frozen public consumer example subpath. No registry publication or target-support claim.",
+  scope: `Packed and offline-installed all three public packages; verified byte inventories, TypeScript declarations, root imports, both manifests, all ${instrumentIds.length} current instrument defaults/source/guide entries, and every frozen public consumer example subpath. No registry publication or target-support claim.`,
 };
 writeFileSync(join(out, "report.json"), `${JSON.stringify(report, null, 2)}\n`);
 writeFileSync(join(out, "SHA256SUMS"), `${artifacts.map((item) => `${item.sha256}  ${item.filename}`).join("\n")}\n`);
