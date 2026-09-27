@@ -40,3 +40,16 @@ test('parameter admission separates slider intervals, integer counts and coupled
   const empty = { ...arc.params, orbits: 0, segments: 2048 };
   assert.deepEqual(validateParameters(arc.technique, empty), empty);
 });
+
+test('growth admission rejects coupled work before preparation or drawing', () => {
+  for (const [id, ticks] of [
+    ['bridge-web', 12],
+    ['neighborhood-growth', 18],
+    ['elastic-loops', 14],
+  ] as const) {
+    const input = createInstrument(id);
+    assert.throws(() => validateInstrument({
+      ...input, params: { ...input.params, ticks },
+    }));
+  }
+});

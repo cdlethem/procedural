@@ -4,7 +4,7 @@ Version 0.2.2 provides 117 editable p5.js study IDs: 99 canonical instruments, i
 
 ## Install and draw
 
-Install this package together with its exact `@procedurals/javascript` peer dependency. For the repository's GitHub release workflow, once `web-toolkit-v0.2.2` has been published, install the release assets:
+Install this package together with its exact `@procedurals/javascript` peer dependency using the GitHub release assets:
 
 ```sh
 npm install --save-exact \
