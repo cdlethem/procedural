@@ -1,4 +1,4 @@
-import { developmentDefinitions, referenceDefinitions } from "../adapters/reference-composition-instruments.js";
+import { referenceDefinitions } from "../adapters/reference-composition-instruments.js";
 import type { InstrumentInput, InstrumentDefinition } from "../types.js";
 import { validateParameterValues } from "../parameter-validation.js";
 import { atEach, createCompositionRun, inside, strokeWith } from "./core.js";
@@ -12,7 +12,7 @@ import type { CompositionRun, CompositionSurface, LatticeSite, MapName, MapStage
 
 type Scalar = number | string | boolean;
 function definition(id: string): InstrumentDefinition {
-  const found = [...referenceDefinitions, ...developmentDefinitions].find((item) => item.id === id);
+  const found = referenceDefinitions.find((item) => item.id === id);
   if (!found) throw new Error(`Unknown reference instrument: ${id}`);
   return found;
 }

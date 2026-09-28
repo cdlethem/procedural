@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  atEach, createInstrument, definitions, developmentDefinitions, latticeSites, motif, pathMaterial,
+  atEach, createInstrument, definitions, latticeSites, motif, pathMaterial,
   referenceComposition, regionTree, strokeWith, wallpaperOperations, wallpaperSites, wallpaperUsesCellHeight,
   type CompositionSurface, type Path, type PathMaterialSpec, type WallpaperGroup, type WallpaperOptions,
 } from "../dist/index.js";
@@ -263,16 +263,24 @@ test("level ramp scales beads by contour band and cross-path phase separates pat
   assert.deepEqual(again, spread, "the spread is stable per path id");
 });
 
-test("studies under construction are resolvable but absent from every released inventory", () => {
-  const released = new Set(definitions.map((item) => item.id));
-  for (const item of developmentDefinitions) {
-    assert.ok(!released.has(item.id), `${item.id} must not be in definitions`);
-    assert.equal(createInstrument(item.id).technique, item.id);
+test("cross-path phase wraps within one spacing, so no station leaves an open path", () => {
+  const paths = Array.from({ length: 40 }, (_, index) => straight(`line-${index}`, 0));
+  for (const phaseSpread of [0, .5, 1]) for (const phase of [0, .35, .9]) {
+    const surface = new MatrixSurface();
+    strokeWith(surface, paths, pathMaterial({ ...beads, phase, phaseSpread }, [0]));
+    assert.ok(surface.circles.length > 0);
+    for (const [x] of surface.circles) assert.ok(x >= -1e-9 && x <= 200 + 1e-9, `station at ${x} (phase ${phase}, spread ${phaseSpread})`);
   }
-  assert.deepEqual(developmentDefinitions.map((item) => item.id).sort(),
-    ["fold-atlas", "ordered-disorder", "recursive-cells", "wallpaper-motifs"]);
-  const kinds = Object.fromEntries(developmentDefinitions.map((item) => [item.id, referenceComposition(createInstrument(item.id)).kind]));
-  assert.deepEqual(kinds, { "wallpaper-motifs": "wallpaper", "ordered-disorder": "lattice", "recursive-cells": "cells", "fold-atlas": "warp" });
+});
+
+test("the four structural studies are released entries and resolve to their composition kinds", () => {
+  const kinds: Record<string, string> = { "wallpaper-motifs": "wallpaper", "ordered-disorder": "lattice",
+    "recursive-cells": "cells", "fold-atlas": "warp" };
+  const ids = new Set(definitions.map((item) => item.id));
+  for (const [id, kind] of Object.entries(kinds)) {
+    assert.ok(ids.has(id), `${id} is in definitions`);
+    assert.equal(referenceComposition(createInstrument(id)).kind, kind);
+  }
 });
 
 test("invalid structural parameters are rejected rather than clamped", () => {

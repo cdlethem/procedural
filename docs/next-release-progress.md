@@ -88,34 +88,35 @@ The package is **unreleased**. The private host was exercised with an isolated, 
 three-package install; primary private-app pins, tenant services and deployment were not
 changed. Integrate a matching package bundle at the appropriate release milestone.
 
-## In development: structural operators and Fold Atlas (W1 first batch)
+## On main for dev preview: structural operators and Fold Atlas (W1 first batch)
 
 Recursive Cell Worlds (06), Ordered Disorder (07), Wallpaper Motifs (22) and Fold Atlas (26/27
-shape) are built but **not promoted**. They live in `developmentDefinitions`, outside
-`definitions`, package metadata, `sources.json` and the shipped guides, so the private app's
-`toolkit:local` preview does not discover them. The
-[slice contract](composition-structural-operators.md) records the gate, the promotion steps,
-the exact semantics and the review record.
+shape) are on `main` and in the package metadata, so the private app's dev preview shows them.
+They render and pass their tests but are **not accepted as finished studies**. The
+[slice contract](composition-structural-operators.md) records the workflow, the exact semantics
+and the review record.
 
 Root reviewed rendered output (defaults, seeds, all 17 wallpaper groups, every fold map,
 control sweeps, and one map applied to released wallpaper, contour and motif sources) and fixed
 real defects it found: unreadable per-site coloring, incomplete p4m/p4g operation sets, wrong
 mirror angles, a cell tree that only cut horizontally at exact halves, disorder too weak to
-see, and a warp that erased a source's own colors under a fold. Still open before promotion:
-real-interface exploration of each control, layered compositions in both orders,
-responsiveness at large settings, and whether Cell Worlds is distinct enough from Region Quilts.
+see, a warp that erased a source's own colors under a fold, and a phase-spread precedence bug
+that put up to 4% of stations off an open path. Still open: real-interface exploration of each
+control, layered compositions in both orders, responsiveness at large settings, and whether
+Cell Worlds is distinct enough from Region Quilts.
 
 Fold Atlas is the first coordinate-map **consumer**: `warpSites`/`warpPaths` fold any existing
 sites or paths, with an explicit singularity policy, so Motif Ecologies, Wallpaper and Contour
 Scores geometry can be swirled, inverted or unrolled without new per-study code.
 
-The released entries are unchanged: their `definitions` are byte-identical to the reference-slice
-commit and 36 default/variant renders across three seeds match pixel for pixel. The Contour
-Scores bead controls (04) and the `arrow` option are held back with the development studies.
+Existing entries: only the three reference entries changed (an `arrow` mark option, and
+`phaseSpread`/`levelRamp` on Contour Scores, both defaulting to zero). Their 36 default/variant
+renders across three seeds match the reference-slice commit pixel for pixel; the other 117 are
+untouched.
 
-Verification: package build, 57 tests (30 new property tests; mutations of six behaviours
-confirmed to fail them), and a `--allow-dirty` preview build whose tarball contains no
-development entry in metadata, sources or guides. The isolated private host was not run.
+Verification: package build, 58 tests (31 new property tests; mutations of six behaviours
+confirmed to fail them) and the `--allow-dirty` preview build over all 124 instruments. The
+isolated private host was not run.
 
 ## Ownership and unchanged boundaries
 

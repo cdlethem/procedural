@@ -1016,8 +1016,8 @@ were implemented and root-reviewed on 28 September 2026. Use their code, guides 
 evidence for subsequent slices. This completes the selected vertical example set, not the
 whole foundation program or the later waves; publication and the primary host upgrade remain
 separate. The [structural operators slice](composition-structural-operators.md) (Recursive Cell
-Worlds, Ordered Disorder, Wallpaper Motifs) is **in development behind the development gate**;
-it is not part of the reviewed set until root promotes it.
+Worlds, Ordered Disorder, Wallpaper Motifs, Fold Atlas) is on `main` for dev preview after a
+rendered-output review; it is not yet part of the reviewed set, which requires real-interface review.
 
 Use **existing Poisson placement + dot/rosette callbacks**, **existing contour paths +
 ink/stitch materials**, and **existing rectangular partitions + two region fillers**.

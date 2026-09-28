@@ -1,38 +1,26 @@
 # Structural operators slice (W1 first batch)
 
-Status: **in development, 2026-09-28. Not promoted, not in any release inventory.**
-Recursive Cell Worlds, Ordered Disorder, Wallpaper Motifs and Fold Atlas build on the frozen
-[reference slice](composition-reference-slice.md) boundary. Root has reviewed their rendered
-output (defaults, seeds, all seventeen wallpaper groups, every fold map, control sweeps,
-one map applied across released sources) and fixed what that review found. It has **not** yet
-exercised them through the real Studio interface, layered them with other entries, or
-reviewed responsiveness; those gate promotion.
+Status: **on `main`, visible in the private app's dev preview, 2026-09-28. Reviewed from rendered
+output only.** Recursive Cell Worlds, Ordered Disorder, Wallpaper Motifs and Fold Atlas build on the
+frozen [reference slice](composition-reference-slice.md) boundary. Root reviewed their rendered
+output (defaults, seeds, all seventeen wallpaper groups, every fold map, control sweeps, one map
+applied across released sources) and fixed what that review found; the package tests pass and the
+other 117 entries are untouched. Root has **not** yet exercised them through the real Studio
+interface, layered them with other entries, or reviewed responsiveness, so they are not accepted
+as finished studies; those remain the open items below.
 
-## Development gate
+## Workflow
 
-Unreleased studies live in `developmentDefinitions`
-(`packages/instruments/src/adapters/reference-composition-instruments.ts`), not in
-`referenceDefinitions`. They are therefore absent from `definitions`, `metadata.json`,
-`sources.json`, the shipped `guides/` directory and every package consumer inventory
-(`npm run toolkit:local` in the private app builds the working tree with `--allow-dirty`, so
-this is what keeps unfinished work out of its discovery). `createInstrument`,
-`referenceComposition`, `drawInstrument` and `prepareInstrument` resolve them by id, so a
-development view can enumerate `developmentDefinitions` and render them live.
-Their source compiles into the package's `src/` and `dist/` but is not listed anywhere.
+Work in progress lives on dev branches; merging to `main` is what makes an entry visible in the
+private app's dev preview, so merge once it renders successfully and breaks nothing. The
+preview builds the working tree with `tools/build_web_toolkit.mjs --allow-dirty`, so any branch
+that builds there is safe to merge. An earlier `developmentDefinitions` gate was removed for
+this reason: it hid work you wanted to inspect.
 
-Their guides live in `packages/instruments/development/guides/`, which is not shipped: the
-release builder requires the shipped `guides/` file count to equal the metadata guide count.
-
-Promotion, once root has reviewed a study through the real interface:
-
-1. Move its definition from `developmentDefinitions` to `referenceDefinitions`.
-2. `git mv` its guide into `packages/instruments/guides/`.
-3. Add its `metadata.json` entry (real title, description, category, `operationIds`,
-   `source`, `sourceEntry`, `creativeReviewScope`) and regenerate `sources.json`.
-4. Run the package tests and `tools/build_web_toolkit.mjs` (preview or release).
-
-The working tree must build with `--allow-dirty` at every step; run that build before leaving
-work in progress.
+A promoted entry needs its `referenceDefinitions` entry, a `metadata.json` entry (title,
+description, category, `operationIds`, `source`, `sourceEntry`, `creativeReviewScope`), a guide in
+`packages/instruments/guides/` (the release builder requires the guide count to equal the
+metadata guide count), and passing package tests.
 
 ## Artist-facing brief
 
@@ -45,8 +33,9 @@ work in progress.
 - **Wallpaper Motifs (22):** a chosen plane symmetry group repeating one motif. Copies are
   colored by group operation so the symmetry is visible.
 - **Contour Scores additions (04, released entry):** `phaseSpread` and `levelRamp`, both
-  defaulting to zero. These change the released Contour Scores definition and are the only part
-  of this slice visible to consumers today; with defaults they render as before.
+  defaulting to zero, plus the `arrow` mark option on the three reference entries. With defaults
+  the released entries render exactly as before (36 default/variant renders across three seeds
+  compared pixel for pixel against the reference-slice commit).
 
 ## Frozen boundary and semantics
 

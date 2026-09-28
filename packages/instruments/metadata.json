@@ -271,6 +271,58 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "wallpaper-motifs",
+      "title": "Wallpaper Motifs",
+      "description": "Repeat one motif with any of the seventeen plane symmetry groups; marks are colored by operation so the symmetry is visible, with optional stable breaking.",
+      "category": "Layouts",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/wallpaper-motifs.md",
+      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+      "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "ordered-disorder",
+      "title": "Ordered Disorder",
+      "description": "Push a regular lattice out of order with one correlated field of drift, turn, swell and omission, strongest around a chosen focus.",
+      "category": "Layouts",
+      "operationIds": ["field.gradient-noise-2d-01"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/ordered-disorder.md",
+      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+      "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "recursive-cells",
+      "title": "Recursive Cell Worlds",
+      "description": "Grow compartments within compartments by recursive subdivision, then fill the leaves with hatching, motif populations or contour scores.",
+      "category": "Partitions",
+      "operationIds": ["layout.binary-cell-partition-2d", "geometry.hatch-region-lines-2d", "sampling.poisson-disc-2d", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/recursive-cells.md",
+      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+      "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "fold-atlas",
+      "title": "Fold Atlas",
+      "description": "Push a grid through chained coordinate maps that fold, swirl, invert or unroll it; lines and nodes follow the same mapping.",
+      "category": "Transforms",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/fold-atlas.md",
+      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+      "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",

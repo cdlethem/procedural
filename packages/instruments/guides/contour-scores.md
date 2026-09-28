@@ -30,9 +30,11 @@ outside the field's values legitimately produces no curve.
 | **Path material** | Continuous ink, tangent stitches or stations bearing point motifs. |
 | **Stroke weight** | Ink and stitch thickness. Zero gives no stroke. |
 | **Station spacing**, **Station phase** | Set the station rhythm and slide it along the actual polyline, including around corners. Spacing is an upper target: the path is divided into whole, uniformly spaced intervals. |
+| **Cross-path phase** | Give each path its own stable station offset, so neighbouring contours' stitches or beads stop lining up. Zero keeps them aligned. |
+| **Band size ramp** | For beads, shrink the mark from the first contour band toward the last. Zero keeps every bead the same size. |
 | **Path retention** | Omit complete ink paths or individual stitch/bead stations without changing the source. |
-| **Bead motif**, **Bead diameter** | Replace each station's mark with a dot, ring or rosette. |
-| **Bead petals**, **Bead opening**, **Bead line weight** | Edit the nested rosette or ring rather than changing the contour beneath it. Applicable controls appear only for that mark. |
+| **Bead motif**, **Bead diameter** | Replace each station's mark with a dot, ring, rosette or arrow. |
+| **Bead petals**, **Bead opening**, **Bead line weight** | Edit the nested rosette, ring or arrow rather than changing the contour beneath it. Applicable controls appear only for that mark. |
 | **Palette** | Recolor the retained construction. |
 
 Try the hill configuration above with dot beads of diameter 3.5 and station spacing 9.

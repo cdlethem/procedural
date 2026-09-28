@@ -12,7 +12,7 @@ import { creativeDefinitions, creativeDrawers } from "./adapters/creative-instru
 import { reliefDefinitions, drawReliefField } from "./adapters/materials-a-relief.js";
 import { interferenceLaceDefinition, drawInterferenceLace } from "./adapters/interference-lace.js";
 import { materialsBDefinitions, drawMaterialsB } from "./adapters/materials-b.js";
-import { developmentDefinitions, referenceDefinitions, drawReferenceInstrument } from "./adapters/reference-composition-instruments.js";
+import { referenceDefinitions, drawReferenceInstrument } from "./adapters/reference-composition-instruments.js";
 import { referenceComposition, prepareReferenceComposition } from "./composition/reference.js";
 import type { CompositionSurface } from "./composition/types.js";
 import { validateParameterValues } from "./parameter-validation.js";
@@ -48,9 +48,8 @@ export const definitions: readonly InstrumentDefinition[] = [
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions,
 ];
-export { developmentDefinitions };
 const byId = new Map<string, InstrumentDefinition>();
-for (const item of [...definitions, ...developmentDefinitions]) {
+for (const item of definitions) {
   if (byId.has(item.id)) throw new Error(`Duplicate instrument: ${item.id}`);
   const parameterKeys = new Set(item.parameters.map(parameter => parameter.key));
   const defaultKeys = Object.keys(item.defaults);
@@ -128,8 +127,7 @@ export function validateInstrument(value: unknown): InstrumentInput {
 }
 
 const geometryIds = new Set(geometryDefinitions.map(item => item.id));
-const referenceIds: Record<string, true> = Object.fromEntries(
-  [...referenceDefinitions, ...developmentDefinitions].map(item => [item.id, true]));
+const referenceIds: Record<string, true> = Object.fromEntries(referenceDefinitions.map(item => [item.id, true]));
 const referencePalettes: Record<string, readonly number[]> = {
   "motif-ecologies": [0x192b34, 0xcd7052, 0xd5ad68],
   "contour-scores": [0x203949, 0xc26d4f, 0xd2af76],

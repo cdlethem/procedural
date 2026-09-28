@@ -157,7 +157,9 @@ function materialWithin(spec: PathMaterialSpec, palette: readonly number[],
       run.check();
       const a = samples.points[i];
       let x = a[0], y = a[1], segment = samples.sourceSegments[i];
-      let offset = samples.totalLength / intervals * (spec.phase + (spec.phaseSpread > 0 ? unit(path.seed, path.id, "phase") * spec.phaseSpread : 0) % 1), dx = 0, dy = 0;
+      // The per-path spread is added to the phase and wrapped together; with no spread the phase is used as authored.
+      const phase = spec.phaseSpread > 0 ? (spec.phase + unit(path.seed, path.id, "phase") * spec.phaseSpread) % 1 : spec.phase;
+      let offset = samples.totalLength / intervals * phase, dx = 0, dy = 0;
       // Advance on the original edges, not the chord between adjacent stations.
       // The source segment supplies the tangent even for a single closed-loop station.
       for (let remaining = path.points.length; remaining > 0; remaining--) {

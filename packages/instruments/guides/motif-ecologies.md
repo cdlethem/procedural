@@ -22,11 +22,11 @@ move or scale of an already chosen layer, use the host's layer transform instead
 
 | Controls | What changes on the canvas |
 |---|---|
-| **Mark** | Dots, concentric rings or radial rosettes on the same sites. |
+| **Mark** | Dots, concentric rings, radial rosettes or arrows on the same sites. An arrow has a head and a one-sided tail flag, so its orientation is readable; the other marks are round. |
 | **Mark diameter**, **Size variation** | Set the maximum diameter and the stable variation below it. More variation gives small supporting marks among larger accents. |
 | **Petals** | Change the number of radial strokes in a rosette. This appears only for rosettes. |
 | **Interior opening** | Open the rosette center, or change the offset between a ring's two circumferences. |
-| **Line weight** | Change outlines and petals, not source separation. Dots have no outline. |
+| **Line weight** | Change outlines, petals and arrow strokes, not source separation. Dots have no outline. |
 | **Mark retention** | Omit marks without resampling. Raising it restores the same omitted marks, including their scale. |
 | **Palette** | Recolor the existing marks without rerolling the population or its size hierarchy. |
 
