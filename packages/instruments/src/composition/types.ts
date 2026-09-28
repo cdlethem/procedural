@@ -29,13 +29,18 @@ export interface Site {
   readonly angle: number;
   /** Positive: uniform scale. Negative: mirror across the site's frame axis. */
   readonly scale: number;
+  /**
+   * Optional structural palette index (e.g. wallpaper operation, lattice exception). Stock marks
+   * use it instead of a per-site random hue so colour can carry structure.
+   */
+  readonly tone?: number;
 }
 /** A lattice site keeps its exact grid origin and structural exception state. */
 export interface LatticeSite extends Site {
   readonly origin: Point;
   readonly anchor: boolean;
   readonly kept: boolean;
-  /** True when the site is displaced, rotated, rescaled, anchored-as-exception or omitted. */
+  /** True when the site is omitted or strongly disturbed (over 70% of a stated disorder limit). */
   readonly exception: boolean;
 }
 export interface Path {

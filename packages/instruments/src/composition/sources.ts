@@ -4,7 +4,7 @@ import { poissonPoints, placementPackingInstrumentDefinitions } from "../adapter
 import { panelLeaves, regionFacetInstrumentDefinitions } from "../adapters/region-facet-instruments.js";
 import { componentSeed } from "./core.js";
 import type { CellTreeOptions, ContourOptions, LatticeOptions, LatticeSite, PartitionOptions, Path,
-  PoissonOptions, Region, RegionTreeNode, Site, WallpaperOptions } from "./types.js";
+  PoissonOptions, Region, RegionTreeNode, Site, WallpaperGroup, WallpaperOptions } from "./types.js";
 
 const siteCache = new Map<string, readonly Site[]>();
 const pathCache = new Map<string, readonly Path[]>();
@@ -148,69 +148,141 @@ function finite(label: string, value: number, min: number, max: number): void {
     throw new Error(`${label} must be finite and in [${min}, ${max}]`);
 }
 
-/** Lattice basis and operations per explicit group; centered and hexagonal cells are documented. */
 type WallpaperOp = readonly [rotation: number, mirror: boolean, tx: number, ty: number];
+type Lattice = "rect" | "centered" | "square" | "hex";
 const TAU = 2 * Math.PI;
-function wallpaperOps(group: WallpaperOptions["group"]): { a: readonly [number, number, number, number]; ops: readonly WallpaperOp[] } {
-  const [w, h] = [1, 1];
-  const c: readonly [number, number, number, number] = [w, 0, w / 2, h / 2];
-  const hex: readonly [number, number, number, number] = [w, 0, w / 2, h * Math.sqrt(3) / 2];
-  switch (group) {
-    case "p1": return { a: [w, 0, 0, h], ops: [[0, false, 0, 0]] };
-    case "p2": return { a: [w, 0, 0, h], ops: [[0, false, 0, 0], [Math.PI, false, 0, 0]] };
-    case "pm": return { a: [w, 0, 0, h], ops: [[0, false, 0, 0], [0, true, 0, 0]] };
-    case "pg": return { a: [w, 0, 0, h], ops: [[0, false, 0, 0], [0, true, .5, 0]] };
-    case "cm": return { a: c, ops: [[0, false, 0, 0], [0, true, 0, 0]] };
-    case "pmm": return { a: [w, 0, 0, h], ops: [[0, false, 0, 0], [Math.PI, false, 0, 0], [0, true, 0, 0], [Math.PI, true, 0, 0]] };
-    case "pmg": return { a: [w, 0, 0, h], ops: [[0, false, 0, 0], [Math.PI, false, 0, 0], [0, true, 0, 0], [0, true, 0, .5]] };
-    case "pgg": return { a: [w, 0, 0, h], ops: [[0, false, 0, 0], [Math.PI, false, 0, 0], [0, true, .5, 0], [0, true, 0, .5]] };
-    case "cmm": return { a: c, ops: [[0, false, 0, 0], [Math.PI, false, 0, 0], [0, true, 0, 0], [Math.PI, true, 0, 0]] };
-    case "p4": return { a: [w, 0, 0, w], ops: [[0, false, 0, 0], [Math.PI / 2, false, 0, 0], [Math.PI, false, 0, 0], [3 * Math.PI / 2, false, 0, 0]] };
-    case "p4m": return { a: [w, 0, 0, w], ops: [[0, false, 0, 0], [Math.PI / 2, false, 0, 0], [Math.PI, false, 0, 0], [3 * Math.PI / 2, false, 0, 0], [0, true, 0, 0], [Math.PI / 4, true, 0, 0]] };
-    case "p4g": return { a: [w, 0, 0, w], ops: [[0, false, 0, 0], [Math.PI / 2, false, 0, 0], [Math.PI, false, 0, 0], [3 * Math.PI / 2, false, 0, 0], [0, true, .5, 0], [Math.PI / 4, true, .5, .5]] };
-    case "p3": return { a: hex, ops: [[0, false, 0, 0], [TAU / 3, false, 0, 0], [2 * TAU / 3, false, 0, 0]] };
-    case "p3m1": return { a: hex, ops: [[0, false, 0, 0], [TAU / 3, false, 0, 0], [2 * TAU / 3, false, 0, 0], [0, true, 0, 0], [TAU / 6, true, 0, 0], [TAU / 3, true, 0, 0]] };
-    case "p31m": return { a: hex, ops: [[0, false, 0, 0], [TAU / 3, false, 0, 0], [2 * TAU / 3, false, 0, 0], [TAU / 12, true, 0, 0], [TAU / 4, true, 0, 0], [5 * TAU / 12, true, 0, 0]] };
-    case "p6": return { a: hex, ops: [[0, false, 0, 0], [TAU / 6, false, 0, 0], [TAU / 3, false, 0, 0], [TAU / 2, false, 0, 0], [2 * TAU / 3, false, 0, 0], [5 * TAU / 6, false, 0, 0]] };
-    case "p6m": return { a: hex, ops: [[0, false, 0, 0], [TAU / 6, false, 0, 0], [TAU / 3, false, 0, 0], [TAU / 2, false, 0, 0], [2 * TAU / 3, false, 0, 0], [5 * TAU / 6, false, 0, 0], [0, true, 0, 0], [TAU / 6, true, 0, 0], [TAU / 3, true, 0, 0], [TAU / 2, true, 0, 0], [2 * TAU / 3, true, 0, 0], [5 * TAU / 6, true, 0, 0]] };
-    default: throw new Error(`Unsupported wallpaper group: ${String(group)}`);
+/**
+ * Each group is its lattice family plus generators (rotation, mirror across the x-axis before
+ * rotating, translation in lattice-basis fractions). The full operation set is the closure of the
+ * generators modulo the lattice, so a table cannot silently omit elements.
+ */
+const wallpaperGenerators: Record<WallpaperGroup, { lattice: Lattice; generators: readonly WallpaperOp[] }> = {
+  p1: { lattice: "rect", generators: [] },
+  p2: { lattice: "rect", generators: [[Math.PI, false, 0, 0]] },
+  pm: { lattice: "rect", generators: [[0, true, 0, 0]] },
+  pg: { lattice: "rect", generators: [[0, true, .5, 0]] },
+  cm: { lattice: "centered", generators: [[0, true, 0, 0]] },
+  pmm: { lattice: "rect", generators: [[0, true, 0, 0], [Math.PI, true, 0, 0]] },
+  pmg: { lattice: "rect", generators: [[Math.PI, false, 0, 0], [0, true, .5, 0]] },
+  pgg: { lattice: "rect", generators: [[Math.PI, false, 0, 0], [Math.PI, true, .5, .5]] },
+  cmm: { lattice: "centered", generators: [[0, true, 0, 0], [Math.PI, true, 0, 0]] },
+  p4: { lattice: "square", generators: [[Math.PI / 2, false, 0, 0]] },
+  p4m: { lattice: "square", generators: [[Math.PI / 2, false, 0, 0], [0, true, 0, 0]] },
+  p4g: { lattice: "square", generators: [[Math.PI / 2, false, 0, 0], [Math.PI, true, .5, .5]] },
+  p3: { lattice: "hex", generators: [[TAU / 3, false, 0, 0]] },
+  p3m1: { lattice: "hex", generators: [[TAU / 3, false, 0, 0], [0, true, 0, 0]] },
+  p31m: { lattice: "hex", generators: [[TAU / 3, false, 0, 0], [TAU / 6, true, 0, 0]] },
+  p6: { lattice: "hex", generators: [[TAU / 6, false, 0, 0]] },
+  p6m: { lattice: "hex", generators: [[TAU / 6, false, 0, 0], [0, true, 0, 0]] },
+};
+/** Lattice vectors for cell width w and height h; square and hexagonal cells use one edge length. */
+function cellVectors(lattice: Lattice, w: number, h: number): readonly [number, number, number, number] {
+  switch (lattice) {
+    case "rect": return [w, 0, 0, h];
+    case "centered": return [w, 0, w / 2, h / 2];
+    case "square": return [w, 0, 0, w];
+    case "hex": return [w, 0, w / 2, w * Math.sqrt(3) / 2];
   }
 }
+/** True when the group's lattice is fixed by one edge length (cell height has no effect). */
+export function wallpaperUsesCellHeight(group: WallpaperGroup): boolean {
+  const { lattice } = wallpaperGenerators[group];
+  return lattice === "rect" || lattice === "centered";
+}
+type Affine = readonly [a: number, b: number, c: number, d: number, tx: number, ty: number];
+const wallpaperOperationCache = new Map<WallpaperGroup, readonly WallpaperOp[]>();
+/** Every distinct operation of the group modulo its lattice, identity first, in stable order. */
+export function wallpaperOperations(group: WallpaperGroup): readonly WallpaperOp[] {
+  const cached = wallpaperOperationCache.get(group);
+  if (cached) return cached;
+  const spec = wallpaperGenerators[group];
+  if (!spec) throw new Error(`Unsupported wallpaper group: ${String(group)}`);
+  const [ax, ay, bx, by] = cellVectors(spec.lattice, 1, 1);
+  const det = ax * by - ay * bx;
+  const toAffine = ([theta, mirror, u, v]: WallpaperOp): Affine => {
+    const s = mirror ? -1 : 1, c = Math.cos(theta), n = Math.sin(theta);
+    return [c, -s * n, n, s * c, u * ax + v * bx, u * ay + v * by];
+  };
+  const compose = (p: Affine, q: Affine): Affine => [
+    p[0] * q[0] + p[1] * q[2], p[0] * q[1] + p[1] * q[3], p[2] * q[0] + p[3] * q[2], p[2] * q[1] + p[3] * q[3],
+    p[0] * q[4] + p[1] * q[5] + p[4], p[2] * q[4] + p[3] * q[5] + p[5],
+  ];
+  const clean = (value: number) => Math.round(value * 1e6) / 1e6 + 0;
+  const reduce = (p: Affine): Affine => {
+    const u = (p[4] * by - p[5] * bx) / det, v = (ax * p[5] - ay * p[4]) / det;
+    const fu = u - Math.floor(u + 1e-9), fv = v - Math.floor(v + 1e-9);
+    return [clean(p[0]), clean(p[1]), clean(p[2]), clean(p[3]), fu * ax + fv * bx, fu * ay + fv * by];
+  };
+  const key = (p: Affine): string => {
+    const u = (p[4] * by - p[5] * bx) / det, v = (ax * p[5] - ay * p[4]) / det;
+    return [p[0], p[1], p[2], p[3], clean(u), clean(v)].map(clean).join(",");
+  };
+  const generators = spec.generators.map(toAffine);
+  const found = new Map<string, Affine>();
+  const identity = reduce([1, 0, 0, 1, 0, 0]);
+  found.set(key(identity), identity);
+  for (let changed = true; changed;) {
+    changed = false;
+    for (const element of [...found.values()]) for (const generator of generators) {
+      const next = reduce(compose(generator, element));
+      if (!found.has(key(next))) {
+        found.set(key(next), next); changed = true;
+        if (found.size > 48) throw new Error(`Wallpaper group ${group} did not close`);
+      }
+    }
+  }
+  const ops = [...found.values()].map((p): WallpaperOp => {
+    const mirror = p[0] * p[3] - p[1] * p[2] < 0;
+    const theta = ((Math.atan2(p[2], p[0]) % TAU) + TAU) % TAU;
+    const u = (p[4] * by - p[5] * bx) / det, v = (ax * p[5] - ay * p[4]) / det;
+    return [clean(theta), mirror, clean(u), clean(v)];
+  }).sort((p, q) => Number(p[1]) - Number(q[1]) || p[0] - q[0] || p[2] - q[2] || p[3] - q[3]);
+  const frozen = Object.freeze(ops.map((op) => Object.freeze(op) as WallpaperOp));
+  wallpaperOperationCache.set(group, frozen);
+  return frozen;
+}
 
+const WALLPAPER_INSTANCE_LIMIT = 6000;
 /** Instance transforms for the stated group; exact duplicate images are removed by fingerprint. */
 export function wallpaperSites(options: WallpaperOptions): readonly Site[] {
   const { seed, group, cellWidth, cellHeight, centerX, centerY, width, height, motifOffsetX, motifOffsetY, margin, breakAmount, breakDensity } = options;
   sourceSeed(seed);
   finite("Wallpaper cell width", cellWidth, 4, 4096);
   finite("Wallpaper cell height", cellHeight, 4, 4096);
+  finite("Wallpaper width", width, 1, 4096);
+  finite("Wallpaper height", height, 1, 4096);
   finite("Wallpaper motif offset X", motifOffsetX, 0, 1);
   finite("Wallpaper motif offset Y", motifOffsetY, 0, 1);
   finite("Wallpaper margin", margin, 0, 512);
   finite("Wallpaper break amount", breakAmount, 0, 1);
   finite("Wallpaper break density", breakDensity, 0, 1);
-  const key = JSON.stringify([seed, group, cellWidth, cellHeight, centerX, centerY, width, height, motifOffsetX, motifOffsetY, margin, breakAmount, breakDensity]);
+  const spec = wallpaperGenerators[group];
+  if (!spec) throw new Error(`Unsupported wallpaper group: ${String(group)}`);
+  const key = JSON.stringify([seed, group, cellWidth, wallpaperUsesCellHeight(group) ? cellHeight : 0, centerX, centerY, width, height, motifOffsetX, motifOffsetY, margin, breakAmount, breakDensity]);
   return memoized(wallpaperCache, key, () => {
-    const { a, ops } = wallpaperOps(group);
-    const ax = a[0] * cellWidth, ay = a[1] * cellWidth, bx = a[2] * cellHeight, by = a[3] * cellHeight;
-    const ox = motifOffsetX * cellWidth, oy = motifOffsetY * cellHeight;
-    const left = centerX - width / 2 - margin, top = centerY - height / 2 - margin;
-    const right = centerX + width / 2 + margin, bottom = centerY + height / 2 + margin;
+    const ops = wallpaperOperations(group);
+    const [ax, ay, bx, by] = cellVectors(spec.lattice, cellWidth, cellHeight);
+    const det = Math.abs(ax * by - ay * bx);
+    const halfW = width / 2 + margin, halfH = height / 2 + margin;
+    if ((halfW * 2) * (halfH * 2) / det * ops.length > WALLPAPER_INSTANCE_LIMIT)
+      throw new Error("Wallpaper would exceed the instance limit; enlarge the cell or shrink the viewport");
+    const [ox, oy] = [motifOffsetX * ax + motifOffsetY * bx, motifOffsetX * ay + motifOffsetY * by];
+    const rowGap = Math.min(det / Math.hypot(ax, ay), det / Math.hypot(bx, by));
+    const span = Math.ceil((Math.hypot(halfW, halfH) + Math.hypot(ax, ay) + Math.hypot(bx, by)) / rowGap) + 1;
     const seen = new Set<string>();
     const sites: Site[] = [];
-    const span = Math.ceil(width / Math.min(cellWidth, cellHeight)) + 4;
     for (let i = -span; i <= span; i++) {
       for (let j = -span; j <= span; j++) {
-        const baseX = i * ax + j * bx, baseY = i * ay + j * by;
         for (let op = 0; op < ops.length; op++) {
-          const [theta, mirror, tx, ty] = ops[op];
+          const [theta, mirror, u, v] = ops[op];
           const cos = Math.cos(theta), sin = Math.sin(theta);
           const px = ox, py = mirror ? -oy : oy;
-          const originX = centerX + baseX + tx * cellWidth + px * cos - py * sin;
-          const originY = centerY + baseY + ty * cellHeight + px * sin + py * cos;
-          const fingerprint = `${Math.round(originX * 1e4)}|${Math.round(originY * 1e4)}|${Math.round((((theta % TAU) + TAU) % TAU) * 1e4)}|${mirror ? 1 : 0}`;
+          const originX = centerX + (i + u) * ax + (j + v) * bx + px * cos - py * sin;
+          const originY = centerY + (i + u) * ay + (j + v) * by + px * sin + py * cos;
+          if (Math.abs(originX - centerX) > halfW || Math.abs(originY - centerY) > halfH) continue;
+          const fingerprint = `${Math.round(originX * 1e4)}|${Math.round(originY * 1e4)}|${Math.round(theta * 1e4)}|${mirror ? 1 : 0}`;
           if (seen.has(fingerprint)) continue;
           seen.add(fingerprint);
-          if (originX < left || originX > right || originY < top || originY > bottom) continue;
           const id = `wall:${i}:${j}:${op}`;
           const siteSeed = componentSeed(seed, id, "site");
           let angle = theta, scale = mirror ? -1 : 1, x = originX, y = originY;
@@ -222,7 +294,7 @@ export function wallpaperSites(options: WallpaperOptions): readonly Site[] {
             const s = 1 + (unit(siteSeed, id, "breakScale") - .5) * breakAmount;
             scale = mirror ? -s : s;
           }
-          sites.push(Object.freeze({ id, seed: siteSeed, angle, scale,
+          sites.push(Object.freeze({ id, seed: siteSeed, angle, scale, tone: op,
             position: Object.freeze([x, y] as const) }));
         }
       }
@@ -230,6 +302,7 @@ export function wallpaperSites(options: WallpaperOptions): readonly Site[] {
     return Object.freeze(sites.sort((p, q) => p.id.localeCompare(q.id, "en", { numeric: true })));
   });
 }
+
 const wallpaperCache = new Map<string, readonly Site[]>();
 const latticeCache = new Map<string, readonly LatticeSite[]>();
 
@@ -263,36 +336,39 @@ export function latticeSites(options: LatticeOptions): readonly LatticeSite[] {
         const id = `lat:${col}:${row}`;
         const siteSeed = componentSeed(seed, id, "site");
         const anchor = anchors > 0 && unit(siteSeed, id, "anchor") < anchors;
-        const dx = originX - focalX, dy = originY - focalY;
-        const distance = focalRadius > 0 ? Math.hypot(dx, dy) / focalRadius : 0;
-        const falloff = focalRadius > 0 ? Math.max(0, 1 - distance) ** 2 : 1;
+        const stableKeep = retention >= 1 || unit(siteSeed, id, "keep") < retention;
+        const distance = focalRadius > 0 ? Math.hypot(originX - focalX, originY - focalY) / focalRadius : 0;
+        const reach = focalRadius > 0 ? Math.max(0, 1 - distance) : 1;
+        const falloff = reach * reach * (3 - 2 * reach);
         if (anchor || falloff === 0) {
-          const kept = retention >= 1 || unit(siteSeed, id, "keep") < retention;
           sites.push(Object.freeze({ id, seed: siteSeed, origin: Object.freeze([originX, originY] as const),
-            position: Object.freeze([originX, originY] as const), angle: 0, scale: 1, anchor, kept,
-            exception: !kept }));
+            position: Object.freeze([originX, originY] as const), angle: 0, scale: 1, anchor,
+            kept: stableKeep, exception: false, tone: anchor ? 2 : 0 }));
           continue;
         }
+        // Value noise clusters near 0.5; stretch it so each amplitude can reach its stated limit.
         const nx = col / correlation, ny = row / correlation;
-        const sample = (offset: number) => field.sample(nx + offset, ny - offset * 0.618);
-        const wobble = falloff * (1 - unit(siteSeed, id, "calm"));
-        const positionX = originX + (sample(0) - .5) * 2 * displacement * cellW * wobble;
-        const positionY = originY + (sample(1000) - .5) * 2 * displacement * cellH * wobble;
-        const angle = (sample(2000) - .5) * 2 * rotation * wobble;
-        const siteScale = 1 + (sample(3000) - .5) * 2 * scale * wobble;
-        const omitted = omission > 0 && sample(4000) < omission * wobble;
-        const kept = !omitted && (retention >= 1 || unit(siteSeed, id, "keep") < retention);
-        const exception = omitted || !kept || Math.hypot(positionX - originX, positionY - originY) > 1e-6
-          || Math.abs(angle) > 1e-6 || Math.abs(siteScale - 1) > 1e-6;
-        sites.push(Object.freeze({ id, seed: siteSeed, anchor, kept, exception,
+        const sample = (offset: number) =>
+          Math.max(-1, Math.min(1, (field.sample(nx + offset, ny - offset * 0.618) - .5) * 3.2));
+        const shiftX = sample(0), shiftY = sample(1000), turn = sample(2000), grow = sample(3000);
+        const positionX = originX + shiftX * displacement * cellW * falloff;
+        const positionY = originY + shiftY * displacement * cellH * falloff;
+        const angle = turn * rotation * falloff;
+        const siteScale = 1 + grow * scale * falloff;
+        const omitted = omission > 0 && (sample(4000) + 1) / 2 < omission * falloff;
+        const disturbance = falloff * Math.max(displacement > 0 ? Math.max(Math.abs(shiftX), Math.abs(shiftY)) : 0,
+          rotation > 0 ? Math.abs(turn) : 0, scale > 0 ? Math.abs(grow) : 0);
+        const exception = omitted || disturbance > .7;
+        sites.push(Object.freeze({ id, seed: siteSeed, anchor, kept: !omitted && stableKeep, exception,
           origin: Object.freeze([originX, originY] as const), position: Object.freeze([positionX, positionY] as const),
-          angle, scale: siteScale }));
+          angle, scale: siteScale, tone: exception ? 1 : 0 }));
       }
     }
     return Object.freeze(sites);
   });
 }
 
+const CUT_GRID = 8;
 const treeCache = new Map<string, readonly RegionTreeNode[]>();
 
 /** Bounded recursive subdivision reusing the existing binary cut policy per node. */
@@ -308,8 +384,7 @@ export function regionTree(options: CellTreeOptions): readonly RegionTreeNode[] 
   finite("Cell tree child retention", childRetention, 0, 1);
   const key = JSON.stringify([seed, width, height, centerX, centerY, depth, minSize, stopChance, childRetention, axis, bias]);
   return memoized(treeCache, key, () => {
-    const q = { ...regionFacetInstrumentDefinitions[1].defaults, width: 400, height: 400,
-      centerX: 200, centerY: 200, columns: 2, rows: 2, attempts: 1, axis, cutBias: bias, retention: 1 };
+    const q = { ...regionFacetInstrumentDefinitions[1].defaults, attempts: 1, axis, cutBias: bias, retention: 1 };
     const rootLeft = centerX - width / 2, rootTop = centerY - height / 2;
     const nodes: RegionTreeNode[] = [];
     const stack: Array<{ id: string; parentId: string | null; depth: number; bounds: readonly [number, number, number, number] }> =
@@ -326,18 +401,20 @@ export function regionTree(options: CellTreeOptions): readonly RegionTreeNode[] 
           bounds: Object.freeze([l, t, r, b] as const), seed: nodeSeed, terminal: true }));
         continue;
       }
-      const panelW = r - l, panelH = b - t;
-      const localQ = { ...q, width: 400, height: 400,
-        centerX: 200, centerY: 200 };
-      const leaves = panelLeaves(localQ, componentSeed(seed, node.id, "cut"));
+      // The partition chooses LONGEST from its grid shape, so encode the node's aspect in the grid.
+      const panelW = r - l, panelH = b - t, k = 400 / Math.max(panelW, panelH);
+      const columns = Math.max(2, Math.round(CUT_GRID * panelW / Math.max(panelW, panelH)));
+      const rows = Math.max(2, Math.round(CUT_GRID * panelH / Math.max(panelW, panelH)));
+      const leaves = panelLeaves({ ...q, columns, rows, width: panelW * k, height: panelH * k,
+        centerX: panelW * k / 2, centerY: panelH * k / 2 }, componentSeed(seed, node.id, "cut"));
       const children: Array<{ id: string; parentId: string; depth: number; bounds: readonly [number, number, number, number] }> = [];
       for (let index = 0; index < leaves.length; index++) {
         const childId = `${node.id}/${index}`;
-        if (childRetention < 1 && unit(nodeSeed, childId, "keep") >= childRetention) continue;
+        // The root's children are always kept so the world can never lose half its footprint outright.
+        if (childRetention < 1 && node.depth > 0 && unit(nodeSeed, childId, "keep") >= childRetention) continue;
         const leaf = leaves[index];
         children.push({ id: childId, parentId: node.id, depth: node.depth + 1,
-          bounds: [l + leaf.bounds[0] / 400 * panelW, t + leaf.bounds[1] / 400 * panelH,
-            l + leaf.bounds[2] / 400 * panelW, t + leaf.bounds[3] / 400 * panelH] });
+          bounds: [l + leaf.bounds[0] / k, t + leaf.bounds[1] / k, l + leaf.bounds[2] / k, t + leaf.bounds[3] / k] });
       }
       if (children.length === 0) {
         nodes.push(Object.freeze({ id: node.id, parentId: node.parentId, depth: node.depth,

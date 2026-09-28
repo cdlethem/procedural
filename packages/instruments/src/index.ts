@@ -12,7 +12,7 @@ import { creativeDefinitions, creativeDrawers } from "./adapters/creative-instru
 import { reliefDefinitions, drawReliefField } from "./adapters/materials-a-relief.js";
 import { interferenceLaceDefinition, drawInterferenceLace } from "./adapters/interference-lace.js";
 import { materialsBDefinitions, drawMaterialsB } from "./adapters/materials-b.js";
-import { referenceDefinitions, drawReferenceInstrument } from "./adapters/reference-composition-instruments.js";
+import { developmentDefinitions, referenceDefinitions, drawReferenceInstrument } from "./adapters/reference-composition-instruments.js";
 import { referenceComposition, prepareReferenceComposition } from "./composition/reference.js";
 import type { CompositionSurface } from "./composition/types.js";
 import { validateParameterValues } from "./parameter-validation.js";
@@ -25,7 +25,7 @@ export type {
   WallpaperGroup, MotifSpec, PathMaterialSpec, RegionFillSpec, ReferenceComposition,
 } from "./composition/types.js";
 export { atEach, strokeWith, inside, componentSeed, createCompositionRun } from "./composition/core.js";
-export { poissonSites, contourPaths, partitionRegions, wallpaperSites, latticeSites, regionTree } from "./composition/sources.js";
+export { poissonSites, contourPaths, partitionRegions, wallpaperSites, wallpaperOperations, wallpaperUsesCellHeight, latticeSites, regionTree } from "./composition/sources.js";
 export { motif, pathMaterial, regionFill } from "./composition/materials.js";
 export { referenceComposition, drawReferenceComposition, prepareReferenceComposition } from "./composition/reference.js";
 
@@ -47,8 +47,9 @@ export const definitions: readonly InstrumentDefinition[] = [
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions,
 ];
+export { developmentDefinitions };
 const byId = new Map<string, InstrumentDefinition>();
-for (const item of definitions) {
+for (const item of [...definitions, ...developmentDefinitions]) {
   if (byId.has(item.id)) throw new Error(`Duplicate instrument: ${item.id}`);
   const parameterKeys = new Set(item.parameters.map(parameter => parameter.key));
   const defaultKeys = Object.keys(item.defaults);
@@ -126,14 +127,15 @@ export function validateInstrument(value: unknown): InstrumentInput {
 }
 
 const geometryIds = new Set(geometryDefinitions.map(item => item.id));
-const referenceIds: Record<string, true> = Object.fromEntries(referenceDefinitions.map(item => [item.id, true]));
+const referenceIds: Record<string, true> = Object.fromEntries(
+  [...referenceDefinitions, ...developmentDefinitions].map(item => [item.id, true]));
 const referencePalettes: Record<string, readonly number[]> = {
   "motif-ecologies": [0x192b34, 0xcd7052, 0xd5ad68],
   "contour-scores": [0x203949, 0xc26d4f, 0xd2af76],
   "region-quilts": [0x263a43, 0xb0614d, 0xd7ac64],
-  "wallpaper-motifs": [0x1b2430, 0xd8a24a, 0x7fa08c, 0xe8e3d5],
-  "ordered-disorder": [0x2a2320, 0xc46a3f, 0x5f7d8c, 0xe6d9b8],
-  "recursive-cells": [0x22301f, 0xc9a24b, 0x8a6f5a, 0xdfe4d5],
+  "wallpaper-motifs": [0x1b2430, 0xc27a1f, 0x3f7a66, 0xa8452f],
+  "ordered-disorder": [0x2a2320, 0xc0452a, 0x2f6f8f],
+  "recursive-cells": [0x22301f, 0xb5832a, 0x8a4a35, 0x3f6572],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));

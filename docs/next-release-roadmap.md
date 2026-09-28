@@ -1012,17 +1012,12 @@ semantics. Root owns F1/F2, public boundaries, selection and final integration.
 ### First vertical slice: decisive before broad implementation
 
 The first three [reference examples and implementation conventions](composition-reference-slice.md)
-and the [structural operators slice](composition-structural-operators.md) were implemented
-and root-reviewed. Structural operators adds Recursive Cell Worlds, Ordered Disorder,
-Wallpaper Motifs, the arrow mark, and contour-score phaseSpread/levelRamp controls.
-Use their code, guides and bound evidence for subsequent slices. This completes the
-structural field operator batch, not the full W1 program; publication and the primary host
-upgrade remain separate.
-
-The first three [reference examples and implementation conventions](composition-reference-slice.md)
 were implemented and root-reviewed on 28 September 2026. Use their code, guides and bound
 evidence for subsequent slices. This completes the selected vertical example set, not the
-whole foundation program or the later waves; publication and the primary host upgrade remain separate.
+whole foundation program or the later waves; publication and the primary host upgrade remain
+separate. The [structural operators slice](composition-structural-operators.md) (Recursive Cell
+Worlds, Ordered Disorder, Wallpaper Motifs) is **in development behind the development gate**;
+it is not part of the reviewed set until root promotes it.
 
 Use **existing Poisson placement + dot/rosette callbacks**, **existing contour paths +
 ink/stitch materials**, and **existing rectangular partitions + two region fillers**.

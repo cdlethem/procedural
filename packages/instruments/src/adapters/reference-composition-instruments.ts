@@ -18,7 +18,9 @@ const n = (key: string, label: string, description: string, min: number, max: nu
 const select = (key: string, label: string, description: string, options: string[], group: string,
   visibleWhen?: Condition): Parameter => control(choice(key, label, description, options), group, visibleWhen);
 
-const pointMarks = ["dot", "rings", "rosette", "arrow"];
+const pointMarks = ["dot", "rings", "rosette"];
+/** The arrow mark is under review; released entries keep the original three-mark vocabulary. */
+const developmentMarks = [...pointMarks, "arrow"];
 const materials = ["ink", "stitch", "beads"];
 export const referenceDefinitions: InstrumentDefinition[] = [
   {
@@ -70,8 +72,6 @@ export const referenceDefinitions: InstrumentDefinition[] = [
       n("weight", "Stroke weight", "Ink/stitch line thickness.", .2, 5, .1, 0, 50, "Material", { material: ["ink", "stitch"] }),
       n("spacing", "Station spacing", "Distance between stitch or bead stations.", 4, 45, .5, .5, 1000, "Material", { material: ["stitch", "beads"] }),
       n("phase", "Station phase", "Slides stations along a path by a fraction of their spacing.", 0, 1, .01, 0, 1, "Material", { material: ["stitch", "beads"] }),
-      n("phaseSpread", "Cross-path phase", "Stable spread of station phase between paths.", 0, 1, .01, 0, 1, "Material", { material: ["stitch", "beads"] }),
-      n("levelRamp", "Band size ramp", "Shrink bead marks from the first toward the last contour band.", 0, 1, .01, 0, 1, "Material", { material: ["beads"] }),
       n("retention", "Path retention", "Stable omission of paths or their stations.", 0, 1, .01, 0, 1, "Material"),
       select("beadMark", "Bead motif", "Nested point vocabulary on each contour station.", pointMarks, "Material/Bead mark", { material: ["beads"] }),
       n("beadSize", "Bead diameter", "Size of each bead motif.", 1, 26, .5, 0, 500, "Material/Bead mark", { material: ["beads"] }),
@@ -82,7 +82,7 @@ export const referenceDefinitions: InstrumentDefinition[] = [
     defaults: { source: "noise", centerX: 320, centerY: 320, width: 474, height: 460, resolution: 54,
       frequency: 3.1, aspect: 1.5, hillCount: 5, hillRadius: .23, levelBase: -.55,
       levelStep: .085, levels: 12, rotation: 12, material: "stitch", weight: 1.4,
-      spacing: 8, phase: .35, phaseSpread: 0, levelRamp: 0, retention: .93,
+      spacing: 8, phase: .35, retention: .93,
       beadMark: "rings", beadSize: 7, beadPetals: 6, beadWeight: 1, beadOpening: .42 },
   },
   {
@@ -122,6 +122,14 @@ export const referenceDefinitions: InstrumentDefinition[] = [
       contourField: "noise", contourFrequency: 1.8,
       material: "ink", materialSpacing: 13, beadMark: "dot", beadSize: 6, beadPetals: 7 },
   },
+];
+
+/**
+ * Studies under active construction. They are deliberately absent from `definitions`, the
+ * package metadata and every consumer inventory until root reviews them through the real
+ * interface and promotes them (move the entry into `referenceDefinitions`, add its metadata).
+ */
+export const developmentDefinitions: InstrumentDefinition[] = [
   {
     id: "wallpaper-motifs", title: "Wallpaper Motifs",
     description: "A stated plane symmetry group stamps one motif across the plane, with stable breaking.",
@@ -130,7 +138,8 @@ export const referenceDefinitions: InstrumentDefinition[] = [
       select("group", "Symmetry group", "One of the seventeen plane groups; changes the instance lattice and operations.",
         ["p1", "p2", "pm", "pg", "cm", "pmm", "pmg", "pgg", "cmm", "p4", "p4m", "p4g", "p3", "p3m1", "p31m", "p6", "p6m"], "Source"),
       n("cellWidth", "Cell width", "First lattice vector length in canvas units.", 16, 220, 1, 4, 4096, "Source"),
-      n("cellHeight", "Cell height", "Second lattice vector length in canvas units.", 16, 220, 1, 4, 4096, "Source"),
+      n("cellHeight", "Cell height", "Second lattice vector length; square and hexagonal groups use the cell width alone.", 16, 220, 1, 4, 4096, "Source",
+        { group: ["p1", "p2", "pm", "pg", "cm", "pmm", "pmg", "pgg", "cmm"] }),
       n("centerX", "Center X", "Horizontal viewport center.", 80, 560, 1, -320, 960, "Source"),
       n("centerY", "Center Y", "Vertical viewport center.", 80, 560, 1, -320, 960, "Source"),
       n("width", "Viewport width", "Canvas width over which the pattern is shown.", 80, 640, 1, 1, 1600, "Source"),
@@ -140,7 +149,7 @@ export const referenceDefinitions: InstrumentDefinition[] = [
       n("margin", "Viewport margin", "Instances this far past the edge remain visible.", 0, 120, 1, 0, 512, "Source"),
       n("breakAmount", "Breaking amount", "Bounded position, rotation and scale deviation of broken instances.", 0, 1, .01, 0, 1, "Break"),
       n("breakDensity", "Breaking density", "Stable fraction of instances that break the symmetry.", 0, 1, .01, 0, 1, "Break"),
-      select("mark", "Mark", "Swap the same instances between dots, rings, rosettes and arrows.", pointMarks, "Mark"),
+      select("mark", "Mark", "Swap the same instances between dots, rings, rosettes and arrows.", developmentMarks, "Mark"),
       n("size", "Mark diameter", "Nominal diameter of each mark.", 1, 75, .5, 0, 500, "Mark"),
       n("petals", "Petals", "Radial strokes in each rosette.", 3, 18, 1, 1, 48, "Mark", { mark: ["rosette"] }),
       n("markOpening", "Interior opening", "Rosette empty center or inner ring offset.", 0, .9, .01, 0, 1, "Mark", { mark: ["rings", "rosette"] }),
@@ -148,10 +157,10 @@ export const referenceDefinitions: InstrumentDefinition[] = [
       n("retention", "Instance retention", "Omit instances without moving the underlying lattice.", 0, 1, .01, 0, 1, "Mark"),
       n("weight", "Line weight", "Outline, petal and arrow stroke width.", .2, 5, .05, 0, 50, "Mark", { mark: ["rings", "rosette", "arrow"] }),
     ],
-    defaults: { group: "p4m", cellWidth: 82, cellHeight: 82, centerX: 320, centerY: 320,
-      width: 640, height: 640, motifOffsetX: .18, motifOffsetY: .32, margin: 60,
-      breakAmount: .14, breakDensity: .2, mark: "arrow", size: 34, petals: 8,
-      markOpening: .34, variation: .22, retention: .96, weight: 1.6 },
+    defaults: { group: "p4g", cellWidth: 140, cellHeight: 140, centerX: 320, centerY: 320,
+      width: 640, height: 640, motifOffsetX: .22, motifOffsetY: .12, margin: 40,
+      breakAmount: .1, breakDensity: .1, mark: "arrow", size: 42, petals: 8,
+      markOpening: .34, variation: 0, retention: 1, weight: 1.7 },
   },
   {
     id: "ordered-disorder", title: "Ordered Disorder",
@@ -167,14 +176,14 @@ export const referenceDefinitions: InstrumentDefinition[] = [
       n("correlation", "Correlation length", "Disorder correlation in cells; larger keeps neighbors alike.", 1, 30, .5, 1, 64, "Source"),
       n("focalX", "Focal X", "Horizontal center of the disorder focal region.", 0, 640, 1, -320, 960, "Source"),
       n("focalY", "Focal Y", "Vertical center of the disorder focal region.", 0, 640, 1, -320, 960, "Source"),
-      n("focalRadius", "Focal radius", "Full-strength radius; zero applies disorder everywhere.", 0, 640, 1, 0, 4096, "Source"),
+      n("focalRadius", "Focal radius", "Distance over which disorder fades smoothly from full strength at the focus to none; zero applies it everywhere.", 0, 640, 1, 0, 4096, "Source"),
       n("displacement", "Displacement", "Maximum site shift as a fraction of the cell.", 0, .95, .01, 0, 1, "Disorder"),
-      n("rotation", "Rotation", "Maximum stable rotation in degrees.", 0, 180, 1, 0, 360, "Disorder"),
+      n("rotation", "Rotation", "Maximum stable rotation in degrees.", 0, 180, 1, 0, 360, "Disorder", { mark: ["rosette", "arrow"] }),
       n("scale", "Scale wobble", "Maximum relative scale deviation.", 0, .9, .01, 0, 1, "Disorder"),
       n("omission", "Omission", "Correlated omission threshold; omissions form runs.", 0, .8, .01, 0, 1, "Disorder"),
       n("anchors", "Anchors", "Stable fraction of sites pinned to their exact grid origin.", 0, 1, .01, 0, 1, "Disorder"),
       n("retention", "Site retention", "Stable per-site omission independent of the field.", 0, 1, .01, 0, 1, "Disorder"),
-      select("mark", "Mark", "Swap the same sites between dots, rings, rosettes and arrows.", pointMarks, "Mark"),
+      select("mark", "Mark", "Swap the same sites between dots, rings, rosettes and arrows.", developmentMarks, "Mark"),
       n("size", "Mark diameter", "Nominal diameter of each mark.", 1, 60, .5, 0, 500, "Mark"),
       n("petals", "Petals", "Radial strokes in each rosette.", 3, 18, 1, 1, 48, "Mark", { mark: ["rosette"] }),
       n("markOpening", "Interior opening", "Rosette empty center or inner ring offset.", 0, .9, .01, 0, 1, "Mark", { mark: ["rings", "rosette"] }),
@@ -182,9 +191,9 @@ export const referenceDefinitions: InstrumentDefinition[] = [
       n("weight", "Line weight", "Outline, petal and arrow stroke width.", .2, 5, .05, 0, 50, "Mark", { mark: ["rings", "rosette", "arrow"] }),
     ],
     defaults: { columns: 14, rows: 14, centerX: 320, centerY: 320, width: 520, height: 520,
-      correlation: 4.5, focalX: 320, focalY: 320, focalRadius: 300,
-      displacement: .55, rotation: 40, scale: .35, omission: .16, anchors: .08, retention: .97,
-      mark: "arrow", size: 26, petals: 8, markOpening: .3, variation: .3, weight: 1.5 },
+      correlation: 4, focalX: 380, focalY: 280, focalRadius: 420,
+      displacement: .6, rotation: 60, scale: .45, omission: .22, anchors: .06, retention: 1,
+      mark: "rings", size: 30, petals: 8, markOpening: .3, variation: .3, weight: 1.5 },
   },
   {
     id: "recursive-cells", title: "Recursive Cell Worlds",
@@ -207,20 +216,20 @@ export const referenceDefinitions: InstrumentDefinition[] = [
       n("spacing", "Source spacing", "Hatch interval or nested motif separation.", 3, 60, .5, 1, 1000, "Filler", { fill: ["hatch", "motifs", "mixed"] }),
       n("angle", "Hatch direction", "Hatch angle, in degrees.", -90, 90, 1, -360, 360, "Filler", { fill: ["hatch", "mixed"] }),
       n("weight", "Line weight", "Shared thickness for hatches, contours, motif outlines and petals; filled dots have no outline.", .2, 5, .1, 0, 50, "Filler"),
-      select("mark", "Nested motif", "Point mark used in motif-filled leaves.", pointMarks, "Filler/Motif", { fill: ["motifs", "mixed"] }),
+      select("mark", "Nested motif", "Point mark used in motif-filled leaves.", developmentMarks, "Filler/Motif", { fill: ["motifs", "mixed"] }),
       n("markSize", "Nested mark size", "Diameter of the nested point motif.", 2, 32, .5, 0, 500, "Filler/Motif", { fill: ["motifs", "mixed"] }),
       n("markPetals", "Nested petals", "Number of petals when nested motif is a rosette.", 3, 14, 1, 1, 48, "Filler/Motif", { fill: ["motifs", "mixed"], mark: ["rosette"] }),
       select("contourField", "Nested field", "Replace the field inside each leaf without changing the subdivision or its material.", ["noise", "hills", "waves", "saddle"], "Filler/Contour", { fill: ["contours", "mixed"] }),
       n("contourFrequency", "Nested field frequency", "Spatial frequency, or hill placement offset, within each leaf.", .3, 5, .05, .1, 12, "Filler/Contour", { fill: ["contours", "mixed"] }),
       select("material", "Nested contour material", "Material used on the nested leaf-local contours.", materials, "Filler/Contour", { fill: ["contours", "mixed"] }),
       n("materialSpacing", "Nested station spacing", "Spacing of contour stitches or beads.", 4, 36, .5, .5, 1000, "Filler/Contour", { fill: ["contours", "mixed"], material: ["stitch", "beads"] }),
-      select("beadMark", "Nested bead motif", "Mark applied at each nested contour station.", pointMarks, "Filler/Contour/Bead mark", { fill: ["contours", "mixed"], material: ["beads"] }),
+      select("beadMark", "Nested bead motif", "Mark applied at each nested contour station.", developmentMarks, "Filler/Contour/Bead mark", { fill: ["contours", "mixed"], material: ["beads"] }),
       n("beadSize", "Nested bead size", "Diameter of a contour bead.", 2, 22, .5, 0, 500, "Filler/Contour/Bead mark", { fill: ["contours", "mixed"], material: ["beads"] }),
       n("beadPetals", "Nested bead petals", "Number of rosette bead petals.", 3, 14, 1, 1, 48, "Filler/Contour/Bead mark", { fill: ["contours", "mixed"], material: ["beads"], beadMark: ["rosette"] }),
     ],
-    defaults: { centerX: 320, centerY: 320, width: 560, height: 560, depth: 5, minSize: 46,
-      stopChance: .3, childRetention: .9, axis: "LONGEST", bias: -.2,
-      fill: "mixed", inset: 4, retention: .9, spacing: 12, angle: -30, weight: 1.4,
+    defaults: { centerX: 320, centerY: 320, width: 560, height: 560, depth: 6, minSize: 38,
+      stopChance: .12, childRetention: .92, axis: "LONGEST", bias: -.2,
+      fill: "mixed", inset: 4, retention: .95, spacing: 12, angle: -30, weight: 1.4,
       mark: "rosette", markSize: 14, markPetals: 7,
       contourField: "noise", contourFrequency: 1.9,
       material: "ink", materialSpacing: 12, beadMark: "dot", beadSize: 6, beadPetals: 7 },

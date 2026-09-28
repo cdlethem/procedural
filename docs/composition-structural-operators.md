@@ -1,96 +1,106 @@
 # Structural operators slice (W1 first batch)
 
-Status: **in implementation, 2026-09-28; unreleased**.
-Recursive Cell Worlds, Ordered Disorder and Wallpaper Motifs are the next vertical slice of
-the [release roadmap](next-release-roadmap.md), built on the frozen
-[reference slice](composition-reference-slice.md) boundary. Briefs 01, 03 and 04 are
-already covered by Motif Ecologies, Region Quilts and Contour Scores (this batch adds
-the two remaining bead-score controls).
+Status: **in development, 2026-09-28. Not promoted, not in any release inventory.**
+Recursive Cell Worlds, Ordered Disorder and Wallpaper Motifs build on the frozen
+[reference slice](composition-reference-slice.md) boundary. Root has reviewed their rendered
+output (defaults, seeds, all seventeen wallpaper groups, control sweeps) and fixed what that
+review found. It has **not** yet exercised them through the real Studio interface, layered
+them with other entries, or reviewed responsiveness; those gate promotion.
+
+## Development gate
+
+Unreleased studies live in `developmentDefinitions`
+(`packages/instruments/src/adapters/reference-composition-instruments.ts`), not in
+`referenceDefinitions`. They are therefore absent from `definitions`, `metadata.json`,
+`sources.json`, the shipped `guides/` directory and every package consumer inventory
+(`npm run toolkit:local` in the private app builds the working tree with `--allow-dirty`, so
+this is what keeps unfinished work out of its discovery). `createInstrument`,
+`referenceComposition`, `drawInstrument` and `prepareInstrument` resolve them by id, so a
+development view can enumerate `developmentDefinitions` and render them live.
+Their source compiles into the package's `src/` and `dist/` but is not listed anywhere.
+
+Their guides live in `packages/instruments/development/guides/`, which is not shipped: the
+release builder requires the shipped `guides/` file count to equal the metadata guide count.
+
+Promotion, once root has reviewed a study through the real interface:
+
+1. Move its definition from `developmentDefinitions` to `referenceDefinitions`.
+2. `git mv` its guide into `packages/instruments/guides/`.
+3. Add its `metadata.json` entry (real title, description, category, `operationIds`,
+   `source`, `sourceEntry`, `creativeReviewScope`) and regenerate `sources.json`.
+4. Run the package tests and `tools/build_web_toolkit.mjs` (preview or release).
+
+The working tree must build with `--allow-dirty` at every step; run that build before leaving
+work in progress.
 
 ## Artist-facing brief
 
-- **Recursive Cell Worlds (06):** nested compartments whose children have their own
-  construction. A root rectangle is recursively subdivided with the existing seeded
-  binary-cut policy; depth, minimum leaf size and selective stopping bound the tree;
-  terminal leaves are filled by the existing region fillers, including nested contour
-  scores. Stopping or omitting a branch must not reseed its siblings.
-- **Ordered Disorder (07):** a regular lattice whose correlated displacement, rotation,
-  scale and omission fields make omissions and local exceptions carry the composition.
-  Zero disorder is genuinely ordered; anchored sites stay pinned; a focal region limits
-  where disorder applies.
-- **Wallpaper Motifs (22):** a stated plane symmetry group, lattice vectors and motif
-  offset producing instance transforms, with an ordinary motif callback. Seventeen
-  explicit groups with documented lattice and operation tables; boundary duplicates are
-  eliminated consistently and the visible extent is a declared margin, not a guess.
-- **Contour Scores additions (04 completion):** cross-path phase relationship (stable
-  per-path spread around the global phase) and contour-band size mapping (beads grow
-  toward the selected field extremes). Both are appearance-only and stable per path ID.
+- **Recursive Cell Worlds (06):** a rectangle recursively divided into compartments, each
+  filled by the region-quilt fillers (hatch, motifs, nested contour scores). Big quiet cells
+  and dense small ones coexist; stopped or dropped branches leave open paper.
+- **Ordered Disorder (07):** a regular lattice pushed out of order by a shared, spatially
+  correlated field of displacement, rotation, scale and omission. Disorder fades from a focal
+  region; anchors stay pinned; exceptions and anchors are colored by role.
+- **Wallpaper Motifs (22):** a chosen plane symmetry group repeating one motif. Copies are
+  colored by group operation so the symmetry is visible.
+- **Contour Scores additions (04, released entry):** `phaseSpread` and `levelRamp`, both
+  defaulting to zero. These change the released Contour Scores definition and are the only part
+  of this slice visible to consumers today; with defaults they render as before.
 
-## Frozen boundary
+## Frozen boundary and semantics
 
-Same file as the reference slice: `packages/instruments/src/composition/types.ts`.
-Reuse `binaryCellPartition2D` (via the existing panel cut policy), the reference slice's
-`atEach`/`inside`/`strokeWith` consumers, `regionFill`/`regionGeometry` for leaves, and
-`gradientNoise2D01` for the correlated disorder field. Do not add a second lattice,
-symmetry or subdivision implementation.
+Types in `packages/instruments/src/composition/types.ts`.
 
-- **Wallpaper instances.** Each supported group is an explicit table of lattice basis
-  vectors (rectangular, centered-rectangular, square, hexagonal from cell width and
-  height) and operations (rotation angle, optional reflection, cell-fraction
-  translation). An instance is `T(i·a + j·b + t_op) ∘ (S·)R(θ)` applied to the motif
-  anchor. Fingerprint `(rounded origin, θ mod 2π, mirror)` eliminates exact duplicates
-  (e.g. glide compositions equal to a rotation). IDs are `wall:<i>:<j>:<op>` in
-  lattice coordinates, so culling or filtering preserves identities. Culling keeps
-  origins within a declared `margin` of the 640-unit viewport. Symmetry breaking is a
-  stable per-instance jitter selected by ID: selected instances receive a bounded
-  position, rotation and scale deviation; the rest remain exact.
-- **Mirror frames.** `Site.scale < 0` marks a reflection. `atEach` applies
-  `scale(|s|, −|s|)` after rotation, i.e. a mirror across the site's frame axis;
-  positive scales are unchanged. Rotationally symmetric stock marks (dots, rings,
-  rosettes) are therefore unchanged by mirrors; the new asymmetric **arrow** mark makes
-  rotations and reflections visible without custom code.
-- **Lattice sites.** `latticeSites` returns every lattice site with its exact grid
-  `origin`, the perturbed `position`, and `kept`/`exception`/`anchor` attributes.
-  Perturbation samples the seeded value-noise field at `(col / correlation, row /
-  correlation)` with independent channel offsets, so nearby cells share displacement
-  and omissions form runs. Amplitude is multiplied by a smooth falloff from the focal
-  region, so sites outside it remain exactly on the grid. Anchored sites (stable by
-  ID) are never displaced or omitted. Zero displacement, rotation, scale and omission
-  reproduces the exact grid.
-- **Cell trees.** `regionTree` grows a pre-order, parent-before-children flat array of
-  `{id, parentId, depth, bounds, seed, terminal}`. Each split reuses the existing
-  binary cut policy (one cut per node, per-node seed `componentSeed(seed, id, "cut")`).
-  A node stops at maximum depth, below minimum side, by stable selective stopping, or
-  when its whole subtree is omitted by child retention. IDs are path strings
-  (`root/0/1/0`), so sibling identity and seeds are independent of which branches
-  survive. Total node count and expanded terminal work are bounded before drawing,
-  with the same aggregate estimate as the reference slice's nested leaves.
-- **Bead scores.** `Path` gains `levelFraction` (0 at the first threshold, 1 at the
-  last) computed at source time. `PathMaterialSpec.phaseSpread` offsets each path's
-  station phase by a stable per-path unit in `[0,1]`; `levelRamp` scales bead marks by
-  `1 − levelRamp · levelFraction`. Both defaults are zero: identical pixels to the
-  accepted reference artifact.
-
-## Studio scope
-
-Three new named layers (`recursive-cells`, `ordered-disorder`, `wallpaper-motifs`)
-resolve through `referenceComposition` to the typed descriptors above; no new host
-document fields. Recursive Cell Worlds reuses the region-quilt filler control groups, so
-a terminal leaf can contain the same three-level nesting as a quilt leaf. Wallpaper
-offsets are canvas units; group, cell size, margin and breaking are structural, while
-mark substitution and palette stay appearance-only.
+- **`Site.tone`** (optional): a structural palette index. Stock marks use it instead of the
+  per-site random hue, so color can carry structure. Wallpaper sets it to the operation index;
+  lattice sets it to 0 (ordinary), 1 (exception), 2 (anchor).
+- **Mirror frames.** `Site.scale < 0` reflects across the site's own axis after rotation:
+  `atEach` calls `scale(|s|, -|s|)`. `CompositionSurface.scale(x, y?)`. The stock **arrow**
+  (shaft, head, one-sided tail flag) is chiral, so mirrors and glides are legible; dots, rings
+  and rosettes are round and reveal only positions.
+- **Wallpaper.** Each group is a lattice family plus generators (rotation, mirror-across-x,
+  translation in lattice-basis fractions). `wallpaperOperations(group)` is the **closure of
+  the generators modulo the lattice**, so operation tables cannot silently omit elements;
+  tests pin all seventeen point-group orders and the mirror/glide distinction (p4m has four
+  mirrors through the four-fold center, p4g none). An instance is
+  `(i + u)·a + (j + v)·b + A·anchor` with `A = R(θ)·diag(1, ±1)`. Ids are
+  `wall:<i>:<j>:<operation>`; margin changes never rename copies. Square and hexagonal
+  lattices use one edge length (`wallpaperUsesCellHeight`). Output is bounded (6000 copies).
+  Symmetry breaking displaces/turns/rescales a stable, id-selected subset; raising the amount
+  never changes the subset.
+- **Lattice.** `latticeSites` returns every site with grid `origin`, disturbed `position`,
+  `anchor`, `kept`, `exception`, `tone`. Disturbance samples seeded value noise at
+  `(col/correlation, row/correlation)`, stretched (×3.2, clamped) because raw value noise
+  clusters near 0.5. Amplitude is multiplied by a smoothstep falloff from the focal region.
+  A site is an exception when omitted or past 70% of a stated limit. Zero amplitudes give the
+  exact grid.
+- **Cell trees.** `regionTree` returns a pre-ordered flat array of
+  `{id, parentId, depth, bounds, seed, terminal}`. Each cut reuses the existing binary
+  partition (`panelLeaves`, one cut, 8-cell grid) run on the node's own proportions: `LONGEST`
+  is decided from the partition's grid shape, so node aspect is encoded in `columns`/`rows`.
+  Ids are paths (`root/0/1`), so sibling bounds and seeds are independent of which branches
+  survive. The root's children are never dropped by child retention. Total work is bounded by
+  `boundNestedWork` before drawing.
+- **Bead scores.** `Path.levelFraction` (0 first band, 1 last); `PathMaterialSpec.phaseSpread`
+  (stable per-path phase offset) and `levelRamp` (bead scale `1 − ramp·levelFraction`).
 
 ## Checks
 
-- Exact grid at zero disorder; correlation: neighbor displacement change smaller than
-  distant change; anchored and out-of-focal sites exactly on grid.
-- Wallpaper: p1/p2/p4/p3/p6 orbit counts for an off-corner motif; mirror-invariant
-  special positions do not double-draw beyond the group's genuine images; cache
-  identity; stable IDs under margin changes.
-- Cell tree: parent-before-child order, parent ID agreement, depth/min-size invariants,
-  sibling stability under selective stopping, node/work budget rejection, and
-  `regionGeometry` key agreement with a region-quilt leaf of equal bounds and spec.
-- Arrow mark: rotation and mirror change the recorded draw sequence; dot/ring/rosette
-  sequences are unchanged.
-- Bead scores: phaseSpread/levelRamp are appearance-only (source cache identity) and
-  stable per path.
+`packages/instruments/tests/composition-structural-operators.test.ts` (20 tests) covers:
+group closure and orders, mirror semantics, orbit size per cell, id stability, non-square
+extents and the instance limit, stable breaking, exact zero-disorder grid, spatial correlation
+and omission runs, anchors/focus/tone, tree ordering and tiling, axis and bias behavior,
+branch-omission stability, arrow chirality through a real transform stack, level ramp and
+cross-path phase, and the development gate itself. Two mutations (root-children rule, level
+ramp) were confirmed to fail their tests.
+
+## Review record and open items
+
+Rendered with a throwaway SVG surface under the native lease. First-pass defects found and
+fixed: wallpaper colored per-site at random (unreadable symmetry); p4m/p4g tables listed 6 of
+8 elements and p3m1/p31m mirror angles were wrong; glides ignored non-rectangular bases;
+extent ignored height; disorder amplitude was tiny (noise clustering, quadratic falloff,
+uncorrelated per-site factor); cell tree cut only horizontally at exact halves and could drop
+half the canvas. Open before promotion: real-interface exploration of every control, layered
+compositions in both orders, cancellation/responsiveness at large settings, and a decision on
+whether the cell-world leaf fillers are distinct enough from Region Quilts to keep both.

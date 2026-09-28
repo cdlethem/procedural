@@ -70,7 +70,7 @@ export function motif(spec: MotifSpec, palette: readonly number[]): Mark {
   return (surface, site) => {
     if (spec.retention === 0 || spec.size === 0 || unit(site.seed, site.id, "keep") >= spec.retention) return;
     const radius = spec.size * (1 - spec.variation * unit(site.seed, site.id, "size")) / 2;
-    const ink = Math.floor(unit(site.seed, site.id, "ink") * palette.length);
+    const ink = site.tone === undefined ? Math.floor(unit(site.seed, site.id, "ink") * palette.length) : Math.floor(site.tone);
     surface.rotate(spec.rotation * radians);
     surface.strokeWeight(spec.weight);
     if (spec.kind === "dot") {
@@ -95,11 +95,13 @@ export function motif(spec: MotifSpec, palette: readonly number[]): Mark {
       }
       if (gap > 0) { color(surface, palette, ink + 1, 180, false); surface.circle(0, 0, gap * .62); }
     } else if (spec.kind === "arrow") {
+      // Head plus a one-sided tail flag: the flag makes mirrors and glides readable.
       surface.noFill(); color(surface, palette, ink, 225, false);
       const length = radius;
       surface.line(-length, 0, length, 0);
       surface.line(length, 0, length - length * .45, -length * .42);
       surface.line(length, 0, length - length * .45, length * .42);
+      surface.line(-length, 0, -length + length * .5, -length * .5);
     } else throw new Error(`Unknown motif kind: ${spec.kind}`);
   };
 }
