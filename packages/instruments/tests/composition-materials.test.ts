@@ -8,6 +8,7 @@ class GeometrySurface implements CompositionSurface {
   CLOSE = "close";
   ROUND = "round";
   lines: number[][] = [];
+  circles: number[][] = [];
   frame = { x: 0, y: 0, angle: 0, scale: 1 };
   stack: typeof this.frame[] = [];
   push() { this.stack.push({ ...this.frame }); }
@@ -25,7 +26,11 @@ class GeometrySurface implements CompositionSurface {
       x + scale * (c * x2 - s * y2), y + scale * (s * x2 + c * y2)]);
   }
   noFill() {} noStroke() {} fill() {} stroke() {} strokeWeight() {} strokeCap() {}
-  circle() {} rect() {} beginShape() {} vertex() {} endShape() {}
+  circle(cx: number, cy: number, diameter: number) {
+    const { x, y, angle, scale } = this.frame, c = Math.cos(angle), s = Math.sin(angle);
+    this.circles.push([x + scale * (c * cx - s * cy), y + scale * (s * cx + c * cy), diameter * scale]);
+  }
+  rect() {} beginShape() {} vertex() {} endShape() {}
 }
 const material: PathMaterialSpec = { kind: "stitch", weight: 1, spacing: 25, phase: 0, retention: 1,
   mark: { kind: "dot", size: 3, petals: 5, opening: .4, weight: 1, rotation: 0, variation: 0, retention: 1 } };
@@ -75,4 +80,26 @@ test("rectangular hatching is centered, uniformly spaced and confined to its ins
   }).sort((a, b) => a - b);
   assert.equal(offsets.length, 24);
   offsets.forEach((value, index) => near(value, (index - 11.5) * 12));
+});
+
+test("filled dots ignore unused stroke width at motif and nested bead boundaries", () => {
+  const recipe = referenceComposition(createInstrument("region-quilts"));
+  if (recipe.kind !== "regions") throw Error("Expected rectangular composition");
+  const region = { id: "edge", seed: 42, bounds: [0, 0, 120, 100] as const };
+  for (const kind of ["motifs", "contours"] as const) {
+    const draw = (weight: number) => {
+      const surface = new GeometrySurface();
+      const dot = { ...recipe.fill.mark, kind: "dot" as const, size: 6, variation: 0, retention: 1, weight };
+      inside(surface, [region], regionFill({ ...recipe.fill, kind, inset: 0, retention: 1,
+        spacing: 13, weight, mark: dot,
+        contour: { ...recipe.fill.contour, source: "waves", frequency: 1.25 },
+        material: { ...recipe.fill.material, kind: "beads", spacing: 10, mark: dot },
+      }, [0]));
+      return surface.circles;
+    };
+    const light = draw(0);
+    assert.ok(light.some(([x, y, diameter]) =>
+      Math.min(x, y, 120 - x, 100 - y) < diameter / 2 + 10), `${kind} must exercise an edge station`);
+    assert.deepEqual(draw(20), light, `${kind} filled dots must not acquire an invisible stroke margin`);
+  }
 });

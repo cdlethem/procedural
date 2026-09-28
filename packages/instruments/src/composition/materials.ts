@@ -170,7 +170,8 @@ function materialWithin(spec: PathMaterialSpec, palette: readonly number[],
       const seed = componentSeed(path.seed, id, "station");
       if (bounds) {
         const radius = spec.kind === "beads"
-          ? (spec.mark.size * (1 - spec.mark.variation * unit(seed, id, "size")) + spec.mark.weight) / 2
+          ? (spec.mark.size * (1 - spec.mark.variation * unit(seed, id, "size")) +
+            (spec.mark.kind === "dot" ? 0 : spec.mark.weight)) / 2
           : spec.spacing * .27 + spec.weight / 2;
         if (x - radius < bounds[0] || y - radius < bounds[1] ||
             x + radius > bounds[2] || y + radius > bounds[3]) continue;
@@ -267,7 +268,7 @@ export function regionFill(spec: RegionFillSpec, palette: readonly number[]): Re
     if (source.mode === "motifs") {
       const within: Mark = (p, site, shared) => {
         const radius = (spec.mark.size * (1 - spec.mark.variation * unit(site.seed, site.id, "size")) +
-          spec.mark.weight) / 2;
+          (spec.mark.kind === "dot" ? 0 : spec.mark.weight)) / 2;
         const x = site.position[0], y = site.position[1];
         if (x - radius >= box.left && y - radius >= box.top &&
             x + radius <= box.left + box.width && y + radius <= box.top + box.height) mark(p, site, shared);
