@@ -51,6 +51,8 @@ export interface Path {
   readonly level: number;
   /** 0 at the first threshold, 1 at the last; stable per source construction. */
   readonly levelFraction: number;
+  /** Optional structural palette index; materials use it instead of a per-path random hue. */
+  readonly tone?: number;
 }
 /** Rectangular regions for this slice; not a general polygon or raster mask. */
 export interface Region {
@@ -224,6 +226,37 @@ export interface RegionFillSpec {
   /** Editable field construction fitted to each leaf; seed and frame come from the region. */
   contour: Omit<ContourOptions, "seed" | "width" | "height" | "centerX" | "centerY" | "rotation">;
 }
+/** Documented coordinate maps; each acts on normalized coordinates (x, y) / radius. */
+export type MapName = "sinusoidal" | "swirl" | "fisheye" | "spherical" | "polar" | "handkerchief" | "waves" | "horseshoe";
+/** One stage blends the identity toward its map by `amount`; `frequency` is the map's coefficient. */
+export interface MapStage { map: MapName; amount: number; frequency: number }
+/** A site carried through a coordinate map; `flipped` marks sites the map turned inside out. */
+export interface WarpedSite extends Site {
+  readonly flipped: boolean;
+}
+export interface WarpOptions {
+  centerX: number;
+  centerY: number;
+  /** Canvas length treated as 1 in map coordinates. */
+  radius: number;
+  /** Applied in order; the whole chain repeats `iterations` times. */
+  stages: readonly MapStage[];
+  iterations: number;
+  /** Points mapped farther than bound × radius from the center are excluded (singularity policy). */
+  bound: number;
+}
+/** Rows and columns of straight lines, and their crossings as sites. */
+export interface GridOptions {
+  seed: number;
+  centerX: number;
+  centerY: number;
+  width: number;
+  height: number;
+  columns: number;
+  rows: number;
+  /** 0..1: stable per-line shift of interior lines (up to 45% of a spacing); edges stay put. */
+  jitter: number;
+}
 /** Named, JSON-compatible compositions. No evaluated code or host layer identities. */
 export type ReferenceComposition =
   | { kind: "sites"; source: PoissonOptions; mark: MotifSpec; palette: readonly number[] }
@@ -231,4 +264,5 @@ export type ReferenceComposition =
   | { kind: "regions"; source: PartitionOptions; fill: RegionFillSpec; palette: readonly number[] }
   | { kind: "cells"; source: CellTreeOptions; fill: RegionFillSpec; palette: readonly number[] }
   | { kind: "lattice"; source: LatticeOptions; mark: MotifSpec; palette: readonly number[] }
-  | { kind: "wallpaper"; source: WallpaperOptions; mark: MotifSpec; palette: readonly number[] };
+  | { kind: "wallpaper"; source: WallpaperOptions; mark: MotifSpec; palette: readonly number[] }
+  | { kind: "warp"; grid: GridOptions; map: WarpOptions; material: PathMaterialSpec; mark: MotifSpec; palette: readonly number[] };

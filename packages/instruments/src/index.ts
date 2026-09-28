@@ -22,10 +22,11 @@ export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
 export type {
   CompositionSurface, CompositionRun, Site, LatticeSite, Path, Region, RegionTreeNode, Point, Mark, PathMaterial,
   RegionFiller, PoissonOptions, ContourOptions, PartitionOptions, WallpaperOptions, LatticeOptions, CellTreeOptions,
-  WallpaperGroup, MotifSpec, PathMaterialSpec, RegionFillSpec, ReferenceComposition,
+  WallpaperGroup, MotifSpec, PathMaterialSpec, RegionFillSpec, ReferenceComposition, MapName, MapStage, WarpOptions, WarpedSite, GridOptions,
 } from "./composition/types.js";
 export { atEach, strokeWith, inside, componentSeed, createCompositionRun } from "./composition/core.js";
-export { poissonSites, contourPaths, partitionRegions, wallpaperSites, wallpaperOperations, wallpaperUsesCellHeight, latticeSites, regionTree } from "./composition/sources.js";
+export { poissonSites, contourPaths, partitionRegions, wallpaperSites, wallpaperOperations, wallpaperUsesCellHeight, latticeSites, regionTree, gridPaths, gridSites } from "./composition/sources.js";
+export { warpPoint, warpSites, warpPaths, mapNames } from "./composition/warp.js";
 export { motif, pathMaterial, regionFill } from "./composition/materials.js";
 export { referenceComposition, drawReferenceComposition, prepareReferenceComposition } from "./composition/reference.js";
 
@@ -136,6 +137,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "wallpaper-motifs": [0x1b2430, 0xc27a1f, 0x3f7a66, 0xa8452f],
   "ordered-disorder": [0x2a2320, 0xc0452a, 0x2f6f8f],
   "recursive-cells": [0x22301f, 0xb5832a, 0x8a4a35, 0x3f6572],
+  "fold-atlas": [0x1f2a33, 0xc0452a, 0x2f6f8f, 0xb8862b],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));

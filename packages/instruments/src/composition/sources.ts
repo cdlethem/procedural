@@ -3,14 +3,14 @@ import { contourReliefContours, contourReliefDefinitions, validateContourRelief 
 import { poissonPoints, placementPackingInstrumentDefinitions } from "../adapters/placement-packing-instruments.js";
 import { panelLeaves, regionFacetInstrumentDefinitions } from "../adapters/region-facet-instruments.js";
 import { componentSeed } from "./core.js";
-import type { CellTreeOptions, ContourOptions, LatticeOptions, LatticeSite, PartitionOptions, Path,
+import type { CellTreeOptions, ContourOptions, GridOptions, LatticeOptions, LatticeSite, PartitionOptions, Path,
   PoissonOptions, Region, RegionTreeNode, Site, WallpaperGroup, WallpaperOptions } from "./types.js";
 
 const siteCache = new Map<string, readonly Site[]>();
 const pathCache = new Map<string, readonly Path[]>();
 const regionCache = new Map<string, readonly Region[]>();
 
-function memoized<T>(cache: Map<string, T>, key: string, make: () => T): T {
+export function memoized<T>(cache: Map<string, T>, key: string, make: () => T): T {
   const hit = cache.get(key);
   if (hit !== undefined) {
     cache.delete(key);
@@ -426,5 +426,68 @@ export function regionTree(options: CellTreeOptions): readonly RegionTreeNode[] 
       for (let index = children.length - 1; index >= 0; index--) stack.push(children[index]);
     }
     return Object.freeze(nodes);
+  });
+}
+
+const gridPathCache = new Map<string, readonly Path[]>();
+const gridSiteCache = new Map<string, readonly Site[]>();
+function gridKey(options: GridOptions): string {
+  const { seed, centerX, centerY, width, height, columns, rows, jitter } = options;
+  sourceSeed(seed);
+  finite("Grid width", width, 1, 4096);
+  finite("Grid height", height, 1, 4096);
+  finite("Grid jitter", jitter, 0, 1);
+  for (const [label, value] of [["columns", columns], ["rows", rows]] as const)
+    if (!Number.isInteger(value) || value < 1 || value > 60) throw new Error(`Grid ${label} must be an integer in [1, 60]`);
+  return JSON.stringify([seed, centerX, centerY, width, height, columns, rows, jitter]);
+}
+/**
+ * Line coordinates along one axis. Interior lines blend their regular position with the sorted
+ * random draws of a seeded stream (weight `jitter`), so spacing clumps and opens in a seed-specific
+ * way while order is kept; the two edge lines stay put.
+ */
+function gridAxis(seed: number, prefix: string, start: number, extent: number, count: number, jitter: number): number[] {
+  const random = Array.from({ length: Math.max(0, count - 1) }, (_, index) => unit(seed, `${prefix}:${index + 1}`, "jitter"))
+    .sort((a, b) => a - b);
+  return Array.from({ length: count + 1 }, (_, index) => {
+    const regular = index / count;
+    const blended = index === 0 || index === count ? regular : (1 - jitter) * regular + jitter * random[index - 1];
+    return start + extent * blended;
+  });
+}
+
+/** Straight column and row lines; `levelFraction` runs 0..1 across each family. */
+export function gridPaths(options: GridOptions): readonly Path[] {
+  const { seed, centerX, centerY, width, height, columns, rows, jitter } = options;
+  return memoized(gridPathCache, gridKey(options), () => {
+    const left = centerX - width / 2, top = centerY - height / 2, paths: Path[] = [];
+    gridAxis(seed, "col", left, width, columns, jitter).forEach((x, column) => {
+      const id = `col:${column}`;
+      paths.push(Object.freeze({ id, seed: componentSeed(seed, id, "path"), closed: false, level: column,
+        levelFraction: column / columns, tone: 0,
+        points: Object.freeze([Object.freeze([x, top] as const), Object.freeze([x, top + height] as const)]) }));
+    });
+    gridAxis(seed, "row", top, height, rows, jitter).forEach((y, row) => {
+      const id = `row:${row}`;
+      paths.push(Object.freeze({ id, seed: componentSeed(seed, id, "path"), closed: false, level: row,
+        levelFraction: row / rows, tone: 1,
+        points: Object.freeze([Object.freeze([left, y] as const), Object.freeze([left + width, y] as const)]) }));
+    });
+    return Object.freeze(paths);
+  });
+}
+
+/** The grid's line crossings, upright and unit scale. */
+export function gridSites(options: GridOptions): readonly Site[] {
+  const { seed, centerX, centerY, width, height, columns, rows, jitter } = options;
+  return memoized(gridSiteCache, gridKey(options), () => {
+    const left = centerX - width / 2, top = centerY - height / 2, sites: Site[] = [];
+    const xs = gridAxis(seed, "col", left, width, columns, jitter), ys = gridAxis(seed, "row", top, height, rows, jitter);
+    ys.forEach((y, row) => xs.forEach((x, column) => {
+      const id = `node:${column}:${row}`;
+      sites.push(Object.freeze({ id, seed: componentSeed(seed, id, "site"), angle: 0, scale: 1, tone: 0,
+        position: Object.freeze([x, y] as const) }));
+    }));
+    return Object.freeze(sites);
   });
 }

@@ -5,9 +5,10 @@ import { atEach, createCompositionRun, inside, strokeWith } from "./core.js";
 import { motif, pathMaterial, regionFill, regionFillValid, regionGeometry, regionGeometryKey,
   regionMode, retainPreparedRegions } from "./materials.js";
 import type { PreparedRegionGeometry } from "./materials.js";
-import { contourPaths, latticeSites, partitionRegions, poissonSites, regionTree, wallpaperSites } from "./sources.js";
-import type { CompositionRun, CompositionSurface, LatticeSite, MotifSpec, PathMaterialSpec, ReferenceComposition,
-  Region, RegionFillSpec, RegionTreeNode, WallpaperGroup } from "./types.js";
+import { contourPaths, gridPaths, gridSites, latticeSites, memoized, partitionRegions, poissonSites, regionTree, wallpaperSites } from "./sources.js";
+import { warpPaths, warpSites } from "./warp.js";
+import type { CompositionRun, CompositionSurface, LatticeSite, MapName, MapStage, MotifSpec, Path, PathMaterialSpec,
+  ReferenceComposition, Region, RegionFillSpec, RegionTreeNode, Site, WallpaperGroup } from "./types.js";
 
 type Scalar = number | string | boolean;
 function definition(id: string): InstrumentDefinition {
@@ -35,6 +36,22 @@ function material(params: Record<string, Scalar>, nested = false): PathMaterialS
     retention: nested ? 1 : params.retention as number,
     mark: mark(params, "bead") };
 }
+function nodeMark(params: Record<string, Scalar>): MotifSpec {
+  return { kind: params.nodeMark as MotifSpec["kind"], size: params.nodeSize as number, petals: params.nodePetals as number,
+    opening: params.nodeOpening as number, weight: params.nodeWeight as number, rotation: 0, variation: 0, retention: 1 };
+}
+function mapStages(params: Record<string, Scalar>): MapStage[] {
+  return [1, 2, 3].map((index) => ({ map: params[`stage${index}Map`] as MapName,
+    amount: params[`stage${index}Amount`] as number, frequency: params[`stage${index}Frequency`] as number }));
+}
+const foldedCache = new Map<string, { paths: readonly Path[]; sites: readonly Site[] }>();
+/** The mapped grid lines and nodes; cached so repeated draws and preparation share the work. */
+function foldedGrid(recipe: Extract<ReferenceComposition, { kind: "warp" }>): { paths: readonly Path[]; sites: readonly Site[] } {
+  return memoized(foldedCache, JSON.stringify([recipe.grid, recipe.map]), () => ({
+    paths: warpPaths(gridPaths(recipe.grid), recipe.map),
+    // The study, not the geometry, decides colour: nodes a map turns inside out take the second color.
+    sites: warpSites(gridSites(recipe.grid), recipe.map).map((site) => Object.freeze({ ...site, tone: site.flipped ? 1 : 0 })) }));
+}
 /** Resolve persisted named scalar controls to a public JSON-compatible source/consumer pair. */
 export function referenceComposition(input: InstrumentInput): ReferenceComposition {
   if (!Number.isSafeInteger(input.seed) || input.seed < 0 || input.seed > 0xffffffff) throw new Error("Composition seed must be a uint32 integer");
@@ -56,6 +73,14 @@ export function referenceComposition(input: InstrumentInput): ReferenceCompositi
       aspect: q.aspect as number, hillCount: q.hillCount as number, hillRadius: q.hillRadius as number,
       levelBase: q.levelBase as number, levelStep: q.levelStep as number, levels: q.levels as number,
       rotation: q.rotation as number }, material: material(q) };
+  }
+  if (input.technique === "fold-atlas") {
+    return { kind: "warp", palette, grid: { seed, centerX: q.centerX as number, centerY: q.centerY as number,
+      width: q.width as number, height: q.height as number, columns: q.columns as number, rows: q.rows as number,
+      jitter: q.jitter as number },
+      map: { centerX: q.mapCenterX as number, centerY: q.mapCenterY as number, radius: q.mapRadius as number,
+        stages: mapStages(q), iterations: q.iterations as number, bound: q.bound as number },
+      material: material(q), mark: nodeMark(q) };
   }
   if (input.technique === "wallpaper-motifs") {
     return { kind: "wallpaper", palette, source: { seed, group: q.group as WallpaperGroup,
@@ -135,6 +160,10 @@ export function drawReferenceComposition(surface: CompositionSurface, recipe: Re
   } else if (recipe.kind === "lattice") {
     const selected = motif(recipe.mark, recipe.palette);
     if (recipe.mark.retention > 0 && recipe.mark.size > 0) atEach(surface, keptLattice(latticeSites(recipe.source)), selected, run);
+  } else if (recipe.kind === "warp") {
+    const { paths, sites } = foldedGrid(recipe);
+    if (recipe.material.retention > 0) strokeWith(surface, paths, pathMaterial(recipe.material, recipe.palette), run);
+    if (recipe.mark.size > 0) atEach(surface, sites, motif(recipe.mark, recipe.palette), run);
   } else if (recipe.kind === "cells") {
     const selected = regionFill(recipe.fill, recipe.palette);
     if (recipe.fill.retention === 0) return;
@@ -156,6 +185,7 @@ export async function prepareReferenceComposition(recipe: ReferenceComposition, 
   if (recipe.kind === "paths") { pathMaterial(recipe.material, recipe.palette); if (recipe.material.retention > 0) contourPaths(recipe.source); return !cancelled(); }
   if (recipe.kind === "wallpaper") { motif(recipe.mark, recipe.palette); if (recipe.mark.retention > 0) wallpaperSites(recipe.source); return !cancelled(); }
   if (recipe.kind === "lattice") { motif(recipe.mark, recipe.palette); if (recipe.mark.retention > 0) latticeSites(recipe.source); return !cancelled(); }
+  if (recipe.kind === "warp") { pathMaterial(recipe.material, recipe.palette); motif(recipe.mark, recipe.palette); foldedGrid(recipe); return !cancelled(); }
   const regions = recipe.kind === "cells" ? terminalRegions(regionTree(recipe.source)) : partitionRegions(recipe.source);
   boundNestedWork(regions, recipe.fill);
   const scene = new Map<string, PreparedRegionGeometry | undefined>();

@@ -2,6 +2,7 @@ import type { CompositionSurface } from "../composition/types.js";
 import { drawReferenceComposition, referenceComposition } from "../composition/reference.js";
 import type { InstrumentInput, InstrumentDefinition, Parameter } from "../types.js";
 import { choice, numeric } from "./types.js";
+import { mapNames } from "../composition/warp.js";
 
 type Condition = Record<string, readonly (string | number | boolean)[]>;
 function control(parameter: Parameter, group: string, visibleWhen?: Condition): Parameter {
@@ -9,7 +10,7 @@ function control(parameter: Parameter, group: string, visibleWhen?: Condition): 
 }
 const integerKeys: Record<string, true> = {
   maxPoints: true, petals: true, resolution: true, hillCount: true, levels: true,
-  beadPetals: true, grid: true, attempts: true, markPetals: true, columns: true, rows: true, depth: true,
+  beadPetals: true, grid: true, attempts: true, markPetals: true, columns: true, rows: true, depth: true, iterations: true,
 };
 const n = (key: string, label: string, description: string, min: number, max: number, step: number,
   hardMin: number, hardMax: number, group: string, visibleWhen?: Condition): Parameter =>
@@ -233,6 +234,60 @@ export const developmentDefinitions: InstrumentDefinition[] = [
       mark: "rosette", markSize: 14, markPetals: 7,
       contourField: "noise", contourFrequency: 1.9,
       material: "ink", materialSpacing: 12, beadMark: "dot", beadSize: 6, beadPetals: 7 },
+  },
+  {
+    id: "fold-atlas", title: "Fold Atlas",
+    description: "A grid pushed through chained coordinate maps: folds, swirls, seams and pinched centers, with lines and nodes following the same mapping.",
+    renderer: "2d",
+    parameters: [
+      n("centerX", "Grid center X", "Horizontal center of the source grid.", 80, 560, 1, -320, 960, "Grid"),
+      n("centerY", "Grid center Y", "Vertical center of the source grid.", 80, 560, 1, -320, 960, "Grid"),
+      n("width", "Grid width", "Width of the source grid before mapping.", 80, 640, 1, 1, 4096, "Grid"),
+      n("height", "Grid height", "Height of the source grid before mapping.", 80, 640, 1, 1, 4096, "Grid"),
+      n("columns", "Columns", "Vertical grid lines: one more than this number.", 2, 40, 1, 1, 60, "Grid"),
+      n("rows", "Rows", "Horizontal grid lines: one more than this number.", 2, 40, 1, 1, 60, "Grid"),
+      n("jitter", "Grid irregularity", "Stable per-line shift of the interior lines, up to 45% of a spacing; a new seed reshuffles it. The edge lines stay put.", 0, 1, .01, 0, 1, "Grid"),
+      n("mapCenterX", "Map center X", "Fixed point of every map, horizontally.", 0, 640, 1, -640, 1280, "Map"),
+      n("mapCenterY", "Map center Y", "Fixed point of every map, vertically.", 0, 640, 1, -640, 1280, "Map"),
+      n("mapRadius", "Map radius", "Canvas length the maps treat as 1; smaller values apply them more strongly.", 60, 480, 1, 1, 4096, "Map"),
+      select("stage1Map", "First map", "Sinusoidal folds, swirl twists, fisheye compresses, spherical inverts about the center, polar unrolls, handkerchief drapes, waves ripple and horseshoe reflects.", mapNames as string[], "Map/First"),
+      n("stage1Amount", "First amount", "Blend from no change (0) to the full map (1); above 1 exaggerates it.", 0, 1.5, .01, 0, 2, "Map/First"),
+      n("stage1Frequency", "First frequency", "The map's coefficient: fold count, twist rate or scale.", .25, 6, .05, .05, 12, "Map/First"),
+      select("stage2Map", "Second map", "Applied after the first map to its result.", mapNames as string[], "Map/Second"),
+      n("stage2Amount", "Second amount", "Blend from no change to the full map; zero skips this stage.", 0, 1.5, .01, 0, 2, "Map/Second"),
+      n("stage2Frequency", "Second frequency", "The second map's coefficient.", .25, 6, .05, .05, 12, "Map/Second"),
+      select("stage3Map", "Third map", "Applied after the second map to its result.", mapNames as string[], "Map/Third"),
+      n("stage3Amount", "Third amount", "Blend from no change to the full map; zero skips this stage.", 0, 1.5, .01, 0, 2, "Map/Third"),
+      n("stage3Frequency", "Third frequency", "The third map's coefficient.", .25, 6, .05, .05, 12, "Map/Third"),
+      n("iterations", "Repeat chain", "Run the whole chain again on its own output; order matters.", 1, 4, 1, 1, 4, "Map"),
+      n("bound", "Exclusion bound", "Points sent farther than this many radii from the map center are dropped, which is how singular maps leave a hole instead of runaway lines.", 2, 20, .5, 1, 50, "Map"),
+      select("material", "Line material", "Draw each mapped grid line as ink, stitches or beads.", materials, "Lines"),
+      n("weight", "Line weight", "Ink and stitch line thickness.", .2, 5, .1, 0, 50, "Lines", { material: ["ink", "stitch"] }),
+      n("spacing", "Station spacing", "Distance between stitch or bead stations along a mapped line.", 4, 45, .5, .5, 1000, "Lines", { material: ["stitch", "beads"] }),
+      n("phase", "Station phase", "Slides stations along each line by a fraction of their spacing.", 0, 1, .01, 0, 1, "Lines", { material: ["stitch", "beads"] }),
+      n("phaseSpread", "Cross-line phase", "Stable spread of station phase between lines, so neighbouring lines' stations stop lining up.", 0, 1, .01, 0, 1, "Lines", { material: ["stitch", "beads"] }),
+      n("levelRamp", "Size ramp across the grid", "Shrink beads from the first grid line toward the last in each family.", 0, 1, .01, 0, 1, "Lines", { material: ["beads"] }),
+      n("retention", "Line retention", "Stable omission of lines or their stations; zero leaves only the nodes.", 0, 1, .01, 0, 1, "Lines"),
+      select("beadMark", "Bead motif", "Point vocabulary on each bead station.", developmentMarks, "Lines/Bead mark", { material: ["beads"] }),
+      n("beadSize", "Bead diameter", "Size of each bead motif.", 1, 26, .5, 0, 500, "Lines/Bead mark", { material: ["beads"] }),
+      n("beadPetals", "Bead petals", "Radial strokes in rosette beads.", 3, 14, 1, 1, 48, "Lines/Bead mark", { material: ["beads"], beadMark: ["rosette"] }),
+      n("beadWeight", "Bead line weight", "Thickness of ring outlines, rosette petals and arrows.", .2, 3, .1, 0, 50, "Lines/Bead mark", { material: ["beads"], beadMark: ["rings", "rosette", "arrow"] }),
+      n("beadOpening", "Bead opening", "Open center of rosettes or inner ring offset.", 0, .9, .01, 0, 1, "Lines/Bead mark", { material: ["beads"], beadMark: ["rings", "rosette"] }),
+      select("nodeMark", "Node mark", "The mark drawn at every grid crossing, carried through the mapping. Crossings the map turns inside out are mirrored and drawn in the second color.", developmentMarks, "Nodes"),
+      n("nodeSize", "Node size", "Diameter of each node mark before the map rescales it; zero hides the nodes.", 0, 30, .5, 0, 500, "Nodes"),
+      n("nodePetals", "Node petals", "Radial strokes in rosette nodes.", 3, 14, 1, 1, 48, "Nodes", { nodeMark: ["rosette"] }),
+      n("nodeOpening", "Node opening", "Open center of rosettes or inner ring offset.", 0, .9, .01, 0, 1, "Nodes", { nodeMark: ["rings", "rosette"] }),
+      n("nodeWeight", "Node line weight", "Thickness of ring outlines, rosette petals and arrows.", .2, 3, .1, 0, 50, "Nodes", { nodeMark: ["rings", "rosette", "arrow"] }),
+    ],
+    defaults: { centerX: 320, centerY: 320, width: 500, height: 500, columns: 20, rows: 20, jitter: .6,
+      mapCenterX: 320, mapCenterY: 320, mapRadius: 250,
+      stage1Map: "swirl", stage1Amount: .9, stage1Frequency: 2,
+      stage2Map: "sinusoidal", stage2Amount: .45, stage2Frequency: 1.3,
+      stage3Map: "fisheye", stage3Amount: 0, stage3Frequency: 1,
+      iterations: 1, bound: 8,
+      material: "ink", weight: 1.1, spacing: 8, phase: .35, phaseSpread: 0, levelRamp: 0, retention: 1,
+      beadMark: "dot", beadSize: 4, beadPetals: 6, beadWeight: 1, beadOpening: .4,
+      nodeMark: "dot", nodeSize: 4, nodePetals: 6, nodeOpening: .4, nodeWeight: 1 },
   },
 ];
 

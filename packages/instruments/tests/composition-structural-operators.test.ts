@@ -269,9 +269,10 @@ test("studies under construction are resolvable but absent from every released i
     assert.ok(!released.has(item.id), `${item.id} must not be in definitions`);
     assert.equal(createInstrument(item.id).technique, item.id);
   }
-  assert.deepEqual(developmentDefinitions.map((item) => item.id).sort(), ["ordered-disorder", "recursive-cells", "wallpaper-motifs"]);
+  assert.deepEqual(developmentDefinitions.map((item) => item.id).sort(),
+    ["fold-atlas", "ordered-disorder", "recursive-cells", "wallpaper-motifs"]);
   const kinds = Object.fromEntries(developmentDefinitions.map((item) => [item.id, referenceComposition(createInstrument(item.id)).kind]));
-  assert.deepEqual(kinds, { "wallpaper-motifs": "wallpaper", "ordered-disorder": "lattice", "recursive-cells": "cells" });
+  assert.deepEqual(kinds, { "wallpaper-motifs": "wallpaper", "ordered-disorder": "lattice", "recursive-cells": "cells", "fold-atlas": "warp" });
 });
 
 test("invalid structural parameters are rejected rather than clamped", () => {

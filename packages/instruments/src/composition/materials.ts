@@ -125,7 +125,7 @@ function materialWithin(spec: PathMaterialSpec, palette: readonly number[],
     if (spec.kind === "ink") {
       if (unit(path.seed, path.id, "keep") >= spec.retention) return;
       if (spec.weight === 0) return;
-      surface.noFill(); color(surface, palette, Math.floor(unit(path.seed, path.id, "ink") * palette.length), 215, false);
+      surface.noFill(); color(surface, palette, path.tone === undefined ? Math.floor(unit(path.seed, path.id, "ink") * palette.length) : Math.floor(path.tone), 215, false);
       surface.strokeWeight(spec.weight); surface.strokeCap(surface.ROUND);
       surface.beginShape(); for (const [x, y] of path.points) surface.vertex(x, y);
       surface.endShape(path.closed ? surface.CLOSE : undefined);
@@ -145,11 +145,11 @@ function materialWithin(spec: PathMaterialSpec, palette: readonly number[],
         count, maxWork: path.points.length + count });
     } finally { run.leave(); }
     const scratchPosition: [number, number] = [0, 0];
-    const scratchSite: { id: string; seed: number; position: [number, number]; angle: number; scale: number } =
-      { id: "", seed: 0, position: scratchPosition, angle: 0, scale: 1 };
+    const scratchSite: { id: string; seed: number; position: [number, number]; angle: number; scale: number; tone?: number } =
+      { id: "", seed: 0, position: scratchPosition, angle: 0, scale: 1, tone: path.tone };
     const scratchSites = [scratchSite];
     const stitch: Mark = (p, station) => {
-      p.noFill(); color(p, palette, Math.floor(unit(station.seed, station.id, "ink") * palette.length), 225, false);
+      p.noFill(); color(p, palette, station.tone === undefined ? Math.floor(unit(station.seed, station.id, "ink") * palette.length) : Math.floor(station.tone), 225, false);
       p.strokeWeight(spec.weight); p.strokeCap(p.ROUND);
       p.line(-spec.spacing * .27, 0, spec.spacing * .27, 0);
     };

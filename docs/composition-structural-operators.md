@@ -1,11 +1,12 @@
 # Structural operators slice (W1 first batch)
 
 Status: **in development, 2026-09-28. Not promoted, not in any release inventory.**
-Recursive Cell Worlds, Ordered Disorder and Wallpaper Motifs build on the frozen
+Recursive Cell Worlds, Ordered Disorder, Wallpaper Motifs and Fold Atlas build on the frozen
 [reference slice](composition-reference-slice.md) boundary. Root has reviewed their rendered
-output (defaults, seeds, all seventeen wallpaper groups, control sweeps) and fixed what that
-review found. It has **not** yet exercised them through the real Studio interface, layered
-them with other entries, or reviewed responsiveness; those gate promotion.
+output (defaults, seeds, all seventeen wallpaper groups, every fold map, control sweeps,
+one map applied across released sources) and fixed what that review found. It has **not** yet
+exercised them through the real Studio interface, layered them with other entries, or
+reviewed responsiveness; those gate promotion.
 
 ## Development gate
 
@@ -104,3 +105,40 @@ uncorrelated per-site factor); cell tree cut only horizontally at exact halves a
 half the canvas. Open before promotion: real-interface exploration of every control, layered
 compositions in both orders, cancellation/responsiveness at large settings, and a decision on
 whether the cell-world leaf fillers are distinct enough from Region Quilts to keep both.
+
+## Fold Atlas (briefs 26/27 shape)
+
+A coordinate-map **consumer**, separate from its grid source, so any sites or paths can be
+folded. Guide: `packages/instruments/development/guides/fold-atlas.md`. Code:
+`composition/warp.ts` (maps, `warpPoint`, `warpSites`, `warpPaths`) and `gridPaths`/`gridSites`
+in `composition/sources.ts`.
+
+- **Maps.** Eight documented maps on normalized coordinates `((x−cx)/r, (y−cy)/r)`:
+  sinusoidal, swirl, fisheye, spherical (inversion), polar, handkerchief, waves, horseshoe.
+  A stage blends the identity toward its map (`amount`); up to four stages run in order and
+  the chain repeats `iterations` times. Order and repetition change the result (tested).
+- **Singularity policy.** A point sent non-finite or beyond `bound × radius` is excluded. There
+  is no clamping and no interpolation across a break: `warpSites` drops such sites;
+  `warpPaths` subdivides to ≤ `segment` units and splits a path at an excluded vertex or at any
+  step longer than `0.6 × radius` (fold seams, polar's branch cut). Parts are `<id>#<n>` and
+  keep `level`, `levelFraction` and `tone`. Mapping is refused above 200,000 points.
+- **Frames.** `warpSites` carries each frame through the map's finite-difference Jacobian:
+  the axis follows the local direction, size follows `√|det|` (clamped 0.2–3), and a negative
+  determinant mirrors the mark and sets `flipped`. It never rewrites `tone`; the Fold Atlas
+  study colors flipped nodes itself. (An earlier version overwrote `tone`, which erased a
+  wallpaper's operation colors under a fold; the composition render exposed it.)
+- **Tone on paths.** `Path.tone` is optional like `Site.tone`; ink, stitch and bead materials
+  use it instead of a random hue. The grid uses 0 for columns and 1 for rows so the two
+  families stay distinguishable through a fold. Released contour paths carry none and render
+  as before (verified).
+- **Seed.** Grid irregularity blends regular line positions with the sorted draws of a seeded
+  stream, so spacing clumps differently per seed while order and the edge lines are kept; at 0
+  the seed changes nothing.
+- **Not done.** No forward-density accumulation and no inverse raster sampling: the study maps
+  vertices and marks only. Stretched image fragments (brief 27) need the asset foundation.
+
+Tests: `tests/composition-warp.test.ts` (10) pin identity at amount 0, documented map values,
+stage order/repetition, exclusion and path cutting at the pole, the seam/bound invariants over
+all maps, fold mirroring with untouched tone, warping released Motif Ecologies sites and
+Contour Scores paths, work limits, and grid irregularity. Mutating the seam break and the
+fold mirror each fails a test.
