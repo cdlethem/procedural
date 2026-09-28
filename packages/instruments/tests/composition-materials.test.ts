@@ -32,17 +32,18 @@ class GeometrySurface implements CompositionSurface {
   }
   rect() {} beginShape() {} vertex() {} endShape() {}
 }
-const material: PathMaterialSpec = { kind: "stitch", weight: 1, spacing: 25, phase: 0, retention: 1,
+const material: PathMaterialSpec = { kind: "stitch", weight: 1, spacing: 25, phase: 0,
+  phaseSpread: 0, levelRamp: 0, retention: 1,
   mark: { kind: "dot", size: 3, petals: 5, opening: .4, weight: 1, rotation: 0, variation: 0, retention: 1 } };
 const near = (actual: number, expected: number) => assert.ok(Math.abs(actual - expected) < 1e-9, `${actual} != ${expected}`);
 
 test("open-path stations span the complete path and phase follows corners rather than cutting chords", () => {
   const p = new GeometrySurface();
-  const straight: Path = { id: "line", seed: 1, points: [[0, 0], [100, 0]], closed: false, level: 0 };
+  const straight: Path = { id: "line", seed: 1, points: [[0, 0], [100, 0]], closed: false, level: 0, levelFraction: 0 };
   strokeWith(p, [straight], pathMaterial(material, [0]));
   assert.deepEqual(p.lines.map(([x1, , x2]) => (x1 + x2) / 2), [0, 25, 50, 75]);
   p.lines = [];
-  const corner: Path = { id: "corner", seed: 1, points: [[0, 0], [10, 0], [10, 30]], closed: false, level: 0 };
+  const corner: Path = { id: "corner", seed: 1, points: [[0, 0], [10, 0], [10, 30]], closed: false, level: 0, levelFraction: 0 };
   strokeWith(p, [corner], pathMaterial({ ...material, spacing: 20, phase: .75 }, [0]));
   assert.equal(p.lines.length, 2);
   for (const [index, [x1, y1, x2, y2]] of p.lines.entries()) {
@@ -53,7 +54,7 @@ test("open-path stations span the complete path and phase follows corners rather
 
 test("closed-path phase wraps without a duplicate seam station and uses the source tangent", () => {
   const p = new GeometrySurface();
-  const square: Path = { id: "square", seed: 1, points: [[0, 0], [10, 0], [10, 10], [0, 10]], closed: true, level: 0 };
+  const square: Path = { id: "square", seed: 1, points: [[0, 0], [10, 0], [10, 10], [0, 10]], closed: true, level: 0, levelFraction: 0 };
   strokeWith(p, [square], pathMaterial({ ...material, spacing: 10, phase: 1 }, [0]));
   assert.equal(p.lines.length, 4);
   const expected = [[10, 0], [10, 10], [0, 10], [0, 0]];

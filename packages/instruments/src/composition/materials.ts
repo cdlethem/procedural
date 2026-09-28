@@ -47,8 +47,7 @@ function color(surface: CompositionSurface, palette: readonly number[], index: n
 }
 function motifValid(spec: MotifSpec): void {
   requireFinite("motif size", spec.size, 0, 500);
-  requireFinite("motif petals", spec.petals, 1, 48);
-  if (!Number.isSafeInteger(spec.petals)) throw new Error("motif petals must be an integer");
+  requireFinite("motif petals", spec.petals, spec.kind === "arrow" ? 0 : 1, 48);
   requireFinite("motif opening", spec.opening, 0, 1);
   requireFinite("motif weight", spec.weight, 0, 50);
   requireFinite("motif rotation", spec.rotation);
@@ -60,6 +59,8 @@ function materialValid(spec: PathMaterialSpec): void {
   requireFinite("material weight", spec.weight, 0, 50);
   requireFinite("material spacing", spec.spacing, 0.5, 1000);
   requireFinite("material phase", spec.phase, 0, 1);
+  requireFinite("material phase spread", spec.phaseSpread, 0, 1);
+  requireFinite("material level ramp", spec.levelRamp, 0, 1);
   requireFinite("material retention", spec.retention, 0, 1);
 }
 
@@ -93,6 +94,12 @@ export function motif(spec: MotifSpec, palette: readonly number[]): Mark {
         surface.circle(c * (gap + length * .7), s * (gap + length * .7), Math.min(length * .24, spec.weight * 2.7));
       }
       if (gap > 0) { color(surface, palette, ink + 1, 180, false); surface.circle(0, 0, gap * .62); }
+    } else if (spec.kind === "arrow") {
+      surface.noFill(); color(surface, palette, ink, 225, false);
+      const length = radius;
+      surface.line(-length, 0, length, 0);
+      surface.line(length, 0, length - length * .45, -length * .42);
+      surface.line(length, 0, length - length * .45, length * .42);
     } else throw new Error(`Unknown motif kind: ${spec.kind}`);
   };
 }
@@ -148,7 +155,7 @@ function materialWithin(spec: PathMaterialSpec, palette: readonly number[],
       run.check();
       const a = samples.points[i];
       let x = a[0], y = a[1], segment = samples.sourceSegments[i];
-      let offset = samples.totalLength / intervals * spec.phase, dx = 0, dy = 0;
+      let offset = samples.totalLength / intervals * (spec.phase + (spec.phaseSpread > 0 ? unit(path.seed, path.id, "phase") * spec.phaseSpread : 0) % 1), dx = 0, dy = 0;
       // Advance on the original edges, not the chord between adjacent stations.
       // The source segment supplies the tangent even for a single closed-loop station.
       for (let remaining = path.points.length; remaining > 0; remaining--) {
@@ -180,6 +187,7 @@ function materialWithin(spec: PathMaterialSpec, palette: readonly number[],
       scratchSite.id = id;
       scratchSite.seed = seed;
       scratchSite.angle = Math.atan2(dy, dx);
+      scratchSite.scale = spec.kind === "beads" ? 1 - spec.levelRamp * path.levelFraction : 1;
       atEach(surface, scratchSites, spec.kind === "stitch" ? stitch : bead, run);
     }
   };

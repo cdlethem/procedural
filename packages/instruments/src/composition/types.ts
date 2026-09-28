@@ -6,7 +6,7 @@ export interface CompositionSurface {
   pop(): void;
   translate(x: number, y: number): void;
   rotate(radians: number): void;
-  scale(value: number): void;
+  scale(x: number, y?: number): void;
   noFill(): void;
   noStroke(): void;
   fill(...channels: number[]): void;
@@ -27,7 +27,16 @@ export interface Site {
   readonly position: Point;
   /** Radians. Mark callbacks draw at their own origin, in this frame. */
   readonly angle: number;
+  /** Positive: uniform scale. Negative: mirror across the site's frame axis. */
   readonly scale: number;
+}
+/** A lattice site keeps its exact grid origin and structural exception state. */
+export interface LatticeSite extends Site {
+  readonly origin: Point;
+  readonly anchor: boolean;
+  readonly kept: boolean;
+  /** True when the site is displaced, rotated, rescaled, anchored-as-exception or omitted. */
+  readonly exception: boolean;
 }
 export interface Path {
   readonly id: string;
@@ -35,6 +44,8 @@ export interface Path {
   readonly points: readonly Point[];
   readonly closed: boolean;
   readonly level: number;
+  /** 0 at the first threshold, 1 at the last; stable per source construction. */
+  readonly levelFraction: number;
 }
 /** Rectangular regions for this slice; not a general polygon or raster mask. */
 export interface Region {
@@ -49,6 +60,16 @@ export interface CompositionRun {
   enter(work: number): void;
   leave(): void;
   check(): void;
+}
+/** One node of a recursive cell tree; parents precede children in the published array. */
+export interface RegionTreeNode {
+  readonly id: string;
+  readonly parentId: string | null;
+  readonly depth: number;
+  /** World-space [left, top, right, bottom]. */
+  readonly bounds: readonly [number, number, number, number];
+  readonly seed: number;
+  readonly terminal: boolean;
 }
 export type Mark = (surface: CompositionSurface, site: Site, run: CompositionRun) => void;
 /** Path coordinates remain in their source frame; no automatic path transform. */
@@ -96,8 +117,74 @@ export interface PartitionOptions {
   axis: "LONGEST" | "RANDOM";
   bias: number;
 }
+/** Explicit plane symmetry groups; no unexplained “symmetry amount”. */
+export type WallpaperGroup =
+  "p1" | "p2" | "pm" | "pg" | "cm" | "pmm" | "pmg" | "pgg" | "cmm"
+  | "p4" | "p4m" | "p4g" | "p3" | "p3m1" | "p31m" | "p6" | "p6m";
+export interface WallpaperOptions {
+  seed: number;
+  group: WallpaperGroup;
+  cellWidth: number;
+  cellHeight: number;
+  centerX: number;
+  centerY: number;
+  width: number;
+  height: number;
+  /** Motif anchor as a fraction of the unit cell, [0,1) × [0,1). */
+  motifOffsetX: number;
+  motifOffsetY: number;
+  /** Instances within this canvas margin of the domain remain visible. */
+  margin: number;
+  /** Bounded per-instance deviation; zero preserves exact symmetry. */
+  breakAmount: number;
+  /** Stable fraction of instances subjected to symmetry breaking. */
+  breakDensity: number;
+}
+export interface LatticeOptions {
+  seed: number;
+  columns: number;
+  rows: number;
+  width: number;
+  height: number;
+  centerX: number;
+  centerY: number;
+  /** Correlation length in cells for the shared disorder field. */
+  correlation: number;
+  /** Maximum displacement as a fraction of the cell size. */
+  displacement: number;
+  /** Maximum rotation in radians. */
+  rotation: number;
+  /** Maximum relative scale deviation. */
+  scale: number;
+  /** Omission threshold on the correlated field; zero keeps every site. */
+  omission: number;
+  /** Stable fraction of sites pinned to their exact grid origin. */
+  anchors: number;
+  /** Focal region where disorder is strongest; smooth falloff beyond it. */
+  focalX: number;
+  focalY: number;
+  focalRadius: number;
+  /** Stable per-site retention independent of the correlated omission. */
+  retention: number;
+}
+export interface CellTreeOptions {
+  seed: number;
+  width: number;
+  height: number;
+  centerX: number;
+  centerY: number;
+  depth: number;
+  /** Leaves smaller than this on the short side stop subdividing. */
+  minSize: number;
+  /** Stable early stopping of individual nodes. */
+  stopChance: number;
+  /** Stable per-child retention; omitted children leave their area bare. */
+  childRetention: number;
+  axis: "LONGEST" | "RANDOM";
+  bias: number;
+}
 export interface MotifSpec {
-  kind: "dot" | "rings" | "rosette";
+  kind: "dot" | "rings" | "rosette" | "arrow";
   size: number;
   petals: number;
   opening: number;
@@ -112,6 +199,10 @@ export interface PathMaterialSpec {
   weight: number;
   spacing: number;
   phase: number;
+  /** Stable per-path spread around the global station phase; zero keeps them aligned. */
+  phaseSpread: number;
+  /** Bead size ramp across contour bands, 0 at the first threshold toward the last. */
+  levelRamp: number;
   retention: number;
   mark: MotifSpec;
 }
@@ -132,4 +223,7 @@ export interface RegionFillSpec {
 export type ReferenceComposition =
   | { kind: "sites"; source: PoissonOptions; mark: MotifSpec; palette: readonly number[] }
   | { kind: "paths"; source: ContourOptions; material: PathMaterialSpec; palette: readonly number[] }
-  | { kind: "regions"; source: PartitionOptions; fill: RegionFillSpec; palette: readonly number[] };
+  | { kind: "regions"; source: PartitionOptions; fill: RegionFillSpec; palette: readonly number[] }
+  | { kind: "cells"; source: CellTreeOptions; fill: RegionFillSpec; palette: readonly number[] }
+  | { kind: "lattice"; source: LatticeOptions; mark: MotifSpec; palette: readonly number[] }
+  | { kind: "wallpaper"; source: WallpaperOptions; mark: MotifSpec; palette: readonly number[] };

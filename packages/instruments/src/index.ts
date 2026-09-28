@@ -20,12 +20,12 @@ import { validateParameterValues } from "./parameter-validation.js";
 export type { CutEdit, InstrumentDefinition, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
 export type {
-  CompositionSurface, CompositionRun, Site, Path, Region, Point, Mark, PathMaterial,
-  RegionFiller, PoissonOptions, ContourOptions, PartitionOptions, MotifSpec,
-  PathMaterialSpec, RegionFillSpec, ReferenceComposition,
+  CompositionSurface, CompositionRun, Site, LatticeSite, Path, Region, RegionTreeNode, Point, Mark, PathMaterial,
+  RegionFiller, PoissonOptions, ContourOptions, PartitionOptions, WallpaperOptions, LatticeOptions, CellTreeOptions,
+  WallpaperGroup, MotifSpec, PathMaterialSpec, RegionFillSpec, ReferenceComposition,
 } from "./composition/types.js";
 export { atEach, strokeWith, inside, componentSeed, createCompositionRun } from "./composition/core.js";
-export { poissonSites, contourPaths, partitionRegions } from "./composition/sources.js";
+export { poissonSites, contourPaths, partitionRegions, wallpaperSites, latticeSites, regionTree } from "./composition/sources.js";
 export { motif, pathMaterial, regionFill } from "./composition/materials.js";
 export { referenceComposition, drawReferenceComposition, prepareReferenceComposition } from "./composition/reference.js";
 
@@ -131,6 +131,9 @@ const referencePalettes: Record<string, readonly number[]> = {
   "motif-ecologies": [0x192b34, 0xcd7052, 0xd5ad68],
   "contour-scores": [0x203949, 0xc26d4f, 0xd2af76],
   "region-quilts": [0x263a43, 0xb0614d, 0xd7ac64],
+  "wallpaper-motifs": [0x1b2430, 0xd8a24a, 0x7fa08c, 0xe8e3d5],
+  "ordered-disorder": [0x2a2320, 0xc46a3f, 0x5f7d8c, 0xe6d9b8],
+  "recursive-cells": [0x22301f, 0xc9a24b, 0x8a6f5a, 0xdfe4d5],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));

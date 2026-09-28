@@ -44,7 +44,8 @@ type PlacementSurface = Pick<FrameSurface, "push" | "pop" | "translate" | "rotat
 type WorldSurface = Pick<CompositionSurface, "push" | "pop">;
 type RegionSurface = WorldSurface & Pick<CompositionSurface, "translate">;
 
-/** Isolate each mark's styling and frame; local coordinates start at the site. */
+/** Isolate each mark's styling and frame; local coordinates start at the site.
+ *  A negative scale mirrors the mark across the site's frame axis after rotation. */
 export function atEach<S extends PlacementSurface, T extends Site>(surface: S, sites: readonly T[], mark: (surface: S, site: T, run: CompositionRun) => void, run: CompositionRun = createCompositionRun()): void {
   for (const site of sites) {
     run.enter(1);
@@ -53,9 +54,11 @@ export function atEach<S extends PlacementSurface, T extends Site>(surface: S, s
       try {
         surface.translate(site.position[0], site.position[1]);
         surface.rotate(site.angle);
-        if (site.scale !== 1) {
+        const scale = site.scale;
+        if (scale !== 1) {
           if (!surface.scale) throw new Error("Site scaling requires a scale-capable surface");
-          surface.scale(site.scale);
+          if (scale < 0) surface.scale(-scale, scale);
+          else surface.scale(scale);
         }
         mark(surface, site, run);
       } finally { surface.pop(); }

@@ -335,7 +335,7 @@ function drawPaths(p: Painter, layer: Layer): void {
   let frames = materialPathFrames.get(paths);
   if (!frames) {
     frames = paths.map((points, id) => ({
-      id: `path:${id}`, seed: layer.seed, points, closed: false, level: 0,
+      id: `path:${id}`, seed: layer.seed, points, closed: false, level: 0, levelFraction: 0,
     }));
     materialPathFrames.set(paths, frames);
   }

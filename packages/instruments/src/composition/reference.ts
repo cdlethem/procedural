@@ -5,9 +5,9 @@ import { atEach, createCompositionRun, inside, strokeWith } from "./core.js";
 import { motif, pathMaterial, regionFill, regionFillValid, regionGeometry, regionGeometryKey,
   regionMode, retainPreparedRegions } from "./materials.js";
 import type { PreparedRegionGeometry } from "./materials.js";
-import { contourPaths, partitionRegions, poissonSites } from "./sources.js";
-import type { CompositionRun, CompositionSurface, MotifSpec, PathMaterialSpec, ReferenceComposition,
-  Region, RegionFillSpec } from "./types.js";
+import { contourPaths, latticeSites, partitionRegions, poissonSites, regionTree, wallpaperSites } from "./sources.js";
+import type { CompositionRun, CompositionSurface, LatticeSite, MotifSpec, PathMaterialSpec, ReferenceComposition,
+  Region, RegionFillSpec, RegionTreeNode, WallpaperGroup } from "./types.js";
 
 type Scalar = number | string | boolean;
 function definition(id: string): InstrumentDefinition {
@@ -30,6 +30,8 @@ function material(params: Record<string, Scalar>, nested = false): PathMaterialS
   return { kind: params.material as PathMaterialSpec["kind"], weight: params.weight as number,
     spacing: (nested ? params.materialSpacing : params.spacing) as number,
     phase: nested ? .3 : params.phase as number,
+    phaseSpread: nested ? 0 : (params.phaseSpread ?? 0) as number,
+    levelRamp: nested ? 0 : (params.levelRamp ?? 0) as number,
     retention: nested ? 1 : params.retention as number,
     mark: mark(params, "bead") };
 }
@@ -55,6 +57,24 @@ export function referenceComposition(input: InstrumentInput): ReferenceCompositi
       levelBase: q.levelBase as number, levelStep: q.levelStep as number, levels: q.levels as number,
       rotation: q.rotation as number }, material: material(q) };
   }
+  if (input.technique === "wallpaper-motifs") {
+    return { kind: "wallpaper", palette, source: { seed, group: q.group as WallpaperGroup,
+      cellWidth: q.cellWidth as number, cellHeight: q.cellHeight as number,
+      centerX: q.centerX as number, centerY: q.centerY as number,
+      width: q.width as number, height: q.height as number,
+      motifOffsetX: q.motifOffsetX as number, motifOffsetY: q.motifOffsetY as number,
+      margin: q.margin as number, breakAmount: q.breakAmount as number, breakDensity: q.breakDensity as number },
+      mark: mark(q) };
+  }
+  if (input.technique === "ordered-disorder") {
+    return { kind: "lattice", palette, source: { seed, columns: q.columns as number, rows: q.rows as number,
+      width: q.width as number, height: q.height as number, centerX: q.centerX as number,
+      centerY: q.centerY as number, correlation: q.correlation as number,
+      displacement: q.displacement as number, rotation: (q.rotation as number) * Math.PI / 180, scale: q.scale as number,
+      omission: q.omission as number, anchors: q.anchors as number,
+      focalX: q.focalX as number, focalY: q.focalY as number, focalRadius: q.focalRadius as number,
+      retention: q.retention as number }, mark: mark(q) };
+  }
   const fill: RegionFillSpec = { kind: q.fill as RegionFillSpec["kind"], inset: q.inset as number,
     retention: q.retention as number, spacing: q.spacing as number, angle: q.angle as number,
     weight: q.weight as number, underpaint: 0,
@@ -64,10 +84,24 @@ export function referenceComposition(input: InstrumentInput): ReferenceCompositi
       frequency: q.contourFrequency as number, resolution: 23, aspect: 1,
       hillCount: 3, hillRadius: .23, levelBase: q.contourField === "hills" ? .15 : -.65,
       levelStep: q.contourField === "hills" ? .25 : .35, levels: 4 } };
+  if (input.technique === "recursive-cells") {
+    return { kind: "cells", palette, source: { seed, width: q.width as number, height: q.height as number,
+      centerX: q.centerX as number, centerY: q.centerY as number, depth: q.depth as number,
+      minSize: q.minSize as number, stopChance: q.stopChance as number,
+      childRetention: q.childRetention as number, axis: q.axis as "LONGEST" | "RANDOM",
+      bias: q.bias as number }, fill };
+  }
   return { kind: "regions", palette, source: { seed, width: q.width as number, height: q.height as number,
     centerX: q.centerX as number, centerY: q.centerY as number, columns: q.grid as number,
     rows: q.grid as number, attempts: q.attempts as number,
     axis: q.axis as "LONGEST" | "RANDOM", bias: q.bias as number }, fill };
+}
+function terminalRegions(nodes: readonly RegionTreeNode[]): readonly Region[] {
+  return Object.freeze(nodes.filter((node) => node.terminal).map((node): Region =>
+    Object.freeze({ id: node.id, seed: node.seed, bounds: node.bounds })));
+}
+function keptLattice(sites: readonly LatticeSite[]): readonly LatticeSite[] {
+  return Object.freeze(sites.filter((site) => site.kept));
 }
 
 /** Conservative aggregate geometry bound before allocating any nested leaf source. */
@@ -95,6 +129,18 @@ export function drawReferenceComposition(surface: CompositionSurface, recipe: Re
   } else if (recipe.kind === "paths") {
     const selected = pathMaterial(recipe.material, recipe.palette);
     if (recipe.material.retention > 0) strokeWith(surface, contourPaths(recipe.source), selected, run);
+  } else if (recipe.kind === "wallpaper") {
+    const selected = motif(recipe.mark, recipe.palette);
+    if (recipe.mark.retention > 0 && recipe.mark.size > 0) atEach(surface, wallpaperSites(recipe.source), selected, run);
+  } else if (recipe.kind === "lattice") {
+    const selected = motif(recipe.mark, recipe.palette);
+    if (recipe.mark.retention > 0 && recipe.mark.size > 0) atEach(surface, keptLattice(latticeSites(recipe.source)), selected, run);
+  } else if (recipe.kind === "cells") {
+    const selected = regionFill(recipe.fill, recipe.palette);
+    if (recipe.fill.retention === 0) return;
+    const regions = terminalRegions(regionTree(recipe.source));
+    boundNestedWork(regions, recipe.fill);
+    inside(surface, regions, selected, run);
   } else {
     const selected = regionFill(recipe.fill, recipe.palette);
     if (recipe.fill.retention === 0) return;
@@ -108,9 +154,9 @@ export async function prepareReferenceComposition(recipe: ReferenceComposition, 
   if (cancelled()) return false;
   if (recipe.kind === "sites") { motif(recipe.mark, recipe.palette); if (recipe.mark.retention > 0) poissonSites(recipe.source); return !cancelled(); }
   if (recipe.kind === "paths") { pathMaterial(recipe.material, recipe.palette); if (recipe.material.retention > 0) contourPaths(recipe.source); return !cancelled(); }
-  regionFillValid(recipe.fill);
-  if (recipe.fill.retention === 0) return !cancelled();
-  const regions = partitionRegions(recipe.source);
+  if (recipe.kind === "wallpaper") { motif(recipe.mark, recipe.palette); if (recipe.mark.retention > 0) wallpaperSites(recipe.source); return !cancelled(); }
+  if (recipe.kind === "lattice") { motif(recipe.mark, recipe.palette); if (recipe.mark.retention > 0) latticeSites(recipe.source); return !cancelled(); }
+  const regions = recipe.kind === "cells" ? terminalRegions(regionTree(recipe.source)) : partitionRegions(recipe.source);
   boundNestedWork(regions, recipe.fill);
   const scene = new Map<string, PreparedRegionGeometry | undefined>();
   for (let index = 0; index < regions.length; index++) {
