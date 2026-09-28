@@ -1,6 +1,6 @@
 # Current project state
 
-Updated 2026-09-21. Read with [AGENTS.md](AGENTS.md); open other documents only for the task.
+Updated 2026-09-28. Read with [AGENTS.md](AGENTS.md); open other documents only for the task.
 This is a current snapshot. Historical plans and reviews are not an active assignment queue.
 
 ## Accepted capabilities
@@ -56,22 +56,23 @@ The report includes all69 family dispositions and all three denominators:800 ass
 
 ## Web application
 
-- Multi-tenant extraction is the current web task. The private successor is
+- Multi-tenant work continues separately in the private successor,
   [cdlethem/procedurals-web](https://github.com/cdlethem/procedurals-web).
-  Public toolkit inputs are published as `web-toolkit-v0.2.1`; the private source is
-  recoverable remotely. Checkpoint B extraction passed: clean private image builds,
-  generated artwork packaging, durable private evidence and public-source removal.
-  Checkpoint C persistence/authentication/admission is next; no tenant or visitor
-  launch acceptance is claimed.
+  Public toolkit inputs are published as `web-toolkit-v0.2.2`: JavaScript operations,
+  catalog and the new library-owned instruments package. The private app pins all three
+  release URLs, SHA-256 values and npm integrity records. Checkpoint B extraction remains
+  historical evidence; Checkpoint C persistence/authentication/admission stays separate.
+  No tenant or visitor launch acceptance is claimed.
 - Checkpoint A containment removed app ingress on 8443 and 8444 and stopped the
-  working preview. Legacy storage services remain loopback-only as migration inputs.
+  working preview. Historical storage remains loopback-only; its artwork need not migrate.
   The release/preview URLs in the historical reviews below are not currently served.
   Do not reopen the shared-store application for visitors.
 
-- The extracted baseline generates 106 gallery/Studio workflows and 92 API entries,
-  with `studioBinding.catalogSha256` unchanged at
-  `66da2c7f786aec46853cfb811a694e3dac29bac5039cba2f0da0b746104de634`.
-  These app counts are not target-support attestations.
+- The historical extraction baseline generated 106 gallery/Studio workflows and 92 API
+  entries, bound to `66da2c7f786aec46853cfb811a694e3dac29bac5039cba2f0da0b746104de634`.
+  The current library has **117 workflow IDs / 99 canonical instruments / 14 families**.
+  [The library baseline review](evidence/web/instrument-library-baseline.json) binds its
+  released artifacts, standalone installed rendering and private app consumption.
 - Preserve both completed visual baselines. The
   [logo-led identity review](evidence/web/logo-led-site-identity.json) records **art with knobs**,
   IBM Plex typography, brick-red accents and stepped geometry. The
@@ -90,53 +91,85 @@ The report includes all69 family dispositions and all three denominators:800 ass
   preserves exact missing-source recovery for 49 bound app files and two app-only
   render runners. It supersedes the [initial app-only binding](evidence/conformance/public-web-historical-source-archive-review-initial.json),
   preserved from `f19481fc`; it does not accept changed sources or repair unrelated stale reviews.
-- Preserve migration inputs: named projects in `.work/web-projects`; shared prompt
-  artifacts, saved layers and palettes in `.work/web-palettes-release/.work/harness`.
-  These remain private/offline migration inputs, never public toolkit assets.
+- Historical named projects in `.work/web-projects` and prompt artifacts, saved layers
+  and palettes in `.work/web-palettes-release/.work/harness` remain private/offline.
+  Saved Studio artwork is disposable, not a migration requirement or public toolkit input.
 
 ## External reference research
 
 The [corpus](docs/external-art-corpus.md) contains 6,497 distinct local images across 24 artist/studio
-groups, representing 1,988 of 2,023 selected records; 383 source URLs remain unavailable. The
-[58-family p5 expansion plan](docs/external-art-p5-expansion-plan.md) compares current capabilities
-and prioritizes future work. [Root review](evidence/external-art/2026-09/root-review.json) records
-visual scope and access gaps; no external artwork recreation is accepted by this research.
+groups, representing 1,988 of 2,023 selected records; 383 source URLs remain unavailable.
+The [58-family p5 expansion plan](docs/external-art-p5-expansion-plan.md) and its
+[root review](evidence/external-art/2026-09/root-review.json) are historical research;
+many proposed families are now implemented. The new [24-group visual synthesis](docs/next-release-visual-review.md)
+records the 229-sheet delegated survey and root's 58 mapped original-image views, with
+source/process/installation distinctions and access limits. No recreation is accepted.
 
 ## Remaining work and ownership
 
-Current assignment is the complete [multi-tenant plan](MULTI_TENANT_WEB_PLAN.md),
-checkpoints A–F, with private application work in its successor repository. Preserve
-both completed web redesigns and the [creative-quality standard](docs/creative-quality.md).
-The capability/port backlog below remains separate from this assignment.
+Next-release planning is complete: the authoritative [roadmap and implementation guide](docs/next-release-roadmap.md)
+specifies **56 substantial capability briefs** in eight areas, built through functional
+composition rather than 56 independent algorithms or mandatory gallery tiles.
+It includes shared contracts, dependency waves, file ownership and twelve layered scenarios.
+The [progress snapshot](docs/next-release-progress.md) records the completed W0 reference examples:
+**Motif Ecologies, Contour Scores and Region Quilts**. Their [contract and implementation map](docs/composition-reference-slice.md)
+freeze shared callbacks, typed named compositions and genuine nested controls.
+Root reviewed thirteen actual-interface configurations and three layered pairs in both orders;
+the [evidence](evidence/web/composition-reference-slice.json) binds exact replay, 27 passing package
+tests, checked packages and observed responsiveness. The slice is unreleased and scoped to p5;
+general graphs, cross-layer links and the remaining capability program are still future work.
 
-The survey batch and first [external expansion batch](docs/external-expansion-first-batch.md)
-are complete at their declared scope. The maintainer now requires the **entire external expansion
-plan implemented**. [Execution scope](docs/external-expansion-execution.md) carries the current
-starting point, the ranked next actions and the open findings; batch completion is an
-integration checkpoint, not the task endpoint. The
-[integration checkpoint](evidence/web/main-integration-checkpoint.json) records what the prior
-merge settled: the nine dynamics studies are now interactive (worst single edit 635ms, was 9.2s).
-The [visual operations acceptance](evidence/expansion/visual-operations/root-review.json) now
-records root acceptance for the five exported operations (weighted-image, recorded-controls,
-mesh-attribute, implicit-ray), with conformant p5.js cores and four scoped native studies. The
-nine dynamics studies are art-directed and pass creative review (see the
-[creative review](docs/dynamics-creative-review.md)); the catalog
-binding reconciliation (stale hashes for the shared web surface, the package index and py5
-records) is complete. The Design-family gate is settled: the intersection-graph editing
-and RNG-evolution studies deliver as compositions of the four accepted
-connected-growth-and-graphs operations; the neighborhood-growth study carries the
-node-insertion coupling (deterministic proposal pool plus an explicit old-density interval),
-both studies pass the 18 September creative review, and the four replay-model studies now
-prepare their step chains cooperatively, with every edit answering under 0.2s in the
-measured interface (worst cold-cache key change 1.0s, main thread responsive). The first
-I-family slice, `fractal.flame-accumulate-2d`, the second, `complex.escape-distance-2d`
-(bounded escape-time iteration plus the derivative distance estimate), and the third,
-`growth.space-colonization-step-2d` (tips growing toward distributed sources with source
-consumption and branching), are each implemented with a reviewed contract, bound fixtures
-and an editable p5 study; the remaining I-family slices (diffusion-limited aggregation,
-multiscale competition, maps) and the deeper-audit gaps are next. The additive barrel
-exposure keeps the pre-existing binding backlog stale, so the reference regeneration stays
-blocked by that backlog, not by the I-family slices.
+- Separate placement/marks, paths/materials, regions/fillers and fields/consumers. Ordinary
+  functions serve code authors; Studio needs serializable equivalents backed by the same
+  implementations. Extract and improve existing instruments alongside new compositions.
+  The earlier “strengthen everything first” ordering is superseded. Keep consequential
+  controls, purposeful seed variation, useful fragments, negative space and real layered
+  review. Consolidate redundant entries; existing artwork is disposable.
+- Reusable controls, construction, drawing, preparation, metadata, guides and source now
+  live in `packages/instruments/`. The private `/home/colin/dev/procedurals-web` host owns
+  UI, document envelopes, transforms/opacity, p5 lifecycle and storage—not copied drawers.
+  Its primary released gallery remains at 117 workflows / 92 API entries; the verified isolated
+  reference-package host has 120 workflows / 102 canonical instruments and the same 92 API entries.
+- The preceding bounded pass scanned the 55 IDs not revised previously, revised 27, and
+  added **Harmonic Traces, Phyllotactic Whorls and Contour Relief**. The subsequent color pass
+  brought that historical checkpoint to **81 revised existing IDs plus eleven additions**
+  with scoped creative reviews. The three new reference studies are admitted separately above;
+  neither checkpoint is whole-gallery creative acceptance.
+  Revised sources include mesh profiles, annular fragments, spring/force replay, costs,
+  vector fields, cell relaxation, binary rows, connector tiles and reusable path materials.
+- In the preceding pass, root exercised all 30 changed studies and reviewed 60 distinct
+  recipes, improved defaults and 15 layered pairs in both orders. All 27 predecessor
+  defaults replay pixel-identically; all 60 edited canvases match the actual Studio and
+  harness compositors. Historical technical/visual evidence is preserved, not overwritten.
+- Eight additional shared families consolidate equivalent instruments; Grammar Paths and
+  Path Materials gain another recipe. All old URLs and IDs remain. Root exercised 35
+  picker selections across the 14 families and three additions, refreshed all 30 detail
+  previews and six live-carousel previews, and fixed stale carousel inset/reseed controls.
+- Perceptual Bands now exposes a piecewise silhouette, gaps, global trim and editable color
+  stops; Oklab Orbits exposes eccentric/twisted arc construction and rank/arc coloring;
+  Quantized Stripes accepts weighted color sequences and area-correct strip/tile layouts.
+  Root explored their real controls, reviewed nine variants, checked 19 exact Studio/harness
+  replays and six layered compositions, and refreshed their guides and previews.
+- The remaining **25 retained IDs** have source-level dispositions, not new creative
+  acceptance. All 117 installed defaults rendered independently of the app and matched
+  the reviewed source PNGs exactly. Packaging is technical evidence, not creative admission.
+- Contour Relief intersects its actual grid triangles with horizontal height levels; it
+  does not drape unrelated marching-squares curves over a different surface. Flat contour
+  views retain marching squares. Harmonic Traces is parametric drawing, not pendulum
+  physics; Phyllotactic Whorls is ranked placement, not botanical growth or packing.
+- The instrument release advances reusable web-study packaging, not shared target support.
+  No deployment or authenticated Studio persistence/export claim: the isolated preview
+  lacks its private backend. Deterministic instruments expose no cosmetic seed.
+- Existing-operation study compositions do not wait on new operation contracts, corpus
+  recreation, target parity or historical binding reconciliation. Preserve deterministic
+  replay, bounded execution, compositing and honest export behavior, not saved-work migration.
+  New/changed public algorithms retain their own contract and fixture requirements.
+- The [external expansion execution record](docs/external-expansion-execution.md) preserves
+  prior implementation and evidence. Its older imperative to finish every family is not
+  the current scheduling rule. Historical dynamics and operation reviews remain evidence
+  of their stated scope, not exemptions from the new creative review.
+- Private tenant work and the [multi-tenant plan](MULTI_TENANT_WEB_PLAN.md) are separate.
+  Preserve its active work and disabled public ingress; use isolated local previews.
 
 - Other-target ports remain separate. The [port handoff](docs/porting-resume.md) tracks Python
   attestation reconciliation, Android ProfileMarks lifecycle validation and Java backlog.
@@ -145,9 +178,9 @@ blocked by that backlog, not by the I-family slices.
 - Preserve concurrent Android ProfileMarks edits, `.gradle/` directories and unrelated work.
   The [export successor](evidence/conformance/external-expansion-surface-review.json) binds the
   two new operations and default palette data while preserving historical acceptance bytes.
-- The [Java recipe preview](docs/java-recipe-preview.md) is a prototype. Before natural-language
-  recipe planning/its first prompt benchmark, create the missing prompt-to-recipe evaluation
-  skill after catalog/executor work, as required by AGENTS.md.
+- The [Java recipe preview](docs/java-recipe-preview.md) is a prototype. The
+  [prompt-evaluation skill](skills/prompt-to-recipe-evaluation/SKILL.md) exists; use it for
+  planner work rather than recreating it or making it a gate for interactive p5 studies.
 
 ## Evidence and focused commands
 

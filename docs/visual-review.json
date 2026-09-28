@@ -2,6 +2,163 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "composition-reference-studies",
+      "title": "Functional composition reference studies",
+      "category": "Root creative review: three unreleased studies",
+      "description": "Thirteen actual-interface configurations: stable source/material substitutions, structural alternatives, sparse fragments and genuine nested regions/paths/marks. Final-artifact replay is exact; admission is limited to this slice.",
+      "evidence": "evidence/web/composition-reference-slice.json",
+      "images": [
+        {
+          "label": "Curated study outcomes",
+          "path": ".work/composition-reference/reference-studies-contact.png",
+          "sha256": "9557145cfe841d13a554ffd95a31ef0b8cd2efcb9648f8d23958ee9e0a698425"
+        },
+        {
+          "label": "motif-ecologies-default",
+          "path": ".work/composition-reference/ui/motif-ecologies-default.png",
+          "sha256": "1a45a509817fbf79ee2c839d7ed21156e6dfd4bd5e80b94b6c176f6cd7392a85"
+        },
+        {
+          "label": "motif-shared-sites-rings",
+          "path": ".work/composition-reference/ui/motif-shared-sites-rings.png",
+          "sha256": "36dfcca22048d3ca787de216aeaf2a67f5042686d4c46a36bf2938593587ea2b"
+        },
+        {
+          "label": "motif-sparse-rings",
+          "path": ".work/composition-reference/ui/motif-sparse-rings.png",
+          "sha256": "a2af89e63874514839214029656425a851e968da27413d132d8ee27634a096c3"
+        },
+        {
+          "label": "motif-slanted-dots",
+          "path": ".work/composition-reference/ui/motif-slanted-dots.png",
+          "sha256": "a6f868daba46a4d20f2c4f7751e33ed3c289aed045b6bca783df0def44b29d64"
+        },
+        {
+          "label": "contour-scores-default",
+          "path": ".work/composition-reference/ui/contour-scores-default.png",
+          "sha256": "4ef40e191879d6784618ed7d47d4e0cf26f6d8dcfa393d12c3c85d0646989864"
+        },
+        {
+          "label": "contour-shared-paths-ink",
+          "path": ".work/composition-reference/ui/contour-shared-paths-ink.png",
+          "sha256": "aa43e55714ea58fe0dd933b563d9be1d6cd331bf03720ca53d756ef5045f865d"
+        },
+        {
+          "label": "contour-hill-beads",
+          "path": ".work/composition-reference/ui/contour-hill-beads.png",
+          "sha256": "ce2150ba86218ae9c5a110ea3432ca78dd484c79b691ce490c68c9859feee45e"
+        },
+        {
+          "label": "contour-saddle-fragment",
+          "path": ".work/composition-reference/ui/contour-saddle-fragment.png",
+          "sha256": "65a17db245d0edfa5ec53ec5cda1e62099c96cadb7da790052535819ec442087"
+        },
+        {
+          "label": "region-quilts-default",
+          "path": ".work/composition-reference/ui/region-quilts-default.png",
+          "sha256": "d4444785557a7b0fda95b5b05a6f499e91793de9b1306ffdd892223fc8dc245a"
+        },
+        {
+          "label": "quilt-wave-ink",
+          "path": ".work/composition-reference/ui/quilt-wave-ink.png",
+          "sha256": "ec292c0ebdb5194dfc95cabac7658c574f9326dd46bd5f3a942fe598e8fc23d6"
+        },
+        {
+          "label": "quilt-wave-rosettes",
+          "path": ".work/composition-reference/ui/quilt-wave-rosettes.png",
+          "sha256": "206c043de13118d2803b7a53b42a7c86948a8a46cffccdeced8a924eab1d76f5"
+        },
+        {
+          "label": "quilt-beaded-islands",
+          "path": ".work/composition-reference/ui/quilt-beaded-islands.png",
+          "sha256": "e1447df33ac566c850101135d7d75714fb8898029c74c00f59a4f43b21907754"
+        },
+        {
+          "label": "quilt-sparse-hatch",
+          "path": ".work/composition-reference/ui/quilt-sparse-hatch.png",
+          "sha256": "61e1d51f3d1e4bbe535c164528c241636d11e35e74a91b1a5dafaeeb37a256bc"
+        },
+        {
+          "label": "Actual motif controls",
+          "path": ".work/composition-reference/ui/motif-default-interface.png",
+          "sha256": "5a997c70f376b7f57f018a67dae295305a2e47be1557ee0d8742a9fac3d0ec23"
+        },
+        {
+          "label": "Actual nested field, material and bead controls",
+          "path": ".work/composition-reference/ui/quilt-nested-controls.png",
+          "sha256": "964456c1628f28c88d194c105e4c7aa99c94415103df338c114a642b537168ce"
+        }
+      ]
+    },
+    {
+      "id": "composition-reference-layered",
+      "title": "Functional references in layered compositions",
+      "category": "Root creative review: both layer orders",
+      "description": "Meadow/terrain, filled discs/hatch fragments and beaded archipelago/line gestures. Both orders were inspected and replayed through both real compositors. The earlier all-outline ring pair is explicitly exploratory.",
+      "evidence": "evidence/web/composition-reference-slice.json",
+      "images": [
+        {
+          "label": "Three layered pairs in both orders",
+          "path": ".work/composition-reference/layered-compositions-contact.png",
+          "sha256": "0562178e51620585c6b867b767f7d0db9fd3c6ae7efa14a59245f5cc85ff8364"
+        },
+        {
+          "label": "meadow-terrain-forward",
+          "path": ".work/composition-reference/compositions/meadow-terrain-forward.png",
+          "sha256": "3900fe66eb19f33dc0d508694754328d17bff8bf393bc729693c26bde2679490"
+        },
+        {
+          "label": "meadow-terrain-reversed",
+          "path": ".work/composition-reference/compositions/meadow-terrain-reversed.png",
+          "sha256": "b4d6fffed73f029bd8eeba1c887e2a858704ca42cc18b3e9a91cad0cf8af6bb1"
+        },
+        {
+          "label": "discs-quilt-forward",
+          "path": ".work/composition-reference/compositions/discs-quilt-forward.png",
+          "sha256": "02d0b8910b4a4770acadc607b5b2da19b6c2531ee860a44e98064e278d55e4fc"
+        },
+        {
+          "label": "discs-quilt-reversed",
+          "path": ".work/composition-reference/compositions/discs-quilt-reversed.png",
+          "sha256": "634ff23296c065e9ae829095c9be9c10c87edba14fecde896c506206f8357af5"
+        },
+        {
+          "label": "archipelago-gesture-forward",
+          "path": ".work/composition-reference/compositions/archipelago-gesture-forward.png",
+          "sha256": "e00938f9ee61f47015d8eefe693a26ed95d5a92b408c5f48c4b7145c337eec10"
+        },
+        {
+          "label": "archipelago-gesture-reversed",
+          "path": ".work/composition-reference/compositions/archipelago-gesture-reversed.png",
+          "sha256": "ee60c0199492d330a45d82aeb88b78b508352aae40781fa7ef047f9cce01b3cd"
+        },
+        {
+          "label": "Exploratory rings; final composition uses filled discs for stronger contrast",
+          "path": ".work/composition-reference/compositions/rings-quilt-forward.png",
+          "sha256": "a3ee536e350f0d79511ae289c62d24254e63c5d4252d67927793365aae42a09f"
+        }
+      ]
+    },
+    {
+      "id": "composition-reference-api",
+      "title": "Functional callback and containment proof",
+      "category": "Native API and regression evidence",
+      "description": "An ordinary custom mark shares immutable sites with a stock mark. Filled-dot containment ignores unused stroke width. These technical examples are not additional admitted studies.",
+      "evidence": "evidence/web/composition-reference-slice.json",
+      "images": [
+        {
+          "label": "Custom callback on shared sites",
+          "path": ".work/composition-reference/native/custom-callback.png",
+          "sha256": "1a7b19e29e3629dc06e589c64abbc288e680a13ea49ce9db5f16401f12376a72"
+        },
+        {
+          "label": "Filled-dot boundary correction",
+          "path": ".work/composition-reference/native/filled-dot-boundary.png",
+          "sha256": "31dde7e4378167f05dc457efcdaa742983ace73e7ccfdda5cce029c39d1a7a13"
+        }
+      ]
+    },
+    {
       "id": "instrument-color-constructions-022",
       "title": "Editable color constructions — scoped creative review",
       "category": "Root creative review: three studies",

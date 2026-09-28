@@ -1,0 +1,1375 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-09-28",
+  "status": "root-accepted-scoped-reference-studies",
+  "scope": {
+    "instruments": [
+      "motif-ecologies",
+      "contour-scores",
+      "region-quilts"
+    ],
+    "boundary": "p5-compatible 2D instrument compositions; no new operation target certification",
+    "workingTreeWorkflowIds": 120,
+    "workingTreeCanonicalInstruments": 102,
+    "releasedWorkflowIds": 117
+  },
+  "package": {
+    "sourceCommit": "d7bb73551d23d71a6e00f3c201411d2ab67a99fd",
+    "version": "0.2.2",
+    "published": false,
+    "report": ".work/dist/composition-reference-accepted/report.json",
+    "artifacts": [
+      {
+        "name": "@procedurals/javascript",
+        "version": "0.2.2",
+        "filename": "procedurals-javascript-0.2.2.tgz",
+        "bytes": 817526,
+        "sha256": "17ddb36e7ad78ebf18f995ab7b845c9766067738c8a64961022342abc93aa3c6",
+        "integrity": "sha512-DZWXzy9uPbShS5onU2GIx39piQo4ojEcb//qREW9Xb4C2iLVArIvocO20y/IgbEj/iYDGyEl5szPrbIB03sAuw=="
+      },
+      {
+        "name": "@procedurals/catalog",
+        "version": "0.2.2",
+        "filename": "procedurals-catalog-0.2.2.tgz",
+        "bytes": 1762463,
+        "sha256": "a233e933749aa5743ace6855190fe22ccddc1b5b0a95c55a7dc0016a7e744cde",
+        "integrity": "sha512-beafLyTTtUoDpweFgySRAtZzJZan0NHLIUDvwtXNnXdJC/6XvpXj76VAg2ZJLVp1N8LHTLl+DqX9uXVxnPirQQ=="
+      },
+      {
+        "name": "@procedurals/instruments",
+        "version": "0.2.2",
+        "filename": "procedurals-instruments-0.2.2.tgz",
+        "bytes": 879818,
+        "sha256": "b5d7ca0d9aba9179fe062a35604403c159d21772269fe1e9558caecc106c6a33",
+        "integrity": "sha512-/IhL+QewPrJABxJKsa3eG3KGj0qz/7ZHy2tMFWEOecv6X8CJd6g4sCKszK7HsdRUDwUs4OkVH8Zl/rDDPXJVAA=="
+      }
+    ],
+    "note": "Local unpublished development artifacts; these are not the existing web-toolkit-v0.2.2 release bytes."
+  },
+  "host": {
+    "root": "/home/colin/dev/procedurals-web",
+    "isolatedApp": "/home/colin/dev/procedurals-web/.work/composition-reference/apps/web",
+    "routes": [
+      "/techniques/motif-ecologies",
+      "/techniques/contour-scores",
+      "/techniques/region-quilts"
+    ],
+    "primaryPinsChanged": false,
+    "accessFlagsEnabled": false,
+    "sourceSha256": {
+      "components/LayerControls.tsx": "2c5d34471997d352297c1c2dbf65080ba6049f716d87eb6954789f169ee9f2c5",
+      "scripts/test-browser.mjs": "b14f1c1a53eb9819378b10cd68141c076fc6e59c25c25fab374585c6781d0414",
+      "lib/render-studio.ts": "7f665330470aff51cd5a34202c5449c00dacd39068888d5597fdbcf0e59a4322",
+      "lib/harness-render.ts": "4981eebacb35d7485b5ae9c30282700d2c490a10e87faa7ee6b8f13b052b563e",
+      "lib/studio.ts": "b92c063a31b348720258d15cab7de5c6a23cdc44c6fc5e2b01311ddcbfc2a540",
+      "lib/studio-document.ts": "de4b5435e9d7edc5a59cb3b3447a6f9b28a69dcf435142981e4f82cfd26deda6"
+    },
+    "note": "Real shared LayerControls and renderer; loopback-only isolated package install. Authentication, tenant storage, deployment and the primary app package upgrade were not exercised."
+  },
+  "rootCreativeReview": {
+    "motif-ecologies": "A coherent open-centered rosette population, interchangeable rings on identical sites, a deliberately sparse ring fragment and a dense slanted dot ribbon. Width 600 and population cap 400 exercised exact values outside the slider intervals.",
+    "contour-scores": "A stitched noise landscape, continuous ink on the same paths, beaded hill contours and an open saddle gesture. The material changes are distinct from threshold/source construction.",
+    "region-quilts": "Mixed fillers establish hierarchy; wave-filled leaves expose local source fitting; bead/rosette substitution reaches three nested levels; beaded islands and sparse hatch fragments leave useful negative space. Very thin leaves can legitimately read as lines.",
+    "layered": "Root inspected all three final pairs in both orders. Filled discs replaced the exploratory all-outline ring pair to make fill-versus-line contrast and foreground order stronger. Meadow/terrain and archipelago/gesture intentionally have subtler crossing effects.",
+    "limits": "Scoped admission of the three studies and reviewed compositions, not a claim that every setting or the rest of the gallery is artistically accepted. Slider intervals are authored working spans, not universally measured quality ranges."
+  },
+  "interfaceReview": {
+    "sourceCommit": "87bed1f69d9fedeacd3284447ace9de39c45c39d",
+    "configurations": [
+      {
+        "name": "motif-ecologies-default",
+        "path": ".work/composition-reference/ui/motif-ecologies-default.png",
+        "input": {
+          "technique": "motif-ecologies",
+          "seed": 42,
+          "palette": [
+            1649460,
+            13463634,
+            14003560
+          ],
+          "params": {
+            "centerX": 320,
+            "centerY": 320,
+            "width": 470,
+            "height": 410,
+            "separation": 32,
+            "maxPoints": 135,
+            "support": "annulus",
+            "opening": 0.28,
+            "rotation": 22,
+            "mark": "rosette",
+            "size": 58,
+            "petals": 13,
+            "markOpening": 0.3,
+            "variation": 0.64,
+            "retention": 0.91,
+            "weight": 1.25
+          },
+          "cutEdits": []
+        }
+      },
+      {
+        "name": "motif-shared-sites-rings",
+        "path": ".work/composition-reference/ui/motif-shared-sites-rings.png",
+        "input": {
+          "technique": "motif-ecologies",
+          "seed": 42,
+          "palette": [
+            1649460,
+            13463634,
+            14003560
+          ],
+          "params": {
+            "centerX": 320,
+            "centerY": 320,
+            "width": 470,
+            "height": 410,
+            "separation": 32,
+            "maxPoints": 135,
+            "support": "annulus",
+            "opening": 0.28,
+            "rotation": 22,
+            "mark": "rings",
+            "size": 58,
+            "petals": 13,
+            "markOpening": 0.3,
+            "variation": 0.64,
+            "retention": 0.91,
+            "weight": 1.25
+          },
+          "cutEdits": []
+        }
+      },
+      {
+        "name": "motif-sparse-rings",
+        "path": ".work/composition-reference/ui/motif-sparse-rings.png",
+        "input": {
+          "technique": "motif-ecologies",
+          "seed": 42,
+          "palette": [
+            1649460,
+            13463634,
+            14003560
+          ],
+          "params": {
+            "centerX": 320,
+            "centerY": 320,
+            "width": 250,
+            "height": 360,
+            "separation": 50,
+            "maxPoints": 135,
+            "support": "ellipse",
+            "opening": 0.28,
+            "rotation": 22,
+            "mark": "rings",
+            "size": 22,
+            "petals": 13,
+            "markOpening": 0.3,
+            "variation": 0.64,
+            "retention": 0.55,
+            "weight": 1.25
+          },
+          "cutEdits": []
+        }
+      },
+      {
+        "name": "motif-slanted-dots",
+        "path": ".work/composition-reference/ui/motif-slanted-dots.png",
+        "input": {
+          "technique": "motif-ecologies",
+          "seed": 42,
+          "palette": [
+            1649460,
+            13463634,
+            14003560
+          ],
+          "params": {
+            "centerX": 320,
+            "centerY": 320,
+            "width": 600,
+            "height": 170,
+            "separation": 14,
+            "maxPoints": 400,
+            "support": "rectangle",
+            "opening": 0.28,
+            "rotation": -24,
+            "mark": "dot",
+            "size": 6,
+            "petals": 17,
+            "markOpening": 0.3,
+            "variation": 0.64,
+            "retention": 0.85,
+            "weight": 1.25
+          },
+          "cutEdits": []
+        }
+      },
+      {
+        "name": "contour-scores-default",
+        "path": ".work/composition-reference/ui/contour-scores-default.png",
+        "input": {
+          "technique": "contour-scores",
+          "seed": 42,
+          "palette": [
+            2111817,
+            12741967,
+            13807478
+          ],
+          "params": {
+            "source": "noise",
+            "centerX": 320,
+            "centerY": 320,
+            "width": 474,
+            "height": 460,
+            "resolution": 54,
+            "frequency": 3.1,
+            "aspect": 1.5,
+            "hillCount": 5,
+            "hillRadius": 0.23,
+            "levelBase": -0.55,
+            "levelStep": 0.085,
+            "levels": 12,
+            "rotation": 12,
+            "material": "stitch",
+            "weight": 1.4,
+            "spacing": 8,
+            "phase": 0.35,
+            "retention": 0.93,
+            "beadMark": "rings",
+            "beadSize": 7,
+            "beadPetals": 6,
+            "beadWeight": 1,
+            "beadOpening": 0.42
+          },
+          "cutEdits": []
+        }
+      },
+      {
+        "name": "contour-shared-paths-ink",
+        "path": ".work/composition-reference/ui/contour-shared-paths-ink.png",
+        "input": {
+          "technique": "contour-scores",
+          "seed": 42,
+          "palette": [
+            2111817,
+            12741967,
+            13807478
+          ],
+          "params": {
+            "source": "noise",
+            "centerX": 320,
+            "centerY": 320,
+            "width": 474,
+            "height": 460,
+            "resolution": 54,
+            "frequency": 3.1,
+            "aspect": 1.5,
+            "hillCount": 5,
+            "hillRadius": 0.23,
+            "levelBase": -0.55,
+            "levelStep": 0.085,
+            "levels": 12,
+            "rotation": 12,
+            "material": "ink",
+            "weight": 1.4,
+            "spacing": 8,
+            "phase": 0.35,
+            "retention": 0.93,
+            "beadMark": "rings",
+            "beadSize": 7,
+            "beadPetals": 6,
+            "beadWeight": 1,
+            "beadOpening": 0.42
+          },
+          "cutEdits": []
+        }
+      },
+      {
+        "name": "contour-hill-beads",
+        "path": ".work/composition-reference/ui/contour-hill-beads.png",
+        "input": {
+          "technique": "contour-scores",
+          "seed": 42,
+          "palette": [
+            2111817,
+            12741967,
+            13807478
+          ],
+          "params": {
+            "source": "hills",
+            "centerX": 320,
+            "centerY": 320,
+            "width": 474,
+            "height": 460,
+            "resolution": 54,
+            "frequency": 3.1,
+            "aspect": 1.5,
+            "hillCount": 5,
+            "hillRadius": 0.23,
+            "levelBase": 0.2,
+            "levelStep": 0.2,
+            "levels": 6,
+            "rotation": 12,
+            "material": "beads",
+            "weight": 1.4,
+            "spacing": 9,
+            "phase": 0.35,
+            "retention": 0.93,
+            "beadMark": "dot",
+            "beadSize": 3.5,
+            "beadPetals": 6,
+            "beadWeight": 1,
+            "beadOpening": 0.42
+          },
+          "cutEdits": []
+        }
+      },
+      {
+        "name": "contour-saddle-fragment",
+        "path": ".work/composition-reference/ui/contour-saddle-fragment.png",
+        "input": {
+          "technique": "contour-scores",
+          "seed": 42,
+          "palette": [
+            2111817,
+            12741967,
+            13807478
+          ],
+          "params": {
+            "source": "saddle",
+            "centerX": 320,
+            "centerY": 320,
+            "width": 280,
+            "height": 320,
+            "resolution": 54,
+            "frequency": 3.1,
+            "aspect": 1.5,
+            "hillCount": 5,
+            "hillRadius": 0.23,
+            "levelBase": -0.1,
+            "levelStep": 0.45,
+            "levels": 2,
+            "rotation": -18,
+            "material": "ink",
+            "weight": 2,
+            "spacing": 9,
+            "phase": 0.35,
+            "retention": 0.93,
+            "beadMark": "dot",
+            "beadSize": 3.5,
+            "beadPetals": 6,
+            "beadWeight": 1,
+            "beadOpening": 0.42
+          },
+          "cutEdits": []
+        }
+      },
+      {
+        "name": "region-quilts-default",
+        "path": ".work/composition-reference/ui/region-quilts-default.png",
+        "input": {
+          "technique": "region-quilts",
+          "seed": 42,
+          "palette": [
+            2505283,
+            11559245,
+            14134372
+          ],
+          "params": {
+            "centerX": 320,
+            "centerY": 320,
+            "width": 475,
+            "height": 475,
+            "grid": 38,
+            "attempts": 22,
+            "axis": "LONGEST",
+            "bias": -0.27,
+            "fill": "mixed",
+            "inset": 5,
+            "retention": 0.87,
+            "spacing": 13,
+            "angle": -35,
+            "weight": 1.5,
+            "mark": "rosette",
+            "markSize": 15,
+            "markPetals": 7,
+            "contourField": "noise",
+            "contourFrequency": 1.8,
+            "material": "ink",
+            "materialSpacing": 13,
+            "beadMark": "dot",
+            "beadSize": 6,
+            "beadPetals": 7
+          },
+          "cutEdits": []
+        }
+      },
+      {
+        "name": "quilt-wave-ink",
+        "path": ".work/composition-reference/ui/quilt-wave-ink.png",
+        "input": {
+          "technique": "region-quilts",
+          "seed": 42,
+          "palette": [
+            2505283,
+            11559245,
+            14134372
+          ],
+          "params": {
+            "centerX": 320,
+            "centerY": 320,
+            "width": 475,
+            "height": 475,
+            "grid": 24,
+            "attempts": 11,
+            "axis": "LONGEST",
+            "bias": -0.27,
+            "fill": "contours",
+            "inset": 8,
+            "retention": 0.85,
+            "spacing": 13,
+            "angle": -35,
+            "weight": 1.5,
+            "mark": "rosette",
+            "markSize": 15,
+            "markPetals": 7,
+            "contourField": "waves",
+            "contourFrequency": 1.25,
+            "material": "ink",
+            "materialSpacing": 13,
+            "beadMark": "dot",
+            "beadSize": 6,
+            "beadPetals": 7
+          },
+          "cutEdits": []
+        }
+      },
+      {
+        "name": "quilt-wave-rosettes",
+        "path": ".work/composition-reference/ui/quilt-wave-rosettes.png",
+        "input": {
+          "technique": "region-quilts",
+          "seed": 42,
+          "palette": [
+            2505283,
+            11559245,
+            14134372
+          ],
+          "params": {
+            "centerX": 320,
+            "centerY": 320,
+            "width": 475,
+            "height": 475,
+            "grid": 24,
+            "attempts": 11,
+            "axis": "LONGEST",
+            "bias": -0.27,
+            "fill": "contours",
+            "inset": 8,
+            "retention": 0.85,
+            "spacing": 13,
+            "angle": -35,
+            "weight": 0.7,
+            "mark": "rosette",
+            "markSize": 15,
+            "markPetals": 7,
+            "contourField": "waves",
+            "contourFrequency": 1.25,
+            "material": "beads",
+            "materialSpacing": 14,
+            "beadMark": "rosette",
+            "beadSize": 8,
+            "beadPetals": 5
+          },
+          "cutEdits": []
+        }
+      },
+      {
+        "name": "quilt-beaded-islands",
+        "path": ".work/composition-reference/ui/quilt-beaded-islands.png",
+        "input": {
+          "technique": "region-quilts",
+          "seed": 42,
+          "palette": [
+            2505283,
+            11559245,
+            14134372
+          ],
+          "params": {
+            "centerX": 320,
+            "centerY": 320,
+            "width": 475,
+            "height": 475,
+            "grid": 24,
+            "attempts": 11,
+            "axis": "LONGEST",
+            "bias": -0.27,
+            "fill": "contours",
+            "inset": 8,
+            "retention": 0.85,
+            "spacing": 13,
+            "angle": -35,
+            "weight": 0.7,
+            "mark": "rosette",
+            "markSize": 15,
+            "markPetals": 7,
+            "contourField": "hills",
+            "contourFrequency": 1.25,
+            "material": "beads",
+            "materialSpacing": 10,
+            "beadMark": "rings",
+            "beadSize": 5,
+            "beadPetals": 5
+          },
+          "cutEdits": []
+        }
+      },
+      {
+        "name": "quilt-sparse-hatch",
+        "path": ".work/composition-reference/ui/quilt-sparse-hatch.png",
+        "input": {
+          "technique": "region-quilts",
+          "seed": 42,
+          "palette": [
+            2505283,
+            11559245,
+            14134372
+          ],
+          "params": {
+            "centerX": 320,
+            "centerY": 320,
+            "width": 475,
+            "height": 475,
+            "grid": 24,
+            "attempts": 11,
+            "axis": "LONGEST",
+            "bias": -0.27,
+            "fill": "hatch",
+            "inset": 12,
+            "retention": 0.5,
+            "spacing": 20,
+            "angle": 38,
+            "weight": 1.4,
+            "mark": "rosette",
+            "markSize": 15,
+            "markPetals": 7,
+            "contourField": "hills",
+            "contourFrequency": 1.25,
+            "material": "beads",
+            "materialSpacing": 10,
+            "beadMark": "rings",
+            "beadSize": 5,
+            "beadPetals": 5
+          },
+          "cutEdits": []
+        }
+      }
+    ],
+    "completedEdits": 59,
+    "maxCompletionMs": 83.6,
+    "medianCompletionMs": 22,
+    "observations": [
+      "Hidden motif petals and nested field/material/bead settings survive switches.",
+      "Seed undo restores identical pixels.",
+      "Changing a used palette stop leaves seed 42 intact; undo restores identical pixels. An unused palette stop legitimately has no effect.",
+      "Out-of-domain width 1601 is rejected and preserves the last image.",
+      "Nested contour work at grid 150, 150 cuts and inset 0 is rejected before child allocation; the last image is preserved.",
+      "During an observed loading state, 98 cuts were superseded by 15; final pixels exactly matched the prior 15-cut image."
+    ],
+    "finalCorrection": {
+      "sourceCommit": "d7bb73551d23d71a6e00f3c201411d2ab67a99fd",
+      "filledDotBoundary": {
+        "motifsExact": true,
+        "beadsExact": true
+      },
+      "note": "Both nested motif dots and contour bead dots remain pixel-identical when unused stroke width changes from 0 to 20. All 13 earlier interface images also replay exactly on this successor."
+    }
+  },
+  "verification": {
+    "packageTests": {
+      "command": "npm run build && npm test",
+      "cwd": "packages/instruments",
+      "passed": 27
+    },
+    "packaging": {
+      "command": "node tools/build_web_toolkit.mjs --output .work/dist/composition-reference-accepted",
+      "status": "passed"
+    },
+    "hostChecks": [
+      "npm run check:generated: 120 workflows and 92 API entries current",
+      "npm run typecheck: passed",
+      "The region-quilts scenario from scripts/test-browser.mjs passed in isolation against the real app. The full browser/auth suite was not run."
+    ],
+    "sourceSharing": {
+      "sharing": [
+        {
+          "id": "motif-ecologies",
+          "sameGeometryObject": true,
+          "deepFrozen": true
+        },
+        {
+          "id": "contour-scores",
+          "sameGeometryObject": true,
+          "deepFrozen": true
+        },
+        {
+          "id": "region-quilts",
+          "sameGeometryObject": true,
+          "deepFrozen": true
+        }
+      ],
+      "cancellationObserved": true,
+      "cancelledResult": false,
+      "retryComplete": true
+    },
+    "uiReplayOnAcceptedArtifact": [
+      {
+        "name": "motif-ecologies-default",
+        "changedPixels": 0,
+        "exact": true
+      },
+      {
+        "name": "motif-shared-sites-rings",
+        "changedPixels": 0,
+        "exact": true
+      },
+      {
+        "name": "motif-sparse-rings",
+        "changedPixels": 0,
+        "exact": true
+      },
+      {
+        "name": "motif-slanted-dots",
+        "changedPixels": 0,
+        "exact": true
+      },
+      {
+        "name": "contour-scores-default",
+        "changedPixels": 0,
+        "exact": true
+      },
+      {
+        "name": "contour-shared-paths-ink",
+        "changedPixels": 0,
+        "exact": true
+      },
+      {
+        "name": "contour-hill-beads",
+        "changedPixels": 0,
+        "exact": true
+      },
+      {
+        "name": "contour-saddle-fragment",
+        "changedPixels": 0,
+        "exact": true
+      },
+      {
+        "name": "region-quilts-default",
+        "changedPixels": 0,
+        "exact": true
+      },
+      {
+        "name": "quilt-wave-ink",
+        "changedPixels": 0,
+        "exact": true
+      },
+      {
+        "name": "quilt-wave-rosettes",
+        "changedPixels": 0,
+        "exact": true
+      },
+      {
+        "name": "quilt-beaded-islands",
+        "changedPixels": 0,
+        "exact": true
+      },
+      {
+        "name": "quilt-sparse-hatch",
+        "changedPixels": 0,
+        "exact": true
+      }
+    ],
+    "layeredReplay": [
+      {
+        "name": "meadow-terrain-forward",
+        "replayExact": true,
+        "harnessExact": true,
+        "prepareMs": 8.5,
+        "drawMs": 3.5
+      },
+      {
+        "name": "meadow-terrain-reversed",
+        "replayExact": true,
+        "harnessExact": true,
+        "prepareMs": 0.09999990463256836,
+        "drawMs": 3.100000023841858
+      },
+      {
+        "name": "discs-quilt-forward",
+        "replayExact": true,
+        "harnessExact": true,
+        "prepareMs": 0.20000004768371582,
+        "drawMs": 2.299999952316284
+      },
+      {
+        "name": "discs-quilt-reversed",
+        "replayExact": true,
+        "harnessExact": true,
+        "prepareMs": 0.30000007152557373,
+        "drawMs": 3.399999976158142
+      },
+      {
+        "name": "archipelago-gesture-forward",
+        "replayExact": true,
+        "harnessExact": true,
+        "prepareMs": 2.0999999046325684,
+        "drawMs": 6.900000095367432
+      },
+      {
+        "name": "archipelago-gesture-reversed",
+        "replayExact": true,
+        "harnessExact": true,
+        "prepareMs": 0.10000002384185791,
+        "drawMs": 5.899999976158142
+      }
+    ],
+    "layerOrderPixelDifferences": [
+      {
+        "name": "meadow-terrain",
+        "changedPixels": 152
+      },
+      {
+        "name": "discs-quilt",
+        "changedPixels": 1203
+      },
+      {
+        "name": "archipelago-gesture",
+        "changedPixels": 398
+      }
+    ],
+    "directAndBoundaryNativeSmoke": {
+      "status": "passed",
+      "sourceCommit": "d7bb73551d23d71a6e00f3c201411d2ab67a99fd",
+      "checks": {
+        "dots": [
+          {
+            "fill": "motifs",
+            "exact": true
+          },
+          {
+            "fill": "contours",
+            "exact": true
+          }
+        ],
+        "direct": [
+          {
+            "id": "motif-ecologies",
+            "exact": true
+          },
+          {
+            "id": "contour-scores",
+            "exact": true
+          },
+          {
+            "id": "region-quilts",
+            "exact": true
+          }
+        ]
+      }
+    },
+    "hiddenLayerEqualsAbsent": true,
+    "customCallback": {
+      "siteCount": 39,
+      "callbackInvocations": 78,
+      "finalRunDepth": 0
+    },
+    "hatchBoundarySmoke": {
+      "cases": 36,
+      "angles": [
+        -180,
+        -135,
+        -90,
+        -45,
+        0,
+        45,
+        90,
+        135,
+        180
+      ],
+      "spacing": [
+        8,
+        10,
+        12,
+        16
+      ],
+      "errors": []
+    }
+  },
+  "legacyMigration": {
+    "results": [
+      {
+        "id": "blue-noise-stipple",
+        "changedChannels": 33,
+        "maxDelta": 34
+      },
+      {
+        "id": "spaced-symbols",
+        "changedChannels": 0,
+        "maxDelta": 0
+      },
+      {
+        "id": "stitched-contours",
+        "changedChannels": 0,
+        "maxDelta": 0
+      },
+      {
+        "id": "fragmented-lines",
+        "changedChannels": 0,
+        "maxDelta": 0
+      },
+      {
+        "id": "panel-marks",
+        "changedChannels": 0,
+        "maxDelta": 0
+      }
+    ],
+    "note": "Four selected predecessor defaults were pixel-identical. Blue-noise Stipple differed in 33 RGBA channel values, maximum 34/255; no bit-exact claim is made for it. This is not recertification of every migrated parameter combination."
+  },
+  "defectsCorrected": [
+    "Open-path station coverage and phase interpolation across actual corners.",
+    "Exact saddle junctions split into non-branching components without dropping edges or perturbing thresholds.",
+    "Hatch scanlines centered at half-spacing rather than forced through a leaf corner.",
+    "Filled-dot containment excludes unused stroke width in both nested motifs and beads.",
+    "Slider increments represent the authored 1.25 weight, 0.085 threshold interval and -0.27 cut bias."
+  ],
+  "performance": {
+    "sourceCommit": "87bed1f69d9fedeacd3284447ace9de39c45c39d",
+    "samples": [
+      {
+        "id": "motif-ecologies",
+        "initial": {
+          "prepareMs": 1.7999999523162842,
+          "drawMs": 7.700000047683716
+        },
+        "paletteOnly": {
+          "prepareMs": 0,
+          "drawMs": 6.399999976158142
+        },
+        "structural": {
+          "params": {
+            "width": 430
+          },
+          "prepareMs": 1.2000000476837158,
+          "drawMs": 5
+        }
+      },
+      {
+        "id": "contour-scores",
+        "initial": {
+          "prepareMs": 16.40000009536743,
+          "drawMs": 14.299999952316284
+        },
+        "paletteOnly": {
+          "prepareMs": 0,
+          "drawMs": 12.799999952316284
+        },
+        "structural": {
+          "params": {
+            "width": 420
+          },
+          "prepareMs": 13.300000071525574,
+          "drawMs": 10.899999976158142
+        }
+      },
+      {
+        "id": "region-quilts",
+        "initial": {
+          "prepareMs": 35,
+          "drawMs": 7.100000023841858
+        },
+        "paletteOnly": {
+          "prepareMs": 20.600000023841858,
+          "drawMs": 10.899999976158142
+        },
+        "structural": {
+          "params": {
+            "attempts": 32
+          },
+          "prepareMs": 56.39999997615814,
+          "drawMs": 6.5
+        }
+      }
+    ],
+    "conditions": "Headless Chromium with software 2D canvas, p5 2.3.2, 640x640, density 1, seed 42. Preparation starts after module/p5 initialization. UI completion includes automation overhead. Selected observations, not universal bounds; the dot-boundary successor does not change the sampled configurations."
+  },
+  "compositions": [
+    {
+      "id": "meadow-terrain",
+      "title": "Meadow over terrain",
+      "document": {
+        "schemaVersion": 1,
+        "bindingVersion": "studio-v3",
+        "catalogSha256": "b2a7b1d13a3d2d0bcbfd8692b17cfd1d0458d1d28280075b3d755d4448853c1c",
+        "width": 640,
+        "height": 640,
+        "background": "#ece7da",
+        "layers": [
+          {
+            "technique": "contour-scores",
+            "seed": 42,
+            "palette": [
+              11774095,
+              9411478
+            ],
+            "params": {
+              "source": "noise",
+              "centerX": 320,
+              "centerY": 320,
+              "width": 500,
+              "height": 440,
+              "resolution": 54,
+              "frequency": 3.1,
+              "aspect": 1.5,
+              "hillCount": 5,
+              "hillRadius": 0.23,
+              "levelBase": -0.5,
+              "levelStep": 0.13,
+              "levels": 8,
+              "rotation": -8,
+              "material": "ink",
+              "weight": 0.55,
+              "spacing": 8,
+              "phase": 0.35,
+              "retention": 0.65,
+              "beadMark": "rings",
+              "beadSize": 7,
+              "beadPetals": 6,
+              "beadWeight": 1,
+              "beadOpening": 0.42
+            },
+            "cutEdits": [],
+            "id": "terrain",
+            "visible": true,
+            "opacity": 0.72,
+            "transform": {
+              "x": 320,
+              "y": 320,
+              "scale": 1,
+              "rotation": 0
+            }
+          },
+          {
+            "technique": "motif-ecologies",
+            "seed": 42,
+            "palette": [
+              1649460,
+              13463634,
+              14003560
+            ],
+            "params": {
+              "centerX": 350,
+              "centerY": 340,
+              "width": 340,
+              "height": 280,
+              "separation": 49,
+              "maxPoints": 70,
+              "support": "ellipse",
+              "opening": 0.28,
+              "rotation": 22,
+              "mark": "rosette",
+              "size": 30,
+              "petals": 9,
+              "markOpening": 0.3,
+              "variation": 0.5,
+              "retention": 0.72,
+              "weight": 1.25
+            },
+            "cutEdits": [],
+            "id": "meadow",
+            "visible": true,
+            "opacity": 1,
+            "transform": {
+              "x": 320,
+              "y": 320,
+              "scale": 1,
+              "rotation": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "discs-quilt",
+      "title": "Filled discs among hatch fragments",
+      "document": {
+        "schemaVersion": 1,
+        "bindingVersion": "studio-v3",
+        "catalogSha256": "b2a7b1d13a3d2d0bcbfd8692b17cfd1d0458d1d28280075b3d755d4448853c1c",
+        "width": 640,
+        "height": 640,
+        "background": "#ece7da",
+        "layers": [
+          {
+            "technique": "region-quilts",
+            "seed": 42,
+            "palette": [
+              2505283,
+              11559245,
+              14134372
+            ],
+            "params": {
+              "centerX": 320,
+              "centerY": 320,
+              "width": 475,
+              "height": 475,
+              "grid": 24,
+              "attempts": 11,
+              "axis": "LONGEST",
+              "bias": -0.27,
+              "fill": "hatch",
+              "inset": 12,
+              "retention": 0.5,
+              "spacing": 20,
+              "angle": 38,
+              "weight": 1.4,
+              "mark": "rosette",
+              "markSize": 15,
+              "markPetals": 7,
+              "contourField": "noise",
+              "contourFrequency": 1.8,
+              "material": "ink",
+              "materialSpacing": 13,
+              "beadMark": "dot",
+              "beadSize": 6,
+              "beadPetals": 7
+            },
+            "cutEdits": [],
+            "id": "quilt",
+            "visible": true,
+            "opacity": 1,
+            "transform": {
+              "x": 320,
+              "y": 320,
+              "scale": 1,
+              "rotation": 0
+            }
+          },
+          {
+            "technique": "motif-ecologies",
+            "seed": 42,
+            "palette": [
+              2505283,
+              13596501,
+              14068326
+            ],
+            "params": {
+              "centerX": 330,
+              "centerY": 345,
+              "width": 390,
+              "height": 380,
+              "separation": 70,
+              "maxPoints": 60,
+              "support": "ellipse",
+              "opening": 0.28,
+              "rotation": 22,
+              "mark": "dot",
+              "size": 82,
+              "petals": 13,
+              "markOpening": 0.3,
+              "variation": 0.5,
+              "retention": 0.75,
+              "weight": 1.5
+            },
+            "cutEdits": [],
+            "id": "discs",
+            "visible": true,
+            "opacity": 0.86,
+            "transform": {
+              "x": 320,
+              "y": 320,
+              "scale": 1,
+              "rotation": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "archipelago-gesture",
+      "title": "Line gestures among nested beaded islands",
+      "document": {
+        "schemaVersion": 1,
+        "bindingVersion": "studio-v3",
+        "catalogSha256": "b2a7b1d13a3d2d0bcbfd8692b17cfd1d0458d1d28280075b3d755d4448853c1c",
+        "width": 640,
+        "height": 640,
+        "background": "#ece7da",
+        "layers": [
+          {
+            "technique": "region-quilts",
+            "seed": 42,
+            "palette": [
+              2505283,
+              11559245,
+              14134372
+            ],
+            "params": {
+              "centerX": 320,
+              "centerY": 320,
+              "width": 475,
+              "height": 475,
+              "grid": 24,
+              "attempts": 11,
+              "axis": "LONGEST",
+              "bias": -0.27,
+              "fill": "contours",
+              "inset": 8,
+              "retention": 0.85,
+              "spacing": 13,
+              "angle": -35,
+              "weight": 0.7,
+              "mark": "rosette",
+              "markSize": 15,
+              "markPetals": 7,
+              "contourField": "hills",
+              "contourFrequency": 1.25,
+              "material": "beads",
+              "materialSpacing": 10,
+              "beadMark": "rings",
+              "beadSize": 5,
+              "beadPetals": 7
+            },
+            "cutEdits": [],
+            "id": "islands",
+            "visible": true,
+            "opacity": 1,
+            "transform": {
+              "x": 320,
+              "y": 320,
+              "scale": 1,
+              "rotation": 0
+            }
+          },
+          {
+            "technique": "contour-scores",
+            "seed": 42,
+            "palette": [
+              2374469,
+              13925457
+            ],
+            "params": {
+              "source": "saddle",
+              "centerX": 320,
+              "centerY": 320,
+              "width": 280,
+              "height": 320,
+              "resolution": 54,
+              "frequency": 3.1,
+              "aspect": 1.5,
+              "hillCount": 5,
+              "hillRadius": 0.23,
+              "levelBase": -0.1,
+              "levelStep": 0.45,
+              "levels": 2,
+              "rotation": -18,
+              "material": "ink",
+              "weight": 2,
+              "spacing": 8,
+              "phase": 0.35,
+              "retention": 0.93,
+              "beadMark": "rings",
+              "beadSize": 7,
+              "beadPetals": 6,
+              "beadWeight": 1,
+              "beadOpening": 0.42
+            },
+            "cutEdits": [],
+            "id": "gesture",
+            "visible": true,
+            "opacity": 1,
+            "transform": {
+              "x": 320,
+              "y": 320,
+              "scale": 1,
+              "rotation": 0
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "images": [
+    {
+      "label": "motif-ecologies-default",
+      "path": ".work/composition-reference/ui/motif-ecologies-default.png",
+      "sha256": "1a45a509817fbf79ee2c839d7ed21156e6dfd4bd5e80b94b6c176f6cd7392a85",
+      "reviewStage": "root-reviewed-actual-interface"
+    },
+    {
+      "label": "motif-shared-sites-rings",
+      "path": ".work/composition-reference/ui/motif-shared-sites-rings.png",
+      "sha256": "36dfcca22048d3ca787de216aeaf2a67f5042686d4c46a36bf2938593587ea2b",
+      "reviewStage": "root-reviewed-actual-interface"
+    },
+    {
+      "label": "motif-sparse-rings",
+      "path": ".work/composition-reference/ui/motif-sparse-rings.png",
+      "sha256": "a2af89e63874514839214029656425a851e968da27413d132d8ee27634a096c3",
+      "reviewStage": "root-reviewed-actual-interface"
+    },
+    {
+      "label": "motif-slanted-dots",
+      "path": ".work/composition-reference/ui/motif-slanted-dots.png",
+      "sha256": "a6f868daba46a4d20f2c4f7751e33ed3c289aed045b6bca783df0def44b29d64",
+      "reviewStage": "root-reviewed-actual-interface"
+    },
+    {
+      "label": "contour-scores-default",
+      "path": ".work/composition-reference/ui/contour-scores-default.png",
+      "sha256": "4ef40e191879d6784618ed7d47d4e0cf26f6d8dcfa393d12c3c85d0646989864",
+      "reviewStage": "root-reviewed-actual-interface"
+    },
+    {
+      "label": "contour-shared-paths-ink",
+      "path": ".work/composition-reference/ui/contour-shared-paths-ink.png",
+      "sha256": "aa43e55714ea58fe0dd933b563d9be1d6cd331bf03720ca53d756ef5045f865d",
+      "reviewStage": "root-reviewed-actual-interface"
+    },
+    {
+      "label": "contour-hill-beads",
+      "path": ".work/composition-reference/ui/contour-hill-beads.png",
+      "sha256": "ce2150ba86218ae9c5a110ea3432ca78dd484c79b691ce490c68c9859feee45e",
+      "reviewStage": "root-reviewed-actual-interface"
+    },
+    {
+      "label": "contour-saddle-fragment",
+      "path": ".work/composition-reference/ui/contour-saddle-fragment.png",
+      "sha256": "65a17db245d0edfa5ec53ec5cda1e62099c96cadb7da790052535819ec442087",
+      "reviewStage": "root-reviewed-actual-interface"
+    },
+    {
+      "label": "region-quilts-default",
+      "path": ".work/composition-reference/ui/region-quilts-default.png",
+      "sha256": "d4444785557a7b0fda95b5b05a6f499e91793de9b1306ffdd892223fc8dc245a",
+      "reviewStage": "root-reviewed-actual-interface"
+    },
+    {
+      "label": "quilt-wave-ink",
+      "path": ".work/composition-reference/ui/quilt-wave-ink.png",
+      "sha256": "ec292c0ebdb5194dfc95cabac7658c574f9326dd46bd5f3a942fe598e8fc23d6",
+      "reviewStage": "root-reviewed-actual-interface"
+    },
+    {
+      "label": "quilt-wave-rosettes",
+      "path": ".work/composition-reference/ui/quilt-wave-rosettes.png",
+      "sha256": "206c043de13118d2803b7a53b42a7c86948a8a46cffccdeced8a924eab1d76f5",
+      "reviewStage": "root-reviewed-actual-interface"
+    },
+    {
+      "label": "quilt-beaded-islands",
+      "path": ".work/composition-reference/ui/quilt-beaded-islands.png",
+      "sha256": "e1447df33ac566c850101135d7d75714fb8898029c74c00f59a4f43b21907754",
+      "reviewStage": "root-reviewed-actual-interface"
+    },
+    {
+      "label": "quilt-sparse-hatch",
+      "path": ".work/composition-reference/ui/quilt-sparse-hatch.png",
+      "sha256": "61e1d51f3d1e4bbe535c164528c241636d11e35e74a91b1a5dafaeeb37a256bc",
+      "reviewStage": "root-reviewed-actual-interface"
+    },
+    {
+      "label": "meadow-terrain-forward",
+      "path": ".work/composition-reference/compositions/meadow-terrain-forward.png",
+      "sha256": "3900fe66eb19f33dc0d508694754328d17bff8bf393bc729693c26bde2679490",
+      "reviewStage": "root-reviewed-layered-composition"
+    },
+    {
+      "label": "meadow-terrain-reversed",
+      "path": ".work/composition-reference/compositions/meadow-terrain-reversed.png",
+      "sha256": "b4d6fffed73f029bd8eeba1c887e2a858704ca42cc18b3e9a91cad0cf8af6bb1",
+      "reviewStage": "root-reviewed-layered-composition"
+    },
+    {
+      "label": "discs-quilt-forward",
+      "path": ".work/composition-reference/compositions/discs-quilt-forward.png",
+      "sha256": "02d0b8910b4a4770acadc607b5b2da19b6c2531ee860a44e98064e278d55e4fc",
+      "reviewStage": "root-reviewed-layered-composition"
+    },
+    {
+      "label": "discs-quilt-reversed",
+      "path": ".work/composition-reference/compositions/discs-quilt-reversed.png",
+      "sha256": "634ff23296c065e9ae829095c9be9c10c87edba14fecde896c506206f8357af5",
+      "reviewStage": "root-reviewed-layered-composition"
+    },
+    {
+      "label": "archipelago-gesture-forward",
+      "path": ".work/composition-reference/compositions/archipelago-gesture-forward.png",
+      "sha256": "e00938f9ee61f47015d8eefe693a26ed95d5a92b408c5f48c4b7145c337eec10",
+      "reviewStage": "root-reviewed-layered-composition"
+    },
+    {
+      "label": "archipelago-gesture-reversed",
+      "path": ".work/composition-reference/compositions/archipelago-gesture-reversed.png",
+      "sha256": "ee60c0199492d330a45d82aeb88b78b508352aae40781fa7ef047f9cce01b3cd",
+      "reviewStage": "root-reviewed-layered-composition"
+    },
+    {
+      "label": "Curated study outcomes",
+      "path": ".work/composition-reference/reference-studies-contact.png",
+      "sha256": "9557145cfe841d13a554ffd95a31ef0b8cd2efcb9648f8d23958ee9e0a698425",
+      "reviewStage": "review-navigation"
+    },
+    {
+      "label": "Three layered pairs in both orders",
+      "path": ".work/composition-reference/layered-compositions-contact.png",
+      "sha256": "0562178e51620585c6b867b767f7d0db9fd3c6ae7efa14a59245f5cc85ff8364",
+      "reviewStage": "review-navigation"
+    },
+    {
+      "label": "Actual motif controls",
+      "path": ".work/composition-reference/ui/motif-default-interface.png",
+      "sha256": "5a997c70f376b7f57f018a67dae295305a2e47be1557ee0d8742a9fac3d0ec23",
+      "reviewStage": "root-reviewed-interface"
+    },
+    {
+      "label": "Actual nested field, material and bead controls",
+      "path": ".work/composition-reference/ui/quilt-nested-controls.png",
+      "sha256": "964456c1628f28c88d194c105e4c7aa99c94415103df338c114a642b537168ce",
+      "reviewStage": "root-reviewed-interface"
+    },
+    {
+      "label": "Custom callback on shared sites",
+      "path": ".work/composition-reference/native/custom-callback.png",
+      "sha256": "1a7b19e29e3629dc06e589c64abbc288e680a13ea49ce9db5f16401f12376a72",
+      "reviewStage": "native-functional-api-smoke"
+    },
+    {
+      "label": "Filled-dot boundary correction",
+      "path": ".work/composition-reference/native/filled-dot-boundary.png",
+      "sha256": "31dde7e4378167f05dc457efcdaa742983ace73e7ccfdda5cce029c39d1a7a13",
+      "reviewStage": "native-regression-smoke"
+    },
+    {
+      "label": "Exploratory rings; final composition uses filled discs for stronger contrast",
+      "path": ".work/composition-reference/compositions/rings-quilt-forward.png",
+      "sha256": "a3ee536e350f0d79511ae289c62d24254e63c5d4252d67927793365aae42a09f",
+      "reviewStage": "exploratory-superseded"
+    }
+  ],
+  "nativeLease": {
+    "launcher": "python3 tools/with_native_render_lock.py",
+    "interactiveSession": "The long-lived review daemon reached its configured one-hour timeout after its individual fixture steps had reported results; its exit 1 is not treated as a passing command. Recorded outputs were preserved.",
+    "finalFiniteCommand": "python3 tools/with_native_render_lock.py --timeout 120 -- node .work/composition-reference/final-native-smoke.mjs",
+    "finalFiniteStatus": "passed, exit 0",
+    "cleanup": "Throwaway smoke/driver scripts are removed after verification; inputs, reports and original images remain as evidence."
+  },
+  "notClaimed": [
+    "Publication or deployment",
+    "Primary private-app package upgrade",
+    "Authenticated Studio workspace and tenant persistence",
+    "Arbitrary graph authoring or cross-layer geometry links",
+    "General polygon-hole clipping",
+    "Java, Android, py5 or other-target composition support",
+    "Whole-gallery or full-parameter-space creative acceptance"
+  ]
+}

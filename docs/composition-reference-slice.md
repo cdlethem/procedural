@@ -1,8 +1,8 @@
 # Functional composition reference slice
 
-Status: implementation in progress; no creative acceptance or release claim yet.
-This implements the first reference examples in the [release roadmap](next-release-roadmap.md),
-not the entire composition editor or all 56 capability briefs.
+Status: **root-reviewed reference slice, 2026-09-28; unreleased**.
+Motif Ecologies, Contour Scores and Region Quilts implement the first vertical slice in
+the [release roadmap](next-release-roadmap.md), not the whole editor or all 56 briefs.
 
 ## Artist-facing brief
 
@@ -99,3 +99,57 @@ settings, sparse supporting fragments and layered compositions; record initial,
 structural and appearance costs separately. Native runs use the shared render lease.
 Authentication/persistence acceptance requires the real private backend; an isolated
 preview may prove controls/rendering without pretending it proves tenant persistence.
+
+## Reference implementation and root review
+
+Use these examples as implementation patterns, not as three scenes to copy:
+
+| Boundary | Reference |
+|---|---|
+| Element/frame ownership, callback budget and child seeds | [`types.ts`](../packages/instruments/src/composition/types.ts), [`core.ts`](../packages/instruments/src/composition/core.ts) |
+| Frozen reusable geometry from existing computations | [`sources.ts`](../packages/instruments/src/composition/sources.ts) |
+| Replaceable marks/materials and genuine nested fillers | [`materials.ts`](../packages/instruments/src/composition/materials.ts) |
+| Named scalar bindings, typed recipes and cooperative preparation | [`reference.ts`](../packages/instruments/src/composition/reference.ts) |
+| Consequential controls, visibility and authored starting points | [`reference-composition-instruments.ts`](../packages/instruments/src/adapters/reference-composition-instruments.ts) |
+| Artist-facing control tables and ordinary-function examples | [Motif Ecologies](../packages/instruments/guides/motif-ecologies.md), [Contour Scores](../packages/instruments/guides/contour-scores.md), [Region Quilts](../packages/instruments/guides/region-quilts.md) |
+
+The [root evidence record](../evidence/web/composition-reference-slice.json) binds exact
+inputs, current host documents, package hashes, images and verification scope.
+The local visual-review gallery registers the actual-interface outcomes and layered pairs.
+
+Root operated the real `/techniques/<id>` controls in an isolated copy of the private app
+consuming built packages. Thirteen configurations cover the three defaults, material-only
+substitutions, structural alternatives, sparse fragments, a dense off-slider population,
+and regions containing contour paths containing point marks. All thirteen interface images
+replayed pixel-for-pixel through the actual host renderer. Three authored pairs were reviewed
+in both orders and replayed identically through both `renderStudio` and `renderHarness`.
+The filled-disc/hatch pair makes foreground order particularly legible; the other pairs
+use subtler crossings. A separate custom callback painted the same immutable sites as a
+stock mark, without adding a mark enum or instrument.
+
+The implementation was corrected during review: open-path station coverage and corner
+tangents, singular contour junctions, centered hatch construction, filled-dot containment,
+and slider increments that could not represent the authored defaults. Permanent semantic
+regressions accompany these changes. Hidden child settings, seed undo, palette undo,
+source identity, work rejection with the last image preserved, and superseded asynchronous
+preparation were exercised. See the evidence record for the five legacy drawing comparisons;
+four were pixel-identical and Blue-noise Stipple had a small recorded raster difference.
+
+The final artifact source is `d7bb73551d23d71a6e00f3c201411d2ab67a99fd`.
+Its local package report is `.work/dist/composition-reference-accepted/report.json`.
+It is an **unpublished development artifact**, not a replacement for the existing 0.2.2
+release. The isolated app has 120 workflow IDs / 102 canonical instruments; the primary
+private app's released package pins were intentionally not changed. Consume the matching
+three-package bundle and run the existing gallery/API generators when integrating it.
+The host change is limited to grouped conditional controls and its browser scenario;
+its document schema, renderer, authentication and persistence were not replaced.
+
+Measured first preparation was 1.8–35 ms and drawing 7.1–14.3 ms for these defaults on
+the review machine. The selected structural edits prepared in 1.2–56.4 ms. Palette-only
+preparation was 0 ms for points/paths and 20.6 ms for the quilt's retained-leaf traversal.
+Fifty-nine completed interface edits took at most 83.6 ms including automation overhead.
+These are observations, not universal performance guarantees or certified parameter ranges.
+
+Admission is scoped to these three p5 studies and the reviewed compositions. It does not
+admit arbitrary graphs, cross-layer geometry links, polygon-hole masks, other targets,
+every parameter combination, the rest of the gallery, tenant persistence or deployment.
