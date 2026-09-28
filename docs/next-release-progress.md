@@ -88,6 +88,42 @@ The package is **unreleased**. The private host was exercised with an isolated, 
 three-package install; primary private-app pins, tenant services and deployment were not
 changed. Integrate a matching package bundle at the appropriate release milestone.
 
+## Structural field operators (W1 first batch, 2026-09-28)
+
+[Frozen slice contract and implementation map](composition-structural-operators.md) admits
+three studies built on the W0 reference boundary:
+
+1. **Recursive Cell Worlds** (brief 06) — bounded recursive subdivision with replaceable
+   terminal fillers; stable lineage, depth bounds, selective stopping, and child retention
+   that leaves negative space without affecting sibling seeds. Terminal leaves reuse the
+   region-quilt fill path (`regionGeometry` + `regionFill` + three-level nesting).
+2. **Ordered Disorder** (brief 07) — regular lattice under a shared correlated value-noise
+   field. Displacement, rotation, scale and omission are coherent across nearby cells.
+   Anchored sites stay pinned. A smooth falloff limits disorder to a focal region. Zero
+   disorder is exactly ordered.
+3. **Wallpaper Motifs** (brief 22) — seventeen explicit plane groups with lattice bases
+   and operation tables. Fingerprint deduplication, margin culling, and stable lattice
+   IDs (`wall:i:j:op`) survive viewport changes. A new **arrow** mark makes rotation and
+   mirror visible. Symmetry breaking selects a stable subset of instances.
+4. **Contour Scores additions** (brief 04 completion) — `phaseSpread` (cross-path phase
+   spread) and `levelRamp` (bead size mapped from contour band index). Both default to
+   zero, preserving the accepted reference artifact.
+
+Shared changes: `CompositionSurface.scale(x, y?)` supports mirror (negative scale);
+`Path.levelFraction` stores normalized band position; `LatticeSite` adds origin/anchor/kept/exception;
+`RegionTreeNode` adds id/parentId/depth/terminal; `MotifSpec.kind` adds "arrow".
+
+**Verified**: package build passes, 48 tests pass (27 existing + 21 new covering all four
+studies and material boundaries), pack/smoke test passes, `referenceComposition` resolves
+all three new IDs with correct kinds (wallpaper/lattice/cells) and palettes, draw paths
+produce sites/leaves without errors. The host was exercised with a verified three-package
+install (123 workflows generated, 102 API entries current); full authenticated Studio
+workflow was not completed.
+
+This admits the three studies and their shared additions, not all W1 briefs or W2+.
+Continue from the frozen types, sources, materials, reference resolution, instrument
+definitions and guides rather than inventing parallel loaders or parameter conventions.
+
 ## Ownership and unchanged boundaries
 
 - Public library: computations, reusable technique composition, drawing/preparation,
