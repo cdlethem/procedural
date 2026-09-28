@@ -1,2441 +1,2482 @@
 {
-  "schemaVersion": 1,
-  "version": "0.2.2",
-  "coreVersion": "0.2.2",
-  "families": [
+ "schemaVersion": 1,
+ "version": "0.2.2",
+ "coreVersion": "0.2.2",
+ "families": [
+  {
+   "id": "profile-marks",
+   "title": "Revolved Profiles",
+   "presets": [
     {
-      "id": "profile-marks",
-      "title": "Revolved Profiles",
-      "presets": [
-        {
-          "id": "profile-marks",
-          "title": "Sculpted Profile"
-        },
-        {
-          "id": "depth-marks",
-          "title": "Noise-colored Taper"
-        }
-      ],
-      "description": "Build pinched columns, flared profiles and open wire shells by editing the form's silhouette."
+     "id": "profile-marks",
+     "title": "Sculpted Profile"
     },
     {
-      "id": "cell-mosaic",
-      "title": "Cell Fields",
-      "presets": [
-        {
-          "id": "cell-mosaic",
-          "title": "Faceted Mosaic"
-        },
-        {
-          "id": "cell-echoes",
-          "title": "Nested Echoes"
-        },
-        {
-          "id": "relaxed-stones",
-          "title": "Relaxed Stones"
-        },
-        {
-          "id": "centroid-trails",
-          "title": "Centroid Trails"
-        }
-      ],
-      "description": "Make a colored mosaic confined to an editable local patch, or strip it back to cell outlines, facets and site marks."
-    },
-    {
-      "id": "stitched-contours",
-      "title": "Path Materials",
-      "presets": [
-        {
-          "id": "stitched-contours",
-          "title": "Stitched Contours"
-        },
-        {
-          "id": "fragmented-lines",
-          "title": "Fragmented Lines"
-        },
-        {
-          "id": "stitched-paths",
-          "title": "Transverse Stitches"
-        }
-      ],
-      "description": "Path Materials draws marks along a local family of seeded, bending trajectories."
-    },
-    {
-      "id": "orbital-brush",
-      "title": "Orbital Brush",
-      "presets": [
-        {
-          "id": "orbital-brush",
-          "title": "Crossing Orbits"
-        },
-        {
-          "id": "orbit-beads",
-          "title": "Nested Beads"
-        }
-      ],
-      "description": "Shape a family of closed paths, then draw equal-distance samples as beads, connected ribbons or short perpendicular dashes."
-    },
-    {
-      "id": "contour-terrain",
-      "title": "Contour Fields",
-      "presets": [
-        {
-          "id": "contour-terrain",
-          "title": "Noise Passages"
-        },
-        {
-          "id": "contour-blobs",
-          "title": "Hill Rings"
-        }
-      ],
-      "description": "Draw flat contour patches from waves, noise, hills or your own height grid, without a filled background."
-    },
-    {
-      "id": "blue-noise-stipple",
-      "title": "Spaced Marks",
-      "presets": [
-        {
-          "id": "blue-noise-stipple",
-          "title": "Stipple"
-        },
-        {
-          "id": "spaced-symbols",
-          "title": "Symbols"
-        }
-      ],
-      "description": "Spaced Marks is a Poisson-disc placement instrument for drawing at sites at least Minimum separation apart."
-    },
-    {
-      "id": "packed-posters",
-      "title": "Packed Shapes",
-      "presets": [
-        {
-          "id": "packed-posters",
-          "title": "Posters"
-        },
-        {
-          "id": "aspect-tiles",
-          "title": "Aspect Tiles"
-        }
-      ],
-      "description": "Packed Shapes generates a seeded population of rectangles, then gives that ordered population to skyline packing."
-    },
-    {
-      "id": "stream-ribbons",
-      "title": "Flow Traces",
-      "presets": [
-        {
-          "id": "stream-ribbons",
-          "title": "Ribbons"
-        },
-        {
-          "id": "curved-trajectories",
-          "title": "Dotted Traces"
-        }
-      ],
-      "description": "Paint filled strips beside genuine RK4 trajectories through a sampled vector grid."
-    },
-    {
-      "id": "woven-rows",
-      "title": "Rule Rows",
-      "presets": [
-        {
-          "id": "woven-rows",
-          "title": "Bars"
-        },
-        {
-          "id": "triangle-glyphs",
-          "title": "Triangles"
-        }
-      ],
-      "description": "Make angular row patterns, sparse triangular growth or irregular binary textures; choose the mark shape independently of the pattern."
-    },
-    {
-      "id": "woven-grammar",
-      "title": "Grammar Paths",
-      "presets": [
-        {
-          "id": "woven-grammar",
-          "title": "Woven Fold"
-        },
-        {
-          "id": "recursive-tiles",
-          "title": "Recursive Tiles"
-        },
-        {
-          "id": "turtle-canopies",
-          "title": "Turtle Canopy"
-        }
-      ],
-      "description": "Grammar Paths lets you write an axiom and parallel productions for F, G, X, Y."
-    },
-    {
-      "id": "compatible-mosaics",
-      "title": "Edge Tiles",
-      "presets": [
-        {
-          "id": "compatible-mosaics",
-          "title": "Sparse Mosaic"
-        },
-        {
-          "id": "tiled-circuits",
-          "title": "Circuit Paths"
-        }
-      ],
-      "description": "A sparse, edge-matched mosaic made by adjacencyTileCollapse2D."
-    },
-    {
-      "id": "maze-gardens",
-      "title": "Lattice Forests",
-      "presets": [
-        {
-          "id": "maze-gardens",
-          "title": "Maze Garden"
-        },
-        {
-          "id": "branching-networks",
-          "title": "Branching Network"
-        }
-      ],
-      "description": "Lattice Forests builds a local four-neighbor lattice, removes seeded blocked sites, and runs seededDepthFirstSpanningTree separately on each connected island."
-    },
-    {
-      "id": "diffusion-engraving",
-      "title": "Dithered Marks",
-      "presets": [
-        {
-          "id": "diffusion-engraving",
-          "title": "Engraving"
-        },
-        {
-          "id": "dithered-ribbons",
-          "title": "Ribbons"
-        }
-      ],
-      "description": "Dithered Marks composes an independently seeded set of compact features into a local scalar image."
-    },
-    {
-      "id": "contact-network",
-      "title": "Proximity Replay",
-      "presets": [
-        {
-          "id": "contact-network",
-          "title": "Contact Network"
-        },
-        {
-          "id": "agent-trails",
-          "title": "Agent Trails"
-        }
-      ],
-      "description": "Build current-neighbor webs or sparse chains from an editable moving population."
+     "id": "depth-marks",
+     "title": "Noise-colored Taper"
     }
-  ],
-  "instruments": [
+   ],
+   "description": "Build pinched columns, flared profiles and open wire shells by editing the form's silhouette."
+  },
+  {
+   "id": "cell-mosaic",
+   "title": "Cell Fields",
+   "presets": [
     {
-      "id": "motif-ecologies",
-      "title": "Motif Ecologies",
-      "description": "Build an open population of dots, rings or rosettes; replace its marks without moving the underlying sites.",
-      "category": "Fields & paths",
-      "operationIds": ["sampling.poisson-disc-2d"],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/motif-ecologies.md",
-      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
-      "sourceEntry": "drawReferenceInstrument",
-      "creativeReviewScope": "instrument-construction"
+     "id": "cell-mosaic",
+     "title": "Faceted Mosaic"
     },
     {
-      "id": "contour-scores",
-      "title": "Contour Scores",
-      "description": "Turn editable terrain into continuous ink, tangent stitches or interchangeable bead marks.",
-      "category": "Fields & paths",
-      "operationIds": ["field.gradient-noise-2d-01", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d", "geometry.resample-polyline-2d"],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/contour-scores.md",
-      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
-      "sourceEntry": "drawReferenceInstrument",
-      "creativeReviewScope": "instrument-construction"
+     "id": "cell-echoes",
+     "title": "Nested Echoes"
     },
     {
-      "id": "region-quilts",
-      "title": "Region Quilts",
-      "description": "Fill an editable rectangular partition with hatching, motif populations or contour scores, leaving chosen leaves open.",
-      "category": "Partitions",
-      "operationIds": ["layout.binary-cell-partition-2d", "geometry.hatch-region-lines-2d", "sampling.poisson-disc-2d", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d", "geometry.resample-polyline-2d"],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/region-quilts.md",
-      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
-      "sourceEntry": "drawReferenceInstrument",
-      "creativeReviewScope": "instrument-construction"
+     "id": "relaxed-stones",
+     "title": "Relaxed Stones"
     },
     {
-      "id": "field-marks",
-      "title": "Field Marks",
-      "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/field-marks.md",
-      "source": "packages/instruments/src/adapters/basic-source-instruments.ts",
-      "sourceEntry": "drawBasicSourceInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "path-marks",
-      "title": "Path Marks",
-      "description": "These trajectories follow the existing seeded gradient-path operation.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "field.gradient-noise-2d-01",
-        "path.gradient-trace-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/path-marks.md",
-      "source": "packages/instruments/src/adapters/basic-source-instruments.ts",
-      "sourceEntry": "drawBasicSourceInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "placement-marks",
-      "title": "Placement Marks",
-      "description": "The seeded source proposes circles within a movable rectangle: Source X and Y set its center, Source width and height its dimensions, and Proposals how many candidates the existing circle-placement operation considers in order.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "sampling.seeded-circle-placement-2d",
-        "sampling.ordered-circle-filter-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/placement-marks.md",
-      "source": "packages/instruments/src/adapters/basic-source-instruments.ts",
-      "sourceEntry": "drawBasicSourceInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "lattice-marks",
-      "title": "Lattice Marks",
-      "description": "Columns and Rows set the actual dimensions sent to occupiedLatticePaths2D.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "path.occupied-lattice-paths-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/lattice-marks.md",
-      "source": "packages/instruments/src/adapters/basic-source-instruments.ts",
-      "sourceEntry": "drawBasicSourceInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "band-marks",
-      "title": "Band Marks",
-      "description": "Draw meandering paths, isolated nodes or short transverse ticks from independently placed starts.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "path.noise-band-trace-2d",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/band-marks.md",
-      "source": "packages/instruments/src/adapters/constructed-geometry-instruments.ts",
-      "sourceEntry": "drawConstructedGeometry",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "branch-marks",
-      "title": "Branch Marks",
-      "description": "Grow sparse forks, small trees or loose groves with editable root placement and generation-by-generation branching.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "topology.seeded-endpoint-branches-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/branch-marks.md",
-      "source": "packages/instruments/src/adapters/constructed-geometry-instruments.ts",
-      "sourceEntry": "drawConstructedGeometry",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "cut-branch-marks",
-      "title": "Cut Branch Marks",
-      "description": "Make split, twig-like line fragments from one freely positioned starting segment.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "topology.seeded-line-pool-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/cut-branch-marks.md",
-      "source": "packages/instruments/src/adapters/constructed-geometry-instruments.ts",
-      "sourceEntry": "drawConstructedGeometry",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "loop-marks",
-      "title": "Loop Marks",
-      "description": "The starting row contains three differently phased, lobed loops with colored diamonds spaced along their outlines.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "geometry.closed-spline-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/loop-marks.md",
-      "source": "packages/instruments/src/adapters/loop-marks-quality.ts",
-      "sourceEntry": "drawLoopMarksModern",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "region-marks",
-      "title": "Region Marks",
-      "description": "A seeded quadrant partition repeatedly replaces one eligible leaf with four quadrants.",
-      "category": "Layouts",
-      "operationIds": [
-        "layout.seeded-quadrant-partition-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/region-marks.md",
-      "source": "packages/instruments/src/adapters/region-facet-instruments.ts",
-      "sourceEntry": "drawRegionFacetInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "panel-marks",
-      "title": "Panel Marks",
-      "description": "Binary partition attempts cut an integer grid into ordered rectangular leaves.",
-      "category": "Layouts",
-      "operationIds": [
-        "layout.binary-cell-partition-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/panel-marks.md",
-      "source": "packages/instruments/src/adapters/region-facet-instruments.ts",
-      "sourceEntry": "drawRegionFacetInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "cut-marks",
-      "title": "Cut Marks",
-      "description": "Build a seeded panel layout, then apply direct retained-rectangle cuts or removals.",
-      "category": "Layouts",
-      "operationIds": [
-        "layout.retained-rectangle-cuts-2d",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/cut-marks.md",
-      "source": "packages/instruments/src/adapters/geometry.ts",
-      "sourceEntry": "cuts",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "polygon-marks",
-      "title": "Polygon Marks",
-      "description": "Center X/Y, Source width/height, Source sides, and Source angle define a convex placement domain.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "sampling.ordered-convex-polygon-filter-2d",
-        "sampling.triangle-coordinate-map-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/polygon-marks.md",
-      "source": "packages/instruments/src/adapters/region-facet-instruments.ts",
-      "sourceEntry": "drawRegionFacetInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "facet-marks",
-      "title": "Facet Marks",
-      "description": "Center X/Y, Source width/height, Source sides and Source angle create a triangular or convex polygonal site domain, not a fixed canvas-sized triangle.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "sampling.ordered-convex-polygon-filter-2d",
-        "sampling.triangle-coordinate-map-2d",
-        "topology.delaunay-2d",
-        "sampling.seeded-triangle-points-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/facet-marks.md",
-      "source": "packages/instruments/src/adapters/region-facet-instruments.ts",
-      "sourceEntry": "drawRegionFacetInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "grain-marks",
-      "title": "Grain Marks",
-      "description": "Place one or more editable source polygons with Center X/Y, Polygon width/height, Polygon sides, Source angle, Source groups, and Group spread.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "sampling.ordered-convex-polygon-filter-2d",
-        "geometry.triangulate-simple-polygon-2d",
-        "sampling.triangle-coordinate-map-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/grain-marks.md",
-      "source": "packages/instruments/src/adapters/region-facet-instruments.ts",
-      "sourceEntry": "drawRegionFacetInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "pull-marks",
-      "title": "Pull Marks",
-      "description": "Arrange source paths and pull them toward one or two editable radial influences.",
-      "category": "Transforms",
-      "operationIds": [
-        "geometry.radial-pull-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/pull-marks.md",
-      "source": "packages/instruments/src/adapters/effects.ts",
-      "sourceEntry": "drawPull",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "projection-marks",
-      "title": "Projection Marks",
-      "description": "Arrange source paths and project them away from one or two ordered discs.",
-      "category": "Transforms",
-      "operationIds": [
-        "geometry.sequential-disc-projection-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/projection-marks.md",
-      "source": "packages/instruments/src/adapters/effects.ts",
-      "sourceEntry": "drawProjection",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "path-clip-marks",
-      "title": "Path Clip Marks",
-      "description": "Clip rows, wandering paths or a fan through an editable simple boundary.",
-      "category": "Transforms",
-      "operationIds": [
-        "geometry.clip-segments-simple-polygon-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/path-clip-marks.md",
-      "source": "packages/instruments/src/adapters/effects.ts",
-      "sourceEntry": "drawClip",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "ramp-marks",
-      "title": "Ramp Marks",
-      "description": "A local mark grid samples a positioned RGB palette ramp through stopRamp.",
-      "category": "Color & raster",
-      "operationIds": [
-        "color.stop-ramp"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/ramp-marks.md",
-      "source": "packages/instruments/src/adapters/ramp-spring-instruments.ts",
-      "sourceEntry": "drawRampSpringInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "warp-marks",
-      "title": "Warp Marks",
-      "description": "Construct a small transparent RGBA image from bars, discs, rings or tiles, then sample it through a local deformation map.",
-      "category": "Color & raster",
-      "operationIds": [
-        "raster.bilinear-remap-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/warp-marks.md",
-      "source": "packages/instruments/src/adapters/raster-transform-instruments.ts",
-      "sourceEntry": "drawRasterTransformInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "blur-marks",
-      "title": "Blur Marks",
-      "description": "Filter an editable transparent RGBA population of bars, discs, rings or tiles with independently sized horizontal and vertical kernels.",
-      "category": "Color & raster",
-      "operationIds": [
-        "raster.separable-blur-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/blur-marks.md",
-      "source": "packages/instruments/src/adapters/raster-transform-instruments.ts",
-      "sourceEntry": "drawRasterTransformInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "profile-marks",
-      "title": "Revolved Profiles",
-      "description": "Build pinched columns, flared profiles and open wire shells by editing the form's silhouette.",
-      "category": "3D forms",
-      "operationIds": [
-        "mesh.radial-profile-surface-3d",
-        "field.gradient-noise-3d-01"
-      ],
-      "presetOf": null,
-      "presets": [
-        {
-          "id": "profile-marks",
-          "title": "Sculpted Profile"
-        },
-        {
-          "id": "depth-marks",
-          "title": "Noise-colored Taper"
-        }
-      ],
-      "guide": "guides/profile-marks.md",
-      "source": "packages/instruments/src/adapters/revolved-instruments.ts",
-      "sourceEntry": "drawRevolvedInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "annular-marks",
-      "title": "Annular Marks",
-      "description": "Show a graphic arc from a thick ring, or keep only wire edges and selected walls.",
-      "category": "3D forms",
-      "operationIds": [
-        "mesh.annular-solid-3d",
-        "field.gradient-noise-3d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/annular-marks.md",
-      "source": "packages/instruments/src/adapters/revolved-instruments.ts",
-      "sourceEntry": "drawRevolvedInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "depth-marks",
-      "title": "Depth Marks",
-      "description": "Make faceted, tapered forms with colored patches that can change without deforming the mesh.",
-      "category": "3D forms",
-      "operationIds": [
-        "mesh.radial-profile-surface-3d",
-        "field.gradient-noise-3d-01"
-      ],
-      "presetOf": "profile-marks",
-      "presets": [
-        {
-          "id": "profile-marks",
-          "title": "Sculpted Profile"
-        },
-        {
-          "id": "depth-marks",
-          "title": "Noise-colored Taper"
-        }
-      ],
-      "guide": "guides/depth-marks.md",
-      "source": "packages/instruments/src/adapters/revolved-instruments.ts",
-      "sourceEntry": "drawRevolvedInstrument",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "spring-marks",
-      "title": "Spring Marks",
-      "description": "Draw converging filaments, looping traces or spare spokes by moving starting bodies and targets independently.",
-      "category": "Motion",
-      "operationIds": [
-        "motion.target-springs-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/spring-marks.md",
-      "source": "packages/instruments/src/adapters/ramp-spring-instruments.ts",
-      "sourceEntry": "drawSpring",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "cell-mosaic",
-      "title": "Cell Fields",
-      "description": "Make a colored mosaic confined to an editable local patch, or strip it back to cell outlines, facets and site marks.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "layout.lloyd-relaxation-2d",
-        "geometry.voronoi-cells-2d"
-      ],
-      "presetOf": null,
-      "presets": [
-        {
-          "id": "cell-mosaic",
-          "title": "Faceted Mosaic"
-        },
-        {
-          "id": "cell-echoes",
-          "title": "Nested Echoes"
-        },
-        {
-          "id": "relaxed-stones",
-          "title": "Relaxed Stones"
-        },
-        {
-          "id": "centroid-trails",
-          "title": "Centroid Trails"
-        }
-      ],
-      "guide": "guides/cell-mosaic.md",
-      "source": "packages/instruments/src/adapters/relaxed-cell-instruments.ts",
-      "sourceEntry": "drawRelaxedCellInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "cell-echoes",
-      "title": "Cell Echoes",
-      "description": "Build nested polygonal rings inside a local cell field, from a few separated cells to dense contour textures.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "layout.lloyd-relaxation-2d",
-        "geometry.voronoi-cells-2d"
-      ],
-      "presetOf": "cell-mosaic",
-      "presets": [
-        {
-          "id": "cell-mosaic",
-          "title": "Faceted Mosaic"
-        },
-        {
-          "id": "cell-echoes",
-          "title": "Nested Echoes"
-        },
-        {
-          "id": "relaxed-stones",
-          "title": "Relaxed Stones"
-        },
-        {
-          "id": "centroid-trails",
-          "title": "Centroid Trails"
-        }
-      ],
-      "guide": "guides/cell-echoes.md",
-      "source": "packages/instruments/src/adapters/relaxed-cell-instruments.ts",
-      "sourceEntry": "drawRelaxedCellInstrument",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "stitched-paths",
-      "title": "Stitched Paths",
-      "description": "Lay transverse marks along editable local waves.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "geometry.chaikin-polyline-2d",
-        "geometry.resample-polyline-2d",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": "stitched-contours",
-      "presets": [
-        {
-          "id": "stitched-contours",
-          "title": "Stitched Contours"
-        },
-        {
-          "id": "fragmented-lines",
-          "title": "Fragmented Lines"
-        },
-        {
-          "id": "stitched-paths",
-          "title": "Transverse Stitches"
-        }
-      ],
-      "guide": "guides/stitched-paths.md",
-      "source": "packages/instruments/src/adapters/path-material-instruments.ts",
-      "sourceEntry": "drawPathMaterialInstrument",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "orbit-beads",
-      "title": "Orbit Beads",
-      "description": "Arrange beads around editable closed orbits.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "geometry.resample-polyline-2d"
-      ],
-      "presetOf": "orbital-brush",
-      "presets": [
-        {
-          "id": "orbital-brush",
-          "title": "Crossing Orbits"
-        },
-        {
-          "id": "orbit-beads",
-          "title": "Nested Beads"
-        }
-      ],
-      "guide": "guides/orbit-beads.md",
-      "source": "packages/instruments/src/adapters/external-expansion.ts",
-      "sourceEntry": "drawOrbitalBrush",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "contour-terrain",
-      "title": "Contour Fields",
-      "description": "Draw flat contour patches from waves, noise, hills or your own height grid, without a filled background.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "field.gradient-noise-2d-01",
-        "geometry.marching-squares-2d"
-      ],
-      "presetOf": null,
-      "presets": [
-        {
-          "id": "contour-terrain",
-          "title": "Noise Passages"
-        },
-        {
-          "id": "contour-blobs",
-          "title": "Hill Rings"
-        }
-      ],
-      "guide": "guides/contour-terrain.md",
-      "source": "packages/instruments/src/adapters/contour-field-instruments.ts",
-      "sourceEntry": "drawContourField",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "contour-blobs",
-      "title": "Contour Blobs",
-      "description": "Make isolated hill rings, merging islands or rippling loop sequences from an editable field.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "field.gradient-noise-2d-01",
-        "geometry.marching-squares-2d"
-      ],
-      "presetOf": "contour-terrain",
-      "presets": [
-        {
-          "id": "contour-terrain",
-          "title": "Noise Passages"
-        },
-        {
-          "id": "contour-blobs",
-          "title": "Hill Rings"
-        }
-      ],
-      "guide": "guides/contour-blobs.md",
-      "source": "packages/instruments/src/adapters/contour-field-instruments.ts",
-      "sourceEntry": "drawContourField",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "rounded-panels",
-      "title": "Rounded Panels",
-      "description": "Repeat softened polygon panels as a loose quilt, a tight grid, or overlapping shapes.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "geometry.chaikin-polyline-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/rounded-panels.md",
-      "source": "packages/instruments/src/adapters/paths-a-quality.ts",
-      "sourceEntry": "drawPathsAQuality",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "flowing-brushes",
-      "title": "Flowing Brushes",
-      "description": "Chaikin corner cuts turn sampled, angular trajectories into continuous brush sweeps.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "geometry.chaikin-polyline-2d",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/flowing-brushes.md",
-      "source": "packages/instruments/src/adapters/paths-a-gestures.ts",
-      "sourceEntry": "drawPathGestures",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "contour-abstraction",
-      "title": "Contour Abstraction",
-      "description": "One sampled trajectory is repeatedly simplified into coarse-to-fine records, then spaced perpendicular to its direction.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "geometry.simplify-polyline-2d",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/contour-abstraction.md",
-      "source": "packages/instruments/src/adapters/paths-a-gestures.ts",
-      "sourceEntry": "drawPathGestures",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "gesture-skeletons",
-      "title": "Gesture Skeletons",
-      "description": "Separately seeded open gestures are sampled, simplified and left as sparse, articulated fragments.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "geometry.simplify-polyline-2d",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/gesture-skeletons.md",
-      "source": "packages/instruments/src/adapters/paths-a-gestures.ts",
-      "sourceEntry": "drawPathGestures",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "road-margins",
-      "title": "Road Margins",
-      "description": "Draw parallel edges beside one or more winding open routes.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "geometry.offset-polyline-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/road-margins.md",
-      "source": "packages/instruments/src/adapters/paths-a-quality.ts",
-      "sourceEntry": "drawPathsAQuality",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "nested-contour-strokes",
-      "title": "Nested Contour Strokes",
-      "description": "Build contour ink around an editable closed polygon.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "geometry.offset-polyline-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/nested-contour-strokes.md",
-      "source": "packages/instruments/src/adapters/paths-a-quality.ts",
-      "sourceEntry": "drawPathsAQuality",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "scatter-envelopes",
-      "title": "Scatter Envelopes",
-      "description": "Independent seeded point populations determine actual convex hulls.",
-      "category": "Layouts",
-      "operationIds": [
-        "geometry.convex-hull-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/scatter-envelopes.md",
-      "source": "packages/instruments/src/adapters/path-material-instruments.ts",
-      "sourceEntry": "drawPathMaterialInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "terraced-islands",
-      "title": "Terraced Islands",
-      "description": "Every island starts with its own seeded sites and a real convex hull.",
-      "category": "Layouts",
-      "operationIds": [
-        "geometry.convex-hull-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/terraced-islands.md",
-      "source": "packages/instruments/src/adapters/path-material-instruments.ts",
-      "sourceEntry": "drawPathMaterialInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "faceted-silhouettes",
-      "title": "Faceted Silhouettes",
-      "description": "Turn a straight-sided silhouette into colored triangular paper planes, with optional facet edges and grain marks.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "geometry.triangulate-simple-polygon-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/faceted-silhouettes.md",
-      "source": "packages/instruments/src/adapters/paths-a-quality.ts",
-      "sourceEntry": "drawPathsAQuality",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "concave-grain",
-      "title": "Concave Grain",
-      "description": "Break a silhouette with inward corners, then colour its straight triangular facets and add fan lines or dots within each one.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "geometry.triangulate-simple-polygon-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/concave-grain.md",
-      "source": "packages/instruments/src/adapters/paths-a-quality.ts",
-      "sourceEntry": "drawPathsAQuality",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "stitched-contours",
-      "title": "Path Materials",
-      "description": "Path Materials draws marks along a local family of seeded, bending trajectories.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "geometry.chaikin-polyline-2d",
-        "geometry.resample-polyline-2d",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [
-        {
-          "id": "stitched-contours",
-          "title": "Stitched Contours"
-        },
-        {
-          "id": "fragmented-lines",
-          "title": "Fragmented Lines"
-        },
-        {
-          "id": "stitched-paths",
-          "title": "Transverse Stitches"
-        }
-      ],
-      "guide": "guides/stitched-contours.md",
-      "source": "packages/instruments/src/adapters/path-material-instruments.ts",
-      "sourceEntry": "drawPathMaterialInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "fragmented-lines",
-      "title": "Fragmented Lines",
-      "description": "The Fragmented Lines starting recipe opens Path Materials with broken dashes and gaps; the Stitched Contours starting recipe opens the same instrument with stitches.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "geometry.chaikin-polyline-2d",
-        "geometry.resample-polyline-2d",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": "stitched-contours",
-      "presets": [
-        {
-          "id": "stitched-contours",
-          "title": "Stitched Contours"
-        },
-        {
-          "id": "fragmented-lines",
-          "title": "Fragmented Lines"
-        },
-        {
-          "id": "stitched-paths",
-          "title": "Transverse Stitches"
-        }
-      ],
-      "guide": "guides/fragmented-lines.md",
-      "source": "packages/instruments/src/adapters/path-material-instruments.ts",
-      "sourceEntry": "drawPathMaterialInstrument",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "blue-noise-stipple",
-      "title": "Spaced Marks",
-      "description": "Spaced Marks is a Poisson-disc placement instrument for drawing at sites at least Minimum separation apart.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "sampling.poisson-disc-2d"
-      ],
-      "presetOf": null,
-      "presets": [
-        {
-          "id": "blue-noise-stipple",
-          "title": "Stipple"
-        },
-        {
-          "id": "spaced-symbols",
-          "title": "Symbols"
-        }
-      ],
-      "guide": "guides/blue-noise-stipple.md",
-      "source": "packages/instruments/src/adapters/placement-packing-instruments.ts",
-      "sourceEntry": "drawPlacementPackingInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "spaced-symbols",
-      "title": "Spaced Symbols",
-      "description": "The Symbols starting recipe opens the same Spaced Marks Poisson-disc placement instrument as Stipple, with square marks and a larger spacing initially.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "sampling.poisson-disc-2d"
-      ],
-      "presetOf": "blue-noise-stipple",
-      "presets": [
-        {
-          "id": "blue-noise-stipple",
-          "title": "Stipple"
-        },
-        {
-          "id": "spaced-symbols",
-          "title": "Symbols"
-        }
-      ],
-      "guide": "guides/spaced-symbols.md",
-      "source": "packages/instruments/src/adapters/placement-packing-instruments.ts",
-      "sourceEntry": "drawPlacementPackingInstrument",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "relaxed-stones",
-      "title": "Relaxed Stones",
-      "description": "Build a small cluster of inset polygonal stones, an open cellular web or the gradual tracks of relaxing sites.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "layout.lloyd-relaxation-2d",
-        "geometry.voronoi-cells-2d"
-      ],
-      "presetOf": "cell-mosaic",
-      "presets": [
-        {
-          "id": "cell-mosaic",
-          "title": "Faceted Mosaic"
-        },
-        {
-          "id": "cell-echoes",
-          "title": "Nested Echoes"
-        },
-        {
-          "id": "relaxed-stones",
-          "title": "Relaxed Stones"
-        },
-        {
-          "id": "centroid-trails",
-          "title": "Centroid Trails"
-        }
-      ],
-      "guide": "guides/relaxed-stones.md",
-      "source": "packages/instruments/src/adapters/relaxed-cell-instruments.ts",
-      "sourceEntry": "drawRelaxedCellInstrument",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "centroid-trails",
-      "title": "Centroid Trails",
-      "description": "Draw short site-motion trails, then optionally expose their surrounding cell outlines.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "layout.lloyd-relaxation-2d",
-        "geometry.voronoi-cells-2d"
-      ],
-      "presetOf": "cell-mosaic",
-      "presets": [
-        {
-          "id": "cell-mosaic",
-          "title": "Faceted Mosaic"
-        },
-        {
-          "id": "cell-echoes",
-          "title": "Nested Echoes"
-        },
-        {
-          "id": "relaxed-stones",
-          "title": "Relaxed Stones"
-        },
-        {
-          "id": "centroid-trails",
-          "title": "Centroid Trails"
-        }
-      ],
-      "guide": "guides/centroid-trails.md",
-      "source": "packages/instruments/src/adapters/relaxed-cell-instruments.ts",
-      "sourceEntry": "drawRelaxedCellInstrument",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "packed-posters",
-      "title": "Packed Shapes",
-      "description": "Packed Shapes generates a seeded population of rectangles, then gives that ordered population to skyline packing.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "layout.skyline-pack-2d"
-      ],
-      "presetOf": null,
-      "presets": [
-        {
-          "id": "packed-posters",
-          "title": "Posters"
-        },
-        {
-          "id": "aspect-tiles",
-          "title": "Aspect Tiles"
-        }
-      ],
-      "guide": "guides/packed-posters.md",
-      "source": "packages/instruments/src/adapters/placement-packing-instruments.ts",
-      "sourceEntry": "drawPlacementPackingInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "aspect-tiles",
-      "title": "Aspect Tiles",
-      "description": "The Aspect Tiles starting recipe opens Packed Shapes with a broader initial width/height distribution than Posters; both use the same skyline packing instrument.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "layout.skyline-pack-2d"
-      ],
-      "presetOf": "packed-posters",
-      "presets": [
-        {
-          "id": "packed-posters",
-          "title": "Posters"
-        },
-        {
-          "id": "aspect-tiles",
-          "title": "Aspect Tiles"
-        }
-      ],
-      "guide": "guides/aspect-tiles.md",
-      "source": "packages/instruments/src/adapters/placement-packing-instruments.ts",
-      "sourceEntry": "drawPlacementPackingInstrument",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "obstacle-roads",
-      "title": "Obstacle Roads",
-      "description": "Draw orthogonal routes through an editable cost and obstacle field, from a few separated segments to branching shared routes.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "path.cost-grid-paths-2d",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/obstacle-roads.md",
-      "source": "packages/instruments/src/adapters/cost-path-instruments.ts",
-      "sourceEntry": "drawCostPathInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "arrival-contours",
-      "title": "Arrival Contours",
-      "description": "Trace cost rings that bend around expensive cells and stop at obstacles or unreachable regions.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "path.cost-grid-paths-2d",
-        "field.gradient-noise-2d-01",
-        "geometry.marching-squares-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/arrival-contours.md",
-      "source": "packages/instruments/src/adapters/cost-path-instruments.ts",
-      "sourceEntry": "drawCostPathInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "stream-ribbons",
-      "title": "Flow Traces",
-      "description": "Paint filled strips beside genuine RK4 trajectories through a sampled vector grid.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "path.rk4-vector-grid-trace-2d",
-        "geometry.offset-polyline-2d",
-        "geometry.resample-polyline-2d"
-      ],
-      "presetOf": null,
-      "presets": [
-        {
-          "id": "stream-ribbons",
-          "title": "Ribbons"
-        },
-        {
-          "id": "curved-trajectories",
-          "title": "Dotted Traces"
-        }
-      ],
-      "guide": "guides/stream-ribbons.md",
-      "source": "packages/instruments/src/adapters/vector-trace-instruments.ts",
-      "sourceEntry": "drawVectorTraceInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "curved-trajectories",
-      "title": "Curved Trajectories",
-      "description": "Follow starts arranged on a ring through a field assembled from uniform drift and independent signed radial and rotational velocity sources.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "path.rk4-vector-grid-trace-2d",
-        "geometry.offset-polyline-2d",
-        "geometry.resample-polyline-2d"
-      ],
-      "presetOf": "stream-ribbons",
-      "presets": [
-        {
-          "id": "stream-ribbons",
-          "title": "Ribbons"
-        },
-        {
-          "id": "curved-trajectories",
-          "title": "Dotted Traces"
-        }
-      ],
-      "guide": "guides/curved-trajectories.md",
-      "source": "packages/instruments/src/adapters/vector-trace-instruments.ts",
-      "sourceEntry": "drawVectorTraceInstrument",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "reaction-spots",
-      "title": "Reaction Spots",
-      "description": "Grow a field of colored discs from a chosen starting pattern.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "field.gray-scott-step-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/reaction-spots.md",
-      "source": "packages/instruments/src/adapters/systems-a-quality.ts",
-      "sourceEntry": "drawSystemsAQuality",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "reaction-stripes",
-      "title": "Reaction Stripes",
-      "description": "Build a changing field of colored square cells from an editable starting pattern.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "field.gray-scott-step-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/reaction-stripes.md",
-      "source": "packages/instruments/src/adapters/systems-a-quality.ts",
-      "sourceEntry": "drawSystemsAQuality",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "organic-cells",
-      "title": "Organic Cells",
-      "description": "Grow rounded colonies from a starting grid you can replace.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "field.life-like-step-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/organic-cells.md",
-      "source": "packages/instruments/src/adapters/systems-a-quality.ts",
-      "sourceEntry": "drawSystemsAQuality",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "geometric-generations",
-      "title": "Geometric Generations",
-      "description": "Turn a chosen starting grid into a field of colored square cells.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "field.life-like-step-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/geometric-generations.md",
-      "source": "packages/instruments/src/adapters/systems-a-quality.ts",
-      "sourceEntry": "drawSystemsAQuality",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "woven-rows",
-      "title": "Rule Rows",
-      "description": "Make angular row patterns, sparse triangular growth or irregular binary textures; choose the mark shape independently of the pattern.",
-      "category": "Layouts",
-      "operationIds": [
-        "field.elementary-cellular-rows"
-      ],
-      "presetOf": null,
-      "presets": [
-        {
-          "id": "woven-rows",
-          "title": "Bars"
-        },
-        {
-          "id": "triangle-glyphs",
-          "title": "Triangles"
-        }
-      ],
-      "guide": "guides/woven-rows.md",
-      "source": "packages/instruments/src/adapters/rule-row-instruments.ts",
-      "sourceEntry": "drawRuleRows",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "triangle-glyphs",
-      "title": "Triangle Glyphs",
-      "description": "Turn a rule-grown row pattern into clusters of triangles, dots or bars, with room for negative space.",
-      "category": "Layouts",
-      "operationIds": [
-        "field.elementary-cellular-rows"
-      ],
-      "presetOf": "woven-rows",
-      "presets": [
-        {
-          "id": "woven-rows",
-          "title": "Bars"
-        },
-        {
-          "id": "triangle-glyphs",
-          "title": "Triangles"
-        }
-      ],
-      "guide": "guides/triangle-glyphs.md",
-      "source": "packages/instruments/src/adapters/rule-row-instruments.ts",
-      "sourceEntry": "drawRuleRows",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "swirling-particles",
-      "title": "Swirling Particles",
-      "description": "Release paths from an editable source region into a seeded scalar curl field.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "field.scalar-grid-curl-2d",
-        "path.rk4-vector-grid-trace-2d",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/swirling-particles.md",
-      "source": "packages/instruments/src/adapters/systems-a-curl.ts",
-      "sourceEntry": "drawCurlStudy",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "flow-needles",
-      "title": "Flow Needles",
-      "description": "Look at the directions of a seeded scalar curl field as individual vector marks rather than advected paths.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "field.scalar-grid-curl-2d",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/flow-needles.md",
-      "source": "packages/instruments/src/adapters/systems-a-curl.ts",
-      "sourceEntry": "drawCurlStudy",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "ripple-interference",
-      "title": "Ripple Interference",
-      "description": "Place one to three signed disturbances in a square wave field, then watch their contours meet and interfere.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "field.damped-wave-step-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/ripple-interference.md",
-      "source": "packages/instruments/src/adapters/systems-b-wave-quality.ts",
-      "sourceEntry": "drawWaveQuality",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "pinned-waves",
-      "title": "Pinned Waves",
-      "description": "Shape wave contours around cells that must remain still.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "field.damped-wave-step-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/pinned-waves.md",
-      "source": "packages/instruments/src/adapters/systems-b-wave-quality.ts",
-      "sourceEntry": "drawWaveQuality",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "branching-sentences",
-      "title": "Branching Sentences",
-      "description": "Grow a single off-center sprig, a wide fan, or a dispersed grove from the same branching grammar.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "grammar.parallel-token-rewrite",
-        "geometry.token-turtle-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/branching-sentences.md",
-      "source": "packages/instruments/src/adapters/systems-b-branches.ts",
-      "sourceEntry": "drawBranchSentences",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "woven-grammar",
-      "title": "Grammar Paths",
-      "description": "Grammar Paths lets you write an axiom and parallel productions for F, G, X, Y.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "grammar.parallel-token-rewrite",
-        "geometry.token-turtle-2d"
-      ],
-      "presetOf": null,
-      "presets": [
-        {
-          "id": "woven-grammar",
-          "title": "Woven Fold"
-        },
-        {
-          "id": "recursive-tiles",
-          "title": "Recursive Tiles"
-        },
-        {
-          "id": "turtle-canopies",
-          "title": "Turtle Canopy"
-        }
-      ],
-      "guide": "guides/woven-grammar.md",
-      "source": "packages/instruments/src/adapters/graph-grammar-instruments.ts",
-      "sourceEntry": "drawGraphGrammarInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "turtle-canopies",
-      "title": "Turtle Canopies",
-      "description": "Grow branching fragments from editable turtle productions.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "grammar.parallel-token-rewrite",
-        "geometry.token-turtle-2d"
-      ],
-      "presetOf": "woven-grammar",
-      "presets": [
-        {
-          "id": "woven-grammar",
-          "title": "Woven Fold"
-        },
-        {
-          "id": "recursive-tiles",
-          "title": "Recursive Tiles"
-        },
-        {
-          "id": "turtle-canopies",
-          "title": "Turtle Canopy"
-        }
-      ],
-      "guide": "guides/turtle-canopies.md",
-      "source": "packages/instruments/src/adapters/graph-grammar-instruments.ts",
-      "sourceEntry": "drawGraphGrammarInstrument",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "recursive-tiles",
-      "title": "Recursive Tiles",
-      "description": "The Recursive Tiles starting recipe opens Grammar Paths with an F/G tile path instead of Woven Fold's X/Y fold.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "grammar.parallel-token-rewrite",
-        "geometry.token-turtle-2d"
-      ],
-      "presetOf": "woven-grammar",
-      "presets": [
-        {
-          "id": "woven-grammar",
-          "title": "Woven Fold"
-        },
-        {
-          "id": "recursive-tiles",
-          "title": "Recursive Tiles"
-        },
-        {
-          "id": "turtle-canopies",
-          "title": "Turtle Canopy"
-        }
-      ],
-      "guide": "guides/recursive-tiles.md",
-      "source": "packages/instruments/src/adapters/graph-grammar-instruments.ts",
-      "sourceEntry": "drawGraphGrammarInstrument",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "compatible-mosaics",
-      "title": "Edge Tiles",
-      "description": "A sparse, edge-matched mosaic made by adjacencyTileCollapse2D.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "layout.adjacency-tile-collapse-2d"
-      ],
-      "presetOf": null,
-      "presets": [
-        {
-          "id": "compatible-mosaics",
-          "title": "Sparse Mosaic"
-        },
-        {
-          "id": "tiled-circuits",
-          "title": "Circuit Paths"
-        }
-      ],
-      "guide": "guides/compatible-mosaics.md",
-      "source": "packages/instruments/src/adapters/edge-tile-instruments.ts",
-      "sourceEntry": "drawEdgeTiles",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "tiled-circuits",
-      "title": "Tiled Circuits",
-      "description": "This preset favors straight and turning paths of actual edge-matched connectors.",
-      "category": "Layouts",
-      "operationIds": [
-        "layout.adjacency-tile-collapse-2d"
-      ],
-      "presetOf": "compatible-mosaics",
-      "presets": [
-        {
-          "id": "compatible-mosaics",
-          "title": "Sparse Mosaic"
-        },
-        {
-          "id": "tiled-circuits",
-          "title": "Circuit Paths"
-        }
-      ],
-      "guide": "guides/tiled-circuits.md",
-      "source": "packages/instruments/src/adapters/edge-tile-instruments.ts",
-      "sourceEntry": "drawEdgeTiles",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "maze-gardens",
-      "title": "Lattice Forests",
-      "description": "Lattice Forests builds a local four-neighbor lattice, removes seeded blocked sites, and runs seededDepthFirstSpanningTree separately on each connected island.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "topology.seeded-depth-first-spanning-tree"
-      ],
-      "presetOf": null,
-      "presets": [
-        {
-          "id": "maze-gardens",
-          "title": "Maze Garden"
-        },
-        {
-          "id": "branching-networks",
-          "title": "Branching Network"
-        }
-      ],
-      "guide": "guides/maze-gardens.md",
-      "source": "packages/instruments/src/adapters/graph-grammar-instruments.ts",
-      "sourceEntry": "drawGraphGrammarInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "branching-networks",
-      "title": "Branching Networks",
-      "description": "The Branching Network starting recipe opens Lattice Forests with a lighter site-and-edge treatment than Maze Garden.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "topology.seeded-depth-first-spanning-tree"
-      ],
-      "presetOf": "maze-gardens",
-      "presets": [
-        {
-          "id": "maze-gardens",
-          "title": "Maze Garden"
-        },
-        {
-          "id": "branching-networks",
-          "title": "Branching Network"
-        }
-      ],
-      "guide": "guides/branching-networks.md",
-      "source": "packages/instruments/src/adapters/graph-grammar-instruments.ts",
-      "sourceEntry": "drawGraphGrammarInstrument",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "diffusion-engraving",
-      "title": "Dithered Marks",
-      "description": "Dithered Marks composes an independently seeded set of compact features into a local scalar image.",
-      "category": "Raster & color",
-      "operationIds": [
-        "raster.floyd-steinberg-dither",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [
-        {
-          "id": "diffusion-engraving",
-          "title": "Engraving"
-        },
-        {
-          "id": "dithered-ribbons",
-          "title": "Ribbons"
-        }
-      ],
-      "guide": "guides/diffusion-engraving.md",
-      "source": "packages/instruments/src/adapters/raster-source-instruments.ts",
-      "sourceEntry": "drawRasterSourceInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "dithered-ribbons",
-      "title": "Dithered Ribbons",
-      "description": "The Ribbons starting recipe opens Dithered Marks with elongated strokes from retained bits; Engraving begins with small dots.",
-      "category": "Raster & color",
-      "operationIds": [
-        "raster.floyd-steinberg-dither",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": "diffusion-engraving",
-      "presets": [
-        {
-          "id": "diffusion-engraving",
-          "title": "Engraving"
-        },
-        {
-          "id": "dithered-ribbons",
-          "title": "Ribbons"
-        }
-      ],
-      "guide": "guides/dithered-ribbons.md",
-      "source": "packages/instruments/src/adapters/raster-source-instruments.ts",
-      "sourceEntry": "drawRasterSourceInstrument",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "ordered-halftone",
-      "title": "Ordered Halftone",
-      "description": "An editable seeded scalar source is sampled on a grid and screened with the actual bayerDither operation.",
-      "category": "Raster & color",
-      "operationIds": [
-        "raster.bayer-dither",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/ordered-halftone.md",
-      "source": "packages/instruments/src/adapters/raster-source-instruments.ts",
-      "sourceEntry": "drawRasterSourceInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "bayer-weave",
-      "title": "Bayer Weave",
-      "description": "The same local seeded scalar source drives bayerDither, but retained bits print crossed horizontal and vertical bars instead of dots.",
-      "category": "Raster & color",
-      "operationIds": [
-        "raster.bayer-dither",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/bayer-weave.md",
-      "source": "packages/instruments/src/adapters/raster-source-instruments.ts",
-      "sourceEntry": "drawRasterSourceInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "embossed-field",
-      "title": "Embossed Field",
-      "description": "Turn seeded source features into raised-looking fragments, scattered textures, or a broad relief.",
-      "category": "Raster & color",
-      "operationIds": [
-        "raster.convolve-2d-signed",
-        "field.gradient-noise-2d-01",
-        "sampling.seeded-triangle-points-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/embossed-field.md",
-      "source": "packages/instruments/src/adapters/materials-a-relief.ts",
-      "sourceEntry": "drawReliefField",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "signed-edge-print",
-      "title": "Signed Edge Print",
-      "description": "Extract two-ink edge marks from seeded, editable grayscale source geometry.",
-      "category": "Raster & color",
-      "operationIds": [
-        "raster.convolve-2d-signed",
-        "field.gradient-noise-2d-01",
-        "sampling.seeded-triangle-points-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/signed-edge-print.md",
-      "source": "packages/instruments/src/adapters/materials-a-relief.ts",
-      "sourceEntry": "drawReliefField",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "distance-halos",
-      "title": "Distance Halos",
-      "description": "A small, editable group of distinct raster sites becomes a measured distance field through euclideanDistanceTransform2D.",
-      "category": "Raster & color",
-      "operationIds": [
-        "field.euclidean-distance-transform-2d",
-        "geometry.marching-squares-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/distance-halos.md",
-      "source": "packages/instruments/src/adapters/feature-distance-instruments.ts",
-      "sourceEntry": "drawFeatureDistanceInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "nearest-feature-mosaic",
-      "title": "Nearest Feature Mosaic",
-      "description": "The same editable binary feature-site source used by Distance Halos divides a sample grid by true nearest-site ownership.",
-      "category": "Raster & color",
-      "operationIds": [
-        "field.euclidean-distance-transform-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/nearest-feature-mosaic.md",
-      "source": "packages/instruments/src/adapters/feature-distance-instruments.ts",
-      "sourceEntry": "drawFeatureDistanceInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "eroded-lace",
-      "title": "Eroded Lace",
-      "description": "The same editable seeded scalar source as Dilated Stamps becomes a binary mask at Mask cutoff.",
-      "category": "Raster & color",
-      "operationIds": [
-        "raster.binary-morphology-2d",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/eroded-lace.md",
-      "source": "packages/instruments/src/adapters/raster-source-instruments.ts",
-      "sourceEntry": "drawRasterSourceInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "dilated-stamps",
-      "title": "Dilated Stamps",
-      "description": "This is the same binary-mask instrument as Eroded Lace, set to grow instead of shrink.",
-      "category": "Raster & color",
-      "operationIds": [
-        "raster.binary-morphology-2d",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/dilated-stamps.md",
-      "source": "packages/instruments/src/adapters/raster-source-instruments.ts",
-      "sourceEntry": "drawRasterSourceInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "perceptual-bands",
-      "title": "Perceptual Bands",
-      "description": "Sculpt an Oklab color field with an editable piecewise-linear edge profile and open rank-cell gaps.",
-      "category": "Raster & color",
-      "operationIds": [
-        "color.oklab-ramp"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/perceptual-bands.md",
-      "source": "packages/instruments/src/adapters/perceptual-color-instruments.ts",
-      "sourceEntry": "drawPerceptualColor",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "oklab-orbits",
-      "title": "Oklab Orbits",
-      "description": "Open elliptical arc stacks with eccentric centers and an Oklab gradient across ranks or along each arc.",
-      "category": "Raster & color",
-      "operationIds": [
-        "color.oklab-ramp"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/oklab-orbits.md",
-      "source": "packages/instruments/src/adapters/perceptual-color-instruments.ts",
-      "sourceEntry": "drawPerceptualColor",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "reduced-mosaic",
-      "title": "Reduced Mosaic",
-      "description": "An independently seeded collection of compact source features supplies local scalar samples.",
-      "category": "Raster & color",
-      "operationIds": [
-        "color.median-cut-quantize",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/reduced-mosaic.md",
-      "source": "packages/instruments/src/adapters/raster-source-instruments.ts",
-      "sourceEntry": "drawRasterSourceInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "quantized-stripes",
-      "title": "Quantized Stripes",
-      "description": "Reduce an editable RGB source to a smaller palette, then place its weighted colors in rows of separated strips or tiles.",
-      "category": "Raster & color",
-      "operationIds": [
-        "color.median-cut-quantize"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/quantized-stripes.md",
-      "source": "packages/instruments/src/adapters/quantized-stripes-instrument.ts",
-      "sourceEntry": "drawQuantizedStripeInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "extruded-seals",
-      "title": "Extruded Seals",
-      "description": "Make a solid seal from a beveled or stepped 2D footprint.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "mesh.extrude-simple-polygon-3d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/extruded-seals.md",
-      "source": "packages/javascript/examples/materials-b-studies.js",
-      "sourceEntry": "drawExtrudedSeals",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "stepped-blocks",
-      "title": "Stepped Blocks",
-      "description": "Cut a shoulder into a polygon footprint and extrude it into a block.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "mesh.extrude-simple-polygon-3d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/stepped-blocks.md",
-      "source": "packages/javascript/examples/materials-b-studies.js",
-      "sourceEntry": "drawSteppedBlocks",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "transported-ribbons",
-      "title": "Transported Ribbons",
-      "description": "Sweep a variable-width strip along a 3D centerline.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "mesh.parallel-transport-ribbon-3d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/transported-ribbons.md",
-      "source": "packages/javascript/examples/materials-b-studies.js",
-      "sourceEntry": "drawTransportedRibbons",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "twisting-streamers",
-      "title": "Twisting Streamers",
-      "description": "Bend a strip through repeated vertical and depth turns to make a folding streamer.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "mesh.parallel-transport-ribbon-3d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/twisting-streamers.md",
-      "source": "packages/javascript/examples/materials-b-studies.js",
-      "sourceEntry": "drawTwistingStreamers",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "rounded-polyhedra",
-      "title": "Rounded Polyhedra",
-      "description": "Refine a coarse 3D source mesh into a softer polyhedral form.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "mesh.loop-subdivide-triangles-3d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/rounded-polyhedra.md",
-      "source": "packages/javascript/examples/materials-b-studies.js",
-      "sourceEntry": "drawRoundedPolyhedra",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "subdivided-shells",
-      "title": "Subdivided Shells",
-      "description": "Build a faceted or softened shell from a small triangle mesh.",
-      "category": "Shapes & space",
-      "operationIds": [
-        "mesh.loop-subdivide-triangles-3d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/subdivided-shells.md",
-      "source": "packages/javascript/examples/materials-b-studies.js",
-      "sourceEntry": "drawSubdividedShells",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "ornament-poster",
-      "title": "Ornament Field",
-      "description": "Build a loose botanical scatter or an ordered decorative repeat.",
-      "category": "Layouts",
-      "operationIds": [
-        "sampling.seeded-circle-placement-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/ornament-poster.md",
-      "source": "packages/instruments/src/adapters/external-expansion.ts",
-      "sourceEntry": "drawOrnamentMotif",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "geometric-panel",
-      "title": "Shape Matrix",
-      "description": "Arrange wedges, crossed bars, discs and open arcs on an editable grid.",
-      "category": "Layouts",
-      "operationIds": [
-        "layout.regular-grid"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/geometric-panel.md",
-      "source": "packages/instruments/src/adapters/external-expansion.ts",
-      "sourceEntry": "drawPanelMark",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "orbital-brush",
-      "title": "Orbital Brush",
-      "description": "Shape a family of closed paths, then draw equal-distance samples as beads, connected ribbons or short perpendicular dashes.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "geometry.resample-polyline-2d"
-      ],
-      "presetOf": null,
-      "presets": [
-        {
-          "id": "orbital-brush",
-          "title": "Crossing Orbits"
-        },
-        {
-          "id": "orbit-beads",
-          "title": "Nested Beads"
-        }
-      ],
-      "guide": "guides/orbital-brush.md",
-      "source": "packages/instruments/src/adapters/external-expansion.ts",
-      "sourceEntry": "drawOrbitalBrush",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "contact-network",
-      "title": "Proximity Replay",
-      "description": "Build current-neighbor webs or sparse chains from an editable moving population.",
-      "category": "Motion",
-      "operationIds": [
-        "spatial.radius-pairs-2d",
-        "motion.pair-force-step-2d"
-      ],
-      "presetOf": null,
-      "presets": [
-        {
-          "id": "contact-network",
-          "title": "Contact Network"
-        },
-        {
-          "id": "agent-trails",
-          "title": "Agent Trails"
-        }
-      ],
-      "guide": "guides/contact-network.md",
-      "source": "packages/instruments/src/adapters/proximity-replay-instruments.ts",
-      "sourceEntry": "drawProximityReplayInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "agent-trails",
-      "title": "Agent Trails",
-      "description": "Draw retained motion as filaments, lines of dots or final-velocity rakes, with links and body marks optional.",
-      "category": "Motion",
-      "operationIds": [
-        "spatial.radius-pairs-2d",
-        "motion.pair-force-step-2d"
-      ],
-      "presetOf": "contact-network",
-      "presets": [
-        {
-          "id": "contact-network",
-          "title": "Contact Network"
-        },
-        {
-          "id": "agent-trails",
-          "title": "Agent Trails"
-        }
-      ],
-      "guide": "guides/agent-trails.md",
-      "source": "packages/instruments/src/adapters/proximity-replay-instruments.ts",
-      "sourceEntry": "drawProximityReplayInstrument",
-      "creativeReviewScope": "named-study-preset"
-    },
-    {
-      "id": "lingering-links",
-      "title": "Lingering Links",
-      "description": "Make a small cluster of crossing, fading connections or an expansive constellation.",
-      "category": "Motion",
-      "operationIds": [
-        "spatial.radius-pairs-2d",
-        "spatial.contact-history-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/lingering-links.md",
-      "source": "packages/instruments/src/adapters/external-dynamics.ts",
-      "sourceEntry": "drawSeededContacts",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "sensing-trails",
-      "title": "Sensing Trails",
-      "description": "Trace moving lines through a seeded landscape of compact scalar peaks.",
-      "category": "Motion",
-      "operationIds": [
-        "motion.sensor-motor-step-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/sensing-trails.md",
-      "source": "packages/instruments/src/adapters/external-dynamics.ts",
-      "sourceEntry": "drawSeededSensors",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "flocking-marks",
-      "title": "Flocking Marks",
-      "description": "Draw collective, localized trajectories from a seeded population.",
-      "category": "Motion",
-      "operationIds": [
-        "motion.flock-steer-2d",
-        "spatial.radius-pairs-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/flocking-marks.md",
-      "source": "packages/instruments/src/adapters/external-dynamics.ts",
-      "sourceEntry": "drawSeededFlock",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "guarded-bands",
-      "title": "Guarded Bands",
-      "description": "Guarded bands is an ordered selection instrument: each seeded center path becomes a variable-width filled strip, and the selector accepts it only if its filled boundary, not merely its centerline, clears strips already retained.",
-      "category": "Geometry",
-      "operationIds": [
-        "geometry.select-tapered-stroke-strips-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/guarded-bands.md",
-      "source": "packages/instruments/src/adapters/region-instruments.ts",
-      "sourceEntry": "drawRegionInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "hatched-islands",
-      "title": "Hatched Islands",
-      "description": "Seed and source controls construct a star-shaped island with zero or more strictly interior, disjoint perforations.",
-      "category": "Geometry",
-      "operationIds": [
-        "geometry.region-clearance-2d",
-        "geometry.hatch-region-lines-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/hatched-islands.md",
-      "source": "packages/instruments/src/adapters/region-instruments.ts",
-      "sourceEntry": "drawRegionInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "bridge-web",
-      "title": "Bridge Web",
-      "description": "Construct a family of parallel strands, then let each candidate cross the current graph.",
-      "category": "Graphs",
-      "operationIds": [
-        "graph.insert-segment-bridge-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/bridge-web.md",
-      "source": "packages/instruments/src/adapters/growth-instruments.ts",
-      "sourceEntry": "drawGrowthInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "neighborhood-growth",
-      "title": "Neighborhood Growth",
-      "description": "Seed an initial population in an area, a ring or a line, and independently seed a proposal pool in a separate square region.",
-      "category": "Graphs",
-      "operationIds": [
-        "spatial.relative-neighborhood-pairs-2d",
-        "motion.threshold-edge-relaxation-2d",
-        "spatial.radius-pairs-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/neighborhood-growth.md",
-      "source": "packages/instruments/src/adapters/growth-instruments.ts",
-      "sourceEntry": "drawGrowthInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "elastic-loops",
-      "title": "Elastic Loops",
-      "description": "Start from seeded ordered open filaments or concentric closed loops, then grow their actual rest lengths and bend targets.",
-      "category": "Motion",
-      "operationIds": [
-        "motion.elastic-curve-grow-step-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/elastic-loops.md",
-      "source": "packages/instruments/src/adapters/growth-instruments.ts",
-      "sourceEntry": "drawGrowthInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "dye-currents",
-      "title": "Dye Currents",
-      "description": "Build local pigment from one droplet or several independently seeded, rotated elliptical deposits.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "field.advect-periodic-scalar-2d",
-        "field.diffuse-periodic-scalar-2d",
-        "simulation.project-periodic-velocity-2d",
-        "geometry.marching-squares-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/dye-currents.md",
-      "source": "packages/instruments/src/adapters/fluid-instrument.ts",
-      "sourceEntry": "drawFluidInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "weighted-image-atlas",
-      "title": "Weighted Image Atlas",
-      "description": "Construct a *local* density field and sample it into marks.",
-      "category": "Images",
-      "operationIds": [
-        "sampling.weighted-raster-points-2d",
-        "layout.weighted-raster-centroids-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/weighted-image-atlas.md",
-      "source": "packages/instruments/src/adapters/image-signal-instruments.ts",
-      "sourceEntry": "drawImageSignalInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "word-echo",
-      "title": "Word Echo",
-      "description": "Marks walk either editable licensed glyph contours or an independent spiral/wave.",
-      "category": "Type",
-      "operationIds": [
-        "signal.sample-recorded-controls"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/word-echo.md",
-      "source": "packages/instruments/src/adapters/image-signal-instruments.ts",
-      "sourceEntry": "drawImageSignalInstrument",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "interference-lace",
-      "title": "Interference Lace",
-      "description": "Two crossing wave families make ribbed ribbons, bead-like islands and cellular lace.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "geometry.marching-squares-2d",
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/interference-lace.md",
-      "source": "packages/instruments/src/adapters/interference-lace.ts",
-      "sourceEntry": "drawInterferenceLace",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "attractor-growth",
-      "title": "Attractor Growth",
-      "description": "Seed target points first, then place roots independently.",
-      "category": "Systems & rules",
-      "operationIds": [
-        "growth.space-colonization-step-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/attractor-growth.md",
-      "source": "packages/instruments/src/adapters/attractor-growth.ts",
-      "sourceEntry": "drawAttractorGrowth",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "flame-clouds",
-      "title": "Flame Clouds",
-      "description": "A population of contractive affine transformations drives fractalFlameAccumulate2D into a fixed 216 × 216 bilinear density grid.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "fractal.flame-accumulate-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/flame-clouds.md",
-      "source": "packages/instruments/src/adapters/fractal-field-instruments.ts",
-      "sourceEntry": "drawFractalField",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "escape-contours",
-      "title": "Escape Contours",
-      "description": "complexEscapeDistance2D samples the actual quadratic map $z\\mapsto z^2+c$.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "complex.escape-distance-2d",
-        "geometry.marching-squares-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/escape-contours.md",
-      "source": "packages/instruments/src/adapters/fractal-field-instruments.ts",
-      "sourceEntry": "drawFractalField",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "woven-strands",
-      "title": "Woven Strands",
-      "description": "Two families of ink paths share one lattice of junctions.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "field.gradient-noise-2d-01",
-        "geometry.clip-segments-simple-polygon-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/woven-strands.md",
-      "source": "packages/instruments/src/adapters/weave-screen-instruments.ts",
-      "sourceEntry": "drawWeaveScreen",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "registered-screens",
-      "title": "Registered Screens",
-      "description": "Two independently editable ink line screens occupy a shared rectangular source footprint.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "geometry.clip-segments-simple-polygon-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/registered-screens.md",
-      "source": "packages/instruments/src/adapters/weave-screen-instruments.ts",
-      "sourceEntry": "drawWeaveScreen",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "asemic-lines",
-      "title": "Asemic Lines",
-      "description": "A seeded dictionary of abstract paths is built once from knot geometry and smoothed with the toolkit's Chaikin polyline operation.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "geometry.chaikin-polyline-2d",
-        "geometry.resample-polyline-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/asemic-lines.md",
-      "source": "packages/instruments/src/adapters/symbol-chord-instruments.ts",
-      "sourceEntry": "drawSymbolChord",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "chord-looms",
-      "title": "Chord Looms",
-      "description": "Two independent source curves are constructed as ellipses, radially lobed closed loops, or open arcs.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "geometry.chaikin-polyline-2d",
-        "geometry.resample-polyline-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/chord-looms.md",
-      "source": "packages/instruments/src/adapters/symbol-chord-instruments.ts",
-      "sourceEntry": "drawSymbolChord",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "harmonic-traces",
-      "title": "Harmonic Traces",
-      "description": "Draw Lissajous rosettes, damped tangles or ordered stitches by combining editable oscillators.",
-      "category": "Fields & paths",
-      "operationIds": [
-        "geometry.resample-polyline-2d"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/harmonic-traces.md",
-      "source": "packages/instruments/src/adapters/harmonic-traces.ts",
-      "sourceEntry": "drawHarmonicTraces",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "phyllotactic-whorls",
-      "title": "Phyllotactic Whorls",
-      "description": "Arrange leaf-like marks, discs or bars around a spiral whorl; adjust divergence to change its visible arms and optional rank links.",
-      "category": "Fields & paths",
-      "operationIds": [],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/phyllotactic-whorls.md",
-      "source": "packages/instruments/src/adapters/phyllotactic-whorls.ts",
-      "sourceEntry": "drawPhyllotacticWhorls",
-      "creativeReviewScope": "instrument-construction"
-    },
-    {
-      "id": "contour-relief",
-      "title": "Contour Relief",
-      "description": "Build a folded height-surface fragment with level curves on its faces, or leave only the suspended contour lines.",
-      "category": "3D forms",
-      "operationIds": [
-        "field.gradient-noise-2d-01"
-      ],
-      "presetOf": null,
-      "presets": [],
-      "guide": "guides/contour-relief.md",
-      "source": "packages/instruments/src/adapters/contour-relief.ts",
-      "sourceEntry": "drawContourRelief",
-      "creativeReviewScope": "instrument-construction"
+     "id": "centroid-trails",
+     "title": "Centroid Trails"
     }
-  ]
+   ],
+   "description": "Make a colored mosaic confined to an editable local patch, or strip it back to cell outlines, facets and site marks."
+  },
+  {
+   "id": "stitched-contours",
+   "title": "Path Materials",
+   "presets": [
+    {
+     "id": "stitched-contours",
+     "title": "Stitched Contours"
+    },
+    {
+     "id": "fragmented-lines",
+     "title": "Fragmented Lines"
+    },
+    {
+     "id": "stitched-paths",
+     "title": "Transverse Stitches"
+    }
+   ],
+   "description": "Path Materials draws marks along a local family of seeded, bending trajectories."
+  },
+  {
+   "id": "orbital-brush",
+   "title": "Orbital Brush",
+   "presets": [
+    {
+     "id": "orbital-brush",
+     "title": "Crossing Orbits"
+    },
+    {
+     "id": "orbit-beads",
+     "title": "Nested Beads"
+    }
+   ],
+   "description": "Shape a family of closed paths, then draw equal-distance samples as beads, connected ribbons or short perpendicular dashes."
+  },
+  {
+   "id": "contour-terrain",
+   "title": "Contour Fields",
+   "presets": [
+    {
+     "id": "contour-terrain",
+     "title": "Noise Passages"
+    },
+    {
+     "id": "contour-blobs",
+     "title": "Hill Rings"
+    }
+   ],
+   "description": "Draw flat contour patches from waves, noise, hills or your own height grid, without a filled background."
+  },
+  {
+   "id": "blue-noise-stipple",
+   "title": "Spaced Marks",
+   "presets": [
+    {
+     "id": "blue-noise-stipple",
+     "title": "Stipple"
+    },
+    {
+     "id": "spaced-symbols",
+     "title": "Symbols"
+    }
+   ],
+   "description": "Spaced Marks is a Poisson-disc placement instrument for drawing at sites at least Minimum separation apart."
+  },
+  {
+   "id": "packed-posters",
+   "title": "Packed Shapes",
+   "presets": [
+    {
+     "id": "packed-posters",
+     "title": "Posters"
+    },
+    {
+     "id": "aspect-tiles",
+     "title": "Aspect Tiles"
+    }
+   ],
+   "description": "Packed Shapes generates a seeded population of rectangles, then gives that ordered population to skyline packing."
+  },
+  {
+   "id": "stream-ribbons",
+   "title": "Flow Traces",
+   "presets": [
+    {
+     "id": "stream-ribbons",
+     "title": "Ribbons"
+    },
+    {
+     "id": "curved-trajectories",
+     "title": "Dotted Traces"
+    }
+   ],
+   "description": "Paint filled strips beside genuine RK4 trajectories through a sampled vector grid."
+  },
+  {
+   "id": "woven-rows",
+   "title": "Rule Rows",
+   "presets": [
+    {
+     "id": "woven-rows",
+     "title": "Bars"
+    },
+    {
+     "id": "triangle-glyphs",
+     "title": "Triangles"
+    }
+   ],
+   "description": "Make angular row patterns, sparse triangular growth or irregular binary textures; choose the mark shape independently of the pattern."
+  },
+  {
+   "id": "woven-grammar",
+   "title": "Grammar Paths",
+   "presets": [
+    {
+     "id": "woven-grammar",
+     "title": "Woven Fold"
+    },
+    {
+     "id": "recursive-tiles",
+     "title": "Recursive Tiles"
+    },
+    {
+     "id": "turtle-canopies",
+     "title": "Turtle Canopy"
+    }
+   ],
+   "description": "Grammar Paths lets you write an axiom and parallel productions for F, G, X, Y."
+  },
+  {
+   "id": "compatible-mosaics",
+   "title": "Edge Tiles",
+   "presets": [
+    {
+     "id": "compatible-mosaics",
+     "title": "Sparse Mosaic"
+    },
+    {
+     "id": "tiled-circuits",
+     "title": "Circuit Paths"
+    }
+   ],
+   "description": "A sparse, edge-matched mosaic made by adjacencyTileCollapse2D."
+  },
+  {
+   "id": "maze-gardens",
+   "title": "Lattice Forests",
+   "presets": [
+    {
+     "id": "maze-gardens",
+     "title": "Maze Garden"
+    },
+    {
+     "id": "branching-networks",
+     "title": "Branching Network"
+    }
+   ],
+   "description": "Lattice Forests builds a local four-neighbor lattice, removes seeded blocked sites, and runs seededDepthFirstSpanningTree separately on each connected island."
+  },
+  {
+   "id": "diffusion-engraving",
+   "title": "Dithered Marks",
+   "presets": [
+    {
+     "id": "diffusion-engraving",
+     "title": "Engraving"
+    },
+    {
+     "id": "dithered-ribbons",
+     "title": "Ribbons"
+    }
+   ],
+   "description": "Dithered Marks composes an independently seeded set of compact features into a local scalar image."
+  },
+  {
+   "id": "contact-network",
+   "title": "Proximity Replay",
+   "presets": [
+    {
+     "id": "contact-network",
+     "title": "Contact Network"
+    },
+    {
+     "id": "agent-trails",
+     "title": "Agent Trails"
+    }
+   ],
+   "description": "Build current-neighbor webs or sparse chains from an editable moving population."
+  }
+ ],
+ "instruments": [
+  {
+   "id": "motif-ecologies",
+   "title": "Motif Ecologies",
+   "description": "Build an open population of dots, rings or rosettes; replace its marks without moving the underlying sites.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "sampling.poisson-disc-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/motif-ecologies.md",
+   "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+   "sourceEntry": "drawReferenceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "contour-scores",
+   "title": "Contour Scores",
+   "description": "Turn editable terrain into continuous ink, tangent stitches or interchangeable bead marks.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "field.gradient-noise-2d-01",
+    "geometry.marching-squares-2d",
+    "geometry.assemble-segment-chains-2d",
+    "geometry.resample-polyline-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/contour-scores.md",
+   "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+   "sourceEntry": "drawReferenceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "region-quilts",
+   "title": "Region Quilts",
+   "description": "Fill an editable rectangular partition with hatching, motif populations or contour scores, leaving chosen leaves open.",
+   "category": "Partitions",
+   "operationIds": [
+    "layout.binary-cell-partition-2d",
+    "geometry.hatch-region-lines-2d",
+    "sampling.poisson-disc-2d",
+    "geometry.marching-squares-2d",
+    "geometry.assemble-segment-chains-2d",
+    "geometry.resample-polyline-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/region-quilts.md",
+   "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+   "sourceEntry": "drawReferenceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "field-marks",
+   "title": "Field Marks",
+   "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/field-marks.md",
+   "source": "packages/instruments/src/adapters/basic-source-instruments.ts",
+   "sourceEntry": "drawBasicSourceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "path-marks",
+   "title": "Path Marks",
+   "description": "These trajectories follow the existing seeded gradient-path operation.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "field.gradient-noise-2d-01",
+    "path.gradient-trace-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/path-marks.md",
+   "source": "packages/instruments/src/adapters/basic-source-instruments.ts",
+   "sourceEntry": "drawBasicSourceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "placement-marks",
+   "title": "Placement Marks",
+   "description": "The seeded source proposes circles within a movable rectangle: Source X and Y set its center, Source width and height its dimensions, and Proposals how many candidates the existing circle-placement operation considers in order.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "sampling.seeded-circle-placement-2d",
+    "sampling.ordered-circle-filter-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/placement-marks.md",
+   "source": "packages/instruments/src/adapters/basic-source-instruments.ts",
+   "sourceEntry": "drawBasicSourceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "lattice-marks",
+   "title": "Lattice Marks",
+   "description": "Columns and Rows set the actual dimensions sent to occupiedLatticePaths2D.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "path.occupied-lattice-paths-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/lattice-marks.md",
+   "source": "packages/instruments/src/adapters/basic-source-instruments.ts",
+   "sourceEntry": "drawBasicSourceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "band-marks",
+   "title": "Band Marks",
+   "description": "Draw meandering paths, isolated nodes or short transverse ticks from independently placed starts.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "path.noise-band-trace-2d",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/band-marks.md",
+   "source": "packages/instruments/src/adapters/constructed-geometry-instruments.ts",
+   "sourceEntry": "drawConstructedGeometry",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "branch-marks",
+   "title": "Branch Marks",
+   "description": "Grow sparse forks, small trees or loose groves with editable root placement and generation-by-generation branching.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "topology.seeded-endpoint-branches-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/branch-marks.md",
+   "source": "packages/instruments/src/adapters/constructed-geometry-instruments.ts",
+   "sourceEntry": "drawConstructedGeometry",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "cut-branch-marks",
+   "title": "Cut Branch Marks",
+   "description": "Make split, twig-like line fragments from one freely positioned starting segment.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "topology.seeded-line-pool-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/cut-branch-marks.md",
+   "source": "packages/instruments/src/adapters/constructed-geometry-instruments.ts",
+   "sourceEntry": "drawConstructedGeometry",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "loop-marks",
+   "title": "Loop Marks",
+   "description": "The starting row contains three differently phased, lobed loops with colored diamonds spaced along their outlines.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "geometry.closed-spline-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/loop-marks.md",
+   "source": "packages/instruments/src/adapters/loop-marks-quality.ts",
+   "sourceEntry": "drawLoopMarksModern",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "region-marks",
+   "title": "Region Marks",
+   "description": "A seeded quadrant partition repeatedly replaces one eligible leaf with four quadrants.",
+   "category": "Layouts",
+   "operationIds": [
+    "layout.seeded-quadrant-partition-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/region-marks.md",
+   "source": "packages/instruments/src/adapters/region-facet-instruments.ts",
+   "sourceEntry": "drawRegionFacetInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "panel-marks",
+   "title": "Panel Marks",
+   "description": "Binary partition attempts cut an integer grid into ordered rectangular leaves.",
+   "category": "Layouts",
+   "operationIds": [
+    "layout.binary-cell-partition-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/panel-marks.md",
+   "source": "packages/instruments/src/adapters/region-facet-instruments.ts",
+   "sourceEntry": "drawRegionFacetInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "cut-marks",
+   "title": "Cut Marks",
+   "description": "Build a seeded panel layout, then apply direct retained-rectangle cuts or removals.",
+   "category": "Layouts",
+   "operationIds": [
+    "layout.retained-rectangle-cuts-2d",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/cut-marks.md",
+   "source": "packages/instruments/src/adapters/geometry.ts",
+   "sourceEntry": "cuts",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "polygon-marks",
+   "title": "Polygon Marks",
+   "description": "Center X/Y, Source width/height, Source sides, and Source angle define a convex placement domain.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "sampling.ordered-convex-polygon-filter-2d",
+    "sampling.triangle-coordinate-map-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/polygon-marks.md",
+   "source": "packages/instruments/src/adapters/region-facet-instruments.ts",
+   "sourceEntry": "drawRegionFacetInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "facet-marks",
+   "title": "Facet Marks",
+   "description": "Center X/Y, Source width/height, Source sides and Source angle create a triangular or convex polygonal site domain, not a fixed canvas-sized triangle.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "sampling.ordered-convex-polygon-filter-2d",
+    "sampling.triangle-coordinate-map-2d",
+    "topology.delaunay-2d",
+    "sampling.seeded-triangle-points-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/facet-marks.md",
+   "source": "packages/instruments/src/adapters/region-facet-instruments.ts",
+   "sourceEntry": "drawRegionFacetInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "grain-marks",
+   "title": "Grain Marks",
+   "description": "Place one or more editable source polygons with Center X/Y, Polygon width/height, Polygon sides, Source angle, Source groups, and Group spread.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "sampling.ordered-convex-polygon-filter-2d",
+    "geometry.triangulate-simple-polygon-2d",
+    "sampling.triangle-coordinate-map-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/grain-marks.md",
+   "source": "packages/instruments/src/adapters/region-facet-instruments.ts",
+   "sourceEntry": "drawRegionFacetInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "pull-marks",
+   "title": "Pull Marks",
+   "description": "Arrange source paths and pull them toward one or two editable radial influences.",
+   "category": "Transforms",
+   "operationIds": [
+    "geometry.radial-pull-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/pull-marks.md",
+   "source": "packages/instruments/src/adapters/effects.ts",
+   "sourceEntry": "drawPull",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "projection-marks",
+   "title": "Projection Marks",
+   "description": "Arrange source paths and project them away from one or two ordered discs.",
+   "category": "Transforms",
+   "operationIds": [
+    "geometry.sequential-disc-projection-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/projection-marks.md",
+   "source": "packages/instruments/src/adapters/effects.ts",
+   "sourceEntry": "drawProjection",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "path-clip-marks",
+   "title": "Path Clip Marks",
+   "description": "Clip rows, wandering paths or a fan through an editable simple boundary.",
+   "category": "Transforms",
+   "operationIds": [
+    "geometry.clip-segments-simple-polygon-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/path-clip-marks.md",
+   "source": "packages/instruments/src/adapters/effects.ts",
+   "sourceEntry": "drawClip",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "ramp-marks",
+   "title": "Ramp Marks",
+   "description": "A local mark grid samples a positioned RGB palette ramp through stopRamp.",
+   "category": "Color & raster",
+   "operationIds": [
+    "color.stop-ramp"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/ramp-marks.md",
+   "source": "packages/instruments/src/adapters/ramp-spring-instruments.ts",
+   "sourceEntry": "drawRampSpringInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "warp-marks",
+   "title": "Warp Marks",
+   "description": "Construct a small transparent RGBA image from bars, discs, rings or tiles, then sample it through a local deformation map.",
+   "category": "Color & raster",
+   "operationIds": [
+    "raster.bilinear-remap-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/warp-marks.md",
+   "source": "packages/instruments/src/adapters/raster-transform-instruments.ts",
+   "sourceEntry": "drawRasterTransformInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "blur-marks",
+   "title": "Blur Marks",
+   "description": "Filter an editable transparent RGBA population of bars, discs, rings or tiles with independently sized horizontal and vertical kernels.",
+   "category": "Color & raster",
+   "operationIds": [
+    "raster.separable-blur-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/blur-marks.md",
+   "source": "packages/instruments/src/adapters/raster-transform-instruments.ts",
+   "sourceEntry": "drawRasterTransformInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "profile-marks",
+   "title": "Revolved Profiles",
+   "description": "Build pinched columns, flared profiles and open wire shells by editing the form's silhouette.",
+   "category": "3D forms",
+   "operationIds": [
+    "mesh.radial-profile-surface-3d",
+    "field.gradient-noise-3d-01"
+   ],
+   "presetOf": null,
+   "presets": [
+    {
+     "id": "profile-marks",
+     "title": "Sculpted Profile"
+    },
+    {
+     "id": "depth-marks",
+     "title": "Noise-colored Taper"
+    }
+   ],
+   "guide": "guides/profile-marks.md",
+   "source": "packages/instruments/src/adapters/revolved-instruments.ts",
+   "sourceEntry": "drawRevolvedInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "annular-marks",
+   "title": "Annular Marks",
+   "description": "Show a graphic arc from a thick ring, or keep only wire edges and selected walls.",
+   "category": "3D forms",
+   "operationIds": [
+    "mesh.annular-solid-3d",
+    "field.gradient-noise-3d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/annular-marks.md",
+   "source": "packages/instruments/src/adapters/revolved-instruments.ts",
+   "sourceEntry": "drawRevolvedInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "depth-marks",
+   "title": "Depth Marks",
+   "description": "Make faceted, tapered forms with colored patches that can change without deforming the mesh.",
+   "category": "3D forms",
+   "operationIds": [
+    "mesh.radial-profile-surface-3d",
+    "field.gradient-noise-3d-01"
+   ],
+   "presetOf": "profile-marks",
+   "presets": [
+    {
+     "id": "profile-marks",
+     "title": "Sculpted Profile"
+    },
+    {
+     "id": "depth-marks",
+     "title": "Noise-colored Taper"
+    }
+   ],
+   "guide": "guides/depth-marks.md",
+   "source": "packages/instruments/src/adapters/revolved-instruments.ts",
+   "sourceEntry": "drawRevolvedInstrument",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "spring-marks",
+   "title": "Spring Marks",
+   "description": "Draw converging filaments, looping traces or spare spokes by moving starting bodies and targets independently.",
+   "category": "Motion",
+   "operationIds": [
+    "motion.target-springs-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/spring-marks.md",
+   "source": "packages/instruments/src/adapters/ramp-spring-instruments.ts",
+   "sourceEntry": "drawSpring",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "cell-mosaic",
+   "title": "Cell Fields",
+   "description": "Make a colored mosaic confined to an editable local patch, or strip it back to cell outlines, facets and site marks.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "layout.lloyd-relaxation-2d",
+    "geometry.voronoi-cells-2d"
+   ],
+   "presetOf": null,
+   "presets": [
+    {
+     "id": "cell-mosaic",
+     "title": "Faceted Mosaic"
+    },
+    {
+     "id": "cell-echoes",
+     "title": "Nested Echoes"
+    },
+    {
+     "id": "relaxed-stones",
+     "title": "Relaxed Stones"
+    },
+    {
+     "id": "centroid-trails",
+     "title": "Centroid Trails"
+    }
+   ],
+   "guide": "guides/cell-mosaic.md",
+   "source": "packages/instruments/src/adapters/relaxed-cell-instruments.ts",
+   "sourceEntry": "drawRelaxedCellInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "cell-echoes",
+   "title": "Cell Echoes",
+   "description": "Build nested polygonal rings inside a local cell field, from a few separated cells to dense contour textures.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "layout.lloyd-relaxation-2d",
+    "geometry.voronoi-cells-2d"
+   ],
+   "presetOf": "cell-mosaic",
+   "presets": [
+    {
+     "id": "cell-mosaic",
+     "title": "Faceted Mosaic"
+    },
+    {
+     "id": "cell-echoes",
+     "title": "Nested Echoes"
+    },
+    {
+     "id": "relaxed-stones",
+     "title": "Relaxed Stones"
+    },
+    {
+     "id": "centroid-trails",
+     "title": "Centroid Trails"
+    }
+   ],
+   "guide": "guides/cell-echoes.md",
+   "source": "packages/instruments/src/adapters/relaxed-cell-instruments.ts",
+   "sourceEntry": "drawRelaxedCellInstrument",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "stitched-paths",
+   "title": "Stitched Paths",
+   "description": "Lay transverse marks along editable local waves.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "geometry.chaikin-polyline-2d",
+    "geometry.resample-polyline-2d",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": "stitched-contours",
+   "presets": [
+    {
+     "id": "stitched-contours",
+     "title": "Stitched Contours"
+    },
+    {
+     "id": "fragmented-lines",
+     "title": "Fragmented Lines"
+    },
+    {
+     "id": "stitched-paths",
+     "title": "Transverse Stitches"
+    }
+   ],
+   "guide": "guides/stitched-paths.md",
+   "source": "packages/instruments/src/adapters/path-material-instruments.ts",
+   "sourceEntry": "drawPathMaterialInstrument",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "orbit-beads",
+   "title": "Orbit Beads",
+   "description": "Arrange beads around editable closed orbits.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "geometry.resample-polyline-2d"
+   ],
+   "presetOf": "orbital-brush",
+   "presets": [
+    {
+     "id": "orbital-brush",
+     "title": "Crossing Orbits"
+    },
+    {
+     "id": "orbit-beads",
+     "title": "Nested Beads"
+    }
+   ],
+   "guide": "guides/orbit-beads.md",
+   "source": "packages/instruments/src/adapters/external-expansion.ts",
+   "sourceEntry": "drawOrbitalBrush",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "contour-terrain",
+   "title": "Contour Fields",
+   "description": "Draw flat contour patches from waves, noise, hills or your own height grid, without a filled background.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "field.gradient-noise-2d-01",
+    "geometry.marching-squares-2d"
+   ],
+   "presetOf": null,
+   "presets": [
+    {
+     "id": "contour-terrain",
+     "title": "Noise Passages"
+    },
+    {
+     "id": "contour-blobs",
+     "title": "Hill Rings"
+    }
+   ],
+   "guide": "guides/contour-terrain.md",
+   "source": "packages/instruments/src/adapters/contour-field-instruments.ts",
+   "sourceEntry": "drawContourField",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "contour-blobs",
+   "title": "Contour Blobs",
+   "description": "Make isolated hill rings, merging islands or rippling loop sequences from an editable field.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "field.gradient-noise-2d-01",
+    "geometry.marching-squares-2d"
+   ],
+   "presetOf": "contour-terrain",
+   "presets": [
+    {
+     "id": "contour-terrain",
+     "title": "Noise Passages"
+    },
+    {
+     "id": "contour-blobs",
+     "title": "Hill Rings"
+    }
+   ],
+   "guide": "guides/contour-blobs.md",
+   "source": "packages/instruments/src/adapters/contour-field-instruments.ts",
+   "sourceEntry": "drawContourField",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "rounded-panels",
+   "title": "Rounded Panels",
+   "description": "Repeat softened polygon panels as a loose quilt, a tight grid, or overlapping shapes.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "geometry.chaikin-polyline-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/rounded-panels.md",
+   "source": "packages/instruments/src/adapters/paths-a-quality.ts",
+   "sourceEntry": "drawPathsAQuality",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "flowing-brushes",
+   "title": "Flowing Brushes",
+   "description": "Chaikin corner cuts turn sampled, angular trajectories into continuous brush sweeps.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "geometry.chaikin-polyline-2d",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/flowing-brushes.md",
+   "source": "packages/instruments/src/adapters/paths-a-gestures.ts",
+   "sourceEntry": "drawPathGestures",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "contour-abstraction",
+   "title": "Contour Abstraction",
+   "description": "One sampled trajectory is repeatedly simplified into coarse-to-fine records, then spaced perpendicular to its direction.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "geometry.simplify-polyline-2d",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/contour-abstraction.md",
+   "source": "packages/instruments/src/adapters/paths-a-gestures.ts",
+   "sourceEntry": "drawPathGestures",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "gesture-skeletons",
+   "title": "Gesture Skeletons",
+   "description": "Separately seeded open gestures are sampled, simplified and left as sparse, articulated fragments.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "geometry.simplify-polyline-2d",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/gesture-skeletons.md",
+   "source": "packages/instruments/src/adapters/paths-a-gestures.ts",
+   "sourceEntry": "drawPathGestures",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "road-margins",
+   "title": "Road Margins",
+   "description": "Draw parallel edges beside one or more winding open routes.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "geometry.offset-polyline-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/road-margins.md",
+   "source": "packages/instruments/src/adapters/paths-a-quality.ts",
+   "sourceEntry": "drawPathsAQuality",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "nested-contour-strokes",
+   "title": "Nested Contour Strokes",
+   "description": "Build contour ink around an editable closed polygon.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "geometry.offset-polyline-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/nested-contour-strokes.md",
+   "source": "packages/instruments/src/adapters/paths-a-quality.ts",
+   "sourceEntry": "drawPathsAQuality",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "scatter-envelopes",
+   "title": "Scatter Envelopes",
+   "description": "Independent seeded point populations determine actual convex hulls.",
+   "category": "Layouts",
+   "operationIds": [
+    "geometry.convex-hull-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/scatter-envelopes.md",
+   "source": "packages/instruments/src/adapters/path-material-instruments.ts",
+   "sourceEntry": "drawPathMaterialInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "terraced-islands",
+   "title": "Terraced Islands",
+   "description": "Every island starts with its own seeded sites and a real convex hull.",
+   "category": "Layouts",
+   "operationIds": [
+    "geometry.convex-hull-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/terraced-islands.md",
+   "source": "packages/instruments/src/adapters/path-material-instruments.ts",
+   "sourceEntry": "drawPathMaterialInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "faceted-silhouettes",
+   "title": "Faceted Silhouettes",
+   "description": "Turn a straight-sided silhouette into colored triangular paper planes, with optional facet edges and grain marks.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "geometry.triangulate-simple-polygon-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/faceted-silhouettes.md",
+   "source": "packages/instruments/src/adapters/paths-a-quality.ts",
+   "sourceEntry": "drawPathsAQuality",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "concave-grain",
+   "title": "Concave Grain",
+   "description": "Break a silhouette with inward corners, then colour its straight triangular facets and add fan lines or dots within each one.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "geometry.triangulate-simple-polygon-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/concave-grain.md",
+   "source": "packages/instruments/src/adapters/paths-a-quality.ts",
+   "sourceEntry": "drawPathsAQuality",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "stitched-contours",
+   "title": "Path Materials",
+   "description": "Path Materials draws marks along a local family of seeded, bending trajectories.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "geometry.chaikin-polyline-2d",
+    "geometry.resample-polyline-2d",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [
+    {
+     "id": "stitched-contours",
+     "title": "Stitched Contours"
+    },
+    {
+     "id": "fragmented-lines",
+     "title": "Fragmented Lines"
+    },
+    {
+     "id": "stitched-paths",
+     "title": "Transverse Stitches"
+    }
+   ],
+   "guide": "guides/stitched-contours.md",
+   "source": "packages/instruments/src/adapters/path-material-instruments.ts",
+   "sourceEntry": "drawPathMaterialInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "fragmented-lines",
+   "title": "Fragmented Lines",
+   "description": "The Fragmented Lines starting recipe opens Path Materials with broken dashes and gaps; the Stitched Contours starting recipe opens the same instrument with stitches.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "geometry.chaikin-polyline-2d",
+    "geometry.resample-polyline-2d",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": "stitched-contours",
+   "presets": [
+    {
+     "id": "stitched-contours",
+     "title": "Stitched Contours"
+    },
+    {
+     "id": "fragmented-lines",
+     "title": "Fragmented Lines"
+    },
+    {
+     "id": "stitched-paths",
+     "title": "Transverse Stitches"
+    }
+   ],
+   "guide": "guides/fragmented-lines.md",
+   "source": "packages/instruments/src/adapters/path-material-instruments.ts",
+   "sourceEntry": "drawPathMaterialInstrument",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "blue-noise-stipple",
+   "title": "Spaced Marks",
+   "description": "Spaced Marks is a Poisson-disc placement instrument for drawing at sites at least Minimum separation apart.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "sampling.poisson-disc-2d"
+   ],
+   "presetOf": null,
+   "presets": [
+    {
+     "id": "blue-noise-stipple",
+     "title": "Stipple"
+    },
+    {
+     "id": "spaced-symbols",
+     "title": "Symbols"
+    }
+   ],
+   "guide": "guides/blue-noise-stipple.md",
+   "source": "packages/instruments/src/adapters/placement-packing-instruments.ts",
+   "sourceEntry": "drawPlacementPackingInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "spaced-symbols",
+   "title": "Spaced Symbols",
+   "description": "The Symbols starting recipe opens the same Spaced Marks Poisson-disc placement instrument as Stipple, with square marks and a larger spacing initially.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "sampling.poisson-disc-2d"
+   ],
+   "presetOf": "blue-noise-stipple",
+   "presets": [
+    {
+     "id": "blue-noise-stipple",
+     "title": "Stipple"
+    },
+    {
+     "id": "spaced-symbols",
+     "title": "Symbols"
+    }
+   ],
+   "guide": "guides/spaced-symbols.md",
+   "source": "packages/instruments/src/adapters/placement-packing-instruments.ts",
+   "sourceEntry": "drawPlacementPackingInstrument",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "relaxed-stones",
+   "title": "Relaxed Stones",
+   "description": "Build a small cluster of inset polygonal stones, an open cellular web or the gradual tracks of relaxing sites.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "layout.lloyd-relaxation-2d",
+    "geometry.voronoi-cells-2d"
+   ],
+   "presetOf": "cell-mosaic",
+   "presets": [
+    {
+     "id": "cell-mosaic",
+     "title": "Faceted Mosaic"
+    },
+    {
+     "id": "cell-echoes",
+     "title": "Nested Echoes"
+    },
+    {
+     "id": "relaxed-stones",
+     "title": "Relaxed Stones"
+    },
+    {
+     "id": "centroid-trails",
+     "title": "Centroid Trails"
+    }
+   ],
+   "guide": "guides/relaxed-stones.md",
+   "source": "packages/instruments/src/adapters/relaxed-cell-instruments.ts",
+   "sourceEntry": "drawRelaxedCellInstrument",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "centroid-trails",
+   "title": "Centroid Trails",
+   "description": "Draw short site-motion trails, then optionally expose their surrounding cell outlines.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "layout.lloyd-relaxation-2d",
+    "geometry.voronoi-cells-2d"
+   ],
+   "presetOf": "cell-mosaic",
+   "presets": [
+    {
+     "id": "cell-mosaic",
+     "title": "Faceted Mosaic"
+    },
+    {
+     "id": "cell-echoes",
+     "title": "Nested Echoes"
+    },
+    {
+     "id": "relaxed-stones",
+     "title": "Relaxed Stones"
+    },
+    {
+     "id": "centroid-trails",
+     "title": "Centroid Trails"
+    }
+   ],
+   "guide": "guides/centroid-trails.md",
+   "source": "packages/instruments/src/adapters/relaxed-cell-instruments.ts",
+   "sourceEntry": "drawRelaxedCellInstrument",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "packed-posters",
+   "title": "Packed Shapes",
+   "description": "Packed Shapes generates a seeded population of rectangles, then gives that ordered population to skyline packing.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "layout.skyline-pack-2d"
+   ],
+   "presetOf": null,
+   "presets": [
+    {
+     "id": "packed-posters",
+     "title": "Posters"
+    },
+    {
+     "id": "aspect-tiles",
+     "title": "Aspect Tiles"
+    }
+   ],
+   "guide": "guides/packed-posters.md",
+   "source": "packages/instruments/src/adapters/placement-packing-instruments.ts",
+   "sourceEntry": "drawPlacementPackingInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "aspect-tiles",
+   "title": "Aspect Tiles",
+   "description": "The Aspect Tiles starting recipe opens Packed Shapes with a broader initial width/height distribution than Posters; both use the same skyline packing instrument.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "layout.skyline-pack-2d"
+   ],
+   "presetOf": "packed-posters",
+   "presets": [
+    {
+     "id": "packed-posters",
+     "title": "Posters"
+    },
+    {
+     "id": "aspect-tiles",
+     "title": "Aspect Tiles"
+    }
+   ],
+   "guide": "guides/aspect-tiles.md",
+   "source": "packages/instruments/src/adapters/placement-packing-instruments.ts",
+   "sourceEntry": "drawPlacementPackingInstrument",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "obstacle-roads",
+   "title": "Obstacle Roads",
+   "description": "Draw orthogonal routes through an editable cost and obstacle field, from a few separated segments to branching shared routes.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "path.cost-grid-paths-2d",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/obstacle-roads.md",
+   "source": "packages/instruments/src/adapters/cost-path-instruments.ts",
+   "sourceEntry": "drawCostPathInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "arrival-contours",
+   "title": "Arrival Contours",
+   "description": "Trace cost rings that bend around expensive cells and stop at obstacles or unreachable regions.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "path.cost-grid-paths-2d",
+    "field.gradient-noise-2d-01",
+    "geometry.marching-squares-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/arrival-contours.md",
+   "source": "packages/instruments/src/adapters/cost-path-instruments.ts",
+   "sourceEntry": "drawCostPathInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "stream-ribbons",
+   "title": "Flow Traces",
+   "description": "Paint filled strips beside genuine RK4 trajectories through a sampled vector grid.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "path.rk4-vector-grid-trace-2d",
+    "geometry.offset-polyline-2d",
+    "geometry.resample-polyline-2d"
+   ],
+   "presetOf": null,
+   "presets": [
+    {
+     "id": "stream-ribbons",
+     "title": "Ribbons"
+    },
+    {
+     "id": "curved-trajectories",
+     "title": "Dotted Traces"
+    }
+   ],
+   "guide": "guides/stream-ribbons.md",
+   "source": "packages/instruments/src/adapters/vector-trace-instruments.ts",
+   "sourceEntry": "drawVectorTraceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "curved-trajectories",
+   "title": "Curved Trajectories",
+   "description": "Follow starts arranged on a ring through a field assembled from uniform drift and independent signed radial and rotational velocity sources.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "path.rk4-vector-grid-trace-2d",
+    "geometry.offset-polyline-2d",
+    "geometry.resample-polyline-2d"
+   ],
+   "presetOf": "stream-ribbons",
+   "presets": [
+    {
+     "id": "stream-ribbons",
+     "title": "Ribbons"
+    },
+    {
+     "id": "curved-trajectories",
+     "title": "Dotted Traces"
+    }
+   ],
+   "guide": "guides/curved-trajectories.md",
+   "source": "packages/instruments/src/adapters/vector-trace-instruments.ts",
+   "sourceEntry": "drawVectorTraceInstrument",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "reaction-spots",
+   "title": "Reaction Spots",
+   "description": "Grow a field of colored discs from a chosen starting pattern.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "field.gray-scott-step-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/reaction-spots.md",
+   "source": "packages/instruments/src/adapters/systems-a-quality.ts",
+   "sourceEntry": "drawSystemsAQuality",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "reaction-stripes",
+   "title": "Reaction Stripes",
+   "description": "Build a changing field of colored square cells from an editable starting pattern.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "field.gray-scott-step-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/reaction-stripes.md",
+   "source": "packages/instruments/src/adapters/systems-a-quality.ts",
+   "sourceEntry": "drawSystemsAQuality",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "organic-cells",
+   "title": "Organic Cells",
+   "description": "Grow rounded colonies from a starting grid you can replace.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "field.life-like-step-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/organic-cells.md",
+   "source": "packages/instruments/src/adapters/systems-a-quality.ts",
+   "sourceEntry": "drawSystemsAQuality",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "geometric-generations",
+   "title": "Geometric Generations",
+   "description": "Turn a chosen starting grid into a field of colored square cells.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "field.life-like-step-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/geometric-generations.md",
+   "source": "packages/instruments/src/adapters/systems-a-quality.ts",
+   "sourceEntry": "drawSystemsAQuality",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "woven-rows",
+   "title": "Rule Rows",
+   "description": "Make angular row patterns, sparse triangular growth or irregular binary textures; choose the mark shape independently of the pattern.",
+   "category": "Layouts",
+   "operationIds": [
+    "field.elementary-cellular-rows"
+   ],
+   "presetOf": null,
+   "presets": [
+    {
+     "id": "woven-rows",
+     "title": "Bars"
+    },
+    {
+     "id": "triangle-glyphs",
+     "title": "Triangles"
+    }
+   ],
+   "guide": "guides/woven-rows.md",
+   "source": "packages/instruments/src/adapters/rule-row-instruments.ts",
+   "sourceEntry": "drawRuleRows",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "triangle-glyphs",
+   "title": "Triangle Glyphs",
+   "description": "Turn a rule-grown row pattern into clusters of triangles, dots or bars, with room for negative space.",
+   "category": "Layouts",
+   "operationIds": [
+    "field.elementary-cellular-rows"
+   ],
+   "presetOf": "woven-rows",
+   "presets": [
+    {
+     "id": "woven-rows",
+     "title": "Bars"
+    },
+    {
+     "id": "triangle-glyphs",
+     "title": "Triangles"
+    }
+   ],
+   "guide": "guides/triangle-glyphs.md",
+   "source": "packages/instruments/src/adapters/rule-row-instruments.ts",
+   "sourceEntry": "drawRuleRows",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "swirling-particles",
+   "title": "Swirling Particles",
+   "description": "Release paths from an editable source region into a seeded scalar curl field.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "field.scalar-grid-curl-2d",
+    "path.rk4-vector-grid-trace-2d",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/swirling-particles.md",
+   "source": "packages/instruments/src/adapters/systems-a-curl.ts",
+   "sourceEntry": "drawCurlStudy",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "flow-needles",
+   "title": "Flow Needles",
+   "description": "Look at the directions of a seeded scalar curl field as individual vector marks rather than advected paths.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "field.scalar-grid-curl-2d",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/flow-needles.md",
+   "source": "packages/instruments/src/adapters/systems-a-curl.ts",
+   "sourceEntry": "drawCurlStudy",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "ripple-interference",
+   "title": "Ripple Interference",
+   "description": "Place one to three signed disturbances in a square wave field, then watch their contours meet and interfere.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "field.damped-wave-step-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/ripple-interference.md",
+   "source": "packages/instruments/src/adapters/systems-b-wave-quality.ts",
+   "sourceEntry": "drawWaveQuality",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "pinned-waves",
+   "title": "Pinned Waves",
+   "description": "Shape wave contours around cells that must remain still.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "field.damped-wave-step-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/pinned-waves.md",
+   "source": "packages/instruments/src/adapters/systems-b-wave-quality.ts",
+   "sourceEntry": "drawWaveQuality",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "branching-sentences",
+   "title": "Branching Sentences",
+   "description": "Grow a single off-center sprig, a wide fan, or a dispersed grove from the same branching grammar.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "grammar.parallel-token-rewrite",
+    "geometry.token-turtle-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/branching-sentences.md",
+   "source": "packages/instruments/src/adapters/systems-b-branches.ts",
+   "sourceEntry": "drawBranchSentences",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "woven-grammar",
+   "title": "Grammar Paths",
+   "description": "Grammar Paths lets you write an axiom and parallel productions for F, G, X, Y.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "grammar.parallel-token-rewrite",
+    "geometry.token-turtle-2d"
+   ],
+   "presetOf": null,
+   "presets": [
+    {
+     "id": "woven-grammar",
+     "title": "Woven Fold"
+    },
+    {
+     "id": "recursive-tiles",
+     "title": "Recursive Tiles"
+    },
+    {
+     "id": "turtle-canopies",
+     "title": "Turtle Canopy"
+    }
+   ],
+   "guide": "guides/woven-grammar.md",
+   "source": "packages/instruments/src/adapters/graph-grammar-instruments.ts",
+   "sourceEntry": "drawGraphGrammarInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "turtle-canopies",
+   "title": "Turtle Canopies",
+   "description": "Grow branching fragments from editable turtle productions.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "grammar.parallel-token-rewrite",
+    "geometry.token-turtle-2d"
+   ],
+   "presetOf": "woven-grammar",
+   "presets": [
+    {
+     "id": "woven-grammar",
+     "title": "Woven Fold"
+    },
+    {
+     "id": "recursive-tiles",
+     "title": "Recursive Tiles"
+    },
+    {
+     "id": "turtle-canopies",
+     "title": "Turtle Canopy"
+    }
+   ],
+   "guide": "guides/turtle-canopies.md",
+   "source": "packages/instruments/src/adapters/graph-grammar-instruments.ts",
+   "sourceEntry": "drawGraphGrammarInstrument",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "recursive-tiles",
+   "title": "Recursive Tiles",
+   "description": "The Recursive Tiles starting recipe opens Grammar Paths with an F/G tile path instead of Woven Fold's X/Y fold.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "grammar.parallel-token-rewrite",
+    "geometry.token-turtle-2d"
+   ],
+   "presetOf": "woven-grammar",
+   "presets": [
+    {
+     "id": "woven-grammar",
+     "title": "Woven Fold"
+    },
+    {
+     "id": "recursive-tiles",
+     "title": "Recursive Tiles"
+    },
+    {
+     "id": "turtle-canopies",
+     "title": "Turtle Canopy"
+    }
+   ],
+   "guide": "guides/recursive-tiles.md",
+   "source": "packages/instruments/src/adapters/graph-grammar-instruments.ts",
+   "sourceEntry": "drawGraphGrammarInstrument",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "compatible-mosaics",
+   "title": "Edge Tiles",
+   "description": "A sparse, edge-matched mosaic made by adjacencyTileCollapse2D.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "layout.adjacency-tile-collapse-2d"
+   ],
+   "presetOf": null,
+   "presets": [
+    {
+     "id": "compatible-mosaics",
+     "title": "Sparse Mosaic"
+    },
+    {
+     "id": "tiled-circuits",
+     "title": "Circuit Paths"
+    }
+   ],
+   "guide": "guides/compatible-mosaics.md",
+   "source": "packages/instruments/src/adapters/edge-tile-instruments.ts",
+   "sourceEntry": "drawEdgeTiles",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "tiled-circuits",
+   "title": "Tiled Circuits",
+   "description": "This preset favors straight and turning paths of actual edge-matched connectors.",
+   "category": "Layouts",
+   "operationIds": [
+    "layout.adjacency-tile-collapse-2d"
+   ],
+   "presetOf": "compatible-mosaics",
+   "presets": [
+    {
+     "id": "compatible-mosaics",
+     "title": "Sparse Mosaic"
+    },
+    {
+     "id": "tiled-circuits",
+     "title": "Circuit Paths"
+    }
+   ],
+   "guide": "guides/tiled-circuits.md",
+   "source": "packages/instruments/src/adapters/edge-tile-instruments.ts",
+   "sourceEntry": "drawEdgeTiles",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "maze-gardens",
+   "title": "Lattice Forests",
+   "description": "Lattice Forests builds a local four-neighbor lattice, removes seeded blocked sites, and runs seededDepthFirstSpanningTree separately on each connected island.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "topology.seeded-depth-first-spanning-tree"
+   ],
+   "presetOf": null,
+   "presets": [
+    {
+     "id": "maze-gardens",
+     "title": "Maze Garden"
+    },
+    {
+     "id": "branching-networks",
+     "title": "Branching Network"
+    }
+   ],
+   "guide": "guides/maze-gardens.md",
+   "source": "packages/instruments/src/adapters/graph-grammar-instruments.ts",
+   "sourceEntry": "drawGraphGrammarInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "branching-networks",
+   "title": "Branching Networks",
+   "description": "The Branching Network starting recipe opens Lattice Forests with a lighter site-and-edge treatment than Maze Garden.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "topology.seeded-depth-first-spanning-tree"
+   ],
+   "presetOf": "maze-gardens",
+   "presets": [
+    {
+     "id": "maze-gardens",
+     "title": "Maze Garden"
+    },
+    {
+     "id": "branching-networks",
+     "title": "Branching Network"
+    }
+   ],
+   "guide": "guides/branching-networks.md",
+   "source": "packages/instruments/src/adapters/graph-grammar-instruments.ts",
+   "sourceEntry": "drawGraphGrammarInstrument",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "diffusion-engraving",
+   "title": "Dithered Marks",
+   "description": "Dithered Marks composes an independently seeded set of compact features into a local scalar image.",
+   "category": "Raster & color",
+   "operationIds": [
+    "raster.floyd-steinberg-dither",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [
+    {
+     "id": "diffusion-engraving",
+     "title": "Engraving"
+    },
+    {
+     "id": "dithered-ribbons",
+     "title": "Ribbons"
+    }
+   ],
+   "guide": "guides/diffusion-engraving.md",
+   "source": "packages/instruments/src/adapters/raster-source-instruments.ts",
+   "sourceEntry": "drawRasterSourceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "dithered-ribbons",
+   "title": "Dithered Ribbons",
+   "description": "The Ribbons starting recipe opens Dithered Marks with elongated strokes from retained bits; Engraving begins with small dots.",
+   "category": "Raster & color",
+   "operationIds": [
+    "raster.floyd-steinberg-dither",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": "diffusion-engraving",
+   "presets": [
+    {
+     "id": "diffusion-engraving",
+     "title": "Engraving"
+    },
+    {
+     "id": "dithered-ribbons",
+     "title": "Ribbons"
+    }
+   ],
+   "guide": "guides/dithered-ribbons.md",
+   "source": "packages/instruments/src/adapters/raster-source-instruments.ts",
+   "sourceEntry": "drawRasterSourceInstrument",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "ordered-halftone",
+   "title": "Ordered Halftone",
+   "description": "An editable seeded scalar source is sampled on a grid and screened with the actual bayerDither operation.",
+   "category": "Raster & color",
+   "operationIds": [
+    "raster.bayer-dither",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/ordered-halftone.md",
+   "source": "packages/instruments/src/adapters/raster-source-instruments.ts",
+   "sourceEntry": "drawRasterSourceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "bayer-weave",
+   "title": "Bayer Weave",
+   "description": "The same local seeded scalar source drives bayerDither, but retained bits print crossed horizontal and vertical bars instead of dots.",
+   "category": "Raster & color",
+   "operationIds": [
+    "raster.bayer-dither",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/bayer-weave.md",
+   "source": "packages/instruments/src/adapters/raster-source-instruments.ts",
+   "sourceEntry": "drawRasterSourceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "embossed-field",
+   "title": "Embossed Field",
+   "description": "Turn seeded source features into raised-looking fragments, scattered textures, or a broad relief.",
+   "category": "Raster & color",
+   "operationIds": [
+    "raster.convolve-2d-signed",
+    "field.gradient-noise-2d-01",
+    "sampling.seeded-triangle-points-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/embossed-field.md",
+   "source": "packages/instruments/src/adapters/materials-a-relief.ts",
+   "sourceEntry": "drawReliefField",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "signed-edge-print",
+   "title": "Signed Edge Print",
+   "description": "Extract two-ink edge marks from seeded, editable grayscale source geometry.",
+   "category": "Raster & color",
+   "operationIds": [
+    "raster.convolve-2d-signed",
+    "field.gradient-noise-2d-01",
+    "sampling.seeded-triangle-points-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/signed-edge-print.md",
+   "source": "packages/instruments/src/adapters/materials-a-relief.ts",
+   "sourceEntry": "drawReliefField",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "distance-halos",
+   "title": "Distance Halos",
+   "description": "A small, editable group of distinct raster sites becomes a measured distance field through euclideanDistanceTransform2D.",
+   "category": "Raster & color",
+   "operationIds": [
+    "field.euclidean-distance-transform-2d",
+    "geometry.marching-squares-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/distance-halos.md",
+   "source": "packages/instruments/src/adapters/feature-distance-instruments.ts",
+   "sourceEntry": "drawFeatureDistanceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "nearest-feature-mosaic",
+   "title": "Nearest Feature Mosaic",
+   "description": "The same editable binary feature-site source used by Distance Halos divides a sample grid by true nearest-site ownership.",
+   "category": "Raster & color",
+   "operationIds": [
+    "field.euclidean-distance-transform-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/nearest-feature-mosaic.md",
+   "source": "packages/instruments/src/adapters/feature-distance-instruments.ts",
+   "sourceEntry": "drawFeatureDistanceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "eroded-lace",
+   "title": "Eroded Lace",
+   "description": "The same editable seeded scalar source as Dilated Stamps becomes a binary mask at Mask cutoff.",
+   "category": "Raster & color",
+   "operationIds": [
+    "raster.binary-morphology-2d",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/eroded-lace.md",
+   "source": "packages/instruments/src/adapters/raster-source-instruments.ts",
+   "sourceEntry": "drawRasterSourceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "dilated-stamps",
+   "title": "Dilated Stamps",
+   "description": "This is the same binary-mask instrument as Eroded Lace, set to grow instead of shrink.",
+   "category": "Raster & color",
+   "operationIds": [
+    "raster.binary-morphology-2d",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/dilated-stamps.md",
+   "source": "packages/instruments/src/adapters/raster-source-instruments.ts",
+   "sourceEntry": "drawRasterSourceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "perceptual-bands",
+   "title": "Perceptual Bands",
+   "description": "Sculpt an Oklab color field with an editable piecewise-linear edge profile and open rank-cell gaps.",
+   "category": "Raster & color",
+   "operationIds": [
+    "color.oklab-ramp"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/perceptual-bands.md",
+   "source": "packages/instruments/src/adapters/perceptual-color-instruments.ts",
+   "sourceEntry": "drawPerceptualColor",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "oklab-orbits",
+   "title": "Oklab Orbits",
+   "description": "Open elliptical arc stacks with eccentric centers and an Oklab gradient across ranks or along each arc.",
+   "category": "Raster & color",
+   "operationIds": [
+    "color.oklab-ramp"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/oklab-orbits.md",
+   "source": "packages/instruments/src/adapters/perceptual-color-instruments.ts",
+   "sourceEntry": "drawPerceptualColor",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "reduced-mosaic",
+   "title": "Reduced Mosaic",
+   "description": "An independently seeded collection of compact source features supplies local scalar samples.",
+   "category": "Raster & color",
+   "operationIds": [
+    "color.median-cut-quantize",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/reduced-mosaic.md",
+   "source": "packages/instruments/src/adapters/raster-source-instruments.ts",
+   "sourceEntry": "drawRasterSourceInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "quantized-stripes",
+   "title": "Quantized Stripes",
+   "description": "Reduce an editable RGB source to a smaller palette, then place its weighted colors in rows of separated strips or tiles.",
+   "category": "Raster & color",
+   "operationIds": [
+    "color.median-cut-quantize"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/quantized-stripes.md",
+   "source": "packages/instruments/src/adapters/quantized-stripes-instrument.ts",
+   "sourceEntry": "drawQuantizedStripeInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "extruded-seals",
+   "title": "Extruded Seals",
+   "description": "Make a solid seal from a beveled or stepped 2D footprint.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "mesh.extrude-simple-polygon-3d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/extruded-seals.md",
+   "source": "packages/javascript/examples/materials-b-studies.js",
+   "sourceEntry": "drawExtrudedSeals",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "stepped-blocks",
+   "title": "Stepped Blocks",
+   "description": "Cut a shoulder into a polygon footprint and extrude it into a block.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "mesh.extrude-simple-polygon-3d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/stepped-blocks.md",
+   "source": "packages/javascript/examples/materials-b-studies.js",
+   "sourceEntry": "drawSteppedBlocks",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "transported-ribbons",
+   "title": "Transported Ribbons",
+   "description": "Sweep a variable-width strip along a 3D centerline.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "mesh.parallel-transport-ribbon-3d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/transported-ribbons.md",
+   "source": "packages/javascript/examples/materials-b-studies.js",
+   "sourceEntry": "drawTransportedRibbons",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "twisting-streamers",
+   "title": "Twisting Streamers",
+   "description": "Bend a strip through repeated vertical and depth turns to make a folding streamer.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "mesh.parallel-transport-ribbon-3d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/twisting-streamers.md",
+   "source": "packages/javascript/examples/materials-b-studies.js",
+   "sourceEntry": "drawTwistingStreamers",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "rounded-polyhedra",
+   "title": "Rounded Polyhedra",
+   "description": "Refine a coarse 3D source mesh into a softer polyhedral form.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "mesh.loop-subdivide-triangles-3d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/rounded-polyhedra.md",
+   "source": "packages/javascript/examples/materials-b-studies.js",
+   "sourceEntry": "drawRoundedPolyhedra",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "subdivided-shells",
+   "title": "Subdivided Shells",
+   "description": "Build a faceted or softened shell from a small triangle mesh.",
+   "category": "Shapes & space",
+   "operationIds": [
+    "mesh.loop-subdivide-triangles-3d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/subdivided-shells.md",
+   "source": "packages/javascript/examples/materials-b-studies.js",
+   "sourceEntry": "drawSubdividedShells",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "ornament-poster",
+   "title": "Ornament Field",
+   "description": "Build a loose botanical scatter or an ordered decorative repeat.",
+   "category": "Layouts",
+   "operationIds": [
+    "sampling.seeded-circle-placement-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/ornament-poster.md",
+   "source": "packages/instruments/src/adapters/external-expansion.ts",
+   "sourceEntry": "drawOrnamentMotif",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "geometric-panel",
+   "title": "Shape Matrix",
+   "description": "Arrange wedges, crossed bars, discs and open arcs on an editable grid.",
+   "category": "Layouts",
+   "operationIds": [
+    "layout.regular-grid"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/geometric-panel.md",
+   "source": "packages/instruments/src/adapters/external-expansion.ts",
+   "sourceEntry": "drawPanelMark",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "orbital-brush",
+   "title": "Orbital Brush",
+   "description": "Shape a family of closed paths, then draw equal-distance samples as beads, connected ribbons or short perpendicular dashes.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "geometry.resample-polyline-2d"
+   ],
+   "presetOf": null,
+   "presets": [
+    {
+     "id": "orbital-brush",
+     "title": "Crossing Orbits"
+    },
+    {
+     "id": "orbit-beads",
+     "title": "Nested Beads"
+    }
+   ],
+   "guide": "guides/orbital-brush.md",
+   "source": "packages/instruments/src/adapters/external-expansion.ts",
+   "sourceEntry": "drawOrbitalBrush",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "contact-network",
+   "title": "Proximity Replay",
+   "description": "Build current-neighbor webs or sparse chains from an editable moving population.",
+   "category": "Motion",
+   "operationIds": [
+    "spatial.radius-pairs-2d",
+    "motion.pair-force-step-2d"
+   ],
+   "presetOf": null,
+   "presets": [
+    {
+     "id": "contact-network",
+     "title": "Contact Network"
+    },
+    {
+     "id": "agent-trails",
+     "title": "Agent Trails"
+    }
+   ],
+   "guide": "guides/contact-network.md",
+   "source": "packages/instruments/src/adapters/proximity-replay-instruments.ts",
+   "sourceEntry": "drawProximityReplayInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "agent-trails",
+   "title": "Agent Trails",
+   "description": "Draw retained motion as filaments, lines of dots or final-velocity rakes, with links and body marks optional.",
+   "category": "Motion",
+   "operationIds": [
+    "spatial.radius-pairs-2d",
+    "motion.pair-force-step-2d"
+   ],
+   "presetOf": "contact-network",
+   "presets": [
+    {
+     "id": "contact-network",
+     "title": "Contact Network"
+    },
+    {
+     "id": "agent-trails",
+     "title": "Agent Trails"
+    }
+   ],
+   "guide": "guides/agent-trails.md",
+   "source": "packages/instruments/src/adapters/proximity-replay-instruments.ts",
+   "sourceEntry": "drawProximityReplayInstrument",
+   "creativeReviewScope": "named-study-preset"
+  },
+  {
+   "id": "lingering-links",
+   "title": "Lingering Links",
+   "description": "Make a small cluster of crossing, fading connections or an expansive constellation.",
+   "category": "Motion",
+   "operationIds": [
+    "spatial.radius-pairs-2d",
+    "spatial.contact-history-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/lingering-links.md",
+   "source": "packages/instruments/src/adapters/external-dynamics.ts",
+   "sourceEntry": "drawSeededContacts",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "sensing-trails",
+   "title": "Sensing Trails",
+   "description": "Trace moving lines through a seeded landscape of compact scalar peaks.",
+   "category": "Motion",
+   "operationIds": [
+    "motion.sensor-motor-step-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/sensing-trails.md",
+   "source": "packages/instruments/src/adapters/external-dynamics.ts",
+   "sourceEntry": "drawSeededSensors",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "flocking-marks",
+   "title": "Flocking Marks",
+   "description": "Draw collective, localized trajectories from a seeded population.",
+   "category": "Motion",
+   "operationIds": [
+    "motion.flock-steer-2d",
+    "spatial.radius-pairs-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/flocking-marks.md",
+   "source": "packages/instruments/src/adapters/external-dynamics.ts",
+   "sourceEntry": "drawSeededFlock",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "guarded-bands",
+   "title": "Guarded Bands",
+   "description": "Guarded bands is an ordered selection instrument: each seeded center path becomes a variable-width filled strip, and the selector accepts it only if its filled boundary, not merely its centerline, clears strips already retained.",
+   "category": "Geometry",
+   "operationIds": [
+    "geometry.select-tapered-stroke-strips-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/guarded-bands.md",
+   "source": "packages/instruments/src/adapters/region-instruments.ts",
+   "sourceEntry": "drawRegionInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "hatched-islands",
+   "title": "Hatched Islands",
+   "description": "Seed and source controls construct a star-shaped island with zero or more strictly interior, disjoint perforations.",
+   "category": "Geometry",
+   "operationIds": [
+    "geometry.region-clearance-2d",
+    "geometry.hatch-region-lines-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/hatched-islands.md",
+   "source": "packages/instruments/src/adapters/region-instruments.ts",
+   "sourceEntry": "drawRegionInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "bridge-web",
+   "title": "Bridge Web",
+   "description": "Construct a family of parallel strands, then let each candidate cross the current graph.",
+   "category": "Graphs",
+   "operationIds": [
+    "graph.insert-segment-bridge-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/bridge-web.md",
+   "source": "packages/instruments/src/adapters/growth-instruments.ts",
+   "sourceEntry": "drawGrowthInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "neighborhood-growth",
+   "title": "Neighborhood Growth",
+   "description": "Seed an initial population in an area, a ring or a line, and independently seed a proposal pool in a separate square region.",
+   "category": "Graphs",
+   "operationIds": [
+    "spatial.relative-neighborhood-pairs-2d",
+    "motion.threshold-edge-relaxation-2d",
+    "spatial.radius-pairs-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/neighborhood-growth.md",
+   "source": "packages/instruments/src/adapters/growth-instruments.ts",
+   "sourceEntry": "drawGrowthInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "elastic-loops",
+   "title": "Elastic Loops",
+   "description": "Start from seeded ordered open filaments or concentric closed loops, then grow their actual rest lengths and bend targets.",
+   "category": "Motion",
+   "operationIds": [
+    "motion.elastic-curve-grow-step-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/elastic-loops.md",
+   "source": "packages/instruments/src/adapters/growth-instruments.ts",
+   "sourceEntry": "drawGrowthInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "dye-currents",
+   "title": "Dye Currents",
+   "description": "Build local pigment from one droplet or several independently seeded, rotated elliptical deposits.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "field.advect-periodic-scalar-2d",
+    "field.diffuse-periodic-scalar-2d",
+    "simulation.project-periodic-velocity-2d",
+    "geometry.marching-squares-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/dye-currents.md",
+   "source": "packages/instruments/src/adapters/fluid-instrument.ts",
+   "sourceEntry": "drawFluidInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "weighted-image-atlas",
+   "title": "Weighted Image Atlas",
+   "description": "Construct a *local* density field and sample it into marks.",
+   "category": "Images",
+   "operationIds": [
+    "sampling.weighted-raster-points-2d",
+    "layout.weighted-raster-centroids-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/weighted-image-atlas.md",
+   "source": "packages/instruments/src/adapters/image-signal-instruments.ts",
+   "sourceEntry": "drawImageSignalInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "word-echo",
+   "title": "Word Echo",
+   "description": "Marks walk either editable licensed glyph contours or an independent spiral/wave.",
+   "category": "Type",
+   "operationIds": [
+    "signal.sample-recorded-controls"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/word-echo.md",
+   "source": "packages/instruments/src/adapters/image-signal-instruments.ts",
+   "sourceEntry": "drawImageSignalInstrument",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "interference-lace",
+   "title": "Interference Lace",
+   "description": "Two crossing wave families make ribbed ribbons, bead-like islands and cellular lace.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "geometry.marching-squares-2d",
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/interference-lace.md",
+   "source": "packages/instruments/src/adapters/interference-lace.ts",
+   "sourceEntry": "drawInterferenceLace",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "attractor-growth",
+   "title": "Attractor Growth",
+   "description": "Seed target points first, then place roots independently.",
+   "category": "Systems & rules",
+   "operationIds": [
+    "growth.space-colonization-step-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/attractor-growth.md",
+   "source": "packages/instruments/src/adapters/attractor-growth.ts",
+   "sourceEntry": "drawAttractorGrowth",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "flame-clouds",
+   "title": "Flame Clouds",
+   "description": "A population of contractive affine transformations drives fractalFlameAccumulate2D into a fixed 216 \u00d7 216 bilinear density grid.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "fractal.flame-accumulate-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/flame-clouds.md",
+   "source": "packages/instruments/src/adapters/fractal-field-instruments.ts",
+   "sourceEntry": "drawFractalField",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "escape-contours",
+   "title": "Escape Contours",
+   "description": "complexEscapeDistance2D samples the actual quadratic map $z\\mapsto z^2+c$.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "complex.escape-distance-2d",
+    "geometry.marching-squares-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/escape-contours.md",
+   "source": "packages/instruments/src/adapters/fractal-field-instruments.ts",
+   "sourceEntry": "drawFractalField",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "woven-strands",
+   "title": "Woven Strands",
+   "description": "Two families of ink paths share one lattice of junctions.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "field.gradient-noise-2d-01",
+    "geometry.clip-segments-simple-polygon-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/woven-strands.md",
+   "source": "packages/instruments/src/adapters/weave-screen-instruments.ts",
+   "sourceEntry": "drawWeaveScreen",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "registered-screens",
+   "title": "Registered Screens",
+   "description": "Two independently editable ink line screens occupy a shared rectangular source footprint.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "geometry.clip-segments-simple-polygon-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/registered-screens.md",
+   "source": "packages/instruments/src/adapters/weave-screen-instruments.ts",
+   "sourceEntry": "drawWeaveScreen",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "asemic-lines",
+   "title": "Asemic Lines",
+   "description": "A seeded dictionary of abstract paths is built once from knot geometry and smoothed with the toolkit's Chaikin polyline operation.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "geometry.chaikin-polyline-2d",
+    "geometry.resample-polyline-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/asemic-lines.md",
+   "source": "packages/instruments/src/adapters/symbol-chord-instruments.ts",
+   "sourceEntry": "drawSymbolChord",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "chord-looms",
+   "title": "Chord Looms",
+   "description": "Two independent source curves are constructed as ellipses, radially lobed closed loops, or open arcs.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "geometry.chaikin-polyline-2d",
+    "geometry.resample-polyline-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/chord-looms.md",
+   "source": "packages/instruments/src/adapters/symbol-chord-instruments.ts",
+   "sourceEntry": "drawSymbolChord",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "harmonic-traces",
+   "title": "Harmonic Traces",
+   "description": "Draw Lissajous rosettes, damped tangles or ordered stitches by combining editable oscillators.",
+   "category": "Fields & paths",
+   "operationIds": [
+    "geometry.resample-polyline-2d"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/harmonic-traces.md",
+   "source": "packages/instruments/src/adapters/harmonic-traces.ts",
+   "sourceEntry": "drawHarmonicTraces",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "phyllotactic-whorls",
+   "title": "Phyllotactic Whorls",
+   "description": "Arrange leaf-like marks, discs or bars around a spiral whorl; adjust divergence to change its visible arms and optional rank links.",
+   "category": "Fields & paths",
+   "operationIds": [],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/phyllotactic-whorls.md",
+   "source": "packages/instruments/src/adapters/phyllotactic-whorls.ts",
+   "sourceEntry": "drawPhyllotacticWhorls",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "contour-relief",
+   "title": "Contour Relief",
+   "description": "Build a folded height-surface fragment with level curves on its faces, or leave only the suspended contour lines.",
+   "category": "3D forms",
+   "operationIds": [
+    "field.gradient-noise-2d-01"
+   ],
+   "presetOf": null,
+   "presets": [],
+   "guide": "guides/contour-relief.md",
+   "source": "packages/instruments/src/adapters/contour-relief.ts",
+   "sourceEntry": "drawContourRelief",
+   "creativeReviewScope": "instrument-construction"
+  },
+  {
+   "id": "wallpaper-motifs",
+   "title": "Wallpaper Motifs",
+   "category": "Discovery",
+   "description": "Structural field operator from W1",
+   "operationIds": [],
+   "guide": "guides/wallpaper-motifs.md",
+   "renderer": "2d"
+  },
+  {
+   "id": "ordered-disorder",
+   "title": "Ordered Disorder",
+   "category": "Discovery",
+   "description": "Structural field operator from W1",
+   "operationIds": [],
+   "guide": "guides/ordered-disorder.md",
+   "renderer": "2d"
+  },
+  {
+   "id": "recursive-cells",
+   "title": "Recursive Cells",
+   "category": "Discovery",
+   "description": "Structural field operator from W1",
+   "operationIds": [],
+   "guide": "guides/recursive-cells.md",
+   "renderer": "2d"
+  }
+ ]
 }
