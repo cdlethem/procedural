@@ -1,6 +1,8 @@
 import { poissonDisc2D, skylinePack2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
 import type { Layer, Parameter } from "../types.js";
+import { atEach } from "../composition/core.js";
+import type { Site } from "../composition/types.js";
 import { channels, choice, numeric, toggle, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -181,33 +183,39 @@ function color(p: Painter, value: number, fill: boolean): void {
   const [r, g, b] = channels(value);
   if (fill) p.fill(r, g, b, 235); else p.stroke(r, g, b, 235);
 }
+const pointFrames = new WeakMap<Point[], readonly Site[]>();
 function paintPoints(p: Painter, layer: Layer): void {
   const q = layer.params, points = poissonPoints(q, layer.seed), size = n(q, "size");
   if (size === 0 || !points.length) return;
   const colors = layer.palette.length ? layer.palette : [0x222222];
   const random = new JavaRandom((layer.seed ^ 0x7f4a7c15) >>> 0);
-  p.noStroke();
-  for (let i = 0; i < points.length; i++) {
-    const variance = random.nextDouble() * 2 - 1;
-    const [x, y] = points[i];
-    color(p, colors[i % colors.length], true);
-    if (q.mark === "dot") { p.circle(x, y, size); continue; }
-    const aspect = n(q, "markAspect");
-    const angle = (n(q, "markAngle") + variance * n(q, "angleSpread")) * Math.PI / 180;
-    p.push(); p.translate(x, y); p.rotate(angle);
-    if (q.mark === "square") p.rect(-size / 2, -size * aspect / 2, size, size * aspect);
-    else if (q.mark === "diamond") {
-      p.beginShape(); p.vertex(0, -size * aspect / 2); p.vertex(size / 2, 0);
-      p.vertex(0, size * aspect / 2); p.vertex(-size / 2, 0); p.endShape(p.CLOSE);
-    } else {
-      p.noFill(); color(p, colors[i % colors.length], false);
-      p.strokeWeight(Math.max(.1, size / 7));
-      p.line(-size / 2, 0, size / 2, 0);
-      if (q.mark === "cross") p.line(0, -size * aspect / 2, 0, size * aspect / 2);
-      p.noStroke();
-    }
-    p.pop();
+  let sites = pointFrames.get(points);
+  if (!sites) {
+    sites = points.map((position, index) => ({
+      id: `site:${index}`, seed: layer.seed, position, angle: 0, scale: 1,
+    }));
+    pointFrames.set(points, sites);
   }
+  let index = 0;
+  p.noStroke();
+  atEach(p, sites, (canvas) => {
+    const colorIndex = index++ % colors.length;
+    const variance = random.nextDouble() * 2 - 1;
+    color(canvas, colors[colorIndex], true);
+    if (q.mark === "dot") { canvas.circle(0, 0, size); return; }
+    const aspect = n(q, "markAspect");
+    canvas.rotate((n(q, "markAngle") + variance * n(q, "angleSpread")) * Math.PI / 180);
+    if (q.mark === "square") canvas.rect(-size / 2, -size * aspect / 2, size, size * aspect);
+    else if (q.mark === "diamond") {
+      canvas.beginShape(); canvas.vertex(0, -size * aspect / 2); canvas.vertex(size / 2, 0);
+      canvas.vertex(0, size * aspect / 2); canvas.vertex(-size / 2, 0); canvas.endShape(canvas.CLOSE);
+    } else {
+      canvas.noFill(); color(canvas, colors[colorIndex], false);
+      canvas.strokeWeight(Math.max(.1, size / 7));
+      canvas.line(-size / 2, 0, size / 2, 0);
+      if (q.mark === "cross") canvas.line(0, -size * aspect / 2, 0, size * aspect / 2);
+    }
+  });
 }
 function paintPacking(p: Painter, layer: Layer): void {
   const q = layer.params, source = packingSource(q, layer.seed), colors = layer.palette.length ? layer.palette : [0x222222];

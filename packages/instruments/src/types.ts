@@ -27,6 +27,10 @@ export type Parameter = {
   options?: { value: string; label: string }[];
   maxLength?: number;
   multiline?: boolean;
+  /** Library-owned inspector section; slash-separated names describe nested slots. */
+  group?: string;
+  /** Show when every named parameter matches one of its allowed values. Hidden values remain valid and retained. */
+  visibleWhen?: Record<string, readonly (string | number | boolean)[]>;
 };
 
 export type InstrumentDefinition = {

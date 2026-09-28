@@ -2,6 +2,7 @@ import { binaryCellPartition2D, delaunay2D, mapTriangleCoordinates2D,
   orderedConvexPolygonFilter2D, seededQuadrantPartition2D, seededTrianglePoints2D, triangulateSimplePolygon2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
 import type { Layer } from "../types.js";
+import { inside } from "../composition/core.js";
 import { channels, choice, numeric, toggle, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -43,7 +44,7 @@ export interface FacetGroup {
   selected: boolean[];
   grainCounts: number[];
 }
-type Canvas = { push(): void; pop(): void; noFill(): void; noStroke(): void;
+type Canvas = { push(): void; pop(): void; translate(x: number, y: number): void; noFill(): void; noStroke(): void;
   stroke(...v: number[]): void; fill(...v: number[]): void; strokeWeight(v: number): void;
   rect(x: number, y: number, w: number, h: number): void; circle(x: number, y: number, d: number): void;
   line(x: number, y: number, xx: number, yy: number): void; triangle(x: number, y: number, xx: number, yy: number, xxx: number, yyy: number): void;
@@ -486,17 +487,19 @@ function drawRegion(p: Canvas,layer: Layer) {
 }
 function drawPanel(p: Canvas,layer: Layer) {
   const q=layer.params;p.strokeWeight(n(q,"weight"));
-  panelLeaves(q,layer.seed).forEach((leaf,i)=>{
-    if(!leaf.selected)return;
-    const [left,top,right,bottom]=leaf.bounds,z=n(q,"inset")+n(q,"gap")/2,w=right-left-2*z,h=bottom-top-2*z;
+  const regions=panelLeaves(q,layer.seed).flatMap((leaf,i)=>leaf.selected
+    ? [{id:`region:${i}`,seed:layer.seed,bounds:leaf.bounds,index:i}] : []);
+  inside(p,regions,(canvas,region)=>{
+    const i=region.index,[left,top,right,bottom]=region.bounds;
+    const z=n(q,"inset")+n(q,"gap")/2,w=right-left-2*z,h=bottom-top-2*z;
     if(w<=0||h<=0)return;
-    if(q.fillPanels)color(p,layer,i,140,false);else p.noFill();
-    if(q.outline)color(p,layer,i,220,true);else p.noStroke();
-    if(q.fillPanels||q.outline)p.rect(left+z,top+z,w,h);
-    p.noFill();color(p,layer,i+1,180,true);
+    if(q.fillPanels)color(canvas,layer,i,140,false);else canvas.noFill();
+    if(q.outline)color(canvas,layer,i,220,true);else canvas.noStroke();
+    if(q.fillPanels||q.outline)canvas.rect(z,z,w,h);
+    canvas.noFill();color(canvas,layer,i+1,180,true);
     for(let j=1;j<=n(q,"nestedLines");j++) {
       const inset=Math.min(w,h)*j/(2*(n(q,"nestedLines")+1));
-      p.rect(left+z+inset,top+z+inset,w-2*inset,h-2*inset);
+      canvas.rect(z+inset,z+inset,w-2*inset,h-2*inset);
     }
   });
 }

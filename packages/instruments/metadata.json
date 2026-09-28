@@ -232,6 +232,45 @@
   ],
   "instruments": [
     {
+      "id": "motif-ecologies",
+      "title": "Motif Ecologies",
+      "description": "Build an open population of dots, rings or rosettes; replace its marks without moving the underlying sites.",
+      "category": "Fields & paths",
+      "operationIds": ["sampling.poisson-disc-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/motif-ecologies.md",
+      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+      "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "contour-scores",
+      "title": "Contour Scores",
+      "description": "Turn editable terrain into continuous ink, tangent stitches or interchangeable bead marks.",
+      "category": "Fields & paths",
+      "operationIds": ["field.gradient-noise-2d-01", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/contour-scores.md",
+      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+      "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "region-quilts",
+      "title": "Region Quilts",
+      "description": "Fill an editable rectangular partition with hatching, motif populations or contour scores, leaving chosen leaves open.",
+      "category": "Partitions",
+      "operationIds": ["layout.binary-cell-partition-2d", "geometry.hatch-region-lines-2d", "sampling.poisson-disc-2d", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/region-quilts.md",
+      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+      "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",

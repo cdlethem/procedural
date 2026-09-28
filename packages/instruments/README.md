@@ -68,6 +68,75 @@ Operation IDs identify the computational contracts used by a study, **not** a fr
 
 The package exports `./internal/*` for tightly coupled adapter behavior tests and source inspection. This is **not a stable consumer API**; applications should use the root exports and declarative metadata instead. License and source-specific attribution are included in `LICENSE`, `THIRD_PARTY_NOTICES.md` and retained source notices.
 
+## Functional composition references (unreleased)
+
+The working tree adds **Motif Ecologies**, **Contour Scores** and **Region Quilts**.
+These are not in the published 0.2.2 tarballs above. They share geometry producers and
+ordinary drawing callbacks; the quilt nests the motif and contour constructions instead
+of maintaining another version of either algorithm.
+
+Start from a named study, then replace only its consumer:
+
+```js
+import {
+  createInstrument, referenceComposition, poissonSites, atEach, motif,
+} from "@procedurals/instruments";
+
+const recipe = referenceComposition(createInstrument("motif-ecologies"));
+const sites = poissonSites(recipe.source); // frozen, reusable construction
+const rings = motif({ ...recipe.mark, kind: "rings", opening: 0.68 }, recipe.palette);
+
+// Call in a prepared p5 drawing lifecycle; the host owns the paper.
+atEach(p, sites, rings);
+
+// A custom mark consumes exactly the same sites. Its origin is local zero;
+// the consumer installs each site's translation, rotation and scale.
+const fork = (p, site) => {
+  p.noFill();
+  p.stroke(30, 49, 60);
+  p.strokeWeight(0.8);
+  p.line(0, 9, 0, -9);
+  p.line(0, -3, -5, -8);
+  p.line(0, -3, 5, -8);
+};
+// Use this instead of the rings above, or paint it as a deliberate second pass.
+atEach(p, sites, fork);
+```
+
+The same boundary applies to paths and rectangular regions:
+
+| Source | Consumer | Callback factory | Callback coordinates |
+|---|---|---|---|
+| `poissonSites(options)` | `atEach(p, sites, mark, run?)` | `motif(spec, palette)` | Local origin; site rotation and uniform scale applied |
+| `contourPaths(options)` | `strokeWith(p, paths, material, run?)` | `pathMaterial(spec, palette)` | Complete open/closed path in its source coordinates |
+| `partitionRegions(options)` | `inside(p, regions, filler, run?)` | `regionFill(spec, palette)` | Local rectangle from `(0,0)` to its width/height |
+
+Callbacks receive the stable element value and a shared `CompositionRun`. Pass that run
+to nested consumers, rather than creating a new budget for each child. The built-in region
+fillers demonstrate this: `motifs` places a local point population and `contours` draws
+local paths through the same mark/material callbacks. `mixed` explicitly combines filler
+choices. These rectangles are not general polygon masks; custom fillers own containment.
+
+Source values are deeply frozen and cached independently of appearance. Child choices use
+`componentSeed(parentSeed, stableId, purpose)`, not a random stream shared by the paint loop.
+Changing a palette, material or omission therefore does not move the source or reroll its
+remaining children. Changing construction settings can change element identities.
+Consumers restore p5 state on callback failure and enforce the shared callback/depth budget.
+They do not clear the canvas, fetch assets, create per-item buffers or own host lifecycle.
+
+`referenceComposition(input)` returns a JSON-compatible typed description.
+`prepareReferenceComposition(recipe, cancelled)` warms its construction cooperatively;
+`drawReferenceComposition(p, recipe)` draws it. Ordinary instrument callers can keep using
+`prepareInstrument` and `drawInstrument`: those resolve and consume the same description.
+Studio persists the named instrument and validated scalar bindings, not executable closures.
+Library-owned `Parameter.group` and `visibleWhen` describe nested inspector sections;
+hidden controls retain their values and remain validated.
+
+Read the three packaged study guides for visible effects and deliberate variations.
+The repository's `docs/composition-reference-slice.md` records the implementation boundary
+and review scope. General graph editing, cross-layer geometry bindings and other-target
+composition support are not supplied by these examples.
+
 ## Build from this repository
 
 From a committed, clean checkout, have Node.js 22.12+ and npm available. Install the package's declared build tools locally before building (this creates only ignored `node_modules`):

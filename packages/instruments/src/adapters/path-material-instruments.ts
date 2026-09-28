@@ -1,6 +1,8 @@
 import { chaikinPolyline2D, convexHull2D, resamplePolyline2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
 import type { Layer, Parameter } from "../types.js";
+import { strokeWith } from "../composition/core.js";
+import type { Path as CompositionPath } from "../composition/types.js";
 import { sourcePaths } from "./paths-a-gestures.js";
 import { channels, choice, numeric, toggle, type StudioDefinition } from "./types.js";
 
@@ -9,6 +11,7 @@ type Params = Layer["params"];
 type PathId = "stitched-contours" | "fragmented-lines" | "stitched-paths";
 type HullId = "scatter-envelopes" | "terraced-islands";
 type Painter = {
+  push(): void; pop(): void;
   ROUND: unknown; CLOSE: unknown;
   noFill(): void; noStroke(): void; strokeCap(cap: unknown): void;
   strokeWeight(weight: number): void;
@@ -312,10 +315,11 @@ function color(p: Painter, layer: Layer, index: number, fill: boolean, alpha: nu
   const [r, g, b] = channels((layer.palette.length ? layer.palette[index % layer.palette.length] : 0x222222) >>> 0);
   if (fill) p.fill(r, g, b, alpha); else p.stroke(r, g, b, alpha);
 }
-function polygon(p: Painter, points: Point[], close: boolean): void {
+function polygon(p: Painter, points: readonly (readonly [number, number])[], close: boolean): void {
   p.beginShape(); for (const [x, y] of points) p.vertex(x, y);
   p.endShape(close ? p.CLOSE : undefined);
 }
+const materialPathFrames = new WeakMap<Point[][], readonly CompositionPath[]>();
 function drawPaths(p: Painter, layer: Layer): void {
   const q = layer.params, paths = pathMaterialSources(q, layer.seed), material = q.material;
   // Budget actual arc lengths before allocating any resampling buffers or painting.
@@ -327,20 +331,30 @@ function drawPaths(p: Painter, layer: Layer): void {
   if (counts.reduce((sum, count, index) => sum + count + paths[index].length, 0) > PATH_WORK)
     throw new Error("Arc-length marks × paths exceeds generation budget");
   p.strokeCap(p.ROUND); p.strokeWeight(n(q, "weight"));
-  paths.forEach((path, index) => {
-    color(p, layer, index, false, 220);
+  let index = 0;
+  let frames = materialPathFrames.get(paths);
+  if (!frames) {
+    frames = paths.map((points, id) => ({
+      id: `path:${id}`, seed: layer.seed, points, closed: false, level: 0,
+    }));
+    materialPathFrames.set(paths, frames);
+  }
+  strokeWith(p, frames, (canvas, path) => {
+    const pathIndex = index++;
+    const points = path.points;
+    color(canvas, layer, pathIndex, false, 220);
     if (material === "line") {
-      if (n(q, "weight") > 0) { p.noFill(); polygon(p, path, false); }
+      if (n(q, "weight") > 0) { canvas.noFill(); polygon(canvas, points, false); }
       return;
     }
-    const result = resamplePolyline2D({ points: path, closed: false, count: counts[index],
-      maxWork: path.length + counts[index] });
-    const random = new JavaRandom((layer.seed ^ Math.imul(index + 1, 0x7f4a7c15)) >>> 0);
+    const result = resamplePolyline2D({ points, closed: false, count: counts[pathIndex],
+      maxWork: points.length + counts[pathIndex] });
+    const random = new JavaRandom((layer.seed ^ Math.imul(pathIndex + 1, 0x7f4a7c15)) >>> 0);
     for (let i = 0; i < result.points.length; i++) {
       const chance = random.nextDouble();
       if (chance < n(q, "omitChance") || (n(q, "gaps") > 0 && i % (n(q, "gaps") + 1) === n(q, "gaps"))) continue;
       const [x, y] = result.points[i], segment = result.sourceSegments[i];
-      let dx = path[segment + 1][0] - path[segment][0], dy = path[segment + 1][1] - path[segment][1];
+      let dx = points[segment + 1][0] - points[segment][0], dy = points[segment + 1][1] - points[segment][1];
       if (dx === 0 && dy === 0) {
         const next = result.points[Math.min(i + 1, result.points.length - 1)];
         const previous = result.points[Math.max(0, i - 1)];
@@ -351,18 +365,18 @@ function drawPaths(p: Painter, layer: Layer): void {
       const half = n(q, "markLength") / 2, width = n(q, "markWidth") / 2;
       if (material === "leaf") {
         if (half === 0 || width === 0) continue;
-        p.noStroke(); color(p, layer, index, true, 215);
-        polygon(p, [[x - vx * half, y - vy * half], [x + nx * width, y + ny * width],
+        canvas.noStroke(); color(canvas, layer, pathIndex, true, 215);
+        polygon(canvas, [[x - vx * half, y - vy * half], [x + nx * width, y + ny * width],
           [x + vx * half, y + vy * half], [x - nx * width, y - ny * width]], true);
-        color(p, layer, index, false, 220);
+        color(canvas, layer, pathIndex, false, 220);
       } else if (n(q, "weight") > 0 && half > 0) {
-        p.noFill();
+        canvas.noFill();
         if (material === "paired-stitch") {
-          for (const sign of [-1, 1]) p.line(x - vx * half + nx * width * sign, y - vy * half + ny * width * sign,
+          for (const sign of [-1, 1]) canvas.line(x - vx * half + nx * width * sign, y - vy * half + ny * width * sign,
             x + vx * half + nx * width * sign, y + vy * half + ny * width * sign);
         } else {
-          p.line(x - vx * half, y - vy * half, x + vx * half, y + vy * half);
-          if (material === "bar" && width > 0) p.line(x - nx * width, y - ny * width, x + nx * width, y + ny * width);
+          canvas.line(x - vx * half, y - vy * half, x + vx * half, y + vy * half);
+          if (material === "bar" && width > 0) canvas.line(x - nx * width, y - ny * width, x + nx * width, y + ny * width);
         }
       }
     }

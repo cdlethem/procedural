@@ -12,15 +12,29 @@ import { creativeDefinitions, creativeDrawers } from "./adapters/creative-instru
 import { reliefDefinitions, drawReliefField } from "./adapters/materials-a-relief.js";
 import { interferenceLaceDefinition, drawInterferenceLace } from "./adapters/interference-lace.js";
 import { materialsBDefinitions, drawMaterialsB } from "./adapters/materials-b.js";
+import { referenceDefinitions, drawReferenceInstrument } from "./adapters/reference-composition-instruments.js";
+import { referenceComposition, prepareReferenceComposition } from "./composition/reference.js";
+import type { CompositionSurface } from "./composition/types.js";
+import { validateParameterValues } from "./parameter-validation.js";
 
 export type { CutEdit, InstrumentDefinition, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
+export type {
+  CompositionSurface, CompositionRun, Site, Path, Region, Point, Mark, PathMaterial,
+  RegionFiller, PoissonOptions, ContourOptions, PartitionOptions, MotifSpec,
+  PathMaterialSpec, RegionFillSpec, ReferenceComposition,
+} from "./composition/types.js";
+export { atEach, strokeWith, inside, componentSeed, createCompositionRun } from "./composition/core.js";
+export { poissonSites, contourPaths, partitionRegions } from "./composition/sources.js";
+export { motif, pathMaterial, regionFill } from "./composition/materials.js";
+export { referenceComposition, drawReferenceComposition, prepareReferenceComposition } from "./composition/reference.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
   & Parameters<typeof drawSystems>[0]
   & Parameters<typeof drawReliefField>[0]
   & Parameters<typeof drawInterferenceLace>[0]
+  & CompositionSurface
   & { background?: (...colors: number[] | [string]) => void };
 
 const original = [0x31a151, 0xffa71e, 0x05084c, 0xde4638, 0x3dbdb7];
@@ -31,7 +45,7 @@ export const definitions: readonly InstrumentDefinition[] = [
   ...reliefDefinitions, ...materialsBDefinitions, interferenceLaceDefinition,
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
-  ...creativeDefinitions,
+  ...creativeDefinitions, ...referenceDefinitions,
 ];
 const byId = new Map<string, InstrumentDefinition>();
 for (const item of definitions) {
@@ -51,6 +65,7 @@ export function definition(id: string): InstrumentDefinition {
 }
 
 function paletteFor(id: string): number[] {
+  if (referencePalettes[id]) return [...referencePalettes[id]];
   return imageAndControlsPalette(id) ?? externalDynamicsPalette(id) ??
     externalExpansionPalette(id) ?? (id === "lattice-marks" ? [...latticeOriginal] : [...original]);
 }
@@ -60,7 +75,6 @@ export function createInstrument(id: string): InstrumentInput {
   return { technique: item.id, seed: 42, palette: paletteFor(id), params: { ...item.defaults }, cutEdits: [] };
 }
 
-type Value = number | string | boolean;
 function object(value: unknown, path: string): Record<string, unknown> {
   if (value === null || typeof value !== "object" || Array.isArray(value))
     throw new Error(`${path} must be an object`);
@@ -85,32 +99,8 @@ function integer(value: unknown, path: string): number {
   return result;
 }
 
-export function validateParameters(id: string, value: unknown): Record<string, Value> {
-  const item = definition(id), source = object(value, "params");
-  exact(source, Object.keys(item.defaults), "params");
-  const copied: Record<string, Value> = {};
-  for (const parameter of item.parameters) {
-    const entry = source[parameter.key], path = `params.${parameter.key}`;
-    if (parameter.type === "boolean") {
-      if (typeof entry !== "boolean") throw new Error(`${path} must be true or false`);
-    } else if (parameter.type === "select") {
-      if (typeof entry !== "string" || !parameter.options?.some(option => option.value === entry))
-        throw new Error(`${path} is not an available option`);
-    } else if (parameter.type === "text") {
-      if (typeof entry !== "string" || entry.length > parameter.maxLength!)
-        throw new Error(`${path} must be text of at most ${parameter.maxLength} characters`);
-    } else {
-      const number = finite(entry, path);
-      const low = parameter.hardMin ?? parameter.min!, high = parameter.hardMax ?? parameter.max!;
-      if (number < low || number > high)
-        throw new Error(`${path} must be between ${low} and ${high}`);
-      if ((parameter.integer ?? parameter.step === 1) && !Number.isInteger(number))
-        throw new Error(`${path} must be an integer`);
-    }
-    copied[parameter.key] = entry as Value;
-  }
-  item.validate?.(copied);
-  return copied;
+export function validateParameters(id: string, value: unknown): InstrumentInput["params"] {
+  return validateParameterValues(definition(id), value);
 }
 
 /** Admit exact current instrument data. App layer/document validation is the caller's concern. */
@@ -136,6 +126,12 @@ export function validateInstrument(value: unknown): InstrumentInput {
 }
 
 const geometryIds = new Set(geometryDefinitions.map(item => item.id));
+const referenceIds: Record<string, true> = Object.fromEntries(referenceDefinitions.map(item => [item.id, true]));
+const referencePalettes: Record<string, readonly number[]> = {
+  "motif-ecologies": [0x192b34, 0xcd7052, 0xd5ad68],
+  "contour-scores": [0x203949, 0xc26d4f, 0xd2af76],
+  "region-quilts": [0x263a43, 0xb0614d, 0xd7ac64],
+};
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
 const systemsIds = new Set(systemsDefinitions.map(item => item.id));
@@ -157,6 +153,7 @@ export function drawInstrument(context: DrawingContext, input: InstrumentInput):
 }
 function drawUncomposited(context: DrawingContext, input: InstrumentInput): void {
   definition(input.technique);
+  if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
   if (geometryIds.has(input.technique)) return drawGeometry(context, input);
@@ -173,12 +170,14 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
 export async function prepareInstrument(input: InstrumentInput, cancelled: () => boolean): Promise<boolean> {
   definition(input.technique);
+  if (referenceIds[input.technique])
+    return prepareReferenceComposition(referenceComposition(input), cancelled);
   if (!externalDynamicsPreparable.has(input.technique)) return !cancelled();
   try {
     await prepareExternalDynamics(input, cancelled);
