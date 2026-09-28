@@ -2458,7 +2458,10 @@
    "description": "Structural field operator from W1",
    "operationIds": [],
    "guide": "guides/wallpaper-motifs.md",
-   "renderer": "2d"
+   "renderer": "2d",
+   "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+   "sourceEntry": "drawReferenceInstrument",
+   "creativeReviewScope": "instrument-construction"
   },
   {
    "id": "ordered-disorder",
@@ -2467,7 +2470,10 @@
    "description": "Structural field operator from W1",
    "operationIds": [],
    "guide": "guides/ordered-disorder.md",
-   "renderer": "2d"
+   "renderer": "2d",
+   "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+   "sourceEntry": "drawReferenceInstrument",
+   "creativeReviewScope": "instrument-construction"
   },
   {
    "id": "recursive-cells",
@@ -2476,7 +2482,10 @@
    "description": "Structural field operator from W1",
    "operationIds": [],
    "guide": "guides/recursive-cells.md",
-   "renderer": "2d"
+   "renderer": "2d",
+   "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+   "sourceEntry": "drawReferenceInstrument",
+   "creativeReviewScope": "instrument-construction"
   }
  ]
 }
