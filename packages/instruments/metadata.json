@@ -401,6 +401,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "quilled-paths",
+      "title": "Quilled Paths",
+      "description": "Paper strips stood on edge along contour lines, letter outlines, spirals or scattered scrolls, nested inside one another and rolled at the ends, drawn with thickness and occlusion from a tilted camera or as a flat plan.",
+      "category": "3D forms",
+      "operationIds": ["mesh.parallel-transport-ribbon-3d", "geometry.offset-polyline-2d", "geometry.convex-hull-2d", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d", "sampling.poisson-disc-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/quilled-paths.md",
+      "source": "packages/instruments/src/composition/quill-draw.ts",
+      "sourceEntry": "drawQuilled",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "typographic-rhythm",
       "title": "Typographic Rhythm",
       "description": "Repeat a phrase huge, then look at it through a grid or partition of modules whose windows slide, stretch and turn the type; other modules become line screens, flat colour or paper, and a small legible caption stays outside the fragments.",

@@ -23,6 +23,8 @@ import { gestureScoresDefinitions } from "./adapters/gesture-scores-instruments.
 import { drawGestureScore, gestureScoreComposition, prepareGestureScore } from "./composition/gesture-scores.js";
 import { dataScoresDefinition } from "./adapters/data-scores-instrument.js";
 import { dataScoresComposition, dataScoresUsesSeed, drawDataScores, prepareDataScores } from "./composition/data-scores.js";
+import { quilledPathsDefinition } from "./adapters/quilled-paths-instrument.js";
+import { drawQuilled, prepareQuilled, quillComposition, quillUsesSeed } from "./composition/quill-draw.js";
 import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
@@ -93,6 +95,14 @@ export { typeRhythmLayout, typeField, rowLine, rowBaseline, repeatLeft, moduleFr
   moduleScreen, moduleLined, moduleOutline, typeAnchor, MAX_TYPE_MODULES, MAX_MODULE_INSTANCES, MAX_MODULE_VERTICES, MAX_TYPE_VERTICES } from "./composition/type-rhythm.js";
 export type { TypeInk, TypeScreenInk, TypeRhythmComposition } from "./composition/type-rhythm-draw.js";
 export { drawTypeRhythm, prepareTypeRhythm } from "./composition/type-rhythm-draw.js";
+export type { SpiralFamily, FrameOptions, SpiralOptions, LettersOptions, ScrollOptions, QuillScaffoldSpec } from "./composition/quill-scaffold.js";
+export { quillScaffold, letterPaths, spiralPaths, scrollPaths, spiralFamilies, MAX_SCAFFOLD_POINTS } from "./composition/quill-scaffold.js";
+export type { QuillTerminals, QuillCurl, QuillNestSide, QuillOverlap, QuillStripOptions, QuillStrip, NestStop, StripClash, QuillDiagnostics, QuillStrips } from "./composition/quill-strips.js";
+export { quillStrips, rollPoints, subdivide, tightestBend, MAX_QUILL_VERTICES, MAX_QUILL_STRIPS, MAX_COIL_TURNS, MAX_CLASH_TESTS } from "./composition/quill-strips.js";
+export type { QuillFaceKind, QuillGeometryOptions, QuillGeometry, QuillCamera, QuillFootprint, QuillProjection } from "./composition/quill-geometry.js";
+export { quillGeometry, quillProjection, projectPoint, stripHeight, stripSides, MAX_QUILL_FACES, MAX_PITCH, MIN_WALL } from "./composition/quill-geometry.js";
+export type { QuillTone, QuillMaterialSpec, QuillView, QuilledPathsComposition, QuillFace, QuillFacePainter, QuillConsumers, QuillProducts } from "./composition/quill-draw.js";
+export { quillComposition, quillProducts, quillCamera, quillPaper, drawQuilled, prepareQuilled } from "./composition/quill-draw.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -111,7 +121,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, quilledPathsDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -218,6 +228,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "optical-plates": [0x1f2d3a, 0xc0452a, 0x2f6f8f],
   "branch-ornament": [0x23302b, 0xb5452e, 0xd39a3a, 0x4f7a5c],
   "gesture-scores": [0x24262b, 0xc99a3b, 0xb8452f, 0x2f6f7a],
+  "quilled-paths": [0xd4563f, 0xe6a23a, 0x2f7f86, 0x6f9a55, 0x8b5190],
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
   "typographic-rhythm": [0x1c1d20, 0xc93a2a, 0x2b5d9b, 0xe6ae2c],
@@ -245,6 +256,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   definition(input.technique);
   if (input.technique === "branch-ornament") return drawBranchOrnament(context, branchOrnamentComposition(input));
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
+  if (input.technique === "quilled-paths") return drawQuilled(context, quillComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
@@ -263,6 +275,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
+  if (id === "quilled-paths") return true;
   return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || externalDynamicsPreparable.has(id);
   return referenceIds[id] === true || id === "branch-ornament" || id === "data-scores" || externalDynamicsPreparable.has(id);
 }
@@ -273,6 +286,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "branch-ornament")
     return prepareBranchOrnament(branchOrnamentComposition(input), cancelled);
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
+  if (input.technique === "quilled-paths") return prepareQuilled(quillComposition(input), cancelled);
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
   if (referenceIds[input.technique])
@@ -303,6 +317,7 @@ export function usesSeed(input: InstrumentInput): boolean {
   const q = input.params;
   switch (input.technique) {
     case "quantized-stripes": return q.order === "shuffle";
+    case "quilled-paths": return quillUsesSeed(q);
     case "gesture-scores": return q.recording === "wander" || Number(q.hairs) > 0 && q.bristles === true || q.sandMark !== "none" ||
       q.glyphMark !== "none" && (Number(q.glyphVariation) > 0 || Number(q.glyphRetention) < 1);
     case "optical-plates": return q.maskedPlate !== "none" && q.maskShape === "regions";
