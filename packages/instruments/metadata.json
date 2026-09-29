@@ -544,6 +544,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "painterly-source",
+      "title": "Painterly Source",
+      "description": "Assemble a picture from marks in coarse-to-fine layers: broad strokes first, finer ones only where the paint still differs from the source, turned along its edges and colored from it; mark family, material and color are separate choices over one plan.",
+      "category": "Images",
+      "operationIds": ["color.median-cut-quantize", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/painterly-source.md",
+      "source": "packages/instruments/src/composition/painterly-draw.ts",
+      "sourceEntry": "drawPainterly",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "adaptive-compartments",
       "title": "Adaptive Compartments",
       "description": "Divide a picture into a mosaic whose cell size follows its detail, big quiet cells where it is flat and small ones along its edges, then fill each cell with flat color, hatching along the local direction, halftone dots, a nested glyph or a stitched border, and leave a chosen share open.",

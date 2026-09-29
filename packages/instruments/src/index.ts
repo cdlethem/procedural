@@ -26,6 +26,8 @@ import { drawGestureScore, gestureScoreComposition, prepareGestureScore } from "
 import { fmEngravingDefinition, fmEngravingUsesSeed } from "./adapters/fm-engraving-instrument.js";
 import { drawEngraving, engravingComposition, prepareEngraving } from "./composition/engraving-draw.js";
 import { dataScoresDefinition } from "./adapters/data-scores-instrument.js";
+import { painterlySourceDefinition } from "./adapters/painterly-source-instrument.js";
+import { drawPainterly, painterlyComposition, preparePainterly } from "./composition/painterly-draw.js";
 import { imageDirectedFieldDefinition } from "./adapters/image-directed-field-instrument.js";
 import { drawImageDirectedField, imageDirectedFieldComposition, prepareImageDirectedField } from "./composition/image-directed-field.js";
 import { dataScoresComposition, dataScoresUsesSeed, drawDataScores, prepareDataScores } from "./composition/data-scores.js";
@@ -169,6 +171,13 @@ export { typeRhythmLayout, typeField, rowLine, rowBaseline, repeatLeft, moduleFr
   moduleScreen, moduleLined, moduleOutline, typeAnchor, MAX_TYPE_MODULES, MAX_MODULE_INSTANCES, MAX_MODULE_VERTICES, MAX_TYPE_VERTICES } from "./composition/type-rhythm.js";
 export type { TypeInk, TypeScreenInk, TypeRhythmComposition } from "./composition/type-rhythm-draw.js";
 export { drawTypeRhythm, prepareTypeRhythm } from "./composition/type-rhythm-draw.js";
+export type { PaintFamily, PaintFrame, PaintSubject, PaintPlanOptions, PaintMark, PaintLayer, PaintPlan } from "./composition/painterly.js";
+export { paintPlan, preparePaintPlan, paintLayerGeometry, paintCandidateCount, PAINT_FAMILIES, MAX_PAINT_LAYERS, MAX_PAINT_CANDIDATES, MAX_PAINT_MARKS,
+  MAX_ANALYSIS_SIDE, MIN_PAINT_BRUSH } from "./composition/painterly.js";
+export type { PaintMaterialKind, PaintMaterialSpec, PaintColorMode, PaintColorSpec } from "./composition/painterly-style.js";
+export { paintLayerMaterial, paintPalette, keepsMark } from "./composition/painterly-style.js";
+export type { PaintSource, PaintShape, PainterlyComposition, PaintConsumers } from "./composition/painterly-draw.js";
+export { painterlyComposition, painterlyPlan, paintPlanOptions, resolvePaintSource, paintDrawWork, drawPainterly, preparePainterly, PAINT_DRAW_WORK } from "./composition/painterly-draw.js";
 export type { EndBehaviour, Interpolation, FrameStackData, FrameStack, ResolvedTime } from "./composition/frame-stack.js";
 export { createFrameStack, resolveFrameTime, FRAME_STACK_LIMITS } from "./composition/frame-stack.js";
 export type { BundledSequenceId } from "./composition/frame-samples.js";
@@ -244,7 +253,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -361,6 +370,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "dry-bristles": [0x22252b, 0x2f6f7a, 0xb8452f, 0xc99a3b],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
   "typographic-rhythm": [0x1c1d20, 0xc93a2a, 0x2b5d9b, 0xe6ae2c],
+  "painterly-source": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0xf0e6d2],
   "slit-compositions": [0x1d2733, 0xb5452e, 0xe0a13a, 0xf1e6cc],
   "adaptive-compartments": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0xefe6d2],
   "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
@@ -394,6 +404,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "quilled-paths") return drawQuilled(context, quillComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
   if (input.technique === "fm-engraving") return drawEngraving(context, engravingComposition(input));
+  if (input.technique === "painterly-source") return drawPainterly(context, painterlyComposition(input));
   if (input.technique === "slit-compositions") return drawSlit(context, slitComposition(input));
   if (input.technique === "stroke-relief") return drawStrokeRelief(context, strokeReliefComposition(input));
   if (input.technique === "image-directed-field") return drawImageDirectedField(context, imageDirectedFieldComposition(input));
@@ -417,7 +428,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -434,6 +445,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "dry-bristles") return prepareDryBristles(dryBristlesComposition(input), cancelled);
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
+  if (input.technique === "painterly-source") return preparePainterly(painterlyComposition(input), cancelled);
   if (input.technique === "slit-compositions") return prepareSlit(slitComposition(input), cancelled);
   if (input.technique === "stroke-relief") return prepareStrokeRelief(strokeReliefComposition(input), cancelled);
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
