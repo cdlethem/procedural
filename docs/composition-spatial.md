@@ -3,8 +3,8 @@
 Status: **foundation code, 2026-09-29; unreleased, no instrument, no Studio control.** It serves briefs 50 (differential
 surface growth), 51 (hinged panels), 52 (surface weave), 53 (visibility-aware mesh drawing), 54 (point-cloud
 reinterpretation), 55 (local mesh abstraction) and 56 (implicit sculpture) of the [release roadmap](next-release-roadmap.md).
-Code: `packages/instruments/src/composition/{mesh,mesh-topology,mesh-sample,camera,visibility,mesh-samples}.ts`, exported
-deliberately from `src/index.ts`. Tests: `tests/composition-spatial.test.ts` (44 tests).
+Code: `packages/instruments/src/composition/{mesh,mesh-topology,mesh-sample,camera,visibility,mesh-samples,mesh-section}.ts`, exported
+deliberately from `src/index.ts`. Tests: `tests/composition-spatial.test.ts` (44 tests) and `tests/composition-mesh-section.test.ts` (17 tests).
 
 Nothing here draws. It produces frozen values (a mesh, its topology, samples, projected paths) that the existing 2D
 consumers (`atEach`, `strokeWith`, region fills, the path materials) already accept. A WEBGL drawing of the same values is
@@ -200,6 +200,84 @@ only for closed outward meshes (an open vessel loses its interior, as the review
 near plane is ordered through its clipped pieces and appears once; a face's two triangles are not kept adjacent. Measured:
 20,480 triangles 75 ms; 394,272 triangles 1.5 s with `maxWork` 1e9 (over the default, which it refuses by name).
 
+## Sections and contours (`mesh-section.ts`)
+
+Exact planar sections of a mesh, iso-contours of a per-vertex scalar, stacks of parallel slices, and closed sections as planar
+domains with holes. For briefs 53 (section spacing), 55 (section planes, exposed sections), 50/51/52 (level curves and cut
+outlines on surfaces). ONE tracer serves all of it: a plane section is the level 0 of the signed distance to the plane, an
+iso-contour the level `c` of a scalar.
+
+**Classification and ties.** Each vertex is classified once as above or below the level, and every later decision uses only
+those classifications, so triangles sharing an edge always agree (no crack, duplicate or missing segment) and a closed
+manifold mesh always yields closed loops. A plane classifies by the **exact** sign of `n . (p - q)` for the plane's own point
+`q` and normal `n` (a floating-point filter, then BigInt arithmetic on the dyadic inputs), so a vertex on the plane is
+recognised however the plane was computed, and one a float evaluation would call zero is classified by its true side (tested
+with `n = (0.1, -fl(0.3), 0)`). A contour compares the stored value exactly. A vertex EXACTLY on the level belongs to `ties`
+(default `"above"`, so value >= level is above): the section is that of the level moved an infinitesimal amount below (`"below"`:
+above). Consequences: a face lying in the plane contributes no segment and its outline appears through the neighbouring faces
+(a cube with its top face in the plane has a square section, with its bottom face in the plane none; `"below"` reverses this);
+touching at a vertex or along an edge leaves no section, only a counted `degenerate` contact (a closed loop of fewer than three
+distinct points, or an open chain of one).
+
+**Saddle rule.** The surface is the mesh's triangulation. Inside a triangle the field is linear, so nothing is ambiguous; at a
+quad the shorter diagonal decides, identically for every level. Crossings of a quad's diagonal are ordinary nodes
+(`diagonal: true`); a mesh of real triangles has none.
+
+**Nodes and provenance.** A node lies on an edge `{a < b}` with parameter `t` from `a`, computed once per edge, so both faces
+sharing it read the same bits and contours are continuous across faces; a vertex exactly on the level is the point itself
+(`vertex >= 0`). Nodes are per edge, not per position, so a curve through a vertex keeps the pairing of its fan (a saddle
+vertex stays two arcs); consecutive nodes at identical coordinates collapse into one point. Each point carries its node
+(`edge`, `t`, `vertex`, `diagonal`) and each point's outgoing segment its source face (`faces`); at a point that is a
+vertex the face is one around that vertex.
+
+**Assembly and degenerate cases.** A node has as many segments as triangles on its edge: 2 in a manifold, 1 on a boundary edge,
+3 or more on a non-manifold edge. Chains run through degree-2 nodes and stop elsewhere; open chains report why in `ends`
+(`"boundary"` or `"non-manifold"`) and nothing is joined across a non-manifold edge (`nonManifoldNodes` counts them).
+Coplanar faces follow the tie rule above.
+
+**Orientation.** Each triangle's segment keeps the above side on its left seen from outside, so on a closed, consistently
+oriented mesh outer loops are counter-clockwise (positive `area` in the frame) and holes clockwise; a chain takes the majority
+direction of its segments. Unreliable where `meshTopology(mesh).kind` is `inconsistent-orientation` or `non-manifold`.
+
+**Frame and ids.** `planeFrame`: origin the plane's point, `n` the unit normal, `u` the unit projection onto the plane of the
+axis along which `n` is smallest (first of x, y, z on ties), `v = n x u`; `(u, v, n)` is right-handed, so a loop
+counter-clockwise from the normal side is counter-clockwise in `(u, v)`. A section loop is `<plane id>/t<k>`, a contour
+`L<level>/t<k>`, where `k` is the LOWEST triangle the curve uses (each triangle hosts at most one segment of a level), so ids are
+unique, independent of traversal, and survive a small move of the level that crosses no vertex (tested: 1e-7 across 39 planes).
+Levels are independent: adding or removing one never changes another's curves or ids.
+
+**API.** `sectionMesh(mesh, plane, {ties, maxWork, run})` returns a `MeshSection` (`loops` as `SectionLoop`s with 3D `points`,
+frame `uv`, signed `area`, `length`, `nodes`, `faces`, `ends`; counts `closedCount`, `openCount`, `degenerate`,
+`nonManifoldNodes`, `crossed`). `sliceMesh(mesh, planes[])` does several at once (plane ids default `p<index>`, must be distinct);
+`slicePlanes(mesh, {normal, spacing, offset, origin})` makes evenly spaced planes strictly inside the mesh's extent, plane `k`
+named `s<k>` at `offset + k * spacing` so widening the range or scaling the mesh never renames one; `sliceCurves` flattens the
+loops to curves that go straight into `hiddenLines`. `sectionDomain(section, {open})` builds a `PlanarDomain` in `(u, v)` from the
+closed loops by the even-odd fill of the planar-domain foundation: a loop inside another becomes its hole by containment
+(a torus cut across its axis is an annulus, a hollow shell a ring), whatever the orientation; open chains are rejected by default.
+`isoContours(mesh, {values, levels, ties})` takes a size-1 vertex attribute name or one number per vertex and returns `IsoCurve`s
+(`level`, `levelIndex`, `tone` = level index).
+
+**Bounds.** Each plane or level charges its vertices, triangles and nodes; over `maxWork` (default `DEFAULT_SECTION_WORK`,
+30,000,000) the call throws naming `maxWork` and what to reduce; more than 512 planes or levels throws naming `planes` or
+`levels`. Sections are cached (512) and contours (6) by mesh key and construction. Measured (busy machine, ranges over repeats):
+39 planes through an 81,920-triangle sphere 0.1-0.45 s (4.9M work units), the same again 0.2 ms; 39 vertical planes through
+the 394,272-triangle terrain 0.3-1.1 s (23.3M units, close to the default bound); 40 contour levels of that terrain 0.3-0.6 s
+(24.4M units); domains for the 39 sphere sections 50-300 ms.
+
+**Tests** (`tests/composition-mesh-section.test.ts`, 17): a cube cut through its middle (exact area 4, perimeter 8, 4 diagonal
+nodes, provenance), hexagon (`3 sqrt 3`) and corner triangles (`sqrt 3 / 2 c^2`), contact-only cuts, tie policy with the top and
+bottom faces in the plane, exactness of the plane test, sphere loops within the tangent-circle bounds and icosahedron equator
+vertices recognised, torus across its axis (annulus, exact outer polygon `u/2 (R+r)^2 sin(2 pi / u)`, hole by containment) and
+along it (two tube polygons), loop count = regions + holes, hollow shell, vase sections equal to the regular polygon of the
+interpolated profile radius (to 1e-12), open sheets and open vases, a non-manifold spine, linear-field contours on a tilted plane
+(collinear, on the level, independent of other levels), latitude contours identical to the plane section, tie rule for contours,
+12 seeded random closed star-shaped meshes, 20 planes each on both tie sides (open chains never appear; planes through vertex coordinates and
+quantised scalars force exact ties; the domain's area equals the sum of signed loop areas), shared-edge nodes appearing once with
+the interpolation of their edge, plane stacks (stable ids, nudge stability, `hiddenLines` on the loops), named errors. Eight
+mutations each fail at least one test: reversing segment orientation (7), ties above counted below (2), no exact arithmetic (1),
+chains through non-manifold nodes (1, after adding a spine walked from its boundary end), wrong diagonal flag (1), degenerate
+contacts kept (1), crossing parameter from the wrong end (7), contour ties reversed (1, after pinning the default).
+
 ## Bundled meshes (`mesh-samples.ts`)
 
 Chosen by `bundledMesh(id, {detail, seed, variant})` (see `bundledMeshInfo` for ranges, what `detail` scales and the valid
@@ -236,8 +314,7 @@ and dihedral angles.
 
 ## Not done
 
-Planar sections and iso-contours of a mesh (briefs 53 and 55 will need them: only the crease, silhouette and boundary
-selections exist), mesh extraction from implicit fields, smoothing groups derived from crease angles for
+Mesh extraction from implicit fields, smoothing groups derived from crease angles for
 `meshCornerAttributes`, host binding of user meshes and clouds, simplification, remeshing and growth (their own briefs), a
 WEBGL check, and any Studio control or gallery entry.
 

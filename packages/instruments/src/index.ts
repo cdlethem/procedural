@@ -342,6 +342,9 @@ export { hiddenLines, visiblePoints, meshEdgeCurves, paintOrder, MAX_VISIBILITY_
 export type { TorusOptions, TerrainOptions, TerrainVariant, VaseProfile, VaseOptions, BundledMeshId, BundledMeshInfo, MeshSource, PointSource } from "./composition/mesh-samples.js";
 export { icosphereMesh, torusMesh, terrainMesh, terrainHeight, vaseMesh, figureMesh, bundledMesh, bundledMeshIds, bundledMeshInfo, terrainVariants, vaseProfiles, vaseProfileNames,
   resolveMeshSource, resolvePointSource, MAX_ICOSPHERE_LEVELS } from "./composition/mesh-samples.js";
+export type { ContourEnd, LevelTies, ContourNode, ContourCurve, SectionPlane, PlaneFrame, SectionOptions, SectionLoop, MeshSection, MeshSlices, SlicePlaneOptions,
+  SectionDomainOptions, IsoOptions, IsoCurve, IsoContours } from "./composition/mesh-section.js";
+export { planeFrame, sectionMesh, sliceMesh, sliceCurves, slicePlanes, sectionDomain, isoContours, SECTION_LIMITS, DEFAULT_SECTION_WORK } from "./composition/mesh-section.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
