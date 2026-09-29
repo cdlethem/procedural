@@ -287,7 +287,8 @@ export function wallpaperSites(options: WallpaperOptions): readonly Site[] {
           const siteSeed = componentSeed(seed, id, "site");
           let angle = theta, scale = mirror ? -1 : 1, x = originX, y = originY;
           if (breakDensity > 0 && unit(siteSeed, id, "break") < breakDensity) {
-            const r = breakAmount * Math.min(cellWidth, cellHeight);
+            // Square and hexagonal lattices ignore cell height everywhere, including here.
+            const r = breakAmount * Math.min(cellWidth, wallpaperUsesCellHeight(group) ? cellHeight : cellWidth);
             x += (unit(siteSeed, id, "breakX") - .5) * 2 * r;
             y += (unit(siteSeed, id, "breakY") - .5) * 2 * r;
             angle += (unit(siteSeed, id, "breakAngle") - .5) * TAU * breakAmount;

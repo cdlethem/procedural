@@ -171,7 +171,7 @@ export const referenceDefinitions: InstrumentDefinition[] = [
       n("focalY", "Focal Y", "Vertical center of the disorder focal region.", 0, 640, 1, -320, 960, "Source"),
       n("focalRadius", "Focal radius", "Distance over which disorder fades smoothly from full strength at the focus to none; zero applies it everywhere.", 0, 640, 1, 0, 4096, "Source"),
       n("displacement", "Displacement", "Maximum site shift as a fraction of the cell.", 0, .95, .01, 0, 1, "Disorder"),
-      n("rotation", "Rotation", "Maximum stable rotation in degrees.", 0, 180, 1, 0, 360, "Disorder", { mark: ["rosette", "arrow"] }),
+      n("rotation", "Rotation", "Maximum stable rotation in degrees. Round marks do not visibly turn, but sites turned past 70% of it still count as strongly disturbed and take the second color.", 0, 180, 1, 0, 360, "Disorder"),
       n("scale", "Scale wobble", "Maximum relative scale deviation.", 0, .9, .01, 0, 1, "Disorder"),
       n("omission", "Omission", "Correlated omission threshold; omissions form runs.", 0, .8, .01, 0, 1, "Disorder"),
       n("anchors", "Anchors", "Stable fraction of sites pinned to their exact grid origin.", 0, 1, .01, 0, 1, "Disorder"),

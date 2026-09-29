@@ -118,6 +118,31 @@ Verification: package build, 58 tests (31 new property tests; mutations of six b
 confirmed to fail them) and the `--allow-dirty` preview build over all 124 instruments. The
 isolated private host was not run.
 
+## In progress on branch `conditional-controls`: conditional controls (F9)
+
+Scope added by the maintainer: the app should show only the controls relevant to the current
+choices. [Contract, evidence tooling and coverage](conditional-controls.md); planned as
+foundation F9 in the [roadmap](next-release-roadmap.md), with a per-brief declaration and a
+verification requirement.
+
+Built: a precise `visibleWhen` contract (discrete drivers, effective visibility through hidden
+drivers, retained values), load-time validation, a shared `visibleParameters(id, values)`
+helper, and an overlay (`control-dependencies.ts`) so legacy adapters get conditions without
+hand edits. Coverage is **measured**: a recording-canvas audit of all 124 instruments
+(2,362 controls, about 40,000 drawing probes) produced 292 conditions across 84 instruments,
+each tried against randomized numeric settings and rejected if it hid a control that matters;
+38 were rejected that way. The audit found two real defects in the newest studies (a wrong
+hand-written condition, and a cell-height leak with a stale-cache path), both fixed.
+
+Left visible on purpose: 364 controls whose relevance is a disjunction (`weight` matters if
+any of several `show…` toggles is on), 46 that are numerically disabled, and 38 refuted. The
+first group needs alternatives in `visibleWhen`, which should wait for the private app to adopt
+`visibleParameters` (its current `LayerControls` would throw on an array).
+
+Open: private-app adoption of the helper and empty-group hiding; alternatives for disjunctions;
+numeric-threshold drivers; a real-interface pass over a sample of the newly conditional
+inspectors.
+
 ## Ownership and unchanged boundaries
 
 - Public library: computations, reusable technique composition, drawing/preparation,

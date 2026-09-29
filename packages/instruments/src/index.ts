@@ -1,4 +1,6 @@
 import type { CutEdit, InstrumentDefinition, InstrumentInput, Parameter } from "./types.js";
+import { applyControlDependencies } from "./control-dependencies.js";
+import { validateVisibility, visibleParameters as visibleControls } from "./visibility.js";
 import { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits } from "./cut-model.js";
 import type { CutRegion } from "./cut-model.js";
 import { geometryDefinitions, drawGeometry } from "./adapters/geometry.js";
@@ -41,13 +43,14 @@ export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
 const original = [0x31a151, 0xffa71e, 0x05084c, 0xde4638, 0x3dbdb7];
 const latticeOriginal = [0x173f5f, 0xaf5441, 0xe9c46a, 0x347969];
 /** Every instrument has exactly one current definition and drawing path. */
-export const definitions: readonly InstrumentDefinition[] = [
+const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...geometryDefinitions, ...effectsDefinitions,
   ...reliefDefinitions, ...materialsBDefinitions, interferenceLaceDefinition,
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions,
 ];
+export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions);
 const byId = new Map<string, InstrumentDefinition>();
 for (const item of definitions) {
   if (byId.has(item.id)) throw new Error(`Duplicate instrument: ${item.id}`);
@@ -56,6 +59,7 @@ for (const item of definitions) {
   if (parameterKeys.size !== item.parameters.length || parameterKeys.size !== defaultKeys.length ||
     defaultKeys.some(key => !parameterKeys.has(key)))
     throw new Error(`Instrument ${item.id} controls must match defaults exactly`);
+  validateVisibility(item);
   byId.set(item.id, item);
 }
 
@@ -64,6 +68,12 @@ export function definition(id: string): InstrumentDefinition {
   if (!found) throw new Error(`Unknown instrument: ${String(id)}`);
   return found;
 }
+
+/** The controls the inspector should show for these values; hidden controls keep their values. */
+export function visibleParameters(id: string, values: InstrumentInput["params"]): Parameter[] {
+  return visibleControls(definition(id), values);
+}
+export { validateVisibility };
 
 function paletteFor(id: string): number[] {
   if (referencePalettes[id]) return [...referencePalettes[id]];

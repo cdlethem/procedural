@@ -193,6 +193,7 @@ These are enabling work, **not extra gallery additions**.
 | F6 Preparation and dependency lifecycle | Content-keyed prepared results, cancellation, invalidation by input dependencies, resource disposal | Extend existing cooperative preparation; one host lifecycle, no per-child canvases |
 | F7 Stateful snapshots | Explicit initial conditions, steps, checkpoints, fixed update order and seeded IDs | Reuse dynamics preparation; palette-only edits repaint snapshots |
 | F8 Spatial inputs and drawing | Indexed meshes/points, surface sampling, camera and depth/material consumers | Reuse surface attributes and implicit-ray cores; no claim to reconstruct scans or train models |
+| F9 Conditional controls | Every control that only matters under another selection declares it (`visibleWhen`), validated at load; one shared helper reports which controls are visible | Extend the existing `visibleWhen` field; conditions on legacy adapters come from measurement, not guesswork. See [conditional controls](conditional-controls.md) |
 
 **Raster contract:** declare width/height, color space, straight versus premultiplied alpha,
 pixel-center mapping and interpolation. Perform composition in a stated representation;
@@ -208,6 +209,15 @@ sampling without rerolling structure. Never silently truncate geometry at a hard
 report the exceeded budget and the controlling parameter. Benchmark actual sparse, dense
 and deeply composed cases before publishing slider limits—this plan invents no measured
 latency, particle count or universally safe mesh bound.
+
+**Conditional controls (F9):** the app should show only the controls that matter for the current
+selections, e.g. annulus settings only when the support is an annulus. A control declares its
+drivers with `visibleWhen`; drivers are `select` or `boolean` controls of the same instrument;
+a control is shown only if its own condition holds and every driver it names is itself shown;
+hidden values are retained and stay valid. The contract's converse is the testable part: **while
+a control is hidden, changing it does not change the drawing.** Every new brief states which of
+its controls depend on which selections, and the existing entries are audited by measurement
+and updated to follow the same rule.
 
 ## 4. Study briefs and counting convention
 
@@ -1135,6 +1145,11 @@ unmodified instrument, not exclusively new-to-new combinations.
   custom code or unsupported media is not falsely advertised as portable.
 - **Spatial work:** actual WEBGL surface, camera, clipping, depth, normals and alpha
   observations are necessary. A core fixture pass does not establish visual support.
+- **Conditional controls:** for every entry, changing a control that its conditions hide leaves
+  the drawing unchanged (property test over random configurations), no condition hides a
+  control that matters (the audit reports zero violations), and each inspector shows only the
+  controls relevant to the current choices. Controls whose relevance is a disjunction that a
+  conjunctive condition cannot state stay visible and are listed, not guessed.
 
 Use existing focused tests and rendering/package harnesses. Relevant package commands
 already exist: `npm run build`, `npm test` and `npm run sources` in
@@ -1154,7 +1169,8 @@ Research images and contact sheets are source-review material, not new render ac
    construction/drawing paths. Existing saved artwork need not migrate.
 2. Regenerate metadata/source artifacts with their existing tools. Each guide explains
    visible results, compatible inputs, replaceable components and canvas effects of
-   controls; keep admission bookkeeping out of teaching copy.
+   controls; keep admission bookkeeping out of teaching copy. Each entry's control
+   dependencies are declared and match the audit.
 3. Document direct-function use, named composition use, callback ownership, explicit
    limits and unsupported export cases. Provide editable examples from the same source.
 4. Build/test relevant packages and install the packed artifacts into an isolated consumer.

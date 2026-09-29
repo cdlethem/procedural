@@ -89,6 +89,24 @@ test("square and hexagonal groups ignore cell height, rectangular groups do not"
   assert.notStrictEqual(wallpaperSites(wall({ group: "pmg", cellHeight: 90 })), wallpaperSites(wall({ group: "pmg", cellHeight: 130 })));
 });
 
+test("cell height never leaks into square and hexagonal groups, even through symmetry breaking", () => {
+  // Different viewport widths give different cache slots, so equal positions prove the values
+  // themselves are independent of cell height rather than one cached array being reused.
+  for (const group of ["p4g", "p6"] as const) {
+    const options = { group, cellWidth: 120, breakAmount: .4, breakDensity: .6 };
+    const short = new Map(wallpaperSites(wall({ ...options, cellHeight: 30, width: 640 })).map((site) => [site.id, site]));
+    const tall = wallpaperSites(wall({ ...options, cellHeight: 220, width: 641 }));
+    let compared = 0;
+    for (const site of tall) {
+      const other = short.get(site.id);
+      if (!other) continue;
+      compared++;
+      assert.deepEqual([site.position, site.angle, site.scale], [other.position, other.angle, other.scale], `${group} ${site.id}`);
+    }
+    assert.ok(compared > 20, `${group} compared ${compared} shared sites`);
+  }
+});
+
 test("wallpaper covers non-square viewports and refuses unbounded instance counts", () => {
   const sites = wallpaperSites(wall({ group: "p1", cellWidth: 100, cellHeight: 100, width: 640, height: 200, margin: 0, motifOffsetX: 0, motifOffsetY: 0 }));
   const ys = sites.map((site) => site.position[1]);
