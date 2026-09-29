@@ -557,6 +557,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "polygon-watercolor",
+      "title": "Polygon Watercolor",
+      "description": "Lay translucent washes over a shape (a blob, a ring, letterforms or quilt compartments): every pass keeps the parent shape but has its own ragged boundary, correlated with the others, so pigment builds up unevenly; reserved holes stay unpainted, and a light partial wash and a dense overpainted patch are the same instrument with different settings.",
+      "category": "Fields & paths",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/polygon-watercolor.md",
+      "source": "packages/instruments/src/composition/polygon-watercolor.ts",
+      "sourceEntry": "drawPolygonWatercolor",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "painterly-source",
       "title": "Painterly Source",
       "description": "Assemble a picture from marks in coarse-to-fine layers: broad strokes first, finer ones only where the paint still differs from the source, turned along its edges and colored from it; mark family, material and color are separate choices over one plan.",

@@ -41,6 +41,8 @@ import { bundledRelationsDefinition } from "./adapters/bundled-relations-instrum
 import { bundledRelationsComposition, bundledRelationsUsesSeed, drawBundledRelations, prepareBundledRelations } from "./composition/bundled-relations.js";
 import { dryBristlesDefinition } from "./adapters/dry-bristles-instrument.js";
 import { drawDryBristles, dryBristlesComposition, prepareDryBristles } from "./composition/dry-bristles.js";
+import { polygonWatercolorDefinition } from "./adapters/polygon-watercolor-instrument.js";
+import { drawPolygonWatercolor, polygonWatercolorComposition, polygonWatercolorUsesSeed, preparePolygonWatercolor } from "./composition/polygon-watercolor.js";
 import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
@@ -138,6 +140,12 @@ export type { SourceFrame, TraceFigure, PathData, BristleSource } from "./compos
 export { bristleSourcePaths, pathSet, traceFigures, contourFields, MAX_SOURCE_PATHS, MAX_SOURCE_POINTS } from "./composition/bristle-sources.js";
 export type { DryBristlesComposition, DryBristlesConsumers, DryBristlesPlan } from "./composition/dry-bristles.js";
 export { dryBristlesComposition, dryBristlesPlan, dryBristlesStrokes, drawDryBristles, prepareDryBristles } from "./composition/dry-bristles.js";
+export type { PolygonWatercolorComposition, PolygonWatercolorConsumers, WashInk, WashPainter } from "./composition/polygon-watercolor.js";
+export { polygonWatercolorComposition, polygonWatercolorParent, polygonWatercolorPasses, drawPolygonWatercolor, preparePolygonWatercolor, washPainter, washTone } from "./composition/polygon-watercolor.js";
+export type { WashBoundary, WashDivergence, WashEdge, WashLaw, WashOptions, WashOutline, WashPass, WashPasses, WashPatches } from "./composition/wash.js";
+export { WASH_LIMITS, checkWashOptions, prepareWashPasses, washLaw, washOffset, washOutline, washParent, washPassCount, washPasses, washPatch, washSide, washWork } from "./composition/wash.js";
+export type { WashParent, WashPlacement, WashShape, WashWord } from "./composition/wash-shapes.js";
+export { washParentDomain, washShapes, washWords } from "./composition/wash-shapes.js";
 export type {
   TilingRuleName, TilingOptions, TilingTile, TilingVertex, TilingEdge, Tiling, TileFiller, TileFillSpec, TileColorMode, TilingView,
 } from "./composition/types.js";
@@ -268,7 +276,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, polygonWatercolorDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -384,6 +392,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "image-directed-field": [0x1d2230, 0x8d3b2a, 0x2f6f7a, 0xc99a3b],
   "bundled-relations": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86, 0x9c5f34],
   "dry-bristles": [0x22252b, 0x2f6f7a, 0xb8452f, 0xc99a3b],
+  "polygon-watercolor": [0x2f6f8f, 0xc4573b, 0xd9a441, 0x4f7a5c],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
   "typographic-rhythm": [0x1c1d20, 0xc93a2a, 0x2b5d9b, 0xe6ae2c],
   "painterly-source": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0xf0e6d2],
@@ -428,6 +437,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
+  if (input.technique === "polygon-watercolor") return drawPolygonWatercolor(context, polygonWatercolorComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
@@ -445,7 +455,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "polygon-watercolor" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -460,6 +470,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "sand-deposition") return prepareSandDeposition(sandDepositionComposition(input), cancelled);
   if (input.technique === "quilled-paths") return prepareQuilled(quillComposition(input), cancelled);
   if (input.technique === "dry-bristles") return prepareDryBristles(dryBristlesComposition(input), cancelled);
+  if (input.technique === "polygon-watercolor") return preparePolygonWatercolor(polygonWatercolorComposition(input), cancelled);
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
   if (input.technique === "pixel-sorting") return preparePixelSorting(pixelSortingComposition(input), cancelled);
@@ -503,6 +514,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "optical-plates": return q.maskedPlate !== "none" && q.maskShape === "regions";
     case "data-scores": return dataScoresUsesSeed(q);
     case "pixel-sorting": return pixelSortingUsesSeed(q);
+    case "polygon-watercolor": return polygonWatercolorUsesSeed(q);
     case "fm-engraving": return fmEngravingUsesSeed(q);
     case "path-typography": return pathTypographyUsesSeed(q);
     case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);

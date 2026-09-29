@@ -524,10 +524,17 @@ export function keyholeJoin(outer: Ring, holes: readonly Ring[]): Ring {
   const cuts = new Map<number, { hole: Ring; start: number }[]>();
   for (const hole of holes) {
     let bestOuter = 0, bestHole = 0, bestDistance = Infinity;
-    outer.forEach((p, i) => hole.forEach((q, j) => {
-      const distance = (p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2;
-      if (distance < bestDistance) { bestDistance = distance; bestOuter = i; bestHole = j; }
-    }));
+    // Skip an outer vertex whose distance to the hole's box already cannot beat the best pair: only a strictly smaller distance replaces it, so the result is the exhaustive search's.
+    let left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
+    for (let j = 0; j < hole.length; j++) { const q = hole[j]; if (q[0] < left) left = q[0]; if (q[0] > right) right = q[0]; if (q[1] < top) top = q[1]; if (q[1] > bottom) bottom = q[1]; }
+    for (let i = 0; i < outer.length; i++) {
+      const p = outer[i], dx = p[0] < left ? left - p[0] : p[0] > right ? p[0] - right : 0, dy = p[1] < top ? top - p[1] : p[1] > bottom ? p[1] - bottom : 0;
+      if (dx * dx + dy * dy >= bestDistance) continue;
+      for (let j = 0; j < hole.length; j++) {
+        const q = hole[j], distance = (p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2;
+        if (distance < bestDistance) { bestDistance = distance; bestOuter = i; bestHole = j; }
+      }
+    }
     const at = cuts.get(bestOuter);
     if (at) at.push({ hole, start: bestHole }); else cuts.set(bestOuter, [{ hole, start: bestHole }]);
   }
