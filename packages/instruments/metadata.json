@@ -427,6 +427,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "dry-bristles",
+      "title": "Dry Bristles",
+      "description": "Carry a broad brush of separate hairs along any path (harmonic traces, a contour family or a hand scribble): hairs lift on light pressure and paper tooth, run dry, taper at the ends and gather into tufts, while the other paths stay fine stitched contours.",
+      "category": "Fields & paths",
+      "operationIds": ["geometry.resample-polyline-2d", "field.gradient-noise-2d-01", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/dry-bristles.md",
+      "source": "packages/instruments/src/composition/dry-bristles.ts",
+      "sourceEntry": "drawDryBristles",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
