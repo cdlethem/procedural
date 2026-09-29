@@ -531,6 +531,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "glyph-packing",
+      "title": "Glyph Packing",
+      "description": "Pack words and ornaments into a silhouette from largest to smallest: each outline stays clear of its neighbours and of the container's edge, holes and any protected space, follows the boundary or an angle you set, and the glyphs that cannot fit are counted rather than squeezed in.",
+      "category": "Type",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/glyph-packing.md",
+      "source": "packages/instruments/src/composition/glyph-pack-draw.ts",
+      "sourceEntry": "drawGlyphPacking",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "crossing-lace",
       "title": "Crossing Lace",
       "description": "Weave paths wherever they really cross: every crossing is found exactly, given an over and under strand by an alternating, seeded or ranked rule with editable exceptions, and the under strand is cut open around it. A braid knot, a Celtic plait, two contour families or random loops.",
