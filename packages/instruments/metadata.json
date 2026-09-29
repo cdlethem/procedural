@@ -414,6 +414,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "slit-compositions",
+      "title": "Slit Compositions",
+      "description": "Recompose one image through parallel slices with editable ordering, offsets and scales, or slit-scan a short bundled frame sequence so that time is stretched into bands. Vector bands, a slice table from output band to source, and a few unsliced fragments for comparison.",
+      "category": "Raster & color",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/slit-compositions.md",
+      "source": "packages/instruments/src/composition/slit-draw.ts",
+      "sourceEntry": "drawSlit",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",

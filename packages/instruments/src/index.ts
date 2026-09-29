@@ -27,6 +27,8 @@ import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
 import { typeRhythmUsesSeed } from "./adapters/type-rhythm-instrument.js";
+import { slitCompositionsDefinition } from "./adapters/slit-compositions-instrument.js";
+import { drawSlit, prepareSlit, slitComposition } from "./composition/slit-draw.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
@@ -105,6 +107,17 @@ export { typeRhythmLayout, typeField, rowLine, rowBaseline, repeatLeft, moduleFr
   moduleScreen, moduleLined, moduleOutline, typeAnchor, MAX_TYPE_MODULES, MAX_MODULE_INSTANCES, MAX_MODULE_VERTICES, MAX_TYPE_VERTICES } from "./composition/type-rhythm.js";
 export type { TypeInk, TypeScreenInk, TypeRhythmComposition } from "./composition/type-rhythm-draw.js";
 export { drawTypeRhythm, prepareTypeRhythm } from "./composition/type-rhythm-draw.js";
+export type { EndBehaviour, Interpolation, FrameStackData, FrameStack, ResolvedTime } from "./composition/frame-stack.js";
+export { createFrameStack, resolveFrameTime, FRAME_STACK_LIMITS } from "./composition/frame-stack.js";
+export type { BundledSequenceId } from "./composition/frame-samples.js";
+export { bundledFrameStack, bundledSequenceIds, bundledSequenceInfo, BUNDLED_SEQUENCE_FRAMES, BUNDLED_SEQUENCE_SIZE } from "./composition/frame-samples.js";
+export type { SliceOrderKind, SliceOrder, ModulationMode, Modulation, GestureChannel, TimeCurve, TimeScan, SliceTableOptions, SliceTime, SliceRow, SliceTable } from "./composition/slit-map.js";
+export { slicePermutation, sliceTable, timeProgress, sliceId, sliceOrderKinds, modulationModes, SLICE_LIMITS } from "./composition/slit-map.js";
+export type { SlitDirection, OutsidePolicy, SlitSourceValue, SlitLine, StripOptions, StripSet, FragmentOptions, SlitFragment, FragmentSet, ColorMode, SlitColor,
+  SlitCell, SlitRectOptions, SlitRect } from "./composition/slit.js";
+export { slitStrips, stripPixel, slitPoint, placePosition, coverScale, slitFragments, slitRects, paletteRamp, SLIT_LIMITS } from "./composition/slit.js";
+export type { SlitSource, SlitMask, SlitComposition, SlitConsumers, SlitScene } from "./composition/slit-draw.js";
+export { slitComposition, slitSource, slitScene, slitBands, quiltCells, drawSlit, prepareSlit, SLIT_SPILL } from "./composition/slit-draw.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -123,7 +136,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, slitCompositionsDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -233,6 +246,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
   "typographic-rhythm": [0x1c1d20, 0xc93a2a, 0x2b5d9b, 0xe6ae2c],
+  "slit-compositions": [0x1d2733, 0xb5452e, 0xe0a13a, 0xf1e6cc],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -258,6 +272,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "branch-ornament") return drawBranchOrnament(context, branchOrnamentComposition(input));
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
+  if (input.technique === "slit-compositions") return drawSlit(context, slitComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
@@ -275,7 +290,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "slit-compositions" || externalDynamicsPreparable.has(id);
   return referenceIds[id] === true || id === "branch-ornament" || id === "data-scores" || externalDynamicsPreparable.has(id);
 }
 
@@ -287,6 +302,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
+  if (input.technique === "slit-compositions") return prepareSlit(slitComposition(input), cancelled);
   if (referenceIds[input.technique])
     return prepareReferenceComposition(referenceComposition(input), cancelled);
   if (!externalDynamicsPreparable.has(input.technique)) return !cancelled();
