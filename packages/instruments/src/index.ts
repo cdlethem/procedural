@@ -68,6 +68,8 @@ import { outlineTypeDefinition, outlineTypeUsesSeed } from "./adapters/outline-t
 import { drawOutlineType, outlineTypeComposition, prepareOutlineType } from "./composition/outline-type-draw.js";
 import { valueRegionsDefinition } from "./adapters/value-regions-instrument.js";
 import { drawValueRegions, prepareValueRegions, valueRegionsComposition, valueRegionsUsesSeed } from "./composition/value-regions-draw.js";
+import { randomWalkFrontsDefinition } from "./adapters/random-walk-fronts-instrument.js";
+import { drawWalkFronts, prepareRandomWalkFronts, randomWalkFrontsComposition } from "./composition/walk-fronts-draw.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
@@ -361,6 +363,14 @@ export { hiddenLines, visiblePoints, meshEdgeCurves, paintOrder, MAX_VISIBILITY_
 export type { TorusOptions, TerrainOptions, TerrainVariant, VaseProfile, VaseOptions, BundledMeshId, BundledMeshInfo, MeshSource, PointSource } from "./composition/mesh-samples.js";
 export { icosphereMesh, torusMesh, terrainMesh, terrainHeight, vaseMesh, figureMesh, bundledMesh, bundledMeshIds, bundledMeshInfo, terrainVariants, vaseProfiles, vaseProfileNames,
   resolveMeshSource, resolvePointSource, MAX_ICOSPHERE_LEVELS } from "./composition/mesh-samples.js";
+export type { WalkGrid, WalkShapeName, WalkMaskSource, WalkBarrier, WalkRegions } from "./composition/walk-grid.js";
+export { walkGrid, walkRegions, nearestAllowedCell, walkShapeNames, WALK_GRID_LIMITS } from "./composition/walk-grid.js";
+export type { WalkRules, WalkSeeding, SeedLayout, WalkRevisit, WalkTransition, WalkEnd, FrontsField, FrontsSeed, FrontsWalker, FrontsSnapshots } from "./composition/walk-fronts.js";
+export { walkFronts, runWalkFronts, prepareWalkFrontsSnapshots, frontsField, frontsSimulation, checkWalkRules, WALK_FRONT_LIMITS } from "./composition/walk-fronts.js";
+export type { FrontsFrame, Territory, BandDomain, CellRuns, HatchOptions as FrontsHatchOptions, SiteOptions as FrontsSiteOptions } from "./composition/walk-fronts-products.js";
+export { territoryDomains, bandDomains, cellRuns, frontContours, territoryOutlines, territoryHatching, frontSites, bandCount, FRONT_PRODUCT_LIMITS } from "./composition/walk-fronts-products.js";
+export type { FrontsView, FillKind as FrontsFillKind, LineKind as FrontsLineKind, RandomWalkFrontsComposition, RandomWalkFrontsConsumers, FrontsProducts } from "./composition/walk-fronts-draw.js";
+export { randomWalkFrontsComposition, randomWalkFrontsProducts, drawWalkFronts, prepareRandomWalkFronts } from "./composition/walk-fronts-draw.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -379,7 +389,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -510,6 +520,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "crossing-lace": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "region-stitch": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0x7f9a4f, 0x8b4a6f],
   "inversion-gardens": [0x1d2733, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
+  "random-walk-fronts": [0xc4452b, 0xe0a13a, 0x2f7f86, 0x6f9a55, 0x8b5190, 0x1f2733],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -555,6 +566,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
   if (input.technique === "polygon-watercolor") return drawPolygonWatercolor(context, polygonWatercolorComposition(input));
   if (input.technique === "inversion-gardens") return drawInversionGardens(context, inversionGardensComposition(input));
+  if (input.technique === "random-walk-fronts") return drawWalkFronts(context, randomWalkFrontsComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
@@ -572,7 +584,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -590,6 +602,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "quilled-paths") return prepareQuilled(quillComposition(input), cancelled);
   if (input.technique === "dry-bristles") return prepareDryBristles(dryBristlesComposition(input), cancelled);
   if (input.technique === "polygon-watercolor") return preparePolygonWatercolor(polygonWatercolorComposition(input), cancelled);
+  if (input.technique === "random-walk-fronts") return prepareRandomWalkFronts(randomWalkFrontsComposition(input), cancelled);
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
   if (input.technique === "pixel-sorting") return preparePixelSorting(pixelSortingComposition(input), cancelled);
