@@ -21,6 +21,8 @@ import { branchOrnamentDefinitions } from "./adapters/branch-ornament-instrument
 import { branchOrnamentComposition, drawBranchOrnament, prepareBranchOrnament } from "./composition/branch-ornament.js";
 import { gestureScoresDefinitions } from "./adapters/gesture-scores-instruments.js";
 import { drawGestureScore, gestureScoreComposition, prepareGestureScore } from "./composition/gesture-scores.js";
+import { dataScoresDefinition } from "./adapters/data-scores-instrument.js";
+import { dataScoresComposition, dataScoresUsesSeed, drawDataScores, prepareDataScores } from "./composition/data-scores.js";
 import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
@@ -68,6 +70,20 @@ export type {
 } from "./composition/types.js";
 export { substitutionTiling, tilingRules, tilingEdgePaths, tileAncestorId, MAX_TILING_DEPTH, MAX_TILING_PIECES } from "./composition/tilings.js";
 export { tileFill, tileTone, tonedTiles, tonedEdges, selectedVertices, shownTiles, insetPolygon, drawTiling } from "./composition/tiling-materials.js";
+export type { ContinuousColumn, CategoricalColumn, Column, ColumnInput, DataTableInput, DataTable, Curve, Outside, ChannelSpec, MeasureMapping,
+  QuantityMapping, ResolvedChannel, Aggregate, MissingPolicy, UnitWindow, UnitOptions, DataUnit, OmitReason, OmittedUnit, ResolveOptions,
+  ResolvedUnit, ResolvedMapping, ResolvedData } from "./composition/data-table.js";
+export { dataTable, column, continuousColumn, categoricalColumn, measureExtent, resolveChannel, applyMeasure, aggregateValues, buildUnits,
+  resolveData, curves, curveNames, outsidePolicies, aggregateNames, missingPolicies, MAX_TABLE_ROWS, MAX_TABLE_COLUMNS, MAX_CATEGORIES } from "./composition/data-table.js";
+export { sampleTable, sampleIds, sampleInputs } from "./composition/data-samples.js";
+export type { DataSite, DataRegion, OrderMode, OrderOptions, LatticeLayoutOptions, DataLattice, TreemapLayoutOptions, DataTreemap,
+  TimelineLayoutOptions, TimelineLane, DataTimeline } from "./composition/data-layouts.js";
+export { orderUnits, latticeLayout, treemapLayout, timelineLayout } from "./composition/data-layouts.js";
+export type { KeyRow, KeyModel } from "./composition/data-key.js";
+export { dataKey, drawDataKey, keyLabel, formatNumber } from "./composition/data-key.js";
+export type { DataMarkKind, DataFillKind, DataMarkSpec, DataFillSpec, DataLineSpec, DataFootprint, DataLayoutSpec, DataScoresRecipe,
+  DataScoresConsumers, DataScene } from "./composition/data-scores.js";
+export { dataScoresScene, dataMark, dataFill, dataFillSpec, drawDataScores, prepareDataScores, dataScoresComposition, sampleSlots } from "./composition/data-scores.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -87,6 +103,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
   ...gestureScoresDefinitions,
+  ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions, dataScoresDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -193,6 +210,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "optical-plates": [0x1f2d3a, 0xc0452a, 0x2f6f8f],
   "branch-ornament": [0x23302b, 0xb5452e, 0xd39a3a, 0x4f7a5c],
   "gesture-scores": [0x24262b, 0xc99a3b, 0xb8452f, 0x2f6f7a],
+  "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
@@ -218,6 +236,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   definition(input.technique);
   if (input.technique === "branch-ornament") return drawBranchOrnament(context, branchOrnamentComposition(input));
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
+  if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
@@ -236,6 +255,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
   return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "data-scores" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -244,6 +264,8 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "branch-ornament")
     return prepareBranchOrnament(branchOrnamentComposition(input), cancelled);
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
+  if (input.technique === "data-scores")
+    return prepareDataScores(dataScoresComposition(input), cancelled);
   if (referenceIds[input.technique])
     return prepareReferenceComposition(referenceComposition(input), cancelled);
   if (!externalDynamicsPreparable.has(input.technique)) return !cancelled();
@@ -275,6 +297,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "gesture-scores": return q.recording === "wander" || Number(q.hairs) > 0 && q.bristles === true || q.sandMark !== "none" ||
       q.glyphMark !== "none" && (Number(q.glyphVariation) > 0 || Number(q.glyphRetention) < 1);
     case "optical-plates": return q.maskedPlate !== "none" && q.maskShape === "regions";
+    case "data-scores": return dataScoresUsesSeed(q);
     case "substitution-tilings":
       return Number(q.retention) > 0 && Number(q.retention) < 1 || q.interior === "wash" && Number(q.bleed) > 0 ||
         q.interior !== "none" && q.colorBy === "supertile";

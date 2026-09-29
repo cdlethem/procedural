@@ -138,7 +138,7 @@ function keptLattice(sites: readonly LatticeSite[]): readonly LatticeSite[] {
 }
 
 /** Conservative aggregate geometry bound before allocating any nested leaf source. */
-function boundNestedWork(regions: readonly Region[], spec: RegionFillSpec): void {
+export function boundNestedWork(regions: readonly Region[], spec: RegionFillSpec): void {
   regionFillValid(spec);
   let estimated = 0;
   for (const region of regions) {
