@@ -259,6 +259,142 @@ export interface GridOptions {
   /** 0..1: stable per-line shift of interior lines (up to 45% of a spacing); edges stay put. */
   jitter: number;
 }
+/** Explicit supported substitution constructions; not a generic name for arbitrary triangles. */
+export type TilingRuleName = "penrose-p3" | "chair";
+/** Exact substitution rule + seed patch + depth → oriented tiles. Lengths are canvas units, angles degrees. */
+export interface TilingOptions {
+  /** uint32. The tiling itself is deterministic; the seed only names each element's stable chance stream. */
+  seed: number;
+  rule: TilingRuleName;
+  /** A seed patch of the chosen rule (see `tilingRules`). */
+  patch: string;
+  /** Substitution generations applied to the seed patch. Tile area scales by the exact ratio per generation. */
+  depth: number;
+  centerX: number;
+  centerY: number;
+  /** Canvas distance from the patch center to its farthest seed vertex; fixed while depth changes. */
+  radius: number;
+  /** Clockwise on the canvas. */
+  rotation: number;
+  /** Lone half-tiles appear where a seed boundary cuts a Penrose rhombus; `whole` omits them. */
+  boundary: "half-tiles" | "whole";
+  /** Keep tiles whose centroid lies inside the shape; `none` keeps the whole patch. */
+  crop: "none" | "rectangle" | "ellipse";
+  cropX: number;
+  cropY: number;
+  cropWidth: number;
+  cropHeight: number;
+}
+/** A tile is a Site at its centroid: `angle` is its axis, `scale` 1. Draw in the local frame with `outline`. */
+export interface TilingTile extends Site {
+  /** `thin`/`thick` for penrose-p3; `nw`/`ne`/`se`/`sw` (elbow corner of the unrotated seed) for chair. */
+  readonly class: string;
+  /** Index of `class` in `Tiling.classes`; also the piece class of the tile's canonical half. */
+  readonly classIndex: number;
+  /** Substitution generation of the tile's pieces; equals the tiling depth. */
+  readonly generation: number;
+  /** Parent piece id of the canonical half; null at generation 0. */
+  readonly parentId: string | null;
+  /** Substitution pieces composing the tile: one for the chair, two Robinson half-tiles (or one lone half) for Penrose. */
+  readonly pieces: readonly string[];
+  /** Child index path from the seed piece down to the canonical piece: [seedPiece, slot, slot, …]. */
+  readonly path: readonly number[];
+  /** Piece class of each ancestor along `path`, generation 0 first. */
+  readonly lineage: readonly number[];
+  /** False for a lone Penrose half-tile at the patch boundary. */
+  readonly complete: boolean;
+  /** Canvas polygon, positive winding, starting at the tile's own reference vertex. */
+  readonly points: readonly Point[];
+  /** The same polygon relative to `position` and rotated by −`angle`; congruent tiles share it. */
+  readonly outline: readonly Point[];
+  /** Interior angle at each polygon vertex in turn/`Tiling.unitsPerTurn` units. */
+  readonly corners: readonly number[];
+  /** Vertex ids in polygon order. */
+  readonly vertexIds: readonly string[];
+  readonly area: number;
+}
+/** A tile corner point with its incident geometry; a Site with angle 0 and scale 1. */
+export interface TilingVertex extends Site {
+  /** Number of tile corners meeting here. */
+  readonly valence: number;
+  /** Sorted incident corner angles in turn/`unitsPerTurn` units, joined by ".". */
+  readonly signature: string;
+  /** True when corners plus straight-through tile edges close a full turn. */
+  readonly interior: boolean;
+  /** True when equal corners alone close the turn: the Penrose sun (five 72 degree corners), the chair's four right angles. */
+  readonly regular: boolean;
+  /** Kept tiles with a corner here. */
+  readonly tiles: readonly string[];
+}
+/** A maximal shared segment; edges are split at T-junctions, so no two edges overlap. */
+export interface TilingEdge {
+  readonly id: string;
+  readonly seed: number;
+  readonly a: string;
+  readonly b: string;
+  readonly points: readonly [Point, Point];
+  /** Kept tiles on either side; `null` when the other side is absent, cropped or the patch boundary. */
+  readonly tiles: readonly [string, string | null];
+  /** First generation at which the two sides' ancestries differ (0 = outer boundary or different seed pieces). */
+  readonly level: number;
+}
+export interface Tiling {
+  readonly rule: TilingRuleName;
+  readonly patch: string;
+  readonly depth: number;
+  readonly classes: readonly string[];
+  /** Angle unit: one turn is this many units (10 for Penrose, 4 for the chair). */
+  readonly unitsPerTurn: number;
+  /** Canvas length of the shortest tile edge. */
+  readonly edgeLength: number;
+  /** Leaf substitution pieces generated (the bounded work measure). */
+  readonly pieces: number;
+  readonly tiles: readonly TilingTile[];
+  readonly vertices: readonly TilingVertex[];
+  readonly edges: readonly TilingEdge[];
+}
+/** A tile fill draws inside the tile's local frame (origin at the centroid, x along the tile axis). */
+export type TileFiller = (surface: CompositionSurface, tile: TilingTile, run: CompositionRun) => void;
+export interface TileFillSpec {
+  kind: "none" | "flat" | "wash" | "hatch" | "concentric" | "mark";
+  /** Clearance inside each tile edge, in canvas units. */
+  inset: number;
+  /** 0..1 paint strength of flat, wash and hatch. */
+  opacity: number;
+  /** Hatch interval or concentric step, in canvas units. */
+  spacing: number;
+  /** Hatch direction in degrees relative to the tile axis. */
+  angle: number;
+  /** Extra hatch turn per class index, in degrees, so classes hatch differently. */
+  classTurn: number;
+  weight: number;
+  /** Translucent passes of a wash. */
+  layers: number;
+  /** Wash edge wander as a fraction of the tile size. */
+  bleed: number;
+  /** Stable per-tile omission. */
+  retention: number;
+  /** `mark.size` is a fraction of the tile's own scale (square root of its area). */
+  mark: MotifSpec;
+}
+/** How each hierarchical tone is derived from a tile's ancestry. */
+export type TileColorMode = "class" | "ancestor" | "supertile" | "slot";
+export interface TilingView {
+  /** Tile classes that are drawn; the others are omitted and leave bare paper. */
+  classes: readonly string[];
+  /** Stable per-tile omission (by tile id) applied to every consumer, so edges and vertices follow the tiles left. */
+  retention: number;
+  colorBy: TileColorMode;
+  /** Generations above the leaves used by `ancestor`, `supertile` and `slot`. */
+  colorLevel: number;
+  fill: TileFillSpec;
+  /** `visible`: edges next to a drawn tile; `all`: every edge of the tiling. */
+  edges: "none" | "visible" | "all";
+  edgeColor: "uniform" | "hierarchy";
+  edgeMaterial: PathMaterialSpec;
+  vertices: "none" | "all" | "interior" | "regular";
+  vertexMark: MotifSpec;
+}
 /** Named, JSON-compatible compositions. No evaluated code or host layer identities. */
 export type ReferenceComposition =
   | { kind: "sites"; source: PoissonOptions; mark: MotifSpec; palette: readonly number[] }
@@ -269,4 +405,5 @@ export type ReferenceComposition =
   | { kind: "wallpaper"; source: WallpaperOptions; mark: MotifSpec; palette: readonly number[] }
   | { kind: "warp"; grid: GridOptions; map: WarpOptions; material: PathMaterialSpec; mark: MotifSpec; palette: readonly number[] }
   | ({ kind: "graph" } & GraphComposition)
-  | PlatesRecipe;
+  | PlatesRecipe
+  | { kind: "tiling"; source: TilingOptions; view: TilingView; palette: readonly number[] };

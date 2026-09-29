@@ -52,6 +52,11 @@ export type { AttachmentOptions, AttachmentRole, AttachmentSite, BranchEdge, Bra
 export { attachmentSites, branchOutline, branchTree, forkAxis, inheritAngle, visibleEdges } from "./composition/branch-tree.js";
 export type { BranchConsumers, BranchOrnamentComposition } from "./composition/branch-ornament.js";
 export { branchOrnamentComposition, drawBranchOrnament, prepareBranchOrnament } from "./composition/branch-ornament.js";
+export type {
+  TilingRuleName, TilingOptions, TilingTile, TilingVertex, TilingEdge, Tiling, TileFiller, TileFillSpec, TileColorMode, TilingView,
+} from "./composition/types.js";
+export { substitutionTiling, tilingRules, tilingEdgePaths, tileAncestorId, MAX_TILING_DEPTH, MAX_TILING_PIECES } from "./composition/tilings.js";
+export { tileFill, tileTone, tonedTiles, tonedEdges, selectedVertices, shownTiles, insetPolygon, drawTiling } from "./composition/tiling-materials.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -175,6 +180,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "graph-roles": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x9a3d78],
   "optical-plates": [0x1f2d3a, 0xc0452a, 0x2f6f8f],
   "branch-ornament": [0x23302b, 0xb5452e, 0xd39a3a, 0x4f7a5c],
+  "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -252,6 +258,9 @@ export function usesSeed(input: InstrumentInput): boolean {
   switch (input.technique) {
     case "quantized-stripes": return q.order === "shuffle";
     case "optical-plates": return q.maskedPlate !== "none" && q.maskShape === "regions";
+    case "substitution-tilings":
+      return Number(q.retention) > 0 && Number(q.retention) < 1 || q.interior === "wash" && Number(q.bleed) > 0 ||
+        q.interior !== "none" && q.colorBy === "supertile";
     case "orbit-beads": return false;
     case "profile-marks": case "depth-marks": case "annular-marks": return q.colorMode === "noise";
     case "ramp-marks": return Number(q.disorder) > 0 || Number(q.retention) > 0 && Number(q.retention) < 1;
