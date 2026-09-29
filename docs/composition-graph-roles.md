@@ -48,6 +48,15 @@ forest (with loops and diagonals added) and the seeded branch tree. A supplied g
   Work (cell insertions, pair tests, point-in-polygon tests) is bounded at 5,000,000 steps and throws
   rather than answering partially; pairs of edges already known to cross are skipped.
 - **Placement.** Lattice: grid spans width × height (wobble ≤ 0.2 spacing past the edge). Branches: grown, then uniformly scaled to fit width × height, touching one side, centered, then rotated. Contact: width/height is the starting shape; drift is not fitted (edges come from the replay's radius, which a rescale would break).
+- **Bridge from the attractor branch tree.** `graphFromBranchTree(tree, { directed? })` converts the frozen
+  `branchTree` (Branch Ornament's tree over the attractor growth) to a `Graph`; neither module's behaviour
+  changes. Ids are the tree's (`root:<n>`, `end:<tick>.<k>`, `edge:<tick>.<k>`) and so keep its stability
+  (more growth ticks or another routing never rename), seeds equal the tree's, edges run trunk → tip and the
+  graph is directed by default. Roles are derivable from direction and degree (trunk: no incoming edge;
+  terminal: no outgoing edge; fork: degree ≥ 3). Weight = terminals beyond the edge ÷ terminals of its tree
+  (trunk 1); age = `lastTick − tick + 1` (older toward the trunk, graph convention, unlike the tree's raw
+  `age` tick); `length` is the node-to-node distance. It is exported, not a Graph Roles source: the source
+  option would need the ~22 growth controls, which the Branch Ornament study already owns.
 - **Direction markers.** `edgeMarkers` omits edges shorter than 3 marker lengths, keeps a stable id-selected `share`, and never places more than 400.
 - **Consumers.** `edgePaths` (two-point paths, from → to), `nodeSites`, `edgeMarkers`, `faceFill`, all drawn
   by the frozen `strokeWith` / `atEach`. `referenceComposition` resolves the named instrument to a
