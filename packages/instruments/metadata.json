@@ -427,6 +427,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "stroke-relief",
+      "title": "Stroke Relief",
+      "description": "Deposit variable-width, pressure-loaded strokes into a height field with an explicit rule for crossings (add, maximum or displace), then light it: edge ridges and bristle furrows catch a movable light. The flat pigment layer and the transparent light-and-shadow patch are separate layers.",
+      "category": "Raster & color",
+      "operationIds": ["raster.convolve-2d-signed"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/stroke-relief.md",
+      "source": "packages/instruments/src/composition/stroke-relief.ts",
+      "sourceEntry": "drawStrokeRelief",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "quilled-paths",
       "title": "Quilled Paths",
       "description": "Paper strips stood on edge along contour lines, letter outlines, spirals or scattered scrolls, nested inside one another and rolled at the ends, drawn with thickness and occlusion from a tilted camera or as a flat plan.",
