@@ -27,6 +27,8 @@ import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
 import { typeRhythmUsesSeed } from "./adapters/type-rhythm-instrument.js";
+import { strokeReliefDefinition } from "./adapters/stroke-relief-instrument.js";
+import { drawStrokeRelief, prepareStrokeRelief, strokeReliefComposition } from "./composition/stroke-relief.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
@@ -93,6 +95,15 @@ export { typeRhythmLayout, typeField, rowLine, rowBaseline, repeatLeft, moduleFr
   moduleScreen, moduleLined, moduleOutline, typeAnchor, MAX_TYPE_MODULES, MAX_MODULE_INSTANCES, MAX_MODULE_VERTICES, MAX_TYPE_VERTICES } from "./composition/type-rhythm.js";
 export type { TypeInk, TypeScreenInk, TypeRhythmComposition } from "./composition/type-rhythm-draw.js";
 export { drawTypeRhythm, prepareTypeRhythm } from "./composition/type-rhythm-draw.js";
+export type { StrokeData, ReliefStroke, StrokeSet, StrokeFrame, DepositionOrder } from "./composition/strokes.js";
+export { strokeSet, strokeData, strokesFromPaths, strokeFromGesture, placeStrokes, scaleWidths, depositionOrder, depositionOrders, paintMass, STROKE_LIMITS } from "./composition/strokes.js";
+export type { BundledStrokeId } from "./composition/stroke-samples.js";
+export { bundledStrokes, bundledStrokeIds, bundledStrokeInfo } from "./composition/stroke-samples.js";
+export type { CrossSection, Overlap, ReliefGrid, DepositOptions, StrokeRelief, DepositControl, ReliefNormals, Light, ShadeMaterial, ShadeBand, ShadedPatch } from "./composition/relief.js";
+export { depositHeight, depositWork, reliefGrid, crossSectionProfile, pigmentField, reliefNormals, normalAt, lightVector, shadeSlope, shadeField, shadeRelief,
+  crossSections, overlaps, MAX_RELIEF_CELLS, MAX_DEPOSIT_PAIRS, MAX_PATCH_VERTICES, footprintWeight, SHADE_LEVELS, PATCH_ALPHA } from "./composition/relief.js";
+export type { ReliefSource, ReliefView, ColorBy, StrokeReliefComposition, StrokeReliefConsumers, StrokeReliefProducts } from "./composition/stroke-relief.js";
+export { strokeReliefComposition, sourceStrokes, strokeTones, strokeReliefProducts, reliefColors, flatRibbon, shadedPatch, drawStrokeRelief, prepareStrokeRelief } from "./composition/stroke-relief.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -112,6 +123,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
   ...gestureScoresDefinitions, dataScoresDefinition,
+  strokeReliefDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -221,6 +233,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
   "typographic-rhythm": [0x1c1d20, 0xc93a2a, 0x2b5d9b, 0xe6ae2c],
+  "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -246,6 +259,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "branch-ornament") return drawBranchOrnament(context, branchOrnamentComposition(input));
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
+  if (input.technique === "stroke-relief") return drawStrokeRelief(context, strokeReliefComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
@@ -263,6 +277,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
+  if (id === "stroke-relief") return true;
   return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || externalDynamicsPreparable.has(id);
   return referenceIds[id] === true || id === "branch-ornament" || id === "data-scores" || externalDynamicsPreparable.has(id);
 }
@@ -275,6 +290,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
+  if (input.technique === "stroke-relief") return prepareStrokeRelief(strokeReliefComposition(input), cancelled);
   if (referenceIds[input.technique])
     return prepareReferenceComposition(referenceComposition(input), cancelled);
   if (!externalDynamicsPreparable.has(input.technique)) return !cancelled();
