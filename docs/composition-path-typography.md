@@ -57,10 +57,21 @@ all) have identical draw fingerprints before and after.
   glyph's interval. **Mono** centres each ink box in a cell as wide as the widest advance.
 - **Layout** (`layoutAlongPath`, `layoutPaths`). Item `i` of repeat `r` occupies arc `[a, b]`,
   `a = start + r·(run + gap) + scale·Σ advance before`. Reading direction is forward, reverse, or upright
-  (forward unless the first repeat's chord points left). `start` is measured in the reading direction; on a
+  (per path: forward unless the first repeat's chord points left; the instrument's default cuts paths first, see
+  **Readable spans**). `start` is measured in the reading direction; on a
   closed path it wraps and the run never passes its own start. Overflow at the end of an open path or one lap
   is explicit (`dropped`, reason `overflow`). `repeat`: once; whole (repeats only while a whole run fits, the
   first always starts); fill.
+- **Readable spans** (`readableSpans(path, minLength)`; the instrument's default `upright` reading). One direction cannot
+  suit a path that doubles back, so the path is cut where it turns from rightward to leftward: samples every 3 units
+  are rightward within 80° of +x, leftward within 80° of −x, neutral (near vertical) otherwise, and neutral samples join the
+  run before them; runs shorter than `SPAN_CAPS` (5) cap heights merge into the longer neighbour. Spans are open paths
+  `<path id>#<k>` with seeds `componentSeed(path.seed, id, "path")`; an uncut path is returned itself. Each span is laid
+  out on its own (its own `start`, repeats and direction), ids `<path id>#<k>/r<repeat>/g<index>`, and takes part in
+  crowding in path order. A closed path is read as arcs (a circle: rightward top, leftward bottom). `forward`/`reverse` never cut,
+  so their ids are unchanged, and no appearance choice changes a span or a frame id. With the default settings no letter of
+  any tested contour (five seeds) is turned past vertical; on branch chains, gestures and saddle contours a kink shorter than
+  the minimum run can leave a few letters leaning past it. Guide lines still stroke the whole supplied path.
 - **Frames.** A frame is a `Site`: position at the middle of the interval on the path, moved `baseline` toward
   the reader's up; **angle is the chord between the two interval ends**, not the middle tangent, so a corner
   inside one letter turns it by half. `turn` is the signed turning inside the interval (positive clockwise on
@@ -103,7 +114,7 @@ all) have identical draw fingerprints before and after.
 | Path | **Path supply**; landscape, frequency, first threshold, threshold interval, threshold count (contour); recording, hand smoothing (gesture); **Growth** (attractors, ticks, branches, spread) and routing (branch); **Path**, **Paths lettered**, smoothing |
 | Placement | Center X/Y, size, rotation |
 | Text | Phrase, type size, kerning, tracking |
-| Layout | Reading direction, start, baseline offset, repeat, repeat gap, tight curves, crowding, clearance |
+| Layout | Reading direction (upright cuts paths at turns), start, baseline offset, repeat, repeat gap, tight curves, crowding, clearance |
 | Disruption | Disruption, correlation length; **Amount** (shift, tilt, size drift, dropout) |
 | Ink | Letter style, outline weight, color by, guide line, guide weight |
 
@@ -117,7 +128,7 @@ disjunction (repeat, tight curves, crowding, color by). Slider intervals are nar
 
 ## Checks
 
-`tests/composition-path-typography.test.ts` (18 tests), with expected values from raw geometry and the font, never the
+`tests/composition-path-typography.test.ts` (20 tests), with expected values from raw geometry and the font, never the
 library's own values: the arc table on hand-worked polylines (open, closed, wrapping, turning, spans); branch flank
 stations equal to the original inline walk; a shaped run equal to `textOutlines`; tracking and mono cells; optical
 kerning of straight pairs, pairs beside a space, and no facing ink of any of ~2,100 kerned pairs overlapping (boundary
@@ -145,9 +156,9 @@ Defects found by looking, fixed: (1) neighbouring contours' type overlapped in a
 were added, whole repeats first (half a phrase left fragments); (2) the same path's two hairpin arms met, so a run stops at
 itself; (3) optical kerning let a crossbar touch the next stem (clearance floor), and 36 rows then missed the hook of "f" beside
 "1" (found by the exhaustive pair test), so 320 rows; (4) trunk-to-tip lineages shared the trunk and overlapped, so branch chains;
-(5) a total-turning limit dropped letters on wiggles that cancel, so the chord-straightness rule; (6) the first default
-(22 units, six paths) was sparse and cluttered, so 17 units, eight paths, thin guide lines; (7) `pathTypographyProducts` rebuilt
-its arrays every call, so it caches by structure; (8) a contour work-limit message named none of this instrument's controls.
+(5) a total-turning limit dropped letters on wiggles that cancel, so the chord-straightness rule; (6) root's interface review: the default left 'BEFORE THE RIVER' upside down on the return arm of a U-turn (one direction per path cannot read both arms), so upright reading now cuts paths at rightward/leftward turns into readable spans (default: 0 letters past vertical over five seeds, was about half turned past 100° with forward reading); (7) the first default
+(22 units, six paths) was sparse and cluttered, so 17 units, eight paths, thin guide lines; (8) `pathTypographyProducts` rebuilt
+its arrays every call, so it caches by structure; (9) a contour work-limit message named none of this instrument's controls.
 
 Timing (Node, null surface, this machine; cold first draw includes contour generation): default first preparation and draw
 55–75 ms, appearance-only edit (style, colour, guide, palette) 0.7 ms including draw, phrase edit about 5 ms, structural edit

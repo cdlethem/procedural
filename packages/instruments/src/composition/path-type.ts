@@ -188,6 +188,86 @@ function reversedPoints(points: readonly Point[]): readonly Point[] {
   return hit;
 }
 
+/**
+ * READABLE SPANS: the path cut where it turns from running rightward to running leftward, so that each
+ * span can be read left to right (`direction: "upright"` reads each span in the direction that does).
+ * A path that doubles back (a U-turn, a loop, a contour) otherwise carries some of its text upside down,
+ * because one direction cannot suit both arms. A sample every `SPAN_STEP` canvas units is rightward when
+ * its heading is within 80° of +x, leftward within 80° of −x, and neutral (near vertical, readable either
+ * way) otherwise; neutral samples join the run before them. A run shorter than `minLength` arc length is
+ * merged into the longer of its neighbours, so a small wiggle never cuts a phrase. Cuts fall where a run
+ * begins, i.e. at a near-vertical tangent. A path with one run is returned itself; otherwise the spans are
+ * open paths with ids `<path id>#<k>` (k in path order) and seeds `componentSeed(path.seed, id, "path")`.
+ * A closed path is cut open at its runs' boundaries (its spans wrap through the original start when a
+ * run straddles it), so under `upright` a closed contour is read as two or more arcs, not one lap.
+ * `forward` and `reverse` never call this: their frames keep `<path id>/r<repeat>/g<index>` ids.
+ */
+export const SPAN_STEP = 3;
+const spanCache = new WeakMap<Path, Map<number, readonly Path[]>>();
+export function readableSpans(path: Path, minLength: number): readonly Path[] {
+  finite("Span minimum length", minLength, 0, 1e6);
+  const byLength = spanCache.get(path) ?? new Map<number, readonly Path[]>();
+  spanCache.set(path, byLength);
+  const hit = byLength.get(minLength);
+  if (hit) return hit;
+  const clean = cleanPath(path), table = arcTable(clean.points, clean.closed), length = table.length, closed = clean.closed;
+  const count = Math.max(2, Math.ceil(length / SPAN_STEP)), step = length / count, samples = closed ? count : count + 1;
+  const sense: number[] = [];
+  for (let k = 0; k < samples; k++) {
+    const cos = Math.cos(arcPointAt(table, Math.min(length, (k + 0.5) * step)).heading);
+    sense.push(cos > 0.17 ? 1 : cos < -0.17 ? -1 : 0);
+  }
+  const first = sense.findIndex((value) => value !== 0);
+  let spans: readonly Path[] = [path];
+  if (first >= 0) {
+    // A closed path is read from a change of sense, so run boundaries are never split by its start.
+    let begin = 0;
+    if (closed) {
+      let last = sense[first];
+      for (let n = 1; n <= samples; n++) {
+        const i = (first + n) % samples;
+        if (sense[i] !== 0 && sense[i] !== last) { begin = i; break; }
+      }
+    }
+    const at = (n: number) => closed ? (begin + n) % samples : n;
+    // Neutral samples take the sense before them (or the first one, at the start of an open path).
+    let held = sense[at(0)] || sense[first];
+    const runs: Array<{ from: number; sign: number; size: number }> = [];
+    for (let n = 0; n < samples; n++) {
+      const value = sense[at(n)] || held;
+      if (runs.length === 0 || value !== held) runs.push({ from: n, sign: value, size: 0 });
+      held = value;
+      runs[runs.length - 1].size++;
+    }
+    // Runs shorter than minLength take the sense of their longer neighbour, shortest first; equal neighbours fuse.
+    while (runs.length > 1) {
+      let shortest = -1;
+      runs.forEach((run, r) => { if (run.size * step < minLength && (shortest < 0 || run.size < runs[shortest].size)) shortest = r; });
+      if (shortest < 0) break;
+      const before = shortest > 0 ? runs[shortest - 1] : closed ? runs[runs.length - 1] : undefined;
+      const after = shortest < runs.length - 1 ? runs[shortest + 1] : closed ? runs[0] : undefined;
+      const into = !before ? after! : !after ? before : before.size >= after.size ? before : after;
+      runs[shortest].sign = into.sign;
+      for (let r = 0; r + 1 < runs.length; r++) if (runs[r].sign === runs[r + 1].sign) { runs[r].size += runs[r + 1].size; runs.splice(r + 1, 1); r--; }
+    }
+    // A closed path whose last run has the sense of its first has no boundary at its own start.
+    const cuts = runs.map((run) => run.from);
+    if (closed && runs.length > 1 && runs[0].sign === runs[runs.length - 1].sign) cuts.shift();
+    if (cuts.length > 1) {
+      spans = Object.freeze(cuts.map((from, k) => {
+        const last = k + 1 === cuts.length;
+        const toN = last ? (closed ? cuts[0] + samples : samples - 1) : cuts[k + 1];
+        const a = closed ? (begin + from) * step : from * step, z = closed ? (begin + toN) * step : Math.min(length, toN * step);
+        const id = `${path.id}#${k}`;
+        const points = arcSpan(table, a, z).map((point) => Object.freeze([point[0], point[1]] as const));
+        return Object.freeze({ id, seed: componentSeed(path.seed, id, "path"), points: Object.freeze(points), closed: false, level: path.level, levelFraction: path.levelFraction });
+      }));
+    }
+  }
+  byLength.set(minLength, spans);
+  return spans;
+}
+
 /** Canvas outline of an item under a frame; the frame's own `position`, `angle`, `scale` and `condense`. */
 type Outline = { readonly rings: readonly (readonly number[])[]; readonly box: readonly [number, number, number, number] };
 function outline(ink: readonly Ring[], x: number, y: number, angle: number, scale: number, condense: number): Outline {

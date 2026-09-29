@@ -3,7 +3,7 @@ import test from "node:test";
 import {
   CAP_HEIGHT, MAX_LAYOUT_ITEMS, MIN_CONDENSE, MIN_STRAIGHTNESS, OPTICAL_CLEARANCE, arcPointAt, arcSpan, arcTable, arcTurn, attachmentSites, branchChains,
   branchTree, bundledBranchTree, componentSeed, createInstrument, definition, disruptFrames, drawPathTypography, drawInstrument, glyphFill, glyphOf, glyphOutline,
-  glyphTone, layoutAlongPath, layoutPaths, opticalKern, pathText, pathTypographyComposition, pathTypographyProducts, preparePathTypography, rankedPaths, shapeRun,
+  glyphTone, layoutAlongPath, readableSpans, SPAN_STEP, layoutPaths, opticalKern, pathText, pathTypographyComposition, pathTypographyProducts, preparePathTypography, rankedPaths, shapeRun,
   supplyPaths, usesSeed, validateInstrument,
   type AdvanceItem, type CompositionSurface, type GlyphItem, type Path, type PathFrame, type PathLayoutOptions, type PathTypographyComposition,
 } from "../dist/index.js";
@@ -538,4 +538,68 @@ test("the instrument: seeds are structural, work is admitted, the layer is trans
   assert.equal(await preparePathTypography(branch, () => ++calls > 3), false, "cancelling mid-growth stops preparation");
   assert.throws(() => pathTypographyComposition({ ...createInstrument("path-typography"), seed: -1 }), /uint32/);
   assert.throws(() => pathTypographyComposition({ ...createInstrument("path-typography"), technique: "contour-scores" }), /Not a path-typography input/);
+});
+
+test("readable spans: a path is cut where it turns from rightward to leftward, short wiggles never cut, forward and reverse keep whole paths", () => {
+  // A U-turn: right along y=0, a half circle of radius 50 down, left along y=100.
+  const uPoints: [number, number][] = [[0, 0], [200, 0]];
+  for (let k = 1; k < 60; k++) { const t = -Math.PI / 2 + k * Math.PI / 60; uPoints.push([200 + 50 * Math.cos(t), 50 + 50 * Math.sin(t)]); }
+  uPoints.push([200, 100], [0, 100]);
+  const uturn = polyline(uPoints, "u");
+  const spans = readableSpans(uturn, 30);
+  assert.equal(spans.length, 2);
+  assert.deepEqual(spans.map((span) => span.id), ["u#0", "u#1"]);
+  assert.equal(spans[0].seed, componentSeed(5, "u#0", "path"));
+  assert.deepEqual(spans[0].points[0], [0, 0], "the first span starts at the path's start");
+  assert.deepEqual(spans[1].points.at(-1), [0, 100], "the last span ends at the path's end");
+  const cut = spans[0].points.at(-1)!;
+  assert.deepEqual(spans[1].points[0], cut, "spans meet exactly");
+  assert.ok(Math.hypot(cut[0] - 250, cut[1] - 50) < 12, "the cut is at the vertical tangent, the right end of the U, to within the neutral band");
+  near(Math.hypot(cut[0] - 200, cut[1] - 50), 50, 0.05, "and lies on the arc");
+  const total = (path: Path) => path.points.reduce((sum, point, i) => i ? sum + Math.hypot(point[0] - path.points[i - 1][0], point[1] - path.points[i - 1][1]) : 0, 0);
+  near(total(spans[0]) + total(spans[1]), total(uturn), 1e-6, "spans partition the path");
+  // Upright reading of the spans: every letter's chord within 100 degrees of the reading direction.
+  const items = boxes(60, 8);
+  for (const span of spans) for (const f of layoutAlongPath(span, items, options({ direction: "upright", scale: 1 })).frames)
+    assert.ok(Math.cos(f.angle) > -0.18, `letter turned ${(f.angle * 180 / Math.PI).toFixed(0)} degrees`);
+  const whole = layoutAlongPath(uturn, items, options({ direction: "upright", scale: 1 }));
+  assert.ok(whole.frames.some((f) => Math.cos(f.angle) < -0.9), "without cutting, the return arm of a U-turn is upside down");
+  assert.equal(readableSpans(uturn, 30), spans, "cached");
+
+  assert.deepEqual(readableSpans(polyline([[0, 0], [300, 20], [600, 0]], "flat"), 30).map((span) => span.id), ["flat"], "one run is the path itself");
+  const same = polyline([[0, 0], [300, 20]], "one");
+  assert.equal(readableSpans(same, 30)[0], same);
+  // A small leftward wiggle shorter than minLength does not cut; a long minimum merges the second arm, a short one keeps it.
+  const wiggle: [number, number][] = [[0, 0], [100, 0], [90, 20], [100, 40], [200, 40], [300, 40]];
+  assert.equal(readableSpans(polyline(wiggle, "wig"), 60).length, 1);
+  assert.equal(readableSpans(polyline([[0, 0], [100, 0], [100, 20], [0, 20]], "z"), 60).length, 2);
+  assert.equal(readableSpans(polyline([[0, 0], [100, 0], [100, 20], [0, 20]], "z"), 150).length, 1, "a run shorter than the minimum is merged");
+  assert.ok(SPAN_STEP > 0);
+
+  // A closed loop is read as arcs: a circle gives a rightward top and a leftward bottom, each half a lap.
+  const ring = readableSpans(circle(300, 300, 100), 30);
+  assert.equal(ring.length, 2);
+  const ringLength = ring.map(total);
+  near(ringLength[0], Math.PI * 100, 8); near(ringLength[1], Math.PI * 100, 8);
+  near(ringLength[0] + ringLength[1], 2 * Math.PI * 100, 0.5, "the two arcs make one lap");
+  assert.ok(ring.every((span) => !span.closed));
+
+  // Through the instrument: forward and reverse ride whole paths with unchanged ids; upright's uncut paths keep theirs.
+  const forward = pathTypographyProducts(recipeOf({ direction: "forward" })), upright = pathTypographyProducts(recipeOf());
+  assert.equal(forward.spans, forward.paths);
+  assert.ok(forward.frames.flat().every((f) => f.id.startsWith(`${f.id.split("/")[0]}/r`) && !f.id.includes("#")));
+  assert.ok(upright.spans.length > upright.paths.length, "the authored default cuts paths that double back");
+  for (const span of upright.spans) assert.ok(span.id.startsWith(upright.paths.find((path) => span.id.startsWith(path.id))!.id));
+  assert.deepEqual(pathTypographyProducts(recipeOf({ colorBy: "word" })).frames.flat().map((f) => [f.id, f.seed]), upright.frames.flat().map((f) => [f.id, f.seed]), "appearance never renames a letter");
+});
+
+test("the authored default reads upright: no letter of any default contour is turned past vertical", () => {
+  for (const seed of [42, 7, 1234, 99, 5]) {
+    const frames = pathTypographyProducts(recipeOf({}, seed)).frames.flat();
+    assert.ok(frames.length > 60);
+    for (const f of frames) assert.ok(Math.cos(f.angle) > -0.18, `seed ${seed}: ${f.id} is turned ${(f.angle * 180 / Math.PI).toFixed(0)} degrees`);
+    const backwards = pathTypographyProducts(recipeOf({ direction: "forward" }, seed)).frames.flat().filter((f) => Math.cos(f.angle) < -0.5).length;
+    assert.ok(backwards > 10, "forward reading leaves many letters upside down, so the rule is doing the work");
+  }
+  assert.equal(createInstrument("path-typography").params.direction, "upright");
 });

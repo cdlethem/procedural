@@ -1,10 +1,10 @@
 # Path Typography
 
 Set a line of text along a path and read it. The starting picture is a contour map of an abstract
-landscape whose lines are lettered: "THE ROAD BENDS TWICE BEFORE THE RIVER" repeats along each of eight
+landscape whose lines are lettered: "THE ROAD BENDS TWICE BEFORE THE RIVER" repeats along each of six
 contours, thin gold guide lines show what the type rides, letters narrow where a bend is too tight for
 their neighbours, and a lettered line that would run into another is left bare rather than piled on top
-of it. A new seed is a different landscape (or branching tree, or take of a hand movement), so different
+of it. Text always reads left to right. A new seed is a different landscape (or branching tree, or take of a hand movement), so different
 lines carry the words.
 
 The instrument can also follow **the branches of a grown tree** (the longest chain runs root to tip, the
@@ -47,8 +47,8 @@ laid on the path.
 | Controls | What changes on the canvas |
 |---|---|
 | **Phrase, Type size** | Which line, and its cap height. |
-| **Reading direction** | **Forward** follows the path as drawn, **reverse** runs against it (the letters are upside down where the path runs left to right), **upright** picks whichever keeps the text reading left to right. |
-| **Start** | Where the text begins along each path, as a fraction of its length in the reading direction. On a closed contour the text wraps around but never passes its own start. |
+| **Reading direction** | **Upright** (the default) cuts each path where it turns from running rightward to running leftward and reads every piece left to right, so no arm of a U-turn, loop or contour is upside down; each piece starts its own text and is treated as its own line. Runs shorter than five cap heights are merged into their neighbour instead of cutting a phrase, so a few letters on a small kink can still lean past vertical. **Forward** follows the path as drawn and **reverse** runs against it, whole, leaving letters upside down wherever the path runs the other way. |
+| **Start** | Where the text begins along each path (each piece, when upright cuts it), as a fraction of its length in the reading direction. Under forward and reverse a closed contour wraps around but never passes its own start; upright reads a closed contour as arcs. |
 | **Baseline offset** | Distance of the baseline from the path: positive lifts the text above it, negative hangs it below. |
 | **Repeat** | **Once** sets the text one time and drops letters that do not fit before the end of the path. **Whole phrases** repeats only while a complete phrase fits. **Fill the path** repeats until the path is used up and cuts the last phrase. **Repeat gap** is the space between repeats, in cap heights. |
 | **Tight curves** | What happens where neighbouring letters would overlap on the inside of a bend. **Compress** narrows the letter (down to 40% of its width), **rotate** turns it back toward its neighbour, **skip** drops it, **ignore** leaves the overlap. A letter is never moved off its place on the path. Where the path folds back on itself inside one letter (a hairpin), the letter is always dropped: a chord across a fold means nothing. |
@@ -105,6 +105,9 @@ const layout = layoutAlongPath(path, run.items, { scale: 24 / 115.18, start: 0, 
 layout.frames;     // id "arc/r0/g<index>", position, angle (radians), scale, condense, turn, seam, adapted
 layout.dropped;    // every letter not placed, and why: overflow, fold, curvature or crowded
 layout.baselines;  // the baseline of each repeat as a Path
+
+// (readableSpans(path, minLength) is what the instrument's upright reading uses to cut a path that doubles back;
+// with direction "upright", lay out each span rather than the whole path.)
 
 // 4. Draw. A glyph consumer is an ordinary callback; the frame is already translated, turned and scaled.
 atEach(p, layout.frames, glyphFill([0x222222], "ink"));

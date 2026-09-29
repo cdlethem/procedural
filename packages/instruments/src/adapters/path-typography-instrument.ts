@@ -62,7 +62,7 @@ const parameters: Parameter[] = [
     [["metric", "Metric"], ["optical", "Optical"], ["mono", "Monospaced"]]),
   n("tracking", "Tracking", "Extra space after every glyph, in cap heights; negative tightens.", -0.15, 1.2, 0.01, -0.3, 4),
 
-  select("direction", "Reading direction", "Forward follows the path as drawn, reverse runs against it, upright picks whichever keeps the text reading left to right.",
+  select("direction", "Reading direction", "Forward follows the path as drawn, reverse runs against it, upright (the default) cuts each path where it turns from running rightward to leftward and reads every piece left to right, so no arm of a U-turn or loop is upside down; each piece starts its own text.",
     [["upright", "Upright"], ["forward", "Forward"], ["reverse", "Reverse"]]),
   n("start", "Start", "Where the text begins along the path, as a fraction of its length in the reading direction; on a closed contour it wraps but never passes its own start.", 0, 1, 0.005, 0, 1),
   n("baseline", "Baseline offset", "Distance of the baseline from the path in canvas units; positive lifts the text above the path, negative hangs it below.", -60, 60, 0.5, -1000, 1000),
@@ -111,7 +111,7 @@ export const pathTypographyDefinition: InstrumentDefinition = {
   controlGroups,
   defaults: {
     supply: "contour", field: "noise", frequency: 2.2, level: -0.1, levelStep: 0.15, levels: 5, recording: "loops", gestureSmoothing: 40,
-    sourceCount: 90, ticks: 34, branches: 2, branchSpread: 40, routing: "smooth", pick: 0, count: 8, smooth: 2,
+    sourceCount: 90, ticks: 34, branches: 2, branchSpread: 40, routing: "smooth", pick: 0, count: 6, smooth: 2,
     centerX: 320, centerY: 320, extent: 520, rotation: 12,
     phrase: "road", size: 17, kerning: "optical", tracking: 0.04,
     direction: "upright", start: 0, baseline: 2, repeat: "fill", gap: 1.2, curves: "compress", crowding: "avoid", clearance: 0.2,

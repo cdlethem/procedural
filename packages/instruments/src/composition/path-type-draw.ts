@@ -4,7 +4,7 @@ import type { InstrumentInput } from "../types.js";
 import { prepareBranchTree } from "./branch-tree.js";
 import { atEach, createCompositionRun, strokeWith } from "./core.js";
 import { color, pathMaterial } from "./materials.js";
-import { disruptFrames, layoutPaths } from "./path-type.js";
+import { disruptFrames, layoutPaths, readableSpans } from "./path-type.js";
 import type { Crowding, CurvaturePolicy, PathFrame, PathLayout, PathsLayoutOptions, ReadingDirection, RepeatPolicy } from "./path-type.js";
 import { bundledBranchTree, gestureNaturalExtent, supplyPaths } from "./path-type-supply.js";
 import type { PathSelection, PathSupply } from "./path-type-supply.js";
@@ -46,6 +46,8 @@ export const MAX_TYPE_FRAMES = 20_000;
 export const MIN_STRAIGHTNESS = 0.8;
 /** Arc length between the vertices of a gesture supply, canvas units. */
 export const GESTURE_SPACING = 3;
+/** Shortest run, in cap heights, that upright reading treats as an arm of its own (see `readableSpans`). */
+export const SPAN_CAPS = 5;
 
 export type ColorBy = "ink" | "repeat" | "word" | "adapted";
 export interface PathTypographyComposition {
@@ -88,6 +90,8 @@ export interface PathTypographyConsumers {
 /** Everything the consumers read. */
 export interface TypographyProducts {
   readonly paths: readonly Path[];
+  /** What the layouts ride: `paths`, or under upright reading their readable spans (`readableSpans`). */
+  readonly spans: readonly Path[];
   /** Paths the supply has, of which `paths` are the selected ones. */
   readonly available: number;
   readonly run: GlyphRun;
@@ -154,7 +158,9 @@ export function pathTypographyProducts(recipe: PathTypographyComposition): Typog
 function buildProducts(recipe: PathTypographyComposition): TypographyProducts {
   const { paths, available } = supplyPaths(recipe.supply, recipe.selection);
   const run = shapeRun(recipe.text, recipe.shape);
-  const layouts = layoutPaths(paths, run.items, layoutOptions(recipe), recipe.layout.crowding);
+  // Upright reading cuts each path where it turns from running rightward to leftward, so no arm is upside down.
+  const spans = recipe.layout.direction === "upright" ? Object.freeze(paths.flatMap((path) => readableSpans(path, SPAN_CAPS * recipe.size))) : paths;
+  const layouts = layoutPaths(spans, run.items, layoutOptions(recipe), recipe.layout.crowding);
   const frames: (readonly PathFrame<GlyphItem>[])[] = [], omitted: string[] = [];
   let total = 0;
   for (const layout of layouts) {
@@ -167,7 +173,7 @@ function buildProducts(recipe: PathTypographyComposition): TypographyProducts {
     if (total > MAX_TYPE_FRAMES)
       throw new Error(`Path type would draw more than ${MAX_TYPE_FRAMES} letters. Lower Paths lettered, set Repeat to once, or raise Type size`);
   }
-  return Object.freeze({ paths, available, run, layouts: Object.freeze(layouts), frames: Object.freeze(frames), omitted: Object.freeze(omitted) });
+  return Object.freeze({ paths, spans, available, run, layouts: Object.freeze(layouts), frames: Object.freeze(frames), omitted: Object.freeze(omitted) });
 }
 
 /** Palette index of a letter under a colour rule; only structure decides it. */

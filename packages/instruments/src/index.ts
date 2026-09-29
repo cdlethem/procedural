@@ -223,14 +223,14 @@ export type { ArcTable, ArcPoint } from "./composition/path-arc.js";
 export { arcTable, arcPointAt, arcTurn, arcSpan, closedRing } from "./composition/path-arc.js";
 export type { AdvanceItem, Crowding, CurvaturePolicy, PathsLayoutOptions, RepeatPolicy, ReadingDirection, DropReason, Adaptation, PathLayoutOptions, PathFrame, DroppedItem, LayoutReport,
   PathLayout, DisruptionOptions, DisruptedFrames } from "./composition/path-type.js";
-export { layoutAlongPath, layoutPaths, disruptFrames, cleanPath, MAX_LAYOUT_ITEMS, MAX_COLLISION_WORK, MIN_CONDENSE } from "./composition/path-type.js";
+export { layoutAlongPath, layoutPaths, readableSpans, SPAN_STEP, disruptFrames, cleanPath, MAX_LAYOUT_ITEMS, MAX_COLLISION_WORK, MIN_CONDENSE } from "./composition/path-type.js";
 export type { PathText, Glyph, KerningRule, ShapeOptions, GlyphItem, GlyphRun } from "./composition/type-glyphs.js";
 export { pathText, bundledPathTexts, glyphOf, opticalKern, shapeRun, MAX_PATH_TEXT, OPTICAL_DEPTH, OPTICAL_CLEARANCE } from "./composition/type-glyphs.js";
 export type { ContourSupply, BranchSupply, GestureSupply, PathSupply, PathSelection, SelectedPaths, BundledBranch } from "./composition/path-type-supply.js";
 export { branchChains, gestureNaturalExtent, rankedPaths, supplyPaths, smoothPath, bundledBranchTree } from "./composition/path-type-supply.js";
 export type { ColorBy as PathTypographyColorBy, PathTypographyComposition, GlyphMark, PathTypographyConsumers, TypographyProducts } from "./composition/path-type-draw.js";
 export { pathTypographyComposition, pathTypographyProducts, glyphTone, glyphFill, glyphOutline, drawPathTypography, preparePathTypography,
-  MAX_TYPE_FRAMES, MIN_STRAIGHTNESS, GESTURE_SPACING } from "./composition/path-type-draw.js";
+  MAX_TYPE_FRAMES, MIN_STRAIGHTNESS, GESTURE_SPACING, SPAN_CAPS } from "./composition/path-type-draw.js";
 export type { Crossing, CrossingSide, Contact, NearMiss, CrossingSet, CrossingOptions } from "./composition/crossings.js";
 export { findCrossings, CROSSING_LIMITS } from "./composition/crossings.js";
 export type { OverRule, CrossingOrderOptions, Occurrence, AlternationBreak, CrossingOrder } from "./composition/crossing-order.js";
