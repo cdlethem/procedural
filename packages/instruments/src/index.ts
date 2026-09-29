@@ -23,8 +23,16 @@ import { drawSandDeposition, prepareSandDeposition, sandDepositionComposition } 
 import { branchOrnamentComposition, drawBranchOrnament, prepareBranchOrnament } from "./composition/branch-ornament.js";
 import { gestureScoresDefinitions } from "./adapters/gesture-scores-instruments.js";
 import { drawGestureScore, gestureScoreComposition, prepareGestureScore } from "./composition/gesture-scores.js";
+import { fmEngravingDefinition, fmEngravingUsesSeed } from "./adapters/fm-engraving-instrument.js";
+import { drawEngraving, engravingComposition, prepareEngraving } from "./composition/engraving-draw.js";
 import { dataScoresDefinition } from "./adapters/data-scores-instrument.js";
+import { painterlySourceDefinition } from "./adapters/painterly-source-instrument.js";
+import { drawPainterly, painterlyComposition, preparePainterly } from "./composition/painterly-draw.js";
+import { imageDirectedFieldDefinition } from "./adapters/image-directed-field-instrument.js";
+import { drawImageDirectedField, imageDirectedFieldComposition, prepareImageDirectedField } from "./composition/image-directed-field.js";
 import { dataScoresComposition, dataScoresUsesSeed, drawDataScores, prepareDataScores } from "./composition/data-scores.js";
+import { pixelSortingDefinition } from "./adapters/pixel-sorting-instrument.js";
+import { drawPixelSorting, pixelSortingComposition, pixelSortingUsesSeed, preparePixelSorting } from "./composition/pixel-sorting.js";
 import { crossingLaceDefinition } from "./adapters/crossing-lace-instrument.js";
 import { crossingLaceComposition, crossingLaceUsesSeed, drawCrossingLace, prepareCrossingLace } from "./composition/crossing-lace.js";
 import { quilledPathsDefinition } from "./adapters/quilled-paths-instrument.js";
@@ -37,6 +45,11 @@ import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
 import { typeRhythmUsesSeed } from "./adapters/type-rhythm-instrument.js";
+import { slitCompositionsDefinition } from "./adapters/slit-compositions-instrument.js";
+import { drawSlit, prepareSlit, slitComposition } from "./composition/slit-draw.js";
+import { compartmentsUsesSeed } from "./adapters/compartments-instrument.js";
+import { strokeReliefDefinition } from "./adapters/stroke-relief-instrument.js";
+import { drawStrokeRelief, prepareStrokeRelief, strokeReliefComposition } from "./composition/stroke-relief.js";
 import { pathTypographyDefinition, pathTypographyUsesSeed } from "./adapters/path-typography-instrument.js";
 import { drawPathTypography, pathTypographyComposition, preparePathTypography } from "./composition/path-type-draw.js";
 
@@ -81,8 +94,23 @@ export type { PressureMap, PressureProfile, PressureShape, BristleFrame, Bristle
   BristleInk, BristleMaterialSpec } from "./composition/bristle.js";
 export { mapPressure, bristleTrack, bristleBand, bristleContact, bristleStroke, bristleStrokes, planBristles, checkBristleWork, bristleMaterial, hairMaterial,
   drawBristleStroke, drawFootprint, paperTooth, profilePressure, isBristleTrack, pressureProfiles, tipShapes, brushHolds, MAX_HAIR_POINTS, MAX_STATIONS } from "./composition/bristle.js";
+export type { DirectionFn, TraceSeed, StreamlineOptions, Streamline, StreamlineResult } from "./composition/streamlines.js";
+export { traceStreamlines, SEED_CLEARANCE } from "./composition/streamlines.js";
+export type { FieldImage, FieldValue, FieldMode, AmbientKind, FieldFrame, ImageFieldOptions, FieldSample, ImageField, FieldGate, FieldLineOptions, FieldLine,
+  FieldSiteOptions, FieldSite } from "./composition/image-field.js";
+export { imageStructure, imageField, fieldLines, fieldSites, FIELD_LIMITS } from "./composition/image-field.js";
+export type { ColorBy as FieldColorBy, LineConstruction, ImageDirectedFieldComposition, ImageDirectedFieldConsumers, ImageDirectedFieldProducts } from "./composition/image-directed-field.js";
+export { imageDirectedFieldComposition, imageDirectedFieldProducts, drawImageDirectedField, prepareImageDirectedField, fieldTone, toneLevel, MAX_DRAW_UNITS } from "./composition/image-directed-field.js";
 export type { RecordingSource, GestureScoreComposition, GestureConsumers, GestureRepeat } from "./composition/gesture-scores.js";
 export { gestureScoreComposition, gestureScoreProducts, resolveRecording, drawGestureScore, prepareGestureScore } from "./composition/gesture-scores.js";
+export type { FitMode, ToneEncoding, ToneSource, ToneOptions, ToneField } from "./composition/engraving-tone.js";
+export { toneField, areaAverage, BUNDLED_SOURCE_SIZE, TONE_LIMITS } from "./composition/engraving-tone.js";
+export type { CarrierFamily, Carrier, CarrierOptions } from "./composition/engraving-carriers.js";
+export { engravingCarriers, carrierFamilies, MAX_LINES, MAX_STATIONS as MAX_CARRIER_STATIONS, STATION } from "./composition/engraving-carriers.js";
+export type { FootprintShape, ClipMode, EngravingOptions, EngravingSignal, EngravedLine, EngravingStats, EngravingLines } from "./composition/engraving.js";
+export { engravedLines, engravingTone, toneSignal, shapedTone, ENGRAVING_LIMITS } from "./composition/engraving.js";
+export type { LineKind, ColorBy as EngravingColorBy, EngravingLineSpec, EngravingComposition, EngravingConsumers } from "./composition/engraving-draw.js";
+export { engravingComposition, engravingProducts, tonePieces, drawEngraving, prepareEngraving, TONE_BINS } from "./composition/engraving-draw.js";
 export type { ControlSequenceData, ControlSequence } from "./composition/control-sequence.js";
 export { createControlSequence, controlSequenceData, sequenceFingerprint, SEQUENCE_LIMITS } from "./composition/control-sequence.js";
 export type { BundledControlSequenceId, BundledSequenceInfo } from "./composition/control-sequence-samples.js";
@@ -104,7 +132,7 @@ export { bundledRaster, bundledRasterIds, bundledRasterInfo, BUNDLED_RASTER_SIZE
 export type { ImageSource, SegmentOptions, ValueRegion, RegionAdjacency, Segmentation, SubdivisionMetric, SplitPolicy, SubdivideOptions, ImageCell, Subdivision,
   OrientationOptions, OrientationSample, OrientationField, OrientationVectorOptions, ScanDirection, ScanOptions, ScanRun, RunSet, SortRunsOptions, PixelMoves,
   ApplyMovesOptions, FrequencyModulationOptions, ModulatedLine } from "./composition/image-structure.js";
-export { segmentValueBands, valueRegionMask, subdivideImage, subdivisionLabels, orientationField, orientationPixel, orientationAt, orientationGrids, orientationVector,
+export { segmentValueBands, valueRegionMask, subdivideImage, subdivisionLabels, orientationField, orientationPixel, orientationAt, orientationInRect, orientationGrids, orientationVector,
   scanRuns, scanRunPixel, scanRunSegment, sortScanRuns, applyPixelMoves, pixelSort, frequencyModulation, modulatedPolyline, IMAGE_STRUCTURE_LIMITS } from "./composition/image-structure.js";
 export type { SourceFrame, TraceFigure, PathData, BristleSource } from "./composition/bristle-sources.js";
 export { bristleSourcePaths, pathSet, traceFigures, contourFields, MAX_SOURCE_PATHS, MAX_SOURCE_POINTS } from "./composition/bristle-sources.js";
@@ -138,6 +166,10 @@ export { dataKey, drawDataKey, keyLabel, formatNumber } from "./composition/data
 export type { DataMarkKind, DataFillKind, DataMarkSpec, DataFillSpec, DataLineSpec, DataFootprint, DataLayoutSpec, DataScoresRecipe,
   DataScoresConsumers, DataScene } from "./composition/data-scores.js";
 export { dataScoresScene, dataMark, dataFill, dataFillSpec, drawDataScores, prepareDataScores, dataScoresComposition, sampleSlots } from "./composition/data-scores.js";
+export type { PixelSortValue, PixelSortImage, PixelSortMask, PixelSortRuns, PixelSortMarks, PixelSortRecipe, PixelSortConstruction, RunRow, PixelSortStructure,
+  MovedPixels, PixelStreak, PixelStreaks, StreakSite, PixelSortConsumers } from "./composition/pixel-sorting.js";
+export { PIXEL_SORTING_LIMITS, pixelSortImage, pixelSortMask, dilateMask, pixelSortStructure, pixelSortRunAt, pixelSortRunTable, movedPixels, pixelSortStreaks,
+  runOutline, pixelSortStreakSites, pixelSortRunPaths, drawPixelSorting, preparePixelSorting, pixelSortingComposition } from "./composition/pixel-sorting.js";
 export type { RelationSample } from "./composition/bundle-samples.js";
 export { relationSample, relationSampleIds, relationColumns } from "./composition/bundle-samples.js";
 export type { RelationColumns, GroupAssignment, RelationData, EndpointOrder, SectorBasis, LayoutFrame, EndpointLayoutOptions, GroupPlacement, EndpointLayout, EdgeScope,
@@ -154,6 +186,39 @@ export { typeRhythmLayout, typeField, rowLine, rowBaseline, repeatLeft, moduleFr
   moduleScreen, moduleLined, moduleOutline, typeAnchor, MAX_TYPE_MODULES, MAX_MODULE_INSTANCES, MAX_MODULE_VERTICES, MAX_TYPE_VERTICES } from "./composition/type-rhythm.js";
 export type { TypeInk, TypeScreenInk, TypeRhythmComposition } from "./composition/type-rhythm-draw.js";
 export { drawTypeRhythm, prepareTypeRhythm } from "./composition/type-rhythm-draw.js";
+export type { PaintFamily, PaintFrame, PaintSubject, PaintPlanOptions, PaintMark, PaintLayer, PaintPlan } from "./composition/painterly.js";
+export { paintPlan, preparePaintPlan, paintLayerGeometry, paintCandidateCount, PAINT_FAMILIES, MAX_PAINT_LAYERS, MAX_PAINT_CANDIDATES, MAX_PAINT_MARKS,
+  MAX_ANALYSIS_SIDE, MIN_PAINT_BRUSH } from "./composition/painterly.js";
+export type { PaintMaterialKind, PaintMaterialSpec, PaintColorMode, PaintColorSpec } from "./composition/painterly-style.js";
+export { paintLayerMaterial, paintPalette, keepsMark } from "./composition/painterly-style.js";
+export type { PaintSource, PaintShape, PainterlyComposition, PaintConsumers } from "./composition/painterly-draw.js";
+export { painterlyComposition, painterlyPlan, paintPlanOptions, resolvePaintSource, paintDrawWork, drawPainterly, preparePainterly, PAINT_DRAW_WORK } from "./composition/painterly-draw.js";
+export type { EndBehaviour, Interpolation, FrameStackData, FrameStack, ResolvedTime } from "./composition/frame-stack.js";
+export { createFrameStack, resolveFrameTime, FRAME_STACK_LIMITS } from "./composition/frame-stack.js";
+export type { BundledSequenceId } from "./composition/frame-samples.js";
+export { bundledFrameStack, bundledSequenceIds, bundledSequenceInfo, BUNDLED_SEQUENCE_FRAMES, BUNDLED_SEQUENCE_SIZE } from "./composition/frame-samples.js";
+export type { SliceOrderKind, SliceOrder, ModulationMode, Modulation, GestureChannel, TimeCurve, TimeScan, SliceTableOptions, SliceTime, SliceRow, SliceTable } from "./composition/slit-map.js";
+export { slicePermutation, sliceTable, timeProgress, sliceId, sliceOrderKinds, modulationModes, SLICE_LIMITS } from "./composition/slit-map.js";
+export type { SlitDirection, OutsidePolicy, SlitSourceValue, SlitLine, StripOptions, StripSet, FragmentOptions, SlitFragment, FragmentSet, ColorMode, SlitColor,
+  SlitCell, SlitRectOptions, SlitRect } from "./composition/slit.js";
+export { slitStrips, stripPixel, slitPoint, placePosition, coverScale, slitFragments, slitRects, paletteRamp, SLIT_LIMITS } from "./composition/slit.js";
+export type { SlitSource, SlitMask, SlitComposition, SlitConsumers, SlitScene } from "./composition/slit-draw.js";
+export { slitComposition, slitSource, slitScene, slitBands, quiltCells, drawSlit, prepareSlit, SLIT_SPILL } from "./composition/slit-draw.js";
+export type { PixelRect, CompartmentMeasure, CompartmentOptions, Compartment, CompartmentNode, CompartmentPlan, KeepRule, CompartmentRegion } from "./composition/compartments.js";
+export { compartmentPlan, coverCrop, keptCompartments, compartmentRegions, keepRules, COMPARTMENT_LIMITS } from "./composition/compartments.js";
+export type { CompartmentFillKind, CompartmentColor, CompartmentFiller, CompartmentGlyphSpec, CompartmentBorderSpec, CompartmentFillSpec, CompartmentInk,
+  CompartmentImage, CompartmentsComposition } from "./composition/compartments-draw.js";
+export { compartmentFiller, compartmentFillKind, compartmentAngle, compartmentInk, nearestPaletteIndex, hatchSegments, halftoneCentres, hatchSpacing, halftoneRadius,
+  boundCompartmentWork, compartmentSource, compartmentOptions, compartmentDrawRegions, drawCompartments, prepareCompartments, MIN_COHERENCE, MAX_COMPARTMENT_UNITS } from "./composition/compartments-draw.js";
+export type { StrokeData, ReliefStroke, StrokeSet, StrokeFrame, DepositionOrder } from "./composition/strokes.js";
+export { strokeSet, strokeData, strokesFromPaths, strokeFromGesture, placeStrokes, scaleWidths, depositionOrder, depositionOrders, paintMass, STROKE_LIMITS } from "./composition/strokes.js";
+export type { BundledStrokeId } from "./composition/stroke-samples.js";
+export { bundledStrokes, bundledStrokeIds, bundledStrokeInfo } from "./composition/stroke-samples.js";
+export type { CrossSection, Overlap, ReliefGrid, DepositOptions as ReliefDepositOptions, StrokeRelief, DepositControl, ReliefNormals, Light, ShadeMaterial, ShadeBand, ShadedPatch } from "./composition/relief.js";
+export { depositHeight, depositWork, reliefGrid, crossSectionProfile, pigmentField, reliefNormals, normalAt, lightVector, shadeSlope, shadeField, shadeRelief,
+  crossSections, overlaps, MAX_RELIEF_CELLS, MAX_DEPOSIT_PAIRS, MAX_PATCH_VERTICES, footprintWeight, SHADE_LEVELS, PATCH_ALPHA } from "./composition/relief.js";
+export type { ReliefSource, ReliefView, ColorBy as ReliefColorBy, StrokeReliefComposition, StrokeReliefConsumers, StrokeReliefProducts } from "./composition/stroke-relief.js";
+export { strokeReliefComposition, sourceStrokes, strokeTones, strokeReliefProducts, reliefColors, flatRibbon, shadedPatch, drawStrokeRelief, prepareStrokeRelief } from "./composition/stroke-relief.js";
 export type { ArcTable, ArcPoint } from "./composition/path-arc.js";
 export { arcTable, arcPointAt, arcTurn, arcSpan, closedRing } from "./composition/path-arc.js";
 export type { AdvanceItem, Crowding, CurvaturePolicy, PathsLayoutOptions, RepeatPolicy, ReadingDirection, DropReason, Adaptation, PathLayoutOptions, PathFrame, DroppedItem, LayoutReport,
@@ -163,7 +228,7 @@ export type { PathText, Glyph, KerningRule, ShapeOptions, GlyphItem, GlyphRun } 
 export { pathText, bundledPathTexts, glyphOf, opticalKern, shapeRun, MAX_PATH_TEXT, OPTICAL_DEPTH, OPTICAL_CLEARANCE } from "./composition/type-glyphs.js";
 export type { ContourSupply, BranchSupply, GestureSupply, PathSupply, PathSelection, SelectedPaths, BundledBranch } from "./composition/path-type-supply.js";
 export { branchChains, gestureNaturalExtent, rankedPaths, supplyPaths, smoothPath, bundledBranchTree } from "./composition/path-type-supply.js";
-export type { ColorBy, PathTypographyComposition, GlyphMark, PathTypographyConsumers, TypographyProducts } from "./composition/path-type-draw.js";
+export type { ColorBy as PathTypographyColorBy, PathTypographyComposition, GlyphMark, PathTypographyConsumers, TypographyProducts } from "./composition/path-type-draw.js";
 export { pathTypographyComposition, pathTypographyProducts, glyphTone, glyphFill, glyphOutline, drawPathTypography, preparePathTypography,
   MAX_TYPE_FRAMES, MIN_STRAIGHTNESS, GESTURE_SPACING } from "./composition/path-type-draw.js";
 export type { Crossing, CrossingSide, Contact, NearMiss, CrossingSet, CrossingOptions } from "./composition/crossings.js";
@@ -203,7 +268,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -310,14 +375,21 @@ const referencePalettes: Record<string, readonly number[]> = {
   "optical-plates": [0x1f2d3a, 0xc0452a, 0x2f6f8f],
   "branch-ornament": [0x23302b, 0xb5452e, 0xd39a3a, 0x4f7a5c],
   "gesture-scores": [0x24262b, 0xc99a3b, 0xb8452f, 0x2f6f7a],
+  "fm-engraving": [0x1d2733, 0xb5452e, 0xd39a3a, 0x2f6f8f],
   "sand-deposition": [0x3b2f27, 0xb5522f, 0x1f5f73],
   "quilled-paths": [0xd4563f, 0xe6a23a, 0x2f7f86, 0x6f9a55, 0x8b5190],
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
+  "pixel-sorting": [0x1c2230, 0x8a3b32, 0xd9a441, 0xf1e6cf],
   "path-typography": [0x1f2226, 0xc24a34, 0x2f6c8f, 0xb8862b],
+  "image-directed-field": [0x1d2230, 0x8d3b2a, 0x2f6f7a, 0xc99a3b],
   "bundled-relations": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86, 0x9c5f34],
   "dry-bristles": [0x22252b, 0x2f6f7a, 0xb8452f, 0xc99a3b],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
   "typographic-rhythm": [0x1c1d20, 0xc93a2a, 0x2b5d9b, 0xe6ae2c],
+  "painterly-source": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0xf0e6d2],
+  "slit-compositions": [0x1d2733, 0xb5452e, 0xe0a13a, 0xf1e6cc],
+  "adaptive-compartments": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0xefe6d2],
+  "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "crossing-lace": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
@@ -347,6 +419,12 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "sand-deposition") return drawSandDeposition(context, sandDepositionComposition(input));
   if (input.technique === "quilled-paths") return drawQuilled(context, quillComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
+  if (input.technique === "pixel-sorting") return drawPixelSorting(context, pixelSortingComposition(input));
+  if (input.technique === "fm-engraving") return drawEngraving(context, engravingComposition(input));
+  if (input.technique === "painterly-source") return drawPainterly(context, painterlyComposition(input));
+  if (input.technique === "slit-compositions") return drawSlit(context, slitComposition(input));
+  if (input.technique === "stroke-relief") return drawStrokeRelief(context, strokeReliefComposition(input));
+  if (input.technique === "image-directed-field") return drawImageDirectedField(context, imageDirectedFieldComposition(input));
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
@@ -367,7 +445,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -376,12 +454,18 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "branch-ornament")
     return prepareBranchOrnament(branchOrnamentComposition(input), cancelled);
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
+  if (input.technique === "fm-engraving") return prepareEngraving(engravingComposition(input), cancelled);
   if (input.technique === "path-typography") return preparePathTypography(pathTypographyComposition(input), cancelled);
+  if (input.technique === "image-directed-field") return prepareImageDirectedField(imageDirectedFieldComposition(input), cancelled);
   if (input.technique === "sand-deposition") return prepareSandDeposition(sandDepositionComposition(input), cancelled);
   if (input.technique === "quilled-paths") return prepareQuilled(quillComposition(input), cancelled);
   if (input.technique === "dry-bristles") return prepareDryBristles(dryBristlesComposition(input), cancelled);
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
+  if (input.technique === "pixel-sorting") return preparePixelSorting(pixelSortingComposition(input), cancelled);
+  if (input.technique === "painterly-source") return preparePainterly(painterlyComposition(input), cancelled);
+  if (input.technique === "slit-compositions") return prepareSlit(slitComposition(input), cancelled);
+  if (input.technique === "stroke-relief") return prepareStrokeRelief(strokeReliefComposition(input), cancelled);
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
   if (referenceIds[input.technique])
@@ -418,13 +502,17 @@ export function usesSeed(input: InstrumentInput): boolean {
       q.glyphMark !== "none" && (Number(q.glyphVariation) > 0 || Number(q.glyphRetention) < 1);
     case "optical-plates": return q.maskedPlate !== "none" && q.maskShape === "regions";
     case "data-scores": return dataScoresUsesSeed(q);
+    case "pixel-sorting": return pixelSortingUsesSeed(q);
+    case "fm-engraving": return fmEngravingUsesSeed(q);
     case "path-typography": return pathTypographyUsesSeed(q);
+    case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
     case "substitution-tilings":
       return Number(q.retention) > 0 && Number(q.retention) < 1 || q.interior === "wash" && Number(q.bleed) > 0 ||
         q.interior !== "none" && q.colorBy === "supertile";
     case "typographic-rhythm": return typeRhythmUsesSeed(q);
+    case "adaptive-compartments": return compartmentsUsesSeed(q);
     case "orbit-beads": return false;
     case "profile-marks": case "depth-marks": case "annular-marks": return q.colorMode === "noise";
     case "ramp-marks": return Number(q.disorder) > 0 || Number(q.retention) > 0 && Number(q.retention) < 1;

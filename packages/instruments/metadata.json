@@ -388,6 +388,32 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "fm-engraving",
+      "title": "FM Engraving",
+      "description": "Engrave a picture as wavy line bands: scan lines run across its tones, and where it is dark the waves grow taller and quicker while the lines crowd or thicken; light places stay open paper.",
+      "category": "Raster & color",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/fm-engraving.md",
+      "source": "packages/instruments/src/composition/engraving-draw.ts",
+      "sourceEntry": "drawEngraving",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "image-directed-field",
+      "title": "Image Directed Field",
+      "description": "Lines and marks that follow or cross the structure of a picture: edges and contours become evenly spaced strokes of ink, stitches or beads that stop where the picture has no direction.",
+      "category": "Fields & paths",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/image-directed-field.md",
+      "source": "packages/instruments/src/composition/image-directed-field.ts",
+      "sourceEntry": "drawImageDirectedField",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "sand-deposition",
       "title": "Sand Deposition",
       "description": "Sand falls from a moving spline: its control points travel through time, grains are released along the curve and land with a delay, and their accumulated density is drawn as exposed grains, isolines, or both; a protected region stays empty and a sparse crisp copy of the generating curve can lie on top.",
@@ -411,6 +437,32 @@
       "guide": "guides/data-scores.md",
       "source": "packages/instruments/src/composition/data-scores.ts",
       "sourceEntry": "drawDataScores",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "pixel-sorting",
+      "title": "Pixel Sorting",
+      "description": "Dissolve a bundled image into ordered streaks: pick the scan direction, the value interval that selects runs, the sort key and order, and a protected region that stays exact; drawn as merged vector bars or stitch-like streaks, with run outlines from a path material.",
+      "category": "Images",
+      "operationIds": ["field.gradient-noise-2d-01"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/pixel-sorting.md",
+      "source": "packages/instruments/src/composition/pixel-sorting.ts",
+      "sourceEntry": "drawPixelSorting",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "stroke-relief",
+      "title": "Stroke Relief",
+      "description": "Deposit variable-width, pressure-loaded strokes into a height field with an explicit rule for crossings (add, maximum or displace), then light it: edge ridges and bristle furrows catch a movable light. The flat pigment layer and the transparent light-and-shadow patch are separate layers.",
+      "category": "Raster & color",
+      "operationIds": ["raster.convolve-2d-signed"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/stroke-relief.md",
+      "source": "packages/instruments/src/composition/stroke-relief.ts",
+      "sourceEntry": "drawStrokeRelief",
       "creativeReviewScope": "instrument-construction"
     },
     {
@@ -453,6 +505,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "slit-compositions",
+      "title": "Slit Compositions",
+      "description": "Recompose one image through parallel slices with editable ordering, offsets and scales, or slit-scan a short bundled frame sequence so that time is stretched into bands. Vector bands, a slice table from output band to source, and a few unsliced fragments for comparison.",
+      "category": "Raster & color",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/slit-compositions.md",
+      "source": "packages/instruments/src/composition/slit-draw.ts",
+      "sourceEntry": "drawSlit",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "path-typography",
       "title": "Path Typography",
       "description": "Set a line of text along contours, a branch chain or a recorded hand stroke: letters keep their advance along the path and follow its direction, and are dropped, narrowed or turned where a tight bend would make them collide, or disrupted in correlated runs.",
@@ -489,6 +554,32 @@
       "guide": "guides/dry-bristles.md",
       "source": "packages/instruments/src/composition/dry-bristles.ts",
       "sourceEntry": "drawDryBristles",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "painterly-source",
+      "title": "Painterly Source",
+      "description": "Assemble a picture from marks in coarse-to-fine layers: broad strokes first, finer ones only where the paint still differs from the source, turned along its edges and colored from it; mark family, material and color are separate choices over one plan.",
+      "category": "Images",
+      "operationIds": ["color.median-cut-quantize", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/painterly-source.md",
+      "source": "packages/instruments/src/composition/painterly-draw.ts",
+      "sourceEntry": "drawPainterly",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "adaptive-compartments",
+      "title": "Adaptive Compartments",
+      "description": "Divide a picture into a mosaic whose cell size follows its detail, big quiet cells where it is flat and small ones along its edges, then fill each cell with flat color, hatching along the local direction, halftone dots, a nested glyph or a stitched border, and leave a chosen share open.",
+      "category": "Images",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/adaptive-compartments.md",
+      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+      "sourceEntry": "drawReferenceInstrument",
       "creativeReviewScope": "instrument-construction"
     },
     {

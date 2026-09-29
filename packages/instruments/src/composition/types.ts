@@ -1,4 +1,5 @@
 import type { GraphComposition } from "./graph-draw.js";
+import type { CompartmentsComposition } from "./compartments-draw.js";
 import type { TypeRhythmComposition } from "./type-rhythm-draw.js";
 import type { PlatesRecipe } from "./plates.js";
 /** p5-compatible 2D drawing boundary. The host owns canvas creation and clearing. */
@@ -410,4 +411,5 @@ export type ReferenceComposition =
   | ({ kind: "graph" } & GraphComposition)
   | PlatesRecipe
   | ({ kind: "typography" } & TypeRhythmComposition)
+  | ({ kind: "compartments" } & CompartmentsComposition)
   | { kind: "tiling"; source: TilingOptions; view: TilingView; palette: readonly number[] };
