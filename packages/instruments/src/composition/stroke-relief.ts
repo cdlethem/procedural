@@ -2,7 +2,8 @@ import { strokeReliefDefinition } from "../adapters/stroke-relief-instrument.js"
 import type { InstrumentInput } from "../types.js";
 import { validateParameterValues } from "../parameter-validation.js";
 import { createCompositionRun, strokeWith } from "./core.js";
-import { bristleBand, gesturePath } from "./gesture.js";
+import { bristleBand } from "./bristle.js";
+import { gesturePath } from "./gesture.js";
 import { depositHeight, pigmentField, reliefNormals, shadeRelief } from "./relief.js";
 import type { DepositOptions, Light, ReliefNormals, ShadeMaterial, ShadedPatch, StrokeRelief } from "./relief.js";
 import { gestureTrack } from "./recording.js";
@@ -117,7 +118,7 @@ export function sourceStrokes(recipe: Pick<StrokeReliefComposition, "source" | "
     const track = gestureTrack(bundledRecording(source.recording, seed), { smoothing: DRY_SMOOTHING, frame: { centerX: 320, centerY: 320, scale: 1, rotation: 0 } });
     const path = gesturePath(track, { seed, sampling: { kind: "arc", spacing: DRY_SPACING }, window: { start: 0, end: track.duration },
       pressure: { source: "recorded", whenAbsent: "speed", level: 0.6 } });
-    const hairs = bristleBand(path, { seed, hairs: source.hairs, width: source.brushWidth, map: { floor: 0.18, curve: 1 },
+    const hairs = bristleBand(path, { hairs: source.hairs, width: source.brushWidth, map: { floor: 0.18, curve: 1 },
       dryness: source.dryness, depletion: source.depletion, wander: 0.2 });
     // Hairs at the brush edge carry less paint than the middle ones.
     return strokesFromPaths({ id: `dry-${source.recording}:${seed}`, seed, paths: hairs, width: source.hairWidth, load: 1, edgeLoad: 0.55 });

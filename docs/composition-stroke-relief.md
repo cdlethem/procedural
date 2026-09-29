@@ -38,8 +38,9 @@ widths in [0, 2000], loads in [0, 1]; each failure names the stroke and field.
 | `strokeReliefComposition`, `strokeReliefProducts`, `drawStrokeRelief`, `prepareStrokeRelief`, `flatRibbon`, `shadedPatch` | `composition/stroke-relief.ts` | JSON-compatible descriptor, its producers, the two default consumers (replaceable by ordinary callbacks), cooperative preparation. |
 | Definition and controls | `adapters/stroke-relief-instrument.ts` | Parameters, groups, defaults, conditions. |
 
-Existing computations reused: `convolve2DSigned`, `gesturePath` + `bristleBand` (the dry-brush source: each hair one
-stroke), `mapPressure` (load to height), `componentSeed`, `strokeWith`, `createCompositionRun`, `memoized`, `fillRings`.
+Existing computations reused: `convolve2DSigned`, `gesturePath` + `bristleBand` from the extracted brush (`bristle.ts`, shared with
+Gesture Scores and Dry Bristles; the dry-brush source: each hair one stroke), `mapPressure` (load to height, also `bristle.ts`),
+`componentSeed`, `strokeWith`, `createCompositionRun`, `memoized`, `fillRings`.
 Nothing existing was refactored, so no existing drawing changed: 20 drawings (ten instruments, two seeds) fingerprint identically before and after.
 
 ## Frozen semantics
@@ -138,5 +139,5 @@ a promise: dense stacks of wide strokes at cell 1.5 reach the 800,000-vertex lim
 - Light edits cost 80-550 ms of synchronous work; a host may want to debounce a light slider. No cheaper preview is offered.
 - Shading of a stroke thinner than two cells is undersampled by design (documented resolving limit).
 - No overlap of the flat layer with `max`-mode height crests: pigment ownership is painter order in every rule.
-- Real-interface acceptance and layered work in the app are root's to exercise. Dry-brush source uses `bristleBand` from
-  `gesture.ts`; a parallel Dry Bristle Strokes module exists on main but is not on this branch.
+- Real-interface acceptance and layered work in the app are root's to exercise. The dry-brush sources call the shared
+  `bristleBand`; their strokes and drawings are identical before and after the merge with the extracted brush (checked by fingerprint).

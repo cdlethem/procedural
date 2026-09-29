@@ -1,7 +1,7 @@
 import { convolve2DSigned } from "@procedurals/javascript";
 import { componentSeed } from "./core.js";
-import { mapPressure } from "./gesture.js";
-import type { PressureMap } from "./gesture.js";
+import { mapPressure } from "./bristle.js";
+import type { PressureMap } from "./bristle.js";
 import { fillableRings, IsoField } from "./iso-rings.js";
 import { depositionOrder } from "./strokes.js";
 import type { Point } from "./types.js";

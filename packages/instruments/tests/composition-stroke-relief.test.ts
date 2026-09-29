@@ -7,7 +7,7 @@ import {
   prepareInstrument, prepareStrokeRelief, reliefColors, reliefNormals, scaleWidths, shadeField, shadeRelief, shadeSlope, shadedPatch,
   sourceStrokes, strokeData, strokeFromGesture, strokeReliefComposition, strokeReliefProducts, strokeSet, strokeTones, strokesFromPaths,
   strokeWith, usesSeed, validateInstrument, visibleParameters, PATCH_ALPHA, SHADE_LEVELS,
-  type CompositionSurface, type DepositOptions, type StrokeData, type StrokeRelief, type StrokeReliefComposition, type StrokeSet,
+  type CompositionSurface, type ReliefDepositOptions as DepositOptions, type StrokeData, type StrokeRelief, type StrokeReliefComposition, type StrokeSet,
 } from "../dist/index.js";
 import { fillableRings, IsoField } from "../dist/composition/iso-rings.js";
 import { bristleBand, gesturePath } from "../dist/index.js";

@@ -363,3 +363,25 @@ test("each layout responds to every consequential mapping control", () => {
     assert.notEqual(drawnInput(input({ ...base, ...change })).join(), drawnInput(input(base)).join(), JSON.stringify([base, change]));
   }
 });
+
+test("column selects name the column each position resolves to in every table, and the stored values stay stable", () => {
+  const parameters = definition(ID).parameters;
+  const byKey = (key: string) => parameters.find((parameter) => parameter.key === key)!;
+  for (const key of ["timeBy", "sortBy", "looseBy", "areaBy", "levelBy", "sizeBy"]) {
+    const options = byKey(key).options!;
+    assert.deepEqual(options.map((option) => option.value).filter((value) => value !== "none"), ["first", "second", "third"], key);
+    options.filter((option) => option.value !== "none").forEach((option, slot) => {
+      const names = sampleIds.map((id) => sampleTable(id).columns.filter((column) => column.kind === "continuous")[slot].name);
+      // Harbour, orchard, loans, in bundled order.
+      for (const name of names) assert.ok(option.label.includes(name), `${key} ${option.value} label "${option.label}" names ${name}`);
+    });
+    for (const id of sampleIds) assert.ok(byKey(key).description.includes(sampleTable(id).title), `${key} description lists ${id}`);
+  }
+  for (const key of ["laneBy", "toneBy", "markRole", "fillRole", "groupBy"]) {
+    const options = byKey(key).options!.filter((option) => option.value !== "none");
+    assert.deepEqual(options.map((option) => option.value), ["first", "second"], key);
+    options.forEach((option, slot) => {
+      for (const id of sampleIds) assert.ok(option.label.includes(sampleTable(id).columns.filter((column) => column.kind === "categorical")[slot].name), `${key} ${option.value}`);
+    });
+  }
+});

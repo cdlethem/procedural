@@ -1,6 +1,7 @@
 import { componentSeed } from "./core.js";
-import { mapPressure } from "./gesture.js";
-import type { GesturePath, PressureMap } from "./gesture.js";
+import { mapPressure } from "./bristle.js";
+import type { PressureMap } from "./bristle.js";
+import type { GesturePath } from "./gesture.js";
 import type { Path, Point } from "./types.js";
 
 /**
