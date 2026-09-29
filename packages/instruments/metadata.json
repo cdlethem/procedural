@@ -388,6 +388,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "sand-deposition",
+      "title": "Sand Deposition",
+      "description": "Sand falls from a moving spline: its control points travel through time, grains are released along the curve and land with a delay, and their accumulated density is drawn as exposed grains, isolines, or both; a protected region stays empty and a sparse crisp copy of the generating curve can lie on top.",
+      "category": "Motion",
+      "operationIds": ["geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/sand-deposition.md",
+      "source": "packages/instruments/src/composition/deposition.ts",
+      "sourceEntry": "drawSandDeposition",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "data-scores",
       "title": "Data Scores",
       "description": "Let recorded values decide structure: three bundled tables with missing values become a lattice that drifts, a treemap with exact areas or a timeline, with explicit mappings and a small generated key.",
@@ -398,6 +411,19 @@
       "guide": "guides/data-scores.md",
       "source": "packages/instruments/src/composition/data-scores.ts",
       "sourceEntry": "drawDataScores",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "bundled-relations",
+      "title": "Bundled Relations",
+      "description": "Draw weighted relationships between grouped places as readable families of curves: edges share waypoints only when they join the same two groups, with bundle strength, hub depth, separation, a highlighted family and direction shown by color or arrows.",
+      "category": "Graphs",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/bundled-relations.md",
+      "source": "packages/instruments/src/composition/bundled-relations.ts",
+      "sourceEntry": "drawBundledRelations",
       "creativeReviewScope": "instrument-construction"
     },
     {
@@ -424,6 +450,19 @@
       "guide": "guides/crossing-lace.md",
       "source": "packages/instruments/src/composition/crossing-lace.ts",
       "sourceEntry": "drawCrossingLace",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "dry-bristles",
+      "title": "Dry Bristles",
+      "description": "Carry a broad brush of separate hairs along any path (harmonic traces, a contour family or a hand scribble): hairs lift on light pressure and paper tooth, run dry, taper at the ends and gather into tufts, while the other paths stay fine stitched contours.",
+      "category": "Fields & paths",
+      "operationIds": ["geometry.resample-polyline-2d", "field.gradient-noise-2d-01", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/dry-bristles.md",
+      "source": "packages/instruments/src/composition/dry-bristles.ts",
+      "sourceEntry": "drawDryBristles",
       "creativeReviewScope": "instrument-construction"
     },
     {

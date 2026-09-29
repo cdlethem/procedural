@@ -17,6 +17,8 @@ values; nothing is fetched or sampled live.
 | Orchard parcels | 30 parcels | year planted, area (ha), yield (t/ha) | crop (5), soil (3) | some yields and soils |
 | Library loans | 12 months × 3 genres | month, loans, late share | genre (3), season (4) | some late shares and seasons |
 
+Column selects (Time measure, Height measure, Size measure, Lanes, Color by, Form by, Fill by, Merge rows by, Sort by, Drift by, Area measure) list their options as, for example, "2nd numeric column (height · area · loans)": the names are that position's column in Harbour log, Orchard parcels and Library loans, in that order. The same position therefore means different things when you change the Table (2nd numeric is tide height, then parcel area, then monthly loans). The drawn key always names the column actually read.
+
 The tables are illustrative samples, fixed and deterministic. Binding your own recording or table to
 a Studio layer is future host work; called as a library function, `dataScoresComposition` and
 `drawDataScores` already accept any table you construct (see the end of this guide).
@@ -25,7 +27,7 @@ a Studio layer is future host work; called as a library function, `dataScoresCom
 
 | Controls | What changes on the canvas |
 |---|---|
-| **Table** | Which recorded table every mapping reads. Columns are addressed by position (first, second, third measure; first, second category), so any choice below works with any table. |
+| **Table** | Which recorded table every mapping reads. Column choices below are by position and their labels name the column each position is in every table, so any choice works with any table. |
 | **Time measure** | The measure that orders rows in time. It drives the window and, in a timeline, each mark's horizontal position. |
 | **Window start / length** | Keep only the rows inside a slice of the time measure's range. Rows outside vanish from everything, including merged groups. In a timeline the window fills the width, so a short window zooms in. |
 | **Missing values** | Ghost draws a pale ring (marks) or an outline (regions) where a mapped value is missing; gap draws nothing. Either way the row keeps its place, so nothing moves. A row without its time or area has no place and is always left out. |

@@ -170,6 +170,41 @@ inconsistencies the grouping workers noticed are not fixed here (e.g. `annular-m
 controls lack the conditions `profile-marks` has; `registered-screens` screen offsets are
 inconsistently conditional).
 
+## Program status (updated as waves land)
+
+**W1 structural discovery: built, on `main`, not closed.** Beyond the earlier entries (01, 03, 04,
+06, 07, 22, 27), seven more briefs are instruments with guides, tests and control groups:
+Branch Ornament (02), Graph Roles (05), Substitution Tilings (23), Optical Plates (28),
+Typographic Rhythm (39), Gesture Scores (40) and Data Scores (42). Each has its own doc
+`docs/composition-<name>.md` with frozen semantics, limits and review notes. Package tests: 277.
+
+Input contract frozen for briefs needing assets: the library defines typed, frozen, resolved
+values (`Recording`, `DataTable`, `TextSource`) that the direct API and typed descriptors accept,
+and each study ships bundled deterministic samples chosen by a validated select. Binding a user's
+own recording, table or text to a saved instrument is future host work.
+
+Real-interface review (isolated copy of the private app on a separate port, package preview built
+with `--allow-dirty`, `LayerControls` patched there to render `inspectorItems`): all seven new W1
+studies plus the seven earlier entries were operated through their actual controls with
+structural sweeps; defects found and fixed for Graph Roles (forest ran off canvas, route vanished
+across components, arrow hairballs), Branch Ornament (looped default, single-root two-lobe) and
+Data Scores (opaque column selects). Layered pairs were reviewed in both orders with unmodified
+instruments for all new studies. Latency through the real controls at large settings:
+27–391 ms per edit. Still open: Contour Scores with waves plus beads at default spacing clogs;
+extreme-limit and combined-setting review is partial; the real Studio (auth/backend) was not
+available, so layering used the host compositors' equivalent SVG surface, not Studio.
+
+Deduplication debts recorded from review: two graph types are now bridged by
+`graphFromBranchTree`; Recording versus Word Echo's recorded-control sampling are kept distinct
+with a typed adapter (rationale in the gesture doc); polygon clipping exists in plates,
+typographic rhythm and core and is being absorbed by the planar-domains foundation.
+
+Process note: the browser and Chromium review sessions for the first batches ran without the
+native render lease; later scripted Chromium runs use `tools/with_native_render_lock.py`.
+
+**W2 in flight** (separate branches): planar domains (F4), raster and image structure (F3), and
+briefs 10, 11, 12, 14, 38, 48. Brief 41 waits for the graph bridge. W3-W5 not started.
+
 ## Ownership and unchanged boundaries
 
 - Public library: computations, reusable technique composition, drawing/preparation,

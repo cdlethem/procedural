@@ -124,6 +124,29 @@ export function recordingData(recording: Recording): RecordingData {
     pressure: recording.pressure === null ? null : [...recording.pressure] };
 }
 
+/** The input shape of the core `sampleRecordedControls` operation (the recorded-control sampling Word Echo uses). */
+export interface RecordedControlsInput {
+  /** Seconds from the recording start; strictly increasing, first is 0. */
+  times: number[];
+  /** `x`, `y` and, only when the recording has one, `pressure`. */
+  channels: string[];
+  /** One row per time, one column per channel. */
+  samples: number[][];
+}
+/**
+ * A recording as the series `sampleRecordedControls` samples: the same raw samples, timebase converted
+ * from milliseconds to seconds relative to the first sample. An absent pressure channel is left out of
+ * `channels` (a mapping that names it fails with the core's INVALID_INPUT), never filled with 0 or 1.
+ * This is a one-way, lossless view: it is how a recording drives the core's linear/step control
+ * mappings. It cannot go the other way, because a control series has no positions.
+ */
+export function recordingControls(recording: Recording): RecordedControlsInput {
+  const channels = recording.pressure ? ["x", "y", "pressure"] : ["x", "y"];
+  const t0 = recording.t[0];
+  return { times: recording.t.map((value) => (value - t0) / 1000), channels,
+    samples: recording.t.map((_, i) => recording.pressure ? [recording.x[i], recording.y[i], recording.pressure[i]] : [recording.x[i], recording.y[i]]) };
+}
+
 const fingerprints = new WeakMap<Recording, string>();
 /** Content hash of every channel (64 bits, hex); cache keys use it, never the id alone. */
 export function recordingFingerprint(recording: Recording): string {
@@ -208,8 +231,8 @@ function slopes(h: number[], v: readonly number[], monotone: boolean): Float64Ar
   return m;
 }
 
-/** Sample the monotone Hermite reconstruction of `v(rel)` on the uniform grid `j * step`. */
-function reconstruct(rel: number[], v: readonly number[], count: number, step: number, monotone: boolean): Float64Array {
+/** Sample the piecewise-cubic Hermite reconstruction of `v(rel)` on the uniform grid `j * step` (`monotone` never leaves the data's range). */
+export function reconstruct(rel: number[], v: readonly number[], count: number, step: number, monotone: boolean): Float64Array {
   const n = rel.length, h = new Array<number>(n - 1);
   for (let i = 0; i < n - 1; i++) h[i] = rel[i + 1] - rel[i];
   const m = slopes(h, v, monotone), out = new Float64Array(count), duration = rel[n - 1];
