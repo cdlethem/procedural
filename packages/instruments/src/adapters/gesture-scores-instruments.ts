@@ -1,5 +1,6 @@
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
-import { MAX_GRAINS, MAX_HAIR_POINTS } from "../composition/gesture.js";
+import { MAX_HAIR_POINTS } from "../composition/bristle.js";
+import { MAX_GRAINS } from "../composition/gesture.js";
 import { bundledRecordingIds, bundledRecordingInfo } from "../composition/recording-samples.js";
 import { choice, numeric, toggle } from "./types.js";
 
