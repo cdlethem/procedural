@@ -231,8 +231,8 @@ function slopes(h: number[], v: readonly number[], monotone: boolean): Float64Ar
   return m;
 }
 
-/** Sample the monotone Hermite reconstruction of `v(rel)` on the uniform grid `j * step`. */
-function reconstruct(rel: number[], v: readonly number[], count: number, step: number, monotone: boolean): Float64Array {
+/** Sample the piecewise-cubic Hermite reconstruction of `v(rel)` on the uniform grid `j * step` (`monotone` never leaves the data's range). */
+export function reconstruct(rel: number[], v: readonly number[], count: number, step: number, monotone: boolean): Float64Array {
   const n = rel.length, h = new Array<number>(n - 1);
   for (let i = 0; i < n - 1; i++) h[i] = rel[i + 1] - rel[i];
   const m = slopes(h, v, monotone), out = new Float64Array(count), duration = rel[n - 1];

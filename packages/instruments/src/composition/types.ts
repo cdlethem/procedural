@@ -1,4 +1,5 @@
 import type { GraphComposition } from "./graph-draw.js";
+import type { CompartmentsComposition } from "./compartments-draw.js";
 import type { TypeRhythmComposition } from "./type-rhythm-draw.js";
 import type { PlatesRecipe } from "./plates.js";
 /** p5-compatible 2D drawing boundary. The host owns canvas creation and clearing. */
@@ -37,6 +38,8 @@ export interface Site {
    * use it instead of a per-site random hue so colour can carry structure.
    */
   readonly tone?: number;
+  /** Optional multiplier in [0, 1] on the stock mark's alpha; absent is 1 (see `exposeGrains`). */
+  readonly opacity?: number;
 }
 /** A lattice site keeps its exact grid origin and structural exception state. */
 export interface LatticeSite extends Site {
@@ -408,4 +411,5 @@ export type ReferenceComposition =
   | ({ kind: "graph" } & GraphComposition)
   | PlatesRecipe
   | ({ kind: "typography" } & TypeRhythmComposition)
+  | ({ kind: "compartments" } & CompartmentsComposition)
   | { kind: "tiling"; source: TilingOptions; view: TilingView; palette: readonly number[] };
