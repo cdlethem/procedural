@@ -414,6 +414,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "path-typography",
+      "title": "Path Typography",
+      "description": "Set a line of text along contours, a branch chain or a recorded hand stroke: letters keep their advance along the path and follow its direction, and are dropped, narrowed or turned where a tight bend would make them collide, or disrupted in correlated runs.",
+      "category": "Type",
+      "operationIds": ["geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d", "growth.space-colonization-step-2d", "geometry.chaikin-polyline-2d", "geometry.offset-polyline-2d", "field.gradient-noise-2d-01"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/path-typography.md",
+      "source": "packages/instruments/src/composition/path-type-draw.ts",
+      "sourceEntry": "drawPathTypography",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
