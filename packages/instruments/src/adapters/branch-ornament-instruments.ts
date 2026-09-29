@@ -1,6 +1,6 @@
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { attractorGrowthDefinitions, validateAttractorGrowth } from "./attractor-growth.js";
-import { growthParams } from "../composition/branch-tree.js";
+import { fitRoots, growthParams } from "../composition/branch-tree.js";
 import type { GrowthConstruction } from "../composition/branch-tree.js";
 import { choice, numeric, toggle } from "./types.js";
 
@@ -24,6 +24,8 @@ const select = (key: string, label: string, description: string, options: string
 const growthConditions: Record<string, Condition> = {
   band: { sourceMode: ["ring"] }, exclusion: { sourceMode: ["area", "two-lobe"] },
   lobeBias: { sourceMode: ["two-lobe"] }, lobeGap: { sourceMode: ["two-lobe"] },
+  rootCount: { rootPlacement: ["manual"] }, rootX: { rootPlacement: ["manual"] }, rootY: { rootPlacement: ["manual"] },
+  rootHeading: { rootPlacement: ["manual"] }, rootSpread: { rootPlacement: ["manual"] }, rootJitter: { rootPlacement: ["manual"] },
 };
 function growth(key: keyof GrowthConstruction): Parameter {
   const found = attractorGrowthDefinitions[0].parameters.find((parameter) => parameter.key === key);
@@ -66,6 +68,7 @@ const parameters: Parameter[] = [
   select("sourceMode", "Attractor footprint", "Area, annulus, or two unequal lobes: the region the branches grow toward.", ["area", "ring", "two-lobe"]),
   ...(["sourceCount", "disorder", "exclusion", "band", "lobeGap", "lobeBias"] as const).map(growth),
   ...(["centerX", "centerY", "extent", "aspect", "direction"] as const).map(growth),
+  select("rootPlacement", "Root placement", "Auto puts one root below an area or ring and one under each lobe of a two-lobe footprint, so the growth reaches all of it. Manual exposes every root control.", ["auto", "manual"]),
   ...(["rootCount", "rootX", "rootY", "rootHeading", "rootSpread", "rootJitter"] as const).map(growth),
   ...(["ticks", "step", "reach", "branches", "branchSpread"] as const).map(growth),
 
@@ -102,7 +105,7 @@ const parameters: Parameter[] = [
 const controlGroups: ControlGroup[] = [
   { label: "Attractors", controls: ["sourceMode", "sourceCount", "disorder", "exclusion", "band", "lobeGap", "lobeBias"] },
   { label: "Placement", controls: ["centerX", "centerY", "extent", "aspect", "direction"] },
-  { label: "Roots", controls: ["rootCount", "rootX", "rootY", "rootHeading", { label: "Spread", controls: ["rootSpread", "rootJitter"], proportional: true }] },
+  { label: "Roots", controls: ["rootPlacement", "rootCount", "rootX", "rootY", "rootHeading", { label: "Spread", controls: ["rootSpread", "rootJitter"], proportional: true }] },
   { label: "Growth", controls: ["ticks", { label: "Reach", controls: ["step", "reach"], proportional: true },
     { label: "Branching", controls: ["branches", "branchSpread"] }] },
   { label: "Branches", controls: ["routing", "edgeMaterial", "edgeWeight", "edgeFalloff",
@@ -118,7 +121,8 @@ const controlGroups: ControlGroup[] = [
 
 /** The growth controls of these values must respect the Attractor Growth domains and work budget. */
 export function validateBranchOrnament(params: Record<string, number | string | boolean>): void {
-  validateAttractorGrowth(growthParams(params as unknown as GrowthConstruction));
+  const construction = params as unknown as GrowthConstruction;
+  validateAttractorGrowth(growthParams(params.rootPlacement === "auto" ? { ...construction, ...fitRoots(construction) } : construction));
 }
 
 export const branchOrnamentDefinitions: InstrumentDefinition[] = [{
@@ -127,18 +131,18 @@ export const branchOrnamentDefinitions: InstrumentDefinition[] = [{
   renderer: "2d",
   parameters, controlGroups,
   defaults: {
-    sourceMode: "area", sourceCount: 70, disorder: .6, exclusion: .1, band: .18, lobeGap: .3, lobeBias: .62,
-    centerX: 320, centerY: 240, extent: 380, aspect: 1.1, direction: 0,
-    rootCount: 1, rootX: 320, rootY: 540, rootHeading: 0, rootSpread: 0, rootJitter: 0,
+    sourceMode: "area", sourceCount: 90, disorder: .6, exclusion: .1, band: .18, lobeGap: .15, lobeBias: .5,
+    centerX: 320, centerY: 250, extent: 420, aspect: 1, direction: 0,
+    rootPlacement: "auto", rootCount: 1, rootX: 320, rootY: 540, rootHeading: 0, rootSpread: 0, rootJitter: 0,
     ticks: 34, step: 11, reach: 16, branches: 2, branchSpread: 40,
     routing: "smooth", edgeMaterial: "ink", edgeWeight: 3.2, edgeFalloff: .82, edgeSpacing: 8, edgePhase: .35, edgePhaseSpread: 0,
     edgeMinDepth: 0, edgeMaxDepth: 48, edgeRetention: 1,
-    outlineWidth: 6, outlineFalloff: .8, outlineTaper: .9, outlineWeight: .8,
-    marksFollowBranches: true, angleInheritance: 1, sizeFalloff: .35, variation: .3, ornamentRetention: 1,
-    terminalMark: "rosette", terminalMinDepth: 0, terminalMaxDepth: 48, terminalOffset: 5, terminalSize: 22, terminalWeight: 1.1, terminalPetals: 7, terminalOpening: .25,
+    outlineWidth: 3, outlineFalloff: .7, outlineTaper: 1, outlineWeight: .7,
+    marksFollowBranches: true, angleInheritance: 1, sizeFalloff: .35, variation: .45, ornamentRetention: 1,
+    terminalMark: "rosette", terminalMinDepth: 0, terminalMaxDepth: 48, terminalOffset: 5, terminalSize: 20, terminalWeight: 1.1, terminalPetals: 7, terminalOpening: .25,
     forkMark: "dot", forkMinDepth: 0, forkMaxDepth: 48, forkOffset: 0, forkSize: 5, forkWeight: 1, forkPetals: 6, forkOpening: .3,
     trunkMark: "rings", trunkOffset: 0, trunkSize: 12, trunkWeight: 1.2, trunkPetals: 6, trunkOpening: .4,
-    flankMark: "arrow", flankMinDepth: 0, flankMaxDepth: 2, flankOffset: 6, flankSize: 13, flankWeight: 1, flankPetals: 5, flankOpening: .3,
+    flankMark: "arrow", flankMinDepth: 0, flankMaxDepth: 1, flankOffset: 6, flankSize: 12, flankWeight: 1, flankPetals: 5, flankOpening: .3,
     flankSpacing: 24, flankSides: "alternate", flankAngle: 50,
   },
   validate: validateBranchOrnament,

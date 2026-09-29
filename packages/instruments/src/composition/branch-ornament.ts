@@ -3,7 +3,7 @@ import type { InstrumentInput } from "../types.js";
 import { validateParameterValues } from "../parameter-validation.js";
 import { atEach, createCompositionRun, strokeWith } from "./core.js";
 import { motif, pathMaterial } from "./materials.js";
-import { attachmentSites, branchOutline, branchTree, prepareBranchTree, visibleEdges } from "./branch-tree.js";
+import { attachmentSites, branchOutline, branchTree, fitRoots, prepareBranchTree, visibleEdges } from "./branch-tree.js";
 import type { AttachmentOptions, AttachmentRole, BranchTreeOptions, BranchVisibility, OutlineShape } from "./branch-tree.js";
 import type { CompositionRun, CompositionSurface, Mark, MotifSpec, PathMaterial, PathMaterialSpec } from "./types.js";
 
@@ -81,14 +81,18 @@ export function branchOrnamentComposition(input: InstrumentInput): BranchOrnamen
     ornaments.push({ mark: markSpec(q, role), attach });
   }
   const outlineWeight = q.outlineWeight as number, outlineWidth = q.outlineWidth as number;
+  const roots = q.rootPlacement === "auto"
+    ? fitRoots({ sourceMode: q.sourceMode as BranchTreeOptions["sourceMode"], extent: q.extent as number, aspect: q.aspect as number,
+      direction: q.direction as number, centerX: q.centerX as number, centerY: q.centerY as number, lobeGap: q.lobeGap as number })
+    : { rootCount: q.rootCount as number, rootSpread: q.rootSpread as number, rootJitter: q.rootJitter as number,
+      rootX: q.rootX as number, rootY: q.rootY as number, rootHeading: q.rootHeading as number };
   return {
     kind: "branch-ornament", palette: [...input.palette],
     tree: { seed: input.seed, routing: q.routing as BranchTreeOptions["routing"],
       sourceCount: q.sourceCount as number, sourceMode: q.sourceMode as BranchTreeOptions["sourceMode"], extent: q.extent as number,
       aspect: q.aspect as number, direction: q.direction as number, centerX: q.centerX as number, centerY: q.centerY as number,
       disorder: q.disorder as number, exclusion: q.exclusion as number, band: q.band as number, lobeGap: q.lobeGap as number,
-      lobeBias: q.lobeBias as number, rootCount: q.rootCount as number, rootSpread: q.rootSpread as number,
-      rootJitter: q.rootJitter as number, rootX: q.rootX as number, rootY: q.rootY as number, rootHeading: q.rootHeading as number,
+      lobeBias: q.lobeBias as number, ...roots,
       ticks: q.ticks as number, step: q.step as number, reach: q.reach as number, branches: q.branches as number,
       branchSpread: q.branchSpread as number },
     visibility,

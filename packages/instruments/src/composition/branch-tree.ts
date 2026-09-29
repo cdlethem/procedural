@@ -143,6 +143,23 @@ const GROWTH_KEYS = ["sourceCount", "sourceMode", "extent", "aspect", "direction
 const ROUTINGS: readonly string[] = ["grown", "smooth", "straight", "octilinear"];
 const treeCache = new Map<string, BranchTree>();
 
+export type RootFit = Pick<GrowthConstruction, "rootCount" | "rootSpread" | "rootJitter" | "rootX" | "rootY" | "rootHeading">;
+/**
+ * Roots that suit a footprint: one root centred below an area or ring, one root under each lobe
+ * of a two-lobe footprint (so both lobes are reached, instead of growth stopping in the nearer
+ * one). The root line follows the footprint's direction; the root row sits `gap` canvas units
+ * below the footprint's lowest point (at most y = 600) and has no jitter. Deterministic in the
+ * footprint alone; it never reads growth settings, so it cannot change what the footprint holds.
+ */
+export function fitRoots(c: Pick<GrowthConstruction, "sourceMode" | "extent" | "aspect" | "direction" | "centerX" | "centerY" | "lobeGap">, gap = 70): RootFit {
+  const theta = c.direction * Math.PI / 180, r = c.extent / 2, two = c.sourceMode === "two-lobe";
+  const semiX = two ? r * (1 - c.lobeGap) / 2 : r, semiY = semiX * c.aspect;
+  const lift = two ? Math.abs(r * (1 + c.lobeGap) / 2 * Math.sin(theta)) : 0;
+  const bottom = c.centerY + lift + Math.hypot(semiX * Math.sin(theta), semiY * Math.cos(theta));
+  return { rootCount: two ? 2 : 1, rootSpread: two ? r * (1 + c.lobeGap) : 0, rootJitter: 0, rootX: c.centerX,
+    rootY: Math.min(600, bottom + gap), rootHeading: c.direction };
+}
+
 /** Growth parameters in the attractor study's own vocabulary; drawing-only keys take its defaults. */
 export function growthParams(options: GrowthConstruction): Record<string, number | string | boolean> {
   const q: Record<string, number | string | boolean> = { ...attractorGrowthDefinitions[0].defaults };
@@ -178,13 +195,41 @@ export function forkAxis(arriving: Vector, outgoing: readonly Vector[]): number 
   return Math.hypot(x, y) >= FORK_RESULTANT ? Math.atan2(y, x) : Math.atan2(arriving[1], arriving[0]);
 }
 
+/**
+ * Cut every self-crossing loop out of a polyline: when segment j properly crosses an earlier
+ * segment i (j > i + 1), the vertices between them are replaced by the crossing point. The first
+ * and last points are unchanged, and the result crosses itself nowhere.
+ */
+export function removeLoops(points: readonly Point[]): readonly Point[] {
+  let line = points.map((p) => [p[0], p[1]] as Point);
+  for (let again = true; again;) {
+    again = false;
+    search: for (let j = 3; j < line.length; j++) {
+      const [p3x, p3y] = line[j - 1], [p4x, p4y] = line[j];
+      for (let i = 0; i < j - 2; i++) {
+        const [p1x, p1y] = line[i], [p2x, p2y] = line[i + 1];
+        const d = (p2x - p1x) * (p4y - p3y) - (p2y - p1y) * (p4x - p3x);
+        if (d === 0) continue;
+        const t = ((p3x - p1x) * (p4y - p3y) - (p3y - p1y) * (p4x - p3x)) / d;
+        const u = ((p3x - p1x) * (p2y - p1y) - (p3y - p1y) * (p2x - p1x)) / d;
+        if (t <= 0 || t >= 1 || u <= 0 || u >= 1) continue;
+        line = [...line.slice(0, i + 1), [p1x + t * (p2x - p1x), p1y + t * (p2y - p1y)] as Point, ...line.slice(j)];
+        again = true;
+        break search;
+      }
+    }
+  }
+  return line;
+}
+
 function route(points: readonly Point[], routing: BranchRouting, id: string, seed: number): readonly Point[] {
   if (routing === "grown") return points;
   const a = points[0], b = points[points.length - 1];
   if (routing === "straight") return [a, b];
   if (routing === "smooth") {
-    // Two rounds of corner cutting; the ends and their directions are kept.
-    let line = points;
+    // Loops are cut out first (a run never crosses itself), then two rounds of corner cutting;
+    // the ends and their directions are kept.
+    let line = removeLoops(points);
     for (let round = 0; round < 2 && line.length > 2; round++) {
       const cut: Point[] = [line[0]];
       for (let i = 0; i < line.length - 1; i++) {

@@ -48,8 +48,8 @@ export type { FootprintSpec, MaskSource, MaskSpec, SupportSpec, Support, Ring } 
 export { opticalPlates, makePlate, plateFrames, drawPlate, drawPlatesRecipe } from "./composition/plates.js";
 export type { OpticalPlates, OpticalPlatesOptions, Plate, PlateFrame, PlateOptions, PlateConsumers, PlateInk, PlatesRecipe, Registration } from "./composition/plates.js";
 export type { AttachmentOptions, AttachmentRole, AttachmentSite, BranchEdge, BranchNode, BranchRole, BranchRouting, BranchTree, BranchTreeOptions,
-  BranchVisibility, FlankSides, GrowthConstruction, OutlineOptions, OutlineShape } from "./composition/branch-tree.js";
-export { attachmentSites, branchOutline, branchTree, forkAxis, inheritAngle, visibleEdges } from "./composition/branch-tree.js";
+  BranchVisibility, FlankSides, GrowthConstruction, OutlineOptions, OutlineShape, RootFit } from "./composition/branch-tree.js";
+export { attachmentSites, branchOutline, branchTree, fitRoots, forkAxis, inheritAngle, removeLoops, visibleEdges } from "./composition/branch-tree.js";
 export type { BranchConsumers, BranchOrnamentComposition } from "./composition/branch-ornament.js";
 export { branchOrnamentComposition, drawBranchOrnament, prepareBranchOrnament } from "./composition/branch-ornament.js";
 export type {

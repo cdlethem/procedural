@@ -3,8 +3,9 @@
 Grow a branching tree, then decorate it by what each part of it is. Blossoms open at the tips,
 small joints sit where the branches fork, a ring marks the base, and pennants or leaves line the
 stems, each with its own size, offset and angle. A separate ribbon outline follows the same tree.
-The starting picture is a bare, wandering tree in ink with tapered stems, gold rosettes at its
-tips, red dots at its forks and a row of arrows up the trunk; a new seed grows a different tree.
+The starting picture is a fine, airy tree in ink with a thin ribbon outline that narrows to a point
+on every branch, gold rosettes at its tips, red dots at its forks and a few arrows up the trunk;
+a new seed grows a different tree.
 
 The tree itself comes from the attractor growth used by Attractor Growth: tips chase the nearest
 unclaimed target point in a footprint you place, and split when they reach one. Everything
@@ -29,7 +30,8 @@ branch: the trunk is 0 and both children of a fork are one deeper.
 |---|---|
 | **Attractor footprint**, **Attractors**, **Source disorder**, **Center exclusion**, **Ring thickness**, **Lobe separation / Left lobe share** | The region the branches grow toward and how many targets it holds. An area fills a blob, a ring makes a wreath with an open middle, two lobes make growth cross from one cluster to the other. Disorder loosens the regular angular spacing of the targets. |
 | **Placement** (Source X/Y, extent, aspect, direction) | Position, size and tilt of the footprint. |
-| **Roots** (count, X/Y, heading, spread, jitter) | Where growth starts. Several roots grow separate trees that compete for the same targets. |
+| **Root placement** | **Auto** starts one root centred under an area or ring and one under each lobe of a two-lobe footprint, on the footprint's own direction, so growth reaches all of it whatever footprint you choose. **Manual** shows the root controls below. |
+| **Roots** (count, X/Y, heading, spread, jitter) | Manual only. Where growth starts; several roots grow separate trees that compete for the same targets. |
 | **Growth ticks** | How long the tree grows. A short run leaves tips spread around a frontier; running to exhaustion piles the last tips onto the last targets. This is the strongest control for sparse or full trees. |
 | **Growth step**, **Consumption distance** | Length of each growth increment and how close a tip must come to claim a target. Larger steps make angular, open trees; smaller steps follow targets closely. |
 | **Branches per tip**, **Branch spread** | How many branches leave a claimed target and how widely they diverge. One branch per tip gives a single vine with no forks. |
@@ -38,7 +40,7 @@ branch: the trunk is 0 and both children of a fork are one deeper.
 
 | Controls | What changes on the canvas |
 |---|---|
-| **Branch routing** | **Grown** keeps every growth vertex, **smooth** rounds the corners, **straight** joins junction to junction, **octilinear** routes each branch with a single 45° elbow for a circuit-board look. The tree and its junctions do not move. |
+| **Branch routing** | **Grown** keeps every growth vertex, **smooth** cuts out any loop a branch makes crossing itself and then rounds the corners, **straight** joins junction to junction, **octilinear** routes each branch with a single 45° elbow for a circuit-board look. The tree and its junctions do not move. |
 | **Branch material** | Continuous ink, tangent stitches, or none (leave only the outline and marks). |
 | **Branch weight**, **Weight falloff** | Trunk stroke width and how quickly it thins with each fork. |
 | **Stitch spacing / phase / cross-branch phase** | Stitch rhythm along each branch. |
@@ -67,7 +69,8 @@ beyond the tip or a flank mark away from the stem, negative pulls it back.
 - **Stitched vine:** *Branch material* stitch, small ring flank marks in mirrored pairs on the first few depths, dot tips.
 - **Blades:** *Branch material* none, outline half-width 9, taper 1, no marks.
 - **Constellation:** *Branch material* none, no outline: only tips, junctions and base marks remain, hanging where the tree put them.
-- **Wreath:** Attractor footprint ring, several roots along the bottom, ring marks at the tips.
+- **Wreath:** Attractor footprint ring, *Growth ticks* 60, ring marks at the tips: two arms grow around the ring toward the top.
+- **Two clusters:** Attractor footprint two-lobe: *Root placement* auto starts one root under each lobe, so both fill.
 
 ## Use the pieces in code
 

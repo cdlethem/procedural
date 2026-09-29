@@ -54,7 +54,8 @@ Nothing about the marks, materials, outline or palette can regrow the tree.
   roles from the visible edges: a node needs its arriving edge visible; no visible child is a
   pruned end and becomes a `terminal` framed by its heading; one is a bend (no site); two or more
   a `fork`, re-framed from the remaining branches. Off, marks ignore visibility.
-- **Routing.** `grown`, `smooth` (two Chaikin rounds, ends and end directions kept), `straight`,
+- **Routing.** `grown`, `smooth` (loops cut out at their crossings, then two Chaikin rounds; ends
+  and end directions kept, no self-crossing), `straight`,
   `octilinear` (one 45° elbow, order chosen from the edge id). Endpoints, ids and topology are
   unchanged.
 - **Limits.** Growth keeps its own budget (2048 tips, 16,000 segments, 1.8 M tip–attractor
@@ -106,7 +107,20 @@ stitched vine, blades, constellation, pruned fragments, dense). Defects found an
 - one shared eligible-depth window forced the same depths for blossoms, joints and pennants:
   windows are per role.
 
+Root-review revision (real-interface findings): the default was a tangle of doubled outline and
+pinched loops. Fixes: `smooth` routing first cuts every self-crossing loop out of a run
+(`removeLoops`, a run never crosses itself; property-tested over random polylines and six seeds);
+the default outline is now a thin blade ribbon (half-width 3, falloff .7, taper 1, weight .7) that
+no longer doubles the ink; defaults are 90 attractors, extent 420, growth stopped at 34 ticks
+(more ticks pile tips into a nest). Two-lobe growth reached only the nearer lobe because one
+root's front never crossed the gap: *Root placement* (auto by default) now derives roots from the
+footprint (`fitRoots`: one below an area or ring, one under each lobe, on the footprint's direction,
+70 units below its lowest point, at most y = 600). Manual keeps all root controls, which are hidden
+in auto and change nothing there.
+
 Open: terminal marks cluster where several tips converge on one attractor (growth behaviour;
-size/variation/retention soften it); outline ribbons are separate strokes, so a child's flat base
-shows as a small notch at a fork when taper is 1; two-lobe growth crosses the gap as a long
-parallel bundle. Not exercised: the real Studio controls, layered compositions, both layer orders.
+size/variation/retention soften it); some seeds start toward a far attractor and grow a lopsided
+tree (seed diversity, not smoothed); a ring needs about 60 ticks to close; lobes fill less area
+than an area footprint of the same width. Outline ribbons are separate strokes, so a child's flat
+base shows a small notch at a fork when taper is 1. Not exercised: the real Studio controls,
+layered compositions, both layer orders.

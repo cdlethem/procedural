@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   atEach, attachmentSites, branchOrnamentComposition, branchOutline, branchTree, canPrepareInstrument, componentSeed,
-  createInstrument, drawBranchOrnament, forkAxis, inheritAngle, motif, pathMaterial, prepareInstrument, strokeWith, visibleEdges,
+  createInstrument, drawBranchOrnament, fitRoots, forkAxis, inheritAngle, motif, pathMaterial, prepareInstrument, removeLoops, strokeWith, visibleEdges,
   type AttachmentOptions, type BranchOrnamentComposition, type BranchTree, type BranchTreeOptions, type CompositionSurface, type Site,
 } from "../dist/index.js";
 import { growthModel } from "../dist/adapters/attractor-growth.js";
@@ -136,6 +136,88 @@ test("routing changes edge geometry between the same nodes", () => {
     assert.deepEqual([...smooth.edges[i].points[0]], [...grown.edges[i].points[0]]);
     assert.deepEqual([...smooth.edges[i].points.at(-1)!], [...grown.edges[i].points.at(-1)!]);
   }
+});
+
+/** Independent proper-crossing test between segments (p1,p2) and (p3,p4). */
+const crosses = (p1: readonly number[], p2: readonly number[], p3: readonly number[], p4: readonly number[]) => {
+  const side = (a: readonly number[], b: readonly number[], c: readonly number[]) => Math.sign((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]));
+  return side(p1, p2, p3) * side(p1, p2, p4) < 0 && side(p3, p4, p1) * side(p3, p4, p2) < 0;
+};
+const selfCrossings = (line: readonly (readonly [number, number])[]) => {
+  let count = 0;
+  for (let i = 0; i < line.length - 1; i++) for (let j = i + 2; j < line.length - 1; j++)
+    if (crosses(line[i], line[i + 1], line[j], line[j + 1])) count++;
+  return count;
+};
+
+test("removeLoops cuts a loop at its crossing and keeps both ends", () => {
+  const line = [[0, 0], [10, 0], [10, 10], [5, 10], [5, -5], [20, -5]] as const;
+  assert.equal(selfCrossings(line), 1);
+  const cut = removeLoops(line);
+  assert.deepEqual(cut.map((p) => [...p]), [[0, 0], [5, 0], [5, -5], [20, -5]]);
+  const open = [[0, 0], [4, 1], [8, 0], [12, 3]] as const;
+  assert.deepEqual(removeLoops(open).map((p) => [...p]), open.map((p) => [...p]));
+  // Two loops in one run, and a double crossing, all resolve: no crossings remain, ends kept, never longer.
+  let state = 12345;
+  const next = () => (state = (state * 1664525 + 1013904223) >>> 0) / 0x1_0000_0000;
+  const length = (points: readonly (readonly [number, number])[]) => points.slice(1).reduce((sum, p, i) => sum + Math.hypot(p[0] - points[i][0], p[1] - points[i][1]), 0);
+  let cutSome = 0;
+  for (let trial = 0; trial < 200; trial++) {
+    const random = Array.from({ length: 4 + Math.floor(next() * 12) }, () => [next() * 100, next() * 100] as const);
+    const result = removeLoops(random);
+    assert.equal(selfCrossings(result), 0);
+    assert.deepEqual([...result[0]], [...random[0]]);
+    assert.deepEqual([...result.at(-1)!], [...random.at(-1)!]);
+    assert.ok(length(result) <= length(random) + 1e-9);
+    if (selfCrossings(random) > 0) cutSome++;
+  }
+  assert.ok(cutSome > 100, "the property was exercised on crossing polylines");
+});
+
+test("smooth routing never lets a run cross itself, and only the loops are removed from the grown run", () => {
+  let grownCrossings = 0;
+  for (const seed of [42, 7, 19, 3, 11, 23]) {
+    const grown = branchTree({ ...options({ routing: "grown", ticks: 46 }), seed }), smooth = branchTree({ ...options({ routing: "smooth", ticks: 46 }), seed });
+    grown.edges.forEach((item, i) => {
+      grownCrossings += selfCrossings(item.points);
+      assert.equal(selfCrossings(smooth.edges[i].points), 0, `${item.id} of seed ${seed}`);
+      assert.deepEqual([...smooth.edges[i].points[0]], [...item.points[0]]);
+      assert.deepEqual([...smooth.edges[i].points.at(-1)!], [...item.points.at(-1)!]);
+    });
+  }
+  assert.ok(grownCrossings > 0, "grown edges do loop, so the rule is doing work");
+});
+
+test("auto roots fit the footprint: one under an area or ring, one under each lobe, along its direction", () => {
+  const area = fitRoots({ sourceMode: "area", extent: 400, aspect: 1.5, direction: 0, centerX: 300, centerY: 200, lobeGap: .3 });
+  assert.deepEqual(area, { rootCount: 1, rootSpread: 0, rootJitter: 0, rootX: 300, rootY: 200 + 300 + 70, rootHeading: 0 });
+  // Turned a quarter, the footprint's vertical half-extent is its width's radius.
+  near(fitRoots({ sourceMode: "ring", extent: 400, aspect: 1.5, direction: 90, centerX: 300, centerY: 200, lobeGap: 0 }).rootY, 200 + 200 + 70, 1e-9);
+  const lobes = fitRoots({ sourceMode: "two-lobe", extent: 400, aspect: 1, direction: 0, centerX: 300, centerY: 200, lobeGap: .5 });
+  assert.equal(lobes.rootCount, 2);
+  near(lobes.rootSpread, 200 * 1.5, 1e-9);
+  near(lobes.rootY, 200 + 200 * .5 / 2 + 70, 1e-9);
+  assert.equal(fitRoots({ sourceMode: "area", extent: 1000, aspect: 1, direction: 0, centerX: 300, centerY: 500, lobeGap: 0 }).rootY, 600);
+  assert.equal(fitRoots({ sourceMode: "two-lobe", extent: 400, aspect: 1, direction: 30, centerX: 300, centerY: 200, lobeGap: .3 }).rootHeading, 30);
+});
+
+test("root placement: auto reaches both lobes and ignores the manual root controls; manual uses them", () => {
+  const input = createInstrument("branch-ornament");
+  Object.assign(input.params, { sourceMode: "two-lobe", lobeGap: .3 });
+  const auto = branchOrnamentComposition(input);
+  assert.equal(auto.tree.rootCount, 2);
+  const tree = branchTree(auto.tree);
+  const ends = tree.nodes.filter((item) => item.role === "terminal");
+  assert.ok(ends.some((item) => item.position[0] < 320 - 20) && ends.some((item) => item.position[0] > 320 + 20), "growth reaches both lobes");
+  const other = createInstrument("branch-ornament");
+  Object.assign(other.params, { sourceMode: "two-lobe", lobeGap: .3, rootX: 50, rootY: 20, rootCount: 5, rootSpread: 3, rootHeading: 77, rootJitter: 9 });
+  assert.deepEqual(branchOrnamentComposition(other).tree, auto.tree, "hidden manual values change nothing in auto");
+  const manual = createInstrument("branch-ornament");
+  Object.assign(manual.params, { rootPlacement: "manual", rootCount: 3, rootSpread: 150, rootX: 200, rootY: 500, rootHeading: 10, rootJitter: 0 });
+  const tree3 = branchOrnamentComposition(manual).tree;
+  assert.deepEqual([tree3.rootCount, tree3.rootSpread, tree3.rootX, tree3.rootY, tree3.rootHeading], [3, 150, 200, 500, 10]);
+  Object.assign(manual.params, { rootCount: 2, rootSpread: 0 });
+  assert.throws(() => branchOrnamentComposition(manual), /positive root spread/);
 });
 
 test("a fork frame is defined even when its outgoing edges nearly cancel", () => {
