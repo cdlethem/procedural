@@ -101,7 +101,7 @@ const track = gestureTrack(recording, { smoothing: 30, frame: { centerX: 320, ce
 const window = { start: 0, end: recording.duration };
 const pressure = { source: "recorded", whenAbsent: "speed", level: 0.5 };   // what a missing channel means is your choice
 const path = gesturePath(track, { seed: 1, sampling: { kind: "arc", spacing: 2 }, window, pressure });
-const hairs = bristleBand(path, { seed: 1, hairs: 40, width: 60, map: { floor: 0.2, curve: 1 }, dryness: 0.5, depletion: 0.5, wander: 0.2 });
+const hairs = bristleBand(path, { hairs: 40, width: 60, map: { floor: 0.2, curve: 1 }, dryness: 0.5, depletion: 0.5, wander: 0.2 });
 
 strokeWith(p, hairs, pathMaterial({ kind: "ink", weight: 1.2, spacing: 4, phase: 0, phaseSpread: 0, levelRamp: 0, retention: 1,
   mark: { kind: "dot", size: 1, petals: 6, opening: 0, weight: 1, rotation: 0, variation: 0, retention: 1 } }, [0x222222]));

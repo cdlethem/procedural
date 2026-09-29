@@ -287,6 +287,13 @@ export function textOutlines(content: string): number[][][] {
   return contours;
 }
 
+/** One printable ASCII glyph of the same licensed font `textOutlines` reads: advance width and closed
+ *  contours in font units, origin at the pen position, y down from the baseline. Read-only. */
+export function fontGlyph(letter: string): { readonly advance: number; readonly contours: readonly (readonly (readonly number[])[])[] } {
+  if (!/^[\x20-\x7E]$/.test(letter)) throw new Error("The glyph font supports only printable ASCII (U+0020–U+007E)");
+  return glyphs[letter];
+}
+
 export function wordEchoSource(params: Layer["params"]): Point[][] {
   validateWordEcho(params);
   const centerX = params.centerX as number, centerY = params.centerY as number;
