@@ -648,6 +648,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "outline-type",
+      "title": "Outline Type",
+      "description": "Set large type as regions and fill each letter with another technique, exactly clipped to its outline with the counters kept open: hatching, waves, rings, contour rings, dot lattices, washes or a different technique per letter. Halos, insets and shadows come from exact offsets, and a correlated field can displace the letters first.",
+      "category": "Type",
+      "operationIds": ["field.gradient-noise-2d-01"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/outline-type.md",
+      "source": "packages/instruments/src/composition/outline-type-draw.ts",
+      "sourceEntry": "drawOutlineType",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
