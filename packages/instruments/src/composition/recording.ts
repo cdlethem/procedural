@@ -124,6 +124,29 @@ export function recordingData(recording: Recording): RecordingData {
     pressure: recording.pressure === null ? null : [...recording.pressure] };
 }
 
+/** The input shape of the core `sampleRecordedControls` operation (the recorded-control sampling Word Echo uses). */
+export interface RecordedControlsInput {
+  /** Seconds from the recording start; strictly increasing, first is 0. */
+  times: number[];
+  /** `x`, `y` and, only when the recording has one, `pressure`. */
+  channels: string[];
+  /** One row per time, one column per channel. */
+  samples: number[][];
+}
+/**
+ * A recording as the series `sampleRecordedControls` samples: the same raw samples, timebase converted
+ * from milliseconds to seconds relative to the first sample. An absent pressure channel is left out of
+ * `channels` (a mapping that names it fails with the core's INVALID_INPUT), never filled with 0 or 1.
+ * This is a one-way, lossless view: it is how a recording drives the core's linear/step control
+ * mappings. It cannot go the other way, because a control series has no positions.
+ */
+export function recordingControls(recording: Recording): RecordedControlsInput {
+  const channels = recording.pressure ? ["x", "y", "pressure"] : ["x", "y"];
+  const t0 = recording.t[0];
+  return { times: recording.t.map((value) => (value - t0) / 1000), channels,
+    samples: recording.t.map((_, i) => recording.pressure ? [recording.x[i], recording.y[i], recording.pressure[i]] : [recording.x[i], recording.y[i]]) };
+}
+
 const fingerprints = new WeakMap<Recording, string>();
 /** Content hash of every channel (64 bits, hex); cache keys use it, never the id alone. */
 export function recordingFingerprint(recording: Recording): string {

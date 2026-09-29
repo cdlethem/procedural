@@ -25,6 +25,10 @@ import { gestureScoresDefinitions } from "./adapters/gesture-scores-instruments.
 import { drawGestureScore, gestureScoreComposition, prepareGestureScore } from "./composition/gesture-scores.js";
 import { dataScoresDefinition } from "./adapters/data-scores-instrument.js";
 import { dataScoresComposition, dataScoresUsesSeed, drawDataScores, prepareDataScores } from "./composition/data-scores.js";
+import { bundledRelationsDefinition } from "./adapters/bundled-relations-instrument.js";
+import { bundledRelationsComposition, bundledRelationsUsesSeed, drawBundledRelations, prepareBundledRelations } from "./composition/bundled-relations.js";
+import { dryBristlesDefinition } from "./adapters/dry-bristles-instrument.js";
+import { drawDryBristles, dryBristlesComposition, prepareDryBristles } from "./composition/dry-bristles.js";
 import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
@@ -42,7 +46,7 @@ export { poissonSites, contourPaths, partitionRegions, wallpaperSites, wallpaper
 export { warpPoint, warpSites, warpPaths, mapNames } from "./composition/warp.js";
 export { motif, pathMaterial, regionFill } from "./composition/materials.js";
 export { referenceComposition, drawReferenceComposition, prepareReferenceComposition } from "./composition/reference.js";
-export { graphFromParts, withDirection, contactGraph, latticeGraph, branchGraph, selectGraph, nearestNode, connectedNodes, graphRoute, planarFaces,
+export { graphFromParts, graphFromBranchTree, withDirection, contactGraph, latticeGraph, branchGraph, selectGraph, nearestNode, connectedNodes, graphRoute, planarFaces,
   edgePaths, nodeSites, edgeMarkers, nodeFraction, edgeFraction, MAX_GRAPH_NODES, MAX_GRAPH_EDGES } from "./composition/graph.js";
 export type { Graph, GraphNode, GraphEdge, GraphStats, GraphParts, GraphRoleOptions, GraphView, GraphRoute, GraphFace, FaceExtraction,
   RouteMode, RouteMetric, RouteOptions, GraphAttribute, ContactGraphOptions, LatticeGraphOptions, BranchGraphOptions } from "./composition/graph.js";
@@ -61,11 +65,16 @@ export type { BranchConsumers, BranchOrnamentComposition } from "./composition/b
 export { branchOrnamentComposition, drawBranchOrnament, prepareBranchOrnament } from "./composition/branch-ornament.js";
 export type { RecordingData, Recording, GestureFrame, TrackOptions, GestureTrack, EchoOptions, PressureSource, PressurePolicy, ResolvedPressure,
   TimeWindow, StationRule, Stations } from "./composition/recording.js";
-export { createRecording, recordingData, recordingFingerprint, gestureTrack, echoTrack, resolvePressure, speedPressure, stations, countStations, RECORDING_LIMITS } from "./composition/recording.js";
+export type { RecordedControlsInput } from "./composition/recording.js";
+export { createRecording, recordingControls, recordingData, recordingFingerprint, gestureTrack, echoTrack, resolvePressure, speedPressure, stations, countStations, RECORDING_LIMITS } from "./composition/recording.js";
 export type { BundledRecordingId } from "./composition/recording-samples.js";
 export { bundledRecording, bundledRecordingIds, bundledRecordingInfo } from "./composition/recording-samples.js";
-export type { PressureMap, GesturePathOptions, GesturePath, BristleOptions, GestureSite, SandOptions, GestureSiteOptions } from "./composition/gesture.js";
-export { mapPressure, gesturePath, bristleBand, sandGrains, gestureSites } from "./composition/gesture.js";
+export type { GesturePathOptions, GesturePath, GestureSite, SandOptions, GestureSiteOptions } from "./composition/gesture.js";
+export { gesturePath, sandGrains, gestureSites } from "./composition/gesture.js";
+export type { PressureMap, PressureProfile, PressureShape, BristleFrame, BristleTrack, TipShape, BrushHold, BristleOptions, BristleHair, BristleContact,
+  BristleInk, BristleMaterialSpec } from "./composition/bristle.js";
+export { mapPressure, bristleTrack, bristleBand, bristleContact, bristleStroke, bristleStrokes, planBristles, checkBristleWork, bristleMaterial, hairMaterial,
+  drawBristleStroke, drawFootprint, paperTooth, profilePressure, isBristleTrack, pressureProfiles, tipShapes, brushHolds, MAX_HAIR_POINTS, MAX_STATIONS } from "./composition/bristle.js";
 export type { RecordingSource, GestureScoreComposition, GestureConsumers, GestureRepeat } from "./composition/gesture-scores.js";
 export { gestureScoreComposition, gestureScoreProducts, resolveRecording, drawGestureScore, prepareGestureScore } from "./composition/gesture-scores.js";
 export type { ControlSequenceData, ControlSequence } from "./composition/control-sequence.js";
@@ -80,6 +89,21 @@ export type { DepositOptions, Deposit, ProtectedSpec, ProtectedSpace, KeptDeposi
   SandConsumers, DepositionProducts } from "./composition/deposition.js";
 export { splineDeposit, protectedSpace, keepOut, curvePaths, sandDepositionComposition, resolveSequence, sandDepositionProducts, depositionDensity,
   isolineTone, densityAtTone, drawSandDeposition, prepareSandDeposition, MAX_DEPOSIT_GRAINS, MAX_SAMPLED_GRAINS, MAX_OVERLAY_CURVES } from "./composition/deposition.js";
+export type { Raster, RasterData, RasterChannels, RasterFormat, ColorSpace, AlphaMode, ConvertOptions, SampleFilter, EdgeRule, SampleOptions, ScalarGrid, LabelGrid,
+  ValueKind, ValueOptions, RasterMapping, ResizeFilter } from "./composition/raster.js";
+export { createRaster, rasterData, rasterPixel, convertRaster, sampleRaster, sampleInto, sampleGrid, createScalarGrid, valueField, rasterMapping, cropRaster,
+  resizeRaster, srgbToLinear, linearToSrgb, LUMA, RASTER_LIMITS } from "./composition/raster.js";
+export type { BundledRasterId } from "./composition/raster-samples.js";
+export { bundledRaster, bundledRasterIds, bundledRasterInfo, BUNDLED_RASTER_SIZE } from "./composition/raster-samples.js";
+export type { ImageSource, SegmentOptions, ValueRegion, RegionAdjacency, Segmentation, SubdivisionMetric, SplitPolicy, SubdivideOptions, ImageCell, Subdivision,
+  OrientationOptions, OrientationSample, OrientationField, OrientationVectorOptions, ScanDirection, ScanOptions, ScanRun, RunSet, SortRunsOptions, PixelMoves,
+  ApplyMovesOptions, FrequencyModulationOptions, ModulatedLine } from "./composition/image-structure.js";
+export { segmentValueBands, valueRegionMask, subdivideImage, subdivisionLabels, orientationField, orientationPixel, orientationAt, orientationGrids, orientationVector,
+  scanRuns, scanRunPixel, scanRunSegment, sortScanRuns, applyPixelMoves, pixelSort, frequencyModulation, modulatedPolyline, IMAGE_STRUCTURE_LIMITS } from "./composition/image-structure.js";
+export type { SourceFrame, TraceFigure, PathData, BristleSource } from "./composition/bristle-sources.js";
+export { bristleSourcePaths, pathSet, traceFigures, contourFields, MAX_SOURCE_PATHS, MAX_SOURCE_POINTS } from "./composition/bristle-sources.js";
+export type { DryBristlesComposition, DryBristlesConsumers, DryBristlesPlan } from "./composition/dry-bristles.js";
+export { dryBristlesComposition, dryBristlesPlan, dryBristlesStrokes, drawDryBristles, prepareDryBristles } from "./composition/dry-bristles.js";
 export type {
   TilingRuleName, TilingOptions, TilingTile, TilingVertex, TilingEdge, Tiling, TileFiller, TileFillSpec, TileColorMode, TilingView,
 } from "./composition/types.js";
@@ -99,6 +123,14 @@ export { dataKey, drawDataKey, keyLabel, formatNumber } from "./composition/data
 export type { DataMarkKind, DataFillKind, DataMarkSpec, DataFillSpec, DataLineSpec, DataFootprint, DataLayoutSpec, DataScoresRecipe,
   DataScoresConsumers, DataScene } from "./composition/data-scores.js";
 export { dataScoresScene, dataMark, dataFill, dataFillSpec, drawDataScores, prepareDataScores, dataScoresComposition, sampleSlots } from "./composition/data-scores.js";
+export type { RelationSample } from "./composition/bundle-samples.js";
+export { relationSample, relationSampleIds, relationColumns } from "./composition/bundle-samples.js";
+export type { RelationColumns, GroupAssignment, RelationData, EndpointOrder, SectorBasis, LayoutFrame, EndpointLayoutOptions, GroupPlacement, EndpointLayout, EdgeScope,
+  BundleFamilies, BundleOptions, BundledPath, EdgeBundle, BundledEdges, FamilyHighlight } from "./composition/bundling.js";
+export { relationsFromTables, layoutEndpoints, selectRelations, bundleEdges, groupBands, pathMarkers, highlightedEdges,
+  MAX_BUNDLED_EDGES, MAX_BUNDLE_VERTICES, MAX_BUNDLE_DETAIL } from "./composition/bundling.js";
+export type { BundledRelationsRecipe, BundledConsumers, BundledStructure } from "./composition/bundled-relations.js";
+export { bundledStructure, drawBundledRelations, prepareBundledRelations, bundledRelationsComposition, WEIGHT_BANDS, MAX_MATERIAL_WORK } from "./composition/bundled-relations.js";
 export type { TextSource, TypeLine } from "./composition/type-text.js";
 export { textSource, bundledTextSources, typeLine, clipRingToRect, keyholeRings, fillRings, CAP_HEIGHT, MAX_TEXT_LINES, MAX_LINE_CHARS } from "./composition/type-text.js";
 export type { TypeModuleKind, ScreenAngles, TypeLayoutOptions, TypeModuleSource, TypeModule, TypeLayout, TypeFieldOptions, TypeField,
@@ -125,7 +157,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, ...sandDepositionDefinitions,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -234,6 +266,8 @@ const referencePalettes: Record<string, readonly number[]> = {
   "gesture-scores": [0x24262b, 0xc99a3b, 0xb8452f, 0x2f6f7a],
   "sand-deposition": [0x3b2f27, 0xb5522f, 0x1f5f73],
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
+  "bundled-relations": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86, 0x9c5f34],
+  "dry-bristles": [0x22252b, 0x2f6f7a, 0xb8452f, 0xc99a3b],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
   "typographic-rhythm": [0x1c1d20, 0xc93a2a, 0x2b5d9b, 0xe6ae2c],
 };
@@ -262,6 +296,8 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
   if (input.technique === "sand-deposition") return drawSandDeposition(context, sandDepositionComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
+  if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
+  if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
@@ -279,8 +315,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "sand-deposition" || externalDynamicsPreparable.has(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "data-scores" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -290,8 +325,10 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
     return prepareBranchOrnament(branchOrnamentComposition(input), cancelled);
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
   if (input.technique === "sand-deposition") return prepareSandDeposition(sandDepositionComposition(input), cancelled);
+  if (input.technique === "dry-bristles") return prepareDryBristles(dryBristlesComposition(input), cancelled);
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
+  if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
   if (referenceIds[input.technique])
     return prepareReferenceComposition(referenceComposition(input), cancelled);
   if (!externalDynamicsPreparable.has(input.technique)) return !cancelled();
@@ -325,6 +362,7 @@ export function usesSeed(input: InstrumentInput): boolean {
       q.glyphMark !== "none" && (Number(q.glyphVariation) > 0 || Number(q.glyphRetention) < 1);
     case "optical-plates": return q.maskedPlate !== "none" && q.maskShape === "regions";
     case "data-scores": return dataScoresUsesSeed(q);
+    case "bundled-relations": return bundledRelationsUsesSeed(q);
     case "substitution-tilings":
       return Number(q.retention) > 0 && Number(q.retention) < 1 || q.interior === "wash" && Number(q.bleed) > 0 ||
         q.interior !== "none" && q.colorBy === "supertile";

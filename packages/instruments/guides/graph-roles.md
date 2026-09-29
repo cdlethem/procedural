@@ -122,6 +122,8 @@ atEach(p, nodeSites(view, { scale: (node) => 0.4 + node.degree * 0.2 }), motif(r
 if (route) strokeWith(p, [route.path], pathMaterial(recipe.focal.material, recipe.palette));
 ```
 
+`graphFromBranchTree(branchTree(options))` turns an attractor-growth branch tree into the same kind of graph (ids kept, trunk → tip direction, weight = share of the tree's tips, age older toward the trunk), so route, filter and edge treatments apply to it; trunk, fork and terminal are the source, degree-3+ and sink nodes.
+
 `graphFromParts({ seed, directed, nodes, edges })` admits your own graph: unique ids, edge weights in
 [0, 1], positive integer ages, no self-loops or duplicate pairs. `contactGraph`, `latticeGraph` and
 `branchGraph` build the three sources directly; `selectGraph` applies the role filters, `graphRoute`

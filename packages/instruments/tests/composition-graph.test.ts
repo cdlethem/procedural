@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  atEach, branchGraph, componentSeed, connectedNodes, contactGraph, createInstrument, drawGraphComposition, drawReferenceComposition, edgeMarkers,
+  atEach, branchGraph, branchOrnamentComposition, branchTree, graphFromBranchTree, componentSeed, connectedNodes, contactGraph, createInstrument, drawGraphComposition, drawReferenceComposition, edgeMarkers,
   edgePaths, graphFromParts, graphRoute, graphStructure, latticeGraph, nearestNode, nodeSites, planarFaces, referenceComposition,
   selectGraph, strokeWith, usesSeed, validateInstrument, withDirection,
-  type CompositionSurface, type Graph, type InstrumentInput, type GraphComposition, type GraphRoleOptions, type GraphView, type RouteOptions,
+  type BranchTreeOptions, type CompositionSurface, type Graph, type InstrumentInput, type GraphComposition, type GraphRoleOptions, type GraphView, type RouteOptions,
 } from "../dist/index.js";
 import { buildProximityReplay } from "../dist/adapters/proximity-replay-instruments.js";
 import { proximityReplayInstrumentDefinitions } from "../dist/adapters/proximity-replay-instruments.js";
@@ -683,4 +683,83 @@ test("the instrument rejects inverted ranges and unbounded work, and its limits 
   assert.doesNotThrow(() => validateInstrument(input({ source: "branches", roots: 6, generations: 6, children: "3" })));
   const dense = input({ columns: 60, rows: 60, braid: 1, diagonals: 1, region: "rectangle", blocked: 0, edgeMaterial: "beads", edgeSpacing: 4 });
   assert.throws(() => drawReferenceComposition(new Log(), referenceComposition(dense)), /work budget exceeded/);
+});
+
+/* ------------------------------------------- bridge from the attractor branch tree */
+
+const growth = (patch: Partial<BranchTreeOptions> = {}): BranchTreeOptions => ({ ...branchOrnamentComposition(createInstrument("branch-ornament")).tree, ...patch });
+
+test("graphFromBranchTree keeps the tree's nodes, edges, ids, seeds, positions and trunk → tip direction", () => {
+  const tree = branchTree(growth()), graph = graphFromBranchTree(tree);
+  assert.ok(tree.edges.length > 10 && tree.nodes.length === tree.edges.length + tree.roots);
+  assert.equal(graph.nodes.length, tree.nodes.length); assert.equal(graph.edges.length, tree.edges.length);
+  assert.equal(graph.directed, true); assert.equal(graphFromBranchTree(tree, { directed: false }).directed, false);
+  assert.deepEqual(graph.nodes.map((node) => node.id), tree.nodes.map((node) => node.id));
+  assert.deepEqual(graph.edges.map((edge) => [edge.id, edge.from, edge.to]), tree.edges.map((edge) => [edge.id, edge.from, edge.to]));
+  graph.nodes.forEach((node, i) => { assert.deepEqual(node.position, tree.nodes[i].position); assert.equal(node.seed, tree.nodes[i].seed); });
+  graph.edges.forEach((edge, i) => assert.equal(edge.seed, tree.edges[i].seed));
+  const incoming = new Map<string, number>();
+  for (const edge of graph.edges) incoming.set(edge.to, (incoming.get(edge.to) ?? 0) + 1);
+  assert.ok([...incoming.values()].every((count) => count === 1), "every node has at most one parent edge: a forest directed away from the trunks");
+  assert.ok(Object.isFrozen(graph) && Object.isFrozen(graph.edges[0]));
+});
+
+test("branch-tree roles are the degree classes: trunk = source, terminal = sink, fork = degree 3+", () => {
+  const tree = branchTree(growth()), graph = graphFromBranchTree(tree);
+  const out = new Map<string, number>(), inn = new Map<string, number>();
+  for (const edge of graph.edges) { out.set(edge.from, (out.get(edge.from) ?? 0) + 1); inn.set(edge.to, (inn.get(edge.to) ?? 0) + 1); }
+  const counts = { trunk: 0, fork: 0, terminal: 0 };
+  for (const node of graph.nodes) {
+    const role = (inn.get(node.id) ?? 0) === 0 ? "trunk" : (out.get(node.id) ?? 0) === 0 ? "terminal" : "fork";
+    assert.equal(role, tree.nodes.find((item) => item.id === node.id)!.role, node.id);
+    if (role === "fork") assert.ok(node.degree >= 3 && (out.get(node.id) ?? 0) >= 2); else assert.equal(node.degree, 1);
+    counts[role]++;
+  }
+  assert.equal(counts.trunk, tree.roots);
+  assert.ok(counts.fork > 0 && counts.terminal > counts.fork, "a branching tree has more tips than forks");
+});
+
+test("branch-tree weight is the terminal share of the tree and age is older toward the trunk", () => {
+  const tree = branchTree(growth()), graph = graphFromBranchTree(tree);
+  const byId = new Map(tree.edges.map((edge) => [edge.id, edge]));
+  const tips = (id: string): number => byId.get(id)!.children.length === 0 ? 1 : byId.get(id)!.children.reduce((sum, child) => sum + tips(child), 0);
+  const total = new Map<number, number>();
+  for (const edge of tree.edges) if (edge.parent === null) total.set(edge.tree, tips(edge.id));
+  const lastTick = Math.max(...tree.edges.map((edge) => edge.age));
+  for (const edge of graph.edges) {
+    const source = byId.get(edge.id)!;
+    near(edge.weight, tips(edge.id) / total.get(source.tree)!, 1e-12);
+    assert.equal(edge.age, lastTick - source.age + 1);
+    if (source.parent) {
+      assert.ok(edge.weight <= graph.edges.find((item) => item.id === source.parent)!.weight + 1e-12);
+      assert.ok(edge.age < graph.edges.find((item) => item.id === source.parent)!.age, "a child edge is younger than its parent");
+    } else near(edge.weight, 1);
+  }
+  assert.ok(graph.edges.some((edge) => edge.age === 1), "the newest edge has age 1");
+  assert.equal(graph.stats.maxAge, lastTick - Math.min(...tree.edges.map((edge) => edge.age)) + 1);
+});
+
+test("branch-tree graph ids survive more growth ticks and any routing", () => {
+  const short = graphFromBranchTree(branchTree(growth({ ticks: 20 }))), long = graphFromBranchTree(branchTree(growth({ ticks: 30 })));
+  const longNodes = new Map(long.nodes.map((node) => [node.id, node])), longEdges = new Map(long.edges.map((edge) => [edge.id, edge]));
+  assert.ok(long.edges.length > short.edges.length);
+  for (const node of short.nodes) { assert.ok(longNodes.has(node.id), `${node.id} survives`); assert.equal(longNodes.get(node.id)!.seed, node.seed); }
+  for (const edge of short.edges) assert.deepEqual([longEdges.get(edge.id)!.from, longEdges.get(edge.id)!.to], [edge.from, edge.to]);
+  const grown = graphFromBranchTree(branchTree(growth({ routing: "grown" }))), straight = graphFromBranchTree(branchTree(growth({ routing: "straight" })));
+  assert.deepEqual(straight.nodes.map((node) => [node.id, node.position]), grown.nodes.map((node) => [node.id, node.position]));
+  assert.deepEqual(straight.edges.map((edge) => edge.id), grown.edges.map((edge) => edge.id));
+  assert.deepEqual(graphFromBranchTree(branchTree(growth({ ticks: 0 }))).nodes, [], "the empty tree is the empty graph");
+});
+
+test("graph roles work on a branch tree: filters, a directed route, and no faces in a forest", () => {
+  const graph = graphFromBranchTree(branchTree(growth())), everything = view(graph);
+  const tip = graph.nodes.find((node) => node.degree === 1 && graph.edges.some((edge) => edge.to === node.id))!;
+  const trunk = graph.nodes.find((node) => !graph.edges.some((edge) => edge.to === node.id))!;
+  const found = graphRoute(everything, { from: trunk.id, to: tip.id, mode: "shortest", metric: "hops", followDirection: true })!;
+  assert.equal(found.nodes[0], trunk.id); assert.equal(found.nodes.at(-1), tip.id);
+  const ages = found.edges.map((id) => graph.edges.find((edge) => edge.id === id)!.age);
+  assert.deepEqual(ages, [...ages].sort((a, b) => b - a), "walking trunk to tip goes from old to young");
+  assert.equal(graphRoute(everything, { from: tip.id, to: trunk.id, mode: "shortest", metric: "hops", followDirection: true }), null, "cannot walk tip to trunk against direction");
+  assert.deepEqual(planarFaces(everything).faces, []);
+  assert.ok(view(graph, { minWeight: .5, isolated: false }).edges.every((edge) => edge.weight >= .5 * graph.stats.maxEdgeWeight - 1e-12));
 });

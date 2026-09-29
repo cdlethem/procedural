@@ -3,6 +3,8 @@ import { fallVelocity, landGrain } from "./grains.js";
 import { checkWindow, gridRange, resolvePressure, stations, TrackCursor } from "./recording.js";
 import type { GestureTrack, PressurePolicy, PressureSource, StationRule, TimeWindow } from "./recording.js";
 import type { Path, Point, Site } from "./types.js";
+import { checkMap, mapPressure, range, seedOf, unit } from "./bristle.js";
+import type { PressureMap } from "./bristle.js";
 
 /**
  * Consumers-ready values derived from one `GestureTrack` (see `recording.ts` for the recording,
@@ -12,9 +14,8 @@ import type { Path, Point, Site } from "./types.js";
  * - `gesturePath(track, ...)`: the stroke as one `Path` (so any `pathMaterial` strokes it) plus
  *   per-point time, arc, direction, speed and resolved pressure. Its points are the window's two
  *   end points and the stations of the sampling rule between them.
- * - `bristleBand(path, ...)`: the same stroke read as a brush. Each hair is an offset copy of the
- *   path; where the pressure is light, the hair has run dry, or a stable streak says so, it lifts
- *   and the hair is split into separate runs.
+ * - `bristleBand(path, ...)` (in `bristle.ts`, which reads any path as a brush): a `GesturePath` carries
+ *   its own pressure, arc and direction channels, so the brush uses them as given.
  * - `sandGrains(track, ...)`: grains released on a fixed clock from the recording start, delayed
  *   by a stable random lag during which they fall and carry a share of the hand's velocity.
  * - `gestureSites(track, ...)`: oriented sites at the stations of a rule, for any mark.
@@ -32,34 +33,13 @@ import type { Path, Point, Site } from "./types.js";
  *
  * Units and limits. Lengths canvas units, time ms, speed units per second, option angles degrees
  * and published angles radians. Stations are limited by `recording.ts` (60,000 per rule); hair
- * points to 300,000 (hairs x stations), grains to 60,000. Over a limit the producer throws a
+ * points (hairs x stations, see `bristle.ts`) to 600,000, grains to 60,000. Over a limit the producer throws a
  * message naming the control to change; nothing is truncated.
  */
 
-const U32 = 0x1_0000_0000;
-const unit = (seed: number, id: string, purpose: string): number => componentSeed(seed, id, purpose) / U32;
-/** Hair vertices per composition (all repeats together); one path is limited by the same number. */
-export const MAX_HAIR_POINTS = 600_000;
+const TAU = Math.PI * 2;
 export const MAX_GRAINS = 60_000;
-/** Hairs meet the paper at different points: hair k first touches after a stable share of this many canvas units of the recording's path. */
-export const ATTACK = 36;
 
-function seedOf(seed: number): void {
-  if (!Number.isSafeInteger(seed) || seed < 0 || seed > 0xffffffff) throw new Error("Gesture seed must be a uint32 integer");
-}
-function range(label: string, value: number, low: number, high: number): void {
-  if (typeof value !== "number" || !Number.isFinite(value) || value < low || value > high)
-    throw new Error(`${label} must be a finite number in [${low}, ${high}]`);
-}
-/** Width/size factor of a pressure: `floor + (1 - floor) * p^curve`. Zero pressure gives `floor`, full pressure 1. */
-export interface PressureMap { floor: number; curve: number }
-export function mapPressure(pressure: number, map: PressureMap): number {
-  return map.floor + (1 - map.floor) * Math.min(1, Math.max(0, pressure)) ** map.curve;
-}
-function checkMap(map: PressureMap): void {
-  range("pressure floor", map.floor, 0, 1);
-  range("pressure curve", map.curve, 0.05, 20);
-}
 
 export interface GesturePathOptions {
   seed: number;
@@ -113,95 +93,6 @@ export function gesturePath(track: GestureTrack, options: GesturePathOptions): G
   });
 }
 
-export interface BristleOptions {
-  seed: number;
-  /** Number of hairs across the brush. */
-  hairs: number;
-  /** Brush width in canvas units at pressure factor 1. */
-  width: number;
-  map: PressureMap;
-  /** 0: every hair touches whatever the pressure; 1: light pressure lifts most hairs. */
-  dryness: number;
-  /** 0: hairs never run out; 1: hairs run dry from the start of the stroke to about 85% of it, at stable different points. */
-  depletion: number;
-  /** Lateral waver of each hair as a fraction of the half width. */
-  wander: number;
-}
-
-const bristleCache = new WeakMap<GesturePath, Map<string, readonly Path[]>>();
-const TAU = Math.PI * 2;
-
-/**
- * Hair `k` sits at stable lateral offset `o` in (-1, 1) (a jittered stratified draw) and follows
- * the path at `o * halfWidth(p)`, `halfWidth = width * mapPressure(p) / 2`, plus a closed-form
- * waver in the arc length. It touches at a station when the mapped pressure reaches its
- * threshold `dryness * (0.65 u + 0.35 |o|) * (0.55 + 0.9 g(arc))` (edge hairs lift first; `g` is a
- * per-hair streak, a sine of the path's own arc length so it does not depend on the sampling) and
- * the stroke has not passed the hair's depletion point. On the inside of a turn the offset is
- * limited to 90% of the local radius of curvature (from the direction change between neighbouring
- * stations), so the hairs bunch up rather than cross into a fan; the side is fixed by the
- * path's normal, which never flips. A hair also first touches only after a
- * stable share of `ATTACK` canvas units of the recording's path (ragged entry; measured from the
- * recording start, so the window does not move it). Only runs of at least two touching stations are
- * published.
- */
-export function bristleBand(path: GesturePath, options: BristleOptions): readonly Path[] {
-  seedOf(options.seed);
-  if (!Number.isInteger(options.hairs) || options.hairs < 1 || options.hairs > 400) throw new Error("Bristle hairs must be an integer in [1, 400]");
-  range("brush width", options.width, 0, 2000);
-  checkMap(options.map);
-  for (const [label, value] of [["dryness", options.dryness], ["depletion", options.depletion], ["wander", options.wander]] as const) range(`bristle ${label}`, value, 0, 1);
-  const total = options.hairs * path.points.length;
-  if (total > MAX_HAIR_POINTS)
-    throw new Error(`Bristles would need ${total} hair points (hairs × stroke stations); the limit is ${MAX_HAIR_POINTS}. Lower the hair count, raise the sampling spacing or narrow the window`);
-  const key = JSON.stringify([options.seed, options.hairs, options.width, options.map, options.dryness, options.depletion, options.wander]);
-  return cachedBy(bristleCache, path, key, () => {
-    const hairs: Path[] = [], n = path.points.length;
-    // Turning rate (radians per unit) at each station from the direction change between its neighbours; 0
-    // where the hand rests. The end stations take their neighbour's (their own tangent is one-sided).
-    const turning = path.points.map((_, i) => {
-      const a = Math.max(0, i - 1), b = Math.min(n - 1, i + 1), ds = path.arcs[b] - path.arcs[a];
-      if (ds < 1e-9) return 0;
-      const change = path.angles[b] - path.angles[a];
-      return Math.atan2(Math.sin(change), Math.cos(change)) / ds;
-    });
-    if (n > 2) { turning[0] = turning[1]; turning[n - 1] = turning[n - 2]; }
-    const progress = (i: number) => path.trackLength > 0 ? path.arcs[i] / path.trackLength : 0;
-    for (let k = 0; k < options.hairs; k++) {
-      const hair = `hair:${k}`;
-      const offset = ((k + unit(path.seed, hair, "offset")) / options.hairs) * 2 - 1;
-      const threshold = 0.65 * unit(path.seed, hair, "threshold") + 0.35 * Math.abs(offset);
-      const runsOut = 1 - options.depletion * (0.15 + 0.85 * unit(path.seed, hair, "depletion"));
-      const streak = 22 + 78 * unit(path.seed, hair, "streak"), streakPhase = TAU * unit(path.seed, hair, "streakPhase");
-      const waver = 60 + 140 * unit(path.seed, hair, "waver"), waverPhase = TAU * unit(path.seed, hair, "waverPhase");
-      const attack = ATTACK * unit(path.seed, hair, "attack");
-      let run: Point[] = [], start = 0;
-      const flush = () => {
-        if (run.length >= 2) {
-          const id = `${path.id}/${hair}@${start.toFixed(3)}`;
-          hairs.push(Object.freeze({ id, seed: componentSeed(path.seed, id, "hair"), points: Object.freeze(run), closed: false, level: 0,
-            levelFraction: (offset + 1) / 2, tone: 0 }));
-        }
-        run = [];
-      };
-      for (let i = 0; i < n; i++) {
-        const factor = mapPressure(path.pressure[i], options.map), arc = path.arcs[i];
-        const gate = options.dryness * threshold * (0.55 + 0.9 * (0.5 + 0.5 * Math.sin(TAU * arc / streak + streakPhase)));
-        if (factor < gate || progress(i) > runsOut || arc < attack) { flush(); continue; }
-        const half = options.width * factor / 2;
-        let lateral = half * (offset + options.wander * 0.35 * Math.sin(TAU * arc / waver + waverPhase));
-        // Inside a turn the offset is limited to 90% of the local radius of curvature, so hairs bunch up instead of crossing into a fan.
-        const turn = turning[i];
-        if (turn * lateral > 0 && Math.abs(lateral) * Math.abs(turn) > 0.9) lateral = Math.sign(lateral) * 0.9 / Math.abs(turn);
-        const angle = path.angles[i], [x, y] = path.points[i];
-        if (run.length === 0) start = path.times[i];
-        run.push(Object.freeze([x - Math.sin(angle) * lateral, y + Math.cos(angle) * lateral] as const));
-      }
-      flush();
-    }
-    return Object.freeze(hairs);
-  });
-}
 
 /** A site with the moment of the gesture it belongs to. */
 export interface GestureSite extends Site {
