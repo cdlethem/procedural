@@ -414,6 +414,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "quilled-paths",
+      "title": "Quilled Paths",
+      "description": "Paper strips stood on edge along contour lines, letter outlines, spirals or scattered scrolls, nested inside one another and rolled at the ends, drawn with thickness and occlusion from a tilted camera or as a flat plan.",
+      "category": "3D forms",
+      "operationIds": ["mesh.parallel-transport-ribbon-3d", "geometry.offset-polyline-2d", "geometry.convex-hull-2d", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d", "sampling.poisson-disc-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/quilled-paths.md",
+      "source": "packages/instruments/src/composition/quill-draw.ts",
+      "sourceEntry": "drawQuilled",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "bundled-relations",
       "title": "Bundled Relations",
       "description": "Draw weighted relationships between grouped places as readable families of curves: edges share waypoints only when they join the same two groups, with bundle strength, hub depth, separation, a highlighted family and direction shown by color or arrows.",

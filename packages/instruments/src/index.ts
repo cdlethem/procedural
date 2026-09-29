@@ -27,6 +27,8 @@ import { dataScoresDefinition } from "./adapters/data-scores-instrument.js";
 import { dataScoresComposition, dataScoresUsesSeed, drawDataScores, prepareDataScores } from "./composition/data-scores.js";
 import { crossingLaceDefinition } from "./adapters/crossing-lace-instrument.js";
 import { crossingLaceComposition, crossingLaceUsesSeed, drawCrossingLace, prepareCrossingLace } from "./composition/crossing-lace.js";
+import { quilledPathsDefinition } from "./adapters/quilled-paths-instrument.js";
+import { drawQuilled, prepareQuilled, quillComposition, quillUsesSeed } from "./composition/quill-draw.js";
 import { bundledRelationsDefinition } from "./adapters/bundled-relations-instrument.js";
 import { bundledRelationsComposition, bundledRelationsUsesSeed, drawBundledRelations, prepareBundledRelations } from "./composition/bundled-relations.js";
 import { dryBristlesDefinition } from "./adapters/dry-bristles-instrument.js";
@@ -166,6 +168,14 @@ export type { LaceFrame, LaceShape, LaceOptions } from "./composition/lace-famil
 export { lacePaths, laceVertexEstimate, MAX_LACE_VERTICES } from "./composition/lace-families.js";
 export type { StrandStyle, CrossingLaceComposition, LaceConsumers, CrossingLaceProducts } from "./composition/crossing-lace.js";
 export { crossingLaceComposition, crossingLaceProducts, drawCrossingLace, drawCrossingLaceProducts, prepareCrossingLace } from "./composition/crossing-lace.js";
+export type { SpiralFamily, FrameOptions, SpiralOptions, LettersOptions, ScrollOptions, QuillScaffoldSpec } from "./composition/quill-scaffold.js";
+export { quillScaffold, letterPaths, spiralPaths, scrollPaths, spiralFamilies, MAX_SCAFFOLD_POINTS } from "./composition/quill-scaffold.js";
+export type { QuillTerminals, QuillCurl, QuillNestSide, QuillOverlap, QuillStripOptions, QuillStrip, NestStop, StripClash, QuillDiagnostics, QuillStrips } from "./composition/quill-strips.js";
+export { quillStrips, rollPoints, subdivide, tightestBend, MAX_QUILL_VERTICES, MAX_QUILL_STRIPS, MAX_COIL_TURNS, MAX_CLASH_TESTS } from "./composition/quill-strips.js";
+export type { QuillFaceKind, QuillGeometryOptions, QuillGeometry, QuillCamera, QuillFootprint, QuillProjection } from "./composition/quill-geometry.js";
+export { quillGeometry, quillProjection, projectPoint, stripHeight, stripHeightFactor, stripSides, MAX_QUILL_FACES, MAX_PITCH, MIN_WALL } from "./composition/quill-geometry.js";
+export type { QuillTone, QuillMaterialSpec, QuillView, QuilledPathsComposition, QuillFace, QuillFacePainter, QuillConsumers, QuillProducts } from "./composition/quill-draw.js";
+export { quillComposition, quillProducts, quillCamera, quillPaper, drawQuilled, prepareQuilled } from "./composition/quill-draw.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -184,7 +194,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -292,6 +302,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "branch-ornament": [0x23302b, 0xb5452e, 0xd39a3a, 0x4f7a5c],
   "gesture-scores": [0x24262b, 0xc99a3b, 0xb8452f, 0x2f6f7a],
   "sand-deposition": [0x3b2f27, 0xb5522f, 0x1f5f73],
+  "quilled-paths": [0xd4563f, 0xe6a23a, 0x2f7f86, 0x6f9a55, 0x8b5190],
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "path-typography": [0x1f2226, 0xc24a34, 0x2f6c8f, 0xb8862b],
   "bundled-relations": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86, 0x9c5f34],
@@ -325,6 +336,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
   if (input.technique === "path-typography") return drawPathTypography(context, pathTypographyComposition(input));
   if (input.technique === "sand-deposition") return drawSandDeposition(context, sandDepositionComposition(input));
+  if (input.technique === "quilled-paths") return drawQuilled(context, quillComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
@@ -346,7 +358,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -357,6 +369,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
   if (input.technique === "path-typography") return preparePathTypography(pathTypographyComposition(input), cancelled);
   if (input.technique === "sand-deposition") return prepareSandDeposition(sandDepositionComposition(input), cancelled);
+  if (input.technique === "quilled-paths") return prepareQuilled(quillComposition(input), cancelled);
   if (input.technique === "dry-bristles") return prepareDryBristles(dryBristlesComposition(input), cancelled);
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
@@ -391,6 +404,7 @@ export function usesSeed(input: InstrumentInput): boolean {
   switch (input.technique) {
     case "quantized-stripes": return q.order === "shuffle";
     case "sand-deposition": return true;
+    case "quilled-paths": return quillUsesSeed(q);
     case "gesture-scores": return q.recording === "wander" || Number(q.hairs) > 0 && q.bristles === true || q.sandMark !== "none" ||
       q.glyphMark !== "none" && (Number(q.glyphVariation) > 0 || Number(q.glyphRetention) < 1);
     case "optical-plates": return q.maskedPlate !== "none" && q.maskShape === "regions";
