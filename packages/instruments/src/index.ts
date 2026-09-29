@@ -33,6 +33,8 @@ import { drawImageDirectedField, imageDirectedFieldComposition, prepareImageDire
 import { dataScoresComposition, dataScoresUsesSeed, drawDataScores, prepareDataScores } from "./composition/data-scores.js";
 import { pixelSortingDefinition } from "./adapters/pixel-sorting-instrument.js";
 import { drawPixelSorting, pixelSortingComposition, pixelSortingUsesSeed, preparePixelSorting } from "./composition/pixel-sorting.js";
+import { shapePackingDefinition } from "./adapters/shape-packing-instrument.js";
+import { drawShapePacking, prepareShapePacking, shapePackingComposition, shapePackingUsesSeed } from "./composition/shape-packing.js";
 import { crossingLaceDefinition } from "./adapters/crossing-lace-instrument.js";
 import { crossingLaceComposition, crossingLaceUsesSeed, drawCrossingLace, prepareCrossingLace } from "./composition/crossing-lace.js";
 import { quilledPathsDefinition } from "./adapters/quilled-paths-instrument.js";
@@ -164,6 +166,14 @@ export { clipPath, clipPaths, hatchDomain, clipRingToRect } from "./composition/
 export type { ClipOptions, ClippedPiece, HatchOptions, HatchStroke } from "./composition/domains-paths.js";
 export { maskDomain, labelDomains, simplifyDomain, MASK_DOMAIN_LIMITS } from "./composition/domains-raster.js";
 export type { MaskRaster, RasterOptions, MaskOptions, LabelOptions, LabelDomain } from "./composition/domains-raster.js";
+export { regionsOverlap, regionInside, shapesOverlap, shapeCovers } from "./composition/domains-overlap.js";
+export type { RingRegion } from "./composition/domains-overlap.js";
+export type { PackShape, PackItem, PackItemsOptions, PieceFamily, LetterSet, ContainerKind, PackContainerSpec } from "./composition/shape-pieces.js";
+export { PIECE_FAMILIES, LETTER_SETS, PACK_ITEM_LIMITS, CONTAINER_KINDS, CONTAINER_LETTERS, packItems, customItem, customShape, pieceShape, packContainer } from "./composition/shape-pieces.js";
+export type { PackOrder, PackRule, PackRules, PackedInstance, UnplacedItem, PackStats, ShapePacking } from "./composition/shape-packing-layout.js";
+export { PACK_LIMITS, packOrder, packShapes, packNegativeSpace } from "./composition/shape-packing-layout.js";
+export type { PackColorBy as ShapePackColorBy, PackRender as ShapePackRender, ShapePackingLook, ShapePackingRecipe, PackSite, ShapePackingConsumers } from "./composition/shape-packing.js";
+export { SHAPE_PACKING_LIMITS, shapePackingLayout, packedSites, drawShapePacking, prepareShapePacking, shapePackingComposition } from "./composition/shape-packing.js";
 export type { ContinuousColumn, CategoricalColumn, Column, ColumnInput, DataTableInput, DataTable, Curve, Outside, ChannelSpec, MeasureMapping,
   QuantityMapping, ResolvedChannel, Aggregate, MissingPolicy, UnitWindow, UnitOptions, DataUnit, OmitReason, OmittedUnit, ResolveOptions,
   ResolvedUnit, ResolvedMapping, ResolvedData } from "./composition/data-table.js";
@@ -305,7 +315,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -417,6 +427,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "quilled-paths": [0xd4563f, 0xe6a23a, 0x2f7f86, 0x6f9a55, 0x8b5190],
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "pixel-sorting": [0x1c2230, 0x8a3b32, 0xd9a441, 0xf1e6cf],
+  "shape-packing": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "path-typography": [0x1f2226, 0xc24a34, 0x2f6c8f, 0xb8862b],
   "glyph-packing": [0x1e2228, 0xb8452f, 0x2f6f7a, 0xd9a441],
   "image-directed-field": [0x1d2230, 0x8d3b2a, 0x2f6f7a, 0xc99a3b],
@@ -461,6 +472,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "quilled-paths") return drawQuilled(context, quillComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
   if (input.technique === "pixel-sorting") return drawPixelSorting(context, pixelSortingComposition(input));
+  if (input.technique === "shape-packing") return drawShapePacking(context, shapePackingComposition(input));
   if (input.technique === "fm-engraving") return drawEngraving(context, engravingComposition(input));
   if (input.technique === "painterly-source") return drawPainterly(context, painterlyComposition(input));
   if (input.technique === "slit-compositions") return drawSlit(context, slitComposition(input));
@@ -488,7 +500,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -508,6 +520,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
   if (input.technique === "pixel-sorting") return preparePixelSorting(pixelSortingComposition(input), cancelled);
+  if (input.technique === "shape-packing") return prepareShapePacking(shapePackingComposition(input), cancelled);
   if (input.technique === "painterly-source") return preparePainterly(painterlyComposition(input), cancelled);
   if (input.technique === "slit-compositions") return prepareSlit(slitComposition(input), cancelled);
   if (input.technique === "nodal-plates") return prepareNodalPlate(nodalPlateComposition(input), cancelled);
@@ -551,6 +564,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "data-scores": return dataScoresUsesSeed(q);
     case "pixel-sorting": return pixelSortingUsesSeed(q);
     case "polygon-watercolor": return polygonWatercolorUsesSeed(q);
+    case "shape-packing": return shapePackingUsesSeed(q);
     case "fm-engraving": return fmEngravingUsesSeed(q);
     case "path-typography": return pathTypographyUsesSeed(q);
     case "glyph-packing": return glyphPackingUsesSeed(q);
