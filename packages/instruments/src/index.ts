@@ -250,6 +250,21 @@ export type { QuillFaceKind, QuillGeometryOptions, QuillGeometry, QuillCamera, Q
 export { quillGeometry, quillProjection, projectPoint, stripHeight, stripHeightFactor, stripSides, MAX_QUILL_FACES, MAX_PITCH, MIN_WALL } from "./composition/quill-geometry.js";
 export type { QuillTone, QuillMaterialSpec, QuillView, QuilledPathsComposition, QuillFace, QuillFacePainter, QuillConsumers, QuillProducts } from "./composition/quill-draw.js";
 export { quillComposition, quillProducts, quillCamera, quillPaper, drawQuilled, prepareQuilled } from "./composition/quill-draw.js";
+export type { CornerAttributes, Vec3, Mesh, MeshInput, MeshAttributeInput, MeshAttributeInfo, MeshMeasures, MeshTransform, AttributeDomain, DegeneratePolicy } from "./composition/mesh.js";
+export { mesh, isMesh, meshData, meshVertex, meshFace, meshAttribute, meshMeasures, faceNormal, faceArea, vertexNormals, meshCornerAttributes, transformMesh, mergeMeshes, boxMesh, MESH_LIMITS } from "./composition/mesh.js";
+export type { MeshTopology, MeshTopologyCounts, MeshKind, MeshEdgeClass, MeshVertexClass, MeshComponentSummary, MeshFeatureOptions, MeshFeatureEdge } from "./composition/mesh-topology.js";
+export { meshTopology, meshEdgeId, meshEdgeVertices, meshEdgeFaces, meshEdgeClass, meshEdgeAngle, findMeshEdge, meshFaceNeighbors, meshVertexClass, meshVertexFanCount,
+  meshComponentOfFace, meshComponents, meshCreaseEdges, meshBoundaryEdges, meshFaceFacing, meshSilhouetteEdges, meshFeatureEdges } from "./composition/mesh-topology.js";
+export type { Camera, CameraOptions, Projection, ProjectedVertex } from "./composition/camera.js";
+export { camera, DEFAULT_CAMERA } from "./composition/camera.js";
+export type { PointCloud, PointCloudInput, PointAttributeInput, SurfaceSampleOptions, SurfaceSamples, ProjectedPoint, ProjectOptions } from "./composition/mesh-sample.js";
+export { pointCloud, isPointCloud, pointCloudData, pointPosition, pointId, pointSeed, pointAttribute, selectPoints, thinPointCloud, cropPointCloud, meshVertexCloud,
+  sampleSurface, sampleSource, projectPoints, POINT_LIMITS } from "./composition/mesh-sample.js";
+export type { SpatialCurve, VisibilityOptions, HiddenLineOptions, ProjectedPath, VisibilityStats, HiddenLineResult, PaintOptions, PaintOrder } from "./composition/visibility.js";
+export { hiddenLines, visiblePoints, meshEdgeCurves, paintOrder, MAX_VISIBILITY_SEGMENTS, DEFAULT_VISIBILITY_WORK } from "./composition/visibility.js";
+export type { TorusOptions, TerrainOptions, TerrainVariant, VaseProfile, VaseOptions, BundledMeshId, BundledMeshInfo, MeshSource, PointSource } from "./composition/mesh-samples.js";
+export { icosphereMesh, torusMesh, terrainMesh, terrainHeight, vaseMesh, figureMesh, bundledMesh, bundledMeshIds, bundledMeshInfo, terrainVariants, vaseProfiles, vaseProfileNames,
+  resolveMeshSource, resolvePointSource, MAX_ICOSPHERE_LEVELS } from "./composition/mesh-samples.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
