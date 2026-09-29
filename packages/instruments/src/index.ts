@@ -40,7 +40,7 @@ export { poissonSites, contourPaths, partitionRegions, wallpaperSites, wallpaper
 export { warpPoint, warpSites, warpPaths, mapNames } from "./composition/warp.js";
 export { motif, pathMaterial, regionFill } from "./composition/materials.js";
 export { referenceComposition, drawReferenceComposition, prepareReferenceComposition } from "./composition/reference.js";
-export { graphFromParts, withDirection, contactGraph, latticeGraph, branchGraph, selectGraph, nearestNode, connectedNodes, graphRoute, planarFaces,
+export { graphFromParts, graphFromBranchTree, withDirection, contactGraph, latticeGraph, branchGraph, selectGraph, nearestNode, connectedNodes, graphRoute, planarFaces,
   edgePaths, nodeSites, edgeMarkers, nodeFraction, edgeFraction, MAX_GRAPH_NODES, MAX_GRAPH_EDGES } from "./composition/graph.js";
 export type { Graph, GraphNode, GraphEdge, GraphStats, GraphParts, GraphRoleOptions, GraphView, GraphRoute, GraphFace, FaceExtraction,
   RouteMode, RouteMetric, RouteOptions, GraphAttribute, ContactGraphOptions, LatticeGraphOptions, BranchGraphOptions } from "./composition/graph.js";
