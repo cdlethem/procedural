@@ -60,6 +60,8 @@ import { nodalPlatesDefinition } from "./adapters/nodal-plates-instrument.js";
 import { drawNodalPlate, nodalPlateComposition, nodalPlatesUsesSeed, prepareNodalPlate } from "./composition/nodal-draw.js";
 import { glyphPackingDefinition, glyphPackingUsesSeed } from "./adapters/glyph-packing-instrument.js";
 import { drawGlyphPacking, glyphPackingComposition, prepareGlyphPacking } from "./composition/glyph-pack-draw.js";
+import { regionStitchDefinition, regionStitchUsesSeed } from "./adapters/region-stitch-instrument.js";
+import { drawStitches, prepareStitches, regionStitchComposition } from "./composition/stitch-draw.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
@@ -119,6 +121,17 @@ export type { FootprintShape, ClipMode, EngravingOptions, EngravingSignal, Engra
 export { engravedLines, engravingTone, toneSignal, shapedTone, ENGRAVING_LIMITS } from "./composition/engraving.js";
 export type { LineKind, ColorBy as EngravingColorBy, EngravingLineSpec, EngravingComposition, EngravingConsumers } from "./composition/engraving-draw.js";
 export { engravingComposition, engravingProducts, tonePieces, drawEngraving, prepareEngraving, TONE_BINS } from "./composition/engraving-draw.js";
+export type { StitchFieldSpec, StitchFieldKind, StitchField } from "./composition/stitch-field.js";
+export { stitchField, fieldKey as stitchFieldKey, stitchFieldKinds } from "./composition/stitch-field.js";
+export type { StitchRegion, StitchFootprint, StitchWord, StitchSourceKind, RegionSourceSpec } from "./composition/stitch-regions.js";
+export { bundledStitchRegions, stitchRegionsOf, regionBoundaries, stitchWords, stitchSourceKinds, STITCH_REGION_LIMITS } from "./composition/stitch-regions.js";
+export type { Chain as StitchChain, Run as StitchRun, RouteOptions as StitchRouteOptions } from "./composition/stitch-route.js";
+export { routeRuns, runningStitches, spanStitches, boundStitches, samplePolyline, polylineLength } from "./composition/stitch-route.js";
+export type { FillRule as StitchFillRule, FillChoice as StitchFillChoice, UnderlayKind as StitchUnderlayKind, OutlineKind as StitchOutlineKind, CrossingKind as StitchCrossingKind,
+  RegionOrder as StitchRegionOrder, ThreadRole as StitchThreadRole, StitchOptions, StitchThread, StitchRegionInfo, StitchStats, StitchProducts } from "./composition/stitch.js";
+export { stitchThreads, stitchUsesSeed, estimateStitches, STITCH_LIMITS, INSIDE_TOLERANCE as STITCH_INSIDE_TOLERANCE, fillChoices as stitchFillChoices } from "./composition/stitch.js";
+export type { StitchColorBy, StitchComposition, StitchThreadSpec, ThreadKind as StitchThreadKind, StitchTrim, StitchConsumers } from "./composition/stitch-draw.js";
+export { regionStitchComposition, regionStitchProducts, stitchRuns, drawStitches, drawStitchProducts, prepareStitches } from "./composition/stitch-draw.js";
 export type { ControlSequenceData, ControlSequence } from "./composition/control-sequence.js";
 export { createControlSequence, controlSequenceData, sequenceFingerprint, SEQUENCE_LIMITS } from "./composition/control-sequence.js";
 export type { BundledControlSequenceId, BundledSequenceInfo } from "./composition/control-sequence-samples.js";
@@ -315,7 +328,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -442,6 +455,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "adaptive-compartments": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0xefe6d2],
   "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "crossing-lace": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
+  "region-stitch": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0x7f9a4f, 0x8b4a6f],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -480,6 +494,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "stroke-relief") return drawStrokeRelief(context, strokeReliefComposition(input));
   if (input.technique === "image-directed-field") return drawImageDirectedField(context, imageDirectedFieldComposition(input));
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
+  if (input.technique === "region-stitch") return drawStitches(context, regionStitchComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
   if (input.technique === "polygon-watercolor") return drawPolygonWatercolor(context, polygonWatercolorComposition(input));
@@ -500,7 +515,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -526,6 +541,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "nodal-plates") return prepareNodalPlate(nodalPlateComposition(input), cancelled);
   if (input.technique === "stroke-relief") return prepareStrokeRelief(strokeReliefComposition(input), cancelled);
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
+  if (input.technique === "region-stitch") return prepareStitches(regionStitchComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
   if (referenceIds[input.technique])
     return prepareReferenceComposition(referenceComposition(input), cancelled);
@@ -571,6 +587,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
+    case "region-stitch": return regionStitchUsesSeed(q);
     case "substitution-tilings":
       return Number(q.retention) > 0 && Number(q.retention) < 1 || q.interior === "wash" && Number(q.bleed) > 0 ||
         q.interior !== "none" && q.colorBy === "supertile";
