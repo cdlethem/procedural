@@ -375,6 +375,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "data-scores",
+      "title": "Data Scores",
+      "description": "Let recorded values decide structure: three bundled tables with missing values become a lattice that drifts, a treemap with exact areas or a timeline, with explicit mappings and a small generated key.",
+      "category": "Layouts",
+      "operationIds": ["field.gradient-noise-2d-01", "geometry.hatch-region-lines-2d", "sampling.poisson-disc-2d", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/data-scores.md",
+      "source": "packages/instruments/src/composition/data-scores.ts",
+      "sourceEntry": "drawDataScores",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
