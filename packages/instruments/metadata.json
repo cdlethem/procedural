@@ -544,6 +544,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "nodal-plates",
+      "title": "Nodal Plates",
+      "description": "Grains gather along the nodes of combined standing waves, the sand-on-a-plate figures: square, rectangle or disc, one edge condition, and up to four weighted modes. Nodal lines, node bands and grains all come from one analytic field, so material and grain edits never move them.",
+      "category": "Fields & paths",
+      "operationIds": ["geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/nodal-plates.md",
+      "source": "packages/instruments/src/composition/nodal-draw.ts",
+      "sourceEntry": "drawNodalPlate",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "dry-bristles",
       "title": "Dry Bristles",
       "description": "Carry a broad brush of separate hairs along any path (harmonic traces, a contour family or a hand scribble): hairs lift on light pressure and paper tooth, run dry, taper at the ends and gather into tufts, while the other paths stay fine stitched contours.",
