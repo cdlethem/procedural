@@ -27,6 +27,7 @@ import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
 import { typeRhythmUsesSeed } from "./adapters/type-rhythm-instrument.js";
+import { compartmentsUsesSeed } from "./adapters/compartments-instrument.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
@@ -76,7 +77,7 @@ export { bundledRaster, bundledRasterIds, bundledRasterInfo, BUNDLED_RASTER_SIZE
 export type { ImageSource, SegmentOptions, ValueRegion, RegionAdjacency, Segmentation, SubdivisionMetric, SplitPolicy, SubdivideOptions, ImageCell, Subdivision,
   OrientationOptions, OrientationSample, OrientationField, OrientationVectorOptions, ScanDirection, ScanOptions, ScanRun, RunSet, SortRunsOptions, PixelMoves,
   ApplyMovesOptions, FrequencyModulationOptions, ModulatedLine } from "./composition/image-structure.js";
-export { segmentValueBands, valueRegionMask, subdivideImage, subdivisionLabels, orientationField, orientationPixel, orientationAt, orientationGrids, orientationVector,
+export { segmentValueBands, valueRegionMask, subdivideImage, subdivisionLabels, orientationField, orientationPixel, orientationAt, orientationInRect, orientationGrids, orientationVector,
   scanRuns, scanRunPixel, scanRunSegment, sortScanRuns, applyPixelMoves, pixelSort, frequencyModulation, modulatedPolyline, IMAGE_STRUCTURE_LIMITS } from "./composition/image-structure.js";
 export type {
   TilingRuleName, TilingOptions, TilingTile, TilingVertex, TilingEdge, Tiling, TileFiller, TileFillSpec, TileColorMode, TilingView,
@@ -105,6 +106,12 @@ export { typeRhythmLayout, typeField, rowLine, rowBaseline, repeatLeft, moduleFr
   moduleScreen, moduleLined, moduleOutline, typeAnchor, MAX_TYPE_MODULES, MAX_MODULE_INSTANCES, MAX_MODULE_VERTICES, MAX_TYPE_VERTICES } from "./composition/type-rhythm.js";
 export type { TypeInk, TypeScreenInk, TypeRhythmComposition } from "./composition/type-rhythm-draw.js";
 export { drawTypeRhythm, prepareTypeRhythm } from "./composition/type-rhythm-draw.js";
+export type { PixelRect, CompartmentMeasure, CompartmentOptions, Compartment, CompartmentNode, CompartmentPlan, KeepRule, CompartmentRegion } from "./composition/compartments.js";
+export { compartmentPlan, coverCrop, keptCompartments, compartmentRegions, keepRules, COMPARTMENT_LIMITS } from "./composition/compartments.js";
+export type { CompartmentFillKind, CompartmentColor, CompartmentFiller, CompartmentGlyphSpec, CompartmentBorderSpec, CompartmentFillSpec, CompartmentInk,
+  CompartmentImage, CompartmentsComposition } from "./composition/compartments-draw.js";
+export { compartmentFiller, compartmentFillKind, compartmentAngle, compartmentInk, nearestPaletteIndex, hatchSegments, halftoneCentres, hatchSpacing, halftoneRadius,
+  boundCompartmentWork, compartmentSource, compartmentOptions, compartmentDrawRegions, drawCompartments, prepareCompartments, MIN_COHERENCE, MAX_COMPARTMENT_UNITS } from "./composition/compartments-draw.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -233,6 +240,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
   "typographic-rhythm": [0x1c1d20, 0xc93a2a, 0x2b5d9b, 0xe6ae2c],
+  "adaptive-compartments": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0xefe6d2],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -323,6 +331,7 @@ export function usesSeed(input: InstrumentInput): boolean {
       return Number(q.retention) > 0 && Number(q.retention) < 1 || q.interior === "wash" && Number(q.bleed) > 0 ||
         q.interior !== "none" && q.colorBy === "supertile";
     case "typographic-rhythm": return typeRhythmUsesSeed(q);
+    case "adaptive-compartments": return compartmentsUsesSeed(q);
     case "orbit-beads": return false;
     case "profile-marks": case "depth-marks": case "annular-marks": return q.colorMode === "noise";
     case "ramp-marks": return Number(q.disorder) > 0 || Number(q.retention) > 0 && Number(q.retention) < 1;

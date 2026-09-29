@@ -702,6 +702,24 @@ export function orientationAt(field: OrientationField, x: number, y: number): Or
   return decompose(mix(field.tensor.xx), mix(field.tensor.xy), mix(field.tensor.yy), field.flatEnergy, field.fallback);
 }
 
+/**
+ * The orientation of a whole integer pixel rectangle: the (already smoothed) structure tensor is averaged with
+ * equal weight per pixel and THEN decomposed, so opposed strips of equal energy cancel to coherence 0 rather
+ * than averaging two angles. Energy is the mean over the rectangle; a flat rectangle reports the field's fallback.
+ */
+export function orientationInRect(field: OrientationField, rect: { x: number; y: number; width: number; height: number }): OrientationSample {
+  const { x, y, width, height } = rect;
+  for (const [name, v] of [["x", x], ["y", y], ["width", width], ["height", height]] as const)
+    if (!Number.isInteger(v)) throw new Error(`orientationInRect: rect.${name} must be an integer`);
+  if (width < 1 || height < 1 || x < 0 || y < 0 || x + width > field.width || y + height > field.height)
+    throw new Error(`orientationInRect: rect ${x},${y} ${width} x ${height} is outside ${field.width} x ${field.height}`);
+  const xx = gridStorage(field.tensor.xx), xy = gridStorage(field.tensor.xy), yy = gridStorage(field.tensor.yy);
+  let sxx = 0, sxy = 0, syy = 0;
+  for (let j = y; j < y + height; j++) for (let i = x; i < x + width; i++) { const p = j * field.width + i; sxx += xx[p]; sxy += xy[p]; syy += yy[p]; }
+  const n = width * height;
+  return decompose(sxx / n, sxy / n, syy / n, field.flatEnergy, field.fallback);
+}
+
 /** Per-pixel direction, coherence and energy as grids (`direction` is the fallback where undefined). */
 export function orientationGrids(field: OrientationField): Readonly<{ direction: ScalarGrid; coherence: ScalarGrid; energy: ScalarGrid }> {
   const P = field.width * field.height, direction = new Float64Array(P), coherence = new Float64Array(P), energy = new Float64Array(P);
