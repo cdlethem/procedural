@@ -2,7 +2,8 @@ import type {ControlGroup, Layer} from '../types.js';
 import {defaultPalettes} from '../default-palettes.js';
 import {choice,numeric,toggle,channels,type StudioDefinition} from './types.js';
 
-import {contactSteps,flockSteps,motionKey,sensorSteps,validateMotion,type ContactModel,type SensorModel,type FlockModel,type MotionParams} from './external-motion-sources.js';
+import {motionConstruction,motionSimulations,validateMotion,type ContactModel,type SensorModel,type FlockModel,type MotionParams} from './external-motion-sources.js';
+import {createSimulationCache,type Frozen} from '../composition/snapshots.js';
 import { creativePreparers } from './creative-instruments.js';
 
 const sourceParameters=[
@@ -50,43 +51,27 @@ export function externalDynamicsPalette(id:string):number[]|null{
   const palette=defaultPalettes.find(item=>item.id===paletteIds[id]);
   return palette?palette.colors.map(hex=>Number.parseInt(hex.slice(1),16)):null;
 }
-const cache=new Map<string,unknown>();
-function retained<T>(key:string,make:()=>T):T{
-  if(cache.has(key)){const value=cache.get(key) as T;cache.delete(key);cache.set(key,value);return value;}
-  const value=make();cache.set(key,value);if(cache.size>12)cache.delete(cache.keys().next().value!);return value;
-}
+/** Retained motion snapshots by construction (no palette, weight or mark toggle); a longer `ticks` extends a cached shorter run. */
+const motionCache=createSimulationCache({capacity:12});
 /** Thrown when cooperative preparation is cancelled before publishing a model. */
 export class PreparationCancelledError extends Error{
   constructor(){super('preparation cancelled');this.name='PreparationCancelledError';}
 }
-const yieldToUi=()=>new Promise<void>((resolve)=>setTimeout(resolve,0));
 type MotionKind='lingering-links'|'sensing-trails'|'flocking-marks';
 type MotionResult=ContactModel|SensorModel|FlockModel;
-function motionSteps(kind:MotionKind,q:MotionParams,seed:number):Generator<void,MotionResult>{
-  return kind==='lingering-links'?contactSteps(q,seed):kind==='sensing-trails'?sensorSteps(q,seed):flockSteps(q,seed);
-}
-function finishMotion(steps:Generator<void,MotionResult>):MotionResult{
-  let next=steps.next();
-  while(!next.done)next=steps.next();
-  return next.value;
-}
-function motionModel(kind:MotionKind,l:Layer):MotionResult{
+/** Models are published frozen and read by every draw; they are never rebuilt for an appearance edit. */
+function motionRequest(kind:MotionKind,l:Layer){
   validateMotion(kind,l.params);
   const q=l.params as unknown as MotionParams;
-  return retained(`motion:${motionKey(kind,q,l.seed)}`,()=>finishMotion(motionSteps(kind,q,l.seed)));
+  return {sim:motionSimulations[kind],construction:motionConstruction(kind,q),seed:l.seed,options:{steps:q.ticks,checkpointEvery:20,historyEvery:0}};
+}
+function motionModel(kind:MotionKind,l:Layer):Frozen<MotionResult>{
+  const {sim,construction,seed,options}=motionRequest(kind,l);
+  return motionCache.get(sim,construction,seed,options).final;
 }
 async function prepareMotion(kind:MotionKind,l:Layer,isCancelled:()=>boolean):Promise<void>{
-  validateMotion(kind,l.params);
-  const q=l.params as unknown as MotionParams;
-  const key=`motion:${motionKey(kind,q,l.seed)}`;
-  if(cache.has(key))return;
-  const steps=motionSteps(kind,q,l.seed);
-  while(true){
-    if(isCancelled())throw new PreparationCancelledError();
-    const next=steps.next();
-    if(next.done){retained(key,()=>next.value);return;}
-    await yieldToUi();
-  }
+  const {sim,construction,seed,options}=motionRequest(kind,l);
+  if(!await motionCache.prepare(sim,construction,seed,{...options,cancelled:isCancelled}))throw new PreparationCancelledError();
 }
 
 /** Studies whose model work can be prepared cooperatively. */
@@ -113,7 +98,7 @@ export async function prepareExternalDynamics(layer:Layer,isCancelled:()=>boolea
 
 const rgb=(layer:Layer,index:number):[number,number,number]=>channels(layer.palette[((index%layer.palette.length)+layer.palette.length)%layer.palette.length]);
 function scale(p:any,size:number,draw:()=>void){p.push();p.scale(640/size);draw();p.pop();}
-function polyline(p:any,points:number[][],closed=false){if(points.length<2)return;p.beginShape();for(const point of points)p.vertex(point[0],point[1]);if(closed)p.endShape(p.CLOSE);else p.endShape();}
+function polyline(p:any,points:readonly (readonly number[])[],closed=false){if(points.length<2)return;p.beginShape();for(const point of points)p.vertex(point[0],point[1]);if(closed)p.endShape(p.CLOSE);else p.endShape();}
 function color(p:any,layer:Layer,index:number,alpha=255){p.stroke(...rgb(layer,index),alpha);}
 function fill(p:any,layer:Layer,index:number,alpha=255){p.fill(...rgb(layer,index),alpha);}
 
@@ -131,7 +116,7 @@ type MotionDrawing={
   rect:(...coordinates:number[])=>void;point:(...coordinates:number[])=>void;
 };
 function drawSeededContacts(p:MotionDrawing,l:Layer):void{
-  const q=l.params,m=motionModel('lingering-links',l) as ContactModel,weight=Number(q.weight);
+  const q=l.params,m=motionModel('lingering-links',l) as Frozen<ContactModel>,weight=Number(q.weight);
   scale(p,640,()=>{
     if(weight>0&&(q.linkMarks||q.dotMarks)){
       p.noFill();
@@ -148,7 +133,7 @@ function drawSeededContacts(p:MotionDrawing,l:Layer):void{
   });
 }
 function drawSeededSensors(p:MotionDrawing,l:Layer):void{
-  const q=l.params,m=motionModel('sensing-trails',l) as SensorModel,weight=Number(q.weight);
+  const q=l.params,m=motionModel('sensing-trails',l) as Frozen<SensorModel>,weight=Number(q.weight);
   scale(p,640,()=>{
     if(q.showField){p.noStroke();for(let y=0;y<64;y+=2)for(let x=0;x<64;x+=2){
       const value=m.field.values[y*64+x];fill(p,l,2,Math.min(70,value*45));
@@ -165,7 +150,7 @@ function drawSeededSensors(p:MotionDrawing,l:Layer):void{
   });
 }
 function drawSeededFlock(p:MotionDrawing,l:Layer):void{
-  const q=l.params,m=motionModel('flocking-marks',l) as FlockModel,weight=Number(q.weight);
+  const q=l.params,m=motionModel('flocking-marks',l) as Frozen<FlockModel>,weight=Number(q.weight);
   scale(p,640,()=>{
     if(weight>0){
       if(q.links){color(p,l,2,120);p.strokeWeight(weight*.65);for(const [a,b] of m.pairs)p.line(...m.bodies[a].point,...m.bodies[b].point);}
