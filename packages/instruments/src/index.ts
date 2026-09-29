@@ -23,6 +23,8 @@ import { gestureScoresDefinitions } from "./adapters/gesture-scores-instruments.
 import { drawGestureScore, gestureScoreComposition, prepareGestureScore } from "./composition/gesture-scores.js";
 import { dataScoresDefinition } from "./adapters/data-scores-instrument.js";
 import { dataScoresComposition, dataScoresUsesSeed, drawDataScores, prepareDataScores } from "./composition/data-scores.js";
+import { dryBristlesDefinition } from "./adapters/dry-bristles-instrument.js";
+import { drawDryBristles, dryBristlesComposition, prepareDryBristles } from "./composition/dry-bristles.js";
 import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
@@ -62,10 +64,18 @@ export type { RecordingData, Recording, GestureFrame, TrackOptions, GestureTrack
 export { createRecording, recordingData, recordingFingerprint, gestureTrack, echoTrack, resolvePressure, speedPressure, stations, countStations, RECORDING_LIMITS } from "./composition/recording.js";
 export type { BundledRecordingId } from "./composition/recording-samples.js";
 export { bundledRecording, bundledRecordingIds, bundledRecordingInfo } from "./composition/recording-samples.js";
-export type { PressureMap, GesturePathOptions, GesturePath, BristleOptions, GestureSite, SandOptions, GestureSiteOptions } from "./composition/gesture.js";
-export { mapPressure, gesturePath, bristleBand, sandGrains, gestureSites } from "./composition/gesture.js";
+export type { GesturePathOptions, GesturePath, GestureSite, SandOptions, GestureSiteOptions } from "./composition/gesture.js";
+export { gesturePath, sandGrains, gestureSites } from "./composition/gesture.js";
+export type { PressureMap, PressureProfile, PressureShape, BristleFrame, BristleTrack, TipShape, BrushHold, BristleOptions, BristleHair, BristleContact,
+  BristleInk, BristleMaterialSpec } from "./composition/bristle.js";
+export { mapPressure, bristleTrack, bristleBand, bristleContact, bristleStroke, bristleStrokes, planBristles, checkBristleWork, bristleMaterial, hairMaterial,
+  drawBristleStroke, drawFootprint, paperTooth, profilePressure, isBristleTrack, pressureProfiles, tipShapes, brushHolds, MAX_HAIR_POINTS, MAX_STATIONS } from "./composition/bristle.js";
 export type { RecordingSource, GestureScoreComposition, GestureConsumers, GestureRepeat } from "./composition/gesture-scores.js";
 export { gestureScoreComposition, gestureScoreProducts, resolveRecording, drawGestureScore, prepareGestureScore } from "./composition/gesture-scores.js";
+export type { SourceFrame, TraceFigure, PathData, BristleSource } from "./composition/bristle-sources.js";
+export { bristleSourcePaths, pathSet, traceFigures, contourFields, MAX_SOURCE_PATHS, MAX_SOURCE_POINTS } from "./composition/bristle-sources.js";
+export type { DryBristlesComposition, DryBristlesConsumers, DryBristlesPlan } from "./composition/dry-bristles.js";
+export { dryBristlesComposition, dryBristlesPlan, dryBristlesStrokes, drawDryBristles, prepareDryBristles } from "./composition/dry-bristles.js";
 export type {
   TilingRuleName, TilingOptions, TilingTile, TilingVertex, TilingEdge, Tiling, TileFiller, TileFillSpec, TileColorMode, TilingView,
 } from "./composition/types.js";
@@ -111,7 +121,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, dryBristlesDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -219,6 +229,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "branch-ornament": [0x23302b, 0xb5452e, 0xd39a3a, 0x4f7a5c],
   "gesture-scores": [0x24262b, 0xc99a3b, 0xb8452f, 0x2f6f7a],
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
+  "dry-bristles": [0x22252b, 0x2f6f7a, 0xb8452f, 0xc99a3b],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
   "typographic-rhythm": [0x1c1d20, 0xc93a2a, 0x2b5d9b, 0xe6ae2c],
 };
@@ -246,6 +257,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "branch-ornament") return drawBranchOrnament(context, branchOrnamentComposition(input));
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
+  if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
@@ -263,7 +275,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "dry-bristles" || externalDynamicsPreparable.has(id);
   return referenceIds[id] === true || id === "branch-ornament" || id === "data-scores" || externalDynamicsPreparable.has(id);
 }
 
@@ -273,6 +285,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "branch-ornament")
     return prepareBranchOrnament(branchOrnamentComposition(input), cancelled);
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
+  if (input.technique === "dry-bristles") return prepareDryBristles(dryBristlesComposition(input), cancelled);
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
   if (referenceIds[input.technique])

@@ -203,6 +203,11 @@ export function pathMaterial(spec: PathMaterialSpec, palette: readonly number[])
   return materialWithin(spec, palette);
 }
 
+/** A path material that draws every path with palette tone `tone` (materials otherwise pick a random hue per path). */
+export function tonedMaterial(material: PathMaterial, tone: number): PathMaterial {
+  return (surface, path, run) => material(surface, { ...path, tone }, run);
+}
+
 function interior(region: Region, inset: number): { width: number; height: number; left: number; top: number } | undefined {
   const width = region.bounds[2] - region.bounds[0] - inset * 2;
   const height = region.bounds[3] - region.bounds[1] - inset * 2;
