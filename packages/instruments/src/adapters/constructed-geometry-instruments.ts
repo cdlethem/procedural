@@ -26,6 +26,8 @@ export interface BranchTree {
   segmentInto(index: number, out: Float64Array): Float64Array;
   segmentAt(index: number): number[];
   generationAt(index: number): number;
+  /** Index of the parent segment, or -1 for a root segment. */
+  parentAt(index: number): number;
   childCountAt(index: number): number;
 }
 export interface CutBranchPool {

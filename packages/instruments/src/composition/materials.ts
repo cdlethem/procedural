@@ -39,7 +39,8 @@ function unit(seed: number, id: string, purpose: string): number {
 function requireFinite(label: string, value: number, min = -Infinity, max = Infinity): void {
   if (!Number.isFinite(value) || value < min || value > max) throw new Error(`${label} must be finite and in [${min}, ${max}]`);
 }
-function color(surface: CompositionSurface, palette: readonly number[], index: number, alpha: number, fill: boolean): void {
+/** Packed RGB palette entry `index` (wrapping) as the current fill or stroke. */
+export function color(surface: CompositionSurface, palette: readonly number[], index: number, alpha: number, fill: boolean): void {
   if (!palette.length) throw new Error("Composition palette must have at least one color");
   const rgb = palette[index % palette.length] >>> 0;
   if (fill) surface.fill((rgb >>> 16) & 255, (rgb >>> 8) & 255, rgb & 255, alpha);

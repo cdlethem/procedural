@@ -7,6 +7,7 @@ import { motif, pathMaterial, regionFill, regionFillValid, regionGeometry, regio
 import type { PreparedRegionGeometry } from "./materials.js";
 import { contourPaths, gridPaths, gridSites, latticeSites, memoized, partitionRegions, poissonSites, regionTree, wallpaperSites } from "./sources.js";
 import { warpPaths, warpSites } from "./warp.js";
+import { drawGraphComposition, graphRolesComposition, prepareGraphComposition } from "./graph-draw.js";
 import type { CompositionRun, CompositionSurface, LatticeSite, MapName, MapStage, MotifSpec, Path, PathMaterialSpec,
   ReferenceComposition, Region, RegionFillSpec, RegionTreeNode, Site, WallpaperGroup } from "./types.js";
 
@@ -59,6 +60,7 @@ export function referenceComposition(input: InstrumentInput): ReferenceCompositi
     !Number.isSafeInteger(color) || color < 0 || color > 0xffffff)) throw new Error("Composition needs packed RGB colors");
   const q = validateParameterValues(definition(input.technique), input.params);
   const seed = input.seed, palette = [...input.palette];
+  if (input.technique === "graph-roles") return { kind: "graph", ...graphRolesComposition(q, seed, palette) };
   if (input.technique === "motif-ecologies") {
     return { kind: "sites", palette, source: { seed, width: q.width as number, height: q.height as number,
       centerX: q.centerX as number, centerY: q.centerY as number, separation: q.separation as number,
@@ -148,6 +150,7 @@ function boundNestedWork(regions: readonly Region[], spec: RegionFillSpec): void
 export function drawReferenceComposition(surface: CompositionSurface, recipe: ReferenceComposition,
   run: CompositionRun = createCompositionRun()): void {
   run.check();
+  if (recipe.kind === "graph") return drawGraphComposition(surface, recipe, run);
   if (recipe.kind === "sites") {
     const selected = motif(recipe.mark, recipe.palette);
     if (recipe.mark.retention > 0 && recipe.mark.size > 0) atEach(surface, poissonSites(recipe.source), selected, run);
@@ -181,6 +184,7 @@ export function drawReferenceComposition(surface: CompositionSurface, recipe: Re
 /** Build both top-level and nested sources, yielding to the event loop between leaf batches. */
 export async function prepareReferenceComposition(recipe: ReferenceComposition, cancelled: () => boolean): Promise<boolean> {
   if (cancelled()) return false;
+  if (recipe.kind === "graph") return prepareGraphComposition(recipe, cancelled);
   if (recipe.kind === "sites") { motif(recipe.mark, recipe.palette); if (recipe.mark.retention > 0) poissonSites(recipe.source); return !cancelled(); }
   if (recipe.kind === "paths") { pathMaterial(recipe.material, recipe.palette); if (recipe.material.retention > 0) contourPaths(recipe.source); return !cancelled(); }
   if (recipe.kind === "wallpaper") { motif(recipe.mark, recipe.palette); if (recipe.mark.retention > 0) wallpaperSites(recipe.source); return !cancelled(); }

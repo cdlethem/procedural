@@ -18,6 +18,7 @@ import { materialsBDefinitions, drawMaterialsB } from "./adapters/materials-b.js
 import { referenceDefinitions, drawReferenceInstrument } from "./adapters/reference-composition-instruments.js";
 import { referenceComposition, prepareReferenceComposition } from "./composition/reference.js";
 import type { CompositionSurface } from "./composition/types.js";
+import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
@@ -32,6 +33,12 @@ export { poissonSites, contourPaths, partitionRegions, wallpaperSites, wallpaper
 export { warpPoint, warpSites, warpPaths, mapNames } from "./composition/warp.js";
 export { motif, pathMaterial, regionFill } from "./composition/materials.js";
 export { referenceComposition, drawReferenceComposition, prepareReferenceComposition } from "./composition/reference.js";
+export { graphFromParts, withDirection, contactGraph, latticeGraph, branchGraph, selectGraph, nearestNode, graphRoute, planarFaces,
+  edgePaths, nodeSites, edgeMarkers, nodeFraction, edgeFraction, MAX_GRAPH_NODES, MAX_GRAPH_EDGES } from "./composition/graph.js";
+export type { Graph, GraphNode, GraphEdge, GraphStats, GraphParts, GraphRoleOptions, GraphView, GraphRoute, GraphFace, FaceExtraction,
+  RouteMode, RouteMetric, RouteOptions, GraphAttribute, ContactGraphOptions, LatticeGraphOptions, BranchGraphOptions } from "./composition/graph.js";
+export { drawGraphComposition, graphStructure, faceFill, edgeToneRole, graphTones } from "./composition/graph-draw.js";
+export type { GraphComposition, GraphStructure, GraphSourceOptions, GraphRouteRecipe, FaceFillSpec, EdgeTone } from "./composition/graph-draw.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -152,6 +159,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "ordered-disorder": [0x2a2320, 0xc0452a, 0x2f6f8f],
   "recursive-cells": [0x22301f, 0xb5832a, 0x8a4a35, 0x3f6572],
   "fold-atlas": [0x1f2a33, 0xc0452a, 0x2f6f8f, 0xb8862b],
+  "graph-roles": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x9a3d78],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -240,6 +248,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "stream-ribbons": case "curved-trajectories":
       return Number(q.sourceCount) > 0 && Number(q.sourceDisorder) > 0 && Number(q.sourceExtent) > 0 ||
         Number(q.startDisorder) > 0 && Number(q.startExtent) > 0;
+    case "graph-roles": return graphRolesUsesSeed(q);
     case "contact-network": case "agent-trails":
       return Number(q.disorder) > 0 && Number(q.extent) > 0 ||
         Number(q.speed) > 0 && Number(q.velocitySpread) > 0;

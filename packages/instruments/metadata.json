@@ -323,6 +323,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "graph-roles",
+      "title": "Graph Roles",
+      "description": "Read one network in separate roles: a thin supporting web, a bold focal route between two chosen places, node motifs sized by connectivity and fills only in genuine planar faces.",
+      "category": "Graphs",
+      "operationIds": ["spatial.radius-pairs-2d", "motion.pair-force-step-2d", "topology.seeded-depth-first-spanning-tree", "topology.seeded-endpoint-branches-2d", "field.gradient-noise-2d-01", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/graph-roles.md",
+      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+      "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",

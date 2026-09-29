@@ -263,14 +263,18 @@ export function graphForest(q: Params, seed: number): Forest {
     return { vertices, parents: result.parents, depths: result.depths, edges: result.edges as [number,number][], component };
   });
 }
+/** Canvas position of lattice vertex `vertex`: a rotated grid centered on (centerX, centerY) with per-axis spacing. */
+export function latticeVertexPosition(vertex: number, columns: number, rows: number, spacingX: number, spacingY: number,
+  centerX: number, centerY: number, orientationDegrees: number): Point {
+  const rotation = orientationDegrees * Math.PI / 180, cos = Math.cos(rotation), sin = Math.sin(rotation);
+  const x = (vertex % columns - (columns - 1) / 2) * spacingX;
+  const y = (Math.floor(vertex / columns) - (rows - 1) / 2) * spacingY;
+  return [centerX + x * cos - y * sin, centerY + x * sin + y * cos];
+}
 function drawForest(p: Canvas, layer: Layer): void {
   const q = layer.params, trees = graphForest(q, layer.seed), cols = number(q, "columns"), rows = number(q, "rows");
-  const rotation = number(q, "orientation") * Math.PI / 180, cos = Math.cos(rotation), sin = Math.sin(rotation);
-  const at = (vertex: number): Point => {
-    const x = (vertex % cols - (cols - 1) / 2) * number(q, "spacing");
-    const y = (Math.floor(vertex / cols) - (rows - 1) / 2) * number(q, "spacing");
-    return [number(q, "centerX") + x * cos - y * sin, number(q, "centerY") + x * sin + y * cos];
-  };
+  const at = (vertex: number): Point => latticeVertexPosition(vertex, cols, rows, number(q, "spacing"), number(q, "spacing"),
+    number(q, "centerX"), number(q, "centerY"), number(q, "orientation"));
   const random = new JavaRandom(layer.seed ^ 0x3f234ab2), weight = number(q, "weight"), dotSize = number(q, "dotSize");
   p.noFill();
   for (const tree of trees) {

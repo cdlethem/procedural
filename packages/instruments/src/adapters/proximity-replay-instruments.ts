@@ -25,8 +25,9 @@ type Settings = {
   nodes: boolean; nodeSize: number; dotMarks: boolean;
   showVelocities: boolean; velocityScale: number; velocityWeight: number;
 };
+/** `pairHistory[t]` is the flat `[a0, b0, a1, b1, …]` pair list of `history[t]` (compact: 8 bytes a pair); the last entry equals `pairs`. */
 export type ProximityReplay = {
-  history: Point[][]; points: Point[]; velocities: Point[]; pairs: number[][];
+  history: Point[][]; points: Point[]; velocities: Point[]; pairs: number[][]; pairHistory: Int32Array[];
 };
 
 
@@ -192,6 +193,12 @@ function makeInitial(s: Settings, seed: number): { points: Point[]; velocities: 
 function replay(s: Settings, seed: number): ProximityReplay {
   let { points, velocities } = makeInitial(s, seed);
   const history: Point[][] = [points];
+  const pairHistory: Int32Array[] = [];
+  const flat = (pairs: number[][]): Int32Array => {
+    const out = new Int32Array(pairs.length * 2);
+    for (let i = 0; i < pairs.length; i++) { out[2 * i] = pairs[i][0]; out[2 * i + 1] = pairs[i][1]; }
+    return out;
+  };
   const chainPairs: number[][] = [];
   if (s.openChains) {
     const groups = Math.min(3, Math.floor(s.count / 2)) || 1;
@@ -203,6 +210,7 @@ function replay(s: Settings, seed: number): ProximityReplay {
     ? chainPairs : radiusPairs2D({ points: current, radius: s.radius, maxWork: s.count + s.count * (s.count - 1) / 2 }).pairs;
   for (let step = 0; step < s.ticks; step++) {
     const pairs = pairsFor(points);
+    pairHistory.push(flat(pairs));
     const next = pairForceStep2D({ points, velocities, pairs, attraction: s.force,
       repulsion: s.avoidance, repulsionRadius: s.repulsionRadius, damping: s.damping,
       dt: 1, maxSpeed: s.maxSpeed, maxWork: s.count + pairs.length });
@@ -210,7 +218,9 @@ function replay(s: Settings, seed: number): ProximityReplay {
     velocities = next.velocities;
     history.push(points);
   }
-  return { points, velocities, history, pairs: pairsFor(points) };
+  const finalPairs = pairsFor(points);
+  pairHistory.push(flat(finalPairs));
+  return { points, velocities, history, pairs: finalPairs, pairHistory };
 }
 /** Fresh source for geometry tests or analysis; never consults the drawing cache. */
 export function buildProximityReplay(params: Params, seed: number): ProximityReplay {
