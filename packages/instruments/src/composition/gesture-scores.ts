@@ -3,6 +3,7 @@ import type { InstrumentInput } from "../types.js";
 import { validateParameterValues } from "../parameter-validation.js";
 import { atEach, createCompositionRun, strokeWith } from "./core.js";
 import { bristleBand, gesturePath, gestureSites, MAX_HAIR_POINTS, sandGrains } from "./gesture.js";
+import { depositGrains } from "./grains.js";
 import type { BristleOptions, GesturePath, GestureSite, PressureMap } from "./gesture.js";
 import { motif, pathMaterial } from "./materials.js";
 import { bundledRecording, bundledRecordingInfo } from "./recording-samples.js";
@@ -180,8 +181,8 @@ export function drawGestureScore(surface: CompositionSurface, recipe: GestureSco
     for (const repeat of repeats) if (repeat.path) strokeWith(surface, [repeat.path], line, run);
   }
   if (recipe.sand && !skipsMark(recipe.sand.mark)) {
-    const grain = consumers.sand ?? motif(recipe.sand.mark, recipe.palette);
-    for (const repeat of repeats) atEach(surface, repeat.grains, grain, run);
+    const mark = consumers.sand ?? motif(recipe.sand.mark, recipe.palette);
+    for (const repeat of repeats) depositGrains(surface, repeat.grains, { mark }, run);
   }
   if (recipe.glyphs && !skipsMark(recipe.glyphs.mark)) {
     const glyph = consumers.glyph ?? motif(recipe.glyphs.mark, recipe.palette);

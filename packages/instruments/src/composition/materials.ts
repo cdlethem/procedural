@@ -65,6 +65,9 @@ function materialValid(spec: PathMaterialSpec): void {
   requireFinite("material retention", spec.retention, 0, 1);
 }
 
+/** Alpha of a stock dot mark (out of 1); a grain's exposure is expressed against it. */
+export const DOT_ALPHA = 225 / 255;
+
 /** A local-origin mark; omission and variation are stable under population reorder. */
 export function motif(spec: MotifSpec, palette: readonly number[]): Mark {
   motifValid(spec);
@@ -72,20 +75,22 @@ export function motif(spec: MotifSpec, palette: readonly number[]): Mark {
     if (spec.retention === 0 || spec.size === 0 || unit(site.seed, site.id, "keep") >= spec.retention) return;
     const radius = spec.size * (1 - spec.variation * unit(site.seed, site.id, "size")) / 2;
     const ink = site.tone === undefined ? Math.floor(unit(site.seed, site.id, "ink") * palette.length) : Math.floor(site.tone);
+    // A site may dim its mark; absent is exactly 1, so ordinary sites draw as before.
+    const opacity = site.opacity ?? 1;
     surface.rotate(spec.rotation * radians);
     surface.strokeWeight(spec.weight);
     if (spec.kind === "dot") {
-      surface.noStroke(); color(surface, palette, ink, 225, true);
+      surface.noStroke(); color(surface, palette, ink, 225 * opacity, true);
       surface.circle(0, 0, radius * 2);
     } else if (spec.kind === "rings") {
-      surface.noFill(); color(surface, palette, ink, 220, false);
+      surface.noFill(); color(surface, palette, ink, 220 * opacity, false);
       surface.circle(0, 0, radius * 2);
       if (spec.opening > 0 && spec.opening < 1) {
-        color(surface, palette, ink + 1, 170, false);
+        color(surface, palette, ink + 1, 170 * opacity, false);
         surface.circle(0, 0, radius * 2 * (1 - spec.opening));
       }
     } else if (spec.kind === "rosette") {
-      surface.noFill(); color(surface, palette, ink, 225, false);
+      surface.noFill(); color(surface, palette, ink, 225 * opacity, false);
       const gap = spec.opening * radius;
       const length = radius - gap;
       if (length > 0) for (let i = 0; i < spec.petals; i++) {
@@ -94,10 +99,10 @@ export function motif(spec: MotifSpec, palette: readonly number[]): Mark {
         surface.line(c * gap, s * gap, c * radius, s * radius);
         surface.circle(c * (gap + length * .7), s * (gap + length * .7), Math.min(length * .24, spec.weight * 2.7));
       }
-      if (gap > 0) { color(surface, palette, ink + 1, 180, false); surface.circle(0, 0, gap * .62); }
+      if (gap > 0) { color(surface, palette, ink + 1, 180 * opacity, false); surface.circle(0, 0, gap * .62); }
     } else if (spec.kind === "arrow") {
       // Head plus a one-sided tail flag: the flag makes mirrors and glides readable.
-      surface.noFill(); color(surface, palette, ink, 225, false);
+      surface.noFill(); color(surface, palette, ink, 225 * opacity, false);
       const length = radius;
       surface.line(-length, 0, length, 0);
       surface.line(length, 0, length - length * .45, -length * .42);

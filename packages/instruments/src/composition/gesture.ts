@@ -1,4 +1,5 @@
-import { componentSeed } from "./core.js";
+import { cachedBy, componentSeed } from "./core.js";
+import { fallVelocity, landGrain } from "./grains.js";
 import { checkWindow, gridRange, resolvePressure, stations, TrackCursor } from "./recording.js";
 import type { GestureTrack, PressurePolicy, PressureSource, StationRule, TimeWindow } from "./recording.js";
 import type { Path, Point, Site } from "./types.js";
@@ -50,17 +51,6 @@ function range(label: string, value: number, low: number, high: number): void {
   if (typeof value !== "number" || !Number.isFinite(value) || value < low || value > high)
     throw new Error(`${label} must be a finite number in [${low}, ${high}]`);
 }
-function cachedBy<K extends object, V>(cache: WeakMap<K, Map<string, V>>, owner: K, key: string, make: () => V): V {
-  let byKey = cache.get(owner);
-  if (!byKey) { byKey = new Map(); cache.set(owner, byKey); }
-  const hit = byKey.get(key);
-  if (hit !== undefined) { byKey.delete(key); byKey.set(key, hit); return hit; }
-  const value = make();
-  byKey.set(key, value);
-  if (byKey.size > 8) byKey.delete(byKey.keys().next().value!);
-  return value;
-}
-
 /** Width/size factor of a pressure: `floor + (1 - floor) * p^curve`. Zero pressure gives `floor`, full pressure 1. */
 export interface PressureMap { floor: number; curve: number }
 export function mapPressure(pressure: number, map: PressureMap): number {
@@ -270,7 +260,7 @@ export function sandGrains(track: GestureTrack, options: SandOptions): readonly 
   const key = JSON.stringify([options.seed, window, options.pressure, options.map, options.rate, options.lag, options.fall, options.fallAngle, options.inherit, options.spread, options.gate]);
   return cachedBy(sandCache, track, key, () => {
     const cursor = new TrackCursor(track, resolvePressure(track, options.pressure).values);
-    const fallX = options.fall * Math.cos(options.fallAngle * Math.PI / 180), fallY = options.fall * Math.sin(options.fallAngle * Math.PI / 180);
+    const fall = fallVelocity(options);
     const grains: GestureSite[] = [];
     for (let j = first; j <= last; j++) {
       const time = Math.min(Math.max(j * period, window.start), window.end);
@@ -278,12 +268,10 @@ export function sandGrains(track: GestureTrack, options: SandOptions): readonly 
       cursor.at(time);
       const share = (1 - options.gate) + options.gate * mapPressure(cursor.pressure, options.map);
       if (unit(seed, id, "keep") >= share) continue;
-      const delay = options.lag * unit(seed, id, "lag") / 1000;
-      const vx = options.inherit * cursor.speed * cursor.tx + fallX, vy = options.inherit * cursor.speed * cursor.ty + fallY;
-      const radius = options.spread * Math.sqrt(-2 * Math.log(1 - unit(seed, id, "radius"))), around = TAU * unit(seed, id, "around");
+      const land = landGrain(cursor, Math.atan2(cursor.ty, cursor.tx), options, fall,
+        { lag: unit(seed, id, "lag"), radius: unit(seed, id, "radius"), around: unit(seed, id, "around") });
       grains.push(Object.freeze({ id, seed, time, pressure: cursor.pressure, arc: cursor.arc,
-        position: Object.freeze([cursor.x + vx * delay + radius * Math.cos(around), cursor.y + vy * delay + radius * Math.sin(around)] as const),
-        angle: Math.hypot(vx, vy) > 1e-9 ? Math.atan2(vy, vx) : Math.atan2(cursor.ty, cursor.tx), scale: 1, tone: 1 }));
+        position: Object.freeze([land.x, land.y] as const), angle: land.angle, scale: 1, tone: 1 }));
     }
     return Object.freeze(grains);
   });

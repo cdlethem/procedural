@@ -18,6 +18,18 @@ export function componentSeed(parentSeed: number, id: string, purpose: string): 
   return hash >>> 0;
 }
 
+/** Memoize `make` on an owner object and a construction key (least recently used, 8 entries per owner). */
+export function cachedBy<K extends object, V>(cache: WeakMap<K, Map<string, V>>, owner: K, key: string, make: () => V): V {
+  let byKey = cache.get(owner);
+  if (!byKey) { byKey = new Map(); cache.set(owner, byKey); }
+  const hit = byKey.get(key);
+  if (hit !== undefined) { byKey.delete(key); byKey.set(key, hit); return hit; }
+  const value = make();
+  byKey.set(key, value);
+  if (byKey.size > 8) byKey.delete(byKey.keys().next().value!);
+  return value;
+}
+
 export function createCompositionRun(options: { maxWork?: number; maxDepth?: number; cancelled?: () => boolean } = {}): CompositionRun {
   const { maxWork = 100_000, maxDepth = 8, cancelled } = options;
   if (!Number.isSafeInteger(maxWork) || maxWork < 0 || !Number.isSafeInteger(maxDepth) || maxDepth < 1)
