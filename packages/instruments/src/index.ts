@@ -44,6 +44,8 @@ import { typeRhythmUsesSeed } from "./adapters/type-rhythm-instrument.js";
 import { slitCompositionsDefinition } from "./adapters/slit-compositions-instrument.js";
 import { drawSlit, prepareSlit, slitComposition } from "./composition/slit-draw.js";
 import { compartmentsUsesSeed } from "./adapters/compartments-instrument.js";
+import { strokeReliefDefinition } from "./adapters/stroke-relief-instrument.js";
+import { drawStrokeRelief, prepareStrokeRelief, strokeReliefComposition } from "./composition/stroke-relief.js";
 import { pathTypographyDefinition, pathTypographyUsesSeed } from "./adapters/path-typography-instrument.js";
 import { drawPathTypography, pathTypographyComposition, preparePathTypography } from "./composition/path-type-draw.js";
 
@@ -183,6 +185,15 @@ export type { CompartmentFillKind, CompartmentColor, CompartmentFiller, Compartm
   CompartmentImage, CompartmentsComposition } from "./composition/compartments-draw.js";
 export { compartmentFiller, compartmentFillKind, compartmentAngle, compartmentInk, nearestPaletteIndex, hatchSegments, halftoneCentres, hatchSpacing, halftoneRadius,
   boundCompartmentWork, compartmentSource, compartmentOptions, compartmentDrawRegions, drawCompartments, prepareCompartments, MIN_COHERENCE, MAX_COMPARTMENT_UNITS } from "./composition/compartments-draw.js";
+export type { StrokeData, ReliefStroke, StrokeSet, StrokeFrame, DepositionOrder } from "./composition/strokes.js";
+export { strokeSet, strokeData, strokesFromPaths, strokeFromGesture, placeStrokes, scaleWidths, depositionOrder, depositionOrders, paintMass, STROKE_LIMITS } from "./composition/strokes.js";
+export type { BundledStrokeId } from "./composition/stroke-samples.js";
+export { bundledStrokes, bundledStrokeIds, bundledStrokeInfo } from "./composition/stroke-samples.js";
+export type { CrossSection, Overlap, ReliefGrid, DepositOptions as ReliefDepositOptions, StrokeRelief, DepositControl, ReliefNormals, Light, ShadeMaterial, ShadeBand, ShadedPatch } from "./composition/relief.js";
+export { depositHeight, depositWork, reliefGrid, crossSectionProfile, pigmentField, reliefNormals, normalAt, lightVector, shadeSlope, shadeField, shadeRelief,
+  crossSections, overlaps, MAX_RELIEF_CELLS, MAX_DEPOSIT_PAIRS, MAX_PATCH_VERTICES, footprintWeight, SHADE_LEVELS, PATCH_ALPHA } from "./composition/relief.js";
+export type { ReliefSource, ReliefView, ColorBy, StrokeReliefComposition, StrokeReliefConsumers, StrokeReliefProducts } from "./composition/stroke-relief.js";
+export { strokeReliefComposition, sourceStrokes, strokeTones, strokeReliefProducts, reliefColors, flatRibbon, shadedPatch, drawStrokeRelief, prepareStrokeRelief } from "./composition/stroke-relief.js";
 export type { ArcTable, ArcPoint } from "./composition/path-arc.js";
 export { arcTable, arcPointAt, arcTurn, arcSpan, closedRing } from "./composition/path-arc.js";
 export type { AdvanceItem, Crowding, CurvaturePolicy, PathsLayoutOptions, RepeatPolicy, ReadingDirection, DropReason, Adaptation, PathLayoutOptions, PathFrame, DroppedItem, LayoutReport,
@@ -232,7 +243,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, painterlySourceDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, painterlySourceDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -351,6 +362,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "painterly-source": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0xf0e6d2],
   "slit-compositions": [0x1d2733, 0xb5452e, 0xe0a13a, 0xf1e6cc],
   "adaptive-compartments": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0xefe6d2],
+  "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "crossing-lace": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
@@ -382,6 +394,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
   if (input.technique === "painterly-source") return drawPainterly(context, painterlyComposition(input));
   if (input.technique === "slit-compositions") return drawSlit(context, slitComposition(input));
+  if (input.technique === "stroke-relief") return drawStrokeRelief(context, strokeReliefComposition(input));
   if (input.technique === "image-directed-field") return drawImageDirectedField(context, imageDirectedFieldComposition(input));
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
@@ -403,7 +416,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "painterly-source" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "painterly-source" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -421,6 +434,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
     return prepareDataScores(dataScoresComposition(input), cancelled);
   if (input.technique === "painterly-source") return preparePainterly(painterlyComposition(input), cancelled);
   if (input.technique === "slit-compositions") return prepareSlit(slitComposition(input), cancelled);
+  if (input.technique === "stroke-relief") return prepareStrokeRelief(strokeReliefComposition(input), cancelled);
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
   if (referenceIds[input.technique])
