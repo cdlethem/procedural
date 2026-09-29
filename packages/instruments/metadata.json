@@ -414,6 +414,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "crossing-lace",
+      "title": "Crossing Lace",
+      "description": "Weave paths wherever they really cross: every crossing is found exactly, given an over and under strand by an alternating, seeded or ranked rule with editable exceptions, and the under strand is cut open around it. A braid knot, a Celtic plait, two contour families or random loops.",
+      "category": "Fields & paths",
+      "operationIds": ["geometry.chaikin-polyline-2d", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/crossing-lace.md",
+      "source": "packages/instruments/src/composition/crossing-lace.ts",
+      "sourceEntry": "drawCrossingLace",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
