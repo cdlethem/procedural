@@ -388,6 +388,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "fm-engraving",
+      "title": "FM Engraving",
+      "description": "Engrave a picture as wavy line bands: scan lines run across its tones, and where it is dark the waves grow taller and quicker while the lines crowd or thicken; light places stay open paper.",
+      "category": "Raster & color",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/fm-engraving.md",
+      "source": "packages/instruments/src/composition/engraving-draw.ts",
+      "sourceEntry": "drawEngraving",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "image-directed-field",
       "title": "Image Directed Field",
       "description": "Lines and marks that follow or cross the structure of a picture: edges and contours become evenly spaced strokes of ink, stitches or beads that stop where the picture has no direction.",

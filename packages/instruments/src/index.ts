@@ -23,6 +23,8 @@ import { drawSandDeposition, prepareSandDeposition, sandDepositionComposition } 
 import { branchOrnamentComposition, drawBranchOrnament, prepareBranchOrnament } from "./composition/branch-ornament.js";
 import { gestureScoresDefinitions } from "./adapters/gesture-scores-instruments.js";
 import { drawGestureScore, gestureScoreComposition, prepareGestureScore } from "./composition/gesture-scores.js";
+import { fmEngravingDefinition, fmEngravingUsesSeed } from "./adapters/fm-engraving-instrument.js";
+import { drawEngraving, engravingComposition, prepareEngraving } from "./composition/engraving-draw.js";
 import { dataScoresDefinition } from "./adapters/data-scores-instrument.js";
 import { imageDirectedFieldDefinition } from "./adapters/image-directed-field-instrument.js";
 import { drawImageDirectedField, imageDirectedFieldComposition, prepareImageDirectedField } from "./composition/image-directed-field.js";
@@ -97,6 +99,14 @@ export type { ColorBy as FieldColorBy, LineConstruction, ImageDirectedFieldCompo
 export { imageDirectedFieldComposition, imageDirectedFieldProducts, drawImageDirectedField, prepareImageDirectedField, fieldTone, toneLevel, MAX_DRAW_UNITS } from "./composition/image-directed-field.js";
 export type { RecordingSource, GestureScoreComposition, GestureConsumers, GestureRepeat } from "./composition/gesture-scores.js";
 export { gestureScoreComposition, gestureScoreProducts, resolveRecording, drawGestureScore, prepareGestureScore } from "./composition/gesture-scores.js";
+export type { FitMode, ToneEncoding, ToneSource, ToneOptions, ToneField } from "./composition/engraving-tone.js";
+export { toneField, areaAverage, BUNDLED_SOURCE_SIZE, TONE_LIMITS } from "./composition/engraving-tone.js";
+export type { CarrierFamily, Carrier, CarrierOptions } from "./composition/engraving-carriers.js";
+export { engravingCarriers, carrierFamilies, MAX_LINES, MAX_STATIONS as MAX_CARRIER_STATIONS, STATION } from "./composition/engraving-carriers.js";
+export type { FootprintShape, ClipMode, EngravingOptions, EngravingSignal, EngravedLine, EngravingStats, EngravingLines } from "./composition/engraving.js";
+export { engravedLines, engravingTone, toneSignal, shapedTone, ENGRAVING_LIMITS } from "./composition/engraving.js";
+export type { LineKind, ColorBy as EngravingColorBy, EngravingLineSpec, EngravingComposition, EngravingConsumers } from "./composition/engraving-draw.js";
+export { engravingComposition, engravingProducts, tonePieces, drawEngraving, prepareEngraving, TONE_BINS } from "./composition/engraving-draw.js";
 export type { ControlSequenceData, ControlSequence } from "./composition/control-sequence.js";
 export { createControlSequence, controlSequenceData, sequenceFingerprint, SEQUENCE_LIMITS } from "./composition/control-sequence.js";
 export type { BundledControlSequenceId, BundledSequenceInfo } from "./composition/control-sequence-samples.js";
@@ -183,7 +193,7 @@ export { bundledStrokes, bundledStrokeIds, bundledStrokeInfo } from "./compositi
 export type { CrossSection, Overlap, ReliefGrid, DepositOptions as ReliefDepositOptions, StrokeRelief, DepositControl, ReliefNormals, Light, ShadeMaterial, ShadeBand, ShadedPatch } from "./composition/relief.js";
 export { depositHeight, depositWork, reliefGrid, crossSectionProfile, pigmentField, reliefNormals, normalAt, lightVector, shadeSlope, shadeField, shadeRelief,
   crossSections, overlaps, MAX_RELIEF_CELLS, MAX_DEPOSIT_PAIRS, MAX_PATCH_VERTICES, footprintWeight, SHADE_LEVELS, PATCH_ALPHA } from "./composition/relief.js";
-export type { ReliefSource, ReliefView, ColorBy, StrokeReliefComposition, StrokeReliefConsumers, StrokeReliefProducts } from "./composition/stroke-relief.js";
+export type { ReliefSource, ReliefView, ColorBy as ReliefColorBy, StrokeReliefComposition, StrokeReliefConsumers, StrokeReliefProducts } from "./composition/stroke-relief.js";
 export { strokeReliefComposition, sourceStrokes, strokeTones, strokeReliefProducts, reliefColors, flatRibbon, shadedPatch, drawStrokeRelief, prepareStrokeRelief } from "./composition/stroke-relief.js";
 export type { ArcTable, ArcPoint } from "./composition/path-arc.js";
 export { arcTable, arcPointAt, arcTurn, arcSpan, closedRing } from "./composition/path-arc.js";
@@ -234,7 +244,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -341,6 +351,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "optical-plates": [0x1f2d3a, 0xc0452a, 0x2f6f8f],
   "branch-ornament": [0x23302b, 0xb5452e, 0xd39a3a, 0x4f7a5c],
   "gesture-scores": [0x24262b, 0xc99a3b, 0xb8452f, 0x2f6f7a],
+  "fm-engraving": [0x1d2733, 0xb5452e, 0xd39a3a, 0x2f6f8f],
   "sand-deposition": [0x3b2f27, 0xb5522f, 0x1f5f73],
   "quilled-paths": [0xd4563f, 0xe6a23a, 0x2f7f86, 0x6f9a55, 0x8b5190],
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
@@ -382,6 +393,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "sand-deposition") return drawSandDeposition(context, sandDepositionComposition(input));
   if (input.technique === "quilled-paths") return drawQuilled(context, quillComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
+  if (input.technique === "fm-engraving") return drawEngraving(context, engravingComposition(input));
   if (input.technique === "slit-compositions") return drawSlit(context, slitComposition(input));
   if (input.technique === "stroke-relief") return drawStrokeRelief(context, strokeReliefComposition(input));
   if (input.technique === "image-directed-field") return drawImageDirectedField(context, imageDirectedFieldComposition(input));
@@ -405,7 +417,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -414,6 +426,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "branch-ornament")
     return prepareBranchOrnament(branchOrnamentComposition(input), cancelled);
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
+  if (input.technique === "fm-engraving") return prepareEngraving(engravingComposition(input), cancelled);
   if (input.technique === "path-typography") return preparePathTypography(pathTypographyComposition(input), cancelled);
   if (input.technique === "image-directed-field") return prepareImageDirectedField(imageDirectedFieldComposition(input), cancelled);
   if (input.technique === "sand-deposition") return prepareSandDeposition(sandDepositionComposition(input), cancelled);
@@ -459,6 +472,7 @@ export function usesSeed(input: InstrumentInput): boolean {
       q.glyphMark !== "none" && (Number(q.glyphVariation) > 0 || Number(q.glyphRetention) < 1);
     case "optical-plates": return q.maskedPlate !== "none" && q.maskShape === "regions";
     case "data-scores": return dataScoresUsesSeed(q);
+    case "fm-engraving": return fmEngravingUsesSeed(q);
     case "path-typography": return pathTypographyUsesSeed(q);
     case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
