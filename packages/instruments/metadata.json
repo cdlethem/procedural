@@ -414,6 +414,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "painterly-source",
+      "title": "Painterly Source",
+      "description": "Assemble a picture from marks in coarse-to-fine layers: broad strokes first, finer ones only where the paint still differs from the source, turned along its edges and colored from it; mark family, material and color are separate choices over one plan.",
+      "category": "Images",
+      "operationIds": ["color.median-cut-quantize", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/painterly-source.md",
+      "source": "packages/instruments/src/composition/painterly-draw.ts",
+      "sourceEntry": "drawPainterly",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
