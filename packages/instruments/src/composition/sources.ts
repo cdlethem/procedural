@@ -4,7 +4,7 @@ import { poissonPoints, placementPackingInstrumentDefinitions } from "../adapter
 import { panelLeaves, regionFacetInstrumentDefinitions } from "../adapters/region-facet-instruments.js";
 import { componentSeed } from "./core.js";
 import type { CellTreeOptions, ContourOptions, GridOptions, LatticeOptions, LatticeSite, PartitionOptions, Path,
-  PoissonOptions, Region, RegionTreeNode, Site, WallpaperGroup, WallpaperOptions } from "./types.js";
+  Point, PoissonOptions, Region, RegionTreeNode, Site, WallpaperGroup, WallpaperOptions } from "./types.js";
 
 const siteCache = new Map<string, readonly Site[]>();
 const pathCache = new Map<string, readonly Path[]>();
@@ -76,6 +76,44 @@ function contourEdgeGroups(segments: number[][]): { segments: number[][][]; sour
   return [...groups.values()];
 }
 
+export interface LevelSegments {
+  readonly level: number;
+  /** Marching-square segments `[x1, y1, x2, y2]` of one level. */
+  readonly segments: readonly (readonly number[])[];
+}
+
+/**
+ * Assemble marching-square segments of successive levels into frozen paths. Chains retain the contour
+ * level and closure; marching-square edges remain exactly shared. Ids are
+ * `level:<index>:segment:<first segment>`; `place` maps the extraction frame to canvas coordinates.
+ * `advice` names what the caller should change when a level has too many segments.
+ */
+export function contourChains(contours: readonly LevelSegments[], seed: number, levelCount: number,
+  place: (x: number, y: number) => Point, advice = ""): readonly Path[] {
+  const paths: Path[] = [];
+  let chainWork = 0;
+  for (let levelIndex = 0; levelIndex < contours.length; levelIndex++) {
+    const { level, segments } = contours[levelIndex];
+    // The chain assembler has a quadratic preflight: bound each level and their total
+    // before allocating segment pairs or chain geometry.
+    if (segments.length > 2200) throw new Error(`Contour chain assembly work limit exceeded${advice}`);
+    chainWork += 8 * segments.length ** 2 + 4 * segments.length;
+    if (chainWork > 80_000_000) throw new Error(`Contour chain assembly work limit exceeded${advice}`);
+    for (const group of contourEdgeGroups(segments as number[][])) {
+      const chains = assembleSegmentChains2D({ segments: group.segments, maxWork: chainWork }).chains;
+      for (const chain of chains) {
+        const id = `level:${levelIndex}:segment:${group.sourceIndices[chain.segmentIndices[0]]}`;
+        paths.push(Object.freeze({
+          id, seed: componentSeed(seed, id, "path"), level, closed: chain.closed,
+          levelFraction: levelCount > 1 ? levelIndex / (levelCount - 1) : 0,
+          points: Object.freeze(chain.points.map(([x, y]) => Object.freeze(place(x, y)))),
+        }));
+      }
+    }
+  }
+  return Object.freeze(paths);
+}
+
 /** Chains retain the contour level and closure; marching-square edges remain exactly shared. */
 export function contourPaths(options: ContourOptions): readonly Path[] {
   const { seed, source, width, height, centerX, centerY, resolution, frequency, aspect,
@@ -98,30 +136,7 @@ export function contourPaths(options: ContourOptions): readonly Path[] {
     }
     const contours = contourReliefContours({ technique: "contour-relief", seed, params: q, palette: [], cutEdits: [] });
     const angle = rotation * Math.PI / 180, c = Math.cos(angle), s = Math.sin(angle);
-    const paths: Path[] = [];
-    let chainWork = 0;
-    for (let levelIndex = 0; levelIndex < contours.length; levelIndex++) {
-      const { level, segments } = contours[levelIndex];
-      // The chain assembler has a quadratic preflight: bound each level and their total
-      // before allocating segment pairs or chain geometry.
-      if (segments.length > 2200) throw new Error("Contour chain assembly work limit exceeded");
-      chainWork += 8 * segments.length ** 2 + 4 * segments.length;
-      if (chainWork > 80_000_000) throw new Error("Contour chain assembly work limit exceeded");
-      for (const group of contourEdgeGroups(segments)) {
-        const chains = assembleSegmentChains2D({ segments: group.segments, maxWork: chainWork }).chains;
-        for (const chain of chains) {
-          const id = `level:${levelIndex}:segment:${group.sourceIndices[chain.segmentIndices[0]]}`;
-          paths.push(Object.freeze({
-            id, seed: componentSeed(seed, id, "path"), level, closed: chain.closed,
-            levelFraction: levels > 1 ? levelIndex / (levels - 1) : 0,
-            points: Object.freeze(chain.points.map(([x, y]) => Object.freeze([
-              centerX + x * c - y * s, centerY + x * s + y * c,
-            ] as const))),
-          }));
-        }
-      }
-    }
-    return Object.freeze(paths);
+    return contourChains(contours, seed, levels, (x, y) => [centerX + x * c - y * s, centerY + x * s + y * c]);
   });
 }
 

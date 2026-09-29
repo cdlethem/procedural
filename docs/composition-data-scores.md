@@ -109,7 +109,7 @@ consumers, draw, prepare, instrument binding), `composition/data-key.ts` (key mo
   ghosts exist, a "blank = out of range" row only when values were left out). `drawDataKey` paints them with
   the outline font (`textOutlines`): unshaped printable ASCII only, cut at 20 characters, other characters
   shown as "?". Sample marks over 22 units are drawn together at a reduced factor.
-- **Instrument.** `data-scores`, palette of six. Columns are addressed by position; every bundled table has
+- **Instrument.** `data-scores`, palette of six. Columns are addressed by position (stored values `first`/`second`/`third`, unchanged and validated). Option labels are generated from the bundled tables (`1st numeric column (hour · planted · month)`) and each column select's description lists what every position is in every table, so the labels cannot drift from what is read; every bundled table has
   three measures and two categories with missing values (tested). Layers are transparent: no background,
   no full-canvas rectangle.
 
