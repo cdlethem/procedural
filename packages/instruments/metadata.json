@@ -388,6 +388,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "image-directed-field",
+      "title": "Image Directed Field",
+      "description": "Lines and marks that follow or cross the structure of a picture: edges and contours become evenly spaced strokes of ink, stitches or beads that stop where the picture has no direction.",
+      "category": "Fields & paths",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/image-directed-field.md",
+      "source": "packages/instruments/src/composition/image-directed-field.ts",
+      "sourceEntry": "drawImageDirectedField",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "sand-deposition",
       "title": "Sand Deposition",
       "description": "Sand falls from a moving spline: its control points travel through time, grains are released along the curve and land with a delay, and their accumulated density is drawn as exposed grains, isolines, or both; a protected region stays empty and a sparse crisp copy of the generating curve can lie on top.",

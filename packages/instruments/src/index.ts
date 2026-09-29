@@ -24,6 +24,8 @@ import { branchOrnamentComposition, drawBranchOrnament, prepareBranchOrnament } 
 import { gestureScoresDefinitions } from "./adapters/gesture-scores-instruments.js";
 import { drawGestureScore, gestureScoreComposition, prepareGestureScore } from "./composition/gesture-scores.js";
 import { dataScoresDefinition } from "./adapters/data-scores-instrument.js";
+import { imageDirectedFieldDefinition } from "./adapters/image-directed-field-instrument.js";
+import { drawImageDirectedField, imageDirectedFieldComposition, prepareImageDirectedField } from "./composition/image-directed-field.js";
 import { dataScoresComposition, dataScoresUsesSeed, drawDataScores, prepareDataScores } from "./composition/data-scores.js";
 import { crossingLaceDefinition } from "./adapters/crossing-lace-instrument.js";
 import { crossingLaceComposition, crossingLaceUsesSeed, drawCrossingLace, prepareCrossingLace } from "./composition/crossing-lace.js";
@@ -81,6 +83,13 @@ export type { PressureMap, PressureProfile, PressureShape, BristleFrame, Bristle
   BristleInk, BristleMaterialSpec } from "./composition/bristle.js";
 export { mapPressure, bristleTrack, bristleBand, bristleContact, bristleStroke, bristleStrokes, planBristles, checkBristleWork, bristleMaterial, hairMaterial,
   drawBristleStroke, drawFootprint, paperTooth, profilePressure, isBristleTrack, pressureProfiles, tipShapes, brushHolds, MAX_HAIR_POINTS, MAX_STATIONS } from "./composition/bristle.js";
+export type { DirectionFn, TraceSeed, StreamlineOptions, Streamline, StreamlineResult } from "./composition/streamlines.js";
+export { traceStreamlines, SEED_CLEARANCE } from "./composition/streamlines.js";
+export type { FieldImage, FieldValue, FieldMode, AmbientKind, FieldFrame, ImageFieldOptions, FieldSample, ImageField, FieldGate, FieldLineOptions, FieldLine,
+  FieldSiteOptions, FieldSite } from "./composition/image-field.js";
+export { imageStructure, imageField, fieldLines, fieldSites, FIELD_LIMITS } from "./composition/image-field.js";
+export type { ColorBy as FieldColorBy, LineConstruction, ImageDirectedFieldComposition, ImageDirectedFieldConsumers, ImageDirectedFieldProducts } from "./composition/image-directed-field.js";
+export { imageDirectedFieldComposition, imageDirectedFieldProducts, drawImageDirectedField, prepareImageDirectedField, fieldTone, toneLevel, MAX_DRAW_UNITS } from "./composition/image-directed-field.js";
 export type { RecordingSource, GestureScoreComposition, GestureConsumers, GestureRepeat } from "./composition/gesture-scores.js";
 export { gestureScoreComposition, gestureScoreProducts, resolveRecording, drawGestureScore, prepareGestureScore } from "./composition/gesture-scores.js";
 export type { ControlSequenceData, ControlSequence } from "./composition/control-sequence.js";
@@ -154,7 +163,7 @@ export type { PathText, Glyph, KerningRule, ShapeOptions, GlyphItem, GlyphRun } 
 export { pathText, bundledPathTexts, glyphOf, opticalKern, shapeRun, MAX_PATH_TEXT, OPTICAL_DEPTH, OPTICAL_CLEARANCE } from "./composition/type-glyphs.js";
 export type { ContourSupply, BranchSupply, GestureSupply, PathSupply, PathSelection, SelectedPaths, BundledBranch } from "./composition/path-type-supply.js";
 export { branchChains, gestureNaturalExtent, rankedPaths, supplyPaths, smoothPath, bundledBranchTree } from "./composition/path-type-supply.js";
-export type { ColorBy, PathTypographyComposition, GlyphMark, PathTypographyConsumers, TypographyProducts } from "./composition/path-type-draw.js";
+export type { ColorBy as PathTypographyColorBy, PathTypographyComposition, GlyphMark, PathTypographyConsumers, TypographyProducts } from "./composition/path-type-draw.js";
 export { pathTypographyComposition, pathTypographyProducts, glyphTone, glyphFill, glyphOutline, drawPathTypography, preparePathTypography,
   MAX_TYPE_FRAMES, MIN_STRAIGHTNESS, GESTURE_SPACING } from "./composition/path-type-draw.js";
 export type { Crossing, CrossingSide, Contact, NearMiss, CrossingSet, CrossingOptions } from "./composition/crossings.js";
@@ -194,7 +203,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -305,6 +314,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "quilled-paths": [0xd4563f, 0xe6a23a, 0x2f7f86, 0x6f9a55, 0x8b5190],
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "path-typography": [0x1f2226, 0xc24a34, 0x2f6c8f, 0xb8862b],
+  "image-directed-field": [0x1d2230, 0x8d3b2a, 0x2f6f7a, 0xc99a3b],
   "bundled-relations": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86, 0x9c5f34],
   "dry-bristles": [0x22252b, 0x2f6f7a, 0xb8452f, 0xc99a3b],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
@@ -338,6 +348,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "sand-deposition") return drawSandDeposition(context, sandDepositionComposition(input));
   if (input.technique === "quilled-paths") return drawQuilled(context, quillComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
+  if (input.technique === "image-directed-field") return drawImageDirectedField(context, imageDirectedFieldComposition(input));
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
@@ -358,7 +369,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -368,6 +379,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
     return prepareBranchOrnament(branchOrnamentComposition(input), cancelled);
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
   if (input.technique === "path-typography") return preparePathTypography(pathTypographyComposition(input), cancelled);
+  if (input.technique === "image-directed-field") return prepareImageDirectedField(imageDirectedFieldComposition(input), cancelled);
   if (input.technique === "sand-deposition") return prepareSandDeposition(sandDepositionComposition(input), cancelled);
   if (input.technique === "quilled-paths") return prepareQuilled(quillComposition(input), cancelled);
   if (input.technique === "dry-bristles") return prepareDryBristles(dryBristlesComposition(input), cancelled);
@@ -410,6 +422,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "optical-plates": return q.maskedPlate !== "none" && q.maskShape === "regions";
     case "data-scores": return dataScoresUsesSeed(q);
     case "path-typography": return pathTypographyUsesSeed(q);
+    case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
     case "substitution-tilings":
