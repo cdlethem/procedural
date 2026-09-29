@@ -262,7 +262,7 @@ test("a gesture path is a Path with per-point channels, window ends and stations
 const straight = rec("straight", [0, 1000], [0, 600], [0, 0], [1, 1]);
 const straightTrack = gestureTrack(straight, { smoothing: 0, frame: identity(300, 300) });
 const straightPath = gesturePath(straightTrack, { seed: 3, sampling: { kind: "arc", spacing: 10 }, window: { start: 0, end: 1000 }, pressure: recorded });
-const brush = { seed: 3, hairs: 20, width: 40, map: { floor: 0, curve: 1 }, dryness: 0, depletion: 0, wander: 0 };
+const brush = { hairs: 20, width: 40, map: { floor: 0, curve: 1 }, dryness: 0, depletion: 0, wander: 0 };
 
 test("bristles: each hair sits in its own lateral stratum of the brush width, ordered and stable", () => {
   const hairs = bristleBand(straightPath, brush);

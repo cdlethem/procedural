@@ -38,6 +38,8 @@ export interface Site {
    * use it instead of a per-site random hue so colour can carry structure.
    */
   readonly tone?: number;
+  /** Optional multiplier in [0, 1] on the stock mark's alpha; absent is 1 (see `exposeGrains`). */
+  readonly opacity?: number;
 }
 /** A lattice site keeps its exact grid origin and structural exception state. */
 export interface LatticeSite extends Site {

@@ -1,4 +1,5 @@
 import { clipSegmentsSimplePolygon2D, gradientNoise2D01 } from "@procedurals/javascript";
+import { crossingHalfGap, cumulativeLengths, retainedSegments } from "../composition/strands.js";
 import { gratingLines } from "../composition/patterns.js";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
 import type { ControlGroup, Layer } from "../types.js";
@@ -181,35 +182,6 @@ function direction(a: Point, b: Point): Point {
 function tangent(path: Point[], index: number): Point {
   return direction(path[Math.max(0, index - 1)], path[Math.min(path.length - 1, index + 1)]);
 }
-function lerp(a: Point, b: Point, fraction: number): Point {
-  return [a[0] + (b[0] - a[0]) * fraction, a[1] + (b[1] - a[1]) * fraction];
-}
-/** Delete intervals in travel distance, then reconstruct actual retained polyline fragments. */
-function retained(path: Point[], distance: number[], gaps: [number, number][]): Segment[] {
-  if (path.length < 2) return [];
-  const result: Segment[] = [];
-  for (let i = 1; i < path.length; i++) {
-    const start = distance[i - 1], end = distance[i], segmentLength = end - start;
-    let cursor = start;
-    for (const [low, high] of gaps) {
-      if (low >= end) break;
-      if (high <= cursor) continue;
-      const stop = Math.min(end, low);
-      if (stop > cursor) {
-        const a = lerp(path[i - 1], path[i], (cursor - start) / segmentLength);
-        const b = lerp(path[i - 1], path[i], (stop - start) / segmentLength);
-        result.push([a[0], a[1], b[0], b[1]]);
-      }
-      cursor = Math.max(cursor, high);
-      if (cursor >= end) break;
-    }
-    if (cursor < end) {
-      const a = lerp(path[i - 1], path[i], (cursor - start) / segmentLength);
-      result.push([a[0], a[1], path[i][0], path[i][1]]);
-    }
-  }
-  return result;
-}
 
 /** Geometry is independent of palette, widths, clearance and over/under sequence. */
 export function wovenFragments(q: Layer["params"], seed: number): { rows: Segment[]; columns: Segment[] } {
@@ -218,8 +190,8 @@ export function wovenFragments(q: Layer["params"], seed: number): { rows: Segmen
   const rowPaths = lattice, columnPaths = Array.from({ length: columnCount }, (_, c) => lattice.map(row => row[c]));
   const rowGaps: [number, number][][] = rowPaths.map(() => []);
   const columnGaps: [number, number][][] = columnPaths.map(() => []);
-  const rowDistance = rowPaths.map(path => cumulative(path));
-  const columnDistance = columnPaths.map(path => cumulative(path));
+  const rowDistance = rowPaths.map(path => cumulativeLengths(path));
+  const columnDistance = columnPaths.map(path => cumulativeLengths(path));
   let pattern: boolean[] | null = null;
   if (q.sequence === "seeded") {
     const random = new JavaRandom((seed ^ 0x569ac127) >>> 0);
@@ -232,21 +204,15 @@ export function wovenFragments(q: Layer["params"], seed: number): { rows: Segmen
     const rowAbove = rowOver(q, r, c, pattern), lowerWidth = v(q, rowAbove ? "columnWidth" : "rowWidth"),
       upperWidth = v(q, rowAbove ? "rowWidth" : "columnWidth");
     if (upperWidth === 0) continue;
-    // Project both the upper stroke and the lower round cap onto the lower path;
-    // add explicit clearance along travel. This remains safe at shallow angles.
-    const halfGap = (upperWidth + lowerWidth) / (2 * sine) + v(q, "clearance");
+    // The gap is the shared thread geometry (composition/strands.ts), also used by Crossing Lace.
+    const halfGap = crossingHalfGap(upperWidth, lowerWidth, sine, v(q, "clearance"));
     const distances = rowAbove ? columnDistance[c] : rowDistance[r];
     (rowAbove ? columnGaps[c] : rowGaps[r]).push([distances[rowAbove ? r : c] - halfGap,
       distances[rowAbove ? r : c] + halfGap]);
   }
-  const rows = rowPaths.flatMap((path, index) => retained(path, rowDistance[index], rowGaps[index]));
-  const columns = columnPaths.flatMap((path, index) => retained(path, columnDistance[index], columnGaps[index]));
+  const rows = rowPaths.flatMap((path, index) => retainedSegments(path, rowDistance[index], rowGaps[index]));
+  const columns = columnPaths.flatMap((path, index) => retainedSegments(path, columnDistance[index], columnGaps[index]));
   return { rows: clip(rows, polygon), columns: clip(columns, polygon) };
-}
-function cumulative(path: Point[]): number[] {
-  const distances = [0];
-  for (let i = 1; i < path.length; i++) distances.push(distances[i - 1] + Math.hypot(path[i][0] - path[i - 1][0], path[i][1] - path[i - 1][1]));
-  return distances;
 }
 
 function screenSettings(q: Layer["params"], family: "A" | "B") {

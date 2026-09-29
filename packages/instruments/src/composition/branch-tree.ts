@@ -1,6 +1,7 @@
 import { attractorGrowthDefinitions, growthModel, prepareGrowthModel } from "../adapters/attractor-growth.js";
 import type { GrowthModel } from "../adapters/attractor-growth.js";
 import { componentSeed } from "./core.js";
+import { arcPointAt, arcTable } from "./path-arc.js";
 import { memoized } from "./sources.js";
 import type { Path, Point, Site } from "./types.js";
 
@@ -484,18 +485,9 @@ export function attachmentSites(tree: BranchTree, options: AttachmentOptions): r
       throw new Error(`Flank attachments would create ${planned} sites; limit ${MAX_ATTACHMENTS}. Increase flank spacing or narrow the eligible depth`);
     for (const edge of tree.edges) {
       if (!eligibleEdge(edge)) continue;
-      const stations = Math.floor(edge.length / spacing);
-      let segment = 0, walked = 0;
+      const stations = Math.floor(edge.length / spacing), table = arcTable(edge.points, false);
       for (let i = 0; i < stations; i++) {
-        const at = (i + 0.5) * spacing;
-        while (segment < edge.points.length - 2 &&
-          walked + Math.hypot(edge.points[segment + 1][0] - edge.points[segment][0], edge.points[segment + 1][1] - edge.points[segment][1]) <= at) {
-          walked += Math.hypot(edge.points[segment + 1][0] - edge.points[segment][0], edge.points[segment + 1][1] - edge.points[segment][1]);
-          segment++;
-        }
-        const a = edge.points[segment], b = edge.points[segment + 1];
-        const run = Math.hypot(b[0] - a[0], b[1] - a[1]), t = run > 0 ? Math.min(1, (at - walked) / run) : 0;
-        const x = a[0] + (b[0] - a[0]) * t, y = a[1] + (b[1] - a[1]) * t, along = Math.atan2(b[1] - a[1], b[0] - a[0]);
+        const { x, y, heading: along } = arcPointAt(table, (i + 0.5) * spacing);
         for (const side of sides === "paired" ? [1, -1] : sides === "single" ? [1] : [i % 2 === 0 ? 1 : -1]) {
           const frame = along + side * turn, id = `flank@${edge.id}#${i}${side > 0 ? "+" : "-"}`;
           sites.push(Object.freeze({ id, seed: componentSeed(edge.seed, id, "site"), role: "flank" as const,
