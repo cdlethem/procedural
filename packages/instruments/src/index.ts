@@ -66,6 +66,8 @@ import { regionStitchDefinition, regionStitchUsesSeed } from "./adapters/region-
 import { drawStitches, prepareStitches, regionStitchComposition } from "./composition/stitch-draw.js";
 import { outlineTypeDefinition, outlineTypeUsesSeed } from "./adapters/outline-type-instrument.js";
 import { drawOutlineType, outlineTypeComposition, prepareOutlineType } from "./composition/outline-type-draw.js";
+import { valueRegionsDefinition } from "./adapters/value-regions-instrument.js";
+import { drawValueRegions, prepareValueRegions, valueRegionsComposition, valueRegionsUsesSeed } from "./composition/value-regions-draw.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
@@ -158,7 +160,7 @@ export type { ImageSource, SegmentOptions, ValueRegion, RegionAdjacency, Segment
   OrientationOptions, OrientationSample, OrientationField, OrientationVectorOptions, ScanDirection, ScanOptions, ScanRun, RunSet, SortRunsOptions, PixelMoves,
   ApplyMovesOptions, FrequencyModulationOptions, ModulatedLine } from "./composition/image-structure.js";
 export { segmentValueBands, valueRegionMask, subdivideImage, subdivisionLabels, orientationField, orientationPixel, orientationAt, orientationInRect, orientationGrids, orientationVector,
-  scanRuns, scanRunPixel, scanRunSegment, sortScanRuns, applyPixelMoves, pixelSort, frequencyModulation, modulatedPolyline, IMAGE_STRUCTURE_LIMITS } from "./composition/image-structure.js";
+  scanRuns, scanRunPixel, scanRunSegment, sortScanRuns, applyPixelMoves, pixelSort, frequencyModulation, modulatedPolyline, smoothValues, IMAGE_STRUCTURE_LIMITS } from "./composition/image-structure.js";
 export type { SourceFrame, TraceFigure, PathData, BristleSource } from "./composition/bristle-sources.js";
 export { bristleSourcePaths, pathSet, traceFigures, contourFields, MAX_SOURCE_PATHS, MAX_SOURCE_POINTS } from "./composition/bristle-sources.js";
 export type { DryBristlesComposition, DryBristlesConsumers, DryBristlesPlan } from "./composition/dry-bristles.js";
@@ -249,6 +251,14 @@ export type { CompartmentFillKind, CompartmentColor, CompartmentFiller, Compartm
   CompartmentImage, CompartmentsComposition } from "./composition/compartments-draw.js";
 export { compartmentFiller, compartmentFillKind, compartmentAngle, compartmentInk, nearestPaletteIndex, hatchSegments, halftoneCentres, hatchSpacing, halftoneRadius,
   boundCompartmentWork, compartmentSource, compartmentOptions, compartmentDrawRegions, drawCompartments, prepareCompartments, MIN_COHERENCE, MAX_COMPARTMENT_UNITS } from "./composition/compartments-draw.js";
+export type { ValueMeasure, ValueBandRule, ValueMergePolicy, ValueRegionOptions, ValueRegionNeighbor, ValueRegionShape, ValueRegionArc, ValueRegionAdjacency, ValueRegionMap,
+  ValueRetainRule } from "./composition/value-regions.js";
+export { valueRegionMap, keptValueRegions, valueRetainRules, valueMeasures, VALUE_REGION_LIMITS } from "./composition/value-regions.js";
+export type { ValueRegionFillKind, ValueRegionColor, ValueNestedKind, ValueNestedMaterial, ValueRegionHatchSpec, ValueRegionNestedSpec, ValueRegionFillSpec, ValueRegionOutlineSpec,
+  ValueRegionSelect, DrawnValueRegion, ValueRegionFiller, ValueRegionConsumers, ValueRegionImage, ValueRegionsRecipe } from "./composition/value-regions-draw.js";
+export { valueRegionFillValid, valueRegionOutlineValid, insetValueRegion, drawnValueRegions, valueRegionInk, valueRegionHatchSpacing, valueRegionHatchAngle, valueRegionHatch,
+  valueRegionFiller, valueRegionOutline, boundValueRegionWork, valueRegionSource, valueRegionOptions, valueRegionsOf, drawValueRegions, prepareValueRegions,
+  valueRegionsComposition, valueRegionsUsesSeed, MIN_VALUE_REGION_ELONGATION, MAX_VALUE_REGION_UNITS } from "./composition/value-regions-draw.js";
 export type { StrokeData, ReliefStroke, StrokeSet, StrokeFrame, DepositionOrder } from "./composition/strokes.js";
 export { strokeSet, strokeData, strokesFromPaths, strokeFromGesture, placeStrokes, scaleWidths, depositionOrder, depositionOrders, paintMass, STROKE_LIMITS } from "./composition/strokes.js";
 export type { BundledStrokeId } from "./composition/stroke-samples.js";
@@ -369,7 +379,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -495,6 +505,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "slit-compositions": [0x1d2733, 0xb5452e, 0xe0a13a, 0xf1e6cc],
   "nodal-plates": [0x1c2430, 0xb8452f, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "adaptive-compartments": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0xefe6d2],
+  "connected-value-regions": [0x231f24, 0xb5452e, 0xe0a13a, 0x2f6f7a, 0xefe6d2],
   "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "crossing-lace": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "region-stitch": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0x7f9a4f, 0x8b4a6f],
@@ -531,6 +542,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
   if (input.technique === "pixel-sorting") return drawPixelSorting(context, pixelSortingComposition(input));
   if (input.technique === "shape-packing") return drawShapePacking(context, shapePackingComposition(input));
+  if (input.technique === "connected-value-regions") return drawValueRegions(context, valueRegionsComposition(input));
   if (input.technique === "fm-engraving") return drawEngraving(context, engravingComposition(input));
   if (input.technique === "painterly-source") return drawPainterly(context, painterlyComposition(input));
   if (input.technique === "slit-compositions") return drawSlit(context, slitComposition(input));
@@ -560,7 +572,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -582,6 +594,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
     return prepareDataScores(dataScoresComposition(input), cancelled);
   if (input.technique === "pixel-sorting") return preparePixelSorting(pixelSortingComposition(input), cancelled);
   if (input.technique === "shape-packing") return prepareShapePacking(shapePackingComposition(input), cancelled);
+  if (input.technique === "connected-value-regions") return prepareValueRegions(valueRegionsComposition(input), cancelled);
   if (input.technique === "painterly-source") return preparePainterly(painterlyComposition(input), cancelled);
   if (input.technique === "slit-compositions") return prepareSlit(slitComposition(input), cancelled);
   if (input.technique === "nodal-plates") return prepareNodalPlate(nodalPlateComposition(input), cancelled);
@@ -628,6 +641,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "pixel-sorting": return pixelSortingUsesSeed(q);
     case "polygon-watercolor": return polygonWatercolorUsesSeed(q);
     case "shape-packing": return shapePackingUsesSeed(q);
+    case "connected-value-regions": return valueRegionsUsesSeed(q);
     case "fm-engraving": return fmEngravingUsesSeed(q);
     case "path-typography": return pathTypographyUsesSeed(q);
     case "glyph-packing": return glyphPackingUsesSeed(q);
