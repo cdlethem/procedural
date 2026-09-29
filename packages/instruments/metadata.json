@@ -388,6 +388,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "fm-engraving",
+      "title": "FM Engraving",
+      "description": "Engrave a picture as wavy line bands: scan lines run across its tones, and where it is dark the waves grow taller and quicker while the lines crowd or thicken; light places stay open paper.",
+      "category": "Raster & color",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/fm-engraving.md",
+      "source": "packages/instruments/src/composition/engraving-draw.ts",
+      "sourceEntry": "drawEngraving",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "data-scores",
       "title": "Data Scores",
       "description": "Let recorded values decide structure: three bundled tables with missing values become a lattice that drifts, a treemap with exact areas or a timeline, with explicit mappings and a small generated key.",
