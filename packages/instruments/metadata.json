@@ -375,6 +375,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "gesture-scores",
+      "title": "Gesture Scores",
+      "description": "Replay a recorded hand movement with its timing and pressure as a broad bristle brush, a lagging fall of sand and glyphs along the path; one time window and smoothing reshape all three.",
+      "category": "Motion",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/gesture-scores.md",
+      "source": "packages/instruments/src/composition/gesture-scores.ts",
+      "sourceEntry": "drawGestureScore",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
