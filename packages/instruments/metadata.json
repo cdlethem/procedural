@@ -453,6 +453,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "connected-value-regions",
+      "title": "Value Regions",
+      "description": "Reduce a picture to a handful of coherent shapes: value bands split into connected regions (corner contact joined or not), small regions merged into neighbours, and every region traced as a polygon with holes whose shared edges are drawn once. Fill each region with flat color, hatching by tone or nested marks and contours, outline the boundaries in ink, stitches or beads, and leave a chosen share as open paper.",
+      "category": "Images",
+      "operationIds": ["geometry.resample-polyline-2d", "geometry.marching-squares-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/connected-value-regions.md",
+      "source": "packages/instruments/src/composition/value-regions-draw.ts",
+      "sourceEntry": "drawValueRegions",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "stroke-relief",
       "title": "Stroke Relief",
       "description": "Deposit variable-width, pressure-loaded strokes into a height field with an explicit rule for crossings (add, maximum or displace), then light it: edge ridges and bristle furrows catch a movable light. The flat pigment layer and the transparent light-and-shadow patch are separate layers.",
