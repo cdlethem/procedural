@@ -23,6 +23,8 @@ import { gestureScoresDefinitions } from "./adapters/gesture-scores-instruments.
 import { drawGestureScore, gestureScoreComposition, prepareGestureScore } from "./composition/gesture-scores.js";
 import { dataScoresDefinition } from "./adapters/data-scores-instrument.js";
 import { dataScoresComposition, dataScoresUsesSeed, drawDataScores, prepareDataScores } from "./composition/data-scores.js";
+import { pixelSortingDefinition } from "./adapters/pixel-sorting-instrument.js";
+import { drawPixelSorting, pixelSortingComposition, pixelSortingUsesSeed, preparePixelSorting } from "./composition/pixel-sorting.js";
 import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
@@ -97,6 +99,10 @@ export { dataKey, drawDataKey, keyLabel, formatNumber } from "./composition/data
 export type { DataMarkKind, DataFillKind, DataMarkSpec, DataFillSpec, DataLineSpec, DataFootprint, DataLayoutSpec, DataScoresRecipe,
   DataScoresConsumers, DataScene } from "./composition/data-scores.js";
 export { dataScoresScene, dataMark, dataFill, dataFillSpec, drawDataScores, prepareDataScores, dataScoresComposition, sampleSlots } from "./composition/data-scores.js";
+export type { PixelSortValue, PixelSortImage, PixelSortMask, PixelSortRuns, PixelSortMarks, PixelSortRecipe, PixelSortConstruction, RunRow, PixelSortStructure,
+  MovedPixels, PixelStreak, PixelStreaks, StreakSite, PixelSortConsumers } from "./composition/pixel-sorting.js";
+export { PIXEL_SORTING_LIMITS, pixelSortImage, pixelSortMask, dilateMask, pixelSortStructure, pixelSortRunAt, pixelSortRunTable, movedPixels, pixelSortStreaks,
+  runOutline, pixelSortStreakSites, pixelSortRunPaths, drawPixelSorting, preparePixelSorting, pixelSortingComposition } from "./composition/pixel-sorting.js";
 export type { TextSource, TypeLine } from "./composition/type-text.js";
 export { textSource, bundledTextSources, typeLine, clipRingToRect, keyholeRings, fillRings, CAP_HEIGHT, MAX_TEXT_LINES, MAX_LINE_CHARS } from "./composition/type-text.js";
 export type { TypeModuleKind, ScreenAngles, TypeLayoutOptions, TypeModuleSource, TypeModule, TypeLayout, TypeFieldOptions, TypeField,
@@ -123,7 +129,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, pixelSortingDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -231,6 +237,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "branch-ornament": [0x23302b, 0xb5452e, 0xd39a3a, 0x4f7a5c],
   "gesture-scores": [0x24262b, 0xc99a3b, 0xb8452f, 0x2f6f7a],
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
+  "pixel-sorting": [0x1c2230, 0x8a3b32, 0xd9a441, 0xf1e6cf],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
   "typographic-rhythm": [0x1c1d20, 0xc93a2a, 0x2b5d9b, 0xe6ae2c],
 };
@@ -258,6 +265,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "branch-ornament") return drawBranchOrnament(context, branchOrnamentComposition(input));
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
+  if (input.technique === "pixel-sorting") return drawPixelSorting(context, pixelSortingComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
@@ -275,7 +283,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || externalDynamicsPreparable.has(id);
   return referenceIds[id] === true || id === "branch-ornament" || id === "data-scores" || externalDynamicsPreparable.has(id);
 }
 
@@ -287,6 +295,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
+  if (input.technique === "pixel-sorting") return preparePixelSorting(pixelSortingComposition(input), cancelled);
   if (referenceIds[input.technique])
     return prepareReferenceComposition(referenceComposition(input), cancelled);
   if (!externalDynamicsPreparable.has(input.technique)) return !cancelled();
@@ -319,6 +328,7 @@ export function usesSeed(input: InstrumentInput): boolean {
       q.glyphMark !== "none" && (Number(q.glyphVariation) > 0 || Number(q.glyphRetention) < 1);
     case "optical-plates": return q.maskedPlate !== "none" && q.maskShape === "regions";
     case "data-scores": return dataScoresUsesSeed(q);
+    case "pixel-sorting": return pixelSortingUsesSeed(q);
     case "substitution-tilings":
       return Number(q.retention) > 0 && Number(q.retention) < 1 || q.interior === "wash" && Number(q.bleed) > 0 ||
         q.interior !== "none" && q.colorBy === "supertile";

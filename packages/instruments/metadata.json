@@ -401,6 +401,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "pixel-sorting",
+      "title": "Pixel Sorting",
+      "description": "Dissolve a bundled image into ordered streaks: pick the scan direction, the value interval that selects runs, the sort key and order, and a protected region that stays exact; drawn as merged vector bars or stitch-like streaks, with run outlines from a path material.",
+      "category": "Images",
+      "operationIds": ["field.gradient-noise-2d-01"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/pixel-sorting.md",
+      "source": "packages/instruments/src/composition/pixel-sorting.ts",
+      "sourceEntry": "drawPixelSorting",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "typographic-rhythm",
       "title": "Typographic Rhythm",
       "description": "Repeat a phrase huge, then look at it through a grid or partition of modules whose windows slide, stretch and turn the type; other modules become line screens, flat colour or paper, and a small legible caption stays outside the fragments.",
