@@ -1,4 +1,4 @@
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { clipSegmentsSimplePolygon2D, radialPull2D, sequentialDiscProjection2D } from "@procedurals/javascript";
 import { numeric, toggle, choice, type StudioDefinition } from "./types.js";
 
@@ -237,6 +237,10 @@ function drawClip(p: any, layer: Layer): void {
 
 
 
+/** A radial influence: its center, reach and, for pulls, how the effect decays toward the reach. */
+const influenceGroup = (label: string, suffix: "1" | "2", falloff: boolean): ControlGroup => ({ label,
+  controls: [`centerX${suffix}`, `centerY${suffix}`, `radius${suffix}`, ...(falloff ? [`power${suffix}`] : [])] });
+
 export const effectsDefinitions: StudioDefinition[] = [
   {
     id: "pull-marks" as any,
@@ -255,6 +259,11 @@ export const effectsDefinitions: StudioDefinition[] = [
       numeric("radius2", "Second radius", "Reach of the optional second pull.", 10, 350, 5, { hardMin: 10, hardMax: 450, integer: false }),
       numeric("power2", "Second falloff", "How the second pull decays toward its radius.", .2, 6, .1, { hardMin: .2, hardMax: 6, integer: false }),
       numeric("weight", "Stroke weight", "Thickness of the transformed paths.", .1, 6, .1, { hardMin: .1, hardMax: 12, integer: false })],
+    controlGroups: [
+      { label: "Source", controls: ["sourceMode", "pathCount", "jitter"] },
+      { label: "Influences", controls: ["influenceCount", influenceGroup("First pull", "1", true), influenceGroup("Second pull", "2", true)] },
+      { label: "Stroke", controls: ["weight"] },
+    ],
     defaults: {sourceMode: "rows",
       pathCount: 28,
       jitter: 0,
@@ -285,6 +294,11 @@ export const effectsDefinitions: StudioDefinition[] = [
       numeric("radius2", "Second radius", "Reach of the optional second disc.", 10, 350, 5, { hardMin: 10, hardMax: 450, integer: false }),
       numeric("strength", "Projection strength", "How far source samples move away from discs.", 0, 1, .05, { hardMin: 0, hardMax: 1, integer: false }),
       numeric("weight", "Stroke weight", "Thickness of the transformed paths.", .1, 6, .1, { hardMin: .1, hardMax: 12, integer: false })],
+    controlGroups: [
+      { label: "Source", controls: ["sourceMode", "pathCount", "jitter"] },
+      { label: "Influences", controls: ["influenceCount", influenceGroup("First disc", "1", false), influenceGroup("Second disc", "2", false), "strength"] },
+      { label: "Stroke", controls: ["weight"] },
+    ],
     defaults: {sourceMode: "rows",
       pathCount: 24,
       jitter: 0,
@@ -317,6 +331,12 @@ export const effectsDefinitions: StudioDefinition[] = [
       numeric("angle", "Polygon angle", "Rotates the regular polygon around its center.", -180, 180, 5, { hardMin: -180, hardMax: 180, integer: false }),
       numeric("weight", "Stroke weight", "Thickness of retained path marks.", .1, 6, .1, { hardMin: .1, hardMax: 12, integer: false }),
       toggle("showOutline", "Show boundary", "Trace the actual clip boundary over the retained paths.")],
+    controlGroups: [
+      { label: "Source", controls: ["sourceMode", "pathCount", "steps", "wander"] },
+      { label: "Boundary", controls: ["regionMode", { label: "Notch", controls: ["notchWidth", "notchDepth"], proportional: true }, "sides"] },
+      { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["regionWidth", "regionHeight"], proportional: true }, "angle"] },
+      { label: "Stroke", controls: ["weight", "showOutline"] },
+    ],
     defaults: {sourceMode: "rows",
       pathCount: 16,
       steps: 70,

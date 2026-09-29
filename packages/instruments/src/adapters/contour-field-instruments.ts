@@ -1,4 +1,4 @@
-import type { Layer, Parameter } from "../types.js";
+import type { ControlGroup, Layer, Parameter } from "../types.js";
 import { channels, numeric, toggle, type StudioDefinition } from "./types.js";
 import { contourReliefContours, contourReliefField, contourReliefDefinitions, validateContourRelief } from "./contour-relief.js";
 
@@ -33,11 +33,20 @@ const common: Parameter[] = [
   toggle("indexLines", "Index lines", "Emphasize every fourth contour level."),
   toggle("centers", "Hill centers", "Show crosses at actual seeded hill centers when the source is Hills."),
 ];
+/** Terrain and blobs share one control set, so they share one organization. */
+const contourGroups: ControlGroup[] = [
+  { label: "Field", controls: ["source", { label: "Samples", controls: ["columns", "rows"], proportional: true }, "grid", "frequency", "aspect", "phase",
+    { label: "Hills", controls: ["hillCount", "hillRadius", "centers"] }] },
+  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "orientation"] },
+  { label: "Levels", controls: ["levels", "levelBase", "levelStep"] },
+  { label: "Lines", controls: ["weight", "indexLines"] },
+];
 
 export const contourFieldDefinitions: StudioDefinition[] = [{
   id: "contour-terrain", title: "Contour terrain",
   description: "Locally placed contours of editable sampled noise, hills or numeric heights.",
   parameters: [...common],
+  controlGroups: contourGroups,
   defaults: {
     ...sourceDefaults,
     source: "noise",
@@ -61,6 +70,7 @@ export const contourFieldDefinitions: StudioDefinition[] = [{
   id: "contour-blobs", title: "Contour blobs",
   description: "Locally placed sampled contours around seeded hills or an edited numeric grid.",
   parameters: [...common],
+  controlGroups: contourGroups,
   defaults: {
     ...sourceDefaults,
     source: "hills",

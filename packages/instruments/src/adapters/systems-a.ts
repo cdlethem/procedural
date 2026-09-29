@@ -1,4 +1,4 @@
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { choice, numeric, type StudioDefinition } from "./types.js";
 import { drawSystemsAQuality, validateSystemsAQuality } from "./systems-a-quality.js";
 import { drawCurlStudy, validateCurlStudy } from "./systems-a-curl.js";
@@ -15,6 +15,10 @@ const sourceControls = (chemical:boolean, sparse=false) => [
     sparse ? 0 : .1,sparse ? .35 : .7,0,1,.01),
 ];
 const commonDefaults = {sourceX:0, sourceY:0, frequency:4, occupancy:.35};
+const initialField: ControlGroup = { label: "Initial field", controls: ["source", "sourceX", "sourceY", "frequency", "occupancy"] };
+/** A concentration or live-cell mark: its size and outline weight scale together. */
+const cellMark = (size: string): ControlGroup => ({ label: "Mark", controls: [size, "weight"], proportional: true });
+const curlField: ControlGroup = { label: "Field", controls: ["fieldFrequency", "anisotropy", "disorder"] };
 const modern:Record<string,StudioDefinition>={};
 for(const [id,title,source,passes,scale] of [
   ["reaction-spots","Reaction spots","speckle",12,18],
@@ -29,6 +33,9 @@ for(const [id,title,source,passes,scale] of [
     n("scale","Cell size","Diameter or width of concentration marks.",7,24,.01,10000),
     n("weight","Stroke weight","Width of concentration mark outlines.",0,8,0,100,.25),
   ],
+  controlGroups:[initialField,
+    { label: "Evolution", controls: ["passes", "feed", "kill"] },
+    cellMark("scale")],
   defaults:{...commonDefaults,source,passes,scale,weight:1,feed:.035,kill:.062,
     occupancy:id==="reaction-stripes" ? .1 : commonDefaults.occupancy},
   validate:params=>validateSystemsAQuality(id,params),
@@ -46,6 +53,9 @@ for(const [id,title,source,passes,cellSize] of [
     n("cellSize","Cell size","Diameter or width of each live cell mark.",7,30,.01,10000),
     n("weight","Stroke weight","Width of live cell mark outlines.",0,8,0,100,.25),
   ],
+  controlGroups:[initialField,
+    { label: "Evolution", controls: ["rule", "boundary", "passes"] },
+    cellMark("cellSize")],
   defaults:{...commonDefaults,source,passes,cellSize,weight:1,rule:"life",boundary:"WRAP"},
   validate:params=>validateSystemsAQuality(id,params),
 };
@@ -69,6 +79,9 @@ modern["swirling-particles"]={
     n("stepSize","Advection step","Continuous RK4 integration time per trail step; zero holds a particle at its start.",.2,3,0,10000,.05),
     n("weight","Stroke weight","Path width in canvas pixels; zero omits path marks.",.25,4,0,100,.1),
   ],
+  controlGroups:[curlField,
+    { label: "Starts", controls: ["sourceMode", "sourceAngle", "sourceX", "sourceY", "sourceSpread", "count"] },
+    { label: "Trails", controls: ["steps", "stepSize", "weight"] }],
   defaults:{fieldFrequency:1.25,
     anisotropy:1.2,
     disorder:.34,
@@ -92,6 +105,9 @@ modern["flow-needles"]={
     n("scale","Mark length","Length of each directional mark in pixels; independent of spacing between samples.",0,48,0,10000,.5),
     n("weight","Stroke weight","Needle width in canvas pixels; zero omits needle marks.",.25,4,0,100,.1),
   ],
+  controlGroups:[curlField,
+    { label: "Samples", controls: ["sourceX", "sourceY", "sourceSpread", "columns"] },
+    { label: "Mark", controls: ["scale", "weight"], proportional: true }],
   defaults:{fieldFrequency:1.25,
     anisotropy:1.2,
     disorder:.34,

@@ -1,6 +1,6 @@
 import { chaikinPolyline2D, resamplePolyline2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { channels, choice, numeric, toggle, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -76,6 +76,27 @@ const chordParameters = [
   toggle("showGuides", "Show source guides", "Draw the two source curves independently of the chords; off by default."),
   numeric("guideWeight", "Guide weight", "Weight of the optional source curves, independent of chord weight.", 0, 3, .25, { hardMin: 0, hardMax: 50 }),
 ];
+const asemicGroups: ControlGroup[] = [
+  { label: "Dictionary", controls: ["dictionarySize", "strokesPerGlyph", "knotsPerStroke", "loopCharacter", "bend"] },
+  { label: "Arrangement", controls: ["rows", "wordsPerRow", "glyphsPerWord", "regularity",
+    { label: "Spacing", controls: ["glyphSpacing", "wordSpacing", "rowSpacing"], proportional: true },
+    "layoutDisorder"] },
+  { label: "Placement", controls: ["centerX", "centerY", "direction"] },
+  { label: "Glyph ink", controls: [{ label: "Size", controls: ["glyphWidth", "glyphHeight"], proportional: true }, "weight"] },
+];
+/** The two chord sources are configured identically, so they share one group builder. */
+const chordSourceGroup = (label: "A" | "B"): ControlGroup => ({ label: `Source ${label}`, controls: [
+  { label: "Shape", controls: [`shape${label}`, `lobes${label}`, `lobeDepth${label}`, `arcSweep${label}`] },
+  { label: "Placement", controls: [`center${label}X`, `center${label}Y`,
+    { label: "Size", controls: [`radius${label}X`, `radius${label}Y`], proportional: true },
+    `rotation${label}`, `phase${label}`] }] });
+const chordGroups: ControlGroup[] = [
+  chordSourceGroup("A"),
+  chordSourceGroup("B"),
+  { label: "Mapping", controls: ["samples", "stride", "mapPhase", "modulation", "modulationWaves"] },
+  { label: "Disorder", controls: ["retainedFraction", "endpointDisorder"] },
+  { label: "Drawing", controls: ["showGuides", { label: "Line weights", controls: ["weight", "guideWeight"], proportional: true }] },
+];
 const asemicDefaults = { dictionarySize: 9, strokesPerGlyph: 2, knotsPerStroke: 5,
   loopCharacter: .32, bend: .65, regularity: .65, rows: 4, wordsPerRow: 5, glyphsPerWord: 5,
   glyphWidth: 19, glyphHeight: 31, glyphSpacing: 19, wordSpacing: 17, rowSpacing: 57,
@@ -88,9 +109,9 @@ const chordDefaults = { shapeA: "ellipse", shapeB: "ellipse", centerAX: 285, cen
   weight: .8, showGuides: false, guideWeight: .8 };
 export const symbolChordDefinitions: StudioDefinition[] = [
   { id: "asemic-lines", title: "Asemic lines", description: "Seed a reusable abstract spline dictionary, then arrange its paths into editable line-like rhythms without asserting a writing system.",
-    parameters: asemicParameters, defaults: asemicDefaults, validate: validateAsemic },
+    parameters: asemicParameters, controlGroups: asemicGroups, defaults: asemicDefaults, validate: validateAsemic },
   { id: "chord-looms", title: "Chord looms", description: "Arc-length samples on two independent curves joined by modular, optionally modulated index mapping.",
-    parameters: chordParameters, defaults: chordDefaults, validate: validateChords },
+    parameters: chordParameters, controlGroups: chordGroups, defaults: chordDefaults, validate: validateChords },
 ];
 export function validateAsemic(q: Params): void {
   const dictionary = number(q, "dictionarySize", 1, 32, true);

@@ -1,6 +1,6 @@
 import { gradientNoise2D01, gradientPath2D, occupiedLatticePaths2D, orderedCircleFilter2D, seededCirclePlacement2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
-import type { Layer, Parameter } from "../types.js";
+import type { ControlGroup, Layer, Parameter } from "../types.js";
 import { channels, choice, numeric, toggle, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -38,6 +38,9 @@ const footprint = [
   num("extentX", "Source width", "Width of the source distribution, not a clipping window.", 10, 600, 1, 0, 4000),
   num("extentY", "Source height", "Height of the source distribution, not a clipping window.", 10, 600, 1, 0, 4000),
 ];
+/** The source footprint every basic source instrument positions the same way. */
+const sourcePlacement = (...rotation: string[]): ControlGroup =>
+  ({ label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["extentX", "extentY"], proportional: true }, ...rotation] });
 export const basicSourceInstrumentDefinitions: StudioDefinition[] = [
   {
     id: "field-marks", title: "Field marks", description: "A positioned, retained field of seeded noise-directed dots, short strokes or bars.",
@@ -55,6 +58,14 @@ export const basicSourceInstrumentDefinitions: StudioDefinition[] = [
       num("minimumLength", "Shortest fraction", "Minimum mark length as a fraction of maximum.", 0, 1, .02, 0, 1),
       choice("mark", "Mark", "Dot, line or filled bar without moving samples.", ["line", "dot", "bar"]),
       num("weight", "Mark weight", "Thickness of strokes and bars; zero hides the drawing.", 0, 8, .1, 0, 80),
+    ],
+    controlGroups: [
+      { label: "Samples", controls: ["distribution", "pitch",
+        { label: "Grid", controls: ["columns", "rows"], proportional: true }, "retention"] },
+      sourcePlacement(),
+      { label: "Field", controls: ["frequency", "direction", "variation"] },
+      { label: "Mark", controls: ["mark",
+        { label: "Scale", controls: ["maxLength", "weight"], proportional: true }, "minimumLength"] },
     ],
     defaults: {columns: 80,
       rows: 80,
@@ -97,6 +108,17 @@ export const basicSourceInstrumentDefinitions: StudioDefinition[] = [
       num("gapEvery", "Gap cycle", "Number of marks per omission cycle; zero disables omissions.", 0, 32, 1, 0, 500, true),
       num("gapLength", "Omitted marks", "Skip this many marks in each cycle.", 0, 16, 1, 0, 500, true),
       num("weight", "Weight", "Stroke or bar thickness; zero hides marks.", 0, 6, .1, 0, 80),
+    ],
+    controlGroups: [
+      { label: "Starts", controls: ["pathCount", "arrangement",
+        { label: "Grid", controls: ["sourceColumns", "sourceRows"], proportional: true }] },
+      sourcePlacement("sourceAngle"),
+      { label: "Trajectory", controls: ["steps", "distance",
+        { label: "Field", controls: ["fieldScale", "angleBase", "angleScale"] }] },
+      { label: "Mark", controls: ["trace", "mark",
+        { label: "Scale", controls: ["markLength", "weight"], proportional: true },
+        { label: "Stations", controls: ["spacing", "regularity", "drift"] },
+        { label: "Gaps", controls: ["gapEvery", "gapLength"] }] },
     ],
     defaults: {steps: 600,
       distance: .4,
@@ -142,6 +164,14 @@ export const basicSourceInstrumentDefinitions: StudioDefinition[] = [
       num("orientation", "Mark angle", "Rotate diamonds and strokes inside their reserved circles.", -180, 180, 1, -3600, 3600),
       num("weight", "Stroke weight", "Outline and stroke width; zero removes stroke material.", 0, 6, .1, 0, 40),
     ],
+    controlGroups: [
+      { label: "Proposals", controls: ["radial", "attempts",
+        { label: "Rings", controls: ["ringCount", "ringSamples", "phase",
+          { label: "Size", controls: ["ringRadius", "ringSpacing"], proportional: true }] }] },
+      sourcePlacement(),
+      { label: "Exclusion", controls: [{ label: "Radii", controls: ["minimum", "maximum"], proportional: true }, "separation"] },
+      { label: "Mark", controls: ["mark", "materialScale", "orientation", "weight"] },
+    ],
     defaults: {attempts: 3000,
       minimum: 4,
       maximum: 48,
@@ -180,6 +210,17 @@ export const basicSourceInstrumentDefinitions: StudioDefinition[] = [
       choice("layout", "Start layout", "Seeded scattered, evenly spaced or concentrated center starts.", ["scatter", "spaced", "center"]),
       toggle("endpoints", "Endpoints", "Emphasize actual first and last claimed cells."),
       toggle("shadow", "Shadow", "Optional offset stroke beneath routes."),
+    ],
+    controlGroups: [
+      { label: "Lattice", controls: [
+        { label: "Grid", controls: ["columns", "rows"], proportional: true },
+        { label: "Spacing", controls: ["spacingX", "spacingY"], proportional: true },
+        "grid"] },
+      { label: "Placement", controls: ["centerX", "centerY", "orientation"] },
+      { label: "Routes", controls: ["layout", "count", "steps"] },
+      { label: "Drawing", controls: ["dots",
+        { label: "Scale", controls: ["weight", "dotSize"], proportional: true },
+        "endpoints", "shadow"] },
     ],
     defaults: {count: 12,
       steps: 12,

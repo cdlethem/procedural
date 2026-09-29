@@ -1,5 +1,5 @@
 import { RadialProfile3D, annularSolid3D, gradientNoise3D01 } from "@procedurals/javascript";
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { choice, numeric, text, toggle, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -101,11 +101,23 @@ const annularDefaults = {outer: 160,
   ...materialDefaults,
   colorMode: "band"};
 
+/** Placement, palette, lighting and edges are shared by every revolved study. */
+const placementGroup: ControlGroup = { label: "Placement", controls: ["offsetX", "offsetY", { label: "Rotation", controls: ["yaw", "pitch", "roll"] }] };
+const paletteGroup: ControlGroup = { label: "Color", controls: ["colorMode", "noiseScale", "noiseDepth"] };
+const facesGroup: ControlGroup = { label: "Faces", controls: ["faces",
+  { label: "Intensity", controls: ["ambient", "directional"], proportional: true },
+  { label: "Direction", controls: ["lightAzimuth", "lightElevation"] }] };
+const edgesGroup: ControlGroup = { label: "Edges", controls: ["edges", "strokeWeight"] };
+const profileGroups: ControlGroup[] = [
+  { label: "Profile", controls: ["profile", { label: "Size", controls: ["height", "radius"], proportional: true }, "slices",
+    { label: "Caps", controls: ["capStart", "capEnd"] }] },
+  placementGroup, paletteGroup, facesGroup, edgesGroup];
+
 export const revolvedInstrumentDefinitions: StudioDefinition[] = [
   { id: "profile-marks", title: "Profile marks", description: "Editable axial profile revolved by the retained radial mesh source.", renderer: "webgl",
-    parameters: profileControls(), defaults: profileDefaults, validate: validateProfile },
+    parameters: profileControls(), controlGroups: profileGroups, defaults: profileDefaults, validate: validateProfile },
   { id: "depth-marks", title: "Depth marks", description: "The same editable radial-profile source, with seeded noise palette mapping.", renderer: "webgl",
-    parameters: [...profileControls()],
+    parameters: [...profileControls()], controlGroups: profileGroups,
     defaults: depthDefaults, validate: validateProfile },
   { id: "annular-marks", title: "Annular marks", description: "Core annular solid with independently selected face kinds and angular cells.", renderer: "webgl",
     parameters: [numeric("outer", "Outer radius", "Outer wall radius in canvas units.", 50, 230, 1, { hardMin: .001, hardMax: 1000, integer: false }),
@@ -118,7 +130,13 @@ export const revolvedInstrumentDefinitions: StudioDefinition[] = [
       toggle("showBottom", "Bottom annulus", "Include bottom annulus faces."),
       toggle("showInner", "Inner wall", "Include inner wall faces."),
       toggle("showOuter", "Outer wall", "Include outer wall faces."),
-      ...sharedMaterial()], defaults: annularDefaults, validate: validateAnnular },
+      ...sharedMaterial()],
+    controlGroups: [
+      { label: "Solid", controls: [{ label: "Size", controls: ["outer", "inner", "depth"], proportional: true }, "slices",
+        { label: "Cells", controls: ["startCell", "visibleCells"] },
+        { label: "Face kinds", controls: ["showTop", "showBottom", "showInner", "showOuter"] }] },
+      placementGroup, paletteGroup, facesGroup, edgesGroup],
+    defaults: annularDefaults, validate: validateAnnular },
 ];
 
 function bounded(p: Params, key: string, minimum: number, maximum: number, integer = false): void {

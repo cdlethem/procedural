@@ -1,6 +1,6 @@
 import { euclideanDistanceTransform2D, marchingSquares2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
-import type { Layer } from "../types.js";;
+import type { ControlGroup, Layer } from "../types.js";
 import { channels, choice, numeric, toggle, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -29,6 +29,12 @@ const sourceParameters = [
 ];
 const sourceDefaults = { siteShape: "area", gridSize: 78, disorder: .34, extent: .32,
   aspect: 1.25, orientation: -16, centerX: .49, centerY: .51 };
+/** The seeded site source is shared: what the sites are, then where the source sits. */
+const sourceGroups = (): ControlGroup[] => [
+  { label: "Sites", controls: ["siteShape", "features", "disorder", "gridSize"] },
+  { label: "Placement", controls: ["centerX", "centerY", "extent", "aspect", "orientation"] },
+];
+const siteDots: ControlGroup = { label: "Site dots", controls: ["showSites", "siteSize"] };
 
 export const featureDistanceInstrumentDefinitions: StudioDefinition[] = [
   {
@@ -42,6 +48,9 @@ export const featureDistanceInstrumentDefinitions: StudioDefinition[] = [
       numeric("weight", "Contour weight", "Stroke width in canvas units; zero leaves no contour marks.", 0, 6, .1, { hardMin: 0, hardMax: 50 }),
       toggle("showSites", "Show sites", "Draw dots at the actual occupied source cells."),
       numeric("siteSize", "Site dot size", "Diameter of optional source-site dots; zero hides dots.", 0, 12, .1, { hardMin: 0, hardMax: 50 })],
+    controlGroups: [...sourceGroups(),
+      { label: "Contours", controls: ["rings", { label: "Radii", controls: ["startRadius", "radius"], proportional: true }, "weight"] },
+      siteDots],
     defaults: {...sourceDefaults,
       features: 9,
       startRadius: 1.4,
@@ -63,6 +72,9 @@ export const featureDistanceInstrumentDefinitions: StudioDefinition[] = [
       numeric("boundaryWidth", "Boundary width", "Line width only between differently owned, supported neighboring cells; zero hides boundaries.", 0, 6, .1, { hardMin: 0, hardMax: 30 }),
       toggle("showSites", "Show sites", "Mark the actual occupied source cells."),
       numeric("siteSize", "Site size", "Diameter of optional source-site dots; zero hides dots.", 0, 12, .1, { hardMin: 0, hardMax: 50 })],
+    controlGroups: [...sourceGroups(),
+      { label: "Regions", controls: ["supportRadius", "display", "cellCoverage", "boundaryWidth"] },
+      siteDots],
     defaults: {...sourceDefaults,
       siteShape: "ring",
       features: 11,

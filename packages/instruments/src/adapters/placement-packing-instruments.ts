@@ -1,6 +1,6 @@
 import { poissonDisc2D, skylinePack2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
-import type { Layer, Parameter } from "../types.js";
+import type { ControlGroup, Layer, Parameter } from "../types.js";
 import { atEach } from "../composition/core.js";
 import type { Site } from "../composition/types.js";
 import { channels, choice, numeric, toggle, type StudioDefinition } from "./types.js";
@@ -53,6 +53,18 @@ const packingParameters: Parameter[] = [
   numeric("outline", "Outline weight", "Stroke weight around placed cores; zero omits outlines.", 0, 5, .25, { hardMin: 0, hardMax: 50 }),
   numeric("inset", "Inner inset", "Inset a second palette-colored core; zero omits it.", 0, 32, 1, { hardMin: 0, hardMax: 1000 }),
 ];
+const pointGroups: ControlGroup[] = [
+  { label: "Population", controls: ["support", "innerRadius", "radius", "attempts", "maxPoints"] },
+  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["footprintWidth", "footprintHeight"], proportional: true }, "orientation"] },
+  { label: "Mark", controls: ["mark", "size", "markAspect", "markAngle", "angleSpread"] },
+];
+const packingGroups: ControlGroup[] = [
+  { label: "Blocks", controls: ["count",
+    { label: "Size", controls: ["minWidth", "maxWidth", "minHeight", "maxHeight"], proportional: true },
+    "scale", "swapChance", "gutter"] },
+  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["packWidth", "packHeight"], proportional: true }, "rotation"] },
+  { label: "Drawing", controls: ["filled", "inset", "outline"] },
+];
 const pointsDefault = {radius: 18,
   attempts: 8,
   maxPoints: 400,
@@ -86,13 +98,13 @@ const packingDefault = {count: 22,
   inset: 0};
 export const placementPackingInstrumentDefinitions: StudioDefinition[] = [
   { id: "blue-noise-stipple", title: "Blue-noise stipple", description: "One Poisson point-placement instrument with editable support and independent marks.",
-    parameters: pointParameters, defaults: pointsDefault, validate: validatePointPlacement },
+    parameters: pointParameters, controlGroups: pointGroups, defaults: pointsDefault, validate: validatePointPlacement },
   { id: "spaced-symbols", title: "Spaced symbols", description: "The same Poisson instrument, starting with square sites; shape is freely editable.",
-    parameters: pointParameters, defaults: { ...pointsDefault, radius: 26, attempts: 7, mark: "square", size: 10, angleSpread: 45 }, validate: validatePointPlacement },
+    parameters: pointParameters, controlGroups: pointGroups, defaults: { ...pointsDefault, radius: 26, attempts: 7, mark: "square", size: 10, angleSpread: 45 }, validate: validatePointPlacement },
   { id: "packed-posters", title: "Packed posters", description: "Seeded rectangles proposed to an ordered skyline; only placed cores are painted.",
-    parameters: packingParameters, defaults: packingDefault, validate: validatePacking },
+    parameters: packingParameters, controlGroups: packingGroups, defaults: packingDefault, validate: validatePacking },
   { id: "aspect-tiles", title: "Aspect tiles", description: "The same skyline packing instrument, starting from a broader aspect population.",
-    parameters: packingParameters, defaults: { ...packingDefault, count: 25, minWidth: 20, maxWidth: 95, minHeight: 20, maxHeight: 95, outline: 1 }, validate: validatePacking },
+    parameters: packingParameters, controlGroups: packingGroups, defaults: { ...packingDefault, count: 25, minWidth: 20, maxWidth: 95, minHeight: 20, maxHeight: 95, outline: 1 }, validate: validatePacking },
 ];
 function number(q: Params, key: string, low: number, high: number, integer = false): number {
   const v = q[key];

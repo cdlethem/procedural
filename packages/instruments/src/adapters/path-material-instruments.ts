@@ -1,6 +1,6 @@
 import { chaikinPolyline2D, convexHull2D, resamplePolyline2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
-import type { Layer, Parameter } from "../types.js";
+import type { ControlGroup, Layer, Parameter } from "../types.js";
 import { strokeWith } from "../composition/core.js";
 import type { Path as CompositionPath } from "../composition/types.js";
 import { sourcePaths } from "./paths-a-gestures.js";
@@ -130,15 +130,27 @@ const terraceDefaults = {count: 38,
   showDots: false,
   filled: false,
   outlined: true};
+/** Trajectory studies share their whole path setup; only the material's defaults differ. */
+const pathGroups: ControlGroup[] = [
+  { label: "Paths", controls: ["lines", "spacing", "variation", "sourcePoints"] },
+  { label: "Placement", controls: ["sourceCenterX", "sourceCenterY", "sourceSpan", "direction"] },
+  { label: "Bend", controls: ["waves", "amplitude", "forwardBend", "disorder"] },
+  { label: "Material", controls: ["material", "weight", "sampleSpacing",
+    { label: "Size", controls: ["markLength", "markWidth"], proportional: true }, "markAngle",
+    { label: "Breaks", controls: ["gaps", "omitChance"] }] },
+];
+/** Hull studies draw their hulls, fill and source dots with the same switches. */
+const hullDrawing: ControlGroup = { label: "Drawing", controls: ["outlined", "weight", "filled",
+  { label: "Source dots", controls: ["showDots", "inset"] }] };
 export const pathMaterialInstrumentDefinitions: StudioDefinition[] = [
   { id: "stitched-contours", title: "Stitched contours", description: "Arc-length material sewn along independently seeded local trajectories.",
-    parameters: pathParameters, defaults: pathDefaults, validate: q => validatePathMaterialInstrument("stitched-contours", q) },
+    parameters: pathParameters, controlGroups: pathGroups, defaults: pathDefaults, validate: q => validatePathMaterialInstrument("stitched-contours", q) },
   { id: "fragmented-lines", title: "Fragmented lines", description: "Broken, omittable traces on the same editable trajectories and material vocabulary.",
-    parameters: pathParameters, defaults: { ...pathDefaults, lines: 12, waves: 1.7, gaps: 4, weight: 2, sourceSpan: 460,
+    parameters: pathParameters, controlGroups: pathGroups, defaults: { ...pathDefaults, lines: 12, waves: 1.7, gaps: 4, weight: 2, sourceSpan: 460,
       amplitude: 36, forwardBend: 35, spacing: 34, variation: 17, material: "dash", markLength: 20,
       markWidth: 5, markAngle: 0, omitChance: .28 }, validate: q => validatePathMaterialInstrument("fragmented-lines", q) },
   { id: "stitched-paths", title: "Stitched paths", description: "Arc-spaced transverse marks on editable local waves and folded trajectories.",
-    parameters: [...pathParameters],
+    parameters: [...pathParameters], controlGroups: pathGroups,
     defaults: {...pathDefaults,
       lines: 8,
       waves: 1.8,
@@ -160,9 +172,23 @@ export const pathMaterialInstrumentDefinitions: StudioDefinition[] = [
       weight: 1.2},
     validate: q => validatePathMaterialInstrument("stitched-paths", q) },
   { id: "scatter-envelopes", title: "Scatter envelopes", description: "Convex hulls around seeded sites in editable local supports and separate groups.",
-    parameters: scatterParameters, defaults: scatterDefaults, validate: q => validatePathMaterialInstrument("scatter-envelopes", q) },
+    parameters: scatterParameters,
+    controlGroups: [
+      { label: "Population", controls: ["count", "support", "innerRing"] },
+      { label: "Groups", controls: ["clusterCount", "clusterSpread"] },
+      { label: "Placement", controls: ["centerX", "centerY", "extent", "aspect", "direction"] },
+      hullDrawing,
+    ],
+    defaults: scatterDefaults, validate: q => validatePathMaterialInstrument("scatter-envelopes", q) },
   { id: "terraced-islands", title: "Terraced islands", description: "Independently seeded islands, each with scaled nested copies of its actual convex hull.",
-    parameters: terraceParameters, defaults: terraceDefaults, validate: q => validatePathMaterialInstrument("terraced-islands", q) },
+    parameters: terraceParameters,
+    controlGroups: [
+      { label: "Islands", controls: ["islands", "spread", "count", "disorder"] },
+      { label: "Placement", controls: ["centerX", "centerY", "radius", "aspect", "direction"] },
+      { label: "Terraces", controls: ["terraces", "terraceScale", "terraceSpacing"] },
+      hullDrawing,
+    ],
+    defaults: terraceDefaults, validate: q => validatePathMaterialInstrument("terraced-islands", q) },
 ];
 function checked(q: Params, key: string, min: number, max: number, integer = false): number {
   const value = q[key];

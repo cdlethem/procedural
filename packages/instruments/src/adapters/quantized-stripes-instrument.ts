@@ -28,6 +28,13 @@ export const quantizedStripeDefinitions: StudioDefinition[] = [{
     num("coverageX", "Horizontal coverage", "Fraction of each weighted cell painted, centered to leave transparent side gaps.", 0, 1, .01, 0, 1),
     num("coverageY", "Vertical coverage", "Fraction of each row painted, centered to leave transparent top and bottom gaps.", 0, 1, .01, 0, 1),
   ],
+  controlGroups: [
+    { label: "Source", controls: ["source", "samples", "sequence"] },
+    { label: "Reduction", controls: ["colors", "order"] },
+    { label: "Layout", controls: ["columns", "rowShift"] },
+    { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
+    { label: "Coverage", controls: ["coverageX", "coverageY"] },
+  ],
   defaults: {
     source: "palette-ramp", samples: 48,
     sequence: '[["#1b2439",2],["#376b89",1],["#84b8b3",3],["#f2d698",1],["#e98567",2],["#784558",1],["#b9a6c6",2],["#35476e",1]]',

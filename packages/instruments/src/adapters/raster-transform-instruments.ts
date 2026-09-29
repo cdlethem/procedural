@@ -1,6 +1,6 @@
 import { bilinearRasterRemap2D, separableBlur2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { choice, numeric, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -58,10 +58,24 @@ const sharedDefaults = {
   markAspect: 1.2, markAngle: 33, sourceAlpha: .88,
   outputX: 320, outputY: 320, outputWidth: 525, outputHeight: 525,
 };
+/** One mark population feeds both filters: how it is laid out, what a mark is, then where the raster is displayed. */
+const sourceGroups: ControlGroup[] = [
+  { label: "Source", controls: ["rasterSize", "arrangement", "sourceCount", "sourceSeed", "sourceCenterX", "sourceCenterY",
+    { label: "Size", controls: ["sourceExtentX", "sourceExtentY"], proportional: true }, "sourceSpacing", "sourceDisorder"] },
+  { label: "Mark", controls: ["sourceShape", { label: "Size", controls: ["markLength", "markWidth"], proportional: true },
+    "markAspect", "markAngle", "sourceAlpha"] },
+];
+const outputGroup: ControlGroup = { label: "Placement", controls: ["outputX", "outputY",
+  { label: "Size", controls: ["outputWidth", "outputHeight"], proportional: true }] };
 const definitions: StudioDefinition[] = [
   { id: "warp-marks", title: "Warp marks", description: "Bend a local RGBA population of marks through an editable directional deformation map.",
     parameters: [...shared,
       ...warp],
+    controlGroups: [...sourceGroups,
+      { label: "Focus", controls: ["warpCenterX", "warpCenterY", "warpRadius"] },
+      { label: "Displacement", controls: ["swirl", "pull",
+        { label: "Directional", controls: ["waveDirection", "wave", "shear", "waveFrequency", "wavePhase"] }] },
+      outputGroup],
     defaults: {...sharedDefaults,
       warpCenterX: .5,
       warpCenterY: .5,
@@ -76,6 +90,9 @@ const definitions: StudioDefinition[] = [
   { id: "blur-marks", title: "Blur marks", description: "Filter the same editable transparent mark source with independent normalized horizontal and vertical kernels.",
     parameters: [...shared,
       ...blur],
+    controlGroups: [...sourceGroups,
+      { label: "Blur", controls: ["kernelXRadius", "kernelYRadius"], proportional: true },
+      outputGroup],
     defaults: {...sharedDefaults,
       sourceShape: "disc",
       sourceCount: 8,

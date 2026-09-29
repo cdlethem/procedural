@@ -1,5 +1,5 @@
 import { oklabRamp } from "@procedurals/javascript";
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { choice, numeric, text, toggle, type StudioDefinition } from "./types.js";
 import { rampStops } from "./color-source.js";
 
@@ -26,6 +26,8 @@ const colorControls = () => [
   text("colorStops", "Custom color stops", "For custom source: JSON array of 2–32 #RGB or #RRGGBB colors in order.", 1024, true),
   toggle("reverse", "Reverse colors", "Reverse the ramp along band, orbit or arc rank; geometry does not change."),
 ];
+/** Both studies choose their ramp the same way; the orbits' color axis leads it. */
+const colorGroup = (...lead: string[]): ControlGroup => ({ label: "Color", controls: [...lead, "colorSource", "colorStops", "reverse"] });
 
 export const perceptualColorDefinitions: StudioDefinition[] = [
   {
@@ -42,6 +44,12 @@ export const perceptualColorDefinitions: StudioDefinition[] = [
       control("from", "From", "First retained global height fraction; does not restretch shape or colors.", 0, 1, .01, 0, 1),
       control("to", "To", "Last retained global height fraction; does not restretch shape or colors.", 0, 1, .01, 0, 1),
       ...colorControls(),
+    ],
+    controlGroups: [
+      { label: "Profile", controls: ["profile", "height"] },
+      { label: "Placement", controls: ["centerX", "centerY", "rotation"] },
+      { label: "Bands", controls: ["bands", "bandCoverage", { label: "Range", controls: ["from", "to"] }] },
+      colorGroup(),
     ],
     defaults: { bands: 24, profile: profileDefault, height: 420, centerX: 320, centerY: 320,
       rotation: -15, bandCoverage: .72, from: 0, to: 1, colorSource: "palette", colorStops: colorStopsDefault, reverse: false },
@@ -68,6 +76,13 @@ export const perceptualColorDefinitions: StudioDefinition[] = [
       control("centerY", "Center Y", "First orbit's center in canvas units.", 0, 640, 1, -10000, 10000),
       control("rotation", "Global rotation °", "Rotate drift and all elliptical arcs around the first center.", -180, 180, 1, -36000, 36000),
       ...colorControls(),
+    ],
+    controlGroups: [
+      { label: "Orbits", controls: ["orbits", { label: "Radii", controls: ["innerRadius", "outerRadius"], proportional: true }, "spacingPower", "aspect"] },
+      { label: "Arcs", controls: ["startAngle", "sweep", "segments", "weight"] },
+      { label: "Placement", controls: ["centerX", "centerY", "rotation"] },
+      { label: "Drift", controls: ["driftX", "driftY", "twist"] },
+      colorGroup("colorAxis"),
     ],
     defaults: { orbits: 22, innerRadius: 32, outerRadius: 240, spacingPower: 1, aspect: .65,
       driftX: 90, driftY: -40, twist: 70, startAngle: -140, sweep: 250, segments: 96, weight: 2,

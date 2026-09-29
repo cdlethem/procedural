@@ -1,4 +1,4 @@
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { channels, choice, numeric, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -35,6 +35,16 @@ function color(p: Painter, value: number, kind: "fill" | "stroke"): void {
   p[kind](r, g, b, 225);
 }
 
+const phyllotacticWhorlsGroups: ControlGroup[] = [
+  { label: "Ranks", controls: ["count", "startIndex", "divergence", "exponent"] },
+  { label: "Placement", controls: ["centerX", "centerY",
+    { label: "Size", controls: ["radialScale", "innerRadius"], proportional: true }, "anisotropy", "rotation"] },
+  { label: "Disorder", controls: ["angularDisorder", "radialDisorder"] },
+  { label: "Mark", controls: ["mark", { label: "Orientation", controls: ["markOrientation", "markAngle"] }, "aspect",
+    { label: "Scale", controls: ["size", "weight"], proportional: true }, "taper", "retention"] },
+  { label: "Connections", controls: ["connectionStride", "connectionWeight"] },
+];
+
 export const phyllotacticWhorlsDefinitions: StudioDefinition[] = [{
   id: "phyllotactic-whorls",
   title: "Phyllotactic whorls",
@@ -63,6 +73,7 @@ export const phyllotacticWhorlsDefinitions: StudioDefinition[] = [{
     numeric("connectionStride", "Connection stride", "Join rank i to i + stride only when both ranks are present. Zero disables links; never wraps.", 0, 89, 1, { hardMin: 0, hardMax: 5000, integer: true }),
     numeric("connectionWeight", "Connection weight", "Zero omits connections without removing marks.", 0, 4, .1, { hardMin: 0, hardMax: 30, integer: false }),
   ],
+  controlGroups: phyllotacticWhorlsGroups,
   defaults: {
     count: 850, startIndex: 1, divergence: 137.508, radialScale: 8.3, exponent: .5,
     innerRadius: 19, anisotropy: 1, centerX: 320, centerY: 320, rotation: 0,

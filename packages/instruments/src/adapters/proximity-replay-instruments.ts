@@ -1,6 +1,6 @@
 import { pairForceStep2D, radiusPairs2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
-import type { Layer, Parameter } from "../types.js";
+import type { ControlGroup, Layer, Parameter } from "../types.js";
 import { choice, numeric, toggle, type StudioDefinition } from "./types.js";
 
 type Kind = "contact-network" | "agent-trails";
@@ -93,11 +93,23 @@ const base = {sourceMode: "area",
   showVelocities: false,
   velocityScale: 7,
   velocityWeight: .85};
+const controlGroups: ControlGroup[] = [
+  { label: "Population", controls: ["sourceMode", "count", "disorder"] },
+  { label: "Placement", controls: ["centerX", "centerY", "extent", "aspect", "angle"] },
+  { label: "Starting motion", controls: ["velocityHeading", "speed", "velocitySpread"] },
+  { label: "Simulation", controls: ["ticks", "openChains", "radius", "force",
+    { label: "Avoidance", controls: ["avoidance", "repulsionRadius"] }, "damping", "maxSpeed"] },
+  { label: "Drawing", controls: ["dotMarks",
+    { label: "Trails", controls: ["trails", "trailStride", "trailWeight"] },
+    { label: "Links", controls: ["links", "linkWeight", "linkDotSize"] },
+    { label: "Nodes", controls: ["nodes", "nodeSize"] },
+    { label: "Velocity spokes", controls: ["showVelocities", "velocityScale", "velocityWeight"] }] },
+];
 export const proximityReplayInstrumentDefinitions: StudioDefinition[] = [
   { id: "contact-network", title: "Contact network", description: "Editable current neighborhood links under synchronous pair-force replay.",
-    parameters, defaults: { ...base, count: 60, extent: 320, ticks: 24, radius: 43, nodeSize: 2.6, linkWeight: .7 }, validate: validateProximityReplayInstrument },
+    parameters, controlGroups, defaults: { ...base, count: 60, extent: 320, ticks: 24, radius: 43, nodeSize: 2.6, linkWeight: .7 }, validate: validateProximityReplayInstrument },
   { id: "agent-trails", title: "Agent trails", description: "Retained movement histories from the same editable proximity-force replay.",
-    parameters, defaults: { ...base, count: 75, sourceMode: "ring", extent: 340, aspect: .8, disorder: .06,
+    parameters, controlGroups, defaults: { ...base, count: 75, sourceMode: "ring", extent: 340, aspect: .8, disorder: .06,
       velocityHeading: 30, speed: 1.5, velocitySpread: 100, force: .00042,
       repulsionRadius: 34, damping: .995, trails: true, trailStride: 2, trailWeight: 1.2,
       links: false, nodes: true, nodeSize: 3.2, showVelocities: true }, validate: validateProximityReplayInstrument },

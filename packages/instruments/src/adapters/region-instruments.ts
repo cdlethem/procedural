@@ -71,6 +71,13 @@ export const regionInstrumentDefinitions: StudioDefinition[] = [
       outlines: false,
       weight: 1.2,
       showRejected: false},
+    controlGroups: [
+      { label: "Candidates", controls: ["candidateCount", "spacing", "clearance"] },
+      { label: "Placement", controls: ["sourceCenterX", "sourceCenterY", "length", "direction"] },
+      { label: "Trajectory", controls: ["sourcePoints", "amplitude", "frequency", "disorder"] },
+      { label: "Ribbon", controls: ["baseWidth", "widthVariation", "taper"] },
+      { label: "Drawing", controls: ["fillRibbons", "centerlines", "outlines", "showRejected", "weight"] },
+    ],
     validate: (q) => validateBands(q),
   },
   {
@@ -97,6 +104,14 @@ export const regionInstrumentDefinitions: StudioDefinition[] = [
       toggle("secondary", "Second field", "Include a crossing hatch field."),
       toggle("outline", "Boundary outline", "Draw the outer and hole boundaries."),
       toggle("regionFill", "Region fill", "Color just the island, leaving holes and surrounding canvas transparent.")],
+    controlGroups: [
+      { label: "Island", controls: ["vertices", "lobes", "irregularity"] },
+      { label: "Placement", controls: ["sourceCenterX", "sourceCenterY", "radius", "aspect", "orientation"] },
+      { label: "Holes", controls: ["holeCount", "holeRadius", "holeSpread"] },
+      { label: "Primary hatch", controls: ["spacing", "rotation", "phase"] },
+      { label: "Cross hatch", controls: ["secondary", "cross", "twist", "crossPhase"] },
+      { label: "Drawing", controls: ["weight", "outline", "regionFill"] },
+    ],
     defaults: {sourceCenterX: 360,
       sourceCenterY: 355,
       radius: 245,

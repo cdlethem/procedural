@@ -1,5 +1,5 @@
 import { gradientNoise2D01, marchingSquares2D } from "@procedurals/javascript";
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { channels, choice, numeric, text, toggle, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -26,6 +26,18 @@ const bounded = (q: Params, key: string, min: number, max: number, integer = fal
 const control = (key: string, label: string, detail: string, min: number, max: number, step: number,
   hardMin = min, hardMax = max, integer = false) => numeric(key, label, detail, min, max, step, { hardMin, hardMax, integer });
 const emptyGrid = "0 0 0 0 0\n0 1 2 1 0\n0 2 4 2 0\n0 1 2 1 0\n0 0 0 0 0";
+const contourReliefGroups: ControlGroup[] = [
+  { label: "Height source", controls: ["source",
+    { label: "Grid", controls: ["columns", "rows"], proportional: true }, "grid",
+    "frequency", "aspect", "phase",
+    { label: "Hills", controls: ["hillCount", "hillRadius"] }] },
+  { label: "Placement", controls: ["centerX", "centerY",
+    { label: "Size", controls: ["width", "height"], proportional: true }, "heightScale",
+    { label: "Rotation", controls: ["yaw", "pitch", "roll"] }] },
+  { label: "Faces", controls: ["faces", "faceColor"] },
+  { label: "Edges", controls: ["edges", "edgeWeight"] },
+  { label: "Contours", controls: ["contours", "levelMode", "levelList", "levelCount", "levelBase", "levelStep", "contourWeight"] },
+];
 
 export const contourReliefDefinitions: StudioDefinition[] = [{
   id: "contour-relief", title: "Contour relief", renderer: "webgl",
@@ -60,6 +72,7 @@ export const contourReliefDefinitions: StudioDefinition[] = [{
     control("edgeWeight", "Edge weight", "Zero suppresses grid-edge ink.", 0, 3, .1, 0, 20),
     control("contourWeight", "Contour weight", "Zero suppresses contour ink.", 0, 4, .1, 0, 20),
   ],
+  controlGroups: contourReliefGroups,
   defaults: { source: "hills", columns: 39, rows: 39, grid: emptyGrid, frequency: 1.6, aspect: .85, phase: 0,
     hillCount: 3, hillRadius: .22, width: 390, height: 330, heightScale: 75, centerX: 320, centerY: 320,
     yaw: -26, pitch: 48, roll: 0, levelMode: "sequence", levelList: ".25, .5, .75, 1, 1.25",

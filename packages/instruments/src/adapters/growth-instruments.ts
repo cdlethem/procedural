@@ -1,6 +1,6 @@
 import {elasticCurveGrowStep2D, insertSegmentBridge2D, radiusPairs2D, relativeNeighborhoodPairs2D, thresholdEdgeRelaxation2D} from '@procedurals/javascript';
 import {JavaRandom} from '@procedurals/javascript/examples/city-marks/city-marks.js';
-import type {Layer} from '../types.js';
+import type {ControlGroup, Layer} from '../types.js';
 import {channels, choice, numeric, toggle, type StudioDefinition} from './types.js';
 
 type Point = [number, number];
@@ -93,10 +93,36 @@ const elasticControls=[
   toggle('endpoints','Endpoints','Mark open endpoints or the first vertex of each ring.'),
   numeric('nodeSize','Node diameter','Diameter of optional structure and endpoint nodes.',0,12,.2,{hardMin:0,hardMax:40}),
 ];
+const bridgeGroups:ControlGroup[]=[
+  {label:'Strands',controls:['strandCount','sourcePoints','span','spacing','strain','disorder']},
+  {label:'Placement',controls:['centerX','centerY','direction']},
+  {label:'Bridges',controls:['ticks','stride','slant','bridgeSpacing','bridgeAdvance','candidateDisorder']},
+  {label:'Drawing',controls:[{label:'Line weights',controls:['sourceWeight','bridgeWeight'],proportional:true},'nodes','nodeSize','candidate']},
+];
+const neighborhoodGroups:ControlGroup[]=[
+  {label:'Source',controls:['sourceMode','count','disorder']},
+  {label:'Placement',controls:['centerX','centerY','extent','aspect','direction']},
+  {label:'Proposals',controls:['poolSize','poolCenterX','poolCenterY','poolExtent']},
+  {label:'Growth',controls:['ticks','insert','densityRadius','minNeighbors','maxNeighbors',{label:'Relaxation',controls:['chain','minLength','step']}]},
+  {label:'Drawing',controls:[
+    {label:'Graph',controls:['graphMarks','graphWeight']},
+    {label:'Nodes',controls:['nodeMarks','dotSize']},
+    {label:'Traces',controls:['traces','traceWeight']},
+  ]},
+];
+const elasticGroups:ControlGroup[]=[
+  {label:'Sources',controls:['sourceMode','strandCount','sourcePoints','length','radius','separation','bend','disorder']},
+  {label:'Placement',controls:['centerX','centerY','direction']},
+  {label:'Growth',controls:['ticks','pinning','growth','curl',
+    {label:'Wind',controls:['windX','windY']},
+    {label:'Avoidance',controls:['range','strength']},
+    {label:'Refinement',controls:['refineLength','nodeCap']}]},
+  {label:'Drawing',controls:['weight','seedGuides','structure','endpoints','nodeSize']},
+];
 export const growthInstrumentDefinitions:StudioDefinition[]=[
-  {id:'bridge-web',title:'Bridge web',description:'Seed parallel strands, then select crossings that split and link their graph.',parameters:bridgeControls,defaults:{ticks:10, strandCount:6, sourcePoints:6, span:400, spacing:56, strain:24, disorder:.35, centerX:320, centerY:320, direction:90, slant:21, stride:5, bridgeSpacing:32, bridgeAdvance:42, candidateDisorder:.2, sourceWeight:1.25, bridgeWeight:2.4, nodes:false, nodeSize:3, candidate:false},validate:q=>validateGrowthInstrument('bridge-web',q)},
-  {id:'neighborhood-growth',title:'Neighborhood growth',description:'Construct seeded populations and grow a density-filtered exact local graph.',parameters:neighborhoodControls,defaults:{ticks:8, count:22, sourceMode:'ring', extent:195, aspect:.9, centerX:320, centerY:320, direction:0, disorder:.55, poolSize:140, poolCenterX:320, poolCenterY:320, poolExtent:340, densityRadius:64, chain:false, minLength:22, step:.4, insert:2, minNeighbors:1, maxNeighbors:5, graphMarks:true, graphWeight:1.15, nodeMarks:true, dotSize:4, traces:false, traceWeight:.6},validate:q=>validateGrowthInstrument('neighborhood-growth',q)},
-  {id:'elastic-loops',title:'Elastic loops',description:'Grow seeded filaments or concentric rings through noncrossing material dynamics.',parameters:elasticControls,defaults:{ticks:7, strandCount:3, sourcePoints:6, sourceMode:'open', length:335, radius:75, separation:72, bend:19, disorder:.4, centerX:320, centerY:320, direction:90, pinning:'first', growth:.018, curl:.045, windX:.1, windY:0, range:42, strength:8, refineLength:70, nodeCap:72, weight:2.1, seedGuides:false, structure:false, endpoints:false, nodeSize:4},validate:q=>validateGrowthInstrument('elastic-loops',q)},
+  {id:'bridge-web',title:'Bridge web',description:'Seed parallel strands, then select crossings that split and link their graph.',controlGroups:bridgeGroups,parameters:bridgeControls,defaults:{ticks:10, strandCount:6, sourcePoints:6, span:400, spacing:56, strain:24, disorder:.35, centerX:320, centerY:320, direction:90, slant:21, stride:5, bridgeSpacing:32, bridgeAdvance:42, candidateDisorder:.2, sourceWeight:1.25, bridgeWeight:2.4, nodes:false, nodeSize:3, candidate:false},validate:q=>validateGrowthInstrument('bridge-web',q)},
+  {id:'neighborhood-growth',title:'Neighborhood growth',description:'Construct seeded populations and grow a density-filtered exact local graph.',controlGroups:neighborhoodGroups,parameters:neighborhoodControls,defaults:{ticks:8, count:22, sourceMode:'ring', extent:195, aspect:.9, centerX:320, centerY:320, direction:0, disorder:.55, poolSize:140, poolCenterX:320, poolCenterY:320, poolExtent:340, densityRadius:64, chain:false, minLength:22, step:.4, insert:2, minNeighbors:1, maxNeighbors:5, graphMarks:true, graphWeight:1.15, nodeMarks:true, dotSize:4, traces:false, traceWeight:.6},validate:q=>validateGrowthInstrument('neighborhood-growth',q)},
+  {id:'elastic-loops',title:'Elastic loops',description:'Grow seeded filaments or concentric rings through noncrossing material dynamics.',controlGroups:elasticGroups,parameters:elasticControls,defaults:{ticks:7, strandCount:3, sourcePoints:6, sourceMode:'open', length:335, radius:75, separation:72, bend:19, disorder:.4, centerX:320, centerY:320, direction:90, pinning:'first', growth:.018, curl:.045, windX:.1, windY:0, range:42, strength:8, refineLength:70, nodeCap:72, weight:2.1, seedGuides:false, structure:false, endpoints:false, nodeSize:4},validate:q=>validateGrowthInstrument('elastic-loops',q)},
 ];
 const keys:Record<Kind,string[]>={
   'bridge-web':['ticks','strandCount','sourcePoints','span','spacing','strain','disorder','centerX','centerY','direction','slant','stride','bridgeSpacing','bridgeAdvance','candidateDisorder'],

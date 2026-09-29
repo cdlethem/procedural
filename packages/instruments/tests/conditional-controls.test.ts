@@ -14,7 +14,7 @@ const toggle = (key: string, extra: Partial<Parameter> = {}): Parameter => ({ ke
 const amount = (key: string, extra: Partial<Parameter> = {}): Parameter =>
   ({ key, label: key, description: key, type: "number", min: 0, max: 1, step: .1, ...extra });
 const item = (parameters: Parameter[], defaults: InstrumentDefinition["defaults"] = {}): InstrumentDefinition =>
-  ({ id: "probe", title: "Probe", description: "", parameters, defaults });
+  ({ id: "probe", title: "Probe", description: "", parameters, controlGroups: [{ label: "All", controls: parameters.map((parameter) => parameter.key) }], defaults });
 const rejects = (parameters: Parameter[], pattern: RegExp) => assert.throws(() => validateVisibility(item(parameters)), pattern);
 
 test("conditions must name a select or boolean control of the same instrument", () => {

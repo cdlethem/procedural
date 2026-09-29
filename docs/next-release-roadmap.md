@@ -194,6 +194,7 @@ These are enabling work, **not extra gallery additions**.
 | F7 Stateful snapshots | Explicit initial conditions, steps, checkpoints, fixed update order and seeded IDs | Reuse dynamics preparation; palette-only edits repaint snapshots |
 | F8 Spatial inputs and drawing | Indexed meshes/points, surface sampling, camera and depth/material consumers | Reuse surface attributes and implicit-ray cores; no claim to reconstruct scans or train models |
 | F9 Conditional controls | Every control that only matters under another selection declares it (`visibleWhen`), validated at load; one shared helper reports which controls are visible | Extend the existing `visibleWhen` field; conditions on legacy adapters come from measurement, not guesswork. See [conditional controls](conditional-controls.md) |
+| F10 Control groups | Every instrument declares `controlGroups`: labelled nested clusters of related controls in display order, each control in exactly one, with `proportional` clusters a host may ratio-lock | Organization only; the app owns presentation. See [control groups](control-groups.md) |
 
 **Raster contract:** declare width/height, color space, straight versus premultiplied alpha,
 pixel-center mapping and interpolation. Perform composition in a stated representation;
@@ -218,6 +219,12 @@ hidden values are retained and stay valid. The contract's converse is the testab
 a control is hidden, changing it does not change the drawing.** Every new brief states which of
 its controls depend on which selections, and the existing entries are audited by measurement
 and updated to follow the same rule.
+
+**Control groups (F10):** the package is opinionated about how each instrument's controls are
+organized; the app decides how to present them. Every new brief declares `controlGroups` next to
+its parameters (TypeScript requires it) following the [authoring guide](control-groups.md), and
+marks a cluster `proportional` only when its members share one non-negative unit and scaling
+them together is one meaningful edit.
 
 ## 4. Study briefs and counting convention
 

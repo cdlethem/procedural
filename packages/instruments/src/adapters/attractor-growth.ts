@@ -1,6 +1,6 @@
 import {spaceColonizationStep2D} from '@procedurals/javascript';
 import {JavaRandom} from '@procedurals/javascript/examples/city-marks/city-marks.js';
-import type {Layer} from '../types.js';
+import type {ControlGroup, Layer} from '../types.js';
 import {channels, choice, numeric, toggle, type StudioDefinition} from './types.js';
 
 type Point = [number, number];
@@ -41,8 +41,18 @@ const parameters = [
   numeric('guideSize','Guide size','Diameter of optional attractor points.',0,8,.2,{hardMin:0,hardMax:30}),
 ];
 
+const controlGroups:ControlGroup[] = [
+  {label:'Attractors',controls:['sourceMode','sourceCount','disorder','exclusion','band','lobeGap','lobeBias']},
+  {label:'Placement',controls:['centerX','centerY','extent','aspect','direction']},
+  {label:'Roots',controls:['rootCount','rootSpread','rootJitter','rootX','rootY','rootHeading']},
+  {label:'Growth',controls:['ticks','step','reach',{label:'Branching',controls:['branches','branchSpread']}]},
+  {label:'Drawing',controls:['weight','taper',
+    {label:'Terminals',controls:['terminals','terminalSize']},
+    {label:'Guides',controls:['guides','guideSize']}]},
+];
+
 export const attractorGrowthDefinitions:StudioDefinition[] = [{
-  id:'attractor-growth',title:'Attractor growth',description:'Seed an editable attractor footprint and independent roots; grow branching tips toward nearest unconsumed targets.',parameters,
+  id:'attractor-growth',title:'Attractor growth',description:'Seed an editable attractor footprint and independent roots; grow branching tips toward nearest unconsumed targets.',parameters,controlGroups,
   defaults:{sourceCount:95,sourceMode:'area',extent:315,aspect:1.1,direction:0,centerX:320,centerY:305,disorder:.45,exclusion:.12,band:.18,lobeGap:.3,lobeBias:.62,rootCount:1,rootSpread:0,rootJitter:5,rootX:320,rootY:530,rootHeading:0,ticks:65,step:7,reach:17,branches:2,branchSpread:42,weight:2.6,taper:.973,terminals:false,terminalSize:4,guides:false,guideSize:3},
   validate:validateAttractorGrowth,
 }];

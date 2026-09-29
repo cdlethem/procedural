@@ -1,5 +1,5 @@
 import { resamplePolyline2D } from "@procedurals/javascript";
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { channels, choice, numeric, text, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -20,6 +20,13 @@ const numberControl = (key: string, label: string, tip: string, low: number, hig
   hardLow: number, hardHigh: number, step = 1, integer = false) =>
   numeric(key, label, tip, low, high, step, { hardMin: hardLow, hardMax: hardHigh, integer });
 const defaultTerms = "x, 160, 3, 0, 0\ny, 160, 2, 90, 0\nx, 40, 7, 30, 0\ny, 40, 5, -20, 0";
+const harmonicTraceGroups: ControlGroup[] = [
+  { label: "Oscillators", controls: ["terms", { label: "Time", controls: ["timeStart", "duration"] }, "samples"] },
+  { label: "Traces", controls: ["traces", "phaseStride"] },
+  { label: "Placement", controls: ["centerX", "centerY", "rotation"] },
+  { label: "Material", controls: ["material", "spacing",
+    { label: "Scale", controls: ["markSize", "weight"], proportional: true }] },
+];
 
 export const harmonicTraceDefinitions: StudioDefinition[] = [{
   id: "harmonic-traces", title: "Harmonic traces",
@@ -39,6 +46,7 @@ export const harmonicTraceDefinitions: StudioDefinition[] = [{
     numberControl("markSize", "Mark size", "Dot diameter or normal stitch length; zero hides sampled marks.", 0, 18, 0, 300, .5),
     numberControl("weight", "Stroke weight", "Line and stitch width; zero hides strokes, not dots.", 0, 5, 0, 80, .1),
   ],
+  controlGroups: harmonicTraceGroups,
   defaults: { terms: defaultTerms, timeStart: 0, duration: 1, samples: 1300, traces: 3, phaseStride: 18,
     centerX: 320, centerY: 320, rotation: 0, material: "line", spacing: 10, markSize: 7, weight: 1.3 },
   validate: validateHarmonicTraces,

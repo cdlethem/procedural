@@ -1,5 +1,5 @@
 import { elementaryCellularRows } from "@procedurals/javascript";
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { channels, choice, numeric, text, toggle, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -36,6 +36,15 @@ const parameters = [num("columns", "Columns", "Number of cells in the initial bi
   toggle("showInactive", "Ink dead cells", "Optionally render dead cells as faint glyphs instead of leaving them blank."),
   num("inactiveColor", "Dead palette slot", "Zero-based palette index for dead cells.", 0, 4, 1, 0, 15, true),
   num("inactiveAlpha", "Dead opacity", "Alpha for optional dead glyphs, 0–255.", 0, 120, 1, 0, 255)];
+const controlGroups: ControlGroup[] = [
+  { label: "Grid", controls: ["columns", "rows"], proportional: true },
+  { label: "Rule", controls: ["rule", "boundary"] },
+  { label: "Initial row", controls: ["initialMode", "binaryWord", "density", "phase"] },
+  { label: "Placement", controls: ["centerX", "centerY", { label: "Spacing", controls: ["pitchX", "pitchY"], proportional: true }, "angle"] },
+  { label: "Ink", controls: ["mark", "markScale",
+    { label: "Live cells", controls: ["activeColor", "activeAlpha"] },
+    { label: "Dead cells", controls: ["showInactive", "inactiveColor", "inactiveAlpha"] }] },
+];
 const shared = {columns: 56,
   rows: 28,
   rule: 90,
@@ -58,9 +67,9 @@ const shared = {columns: 56,
   inactiveAlpha: 35};
 export const ruleRowDefinitions: StudioDefinition[] = [
   { id: "woven-rows", title: "Woven Rows", description: "Editable elementary automaton generations as separated woven bars.",
-    parameters, defaults: {...shared}, validate: validateRuleRows },
+    parameters, controlGroups, defaults: {...shared}, validate: validateRuleRows },
   { id: "triangle-glyphs", title: "Triangle Glyphs", description: "The same true automaton source drawn with triangular ink.",
-    parameters, defaults: {...shared,
+    parameters, controlGroups, defaults: {...shared,
       columns: 49,
       rows: 25,
       rule: 110,

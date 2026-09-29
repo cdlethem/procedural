@@ -1,6 +1,6 @@
 import { offsetPolyline2D, resamplePolyline2D, rk4VectorGridTrace2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
-import type { Layer, Parameter } from "../types.js";
+import type { ControlGroup, Layer, Parameter } from "../types.js";
 import { channels, choice, numeric, toggle, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -54,6 +54,18 @@ const parameters: Parameter[] = [choice("sourceLayout", "Vector source arrangeme
   num("ribbonWidth", "Ribbon width", "Full width of the filled offset strip, independent of trace geometry.", 0, 26, 0, 100),
   num("stationSize", "Station diameter", "Diameter of equal-arc-distance dots; zero omits dots.", 0, 13, 0, 100),
   num("stationStride", "Station stride", "One station per approximately this many traced steps, resampled by arc length.", 2, 25, 1, 1000, 1, true)];
+const controlGroups: ControlGroup[] = [
+  { label: "Vector sources", controls: ["sourceLayout", "sourceCount", "sourceX", "sourceY", "sourceExtent", "sourceAspect", "sourceAngle", "sourceDisorder"] },
+  { label: "Flow", controls: ["sourceRadius", "rotation", "radial", { label: "Drift", controls: ["driftX", "driftY"] }] },
+  { label: "Velocity grid", controls: ["gridColumns", "fieldX", "fieldY", "fieldExtent"] },
+  { label: "Trace starts", controls: ["startLayout", "startCount", "startX", "startY", "startExtent", "startAspect", "startAngle", "startDisorder"] },
+  { label: "Integration", controls: ["steps", "timeStep"] },
+  { label: "Drawing", controls: [
+    { label: "Centerline", controls: ["showLine", "weight"] },
+    { label: "Ribbon", controls: ["showRibbon", "ribbonWidth"] },
+    { label: "Stations", controls: ["showStations", "stationSize", "stationStride"] },
+  ] },
+];
 const defaults = {sourceLayout: "line",
   sourceCount: 3,
   sourceX: 320,
@@ -90,9 +102,9 @@ const defaults = {sourceLayout: "line",
   stationStride: 7};
 export const vectorTraceInstrumentDefinitions: StudioDefinition[] = [
   { id: "stream-ribbons", title: "Stream ribbons", description: "RK4 traces through an editable mixture of uniform drift and seeded radial/rotational sources, with independent ribbons, lines and stations.",
-    parameters, defaults, validate: q => validateVectorTraceInstrument("stream-ribbons", q) },
+    parameters, controlGroups, defaults, validate: q => validateVectorTraceInstrument("stream-ribbons", q) },
   { id: "curved-trajectories", title: "Curved trajectories", description: "The same explicit vector mixture and RK4 tracing with a different start geometry and sparse station material.",
-    parameters, defaults: { ...defaults, sourceLayout: "ring", sourceCount: 4, sourceExtent: 260, sourceAngle: 0,
+    parameters, controlGroups, defaults: { ...defaults, sourceLayout: "ring", sourceCount: 4, sourceExtent: 260, sourceAngle: 0,
       sourceDisorder: 0, radial: -8, rotation: 18, driftX: 1.5, driftY: 2,
       startLayout: "ring", startX: 315, startY: 330, startExtent: 350, startAspect: .7,
       startAngle: 0, startDisorder: .12, startCount: 16, steps: 72, timeStep: .65,

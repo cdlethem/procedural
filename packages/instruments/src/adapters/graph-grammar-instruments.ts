@@ -1,6 +1,6 @@
 import { parallelTokenRewrite, seededDepthFirstSpanningTree, tokenTurtle2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
-import type { Layer, Parameter } from "../types.js";
+import type { ControlGroup, Layer, Parameter } from "../types.js";
 import { choice, numeric, text, toggle, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -74,6 +74,24 @@ const grammarParameters = (depthKey: "iterations" | "depth"): Parameter[] => [
   toggle("ticks", "Midpoint ticks", "Short normal marks along every turtle segment."),
   numeric("tickLength", "Tick length", "Midpoint-mark extent.", 0, 12, .1, { hardMin: 0, hardMax: 80 }),
 ];
+const latticeGroups: ControlGroup[] = [
+  { label: "Lattice", controls: ["columns", "rows"], proportional: true },
+  { label: "Placement", controls: ["centerX", "centerY", "spacing", "orientation"] },
+  { label: "Region", controls: ["shape", "innerRadius", "blocked"] },
+  { label: "Traversal", controls: [
+    { label: "Root", controls: ["rootX", "rootY"] },
+    { label: "Depth range", controls: ["minDepth", "maxDepth"] },
+    "branchRetention"] },
+  { label: "Drawing", controls: ["weight", { label: "Site marks", controls: ["nodes", "dotSize"] }] },
+];
+const grammarGroups = (depthKey: "iterations" | "depth"): ControlGroup[] => [
+  { label: "Grammar", controls: ["axiom", { label: "Productions", controls: ["ruleF", "ruleG", "ruleX", "ruleY"] }, depthKey] },
+  { label: "Turtle", controls: ["step", "contraction", "angle"] },
+  { label: "Placement", controls: ["startX", "startY", "heading"] },
+  { label: "Drawing", controls: ["weight",
+    { label: "Endpoint marks", controls: ["nodes", "dotSize"] },
+    { label: "Midpoint ticks", controls: ["ticks", "tickLength"] }] },
+];
 const commonTree = {spacing: 19,
   centerX: 320,
   centerY: 320,
@@ -103,19 +121,19 @@ const commonGrammar = {ruleF: "F",
   tickLength: 4};
 export const graphGrammarInstrumentDefinitions: StudioDefinition[] = [
   { id: "maze-gardens", title: "Maze gardens", description: "Seeded DFS maze fragments over a locally shaped and optionally disconnected lattice.",
-    parameters: latticeParameters, defaults: { ...commonTree, columns: 16, rows: 16, weight: 3 },
+    parameters: latticeParameters, controlGroups: latticeGroups, defaults: { ...commonTree, columns: 16, rows: 16, weight: 3 },
     validate: q => validateGraphGrammarInstrument("maze-gardens", q) },
   { id: "branching-networks", title: "Branching networks", description: "Seeded DFS forest with site and edge depth filtering over an editable local region.",
-    parameters: latticeParameters, defaults: { ...commonTree, columns: 13, rows: 13, weight: 2, spacing: 24, nodes: false },
+    parameters: latticeParameters, controlGroups: latticeGroups, defaults: { ...commonTree, columns: 13, rows: 13, weight: 2, spacing: 24, nodes: false },
     validate: q => validateGraphGrammarInstrument("branching-networks", q) },
   { id: "woven-grammar", title: "Woven grammar", description: "Editable X/Y productions weave deterministic paths through a token turtle, without page fitting.",
-    parameters: grammarParameters("iterations"), defaults: { ...commonGrammar, axiom: "X", ruleX: "+YF-XFX-FY+", ruleY: "-XF+YFY+FX-", iterations: 5, step: 9, angle: 90 },
+    parameters: grammarParameters("iterations"), controlGroups: grammarGroups("iterations"), defaults: { ...commonGrammar, axiom: "X", ruleX: "+YF-XFX-FY+", ruleY: "-XF+YFY+FX-", iterations: 5, step: 9, angle: 90 },
     validate: q => validateGraphGrammarInstrument("woven-grammar", q) },
   { id: "recursive-tiles", title: "Recursive tiles", description: "Editable F/G productions construct folded local paths; brackets also permit branches.",
-    parameters: grammarParameters("depth"), defaults: { ...commonGrammar, axiom: "F", ruleF: "F+G-F-G-F", depth: 4, step: 16, angle: 90, startX: 320, startY: 320 },
+    parameters: grammarParameters("depth"), controlGroups: grammarGroups("depth"), defaults: { ...commonGrammar, axiom: "F", ruleF: "F+G-F-G-F", depth: 4, step: 16, angle: 90, startX: 320, startY: 320 },
     validate: q => validateGraphGrammarInstrument("recursive-tiles", q) },
   { id: "turtle-canopies", title: "Turtle canopies", description: "Editable fork productions grow local turtle canopies with independent path and endpoint material.",
-    parameters: grammarParameters("depth"), defaults: { ...commonGrammar, axiom: "F", ruleF: "F[+F][-F]F", depth: 4, step: 20, angle: 25, startX: 320, startY: 500, heading: -90 },
+    parameters: grammarParameters("depth"), controlGroups: grammarGroups("depth"), defaults: { ...commonGrammar, axiom: "F", ruleF: "F[+F][-F]F", depth: 4, step: 20, angle: 25, startX: 320, startY: 500, heading: -90 },
     validate: q => validateGraphGrammarInstrument("turtle-canopies", q) },
 ];
 

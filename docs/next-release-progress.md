@@ -143,6 +143,33 @@ Open: private-app adoption of the helper and empty-group hiding; alternatives fo
 numeric-threshold drivers; a real-interface pass over a sample of the newly conditional
 inspectors.
 
+## In progress on main (uncommitted): control groups (F10)
+
+Scope added by the maintainer: the package decides, for every instrument, which control groups
+exist and which controls belong to them; the app decides presentation (sections, ratio locks,
+one slider driving a cluster). [Contract and authoring guide](control-groups.md).
+
+Built: a required `InstrumentDefinition.controlGroups` tree (labelled, ordered, at most three
+deep, every control in exactly one group), load-time validation, a derived `Parameter.group`
+path with `parameters` reordered into group order (so the app's current nested fieldsets pick it
+up unchanged), and `inspectorItems(id, values)`, which applies F9 visibility and omits empty
+groups. `proportional` marks clusters of non-negative numbers in one unit that may be
+ratio-locked; validation rejects signed, non-numeric or nested members.
+
+Coverage: all 124 instruments (2,362 controls) are grouped, with 144 proportional clusters
+(footprint sizes, mark diameter with line weight, grid columns/rows, paired radii, weights and
+opacities). Reference entries were regrouped from their earlier inline paths. Root reviewed every
+outline and normalized section order (`Placement` follows the first construction section) and
+recurring labels. Grouping is organization only: 496 default and seeded random configurations
+draw identical fingerprints before and after, and all 73 package tests pass, including six new
+ones. The `--allow-dirty` toolkit preview built and passed its installed-consumer checks.
+
+Open: private-app adoption of `inspectorItems` and a ratio-lock UI for proportional groups; a
+real-interface pass over a sample of the regrouped inspectors. Label and `visibleWhen`
+inconsistencies the grouping workers noticed are not fixed here (e.g. `annular-marks` light
+controls lack the conditions `profile-marks` has; `registered-screens` screen offsets are
+inconsistently conditional).
+
 ## Ownership and unchanged boundaries
 
 - Public library: computations, reusable technique composition, drawing/preparation,

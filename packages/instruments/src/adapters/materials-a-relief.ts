@@ -1,5 +1,5 @@
 import { convolve2DSigned, gradientNoise2D01, seededTrianglePoints2D } from "@procedurals/javascript";
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { choice, numeric, type StudioDefinition } from "./types.js";
 
 const reliefParameters = (id: "embossed-field" | "signed-edge-print") => [
@@ -34,11 +34,19 @@ const reliefDefaults = (id: "embossed-field" | "signed-edge-print") => ({
   contrast: id === "embossed-field" ? 1.3 : 1.1,
 });
 
+/** Both relief studies share the seeded source field and its placement; only the response control differs. */
+const reliefGroups = (response: "gain" | "cutoff"): ControlGroup[] => [
+  { label: "Field", controls: ["source", "features", "featureScale", "aspect", "orientation", "contrast"] },
+  { label: "Placement", controls: ["centerX", "centerY", "spread"] },
+  { label: "Response", controls: ["axis", response] },
+  { label: "Mark", controls: ["treatment", "scale"] },
+];
+
 export const reliefDefinitions: StudioDefinition[] = [
   { id: "embossed-field", title: "Embossed field", description: "Signed convolution relief.",
-    parameters: reliefParameters("embossed-field"), defaults: reliefDefaults("embossed-field") },
+    parameters: reliefParameters("embossed-field"), controlGroups: reliefGroups("gain"), defaults: reliefDefaults("embossed-field") },
   { id: "signed-edge-print", title: "Signed edge print", description: "Two-ink convolution edges.",
-    parameters: reliefParameters("signed-edge-print"), defaults: reliefDefaults("signed-edge-print") },
+    parameters: reliefParameters("signed-edge-print"), controlGroups: reliefGroups("cutoff"), defaults: reliefDefaults("signed-edge-print") },
 ];
 
 type ReliefSource = "mounds" | "waves" | "cutout";

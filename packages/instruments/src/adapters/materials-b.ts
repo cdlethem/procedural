@@ -1,4 +1,4 @@
-import type { Layer, Parameter } from "../types.js";
+import type { ControlGroup, Layer, Parameter } from "../types.js";
 import { choice, numeric, type StudioDefinition } from "./types.js";
 import * as draws from "@procedurals/javascript/examples/materials-b-studies.js"
 
@@ -38,6 +38,24 @@ const subdivisionControls: Parameter[] = [
   numeric("levels", "Refinement", "Subdivides each triangle fourfold per level.", 0, 4, 1, { hardMin: 0, hardMax: 6, integer: true }),
 ];
 
+/** Every materials study ends with the same drawing and camera sections. */
+const surfaceGroup: ControlGroup = { label: "Surface", controls: ["faceMode", "weight"] };
+const viewGroup: ControlGroup = { label: "View", controls: ["rotation", "pitch", "zoom"] };
+const footprintGroups: ControlGroup[] = [
+  { label: "Solid", controls: ["footprint",
+    { label: "Size", controls: ["footprintWidth", "footprintDepth", "height"], proportional: true },
+    { label: "Shape", controls: ["inset", "stepDepth", "shoulder"] }] },
+  surfaceGroup, viewGroup];
+const ribbonGroups: ControlGroup[] = [
+  { label: "Path", controls: ["segments",
+    { label: "Vertical", controls: ["verticalAmplitude", "verticalCycles"] },
+    { label: "Depth", controls: ["depthAmplitude", "depthCycles"] }] },
+  { label: "Ribbon", controls: [{ label: "Width", controls: ["width", "endWidth"], proportional: true }, "widthPulse"] },
+  surfaceGroup, viewGroup];
+const subdivisionGroups: ControlGroup[] = [
+  { label: "Mesh", controls: ["base", { label: "Scale", controls: ["axisX", "axisY", "axisZ"] }, "cornerLift", "levels"] },
+  surfaceGroup, viewGroup];
+
 function validateFootprint(params: Layer["params"]): void {
   const w = Number(params.footprintWidth), d = Number(params.footprintDepth);
   const inset = Number(params.inset), step = Number(params.stepDepth), shoulder = Number(params.shoulder);
@@ -55,19 +73,19 @@ function validateSubdivision(params: Layer["params"]): void {
 }
 
 const rows = [
-  ["extruded-seals", "Extruded seals", "Choose and extrude a polygon footprint.", footprintControls, validateFootprint],
-  ["stepped-blocks", "Stepped blocks", "Cut a step into a polygon and extrude it.", footprintControls, validateFootprint],
-  ["transported-ribbons", "Transported ribbons", "Transport a variable-width strip along an editable 3D path.", ribbonControls, undefined],
-  ["twisting-streamers", "Twisting streamers", "Bend a variable-width strip through independent vertical and depth cycles.", ribbonControls, undefined],
-  ["rounded-polyhedra", "Rounded polyhedra", "Refine a selected base mesh with independent axis proportions.", subdivisionControls, validateSubdivision],
-  ["subdivided-shells", "Subdivided shells", "Refine closed or open base meshes and control their silhouette.", subdivisionControls, validateSubdivision],
+  ["extruded-seals", "Extruded seals", "Choose and extrude a polygon footprint.", footprintControls, footprintGroups, validateFootprint],
+  ["stepped-blocks", "Stepped blocks", "Cut a step into a polygon and extrude it.", footprintControls, footprintGroups, validateFootprint],
+  ["transported-ribbons", "Transported ribbons", "Transport a variable-width strip along an editable 3D path.", ribbonControls, ribbonGroups, undefined],
+  ["twisting-streamers", "Twisting streamers", "Bend a variable-width strip through independent vertical and depth cycles.", ribbonControls, ribbonGroups, undefined],
+  ["rounded-polyhedra", "Rounded polyhedra", "Refine a selected base mesh with independent axis proportions.", subdivisionControls, subdivisionGroups, validateSubdivision],
+  ["subdivided-shells", "Subdivided shells", "Refine closed or open base meshes and control their silhouette.", subdivisionControls, subdivisionGroups, validateSubdivision],
 ] as const;
 
-export const materialsBDefinitions: StudioDefinition[] = rows.map(([id, title, description, source, validate]) => {
+export const materialsBDefinitions: StudioDefinition[] = rows.map(([id, title, description, source, controlGroups, validate]) => {
   const parameters = [...source, ...cameraAndSurface];
   const settings = draws.materialsBSettings[id].defaults as Record<string, number | string | boolean>;
   return {
-    id, title, description, parameters,
+    id, title, description, parameters, controlGroups,
     defaults: Object.fromEntries(parameters.map(({ key }) => [key, settings[key]])),
     validate,
   };

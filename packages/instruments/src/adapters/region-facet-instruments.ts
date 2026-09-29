@@ -1,7 +1,7 @@
 import { binaryCellPartition2D, delaunay2D, mapTriangleCoordinates2D,
   orderedConvexPolygonFilter2D, seededQuadrantPartition2D, seededTrianglePoints2D, triangulateSimplePolygon2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { inside } from "../composition/core.js";
 import { channels, choice, numeric, toggle, type StudioDefinition } from "./types.js";
 
@@ -66,6 +66,41 @@ function color(p: Canvas, layer: Layer, index: number, alpha: number, stroke: bo
 function polygon(p: Canvas, points: Polygon) {
   p.beginShape(); for (const pt of points) p.vertex(pt[0], pt[1]); p.endShape(p.CLOSE);
 }
+/** A footprint centered on (centerX, centerY) with a proportional width/height and an optional rotation. */
+const placement = (...rotation: string[]): ControlGroup => ({ label: "Placement",
+  controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, ...rotation] });
+const regionGroups: ControlGroup[] = [
+  { label: "Partition", controls: ["replacements", "fraction", "maxDepth"] },
+  placement(),
+  { label: "Leaves", controls: ["retention", "inset", "fillLeaves", "outline", "weight"] },
+  { label: "Leaf mark", controls: ["mark", "markCount", "markScale"] },
+];
+const panelGroups: ControlGroup[] = [
+  { label: "Partition", controls: [{ label: "Grid", controls: ["columns", "rows"], proportional: true }, "attempts", "axis", "cutBias"] },
+  placement(),
+  { label: "Panels", controls: ["retention", { label: "Spacing", controls: ["inset", "gap"] }, "fillPanels", "outline", "nestedLines", "weight"] },
+];
+const polygonGroups: ControlGroup[] = [
+  { label: "Source", controls: ["sides", "irregularity"] },
+  placement("orientation"),
+  { label: "Proposals", controls: ["proposals", "retention"] },
+  { label: "Mark", controls: ["shape", "size", "ratio", "sizeDisorder",
+    { label: "Angle", controls: ["rotation", "rotationSpread"] }] },
+  { label: "Drawing", controls: ["fillMarks", "outline", "weight"] },
+];
+const facetMarkGroups: ControlGroup[] = [
+  { label: "Source", controls: ["sides", "groups", "groupSpread"] },
+  placement("orientation"),
+  { label: "Sites", controls: ["sites", "distribution", "cluster", "jitter"] },
+  { label: "Facets", controls: ["selectedFraction", "mode", "grain", "weight", "opacity"] },
+];
+const grainGroups: ControlGroup[] = [
+  { label: "Source", controls: ["sides", "groups", "groupSpread"] },
+  placement("orientation"),
+  { label: "Sampling", controls: ["density", "distribution"] },
+  { label: "Mark", controls: ["strokes", "size", "sizeVariation", "weight",
+    { label: "Angle", controls: ["angle", "angleSpread"] }] },
+];
 
 
 
@@ -84,7 +119,7 @@ export const regionFacetInstrumentDefinitions: StudioDefinition[] = [
     numeric("inset", "Inset", "Inset for leaf backgrounds and outlines.", 0, 20, .5),
     toggle("fillLeaves", "Fill leaves", "Fill retained leaf backgrounds."),
     toggle("outline", "Outline leaves", "Draw retained leaf borders."),
-    numeric("weight", "Outline weight", "Leaf outline and line weight.", .2, 4, .1)], defaults: {centerX: 320,
+    numeric("weight", "Outline weight", "Leaf outline and line weight.", .2, 4, .1)], controlGroups: regionGroups, defaults: {centerX: 320,
       centerY: 320,
       width: 480,
       height: 480,
@@ -114,7 +149,7 @@ export const regionFacetInstrumentDefinitions: StudioDefinition[] = [
     toggle("fillPanels", "Fill", "Fill retained panels."),
     toggle("outline", "Outline", "Draw panel outlines."),
     numeric("nestedLines", "Nested lines", "Interior concentric outlines.", 0, 12, 1, { integer: true }),
-    numeric("weight", "Stroke weight", "Panel and interior outline width.", .2, 4, .1)], defaults: {centerX: 320,
+    numeric("weight", "Stroke weight", "Panel and interior outline width.", .2, 4, .1)], controlGroups: panelGroups, defaults: {centerX: 320,
       centerY: 320,
       width: 440,
       height: 440,
@@ -147,7 +182,7 @@ export const regionFacetInstrumentDefinitions: StudioDefinition[] = [
     choice("shape", "Shape", "Proposal polygon shape.", ["capsule", "diamond"]),
     toggle("fillMarks", "Fill", "Fill placed marks."),
     toggle("outline", "Outline", "Stroke placed marks."),
-    numeric("weight", "Outline weight", "Stroke width.", .2, 4, .1)], defaults: {centerX: 320,
+    numeric("weight", "Outline weight", "Stroke width.", .2, 4, .1)], controlGroups: polygonGroups, defaults: {centerX: 320,
     centerY: 320,
     width: 450,
     height: 440,
@@ -181,7 +216,7 @@ export const regionFacetInstrumentDefinitions: StudioDefinition[] = [
     choice("mode", "Material", "Fill, wire or sampled grain.", ["fill", "wire", "grain"]),
     numeric("grain", "Grain density", "Grain points per facet area.", 0, .16, .005),
     numeric("weight", "Wire weight", "Facet line width.", .2, 4, .1),
-    numeric("opacity", "Opacity", "Fill alpha.", 0, 255, 1)], defaults: {centerX: 320,
+    numeric("opacity", "Opacity", "Fill alpha.", 0, 255, 1)], controlGroups: facetMarkGroups, defaults: {centerX: 320,
     centerY: 320,
     width: 310,
     height: 300,
@@ -213,7 +248,7 @@ export const regionFacetInstrumentDefinitions: StudioDefinition[] = [
     numeric("weight", "Stroke weight", "Line mark stroke width.", .2, 4, .1),
     numeric("angle", "Stroke angle", "Base stroke orientation in degrees.", -180, 180),
     numeric("angleSpread", "Angle spread", "Seeded orientation deviation in degrees.", 0, 180),
-    toggle("strokes", "Strokes", "Draw short lines instead of dots.")], defaults: {centerX: 320,
+    toggle("strokes", "Strokes", "Draw short lines instead of dots.")], controlGroups: grainGroups, defaults: {centerX: 320,
       centerY: 320,
       width: 280,
       height: 290,

@@ -1,5 +1,5 @@
 import { noiseBandPath2D, seededEndpointBranches2D, seededLinePool2D } from "@procedurals/javascript";
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { channels, choice, numeric, toggle, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -91,6 +91,9 @@ function starts(layout: "line" | "grid" | "area" | "ring", count: number, column
   return result;
 }
 
+/** Band and branch instruments place their start/root arrangement the same way. */
+const rootPlacement: ControlGroup = { label: "Placement", controls: ["centerX", "centerY", "extent", "aspect"] };
+
 const bandDefinition: StudioDefinition = {
   id: "band-marks", title: "Band marks",
   description: "Attempt-bounded noise-band traces with independently painted retained paths and marks.",
@@ -115,6 +118,15 @@ const bandDefinition: StudioDefinition = {
     numeric("tickLength", "Tick length", "Perpendicular tick length in canvas units.", 0, 20, .5),
     numeric("nodeSize", "Node size", "Diameter of retained-node dots.", 0, 12, .25),
     numeric("weight", "Stroke weight", "Path/tick stroke width.", .1, 5, .05)],
+  controlGroups: [
+    { label: "Starts", controls: ["layout", "columns", "count",
+      { label: "Heading", controls: ["heading", "spread"] }] },
+    rootPlacement,
+    { label: "Trace", controls: ["attempts", "stepDistance", "tolerance"] },
+    { label: "Field", controls: ["fieldScale", "fieldOffsetX", "fieldOffsetY"] },
+    { label: "Drawing", controls: ["pathLines", "pointMaterial", "markStride",
+      { label: "Scale", controls: ["tickLength", "nodeSize", "weight"], proportional: true }] },
+  ],
   defaults: {count: 24,
     tolerance: .005,
     fieldScale: .006,
@@ -160,6 +172,14 @@ const branchDefinition: StudioDefinition = {
     toggle("strokes", "Branch strokes", "Paint retained segment strokes."),
     numeric("weight", "Base weight", "Root stroke weight; subsequent generations taper.", .3, 5, .1),
     numeric("tipSize", "Tip size", "Diameter of retained leaf-tip dots; zero hides dots.", 0, 10, .5)],
+  controlGroups: [
+    { label: "Roots", controls: ["layout", "columns", "rootCount",
+      { label: "Heading", controls: ["heading", "headingSpread"] }] },
+    rootPlacement,
+    { label: "Growth", controls: ["rootLength", "generations", "children", "contraction", "survival",
+      { label: "Turn", controls: ["angle", "angleSpread"] }] },
+    { label: "Drawing", controls: ["strokes", { label: "Scale", controls: ["weight", "tipSize"], proportional: true }] },
+  ],
   defaults: {generations: 5,
     weight: 2,
     tipSize: 4,
@@ -194,6 +214,13 @@ const cutDefinition: StudioDefinition = {
     toggle("segments", "Final segments", "Paint the actual retained line-pool segments."),
     numeric("weight", "Stroke weight", "Retained segment stroke width.", .15, 2, .05),
     numeric("opacity", "Opacity", "Segment alpha, 0 is invisible.", 0, 255, 1)],
+  controlGroups: [
+    { label: "Segment", controls: [
+      { label: "Start", controls: ["startX", "startY"] },
+      { label: "End", controls: ["endX", "endY"] }] },
+    { label: "Cuts", controls: ["attempts", "minCutLength", "angle"] },
+    { label: "Drawing", controls: ["segments", "weight", "opacity"] },
+  ],
   defaults: {attempts: 6000,
     angle: 1.1,
     weight: 1,

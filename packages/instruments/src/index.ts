@@ -1,6 +1,7 @@
-import type { CutEdit, InstrumentDefinition, InstrumentInput, Parameter } from "./types.js";
+import type { ControlGroup, CutEdit, InstrumentDefinition, InstrumentInput, Parameter } from "./types.js";
 import { applyControlDependencies } from "./control-dependencies.js";
 import { validateVisibility, visibleParameters as visibleControls } from "./visibility.js";
+import { inspectorItems as inspectorTree, resolveControlGroups, validateControlGroups, type InspectorItem } from "./control-groups.js";
 import { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits } from "./cut-model.js";
 import type { CutRegion } from "./cut-model.js";
 import { geometryDefinitions, drawGeometry } from "./adapters/geometry.js";
@@ -19,7 +20,7 @@ import { referenceComposition, prepareReferenceComposition } from "./composition
 import type { CompositionSurface } from "./composition/types.js";
 import { validateParameterValues } from "./parameter-validation.js";
 
-export type { CutEdit, InstrumentDefinition, InstrumentInput, Parameter, CutRegion };
+export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
 export type {
   CompositionSurface, CompositionRun, Site, LatticeSite, Path, Region, RegionTreeNode, Point, Mark, PathMaterial,
@@ -50,7 +51,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions,
 ];
-export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions);
+export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
 for (const item of definitions) {
   if (byId.has(item.id)) throw new Error(`Duplicate instrument: ${item.id}`);
@@ -73,7 +74,12 @@ export function definition(id: string): InstrumentDefinition {
 export function visibleParameters(id: string, values: InstrumentInput["params"]): Parameter[] {
   return visibleControls(definition(id), values);
 }
-export { validateVisibility };
+export { validateVisibility, validateControlGroups };
+
+/** The inspector tree for these values: declared groups holding their visible controls; empty groups omitted. */
+export function inspectorItems(id: string, values: InstrumentInput["params"]): InspectorItem[] {
+  return inspectorTree(definition(id), values);
+}
 
 function paletteFor(id: string): number[] {
   if (referencePalettes[id]) return [...referencePalettes[id]];

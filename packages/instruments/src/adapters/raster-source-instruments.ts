@@ -1,6 +1,6 @@
 import { bayerDither, binaryMorphology2D, floydSteinbergDither, gradientNoise2D01, medianCutQuantize } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { channels, choice, numeric, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -73,14 +73,34 @@ const sourceDefaults = {
 };
 const markDefaults = { mark: "dot", markFill: .78, markAngle: 30, rowSpacing: 1, stitchSpacing: 1, lineLength: 1.2, lineWeight: .28 };
 
+/** Every raster source shares one sampled footprint: where it sits, what features it holds, and how they are textured. */
+const sourceGroups: ControlGroup[] = [
+  { label: "Features", controls: ["featureCount", "spread", "featureAngle", { label: "Shape", controls: ["featureSize", "aspect"] }] },
+  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["footprintWidth", "footprintHeight"], proportional: true }] },
+  { label: "Texture", controls: ["featureWeight",
+    { label: "Waves", controls: ["waveWeight", "waveContrast", "waveFrequency", "waveAngle"] },
+    { label: "Noise", controls: ["noiseAmount", "noiseScale"] }, "sourceGain"] },
+];
+/** The sampling pitch leads the section; each instrument adds the source-to-bit control it thresholds or quantizes with. */
+const sampling = (...operation: string[]): ControlGroup => ({ label: "Sampling", controls: ["scale", ...operation] });
+/** Printed marks of the dithered and screened instruments: shape, line stroke and retained rows and columns. */
+const printedMark: ControlGroup = { label: "Mark", controls: ["mark", "markAngle",
+  { label: "Scale", controls: ["lineLength", "lineWeight"], proportional: true },
+  "markFill", { label: "Spacing", controls: ["rowSpacing", "stitchSpacing"] }] };
+/** Binary-mask morphology: structuring element, then the output mark. */
+const morphGroups: ControlGroup[] = [
+  { label: "Element", controls: ["elementShape", "elementSize", "passes"] },
+  { label: "Mark", controls: ["markShape", "markFill"] },
+];
+
 const definitions: StudioDefinition[] = [
-  { id: "diffusion-engraving", title: "Diffusion engraving", description: "Diffuse source error into retained dots, strokes or cells in a local print.", parameters: [...common, n("threshold", "Diffusion threshold", "Floyd–Steinberg bit threshold; blank source is always blank.", 0, 1), ...print], defaults: { scale: 9, threshold: .5, ...sourceDefaults, ...markDefaults } },
-  { id: "dithered-ribbons", title: "Dithered ribbons", description: "Pull elongated independently oriented strokes through retained diffusion bits.", parameters: [...common, n("threshold", "Diffusion threshold", "Threshold before error diffusion into retained ribbon bits.", 0, 1), ...print], defaults: { scale: 10, threshold: .52, ...sourceDefaults, ...markDefaults, mark: "line", lineLength: 3, lineWeight: .26, rowSpacing: 2 } },
-  { id: "ordered-halftone", title: "Ordered halftone", description: "An ordered Bayer screen prints local scalar source as independently sized marks.", parameters: [...common, n("order", "Bayer order", "Power of two Bayer threshold screen order.", 1, 5, 1, 6, 1, true), ...print], defaults: { scale: 10, order: 3, ...sourceDefaults, ...markDefaults } },
-  { id: "bayer-weave", title: "Bayer weave", description: "Crossed independently weighted bars print only retained ordered-screen bits.", parameters: [...common, n("order", "Bayer order", "Power of two Bayer threshold screen order.", 1, 5, 1, 6, 1, true), ...weaveMarks, n("horizontalWeight", "Across weight", "Width of across bars relative to the cell; zero disables this direction.", 0, 1), n("verticalWeight", "Down weight", "Width of down bars relative to the cell; zero disables this direction.", 0, 1), n("barLength", "Bar reach", "Length of each woven bar in cell widths.", .25, 3, 0, 6)], defaults: { scale: 12, order: 4, ...sourceDefaults, markFill: .78, rowSpacing: 1, stitchSpacing: 1, horizontalWeight: .28, verticalWeight: .18, barLength: 1.25 } },
-  { id: "eroded-lace", title: "Eroded lace", description: "Erode an editable binary source mask with a chosen actual structuring element.", parameters: [...common, ...morph], defaults: { scale: 10, ...sourceDefaults, sourceThreshold: .35, elementSize: 3, elementShape: "disk", passes: 1, markShape: "dot", markFill: .9 } },
-  { id: "dilated-stamps", title: "Dilated stamps", description: "Dilate the same editable binary source mask without edge wrapping.", parameters: [...common, ...morph], defaults: { scale: 13, ...sourceDefaults, featureSize: .12, sourceThreshold: .55, elementSize: 3, elementShape: "disk", passes: 1, markShape: "square", markFill: .86 } },
-  { id: "reduced-mosaic", title: "Reduced mosaic", description: "Median-cut local RGB samples into a spaced, transparent color mosaic.", parameters: [n("scale", "Sample cell", "Source sampling pitch, separate from footprint and printed tile size.", 17, 30, 4, 120, 1), ...common.slice(1), ...mosaic], defaults: { scale: 18, count: 5, ...sourceDefaults, fieldMask: "all", maskThreshold: .5, cellSpacing: 1, markFill: .88 } },
+  { id: "diffusion-engraving", title: "Diffusion engraving", description: "Diffuse source error into retained dots, strokes or cells in a local print.", parameters: [...common, n("threshold", "Diffusion threshold", "Floyd–Steinberg bit threshold; blank source is always blank.", 0, 1), ...print], controlGroups: [...sourceGroups, sampling("threshold"), printedMark], defaults: { scale: 9, threshold: .5, ...sourceDefaults, ...markDefaults } },
+  { id: "dithered-ribbons", title: "Dithered ribbons", description: "Pull elongated independently oriented strokes through retained diffusion bits.", parameters: [...common, n("threshold", "Diffusion threshold", "Threshold before error diffusion into retained ribbon bits.", 0, 1), ...print], controlGroups: [...sourceGroups, sampling("threshold"), printedMark], defaults: { scale: 10, threshold: .52, ...sourceDefaults, ...markDefaults, mark: "line", lineLength: 3, lineWeight: .26, rowSpacing: 2 } },
+  { id: "ordered-halftone", title: "Ordered halftone", description: "An ordered Bayer screen prints local scalar source as independently sized marks.", parameters: [...common, n("order", "Bayer order", "Power of two Bayer threshold screen order.", 1, 5, 1, 6, 1, true), ...print], controlGroups: [...sourceGroups, sampling("order"), printedMark], defaults: { scale: 10, order: 3, ...sourceDefaults, ...markDefaults } },
+  { id: "bayer-weave", title: "Bayer weave", description: "Crossed independently weighted bars print only retained ordered-screen bits.", parameters: [...common, n("order", "Bayer order", "Power of two Bayer threshold screen order.", 1, 5, 1, 6, 1, true), ...weaveMarks, n("horizontalWeight", "Across weight", "Width of across bars relative to the cell; zero disables this direction.", 0, 1), n("verticalWeight", "Down weight", "Width of down bars relative to the cell; zero disables this direction.", 0, 1), n("barLength", "Bar reach", "Length of each woven bar in cell widths.", .25, 3, 0, 6)], controlGroups: [...sourceGroups, sampling("order"), { label: "Bars", controls: ["markFill", { label: "Line weights", controls: ["horizontalWeight", "verticalWeight"], proportional: true }, "barLength", { label: "Spacing", controls: ["rowSpacing", "stitchSpacing"] }] }], defaults: { scale: 12, order: 4, ...sourceDefaults, markFill: .78, rowSpacing: 1, stitchSpacing: 1, horizontalWeight: .28, verticalWeight: .18, barLength: 1.25 } },
+  { id: "eroded-lace", title: "Eroded lace", description: "Erode an editable binary source mask with a chosen actual structuring element.", parameters: [...common, ...morph], controlGroups: [...sourceGroups, sampling("sourceThreshold"), ...morphGroups], defaults: { scale: 10, ...sourceDefaults, sourceThreshold: .35, elementSize: 3, elementShape: "disk", passes: 1, markShape: "dot", markFill: .9 } },
+  { id: "dilated-stamps", title: "Dilated stamps", description: "Dilate the same editable binary source mask without edge wrapping.", parameters: [...common, ...morph], controlGroups: [...sourceGroups, sampling("sourceThreshold"), ...morphGroups], defaults: { scale: 13, ...sourceDefaults, featureSize: .12, sourceThreshold: .55, elementSize: 3, elementShape: "disk", passes: 1, markShape: "square", markFill: .86 } },
+  { id: "reduced-mosaic", title: "Reduced mosaic", description: "Median-cut local RGB samples into a spaced, transparent color mosaic.", parameters: [n("scale", "Sample cell", "Source sampling pitch, separate from footprint and printed tile size.", 17, 30, 4, 120, 1), ...common.slice(1), ...mosaic], controlGroups: [...sourceGroups, sampling("count"), { label: "Visibility", controls: ["fieldMask", "maskThreshold"] }, { label: "Mark", controls: ["cellSpacing", "markFill"] }], defaults: { scale: 18, count: 5, ...sourceDefaults, fieldMask: "all", maskThreshold: .5, cellSpacing: 1, markFill: .88 } },
 ];
 
 /** The indexed source sampler is independent of drawing style, palette, operation and cell resolution. */

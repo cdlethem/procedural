@@ -1,5 +1,5 @@
 import { lloydRelaxation2D, voronoiCells2D } from "@procedurals/javascript";
-import type { Layer, Parameter } from "../types.js";
+import type { ControlGroup, Layer, Parameter } from "../types.js";
 import { channels, choice, numeric, toggle, type StudioDefinition } from "./types.js";
 
 type Params = Layer["params"];
@@ -42,6 +42,16 @@ const parameters: Parameter[] = [numeric("sites", "Sites", "Exact number of init
   numeric("initialSize", "Initial sites", "Diameter of marks at the original positions; zero hides them.", 0, 14, .25, { hardMin: 0, hardMax: 60 }),
   toggle("dots", "Final site dots", "Show the final sites independently of cell and trail materials."),
   numeric("finalSize", "Final dot size", "Final-site mark diameter; zero hides them even when dots are enabled.", 0, 14, .25, { hardMin: 0, hardMax: 60 })];
+/** The four relaxed-cell instruments share one control set, so they share one organization. */
+const controlGroups: ControlGroup[] = [
+  { label: "Sites", controls: ["sites", "arrangement", "spread", "disorder"] },
+  { label: "Relaxation", controls: ["iterations", "strength"] },
+  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["domainWidth", "domainHeight"], proportional: true }, "domainRotation"] },
+  { label: "Cells", controls: ["cellInset", "fillOpacity", "outlineWeight", "facets", "facetOpacity"] },
+  { label: "Echoes", controls: ["echoes", "echoWeight", "alternating"] },
+  { label: "Trails and marks", controls: ["trailWeight", "dots",
+    { label: "Scale", controls: ["initialSize", "finalSize"], proportional: true }] },
+];
 const commonDefaults = {sites: 24,
   arrangement: "area",
   spread: 1,
@@ -68,7 +78,7 @@ const commonDefaults = {sites: 24,
 
 export const relaxedCellInstrumentDefinitions: StudioDefinition[] = [
   { id: "cell-mosaic", title: "Cell mosaic", description: "Inset local Voronoi tiles, site marks and independent faceted accents.",
-    parameters, defaults: {...commonDefaults,
+    parameters, controlGroups, defaults: {...commonDefaults,
       sites: 48,
       arrangement: "grid",
       disorder: .9,
@@ -79,7 +89,7 @@ export const relaxedCellInstrumentDefinitions: StudioDefinition[] = [
       outlineWeight: 0},
     validate: validateRelaxedCells },
   { id: "cell-echoes", title: "Cell echoes", description: "Nested contours of locally constructed Voronoi cells.",
-    parameters, defaults: {...commonDefaults,
+    parameters, controlGroups, defaults: {...commonDefaults,
       sites: 35,
       arrangement: "area",
       spread: .85,
@@ -91,9 +101,9 @@ export const relaxedCellInstrumentDefinitions: StudioDefinition[] = [
       cellInset: 0},
     validate: validateRelaxedCells },
   { id: "relaxed-stones", title: "Relaxed stones", description: "Inset Voronoi cells from retained, locally relaxed sites.",
-    parameters, defaults: { ...commonDefaults }, validate: validateRelaxedCells },
+    parameters, controlGroups, defaults: { ...commonDefaults }, validate: validateRelaxedCells },
   { id: "centroid-trails", title: "Centroid trails", description: "Follow each site's synchronous Lloyd centroid moves in a local domain.",
-    parameters, defaults: {...commonDefaults,
+    parameters, controlGroups, defaults: {...commonDefaults,
       sites: 18,
       arrangement: "cluster",
       iterations: 6,

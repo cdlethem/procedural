@@ -1,6 +1,6 @@
 import { adjacencyTileCollapse2D } from "@procedurals/javascript";
 
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { channels, choice, numeric, text, toggle, type StudioDefinition } from "./types.js";
 
 // N=1, E=2, S=4, W=8. The tile ID itself is its connector mask.
@@ -32,6 +32,15 @@ const parameters = [
   toggle("showJunctions", "Junctions", "Ink centers of nonblank tiles separately from connector arms."),
   num("junctionSize", "Junction size", "Diameter of nonblank junction marks; zero hides them.", 1, 7, .25, 0, 24),
 ];
+const controlGroups: ControlGroup[] = [
+  { label: "Lattice", controls: ["columns", "rows"], proportional: true },
+  { label: "Placement", controls: ["centerX", "centerY", { label: "Spacing", controls: ["size", "pitchY"], proportional: true }, "angle"] },
+  { label: "Tiles", controls: ["boundary", "pins", { label: "Weights", controls: [...WEIGHTS] }] },
+  { label: "Drawing", controls: [
+    { label: "Body", controls: ["showBody", "bodySize"] },
+    { label: "Connectors", controls: ["showConnectors", "lineWeight"] },
+    { label: "Junctions", controls: ["showJunctions", "junctionSize"] }] },
+];
 const common = {pitchY: 36,
   centerX: 320,
   centerY: 320,
@@ -53,12 +62,12 @@ const common = {pitchY: 36,
 export const edgeTileDefinitions: StudioDefinition[] = [
   { id: "compatible-mosaics", title: "Compatible Mosaics",
     description: "Arrange weighted edge-matched masks as sparse mosaics with editable perimeter and pins.",
-    parameters, defaults: { ...common, columns: 12, rows: 12, size: 42,
+    parameters, controlGroups, defaults: { ...common, columns: 12, rows: 12, size: 42,
       pitchY: 42, blankWeight: 7, endWeight: 4, straightWeight: 1, turnWeight: 2,
       teeWeight: .2, crossWeight: 0, showBody: true, bodySize: .24, lineWeight: 2 }, validate: validateEdgeTiles },
   { id: "tiled-circuits", title: "Tiled Circuits",
     description: "Collapse equal-facing connector bits into circuit paths with category weights and pins.",
-    parameters, defaults: { ...common, columns: 13, rows: 13, size: 38, pitchY: 38,
+    parameters, controlGroups, defaults: { ...common, columns: 13, rows: 13, size: 38, pitchY: 38,
       blankWeight: .4, endWeight: 1, straightWeight: 5, turnWeight: 6,
       teeWeight: 1, crossWeight: .3, lineWeight: 3, junctionSize: 4 }, validate: validateEdgeTiles },
 ];

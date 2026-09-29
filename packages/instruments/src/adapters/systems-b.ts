@@ -1,4 +1,4 @@
-import type { Layer } from "../types.js";
+import type { ControlGroup, Layer } from "../types.js";
 import { choice, numeric, toggle, type StudioDefinition } from "./types.js";
 import { drawWaveQuality, validateWaveQuality } from "./systems-b-wave-quality.js";
 import { drawBranchSentences, validateBranchSentences } from "./systems-b-branches.js";
@@ -22,6 +22,14 @@ const waveParameters=[
   bounded("passes","Passes","Elapsed wave updates; zero shows the initial displacement.",0,38,0,80,1,true),
   bounded("scale","Cell spacing","Distance between grid samples on the canvas; large values may crop.",10,28,.1,100,.1),
   bounded("weight","Line weight","Thickness of the wave contours.",.5,4,.1,12,.1),
+];
+const impulseGroup = (site:number):ControlGroup=>({label:`Impulse ${site}`,
+  controls:[`impulseX${site}`,`impulseY${site}`,`impulseSpread${site}`,`impulseAmplitude${site}`]});
+const waveGroups:ControlGroup[]=[
+  {label:"Impulses",controls:["impulseCount",impulseGroup(1),impulseGroup(2),impulseGroup(3)]},
+  {label:"Pins",controls:["pinMode","pinX","pinY","pinRadius","showPins"]},
+  {label:"Evolution",controls:["passes"]},
+  {label:"Drawing",controls:["scale","weight"]},
 ];
 const waveDefaults={impulseCount:2,
   impulseX1:26*.32/25,
@@ -65,6 +73,14 @@ const branchDefinition: StudioDefinition = {
     bounded("taper", "Branch taper", "Stroke multiplier per depth; zero leaves only the trunks.", .4, 1.2, 0, 2, .01),
     toggle("tips", "Draw tips", "Place small color marks at the final branch endpoints."),
   ],
+  controlGroups: [
+    { label: "Growth", controls: ["iterations", "branchCount", "branchSurvival", "step", "contraction", "heading",
+      { label: "Fork", controls: ["angle", "branchBias", "tipSpread"] }] },
+    { label: "Disorder", controls: ["angularDisorder", "lengthDisorder"] },
+    { label: "Placement", controls: ["specimens", "centerX", "centerY",
+      { label: "Spread", controls: ["spreadX", "spreadY"], proportional: true }] },
+    { label: "Stroke", controls: ["weight", "taper", "tips"] },
+  ],
   defaults: {iterations: 6,
     step: 65,
     angle: 32,
@@ -88,9 +104,9 @@ const branchDefinition: StudioDefinition = {
 };
 const waveDefinitions:Record<string,StudioDefinition>={
   "ripple-interference":{id:"ripple-interference",title:"Ripple interference",description:"Compose signed wave impulses and evolve their interference as drawn contours.",
-    parameters:waveParameters,defaults:{...waveDefaults,...systemsBSettings["ripple-interference"].defaults},validate:validateWaveQuality},
+    parameters:waveParameters,controlGroups:waveGroups,defaults:{...waveDefaults,...systemsBSettings["ripple-interference"].defaults},validate:validateWaveQuality},
   "pinned-waves":{id:"pinned-waves",title:"Pinned waves",description:"Compose wave impulses and pin chosen cells while the field evolves.",
-    parameters:waveParameters,defaults:{...waveDefaults,...systemsBSettings["pinned-waves"].defaults,impulseCount:1,pinMode:"perimeter",showPins:true},validate:validateWaveQuality},
+    parameters:waveParameters,controlGroups:waveGroups,defaults:{...waveDefaults,...systemsBSettings["pinned-waves"].defaults,impulseCount:1,pinMode:"perimeter",showPins:true},validate:validateWaveQuality},
 };
 export const systemsBDefinitions:StudioDefinition[]=[
   waveDefinitions["ripple-interference"],

@@ -108,8 +108,8 @@ would remove a control the artist may need.
    be added only after the app adopts `visibleParameters`.
 2. **Numeric drivers.** "Third stage settings matter only when its amount is above zero" needs a
    condition on a number (for example a threshold). Not supported; those controls stay visible.
-3. **Groups.** A group whose controls are all hidden should not render its heading. The helper
-   returns controls, not groups; the app owns that.
+3. **Groups.** Resolved by [control groups](control-groups.md): `inspectorItems(id, values)`
+   returns the grouped tree with hidden controls and empty groups omitted.
 
 ## Plan for this release
 
@@ -117,5 +117,5 @@ would remove a control the artist may need.
   inline (`roadmap` §3 F9, §7).
 - The audit and the property test run for every entry before it is considered done; an entry
   with a violation is not done.
-- Private app: adopt `visibleParameters`, hide empty groups, then (with the library) add
-  alternatives to cover the disjunctive controls.
+- Private app: adopt `inspectorItems` (which applies this visibility and hides empty groups),
+  then (with the library) add alternatives to cover the disjunctive controls.
