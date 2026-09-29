@@ -67,6 +67,17 @@ export type { PressureMap, GesturePathOptions, GesturePath, BristleOptions, Gest
 export { mapPressure, gesturePath, bristleBand, sandGrains, gestureSites } from "./composition/gesture.js";
 export type { RecordingSource, GestureScoreComposition, GestureConsumers, GestureRepeat } from "./composition/gesture-scores.js";
 export { gestureScoreComposition, gestureScoreProducts, resolveRecording, drawGestureScore, prepareGestureScore } from "./composition/gesture-scores.js";
+export type { Raster, RasterData, RasterChannels, RasterFormat, ColorSpace, AlphaMode, ConvertOptions, SampleFilter, EdgeRule, SampleOptions, ScalarGrid, LabelGrid,
+  ValueKind, ValueOptions, RasterMapping, ResizeFilter } from "./composition/raster.js";
+export { createRaster, rasterData, rasterPixel, convertRaster, sampleRaster, sampleInto, sampleGrid, createScalarGrid, valueField, rasterMapping, cropRaster,
+  resizeRaster, srgbToLinear, linearToSrgb, LUMA, RASTER_LIMITS } from "./composition/raster.js";
+export type { BundledRasterId } from "./composition/raster-samples.js";
+export { bundledRaster, bundledRasterIds, bundledRasterInfo, BUNDLED_RASTER_SIZE } from "./composition/raster-samples.js";
+export type { ImageSource, SegmentOptions, ValueRegion, RegionAdjacency, Segmentation, SubdivisionMetric, SplitPolicy, SubdivideOptions, ImageCell, Subdivision,
+  OrientationOptions, OrientationSample, OrientationField, OrientationVectorOptions, ScanDirection, ScanOptions, ScanRun, RunSet, SortRunsOptions, PixelMoves,
+  ApplyMovesOptions, FrequencyModulationOptions, ModulatedLine } from "./composition/image-structure.js";
+export { segmentValueBands, valueRegionMask, subdivideImage, subdivisionLabels, orientationField, orientationPixel, orientationAt, orientationGrids, orientationVector,
+  scanRuns, scanRunPixel, scanRunSegment, sortScanRuns, applyPixelMoves, pixelSort, frequencyModulation, modulatedPolyline, IMAGE_STRUCTURE_LIMITS } from "./composition/image-structure.js";
 export type {
   TilingRuleName, TilingOptions, TilingTile, TilingVertex, TilingEdge, Tiling, TileFiller, TileFillSpec, TileColorMode, TilingView,
 } from "./composition/types.js";
