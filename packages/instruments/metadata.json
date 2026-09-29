@@ -414,6 +414,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "bundled-relations",
+      "title": "Bundled Relations",
+      "description": "Draw weighted relationships between grouped places as readable families of curves: edges share waypoints only when they join the same two groups, with bundle strength, hub depth, separation, a highlighted family and direction shown by color or arrows.",
+      "category": "Graphs",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/bundled-relations.md",
+      "source": "packages/instruments/src/composition/bundled-relations.ts",
+      "sourceEntry": "drawBundledRelations",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "typographic-rhythm",
       "title": "Typographic Rhythm",
       "description": "Repeat a phrase huge, then look at it through a grid or partition of modules whose windows slide, stretch and turn the type; other modules become line screens, flat colour or paper, and a small legible caption stays outside the fragments.",
@@ -424,6 +437,19 @@
       "guide": "guides/typographic-rhythm.md",
       "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
       "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "dry-bristles",
+      "title": "Dry Bristles",
+      "description": "Carry a broad brush of separate hairs along any path (harmonic traces, a contour family or a hand scribble): hairs lift on light pressure and paper tooth, run dry, taper at the ends and gather into tufts, while the other paths stay fine stitched contours.",
+      "category": "Fields & paths",
+      "operationIds": ["geometry.resample-polyline-2d", "field.gradient-noise-2d-01", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/dry-bristles.md",
+      "source": "packages/instruments/src/composition/dry-bristles.ts",
+      "sourceEntry": "drawDryBristles",
       "creativeReviewScope": "instrument-construction"
     },
     {

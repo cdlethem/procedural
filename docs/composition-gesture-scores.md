@@ -28,11 +28,44 @@ present, so absence is a distinct explicit state and never 0 or 1. Raw samples a
 kept as given. Limits: 2 to 200,000 samples, 10 minutes, coordinates within ±1e6; each failure names
 the channel and index. `recordingFingerprint` (64-bit content hash) keys every cache.
 
+## Relation to the recorded-control sampler (Word Echo)
+
+The library already has `signal.sample-recorded-controls` (`sampleRecordedControls` in
+`@procedurals/javascript`), which Word Echo calls through `controlsAt`. `Recording` is not a second
+incompatible concept for the same thing; the two answer different questions and are deliberately
+not merged:
+
+| | `sampleRecordedControls` (Word Echo) | `Recording` / `gestureTrack` |
+|---|---|---|
+| What it holds | Named scalar channels of derived features (RMS level, accent) on a fixed hop, no geometry | Raw device samples: x, y, optional pressure |
+| Timebase | Seconds, non-negative, strictly increasing | Milliseconds, strictly increasing, any start; converted to relative seconds by the adapter |
+| Query | One value per mapping at one caller-supplied time | A whole replay: a uniform grid, arc length, direction, speed, stations |
+| Between samples | `LINEAR` or `STEP` per mapping, exact on samples | Cubic Hermite on the real timestamps (three-point slopes, monotone for pressure); exact on samples |
+| Outside / gaps | Holds the last sample after the end; refuses queries before 0; a gap wider than `maxGap` fails (`TIME_GAP`) | The window is checked against the duration; gaps are interpolated through, never refused |
+| Missing data | No optional channels; a mapping names a channel that exists or fails | `pressure: null` is an explicit state resolved by a stated policy |
+| Resampling rule | Point query only, no resampling | Fixed grid (at most 4 ms), then time or arc-length stations anchored at the recording start |
+
+Why not one rule. Word Echo's defaults depend on the historical linear/step sampling and its
+`maxGap` refusal, and its channels are windowed features rather than a trajectory, so replacing its
+rule with Hermite replay would change its drawing, and forcing a recording through `LINEAR` would give
+a polygon with corners at every device event (the frequency dependence the brief forbids). The
+Word Echo code, its default drawing and the core operation are untouched (no file of either is in this
+branch's diff).
+
+What is shared is the value: `recordingControls(recording)` returns the raw samples exactly as the
+core sampler's input (`times` in seconds from the start, channels `x`, `y` and only when present
+`pressure`). Any core mapping, `LINEAR` or `STEP`, can therefore read a recording, for example to
+drive a Word Echo-style level from a gesture's pressure, and a mapping naming an absent pressure
+channel fails rather than reading 0. It is one-way and lossless; there is no `recordingFromControls`,
+because a control series has no positions and inventing them would be dishonest. The test compares
+the two on the same series: identical on every recorded sample, linear between them in the core
+versus the replay's curve, and each side's failures (negative time, `TIME_GAP`, absent channel).
+
 ## Producers and consumers
 
 | Piece | Where | Contract |
 |---|---|---|
-| `createRecording`, `recordingData`, `recordingFingerprint` | `composition/recording.ts` | Validation, JSON round trip, content hash. |
+| `createRecording`, `recordingData`, `recordingFingerprint`, `recordingControls` | `composition/recording.ts` | Validation, JSON round trip, content hash, the view the core recorded-control sampler reads. |
 | `gestureTrack(recording, {smoothing, frame})` | same | Frozen derived replay: reconstruction on one canonical uniform time grid, smoothing, frame, tangents, speed, arc length. Cached (24 entries) by content, smoothing and frame. |
 | `echoTrack(track, ...)` | same | Repetition: the same track rotated and moved; shares arc, speed and pressure. |
 | `resolvePressure(track, policy)`, `speedPressure` | same | Pressure policy with an explicit fallback; reports which source actually supplied the values. |
@@ -137,7 +170,7 @@ several consumers is on, a disjunction).
 
 ## Checks
 
-`tests/composition-gesture-scores.test.ts` (29 tests): validation and freezing, explicit pressure
+`tests/composition-gesture-scores.test.ts` (30 tests): validation and freezing, explicit pressure
 absence and fingerprints, timestamp/range failures; constant-velocity reconstruction exact on irregular
 timestamps; rests stay still and never swing back; smoothing keeps ends, straight runs, pressure range
 and the recording; frame centre/scale/turn with exact expected corners; frequency independence against

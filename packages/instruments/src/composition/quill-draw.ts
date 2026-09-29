@@ -73,7 +73,7 @@ export interface QuillFace {
   /** Outward unit normal in the plan frame (before the camera's yaw). */
   readonly normal: readonly [number, number, number];
   readonly height: number;
-  /** 0 at the lowest wall of the sculpture, 1 at the highest; 0 when all are equal. */
+  /** 0 at the lowest wall of the sculpture, 1 at the highest, by height relative to the requested wall height; 0 when all are equal. */
   readonly heightFraction: number;
 }
 export type QuillFacePainter = (surface: CompositionSurface, face: QuillFace, run: CompositionRun) => void;
@@ -207,7 +207,8 @@ export function drawQuilled(surface: CompositionSurface, recipe: QuilledPathsCom
   run.check();
   const { projection, geometry } = quillProducts(recipe);
   const paint = consumers.face ?? quillPaper(recipe.material, recipe.palette);
-  const { order, screen } = projection, [low, high] = geometry.heightRange;
+  const { order, screen } = projection;
+  const low = Math.min(...geometry.factors), high = Math.max(...geometry.factors);
   run.enter(order.length);
   surface.push();
   try {
@@ -219,7 +220,7 @@ export function drawQuilled(surface: CompositionSurface, recipe: QuilledPathsCom
         position, index, kind: geometry.kind[index], strip: geometry.strips.strips[stripIndex], stripIndex,
         screen: screen.slice(position * 8, position * 8 + 8),
         normal: [geometry.normals[index * 3], geometry.normals[index * 3 + 1], geometry.normals[index * 3 + 2]],
-        height, heightFraction: high > low ? (height - low) / (high - low) : 0,
+        height, heightFraction: high > low ? (geometry.factors[stripIndex] - low) / (high - low) : 0,
       }, run);
     }
   } finally { surface.pop(); run.leave(); }

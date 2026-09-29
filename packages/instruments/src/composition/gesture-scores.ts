@@ -2,9 +2,11 @@ import { gestureScoresDefinitions } from "../adapters/gesture-scores-instruments
 import type { InstrumentInput } from "../types.js";
 import { validateParameterValues } from "../parameter-validation.js";
 import { atEach, createCompositionRun, strokeWith } from "./core.js";
-import { bristleBand, gesturePath, gestureSites, MAX_HAIR_POINTS, sandGrains } from "./gesture.js";
-import type { BristleOptions, GesturePath, GestureSite, PressureMap } from "./gesture.js";
-import { motif, pathMaterial } from "./materials.js";
+import { bristleBand, hairMaterial, MAX_HAIR_POINTS } from "./bristle.js";
+import type { BristleOptions, PressureMap } from "./bristle.js";
+import { gesturePath, gestureSites, sandGrains } from "./gesture.js";
+import type { GesturePath, GestureSite } from "./gesture.js";
+import { motif, pathMaterial, tonedMaterial } from "./materials.js";
 import { bundledRecording, bundledRecordingInfo } from "./recording-samples.js";
 import type { BundledRecordingId } from "./recording-samples.js";
 import { createRecording, echoTrack, gestureTrack } from "./recording.js";
@@ -50,7 +52,7 @@ export interface GestureScoreComposition {
   pressure: PressurePolicy;
   pressureMap: PressureMap;
   echoes: { count: number; dx: number; dy: number; turn: number };
-  bristles: (Omit<BristleOptions, "seed" | "map"> & { weight: number }) | null;
+  bristles: (Omit<BristleOptions, "map"> & { weight: number }) | null;
   line: PathMaterialSpec | null;
   sand: { mark: MotifSpec; rate: number; lag: number; fall: number; fallAngle: number; inherit: number; spread: number; gate: number } | null;
   glyphs: { mark: MotifSpec; sampling: StationRule; follow: number; sizeFollow: number; offset: number } | null;
@@ -132,7 +134,7 @@ function repeatProducts(recipe: GestureScoreComposition, base: GestureTrack, ind
   const path = recipe.bristles || recipe.line ? gesturePath(track, { seed, sampling: recipe.sampling, window, pressure }) : null;
   return {
     track, path,
-    hairs: recipe.bristles && path ? bristleBand(path, { seed, hairs: recipe.bristles.hairs, width: recipe.bristles.width, map: recipe.pressureMap,
+    hairs: recipe.bristles && path ? bristleBand(path, { hairs: recipe.bristles.hairs, width: recipe.bristles.width, map: recipe.pressureMap,
       dryness: recipe.bristles.dryness, depletion: recipe.bristles.depletion, wander: recipe.bristles.wander }) : [],
     grains: recipe.sand && !skipsMark(recipe.sand.mark) ? sandGrains(track, { seed, window, pressure, map: recipe.pressureMap, rate: recipe.sand.rate, lag: recipe.sand.lag,
       fall: recipe.sand.fall, fallAngle: recipe.sand.fallAngle, inherit: recipe.sand.inherit, spread: recipe.sand.spread, gate: recipe.sand.gate }) : [],
@@ -161,22 +163,17 @@ export function gestureScoreProducts(recipe: GestureScoreComposition): readonly 
   return repeats;
 }
 
-/** Draw a path with a palette tone (materials use `Path.tone` instead of a per-path random hue). */
-function toned(material: PathMaterial, tone: number): PathMaterial {
-  return (surface, path, run) => material(surface, { ...path, tone }, run);
-}
-
 /** Draw the recipe into a caller-owned surface: bristles, line, sand, then glyphs. */
 export function drawGestureScore(surface: CompositionSurface, recipe: GestureScoreComposition,
   consumers: GestureConsumers = {}, run: CompositionRun = createCompositionRun({ maxWork: 400_000 })): void {
   run.check();
   const repeats = gestureScoreProducts(recipe);
   if (recipe.bristles) {
-    const hair = consumers.bristle ?? pathMaterial(materialSpec("ink", recipe.bristles.weight, 4, 0), recipe.palette);
+    const hair = consumers.bristle ?? hairMaterial({ weight: recipe.bristles.weight, mix: 0, inkTone: 0, mixTone: 0 }, recipe.palette);
     for (const repeat of repeats) strokeWith(surface, repeat.hairs, hair, run);
   }
   if (recipe.line) {
-    const line = consumers.line ?? toned(pathMaterial(recipe.line, recipe.palette), 1);
+    const line = consumers.line ?? tonedMaterial(pathMaterial(recipe.line, recipe.palette), 1);
     for (const repeat of repeats) if (repeat.path) strokeWith(surface, [repeat.path], line, run);
   }
   if (recipe.sand && !skipsMark(recipe.sand.mark)) {

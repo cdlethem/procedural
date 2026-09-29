@@ -75,14 +75,20 @@ export interface QuillGeometry {
   /** Absolute wall height per strip. */
   readonly heights: readonly number[];
   readonly heightRange: readonly [number, number];
+  /** Per strip height relative to the requested height (see `stripHeightFactor`); scaling the height leaves it unchanged. */
+  readonly factors: readonly number[];
   /** Ground outline rings per strip (plan coordinates). */
   readonly outlines: readonly (readonly Ring[])[];
   readonly pinchedVertices: number;
 }
 
+/** A strip's height relative to `options.height`, before the minimum wall: independent of the absolute height. */
+export function stripHeightFactor(strip: Pick<QuillStrip, "ring" | "heightUnit">, o: Pick<QuillGeometryOptions, "heightVariation" | "nestHeight">): number {
+  return (1 - o.heightVariation * strip.heightUnit) * (1 + o.nestHeight) ** Math.abs(strip.ring);
+}
 /** The absolute wall height of a strip. */
 export function stripHeight(strip: Pick<QuillStrip, "ring" | "heightUnit">, o: QuillGeometryOptions): number {
-  return Math.max(MIN_WALL, o.height * (1 - o.heightVariation * strip.heightUnit) * (1 + o.nestHeight) ** Math.abs(strip.ring));
+  return Math.max(MIN_WALL, o.height * stripHeightFactor(strip, o));
 }
 
 function validateGeometryOptions(o: QuillGeometryOptions): void {
@@ -177,7 +183,7 @@ function buildGeometry(strips: QuillStrips, o: QuillGeometryOptions): QuillGeome
     throw new Error(`The strips would need ${faceCount} faces; the limit is ${MAX_QUILL_FACES}. Raise Path resolution or lower the nest rings, the scaffold size or its path count`);
   const corners = new Float64Array(faceCount * 12), normals = new Float64Array(faceCount * 3);
   const kind = new Array<QuillFaceKind>(faceCount), strip = new Array<number>(faceCount), segment = new Array<number>(faceCount);
-  const heights: number[] = [], outlines: Ring[][] = [];
+  const heights: number[] = [], factors: number[] = [], outlines: Ring[][] = [];
   let face = 0, pinchedVertices = 0, low = Infinity, high = -Infinity;
   const emit = (k: QuillFaceKind, s: number, j: number, quad: readonly number[][], nx: number, ny: number, nz: number) => {
     for (let c = 0; c < 4; c++) { corners[face * 12 + c * 3] = quad[c][0]; corners[face * 12 + c * 3 + 1] = quad[c][1]; corners[face * 12 + c * 3 + 2] = quad[c][2]; }
@@ -187,7 +193,7 @@ function buildGeometry(strips: QuillStrips, o: QuillGeometryOptions): QuillGeome
   };
   list.forEach((item, s) => {
     const h = stripHeight(item, o), n = item.points.length, closed = item.closed;
-    heights.push(h); low = Math.min(low, h); high = Math.max(high, h);
+    heights.push(h); low = Math.min(low, h); high = Math.max(high, h); factors.push(stripHeightFactor(item, o));
     const { left, right, pinched } = stripSides(item.points, closed, half);
     pinchedVertices += pinched;
     const segments = closed ? n : n - 1;
@@ -216,7 +222,7 @@ function buildGeometry(strips: QuillStrips, o: QuillGeometryOptions): QuillGeome
     strips, options: Object.freeze(o), faceCount,
     corners: Object.freeze(Array.from(corners)), normals: Object.freeze(Array.from(normals)),
     kind: Object.freeze(kind), strip: Object.freeze(strip), segment: Object.freeze(segment),
-    heights: Object.freeze(heights), heightRange: Object.freeze([list.length ? low : 0, list.length ? high : 0] as const),
+    heights: Object.freeze(heights), factors: Object.freeze(factors), heightRange: Object.freeze([list.length ? low : 0, list.length ? high : 0] as const),
     outlines: Object.freeze(outlines.map((rings) => Object.freeze(rings))), pinchedVertices,
   });
 }

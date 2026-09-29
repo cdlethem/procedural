@@ -71,14 +71,15 @@ camera and height never rebuild earlier stages.
 
 Groups: Scaffold (Contours, Spirals, Scrolls subgroups), Placement (proportional Size), Paper
 (proportional Size: wall height, thickness), Nesting, Terminals (proportional Roll: radius, gap),
-View, Material. Conditions: contour controls on `source: contours` (frequency on noise/waves,
-hills on hills); `word` on letters; spiral controls on spirals; scroll controls on scrolls; nesting
+View, Material. Conditions: contour controls on `source: contours` (hill count and radius on hills
+only; frequency matters for every field); `word` on letters; spiral controls on spirals; scroll controls on scrolls; nesting
 on contours/letters; terminals on contours/spirals/scrolls; curl/roll size on those with terminals not
 `none`; yaw, pitch, light direction on the tilted view. Controls a selection hides are neutral (letters
-ignore rolls, spirals ignore nesting, flat ignores camera and light direction) and are not even
-validated against each other. Wall height, height variation and the nest height step stay visible
-in the flat view although they change nothing unless colour is by height (a disjunction the
-conjunctive condition cannot state).
+ignore rolls, spirals ignore nesting, flat ignores camera, light direction and wall height) and are not
+even validated against each other. Colour by height uses each strip's height *relative* to the requested
+wall height, so wall height is hidden in the flat view without ever mattering there. Height variation and the
+nest height step stay visible in the flat view although they change nothing unless colour is by height
+(a disjunction the conjunctive condition cannot state; listed, not guessed).
 
 ## Not done / boundaries chosen
 

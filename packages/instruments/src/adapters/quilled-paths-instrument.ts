@@ -28,7 +28,7 @@ const tilted: Condition = { view: ["tilted"] };
 const parameters: Parameter[] = [
   select("source", "Scaffold", "The paths the strips follow: a contour family, the outline rings of a word, spiral arms, or short S-shaped strips scattered by a Poisson population.", [...quillSources]),
   select("contourShape", "Contour field", "The scalar landscape whose level lines are the scaffold.", ["noise", "hills", "waves", "saddle"], contoured),
-  n("contourFrequency", "Contour frequency", "Wave cycles or noise scale across the footprint.", 0.5, 5, 0.05, 0.05, 20, { source: ["contours"], contourShape: ["noise", "waves"] }),
+  n("contourFrequency", "Contour frequency", "Wave cycles or noise scale across the footprint; for hills and the saddle it shifts the field's phase.", 0.5, 5, 0.05, 0.05, 20, contoured),
   n("contourHills", "Hill count", "Number of seeded hills.", 1, 10, 1, 1, 24, { source: ["contours"], contourShape: ["hills"] }),
   n("contourHillRadius", "Hill radius", "Width of each hill as a fraction of the footprint. Wide hills merge into one landscape; narrow ones stay separate summits with their own rings.", 0.06, 0.3, 0.005, 0.02, 1, { source: ["contours"], contourShape: ["hills"] }),
   n("contourLevels", "Contour levels", "Number of level lines; levels above the highest crest are empty.", 1, 12, 1, 1, 24, contoured),
@@ -51,7 +51,7 @@ const parameters: Parameter[] = [
   n("height", "Height", "Height of the scaffold's footprint.", 80, 600, 1, 1, 4000),
   n("rotation", "Rotation", "Turns the scaffold about its center, in degrees.", -180, 180, 1, -3600, 3600),
 
-  n("wallHeight", "Wall height", "How tall every strip stands, in canvas units. Seen from above it only shows in tone; tilt the camera to see the walls.", 4, 90, 1, 0.1, 1000),
+  n("wallHeight", "Wall height", "How tall every strip stands, in canvas units. Tilt the camera to see the walls; the flat view shows only the tops.", 4, 90, 1, 0.1, 1000, tilted),
   n("thickness", "Paper thickness", "Width of each strip seen from above, in canvas units.", 0.8, 9, 0.1, 0.05, 200),
   n("heightVariation", "Height variation", "Stable per-path shortening of the walls; a new seed changes which paths are lower.", 0, 1, 0.01, 0, 1),
   n("clearance", "Clearance", "Least gap between two strips. A stretch of a strip closer than this to a higher-ranked one is trimmed away, so crowded paths lose their later strips first.", 0, 6, 0.1, 0, 100),

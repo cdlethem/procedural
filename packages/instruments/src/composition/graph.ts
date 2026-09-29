@@ -4,6 +4,7 @@ import { graphForest, latticeVertexPosition } from "../adapters/graph-grammar-in
 import { buildProximityReplay, proximityReplayInstrumentDefinitions } from "../adapters/proximity-replay-instruments.js";
 import { componentSeed } from "./core.js";
 import { memoized } from "./sources.js";
+import type { BranchTree } from "./branch-tree.js";
 import type { Path, Point, Site } from "./types.js";
 
 /**
@@ -427,6 +428,48 @@ export function branchGraph(options: BranchGraphOptions): Graph {
     });
     return graphFromParts({ seed, nodes, edges });
   });
+}
+
+/**
+ * The attractor-growth branch tree (`branchTree`) as a `Graph`, so every graph role (selection, routes,
+ * faces, edge/node treatments) applies to it. It is a pure conversion of the frozen tree: nothing is
+ * regrown, and the tree's routing, growth and seeds are untouched.
+ *
+ * - **Ids.** Node and edge ids are the tree's own (`root:<n>`, `end:<tick>.<k>`, `edge:<tick>.<k>`), so
+ *   they keep the tree's stability: raising the growth `ticks` keeps every id; routing never renames.
+ *   Element seeds follow the graph convention, `componentSeed(tree.seed, id, "node" | "edge")`, which
+ *   is exactly the tree's own seed derivation.
+ * - **Direction.** Edges run trunk → tip (`from` is the node the edge leaves, `to` the node it ends on);
+ *   `directed` defaults to true and can be switched with `withDirection` without moving anything.
+ * - **Roles.** Not stored: derive them from direction. A trunk has no incoming edge, a terminal no
+ *   outgoing edge, a fork two or more outgoing edges; so trunk and terminal are the degree-1 nodes told
+ *   apart by which end they are, and a fork is any node of degree three or more (one in, two or more out).
+ * - **Weight.** The edge's share of its tree's terminals: terminals beyond the edge divided by the
+ *   terminals of its whole tree, so a trunk edge is 1 and a lone tip edge is 1 / (tree terminals).
+ * - **Age.** `lastTick − tick + 1` where `tick` is the growth tick of the edge's first segment and
+ *   `lastTick` the greatest such tick over the whole tree: the trunk is oldest, and a child is always
+ *   younger than its parent edge. Unlike the branch tree's own `age` (the raw tick) this follows the
+ *   graph convention that a larger age is older.
+ * - **Geometry.** Node positions are the tree's. Graph `length` is the straight distance between the two
+ *   nodes; the tree's polyline length stays on the tree's edge.
+ * - **Failure / bounds.** An over-large tree throws the graph limits' error; the empty tree gives the
+ *   empty graph. Several roots make several components.
+ */
+export function graphFromBranchTree(tree: BranchTree, options: { directed?: boolean } = {}): Graph {
+  const terminals = new Map<string, number>();
+  // Children follow their parent in tree order, so a reverse pass sees every child first.
+  for (let i = tree.edges.length - 1; i >= 0; i--) {
+    const edge = tree.edges[i];
+    terminals.set(edge.id, edge.children.length === 0 ? 1 : edge.children.reduce((sum, child) => sum + terminals.get(child)!, 0));
+  }
+  const rootShare = new Map<number, number>();
+  for (const edge of tree.edges) if (edge.parent === null) rootShare.set(edge.tree, (rootShare.get(edge.tree) ?? 0) + terminals.get(edge.id)!);
+  let lastTick = 0;
+  for (const edge of tree.edges) lastTick = Math.max(lastTick, edge.age);
+  return graphFromParts({ seed: tree.seed, directed: options.directed ?? true,
+    nodes: tree.nodes.map((node) => ({ id: node.id, position: node.position })),
+    edges: tree.edges.map((edge) => ({ id: edge.id, from: edge.from, to: edge.to,
+      weight: terminals.get(edge.id)! / rootShare.get(edge.tree)!, age: lastTick - edge.age + 1 })) });
 }
 
 /* ---------------------------------------------------------- role selection */

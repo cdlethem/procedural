@@ -647,13 +647,22 @@ test("the flat view is the plan view: caps at plan positions whatever the tilt v
   assert.equal(paint(make({ view: "flat", yaw: 77, pitch: 63, lightAngle: 10 })).polygons.length, paint(make({ view: "flat" })).polygons.length);
 });
 
+test("wall height only scales the walls: the flat drawing and colour-by-height do not move with it", () => {
+  const faces = (wallHeight: number) => { const seen: number[] = []; drawQuilled(new Recorder(), quillComposition(make({ view: "flat", tone: "height", heightVariation: 0.6, nest: 2, wallHeight })),
+    { face: (_s, f) => { seen.push(f.heightFraction); } }); return seen; };
+  assert.deepEqual(faces(12), faces(80));
+  assert.ok(new Set(faces(12)).size > 3, "the fractions are not all equal");
+  const fp = (wallHeight: number) => JSON.stringify(paint(make({ view: "flat", tone: "height", heightVariation: 0.6, nest: 2, wallHeight })).fills);
+  assert.equal(fp(12), fp(80));
+});
+
 test("controls hidden by a selection cannot change the drawing or fail its checks", () => {
   const fingerprint = (input: InstrumentInput) => { const r = paint(input); return JSON.stringify([r.polygons, r.fills]); };
   const cases: Array<[Record<string, number | string | boolean>, Record<string, number | string | boolean>]> = [
     [{ source: "spirals" }, { contourShape: "saddle", contourLevels: 2, word: "CURL", scrollLength: 150, scrollBend: 0.6, nest: 8, spacing: 2, nestSide: "both", nestHeight: 0.5 }],
     [{ source: "letters", nest: 1 }, { terminals: "both", curl: "random", curlRadius: 200, curlGap: 0, arms: 7, spiralFamily: "fermat", scrollSeparation: 30 }],
     [{ source: "scrolls", terminals: "none" }, { curl: "right", curlRadius: 3, curlGap: 0, clearance: 0 }],
-    [{ view: "flat" }, { yaw: -120, pitch: 80, lightAngle: 170 }],
+    [{ view: "flat" }, { yaw: -120, pitch: 80, lightAngle: 170, wallHeight: 77 }],
     [{ source: "contours", contourShape: "noise" }, { contourHills: 3, contourHillRadius: 0.2 }],
   ];
   for (const [base, hidden] of cases) {

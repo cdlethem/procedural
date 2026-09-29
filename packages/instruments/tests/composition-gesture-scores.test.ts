@@ -1,9 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { sampleRecordedControls } from "@procedurals/javascript";
 import {
   atEach, bristleBand, bundledRecording, bundledRecordingIds, bundledRecordingInfo, canPrepareInstrument, countStations, createInstrument,
   createRecording, drawGestureScore, echoTrack, gesturePath, gestureScoreComposition, gestureScoreProducts, gestureSites, gestureTrack,
-  mapPressure, motif, pathMaterial, prepareInstrument, recordingData, recordingFingerprint, resolvePressure, sandGrains, speedPressure,
+  mapPressure, motif, recordingControls, pathMaterial, prepareInstrument, recordingData, recordingFingerprint, resolvePressure, sandGrains, speedPressure,
   stations, strokeWith, usesSeed, validateParameters,
   type CompositionSurface, type GestureFrame, type GestureScoreComposition, type PressurePolicy, type RecordingData,
 } from "../dist/index.js";
@@ -261,7 +262,7 @@ test("a gesture path is a Path with per-point channels, window ends and stations
 const straight = rec("straight", [0, 1000], [0, 600], [0, 0], [1, 1]);
 const straightTrack = gestureTrack(straight, { smoothing: 0, frame: identity(300, 300) });
 const straightPath = gesturePath(straightTrack, { seed: 3, sampling: { kind: "arc", spacing: 10 }, window: { start: 0, end: 1000 }, pressure: recorded });
-const brush = { seed: 3, hairs: 20, width: 40, map: { floor: 0, curve: 1 }, dryness: 0, depletion: 0, wander: 0 };
+const brush = { hairs: 20, width: 40, map: { floor: 0, curve: 1 }, dryness: 0, depletion: 0, wander: 0 };
 
 test("bristles: each hair sits in its own lateral stratum of the brush width, ordered and stable", () => {
   const hairs = bristleBand(straightPath, brush);
@@ -623,4 +624,28 @@ test("failures name the control to change and nothing is truncated", () => {
   assert.throws(() => gestureTrack(bundledRecording("scribble", 1), { smoothing: 0, frame: { ...identity(0, 0), scale: 0 } }), /frame scale/);
   assert.throws(() => gesturePath(track, { seed: -1, sampling: { kind: "arc", spacing: 5 }, window: { start: 0, end: 100 }, pressure: recorded }), /uint32/);
   assert.throws(() => gesturePath(track, { seed: 1, sampling: { kind: "arc", spacing: 5 }, window: { start: 0, end: 5000 }, pressure: { ...recorded, whenAbsent: "speed" } }), /window end/);
+});
+
+test("a recording is the same series the core recorded-control sampler reads, in seconds, with pressure absence preserved", () => {
+  const series = recordingControls(ramp);
+  assert.deepEqual(series.channels, ["x", "y", "pressure"]);
+  assert.deepEqual(series.times, [0, 0.01, 0.035, 0.036, 0.1]);
+  const at = (time: number, channel: string, interpolation: "LINEAR" | "STEP" = "LINEAR") => sampleRecordedControls({ ...series, time, maxGap: 1,
+    mappings: [{ channel, interpolation, domain: [0, 1], range: [0, 1], clamp: false }], maxWork: 100 }).values[0];
+  // At every recorded sample the core and the raw channels agree exactly; after the end it holds the last sample.
+  ramp.t.forEach((t, i) => { near(at(t / 1000, "x"), ramp.x[i], 1e-9); near(at(t / 1000, "pressure"), ramp.pressure![i], 1e-12); });
+  near(at(0, "x"), 100, 1e-9); near(at(9, "x"), 300, 1e-9);
+  assert.throws(() => at(-0.001, "x"), /INVALID_INPUT/, "the core refuses negative query times");
+  // Between samples the core's rule is linear (or step); the gesture replay is the Hermite curve, which on this straight
+  // constant-velocity stroke is the same line, but on a curve differs from the chords by a bounded amount.
+  near(at(0.0225, "x"), 100 + 2 * 22.5, 1e-9);
+  near(at(0.0225, "pressure", "STEP"), 0.1, 1e-12);
+  const bare = createRecording({ id: "bare", t: [1000, 1010], x: [0, 1], y: [0, 1], pressure: null });
+  assert.deepEqual(recordingControls(bare).channels, ["x", "y"]);
+  assert.deepEqual(recordingControls(bare).times, [0, 0.01]);
+  assert.throws(() => sampleRecordedControls({ ...recordingControls(bare), time: 0, maxGap: 1,
+    mappings: [{ channel: "pressure", interpolation: "LINEAR", domain: [0, 1], range: [0, 1], clamp: false }], maxWork: 100 }), /INVALID_INPUT/);
+  // A gap wider than the core's maxGap is refused there; the gesture replay never refuses a gap, it interpolates through it.
+  assert.throws(() => sampleRecordedControls({ ...series, time: 0.02, maxGap: 0.01,
+    mappings: [{ channel: "x", interpolation: "LINEAR", domain: [0, 1], range: [0, 1], clamp: false }], maxWork: 100 }), /TIME_GAP/);
 });

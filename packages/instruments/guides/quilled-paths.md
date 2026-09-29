@@ -37,7 +37,7 @@ saved instrument is future host work.
 
 | Controls | What changes on the canvas |
 |---|---|
-| **Wall height / Paper thickness** | How tall the strips stand, and how wide their top edge is. Thickness is what you see from above; height is what you see when tilted. |
+| **Wall height / Paper thickness** | How tall the strips stand, and how wide their top edge is. Thickness is what you see from above; height is what you see when tilted (wall height is hidden in the flat view). |
 | **Height variation** | Stable per-path shortening of walls. A new seed lowers different paths. |
 | **Clearance** | The least gap between two strips. Wherever a strip comes closer than this to a higher-ranked one it is cut back: scaffold strips outrank nest rings, shallower rings outrank deeper ones, and earlier paths outrank later ones. The cut ends are visible, not hidden, so no two walls ever pass through each other. |
 | **Path resolution** | The longest straight piece of a centerline. Finer is smoother and slower. |
