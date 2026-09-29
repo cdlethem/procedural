@@ -54,6 +54,8 @@ import { drawSlit, prepareSlit, slitComposition } from "./composition/slit-draw.
 import { compartmentsUsesSeed } from "./adapters/compartments-instrument.js";
 import { strokeReliefDefinition } from "./adapters/stroke-relief-instrument.js";
 import { drawStrokeRelief, prepareStrokeRelief, strokeReliefComposition } from "./composition/stroke-relief.js";
+import { inversionGardensDefinition } from "./adapters/inversion-gardens-instrument.js";
+import { drawInversionGardens, inversionGardensComposition, inversionGardensUsesSeed, prepareInversionGardens } from "./composition/inversion-gardens.js";
 import { pathTypographyDefinition, pathTypographyUsesSeed } from "./adapters/path-typography-instrument.js";
 import { drawPathTypography, pathTypographyComposition, preparePathTypography } from "./composition/path-type-draw.js";
 import { nodalPlatesDefinition } from "./adapters/nodal-plates-instrument.js";
@@ -310,6 +312,21 @@ export type { NodalMode, NodalFieldOptions, NodalResolvedMode, NodalGrid, NodalF
 export { nodalField, nodalPaths, nodalSites, nodalBands, nodalDistance, nodalProximity, NODAL_LIMITS } from "./composition/nodal-plate.js";
 export type { NodalComposition, NodalConsumers } from "./composition/nodal-draw.js";
 export { nodalPlateComposition, drawNodalPlate, prepareNodalPlate } from "./composition/nodal-draw.js";
+export type { Cline, ClineShape, CircleInversion, Frame as InversionFrame, Segment as InversionSegment, Circle as InversionCircleCurve, Arc as InversionArc,
+  Constraint as ClineConstraint } from "./composition/inversion.js";
+export { circleCline, lineCline, clineValue, clineDot, clineShape, circleInversion, invertPoint, invertCline, invertFrame, segmentIntervals, circleIntervals,
+  arcThrough, arcSteps, sampleArc, circumcircle, LINE_CURVATURE } from "./composition/inversion.js";
+export type { GasketOptions, GasketCircle, GasketDual, Gasket } from "./composition/inversion-gasket.js";
+export { apollonianGasket, tangencyPoint, GASKET_LIMITS } from "./composition/inversion-gasket.js";
+export type { SourceKind, SourceOptions, SourceChain, SourceCircle, SourceSite, Source as InversionSource } from "./composition/inversion-sources.js";
+export { sourceGeometry, SOURCE_KINDS, GLYPHS as INVERSION_GLYPHS } from "./composition/inversion-sources.js";
+export type { Arrangement, OrbitRule, OrbitOptions, OrbitCircle, OrbitImage, GardenPath, GardenDisc, GardenSite, Orbit } from "./composition/inversion-orbit.js";
+export { orbitCircles, orbitImages, wordConstraints, inWordDomain, parseWord, ORBIT_LIMITS } from "./composition/inversion-orbit.js";
+export type { Construction, GardenOptions, GardenImage, Garden } from "./composition/inversion-garden.js";
+export { gardenProducts, orbitOptions, GARDEN_LIMITS } from "./composition/inversion-garden.js";
+export type { ColorBy as GardenColorBy, OriginalMode, StrokeStyle as GardenStrokeStyle, FillKind, MarkKind, InversionGardensComposition, DiscFiller, GardenConsumers } from "./composition/inversion-gardens.js";
+export { inversionGardensComposition, inversionGardensProducts, inversionGardensUsesSeed, gardenSource, gardenTone, discFill, markSites, drawInversionGardens, drawInversionGardensProducts,
+  prepareInversionGardens } from "./composition/inversion-gardens.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -328,7 +345,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -456,6 +473,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "crossing-lace": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "region-stitch": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0x7f9a4f, 0x8b4a6f],
+  "inversion-gardens": [0x1d2733, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -498,6 +516,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
   if (input.technique === "polygon-watercolor") return drawPolygonWatercolor(context, polygonWatercolorComposition(input));
+  if (input.technique === "inversion-gardens") return drawInversionGardens(context, inversionGardensComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
@@ -515,7 +534,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -543,6 +562,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
   if (input.technique === "region-stitch") return prepareStitches(regionStitchComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
+  if (input.technique === "inversion-gardens") return prepareInversionGardens(inversionGardensComposition(input), cancelled);
   if (referenceIds[input.technique])
     return prepareReferenceComposition(referenceComposition(input), cancelled);
   if (!externalDynamicsPreparable.has(input.technique)) return !cancelled();
@@ -588,6 +608,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "crossing-lace": return crossingLaceUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
     case "region-stitch": return regionStitchUsesSeed(q);
+    case "inversion-gardens": return inversionGardensUsesSeed(q);
     case "substitution-tilings":
       return Number(q.retention) > 0 && Number(q.retention) < 1 || q.interior === "wash" && Number(q.bleed) > 0 ||
         q.interior !== "none" && q.colorBy === "supertile";
