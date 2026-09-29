@@ -39,7 +39,7 @@ from it.
 
 | Controls | What changes on the canvas |
 |---|---|
-| **Center X/Y**, **Width/Height** | The footprint. For Contact the width is the extent of the starting shape and the network may drift beyond it. |
+| **Center X/Y**, **Width/Height** | The footprint. Lattice sites fill it (wobble may nudge sites slightly past the edge). Branch forests are grown, then scaled uniformly to fit inside it, touching at least one of its sides, and centered. For Contact it is the starting shape only; the agents then drift, so the network may leave it. |
 | **Rotation** | Turns the whole network about its center. |
 
 ## Select roles
@@ -62,7 +62,7 @@ The route is computed on the selected roles only, so a filter can close a road o
 |---|---|
 | **Route** | **Shortest** or **longest** simple route between the nodes nearest the start and end points, or off. |
 | **Measured by** | **Length** (edge length), **hops** (edge count) or **weight** (strong edges are short, so the route prefers them). |
-| **Start / End X/Y** | Canvas points; each selects the nearest node of the current selection. |
+| **Start / End X/Y** | Canvas points. The start is the nearest selected node; the end is the nearest node *connected to the start*, so separate trees or clusters never leave the route silently missing. A route can still be absent when Follow direction forbids it or the start is isolated. |
 | **Follow direction** | With Source direction, the route may only travel tail to head, and may not exist. |
 
 Equal-cost shortest routes are settled by an explicit rule: fewer edges first, then the route whose node
@@ -79,7 +79,7 @@ valid route and never shorter than the shortest.
 | **Edge material**, **Edge weight**, **Edge spacing**, **Edge bead**, **Edge bead size** | The supporting network, kept deliberately thin. |
 | **Edge color** | One colour, or three colour bands by weight or by age. |
 | **Edge retention** | Stable omission of edges, opening space without changing the network. |
-| **Arrowheads**, **Arrow size** | With Source direction, a small arrow at every edge's midpoint pointing tail to head. |
+| **Arrowheads**, **Arrow size**, **Arrow share** | With Source direction, a small arrow at an edge's midpoint pointing tail to head. Edges shorter than three arrow lengths get none, *Arrow share* keeps a stable fraction of the rest, and no more than 400 arrows are ever drawn, so dense networks show a legible scatter of direction rather than a hairball. |
 | **Node mark**, **Node size**, **Size by**, **Size contrast** | A dot, ring or rosette on every selected node, scaled by degree, weight or age. Size 0 hides nodes; nodes on the route take the route colour. |
 | **Fill faces**, **Face color**, **Face opacity** | Fills the enclosed regions. Colour by size bands small faces gold and large ones blue. |
 | **Smallest / Largest face**, **Face retention** | Leave small or huge faces open, or omit faces at random but stably. |

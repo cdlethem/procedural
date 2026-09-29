@@ -129,6 +129,8 @@ export interface FaceExtraction {
 
 export const MAX_GRAPH_NODES = 20_000;
 export const MAX_GRAPH_EDGES = 60_000;
+/** Most direction markers `edgeMarkers` will place; denser networks get a stable subset. */
+export const MAX_EDGE_MARKERS = 400;
 const ROUTE_SEARCH_LIMIT = 100_000;
 const FACE_WORK_LIMIT = 5_000_000;
 const U32 = 0x1_0000_0000;
@@ -374,8 +376,9 @@ export interface BranchGraphOptions {
 }
 const branchCache = new Map<string, Graph>();
 /**
- * Branch tree graph: each root grows the existing seeded breadth-first endpoint tree upward from the
- * bottom edge of the footprint; a node is a segment end (plus each root origin) and an edge is a
+ * Branch tree graph: each root grows the existing seeded breadth-first endpoint tree upward from a line
+ * of roots `width` wide, and the whole forest is then fitted into the placement footprint (see the
+ * fit rule below: uniform scale to fit width × height, centered, then rotated); a node is a segment end (plus each root origin) and an edge is a
  * segment, parent → child. Edge weight is the segment's share of its tree's segments (the trunk is
  * 1); edge age is `last generation − generation + 1`. Ids `t<k>:o`, `t<k>:<segment>`, `t<k>:e<segment>`.
  * The result is a forest: it has no cycles, hence no faces.
@@ -389,9 +392,24 @@ export function branchGraph(options: BranchGraphOptions): Graph {
     const trees = buildBranchTrees({ rootCount: roots, layout: "line", columns: 1, centerX, centerY: centerY + height / 2, extent: width,
       aspect: 1, heading: -90, headingSpread: 0, rootLength, generations, children: String(children), angle, angleSpread,
       contraction, survival, strokes: true, weight: 1, tipSize: 0 }, seed);
+    // Fit rule: the grown forest (any tree lengths, however far branches spread) is scaled uniformly, about
+    // its bounding-box center, so that its bounding box fits inside width × height and touches at least one
+    // of them, then centered on (centerX, centerY) and finally turned by `rotation` about that center.
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (const tree of trees) for (let i = 0; i < tree.size; i++) {
+      const segment = tree.segmentAt(i);
+      for (const [x, y] of i === 0 ? [[segment[0], segment[1]], [segment[2], segment[3]]] : [[segment[2], segment[3]]]) {
+        x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y);
+      }
+    }
+    const spanX = x1 - x0, spanY = y1 - y0;
+    const fit = Math.min(spanX > 0 ? width / spanX : Infinity, spanY > 0 ? height / spanY : Infinity);
+    const scale = Number.isFinite(fit) ? fit : 1;
     const turn = rotation * Math.PI / 180, cos = Math.cos(turn), sin = Math.sin(turn);
-    const rotate = (x: number, y: number): Point => [centerX + (x - centerX) * cos - (y - centerY) * sin,
-      centerY + (x - centerX) * sin + (y - centerY) * cos];
+    const place = (x: number, y: number): Point => {
+      const dx = (x - (x0 + x1) / 2) * scale, dy = (y - (y0 + y1) / 2) * scale;
+      return [centerX + dx * cos - dy * sin, centerY + dx * sin + dy * cos];
+    };
     const nodes: { id: string; position: Point }[] = [], edges: GraphParts["edges"][number][] = [];
     trees.forEach((tree, k) => {
       const size = new Float64Array(tree.size).fill(1);
@@ -399,10 +417,10 @@ export function branchGraph(options: BranchGraphOptions): Graph {
       let lastGeneration = 0;
       for (let i = 0; i < tree.size; i++) lastGeneration = Math.max(lastGeneration, tree.generationAt(i));
       const root = tree.segmentAt(0);
-      nodes.push({ id: `t${k}:o`, position: rotate(root[0], root[1]) });
+      nodes.push({ id: `t${k}:o`, position: place(root[0], root[1]) });
       for (let i = 0; i < tree.size; i++) {
         const segment = tree.segmentAt(i), parent = tree.parentAt(i);
-        nodes.push({ id: `t${k}:${i}`, position: rotate(segment[2], segment[3]) });
+        nodes.push({ id: `t${k}:${i}`, position: place(segment[2], segment[3]) });
         edges.push({ id: `t${k}:e${i}`, from: parent < 0 ? `t${k}:o` : `t${k}:${parent}`, to: `t${k}:${i}`,
           weight: size[i] / size[0], age: lastGeneration - tree.generationAt(i) + 1 });
       }
@@ -437,14 +455,31 @@ export function selectGraph(graph: Graph, roles: GraphRoleOptions): GraphView {
   return Object.freeze({ graph, nodes: Object.freeze(nodes), edges: Object.freeze(edges) });
 }
 
-/** The nearest node of a view to a canvas point; the earliest in source order wins a tie. */
-export function nearestNode(view: GraphView, point: Point): GraphNode | undefined {
+/**
+ * The nearest node of a view to a canvas point; the earliest in source order wins a tie. With `within`
+ * (a set of node ids, e.g. one connected component) only those nodes are considered.
+ */
+export function nearestNode(view: GraphView, point: Point, within?: ReadonlySet<string>): GraphNode | undefined {
   let best: GraphNode | undefined, bestDistance = Infinity;
   for (const node of view.nodes) {
+    if (within && !within.has(node.id)) continue;
     const distance = Math.hypot(node.position[0] - point[0], node.position[1] - point[1]);
     if (distance < bestDistance) { best = node; bestDistance = distance; }
   }
   return best;
+}
+
+/** Ids of the nodes connected to `id` through the view's edges, ignoring direction (includes `id`). */
+export function connectedNodes(view: GraphView, id: string): ReadonlySet<string> {
+  const adjacent = new Map<string, string[]>();
+  for (const edge of view.edges) {
+    (adjacent.get(edge.from) ?? adjacent.set(edge.from, []).get(edge.from)!).push(edge.to);
+    (adjacent.get(edge.to) ?? adjacent.set(edge.to, []).get(edge.to)!).push(edge.from);
+  }
+  const seen = new Set<string>([id]), queue = [id];
+  for (let head = 0; head < queue.length; head++)
+    for (const next of adjacent.get(queue[head]) ?? []) if (!seen.has(next)) { seen.add(next); queue.push(next); }
+  return seen;
 }
 
 /* ------------------------------------------------------------------ routes */
@@ -624,19 +659,28 @@ export function nodeSites(view: GraphView, options: {
 }
 
 /**
- * Direction markers: one site at the midpoint of every view edge, turned along from → to, shrunk on
- * edges shorter than twice `size` so a marker never outgrows its edge. Ids `<edge id>/arrow`.
+ * Direction markers: one site at the midpoint of a view edge, turned along from → to. Ids `<edge id>/arrow`.
+ * Legibility rules: an edge shorter than three times `size` gets no marker (it would swallow the edge);
+ * `share` (0–1, default 1) keeps a stable, id-selected fraction of the eligible edges; and at most
+ * `MAX_EDGE_MARKERS` (400) are drawn, by lowering the share to fit. The kept set is always the eligible
+ * edges with the smallest id-derived draws, so raising the share or the cap only adds markers.
  */
-export function edgeMarkers(view: GraphView, size: number, tone: (edge: GraphEdge, graph: Graph) => number = () => 0): readonly Site[] {
+export function edgeMarkers(view: GraphView, size: number, tone: (edge: GraphEdge, graph: Graph) => number = () => 0, share = 1): readonly Site[] {
   finite("Marker size", size, 0.001, 1000);
+  finite("Marker share", share, 0, 1);
   const at = new Map(view.graph.nodes.map((node) => [node.id, node.position] as const));
-  return Object.freeze(view.edges.map((edge): Site => {
+  const eligible = view.edges.map((edge) => ({ edge, id: `${edge.id}/arrow` }))
+    .filter(({ edge }) => edge.length >= 3 * size)
+    .map((item) => ({ ...item, seed: componentSeed(view.graph.seed, item.id, "arrow") }));
+  const limit = Math.min(share, MAX_EDGE_MARKERS / Math.max(1, eligible.length));
+  const sites: Site[] = [];
+  for (const { edge, id, seed } of eligible) {
+    if (limit < 1 && seed / U32 >= limit) continue;
     const a = at.get(edge.from)!, b = at.get(edge.to)!;
-    const id = `${edge.id}/arrow`;
-    return Object.freeze({ id, seed: componentSeed(view.graph.seed, id, "arrow"),
-      position: Object.freeze([(a[0] + b[0]) / 2, (a[1] + b[1]) / 2] as const),
-      angle: Math.atan2(b[1] - a[1], b[0] - a[0]), scale: Math.min(1, edge.length / (2 * size)) || 1e-6, tone: tone(edge, view.graph) });
-  }));
+    sites.push(Object.freeze({ id, seed, position: Object.freeze([(a[0] + b[0]) / 2, (a[1] + b[1]) / 2] as const),
+      angle: Math.atan2(b[1] - a[1], b[0] - a[0]), scale: 1, tone: tone(edge, view.graph) }));
+  }
+  return Object.freeze(sites);
 }
 
 /* -------------------------------------------------------------- planar faces */
