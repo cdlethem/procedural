@@ -388,6 +388,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "image-directed-field",
+      "title": "Image Directed Field",
+      "description": "Lines and marks that follow or cross the structure of a picture: edges and contours become evenly spaced strokes of ink, stitches or beads that stop where the picture has no direction.",
+      "category": "Fields & paths",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/image-directed-field.md",
+      "source": "packages/instruments/src/composition/image-directed-field.ts",
+      "sourceEntry": "drawImageDirectedField",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "data-scores",
       "title": "Data Scores",
       "description": "Let recorded values decide structure: three bundled tables with missing values become a lattice that drifts, a treemap with exact areas or a timeline, with explicit mappings and a small generated key.",
