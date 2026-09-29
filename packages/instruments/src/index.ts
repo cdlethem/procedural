@@ -26,6 +26,7 @@ import { dataScoresComposition, dataScoresUsesSeed, drawDataScores, prepareDataS
 import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
+import { typeRhythmUsesSeed } from "./adapters/type-rhythm-instrument.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
@@ -84,6 +85,14 @@ export { dataKey, drawDataKey, keyLabel, formatNumber } from "./composition/data
 export type { DataMarkKind, DataFillKind, DataMarkSpec, DataFillSpec, DataLineSpec, DataFootprint, DataLayoutSpec, DataScoresRecipe,
   DataScoresConsumers, DataScene } from "./composition/data-scores.js";
 export { dataScoresScene, dataMark, dataFill, dataFillSpec, drawDataScores, prepareDataScores, dataScoresComposition, sampleSlots } from "./composition/data-scores.js";
+export type { TextSource, TypeLine } from "./composition/type-text.js";
+export { textSource, bundledTextSources, typeLine, clipRingToRect, keyholeRings, fillRings, CAP_HEIGHT, MAX_TEXT_LINES, MAX_LINE_CHARS } from "./composition/type-text.js";
+export type { TypeModuleKind, ScreenAngles, TypeLayoutOptions, TypeModuleSource, TypeModule, TypeLayout, TypeFieldOptions, TypeField,
+  ModuleFrame, TypeInstance, ModuleType, TypeContent, TypeScreenSpec, TypeAnchor } from "./composition/type-rhythm.js";
+export { typeRhythmLayout, typeField, rowLine, rowBaseline, repeatLeft, moduleFrame, fieldToLocal, moduleType, typeContent, screenFrame,
+  moduleScreen, moduleLined, moduleOutline, typeAnchor, MAX_TYPE_MODULES, MAX_MODULE_INSTANCES, MAX_MODULE_VERTICES, MAX_TYPE_VERTICES } from "./composition/type-rhythm.js";
+export type { TypeInk, TypeScreenInk, TypeRhythmComposition } from "./composition/type-rhythm-draw.js";
+export { drawTypeRhythm, prepareTypeRhythm } from "./composition/type-rhythm-draw.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -211,6 +220,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "gesture-scores": [0x24262b, 0xc99a3b, 0xb8452f, 0x2f6f7a],
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
+  "typographic-rhythm": [0x1c1d20, 0xc93a2a, 0x2b5d9b, 0xe6ae2c],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -300,6 +310,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "substitution-tilings":
       return Number(q.retention) > 0 && Number(q.retention) < 1 || q.interior === "wash" && Number(q.bleed) > 0 ||
         q.interior !== "none" && q.colorBy === "supertile";
+    case "typographic-rhythm": return typeRhythmUsesSeed(q);
     case "orbit-beads": return false;
     case "profile-marks": case "depth-marks": case "annular-marks": return q.colorMode === "noise";
     case "ramp-marks": return Number(q.disorder) > 0 || Number(q.retention) > 0 && Number(q.retention) < 1;

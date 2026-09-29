@@ -401,6 +401,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "typographic-rhythm",
+      "title": "Typographic Rhythm",
+      "description": "Repeat a phrase huge, then look at it through a grid or partition of modules whose windows slide, stretch and turn the type; other modules become line screens, flat colour or paper, and a small legible caption stays outside the fragments.",
+      "category": "Type",
+      "operationIds": ["layout.binary-cell-partition-2d", "field.gradient-noise-2d-01"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/typographic-rhythm.md",
+      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+      "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
