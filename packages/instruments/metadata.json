@@ -401,6 +401,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "bundled-relations",
+      "title": "Bundled Relations",
+      "description": "Draw weighted relationships between grouped places as readable families of curves: edges share waypoints only when they join the same two groups, with bundle strength, hub depth, separation, a highlighted family and direction shown by color or arrows.",
+      "category": "Graphs",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/bundled-relations.md",
+      "source": "packages/instruments/src/composition/bundled-relations.ts",
+      "sourceEntry": "drawBundledRelations",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "typographic-rhythm",
       "title": "Typographic Rhythm",
       "description": "Repeat a phrase huge, then look at it through a grid or partition of modules whose windows slide, stretch and turn the type; other modules become line screens, flat colour or paper, and a small legible caption stays outside the fragments.",
