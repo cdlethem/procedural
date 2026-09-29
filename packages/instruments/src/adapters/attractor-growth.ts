@@ -7,7 +7,17 @@ type Point = [number, number];
 type Stroke = [number, number, number, number, number];
 type Canvas = {push():void;pop():void;noFill():void;noStroke():void;stroke(...values:number[]):void;fill(...values:number[]):void;strokeWeight(value:number):void;line(x0:number,y0:number,x1:number,y1:number):void;circle(x:number,y:number,diameter:number):void};
 type Params = Layer['params'];
-type Model = {sources:Point[];tips:Point[];segments:Stroke[]};
+/**
+ * The published growth: attractor positions, the pending tips, and every grown segment as
+ * `[x0,y0,x1,y1,tick]` in tick-major order. `lineage` records how the segments connect: for each
+ * segment, the segment that grew its tip (`-1 - root` for a root tip) and, when that tip was born
+ * from a consumed attractor, its slot (0..branches-1) among that fork's siblings (0 otherwise).
+ * A parent always precedes its children, so a longer `ticks` only appends. It is absent only if
+ * the native step's result could not be matched to its tips exactly (a growing tip landed exactly
+ * on an attractor consumed by another tip in the same tick); drawing does not need it.
+ */
+export type GrowthModel = {sources:Point[];tips:Point[];segments:Stroke[];lineage?:{parents:Int32Array;slots:Uint8Array}};
+type Model = GrowthModel;
 
 const parameters = [
   numeric('sourceCount','Attractors','Target points in the independently seeded population.',8,180,1,{hardMin:1,hardMax:450,integer:true}),
@@ -114,13 +124,29 @@ function roots(q:Params,seed:number):Point[]{
   return out;
 }
 function* replay(q:Params,seed:number):Generator<void,Model>{
-  const targets=sources(q,seed),segments:Stroke[]=[];let consumed=targets.map(()=>false);
+  const targets=sources(q,seed),segments:Stroke[]=[],parents:number[]=[],slots:number[]=[];let consumed=targets.map(()=>false);
   let tips=roots(q,seed);
+  // For each current tip: the segment that grew it (`-1 - root` for a root tip) and its fork slot.
+  let owners:number[]|undefined=tips.map((_,root)=>-1-root),ownerSlots=tips.map(()=>0);
   for(let tick=0;tick<number(q,'ticks')&&tips.length>0;tick++){
     const next=spaceColonizationStep2D({tips,sources:targets,consumed,step:number(q,'step'),reach:number(q,'reach'),branches:number(q,'branches'),branchAngle:number(q,'branchSpread')*Math.PI/180,maxWork:MAX_QUERIES});
     if(next.dropped!==0)throw Error('Attractor growth exceeded the native tip cap');
     if(segments.length+next.segments.length>MAX_SEGMENTS)throw Error('Attractor growth exceeded the segment budget');
-    for(const [x0,y0,x1,y1] of next.segments)segments.push([x0,y0,x1,y1,tick]);
+    const base=segments.length,newlyConsumed=new Set<string>();
+    // The native step emits one segment per tip, in tip order, for a prefix of the tips (a tip is
+    // dropped only once every attractor is gone). A segment ending exactly on an attractor consumed
+    // this tick reached it and spawns `branches` tips at that attractor; any other extends by one tip.
+    if(owners)for(let s=0;s<targets.length;s++)if(next.consumed[s]&&!consumed[s])newlyConsumed.add(`${targets[s][0]},${targets[s][1]}`);
+    const nextOwners:number[]=[],nextSlots:number[]=[];
+    next.segments.forEach(([x0,y0,x1,y1],k)=>{
+      segments.push([x0,y0,x1,y1,tick]);
+      if(!owners)return;
+      parents.push(owners[k]);slots.push(ownerSlots[k]);
+      const children=newlyConsumed.has(`${x1},${y1}`)?number(q,'branches'):1;
+      for(let child=0;child<children;child++){nextOwners.push(base+k);nextSlots.push(children>1?child:0);}
+    });
+    if(owners&&(next.segments.length>owners.length||nextOwners.length!==next.tips.length))owners=undefined;
+    else if(owners){owners=nextOwners;ownerSlots=nextSlots;}
     tips=next.tips as Point[];
     consumed=next.consumed;
     // All targets have been consumed; another native step would only discard tips.
@@ -132,24 +158,29 @@ function* replay(q:Params,seed:number):Generator<void,Model>{
     const finalTick=segments.at(-1)![4];
     tips=segments.filter(segment=>segment[4]===finalTick).map(segment=>[segment[2],segment[3]]);
   }
-  return {sources:targets,tips,segments};
+  return {sources:targets,tips,segments,lineage:owners?{parents:Int32Array.from(parents),slots:Uint8Array.from(slots)}:undefined};
 }
 const cache=new Map<string,Model>();
 function modelKey(q:Params,seed:number):string{return JSON.stringify([seed,...constructionKeys.map(key=>q[key])]);}
 function store(key:string,value:Model):void{cache.delete(key);cache.set(key,value);if(cache.size>5)cache.delete(cache.keys().next().value!);}
-function model(layer:Layer):Model{
-  validateAttractorGrowth(layer.params);const key=modelKey(layer.params,layer.seed),hit=cache.get(key);if(hit)return hit;
-  const iterator=replay(layer.params,layer.seed);let current=iterator.next();while(!current.done)current=iterator.next();store(key,current.value);return current.value;
+/**
+ * The cached growth for these construction values (the same keys the drawing uses; drawing
+ * controls are not part of it). Callers must treat the result as immutable.
+ */
+export function growthModel(q:Params,seed:number):GrowthModel{
+  validateAttractorGrowth(q);const key=modelKey(q,seed),hit=cache.get(key);if(hit)return hit;
+  const iterator=replay(q,seed);let current=iterator.next();while(!current.done)current=iterator.next();store(key,current.value);return current.value;
 }
 /** Cooperatively replay the same steps as synchronous draw; canceled states are never published. */
-export async function prepareAttractorGrowth(layer:Layer,cancel:()=>boolean):Promise<boolean>{
-  validateAttractorGrowth(layer.params);const key=modelKey(layer.params,layer.seed);
+export async function prepareGrowthModel(q:Params,seed:number,cancel:()=>boolean):Promise<boolean>{
+  validateAttractorGrowth(q);const key=modelKey(q,seed);
   if(cancel())return false;if(cache.has(key))return true;
-  const iterator=replay(layer.params,layer.seed);
+  const iterator=replay(q,seed);
   while(true){if(cancel())return false;const current=iterator.next();if(current.done){if(cancel())return false;store(key,current.value);return true;}await new Promise<void>(resolve=>setTimeout(resolve,0));}
 }
+export function prepareAttractorGrowth(layer:Layer,cancel:()=>boolean):Promise<boolean>{return prepareGrowthModel(layer.params,layer.seed,cancel);}
 export function drawAttractorGrowth(p:Canvas,layer:Layer):void{
-  const q=layer.params,m=model(layer);p.push();
+  const q=layer.params,m=growthModel(q,layer.seed);p.push();
   try{
     if(number(q,'weight')>0){p.noFill();p.stroke(...channels(layer.palette[0]));let previous=-1;
       for(const [x0,y0,x1,y1,generation] of m.segments){if(generation!==previous){p.strokeWeight(number(q,'weight')*number(q,'taper')**generation);previous=generation;}p.line(x0,y0,x1,y1);}

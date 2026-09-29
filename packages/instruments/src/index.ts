@@ -17,6 +17,8 @@ import { interferenceLaceDefinition, drawInterferenceLace } from "./adapters/int
 import { materialsBDefinitions, drawMaterialsB } from "./adapters/materials-b.js";
 import { referenceDefinitions, drawReferenceInstrument } from "./adapters/reference-composition-instruments.js";
 import { referenceComposition, prepareReferenceComposition } from "./composition/reference.js";
+import { branchOrnamentDefinitions } from "./adapters/branch-ornament-instruments.js";
+import { branchOrnamentComposition, drawBranchOrnament, prepareBranchOrnament } from "./composition/branch-ornament.js";
 import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
@@ -45,6 +47,11 @@ export { resolveSupport, supportContains, clipToSupport } from "./composition/su
 export type { FootprintSpec, MaskSource, MaskSpec, SupportSpec, Support, Ring } from "./composition/support.js";
 export { opticalPlates, makePlate, plateFrames, drawPlate, drawPlatesRecipe } from "./composition/plates.js";
 export type { OpticalPlates, OpticalPlatesOptions, Plate, PlateFrame, PlateOptions, PlateConsumers, PlateInk, PlatesRecipe, Registration } from "./composition/plates.js";
+export type { AttachmentOptions, AttachmentRole, AttachmentSite, BranchEdge, BranchNode, BranchRole, BranchRouting, BranchTree, BranchTreeOptions,
+  BranchVisibility, FlankSides, GrowthConstruction, OutlineOptions, OutlineShape } from "./composition/branch-tree.js";
+export { attachmentSites, branchOutline, branchTree, forkAxis, inheritAngle, visibleEdges } from "./composition/branch-tree.js";
+export type { BranchConsumers, BranchOrnamentComposition } from "./composition/branch-ornament.js";
+export { branchOrnamentComposition, drawBranchOrnament, prepareBranchOrnament } from "./composition/branch-ornament.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -62,7 +69,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...reliefDefinitions, ...materialsBDefinitions, interferenceLaceDefinition,
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
-  ...creativeDefinitions, ...referenceDefinitions,
+  ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -167,6 +174,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "fold-atlas": [0x1f2a33, 0xc0452a, 0x2f6f8f, 0xb8862b],
   "graph-roles": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x9a3d78],
   "optical-plates": [0x1f2d3a, 0xc0452a, 0x2f6f8f],
+  "branch-ornament": [0x23302b, 0xb5452e, 0xd39a3a, 0x4f7a5c],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -189,6 +197,7 @@ export function drawInstrument(context: DrawingContext, input: InstrumentInput):
 }
 function drawUncomposited(context: DrawingContext, input: InstrumentInput): void {
   definition(input.technique);
+  if (input.technique === "branch-ornament") return drawBranchOrnament(context, branchOrnamentComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
@@ -206,12 +215,14 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
 export async function prepareInstrument(input: InstrumentInput, cancelled: () => boolean): Promise<boolean> {
   definition(input.technique);
+  if (input.technique === "branch-ornament")
+    return prepareBranchOrnament(branchOrnamentComposition(input), cancelled);
   if (referenceIds[input.technique])
     return prepareReferenceComposition(referenceComposition(input), cancelled);
   if (!externalDynamicsPreparable.has(input.technique)) return !cancelled();

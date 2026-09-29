@@ -349,6 +349,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "branch-ornament",
+      "title": "Branch Ornament",
+      "description": "Grow a branching tree toward an editable attractor field, then attach blossoms, joints and pennants by branch role, with stitched or inked stems and a separate outline.",
+      "category": "Systems & rules",
+      "operationIds": ["growth.space-colonization-step-2d", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/branch-ornament.md",
+      "source": "packages/instruments/src/composition/branch-ornament.ts",
+      "sourceEntry": "drawBranchOrnament",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
