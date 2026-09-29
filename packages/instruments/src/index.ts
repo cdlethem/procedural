@@ -52,6 +52,8 @@ import { strokeReliefDefinition } from "./adapters/stroke-relief-instrument.js";
 import { drawStrokeRelief, prepareStrokeRelief, strokeReliefComposition } from "./composition/stroke-relief.js";
 import { pathTypographyDefinition, pathTypographyUsesSeed } from "./adapters/path-typography-instrument.js";
 import { drawPathTypography, pathTypographyComposition, preparePathTypography } from "./composition/path-type-draw.js";
+import { outlineTypeDefinition, outlineTypeUsesSeed } from "./adapters/outline-type-instrument.js";
+import { drawOutlineType, outlineTypeComposition, prepareOutlineType } from "./composition/outline-type-draw.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
@@ -143,10 +145,10 @@ export type {
 } from "./composition/types.js";
 export { substitutionTiling, tilingRules, tilingEdgePaths, tileAncestorId, MAX_TILING_DEPTH, MAX_TILING_PIECES } from "./composition/tilings.js";
 export { tileFill, tileTone, tonedTiles, tonedEdges, selectedVertices, shownTiles, insetPolygon, drawTiling } from "./composition/tiling-materials.js";
-export { planarRegion, planarDomain, ringsDomain, locateInDomain, domainContains, domainRings, domainUnion, domainIntersection, domainDifference, domainXor,
+export { planarRegion, planarDomain, ringsDomain, locateInDomain, domainClearance, domainContains, domainRings, domainUnion, domainIntersection, domainDifference, domainXor,
   unionDomains, emptyDomain, rectangleRegion, rectangleDomain, textDomain, keyholeRing, keyholeJoin, keyholeRings, PlanarError, PLANAR_LIMITS } from "./composition/domains.js";
 export type { PlanarRegion, PlanarDomain, PlanarRegionData, PlanarShape, PlanarOptions, RepairOptions, TextDomainOptions, DomainLocation, Fill, PlanarErrorCode } from "./composition/domains.js";
-export { offsetDomain } from "./composition/domains-offset.js";
+export { offsetDomain, sweepDomain, shadowDomain } from "./composition/domains-offset.js";
 export type { OffsetOptions } from "./composition/domains-offset.js";
 export { clipPath, clipPaths, hatchDomain, clipRingToRect } from "./composition/domains-paths.js";
 export type { ClipOptions, ClippedPiece, HatchOptions, HatchStroke } from "./composition/domains-paths.js";
@@ -231,6 +233,13 @@ export { branchChains, gestureNaturalExtent, rankedPaths, supplyPaths, smoothPat
 export type { ColorBy as PathTypographyColorBy, PathTypographyComposition, GlyphMark, PathTypographyConsumers, TypographyProducts } from "./composition/path-type-draw.js";
 export { pathTypographyComposition, pathTypographyProducts, glyphTone, glyphFill, glyphOutline, drawPathTypography, preparePathTypography,
   MAX_TYPE_FRAMES, MIN_STRAIGHTNESS, GESTURE_SPACING } from "./composition/path-type-draw.js";
+export type { OutlineText, OutlineUnitKind, OutlineLayoutOptions, OutlineGlyph, OutlineLine, OutlineLayout, OutlineUnit, OutlineDisplacement, OutlineDisplacementSpec } from "./composition/outline-type.js";
+export { outlineText, bundledOutlineTexts, outlineLayout, outlineUnits, displacementField, deformDomain, displaceUnits, MAX_OUTLINE_LINES, MAX_OUTLINE_LINE_CHARS, MAX_DISPLACED_VERTICES } from "./composition/outline-type.js";
+export type { OutlineFillKind, OutlineFillSpec, OutlineFillShape, OutlineFillMark, OutlineFill, OutlineFillContext, OutlineFiller } from "./composition/outline-type-fill.js";
+export { outlineFillerFor, validateOutlineFill, resolveOutlineFillKind, OUTLINE_MIXED_KINDS } from "./composition/outline-type-fill.js";
+export type { OutlineTypeColorBy, OutlineTypeComposition, OutlineUnitProduct, OutlineTypeProducts, OutlineTypeConsumers } from "./composition/outline-type-draw.js";
+export { outlineTypeComposition, outlineTypeProducts, outlineTone, trimPath, fillMaterial, drawOutlineType, prepareOutlineType,
+  MAX_FILL_PATHS, MAX_FILL_POINTS, MAX_FILL_MARKS, MAX_OUTLINE_STATIONS } from "./composition/outline-type-draw.js";
 export type { Crossing, CrossingSide, Contact, NearMiss, CrossingSet, CrossingOptions } from "./composition/crossings.js";
 export { findCrossings, CROSSING_LIMITS } from "./composition/crossings.js";
 export type { OverRule, CrossingOrderOptions, Occurrence, AlternationBreak, CrossingOrder } from "./composition/crossing-order.js";
@@ -268,7 +277,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, outlineTypeDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -381,6 +390,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "pixel-sorting": [0x1c2230, 0x8a3b32, 0xd9a441, 0xf1e6cf],
   "path-typography": [0x1f2226, 0xc24a34, 0x2f6c8f, 0xb8862b],
+  "outline-type": [0x20232a, 0x2b7a83, 0xc9493a, 0xb98524, 0x7d4a8a, 0x5b7f3b, 0x3d5a9e],
   "image-directed-field": [0x1d2230, 0x8d3b2a, 0x2f6f7a, 0xc99a3b],
   "bundled-relations": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86, 0x9c5f34],
   "dry-bristles": [0x22252b, 0x2f6f7a, 0xb8452f, 0xc99a3b],
@@ -416,6 +426,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "branch-ornament") return drawBranchOrnament(context, branchOrnamentComposition(input));
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
   if (input.technique === "path-typography") return drawPathTypography(context, pathTypographyComposition(input));
+  if (input.technique === "outline-type") return drawOutlineType(context, outlineTypeComposition(input));
   if (input.technique === "sand-deposition") return drawSandDeposition(context, sandDepositionComposition(input));
   if (input.technique === "quilled-paths") return drawQuilled(context, quillComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
@@ -445,7 +456,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "outline-type" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -456,6 +467,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
   if (input.technique === "fm-engraving") return prepareEngraving(engravingComposition(input), cancelled);
   if (input.technique === "path-typography") return preparePathTypography(pathTypographyComposition(input), cancelled);
+  if (input.technique === "outline-type") return prepareOutlineType(outlineTypeComposition(input), cancelled);
   if (input.technique === "image-directed-field") return prepareImageDirectedField(imageDirectedFieldComposition(input), cancelled);
   if (input.technique === "sand-deposition") return prepareSandDeposition(sandDepositionComposition(input), cancelled);
   if (input.technique === "quilled-paths") return prepareQuilled(quillComposition(input), cancelled);
@@ -505,6 +517,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "pixel-sorting": return pixelSortingUsesSeed(q);
     case "fm-engraving": return fmEngravingUsesSeed(q);
     case "path-typography": return pathTypographyUsesSeed(q);
+    case "outline-type": return outlineTypeUsesSeed(q);
     case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
