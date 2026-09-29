@@ -59,7 +59,8 @@ export type { BranchConsumers, BranchOrnamentComposition } from "./composition/b
 export { branchOrnamentComposition, drawBranchOrnament, prepareBranchOrnament } from "./composition/branch-ornament.js";
 export type { RecordingData, Recording, GestureFrame, TrackOptions, GestureTrack, EchoOptions, PressureSource, PressurePolicy, ResolvedPressure,
   TimeWindow, StationRule, Stations } from "./composition/recording.js";
-export { createRecording, recordingData, recordingFingerprint, gestureTrack, echoTrack, resolvePressure, speedPressure, stations, countStations, RECORDING_LIMITS } from "./composition/recording.js";
+export type { RecordedControlsInput } from "./composition/recording.js";
+export { createRecording, recordingControls, recordingData, recordingFingerprint, gestureTrack, echoTrack, resolvePressure, speedPressure, stations, countStations, RECORDING_LIMITS } from "./composition/recording.js";
 export type { BundledRecordingId } from "./composition/recording-samples.js";
 export { bundledRecording, bundledRecordingIds, bundledRecordingInfo } from "./composition/recording-samples.js";
 export type { PressureMap, GesturePathOptions, GesturePath, BristleOptions, GestureSite, SandOptions, GestureSiteOptions } from "./composition/gesture.js";
