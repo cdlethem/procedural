@@ -7,6 +7,8 @@ import { motif, pathMaterial, regionFill, regionFillValid, regionGeometry, regio
 import type { PreparedRegionGeometry } from "./materials.js";
 import { contourPaths, gridPaths, gridSites, latticeSites, memoized, partitionRegions, poissonSites, regionTree, wallpaperSites } from "./sources.js";
 import { warpPaths, warpSites } from "./warp.js";
+import { tilingComposition } from "../adapters/tiling-instruments.js";
+import { drawTiling, prepareTiling } from "./tiling-materials.js";
 import type { CompositionRun, CompositionSurface, LatticeSite, MapName, MapStage, MotifSpec, Path, PathMaterialSpec,
   ReferenceComposition, Region, RegionFillSpec, RegionTreeNode, Site, WallpaperGroup } from "./types.js";
 
@@ -91,6 +93,7 @@ export function referenceComposition(input: InstrumentInput): ReferenceCompositi
       margin: q.margin as number, breakAmount: q.breakAmount as number, breakDensity: q.breakDensity as number },
       mark: mark(q) };
   }
+  if (input.technique === "substitution-tilings") return tilingComposition(q, seed, palette);
   if (input.technique === "ordered-disorder") {
     return { kind: "lattice", palette, source: { seed, columns: q.columns as number, rows: q.rows as number,
       width: q.width as number, height: q.height as number, centerX: q.centerX as number,
@@ -164,6 +167,8 @@ export function drawReferenceComposition(surface: CompositionSurface, recipe: Re
     const { paths, sites } = foldedGrid(recipe);
     if (recipe.material.retention > 0) strokeWith(surface, paths, pathMaterial(recipe.material, recipe.palette), run);
     if (recipe.mark.size > 0) atEach(surface, sites, motif(recipe.mark, recipe.palette), run);
+  } else if (recipe.kind === "tiling") {
+    drawTiling(surface, recipe, run);
   } else if (recipe.kind === "cells") {
     const selected = regionFill(recipe.fill, recipe.palette);
     if (recipe.fill.retention === 0) return;
@@ -186,6 +191,7 @@ export async function prepareReferenceComposition(recipe: ReferenceComposition, 
   if (recipe.kind === "wallpaper") { motif(recipe.mark, recipe.palette); if (recipe.mark.retention > 0) wallpaperSites(recipe.source); return !cancelled(); }
   if (recipe.kind === "lattice") { motif(recipe.mark, recipe.palette); if (recipe.mark.retention > 0) latticeSites(recipe.source); return !cancelled(); }
   if (recipe.kind === "warp") { pathMaterial(recipe.material, recipe.palette); motif(recipe.mark, recipe.palette); foldedGrid(recipe); return !cancelled(); }
+  if (recipe.kind === "tiling") return prepareTiling(recipe, cancelled);
   const regions = recipe.kind === "cells" ? terminalRegions(regionTree(recipe.source)) : partitionRegions(recipe.source);
   boundNestedWork(regions, recipe.fill);
   const scene = new Map<string, PreparedRegionGeometry | undefined>();

@@ -32,6 +32,11 @@ export { poissonSites, contourPaths, partitionRegions, wallpaperSites, wallpaper
 export { warpPoint, warpSites, warpPaths, mapNames } from "./composition/warp.js";
 export { motif, pathMaterial, regionFill } from "./composition/materials.js";
 export { referenceComposition, drawReferenceComposition, prepareReferenceComposition } from "./composition/reference.js";
+export type {
+  TilingRuleName, TilingOptions, TilingTile, TilingVertex, TilingEdge, Tiling, TileFiller, TileFillSpec, TileColorMode, TilingView,
+} from "./composition/types.js";
+export { substitutionTiling, tilingRules, tilingEdgePaths, tileAncestorId, MAX_TILING_DEPTH, MAX_TILING_PIECES } from "./composition/tilings.js";
+export { tileFill, tileTone, tonedTiles, tonedEdges, selectedVertices, shownTiles, insetPolygon, drawTiling } from "./composition/tiling-materials.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -152,6 +157,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "ordered-disorder": [0x2a2320, 0xc0452a, 0x2f6f8f],
   "recursive-cells": [0x22301f, 0xb5832a, 0x8a4a35, 0x3f6572],
   "fold-atlas": [0x1f2a33, 0xc0452a, 0x2f6f8f, 0xb8862b],
+  "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -225,6 +231,9 @@ export function usesSeed(input: InstrumentInput): boolean {
   const q = input.params;
   switch (input.technique) {
     case "quantized-stripes": return q.order === "shuffle";
+    case "substitution-tilings":
+      return Number(q.retention) > 0 && Number(q.retention) < 1 || q.interior === "wash" && Number(q.bleed) > 0 ||
+        q.interior !== "none" && q.colorBy === "supertile";
     case "orbit-beads": return false;
     case "profile-marks": case "depth-marks": case "annular-marks": return q.colorMode === "noise";
     case "ramp-marks": return Number(q.disorder) > 0 || Number(q.retention) > 0 && Number(q.retention) < 1;

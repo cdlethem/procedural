@@ -323,6 +323,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "substitution-tilings",
+      "title": "Substitution Tilings",
+      "description": "Grow a Penrose rhombus or chair tiling by exact substitution, then edit the tile interiors, shared edges and vertex marks; color follows ancestry and any tile class can be omitted.",
+      "category": "Layouts",
+      "operationIds": ["geometry.hatch-region-lines-2d", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/substitution-tilings.md",
+      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+      "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
