@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  atEach, branchGraph, componentSeed, contactGraph, createInstrument, drawGraphComposition, drawReferenceComposition, edgeMarkers,
+  atEach, branchGraph, componentSeed, connectedNodes, contactGraph, createInstrument, drawGraphComposition, drawReferenceComposition, edgeMarkers,
   edgePaths, graphFromParts, graphRoute, graphStructure, latticeGraph, nearestNode, nodeSites, planarFaces, referenceComposition,
   selectGraph, strokeWith, usesSeed, validateInstrument, withDirection,
   type CompositionSurface, type Graph, type InstrumentInput, type GraphComposition, type GraphRoleOptions, type GraphView, type RouteOptions,
@@ -203,11 +203,31 @@ test("branch graph is a forest whose weights are subtree shares and whose ages f
     for (const edge of graph.edges.filter((item) => item.id.startsWith(root.slice(0, 2)) && item.from !== root))
       assert.equal(edge.age, byTo.get(edge.from)!.age - 1, "each generation is one step younger than its parent");
   }
-  const turned = branchGraph({ seed: 4, roots: 1, generations: 3, children: 2, angle: 30, angleSpread: 0, contraction: .8, survival: 1,
+  const straight = branchGraph({ seed: 4, roots: 1, generations: 3, children: 2, angle: 30, angleSpread: 0, contraction: .8, survival: 1,
     rootLength: 100, centerX: 320, centerY: 320, width: 400, height: 400, rotation: 0 });
-  const trunk = turned.nodes.find((node) => node.id === "t0:0")!.position, origin = turned.nodes.find((node) => node.id === "t0:o")!.position;
-  near(trunk[0], origin[0], 1e-9); near(origin[1] - trunk[1], 100, 1e-9);
-  assert.ok(Math.abs(origin[1] - (320 + 200)) < 1e-9, "roots stand on the bottom edge of the footprint");
+  const trunk = straight.nodes.find((node) => node.id === "t0:0")!.position, origin = straight.nodes.find((node) => node.id === "t0:o")!.position;
+  near(trunk[0], origin[0], 1e-9);
+  const trunkLength = origin[1] - trunk[1], generationOne = straight.nodes.find((node) => node.id === "t0:1")!.position;
+  near(Math.hypot(generationOne[0] - trunk[0], generationOne[1] - trunk[1]) / trunkLength, .8, 1e-9);
+});
+
+test("branch forests are fitted into Placement: bounding box inside width × height, touching one, centered, rotation about the center", () => {
+  const base = { seed: 4, roots: 3, generations: 5, children: 2 as const, angle: 30, angleSpread: 10, contraction: .82, survival: .9, rootLength: 90 };
+  for (const [width, height, centerX, centerY] of [[400, 400, 320, 320], [200, 500, 100, 350], [520, 130, 400, 90]] as const) {
+    const graph = branchGraph({ ...base, centerX, centerY, width, height, rotation: 0 });
+    const xs = graph.nodes.map((node) => node.position[0]), ys = graph.nodes.map((node) => node.position[1]);
+    const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
+    near((x0 + x1) / 2, centerX, 1e-9); near((y0 + y1) / 2, centerY, 1e-9);
+    assert.ok(x1 - x0 <= width + 1e-9 && y1 - y0 <= height + 1e-9);
+    assert.ok(Math.abs(x1 - x0 - width) < 1e-9 || Math.abs(y1 - y0 - height) < 1e-9, "the footprint is used, not just respected");
+    const turned = branchGraph({ ...base, centerX, centerY, width, height, rotation: 90 });
+    for (const node of graph.nodes) {
+      const other = turned.nodes.find((item) => item.id === node.id)!.position;
+      near(other[0] - centerX, -(node.position[1] - centerY), 1e-9); near(other[1] - centerY, node.position[0] - centerX, 1e-9);
+    }
+  }
+  const canvas = branchGraph({ ...base, centerX: 320, centerY: 320, width: 500, height: 420, rotation: 0 });
+  assert.ok(canvas.nodes.every((node) => node.position[0] >= 70 - 1e-9 && node.position[0] <= 570 + 1e-9 && node.position[1] >= 110 - 1e-9 && node.position[1] <= 530 + 1e-9));
 });
 
 /* --------------------------------------------------------------- selection */
@@ -275,6 +295,27 @@ test("routes respect direction only when asked, may be absent, and reject unknow
   assert.throws(() => route(oneWay, "a", "nope"), /Route end nope is not in the selected view/);
   assert.throws(() => route(oneWay, "nope", "a"), /Route start nope is not in the selected view/);
   assert.throws(() => route(build(nodes, [["ab", "a", "b"], ["bc", "b", "c"]]), "a", "c", {}, { minWeight: 1, maxWeight: 1, isolated: false, maxAge: 0 }), /not in the selected view/);
+});
+
+test("endpoints in different components: the end snaps to the nearest node of the start's component, deterministically", () => {
+  // Two separate triangles; the end point sits on the far one.
+  const graph = build([["a", 0, 0], ["b", 10, 0], ["c", 5, 8], ["x", 100, 0], ["y", 110, 0], ["z", 105, 8]],
+    [["ab", "a", "b"], ["bc", "b", "c"], ["ca", "c", "a"], ["xy", "x", "y"], ["yz", "y", "z"], ["zx", "z", "x"]]);
+  const v = view(graph);
+  assert.deepEqual([...connectedNodes(v, "a")].sort(), ["a", "b", "c"]);
+  assert.equal(nearestNode(v, [104, 6])!.id, "z");
+  assert.equal(nearestNode(v, [104, 6], connectedNodes(v, "a"))!.id, "b", "restricted to a's component: b (10,0) is nearer than c (5,8)");
+  assert.equal(graphRoute(v, { from: "a", to: "z", mode: "shortest", metric: "length", followDirection: false }), null, "the raw route is still absent");
+  const item = input({ source: "branches", roots: 3, route: "shortest", startX: 120, startY: 520, endX: 520, endY: 120 });
+  const recipe = referenceComposition(item) as GraphComposition & { kind: "graph" };
+  const { route, view: selected } = graphStructure(recipe);
+  assert.ok(route && route.nodes.length > 2, "trees are separate components, yet a route is drawn");
+  const tree = (id: string) => id.split(":")[0];
+  assert.equal(new Set(route!.nodes.map(tree)).size, 1, "the whole route stays in the start's tree");
+  assert.equal(route!.nodes[0], nearestNode(selected, [120, 520])!.id, "the start is still the nearest node to its point");
+  assert.deepEqual(graphStructure(recipe).route!.nodes, route!.nodes, "deterministic");
+  const walled = graphStructure(referenceComposition(input({ source: "branches", roots: 2, route: "shortest", startX: 120, startY: 520, endX: 120, endY: 520, minAge: 1 })) as GraphComposition & { kind: "graph" });
+  assert.ok(walled.route === null || walled.route.nodes.length >= 1);
 });
 
 test("routes agree with brute-force enumeration of simple paths on small random graphs", () => {
@@ -472,9 +513,17 @@ test("direction survives into edge paths, arrow markers and node roles", () => {
   const markers = edgeMarkers(v, 10);
   near(markers[0].angle, Math.atan2(-40, -30)); near(markers[1].angle, Math.atan2(-40, 70));
   assert.deepEqual(markers[0].position, [15, 20]);
-  near(markers[0].scale, 1); assert.equal(markers[1].id, "bc/arrow");
-  const tiny = edgeMarkers(view(build([["p", 0, 0], ["q", 5, 0]], [["pq", "p", "q"]])), 10);
-  near(tiny[0].scale, .25, 1e-12);
+  assert.equal(markers[1].id, "bc/arrow");
+  assert.equal(edgeMarkers(view(build([["p", 0, 0], ["q", 29, 0]], [["pq", "p", "q"]])), 10).length, 0, "an edge shorter than three markers gets none");
+  assert.equal(edgeMarkers(view(build([["p", 0, 0], ["q", 31, 0]], [["pq", "p", "q"]])), 10).length, 1);
+  const many = view(lattice({ braid: 1, columns: 12, rows: 10 }));
+  const half = edgeMarkers(many, 5, () => 0, .5).map((site) => site.id), third = edgeMarkers(many, 5, () => 0, .3).map((site) => site.id);
+  assert.ok(half.length > many.edges.length * .3 && half.length < many.edges.length * .7, `${half.length} of ${many.edges.length}`);
+  assert.ok(third.every((id) => half.includes(id)), "raising the share only adds arrows");
+  assert.equal(edgeMarkers(many, 5, () => 0, 0).length, 0);
+  const big = view(lattice({ braid: 1, diagonals: 1, columns: 30, rows: 30, width: 900, height: 900 }));
+  const capped = edgeMarkers(big, 5, () => 0, 1);
+  assert.ok(big.edges.length > 2000 && capped.length <= 400 && capped.length > 300, `${capped.length} markers on ${big.edges.length} edges`);
   const sites = nodeSites(v, { scale: (node) => node.degree, tone: (node) => node.degree === 2 ? 2 : 0 });
   assert.deepEqual(sites.map((site) => [site.id, site.scale, site.tone]), [["a", 1, 0], ["b", 2, 2], ["c", 1, 0]]);
   assert.throws(() => nodeSites(v, { scale: () => 0 }), /must be positive/);

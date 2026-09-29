@@ -1,6 +1,6 @@
 import { atEach, componentSeed, createCompositionRun, strokeWith } from "./core.js";
 import {
-  MAX_GRAPH_EDGES, branchGraph, contactGraph, edgeFraction, edgeMarkers, edgePaths, graphRoute, latticeGraph, nearestNode, nodeFraction, nodeSites,
+  MAX_GRAPH_EDGES, branchGraph, connectedNodes, contactGraph, edgeFraction, edgeMarkers, edgePaths, graphRoute, latticeGraph, nearestNode, nodeFraction, nodeSites,
   planarFaces, selectGraph, withDirection,
 } from "./graph.js";
 import type { BranchGraphOptions, ContactGraphOptions, Graph, GraphAttribute, GraphEdge, GraphFace, GraphNode, GraphRoleOptions, GraphRoute,
@@ -43,7 +43,7 @@ export interface GraphComposition {
   readonly roles: GraphRoleOptions;
   readonly route: GraphRouteRecipe;
   /** The thin supporting network: one material for every selected edge, plus optional direction markers. */
-  readonly support: { readonly material: PathMaterialSpec; readonly tone: EdgeTone; readonly arrow: MotifSpec };
+  readonly support: { readonly material: PathMaterialSpec; readonly tone: EdgeTone; /** `retention` is the share of eligible edges that carry a marker (chosen by edge id). */ readonly arrow: MotifSpec };
   readonly nodes: { readonly mark: MotifSpec; readonly scaleBy: "none" | GraphAttribute; readonly amount: number };
   /** The bold focal route, drawn with its own material, and its endpoint marks. */
   readonly focal: { readonly material: PathMaterialSpec; readonly endpoints: MotifSpec };
@@ -83,7 +83,10 @@ function structure(recipe: GraphComposition): GraphStructure {
     return { graph: directed, view: selectGraph(directed, recipe.roles) };
   });
   const route = recipe.route.mode === "off" ? null : memoized(routes, JSON.stringify([key, recipe.route]), () => {
-    const from = nearestNode(view, recipe.route.start), to = nearestNode(view, recipe.route.end);
+    // Endpoint rule: the start is the nearest selected node; the end is the nearest node connected to it, so
+    // a route exists whenever the start's component has two nodes (direction may still forbid it).
+    const from = nearestNode(view, recipe.route.start);
+    const to = from ? nearestNode(view, recipe.route.end, connectedNodes(view, from.id)) : undefined;
     return from && to ? graphRoute(view, { from: from.id, to: to.id, mode: recipe.route.mode as RouteMode, metric: recipe.route.metric,
       followDirection: recipe.route.followDirection }) : null;
   });
@@ -143,7 +146,7 @@ export function drawGraphComposition(surface: CompositionSurface, recipe: GraphC
       pathMaterial(recipe.support.material, recipe.palette), run);
   }
   if (view.graph.directed && recipe.support.arrow.size > 0 && recipe.support.arrow.retention > 0)
-    atEach(surface, edgeMarkers(view, recipe.support.arrow.size, edgeToneRole(recipe.support.tone)), motif(recipe.support.arrow, recipe.palette), run);
+    atEach(surface, edgeMarkers(view, recipe.support.arrow.size, edgeToneRole(recipe.support.tone), recipe.support.arrow.retention), motif({ ...recipe.support.arrow, retention: 1 }, recipe.palette), run);
   if (recipe.nodes.mark.size > 0 && recipe.nodes.mark.retention > 0) {
     const onRoute = new Set(route?.nodes ?? []);
     const scaleBy = recipe.nodes.scaleBy, amount = recipe.nodes.amount;
@@ -207,7 +210,7 @@ export function graphRolesComposition(q: Record<string, Scalar>, seed: number, p
     route: { mode: q.route as GraphRouteRecipe["mode"], metric: q.metric as RouteMetric, start: [num("startX"), num("startY")],
       end: [num("endX"), num("endY")], followDirection: directed && (q.followDirection as boolean) },
     support: { material: material(q.edgeMaterial as PathMaterialSpec["kind"], num("edgeWeight"), num("edgeSpacing"), num("edgeRetention"), edgeBead),
-      tone: q.edgeTone as EdgeTone, arrow: mark("arrow", q.arrows === true ? num("arrowSize") : 0, 1.4) },
+      tone: q.edgeTone as EdgeTone, arrow: { ...mark("arrow", q.arrows === true ? num("arrowSize") : 0, 1.1), retention: num("arrowShare") } },
     nodes: { mark: mark(q.nodeMark as MotifSpec["kind"], num("nodeSize"), 1.2, 8),
       scaleBy: q.nodeScaleBy === "uniform" ? "none" : q.nodeScaleBy as GraphAttribute, amount: num("nodeScaleAmount") },
     focal: { material: material(q.routeMaterial as PathMaterialSpec["kind"], num("routeWeight"), num("routeSpacing"), 1, routeBead),

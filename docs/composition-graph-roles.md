@@ -38,7 +38,7 @@ forest (with loops and diagonals added) and the seeded branch tree. A supplied g
 - **Routes.** `graphRoute(view, options)`; shortest ties: fewer edges, then the lexicographically smallest
   node sequence in graph node order. Longest simple route is NP-hard, so the search is bounded (100,000
   expansions) and reports `exact: false` if it stopped early, returning the best route found (or the
-  shortest). Endpoints are the view nodes nearest two canvas points (ties: earlier node).
+  shortest). Endpoints: the start is the view node nearest the start point; the end is the nearest node connected to the start (ties: earlier node), so disconnected components never hide the route. `graphRoute` itself still returns null for unreachable nodes.
 - **Faces.** `planarFaces(view)`: crossing edges (proper crossings, endpoint on another edge's interior,
   collinear overlap) never bound a face, and a crossing never becomes a node; dangling chains are pruned;
   counter-clockwise faces of the rest are traced; a face is kept only if it is a simple polygon
@@ -47,6 +47,8 @@ forest (with loops and diagonals added) and the seeded branch tree. A supplied g
   closed `Path`s, so `strokeWith` and any path material can consume them; `faceFill` fills the polygon.
   Work (cell insertions, pair tests, point-in-polygon tests) is bounded at 5,000,000 steps and throws
   rather than answering partially; pairs of edges already known to cross are skipped.
+- **Placement.** Lattice: grid spans width × height (wobble ≤ 0.2 spacing past the edge). Branches: grown, then uniformly scaled to fit width × height, touching one side, centered, then rotated. Contact: width/height is the starting shape; drift is not fitted (edges come from the replay's radius, which a rescale would break).
+- **Direction markers.** `edgeMarkers` omits edges shorter than 3 marker lengths, keeps a stable id-selected `share`, and never places more than 400.
 - **Consumers.** `edgePaths` (two-point paths, from → to), `nodeSites`, `edgeMarkers`, `faceFill`, all drawn
   by the frozen `strokeWith` / `atEach`. `referenceComposition` resolves the named instrument to a
   JSON-compatible `{ kind: "graph" } & GraphComposition`; `drawGraphComposition` and
