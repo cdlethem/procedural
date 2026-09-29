@@ -101,7 +101,7 @@ follows shape = circle; modes 2–4, and weight, phase and time of every mode, f
 time are ignored for one mode, so hidden values cannot change or invalidate the drawing); grain line weight follows ring/rosette/
 arrow; petals follow rosette; opening follows ring/rosette; follow node follows rosette/arrow (for round marks the angle is not
 applied, so the hidden control cannot change the fingerprint); line controls follow the line toggle and material; band opacity
-follows bands; outline weight follows outline. Slider intervals differ from hard limits (indices 0–10 vs 0–24, resolution 60–240 vs
+follows bands; outline weight follows outline. The control audit (`tests/helpers/audit-controls.ts nodal-plates`, 2,527 probes, 51 controls) reports **0 violations** and no dead or disjunctive control. Slider intervals differ from hard limits (indices 0–10 vs 0–24, resolution 60–240 vs
 16–480, particles 0–6,000 vs 20,000, node width 0.02–0.2 vs 0.002–1).
 
 ## Checks (`tests/composition-nodal-plates.test.ts`, 17 tests)
