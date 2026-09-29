@@ -453,6 +453,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "random-walk-fronts",
+      "title": "Random Walk Fronts",
+      "description": "Branching patches of colour that occupy only part of the canvas: seeded walkers claim lattice cells inside a chosen region (a shape, a word, an image's tone band, with barriers), branch and die on stated rules; the visited region, its colours and claim steps are drawn as territories, age bands, front-age contours, hatching or marks.",
+      "category": "Systems & rules",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/random-walk-fronts.md",
+      "source": "packages/instruments/src/composition/walk-fronts-draw.ts",
+      "sourceEntry": "drawWalkFronts",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "stroke-relief",
       "title": "Stroke Relief",
       "description": "Deposit variable-width, pressure-loaded strokes into a height field with an explicit rule for crossings (add, maximum or displace), then light it: edge ridges and bristle furrows catch a movable light. The flat pigment layer and the transparent light-and-shadow patch are separate layers.",
