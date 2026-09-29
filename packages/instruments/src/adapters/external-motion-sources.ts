@@ -1,5 +1,6 @@
 import {contactHistory2D, flockSteer2D, radiusPairs2D, sensorMotorStep2D} from '@procedurals/javascript';
 import {JavaRandom} from '@procedurals/javascript/examples/city-marks/city-marks.js';
+import type {Simulation} from '../composition/snapshots.js';
 
 type Point = [number, number];
 export type MotionSource = {count:number; sourceMode:string; centerX:number; centerY:number; extent:number; aspect:number; sourceAngle:number; disorder:number; speed:number};
@@ -60,7 +61,7 @@ export function motionSource(q:MotionSource,seed:number):{points:Point[]; veloci
 }
 
 /** Separate random stream: changing agent count or appearance cannot move scalar peaks. */
-export function scalarPeaks(q:MotionParams,seed:number):SensorModel['field'] {
+export function scalarPeaks(q:Omit<MotionParams,'ticks'>,seed:number):SensorModel['field'] {
   const random=new JavaRandom(seed ^ 0x6b9a72d1), peaks:Point[]=[];
   for(let i=0;i<q.peaks;i++){
     const theta=random.nextDouble()*2*Math.PI, radial=Math.sqrt(random.nextDouble())*q.fieldSpread;
@@ -76,58 +77,90 @@ export function scalarPeaks(q:MotionParams,seed:number):SensorModel['field'] {
   return {values,columns:64,rows:64,origin:[0,0],spacing:[640/63,640/63],boundary:'wrap'};
 }
 
-/** Generators expose one original-core step at a time for cooperative preparation. */
-export function* contactSteps(q:MotionParams,seed:number):Generator<void,ContactModel> {
-  validateMotion('lingering-links',q);
-  const source=motionSource(q,seed);
-  let agents:ContactAgent[]=source.points.map(([x,y],i)=>({id:100+i,x,y,vx:source.velocities[i][0],vy:source.velocities[i][1]}));
-  let contacts:ContactModel['contacts']=[];
-  for(let tick=0;tick<q.ticks;tick++){
-    const pairs=radiusPairs2D({points:agents.map(a=>[a.x,a.y]),radius:q.radius,maxWork:q.count+q.count*(q.count-1)/2}).pairs;
-    contacts=contactHistory2D({ids:agents.map(a=>a.id),pairs,contacts,lingerSteps:q.linger,maxWork:q.count*q.count*2}).contacts;
-    agents=agents.map(a=>({...a,x:a.x+a.vx,y:a.y+a.vy}));
-    yield;
-  }
-  return {agents,contacts};
+export type MotionKind = 'lingering-links'|'sensing-trails'|'flocking-marks';
+/** What shapes a motion model; `ticks` is the step count and drawing controls never appear. */
+export type MotionConstruction = Omit<MotionParams,'ticks'>;
+const commonKeys=['count','sourceMode','centerX','centerY','extent','aspect','sourceAngle','disorder','speed'] as const;
+const specificKeys:Record<MotionKind,readonly string[]>={
+  'lingering-links':['radius','linger'],
+  'sensing-trails':['peaks','fieldSpread','fieldRadius','reach','gain','probeAngle'],
+  'flocking-marks':['radius','cohesion','alignment','separation'],
+};
+/** The construction parameters of a validated layer; palette, weights and mark toggles are not among them. */
+export function motionConstruction(kind:MotionKind,q:MotionParams):MotionConstruction {
+  return Object.fromEntries([...commonKeys,...specificKeys[kind]].map(key=>[key,q[key as keyof MotionParams]])) as MotionConstruction;
 }
-export function* sensorSteps(q:MotionParams,seed:number):Generator<void,SensorModel> {
-  validateMotion('sensing-trails',q);
-  const source=motionSource(q,seed),field=scalarPeaks(q,seed);
-  let agents:SensorAgent[]=source.points.map((position,i)=>({position,headingTurns:source.headings[i],speed:q.speed}));
-  const paths:Point[][]=agents.map(a=>[a.position]);
-  for(let tick=0;tick<q.ticks;tick++){
-    agents=sensorMotorStep2D({agents,field,sensorDistance:q.reach,sensorAngleTurns:q.probeAngle,turnGain:q.gain,dt:1,maxWork:q.count*3}).agents;
+
+const pairWork=(q:MotionConstruction)=>q.count+q.count*(q.count-1)/2;
+const positions=(agents:readonly {x:number,y:number}[]):Point[]=>agents.map(a=>[a.x,a.y]);
+
+/** One tick per step: pairs from the current positions, contact memory, then motion. */
+export const contactSimulation:Simulation<ContactModel,MotionConstruction,ContactModel>={
+  id:'lingering-links',
+  limits:q=>({stepLimit:240,workPerStep:pairWork(q)+2*q.count*q.count}),
+  initial(ctx){
+    const source=motionSource(ctx.params,ctx.seed);
+    ctx.charge(ctx.params.count);
+    return {agents:source.points.map(([x,y],i)=>({id:100+i,x,y,vx:source.velocities[i][0],vy:source.velocities[i][1]})),contacts:[]};
+  },
+  step(state,ctx){
+    const q=ctx.params;
+    const pairs=radiusPairs2D({points:positions(state.agents),radius:q.radius,maxWork:pairWork(q)}).pairs;
+    const contacts=contactHistory2D({ids:state.agents.map(a=>a.id),pairs,contacts:state.contacts,lingerSteps:q.linger,maxWork:q.count*q.count*2}).contacts;
+    ctx.charge(pairWork(q)+2*q.count*q.count);
+    return {agents:state.agents.map(a=>({...a,x:a.x+a.vx,y:a.y+a.vy})),contacts};
+  },
+  project:state=>state,
+};
+
+/** One synchronized sensor/motor update per step; the scalar field is built once in the initial state. */
+export const sensorSimulation:Simulation<SensorModel,MotionConstruction,SensorModel>={
+  id:'sensing-trails',
+  limits:q=>({stepLimit:240,workPerStep:q.count*3,initialWork:q.count+64*64*q.peaks}),
+  initial(ctx){
+    const q=ctx.params,source=motionSource(q,ctx.seed),field=scalarPeaks(q,ctx.seed);
+    ctx.charge(q.count+64*64*q.peaks);
+    const agents:SensorAgent[]=source.points.map((position,i)=>({position,headingTurns:source.headings[i],speed:q.speed}));
+    return {agents,paths:agents.map(a=>[a.position]),field};
+  },
+  step(state,ctx){
+    const q=ctx.params;
+    const agents=sensorMotorStep2D({agents:state.agents,field:state.field,sensorDistance:q.reach,sensorAngleTurns:q.probeAngle,turnGain:q.gain,dt:1,maxWork:q.count*3}).agents;
+    ctx.charge(q.count*3);
+    const paths=state.paths;
     for(let i=0;i<agents.length;i++)paths[i].push(agents[i].position);
-    yield;
-  }
-  return {agents,paths,field};
-}
-export function* flockSteps(q:MotionParams,seed:number):Generator<void,FlockModel> {
-  validateMotion('flocking-marks',q);
-  const source=motionSource(q,seed);
-  let bodies:FlockBody[]=source.points.map((point,i)=>({point,velocity:source.velocities[i]}));
-  const trails:Point[][]=bodies.map(b=>[b.point]);
-  let pairs:number[][]=[];
-  for(let tick=0;tick<q.ticks;tick++){
-    pairs=radiusPairs2D({points:bodies.map(b=>b.point),radius:q.radius,maxWork:q.count+q.count*(q.count-1)/2}).pairs;
-    const steering=flockSteer2D({points:bodies.map(b=>b.point),velocities:bodies.map(b=>b.velocity),pairs,
-      cohesion:q.cohesion,alignment:q.alignment,separation:q.separation,maxSteer:.8,maxWork:q.count+pairs.length}).steering;
-    bodies=bodies.map((b,i)=>{
+    return {agents,paths,field:state.field};
+  },
+  project:state=>state,
+};
+
+/** One synchronous steering tick per step. `pairs` always belongs to the current bodies (the final one links only actual proximity). */
+export const flockSimulation:Simulation<FlockModel,MotionConstruction,FlockModel>={
+  id:'flocking-marks',
+  limits:q=>({stepLimit:240,workPerStep:2*pairWork(q)+2*q.count}),
+  initial(ctx){
+    const q=ctx.params,source=motionSource(q,ctx.seed);
+    const bodies:FlockBody[]=source.points.map((point,i)=>({point,velocity:source.velocities[i]}));
+    ctx.charge(pairWork(q)+q.count);
+    return {bodies,trails:bodies.map(b=>[b.point]),pairs:radiusPairs2D({points:bodies.map(b=>b.point),radius:q.radius,maxWork:pairWork(q)}).pairs};
+  },
+  step(state,ctx){
+    const q=ctx.params;
+    const steering=flockSteer2D({points:state.bodies.map(b=>b.point),velocities:state.bodies.map(b=>b.velocity),pairs:state.pairs,
+      cohesion:q.cohesion,alignment:q.alignment,separation:q.separation,maxSteer:.8,maxWork:q.count+state.pairs.length}).steering;
+    const bodies=state.bodies.map((b,i)=>{
       let vx=b.velocity[0]+steering[i][0],vy=b.velocity[1]+steering[i][1];
       const speed=Math.hypot(vx,vy),cap=q.speed*2.5;
       if(speed>cap){vx*=cap/speed;vy*=cap/speed;}
       return {point:[b.point[0]+vx,b.point[1]+vy] as Point,velocity:[vx,vy] as Point};
     });
-    for(let i=0;i<bodies.length;i++)trails[i].push(bodies[i].point);
-    yield;
-  }
-  // Link only agents in actual proximity at the visible final state.
-  pairs=radiusPairs2D({points:bodies.map(b=>b.point),radius:q.radius,maxWork:q.count+q.count*(q.count-1)/2}).pairs;
-  return {bodies,trails,pairs};
-}
+    for(let i=0;i<bodies.length;i++)state.trails[i].push(bodies[i].point);
+    ctx.charge(q.count+state.pairs.length+pairWork(q));
+    return {bodies,trails:state.trails,pairs:radiusPairs2D({points:bodies.map(b=>b.point),radius:q.radius,maxWork:pairWork(q)}).pairs};
+  },
+  project:state=>state,
+};
 
-export function motionKey(kind:string,q:MotionParams,seed:number):string {
-  const common=[kind,seed,q.ticks,q.count,q.sourceMode,q.centerX,q.centerY,q.extent,q.aspect,q.sourceAngle,q.disorder,q.speed];
-  const specific=kind==='lingering-links'?[q.radius,q.linger]:kind==='sensing-trails'?[q.peaks,q.fieldSpread,q.fieldRadius,q.reach,q.gain,q.probeAngle]:[q.radius,q.cohesion,q.alignment,q.separation];
-  return JSON.stringify([...common,...specific]);
-}
+export const motionSimulations:Record<MotionKind,Simulation<any,MotionConstruction,any>>={
+  'lingering-links':contactSimulation,'sensing-trails':sensorSimulation,'flocking-marks':flockSimulation,
+};

@@ -2,6 +2,7 @@ import { pairForceStep2D, radiusPairs2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
 import type { ControlGroup, Layer, Parameter } from "../types.js";
 import { choice, numeric, toggle, type StudioDefinition } from "./types.js";
+import { createSimulationCache, finalState, runSimulation, type Simulation, type Snapshots } from "../composition/snapshots.js";
 
 type Kind = "contact-network" | "agent-trails";
 type Point = [number, number];
@@ -25,9 +26,13 @@ type Settings = {
   nodes: boolean; nodeSize: number; dotMarks: boolean;
   showVelocities: boolean; velocityScale: number; velocityWeight: number;
 };
-/** `pairHistory[t]` is the flat `[a0, b0, a1, b1, …]` pair list of `history[t]` (compact: 8 bytes a pair); the last entry equals `pairs`. */
+/**
+ * `history[t]` are the frozen positions after t ticks; `pairHistory[t]` is the flat `[a0, b0, a1, b1, …]` pair
+ * list of `history[t]` (compact: 8 bytes a pair, a private copy that must not be written); the last entry
+ * equals `pairs`. Built from `Snapshots`, so the same frames can be replayed from any checkpoint.
+ */
 export type ProximityReplay = {
-  history: Point[][]; points: Point[]; velocities: Point[]; pairs: number[][]; pairHistory: Int32Array[];
+  history: readonly (readonly (readonly number[])[])[]; points: readonly (readonly number[])[]; velocities: Point[]; pairs: number[][]; pairHistory: readonly Int32Array[];
 };
 
 
@@ -158,7 +163,7 @@ export function validateProximityReplayInstrument(q: Params): void {
   
   settings(q);
 }
-function makeInitial(s: Settings, seed: number): { points: Point[]; velocities: Point[] } {
+function makeInitial(s: Readonly<Construction>, seed: number): { points: Point[]; velocities: Point[] } {
   const positionRng = s.disorder > 0 && s.extent > 0 ? new JavaRandom(seed) : null;
   const velocityRng = s.speed > 0 && s.velocitySpread > 0 ? new JavaRandom((seed ^ 0x5a17c9e3) >>> 0) : null;
   const points: Point[] = [], velocities: Point[] = [];
@@ -190,50 +195,80 @@ function makeInitial(s: Settings, seed: number): { points: Point[]; velocities: 
   }
   return { points, velocities };
 }
-function replay(s: Settings, seed: number): ProximityReplay {
-  let { points, velocities } = makeInitial(s, seed);
-  const history: Point[][] = [points];
-  const pairHistory: Int32Array[] = [];
-  const flat = (pairs: number[][]): Int32Array => {
-    const out = new Int32Array(pairs.length * 2);
-    for (let i = 0; i < pairs.length; i++) { out[2 * i] = pairs[i][0]; out[2 * i + 1] = pairs[i][1]; }
-    return out;
-  };
-  const chainPairs: number[][] = [];
+/** The construction of a replay: everything that shapes a tick, and none of `ticks` (the step count) or appearance. */
+const constructionKeys = ["count", "sourceMode", "centerX", "centerY", "extent", "aspect", "angle", "disorder",
+  "velocityHeading", "speed", "velocitySpread", "radius", "avoidance", "openChains", "force", "repulsionRadius", "damping", "maxSpeed"] as const;
+type Construction = Pick<Settings, typeof constructionKeys[number]>;
+/** `pairs` always belongs to `points`; a tick reads them and computes the next pair list. */
+type ReplayState = { points: Point[]; velocities: Point[]; pairs: number[][] };
+type ReplayFrame = { points: Point[]; pairs: Int32Array };
+const flatPairs = (pairs: number[][]): Int32Array => {
+  const out = new Int32Array(pairs.length * 2);
+  for (let i = 0; i < pairs.length; i++) { out[2 * i] = pairs[i][0]; out[2 * i + 1] = pairs[i][1]; }
+  return out;
+};
+function chainPairs(s: Construction): number[][] {
+  const chains: number[][] = [];
   if (s.openChains) {
     const groups = Math.min(3, Math.floor(s.count / 2)) || 1;
     for (let i = 1; i < s.count; i++)
       if (Math.floor(i * groups / s.count) === Math.floor((i - 1) * groups / s.count))
-        chainPairs.push([i - 1, i]);
+        chains.push([i - 1, i]);
   }
-  const pairsFor = (current: Point[]): number[][] => s.openChains
-    ? chainPairs : radiusPairs2D({ points: current, radius: s.radius, maxWork: s.count + s.count * (s.count - 1) / 2 }).pairs;
-  for (let step = 0; step < s.ticks; step++) {
-    const pairs = pairsFor(points);
-    pairHistory.push(flat(pairs));
-    const next = pairForceStep2D({ points, velocities, pairs, attraction: s.force,
-      repulsion: s.avoidance, repulsionRadius: s.repulsionRadius, damping: s.damping,
-      dt: 1, maxSpeed: s.maxSpeed, maxWork: s.count + pairs.length });
-    points = next.points;
-    velocities = next.velocities;
-    history.push(points);
-  }
-  const finalPairs = pairsFor(points);
-  pairHistory.push(flat(finalPairs));
-  return { points, velocities, history, pairs: finalPairs, pairHistory };
+  return chains;
 }
+function pairsFor(s: Construction, points: Point[]): number[][] {
+  return s.openChains ? chainPairs(s) : radiusPairs2D({ points, radius: s.radius, maxWork: s.count + s.count * (s.count - 1) / 2 }).pairs;
+}
+/** One synchronous pair-force tick per step; the retained projection is each tick's positions and pair list. */
+const proximitySimulation: Simulation<ReplayState, Construction, ReplayFrame> = {
+  id: "proximity-replay",
+  limits: (s) => ({ stepLimit: 180, workPerStep: s.count * s.count + s.count }),
+  initial(ctx) {
+    const { points, velocities } = makeInitial(ctx.params, ctx.seed);
+    ctx.charge(ctx.params.count + ctx.params.count * (ctx.params.count - 1) / 2);
+    return { points, velocities, pairs: pairsFor(ctx.params, points) };
+  },
+  step(state, ctx) {
+    const s = ctx.params;
+    const next = pairForceStep2D({ points: state.points, velocities: state.velocities, pairs: state.pairs, attraction: s.force,
+      repulsion: s.avoidance, repulsionRadius: s.repulsionRadius, damping: s.damping,
+      dt: 1, maxSpeed: s.maxSpeed, maxWork: s.count + state.pairs.length });
+    ctx.charge(s.count + state.pairs.length);
+    ctx.charge(s.count + s.count * (s.count - 1) / 2);
+    return { points: next.points, velocities: next.velocities, pairs: pairsFor(s, next.points) };
+  },
+  project: (state) => ({ points: state.points, pairs: flatPairs(state.pairs) }),
+};
+/** Ticks 0…N as frozen frames; `velocities` and `pairs` are the final state's, as copies this replay owns. */
+function replayOf(snaps: Snapshots<ReplayState, Construction, ReplayFrame>): ProximityReplay {
+  const end = finalState(snaps);
+  return { history: snaps.history.map((entry) => entry.value.points), points: end.points, velocities: end.velocities,
+    pairs: end.pairs, pairHistory: snaps.history.map((entry) => entry.value.pairs) };
+}
+function construction(s: Settings): Construction {
+  return Object.fromEntries(constructionKeys.map((k) => [k, k === "radius" && s.openChains ? 0 : s[k]])) as Construction;
+}
+/** The seed matters only where a seeded stream is actually drawn. */
+const seedOf = (s: Settings, seed: number): number =>
+  (s.disorder > 0 && s.extent > 0) || (s.speed > 0 && s.velocitySpread > 0) ? seed : 0;
 /** Fresh source for geometry tests or analysis; never consults the drawing cache. */
 export function buildProximityReplay(params: Params, seed: number): ProximityReplay {
-  return replay(settings(params), seed);
+  const s = settings(params);
+  return replayOf(runSimulation(proximitySimulation, construction(s), seed, { steps: s.ticks }));
 }
-const sourceKeys = ["count", "ticks", "sourceMode", "centerX", "centerY", "extent", "aspect", "angle", "disorder",
-  "velocityHeading", "speed", "velocitySpread", "radius", "avoidance", "openChains", "force", "repulsionRadius", "damping", "maxSpeed"] as const;
-let cached: { key: string; replay: ProximityReplay } | null = null;
+/** Retained snapshots by construction: recolouring never reruns the replay, and a longer `ticks` extends a cached shorter run. */
+const replays = createSimulationCache({ capacity: 6 });
+const composed = new WeakMap<object, ProximityReplay>();
 function retained(s: Settings, seed: number): ProximityReplay {
-  const key = JSON.stringify([...sourceKeys.map(k => k === "radius" && s.openChains ? 0 : s[k]),
-    (s.disorder > 0 && s.extent > 0) || (s.speed > 0 && s.velocitySpread > 0) ? seed : 0]);
-  if (cached?.key !== key) cached = { key, replay: replay(s, seed) };
-  return cached.replay;
+  const snaps = replays.get(proximitySimulation, construction(s), seedOf(s, seed), { steps: s.ticks });
+  let replay = composed.get(snaps);
+  if (!replay) { replay = replayOf(snaps); composed.set(snaps, replay); }
+  return replay;
+}
+/** The replay a drawing of these settings uses: the same object for the same construction, whatever the appearance. */
+export function cachedProximityReplay(params: Params, seed: number): ProximityReplay {
+  return retained(settings(params), seed);
 }
 function color(layer: Layer, channel: number): [number, number, number] {
   const packed = (layer.palette[channel % layer.palette.length] ?? 0x232323) >>> 0;
