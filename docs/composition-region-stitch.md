@@ -78,8 +78,9 @@ stitch length, scaling the texture uniformly). Conditions are inline `visibleWhe
 tones; `patches`, `merge`, `windows` under quilt; `image`, `bands`, `minRegion`, `leaveLightest` under tones; `fieldX/Y` under radial and swirl; `twist` under swirl;
 `fieldImage`, `fieldVariant`, `follow`, `smoothing` under image; `stagger` under running and mixed; `scatter` under seed and mixed; `underlaySpacing` under cross and
 both; `underlayInset` under any underlay; `crossAngle`, `crossSpacing` under crossing; `outlineWidth` under satin; `lap` under any outline; `dash` under dashes and
-beads. Controls left visible because their relevance is a disjunction: `trim` (outline or crossing layer). Hidden controls are dropped from the resolved descriptor,
-so they cannot reach a key or a drawing (property test over four configurations; the audit reports zero violations).
+beads. Controls left visible because their relevance is a disjunction (the audit lists them): `trim` (outline or crossing layer), `order` (matters only with more than one region) and `height`
+(matters for letters and pictures only when the footprint is not square-limited). Hidden controls are dropped from the resolved descriptor, so they cannot reach a key or a drawing. Audit
+(`tests/helpers/audit-controls.ts region-stitch`, 48 controls, 3,135 probes, sampled): zero violations, zero dead controls, zero unknown; plus the property test over four configurations.
 
 Slider intervals versus hard limits: spacing 1.5-10 (hard 0.8-200), stitch length 2-24 (hard 1-200), inset 0-14 (hard 0-1000), letter weight 0-14 (hard 0-60), patches 3-30
 (hard 1-60), tone bands 2-8 (hard 2-8), regions at most 512, thread width 0.4-4 (hard 0-50), and so on: see the definition. Sliders are the useful spans found by looking; the
