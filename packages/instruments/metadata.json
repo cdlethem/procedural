@@ -453,6 +453,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "shape-packing",
+      "title": "Shape Packing",
+      "description": "Fit interlocking non-convex pieces (letters, leaves, blobs, polygons with holes) into a container by a deterministic rule: largest first, at a set of angles, at the exact place that touches its neighbours, with a minimum gap. Pieces that do not fit are reported and the remaining negative space can be drawn.",
+      "category": "Layouts",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/shape-packing.md",
+      "source": "packages/instruments/src/composition/shape-packing.ts",
+      "sourceEntry": "drawShapePacking",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "stroke-relief",
       "title": "Stroke Relief",
       "description": "Deposit variable-width, pressure-loaded strokes into a height field with an explicit rule for crossings (add, maximum or displace), then light it: edge ridges and bristle furrows catch a movable light. The flat pigment layer and the transparent light-and-shadow patch are separate layers.",
