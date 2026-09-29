@@ -129,6 +129,9 @@ general graphs, cross-layer links and the remaining capability program are still
   live in `packages/instruments/`. The private `/home/colin/dev/procedurals-web` host owns
   UI, document envelopes, transforms/opacity, p5 lifecycle and storage—not copied drawers.
   Its primary released gallery remains at 117 workflows / 92 API entries; the verified isolated
+- Every instrument now declares semantic [control groups](docs/control-groups.md) with
+  ratio-lockable `proportional` clusters; drawing is unchanged. Uncommitted; the app has not
+  yet adopted `inspectorItems` or a ratio lock ([progress](docs/next-release-progress.md)).
   reference-package host has 120 workflows / 102 canonical instruments and the same 92 API entries.
 - The preceding bounded pass scanned the 55 IDs not revised previously, revised 27, and
   added **Harmonic Traces, Phyllotactic Whorls and Contour Relief**. The subsequent color pass

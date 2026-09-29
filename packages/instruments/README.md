@@ -129,8 +129,14 @@ They do not clear the canvas, fetch assets, create per-item buffers or own host 
 `drawReferenceComposition(p, recipe)` draws it. Ordinary instrument callers can keep using
 `prepareInstrument` and `drawInstrument`: those resolve and consume the same description.
 Studio persists the named instrument and validated scalar bindings, not executable closures.
-Library-owned `Parameter.group` and `visibleWhen` describe nested inspector sections;
-hidden controls retain their values and remain validated.
+Every instrument declares `controlGroups`: its library-owned organization of the inspector into
+labelled, nested groups in display order, each control in exactly one group. A `proportional`
+group holds numeric controls on one non-negative scale (a footprint's width and height, a
+mark's diameter and line weight), so a host may lock their ratio and drive them together.
+Published definitions list `parameters` in group order with a derived `Parameter.group` path.
+`visibleWhen` hides controls that cannot affect the drawing; hidden controls retain their
+values and remain validated. `inspectorItems(id, params)` returns the current tree: visible
+controls only, with empty groups omitted.
 
 Read the three packaged study guides for visible effects and deliberate variations.
 The repository's `docs/composition-reference-slice.md` records the implementation boundary

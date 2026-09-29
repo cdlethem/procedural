@@ -143,7 +143,7 @@ Open: private-app adoption of the helper and empty-group hiding; alternatives fo
 numeric-threshold drivers; a real-interface pass over a sample of the newly conditional
 inspectors.
 
-## In progress on main (uncommitted): control groups (F10)
+## Committed on main (9213ae94): control groups (F10)
 
 Scope added by the maintainer: the package decides, for every instrument, which control groups
 exist and which controls belong to them; the app decides presentation (sections, ratio locks,
