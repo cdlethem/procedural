@@ -375,6 +375,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "hyperbolic-gardens",
+      "title": "Hyperbolic Gardens",
+      "description": "Grow a regular hyperbolic tiling {p,q} in the Poincaré disk by exact reflection: cells, geodesic edges and rings shrink toward the boundary circle, and motifs are placed in every mirror-image triangle with the true local turn, reflection and scale.",
+      "category": "Layouts",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/hyperbolic-gardens.md",
+      "source": "packages/instruments/src/composition/hyperbolic-draw.ts",
+      "sourceEntry": "drawHyperbolicGardens",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "gesture-scores",
       "title": "Gesture Scores",
       "description": "Replay a recorded hand movement with its timing and pressure as a broad bristle brush, a lagging fall of sand and glyphs along the path; one time window and smoothing reshape all three.",
