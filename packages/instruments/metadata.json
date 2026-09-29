@@ -2748,6 +2748,21 @@
       "source": "packages/instruments/src/adapters/contour-relief.ts",
       "sourceEntry": "drawContourRelief",
       "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "region-stitch",
+      "title": "Region Stitch",
+      "description": "Fill regions with directional stitching: rows or scattered stitches follow a field inside letters, blobs, quilt patches or picture tones, over underlay, with satin outlines, a seam and threads that visibly cross.",
+      "category": "Fields & paths",
+      "operationIds": [
+        "geometry.resample-polyline-2d"
+      ],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/region-stitch.md",
+      "source": "packages/instruments/src/composition/stitch-draw.ts",
+      "sourceEntry": "drawStitches",
+      "creativeReviewScope": "instrument-construction"
     }
   ]
 }
