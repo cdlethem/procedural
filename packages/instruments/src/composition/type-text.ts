@@ -21,11 +21,10 @@ import type { CompositionSurface, Point } from "./types.js";
  * and letter counters have opposite orientation. Positioning uses ink bounds, not advance
  * widths, so leading and trailing spaces do not move a line.
  *
- * CLIPPING. `clipRingToRect` is Sutherland–Hodgman against an axis-aligned rectangle. It keeps
- * the winding number of every point strictly inside the rectangle, so a glyph clipped ring by
- * ring still fills correctly under the nonzero rule. Edges that run along the rectangle boundary
- * may double back on themselves and enclose no area; fill them, never stroke them (strokes are
- * clipped as polylines with `clipToSupport` instead).
+ * CLIPPING AND KEYHOLES. The ring geometry these fills need (`clipRingToRect`, the winding-preserving
+ * per-ring rectangle clip, and `keyholeRings`, which joins counters to their letters) lives in
+ * `domains.ts` with the rest of the planar-domain code; strokes are clipped as polylines with
+ * `clipToSupport`.
  *
  * Failure: an invalid text source throws an `Error` naming the field. No randomness.
  */
@@ -94,103 +93,6 @@ export function typeLine(text: string): TypeLine {
 
 /** Cap height of the font in font units: the height of "H" above the baseline. */
 export const CAP_HEIGHT: number = -typeLine("H").top;
-
-/** Sutherland–Hodgman against [0, width] × [0, height]; `null` when fewer than three vertices remain. */
-export function clipRingToRect(ring: Ring, width: number, height: number): Ring | null {
-  let points: Point[] = ring as Point[];
-  const planes: Array<[(p: Point) => number, (a: Point, b: Point) => Point]> = [
-    [(p) => p[0], (a, b) => [0, a[1] + (b[1] - a[1]) * (0 - a[0]) / (b[0] - a[0])]],
-    [(p) => width - p[0], (a, b) => [width, a[1] + (b[1] - a[1]) * (width - a[0]) / (b[0] - a[0])]],
-    [(p) => p[1], (a, b) => [a[0] + (b[0] - a[0]) * (0 - a[1]) / (b[1] - a[1]), 0]],
-    [(p) => height - p[1], (a, b) => [a[0] + (b[0] - a[0]) * (height - a[1]) / (b[1] - a[1]), height]],
-  ];
-  for (const [distance, cut] of planes) {
-    if (points.length === 0) return null;
-    const next: Point[] = [];
-    for (let i = 0, j = points.length - 1; i < points.length; j = i++) {
-      const a = points[j], b = points[i], da = distance(a), db = distance(b);
-      if (db >= 0) {
-        if (da < 0) next.push(Object.freeze(cut(a, b)) as Point);
-        next.push(b);
-      } else if (da >= 0) next.push(Object.freeze(cut(a, b)) as Point);
-    }
-    points = next;
-  }
-  return points.length >= 3 ? Object.freeze(points) : null;
-}
-
-const signedArea = (ring: Ring): number => {
-  let sum = 0;
-  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) sum += ring[j][0] * ring[i][1] - ring[i][0] * ring[j][1];
-  return sum / 2;
-};
-function ringContains(ring: Ring, x: number, y: number): boolean {
-  let inside = false;
-  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    const [xi, yi] = ring[i], [xj, yj] = ring[j];
-    if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside;
-  }
-  return inside;
-}
-
-/**
- * Merge each hole into its outer ring with one short "keyhole" cut, giving filled polygons with no
- * separate contours. The surface has no contour call, and filling rings one by one would paint
- * over counters. Outer rings have positive `Σ(xⱼ·yᵢ − xᵢ·yⱼ)/2` and holes negative (the font's
- * winding, preserved by rotation, positive scaling and `clipRingToRect`); rings of no area are
- * dropped. A hole belongs to the outer ring containing most of its vertices (smaller area on a
- * tie); it is joined at the nearest vertex pair, which lies in the ink, and the cut is traversed
- * out and back so it encloses no area. Bridges that crossed paper would render as hairlines in
- * some rasterizers, which is why holes are never joined to distant rings. A hole with no outer
- * ring encloses nothing and is dropped.
- */
-export function keyholeRings(rings: readonly Ring[]): Ring[] {
-  const outers: Array<{ ring: Ring; area: number; holes: Ring[]; box: readonly [number, number, number, number] }> = [], holes: Ring[] = [];
-  const boxOf = (ring: Ring): readonly [number, number, number, number] => {
-    let left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
-    for (const [x, y] of ring) { left = Math.min(left, x); right = Math.max(right, x); top = Math.min(top, y); bottom = Math.max(bottom, y); }
-    return [left, top, right, bottom];
-  };
-  for (const ring of rings) {
-    const area = signedArea(ring);
-    if (Math.abs(area) < 1e-9) continue;
-    if (area > 0) outers.push({ ring, area, holes: [], box: boxOf(ring) }); else holes.push(ring);
-  }
-  for (const hole of holes) {
-    const [hl, ht, hr, hb] = boxOf(hole);
-    let parent: (typeof outers)[number] | undefined, best = 0;
-    for (const outer of outers) {
-      // A hole lies inside its outer ring, so their boxes overlap; this prunes almost every pair.
-      if (outer.box[0] > hr || outer.box[2] < hl || outer.box[1] > hb || outer.box[3] < ht) continue;
-      let count = 0;
-      for (const [x, y] of hole) if (ringContains(outer.ring, x, y)) count++;
-      if (count > best || (count === best && count > 0 && outer.area < parent!.area)) { best = count; parent = outer; }
-    }
-    if (parent) parent.holes.push(hole);
-  }
-  return outers.map(({ ring, holes: inner }): Ring => {
-    if (inner.length === 0) return ring;
-    const cuts = new Map<number, Array<{ hole: Ring; start: number }>>();
-    for (const hole of inner) {
-      let bestOuter = 0, bestHole = 0, bestDistance = Infinity;
-      ring.forEach((p, i) => hole.forEach((q, j) => {
-        const distance = (p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2;
-        if (distance < bestDistance) { bestDistance = distance; bestOuter = i; bestHole = j; }
-      }));
-      const at = cuts.get(bestOuter);
-      if (at) at.push({ hole, start: bestHole }); else cuts.set(bestOuter, [{ hole, start: bestHole }]);
-    }
-    const merged: Point[] = [];
-    ring.forEach((p, i) => {
-      merged.push(p);
-      for (const { hole, start } of cuts.get(i) ?? []) {
-        for (let step = 0; step <= hole.length; step++) merged.push(hole[(start + step) % hole.length]);
-        merged.push(p);
-      }
-    });
-    return Object.freeze(merged);
-  });
-}
 
 /** Fill polygons from `keyholeRings` with the current fill; each polygon is one shape. */
 export function fillRings(surface: CompositionSurface, polygons: readonly Ring[]): void {

@@ -116,13 +116,13 @@ export type {
 export { substitutionTiling, tilingRules, tilingEdgePaths, tileAncestorId, MAX_TILING_DEPTH, MAX_TILING_PIECES } from "./composition/tilings.js";
 export { tileFill, tileTone, tonedTiles, tonedEdges, selectedVertices, shownTiles, insetPolygon, drawTiling } from "./composition/tiling-materials.js";
 export { planarRegion, planarDomain, ringsDomain, locateInDomain, domainContains, domainRings, domainUnion, domainIntersection, domainDifference, domainXor,
-  unionDomains, emptyDomain, rectangleRegion, rectangleDomain, textDomain, keyholeRing, PlanarError, PLANAR_LIMITS } from "./composition/domains.js";
+  unionDomains, emptyDomain, rectangleRegion, rectangleDomain, textDomain, keyholeRing, keyholeJoin, keyholeRings, PlanarError, PLANAR_LIMITS } from "./composition/domains.js";
 export type { PlanarRegion, PlanarDomain, PlanarRegionData, PlanarShape, PlanarOptions, RepairOptions, TextDomainOptions, DomainLocation, Fill, PlanarErrorCode } from "./composition/domains.js";
 export { offsetDomain } from "./composition/domains-offset.js";
 export type { OffsetOptions } from "./composition/domains-offset.js";
-export { clipPath, clipPaths, hatchDomain } from "./composition/domains-paths.js";
+export { clipPath, clipPaths, hatchDomain, clipRingToRect } from "./composition/domains-paths.js";
 export type { ClipOptions, ClippedPiece, HatchOptions, HatchStroke } from "./composition/domains-paths.js";
-export { maskDomain, labelDomains, simplifyDomain, RASTER_LIMITS } from "./composition/domains-raster.js";
+export { maskDomain, labelDomains, simplifyDomain, MASK_DOMAIN_LIMITS } from "./composition/domains-raster.js";
 export type { MaskRaster, RasterOptions, MaskOptions, LabelOptions, LabelDomain } from "./composition/domains-raster.js";
 export type { ContinuousColumn, CategoricalColumn, Column, ColumnInput, DataTableInput, DataTable, Curve, Outside, ChannelSpec, MeasureMapping,
   QuantityMapping, ResolvedChannel, Aggregate, MissingPolicy, UnitWindow, UnitOptions, DataUnit, OmitReason, OmittedUnit, ResolveOptions,
@@ -147,7 +147,7 @@ export { relationsFromTables, layoutEndpoints, selectRelations, bundleEdges, gro
 export type { BundledRelationsRecipe, BundledConsumers, BundledStructure } from "./composition/bundled-relations.js";
 export { bundledStructure, drawBundledRelations, prepareBundledRelations, bundledRelationsComposition, WEIGHT_BANDS, MAX_MATERIAL_WORK } from "./composition/bundled-relations.js";
 export type { TextSource, TypeLine } from "./composition/type-text.js";
-export { textSource, bundledTextSources, typeLine, clipRingToRect, keyholeRings, fillRings, CAP_HEIGHT, MAX_TEXT_LINES, MAX_LINE_CHARS } from "./composition/type-text.js";
+export { textSource, bundledTextSources, typeLine, fillRings, CAP_HEIGHT, MAX_TEXT_LINES, MAX_LINE_CHARS } from "./composition/type-text.js";
 export type { TypeModuleKind, ScreenAngles, TypeLayoutOptions, TypeModuleSource, TypeModule, TypeLayout, TypeFieldOptions, TypeField,
   ModuleFrame, TypeInstance, ModuleType, TypeContent, TypeScreenSpec, TypeAnchor } from "./composition/type-rhythm.js";
 export { typeRhythmLayout, typeField, rowLine, rowBaseline, repeatLeft, moduleFrame, fieldToLocal, moduleType, typeContent, screenFrame,

@@ -1,4 +1,7 @@
 import { textOutlines } from "../adapters/image-signal-instruments.js";
+import { PLANAR_LIMITS, domainDifference, domainIntersection, ringsDomain, type PlanarDomain } from "./domains.js";
+import { edgeIndex, locateIndexed } from "./domains-index.js";
+import { clipPath } from "./domains-paths.js";
 import type { Point } from "./types.js";
 
 /**
@@ -13,10 +16,12 @@ import type { Point } from "./types.js";
  * (letter counters) are rings of opposite winding; overlapping regions of one orientation
  * union. `invert` keeps the footprint area outside the mask.
  *
- * Output: a deeply frozen `Support` (its rings, bounds and vertex list) and two operations,
- * `supportContains` (points) and `clipToSupport` (polylines). A boundary is inside: a line that
- * runs exactly along an edge is kept or dropped as a whole by half-open crossing counts, never
- * partly. Ellipses are inscribed polygons flattened to `flatness` (see patterns.ts).
+ * Output: a deeply frozen `Support` (its rings, bounds, vertex count and `domain`) and two
+ * operations, `supportContains` (points) and `clipToSupport` (polylines). The stencil is a planar
+ * domain (footprint ∩ mask, or footprint minus mask when inverted, resolved by nonzero fill in
+ * domains.ts), so both operations are the exact closed-set location and path clipping of
+ * `docs/composition-domains.md`: a boundary is inside, and a line that runs along an edge is
+ * kept whole. Ellipses are inscribed polygons flattened to `flatness` (see patterns.ts).
  *
  * Failure: invalid geometry, empty masks, non-finite numbers and work above `MAX_CLIP_WORK`
  * (segments × boundary edges) throw; nothing is thinned. No randomness.
@@ -45,8 +50,10 @@ export interface Support {
   readonly mask: { readonly rings: readonly Ring[]; readonly invert: boolean } | null;
   /** World-space [left, top, right, bottom] of the footprint. */
   readonly bounds: readonly [number, number, number, number];
-  /** Total boundary edges of the footprint and mask: the per-segment cost of clipping. */
+  /** Total boundary edges of the footprint and mask: the per-segment cost bound of clipping. */
   readonly edges: number;
+  /** The stencil as a planar domain: the footprint, intersected with the mask (or minus it when inverted). */
+  readonly domain: PlanarDomain;
 }
 
 function finite(label: string, value: number, min: number, max: number): void {
@@ -132,52 +139,21 @@ export function resolveSupport(spec: SupportSpec, flatness: number): Support {
   let edges = footprint.length;
   if (rings) for (const ring of rings) edges += ring.length;
   const { centerX, centerY, width, height } = spec.footprint;
+  const footprintDomain = ringsDomain([footprint as unknown as [number, number][]], { fill: "nonzero", id: "footprint" });
+  const domain = rings
+    ? (spec.mask!.invert ? domainDifference : domainIntersection)(footprintDomain, ringsDomain(rings as unknown as [number, number][][], { fill: "nonzero", id: "mask" }), { id: "support" })
+    : footprintDomain;
   return Object.freeze({
     footprint, mask: rings ? Object.freeze({ rings: Object.freeze(rings), invert: spec.mask!.invert }) : null,
     bounds: Object.freeze([centerX - width / 2, centerY - height / 2, centerX + width / 2, centerY + height / 2] as const),
-    edges,
+    edges, domain,
   });
 }
 
-/** Winding of one ring about a point; boundaries follow the half-open crossing rule. */
-const ringBounds = new WeakMap<Ring, readonly [number, number, number, number]>();
-function ringWinding(ring: Ring, x: number, y: number): number {
-  let box = ringBounds.get(ring);
-  if (!box) {
-    let l = Infinity, t = Infinity, r = -Infinity, b = -Infinity;
-    for (const [px, py] of ring) { l = Math.min(l, px); r = Math.max(r, px); t = Math.min(t, py); b = Math.max(b, py); }
-    box = [l, t, r, b]; ringBounds.set(ring, box);
-  }
-  // Outside a ring's bounding box its winding number is zero.
-  if (x < box[0] || x > box[2] || y < box[1] || y > box[3]) return 0;
-  let count = 0;
-  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    const [ax, ay] = ring[j], [bx, by] = ring[i];
-    const left = (bx - ax) * (y - ay) - (x - ax) * (by - ay);
-    if (ay <= y) { if (by > y && left > 0) count++; }
-    else if (by <= y && left < 0) count--;
-  }
-  return count;
-}
+/** Is the point in the stencil? The stencil is the closed set `support.domain`: boundary points are inside. */
 export function supportContains(support: Support, x: number, y: number): boolean {
-  if (ringWinding(support.footprint, x, y) === 0) return false;
-  if (!support.mask) return true;
-  let count = 0;
-  for (const ring of support.mask.rings) count += ringWinding(ring, x, y);
-  return (count !== 0) !== support.mask.invert;
+  return locateIndexed(edgeIndex(support.domain), x, y) >= 0;
 }
-
-/** Flattened boundary edges for crossing tests. */
-function edgeTable(support: Support): Float64Array {
-  const rings = support.mask ? [support.footprint, ...support.mask.rings] : [support.footprint];
-  const table = new Float64Array(support.edges * 4);
-  let at = 0;
-  for (const ring of rings) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    table[at++] = ring[j][0]; table[at++] = ring[j][1]; table[at++] = ring[i][0]; table[at++] = ring[i][1];
-  }
-  return table;
-}
-const tables = new WeakMap<Support, Float64Array>();
 
 export interface ClippedPolyline {
   /** True only when a closed input lies entirely inside and is returned as one closed path. */
@@ -186,61 +162,19 @@ export interface ClippedPolyline {
 }
 
 /**
- * Keep the parts of a polyline inside the support. Every crossing of every boundary edge splits
- * a segment; each sub-interval is classified by its midpoint, so holes, disjoint islands and
- * inverted masks need no special cases. A closed ring cut by the boundary comes back as open
- * pieces, joined across its start vertex when both ends are inside.
+ * Keep the parts of a polyline inside the support: `clipPath` against `support.domain` (see
+ * domains-paths.ts for the cut and joining rules). A closed ring cut by the boundary comes back as
+ * open pieces, joined across its start vertex when both ends are inside. `budget` accumulates the
+ * per-segment cost bound `segments × support.edges` and throws above `MAX_CLIP_WORK`.
  */
 export function clipToSupport(points: readonly Point[], closed: boolean, support: Support, budget?: { work: number }): ClippedPolyline {
-  let table = tables.get(support);
-  if (!table) { table = edgeTable(support); tables.set(support, table); }
-  const edgeCount = support.edges;
-  const path = closed ? [...points, points[0]] : points;
-  const segments = path.length - 1;
+  const segments = (closed ? points.length : points.length - 1);
   if (budget) {
-    budget.work += segments * edgeCount;
+    budget.work += Math.max(0, segments) * support.edges;
     if (budget.work > MAX_CLIP_WORK) throw new Error(`Support clipping needs ${budget.work} segment-edge tests; limit ${MAX_CLIP_WORK}. Simplify the mask or coarsen the pattern.`);
   }
-  const runs: Point[][] = [];
-  let run: Point[] | null = null;
-  let firstRunAtStart = false, cutAny = false;
-  const crossings: number[] = [];
-  for (let s = 0; s < segments; s++) {
-    const [px, py] = path[s], [qx, qy] = path[s + 1];
-    const ex = qx - px, ey = qy - py;
-    const minX = Math.min(px, qx), maxX = Math.max(px, qx), minY = Math.min(py, qy), maxY = Math.max(py, qy);
-    crossings.length = 0; crossings.push(0);
-    for (let e = 0; e < table.length; e += 4) {
-      const ax = table[e], ay = table[e + 1], bx = table[e + 2], by = table[e + 3];
-      if (Math.max(ax, bx) < minX || Math.min(ax, bx) > maxX || Math.max(ay, by) < minY || Math.min(ay, by) > maxY) continue;
-      const dx = bx - ax, dy = by - ay, denom = ex * dy - ey * dx;
-      if (denom === 0) continue;
-      const t = ((ax - px) * dy - (ay - py) * dx) / denom;
-      const u = ((ax - px) * ey - (ay - py) * ex) / denom;
-      if (t >= 0 && t <= 1 && u >= 0 && u < 1) crossings.push(t);
-    }
-    crossings.push(1);
-    crossings.sort((a, b) => a - b);
-    for (let c = 0; c + 1 < crossings.length; c++) {
-      const t0 = crossings[c], t1 = crossings[c + 1];
-      if (t1 - t0 <= 1e-12 && crossings.length > 2) continue;
-      const tm = (t0 + t1) / 2;
-      if (!supportContains(support, px + ex * tm, py + ey * tm)) { if (run) { runs.push(run); run = null; } cutAny = true; continue; }
-      if (!run) {
-        run = [freezePoint(px + ex * t0, py + ey * t0)];
-        if (runs.length === 0 && s === 0 && t0 === 0) firstRunAtStart = true;
-      }
-      run.push(t1 === 1 ? freezePoint(qx, qy) : freezePoint(px + ex * t1, py + ey * t1));
-    }
-  }
-  const endedInside = run !== null;
-  if (run) runs.push(run);
-  if (closed && !cutAny && runs.length === 1) {
-    return { closed: true, pieces: [Object.freeze(runs[0].slice(0, -1))] };
-  }
-  if (closed && runs.length > 1 && firstRunAtStart && endedInside) {
-    const last = runs.pop()!, first = runs.shift()!;
-    runs.push([...last, ...first.slice(1)]);
-  }
-  return { closed: false, pieces: runs.filter((piece) => piece.length >= 2 && piece.some((p, i) => i > 0 && (p[0] !== piece[0][0] || p[1] !== piece[0][1]))) };
+  const distinct = new Set(points.map((p) => `${p[0]},${p[1]}`)).size;
+  if (distinct < (closed ? 3 : 2)) return { closed: false, pieces: [] };
+  const pieces = clipPath(points as readonly (readonly [number, number])[], support.domain, { closed, maxWork: PLANAR_LIMITS.maxWorkCeiling });
+  return { closed: pieces.length === 1 && pieces[0].closed, pieces: pieces.map((piece) => piece.points) };
 }

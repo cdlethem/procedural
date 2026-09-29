@@ -31,7 +31,7 @@ import { simplifyRingSet } from "./domains-simplify.js";
  * Neighbouring labels' shared boundaries coincide exactly, before and after simplification.
  *
  * Failure: non-finite values, non-integer labels, mismatched sizes and more than
- * `RASTER_LIMITS.maxPixels` pixels throw `PlanarError` naming the argument.
+ * `MASK_DOMAIN_LIMITS.maxPixels` pixels throw `PlanarError` naming the argument.
  */
 export interface MaskRaster {
   readonly width: number;
@@ -55,14 +55,14 @@ export interface LabelOptions extends RasterOptions {
   readonly background?: number | null;
 }
 export interface LabelDomain { readonly label: number; readonly domain: PlanarDomain }
-export const RASTER_LIMITS = Object.freeze({ maxPixels: 4_194_304 });
+export const MASK_DOMAIN_LIMITS = Object.freeze({ maxPixels: 4_194_304 });
 
 interface Frame { width: number; height: number; cell: number; ox: number; oy: number; simplify: number }
 function frame(raster: MaskRaster, options: RasterOptions): Frame {
   if (typeof raster !== "object" || raster === null) throw new PlanarError("INVALID_INPUT", "raster must be an object { width, height, data }");
   const { width, height, data } = raster;
   if (!Number.isSafeInteger(width) || !Number.isSafeInteger(height) || width < 1 || height < 1) throw new PlanarError("INVALID_INPUT", "raster.width and raster.height must be positive integers");
-  if (width * height > RASTER_LIMITS.maxPixels) throw new PlanarError("WORK_LIMIT", `raster has ${width * height} pixels; the limit is ${RASTER_LIMITS.maxPixels}. Downsample the raster`);
+  if (width * height > MASK_DOMAIN_LIMITS.maxPixels) throw new PlanarError("WORK_LIMIT", `raster has ${width * height} pixels; the limit is ${MASK_DOMAIN_LIMITS.maxPixels}. Downsample the raster`);
   if (!data || typeof data.length !== "number" || data.length !== width * height) throw new PlanarError("INVALID_INPUT", `raster.data must have width × height = ${width * height} entries`);
   const cell = checkCoordinate("options.cell", options.cell ?? 1);
   if (!(cell > 0)) throw new PlanarError("INVALID_INPUT", "options.cell must be > 0");

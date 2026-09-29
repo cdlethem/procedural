@@ -3,7 +3,9 @@ import { DEFAULT_FLATNESS, MIN_PERIOD, patternFunction } from "./patterns.js";
 import { latticeSites, memoized, partitionRegions } from "./sources.js";
 import { clipToSupport, resolveSupport } from "./support.js";
 import type { Ring, Support } from "./support.js";
-import { clipRingToRect, keyholeRings, typeLine, CAP_HEIGHT } from "./type-text.js";
+import { clipRingToRect } from "./domains-paths.js";
+import { keyholeRings } from "./domains.js";
+import { typeLine, CAP_HEIGHT } from "./type-text.js";
 import type { TextSource, TypeLine } from "./type-text.js";
 import type { Path, Point, Region } from "./types.js";
 

@@ -3,7 +3,7 @@ import test from "node:test";
 import {
   PlanarError, clipPath, clipPaths, domainContains, domainDifference, domainIntersection, domainRings, domainUnion, domainXor, hatchDomain,
   keyholeRing, labelDomains, locateInDomain, maskDomain, offsetDomain, partitionRegions, planarDomain, planarRegion, rectangleDomain, rectangleRegion,
-  ringsDomain, simplifyDomain, textDomain, unionDomains, createCompositionRun,
+  ringsDomain, simplifyDomain, textDomain, unionDomains, createCompositionRun, clipRingToRect, keyholeRings, resolveSupport, supportContains, clipToSupport,
   type Path, type PlanarDomain, type PlanarRegion,
 } from "../dist/index.js";
 
@@ -688,4 +688,39 @@ test("keyholeRing joins holes with zero-width cuts and preserves the area", () =
   const plain = box(0, 0, 3);
   assert.equal(keyholeRing(plain), plain.outer);
   planarCode(() => keyholeRing({ ...region }), "INVALID_INPUT");
+});
+
+test("keyholeRings keeps overlapping contours separate and joins counters even when they touch the outline", () => {
+  const A = rect(0, 0, 10, 10), B = rect(6, 6, 10, 10), hole = rect(2, 2, 3, 3).reverse();
+  const polygons = keyholeRings([A, B, hole]);
+  assert.equal(polygons.length, 2, "outer rings are not merged");
+  near(signed(polygons[0]), 100 - 9); near(signed(polygons[1]), 100);
+  // A counter whose every vertex lies on the outline (as after clipping a glyph to a module) still belongs to it.
+  const touching = keyholeRings([rect(0, 0, 10, 10), [[0, 0], [0, 5], [5, 0]]]);
+  assert.equal(touching.length, 1); near(signed(touching[0]), 100 - 12.5);
+  assert.equal(keyholeRings([rect(0, 0, 10, 10), [[20, 20], [20, 22], [22, 20]]]).length, 1, "a counter outside every outline is dropped");
+  assert.equal(keyholeRings([[[0, 0], [1, 0], [2, 0]]]).length, 0, "rings without area are dropped");
+});
+
+test("the per-ring rectangle clip keeps the enclosed area of a simple ring, which equals the Boolean intersection", () => {
+  const r = rng(17);
+  for (let k = 0; k < 60; k++) {
+    const ring = star(r, 5 + r() * 4, 5 + r() * 4, 12, 2, 8), w = 4 + r() * 8, h = 4 + r() * 8;
+    const clipped = clipRingToRect(ring, w, h);
+    const expected = domainIntersection(planarRegion({ outer: ring }), box(0, 0, w, h)).area;
+    near(clipped ? Math.abs(signed(clipped)) : 0, expected, 1e-9, `ring ${k}`);
+  }
+  assert.equal(clipRingToRect(rect(20, 20, 2, 2), 10, 10), null);
+});
+
+test("the stencil is a closed planar domain: edges belong to it and a line along an edge is kept whole", () => {
+  const box100 = { shape: "rectangle" as const, centerX: 50, centerY: 50, width: 100, height: 100 };
+  const support = resolveSupport({ footprint: box100 }, 0.02);
+  for (const [x, y] of [[0, 0], [100, 100], [0, 50], [100, 50], [50, 0], [50, 100]] as const) assert.equal(supportContains(support, x, y), true, `${x},${y}`);
+  assert.equal(supportContains(support, 100.0001, 50), false);
+  const along = clipToSupport([[-20, 0], [120, 0]], false, support);
+  assert.equal(along.pieces.length, 1); near(along.pieces[0][0][0], 0); near(along.pieces[0][1][0], 100);
+  const masked = resolveSupport({ footprint: box100, mask: { invert: true, source: { kind: "regions", regions: [{ bounds: [40, 40, 60, 60] }], inset: 0 } } }, 0.02);
+  assert.equal(supportContains(masked, 50, 50), false); assert.equal(supportContains(masked, 40, 50), true, "the mask boundary belongs to the stencil");
+  near(masked.domain.area, 10000 - 400);
 });

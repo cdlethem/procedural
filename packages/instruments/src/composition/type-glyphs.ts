@@ -1,7 +1,8 @@
 import { fontGlyph } from "../adapters/image-signal-instruments.js";
 import type { AdvanceItem } from "./path-type.js";
 import type { Ring } from "./support.js";
-import { CAP_HEIGHT, keyholeRings } from "./type-text.js";
+import { keyholeRings } from "./domains.js";
+import { CAP_HEIGHT } from "./type-text.js";
 import type { Point } from "./types.js";
 
 /**

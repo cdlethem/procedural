@@ -5,6 +5,7 @@ import {
   planarize, pushEdge, ringArea, ringOrientation, windings,
   type Fill, type Pt, type RawRegion, type Seg, type Work,
 } from "./planar-kernel.js";
+import { edgeIndex, locateIndexed } from "./domains-index.js";
 import type { Path, Point, Region } from "./types.js";
 
 /**
@@ -404,29 +405,14 @@ export function ringsDomain(rings: readonly (readonly (readonly [number, number]
 // Queries
 // ---------------------------------------------------------------------------------------------
 export type DomainLocation = "inside" | "boundary" | "outside";
-function locateInRegion(region: PlanarRegion, x: number, y: number): number {
-  const [l, t, r, b] = region.bounds;
-  if (x < l || x > r || y < t || y > b) return -1;
-  const outer = locateInRing(region.outer as Pt[], x, y);
-  if (outer <= 0) return outer;
-  for (const hole of region.holes) {
-    const at = locateInRing(hole as Pt[], x, y);
-    if (at === 0) return 0;
-    if (at > 0) return -1;
-  }
-  return 1;
-}
-/** Exact location of a point against a region or domain (the closed set; see the header). */
+/**
+ * Exact location of a point against a region or domain (the closed set; see the header). Uses a
+ * cached edge grid, so repeated queries against one value cost about √E exact tests each.
+ */
 export function locateInDomain(shape: PlanarShape, x: number, y: number): DomainLocation {
   checkCoordinate("x", x); checkCoordinate("y", y);
-  const value = asDomainOrRegion(shape, 0, workFor("locate", undefined));
-  let boundary = false;
-  for (const region of "regions" in value ? value.regions : [value]) {
-    const at = locateInRegion(region, x, y);
-    if (at > 0) return "inside";
-    if (at === 0) boundary = true;
-  }
-  return boundary ? "boundary" : "outside";
+  const at = locateIndexed(edgeIndex(asDomainOrRegion(shape, 0, workFor("locate", undefined))), x, y);
+  return at > 0 ? "inside" : at === 0 ? "boundary" : "outside";
 }
 /** True for points inside or on the boundary of the shape. */
 export const domainContains = (shape: PlanarShape, x: number, y: number): boolean => locateInDomain(shape, x, y) !== "outside";
@@ -527,19 +513,18 @@ export function textDomain(content: string, options: TextDomainOptions): PlanarD
 }
 
 /**
- * Merge each hole of a region into its outer ring by one zero-width "keyhole" cut, giving one
- * polygon with no separate contour, for surfaces that fill a single closed shape (p5's
- * beginShape/endShape). Each hole is joined at the nearest outer/hole vertex pair (ties by lower
- * indices) and the cut is traversed out and back, so it encloses no area. Fill it, never stroke it.
- * Holes touching the outer ring at a vertex are joined there.
+ * Join holes to an outer ring with zero-width "keyhole" cuts, giving ONE closed polygon for
+ * surfaces that fill a single shape (p5's beginShape/endShape) and cannot fill counters. Each
+ * hole is joined at the nearest outer/hole vertex pair (ties by lower indices) and the cut is
+ * traversed out and back, so it encloses no area: fill the result, never stroke it. Holes touching
+ * the outer ring at a vertex are joined there. The result is a weakly simple ring, not a valid region.
  */
-export function keyholeRing(region: PlanarRegion): Ring {
-  if (!trusted.has(region)) throw new PlanarError("INVALID_INPUT", "keyholeRing needs a region produced by planarRegion or a domain operation");
-  if (region.holes.length === 0) return region.outer;
+export function keyholeJoin(outer: Ring, holes: readonly Ring[]): Ring {
+  if (holes.length === 0) return outer;
   const cuts = new Map<number, { hole: Ring; start: number }[]>();
-  for (const hole of region.holes) {
+  for (const hole of holes) {
     let bestOuter = 0, bestHole = 0, bestDistance = Infinity;
-    region.outer.forEach((p, i) => hole.forEach((q, j) => {
+    outer.forEach((p, i) => hole.forEach((q, j) => {
       const distance = (p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2;
       if (distance < bestDistance) { bestDistance = distance; bestOuter = i; bestHole = j; }
     }));
@@ -547,7 +532,7 @@ export function keyholeRing(region: PlanarRegion): Ring {
     if (at) at.push({ hole, start: bestHole }); else cuts.set(bestOuter, [{ hole, start: bestHole }]);
   }
   const merged: Point[] = [];
-  region.outer.forEach((p, i) => {
+  outer.forEach((p, i) => {
     merged.push(p);
     for (const { hole, start } of cuts.get(i) ?? []) {
       for (let step = 0; step <= hole.length; step++) merged.push(hole[(start + step) % hole.length]);
@@ -555,6 +540,45 @@ export function keyholeRing(region: PlanarRegion): Ring {
     }
   });
   return Object.freeze(merged);
+}
+/** `keyholeJoin` of a region's rings. */
+export function keyholeRing(region: PlanarRegion): Ring {
+  if (!trusted.has(region)) throw new PlanarError("INVALID_INPUT", "keyholeRing needs a region produced by planarRegion or a domain operation");
+  return keyholeJoin(region.outer, region.holes);
+}
+/**
+ * Keyhole a raw ring set that follows the font winding (outer rings positive shoelace area, holes
+ * negative) WITHOUT merging it: every outer ring stays its own polygon (overlapping contours stay
+ * overlapping, so their fill is exactly what nonzero filling of the rings would paint), and every hole
+ * is joined to the outer ring that contains most of its vertices (the smaller ring on a tie) by
+ * `keyholeJoin`. Rings enclosing no area (|area| < 1e-9) are dropped; a hole in no outer ring is
+ * dropped. Use `ringsDomain` + `keyholeRing` instead when contours should be unioned into regions.
+ */
+export function keyholeRings(rings: readonly Ring[]): Ring[] {
+  const outers: { ring: Ring; area: number; holes: Ring[]; box: readonly [number, number, number, number] }[] = [], holes: Ring[] = [];
+  const boxOf = (ring: Ring): readonly [number, number, number, number] => {
+    let left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
+    for (const [x, y] of ring) { left = Math.min(left, x); right = Math.max(right, x); top = Math.min(top, y); bottom = Math.max(bottom, y); }
+    return [left, top, right, bottom];
+  };
+  for (const ring of rings) {
+    const area = ringArea(ring as Pt[]);
+    if (Math.abs(area) < 1e-9) continue;
+    if (area > 0) outers.push({ ring, area, holes: [], box: boxOf(ring) }); else holes.push(ring);
+  }
+  for (const hole of holes) {
+    const [hl, ht, hr, hb] = boxOf(hole);
+    let parent: (typeof outers)[number] | undefined, best = 0;
+    for (const outer of outers) {
+      // A hole lies inside its outer ring, so their boxes overlap; this prunes almost every pair.
+      if (outer.box[0] > hr || outer.box[2] < hl || outer.box[1] > hb || outer.box[3] < ht) continue;
+      let count = 0;
+      for (const [x, y] of hole) if (locateInRing(outer.ring as Pt[], x, y) >= 0) count++;
+      if (count > best || (count === best && count > 0 && outer.area < parent!.area)) { best = count; parent = outer; }
+    }
+    if (parent) parent.holes.push(hole);
+  }
+  return outers.map(({ ring, holes: inner }) => keyholeJoin(ring, inner));
 }
 
 // ---------------------------------------------------------------------------------------------

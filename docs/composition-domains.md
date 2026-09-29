@@ -130,10 +130,43 @@ nonzero fill, counters are holes, ink fitted uniformly into the box; cached and 
 zero-width cut at the nearest vertex pair, for surfaces that fill one closed shape; the result is intentionally a weakly simple ring (fill it, never
 stroke it). `ringsDomain` accepts any transformed contour set. Nothing fetches or decodes: the font is already an owned asset.
 
+## One planar implementation: consumers absorbed into `domains`
+
+The plates stencil and the typographic-rhythm fills previously carried their own geometry. They now use this module:
+
+* `support.ts` (`resolveSupport`, `supportContains`, `clipToSupport`): a `Support` gains `domain`, the stencil as a `PlanarDomain` (footprint ∩ mask, or
+  footprint minus mask when inverted, mask rings resolved by nonzero fill). `supportContains` is the exact closed-set location and `clipToSupport` is
+  `clipPath` on that domain; the old float winding/`edgeTable` clipper is deleted. `support.edges` keeps its old meaning (footprint + mask ring vertices), so
+  every `MAX_CLIP_WORK` preflight and its error text is unchanged. `Support.mask.rings` is still exposed (sand deposition builds its inverted "allowed" stencil from it).
+* `keyholeRings`, `keyholeJoin` and `clipRingToRect` moved from `type-text.ts` into `domains.ts` / `domains-paths.ts` (same behaviour, now sharing the exact ring predicates
+  and area routine); `keyholeRing(region)` is the same join applied to a `PlanarRegion`. `type-rhythm.ts` and `type-glyphs.ts` import them from there.
+* `locateInDomain` and `clipPath` share one cached edge grid (`domains-index.ts`).
+
+**Verification against the previous code.** Draw-call fingerprints (the test suite's `drawFingerprint`, exact JSON of every painted call) of Optical Plates, Typographic
+Rhythm, Sand Deposition, Gesture Scores, Path Typography, Dry Bristles and Quilled Paths: default and seeds 1, 2, 3, plus one-control sweeps (every select option, each number's
+min and max, each toggle) — 737 drawings, 734 identical to the bit. **Identical: every default and every seed.** Three sweep settings differ, all understood:
+
+1. Optical Plates with `angleA = −90°` and with `+90°`: a dot lattice then lies exactly on the stencil edge. The old float rule counted boundary points by a half-open
+   crossing test (two edges of a rectangle inside, two outside) although its own header said the boundary is inside; the stencil is now the closed set on every edge, so
+   those boundary dots are drawn (621 more `circle` calls in the default-sized study). This is a deliberate correction, not an accident of the rewrite.
+2. Typographic Rhythm `textStyle = lined`: 86 of 2,118 calls differ by at most 5.7·10⁻¹⁴ canvas units. Crossings are now computed against the exact Boolean boundary,
+   whose edges may be sub-segments of the original mask edges, so the last bits of a crossing differ. Structure, counts and ids are identical.
+
+Also found and fixed during the comparison (no longer a difference): counters whose every vertex lies on the outline after clipping must count as contained, or the fill
+loses them. `keyholeRings` counts boundary vertices and a regression test pins it.
+
+Draw time per seed on the development machine, old → new: Optical Plates 17.6 → 9.8 ms, Typographic Rhythm 1.8 → 2.4 ms, Sand Deposition 29.6 → 28.5 ms, Path Typography 14.5 → 14.6 ms.
+
+**What remains outside `domains.ts`, and why.** Nothing that clips or classifies geometry against a stencil. Left in place deliberately:
+`clipRingToRect` (a Sutherland–Hodgman variant that preserves the winding number ring by ring; a Boolean intersection would merge or split the glyph polygons and change the
+painted calls) is *in* the domain module but is a separate, documented primitive; `keyholeRings` keeps overlapping outers separate for the same reason (`ringsDomain` +
+`keyholeRing` is the unioning alternative); footprint/ellipse construction and mask parsing stay in `support.ts` (they are input descriptors, not geometry); and the older
+simple-polygon routines in `@procedurals/javascript` and `insetPolygon` in `tiling-materials.ts` are untouched by design (convex/simple inputs, published operations).
+
 ## Limits (measured, not certified slider ranges)
 
 `PLANAR_LIMITS`: `maxWork` default 40,000,000 exact geometric tests (raise per call up to 2·10⁹), `maxEdges` 400,000 boundary edges per operation,
-`maxRegions` 100,000; `RASTER_LIMITS.maxPixels` 4,194,304; hatch `maxLines` 200,000 and 1,000,000 strokes; ≤ 4096 arc steps per round join;
+`maxRegions` 100,000; `MASK_DOMAIN_LIMITS.maxPixels` 4,194,304; hatch `maxLines` 200,000 and 1,000,000 strokes; ≤ 4096 arc steps per round join;
 generated offset pieces ≤ `maxEdges`. Exceeding one throws `WORK_LIMIT` naming the option to change (`maxWork`, `spacing`, `arcTolerance`, the
 raster size). Nothing is thinned to fit. Cheap box rejections cost ⅛ of an exact test. Development-machine timings (Node 22, one thread):
 
@@ -164,7 +197,7 @@ unshaped Latin only (the font's own limits).
 
 ## Evidence
 
-`tests/composition-domains.test.ts` (39 tests): hand-computed Boolean shapes and vertex lists, nested holes (four-deep XOR), pinched holes, edge and corner contact,
+`tests/composition-domains.test.ts` (42 tests): hand-computed Boolean shapes and vertex lists, nested holes (four-deep XOR), pinched holes, edge and corner contact,
 slivers (1e-9), collinear runs, near-parallel wedges, scales 1e-12…1e12, ring start / orientation / argument-order invariance to the last bit, idempotence, seeded
 random area identities (`|A∪B| + |A∩B| = |A| + |B|`, difference, xor) over stars with holes, 1e-13 shifts and integer grids, exact per-pixel Boolean checks on random
 masks, orientation predicate against independent BigInt arithmetic on near-collinear points, every rejection with its code and message, repair by both fill rules

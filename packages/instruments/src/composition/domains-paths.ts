@@ -1,4 +1,5 @@
 import { PlanarError, charge, checkCoordinate, orient, type Pt, type Work } from "./planar-kernel.js";
+import { edgeIndex, locateIndexed, type EdgeIndex } from "./domains-index.js";
 import { derivedPath, resolveShape, workFor, cleanRing, type PlanarDomain, type PlanarOptions, type PlanarRegion, type PlanarShape } from "./domains.js";
 import type { Path, Point } from "./types.js";
 
@@ -38,76 +39,12 @@ export interface ClipOptions extends PlanarOptions {
   readonly keep?: "inside" | "outside";
 }
 
-interface EdgeIndex {
-  readonly edges: Float64Array; // ax ay bx by per edge
-  readonly count: number;
-  readonly cells: Int32Array[]; // edge ids per cell
-  readonly gx: number; readonly gy: number;
-  readonly minX: number; readonly minY: number; readonly cellW: number; readonly cellH: number;
-  readonly stamp: Int32Array;
-  clock: number;
-}
-const indexes = new WeakMap<object, EdgeIndex>();
-
-function edgeIndex(domain: PlanarDomain | PlanarRegion): EdgeIndex {
-  const hit = indexes.get(domain);
-  if (hit) return hit;
-  const regions = "regions" in domain ? domain.regions : [domain];
-  let count = 0;
-  for (const region of regions) count += region.outer.length + region.holes.reduce((s, h) => s + h.length, 0);
-  const edges = new Float64Array(count * 4);
-  let at = 0, minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-  for (const region of regions) for (const ring of [region.outer, ...region.holes]) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    edges[at++] = ring[j][0]; edges[at++] = ring[j][1]; edges[at++] = ring[i][0]; edges[at++] = ring[i][1];
-    minX = Math.min(minX, ring[i][0]); maxX = Math.max(maxX, ring[i][0]); minY = Math.min(minY, ring[i][1]); maxY = Math.max(maxY, ring[i][1]);
-  }
-  const side = Math.max(1, Math.min(512, Math.ceil(Math.sqrt(count / 2))));
-  const gx = side, gy = side, cellW = (maxX - minX) / gx || 1, cellH = (maxY - minY) / gy || 1;
-  const lists: number[][] = Array.from({ length: gx * gy }, () => []);
-  const cx = (x: number) => Math.min(gx - 1, Math.max(0, Math.floor((x - minX) / cellW)));
-  const cy = (y: number) => Math.min(gy - 1, Math.max(0, Math.floor((y - minY) / cellH)));
-  for (let e = 0; e < count; e++) {
-    const x0 = cx(Math.min(edges[4 * e], edges[4 * e + 2])), x1 = cx(Math.max(edges[4 * e], edges[4 * e + 2]));
-    const y0 = cy(Math.min(edges[4 * e + 1], edges[4 * e + 3])), y1 = cy(Math.max(edges[4 * e + 1], edges[4 * e + 3]));
-    for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) lists[y * gx + x].push(e);
-  }
-  const built: EdgeIndex = { edges, count, cells: lists.map((l) => Int32Array.from(l)), gx, gy, minX, minY, cellW, cellH, stamp: new Int32Array(count), clock: 0 };
-  indexes.set(domain, built);
-  return built;
-}
-
 /**
- * Closed-set membership of a point by exact predicates, using only the boundary edges the index
- * places along the point's row to its right (an edge crossing that ray shares a cell with it).
+ * Cut parameters and boundary-run intervals of one path segment against the whole boundary.
+ * Returns a bit set: 1 when the segment's start lies on the boundary, 2 when its end does.
  */
-function insideIndexed(index: EdgeIndex, x: number, y: number, work: Work): boolean {
-  const { edges, cells, gx, gy, minX, minY, cellW, cellH, stamp } = index;
-  if (index.count === 0 || x < minX || y < minY || x > minX + cellW * gx || y > minY + cellH * gy) return false;
-  const c0 = Math.min(gx - 1, Math.max(0, Math.floor((x - minX) / cellW))), row = Math.min(gy - 1, Math.max(0, Math.floor((y - minY) / cellH)));
-  const clock = ++index.clock;
-  let winding = 0;
-  for (let c = c0; c < gx; c++) {
-    const list = cells[row * gx + c];
-    charge(work, list.length + 1);
-    for (let k = 0; k < list.length; k++) {
-      const e = list[k];
-      if (stamp[e] === clock) continue;
-      stamp[e] = clock;
-      const ax = edges[4 * e], ay = edges[4 * e + 1], bx = edges[4 * e + 2], by = edges[4 * e + 3];
-      if (Math.max(ay, by) < y || Math.min(ay, by) > y || Math.max(ax, bx) < x) continue;
-      const o = orient(ax, ay, bx, by, x, y);
-      if (o === 0 && x >= Math.min(ax, bx) && x <= Math.max(ax, bx)) return true; // on the boundary
-      if (ay <= y) { if (by > y && o > 0) winding++; }
-      else if (by <= y && o < 0) winding--;
-    }
-  }
-  return winding !== 0;
-}
-
-/** Cut parameters and boundary-run intervals of one path segment against the whole boundary. */
-/** Returns a bit set: 1 when the segment's start lies on the boundary, 2 when its end does. */
 function cutSegment(px: number, py: number, qx: number, qy: number, index: EdgeIndex, work: Work, cuts: number[], runs: number[]): number {
-  const { edges, cells, gx, gy, minX, minY, cellW, cellH, stamp } = index;
+  const { edges, cells, gx, gy, minX, minY, maxX, maxY, cellW, cellH, stamp } = index;
   const dx = qx - px, dy = qy - py, length2 = dx * dx + dy * dy;
   const project = (x: number, y: number): number => Math.min(1, Math.max(0, ((x - px) * dx + (y - py) * dy) / length2));
   const cx = (x: number) => Math.min(gx - 1, Math.max(0, Math.floor((x - minX) / cellW)));
@@ -115,7 +52,7 @@ function cutSegment(px: number, py: number, qx: number, qy: number, index: EdgeI
   const x0 = cx(Math.min(px, qx)), x1 = cx(Math.max(px, qx)), y0 = cy(Math.min(py, qy)), y1 = cy(Math.max(py, qy));
   const clock = ++index.clock;
   let touch = 0;
-  if (Math.max(px, qx) < minX || Math.min(px, qx) > minX + cellW * gx || Math.max(py, qy) < minY || Math.min(py, qy) > minY + cellH * gy) return 0;
+  if (Math.max(px, qx) < minX || Math.min(px, qx) > maxX || Math.max(py, qy) < minY || Math.min(py, qy) > maxY) return 0;
   for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) {
     const list = cells[y * gx + x];
     charge(work, list.length + 1);
@@ -188,7 +125,7 @@ export function clipPath(points: readonly (readonly [number, number])[], shape: 
       if (free) inside = carried!;
       else {
         for (let r = 0; r < runs.length; r += 2) if (tm >= runs[r] && tm <= runs[r + 1]) { inside = true; break; }
-        if (!inside) inside = insideIndexed(index, px + (qx - px) * tm, py + (qy - py) * tm, work);
+        if (!inside) inside = locateIndexed(index, px + (qx - px) * tm, py + (qy - py) * tm, work) >= 0;
       }
       carried = inside;
       if (inside !== (keep === "inside")) { dropped = true; if (current) { pieces.push(current); current = null; } continue; }
@@ -325,4 +262,36 @@ export function hatchDomain(shape: PlanarShape, options: HatchOptions): readonly
     }
   }
   return Object.freeze(out);
+}
+
+/**
+ * Winding-preserving clip of ONE ring to the rectangle `[0, width] × [0, height]` (Sutherland–Hodgman),
+ * or `null` when fewer than three vertices remain. It keeps the winding number of every point
+ * strictly inside the rectangle, so a font's rings clipped one by one still fill correctly under the
+ * nonzero rule, and it is cheap and order-preserving. It is NOT a Boolean: the output may contain
+ * edges along the rectangle boundary that double back and enclose no area (fill them, never stroke
+ * them), overlapping rings stay overlapping, and vertices are neither merged nor deduplicated. Use
+ * `domainIntersection` with `rectangleRegion` when a proper polygon result is needed.
+ */
+export function clipRingToRect(ring: readonly Point[], width: number, height: number): readonly Point[] | null {
+  let points: Point[] = ring as Point[];
+  const planes: Array<[(p: Point) => number, (a: Point, b: Point) => Point]> = [
+    [(p) => p[0], (a, b) => [0, a[1] + (b[1] - a[1]) * (0 - a[0]) / (b[0] - a[0])]],
+    [(p) => width - p[0], (a, b) => [width, a[1] + (b[1] - a[1]) * (width - a[0]) / (b[0] - a[0])]],
+    [(p) => p[1], (a, b) => [a[0] + (b[0] - a[0]) * (0 - a[1]) / (b[1] - a[1]), 0]],
+    [(p) => height - p[1], (a, b) => [a[0] + (b[0] - a[0]) * (height - a[1]) / (b[1] - a[1]), height]],
+  ];
+  for (const [distance, cut] of planes) {
+    if (points.length === 0) return null;
+    const next: Point[] = [];
+    for (let i = 0, j = points.length - 1; i < points.length; j = i++) {
+      const a = points[j], b = points[i], da = distance(a), db = distance(b);
+      if (db >= 0) {
+        if (da < 0) next.push(Object.freeze(cut(a, b)) as Point);
+        next.push(b);
+      } else if (da >= 0) next.push(Object.freeze(cut(a, b)) as Point);
+    }
+    points = next;
+  }
+  return points.length >= 3 ? Object.freeze(points) : null;
 }
