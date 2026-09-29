@@ -51,6 +51,8 @@ import { compartmentsUsesSeed } from "./adapters/compartments-instrument.js";
 import { strokeReliefDefinition } from "./adapters/stroke-relief-instrument.js";
 import { drawStrokeRelief, prepareStrokeRelief, strokeReliefComposition } from "./composition/stroke-relief.js";
 import { pathTypographyDefinition, pathTypographyUsesSeed } from "./adapters/path-typography-instrument.js";
+import { chemotacticTrailsDefinition } from "./adapters/chemotactic-trails-instrument.js";
+import { chemotacticTrailsComposition, drawChemotacticTrails, prepareChemotacticTrails } from "./composition/chemotaxis-draw.js";
 import { drawPathTypography, pathTypographyComposition, preparePathTypography } from "./composition/path-type-draw.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
@@ -250,6 +252,13 @@ export type { QuillFaceKind, QuillGeometryOptions, QuillGeometry, QuillCamera, Q
 export { quillGeometry, quillProjection, projectPoint, stripHeight, stripHeightFactor, stripSides, MAX_QUILL_FACES, MAX_PITCH, MIN_WALL } from "./composition/quill-geometry.js";
 export type { QuillTone, QuillMaterialSpec, QuillView, QuilledPathsComposition, QuillFace, QuillFacePainter, QuillConsumers, QuillProducts } from "./composition/quill-draw.js";
 export { quillComposition, quillProducts, quillCamera, quillPaper, drawQuilled, prepareQuilled } from "./composition/quill-draw.js";
+export type { ChemotaxisEmitter, ChemotaxisConstruction, ChemotaxisFrame, ChemotaxisSnapshots, ChemicalField, ChemotaxisTrail, TrailOptions, ChemotaxisAgent } from "./composition/chemotaxis.js";
+export { CHEMOTAXIS_ARENA, CHEMOTAXIS_LIMITS, SENSE_FLOOR, FIELD_EPSILON, checkChemotaxis, chemotaxisSimulation, chemotaxisCache, chemotaxisRunOptions, chemotaxisSnapshots, prepareChemotaxis, runChemotaxis, chemicalField,
+  chemotaxisTrails, chemotaxisAgents, contourLevels, fieldContourPaths, fieldBands, sampleField, relaxField, barrierMask, totalAgents } from "./composition/chemotaxis.js";
+export type { EmitterLayout, BarrierKind, EmitterLayoutOptions, BarrierOptions, ColonyControls } from "./composition/chemotaxis-layouts.js";
+export { emitterLayout, bundledBarrier, colonyGeometry, barrierBlocks, emitterLayouts, barrierKinds, barrierThickness } from "./composition/chemotaxis-layouts.js";
+export type { ChemotacticTrailsComposition, ChemotacticConsumers, ChemotacticProducts } from "./composition/chemotaxis-draw.js";
+export { chemotacticTrailsComposition, chemotacticProducts, chemotacticSnapshots, drawChemotacticTrails, prepareChemotacticTrails } from "./composition/chemotaxis-draw.js";
 export type { Simulation, SimulationContext, SimulationLimits, Snapshots, HistoryEntry, Frozen, RunOptions as SimulationRunOptions,
   AsyncRunOptions as SimulationAsyncRunOptions, SimulationCacheOptions } from "./composition/snapshots.js";
 export { runSimulation, prepareSimulation, resumeSimulation, stateAt, finalState, projectionAt, checkSimulation, createSimulationCache, SimulationCache,
@@ -276,7 +285,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, chemotacticTrailsDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -399,6 +408,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "adaptive-compartments": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0xefe6d2],
   "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "crossing-lace": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
+  "chemotactic-trails": [0x1f3040, 0xc4452b, 0xd9a441, 0x2f7a86, 0x6a8f4a],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -436,6 +446,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
+  if (input.technique === "chemotactic-trails") return drawChemotacticTrails(context, chemotacticTrailsComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
@@ -453,7 +464,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "chemotactic-trails" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -476,6 +487,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "stroke-relief") return prepareStrokeRelief(strokeReliefComposition(input), cancelled);
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
+  if (input.technique === "chemotactic-trails") return prepareChemotacticTrails(chemotacticTrailsComposition(input), cancelled);
   if (referenceIds[input.technique])
     return prepareReferenceComposition(referenceComposition(input), cancelled);
   if (!externalDynamicsPreparable.has(input.technique)) return !cancelled();

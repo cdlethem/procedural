@@ -557,6 +557,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "chemotactic-trails",
+      "title": "Chemotactic Trails",
+      "description": "Agents that follow and lay a chemical at once: each senses a diffusing, decaying field with two probes, steers toward or away from it and deposits more, so veins reinforce, colonies from separate emitters meet and barriers redirect them. Draw the chemical as contours or bands, the recorded trajectories as ink, stitches or brush hairs, and the agents as small marks; scrub the step count to watch it organize.",
+      "category": "Motion",
+      "operationIds": ["motion.sensor-motor-step-2d", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/chemotactic-trails.md",
+      "source": "packages/instruments/src/composition/chemotaxis-draw.ts",
+      "sourceEntry": "drawChemotacticTrails",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "painterly-source",
       "title": "Painterly Source",
       "description": "Assemble a picture from marks in coarse-to-fine layers: broad strokes first, finer ones only where the paint still differs from the source, turned along its edges and colored from it; mark family, material and color are separate choices over one plan.",
