@@ -7,6 +7,7 @@ import { graphRolesDefinition } from "./graph-roles-instrument.js";
 import { opticalPlatesDefinition } from "./optical-plates.js";
 import { tilingDefinitions } from "./tiling-instruments.js";
 import { typeRhythmDefinition } from "./type-rhythm-instrument.js";
+import { compartmentsDefinition } from "./compartments-instrument.js";
 
 type Condition = Record<string, readonly (string | number | boolean)[]>;
 function control(parameter: Parameter, visibleWhen?: Condition): Parameter {
@@ -344,6 +345,7 @@ export const referenceDefinitions: InstrumentDefinition[] = [
   opticalPlatesDefinition,
   ...tilingDefinitions,
   typeRhythmDefinition,
+  compartmentsDefinition,
 ];
 
 /** Draw a transparent 640-unit reference layer into the host-owned 2D surface. */

@@ -531,6 +531,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "adaptive-compartments",
+      "title": "Adaptive Compartments",
+      "description": "Divide a picture into a mosaic whose cell size follows its detail, big quiet cells where it is flat and small ones along its edges, then fill each cell with flat color, hatching along the local direction, halftone dots, a nested glyph or a stitched border, and leave a chosen share open.",
+      "category": "Images",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/adaptive-compartments.md",
+      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+      "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
