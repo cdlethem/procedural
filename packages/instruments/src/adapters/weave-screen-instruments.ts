@@ -1,4 +1,5 @@
 import { clipSegmentsSimplePolygon2D, gradientNoise2D01 } from "@procedurals/javascript";
+import { gratingLines } from "../composition/patterns.js";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
 import type { ControlGroup, Layer } from "../types.js";
 import { channels, choice, numeric, text, toggle, type StudioDefinition } from "./types.js";
@@ -282,26 +283,21 @@ export function validateRegisteredScreens(q: Layer["params"]): void {
   // convex footprints return at most one piece per input. Reject instead of thinning.
   if (segments > 12000) throw Error("Reduce screen density, curvature frequency or footprint size: 12000 segment budget exceeded");
 }
-/** Real line segments clipped to the shared rectangle; no raster, summed field or panel. */
+/** Real line segments clipped to the shared rectangle; no raster, summed field or panel.
+ *  The lines are the shared `gratingLines` pattern function; only their extent and step rule live here. */
 export function registeredScreenSegments(q: Layer["params"], family: "A" | "B"): Segment[] {
   validateRegisteredScreens(q);
   const s = screenSettings(q, family);
   if (!s.enabled || s.weight === 0) return [];
   const { lines, first, steps, travel } = screenCount(q, family);
-  const radians = s.angle * Math.PI / 180, dx = Math.cos(radians), dy = Math.sin(radians), nx = -dy, ny = dx;
+  const offsets: number[] = [];
+  for (let line = 0; line < lines; line++) offsets.push((first + line) * s.pitch + s.phase);
   const input: Segment[] = [];
-  for (let line = 0; line < lines; line++) {
-    const shift = (first + line) * s.pitch + s.phase;
-    let previous: Point | undefined;
-    for (let step = 0; step <= steps; step++) {
-      const t = -travel + 2 * travel * step / steps;
-      const normal = shift + s.curve * Math.sin(TAU * s.frequency * t / Math.max(v(q, "width"), v(q, "height")));
-      const next: Point = [v(q, "centerX") + s.offsetX + dx * t + nx * normal,
-        v(q, "centerY") + s.offsetY + dy * t + ny * normal];
-      if (previous) input.push([previous[0], previous[1], next[0], next[1]]);
-      previous = next;
-    }
-  }
+  for (const polyline of gratingLines({ originX: v(q, "centerX") + s.offsetX, originY: v(q, "centerY") + s.offsetY,
+    angle: s.angle * Math.PI / 180, offsets, travel, steps, curve: s.curve, waveCycles: s.frequency,
+    waveSpan: Math.max(v(q, "width"), v(q, "height")) }))
+    for (let index = 1; index < polyline.length; index++)
+      input.push([polyline[index - 1][0], polyline[index - 1][1], polyline[index][0], polyline[index][1]]);
   return clip(input, rectangle(v(q, "centerX"), v(q, "centerY"), v(q, "width"), v(q, "height")));
 }
 

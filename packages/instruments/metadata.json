@@ -336,6 +336,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "optical-plates",
+      "title": "Optical Plates",
+      "description": "Two editable pattern plates (lines, rings, dots, waves, spokes), linked or detached, alone or overlaid, with one following a type or region mask.",
+      "category": "Fields & paths",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/optical-plates.md",
+      "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
+      "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",

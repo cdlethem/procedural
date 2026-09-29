@@ -4,6 +4,7 @@ import type { ControlGroup, InstrumentInput, InstrumentDefinition, Parameter } f
 import { choice, numeric } from "./types.js";
 import { mapNames } from "../composition/warp.js";
 import { graphRolesDefinition } from "./graph-roles-instrument.js";
+import { opticalPlatesDefinition } from "./optical-plates.js";
 
 type Condition = Record<string, readonly (string | number | boolean)[]>;
 function control(parameter: Parameter, visibleWhen?: Condition): Parameter {
@@ -338,6 +339,7 @@ export const referenceDefinitions: InstrumentDefinition[] = [
       nodeMark: "dot", nodeSize: 4, nodePetals: 6, nodeOpening: .4, nodeWeight: 1 },
   },
   graphRolesDefinition,
+  opticalPlatesDefinition,
 ];
 
 /** Draw a transparent 640-unit reference layer into the host-owned 2D surface. */

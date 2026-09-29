@@ -39,6 +39,12 @@ export type { Graph, GraphNode, GraphEdge, GraphStats, GraphParts, GraphRoleOpti
   RouteMode, RouteMetric, RouteOptions, GraphAttribute, ContactGraphOptions, LatticeGraphOptions, BranchGraphOptions } from "./composition/graph.js";
 export { drawGraphComposition, graphStructure, faceFill, edgeToneRole, graphTones } from "./composition/graph-draw.js";
 export type { GraphComposition, GraphStructure, GraphSourceOptions, GraphRouteRecipe, FaceFillSpec, EdgeTone } from "./composition/graph-draw.js";
+export { patternFunction, gratingLines, planeWave, radialWave, driftPhase, driftPosition, MIN_PERIOD, DEFAULT_FLATNESS } from "./composition/patterns.js";
+export type { PatternSpec, PatternFunction, PatternRequest, PatternElements, PatternStroke, PatternDot, WavePattern } from "./composition/patterns.js";
+export { resolveSupport, supportContains, clipToSupport } from "./composition/support.js";
+export type { FootprintSpec, MaskSource, MaskSpec, SupportSpec, Support, Ring } from "./composition/support.js";
+export { opticalPlates, makePlate, plateFrames, drawPlate, drawPlatesRecipe } from "./composition/plates.js";
+export type { OpticalPlates, OpticalPlatesOptions, Plate, PlateFrame, PlateOptions, PlateConsumers, PlateInk, PlatesRecipe, Registration } from "./composition/plates.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -160,6 +166,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "recursive-cells": [0x22301f, 0xb5832a, 0x8a4a35, 0x3f6572],
   "fold-atlas": [0x1f2a33, 0xc0452a, 0x2f6f8f, 0xb8862b],
   "graph-roles": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x9a3d78],
+  "optical-plates": [0x1f2d3a, 0xc0452a, 0x2f6f8f],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -233,6 +240,7 @@ export function usesSeed(input: InstrumentInput): boolean {
   const q = input.params;
   switch (input.technique) {
     case "quantized-stripes": return q.order === "shuffle";
+    case "optical-plates": return q.maskedPlate !== "none" && q.maskShape === "regions";
     case "orbit-beads": return false;
     case "profile-marks": case "depth-marks": case "annular-marks": return q.colorMode === "noise";
     case "ramp-marks": return Number(q.disorder) > 0 || Number(q.retention) > 0 && Number(q.retention) < 1;

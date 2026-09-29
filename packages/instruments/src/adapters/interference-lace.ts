@@ -1,6 +1,7 @@
 import { gradientNoise2D01, marchingSquares2D } from "@procedurals/javascript";
 import { JavaRandom } from "@procedurals/javascript/examples/city-marks/city-marks.js";
 import type { Layer } from "../types.js";
+import { planeWave, type WavePattern } from "../composition/patterns.js";
 import { channels, numeric, type StudioDefinition } from "./types.js";
 
 const TAU = Math.PI * 2;
@@ -52,15 +53,22 @@ function laceResolution(q: Layer["params"]): number {
   return Math.max(97, Math.ceil(frequency * stretch * 8) + 1);
 }
 
-/** Reusable scalar samples; palette, contour levels, source placement and stroke never reroll them. */
-export function interferenceLaceField(seed: number, q: Layer["params"]) {
-  validateInterferenceLace(q);
-  const size = laceResolution(q), values = new Array<number>(size * size);
+/** The two wave families as replaceable scalar patterns; each takes its own domain-warp sample. */
+export function interferenceLaceWaves(seed: number, q: Layer["params"]): readonly [WavePattern, WavePattern] {
   const random = new JavaRandom(seed), firstPhase = random.nextDouble() * TAU;
   const secondPhase = random.nextDouble() * TAU + Number(q.phase) * Math.PI / 180;
+  const frequency = Number(q.frequency);
+  return [planeWave({ frequency, angle: 0, phase: firstPhase }),
+    planeWave({ frequency, ratio: Number(q.ratio), angle: Number(q.angle) * Math.PI / 180, phase: secondPhase })];
+}
+
+/** Reusable scalar samples; palette, contour levels, source placement and stroke never reroll them.
+ *  `waves` may replace either family (for example with `radialWave`); the sampling rule, eight samples
+ *  per undistorted shortest wave plus the noise bend, is unchanged. */
+export function interferenceLaceField(seed: number, q: Layer["params"], waves = interferenceLaceWaves(seed, q)) {
+  validateInterferenceLace(q);
+  const size = laceResolution(q), values = new Array<number>(size * size);
   const noise = gradientNoise2D01({ seed });
-  const angle = Number(q.angle) * Math.PI / 180, c = Math.cos(angle), s = Math.sin(angle);
-  const frequency = Number(q.frequency), ratio = Number(q.ratio);
   const warp = Number(q.warp), scale = Number(q.warpScale);
   for (let y = 0; y < size; y++) {
     const v = y / (size - 1) - .5;
@@ -69,8 +77,8 @@ export function interferenceLaceField(seed: number, q: Layer["params"]) {
       if (radius2 >= 1) { values[y * size + x] = 0; continue; }
       const bendA = warp === 0 ? 0 : (noise.sample(u * scale + 11, v * scale + 7) - .5) * warp;
       const bendB = warp === 0 ? 0 : (noise.sample(u * scale - 19, v * scale + 31) - .5) * warp;
-      const a = Math.cos(TAU * frequency * (u + bendA) + firstPhase);
-      const b = Math.cos(TAU * frequency * ratio * (u * c + v * s + bendB) + secondPhase);
+      const a = waves[0](u, v, bendA);
+      const b = waves[1](u, v, bendB);
       values[y * size + x] = (1 - radius2) ** 2 * (a + b) * .5;
     }
   }

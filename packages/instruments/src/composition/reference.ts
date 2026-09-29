@@ -8,6 +8,8 @@ import type { PreparedRegionGeometry } from "./materials.js";
 import { contourPaths, gridPaths, gridSites, latticeSites, memoized, partitionRegions, poissonSites, regionTree, wallpaperSites } from "./sources.js";
 import { warpPaths, warpSites } from "./warp.js";
 import { drawGraphComposition, graphRolesComposition, prepareGraphComposition } from "./graph-draw.js";
+import { drawPlatesRecipe, preparePlatesRecipe } from "./plates.js";
+import { opticalPlatesRecipe } from "../adapters/optical-plates.js";
 import type { CompositionRun, CompositionSurface, LatticeSite, MapName, MapStage, MotifSpec, Path, PathMaterialSpec,
   ReferenceComposition, Region, RegionFillSpec, RegionTreeNode, Site, WallpaperGroup } from "./types.js";
 
@@ -76,6 +78,7 @@ export function referenceComposition(input: InstrumentInput): ReferenceCompositi
       levelBase: q.levelBase as number, levelStep: q.levelStep as number, levels: q.levels as number,
       rotation: q.rotation as number }, material: material(q) };
   }
+  if (input.technique === "optical-plates") return opticalPlatesRecipe(q, seed, palette);
   if (input.technique === "fold-atlas") {
     return { kind: "warp", palette, grid: { seed, centerX: q.centerX as number, centerY: q.centerY as number,
       width: q.width as number, height: q.height as number, columns: q.columns as number, rows: q.rows as number,
@@ -167,6 +170,8 @@ export function drawReferenceComposition(surface: CompositionSurface, recipe: Re
     const { paths, sites } = foldedGrid(recipe);
     if (recipe.material.retention > 0) strokeWith(surface, paths, pathMaterial(recipe.material, recipe.palette), run);
     if (recipe.mark.size > 0) atEach(surface, sites, motif(recipe.mark, recipe.palette), run);
+  } else if (recipe.kind === "plates") {
+    drawPlatesRecipe(surface, recipe, run);
   } else if (recipe.kind === "cells") {
     const selected = regionFill(recipe.fill, recipe.palette);
     if (recipe.fill.retention === 0) return;
@@ -190,6 +195,7 @@ export async function prepareReferenceComposition(recipe: ReferenceComposition, 
   if (recipe.kind === "wallpaper") { motif(recipe.mark, recipe.palette); if (recipe.mark.retention > 0) wallpaperSites(recipe.source); return !cancelled(); }
   if (recipe.kind === "lattice") { motif(recipe.mark, recipe.palette); if (recipe.mark.retention > 0) latticeSites(recipe.source); return !cancelled(); }
   if (recipe.kind === "warp") { pathMaterial(recipe.material, recipe.palette); motif(recipe.mark, recipe.palette); foldedGrid(recipe); return !cancelled(); }
+  if (recipe.kind === "plates") return preparePlatesRecipe(recipe, cancelled);
   const regions = recipe.kind === "cells" ? terminalRegions(regionTree(recipe.source)) : partitionRegions(recipe.source);
   boundNestedWork(regions, recipe.fill);
   const scene = new Map<string, PreparedRegionGeometry | undefined>();

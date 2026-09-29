@@ -271,6 +271,22 @@ export function validateWordEcho(params: Layer["params"]): void {
   if (echoes * expected > 10_000) throw new Error("Word echo mark work budget exceeded");
 }
 
+/** Glyph-unit outlines of printable ASCII text in the licensed font: advances laid out left to right,
+ *  centered on x = 0, y down from the baseline. Each contour is one closed ring. */
+export function textOutlines(content: string): number[][][] {
+  if (!/^[\x20-\x7E]{1,20}$/.test(content) || !content.trim())
+    throw new Error("Contour text supports only 1–20 printable ASCII characters (U+0020–U+007E)");
+  const width = [...content].reduce((sum, letter) => sum + glyphs[letter].advance, 0);
+  let x = -width * .5;
+  const contours: number[][][] = [];
+  for (const letter of content) {
+    const glyph = glyphs[letter];
+    for (const contour of glyph.contours) contours.push(contour.map(([px, py]) => [x + px, py]));
+    x += glyph.advance;
+  }
+  return contours;
+}
+
 export function wordEchoSource(params: Layer["params"]): Point[][] {
   validateWordEcho(params);
   const centerX = params.centerX as number, centerY = params.centerY as number;
@@ -287,15 +303,8 @@ export function wordEchoSource(params: Layer["params"]): Point[][] {
     }
     local = [path];
   } else {
-    const content = params.text as string;
-    const width = [...content].reduce((sum, letter) => sum + glyphs[letter].advance, 0);
-    let x = -width * .5;
-    local = [];
-    for (const letter of content) {
-      const glyph = glyphs[letter];
-      for (const contour of glyph.contours) local.push(contour.map(([px, py]): Point => [(x + px) * scale, (py + 56) * scale]));
-      x += glyph.advance;
-    }
+    local = textOutlines(params.text as string).map(contour =>
+      contour.map(([px, py]): Point => [px * scale, (py + 56) * scale]));
   }
   const angle = (params.direction as number) * Math.PI / 180, ca = Math.cos(angle), sa = Math.sin(angle);
   return local.map(contour => contour.map(([x, y]) => [centerX + x * ca - y * sa, centerY + x * sa + y * ca]));

@@ -1,4 +1,5 @@
 import type { GraphComposition } from "./graph-draw.js";
+import type { PlatesRecipe } from "./plates.js";
 /** p5-compatible 2D drawing boundary. The host owns canvas creation and clearing. */
 export interface CompositionSurface {
   readonly CLOSE: unknown;
@@ -267,4 +268,5 @@ export type ReferenceComposition =
   | { kind: "lattice"; source: LatticeOptions; mark: MotifSpec; palette: readonly number[] }
   | { kind: "wallpaper"; source: WallpaperOptions; mark: MotifSpec; palette: readonly number[] }
   | { kind: "warp"; grid: GridOptions; map: WarpOptions; material: PathMaterialSpec; mark: MotifSpec; palette: readonly number[] }
-  | ({ kind: "graph" } & GraphComposition);
+  | ({ kind: "graph" } & GraphComposition)
+  | PlatesRecipe;
