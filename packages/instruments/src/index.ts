@@ -52,6 +52,8 @@ import { strokeReliefDefinition } from "./adapters/stroke-relief-instrument.js";
 import { drawStrokeRelief, prepareStrokeRelief, strokeReliefComposition } from "./composition/stroke-relief.js";
 import { pathTypographyDefinition, pathTypographyUsesSeed } from "./adapters/path-typography-instrument.js";
 import { drawPathTypography, pathTypographyComposition, preparePathTypography } from "./composition/path-type-draw.js";
+import { glyphPackingDefinition, glyphPackingUsesSeed } from "./adapters/glyph-packing-instrument.js";
+import { drawGlyphPacking, glyphPackingComposition, prepareGlyphPacking } from "./composition/glyph-pack-draw.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
@@ -231,6 +233,17 @@ export { branchChains, gestureNaturalExtent, rankedPaths, supplyPaths, smoothPat
 export type { ColorBy as PathTypographyColorBy, PathTypographyComposition, GlyphMark, PathTypographyConsumers, TypographyProducts } from "./composition/path-type-draw.js";
 export { pathTypographyComposition, pathTypographyProducts, glyphTone, glyphFill, glyphOutline, drawPathTypography, preparePathTypography,
   MAX_TYPE_FRAMES, MIN_STRAIGHTNESS, GESTURE_SPACING } from "./composition/path-type-draw.js";
+export type { FlatRing, FlatRegion, Tally } from "./composition/domains-contact.js";
+export { flatRing, transformRing, segmentsContact, ringsContact, regionsContact, locateInFlatRing, ringWithin } from "./composition/domains-contact.js";
+export type { GlyphPart, GlyphSource, SymbolInput, VocabularyEntry, GlyphVocabulary, CounterPolicy, FlatPart, Footprint, BundledSymbolId, BundledVocabularyId } from "./composition/glyph-sources.js";
+export { wordSource, symbolSource, bundledSymbol, bundledSymbolIds, glyphVocabulary, bundledVocabulary, bundledVocabularyIds, footprintOf, MAX_SOURCE_TEXT } from "./composition/glyph-sources.js";
+export type { BundledContainerId, ContainerPlacement, NegativeKind, NegativeSpec, PackingField } from "./composition/glyph-containers.js";
+export { bundledContainerIds, containerSilhouette, placeContainer, negativeSpace, noNegativeSpace, packingField } from "./composition/glyph-containers.js";
+export type { OrientationRule, Orientation, PackOptions, GlyphInstance, UnplacedReason, Unplaced, PackingStats, GlyphPacking, Demand } from "./composition/glyph-pack.js";
+export { GLYPH_PACKING_LIMITS, validatePack, pickEntry, planDemands, packGlyphs, instanceInk } from "./composition/glyph-pack.js";
+export type { GlyphColorBy, ContainerShown, GlyphPackingComposition, GlyphMark as GlyphPackMark, GlyphPackingConsumers, GlyphPackingProducts } from "./composition/glyph-pack-draw.js";
+export { glyphPackingComposition, glyphPackingProducts, glyphTone as packedGlyphTone, glyphFill as packedGlyphFill, glyphOutline as packedGlyphOutline,
+  drawGlyphPacking, prepareGlyphPacking } from "./composition/glyph-pack-draw.js";
 export type { Crossing, CrossingSide, Contact, NearMiss, CrossingSet, CrossingOptions } from "./composition/crossings.js";
 export { findCrossings, CROSSING_LIMITS } from "./composition/crossings.js";
 export type { OverRule, CrossingOrderOptions, Occurrence, AlternationBreak, CrossingOrder } from "./composition/crossing-order.js";
@@ -268,7 +281,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, glyphPackingDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -381,6 +394,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "pixel-sorting": [0x1c2230, 0x8a3b32, 0xd9a441, 0xf1e6cf],
   "path-typography": [0x1f2226, 0xc24a34, 0x2f6c8f, 0xb8862b],
+  "glyph-packing": [0x1e2228, 0xb8452f, 0x2f6f7a, 0xd9a441],
   "image-directed-field": [0x1d2230, 0x8d3b2a, 0x2f6f7a, 0xc99a3b],
   "bundled-relations": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86, 0x9c5f34],
   "dry-bristles": [0x22252b, 0x2f6f7a, 0xb8452f, 0xc99a3b],
@@ -416,6 +430,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "branch-ornament") return drawBranchOrnament(context, branchOrnamentComposition(input));
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
   if (input.technique === "path-typography") return drawPathTypography(context, pathTypographyComposition(input));
+  if (input.technique === "glyph-packing") return drawGlyphPacking(context, glyphPackingComposition(input));
   if (input.technique === "sand-deposition") return drawSandDeposition(context, sandDepositionComposition(input));
   if (input.technique === "quilled-paths") return drawQuilled(context, quillComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
@@ -445,7 +460,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "glyph-packing" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -456,6 +471,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
   if (input.technique === "fm-engraving") return prepareEngraving(engravingComposition(input), cancelled);
   if (input.technique === "path-typography") return preparePathTypography(pathTypographyComposition(input), cancelled);
+  if (input.technique === "glyph-packing") return prepareGlyphPacking(glyphPackingComposition(input), cancelled);
   if (input.technique === "image-directed-field") return prepareImageDirectedField(imageDirectedFieldComposition(input), cancelled);
   if (input.technique === "sand-deposition") return prepareSandDeposition(sandDepositionComposition(input), cancelled);
   if (input.technique === "quilled-paths") return prepareQuilled(quillComposition(input), cancelled);
@@ -505,6 +521,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "pixel-sorting": return pixelSortingUsesSeed(q);
     case "fm-engraving": return fmEngravingUsesSeed(q);
     case "path-typography": return pathTypographyUsesSeed(q);
+    case "glyph-packing": return glyphPackingUsesSeed(q);
     case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
