@@ -102,7 +102,7 @@ export const GROWTH_LIMITS = Object.freeze({
   maxBending: 1,
   maxThickness: 1.5,
   /** Work units (see `growthStepWork`) one run may declare: steps x the worst-case step. */
-  maxWork: 300_000_000,
+  maxWork: 400_000_000,
 });
 export const REFINE_PASSES = 2;
 export const CHECKPOINT_EVERY = 25;

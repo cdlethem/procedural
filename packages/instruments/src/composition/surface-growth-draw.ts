@@ -163,7 +163,10 @@ export function surfaceWirePaths(mesh: Mesh, cam: Camera, seed: number, run?: Co
 
 const attributeValues = (mesh: Mesh, name: string): Float64Array => meshStorage(mesh).attributes.find((a) => a.name === name)!.values;
 
-/** Level values of `by` for `count` iso-lines: evenly spaced strictly inside the range (see the module header of the instrument guide). */
+/**
+ * Level values of `by` for `count` iso-lines, evenly spaced strictly inside the range: growth between 1 and the growth limit, stretch
+ * and height between the mesh's extremes, refinement depth at each half generation up to `count` of them.
+ */
 export function surfaceLevelValues(mesh: Mesh, by: "growth" | "stretch" | "height" | "depth", count: number, limit: number): readonly number[] {
   let low: number, high: number;
   if (by === "growth") { low = 1; high = limit; }
@@ -193,19 +196,29 @@ export function surfaceLevelPaths(mesh: Mesh, cam: Camera, by: "growth" | "stret
 }
 
 const attributeOf = (by: ColorBy): string | null => by === "none" ? null : by === "depth" ? "generation" : by;
-/** Attribute value in [0, 1] for colour: growth over its capacity, stretch about zero (+-0.15), refinement depth over the deepest. */
+const scaleCache = new WeakMap<Mesh, number>();
+/** The strain that maps to the ends of the stretch ramp: the 95th percentile of |stretch| (at least 0.01), so the ramp spans what this skin shows. */
+function stretchScale(mesh: Mesh): number {
+  const hit = scaleCache.get(mesh);
+  if (hit !== undefined) return hit;
+  const magnitudes = Float64Array.from(attributeValues(mesh, "stretch"), Math.abs).sort();
+  const scale = Math.max(0.01, magnitudes.length ? magnitudes[Math.min(magnitudes.length - 1, Math.floor(0.95 * magnitudes.length))] : 0);
+  scaleCache.set(mesh, scale);
+  return scale;
+}
+/** Colour fraction in [0, 1] of one attribute value: growth over its capacity, stretch about zero over `stretchScale`, refinement depth over the deepest. */
+function fractionOf(by: ColorBy, value: number, limit: number, scale: number, deepest: number): number {
+  const t = by === "growth" ? (limit > 1 ? (value - 1) / (limit - 1) : 0) : by === "stretch" ? 0.5 + 0.5 * Math.max(-1, Math.min(1, value / scale)) : value / deepest;
+  return Math.max(0, Math.min(1, t));
+}
 function colorFraction(mesh: Mesh, by: ColorBy, limit: number): Float64Array | null {
   const name = attributeOf(by);
   if (!name) return null;
-  const values = attributeValues(mesh, name), out = new Float64Array(values.length);
+  const values = attributeValues(mesh, name);
   let deepest = 1;
   if (by === "depth") for (const g of values) if (g > deepest) deepest = g;
-  for (let i = 0; i < values.length; i++) {
-    const v = values[i];
-    out[i] = by === "growth" ? (limit > 1 ? (v - 1) / (limit - 1) : 0) : by === "stretch" ? 0.5 + 0.5 * Math.max(-1, Math.min(1, v / 0.15)) : v / deepest;
-    out[i] = Math.max(0, Math.min(1, out[i]));
-  }
-  return out;
+  const scale = by === "stretch" ? stretchScale(mesh) : 1;
+  return Float64Array.from(values, (v) => fractionOf(by, v, limit, scale, deepest));
 }
 
 /** Surface samples that are visible (not hidden behind the surface), far to near, as sites; `tone` is the colour index. */
@@ -217,14 +230,13 @@ export function surfaceGrains(mesh: Mesh, cam: Camera, recipe: SurfaceGrowthComp
     const cloud = sampleSurface(mesh, { seed, count, distribution: "even", normals: "smooth", attributes: name ? [name] : [] });
     const seen = visiblePoints(mesh, cloud, cam, run ? { run } : {});
     const values = name ? pointAttribute(cloud, name).values : null;
-    const top = by === "depth" && values ? values.reduce((m, v) => Math.max(m, v), 1) : 1;
+    const top = by === "depth" && values ? values.reduce((m, v) => Math.max(m, v), 1) : 1, scale = by === "stretch" ? stretchScale(mesh) : 1;
     const zoom = cam.options.zoom;
     return projectPoints(cloud, cam, { order: "far-to-near" }).filter((p) => seen[p.index] === 1).map((p) => {
       let tone = 1;
       if (values) {
         const v = values[p.index];
-        const t = by === "growth" ? (limit > 1 ? (v - 1) / (limit - 1) : 0) : by === "stretch" ? 0.5 + 0.5 * Math.max(-1, Math.min(1, v / 0.15)) : v / top;
-        tone = palette.length > 1 ? 1 + Math.min(palette.length - 2, Math.floor(Math.max(0, Math.min(1, t)) * (palette.length - 1))) : 0;
+        tone = palette.length > 1 ? 1 + Math.min(palette.length - 2, Math.floor(fractionOf(by, v, limit, scale, top) * (palette.length - 1))) : 0;
       }
       return Object.freeze({ ...p, scale: cam.scaleAt(p.depth) / zoom, tone });
     });

@@ -541,8 +541,16 @@ test("controls are grouped, conditions are inline and the seed matters only wher
   assert.ok(definition.parameters.every((p) => p.group));
   const tree = inspectorItems("surface-growth", createInstrument("surface-growth").params);
   const names = tree.filter((item) => item.kind === "group").map((item) => item.label);
-  assert.deepEqual(names.slice(0, 3), ["Seed surface", "Placement", "Growth field"]);
-  assert.ok(names.includes("View"));
+  assert.deepEqual(names, ["Seed surface", "Placement", "Growth field", "Growth", "Skin", "Refinement", "Faces", "Color", "Lines", "Grains", "View"]);
+  const proportional: Array<[string, string[]]> = [];
+  const walk = (items: typeof tree, path: string) => {
+    for (const item of items) if (item.kind === "group") {
+      if (item.proportional) proportional.push([path + item.label, item.items.map((entry) => entry.kind === "control" ? entry.parameter.key : "")]);
+      walk(item.items as typeof tree, `${path}${item.label}/`);
+    }
+  };
+  walk(inspectorItems("surface-growth", { ...createInstrument("surface-growth").params, field: "radial", lines: "both", levelBy: "growth" }), "");
+  assert.deepEqual(proportional, [["Growth field/Ring", ["fieldRadius", "fieldWidth"]], ["Lines/Line weights", ["contourWeight", "wireWeight", "levelWeight"]]]);
   assert.equal(canPrepareInstrument("surface-growth"), true);
   const q = createInstrument("surface-growth").params;
   assert.equal(usesSeed(input({ perturb: 0, field: "edge", grains: 0 })), false);

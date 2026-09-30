@@ -56,7 +56,7 @@ const parameters: Parameter[] = [
 
   n("rate", "Growth rate", "How much a vertex in full growth lengthens each step, as a fraction of its length. A step multiplies its growth scale by 1 + rate × field, up to the limit.", 0.005, 0.08, 0.001, 0, GROWTH_LIMITS.maxRate),
   n("limit", "Growth limit", "Largest expansion of any part of the skin: 2 lets edges grow to twice their seed length. When every growing part reaches it, growth has ended and the skin only settles.", 1.2, 5, 0.05, 1, GROWTH_LIMITS.maxScale),
-  n("steps", "Steps", "How many growth steps have run. Scrub it to watch the ruffles form: earlier steps are the same skin, younger; it is one run, extended or replayed from a checkpoint, never re-rolled.", 0, 400, 1, 0, GROWTH_LIMITS.maxSteps),
+  n("steps", "Steps", "How many growth steps have run. Scrub it to watch the ruffles form: earlier steps are the same skin, younger; it is one run, extended or replayed from a checkpoint, never re-rolled.", 0, 300, 1, 0, GROWTH_LIMITS.maxSteps),
 
   n("bending", "Bending", "Stiffness of the folds relative to stretching, in bending rigidity (stretch modulus × seed unit²). Low values give many tight ruffles; higher ones give a few broad, smooth folds; 0 is a limp skin.", 0, 0.01, 0.0001, 0, 1),
   select("pin", "Pin", "Hold part of the skin still: nothing, its whole rim, one center vertex, or one side (the left edge of a sheet or strip, the left arc of a disc). Pinned parts never move, so the free part buckles against them. The sphere has no rim and ignores it.", GROWTH_PINS, open),
@@ -65,7 +65,7 @@ const parameters: Parameter[] = [
 
   flag("refine", "Refine", "Split the skin's longest edges as it stretches, so growing regions get the detail their new length needs. Off keeps the seed's triangles."),
   n("edgeLimit", "Edge limit", "An edge longer than this many seed edges is split at its midpoint (both its triangles). Lower values make finer, more detailed ruffles and use more vertices.", 1.2, 3, 0.05, GROWTH_LIMITS.minEdgeLimit, GROWTH_LIMITS.maxEdgeLimit, refined),
-  n("maxVertices", "Vertex limit", "The most vertices the refined skin may have. Once it is reached, longer edges stay unsplit (the frame counts how many were refused); it may not be below the seed's own vertex count.", 300, 5000, 10, 8, GROWTH_LIMITS.maxVertices, refined),
+  n("maxVertices", "Vertex limit", "The most vertices the refined skin may have. Once it is reached, longer edges stay unsplit (the frame counts how many were refused); it may not be below the seed's own vertex count.", 300, 4000, 10, 8, GROWTH_LIMITS.maxVertices, refined),
 
   select("faces", "Faces", "How the skin's triangles are painted, far to near so nearer folds hide farther ones: not at all, in one flat color, lit with each triangle's own normal (facets), or lit with normals smoothed across triangles.", ["none", "flat", "facets", "shaded"]),
   select("backFaces", "Underside", "How faces turned away from the camera are painted: like the top, mixed toward the line color so the two sides read differently, or not at all.", ["same", "tinted", "hidden"], filled),
