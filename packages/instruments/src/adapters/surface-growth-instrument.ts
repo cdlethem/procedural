@@ -38,7 +38,7 @@ const parameters: Parameter[] = [
   n("centerY", "Center Y", "Vertical canvas position of the surface's center (the world origin).", 0, 640, 1, 0, 640),
   n("size", "Size", "Radius on the canvas, in canvas units, of the sphere about the surface's center that contains all of it. The picture is framed to the grown surface, so a surface that has grown larger still fills the same space; only the view changes, never the growth.", 100, 320, 1, 1, 4000),
 
-  select("field", "Growth field", "Where the skin is allowed to expand: near its edge, in a ring around a point, in stripes, in seeded blobs, or everywhere. Growth goes where this field is high; the rest is pushed into folds.", GROWTH_FIELD_KINDS),
+  select("field", "Growth field", "Where the skin is allowed to expand: near its edge, in a ring around a point, in stripes, in seeded blobs, or everywhere. Growth goes where this field is high; the rest is pushed into folds. A sphere has no edge, so there Edge grows a cap around its pole with the same Band width.", GROWTH_FIELD_KINDS),
   n("fieldWidth", "Band width", "Width of the growing band in seed units: how far from the edge growth reaches, or the Gaussian half width of the ring.", 0.1, 1.2, 0.01, 0.01, 10, ringed),
   n("fieldRadius", "Ring radius", "Radius of the growing ring around its center, in seed units. 0 grows a round spot.", 0, 1.4, 0.01, 0, 10, radial),
   n("fieldX", "Ring center X", "Horizontal position of the ring's center on the seed (-1 to 1). On the sphere the center sits on the surface above this point.", -1, 1, 0.01, -2, 2, radial),

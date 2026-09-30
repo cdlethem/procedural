@@ -38,7 +38,7 @@ recomputes the run; scrubbing **Steps** extends the same run or replays it from 
 
 | Controls | What changes on the canvas |
 |---|---|
-| **Growth field** | *Edge*: growth near the rim. *Ring*: a ring (or a round spot at radius 0) around a point. *Stripes*: parallel bands. *Blobs*: seeded patches. *Everywhere*: uniform. Growth goes where the field is high; the rest is pushed into folds. The sphere has no edge. |
+| **Growth field** | *Edge*: growth near the rim. *Ring*: a ring (or a round spot at radius 0) around a point. *Stripes*: parallel bands. *Blobs*: seeded patches. *Everywhere*: uniform. Growth goes where the field is high; the rest is pushed into folds. The sphere has no edge, so *Edge* there grows a cap around its pole with the same **Band width**. |
 | **Band width** | For *Edge*: how far from the rim growth reaches. For *Ring*: the ring's width. Reaching the centre turns edge growth into global swelling. |
 | **Ring radius**, **Ring center X/Y** | The ring's size and position on the seed. Radius and width scale together as **Ring**. |
 | **Stripes**, **Stripe angle**, **Stripe sharpness** | Stripes across the seed, their direction, and how sharply growth switches on and off. More stripes give finer, closer folds. |

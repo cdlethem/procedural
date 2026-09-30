@@ -9,7 +9,7 @@
  * `noiseScale`, `noiseContrast`, `baseline`, `spot`, `spotX`, `spotY`, `spotWidth`, `rate`, `limit`, `steps`,
  * `bending`, `pin`, `sweeps`, `thickness`, `refine`, `edgeLimit`, `maxVertices` and the seed. Controls a choice
  * makes irrelevant are normalized here, so a hidden control never changes the drawing: the field's own numbers
- * are read only for its kind, `pin` is ignored on a closed surface, and the refinement numbers are ignored when
+ * are read only for its kind, `pin` is ignored on a closed surface, `edge` on a closed surface means a pole cap of the same width, and the refinement numbers are ignored when
  * refinement is off.
  */
 import { growthField, type GrowthFieldSpec, type GrowthRegion } from "./growth-field.js";
@@ -36,10 +36,12 @@ export function growthConstruction(q: Record<string, Scalar>): SurfaceGrowthCons
   const seed = bundledGrowthSeed(kind, resolution);
   const field = q.field as GrowthFieldKind;
   if (!GROWTH_FIELD_KINDS.includes(field)) throw new Error(`Growth field must be one of ${GROWTH_FIELD_KINDS.join(", ")} (got ${String(field)})`);
-  if (field === "edge" && seed.closed) throw new Error("Growth field \"edge\" needs an open seed surface (the sphere has no edge); choose another field or a sheet, disc or strip");
   let primary: GrowthRegion;
   switch (field) {
-    case "edge": primary = { kind: "edge", width: num(q, "fieldWidth") }; break;
+    // A closed surface has no edge, so the instrument's Edge choice means the nearest closed-surface thing: growth gathered around
+    // the pole (the point of the sphere above the seed's center), falling off with the same Band width. The direct API
+    // (`growthField`) still refuses an edge region on a closed seed by name.
+    case "edge": primary = seed.closed ? { kind: "radial", centerX: 0, centerY: 0, radius: 0, width: num(q, "fieldWidth") } : { kind: "edge", width: num(q, "fieldWidth") }; break;
     case "radial": primary = { kind: "radial", centerX: num(q, "fieldX"), centerY: num(q, "fieldY"), radius: num(q, "fieldRadius"), width: num(q, "fieldWidth") }; break;
     case "stripes": primary = { kind: "stripes", count: num(q, "stripeCount"), angle: num(q, "stripeAngle"), sharpness: num(q, "stripeSharp") }; break;
     case "noise": primary = { kind: "noise", scale: num(q, "noiseScale"), contrast: num(q, "noiseContrast") }; break;

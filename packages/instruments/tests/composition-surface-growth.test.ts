@@ -557,7 +557,9 @@ test("controls are grouped, conditions are inline and the seed matters only wher
   assert.equal(usesSeed(input({ perturb: 0.2 })), true);
   assert.equal(usesSeed(input({ perturb: 0, field: "noise" })), true);
   assert.equal(usesSeed(input({ perturb: 0, grains: 100 })), true);
-  assert.throws(() => validateParameters("surface-growth", { ...q, surface: "sphere", field: "edge" }), /needs an open seed surface/);
+  assert.doesNotThrow(() => validateParameters("surface-growth", { ...q, surface: "sphere", field: "edge" }), "Edge on a closed surface falls back rather than refusing");
+  const sphere = seedOf("sphere", 16);
+  assert.throws(() => growthField({ regions: [{ kind: "edge", width: 0.3 }], combine: "max", baseline: 0 }, sphere, 1), /closed/, "the typed API still refuses, by name");
   assert.throws(() => validateParameters("surface-growth", { ...q, resolution: 8, maxVertices: 20 }), /Vertex limit/);
   assert.throws(() => validateParameters("surface-growth", { ...q, steps: 1100, sweeps: 40, maxVertices: 5000 }), /Lower Steps, Relaxation or Vertex limit/);
 });
@@ -591,4 +593,23 @@ test("every numeric control at its slider minimum and maximum, alone and all tog
   // the hard maximum of every control together is refused by name, not attempted
   const hard = Object.fromEntries(numeric.map((p) => [p.key, p.hardMax ?? p.max!]));
   assert.throws(() => validateParameters("surface-growth", { ...createInstrument("surface-growth").params, ...hard }), /Steps|Vertex limit|Relaxation|Pin|must be/);
+});
+
+test("every option of every select, chosen alone from the defaults, validates and draws; Edge on a sphere is a pole cap of the same width", () => {
+  const definition = definitions.find((d) => d.id === "surface-growth")!;
+  const silent = new Proxy({ CLOSE: "close", ROUND: "round" } as Record<string, unknown>, { get: (target, key) => (key in target ? target[key] : () => {}) }) as unknown as CompositionSurface;
+  let tried = 0;
+  for (const p of definition.parameters.filter((q) => q.type === "select")) for (const option of p.options!) {
+    const candidate = { ...createInstrument("surface-growth"), params: { ...createInstrument("surface-growth").params, [p.key]: option.value } };
+    assert.doesNotThrow(() => validateInstrument(candidate), `${p.key} = ${option.value} validates`);
+    assert.doesNotThrow(() => drawInstrument(silent, candidate), `${p.key} = ${option.value} draws`);
+    tried++;
+  }
+  assert.ok(tried > 30);
+  // the sphere under Edge grows exactly like a sphere under a radial cap at the pole, and the cap width is the visible Band width
+  const a = surfaceGrowthComposition(input({ surface: "sphere", field: "edge", fieldWidth: 0.3 })), b = surfaceGrowthComposition(input({ surface: "sphere", field: "radial", fieldX: 0, fieldY: 0, fieldRadius: 0, fieldWidth: 0.3 }));
+  assert.equal(surfaceGrowthRun(a), surfaceGrowthRun(b), "the same cached run");
+  assert.notEqual(surfaceGrowthRun(a).key, surfaceGrowthRun(surfaceGrowthComposition(input({ surface: "sphere", field: "edge", fieldWidth: 0.6 }))).key);
+  const top = meshAttribute(grownSurface(surfaceGrowthRun(a)).mesh, "field").values;
+  assert.ok(Math.max(...top) === 1 && Math.abs(Math.min(...top) - 0.04) < 1e-9, "growth gathers at the pole and falls to the baseline (0.04) across the sphere");
 });
