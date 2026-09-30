@@ -100,9 +100,9 @@ const parameters: Parameter[] = [
   n("lineWeight", "Outline weight", "Thickness of silhouette and crease lines.", 0.2, 3, 0.05, 0, 50),
   n("sliceWeight", "Slice weight", "Thickness of slice contours.", 0.2, 3, 0.05, 0, 50),
 
-  n("cellSize", "Cell size", "Side of a ray-marched cell in canvas units: smaller cells resolve finer detail at the square of the cost.", 2, 16, 0.5, 1, 64, raymarched),
+  n("cellSize", "Cell size", "Side of a ray-marched cell in canvas units: smaller cells resolve finer detail at the square of the cost.", 3, 16, 0.5, 1, 64, raymarched),
   n("steps", "March steps", "Field evaluations allowed per ray. Rays that run out end as misses, which shows as missing thin or grazing surface.", 24, 256, 1, 8, 1000, raymarched),
-  n("meshDetail", "Mesh detail", "Grid cubes along the sculpture's longest side for the extracted mesh behind facets, grains and line work; the surface error is about the cube's side squared.", 12, 72, 1, 4, 128),
+  n("meshDetail", "Mesh detail", "Grid cubes along the sculpture's longest side for the extracted mesh behind facets, grains and line work; the surface error is about the cube's side squared. Features thinner than a cube (and a hollow wall thinner than 0.8 of one) are not extracted, so facets, grains and line work leave them out.", 12, 44, 1, 4, 128),
 ];
 
 const controlGroups: ControlGroup[] = [

@@ -44,6 +44,11 @@ import type { CompositionRun } from "./types.js";
 export const SDF_MESH_LIMITS = Object.freeze({ minDetail: 4, maxDetail: 128, maxSamples: 2_500_000, maxVertices: 200_000, maxFaces: 200_000 });
 export const DEFAULT_MESH_WORK = 300_000_000;
 
+/** The field has no surface on this grid: empty, or every feature thinner than a cell. A valid state for callers that can draw without a mesh. */
+export class SdfNoSurfaceError extends Error {
+  constructor(message: string) { super(message); this.name = "SdfNoSurfaceError"; }
+}
+
 export interface SdfMeshOptions {
   /** Cubes along the tree's longest side, an integer in [4, 128]. */
   readonly detail: number;
@@ -228,7 +233,7 @@ export function sdfMesh(tree: Sdf, options: SdfMeshOptions): SdfMesh {
         emit(cellId[(k * ny + j - 1) * nx + i - 1], cellId[(k * ny + j - 1) * nx + i], cellId[(k * ny + j) * nx + i], cellId[(k * ny + j) * nx + i - 1], 2, s0 ? 1 : -1);
     }
   }
-  if (quads.length + triangles.length === 0) throw new Error(`sdfMesh: the sculpture has no surface at this grid (empty, or thinner than one cell of ${h}); raise Mesh detail (now ${detail})`);
+  if (quads.length + triangles.length === 0) throw new SdfNoSurfaceError(`sdfMesh: the sculpture has no surface at this grid (empty, or thinner than one cell of ${h}); raise Mesh detail (now ${detail})`);
   const built = mesh({ id: `sdf:${tree.key.slice(4, 16)}@${detail}`, positions, triangles, quads, degenerate: "drop" });
   const value: SdfMesh = Object.freeze({
     mesh: built,

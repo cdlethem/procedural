@@ -115,12 +115,12 @@ weights** subgroup: `lineWeight`, `sliceWeight`, both non-negative canvas widths
 perspective; light, opacity and levels on `fill` not none; `aoStrength`, `cellSize`, `steps` on cells or bands; cell options on cells;
 grain options on grains; `creaseAngle` on `creases`. **Left visible** because relevance is a disjunction: `meshDetail`, `sliceAxis`, `hiddenLines`,
 `lineWeight`, `sliceWeight`, `twist`, `bend` (a value of 0 is inert, but a numeric driver is not expressible).
-Slider intervals are convenient spans; hard limits are the model's (for example Cell size 1 to 64, Mesh detail 4 to 128, iterations 0 to 5,
+Slider intervals are chosen so every combination of slider ends draws (tested for each form: every numeric control at its slider minimum and at its maximum alone and together, under all five fills, hollow, cuts and perspective, all-max under 2.5 s): Cell size starts at 3 (so at most 45,000 cells) and Mesh detail ends at 44 (facets stay under 120,000 for every form, fill, hollow and cut). Slider intervals are convenient spans; hard limits are the model's (for example Cell size 1 to 64 (slider 3 to 16), Mesh detail 4 to 128 (slider 12 to 44), iterations 0 to 5,
 repeats 1 to 12) and refused outside them by name.
 
 ## Failure, units
 
-Every limit throws an `Error` naming the control or option (a hollow **Wall** thinner than 0.8 of a mesh cell is refused whenever facets, grains, lines or slices need the mesh, naming Wall and Mesh detail); nothing truncates, repairs or falls back to another picture. World units
+Every limit throws an `Error` naming the control or option (typed values past a hard limit only; **slider ends never refuse**: a sculpture the mesh grid cannot resolve, no surface at all or a hollow **Wall** thinner than 0.8 of a mesh cell, gives `meshOrEmpty` = null, so facets, grains, silhouettes, creases and slices draw nothing while cells and bands still march; `SdfNoSurfaceError` is the typed error `sdfMesh` throws for no surface); nothing truncates, repairs or falls back to another picture. World units
 are half the block's side (or the caller's); canvas units are the 640 reference frame; angles are degrees except twist and bend
 rates, in radians per world unit.
 
@@ -145,7 +145,7 @@ configurations, 144 hidden-control changes, drawing fingerprints unchanged); can
 
 Mutations each shown to fail tests (dist edited, tests run, restored): twist not divided by its constant (2 failing), repeat without the slab bound (3),
 mesh quads wound inward (3), hit rule `d < 0` for `d <= eps` (5), wrong Menger split (2), coverage ignoring the refinement rays (1), shell without
-`abs` (1), smooth union adding the blend (3). Full `npm run build && npm test`: 1,091 tests pass (the 1,059 baseline plus these).
+`abs` (1), smooth union adding the blend (3). Full `npm run build && npm test`: the full suite passes (the 1,059 baseline plus these).
 
 ## Review record (rendered, not accepted through the real interface)
 
