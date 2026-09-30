@@ -35,8 +35,8 @@ const parameters: Parameter[] = [
   n("sourceOffset", "Source distance", "How far from the centre a spot source sits, as a fraction of the half width: 0 is in the middle, 1 at the wall.", 0, 1, 0.01, 0, 1, spotted),
   n("sourceSize", "Source size", "Thickness of an edge or ring source, or radius of a spot, as a fraction of the shorter side. A larger source feeds more of the dish at once.", 0.02, 0.3, 0.005, 0, 1, supplied),
   n("reserve", "Reserve", "Nutrient already spread through the dish at the start, as a fraction of a source's strength. 0 starts empty, so growth waits for the supply to arrive; higher lets the colony start at once and eat down its own surroundings.", 0, 1, 0.01, 0, 1),
-  n("diffusion", "Diffusion", "How quickly nutrient spreads, in canvas units squared per step. Low keeps the food near its source, so the colony hugs it and thins away from it; high evens the dish out.", 10, 400, 5, 0, 100000),
-  n("fieldCell", "Field cell", "Edge of one cell of the nutrient grid, in canvas units. Smaller resolves the food more finely and costs more per step; it does not change how fast the food spreads.", 5, 16, 0.5, 1, 200),
+  n("diffusion", "Diffusion", "How quickly nutrient spreads, in canvas units squared per step. Low keeps the food near its source, so the colony hugs it and thins away from it; high evens the dish out.", 10, 300, 5, 0, 100000),
+  n("fieldCell", "Field cell", "Edge of one cell of the nutrient grid, in canvas units. Smaller resolves the food more finely and costs more per step; it does not change how fast the food spreads.", 6, 16, 0.5, 1, 200),
 
   n("centerX", "Center X", "Horizontal canvas position of the middle of the dish.", 0, 640, 1, -4096, 4096),
   n("centerY", "Center Y", "Vertical canvas position of the middle of the dish.", 0, 640, 1, -4096, 4096),
@@ -64,7 +64,7 @@ const parameters: Parameter[] = [
   select("boundary", "Boundary", "The dish wall: a rectangle, or the ellipse inside it. Cells and nutrient stay inside; cells pile up against the wall.", ["dish", "box"]),
   n("overlap", "Allowed overlap", "How far two cells may overlap before they are pushed apart, as a fraction of the sum of their radii. 0 keeps them touching but never overlapping; higher lets a crowded colony compress.", 0, 0.3, 0.01, 0, 0.5),
   n("stiffness", "Stiffness", "Share of an overlap resolved each relaxation pass. Low leaves soft, overlapping cells; 1 pushes them apart at once. At 0 cells never move apart.", 0.05, 1, 0.05, 0, 1),
-  n("relax", "Relaxation", "Overlap-resolving passes per step. More passes spread the push through a crowd; fewer let daughters stay tucked where they were born.", 1, 8, 1, 1, 16),
+  n("relax", "Relaxation", "Overlap-resolving passes per step. More passes spread the push through a crowd; fewer let daughters stay tucked where they were born. Each pass costs time in a large colony.", 1, 6, 1, 1, 16),
 
   n("steps", "Steps", "How long the colony has grown. Drag it to watch the colony grow and divide; the states before it never change, they are only extended.", 0, 500, 1, 0, 1000),
 

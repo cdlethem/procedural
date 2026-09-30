@@ -200,24 +200,26 @@ function extended(colony: Colony): DensityField {
   return { ...colony.field, values };
 }
 
-/** The boundary as a planar region: the rectangle, or the ellipse as a 160-gon inscribed in it. */
-function boundaryRegion(options: ColonyOptions) {
-  const { width, height } = options;
-  if (options.boundary === "box") return planarRegion({ id: "dish", outer: [[0, 0], [width, 0], [width, height], [0, height]] });
+/** The boundary inset by `inset` on every side, as a planar region: the rectangle, or the ellipse as a 160-gon. */
+function boundaryRegion(options: ColonyOptions, inset: number) {
+  const w = options.width - 2 * inset, h = options.height - 2 * inset;
+  if (options.boundary === "box") return planarRegion({ id: "dish", outer: [[inset, inset], [inset + w, inset], [inset + w, inset + h], [inset, inset + h]] });
   return planarRegion({ id: "dish", outer: Array.from({ length: 160 }, (_, k): [number, number] => {
     const t = 2 * Math.PI * k / 160;
-    return [width / 2 + width / 2 * Math.cos(t), height / 2 + height / 2 * Math.sin(t)];
+    return [options.width / 2 + w / 2 * Math.cos(t), options.height / 2 + h / 2 * Math.sin(t)];
   }) });
 }
 
 /**
  * Isolines of the nutrient concentration at `levels` evenly spaced fractions of the supply (`k / (levels + 1)`),
- * through `densityContours`, cut exactly at the dish wall (`clipPaths`). Tone 0.
+ * through `densityContours`, cut at the dish wall inset by half a field cell (`clipPaths`). Tone 0.
  */
 export function nutrientPaths(colony: Colony, levels: number): readonly Path[] {
   return cachedBy(nutrientCache, colony, String(levels), () => {
     const contours = densityContours(extended(colony), Array.from({ length: levels }, (_, k) => (k + 1) / (levels + 1)), colony.seed);
-    return clipPaths(contours.map((path) => Object.freeze({ ...path, tone: 0 })), boundaryRegion(colony.options));
+    // Field cells whose centres lie within half a cell of the wall are the wall's own staircase: contours are cut back to the wall inset by half a field cell.
+    const region = boundaryRegion(colony.options, colony.options.fieldCell / 2);
+    return clipPaths(contours.map((path) => Object.freeze({ ...path, tone: 0 })), region);
   });
 }
 

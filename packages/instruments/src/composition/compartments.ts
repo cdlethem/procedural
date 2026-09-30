@@ -182,7 +182,7 @@ const recall = <T>(map: Map<string, T>, key: string): T | undefined => {
 };
 
 /** CIE L* / 100 from linear luminance. */
-function lightness(y: number): number {
+export function lightness(y: number): number {
   return (y > 216 / 24389 ? 116 * Math.cbrt(y) - 16 : (24389 / 27) * y) / 100;
 }
 
