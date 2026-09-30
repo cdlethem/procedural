@@ -3,7 +3,7 @@ import test from "node:test";
 import {
   PlanarError, clipPath, clipPaths, domainContains, domainDifference, domainIntersection, domainRings, domainUnion, domainXor, hatchDomain,
   keyholeRing, labelDomains, locateInDomain, maskDomain, offsetDomain, partitionRegions, planarDomain, planarRegion, rectangleDomain, rectangleRegion,
-  ringsDomain, simplifyDomain, textDomain, unionDomains, createCompositionRun, clipRingToRect, keyholeRings, resolveSupport, supportContains, clipToSupport,
+  ringsDomain, simplifyDomain, textDomain, unionDomains, createCompositionRun, outlineText, outlineLayout, outlineUnits, clipRingToRect, keyholeRings, resolveSupport, supportContains, clipToSupport,
   type Path, type PlanarDomain, type PlanarRegion,
 } from "../dist/index.js";
 
@@ -771,4 +771,41 @@ test("the stencil is a closed planar domain: edges belong to it and a line along
   const masked = resolveSupport({ footprint: box100, mask: { invert: true, source: { kind: "regions", regions: [{ bounds: [40, 40, 60, 60] }], inset: 0 } } }, 0.02);
   assert.equal(supportContains(masked, 50, 50), false); assert.equal(supportContains(masked, 40, 50), true, "the mask boundary belongs to the stencil");
   near(masked.domain.area, 10000 - 400);
+});
+
+test("overlapped, rotated outline type offsets without non-convergence: the reported repro", () => {
+  // Nearly concurrent strokes of overlapping glyphs: re-split crossings used to creep along a sliver for ever (NOT_CONVERGED after 32 rounds).
+  const text = outlineText({ id: "t", lines: ["0869", "4@&%"] });
+  const layout = outlineLayout({ text, kerning: "optical", tracking: -0.2, size: 40, leading: 1.25, centerX: 0, centerY: 640, rotation: -13 });
+  for (const kind of ["word", "line", "block"] as const) for (const unit of outlineUnits(layout, kind)) for (const join of ["round", "miter", "bevel"] as const) {
+    const grown = offsetDomain(unit.domain, 2, { join }), shrunk = offsetDomain(unit.domain, -2, { join });
+    assertValid(grown, `${unit.id} ${join}`); assertValid(shrunk, `${unit.id} ${join}`);
+    near(domainDifference(unit.domain, grown).area, 0, 1e-6, `${unit.id} ${join}: growth contains the letters`);
+    near(domainDifference(shrunk, unit.domain).area, 0, 1e-6, `${unit.id} ${join}: shrinking stays inside`);
+    assert.ok(grown.area > unit.domain.area && shrunk.area < unit.domain.area);
+    near(domainUnion(unit.domain, grown).area, grown.area, 1e-6 * grown.area);
+  }
+});
+
+test("offsets of 500 seeded overlapped glyph layouts never fail to converge and keep their area identities", () => {
+  const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@&%$#8B";
+  let offsets = 0;
+  for (let seed = 1; seed <= 500; seed++) {
+    const r = rng(seed * 2654435761);
+    const line = () => Array.from({ length: 3 + Math.floor(r() * 4) }, () => chars[Math.floor(r() * chars.length)]).join("");
+    const text = outlineText({ id: "t", lines: [line(), line()] });
+    const kerning = (["metric", "optical", "mono"] as const)[Math.floor(r() * 3)];
+    const options = { text, kerning, tracking: -0.25 + r() * 0.3, size: 20 + r() * 80, leading: 0.8 + r() * 1.2, centerX: r() * 200 - 100, centerY: r() * 1300 - 100, rotation: r() * 360 - 180 };
+    const kind = (["glyph", "word", "line", "block"] as const)[Math.floor(r() * 4)];
+    for (const unit of outlineUnits(outlineLayout(options), kind)) {
+      const d = (0.3 + r() * 5) * (r() < 0.6 ? 1 : -1), join = (["round", "miter", "bevel"] as const)[Math.floor(r() * 3)];
+      const out = offsetDomain(unit.domain, d, { join });
+      offsets++;
+      for (const g of out.regions) planarRegion(asData(g));
+      const escaped = d > 0 ? domainDifference(unit.domain, out).area : domainDifference(out, unit.domain).area;
+      assert.ok(escaped <= 1e-6 * unit.domain.area, `seed ${seed} ${unit.id} ${d} ${join}: ${escaped} of the original is on the wrong side`);
+      assert.ok(d > 0 ? out.area >= unit.domain.area - 1e-9 : out.area <= unit.domain.area + 1e-9, `seed ${seed}: ${d > 0 ? "growth" : "shrinkage"} moved area the wrong way`);
+    }
+  }
+  assert.ok(offsets > 1500, `only ${offsets} offsets checked`);
 });
