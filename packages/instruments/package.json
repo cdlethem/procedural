@@ -46,7 +46,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "sources": "node tools/generate_sources.mjs",
-    "test": "tsx --test tests/*.test.ts"
+    "test": "python3 ../../tools/with_heavy_lock.py -- tsx --test --test-concurrency=4 tests/*.test.ts"
   },
   "devDependencies": {
     "@babel/parser": "8.0.4",

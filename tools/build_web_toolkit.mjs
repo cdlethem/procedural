@@ -16,7 +16,10 @@ import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputIndex = process.argv.indexOf("--output");
-assert.notEqual(outputIndex, -1, "usage: build_web_toolkit.mjs --output .work/dist/<new-release>");
+assert.notEqual(outputIndex, -1, "usage: build_web_toolkit.mjs --output .work/dist/<new-release> [--allow-dirty]");
+// Local preview only: package uncommitted inputs for a private app checkout. The report
+// status becomes "local-preview" and lists the dirty inputs; such output is never a release.
+const allowDirty = process.argv.includes("--allow-dirty");
 const out = resolve(root, process.argv[outputIndex + 1] ?? "");
 const distRoot = join(root, ".work", "dist") + sep;
 assert.ok(out.startsWith(distRoot), "output must be below .work/dist");
@@ -112,7 +115,7 @@ const releaseInputs = [
   exampleSmokeContractPath,
 ];
 const dirty = git("status", "--porcelain=v1", "--untracked-files=all", "--", ...releaseInputs);
-assert.equal(dirty, "", `release inputs must be committed and clean:\n${dirty}`);
+assert.ok(allowDirty || dirty === "", `release inputs must be committed and clean:\n${dirty}`);
 const inputFiles = releaseInputs.flatMap((path) => {
   const absolute = join(root, path);
   return statSync(absolute).isDirectory() ? files(absolute) : [absolute];
@@ -285,8 +288,9 @@ const artifacts = [javascriptPack, catalogPack, instrumentsPack].map((record) =>
 }));
 const report = {
   schemaVersion: 1,
-  status: "passed",
+  status: dirty === "" ? "passed" : "local-preview",
   sourceCommit,
+  ...(dirty === "" ? {} : { uncommittedInputs: dirty.split("\n") }),
   version: javascriptPackage.version,
   artifacts,
   catalogManifestSha256: hashFile(join(catalogStage, "manifest.json")),

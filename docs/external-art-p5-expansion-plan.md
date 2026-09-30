@@ -2,6 +2,13 @@
 
 Research date: 17 September 2026. This is a capability research and delivery plan, not an API admission or implementation acceptance. The requested direction is **new p5.js capabilities**. Java, Python and Android parity do not gate this work.
 
+**Scheduling update, 27 September 2026:** this is a historical research inventory, not the
+active execution queue or a current missing-capability list. Many mechanisms below have
+since shipped. Follow [roadmap](roadmap.md), [next-release progress](next-release-progress.md)
+and [creative quality](creative-quality.md): substantial expansion through functional
+composition, with extraction/improvement of existing instruments alongside new studies.
+The historical 58-family list is not the new release's scope or a completion quota.
+
 The strongest next step is to combine better complete compositions with a few substantial new computations: interacting agents, non-overlapping thick paths, elastic growth, image-driven marks, and browser-native materials and media. Adding another catalog of isolated geometric demonstrations would leave much of the visual gap intact.
 
 The [local image corpus](../.work/external-art-corpus/index.html) contains **a collection-led selection across 24 primary artist/studio groups** (final counts and coverage denominators are in the [collection report](external-art-corpus.md)). A record can represent a series or selected frame pair; it is not necessarily one independently designed algorithm. The [manifest](../evidence/external-art/2026-09/corpus.json) links each selection to its artist, source page, technique evidence, limitations and package comparison. The [source screen](../evidence/external-art/2026-09/source-screen.json) accounts for the thread's 83 extracted outbound references, including failures and references not selected. The two specifically requested sites anchor the selection: [Joshua Davis](https://joshuadavis.com/) and the [REAS index](https://index.reas.com/), supplemented by Reas's directly linked thematic essays.
@@ -16,7 +23,7 @@ An image can show branching, folding or interference without establishing the me
 
 Collection limitations are explicit. Instagram shells and inaccessible archives did not yield useful artwork evidence. Some formerly useful URLs now redirect, park or show construction pages. Accessible landing pages are not equivalent to assessed oeuvres. Historical computer art, non-Western traditions, hand-coded typography, shader demoscene, sound, installation and fabrication cannot be exhausted by this thread. The family map below keeps further research visible, including families with no collected decisive sample.
 
-## The actual starting point
+## Historical starting point (17 September)
 
 The research began at `c7071577110b271c7a1a295d93729dbf3b737bd0` with 64 accepted p5 operations. Before this report was completed, the separate [survey-coverage batch](../evidence/coverage/batch1/integration-review.json) accepted grain, sampled point displacement and octave gradient noise. The [current inventory](external-art-current-capabilities.md) therefore covers **67 conformant cores, 67 scoped native operations, 106 editable package workflows, 90 browser studies and four scoped technique attestations**. All 67 contract hashes were reconciled. These are different denominators, not additive capability counts. This research does not reaccept the concurrent batch or infer any new artist recreations from it.
 

@@ -1,10 +1,13 @@
 # Full external corpus expansion execution
 
-The maintainer's 17 September 2026 instruction requires implementation of the entire
-[delivery plan](external-art-p5-expansion-plan.md). Its batch stopping conditions are
-integration checkpoints, not permission to end the overall assignment. This execution
-record supersedes that document's immediate-handoff scheduling, while preserving the
-research snapshot and its evidence hashes.
+This record preserves implementation and evidence from the 17 September 2026 expansion
+assignment. The 27 September next-release direction supersedes its scheduling:
+substantially expand artist capability through functional technique composition, extracting
+and improving existing instruments alongside new studies. See [roadmap](roadmap.md),
+[next-release progress](next-release-progress.md) and [creative quality](creative-quality.md).
+Existing implementations and historical evidence remain valuable; neither a delivery table
+nor a completion label establishes current gaps or exempts a study from creative review.
+The historical family list is not the next-release queue.
 
 ## Starting point, 17 September 2026
 
@@ -175,22 +178,23 @@ this slice.
 
 ## Standing priority
 
-Apply [creative quality](creative-quality.md) to existing and new components, techniques and
-studies. Correct the shared range model and the ornament/panel and embossed/signed-edge studies
-first, then address the broader gallery audit by computational family.
-Preserve all completed implementation and historical technical evidence.
-The delivery table below records expansion scope; its earlier acceptance and design labels
-do not establish current creative approval or live deployment. The full expansion remains
-required after this corrective work; adding entries is not the immediate release objective.
+The current goal is discovery and compositional usefulness, not completion of this table.
+Audit shipped, partial and planned p5 studies. Expose hidden construction choices,
+meaningful seeded alternatives and controllable spatial occupation; assess outputs in
+actual layered artworks. Improve existing studies before adding near-duplicates.
+Consolidate or retire entries that contribute nothing distinct while preserving saved work.
+
+Study compositions over existing operations do not require new API-admission paperwork,
+full-corpus reproduction or unrelated binding repair. Retain operation contracts when
+public computations change and focused reliability checks that protect the artist's work.
+Preserve historical evidence without treating it as current creative acceptance.
 
 ## Expansion scope
 
-The corpus and 50 default palettes are delivered. Batch A and the first B slice are
-accepted in [their review](../evidence/expansion/first-batch/root-review.json). Remaining
-work below is active; a proposal, passing core test or generated image alone is not completion.
-Every implemented slice needs reviewed semantics, distinguishing checks, an editable native
-workflow, structural and appearance edits, substitution, package replay and root review.
-No new port or original-artist recreation is implied.
+The table is an inventory of earlier delivery ambitions and gaps, not an automatic queue.
+Its historical labels and pending items must be reconciled against current source before
+claiming completion or selecting work. New public algorithms still need explicit semantics
+and distinguishing fixtures; gallery studies need real creative and compositional review.
 
 `Accepted` means a root acceptance record exists. `Cores accepted; studies draft` means the
 operations carry acceptance in [the second batch review](../evidence/expansion/second-batch/root-review.json)

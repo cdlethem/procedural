@@ -9,9 +9,10 @@ Git history preserves prior handoffs; it is not an active task queue.
 
 ## Mission and architecture
 
-Build a reusable generative-art toolkit from the surveyed Processing corpus. Processing 4
-Java is the reference implementation; language-neutral contracts support independent p5.js,
-py5 and Android implementations. Native sketches are editable examples, not the core API.
+Build a reusable generative-art toolkit informed by the surveyed Processing corpus and
+other useful artistic and technical inputs. Processing 4 Java is the reference implementation;
+language-neutral contracts support independent p5.js, py5 and Android implementations.
+Native sketches are editable examples, not the core API.
 
 Capability and clarity take priority over completeness. Start from what an artist wants
 to make and the algorithmic work the package removes. Prefer composing existing operations
@@ -25,17 +26,47 @@ personally explores the real interface and reviews diverse outcomes and responsi
 Rendering/replay/export checks alone do not admit a study. Existing entries are subject
 to the same standard; preserve historical technical evidence without grandfathering quality.
 
+The current artist-facing goal is a **p5.js apparatus of discovery and a tool for
+incrementally building a unique canvas**. Expose consequential construction decisions,
+not only styling of hardcoded scenes. Seeds should produce structural alternatives where
+chance belongs; appearance changes should not reroll them. Useful fragments and negative
+space matter as much as attractive defaults. Review real layered compositions, not only
+standalone screenshots. The next-release direction is **broad capability expansion through
+functional composition**: separate placement from marks, paths from materials, regions from
+fillers, and fields from their consumers; techniques may take compatible techniques as inputs.
+Improve and extract reusable parts of existing entries alongside substantial new compositions,
+not as an exhaustive prerequisite. Consolidate or retire entries that add nothing distinct.
+Existing web-Studio artwork is disposable: saved-work compatibility, migration shims and legacy
+renderers must not constrain this baseline. Reusable instrument definitions, drawing code and
+study guides belong to the library; the web app consumes a versioned package and owns its UI,
+composition document, persistence and renderer lifecycle. Follow [roadmap](docs/roadmap.md)
+and [next-release progress](docs/next-release-progress.md) for authoritative scope and sequencing.
+
+Evaluate the tool holistically. The survey in `../genart-survey/out/` is one source of
+mechanisms, control relationships and visual ideas, not a recreation checklist. Do not
+require recreation-versus-borrowing labels for creative work. Judge an addition by what
+artists can discover and compose with it, how it complements existing capabilities and
+whether its controls expose useful decisions.
+
+Study exploration and public API admission are different lifecycles. A p5 composition
+using existing operations needs a short creative brief and real interface review, not a
+new operation contract, corpus recreation, target port, full-catalog recertification or
+new validation framework. Original studies need not imitate surveyed artwork. Keep
+contracts/fixtures for new or changed public computations, and provenance for reused
+material. Run checks relevant to changed behavior; unrelated historical binding debt
+must not block creative iteration. Reliability checks protect the artist's work but do
+not establish that an instrument is interesting.
+
 Root owns capability selection, public boundaries, important semantics and final integration.
 Personally inspect decisive reports, implementation and representative native images.
 Workers propose or implement frozen behavior; they do not independently admit public APIs,
 author root acceptance records or accept shared target support.
 
-For a new capability, read [artist-capabilities.md](docs/artist-capabilities.md) and
-[recreation-coverage.md](docs/recreation-coverage.md). Record the artist task, computation
-removed, alternative, reusable output, meaningful edit, transfer case and evidence limits.
-Recreated originals, plausible compositions, algorithmic gaps and unassessed work are
-separate categories. Ordinary artistic drawing is allowed; hidden one-off algorithms
-must not inflate coverage. Surface major technique-family exclusions and uncertainty.
+For a new public capability, read [artist-capabilities.md](docs/artist-capabilities.md).
+Record the artist task, computation removed, alternative, reusable output, meaningful
+edit, transfer case and evidence limits. Ordinary artistic drawing is allowed.
+Use [recreation-coverage.md](docs/recreation-coverage.md) only when making an explicit
+recreation or corpus-coverage claim; its taxonomy is not a creative-development gate.
 
 ## Evidence and admission
 
@@ -92,10 +123,10 @@ Use the relevant existing skill only when its lifecycle applies:
 | Derived reference, UI, MCP or export metadata | [catalog-surface-synchronization](skills/catalog-surface-synchronization/SKILL.md) |
 | Persisted recipes, execution or export | [recipe-execution-and-validation](skills/recipe-execution-and-validation/SKILL.md) |
 
-Before natural-language recipe planning or its first prompt benchmark, create the still-missing
-`skills/prompt-to-recipe-evaluation/SKILL.md` after catalog/executor work. It must evaluate
-semantic predicates, provenance, execution, cross-target and visual behavior, and coverage;
-equivalent recipe syntax must be allowed. No other skill-creation gate remains outstanding.
+Before natural-language recipe planning or its first prompt benchmark, use the existing
+`skills/prompt-to-recipe-evaluation/SKILL.md`. Its semantic, provenance, execution,
+cross-target, visual and coverage criteria apply to planner claims, not to ordinary
+interactive study exploration. No skill-creation gate remains outstanding.
 
 ## Sustainable work and delegation
 
@@ -131,7 +162,9 @@ inclusion is navigation, not acceptance. Images and contact sheets stay out of G
 
 ## Repository integrity and publishing
 
-Keep project work in this repository; temporary work belongs in ignored `.work/`.
+Keep public toolkit work in this repository and private gallery/Studio work in
+`/home/colin/dev/procedurals-web`; do not restore extracted app code here. Temporary work
+belongs in the relevant checkout's ignored `.work/`.
 Never add rendered images, toolchains, environments, logs, temporary builds or copied assets
 to Git. Preserve source authorship, licensing and explicit provenance for reused code,
 including third-party numerical helpers. Prefer independently specified operations.

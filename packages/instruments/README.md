@@ -156,3 +156,5 @@ node tools/build_web_toolkit.mjs --output .work/dist/web-toolkit-v0.2.2
 ```
 
 The release builder checks clean committed inputs, compiles NodeNext ESM/declarations, generates extracted sources from the current public modules, builds catalog/JavaScript/instruments tarballs, offline-installs all three into an isolated consumer, checks bytes and imports, and writes `report.json` plus `SHA256SUMS`. It does not publish or substitute a guessed commit hash. Run it only after the 0.2.2 inputs have been committed; choose a fresh output path. The builder uses the locally installed Babel parser and TypeScript build tools; isolated-stage and final-consumer installation use explicit local inputs with `--offline`. The source-package behavior tests use the declared `tsx` runner.
+
+For a private app preview of uncommitted work, add `--allow-dirty`. The same compile, extraction and installed-consumer checks run, but `report.json` records `status: "local-preview"` and lists the uncommitted inputs; that output is never a release artifact.

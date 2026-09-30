@@ -63,6 +63,10 @@ The report includes all69 family dispositions and all three denominators:800 ass
   release URLs, SHA-256 values and npm integrity records. Checkpoint B extraction remains
   historical evidence; Checkpoint C persistence/authentication/admission stays separate.
   No tenant or visitor launch acceptance is claimed.
+- Unreleased instruments preview in the private app without a release: its `npm run toolkit:local`
+  runs `tools/build_web_toolkit.mjs --allow-dirty` and installs those tarballs unsaved, so the
+  app's normal checks apply. Live dev server: https://eunoia.tailf03dad.ts.net:46590
+  (443 belongs to the separate Airflow project, whose workers call its execution API there).
 - Checkpoint A containment removed app ingress on 8443 and 8444 and stopped the
   working preview. Historical storage remains loopback-only; its artwork need not migrate.
   The release/preview URLs in the historical reviews below are not currently served.
@@ -125,13 +129,13 @@ general graphs, cross-layer links and the remaining capability program are still
   The earlier “strengthen everything first” ordering is superseded. Keep consequential
   controls, purposeful seed variation, useful fragments, negative space and real layered
   review. Consolidate redundant entries; existing artwork is disposable.
+- Every instrument now declares semantic [control groups](docs/control-groups.md) with
+  ratio-lockable `proportional` clusters; drawing is unchanged. Uncommitted; the app has not
+  yet adopted `inspectorItems` or a ratio lock ([progress](docs/next-release-progress.md)).
 - Reusable controls, construction, drawing, preparation, metadata, guides and source now
   live in `packages/instruments/`. The private `/home/colin/dev/procedurals-web` host owns
   UI, document envelopes, transforms/opacity, p5 lifecycle and storage—not copied drawers.
   Its primary released gallery remains at 117 workflows / 92 API entries; the verified isolated
-- Every instrument now declares semantic [control groups](docs/control-groups.md) with
-  ratio-lockable `proportional` clusters; drawing is unchanged. Uncommitted; the app has not
-  yet adopted `inspectorItems` or a ratio lock ([progress](docs/next-release-progress.md)).
   reference-package host has 120 workflows / 102 canonical instruments and the same 92 API entries.
 - The preceding bounded pass scanned the 55 IDs not revised previously, revised 27, and
   added **Harmonic Traces, Phyllotactic Whorls and Contour Relief**. The subsequent color pass

@@ -81,15 +81,19 @@ def main():
                 overview.append((cover, width, height))
             image_count += 1
         evidence = ROOT / group['evidence']
-        if not evidence.is_file():
-            raise ValueError('missing group evidence: ' + group['evidence'])
-        evidence_url = quote(os.path.relpath(evidence, OUTPUT))
+        if evidence.is_file():
+            evidence_url = quote(os.path.relpath(evidence, OUTPUT))
+            evidence_link = '<a class="evidence" href="' + evidence_url + '">Review record</a>'
+        else:
+            problems.append({'group': group['title'], 'path': group['evidence'],
+                             'problem': 'Review record not available locally'})
+            evidence_link = '<span class="missing">Review record not available locally</span>'
         search = group['title'] + ' ' + group['description'] + ' ' + group['category']
         sections.append('<section id="' + escaped(group['id']) + '" data-category="'
                         + escaped(group['category']) + '" data-search="' + escaped(search.lower()) + '">'
                         '<div class="section-title"><h2>' + escaped(group['title']) + '</h2><span class="badge">'
                         + escaped(group['category']) + '</span></div><p>' + escaped(group['description'])
-                        + ' <a class="evidence" href="' + evidence_url + '">Review record</a></p>'
+                        + ' ' + evidence_link + '</p>'
                         '<div class="grid">' + ''.join(cards) + '</div></section>')
     if overview:
         with tempfile.TemporaryDirectory(prefix='overview-', dir=OUTPUT) as temporary:

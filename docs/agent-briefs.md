@@ -9,7 +9,7 @@ is a task-brief template, not an execution queue. Use the current user assignmen
 | Field | Required content |
 |---|---|
 | Objective | One bounded result and explicit stopping condition |
-| Inputs | Exact evidence/candidate identities, note hashes and approved contract version |
+| Inputs | Relevant source and existing patterns; exact evidence identities and contract versions only when changing their dependent computation or claim |
 | Ownership | Files the worker may edit; integration-owned files it must leave alone |
 | Behavior | Target, capabilities, input/output semantics, errors and unchanged tolerances |
 | Validation | Existing commands and observable acceptance scenarios; state read-only limits |
@@ -19,6 +19,17 @@ For artist-facing work, apply [creative quality](creative-quality.md). The brief
 the artist's construction choices, replaceable inputs, hidden constants, intended distinct
 outcomes and the reasons for hard limits. Handoffs include configurations actually explored
 through the interface and initial/structural/appearance costs. Root retains creative admission.
+
+For p5 study work, the creative brief also names the material an artist can add to a
+larger canvas, the source of discovery, and how density/extent/negative space can be
+directed. Explore purposeful seeds and interacting controls, not only default-versus-one-
+slider screenshots. A fragment need not become a finished poster to pass.
+
+Keep the brief proportional. Existing-operation compositions do not require new portable
+contracts, corpus transfers, other-target ports or repository-wide historical binding
+repair. Use a focused real-interface check, useful behavior regressions and a concise
+handoff with actual configurations and images. Do not create numerical quotas, generic
+checker frameworks or new acceptance dossiers as substitutes for creative judgment.
 
 Give only task-relevant context. Independent assignments need disjoint file ownership.
 Workers resolve ordinary bugs; root decides API ambiguity and conflicting evidence.
@@ -49,8 +60,11 @@ to the authored ledger. Use the parameter-evidence skill for uncertain parameter
 
 ## Implementation and handoff
 
-Use catalog contracts and shared fixtures unchanged. Return ambiguities about defaults,
-RNG consumption, ordering, numeric tolerances or capabilities to root. Review ownership,
+For new or changed public operations, use catalog contracts and shared fixtures.
+For study compositions, reuse existing operation semantics without imposing API-admission
+paperwork on changes to source geometry or artist controls. Return public-contract
+ambiguities about defaults, RNG consumption, ordering, numeric tolerances or capabilities
+to root. Review ownership,
 allocation and failure semantics as well as fixture output; frozen wrappers alone do not
 make backing storage immutable, and counts alone do not prove geometry equivalence.
 

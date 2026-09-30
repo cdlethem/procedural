@@ -459,7 +459,7 @@ async function main(): Promise<void> {
     for (const id of args.slice(1)) process.stdout.write(`${JSON.stringify(auditInstrument(id))}\n`);
     return;
   }
-  let out = ".work/control-audit/report.json", workers = 16;
+  let out = ".work/control-audit/report.json", workers = 4;
   const ids: string[] = [];
   for (let index = 0; index < args.length; index++) {
     if (args[index] === "--out") out = args[++index];
