@@ -466,6 +466,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "river-ribbons",
+      "title": "River Ribbons",
+      "description": "A channel that migrates: each bend erodes toward its outside at a rate set by the curvature averaged along the channel, tight necks cut off into oxbows with their own age, and every earlier position is kept. Drawn as a ribbon whose width follows the discharge, faded scars of old channels and oxbows, and a floodplain tinted by age.",
+      "category": "Motion",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/river-ribbons.md",
+      "source": "packages/instruments/src/composition/river-draw.ts",
+      "sourceEntry": "drawRiverRibbons",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "data-scores",
       "title": "Data Scores",
       "description": "Let recorded values decide structure: three bundled tables with missing values become a lattice that drifts, a treemap with exact areas or a timeline, with explicit mappings and a small generated key.",
@@ -476,6 +489,19 @@
       "guide": "guides/data-scores.md",
       "source": "packages/instruments/src/composition/data-scores.ts",
       "sourceEntry": "drawDataScores",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "collision-scores",
+      "title": "Collision Scores",
+      "description": "Discs bounce in a container and the record of every contact becomes the drawing: trails with exact corners at each bounce, marks sized by impulse, rays along the bounce angles and a graph of who met whom, all read from one deterministic log.",
+      "category": "Motion",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/collision-scores.md",
+      "source": "packages/instruments/src/composition/collision-draw.ts",
+      "sourceEntry": "drawCollisionScores",
       "creativeReviewScope": "instrument-construction"
     },
     {
@@ -515,6 +541,19 @@
       "guide": "guides/stroke-relief.md",
       "source": "packages/instruments/src/composition/stroke-relief.ts",
       "sourceEntry": "drawStrokeRelief",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "drainage-erosion",
+      "title": "Drainage and Erosion",
+      "description": "Rain runs over a landform, gathers into rivers and cuts them deeper, step by step: depressions are filled, water is routed downhill and accumulated, stream power erodes, sediment is carried and dropped. The same land is drawn as contours, tapering rivers, drainage basins, lakes, marks at confluences and lit relief.",
+      "category": "Fields & paths",
+      "operationIds": ["field.gradient-noise-2d-01"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/drainage-erosion.md",
+      "source": "packages/instruments/src/composition/drainage-draw.ts",
+      "sourceEntry": "drawDrainageErosion",
       "creativeReviewScope": "instrument-construction"
     },
     {
@@ -622,6 +661,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "pattern-competition",
+      "title": "Pattern Competition",
+      "description": "Several scales of activation and inhibition compete on one grid, and the scale with the smallest disagreement updates each cell: broad lobes hold finer patterns, which hold finer ones. Flat bands by scale, contours and scale-sized marks are three drawings of the same evolving field, scrubbed by steps.",
+      "category": "Fields & paths",
+      "operationIds": ["geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/pattern-competition.md",
+      "source": "packages/instruments/src/composition/pattern-draw.ts",
+      "sourceEntry": "drawPatternCompetition",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "dry-bristles",
       "title": "Dry Bristles",
       "description": "Carry a broad brush of separate hairs along any path (harmonic traces, a contour family or a hand scribble): hairs lift on light pressure and paper tooth, run dry, taper at the ends and gather into tufts, while the other paths stay fine stitched contours.",
@@ -635,6 +687,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "cyclic-fronts",
+      "title": "Cyclic Fronts",
+      "description": "Expanding domains, interleaved fronts and spiral waves from a cyclic cellular automaton: every cell steps to the next of n states when enough neighbors already are, then the state cells (flat, hatched or marked), the fronts between them and the spiral cores are each drawn from the same grid, with obstacles that stop a front and a step count that scrubs the growth.",
+      "category": "Systems & rules",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/cyclic-fronts.md",
+      "source": "packages/instruments/src/composition/cyclic-fronts.ts",
+      "sourceEntry": "drawCyclicFronts",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "polygon-watercolor",
       "title": "Polygon Watercolor",
       "description": "Lay translucent washes over a shape (a blob, a ring, letterforms or quilt compartments): every pass keeps the parent shape but has its own ragged boundary, correlated with the others, so pigment builds up unevenly; reserved holes stay unpainted, and a light partial wash and a dense overpainted patch are the same instrument with different settings.",
@@ -645,6 +710,19 @@
       "guide": "guides/polygon-watercolor.md",
       "source": "packages/instruments/src/composition/polygon-watercolor.ts",
       "sourceEntry": "drawPolygonWatercolor",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "aggregation-colonies",
+      "title": "Aggregation Colonies",
+      "description": "Grow a branching accretion from random walkers that stick where they touch: seeds, a release source, a wind, a sticking chance and an optional wall (letters, an image silhouette or a hole) decide the tree; the same colony is drawn as marks at its grains, ink, stitches or beads along its parent links, a halo and tip marks, coloured by age, limb or depth.",
+      "category": "Systems & rules",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/aggregation-colonies.md",
+      "source": "packages/instruments/src/composition/aggregation-draw.ts",
+      "sourceEntry": "drawAggregationColonies",
       "creativeReviewScope": "instrument-construction"
     },
     {
@@ -723,6 +801,19 @@
       "guide": "guides/chemotactic-trails.md",
       "source": "packages/instruments/src/composition/chemotaxis-draw.ts",
       "sourceEntry": "drawChemotacticTrails",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "cell-division",
+      "title": "Cell Division",
+      "description": "A colony of cells eats a diffusing nutrient, grows and divides in two, pushing its neighbours aside: cells near the food grow large and divide, starved ones stay small, so sizes and generations record where the food was. Draw the cells, their division tree, the nutrient left and each cell's territory from the same colony.",
+      "category": "Systems & rules",
+      "operationIds": ["geometry.voronoi-cells-2d", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/cell-division.md",
+      "source": "packages/instruments/src/composition/cell-division-draw.ts",
+      "sourceEntry": "drawCellDivision",
       "creativeReviewScope": "instrument-construction"
     },
     {
@@ -2905,6 +2996,19 @@
       "guide": "guides/region-stitch.md",
       "source": "packages/instruments/src/composition/stitch-draw.ts",
       "sourceEntry": "drawStitches",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "wet-pigment",
+      "title": "Wet Pigment",
+      "description": "Pigmented water dropped into an artist-defined wet region spreads, is soaked up by uneven paper and dries from the edge in. Suspended pigment is carried out with the water and left where it dries, so drops bloom into feathered rims, late clear water pushes old pigment outward into backruns, and drying fronts record the order the sheet dried. Drawn as banded pigment fills, drying-front contours and the wet film, all from one stepped simulation. A 2D cellular model, not physical paint.",
+      "category": "Systems & rules",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/wet-pigment.md",
+      "source": "packages/instruments/src/composition/wet-pigment-draw.ts",
+      "sourceEntry": "drawWetPigment",
       "creativeReviewScope": "instrument-construction"
     }
   ]

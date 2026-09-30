@@ -20,6 +20,11 @@ import { referenceComposition, prepareReferenceComposition } from "./composition
 import { branchOrnamentDefinitions } from "./adapters/branch-ornament-instruments.js";
 import { sandDepositionDefinitions } from "./adapters/sand-deposition-instrument.js";
 import { drawSandDeposition, prepareSandDeposition, sandDepositionComposition } from "./composition/deposition.js";
+import { riverRibbonsDefinition } from "./adapters/river-ribbons-instrument.js";
+import { drawRiverRibbons, prepareRiverRibbonsDrawing, riverRibbonsComposition } from "./composition/river-draw.js";
+import { riverUsesSeed } from "./composition/river.js";
+import { cellDivisionDefinitions } from "./adapters/cell-division-instrument.js";
+import { cellDivisionComposition, cellDivisionUsesSeed, drawCellDivision, prepareCellDivision } from "./composition/cell-division-draw.js";
 import { branchOrnamentComposition, drawBranchOrnament, prepareBranchOrnament } from "./composition/branch-ornament.js";
 import { gestureScoresDefinitions } from "./adapters/gesture-scores-instruments.js";
 import { drawGestureScore, gestureScoreComposition, prepareGestureScore } from "./composition/gesture-scores.js";
@@ -47,6 +52,8 @@ import { dryBristlesDefinition } from "./adapters/dry-bristles-instrument.js";
 import { drawDryBristles, dryBristlesComposition, prepareDryBristles } from "./composition/dry-bristles.js";
 import { polygonWatercolorDefinition } from "./adapters/polygon-watercolor-instrument.js";
 import { drawPolygonWatercolor, polygonWatercolorComposition, polygonWatercolorUsesSeed, preparePolygonWatercolor } from "./composition/polygon-watercolor.js";
+import { collisionScoresDefinition } from "./adapters/collision-scores-instrument.js";
+import { collisionScoresComposition, collisionScoresUsesSeed, drawCollisionScores, prepareCollisionScores } from "./composition/collision-draw.js";
 import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
@@ -59,13 +66,20 @@ import { drawStrokeRelief, prepareStrokeRelief, strokeReliefComposition } from "
 import { inversionGardensDefinition } from "./adapters/inversion-gardens-instrument.js";
 import { drawInversionGardens, inversionGardensComposition, inversionGardensUsesSeed, prepareInversionGardens } from "./composition/inversion-gardens.js";
 import { pathTypographyDefinition, pathTypographyUsesSeed } from "./adapters/path-typography-instrument.js";
+import { cyclicFrontsDefinition } from "./adapters/cyclic-fronts-instrument.js";
+import { cyclicFrontsComposition, cyclicFrontsUsesSeed, drawCyclicFronts, prepareCyclicFronts } from "./composition/cyclic-fronts.js";
 import { chemotacticTrailsDefinition } from "./adapters/chemotactic-trails-instrument.js";
 import { chemotacticTrailsComposition, drawChemotacticTrails, prepareChemotacticTrails } from "./composition/chemotaxis-draw.js";
 import { hingedPanelsDefinition } from "./adapters/hinged-panels-instrument.js";
 import { drawHingedPanels, hingedPanelsComposition, hingedPanelsUsesSeed, prepareHingedPanels } from "./composition/hinge-draw.js";
 import { drawPathTypography, pathTypographyComposition, preparePathTypography } from "./composition/path-type-draw.js";
+import { drainageErosionDefinition } from "./adapters/drainage-erosion-instrument.js";
+import { drainageErosionComposition, drawDrainageErosion, prepareDrainageErosion } from "./composition/drainage-draw.js";
+import { drainageUsesSeed } from "./composition/drainage-settings.js";
 import { nodalPlatesDefinition } from "./adapters/nodal-plates-instrument.js";
 import { drawNodalPlate, nodalPlateComposition, nodalPlatesUsesSeed, prepareNodalPlate } from "./composition/nodal-draw.js";
+import { patternCompetitionDefinition } from "./adapters/pattern-competition-instrument.js";
+import { drawPatternCompetition, patternCompetitionComposition, patternCompetitionUsesSeed, preparePatternCompetition } from "./composition/pattern-draw.js";
 import { glyphPackingDefinition, glyphPackingUsesSeed } from "./adapters/glyph-packing-instrument.js";
 import { drawGlyphPacking, glyphPackingComposition, prepareGlyphPacking } from "./composition/glyph-pack-draw.js";
 import { regionStitchDefinition, regionStitchUsesSeed } from "./adapters/region-stitch-instrument.js";
@@ -76,6 +90,10 @@ import { valueRegionsDefinition } from "./adapters/value-regions-instrument.js";
 import { drawValueRegions, prepareValueRegions, valueRegionsComposition, valueRegionsUsesSeed } from "./composition/value-regions-draw.js";
 import { randomWalkFrontsDefinition } from "./adapters/random-walk-fronts-instrument.js";
 import { drawWalkFronts, prepareRandomWalkFronts, randomWalkFrontsComposition } from "./composition/walk-fronts-draw.js";
+import { wetPigmentDefinition, wetPigmentPalette } from "./adapters/wet-pigment-instrument.js";
+import { drawWetPigment, prepareWetPigment, wetPigmentComposition, wetPigmentUsesSeed } from "./composition/wet-pigment-draw.js";
+import { aggregationColoniesDefinition } from "./adapters/aggregation-colonies-instrument.js";
+import { aggregationColoniesComposition, drawAggregationColonies, prepareAggregationColonies } from "./composition/aggregation-draw.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
@@ -158,6 +176,21 @@ export type { DepositOptions, Deposit, ProtectedSpec, ProtectedSpace, KeptDeposi
   SandConsumers, DepositionProducts } from "./composition/deposition.js";
 export { splineDeposit, protectedSpace, keepOut, curvePaths, sandDepositionComposition, resolveSequence, sandDepositionProducts, depositionDensity,
   isolineTone, densityAtTone, drawSandDeposition, prepareSandDeposition, MAX_DEPOSIT_GRAINS, MAX_SAMPLED_GRAINS, MAX_OVERLAY_CURVES } from "./composition/deposition.js";
+export type { RiverOptions, RiverConstruction, RiverPlanform, RiverState, RiverFrameData, OxbowRecord, RiverChannel, RiverOxbow, RiverFrame, RiverScene, RiverControl, RiverAgeField } from "./composition/river.js";
+export { riverRibbons, prepareRiverRibbons, riverSnapshots, riverSimulation, riverConstruction, checkRiver, riverFields, riverTraces, oxbowPaths, riverAgeField, riverUsesSeed, isRiverCached, clearRiverCache,
+  RIVER_LIMITS, MAX_SINUOSITY, MAX_NODES, END_ROOM, MAX_AGE_CELLS, MAX_AGE_WORK } from "./composition/river.js";
+export type { Valley as RiverValley, Walls as RiverWalls, Cut as RiverCut, Loop as RiverLoop } from "./composition/river-model.js";
+export { arcLengths as channelArcLengths, signedCurvature as channelCurvature, smoothCurvature as smoothChannelCurvature, kernelTaps as curvatureKernelTaps, dischargeAt, dischargeWidths,
+  valleyOf as riverValley, migrationOffsets, easeAtWalls, confine as confineChannel, findCuts as findNeckCuts, applyCuts as applyNeckCuts, resample as resampleChannel, firstSelfCrossing,
+  MAX_KERNEL_TAPS, LOOP_FACTOR, SETTLE_TOLERANCE, ANCHOR_WIDTHS, WALL_WIDTHS } from "./composition/river-model.js";
+export type { RiverRibbonsComposition, RiverRibbon, RibbonPainter, RiverConsumers } from "./composition/river-draw.js";
+export { riverRibbonsComposition, drawRiverRibbons, prepareRiverRibbonsDrawing, riverBanks, ribbonHalfWidths } from "./composition/river-draw.js";
+export type { ColonyOptions as CellColonyOptions, Colony as CellColony, ColonyCell, ColonyFrame as CellColonyFrame, ColonyStatus as CellColonyStatus, CellBoundary, NutrientSource, SeedLayout as CellSeedLayout, DivisionAxis } from "./composition/cell-division.js";
+export { cellColony, prepareCellColony, colonyAt, colonyFrameAt, colonyOptionsOf, colonyConstruction, colonyUsesSeed, validateColony, fieldSize, fieldLayout, diffusionPlan,
+  cellDivisionSimulation, COLONY_LIMITS as CELL_COLONY_LIMITS, MAX_COLONY_WORK } from "./composition/cell-division.js";
+export type { CellShape, ColorBy as CellColonyColorBy, CellDivisionComposition, CellDivisionConsumers, CellSite, CellWall } from "./composition/cell-division-draw.js";
+export { cellDivisionComposition, cellDivisionProducts, cellSites as cellDivisionSites, lineagePaths, nutrientPaths, cellWalls, wallPaths, wallHatch, agedCells,
+  drawCellDivision, prepareCellDivision, MAX_WALL_CELLS } from "./composition/cell-division-draw.js";
 export type { Raster, RasterData, RasterChannels, RasterFormat, ColorSpace, AlphaMode, ConvertOptions, SampleFilter, EdgeRule, SampleOptions, ScalarGrid, LabelGrid,
   ValueKind, ValueOptions, RasterMapping, ResizeFilter } from "./composition/raster.js";
 export { createRaster, rasterData, rasterPixel, convertRaster, sampleRaster, sampleInto, sampleGrid, createScalarGrid, valueField, rasterMapping, cropRaster,
@@ -276,6 +309,23 @@ export { depositHeight, depositWork, reliefGrid, crossSectionProfile, pigmentFie
   crossSections, overlaps, MAX_RELIEF_CELLS, MAX_DEPOSIT_PAIRS, MAX_PATCH_VERTICES, footprintWeight, SHADE_LEVELS, PATCH_ALPHA } from "./composition/relief.js";
 export type { ReliefSource, ReliefView, ColorBy as ReliefColorBy, StrokeReliefComposition, StrokeReliefConsumers, StrokeReliefProducts } from "./composition/stroke-relief.js";
 export { strokeReliefComposition, sourceStrokes, strokeTones, strokeReliefProducts, reliefColors, flatRibbon, shadedPatch, drawStrokeRelief, prepareStrokeRelief } from "./composition/stroke-relief.js";
+export type { ErosionParams, ErosionState, ErosionProjection, ErosionSnapshots } from "./composition/drainage-erosion.js";
+export { erosionSimulation, erosionCache, erodedTerrain, checkErosionWork, creepSubsteps, terrainVolume, hasSettled, MAX_EROSION_STEPS, MAX_EROSION_WORK, MAX_CREEP_SUBSTEPS,
+  CHECKPOINT_EVERY as EROSION_CHECKPOINT_EVERY } from "./composition/drainage-erosion.js";
+export type { OutletMode, FilledSurface } from "./composition/drainage-flow.js";
+export { outletMask, fillDepressions, flowReceivers, accumulateFlow, EPSILON as FILL_EPSILON, MAX_GRID_CELLS as MAX_TERRAIN_CELLS } from "./composition/drainage-flow.js";
+export type { TerrainShape, TerrainSpec, RainMode, RainSpec, BedrockKind, BedrockSpec } from "./composition/terrain.js";
+export { initialTerrain, rainField, bedrockField, terrainShapes, rainModes, bedrockKinds } from "./composition/terrain.js";
+export type { ContourGrid } from "./composition/grid-contours.js";
+export { gridContours, MAX_CONTOUR_VERTICES } from "./composition/grid-contours.js";
+export type { DrainageSpec, Drainage, GridFrame, StreamNode, StreamReach, StreamOptions, StreamNetwork, Basin, BasinMap } from "./composition/drainage-network.js";
+export { analyzeDrainage, streamNetwork, drainageBasins, MAX_STREAM_CELLS } from "./composition/drainage-network.js";
+export { hillshadePatch, lakeDomain, basinColors } from "./composition/drainage-shade.js";
+export type { DrainageView, Footprint as DrainageFootprint, StreamStyle, BasinStyle, MarkSet as DrainageMarkSet, MarkKind as DrainageMarkKind } from "./composition/drainage-settings.js";
+export { footprintFor as drainageFootprint, erosionParamsFor, viewFor as drainageView } from "./composition/drainage-settings.js";
+export type { DrainageErosionComposition, BasinGeometry, DrainageProducts, DrainageConsumers } from "./composition/drainage-draw.js";
+export { drainageErosionComposition, drainageErosionProducts, drawDrainageErosion, prepareDrainageErosion, terrainContours, streamRibbon, simulationSeed as drainageSimulationSeed,
+  MAX_CONTOUR_LEVELS, MAX_HATCH_STROKES } from "./composition/drainage-draw.js";
 export type { ArcTable, ArcPoint } from "./composition/path-arc.js";
 export { arcTable, arcPointAt, arcTurn, arcSpan, closedRing } from "./composition/path-arc.js";
 export type { AdvanceItem, Crowding, CurvaturePolicy, PathsLayoutOptions, RepeatPolicy, ReadingDirection, DropReason, Adaptation, PathLayoutOptions, PathFrame, DroppedItem, LayoutReport,
@@ -358,12 +408,35 @@ export type { PointGridOptions, PointHit } from "./composition/spatial-index.js"
 export { PointGrid, MAX_GRID_CELLS } from "./composition/spatial-index.js";
 export type { LatticeWalkOptions, LatticeStep, AngleWalkOptions, AngleStep } from "./composition/walks.js";
 export { latticeWalkStep, angleWalkStep, LATTICE_DIRECTIONS } from "./composition/walks.js";
+export type { WallSet as CollisionWalls } from "./composition/collision-walls.js";
+export { buildWalls, timeToSegment, timeToReach, insideContainer, distanceToWalls, wallsNear, APPROACH_EPS } from "./composition/collision-walls.js";
+export type { Bodies as CollisionBodyArrays, Physics as CollisionPhysics, PairOutcome, WallOutcome, FrameLimits } from "./composition/collision-solver.js";
+export { pairLaw, wallLaw, solveFrame, EVENT, EVENT_STRIDE, KIND_PAIR, KIND_WALL, KIND_EMIT, REST_SPEED, TIE } from "./composition/collision-solver.js";
+export type { ContainerShape, BarrierKind as CollisionBarrierKind, ContainerSpec, EmitterFootprint } from "./composition/collision-containers.js";
+export { bundledContainer, containerRings, containerShapes, barrierKinds as collisionBarrierKinds, barriers as collisionBarriers } from "./composition/collision-containers.js";
+export type { EmitterMode, MassLaw, CollisionBodies, CollisionEmitter, CollisionSetup, CollisionModel, CollisionState, CollisionFrame, CollisionBody, CollisionTrail,
+  Contact as CollisionContact, CollisionScore, CollisionRunOptions } from "./composition/collision.js";
+export { collisionModel, collisionSimulation, collisionSnapshots, prepareCollisionSnapshots, hasCollisionSnapshots, collisionScore, collisionScoreOfModel,
+  emitterModes, COLLISION_LIMITS } from "./composition/collision.js";
+export type { CollisionColorBy, CollisionView, CollisionScoresRecipe, ContactSite, DiscSite, TrailPath, CollisionConsumers } from "./composition/collision-draw.js";
+export { collisionScoresComposition, collisionScoresUsesSeed, collisionScoreOfRecipe, drawCollisionScores, prepareCollisionScores } from "./composition/collision-draw.js";
+export type { CyclicRule, CyclicConstruction, CyclicState, CyclicStep, InitialSpec, ObstacleSpec, NeighbourhoodShape, StampName } from "./composition/cyclic-rule.js";
+export { cyclicSimulation, neighbourOffsets, obstacleRuns, lettersObstacle, checkConstruction as checkCyclicConstruction, CYCLIC_LIMITS, WALL as CYCLIC_WALL } from "./composition/cyclic-rule.js";
+export type { CyclicGrid, CyclicFrame, GridGeometry, StateRegion, FrontPath, FrontOptions, CoreSite } from "./composition/cyclic-structure.js";
+export { cyclicGrid, gridGeometry, stateRegions, frontPaths, spiralCores, cellSites, stateCounts, MAX_SMOOTHING } from "./composition/cyclic-structure.js";
+export type { CyclicInk, CyclicParams } from "./composition/cyclic-params.js";
+export type { CyclicFrontsComposition, CyclicFrontsConsumers, CyclicFrontsProducts, CyclicSummary, CyclicSnapshots } from "./composition/cyclic-fronts.js";
+export { cyclicFrontsComposition, cyclicFrontsProducts, cyclicSnapshots, hasCyclicSnapshots, cyclicSummary, statePalette, stateHatch, drawCyclicFronts, prepareCyclicFronts, CYCLIC_DRAW_UNITS } from "./composition/cyclic-fronts.js";
 export type { NodalShape, NodalEdge, ModeFunction } from "./composition/nodal-modes.js";
 export { besselJ, besselJPrime, besselPair, besselZero, rectangleMode, circleMode, NODAL_MAX_INDEX } from "./composition/nodal-modes.js";
 export type { NodalMode, NodalFieldOptions, NodalResolvedMode, NodalGrid, NodalField, NodalSiteOptions, NodalSite } from "./composition/nodal-plate.js";
 export { nodalField, nodalPaths, nodalSites, nodalBands, nodalDistance, nodalProximity, NODAL_LIMITS } from "./composition/nodal-plate.js";
 export type { NodalComposition, NodalConsumers } from "./composition/nodal-draw.js";
 export { nodalPlateComposition, drawNodalPlate, prepareNodalPlate } from "./composition/nodal-draw.js";
+export type { PatternModel, PatternScale, PatternState, PatternProjection, PatternSnapshots, PatternView, PatternFrame, PatternContourOptions, PatternPath, PatternSiteOptions, PatternSite, PatternBandOptions, PatternBand, PatternBoundary, PatternSymmetry, PatternStart, SymmetryOrbits } from "./composition/pattern-competition.js";
+export { patternSimulation, patternSnapshots, preparePatternSnapshots, patternView, patternCompetingFields, patternScales, patternStepWork, checkPatternModel, patternFrame, patternContours, patternSites, patternBands, symmetryOrbits, scaleTone as patternScaleTone, PATTERN_LIMITS, PATTERN_BOUNDARIES, PATTERN_SYMMETRIES, PATTERN_STARTS } from "./composition/pattern-competition.js";
+export type { PatternCompetitionComposition, PatternConsumers, PatternProducts } from "./composition/pattern-draw.js";
+export { patternCompetitionComposition, patternRecipeSnapshots, patternProducts, drawPatternCompetition, preparePatternCompetition } from "./composition/pattern-draw.js";
 export type { Cline, ClineShape, CircleInversion, Frame as InversionFrame, Segment as InversionSegment, Circle as InversionCircleCurve, Arc as InversionArc,
   Constraint as ClineConstraint } from "./composition/inversion.js";
 export { circleCline, lineCline, clineValue, clineDot, clineShape, circleInversion, invertPoint, invertCline, invertFrame, segmentIntervals, circleIntervals,
@@ -405,6 +478,20 @@ export { randomWalkFrontsComposition, randomWalkFrontsProducts, drawWalkFronts, 
 export type { ContourEnd, LevelTies, ContourNode, ContourCurve, SectionPlane, PlaneFrame, SectionOptions, SectionLoop, MeshSection, MeshSlices, SlicePlaneOptions,
   SectionDomainOptions, IsoOptions, IsoCurve, IsoContours } from "./composition/mesh-section.js";
 export { planeFrame, sectionMesh, sliceMesh, sliceCurves, slicePlanes, sectionDomain, isoContours, SECTION_LIMITS, DEFAULT_SECTION_WORK } from "./composition/mesh-section.js";
+export type { WetMaskSpec, WetBoundary, WetLayout, WetModel, WetSite, WetAccounting, WetState, WetFrame, WetEnvironment, WetSnapshots } from "./composition/wet-pigment.js";
+export { WET_LIMITS, wetPigmentSimulation, wetPigmentSnapshots, prepareWetPigmentSnapshots, wetEnvironment, wetMaskDomain, checkWetModel, wetWork } from "./composition/wet-pigment.js";
+export type { WetPigmentComposition, PigmentBands, DryingFronts, WetFilm, WetPigmentProducts, WetPigmentConsumers } from "./composition/wet-pigment-draw.js";
+export { wetPigmentComposition, wetPigmentProducts, pigmentBands, dryingFronts, wetFilm, pigmentFills, frontLines, filmSheen, bandAlpha, drawWetPigment,
+  prepareWetPigment, wetPigmentUsesSeed, MAX_FRONTS, MAX_BANDS } from "./composition/wet-pigment-draw.js";
+export { WET_WORDS } from "./adapters/wet-pigment-instrument.js";
+export { DomainWalls } from "./composition/domain-walls.js";
+export type { SeedShape, SourceShape, SeedSpec, SourceSpec, ColonyDomainSpec, WalkerSpec, GrowthSpec, ColonyOptions, ColonySite, ColonyStatus, Colony,
+  ColonyParams, ColonyState, ColonyFrame, Box as ColonyBox } from "./composition/aggregation.js";
+export { growColony, prepareColony, colonyIsCached, colonyReleasePoint, colonySimulation, colonyDomain, colonyParams, colonyCache, checkColonyOptions, checkColonySteps, colonyWorkBound, domainPaths,
+  COLONY_LIMITS } from "./composition/aggregation.js";
+export type { ColonyColorBy, ColonyView, AggregationColoniesRecipe, ColonyConsumers, LinkLayer } from "./composition/aggregation-draw.js";
+export { aggregationColoniesComposition, drawAggregationColonies, prepareAggregationColonies, colonyOfRecipe, colonyMarkSites, colonyTipSites, colonyLinkPaths,
+  colonyTone, massFraction, shownGrains, colonyColorings } from "./composition/aggregation-draw.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -423,7 +510,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, hingedPanelsDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, hingedPanelsDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -457,6 +544,7 @@ export function inspectorItems(id: string, values: InstrumentInput["params"]): I
 
 function paletteFor(id: string): number[] {
   if (referencePalettes[id]) return [...referencePalettes[id]];
+  if (id === "wet-pigment") return [...wetPigmentPalette];
   return imageAndControlsPalette(id) ?? externalDynamicsPalette(id) ??
     externalExpansionPalette(id) ?? (id === "lattice-marks" ? [...latticeOriginal] : [...original]);
 }
@@ -532,6 +620,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "gesture-scores": [0x24262b, 0xc99a3b, 0xb8452f, 0x2f6f7a],
   "fm-engraving": [0x1d2733, 0xb5452e, 0xd39a3a, 0x2f6f8f],
   "sand-deposition": [0x3b2f27, 0xb5522f, 0x1f5f73],
+  "cell-division": [0x2b3a55, 0x2f6f8f, 0x4f9a8a, 0xd9a441, 0xc4452b],
   "quilled-paths": [0xd4563f, 0xe6a23a, 0x2f7f86, 0x6f9a55, 0x8b5190],
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "pixel-sorting": [0x1c2230, 0x8a3b32, 0xd9a441, 0xf1e6cf],
@@ -543,15 +632,21 @@ const referencePalettes: Record<string, readonly number[]> = {
   "bundled-relations": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86, 0x9c5f34],
   "dry-bristles": [0x22252b, 0x2f6f7a, 0xb8452f, 0xc99a3b],
   "polygon-watercolor": [0x2f6f8f, 0xc4573b, 0xd9a441, 0x4f7a5c],
+  "aggregation-colonies": [0x243b4a, 0x3f7f7a, 0xd9a441, 0xc4452b, 0x8a4a86],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
   "typographic-rhythm": [0x1c1d20, 0xc93a2a, 0x2b5d9b, 0xe6ae2c],
   "painterly-source": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0xf0e6d2],
   "slit-compositions": [0x1d2733, 0xb5452e, 0xe0a13a, 0xf1e6cc],
   "nodal-plates": [0x1c2430, 0xb8452f, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
+  "pattern-competition": [0x1c2430, 0xb8452f, 0xd9a441, 0x4f7a5c, 0x2f6f8f],
   "adaptive-compartments": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0xefe6d2],
   "connected-value-regions": [0x231f24, 0xb5452e, 0xe0a13a, 0x2f6f7a, 0xefe6d2],
   "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "crossing-lace": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
+  "collision-scores": [0x1f2733, 0xc4452b, 0x2f7f8f, 0xd9a441, 0x5d8a55, 0x8b5190],
+  "cyclic-fronts": [0x1c2b4f, 0x2e8b9d, 0xe6be5a, 0xd9553b, 0x8a2f7a],
+  "river-ribbons": [0x1f5f73, 0x6b5636, 0x2f7f86, 0xc9a86a],
+  "drainage-erosion": [0x2b2622, 0x2f6f8f, 0xd6a45a, 0x8ea15a, 0xc46a4a, 0x6f8fa3],
   "region-stitch": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0x7f9a4f, 0x8b4a6f],
   "inversion-gardens": [0x1d2733, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "random-walk-fronts": [0xc4452b, 0xe0a13a, 0x2f7f86, 0x6f9a55, 0x8b5190, 0x1f2733],
@@ -581,11 +676,15 @@ export function drawInstrument(context: DrawingContext, input: InstrumentInput):
 function drawUncomposited(context: DrawingContext, input: InstrumentInput): void {
   definition(input.technique);
   if (input.technique === "branch-ornament") return drawBranchOrnament(context, branchOrnamentComposition(input));
+  if (input.technique === "cyclic-fronts") return drawCyclicFronts(context, cyclicFrontsComposition(input));
+  if (input.technique === "aggregation-colonies") return drawAggregationColonies(context, aggregationColoniesComposition(input));
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
   if (input.technique === "path-typography") return drawPathTypography(context, pathTypographyComposition(input));
   if (input.technique === "glyph-packing") return drawGlyphPacking(context, glyphPackingComposition(input));
   if (input.technique === "outline-type") return drawOutlineType(context, outlineTypeComposition(input));
   if (input.technique === "sand-deposition") return drawSandDeposition(context, sandDepositionComposition(input));
+  if (input.technique === "river-ribbons") return drawRiverRibbons(context, riverRibbonsComposition(input));
+  if (input.technique === "cell-division") return drawCellDivision(context, cellDivisionComposition(input));
   if (input.technique === "quilled-paths") return drawQuilled(context, quillComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
   if (input.technique === "pixel-sorting") return drawPixelSorting(context, pixelSortingComposition(input));
@@ -595,17 +694,21 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "painterly-source") return drawPainterly(context, painterlyComposition(input));
   if (input.technique === "slit-compositions") return drawSlit(context, slitComposition(input));
   if (input.technique === "nodal-plates") return drawNodalPlate(context, nodalPlateComposition(input));
+  if (input.technique === "pattern-competition") return drawPatternCompetition(context, patternCompetitionComposition(input));
   if (input.technique === "stroke-relief") return drawStrokeRelief(context, strokeReliefComposition(input));
+  if (input.technique === "drainage-erosion") return drawDrainageErosion(context, drainageErosionComposition(input));
   if (input.technique === "image-directed-field") return drawImageDirectedField(context, imageDirectedFieldComposition(input));
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
   if (input.technique === "region-stitch") return drawStitches(context, regionStitchComposition(input));
   if (input.technique === "hyperbolic-gardens") return drawHyperbolicGardens(context, hyperbolicGardensComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
+  if (input.technique === "collision-scores") return drawCollisionScores(context, collisionScoresComposition(input));
   if (input.technique === "polygon-watercolor") return drawPolygonWatercolor(context, polygonWatercolorComposition(input));
   if (input.technique === "inversion-gardens") return drawInversionGardens(context, inversionGardensComposition(input));
   if (input.technique === "random-walk-fronts") return drawWalkFronts(context, randomWalkFrontsComposition(input));
   if (input.technique === "chemotactic-trails") return drawChemotacticTrails(context, chemotacticTrailsComposition(input));
+  if (input.technique === "wet-pigment") return drawWetPigment(context, wetPigmentComposition(input));
   if (input.technique === "hinged-panels") return drawHingedPanels(context, hingedPanelsComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
@@ -624,7 +727,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "hinged-panels" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "hinged-panels" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -633,16 +736,21 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "branch-ornament")
     return prepareBranchOrnament(branchOrnamentComposition(input), cancelled);
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
+  if (input.technique === "cyclic-fronts") return prepareCyclicFronts(cyclicFrontsComposition(input), cancelled);
+  if (input.technique === "aggregation-colonies") return prepareAggregationColonies(aggregationColoniesComposition(input), cancelled);
   if (input.technique === "fm-engraving") return prepareEngraving(engravingComposition(input), cancelled);
   if (input.technique === "path-typography") return preparePathTypography(pathTypographyComposition(input), cancelled);
   if (input.technique === "glyph-packing") return prepareGlyphPacking(glyphPackingComposition(input), cancelled);
   if (input.technique === "outline-type") return prepareOutlineType(outlineTypeComposition(input), cancelled);
   if (input.technique === "image-directed-field") return prepareImageDirectedField(imageDirectedFieldComposition(input), cancelled);
   if (input.technique === "sand-deposition") return prepareSandDeposition(sandDepositionComposition(input), cancelled);
+  if (input.technique === "river-ribbons") return prepareRiverRibbonsDrawing(riverRibbonsComposition(input), cancelled);
+  if (input.technique === "cell-division") return prepareCellDivision(cellDivisionComposition(input), cancelled);
   if (input.technique === "quilled-paths") return prepareQuilled(quillComposition(input), cancelled);
   if (input.technique === "dry-bristles") return prepareDryBristles(dryBristlesComposition(input), cancelled);
   if (input.technique === "polygon-watercolor") return preparePolygonWatercolor(polygonWatercolorComposition(input), cancelled);
   if (input.technique === "random-walk-fronts") return prepareRandomWalkFronts(randomWalkFrontsComposition(input), cancelled);
+  if (input.technique === "wet-pigment") return prepareWetPigment(wetPigmentComposition(input), cancelled);
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
   if (input.technique === "pixel-sorting") return preparePixelSorting(pixelSortingComposition(input), cancelled);
@@ -651,8 +759,11 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "painterly-source") return preparePainterly(painterlyComposition(input), cancelled);
   if (input.technique === "slit-compositions") return prepareSlit(slitComposition(input), cancelled);
   if (input.technique === "nodal-plates") return prepareNodalPlate(nodalPlateComposition(input), cancelled);
+  if (input.technique === "pattern-competition") return preparePatternCompetition(patternCompetitionComposition(input), cancelled);
   if (input.technique === "stroke-relief") return prepareStrokeRelief(strokeReliefComposition(input), cancelled);
+  if (input.technique === "drainage-erosion") return prepareDrainageErosion(drainageErosionComposition(input), cancelled);
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
+  if (input.technique === "collision-scores") return prepareCollisionScores(collisionScoresComposition(input), cancelled);
   if (input.technique === "region-stitch") return prepareStitches(regionStitchComposition(input), cancelled);
   if (input.technique === "hyperbolic-gardens") return prepareHyperbolicGardens(hyperbolicGardensComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
@@ -688,7 +799,12 @@ export function usesSeed(input: InstrumentInput): boolean {
   switch (input.technique) {
     case "quantized-stripes": return q.order === "shuffle";
     case "sand-deposition": return true;
+    case "cyclic-fronts": return cyclicFrontsUsesSeed(q);
+    case "river-ribbons": return riverUsesSeed({ planform: q.planform as "wandering", amplitude: Number(q.amplitude), heterogeneity: Number(q.heterogeneity) });
+    case "cell-division": return cellDivisionUsesSeed(q);
+    case "drainage-erosion": return drainageUsesSeed(q);
     case "nodal-plates": return nodalPlatesUsesSeed(q);
+    case "pattern-competition": return patternCompetitionUsesSeed(q);
     case "quilled-paths": return quillUsesSeed(q);
     case "gesture-scores": return q.recording === "wander" || Number(q.hairs) > 0 && q.bristles === true || q.sandMark !== "none" ||
       q.glyphMark !== "none" && (Number(q.glyphVariation) > 0 || Number(q.glyphRetention) < 1);
@@ -699,11 +815,13 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "shape-packing": return shapePackingUsesSeed(q);
     case "connected-value-regions": return valueRegionsUsesSeed(q);
     case "fm-engraving": return fmEngravingUsesSeed(q);
+    case "wet-pigment": return wetPigmentUsesSeed(q);
     case "path-typography": return pathTypographyUsesSeed(q);
     case "glyph-packing": return glyphPackingUsesSeed(q);
     case "outline-type": return outlineTypeUsesSeed(q);
     case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
+    case "collision-scores": return collisionScoresUsesSeed(q);
     case "hyperbolic-gardens": return hyperbolicGardensUsesSeed(q);
     case "hinged-panels": return hingedPanelsUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
