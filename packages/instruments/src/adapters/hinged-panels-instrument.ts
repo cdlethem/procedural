@@ -1,7 +1,7 @@
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { choice, numeric, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 const withCondition = (parameter: Parameter, visibleWhen?: Condition): Parameter => visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const integerKeys = new Set(["columns", "rows", "depth", "anchors"]);
 const n = (key: string, label: string, description: string, min: number, max: number, step: number,
@@ -79,7 +79,7 @@ const parameters: Parameter[] = [
   select("fill", "Panel fill", "None leaves only lines; flat paints each panel one colour; shaded lights it from a fixed direction so folds read as form.",
     [["none", "None"], ["flat", "Flat"], ["shaded", "Shaded"]]),
   select("colorBy", "Color by", "What picks a panel's palette entry: its tile class, its distance from the anchor along the hinges, whether its own fold is a mountain or valley, its tilt from flat, its height, one panel at a time by name, or one accent.",
-    [["class", "Tile class"], ["depth", "Hinge depth"], ["fold", "Mountain / valley"], ["tilt", "Tilt"], ["height", "Height"], ["panel", "Panel name"], ["single", "One accent"]]),
+    [["class", "Tile class"], ["depth", "Hinge depth"], ["fold", "Mountain / valley"], ["tilt", "Tilt"], ["height", "Height"], ["panel", "Panel name"], ["single", "One accent"]], { fill: ["flat", "shaded"] }),
   n("opacity", "Fill opacity", "Paint strength of panel fills.", 0, 1, 0.01, 0, 1, painted),
   n("shade", "Shading", "How much the light changes a panel's colour: 0 is flat colour, 1 is from dark to lit.", 0, 1, 0.01, 0, 1, shaded),
   n("lightAzimuth", "Light direction", "Where the light comes from around the vertical axis, degrees; fixed in the world, so moving the camera does not move it.", -180, 180, 1, -3600, 3600, shaded),

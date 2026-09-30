@@ -4,7 +4,7 @@ import { WALK_FRONT_LIMITS } from "../composition/walk-fronts.js";
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { numeric, text, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 type Option = readonly [value: string, label: string];
 const control = (parameter: Parameter, visibleWhen?: Condition): Parameter => visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const n = (key: string, label: string, description: string, min: number, max: number, step: number,
@@ -96,7 +96,7 @@ export const randomWalkFrontsParameters: Parameter[] = [
   n("lineWeight", "Line weight", "Stroke width of the lines, or bead size.", 0, 5, 0.1, 0, 50, lined),
   n("lineSpacing", "Stitch spacing", "Distance between stitches or beads along a path.", 2, 30, 0.5, 0.5, 1000, { ...lined, ...stitched }),
   select("lineTone", "Line colour", "Ink: the palette colour after the walk's colours. Colour: territory borders and hatching take their territory's colour; contours step through the walk's colours with age.",
-    [["ink", "Ink"], ["colour", "Territory / age colour"]]),
+    [["ink", "Ink"], ["colour", "Territory / age colour"]], [{ hatch: [true] }, { lines: ["territory", "contours", "both"] }]),
 
   flag("hatch", "Hatching", "Draw scan lines inside each colour's territory, at a different angle for each colour."),
   n("hatchSpacing", "Hatch spacing", "Distance between hatch lines in canvas units.", 2, 20, 0.5, 0.5, 400, hatched),

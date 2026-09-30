@@ -5,7 +5,7 @@ import { terrainVariants, vaseProfileNames } from "../composition/mesh-samples.j
 import { SOURCES } from "../composition/mesh-abstraction.js";
 import { choice, numeric, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 const withCondition = (parameter: Parameter, visibleWhen?: Condition): Parameter => visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const n = (key: string, label: string, description: string, min: number, max: number, step: number, hardMin: number, hardMax: number, options: { integer?: boolean; visibleWhen?: Condition } = {}): Parameter =>
   withCondition(numeric(key, label, description, min, max, step, { hardMin, hardMax, ...(options.integer ? { integer: true } : {}) }), options.visibleWhen);
@@ -22,14 +22,17 @@ const filled: Condition = { facets: ["shaded", "flat"] };
 const ghosted: Condition = { compare: ["ghost"] };
 
 const parameters: Parameter[] = [
-  select("source", "Source", "The detailed surface that gets abstracted: a finely subdivided sphere, a seeded terrain, a revolved vase, a faceted figure whose head is a fine sphere on a blocky body or a torus. Each is a closed or open triangle or quad mesh; a quad counts as two triangles.", SOURCES),
-  n("detail", "Source detail", "How finely the source is built. Icosphere: subdivision level is one less (level 5, 20,480 triangles, is the limit; 7 is refused). Figure: the head is subdivided to that level (5 at most). Terrain: 8 cells per side per step. Vase: 8 slices per step. Torus: 12 by 6 segments per step.", 1, 6, 1, 1, 7, { integer: true }),
+  select("source", "Source", "The detailed surface that gets abstracted: a finely subdivided sphere, a seeded terrain, a revolved vase, a faceted figure whose head is a fine sphere on a blocky body or a torus. Each is a closed or open triangle or quad mesh; a quad counts as two triangles.", SOURCES,
+    [{ compare: ["ghost"] }, { edges: ["outline", "mesh"] }, { facets: ["shaded", "flat"] }]),
+  n("detail", "Source detail", "How finely the source is built. Icosphere: subdivision level is one less (level 5, 20,480 triangles, is the limit; 7 is refused). Figure: the head is subdivided to that level (5 at most). Terrain: 8 cells per side per step. Vase: 8 slices per step. Torus: 12 by 6 segments per step.", 1, 6, 1, 1, 7,
+    { integer: true, visibleWhen: [{ compare: ["ghost"] }, { edges: ["outline", "mesh"] }, { facets: ["shaded", "flat"] }] }),
   select("terrainVariant", "Terrain kind", "Which seeded height field: rolling hills, ridges, a crater or dunes. The seed rerolls the heights.", terrainVariants, { source: ["terrain"] }),
   select("vaseProfile", "Vase profile", "Which profile is revolved: amphora, goblet, bottle or urn.", vaseProfileNames, { source: ["vase"] }),
 
   n("centerX", "Center X", "Horizontal canvas position of the middle of the source's bounding box.", 0, 640, 1, -640, 1280),
   n("centerY", "Center Y", "Vertical canvas position of the middle of the source's bounding box.", 0, 640, 1, -640, 1280),
-  n("size", "Size", "Canvas length of the source's bounding-box diagonal, so every source fills about the same space. Moving the camera or changing this never recomputes the abstraction.", 120, 620, 1, 10, 4000),
+  n("size", "Size", "Canvas length of the source's bounding-box diagonal, so every source fills about the same space. Moving the camera or changing this never recomputes the abstraction.", 120, 620, 1, 10, 4000,
+    { visibleWhen: [{ compare: ["ghost"] }, { edges: ["outline", "mesh"] }, { facets: ["shaded", "flat"] }] }),
 
   n("keep", "Facets kept", "Share of the triangles outside the preserved region that remain (the region's own triangles always stay). Edge collapse removes the cheapest edges first until this many are left: 1 is the source untouched, small values leave coarse facets. Scrub it: the same collapses simply continue or rewind.", 0.02, 0.6, 0.005, 0.0001, 1),
   select("rule", "Collapse rule", "What decides which edge goes first. Error-driven collapse (quadric) flattens where the surface is flat and keeps facets where it curves, so facet size follows the form. Shortest edge gives every facet the same scale whatever the form.", ["quadric", "length"]),
@@ -38,7 +41,8 @@ const parameters: Parameter[] = [
   flag("keepCreases", "Keep creases", "Protect sharp folds: edges bent by at least the crease angle get a strong penalty against moving. The figure's blocks and the vase's shoulder keep their corners."),
   n("creaseAngle", "Crease angle", "Fold, in degrees between neighbouring facets, from which an edge counts as a crease. It protects creases when Keep creases is on, and picks the crease lines of the Outline edges.", 10, 90, 1, 1, 180),
 
-  select("region", "Region", "The part that keeps its detail: nothing, a sphere, a box, a band along an axis, or seeded spheres centred on random surface points. Inside it the source is preserved vertex for vertex; outside it the surface is abstracted.", ["none", "sphere", "box", "band", "seeded"]),
+  select("region", "Region", "The part that keeps its detail: nothing, a sphere, a box, a band along an axis, or seeded spheres centred on random surface points. Inside it the source is preserved vertex for vertex; outside it the surface is abstracted.", ["none", "sphere", "box", "band", "seeded"],
+    [{ edges: ["outline", "mesh"] }, { facets: ["shaded", "flat"] }]),
   n("regionX", "Region X", "Where the region sits along X, as a fraction of the source's width (0 left edge, 1 right edge).", 0, 1, 0.01, -1, 2, { visibleWhen: placed }),
   n("regionY", "Region Y", "Where the region sits along Y (up), as a fraction of the source's height.", 0, 1, 0.01, -1, 2, { visibleWhen: placed }),
   n("regionZ", "Region Z", "Where the region sits along Z (depth), as a fraction of the source's depth.", 0, 1, 0.01, -1, 2, { visibleWhen: placed }),
@@ -51,7 +55,9 @@ const parameters: Parameter[] = [
   flag("invert", "Invert region", "Abstract inside the region and preserve everything outside it.", marked),
 
   n("yaw", "Yaw", "Turns the camera around the vertical axis, in degrees. Positive swings the eye toward +X.", -180, 180, 1, -3600, 3600),
-  n("pitch", "Pitch", "Raises the camera above the horizon, in degrees. Negative looks up from below.", -90, 90, 1, -360, 360),
+  n("pitch", "Pitch", "Raises the camera above the horizon, in degrees. Negative looks up from below.", -90, 90, 1, -360, 360, { visibleWhen: [
+    { compare: ["ghost"] }, { edges: ["outline", "mesh"] }, { facets: ["flat"] },
+    { facets: ["shaded", "flat"], compare: ["ghost", "beside"] }, { facets: ["shaded"], compare: ["off", "ghost"] }] }),
   n("roll", "Roll", "Turns the picture about the viewing axis, in degrees; positive turns it clockwise.", -180, 180, 1, -360, 360),
   select("projection", "Projection", "Orthographic keeps parallel edges parallel; perspective foreshortens, so near facets are larger and depth reads more strongly.", ["orthographic", "perspective"]),
   n("distance", "Eye distance", "How far a perspective camera sits, in diagonals of the source: small is a wide-angle close-up, large approaches orthographic. Below 0.75 the source can pass through the near plane.", 1.2, 6, 0.05, 0.75, 50, { visibleWhen: { projection: ["perspective"] } }),

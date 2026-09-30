@@ -36,11 +36,14 @@ const merged: Record<string, Record<string, VisibleWhen>> = {};
 for (const [id, table] of Object.entries(controlDependencies)) merged[id] = { ...table };
 const inline: Record<string, Record<string, VisibleWhen>> = {};
 let added = 0;
+const skipped: string[] = [];
 for (const entry of report) {
   const keys = Object.keys(entry.proposals);
   if (keys.length === 0) continue;
   const into = inlineInstruments.has(entry.id) ? inline : merged;
   for (const key of keys) {
+    // A report measured on an older tree can name a control that has since gained a condition; that one wins.
+    if (definitions.find((item) => item.id === entry.id)?.parameters.find((parameter) => parameter.key === key)?.visibleWhen) { skipped.push(`${entry.id}.${key}`); continue; }
     if (into[entry.id]?.[key]) throw new Error(`${entry.id}.${key} already has a condition`);
     (into[entry.id] ??= {})[key] = entry.proposals[key];
     if (into === merged) added++;
@@ -60,4 +63,5 @@ if (begin < 0 || end < 0) throw new Error("generation markers not found");
 const beginLine = source.indexOf("\n", begin) + 1;
 writeFileSync(target, source.slice(0, beginLine) + lines.join("\n") + "\n" + source.slice(end));
 if (inlineOut) writeFileSync(inlineOut, JSON.stringify(inline, null, 1));
+if (skipped.length) console.log(`skipped (already conditional): ${skipped.join(", ")}`);
 console.log(`overlay: ${controls} conditions in ${Object.keys(merged).length} instruments (${added} new); inline proposals: ${Object.values(inline).reduce((total, table) => total + Object.keys(table).length, 0)} in ${Object.keys(inline).length} instruments`);

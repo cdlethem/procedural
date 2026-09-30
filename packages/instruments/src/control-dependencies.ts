@@ -239,6 +239,7 @@ export const controlDependencies: Readonly<Record<string, Readonly<Record<string
     "contourSpacing": { "contours": [true] },
     "contourThreshold": { "contours": [true] },
     "contourWeight": { "contours": [true] },
+    "ticks": [{ "contours": [true] }, { "pigment": [true] }],
   },
   "elastic-loops": {
     "length": { "sourceMode": ["open"] },
@@ -555,7 +556,6 @@ export const controlDependencies: Readonly<Record<string, Readonly<Record<string
     "startAngle": [{ "showLine": [true], "startExtent": { "gt": 0 } }, { "showRibbon": [true] }, { "showStations": [true] }],
     "stationSize": { "showStations": [true] },
     "stationStride": { "showStations": [true] },
-    "steps": [{ "fieldY": { "gt": -95, "lt": 1311.5 } }, { "fieldY": { "gt": -816.8, "lt": 778 }, "showLine": [true] }, { "fieldY": { "gt": 410.6 }, "showLine": [true] }],
     "weight": { "showLine": [true] },
   },
   "subdivided-shells": {

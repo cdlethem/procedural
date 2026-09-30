@@ -4,7 +4,7 @@ import { GROWTH_LIMITS } from "../composition/laplacian-layout.js";
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { choice, numeric, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 type Values = Record<string, number | string | boolean>;
 const withCondition = (parameter: Parameter, visibleWhen?: Condition): Parameter =>
   visibleWhen ? { ...parameter, visibleWhen } : parameter;
@@ -88,7 +88,8 @@ const parameters: Parameter[] = [
 
   n("grid", "Grid", "Cells per side of the square grid the potential is solved on and the front is traced through. Finer grids resolve narrow gaps and thin fingers and cost much more: the work grows with the fourth power of this.", 48, 112, 8, GROWTH_LIMITS.minGrid, GROWTH_LIMITS.maxGrid),
   n("precision", "Solver precision", "Decimal digits of residual the potential solve must reach every step (8 means a residual of 1e-8 against a potential drop of 1). If the iteration limit is reached first the drawing fails with the residual instead of being drawn from an unfinished solution.", 4, 8, 1, 2, 12),
-  n("maxIterations", "Solver iterations", "Most relaxation sweeps one step's solve may use (the first solve may use four times as many). It bounds the work: steps × grid² × this.", 100, 1000, 50, 10, MAX_ITERATIONS),
+  n("maxIterations", "Solver iterations", "Most relaxation sweeps one step's solve may use (the first solve may use four times as many). It bounds the work: steps × grid² × this.", 100, 1000, 50, 10, MAX_ITERATIONS,
+    [{ source: ["edge"] }, { source: ["points"], steps: { gte: 2 } }]),
 
   select("frontMaterial", "Front material", "How the fronts are stroked: ink lines, stitches along them, beads along them, or not at all. Every front takes its color from its age along the palette.", ["ink", "stitch", "beads", "none"]),
   n("frontEvery", "Front interval", "Draw every this-many-th step's front. The most recent one in the window is always drawn.", 1, 20, 1, 1, GROWTH_STEP_LIMIT, stroked),
