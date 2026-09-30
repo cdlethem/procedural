@@ -206,9 +206,9 @@ export { cellDivisionComposition, cellDivisionProducts, cellSites as cellDivisio
 export type { LayoutSpec as GrowthLayoutSpec, GrowthLayout, SeedShape as GrowthSeedShape, SourceKind as GrowthSourceKind, SourceSide as GrowthSourceSide,
   SinkKind as GrowthSinkKind, BarrierKind as GrowthBarrierKind } from "./composition/laplacian-layout.js";
 export { growthLayout, checkLayoutSpec as checkGrowthLayoutSpec, clusterCentres as growthClusterCentres, ringPoints as growthRingPoints,
-  pillarCentres as growthPillarCentres, GROWTH_LIMITS, KIND_FREE as GROWTH_KIND_FREE, KIND_SOURCE as GROWTH_KIND_SOURCE, KIND_SINK as GROWTH_KIND_SINK,
+  pillarCentres as growthPillarCentres, GROWTH_LIMITS as FRONT_GROWTH_LIMITS, KIND_FREE as GROWTH_KIND_FREE, KIND_SOURCE as GROWTH_KIND_SOURCE, KIND_SINK as GROWTH_KIND_SINK,
   KIND_WALL as GROWTH_KIND_WALL, NOISE_LENGTH as GROWTH_NOISE_LENGTH } from "./composition/laplacian-layout.js";
-export type { GrowthSpec as FrontGrowthSpec, PhysicsSpec, GrowthState, FrontFrame, GrowthSnapshots, GrowthDiagnostics, PotentialField, SolveReport, RateReport, StopReason } from "./composition/laplacian-growth.js";
+export type { GrowthSpec as FrontGrowthSpec, PhysicsSpec, GrowthState, FrontFrame, GrowthSnapshots as FrontGrowthSnapshots, GrowthDiagnostics, PotentialField, SolveReport, RateReport, StopReason as FrontStopReason } from "./composition/laplacian-growth.js";
 export { solvePotential as solveLaplacePotential, jacobiRadius as growthJacobiRadius, frontRates as growthFrontRates, coverage as growthCoverage,
   growthSimulation, growthLimits, growthSnapshots, prepareGrowth, growthCached, checkGrowthSpec, lastActiveStep as growthLastActiveStep, growthDiagnostics,
   ringPaths as growthRingPaths, frontPaths as growthFrontPaths, frontOutlines as growthFrontOutlines, frontRings as growthFrontRings, occupiedRegion as growthOccupiedRegion,
@@ -545,7 +545,7 @@ export { roadsParcelsComposition, roadsParcelsProducts, roadPaths, drawRoadsParc
 export { roadGrowthParams, validateRoadsParcels } from "./composition/roads-parcels-params.js";
 export type { MeshRegion, Axis as MeshAxis } from "./composition/mesh-region.js";
 export { regionImportance, checkRegion, MAX_SEEDED_REGIONS } from "./composition/mesh-region.js";
-export type { SimplifyParams, SimplifyProjection, SimplifyOptions, Abstraction, StopReason, BlockReason, SimplifyRule, BoundaryMode } from "./composition/mesh-simplify.js";
+export type { SimplifyParams, SimplifyProjection, SimplifyOptions, Abstraction, StopReason as SimplifyStopReason, BlockReason, SimplifyRule, BoundaryMode } from "./composition/mesh-simplify.js";
 export { simplifyMesh, prepareSimplification, abstractionAt, simplifySimulation, simplifyRetention, maxValence, SIMPLIFY_LIMITS, MIN_NORMAL_DOT, MIN_VALENCE_CAP, CONSTRAINT_WEIGHT, IMPORTANCE_BIAS } from "./composition/mesh-simplify.js";
 export type { MeshAbstractionComposition, MeshAbstractionProducts, MeshAbstractionConstruction, AbstractionView, AbstractionSource, ViewSpec as AbstractionViewSpec, ViewProducts as AbstractionViewProducts } from "./composition/mesh-abstraction.js";
 export { meshAbstractionProducts, meshViewProducts as abstractionViewProducts, abstractionCamera, sourceDescriptor as abstractionSourceDescriptor } from "./composition/mesh-abstraction.js";
