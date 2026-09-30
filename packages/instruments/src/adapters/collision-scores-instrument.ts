@@ -1,7 +1,6 @@
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { barrierKinds, containerShapes } from "../composition/collision-containers.js";
 import { emitterModes } from "../composition/collision.js";
-import { checkFeasible, roomParams } from "../composition/collision-room.js";
 import { choice, numeric, toggle } from "./types.js";
 
 type Condition = Record<string, readonly (string | number | boolean)[]>;
@@ -49,9 +48,9 @@ const parameters: Parameter[] = [
   select("massLaw", "Mass", "Equal: every disc has the same mass, so equal discs swap their normal velocities exactly. Area: mass grows with the square of the radius, so big discs barely deflect when small ones hit them.", ["equal", "area"]),
 
   select("emitter", "Emitter", "How the discs start: scattered at random over the container, evenly along a line or around a ring (released one after another when they overlap), or one by one from a nozzle.", emitterModes),
-  n("emitterX", "Emitter X", "Canvas x of the line's or ring's center or of the nozzle.", 0, 640, 1, -4096, 4096, placed),
-  n("emitterY", "Emitter Y", "Canvas y of the line's or ring's center or of the nozzle.", 0, 640, 1, -4096, 4096, placed),
-  n("emitterSize", "Emitter size", "Length of the line, or diameter of the ring, in canvas units. Discs sit evenly along it; when they cannot all fit at once, each is released as soon as its own place is free, in order. A place against a wall is refused.", 0, 500, 1, 0, 4000, sized),
+  n("emitterX", "Emitter X", "Canvas x of the line's or ring's center or of the nozzle. A place that is outside the container or too close to a wall or barrier for a disc moves to the nearest clear place.", 0, 640, 1, -4096, 4096, placed),
+  n("emitterY", "Emitter Y", "Canvas y of the line's or ring's center or of the nozzle. A place that is outside the container or too close to a wall or barrier for a disc moves to the nearest clear place.", 0, 640, 1, -4096, 4096, placed),
+  n("emitterSize", "Emitter size", "Length of the line, or diameter of the ring, in canvas units. Discs sit evenly along it; when they cannot all fit at once, each is released as soon as its own place is free, in order. A place that is outside the container or against a wall moves to the nearest clear place.", 0, 500, 1, 0, 4000, sized),
   n("emitterAngle", "Line angle", "Orientation of the emitting line, in degrees.", -180, 180, 1, -3600, 3600, lined),
   n("emitEvery", "Release every", "Steps between two births at the nozzle. A birth waits while the nozzle is occupied.", 1, 30, 1, 1, 600, nozzled),
   n("heading", "Heading", "Launch direction in degrees from the canvas x axis (from the outward direction for a ring).", -180, 180, 1, -3600, 3600),
@@ -135,7 +134,6 @@ export const collisionScoresDefinition: InstrumentDefinition = {
   description: "Discs bounce in a container and the record of every contact becomes the drawing: trails with exact corners at each bounce, marks sized by impulse, rays along the bounce angles and a graph of who met whom, all read from one deterministic log.",
   renderer: "2d",
   parameters: parameters.map(labelled), controlGroups,
-  validate: (params) => checkFeasible(roomParams(params)),
   defaults: {
     container: "ellipse", barriers: "none", barrierCount: 3, barrierSize: 14, barrierAngle: 35,
     centerX: 320, centerY: 320, width: 540, height: 460, rotation: 0,

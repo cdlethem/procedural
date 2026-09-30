@@ -1,18 +1,10 @@
 /**
  * The room of a Collision Scores instrument: the bundled container with its barriers, resolved once per
- * construction, and the deterministic checks that say whether the emitter can start in it.
- *
- * `checkFeasible` runs when the scalar controls are validated, so a combination the model cannot place is
- * rejected with a message naming the controls to change, before any simulation. Line and ring discs are released in
- * serial order as their sites free up, so a line or ring too small for all discs at once is legal; what is refused is
- * a site that can never free because it lies against a wall, a barrier or outside the container. Discs are assumed to
- * have their largest possible radius `radius × (1 + radiusSpread)`; the exact placement (`collision.ts`) uses the true radii.
- * A `scatter` emitter is seeded rejection sampling, so it is only bounded by area: the discs may cover at most
- * 35% of the free area. Whether a particular seed places every disc is decided when the simulation starts.
+ * construction. Nothing about where or how many discs start is refused: line, ring and nozzle places are fitted to the
+ * room (`snapToClear`) and discs that do not fit are released later, in order (`collision.ts`).
  */
-import { COLLISION_LIMITS } from "./collision.js";
 import { barriers, bundledContainer, containerRings, type BarrierKind, type ContainerShape } from "./collision-containers.js";
-import { buildWalls, distanceToWalls, insideContainer, wallsNear, type WallSet } from "./collision-walls.js";
+import { buildWalls, type WallSet } from "./collision-walls.js";
 import type { PlanarDomain } from "./domains.js";
 
 export interface RoomParams {
@@ -52,38 +44,4 @@ export function resolveRoom(p: RoomParams): Room {
   rooms.set(key, room);
   if (rooms.size > 4) rooms.delete(rooms.keys().next().value!);
   return room;
-}
-
-/** Throw, naming the controls to change, when the emitter cannot start its discs in this room. */
-export function checkFeasible(p: RoomParams): void {
-  const largest = p.radius * (1 + p.radiusSpread), n = p.count;
-  const room = resolveRoom(p), walls = room.walls;
-  if (p.emitter === "scatter") {
-    const free = room.container.area - room.posts.reduce((sum, post) => sum + Math.PI * post[2] ** 2, 0);
-    if (n * Math.PI * largest ** 2 > 0.35 * free)
-      throw new Error(`${n} discs of radius up to ${+largest.toFixed(2)} would cover more than 35% of the container; lower Bodies or Radius, or enlarge the container`);
-    return;
-  }
-  const marks = new Int32Array(walls.segmentCount + walls.roundCount), near: number[] = [];
-  let stamp = 0;
-  const clear = (x: number, y: number): boolean => {
-    if (!insideContainer(walls, x, y)) return false;
-    const reach = largest + COLLISION_LIMITS.placementGap;
-    wallsNear(walls, x - reach, y - reach, x + reach, y + reach, marks, ++stamp, near);
-    return distanceToWalls(walls, x, y, near) >= reach;
-  };
-  const where = p.emitter === "nozzle" ? "The nozzle does not fit: move Emitter X/Y inside the container, away from walls and barriers, or lower Radius"
-    : `The ${p.emitter} emitter has a release site against a wall, a barrier or outside the container: move Emitter X/Y, shrink Emitter size, or lower Bodies or Radius`;
-  if (p.emitter === "nozzle") { if (!clear(p.emitterX, p.emitterY)) throw new Error(where); return; }
-  for (let k = 0; k < n; k++) {
-    let x: number, y: number;
-    if (p.emitter === "line") {
-      const along = n === 1 ? 0 : (k / (n - 1) - 0.5) * p.emitterSize, a = p.emitterAngle * Math.PI / 180;
-      x = p.emitterX + Math.cos(a) * along; y = p.emitterY + Math.sin(a) * along;
-    } else {
-      const theta = 2 * Math.PI * k / n;
-      x = p.emitterX + Math.cos(theta) * p.emitterSize / 2; y = p.emitterY + Math.sin(theta) * p.emitterSize / 2;
-    }
-    if (!clear(x, y)) throw new Error(where);
-  }
 }

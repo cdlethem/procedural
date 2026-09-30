@@ -27,8 +27,8 @@
  * reads palette, marks or materials.
  */
 import { componentSeed } from "./core.js";
-import { EVENT, EVENT_STRIDE, KIND_EMIT, KIND_PAIR, KIND_WALL, solveFrame, type Physics } from "./collision-solver.js";
-import { buildWalls, distanceToWalls, insideContainer, wallsNear, type WallSet } from "./collision-walls.js";
+import { EVENT, EVENT_STRIDE, FrameLimitError, KIND_EMIT, KIND_PAIR, KIND_WALL, solveFrame, type Physics } from "./collision-solver.js";
+import { buildWalls, distanceToWalls, insideContainer, snapToClear, wallsNear, type WallSet } from "./collision-walls.js";
 import { containerRings } from "./collision-containers.js";
 import type { PlanarShape } from "./domains.js";
 import { createSimulationCache, type Simulation, type SimulationContext, type Snapshots } from "./snapshots.js";
@@ -127,12 +127,16 @@ export interface CollisionState {
   nextBirth: number;
   /** Records logged so far (contacts and births), for the log bound. */
   total: number;
+  /** 0 running; 1 the log reached `COLLISION_LIMITS.maxContacts`; 2 one frame needed more contacts or work than its bound. Either ends the recording: later steps change nothing. */
+  stopped: number;
   x: Float64Array; y: Float64Array; vx: Float64Array; vy: Float64Array; r: Float64Array; m: Float64Array;
   /** Packed records (`EVENT_STRIDE` each) of the step just taken; the births of step 0 in the initial state. */
   events: Float64Array;
 }
 export interface CollisionFrame {
   born: number;
+  /** The recording had ended by this step (see `CollisionState.stopped`). */
+  stopped: number;
   /** `x0, y0, x1, y1, …` of the born bodies at the end of the step. */
   positions: Float64Array;
   events: Float64Array;
@@ -185,21 +189,48 @@ class Spawner {
   }
 }
 
-/** Site of disc `k` of `n` on a line (evenly along it, centred) or ring (evenly around it), and its base heading (ring: outward). */
-function emitterSite(e: CollisionEmitter, k: number, n: number): [number, number, number] {
-  if (e.mode === "line") {
-    const along = n === 1 ? 0 : (k / (n - 1) - 0.5) * e.extent, a = e.angle * radians;
-    return [e.x + Math.cos(a) * along, e.y + Math.sin(a) * along, 0];
+/** A site `[x, y, base heading]` per disc that can be released at a place (line, ring) or one for the nozzle, fitted to the room. */
+const siteMemo = new WeakMap<object, readonly (readonly [number, number, number])[]>();
+function sitesOf(model: CollisionModel, walls: WallSet): readonly (readonly [number, number, number])[] {
+  const hit = siteMemo.get(model);
+  if (hit) return hit;
+  const e = model.emitter, n = model.bodies.count, count = e.mode === "nozzle" ? 1 : n;
+  const asked: [number, number][] = [], base: number[] = [];
+  for (let k = 0; k < count; k++) {
+    if (e.mode === "line") {
+      const along = n === 1 ? 0 : (k / (n - 1) - 0.5) * e.extent, a = e.angle * radians;
+      asked.push([e.x + Math.cos(a) * along, e.y + Math.sin(a) * along]); base.push(0);
+    } else if (e.mode === "ring") {
+      const theta = 2 * Math.PI * k / n;
+      asked.push([e.x + Math.cos(theta) * e.extent / 2, e.y + Math.sin(theta) * e.extent / 2]); base.push(theta);
+    } else { asked.push([e.x, e.y]); base.push(0); }
   }
-  const theta = 2 * Math.PI * k / n;
-  return [e.x + Math.cos(theta) * e.extent / 2, e.y + Math.sin(theta) * e.extent / 2, theta];
+  const largest = model.bodies.radius * (1 + model.bodies.radiusSpread);
+  const fitted = snapToClear(walls, asked, largest + COLLISION_LIMITS.placementGap);
+  if (!fitted) throw new Error(`The container leaves no place clear of its walls for a disc of radius up to ${+largest.toFixed(2)}; lower Radius or Radius spread, or enlarge the container`);
+  const sites = Object.freeze(fitted.map(([x, y], k) => Object.freeze([x, y, base[k]] as const)));
+  siteMemo.set(model, sites);
+  return sites;
 }
+/** Try to place disc `serial` at up to `tries` seeded places (a fresh stream each step); returns the places tried, and the disc is born if one fit. */
+function scatterBirth(spawn: Spawner, serial: number, tries: number, time: number, out: number[]): number {
+  const [x0, y0, x1, y1] = spawn.walls.bounds, r = spawn.radiusOf(serial), place = spawn.ctx.stream(`body:${serial}`, "place");
+  for (let attempt = 0; attempt < tries; attempt++) {
+    const x = x0 + place.next() * (x1 - x0), y = y0 + place.next() * (y1 - y0);
+    if (spawn.fits(x, y, r)) { spawn.birth(serial, x, y, r, 0, time, out); return attempt + 1; }
+  }
+  return tries;
+}
+/** Per-step allowance of scatter placement tries, kept inside the step's work bound. */
+const SCATTER_TRIES_PER_STEP = 40;
+
 /** Most births one step makes at a line or ring (bounds the work of a step). */
 const MAX_RELEASES_PER_STEP = 8;
 /** Born in serial order while the next site is free, stopping at the first that is not; at most `limit` births. */
-function releaseAtSites(spawn: Spawner, e: CollisionEmitter, n: number, time: number, limit: number, out: number[]): void {
+function releaseAtSites(spawn: Spawner, n: number, time: number, limit: number, out: number[]): void {
+  const sites = sitesOf(spawn.model, spawn.walls);
   for (let released = 0; spawn.state.born < n && released < limit; released++) {
-    const serial = spawn.state.born, r = spawn.radiusOf(serial), [x, y, base] = emitterSite(e, serial, n);
+    const serial = spawn.state.born, r = spawn.radiusOf(serial), [x, y, base] = sites[serial];
     if (!spawn.fits(x, y, r)) return;
     spawn.birth(serial, x, y, r, base, time, out);
   }
@@ -208,38 +239,25 @@ function releaseAtSites(spawn: Spawner, e: CollisionEmitter, n: number, time: nu
 const packed = (list: number[]): Float64Array => Float64Array.from(list);
 
 function emptyState(count: number): CollisionState {
-  return { born: 0, nextBirth: 0, total: 0, x: new Float64Array(count), y: new Float64Array(count), vx: new Float64Array(count),
+  return { born: 0, nextBirth: 0, total: 0, stopped: 0, x: new Float64Array(count), y: new Float64Array(count), vx: new Float64Array(count),
     vy: new Float64Array(count), r: new Float64Array(count), m: new Float64Array(count), events: new Float64Array(0) };
 }
 
 function initial(ctx: SimulationContext<CollisionModel>): CollisionState {
   const model = ctx.params as CollisionModel, walls = wallsOf(model), e = model.emitter, n = model.bodies.count;
   const state = emptyState(n), spawn = new Spawner(walls, model, ctx, state), out: number[] = [];
-  const tooCrowded = (k: number, what: string) => new Error(`Body ${k + 1} of ${n} ${what}; lower Bodies or Radius, move or resize the emitter, or enlarge the container`);
   if (e.mode === "scatter") {
-    const [x0, y0, x1, y1] = walls.bounds;
-    for (let k = 0; k < n; k++) {
-      const r = spawn.radiusOf(k), place = ctx.stream(`body:${k}`, "place");
-      let done = false;
-      for (let attempt = 0; attempt < COLLISION_LIMITS.placementTries && !done; attempt++) {
-        const x = x0 + place.next() * (x1 - x0), y = y0 + place.next() * (y1 - y0);
-        if (spawn.fits(x, y, r)) { spawn.birth(k, x, y, r, 0, 0, out); done = true; }
-      }
-      if (!done) throw tooCrowded(k, `could not be placed after ${COLLISION_LIMITS.placementTries} tries`);
-    }
+    // In serial order, each disc at the first of `placementTries` seeded places that fits; the first that finds none, and
+    // every disc after it, waits and is tried again from the next step on (see `scatterReleases`).
+    for (let k = 0; k < n; k++) { scatterBirth(spawn, k, COLLISION_LIMITS.placementTries, 0, out); if (state.born <= k) break; }
   } else if (e.mode === "nozzle") {
-    const r = spawn.radiusOf(0);
-    if (!spawn.fits(e.x, e.y, r)) throw new Error("The nozzle does not fit: move Emitter X/Y inside the container, away from walls and posts, or lower Radius");
-    spawn.birth(0, e.x, e.y, r, 0, 0, out);
+    const [x, y] = sitesOf(model, walls)[0];
+    spawn.birth(0, x, y, spawn.radiusOf(0), 0, 0, out);
     state.nextBirth = e.every;
   } else {
     // Line and ring: disc k has a fixed site. Discs are released in serial order as soon as their site is free, so a
     // line or ring too small for all of them at once releases them one after another as the earlier ones leave.
-    for (let k = 0; k < n; k++) {
-      const [x, y] = emitterSite(e, k, n);
-      if (!spawn.fits(x, y, spawn.radiusOf(k), false)) throw tooCrowded(k, `has its site on the ${e.mode} emitter against a wall, a post or outside the container (it never frees)`);
-    }
-    releaseAtSites(spawn, e, n, 0, Infinity, out);
+    releaseAtSites(spawn, n, 0, Infinity, out);
   }
   state.events = packed(out);
   state.total = out.length / EVENT_STRIDE;
@@ -248,27 +266,46 @@ function initial(ctx: SimulationContext<CollisionModel>): CollisionState {
 
 function step(state: CollisionState, ctx: SimulationContext<CollisionModel>): CollisionState {
   const model = ctx.params as CollisionModel, walls = wallsOf(model), e = model.emitter, k = ctx.step, out: number[] = [];
+  if (state.stopped !== 0) { state.events = new Float64Array(0); return state; }
   if (e.mode === "nozzle" && state.born < model.bodies.count && k >= state.nextBirth) {
-    const spawn = new Spawner(walls, model, ctx, state), serial = state.born, r = spawn.radiusOf(serial);
-    if (spawn.fits(e.x, e.y, r)) { spawn.birth(serial, e.x, e.y, r, 0, k - 1, out); state.nextBirth = k + e.every; }
+    const spawn = new Spawner(walls, model, ctx, state), serial = state.born, r = spawn.radiusOf(serial), [x, y] = sitesOf(model, walls)[0];
+    if (spawn.fits(x, y, r)) { spawn.birth(serial, x, y, r, 0, k - 1, out); state.nextBirth = k + e.every; }
   }
   if ((e.mode === "line" || e.mode === "ring") && state.born < model.bodies.count)
-    releaseAtSites(new Spawner(walls, model, ctx, state), e, model.bodies.count, k - 1, MAX_RELEASES_PER_STEP, out);
-  const cap = workPerStep(model.bodies.count);
+    releaseAtSites(new Spawner(walls, model, ctx, state), model.bodies.count, k - 1, MAX_RELEASES_PER_STEP, out);
+  if (e.mode === "scatter" && state.born < model.bodies.count) {
+    const spawn = new Spawner(walls, model, ctx, state);
+    let tries = Math.max(1, Math.min(SCATTER_TRIES_PER_STEP, Math.floor(workPerStep(model.bodies.count) / 4 / (walls.segmentCount + state.born + 2))));
+    for (let released = 0; state.born < model.bodies.count && released < MAX_RELEASES_PER_STEP && tries > 0; released++) {
+      const before = state.born;
+      tries -= scatterBirth(spawn, before, tries, k - 1, out);
+      if (state.born === before) break;
+    }
+  }
+  const cap = workPerStep(model.bodies.count), births = out.length;
   let used = 0;
-  solveFrame({ count: state.born, x: state.x, y: state.y, vx: state.vx, vy: state.vy, r: state.r, m: state.m }, walls, model.physics, k - 1, out, {
-    maxEvents: perFrameEvents(model.bodies.count),
-    charge(units) {
-      used += units;
-      if (used > cap) throw new Error(`Step ${k} needed more than ${cap} work units; lower Bodies, Radius or Speed, or enlarge the container`);
-      ctx.charge(units);
-    },
-    overflow: (events) => `Step ${k} resolved more than ${perFrameEvents(model.bodies.count)} contacts (${events}); lower Bodies, Radius or Restitution, or enlarge the container`,
-  });
+  // A frame that needs more contacts or work than its bound is discarded whole: the bodies stay where the frame found
+  // them, the births made at its start stay, and the recording ends (`stopped` 2) instead of the study refusing.
+  const saved = [state.x, state.y, state.vx, state.vy].map((array) => array.slice());
+  try {
+    solveFrame({ count: state.born, x: state.x, y: state.y, vx: state.vx, vy: state.vy, r: state.r, m: state.m }, walls, model.physics, k - 1, out, {
+      maxEvents: perFrameEvents(model.bodies.count),
+      charge(units) {
+        used += units;
+        if (used > cap) throw new FrameLimitError(`Step ${k} needed more than ${cap} work units; lower Bodies, Radius or Speed, or enlarge the container`);
+        try { ctx.charge(units); } catch (error) { throw new FrameLimitError((error as Error).message); }
+      },
+      overflow: (events) => `Step ${k} resolved more than ${perFrameEvents(model.bodies.count)} contacts (${events}); lower Bodies, Radius or Restitution, or enlarge the container`,
+    });
+  } catch (error) {
+    if (!(error instanceof FrameLimitError)) throw error;
+    [state.x, state.y, state.vx, state.vy].forEach((array, i) => array.set(saved[i]));
+    out.length = births;
+    state.stopped = 2;
+  }
   state.events = packed(out);
   state.total += out.length / EVENT_STRIDE;
-  if (state.total > COLLISION_LIMITS.maxContacts)
-    throw new Error(`The collision log passed ${COLLISION_LIMITS.maxContacts} records by step ${k}; lower Steps, Bodies, Speed or Radius`);
+  if (state.stopped === 0 && state.total >= COLLISION_LIMITS.maxContacts) state.stopped = 1;
   return state;
 }
 
@@ -285,7 +322,7 @@ export const collisionSimulation: Simulation<CollisionState, CollisionModel, Col
   project: (state): CollisionFrame => {
     const positions = new Float64Array(state.born * 2);
     for (let i = 0; i < state.born; i++) { positions[2 * i] = state.x[i]; positions[2 * i + 1] = state.y[i]; }
-    return { born: state.born, positions, events: state.events };
+    return { born: state.born, stopped: state.stopped, positions, events: state.events };
   },
 };
 
@@ -349,6 +386,10 @@ export interface CollisionScore {
   readonly trails: readonly CollisionTrail[];
   /** Every contact, in log order. */
   readonly contacts: readonly Contact[];
+  /** First step at which the log was full and the recording ended (`null` when it never was): nothing after it is recorded or moves. */
+  readonly stoppedAt: number | null;
+  /** Why the recording ended at `stoppedAt`: `log-full` (30,000 records) or `frame-limit` (one frame needed more contacts or work than its bound). */
+  readonly stopReason: "log-full" | "frame-limit" | null;
   /** The largest impulse of any contact (0 for none). */
   readonly maxImpulse: number;
   readonly walls: WallSet;
@@ -370,9 +411,10 @@ export function collisionScore(snaps: Snapshots<CollisionState, CollisionModel, 
     if (last >= 0 && t[last] === time && Math.abs(px[last] - x) < 1e-9 && Math.abs(py[last] - y) < 1e-9) return;
     t.push(time); px.push(x); py.push(y);
   };
-  let maxImpulse = 0;
+  let maxImpulse = 0, stoppedAt: number | null = null, stopReason: CollisionScore["stopReason"] = null;
   for (const entry of snaps.history) {
     const { positions, events } = entry.value;
+    if (entry.value.stopped !== 0 && stoppedAt === null) { stoppedAt = entry.step; stopReason = entry.value.stopped === 1 ? "log-full" : "frame-limit"; }
     for (let o = 0; o < events.length; o += EVENT_STRIDE) {
       const kind = events[o + EVENT.kind], a = events[o + EVENT.a], time = events[o + EVENT.time];
       if (kind === KIND_EMIT) {
@@ -409,7 +451,7 @@ export function collisionScore(snaps: Snapshots<CollisionState, CollisionModel, 
   }));
   const score: CollisionScore = Object.freeze({
     key: snaps.key, seed: snaps.seed, steps: snaps.steps, bodies: Object.freeze(bodies), trails: Object.freeze(trails),
-    contacts: Object.freeze(contacts), maxImpulse, walls,
+    contacts: Object.freeze(contacts), stoppedAt, stopReason, maxImpulse, walls,
   });
   scores.set(snaps, score);
   return score;
