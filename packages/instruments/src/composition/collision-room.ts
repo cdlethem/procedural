@@ -3,9 +3,10 @@
  * construction, and the deterministic checks that say whether the emitter can start in it.
  *
  * `checkFeasible` runs when the scalar controls are validated, so a combination the model cannot place is
- * rejected with a message naming the controls to change, before any simulation. It is conservative in one
- * stated way: discs are assumed to have their largest possible radius `radius × (1 + radiusSpread)`, so a line,
- * ring or nozzle that passes always fits, and the exact placement (`collision.ts`) uses the true radii.
+ * rejected with a message naming the controls to change, before any simulation. Line and ring discs are released in
+ * serial order as their sites free up, so a line or ring too small for all discs at once is legal; what is refused is
+ * a site that can never free because it lies against a wall, a barrier or outside the container. Discs are assumed to
+ * have their largest possible radius `radius × (1 + radiusSpread)`; the exact placement (`collision.ts`) uses the true radii.
  * A `scatter` emitter is seeded rejection sampling, so it is only bounded by area: the discs may cover at most
  * 35% of the free area. Whether a particular seed places every disc is decided when the simulation starts.
  */
@@ -55,11 +56,7 @@ export function resolveRoom(p: RoomParams): Room {
 
 /** Throw, naming the controls to change, when the emitter cannot start its discs in this room. */
 export function checkFeasible(p: RoomParams): void {
-  const largest = p.radius * (1 + p.radiusSpread), need = 2 * largest + COLLISION_LIMITS.placementGap, n = p.count;
-  if (p.emitter === "line" && n > 1 && p.emitterSize < (n - 1) * need)
-    throw new Error(`Emitter size ${p.emitterSize} is too short for ${n} discs of radius up to ${+largest.toFixed(2)}: the line needs at least ${Math.ceil((n - 1) * need)}; lengthen it or lower Bodies or Radius`);
-  if (p.emitter === "ring" && n > 1 && p.emitterSize * Math.sin(Math.PI / n) < need)
-    throw new Error(`Emitter size ${p.emitterSize} is too small for ${n} discs of radius up to ${+largest.toFixed(2)}: the ring needs a diameter of at least ${Math.ceil(need / Math.sin(Math.PI / n))}; enlarge it or lower Bodies or Radius`);
+  const largest = p.radius * (1 + p.radiusSpread), n = p.count;
   const room = resolveRoom(p), walls = room.walls;
   if (p.emitter === "scatter") {
     const free = room.container.area - room.posts.reduce((sum, post) => sum + Math.PI * post[2] ** 2, 0);
@@ -76,7 +73,7 @@ export function checkFeasible(p: RoomParams): void {
     return distanceToWalls(walls, x, y, near) >= reach;
   };
   const where = p.emitter === "nozzle" ? "The nozzle does not fit: move Emitter X/Y inside the container, away from walls and barriers, or lower Radius"
-    : `The ${p.emitter} emitter puts a disc against a wall, a barrier or outside the container: move Emitter X/Y, resize the emitter, or lower Bodies or Radius`;
+    : `The ${p.emitter} emitter has a release site against a wall, a barrier or outside the container: move Emitter X/Y, shrink Emitter size, or lower Bodies or Radius`;
   if (p.emitter === "nozzle") { if (!clear(p.emitterX, p.emitterY)) throw new Error(where); return; }
   for (let k = 0; k < n; k++) {
     let x: number, y: number;

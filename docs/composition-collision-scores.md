@@ -49,12 +49,17 @@ wall elements from a per-frame cell list, so cost is not all-pairs.
 - **Launch.** `heading ± headingSpread` degrees, speed `speed (1 ± speedSpread)`; ring headings are measured from the outward
   direction. Nozzle births happen at the start of a step, one per `Release every` steps, only when the spot is free.
   Nothing is dropped; a blocked nozzle waits.
+- **Line and ring.** Disc `k` has a fixed site (evenly along the line, or around the ring). At step 0 and at the start of each later step
+  (at most 8 births a step) discs are born in serial order while the next site is free, stopping at the first that is not. A line or ring too
+  small for all discs at once therefore releases them one after another; a site that lies against a wall, a barrier or outside the
+  container can never free and is refused with the control to change. Every select option (and every combination of container, barriers,
+  emitter and mass) draws at the defaults; a test iterates them.
 
 ## Bounds (each throws naming the control)
 
 Bodies ≤ 96, steps ≤ 3000, wall elements (edges + corners + posts) ≤ 4000, log ≤ 30,000 records, ≤ 32 + 8·bodies contacts
 per frame, work per step ≤ 2000 + 1200·bodies units (charged through `ctx.charge`), radius ≤ 60, speed ≤ 40. Emitter
-feasibility (line length, ring diameter, nozzle clearance, scatter area ≤ 35%) is validated with the scalar controls; the
+feasibility (release sites clear of walls, nozzle clearance, scatter area ≤ 35%) is validated with the scalar controls; the
 seeded scatter placement itself can still fail for a given seed and then names Bodies/Radius/container. Termination:
 there is no growth to stop; a run that has settled simply stops logging. A nozzle that never frees up stops births.
 

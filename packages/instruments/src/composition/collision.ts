@@ -160,14 +160,14 @@ class Spawner {
     return radius * (1 + radiusSpread * (2 * this.ctx.stream(`body:${serial}`, "size").next() - 1));
   }
   /** True when a disc of radius `r` at `(x, y)` is inside, clear of every wall and post, and clear of the born bodies. */
-  fits(x: number, y: number, r: number): boolean {
+  fits(x: number, y: number, r: number, withBodies = true): boolean {
     const gap = COLLISION_LIMITS.placementGap, { walls, state } = this;
     this.ctx.charge(walls.segmentCount + state.born + 2);
     if (!insideContainer(walls, x, y)) return false;
     const reach = r + gap;
     wallsNear(walls, x - reach, y - reach, x + reach, y + reach, this.marks, ++this.stamp, this.near);
     if (distanceToWalls(walls, x, y, this.near) < reach) return false;
-    for (let j = 0; j < state.born; j++) if (Math.hypot(x - state.x[j], y - state.y[j]) < r + state.r[j] + gap) return false;
+    if (withBodies) for (let j = 0; j < state.born; j++) if (Math.hypot(x - state.x[j], y - state.y[j]) < r + state.r[j] + gap) return false;
     return true;
   }
   /** Add body `serial` at `(x, y)` launched at `base` radians plus the seeded spread; logs its birth at `time`. */
@@ -182,6 +182,26 @@ class Spawner {
     state.born = serial + 1;
     out.push(KIND_EMIT, serial, -1, time, x, y, Math.cos(heading), Math.sin(heading), 0, speed,
       0, 0, state.vx[serial], state.vy[serial], 0, 0, 0, 0, r, mass);
+  }
+}
+
+/** Site of disc `k` of `n` on a line (evenly along it, centred) or ring (evenly around it), and its base heading (ring: outward). */
+function emitterSite(e: CollisionEmitter, k: number, n: number): [number, number, number] {
+  if (e.mode === "line") {
+    const along = n === 1 ? 0 : (k / (n - 1) - 0.5) * e.extent, a = e.angle * radians;
+    return [e.x + Math.cos(a) * along, e.y + Math.sin(a) * along, 0];
+  }
+  const theta = 2 * Math.PI * k / n;
+  return [e.x + Math.cos(theta) * e.extent / 2, e.y + Math.sin(theta) * e.extent / 2, theta];
+}
+/** Most births one step makes at a line or ring (bounds the work of a step). */
+const MAX_RELEASES_PER_STEP = 8;
+/** Born in serial order while the next site is free, stopping at the first that is not; at most `limit` births. */
+function releaseAtSites(spawn: Spawner, e: CollisionEmitter, n: number, time: number, limit: number, out: number[]): void {
+  for (let released = 0; spawn.state.born < n && released < limit; released++) {
+    const serial = spawn.state.born, r = spawn.radiusOf(serial), [x, y, base] = emitterSite(e, serial, n);
+    if (!spawn.fits(x, y, r)) return;
+    spawn.birth(serial, x, y, r, base, time, out);
   }
 }
 
@@ -213,19 +233,13 @@ function initial(ctx: SimulationContext<CollisionModel>): CollisionState {
     spawn.birth(0, e.x, e.y, r, 0, 0, out);
     state.nextBirth = e.every;
   } else {
+    // Line and ring: disc k has a fixed site. Discs are released in serial order as soon as their site is free, so a
+    // line or ring too small for all of them at once releases them one after another as the earlier ones leave.
     for (let k = 0; k < n; k++) {
-      const r = spawn.radiusOf(k);
-      let x: number, y: number, base = 0;
-      if (e.mode === "line") {
-        const along = n === 1 ? 0 : (k / (n - 1) - 0.5) * e.extent, a = e.angle * radians;
-        x = e.x + Math.cos(a) * along; y = e.y + Math.sin(a) * along;
-      } else {
-        const theta = 2 * Math.PI * k / n;
-        x = e.x + Math.cos(theta) * e.extent / 2; y = e.y + Math.sin(theta) * e.extent / 2; base = theta;
-      }
-      if (!spawn.fits(x, y, r)) throw tooCrowded(k, `does not fit on the ${e.mode} emitter (it overlaps a wall, a post or another body)`);
-      spawn.birth(k, x, y, r, base, 0, out);
+      const [x, y] = emitterSite(e, k, n);
+      if (!spawn.fits(x, y, spawn.radiusOf(k), false)) throw tooCrowded(k, `has its site on the ${e.mode} emitter against a wall, a post or outside the container (it never frees)`);
     }
+    releaseAtSites(spawn, e, n, 0, Infinity, out);
   }
   state.events = packed(out);
   state.total = out.length / EVENT_STRIDE;
@@ -238,6 +252,8 @@ function step(state: CollisionState, ctx: SimulationContext<CollisionModel>): Co
     const spawn = new Spawner(walls, model, ctx, state), serial = state.born, r = spawn.radiusOf(serial);
     if (spawn.fits(e.x, e.y, r)) { spawn.birth(serial, e.x, e.y, r, 0, k - 1, out); state.nextBirth = k + e.every; }
   }
+  if ((e.mode === "line" || e.mode === "ring") && state.born < model.bodies.count)
+    releaseAtSites(new Spawner(walls, model, ctx, state), e, model.bodies.count, k - 1, MAX_RELEASES_PER_STEP, out);
   const cap = workPerStep(model.bodies.count);
   let used = 0;
   solveFrame({ count: state.born, x: state.x, y: state.y, vx: state.vx, vy: state.vy, r: state.r, m: state.m }, walls, model.physics, k - 1, out, {

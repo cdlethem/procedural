@@ -3,8 +3,8 @@ import test from "node:test";
 import {
   EVENT, EVENT_STRIDE, KIND_PAIR, KIND_WALL, REST_SPEED, buildWalls, bundledContainer, checkSimulation, collisionBarriers, collisionModel, collisionScore, collisionScoreOfRecipe, collisionScoresComposition,
   collisionScoresUsesSeed, collisionSimulation, collisionSnapshots, containerRings, createInstrument, definition, distanceToWalls, drawCollisionScores, finalState, hasCollisionSnapshots,
-  insideContainer, inspectorItems, pairLaw, prepareCollisionSnapshots, prepareInstrument, solveFrame, stateAt, timeToReach, timeToSegment, usesSeed, visibleParameters, wallLaw,
-  type CollisionModel, type CollisionScore, type CollisionScoresRecipe, type CollisionSetup, type CollisionState, type CompositionSurface, type ContactSite, type Path,
+  insideContainer, inspectorItems, validateInstrument, pairLaw, prepareCollisionSnapshots, prepareInstrument, solveFrame, stateAt, timeToReach, timeToSegment, usesSeed, visibleParameters, wallLaw,
+  drawInstrument, type DrawingContext, type InstrumentInput, type CollisionModel, type CollisionScore, type CollisionScoresRecipe, type CollisionSetup, type CollisionState, type CompositionSurface, type ContactSite, type Path,
 } from "../dist/index.js";
 import { drawFingerprint } from "./helpers/draw-fingerprint.js";
 
@@ -31,6 +31,7 @@ const kinetic = (state: CollisionState): number => {
   for (let i = 0; i < state.born; i++) sum += 0.5 * state.m[i] * (state.vx[i] ** 2 + state.vy[i] ** 2);
   return sum;
 };
+const drawInstrumentOnce = (input: InstrumentInput): void => { drawInstrument(new Recorder() as unknown as DrawingContext, input); };
 const inputOf = (params: Params = {}, seed = 42) => { const base = createInstrument(ID); return { ...base, seed, params: { ...base.params, ...params } }; };
 const recipeOf = (params: Params = {}, seed = 42) => collisionScoresComposition(inputOf(params, seed));
 
@@ -353,7 +354,8 @@ test("the bounds throw, naming the control to change", () => {
   assert.throws(() => modelOf({ bodies: { radius: 200 } }), /Radius/);
   assert.throws(() => collisionSnapshots(modelOf({ container: box(120, 120), bodies: { count: 60, radius: 12 }, emitter: { mode: "scatter" } }), 1, 1), /Bodies or Radius/);
   assert.throws(() => collisionSnapshots(modelOf({ emitter: { mode: "nozzle", x: 2000, y: 320, every: 3 } }), 1, 1), /Emitter X\/Y/);
-  assert.throws(() => collisionSnapshots(modelOf({ bodies: { count: 5 }, emitter: { mode: "ring", extent: 20 } }), 1, 1), /does not fit on the ring emitter/);
+  assert.throws(() => collisionSnapshots(modelOf({ bodies: { count: 5 }, emitter: { mode: "ring", extent: 900 } }), 1, 1), /site on the ring emitter against a wall/);
+  assert.throws(() => validateInstrument(inputOf({ emitter: "ring", emitterSize: 500 })), /release site against a wall/);
   // A crowd in a small room reaches a per-frame or whole-log bound and says so, instead of truncating.
   assert.throws(() => collisionSnapshots(modelOf({ container: box(150, 150), bodies: { count: 60, radius: 6 }, emitter: { mode: "scatter", speed: 30, headingSpread: 180 } }), 1, 3000), /Bodies|Steps|Speed|Radius/);
   // The solver itself refuses a frame with more contacts than its limit.
@@ -509,4 +511,45 @@ test("defaults draw, and the authored default shows every treatment", () => {
   const surface = new Recorder();
   drawCollisionScores(surface, recipeOf());
   assert.ok(surface.calls > 100);
+});
+
+test("a line or ring too small for all discs at once releases them in serial order as each site frees, and never overlaps", () => {
+  // Five discs of radius 10 on a 20-unit line: adjacent sites overlap, so each waits for the one before it to leave.
+  const score = scoreOf(modelOf({ container: box(600, 400), bodies: { count: 5 }, emitter: { mode: "line", x: 320, y: 320, extent: 20, angle: 90, heading: 0, speed: 4 } }), 40);
+  assert.deepEqual(score.bodies.map((body) => body.id), ["body:0", "body:1", "body:2", "body:3", "body:4"]);
+  assert.equal(score.bodies[0].bornAt, 0);
+  for (let i = 1; i < 5; i++) assert.ok(score.bodies[i].bornAt > score.bodies[i - 1].bornAt, `body ${i} waits for its predecessor`);
+  // Each disc is born at its own site, along the line: y = 310 + 5 k.
+  score.trails.forEach((trail, k) => { near(trail.xs[0], 320); near(trail.ys[0], 310 + 5 * k, 1e-9, `site ${k}`); });
+  // Never born overlapping anything: at every birth the centre distance to each earlier disc is at least the radii sum.
+  for (const body of score.bodies) for (const other of score.bodies) if (other.serial < body.serial) {
+    const trail = score.trails[other.serial], j = trail.times.indexOf(body.bornAt), at = score.trails[body.serial];
+    assert.ok(j >= 0);
+    assert.ok(Math.hypot(trail.xs[j] - at.xs[0], trail.ys[j] - at.ys[0]) >= body.radius + other.radius, `${body.id} vs ${other.id}`);
+  }
+  // A disc that never leaves keeps the rest unborn, without an error.
+  const stuck = scoreOf(modelOf({ bodies: { count: 5 }, emitter: { mode: "ring", x: 320, y: 320, extent: 0, speed: 0 } }), 30);
+  assert.equal(stuck.bodies.length, 1);
+});
+
+test("every option of every select draws at the defaults, alone and in combination with the other structural selects", () => {
+  const item = definition(ID), base = createInstrument(ID);
+  const selects = item.parameters.filter((parameter) => parameter.type === "select");
+  const surface = new Recorder();
+  const drawWith = (params: Params) => {
+    const input = validateInstrument({ ...base, params: { ...base.params, ...params } });
+    drawCollisionScores(surface, collisionScoresComposition(input));
+    drawInstrumentOnce(input);
+  };
+  let count = 0;
+  for (const select of selects) for (const option of select.options!) { drawWith({ [select.key]: option.value }); count++; }
+  for (const container of ["rectangle", "ellipse", "diamond", "l-room", "island"]) for (const barriers of ["none", "pins", "slats"])
+    for (const emitter of ["scatter", "line", "ring", "nozzle"]) for (const massLaw of ["equal", "area"]) { drawWith({ container, barriers, emitter, massLaw }); count++; }
+  assert.ok(count > 120);
+  // Every drawing has bodies and a log to draw from, not an empty study.
+  for (const emitter of ["scatter", "line", "ring", "nozzle"]) {
+    const score = collisionScoreOfRecipe(recipeOf({ emitter }));
+    assert.equal(score.bodies.length, 14, emitter);
+    assert.ok(score.contacts.length > 10, emitter);
+  }
 });

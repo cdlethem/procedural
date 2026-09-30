@@ -25,7 +25,7 @@ planar domain (see the end).
 | **Container**, **Barriers**, **Barrier count/size/tilt** | The walls: rectangle, ellipse (a 96-sided polygon), diamond, an L-shaped room whose inner corner is struck as a point, or a box around a diamond island; plus staggered round pins or tilted slats. Pins that would not leave room for a disc are left out, and nothing blocks the emitter. |
 | **Center, Width/Height, Rotation** | Where the container sits, how large it is and its turn. The emitter does not turn with it. |
 | **Bodies**, **Radius**, **Radius spread**, **Mass** | How many discs, their size, and how sizes vary (a stable seeded draw per disc). *Mass by area* lets big discs barely deflect when small ones hit them. |
-| **Emitter** and its position, size, angle, **Release every** | Scattered over the container, evenly on a line or ring, or released one by one from a nozzle. A birth waits while the nozzle is occupied. |
+| **Emitter** and its position, size, angle, **Release every** | Scattered over the container, evenly on a line or ring, or released one by one from a nozzle. A birth waits while the nozzle is occupied. A line or ring too small for all discs at once releases them one after another, in order, as each one's own place frees up (at most eight per step); a place against a wall is refused, and a disc that never leaves keeps the rest unborn. |
 | **Heading**, **Heading spread**, **Speed**, **Speed spread** | Launch direction and speed, with seeded variation per disc. |
 | **Disc bounce**, **Wall bounce**, **Wall friction**, **Gravity** | Elasticity between discs and against walls (1 conserves energy exactly), friction on the sliding component at walls, and a downward kick each step. Lossy contacts settle: a disc at rest stops bouncing. |
 | **Steps**, **Recording window** | How long the motion runs, and how many of the last steps are drawn (0 draws everything). Later steps only extend earlier ones, so dragging Steps never rewrites the past. |
@@ -87,5 +87,5 @@ reflect at the incoming angle; with gravity, energy is not conserved. Resting co
 
 At most 96 discs, 3000 steps, 4000 wall elements, 30,000 records, and a per-frame contact bound. Over
 a bound the error names the control to change and nothing is truncated. A set-up that cannot place
-its discs (too crowded, nozzle in a wall) is refused with the control to change; scatter is
+its discs (nozzle or a line/ring place against a wall) is refused with the control to change; scatter is
 checked by area (at most 35% of the container) and finally by the seed's own placement.
