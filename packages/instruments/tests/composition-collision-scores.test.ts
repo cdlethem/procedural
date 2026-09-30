@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  EVENT, EVENT_STRIDE, KIND_PAIR, REST_SPEED, buildWalls, bundledContainer, checkSimulation, collisionBarriers, collisionModel, collisionScore, collisionScoreOfRecipe, collisionScoresComposition,
+  EVENT, EVENT_STRIDE, KIND_PAIR, KIND_WALL, REST_SPEED, buildWalls, bundledContainer, checkSimulation, collisionBarriers, collisionModel, collisionScore, collisionScoreOfRecipe, collisionScoresComposition,
   collisionScoresUsesSeed, collisionSimulation, collisionSnapshots, containerRings, createInstrument, definition, distanceToWalls, drawCollisionScores, finalState, hasCollisionSnapshots,
   insideContainer, inspectorItems, pairLaw, prepareCollisionSnapshots, prepareInstrument, solveFrame, stateAt, timeToReach, timeToSegment, usesSeed, visibleParameters, wallLaw,
   type CollisionModel, type CollisionScore, type CollisionScoresRecipe, type CollisionSetup, type CollisionState, type CompositionSurface, type ContactSite, type Path,
@@ -231,6 +231,19 @@ test("simultaneous contacts are resolved in the stated order: walls before discs
   assert.deepEqual(run(false).map((r) => [r[0], r[1]]), [[0, 1], [2, 3]]);
 });
 
+test("a wall contact and a disc contact at one instant: the wall is resolved first, and the outcome is the sequential one", () => {
+  const room = buildWalls([[[0, 0], [100, 0], [100, 100], [0, 100]]], []);
+  // Disc 0 (x = 10, v = -5) reaches the left wall at t = 1; disc 1 (x = 25, v = -10) reaches disc 0 at t = 1 as well (centres 10 apart).
+  const bodies = { count: 2, x: Float64Array.of(10, 25), y: Float64Array.of(50, 50), vx: Float64Array.of(-5, -10), vy: new Float64Array(2), r: Float64Array.of(5, 5), m: Float64Array.of(1, 1) };
+  const out: number[] = [];
+  solveFrame(bodies, room, { restitution: 1, wallRestitution: 1, wallFriction: 0, gravity: 0 }, 0, out, { maxEvents: 20, charge() {}, overflow: (n) => `${n}` });
+  const kinds = Array.from({ length: out.length / EVENT_STRIDE }, (_, i) => out[i * EVENT_STRIDE + EVENT.kind]);
+  assert.deepEqual(kinds.slice(0, 2), [KIND_WALL, KIND_PAIR]);
+  near(out[EVENT.time], 1); near(out[EVENT_STRIDE + EVENT.time], 1);
+  // Wall first: disc 0 turns to +5, then the equal discs swap (+5 vs -10): disc 0 leaves at -10, disc 1 at +5.
+  near(out[EVENT_STRIDE + EVENT.aOutX], -10); near(out[EVENT_STRIDE + EVENT.bOutX], 5);
+});
+
 test("no tunnelling: a fast disc never crosses a thin slat, a post or a wall at any recorded position", () => {
   const room = collisionBarriers(box(300, 300), "slats", 3, 120, 0, 12, { mode: "scatter", x: 0, y: 0, extent: 0, angle: 0 });
   const model = collisionModel({ ...setupOf({ container: room.container, bodies: { count: 10, radius: 3 }, emitter: { mode: "scatter", speed: 39, headingSpread: 180 } }), posts: [[300, 300, 6], [340, 250, 4]] });
@@ -258,6 +271,7 @@ test("element independence: adding bodies never moves earlier ones; seeds change
   const scatter = (count: number) => modelOf({ bodies: { count, radiusSpread: 0.4 }, emitter: { mode: "scatter", speed: 3, headingSpread: 180, speedSpread: 0.3 }, container: box(500, 400) });
   const small = stateAt(collisionSnapshots(scatter(6), 77, 0), 0), large = stateAt(collisionSnapshots(scatter(9), 77, 0), 0);
   for (let i = 0; i < 6; i++) for (const field of ["x", "y", "vx", "vy", "r"] as const) assert.equal(small[field][i], large[field][i], `${field}[${i}]`);
+  assert.ok(new Set(Array.from(small.r.slice(0, 6))).size === 6, "each disc draws its own radius");
   assert.notDeepEqual(Array.from(stateAt(collisionSnapshots(scatter(6), 78, 0), 0).x), Array.from(small.x));
   assert.equal(collisionScoresUsesSeed({ emitter: "nozzle", radiusSpread: 0, speed: 3, headingSpread: 0, speedSpread: 0 }), false);
   assert.equal(usesSeed(inputOf({ emitter: "nozzle", radiusSpread: 0, headingSpread: 0, speedSpread: 0 })), false);

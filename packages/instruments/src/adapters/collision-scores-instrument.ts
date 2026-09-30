@@ -92,7 +92,7 @@ const parameters: Parameter[] = [
   n("rayWeight", "Ray weight", "Stroke width of the rays.", 0.3, 4, 0.1, 0, 30, rayed),
 
   flag("graph", "Contact graph", "Join every pair of discs that met with a line whose thickness follows their summed impulse."),
-  select("graphAnchor", "Graph nodes at", "Where each disc sits in the graph: the mean of its disc contacts, or its position at the end of the window.", ["contacts", "final"], networked),
+  select("graphAnchor", "Graph nodes at", "Where each disc sits in the graph: at its position at the end of the window (the drawn discs), or at the mean of its disc contacts, which pulls a long run toward the middle.", ["final", "contacts"], networked),
   n("graphWeight", "Graph line weight", "Stroke width of the strongest edge; weaker edges are thinner.", 0.5, 8, 0.1, 0, 30, networked),
   n("graphNodeSize", "Graph node size", "Diameter of a node dot at the most connected disc; 0 draws none.", 0, 20, 0.5, 0, 100, networked),
 ];
@@ -123,7 +123,7 @@ const optionLabels: Record<string, Record<string, string>> = {
   trails: { none: "None", ink: "Ink", stitch: "Stitch", beads: "Beads", bristle: "Dry brush" },
   markKind: { none: "None", dot: "Dots", rings: "Rings", rosette: "Rosettes", arrow: "Arrows" },
   rays: { none: "None", reflected: "Reflected", both: "Arrived and reflected" },
-  graphAnchor: { contacts: "Contact centroid", final: "Final position" },
+  graphAnchor: { final: "Final position", contacts: "Contact centroid" },
 };
 const labelled = (parameter: Parameter): Parameter => {
   const labels = optionLabels[parameter.key];
@@ -146,8 +146,8 @@ export const collisionScoresDefinition: InstrumentDefinition = {
     contacts: "all", minImpulse: 0.04, floor: 0.2, colorBy: "kind",
     outline: true, bodies: "outline", bodyWeight: 1.3,
     trails: "ink", trailWeight: 0.9, trailSpacing: 8, trailBead: 3.5, brushWidth: 10,
-    markKind: "rings", markSize: 24, markWeight: 1, markPetals: 6,
-    rays: "reflected", rayLength: 28, rayWeight: 0.8,
-    graph: true, graphAnchor: "contacts", graphWeight: 2.4, graphNodeSize: 7,
+    markKind: "rings", markSize: 24, markWeight: 1.5, markPetals: 6,
+    rays: "reflected", rayLength: 28, rayWeight: 0.9,
+    graph: true, graphAnchor: "final", graphWeight: 2.4, graphNodeSize: 7,
   },
 };

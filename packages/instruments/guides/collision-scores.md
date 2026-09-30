@@ -7,8 +7,9 @@ contact sized by its impulse, **rays** along the directions the discs left in (a
 **graph** joining discs that met, the discs themselves and the container outline. All of them read the
 same log, so switching one treatment off or replacing it moves nothing else.
 
-The default releases fourteen discs one by one from a nozzle on the left of an ellipse: crossing
-trails, rings at the harder hits, and a few heavy graph edges where the same discs kept meeting.
+The default releases fourteen discs one by one from a nozzle on the left of an ellipse: a fan of
+straight trails with a corner at every bounce, rings on the harder hits, and red graph lines between
+the discs (drawn where they ended) that met, heavier where they met harder.
 Change one launch heading by a degree and every later bounce changes: the score is the consequence of
 the initial conditions, not a texture.
 
@@ -39,7 +40,7 @@ planar domain (see the end).
 | **Trails**, weight, spacing, bead, brush width | Each path as ink, stitches, beads or a dry brush. Only the recording window changes which part is drawn. |
 | **Contact mark**, size, line weight, petals | Dots, rings, rosettes or arrows at each contact point, turned to its normal. |
 | **Bounce rays**, length, weight | Rays along each disc's outgoing direction (or also its incoming one); length follows the impulse. |
-| **Contact graph**, nodes at, line weight, node size | One line per pair that met, thickness by summed impulse; nodes at the mean of their contacts or at their final position. |
+| **Contact graph**, nodes at, line weight, node size | One line per pair that met, thickness by summed impulse; nodes at each disc's final position (the drawn discs) or at the mean of its contacts, which pulls a long run toward the middle. |
 
 Palette, mark, material and window edits repaint the same recorded motion: only initial-condition
 edits (container, barriers, bodies, emitter, launch, bounce, gravity, seed) and the step count run
