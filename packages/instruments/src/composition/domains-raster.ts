@@ -25,7 +25,8 @@ import { simplifyRingSet } from "./domains-simplify.js";
  *
  * SIMPLIFY (canvas units, default 0). Boundaries are thinned with topology-preserving
  * Douglas–Peucker (see `domains-simplify.ts`): rings never cross or touch each other or themselves
- * because of the thinning, and boundaries shared by two labels stay shared and identical.
+ * because of the thinning, and boundaries shared by two labels stay shared and identical. `protectFrame` also fixes the four
+ * corners of the raster frame, so the frame of a segmented picture is never cut across a corner.
  *
  * LABELS. `labelDomains` returns one domain per non-background label, in ascending label order.
  * Neighbouring labels' shared boundaries coincide exactly, before and after simplification.
@@ -43,8 +44,12 @@ export interface RasterOptions extends PlanarOptions {
   readonly cell?: number;
   /** Canvas position of the raster's top-left corner. Default [0, 0]. */
   readonly origin?: readonly [number, number];
-  /** Boundary thinning tolerance in canvas units. Default 0 (exact boundary). */
   readonly simplify?: number;
+  /**
+   * With `simplify`, keep the four corners of the raster frame as fixed vertices, so thinning never cuts a corner of the
+   * picture (the frame stays a rectangle wherever a region reaches it). Default false: frame corners may be thinned like any vertex.
+   */
+  readonly protectFrame?: boolean;
 }
 export interface MaskOptions extends RasterOptions {
   readonly threshold?: number;
@@ -57,7 +62,7 @@ export interface LabelOptions extends RasterOptions {
 export interface LabelDomain { readonly label: number; readonly domain: PlanarDomain }
 export const MASK_DOMAIN_LIMITS = Object.freeze({ maxPixels: 4_194_304 });
 
-interface Frame { width: number; height: number; cell: number; ox: number; oy: number; simplify: number }
+interface Frame { width: number; height: number; cell: number; ox: number; oy: number; simplify: number; protectFrame: boolean }
 function frame(raster: MaskRaster, options: RasterOptions): Frame {
   if (typeof raster !== "object" || raster === null) throw new PlanarError("INVALID_INPUT", "raster must be an object { width, height, data }");
   const { width, height, data } = raster;
@@ -69,7 +74,7 @@ function frame(raster: MaskRaster, options: RasterOptions): Frame {
   const origin = options.origin ?? [0, 0];
   const simplify = checkCoordinate("options.simplify", options.simplify ?? 0);
   if (simplify < 0) throw new PlanarError("INVALID_INPUT", "options.simplify must be ≥ 0");
-  return { width, height, cell, ox: checkCoordinate("options.origin[0]", origin[0]), oy: checkCoordinate("options.origin[1]", origin[1]), simplify };
+  return { width, height, cell, ox: checkCoordinate("options.origin[0]", origin[0]), oy: checkCoordinate("options.origin[1]", origin[1]), simplify, protectFrame: options.protectFrame === true };
 }
 
 const DX = [1, 0, -1, 0], DY = [0, 1, 0, -1]; // E, S, W, N: increasing algebraic angle (counter-clockwise with y as given)
@@ -159,6 +164,7 @@ function cellDomains(labels: Int32Array, f: Frame, wanted: (label: number) => bo
   const present = (a: number, b: number): boolean => a !== b && (wanted(a) || wanted(b));
   const isAnchor = (v: number): boolean => {
     const i = v % stride, j = (v - i) / stride;
+    if (f.protectFrame && (i === 0 || i === w) && (j === 0 || j === h)) return true;
     const nw = at(i - 1, j - 1), ne = at(i, j - 1), sw = at(i - 1, j), se = at(i, j);
     return +present(nw, ne) + +present(sw, se) + +present(nw, sw) + +present(ne, se) >= 3;
   };

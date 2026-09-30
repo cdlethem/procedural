@@ -159,8 +159,8 @@ export interface CompartmentInk {
   markOpacity: number;
 }
 
-/** The colors for one cell under a spec; a pure function of the cell, spec and palette. */
-export function compartmentInk(spec: CompartmentFillSpec, palette: readonly number[], cell: Compartment): CompartmentInk {
+/** The colors for one cell under a spec; a pure function of the cell, spec and palette. Any region with a mean color, tone and coverage can be inked (Value Regions do). */
+export function compartmentInk(spec: Pick<CompartmentFillSpec, "color" | "body">, palette: readonly number[], cell: Pick<Compartment, "color" | "tone" | "coverage">): CompartmentInk {
   if (palette.length === 0) throw new Error("Compartment fill: the palette needs at least one color");
   if (spec.color === "ink") {
     const ink = unpack(palette[0] >>> 0);
