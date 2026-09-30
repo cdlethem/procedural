@@ -327,7 +327,9 @@ test("every bound refuses by naming the control to change", () => {
   const crowded: ColonyOptions = { ...base, width: 20, height: 20, fieldCell: 5, seedCount: 400, seedSpread: 4, startRadius: 3, maxCells: 400, stiffness: 0.5, relax: 1 };
   assert.throws(() => cellColony(crowded, 1, 2), /too crowded|Cell limit/);
   const input = createInstrument("cell-division");
-  assert.throws(() => validateInstrument(params(input, { ageMin: 0.8, ageMax: 0.2 })), /Youngest shown/);
+  // An inverted age window is not an error: it selects nothing.
+  const inverted = cellDivisionComposition(params(input, { steps: 40, ageMin: 0.8, ageMax: 0.2 }));
+  assert.equal(cellSites(cellColony(inverted.colony, inverted.seed, inverted.steps), { colorBy: "age", palette: 3, min: 0.8, max: 0.2 }).length, 0);
   assert.throws(() => validateInstrument(params(input, { width: 620, height: 620, fieldCell: 1 })), /field cell/);
 });
 
@@ -499,19 +501,24 @@ test("the instrument prepares cooperatively, draws from the prepared colony, and
   } finally { cellDivisionSimulation.step = step; }
 });
 
-test("every combination of the cost drivers at their slider ends is admitted, inside the work bound", () => {
+test("slider ends of every numeric control are admitted, alone, all together and in seeded random corners, inside the work bound", () => {
   const item = definition("cell-division"), input = createInstrument("cell-division");
-  const ends = (key: string) => { const p = item.parameters.find((q) => q.key === key)!; return [p.min!, p.max!]; };
-  const drivers = ["steps", "maxCells", "relax", "fieldCell", "diffusion", "width", "height", "seedCount", "uptake"];
-  let worst = 0;
-  for (let mask = 0; mask < 2 ** drivers.length; mask++) {
-    const over = Object.fromEntries(drivers.map((key, k) => [key, ends(key)[(mask >> k) & 1]]));
+  const numbers = item.parameters.filter((p) => p.type === "number");
+  let worst = 0, checked = 0;
+  const admit = (over: Record<string, number>) => {
     const values = { ...input.params, ...over };
     assert.doesNotThrow(() => validateInstrument({ ...input, params: values }), JSON.stringify(over));
     const options = colonyOptionsOf(values), limits = cellDivisionSimulation.limits(options);
     const work = limits.initialWork! + (values.steps as number) * limits.workPerStep;
-    worst = Math.max(worst, work);
+    worst = Math.max(worst, work); checked++;
     assert.ok(work <= MAX_COLONY_WORK, `slider corner ${JSON.stringify(over)} declares ${work} work units`);
-  }
-  assert.ok(worst > 1e7, "the corners were actually expensive");
+  };
+  const ends = (pick: (p: (typeof numbers)[number]) => number) => Object.fromEntries(numbers.map((p) => [p.key, pick(p)]));
+  admit(ends((p) => p.min!)); admit(ends((p) => p.max!));
+  for (const p of numbers) for (const end of [p.min!, p.max!]) { admit({ [p.key]: end }); admit({ ...ends((q) => q.max!), [p.key]: end }); admit({ ...ends((q) => q.min!), [p.key]: end }); }
+  // Seeded random corners (each control at its min or max; xorshift, so the run is reproducible).
+  let x = 0x9e3779b9;
+  const bit = () => { x ^= x << 13; x >>>= 0; x ^= x >>> 17; x ^= x << 5; x >>>= 0; return x & 1; };
+  for (let k = 0; k < 3000; k++) admit(Object.fromEntries(numbers.map((p) => [p.key, bit() ? p.max! : p.min!])));
+  assert.ok(checked > 3000 && worst > 1e7, "the corners were actually expensive");
 });

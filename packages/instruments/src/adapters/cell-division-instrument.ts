@@ -35,8 +35,8 @@ const parameters: Parameter[] = [
   n("sourceOffset", "Source distance", "How far from the centre a spot source sits, as a fraction of the half width: 0 is in the middle, 1 at the wall.", 0, 1, 0.01, 0, 1, spotted),
   n("sourceSize", "Source size", "Thickness of an edge or ring source, or radius of a spot, as a fraction of the shorter side. A larger source feeds more of the dish at once.", 0.02, 0.3, 0.005, 0, 1, supplied),
   n("reserve", "Reserve", "Nutrient already spread through the dish at the start, as a fraction of a source's strength. 0 starts empty, so growth waits for the supply to arrive; higher lets the colony start at once and eat down its own surroundings.", 0, 1, 0.01, 0, 1),
-  n("diffusion", "Diffusion", "How quickly nutrient spreads, in canvas units squared per step. Low keeps the food near its source, so the colony hugs it and thins away from it; high evens the dish out.", 10, 300, 5, 0, 100000),
-  n("fieldCell", "Field cell", "Edge of one cell of the nutrient grid, in canvas units. Smaller resolves the food more finely and costs more per step; it does not change how fast the food spreads.", 6, 16, 0.5, 1, 200),
+  n("diffusion", "Diffusion", "How quickly nutrient spreads, in canvas units squared per step. Low keeps the food near its source, so the colony hugs it and thins away from it; high evens the dish out.", 10, 200, 5, 0, 100000),
+  n("fieldCell", "Field cell", "Edge of one cell of the nutrient grid, in canvas units. Smaller resolves the food more finely and costs more per step; it does not change how fast the food spreads.", 8, 16, 0.5, 1, 200),
 
   n("centerX", "Center X", "Horizontal canvas position of the middle of the dish.", 0, 640, 1, -4096, 4096),
   n("centerY", "Center Y", "Vertical canvas position of the middle of the dish.", 0, 640, 1, -4096, 4096),
@@ -50,10 +50,10 @@ const parameters: Parameter[] = [
   n("seedSpread", "Seed spread", "Radius of the seed cluster, ring or scatter, or half the length of the seed line, in canvas units.", 0, 150, 1, 0, 4000),
   n("seedAngle", "Seed angle", "Turns the seed line, or the ring or cluster pattern, in degrees.", -180, 180, 1, -3600, 3600, laid),
 
-  n("startRadius", "Start radius", "Radius of a seed cell, in canvas units. Cells that never find food stay near this size.", 2, 14, 0.25, 0.05, 500),
-  n("divideRadius", "Division radius", "A cell divides when it grows to this radius; no cell grows larger. Larger cells mean fewer, bolder cells in the same dish.", 6, 30, 0.25, 0.05, 500),
+  n("startRadius", "Start radius", "Radius of a seed cell, in canvas units. Cells that never find food stay near this size. It cannot exceed the division radius.", 2, 8, 0.25, 0.05, 500),
+  n("divideRadius", "Division radius", "A cell divides when it grows to this radius; no cell grows larger. Larger cells mean fewer, bolder cells in the same dish.", 8, 20, 0.25, 0.05, 500),
   n("uptake", "Uptake", "Share of the nutrient under a cell that it absorbs each step. Higher grows and divides faster and starves the neighbours behind a growing front sooner.", 0.02, 0.3, 0.005, 0.0001, 1),
-  n("maxCells", "Cell limit", "Most cells the colony will hold. At the limit division stops, cells finish growing and the colony settles.", 30, 600, 10, 1, 2000),
+  n("maxCells", "Cell limit", "Most cells the colony will hold. At the limit division stops, cells finish growing and the colony settles.", 30, 400, 10, 1, 2000),
 
   n("split", "Split", "Share of the mother's area that the larger daughter takes: 0.5 divides evenly, higher gives one big and one small daughter, so sizes differ from the first division on.", 0.5, 0.9, 0.01, 0.5, 0.95),
   select("orientation", "Division axis", "The line the daughters separate along: random, along or across the nutrient gradient (chains toward the food, or sheets across it), out from or around the colony's middle, or one fixed direction. With a slope the larger daughter leads toward the food or outward.",
@@ -64,11 +64,11 @@ const parameters: Parameter[] = [
   select("boundary", "Boundary", "The dish wall: a rectangle, or the ellipse inside it. Cells and nutrient stay inside; cells pile up against the wall.", ["dish", "box"]),
   n("overlap", "Allowed overlap", "How far two cells may overlap before they are pushed apart, as a fraction of the sum of their radii. 0 keeps them touching but never overlapping; higher lets a crowded colony compress.", 0, 0.3, 0.01, 0, 0.5),
   n("stiffness", "Stiffness", "Share of an overlap resolved each relaxation pass. Low leaves soft, overlapping cells; 1 pushes them apart at once. At 0 cells never move apart.", 0.05, 1, 0.05, 0, 1),
-  n("relax", "Relaxation", "Overlap-resolving passes per step. More passes spread the push through a crowd; fewer let daughters stay tucked where they were born. Each pass costs time in a large colony.", 1, 5, 1, 1, 16),
+  n("relax", "Relaxation", "Overlap-resolving passes per step. More passes spread the push through a crowd; fewer let daughters stay tucked where they were born. Each pass costs time in a large colony.", 1, 4, 1, 1, 16),
 
-  n("steps", "Steps", "How long the colony has grown. Drag it to watch the colony grow and divide; the states before it never change, they are only extended.", 0, 400, 1, 0, 1000),
+  n("steps", "Steps", "How long the colony has grown. Drag it to watch the colony grow and divide; the states before it never change, they are only extended.", 0, 250, 1, 0, 1000),
 
-  n("ageMin", "Youngest shown", "Hide cells younger than this fraction of the run: 0 shows even the cells born at the last step, 1 only the founders.", 0, 1, 0.01, 0, 1),
+  n("ageMin", "Youngest shown", "Hide cells younger than this fraction of the run: 0 shows even the cells born at the last step, 1 only the founders. If it is above the oldest shown, nothing is drawn.", 0, 1, 0.01, 0, 1),
   n("ageMax", "Oldest shown", "Hide cells older than this fraction of the run: 1 shows the founders, lower shows only their descendants. Hiding never moves a cell.", 0, 1, 0.01, 0, 1),
   select("colorBy", "Color by", "What the palette encodes: generation (divisions since a founder), age (palette order, first colour the oldest), size (radius against the division radius, first colour the smallest), or which founder the cell descends from.",
     ["generation", "age", "size", "root"]),
@@ -116,7 +116,6 @@ type Values = Record<string, number | string | boolean>;
 
 /** Everything that follows from the stored values alone (the colony itself is built, and bounded again, where it runs). */
 export function validateCellDivision(q: Values): void {
-  if ((q.ageMin as number) > (q.ageMax as number)) throw new Error(`Youngest shown (${q.ageMin}) must not exceed oldest shown (${q.ageMax})`);
   validateColony(colonyOptionsOf(q), q.steps as number);
 }
 
@@ -129,7 +128,7 @@ export const cellDivisionDefinitions: InstrumentDefinition[] = [{
     source: "ring", sourceAngle: 0, sourceOffset: 0.5, sourceSize: 0.06, reserve: 0.3, diffusion: 100, fieldCell: 8,
     centerX: 320, centerY: 320, width: 560, height: 560,
     seedLayout: "cluster", seedCount: 3, seedX: 0.5, seedY: 0.5, seedSpread: 16, seedAngle: 0,
-    startRadius: 7, divideRadius: 13, uptake: 0.12, maxCells: 600,
+    startRadius: 7, divideRadius: 13, uptake: 0.12, maxCells: 400,
     split: 0.6, orientation: "random", splitAngle: 0, orientJitter: 0,
     boundary: "dish", overlap: 0.05, stiffness: 0.5, relax: 4,
     steps: 230,
