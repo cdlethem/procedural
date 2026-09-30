@@ -3,7 +3,7 @@ import test from "node:test";
 import {
   CAP_HEIGHT, MAX_FILL_MARKS, OUTLINE_MIXED_KINDS, bundledOutlineTexts, createInstrument, definition, deformDomain, displacementField, displaceUnits, domainClearance,
   domainIntersection, drawInstrument, drawOutlineType, glyphOf, outlineLayout, outlineText, outlineTone, outlineTypeComposition,
-  outlineTypeProducts, outlineUnits, planarDomain, prepareOutlineType, shadowDomain, resolveOutlineFillKind, sweepDomain, trimPath, usesSeed, validateInstrument,
+  outlineTypeProducts, outlineUnits, planarDomain, prepareOutlineType, robustOffset, shadowDomain, unionDomains, offsetDomain, resolveOutlineFillKind, sweepDomain, trimPath, usesSeed, validateInstrument,
   type CompositionSurface, type OutlineText, type OutlineTypeComposition, type OutlineTypeProducts, type OutlineUnitProduct, type Path, type PlanarDomain,
 } from "../dist/index.js";
 
@@ -397,7 +397,7 @@ test("fill constructions against closed forms on a rectangle", () => {
   for (const p of rings.unit.fill!.paths.filter((q) => !q.closed)) for (const [x, y] of p.points) {
     assert.ok(x >= rings.l - 1e-9 && x <= rings.r + 1e-9 && y >= rings.t - 1e-9 && y <= rings.b + 1e-9, "clipped arcs stay in the bar");
     const d = Math.hypot(x - 300, y - 250), nearest = Math.round((d - 3) / 6) * 6 + 3;
-    assert.ok(Math.abs(d - nearest) < 0.1, `arc vertex at radius ${d} is on a ring (chord error 0.08)`);
+    assert.ok(Math.abs(d - nearest) < 0.125, `arc vertex at radius ${d} is on a ring (chord error 0.12)`);
   }
 });
 
@@ -566,7 +566,7 @@ test("named work bounds throw naming the controls, and nothing is thinned", () =
   assert.throws(() => outlineTypeProducts(dots), /would draw \d+ marks; the limit is 30000.*Line spacing.*Mark size.*Type size/);
   assert.throws(() => outlineTypeProducts(directRecipe(long, { fill: "hatch", cross: true, spacing: 3, size: 400 })), /would draw \d+ lines; the limit is 20000.*Line spacing/);
   assert.throws(() => drawOutlineType(new Recorder(), recipeOf({ fill: "hatch", cross: true, stroke: "stitch", pitch: 3, spacing: 3, size: 500, phrase: "open", displace: "none" })), /stations.*limit is 40000.*Stitch pitch/);
-  assert.throws(() => outlineTypeProducts(recipeOf({ fill: "waves", chirp: 0.3, unit: "block", size: 260, waveAmplitude: 2 })), /Frequency drift.*Change: .*Frequency drift/);
+  assert.throws(() => outlineTypeProducts(recipeOf({ fill: "waves", chirp: 0.6, spacing: 3.5, unit: "block", size: 260, waveAmplitude: 2 })), /Frequency drift.*Change: .*Frequency drift/);
   assert.ok(crowded({}).units.length === 56, "56 letters at once are fine without a fill");
   assert.throws(() => outlineTypeComposition({ ...createInstrument("outline-type"), params: { ...createInstrument("outline-type").params, size: 5000 } }), /size/i);
   assert.throws(() => validateInstrument({ ...createInstrument("outline-type"), params: { ...createInstrument("outline-type").params, phrase: "nothing" } }), /phrase/i);
@@ -594,4 +594,60 @@ test("the instrument: registration, groups, seeds, transparency and cooperative 
   const t0 = performance.now(); outlineTypeProducts(big); assert.ok(performance.now() - t0 < 5, "prepared products are cached");
   assert.throws(() => outlineTypeComposition({ ...createInstrument("outline-type"), seed: -1 }), /uint32/);
   assert.throws(() => outlineTypeComposition({ ...createInstrument("outline-type"), technique: "path-typography" }), /Not a outline-type input/);
+});
+
+test("every slider end, and all ends together, is admitted and draws within the declared bound", () => {
+  const item = definition("outline-type");
+  const numbers = item.parameters.filter((p) => p.type === "number");
+  assert.ok(numbers.length >= 25, `${numbers.length} numeric controls`);
+  const DRAW_BOUND_MS = 10_000;
+  const attempt = (label: string, params: Record<string, number>): void => {
+    const input = createInstrument("outline-type");
+    Object.assign(input.params, params);
+    assert.doesNotThrow(() => validateInstrument(input), label);
+    const rec = new Recorder(), started = performance.now();
+    assert.doesNotThrow(() => drawInstrument(rec as never, input), label);
+    assert.ok(performance.now() - started < DRAW_BOUND_MS, `${label} drew within ${DRAW_BOUND_MS} ms`);
+    assert.ok(rec.count("endShape") > 0, `${label} draws something`);
+  };
+  for (const p of numbers) { attempt(`${p.key} at slider min`, { [p.key]: p.min! }); attempt(`${p.key} at slider max`, { [p.key]: p.max! }); }
+  attempt("all sliders at min", Object.fromEntries(numbers.map((p) => [p.key, p.min!])));
+  attempt("all sliders at max", Object.fromEntries(numbers.map((p) => [p.key, p.max!])));
+  // fixed-stream random mixtures of slider ends and select values (30 of the 2^41 corners), each of which fuzzing found admitted
+  let state = 2024;
+  const random = () => (state = (Math.imul(state, 1664525) + 1013904223) >>> 0) / 4294967296;
+  for (let k = 0; k < 30; k++) {
+    const input = createInstrument("outline-type");
+    for (const p of item.parameters) {
+      if (p.type === "number") input.params[p.key] = random() < 0.5 ? p.min! : p.max!;
+      else if (p.type === "select") input.params[p.key] = p.options![Math.floor(random() * p.options!.length)].value;
+    }
+    const started = performance.now();
+    assert.doesNotThrow(() => { validateInstrument(input); drawInstrument(new Recorder() as never, input); }, `mixture ${k}: ${JSON.stringify(input.params)}`);
+    assert.ok(performance.now() - started < DRAW_BOUND_MS, `mixture ${k} drew within the bound`);
+  }
+  // the worst pairing for pattern drift is the largest block with the widest drift of either sign
+  for (const chirp of [numbers.find((p) => p.key === "chirp")!.min!, numbers.find((p) => p.key === "chirp")!.max!])
+    for (const fill of ["waves", "rings"]) {
+      const input = createInstrument("outline-type");
+      Object.assign(input.params, Object.fromEntries(numbers.map((p) => [p.key, p.max!])), { chirp, fill, unit: "block", phrase: "figures" });
+      assert.doesNotThrow(() => { validateInstrument(input); drawInstrument(new Recorder() as never, input); }, `${fill} block chirp ${chirp}`);
+    }
+});
+
+test("offsets survive the kernel's non-convergence: a union that defeats single-step offsets still gets its halo and inset", () => {
+  // Found by fuzzing: letters overlapped by tracking -0.2, rotated -13°, block unit: every single-step offset of the union throws NOT_CONVERGED.
+  const layout = outlineLayout({ text: outlineText({ id: "t", lines: ["0869", "4@&%"] }), kerning: "optical", tracking: -0.2, size: 40, leading: 1.25, centerX: 0, centerY: 640, rotation: -13 });
+  const line = outlineUnits(layout, "line")[1], distance = 2;
+  assert.throws(() => offsetDomain(line.domain, distance, { join: "round" }), /did not become planar/, "the premise: the direct offset fails");
+  const halo = robustOffset(line.domain, distance, "round", "halo");
+  // independent reference: dilation distributes over union, so the union of the glyphs' own halos is the same set
+  const reference = unionDomains(layout.glyphs.filter((g) => g.line === 1).map((g) => offsetDomain(g.domain, distance, { join: "round" })));
+  near(halo.area / reference.area, 1, 0.005, "halo area");
+  assert.equal(halo.regions.length, reference.regions.length);
+  const inset = robustOffset(line.domain, -distance, "round", "inline");
+  assert.ok(inset.area < line.domain.area && inset.area > 0);
+  near(inset.area, line.domain.area - distance * line.domain.regions.reduce((s, r) => s + [r.outer, ...r.holes].reduce((p, ring) => p + ring.reduce((l, pt, i) => l + Math.hypot(pt[0] - ring[(i + 1) % ring.length][0], pt[1] - ring[(i + 1) % ring.length][1]), 0), 0), 0), 0.1 * line.domain.area, "inset removes about perimeter × distance");
+  // a failure that is not non-convergence is not retried
+  assert.throws(() => robustOffset(line.domain, Number.NaN, "round", "x"), /distance/);
 });

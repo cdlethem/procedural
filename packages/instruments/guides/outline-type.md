@@ -46,7 +46,7 @@ never a blank or a substitute. The font is already inside the package, so nothin
 | **Angle, Angle variation** | Direction of hatching, waves, the dot lattice and the wash bands; each unit turns by up to the variation either way, drawn from its own id. |
 | **Cross-hatch** | A second family of lines at 90°. |
 | **Pattern origin** | *Shared*: lines and rings are counted from the middle of the block, so neighbouring letters continue each other. *Each unit*: every unit counts from its own center. |
-| **Frequency drift** | Spacing of waves and rings changes with distance from the origin: positive tightens outward. Too much across a large block is refused. |
+| **Frequency drift** | How much the line frequency changes from the pattern origin to the farthest edge of each unit, as a fraction: positive tightens outward, negative opens. Values that would shrink the spacing below 3 units are refused. |
 | **Wave amplitude, Wavelength** | Sideways swing and length of one wave; amplitude 0 gives straight lines. |
 | **Lattice, Mark, Mark size, Size ramp** | Square or staggered rows; a dot, ring or rosette at every site whose disc fits inside the letter; its diameter as a share of the period; and how much it shrinks across each letter along the angle (a halftone gradient). |
 | **Steps, Wash strength** | Number of contour rings (they stop early when the letter is used up) or wash layers, and the opacity of each wash layer. |
@@ -71,7 +71,7 @@ a disc of its size fits inside the letter and left out otherwise.
 ## Try these
 
 - **Hatched words:** **Fill unit** word, **Fill** hatching, **Cross-hatch**, **Kerning** optical, **Tracking** −0.08, **Outline** halo.
-- **Topographic type:** **Fill** contours, **Steps** 12, **Line spacing** 4, **Outline** edge + inline with **Corners** mitre.
+- **Topographic type:** **Fill** contours, **Steps** 12, **Line spacing** 5, **Outline** edge + inline with **Corners** mitre.
 - **Halftone:** **Phrase** shade, **Fill** dots, **Mark size** 0.85, **Size ramp** 0.9, **Lattice** square, **Outline** none.
 - **Block letters:** **Fill** solid, **Color by** unit, **Shadow** extrude, **Shadow distance** 0.3, **Displacement** none.
 - **Wobbling sign:** **Displacement** wave, **Displacement amount** 0.09, **Correlation length** 1.6, **Fill** wavy lines with **Line style** stitch.
