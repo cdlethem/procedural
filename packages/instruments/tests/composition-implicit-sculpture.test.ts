@@ -191,6 +191,12 @@ test("bounded repeat: the field bounds the union of copies, is exact beside a co
     near(tree.distance(...p), truth(p), 1e-9); exactNear++;
   }
   assert.equal(exactNear, 600);
+  // An off-centre child (sphere 0.2 from its cell centre) makes the nearest copy differ from the own cell near a cell face: the slab bound matters.
+  const lopsided = sdf(sdfRepeat(sdfSphere(0.25, [0.2, 0, 0]), [1, 1, 1], [4, 1, 1])), copies = [-1.5, -0.5, 0.5, 1.5].map((c) => c + 0.2);
+  for (let i = 0; i < 3000; i++) {
+    const p = randomPoint(next, 2.2), t = Math.min(...copies.map((c) => Math.hypot(p[0] - c, p[1], p[2]) - 0.25));
+    assert.ok(lopsided.distance(...p) <= t + 1e-12, `lopsided repeat overestimates at ${p}: ${lopsided.distance(...p)} > ${t}`);
+  }
   assert.throws(() => sdf(sdfRepeat(sdfSphere(0.6), [1, 1, 1], [2, 1, 1])), /SDF node 0 \(repeat\).*along x, more than half the spacing 1/);
   sdf(sdfRepeat(sdfSphere(0.5), [1, 1, 1], [2, 2, 2])); // touching copies are allowed
   assert.equal(sdf(sdfRepeat(sdfSphere(5), [1, 1, 1], [1, 1, 1])).class, "exact", "one copy keeps exactness");
@@ -320,7 +326,7 @@ test("the released operation and the local tracer agree exactly on the shared su
 // ---- The view --------------------------------------------------------------------------------------------------------
 
 test("a sphere's view has the analytic silhouette area, depth, normal and no occlusion; perspective changes the disc by the analytic factor", () => {
-  const ball = sdf(sdfSphere(1)), cellSize = 4, R = ball.radius;
+  const ball = sdf(sdfSphere(1)), cellSize = 8, R = ball.radius;
   for (const projection of ["orthographic", "perspective"] as const) {
     const distance = projection === "orthographic" ? 3 * R : 4 * R, zoom = 100;
     const cam = camera({ projection, yaw: 0, pitch: 0, target: ball.center, zoom, distance, center: [320, 320] });
@@ -329,12 +335,13 @@ test("a sphere's view has the analytic silhouette area, depth, normal and no occ
     for (let c = 0; c < view.coverage.length; c++) area += view.coverage[c] * cellSize * cellSize;
     // Ortho: radius zoom * r. Perspective: the silhouette is the tangent cone's circle at the target plane: zoom * distance * tan(asin(r / distance)) ... per the camera model, s = zoom * distance / depth.
     const radius = projection === "orthographic" ? zoom * 1 : zoom * distance * (1 / Math.sqrt(distance * distance - 1));
-    near(area / (Math.PI * radius * radius), 1, 0.02);
+    near(area / (Math.PI * radius * radius), 1, 0.01);
+    assert.ok(view.coverage.some((v) => v > 0.05 && v < 0.95), "silhouette cells carry fractional coverage from the refinement rays");
     // Central cell: depth is eye distance minus the radius; normal faces the viewer; a convex ball has no occlusion.
     const i = Math.round((320 - view.x0) / cellSize), j = Math.round((320 - view.y0) / cellSize), c = j * view.columns + i;
     assert.equal(view.hit[c], 1);
-    near(view.depth[c], distance - 1, 1e-3);
-    assert.ok(view.normal[c * 3 + 2] > 0.999, "normal points at the eye");
+    near(view.depth[c], distance - 1, 5e-3); // the nearest cell centre is up to 5.7 canvas units off the axis
+    assert.ok(view.normal[c * 3 + 2] > 0.99, "normal points at the eye");
     let minOcclusion = 1;
     for (let k = 0; k < view.occlusion.length; k++) if (view.hit[k]) minOcclusion = Math.min(minOcclusion, view.occlusion[k]);
     assert.ok(minOcclusion > 0.98, `a convex ball is not occluded (${minOcclusion})`);

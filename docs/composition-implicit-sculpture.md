@@ -34,7 +34,7 @@ Plain data (`SdfNode`), validated and frozen by `sdf(root)`; every failure names
 | `sphere`, `box` (optional rounding), `torus`, `capsule` (segment), `cylinder` | Primitives, negative inside | `exact` |
 | `place` | Translate, rotate (`Ry Rx Rz`, degrees), uniform scale; the field is scaled back | keeps the child's class |
 | `union`, `intersection`, `subtract`, `smoothUnion` | min, max, `max(base, -cut)`, polynomial smooth minimum | `bound` |
-| `shell` | `|d| - t/2` | `bound` |
+| `shell` | `abs(d) - t/2` | `bound` |
 | `repeat` | Bounded lattice of copies (`counts` per axis), optional seeded `keep` | `bound` (`exact` for one copy) |
 | `twist`, `bend` | Rotation proportional to height / width, divided by a Lipschitz constant | `bound` |
 | `fold` | Bounded fractal fold `menger` or `tetra`, `iterations` at most 5 | `bound` |
@@ -93,15 +93,15 @@ Newton steps and attaches gradient normals: a `PointCloud` for `projectPoints` a
 Carved block, lattice cavity, coral and fractal fragment, then one shared pipeline: hollow shell and cutaway in either **order**, twist,
 bend, bounded repeat of the whole (spaced by its own extent times `1 + gap`, so it is always valid). Seeds enter only through
 `componentSeed(seed, id, purpose)`: coral limb heights, azimuths, tilts, lengths and twig angles (ids `b<k>`, `b<k>/t<j>`), and the
-lattice repeat's per-cell `keep` hash (id `i,j,k`). A block and a fractal do not read the seed (`usesSeed` is false), a hidden
+lattice repeats' per-cell `keep` hash (id `i,j,k`; separate streams for voids and each tunnel axis). A block and a fractal do not read the seed (`usesSeed` is false), a hidden
 control is never read (tested by property).
 
 ## The drawing (`sdf-draw.ts`)
 
-Fills: **cells** (rectangles merged along rows, or halftone dots), **bands** (the `IsoField` level rings of the shade, plus the
-coverage-0.5 silhouette as the base region, filled with keyholes), **facets** (painter order from `paintOrder`, with the extracted
+Fills: **cells** (rectangles merged along rows, or halftone dots), **bands** (the `IsoField` level rings of the shade, each clipped by
+`domainIntersection` to the coverage-0.5 silhouette domain, which is also painted as the darkest tone, so bands meet the outline exactly), **facets** (painter order from `paintOrder`, with the extracted
 mesh's own face normals), **grains** (`sdfSurfacePoints`, occluded by `visiblePoints` with a tolerance of 0.4 mesh cells, far to near).
-Lines: silhouette and crease edges of the mesh through `hiddenLines`, and planar slices through `sliceMesh`, hidden runs dropped or faint.
+Lines: silhouette and crease edges of the mesh (chains shorter than 1.5 mesh cells, closed loops shorter than 5, are dropped as extraction noise: a skin thinner than the grid leaves such slivers) through `hiddenLines`, and planar slices through `sliceMesh`, hidden runs dropped or faint.
 Shading: Lambert from a viewer-frame light, ambient, occlusion and a depth cue; tones from the palette (entry 0 is ink, 1..n-1 the ramp),
 quantised to `levels`. `SculptureConsumers.line` replaces the built-in line material with an ordinary path material.
 
@@ -120,9 +120,63 @@ repeats 1 to 12) and refused outside them by name.
 
 ## Failure, units
 
-Every limit throws an `Error` naming the control or option; nothing truncates, repairs or falls back to another picture. World units
+Every limit throws an `Error` naming the control or option (a hollow **Wall** thinner than 0.8 of a mesh cell is refused whenever facets, grains, lines or slices need the mesh, naming Wall and Mesh detail); nothing truncates, repairs or falls back to another picture. World units
 are half the block's side (or the caller's); canvas units are the 640 reference frame; angles are degrees except twist and bend
 rates, in radians per world unit.
+
+## Verification
+
+`tests/composition-implicit-sculpture.test.ts` (32 tests, independent expected values): every primitive against its own closed form or a brute-force
+reference (sphere, box, rounded box, torus, capsule by 4,000-sample projection, cylinder, a placed cylinder); bounds contain every interior point; every
+operator and every bundled tree is 1-Lipschitz on random pairs; a lens (intersection of two spheres) underestimates the brute-force distance
+to its sampled boundary; the twist's Lipschitz constant is not vacuous (the undivided twist reaches slope 1.2 or more but never the constant);
+a bounded repeat bounds the union of copies (including a lopsided child whose nearest copy is a neighbour) and is exact beside a copy; the
+keep hash equals `componentSeed` of the cell index; Menger levels 1 to 3 keep exactly the 20^n cells a ternary-digit rule keeps, tetra levels 1
+and 2 hold 4^n cubes; a scalar field meshes (volume within 3 percent) and is refused by `marchRays` until a Lipschitz constant is declared;
+sphere rays at analytic distances in both engines, the exact step cap, range and work errors; the released operation and the local tracer agree
+exactly (kind, steps, distance) on 400 rays; a sphere's view has the analytic silhouette area in both projections to 1 percent, central depth and
+normal, and no occlusion, a bore is occluded; views are cached by tree, camera and sampling and not by light; camera, appearance, sampling and sculpt
+edits return the same or new producers exactly as documented (identity checks); dual contouring gives a box exact volume, area and corners, sphere
+volume converging (below 0.5 percent at 64), torus Euler 0 with volume and area within 2 percent, a bore's rim on its circle to a twentieth of a
+cell, outward orientation; surface points lie on the exact surface and thin by prefix; mesh hidden lines agree with the ray-marched depth at over 98
+percent of interior samples and a floating ring is hidden by a slab and a sphere exactly where the analytic occlusion says; operation order
+changes a membership test in the wall; bands are clipped to the silhouette with the disc's area; a hidden-control property test (24
+configurations, 144 hidden-control changes, drawing fingerprints unchanged); cancellation publishes nothing.
+
+Mutations each shown to fail tests (dist edited, tests run, restored): twist not divided by its constant (2 failing), repeat without the slab bound (3),
+mesh quads wound inward (3), hit rule `d < 0` for `d <= eps` (5), wrong Menger split (2), coverage ignoring the refinement rays (1), shell without
+`abs` (1), smooth union adding the blend (3). Full `npm run build && npm test`: 1,091 tests pass (the 1,059 baseline plus these).
+
+## Review record (rendered, not accepted through the real interface)
+
+Drawn through a throwaway SVG surface and rasterized with Chromium under the render lease: the default and seeds 1, 7, 42, 1234; the four forms; hollow
+blocks with both operation orders; twisted and bent blocks and lattices; repeated corals; Menger 2, 3 and 5, sphere-sponge cells, tetra facets and
+slice-only tetra; halftone and grain fills; yaw 0, 60, 200 (from below), pitch 89, perspective at distance 1.5, 3 and 8, roll 30 off centre; sparse
+(cell 14, 24 steps) and dense (cell 2.5) sampling; mesh detail 12 and 64; three layered pairs in both orders with the unmodified Contour Scores,
+Substitution Tilings and Motif Ecologies (the opaque sculpture hides what is beneath it and is crossed by what is above; the lines-only
+sculpture leaves the motifs visible in both orders).
+
+Defects found by looking, and fixed: (1) marching cubes and then marching tetrahedra chamfered every crease by up to a cell and the
+hidden-line silhouettes and creases zigzagged; replaced by dual contouring. (2) A regularised least-squares vertex undershot box edges by
+5 percent of the cell and an unbiased one still landed 0.06 cell off, because edge crossings were interpolated in a field that is not linear near
+a crease; crossings are now found by root finding and the truncated pseudo-inverse keeps edges and corners exact. (3) Coincident cell
+vertices left cracks (open meshes); they are welded and collapsed faces are counted. (4) Facets showed star-shaped fans around holes when shaded by
+the field's gradient at a quad's centroid; they use the mesh's face normals. (5) Bands stair-stepped beside the outline with a dark rim; they are
+now clipped to the exact silhouette domain. (6) Default seeds looked identical because only the voids were omitted while the tunnels made
+every face the same; tunnel lines are thinned by the same hash. (7) Slivers of a skin thinner than a cell drew stray marks and whiskers on
+faces; short chains and small closed loops are dropped and a thinner-than-cell hollow wall is refused. (8) The coral filled a third of the frame; the
+default size is 600. (9) A 3 x 1 x 3 coral was refused by the worst-case work bound although it drew in half a second; the bound was
+raised to 500 million (a worst case: a typical march uses a fraction). Observed and left as documented: rims of holes a few cells across
+are polygons that differ from the ray-marched outline by a pixel or two; heavy twist (beyond about 2) needs more March steps and shows missing
+surface otherwise; a mesh detail of 12 breaks a lattice into shards; features thinner than a cell blur.
+
+## Timing (this machine, busy with other builds, single runs)
+
+Large setting (5 x 5 x 5 lattice, cell 3, mesh detail 56, 160 steps, 10 slices, size 620): first prepare 3.0 s (mesh, march of about 45,000 rays, lines and
+slices); the same again 3 ms; **camera-only** edit (yaw, then pitch and perspective) 0.9 to 1.0 s (march and hidden lines; the tree and mesh are reused);
+**appearance-only** edit (levels, light, weights, opacity) 2 ms to prepare and about 120 ms to draw (shading and the band clipping); **structural** edit (6 cells)
+2.4 s. Default: 0.45 s to prepare, 30 ms to draw. Menger level 4 at detail 40: 0.8 s; a coral with 10 branches in 3 x 3 copies: 1.5 s; a twisted and bent block: 0.5 s.
+These are observations, not certified slider ranges.
 
 ## Not done
 

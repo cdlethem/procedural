@@ -37,7 +37,7 @@ const parameters: Parameter[] = [
   n("cells", "Cells per side", "Voids along each axis: the bounded repeat is cells x cells x cells copies, each cell as wide as the block divided by this.", 1, 6, 1, 1, 8, lattice),
   n("voidSize", "Void size", "Void radius as a fraction of half a cell: 1 makes neighbouring voids touch.", 0.2, 1, 0.01, 0.05, 1, lattice),
   n("tunnel", "Tunnels", "Radius of the tunnels joining the voids along the three axes, as a fraction of the void radius. 0 leaves closed voids, only visible in a cutaway.", 0, 1, 0.01, 0, 1, lattice),
-  n("voidKeep", "Voids kept", "Share of voids present: each cell keeps its void by a stable hash of the seed, so a new seed reshuffles which are missing.", 0, 1, 0.01, 0, 1, lattice),
+  n("voidKeep", "Voids kept", "Share of voids and of tunnel lines present: each keeps itself by a stable hash of the seed, so a new seed reshuffles which are missing, including the holes on the faces. 0 carves nothing.", 0, 1, 0.01, 0, 1, lattice),
   n("blend", "Blend", "Smooth-union width: how far neighbouring limbs (coral) or cavities (lattice) flow into each other, as a share of the limb length or the cell. 0 is a hard union.", 0, 1, 0.01, 0, 1, blended),
   n("branches", "Branches", "Limbs leaving the trunk at seeded heights, azimuths, tilts and lengths.", 1, 10, 1, 1, 10, growth),
   n("twigs", "Twigs per branch", "Side limbs forking from every branch tip.", 0, 2, 1, 0, 2, growth),
@@ -128,7 +128,7 @@ export const implicitSculptureDefinition: InstrumentDefinition = {
   renderer: "2d",
   parameters, controlGroups,
   defaults: {
-    form: "lattice-cavity", roundness: 0.35, bores: 3, boreRadius: 0.38, cells: 3, voidSize: 0.86, tunnel: 0.5, voidKeep: 0.6, blend: 0.3,
+    form: "lattice-cavity", roundness: 0.35, bores: 3, boreRadius: 0.38, cells: 3, voidSize: 0.8, tunnel: 0.5, voidKeep: 0.7, blend: 0.3,
     branches: 6, twigs: 2, spread: 0.85, thickness: 0.075, bulbs: true, fold: "menger", iterations: 3, foldShape: "box",
     centerX: 320, centerY: 322, size: 600,
     cut: "quarter", cutAt: 0, cutTurn: 0, hollow: false, wall: 0.1, order: "shell-first",

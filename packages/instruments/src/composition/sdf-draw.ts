@@ -157,8 +157,10 @@ function lines(extracted: SdfMesh, view: Camera, spec: ImplicitSculptureComposit
       if (spec.silhouette || spec.creases) {
         const topology = meshTopology(mesh);
         const edges = meshFeatureEdges(mesh, topology, view, { crease: spec.creases ? spec.creaseAngle : null, silhouette: spec.silhouette, boundary: false });
-        // Open chains shorter than 1.5 mesh cells are extraction noise (slivers where several features meet in one cell), not features.
-        const chains = meshEdgeCurves(mesh, topology, edges).filter((c) => c.closed || chainLength(c.points) >= 1.5 * extracted.provenance.spacing);
+        // Chains shorter than 1.5 mesh cells (closed loops: under 5, a circle 1.6 cells across) are extraction noise, slivers where a skin thinner
+        // than the grid or several features share one cell, not features the grid resolves.
+        const h = extracted.provenance.spacing;
+        const chains = meshEdgeCurves(mesh, topology, edges).filter((c) => chainLength(c.points) >= (c.closed ? 5 : 1.5) * h);
         features = hiddenLines(mesh, chains, view, { maxWork: 100_000_000 }).paths;
       }
       if (spec.slices > 0) {

@@ -10,7 +10,7 @@
  *    that touches its faces), with `bores` cylinders (Y, then X, then Z) subtracted through it.
  *  - `lattice-cavity`: a block minus a bounded lattice of `cells`^3 spherical voids (radius `voidSize` of half a cell)
  *    joined by tunnels along the three axes (`tunnel` of the void radius), the cavities smooth-unioned with `blend` (a
- *    fraction of the cell). `voidKeep` omits voids by a stable per-cell hash of the seed (the repeat node's `keep`).
+ *    fraction of the cell). `voidKeep` omits voids, and each tunnel line, by a stable per-cell hash of the seed (the repeat node's `keep`); 0 carves nothing.
  *  - `coral`: a holdfast, a trunk and `branches` capsules leaving it at seeded heights, azimuths, tilts and lengths, each
  *    with `twigs` capsules and (`bulbs`) a knob at every tip, all smooth-unioned with `blend`. `spread` tilts the limbs
  *    from the vertical and `thickness` is the limb radius.
@@ -71,12 +71,10 @@ function carvedBlock(s: SculptureSpec["carved"]): SdfNode {
 
 function latticeCavity(s: SculptureSpec["lattice"], blend: number, seed: number): SdfNode {
   const n = s.cells, cell = 2 / n, rv = s.voidSize * cell / 2, rt = s.tunnel * rv, spacing: Vec3 = [cell, cell, cell];
-  const parts: SdfNode[] = [];
-  if (s.voidKeep > 0 && rv > 0)
-    parts.push(sdfRepeat(sdfSphere(rv), spacing, [n, n, n], s.voidKeep < 1 ? { seed: componentSeed(seed, "lattice", "voids"), probability: s.voidKeep } : undefined));
-  if (rt > 0) {
-    parts.push(sdfRepeat(cyl(rt, "y", 1.3), spacing, [n, 1, n]), sdfRepeat(cyl(rt, "x", 1.3), spacing, [1, n, n]), sdfRepeat(cyl(rt, "z", 1.3), spacing, [n, n, 1]));
-  }
+  const parts: SdfNode[] = [], keep = (purpose: string) => (s.voidKeep < 1 ? { seed: componentSeed(seed, "lattice", purpose), probability: s.voidKeep } : undefined);
+  if (s.voidKeep > 0 && rv > 0) parts.push(sdfRepeat(sdfSphere(rv), spacing, [n, n, n], keep("voids")));
+  if (s.voidKeep > 0 && rt > 0)
+    parts.push(sdfRepeat(cyl(rt, "y", 1.3), spacing, [n, 1, n], keep("tunnels-y")), sdfRepeat(cyl(rt, "x", 1.3), spacing, [1, n, n], keep("tunnels-x")), sdfRepeat(cyl(rt, "z", 1.3), spacing, [n, n, 1], keep("tunnels-z")));
   const block = sdfBox([1, 1, 1]);
   return parts.length ? sdfSubtract(block, join(blend * cell, parts)) : block;
 }

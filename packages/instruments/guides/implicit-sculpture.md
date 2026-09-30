@@ -5,7 +5,7 @@ warm stone hollowed by a three-by-three-by-three lattice of voids joined by tunn
 cut away so the cavities show: the front faces are flat, the tunnels open into holes on the sides, and
 inside the cut you see smooth-blended chambers, shaded in five posterised tones, darkening in the
 creases, with an ink outline, sharp edges and nothing drawn that the solid hides. Every seed omits a
-different set of voids. It is not a mesh model and not a noise heightfield: the solid is a *signed
+different set of voids and tunnels. It is not a mesh model and not a noise heightfield: the solid is a *signed
 distance tree* (a sphere, a box, a torus, a capsule, a cylinder, combined by union, intersection,
 subtraction, smooth union, shell, bounded repetition, twist, bend and a bounded fractal fold), and the
 picture is computed from it, so a cut really opens a cavity, a shell really has an inside, and a hole
@@ -23,7 +23,7 @@ painted again. Nothing is filled behind the sculpture; the layer paints transpar
 |---|---|
 | **Form** | Which tree you start from. **Carved block**: a cube (optionally rubbed toward a sphere) with cylinders bored through it. **Lattice cavity**: a block minus a bounded lattice of voids joined by tunnels. **Coral**: a holdfast, a trunk and seeded limbs, smooth-unioned. **Fractal fragment**: a Menger sponge or a tetrahedral arrangement of cubes, folded up to five times. |
 | **Roundness**, **Bores**, **Bore radius** (block) | 0 keeps the sharp cube, 1 leaves the sphere that touches its faces. Up to three cylinders are drilled: vertical, then left-right, then front-back. |
-| **Cells per side**, **Void size**, **Tunnels**, **Voids kept** (lattice) | The lattice is cells × cells × cells copies of one void (bounded repetition). Void size 1 makes neighbours touch; tunnels join them along the axes and open onto the faces; *Voids kept* removes voids by a stable per-cell hash of the seed, so a new seed reshuffles which are missing. |
+| **Cells per side**, **Void size**, **Tunnels**, **Voids kept** (lattice) | The lattice is cells × cells × cells copies of one void (bounded repetition). Void size 1 makes neighbours touch; tunnels join them along the axes and open onto the faces; *Voids kept* removes voids and tunnel lines by a stable per-cell hash of the seed, so a new seed reshuffles which are missing, holes on the faces included. |
 | **Blend** (lattice, coral) | How far neighbouring cavities or limbs flow into each other (smooth union). 0 is a hard union. |
 | **Branches**, **Twigs per branch**, **Spread**, **Limb radius**, **Tip knobs** (coral) | Limbs leave the trunk at seeded heights, azimuths, tilts and lengths; each has side twigs and a knob at the tip. A new seed grows a different coral. |
 | **Fold**, **Iterations**, **Shape** (fractal) | Menger folds space by absolute value and sorting and scales by 3 (20 of 27 sub-cubes survive each level); tetrahedral reflects and scales by 2 (4 copies). Iterations are capped at 5: each level multiplies the copies and shrinks their detail, and the picture stops resolving them below a cell. |
@@ -33,7 +33,7 @@ painted again. Nothing is filled behind the sculpture; the layer paints transpar
 | Controls | What changes on the canvas |
 |---|---|
 | **Cutaway**, **Cut position**, **Cut direction** | Removes a half-space, the quarter or octant beyond a corner, or a thin slot, so the inside shows. Direction turns the opening about the vertical axis to face the camera. The framing never changes: the sculpture is always scaled by its uncut bounds. |
-| **Hollow**, **Wall** | Turns the sculpture into a skin: the field becomes `|d|` minus half the wall, so the wall has an outside face and an inside face. |
+| **Hollow**, **Wall** | Turns the sculpture into a skin: the field becomes the absolute distance to the surface minus half the wall, so the wall has an outside face and an inside face. A wall thinner than about a mesh cell cannot be extracted; with facets, grains or lines on it is refused, naming Wall and Mesh detail. |
 | **Operation order** | With Hollow and a cut, **Shell, then cut** opens the skin and shows the empty interior between the two faces of the wall; **Cut, then shell** skins every cut face too. They differ wherever the cut meets a wall. |
 | **Twist**, **Bend** | Rotates every level about the vertical axis in proportion to height (twist), or about the front-back axis in proportion to width (bend). Strong values slow the marching (see Limits) but stay safe. |
 | **Copies across / up / deep**, **Copy gap** | Repeats the whole sculpture on a lattice spaced by its extent times one plus the gap. The picture is re-fitted, so repeats shrink each copy. |
