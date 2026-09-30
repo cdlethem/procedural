@@ -4,7 +4,7 @@ import {
   CAP_HEIGHT, MAX_LAYOUT_ITEMS, MIN_CONDENSE, MIN_STRAIGHTNESS, OPTICAL_CLEARANCE, arcPointAt, arcSpan, arcTable, arcTurn, attachmentSites, branchChains,
   branchTree, bundledBranchTree, componentSeed, createInstrument, definition, disruptFrames, drawPathTypography, drawInstrument, glyphFill, glyphOf, glyphOutline,
   glyphTone, layoutAlongPath, readableSpans, SPAN_STEP, layoutPaths, opticalKern, pathText, pathTypographyComposition, pathTypographyProducts, preparePathTypography, rankedPaths, shapeRun,
-  supplyPaths, usesSeed, validateInstrument,
+  supplyPaths, usesSeed, validateInstrument, prepareInstrument,
   type AdvanceItem, type CompositionSurface, type GlyphItem, type Path, type PathFrame, type PathLayoutOptions, type PathTypographyComposition,
 } from "../dist/index.js";
 import { textOutlines } from "../dist/adapters/image-signal-instruments.js";
@@ -409,12 +409,14 @@ test("supplies: ranked longest first, windows slide, chains partition the tree, 
   assert.equal(window.available, ranked.length);
   assert.equal(supplyPaths(supply, { pick: 2, count: 3, smooth: 0 }), window, "selections are cached, so layouts can share");
   assert.equal(supplyPaths(supply, { pick: ranked.length - 1, count: 64, smooth: 0 }).paths.length, 1, "count is capped by what exists");
-  assert.throws(() => supplyPaths(supply, { pick: ranked.length, count: 1, smooth: 0 }), /Path \d+ does not exist.*lower Path/);
+  const past = supplyPaths(supply, { pick: ranked.length, count: 1, smooth: 0 });
+  assert.deepEqual([past.paths.length, past.available], [0, ranked.length], "a pick past the last path is a valid empty selection that reports what exists");
+  assert.throws(() => supplyPaths(supply, { pick: 1.5, count: 1, smooth: 0 }), /nonnegative integer/);
   const smooth = supplyPaths(supply, { pick: 0, count: 1, smooth: 2 }).paths[0];
   assert.equal(smooth.id, `${ranked[0].id}~s2`);
   assert.ok(smooth.points.length > ranked[0].points.length);
   assert.deepEqual(smooth.points[0], ranked[0].points[0], "an open path keeps its ends");
-  assert.throws(() => supplyPaths({ kind: "contour", source: { ...source, levels: 0 } }, { pick: 0, count: 1, smooth: 0 }), /no paths.*Field, Frequency or Level/);
+  assert.deepEqual(supplyPaths({ kind: "contour", source: { ...source, levels: 0 } }, { pick: 0, count: 1, smooth: 0 }), { paths: [], available: 0 });
 
   const treeOptions = bundledBranchTree({ seed: 42, centerX: 320, centerY: 320, extent: 520, attractors: 90, ticks: 34, branches: 2, spread: 40, routing: "smooth" });
   const tree = branchTree(treeOptions), chains = branchChains(tree);
@@ -602,4 +604,34 @@ test("the authored default reads upright: no letter of any default contour is tu
     assert.ok(backwards > 10, "forward reading leaves many letters upside down, so the rule is doing the work");
   }
   assert.equal(createInstrument("path-typography").params.direction, "upright");
+});
+
+test("sliders always give a drawing: every numeric control at slider min, at slider max, and all together, for every supply and landscape", async () => {
+  const numeric = definition("path-typography").parameters.filter((parameter) => parameter.type === "number");
+  const surface = new Recorder();
+  const check = async (params: Record<string, unknown>, label: string) => {
+    const input = createInstrument("path-typography");
+    Object.assign(input.params, params);
+    validateInstrument(input);
+    assert.equal(await prepareInstrument(input, () => false), true, label);
+    drawInstrument(surface as never, input);
+  };
+  // The landscape only matters to the contour supply; the others are checked with one.
+  for (const supply of ["contour", "branch", "gesture"]) for (const field of supply === "contour" ? ["noise", "hills", "waves", "saddle"] : ["noise"]) {
+    const base = { supply, field };
+    await check({ ...base, ...Object.fromEntries(numeric.map((p) => [p.key, p.min])) }, `${supply}/${field} all min`);
+    await check({ ...base, ...Object.fromEntries(numeric.map((p) => [p.key, p.max])) }, `${supply}/${field} all max`);
+    if (field === "noise" || field === "waves") for (const p of numeric) for (const value of [p.min, p.max]) await check({ ...base, [p.key]: value }, `${supply}/${field} ${p.key}=${value}`);
+  }
+  // Every corner of the contour drivers, where paths can vanish entirely.
+  const drivers = ["frequency", "level", "levelStep", "levels", "pick", "count"].map((key) => numeric.find((p) => p.key === key)!);
+  for (const field of ["noise", "hills", "waves", "saddle"]) for (let mask = 0; mask < 1 << drivers.length; mask++)
+    await check({ field, ...Object.fromEntries(drivers.map((p, i) => [p.key, mask >> i & 1 ? p.max : p.min])) }, `${field} corner ${mask}`);
+  // An empty supply is an empty drawing: nothing is painted, and the producers say why.
+  const empty = recipeOf({ levels: 1, level: 16, pick: 0 });
+  const products = pathTypographyProducts(empty);
+  assert.deepEqual([products.paths.length, products.available, products.frames.flat().length], [0, 0, 0]);
+  const blank = new Recorder();
+  drawPathTypography(blank, empty);
+  assert.equal(blank.count("endShape") + blank.count("push"), 0);
 });
