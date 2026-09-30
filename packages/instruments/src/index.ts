@@ -417,7 +417,7 @@ export type { SdfNode, SdfClass, SdfFold, SdfFn, Sdf } from "./composition/sdf.j
 export { sdf, SDF_LIMITS, twistLipschitz, bendLipschitz, sdfSphere, sdfBox, sdfTorus, sdfCapsule, sdfCylinder, sdfPlace, sdfUnion, sdfIntersection, sdfSubtract, sdfSmoothUnion,
   sdfShell, sdfRepeat, sdfTwist, sdfBend, sdfFold, sdfField } from "./composition/sdf.js";
 export type { RayBatch, MarchOptions, MarchResult, MarchEngine, ViewOptions as SdfViewOptions, ViewStats as SdfViewStats, SdfView, Light as SdfLight } from "./composition/sdf-march.js";
-export { marchRays, marchWork, releasedScene, primaryRay, frameHalf, sdfView, buildSdfView, cachedSdfView, shadeView, lightDirection, MARCH, DEFAULT_MARCH_WORK, MAX_VIEW_CELLS } from "./composition/sdf-march.js";
+export { marchRays, marchWork, releasedScene, primaryRay, frameHalf, sdfView, buildSdfView, cachedSdfView, shadeView, lightDirection as sdfLightDirection, MARCH, DEFAULT_MARCH_WORK, MAX_VIEW_CELLS } from "./composition/sdf-march.js";
 export type { SdfMesh, SdfMeshOptions, SdfMeshProvenance, SurfacePointOptions } from "./composition/sdf-mesh.js";
 export { sdfMesh, sdfSurfacePoints, SDF_MESH_LIMITS, DEFAULT_MESH_WORK } from "./composition/sdf-mesh.js";
 export type { SculptureForm, SculptureCut, SculptureOrder, SculptureSpec } from "./composition/sdf-samples.js";
