@@ -87,7 +87,7 @@ scale together; nothing in the model groups is proportional (counts and radii in
 disc/ring/spots, spots follow spots, start noise follows spots/disc/ring; tiles follow a symmetry; band controls follow bands; contour controls
 follow contours (weight for ink/stitch, spacing for stitch/beads, bead for beads); mark controls follow marks (line weight for ring/rosette/arrow,
 petals for rosette, opening for ring/rosette, follow for rosette/arrow). Slider intervals differ from hard limits (resolution 48–120 vs 24–192,
-scales 2–6 vs 2–8, steps 0–400 vs 2,000, ratio 1.3–2.6 vs 1.05–4, band level −0.6–0.6 vs −1–1). The control audit result is recorded below.
+scales 2–6 vs 2–8, steps 0–400 vs 2,000, ratio 1.3–2.6 vs 1.05–4, band level −0.6–0.6 vs −1–1). The full control audit (`tests/helpers/audit-controls.ts pattern-competition`) was started but not finished: every probe is a model run, and on the loaded shared machine it did not complete in over an hour. It was stopped and is **not** claimed; the hidden-control property test in the suite (each declared condition's hidden controls changed on a small grid, fingerprint unchanged; visible controls change it) is the evidence.
 
 ## Checks (`tests/composition-pattern-competition.test.ts`, 21 tests)
 
