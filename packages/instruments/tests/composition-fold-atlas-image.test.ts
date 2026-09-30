@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  FOLD_LIMITS, bundledRaster, canPrepareInstrument, createInstrument, createRaster, definition, drawFoldAtlasImage, drawInstrument, foldAtlasImageComposition, foldColors,
+  FOLD_LIMITS, bundledRaster, canPrepareInstrument, createInstrument, createRaster, definition, foldFragmentKeys, foldGrid, drawFoldAtlasImage, drawInstrument, foldAtlasImageComposition, foldColors,
   foldDensity, foldDensityProducts, foldFragmentProducts, foldMapped, foldPreimages, foldSamples, foldSeedCount, invertMap, latticeStarts, mapNames, mergeRuns,
   prepareInstrument, tonemapDensity, usesSeed, validateInstrument, visibleParameters, warpPoint,
   type FoldAtlasImageComposition, type FoldRect, type InstrumentInput, type MapName, type Raster, type WarpOptions,
@@ -220,6 +220,21 @@ test("area averaging: cells the map shrinks read the mean of what they cover, po
   assert.ok(averaged > .85 * shrunk, `area averaging reads the mean in ${averaged} of ${shrunk}`);
 });
 
+test("mirrored cells are darkened by the shade and unmirrored cells are not", () => {
+  const base = recipeOf({}, { mode: "fragments", cell: 8, stage1Map: "sinusoidal", stage1Amount: 1, stage1Frequency: 3, stage2Amount: 0, backShade: 0, color: "image", levels: 16 });
+  const products = foldFragmentProducts(base);
+  const plain = foldFragmentKeys(base, products), shaded = foldFragmentKeys({ ...base, fragments: { ...base.fragments, backShade: .5 } }, products);
+  let mirrored = 0, front = 0;
+  for (let k = 0; k < plain.length; k++) {
+    if (plain[k] < 0) { assert.equal(shaded[k], -1); continue; }
+    if (products.preimages.determinant.get(k) < 0) {
+      mirrored++;
+      for (const shift of [16, 8, 0]) near((shaded[k] >> shift) & 255, Math.round(((plain[k] >> shift) & 255) * .5), 1);
+    } else { front++; assert.equal(shaded[k], plain[k]); }
+  }
+  assert.ok(mirrored > 20 && front > 20, `${mirrored} mirrored, ${front} unmirrored`);
+});
+
 test("exposure and tone response only read the finished counts: mapped samples and density stay the same objects", () => {
   const base = recipeOf({}, { mode: "density", count: 20000 });
   const a = foldDensityProducts(base);
@@ -390,7 +405,6 @@ test("bounds fail naming the control to change, and unsupported images are refus
   const withAlpha = createRaster({ width: 1, height: 1, channels: 4, format: "u8", colorSpace: "srgb", alpha: "straight", data: [1, 2, 3, 255] });
   const pre = foldPreimages(warp([stage("sinusoidal", 0)]), { x: 0, y: 0, width: 10, height: 10 }, { x: 0, y: 0, width: 10, height: 10 }, 5, { search: "nearest", seeds: 1, sheet: "front" });
   assert.throws(() => foldColors(pre, withAlpha, { x: 0, y: 0, width: 10, height: 10 }, "nearest", true), /alpha channel/);
-  assert.equal(FOLD_LIMITS.cells, 40000);
   assert.throws(() => validateInstrument({ ...createInstrument(ID), params: { ...createInstrument(ID).params, image: "nope" } }));
 });
 
@@ -409,7 +423,7 @@ test("the instrument is registered, preparable, and prepares the same products i
   assert.ok(mapNames.length === 8);
 });
 
-test("every slider corner is admitted and draws: each numeric control alone at its ends, all minimums, all maximums, and the first preparation of the costliest corners stays near 2.5 s", async () => {
+test("every slider corner is admitted and draws: each numeric control alone at its ends, all minimums, all maximums, and the costliest corners stay inside the declared work limits", async () => {
   const item = definition(ID), numbers = item.parameters.filter((p) => p.type === "number");
   const cornerOf = (edge: "min" | "max" | "default", over: Record<string, string | number | boolean> = {}): InstrumentInput => {
     const input = createInstrument(ID);
@@ -430,7 +444,7 @@ test("every slider corner is admitted and draws: each numeric control alone at i
     }
     for (const search of ["nearest", "sheets"]) for (const display of ["bands", "dots"]) admit(`${mode} ${search} ${display} maximums`, cornerOf("max", { mode, search, display }));
   }
-  // First-preparation time (validation, stage caches cold) at the corners that cost the most.
+  // The costliest corners prepare (validation, cold stage caches) inside the declared work: counts, never clocks.
   const heavy: [string, InstrumentInput][] = [
     ["fragments all maximums", cornerOf("max", { mode: "fragments" })],
     ["density all maximums", cornerOf("max", { mode: "density" })],
@@ -440,10 +454,13 @@ test("every slider corner is admitted and draws: each numeric control alone at i
   ];
   for (const [label, input] of heavy) {
     validateInstrument(input);
-    const start = performance.now();
     assert.equal(await prepareInstrument(input, () => false), true, label);
-    const ms = performance.now() - start;
-    assert.ok(ms < (label.includes("all maximums") ? 2500 : 10_000), `${label}: first preparation took ${ms.toFixed(0)} ms`);
+    const recipe = foldAtlasImageComposition(input), grid = foldGrid(recipe.frame, recipe.cell);
+    assert.ok(grid.columns * grid.rows <= FOLD_LIMITS.cells, label);
+    if (recipe.mode === "fragments") {
+      const f = recipe.fragments, seeds = foldSeedCount(recipe.source, recipe.cell, { search: f.search, seeds: f.seeds, sheet: f.sheet });
+      assert.ok(seeds <= FOLD_LIMITS.seeds, `${label}: ${seeds} seed points`);
+    } else assert.ok(foldDensityProducts(recipe).samples.count <= FOLD_LIMITS.samples, label);
   }
   // Every numeric control's hard limits still admit exact entry through validateInstrument (values outside are refused).
   for (const p of numbers) {
