@@ -7,7 +7,7 @@ import type { CrossingKind, FillChoice, OutlineKind, RegionOrder, StitchOptions,
 import type { StitchFieldSpec } from "../composition/stitch-field.js";
 import { choice, numeric, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 const integerKeys = new Set(["variant", "patches", "bands", "minRegion", "fieldVariant"]);
 const withCondition = (parameter: Parameter, visibleWhen?: Condition): Parameter => (visibleWhen ? { ...parameter, visibleWhen } : parameter);
 const n = (key: string, label: string, description: string, min: number, max: number, step: number,
@@ -92,7 +92,8 @@ const parameters: Parameter[] = [
   n("weight", "Thread width", "Stroke width of the thread, in canvas units.", 0.4, 4, 0.05, 0, 50),
   n("dash", "Dash spacing", "Distance between dashes or beads along a thread, in canvas units.", 2, 20, 0.5, 0.5, 1000, dashed),
   select("colorBy", "Color by", "Region gives each region a palette color; tone runs the palette from the lightest tone to the darkest; row alternates colors from row to row; stitch picks a color for every stitch from the seed. Underlay and travel use the first palette color; the rest use the others.", ["region", "tone", "row", "stitch"]),
-  select("trim", "Outline and crossing color", "Ink uses the first palette color; region uses the region's own color; contrast uses the next palette color after it.", ["ink", "region", "contrast"]),
+  select("trim", "Outline and crossing color", "Ink uses the first palette color; region uses the region's own color; contrast uses the next palette color after it.", ["ink", "region", "contrast"],
+    [{ crossing: ["over"] }, { outline: ["running", "satin"] }]),
 ];
 
 const controlGroups: ControlGroup[] = [

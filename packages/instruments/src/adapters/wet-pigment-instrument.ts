@@ -2,7 +2,7 @@ import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js"
 import { WET_LIMITS, wetWork } from "../composition/wet-pigment.js";
 import { choice, numeric, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 const withCondition = (parameter: Parameter, visibleWhen?: Condition): Parameter =>
   visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const integerKeys = new Set(["sites", "backruns", "backrunStep", "backrunGap", "steps", "grid", "bands", "frontEvery"]);
@@ -47,21 +47,22 @@ const parameters: Parameter[] = [
   n("prewet", "Pre-wet", "Depth of water laid over the whole wet region before any pigment: 0 paints onto dry paper, small blooms stay close to their drops, larger values let every drop flood far across the sheet.", 0, 1.5, 0.05, 0, 5),
   n("evaporation", "Drying rate", "Water lost to the air per step from every wet cell. Higher dries sooner and freezes blooms earlier. The elapsed steps slider must reach the moment the region dries to see the finished bloom.", 0.0005, 0.006, 0.0001, 0, 0.5),
   n("edgeDrying", "Edge drying", "How much faster the wet region's edge dries than its middle (a multiple of the drying rate). Water flows out to the drying edge and carries pigment with it, leaving a dark rim.", 0, 6, 0.1, 0, 20),
-  n("edgeReach", "Edge reach", "Distance from the edge over which the faster drying fades, in canvas units.", 10, 120, 1, 1, 1000),
+  n("edgeReach", "Edge reach", "Distance from the edge over which the faster drying fades, in canvas units.", 10, 120, 1, 1, 1000,
+    [{ edgeDrying: { gt: 0 } }, { showFronts: [true], steps: { gte: 2 } }, { showPigment: [true], sites: { gte: 1 } }]),
 
   n("transport", "Transport strength", "How readily water spreads from deeper to shallower cells (a share of the depth difference moved per pass, three passes a step). Zero freezes the water where it lands.", 0, 1, 0.01, 0, 1),
-  n("pigmentSpread", "Pigment diffusion", "How readily suspended pigment diffuses between wet cells on its own, on top of being carried by the water.", 0, 1, 0.01, 0, 1),
+  n("pigmentSpread", "Pigment diffusion", "How readily suspended pigment diffuses between wet cells on its own, on top of being carried by the water.", 0, 1, 0.01, 0, 1, { showPigment: [true] }),
   n("tilt", "Tilt", "Tips the sheet so water drifts downhill and pools at the low side, a share of each cell's water per pass. Zero is a flat board.", 0, 0.06, 0.001, 0, 0.1),
-  n("tiltAngle", "Tilt direction", "Direction the water drifts, in degrees: 90 toward the bottom of the canvas, 0 toward the right.", -180, 180, 1, -3600, 3600),
+  n("tiltAngle", "Tilt direction", "Direction the water drifts, in degrees: 90 toward the bottom of the canvas, 0 toward the right.", -180, 180, 1, -3600, 3600, { tilt: { gt: 0 } }),
   select("boundary", "Edge", "Sealed: the region's edge is a wall, nothing leaves. Open: water and its pigment drain out through the edge into the surrounding dry paper and are lost from the picture, so the deposit fades toward the edge.", ["sealed", "open"]),
 
   n("sites", "Deposit sites", "Number of drops of pigmented water. Each lands at a seeded place in the region and never moves.", 0, 12, 1, 0, 24),
   select("layout", "Site layout", "Scattered spreads drops evenly over the region; rim puts them near its edge; core keeps them deep inside, as far from the edge as possible.", ["scattered", "rim", "core"]),
   n("dropRadius", "Drop radius", "Radius of each pigment drop in canvas units.", 20, 120, 1, 1, 1000),
   n("dropDepth", "Drop depth", "Water depth at the middle of a drop; it falls off smoothly to the rim. A deeper drop carries its pigment further.", 0.2, 2.5, 0.05, 0.005, 5),
-  n("ratio", "Water per pigment", "Volume of water for each unit of pigment mass in a drop: high is a thin, dilute wash, low a heavy, dark charge.", 0.5, 8, 0.1, 0.05, 100),
-  n("depositRate", "Deposit rate", "Share of suspended pigment that settles onto the paper each step while the film is deep. As the film thins the share rises to 1: a cell that dries leaves all its pigment behind.", 0, 0.2, 0.005, 0, 1),
-  n("redissolve", "Redissolve", "Share of deposited pigment that lifts back into the water each step where the film is deep. This is what lets a late drop push old pigment outward to a new rim.", 0, 0.1, 0.002, 0, 1),
+  n("ratio", "Water per pigment", "Volume of water for each unit of pigment mass in a drop: high is a thin, dilute wash, low a heavy, dark charge.", 0.5, 8, 0.1, 0.05, 100, { showPigment: [true] }),
+  n("depositRate", "Deposit rate", "Share of suspended pigment that settles onto the paper each step while the film is deep. As the film thins the share rises to 1: a cell that dries leaves all its pigment behind.", 0, 0.2, 0.005, 0, 1, { showPigment: [true] }),
+  n("redissolve", "Redissolve", "Share of deposited pigment that lifts back into the water each step where the film is deep. This is what lets a late drop push old pigment outward to a new rim.", 0, 0.1, 0.002, 0, 1, { showPigment: [true] }),
 
   flag("lateWater", "Late water", "Drop clear water into the drying picture: each drop lifts and pushes pigment outward, leaving a pale bloom with a dark, feathered rim: a backrun."),
   n("backruns", "Late drops", "Number of clear-water drops. Each lands beside one of the pigment sites (in turn), or anywhere if there are none.", 1, 8, 1, 0, 24, late),

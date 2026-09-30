@@ -4,7 +4,7 @@ import { MAX_GRAINS } from "../composition/gesture.js";
 import { bundledRecordingIds, bundledRecordingInfo } from "../composition/recording-samples.js";
 import { choice, numeric, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 const withCondition = (parameter: Parameter, visibleWhen?: Condition): Parameter =>
   visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const integerKeys = new Set(["hairs", "echoes", "glyphPetals"]);
@@ -40,7 +40,8 @@ const parameters: Parameter[] = [
   n("windowStart", "Window start", "Where the replay begins, as a fraction of the recording's duration. Every consumer sees the same window.", 0, 1, 0.01, 0, 0.99),
   n("windowLength", "Window length", "How much of the recording is replayed after the start, as a fraction of its duration; it stops at the end of the recording.", 0.05, 1, 0.01, 0.01, 1),
 
-  select("sampling", "Sample by", "Distance places stations evenly along the path. Time places them at equal moments, so they crowd where the hand slowed or rested and thin out where it moved fast.", ["distance", "time"]),
+  select("sampling", "Sample by", "Distance places stations evenly along the path. Time places them at equal moments, so they crowd where the hand slowed or rested and thin out where it moved fast.", ["distance", "time"],
+    [{ bristles: [true] }, { glyphMark: ["dot", "rings", "rosette", "arrow"] }, { line: ["ink", "stitch"] }]),
   n("pathSpacing", "Stroke spacing", "Distance between the vertices of the stroke, in canvas units.", 0.5, 12, 0.1, 0.2, 500, { sampling: ["distance"] }),
   n("pathInterval", "Stroke interval", "Time between the vertices of the stroke, in milliseconds. Long intervals show as corners where the hand moved fast.", 4, 120, 1, 1, 2000, { sampling: ["time"] }),
 
@@ -50,9 +51,9 @@ const parameters: Parameter[] = [
   n("pressureCurve", "Pressure curve", "Exponent applied to pressure: below 1 makes light pressure count for more, above 1 makes only hard pressure count.", 0.3, 3, 0.05, 0.05, 20),
 
   n("echoes", "Repeats", "Copies of the whole gesture, each moved by the steps below from the one before. Every copy has its own bristle and sand randomness.", 1, 8, 1, 1, 16),
-  n("echoX", "Step X", "Horizontal offset between successive repeats, in canvas units.", -200, 200, 1, -2000, 2000),
-  n("echoY", "Step Y", "Vertical offset between successive repeats, in canvas units.", -200, 200, 1, -2000, 2000),
-  n("echoTurn", "Step turn", "Rotation between successive repeats about the gesture's center, in degrees.", -90, 90, 1, -3600, 3600),
+  n("echoX", "Step X", "Horizontal offset between successive repeats, in canvas units.", -200, 200, 1, -2000, 2000, { echoes: { gte: 2 } }),
+  n("echoY", "Step Y", "Vertical offset between successive repeats, in canvas units.", -200, 200, 1, -2000, 2000, { echoes: { gte: 2 } }),
+  n("echoTurn", "Step turn", "Rotation between successive repeats about the gesture's center, in degrees.", -90, 90, 1, -3600, 3600, { echoes: { gte: 2 } }),
 
   toggle("bristles", "Bristles", "Draw the stroke as a broad brush of separate hairs."),
   n("brushWidth", "Brush width", "Width of the brush at full pressure, in canvas units.", 6, 120, 1, 0, 2000, bristled),

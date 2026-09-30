@@ -3,7 +3,7 @@ import { bundledRasterIds, bundledRasterInfo } from "../composition/raster-sampl
 import { validateColonyControls } from "../composition/aggregation-controls.js";
 import { choice, numeric, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 const withCondition = (parameter: Parameter, visibleWhen?: Condition): Parameter => visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const integerKeys = new Set(["seedCount", "steps", "lifetime", "patience", "bands", "domainVariant"]);
 const n = (key: string, label: string, description: string, min: number, max: number, step: number, hardMin: number, hardMax: number, visibleWhen?: Condition): Parameter =>
@@ -73,8 +73,9 @@ const parameters: Parameter[] = [
   n("steps", "Walkers", "Released walkers: each one is a growth step. Growth only ever appends, so a larger number keeps every grain already there. Walkers that escape or time out add nothing, so the grain count is smaller (see the guide for the usual share).", 0, 4000, 10, 0, 12000),
   n("reach", "Step reach", "Longest step a walker makes in empty space, in canvas units. It is a speed, not a shape: steps shrink automatically near grains and walls, so no contact is ever skipped.", 10, 120, 1, 1, 400),
   n("lifetime", "Walker lifetime", "Most steps a walker takes before it is abandoned. Together with Walkers it bounds the run's work.", 200, 6000, 50, 10, 20000),
-  n("patience", "Give up after", "The colony stalls, and stays as it is, once this many walkers in a row fail to attach (escape, time out or find no room to start). Every later step then costs nothing.", 5, 500, 5, 1, 5000),
-  n("escape", "Escape margin", "How far past the canvas edge a walker may wander before it is lost. Small margins lose more walkers; large ones waste steps on walkers that will not return.", 0, 300, 5, 0, 400),
+  n("patience", "Give up after", "The colony stalls, and stays as it is, once this many walkers in a row fail to attach (escape, time out or find no room to start). Every later step then costs nothing.", 5, 500, 5, 1, 5000,
+    { seedShape: ["ring", "scatter"], domain: ["none", "image"] }),
+  n("escape", "Escape margin", "How far past the canvas edge a walker may wander before it is lost. Small margins lose more walkers; large ones waste steps on walkers that will not return.", 0, 300, 5, 0, 400, { domain: ["none"] }),
 
   n("reveal", "Reveal", "Draws only the grains attached by this fraction of the walkers, like a time scrub of the finished colony. Nothing is recomputed and colours keep their full-run meaning.", 0, 1, 0.01, 0, 1),
   select("colorBy", "Colour by", "What the palette means: attachment age (early to late), limb (each seed and its direct children start a colour), depth in the tree, or one flat colour. Every treatment uses the same colour for the same grain.", [["age", "Attachment age"], ["limb", "Limb"], ["depth", "Depth in tree"], ["flat", "Flat"]]),

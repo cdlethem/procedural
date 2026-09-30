@@ -2,7 +2,7 @@ import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js"
 import { washShapes, washWords } from "../composition/wash-shapes.js";
 import { choice, numeric } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 const withCondition = (parameter: Parameter, visibleWhen?: Condition): Parameter =>
   visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const integerKeys = new Set(["lobes", "holeCount", "compartments", "passes", "detail"]);
@@ -38,7 +38,7 @@ const parameters: Parameter[] = [
   n("centerX", "Center X", "Horizontal canvas position of the middle of the shape.", 0, 640, 1, -4096, 4096),
   n("centerY", "Center Y", "Vertical canvas position of the middle of the shape.", 0, 640, 1, -4096, 4096),
   n("width", "Width", "Width of the box the shape is fitted to, in canvas units.", 120, 620, 1, 4, 4096),
-  n("height", "Height", "Height of the box the shape is fitted to, in canvas units. Letterforms keep their proportions inside it.", 120, 620, 1, 4, 4096),
+  n("height", "Height", "Height of the box the shape is fitted to, in canvas units. Letterforms keep their proportions inside it.", 120, 620, 1, 4, 4096, { shape: ["blob", "ring", "quilt"] }),
   n("rotation", "Rotation", "Turns the shape about its center, in degrees. A quilt partition stays axis-aligned.", -180, 180, 1, -3600, 3600, turnable),
 
   n("swell", "Swell", "Wavelength of the broadest ripple of the boundary, as a fraction of the shape's shorter side. Larger swells give long, lazy bulges; smaller ones a busy edge.", 0.08, 0.5, 0.005, 0.005, 4),

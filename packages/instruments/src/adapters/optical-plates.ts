@@ -7,7 +7,7 @@ import type { MaskSource, SupportSpec } from "../composition/support.js";
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { choice, numeric, text, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 const n = (key: string, label: string, description: string, min: number, max: number, step: number,
   hardMin: number, hardMax: number, visibleWhen?: Condition, integer = false): Parameter => {
   const parameter = numeric(key, label, description, min, max, step, { hardMin, hardMax, integer });
@@ -21,6 +21,9 @@ const select = (key: string, label: string, description: string, options: string
 const patterns = ["grating", "rings", "dots", "waves", "spokes"];
 const masked = ["A", "B", "both"];
 const uses = (x: "A" | "B", ...kinds: string[]): Condition => ({ [`pattern${x}`]: kinds });
+const plateBShown: Condition = { show: ["both", "B"] };
+// Plate A's Y offset matters while A is drawn, or while a linked B is registered to it.
+const offsetYAShown: Condition = [{ link: ["linked"] }, { show: ["both", "A"] }];
 
 /** Every plate has the same controls, so both are built by one function and share one group. */
 function plateControls(x: "A" | "B", name: string): Parameter[] {
@@ -38,12 +41,15 @@ function plateControls(x: "A" | "B", name: string): Parameter[] {
     n(`dotSize${x}`, "Dot diameter", `Diameter of each dot of ${p}.`, 2, 9, .25, .5, 60, uses(x, "dots")),
     n(`angle${x}`, "Rotation", x === "A"
       ? "Turn plate A about the footprint center, in degrees. A linked plate B turns with it."
-      : "Turn plate B, in degrees: relative to plate A when linked, in the canvas frame when detached.", -90, 90, .25, -360, 360),
+      : "Turn plate B, in degrees: relative to plate A when linked, in the canvas frame when detached.", -90, 90, .25, -360, 360,
+      x === "B" ? plateBShown : undefined),
     n(`phase${x}`, "Phase", `Slide ${p}'s pattern by this fraction of its period: lines and dots slide, rings grow, spokes turn.${
-      x === "A" ? " A linked plate B is phased on top of this." : " Added to plate A's phase when linked."}`, -.5, .5, .01, -1000, 1000),
+      x === "A" ? " A linked plate B is phased on top of this." : " Added to plate A's phase when linked."}`, -.5, .5, .01, -1000, 1000,
+      x === "B" ? plateBShown : undefined),
     n(`offsetX${x}`, "Offset X", x === "A" ? "Move plate A sideways, in canvas units. A linked plate B moves with it."
-      : "Move plate B sideways, in canvas units; when linked, in plate A's rotated frame.", -60, 60, 1, -800, 800),
-    n(`offsetY${x}`, "Offset Y", x === "A" ? "Move plate A vertically, in canvas units." : "Move plate B vertically, in canvas units.", -60, 60, 1, -800, 800),
+      : "Move plate B sideways, in canvas units; when linked, in plate A's rotated frame.", -60, 60, 1, -800, 800, x === "B" ? plateBShown : undefined),
+    n(`offsetY${x}`, "Offset Y", x === "A" ? "Move plate A vertically, in canvas units." : "Move plate B vertically, in canvas units.", -60, 60, 1, -800, 800,
+      x === "A" ? offsetYAShown : plateBShown),
     n(`weight${x}`, "Line weight", `Stroke width of ${p}'s lines. Dot plates use the dot diameter instead.`, .4, 3, .05, 0, 20, uses(x, "grating", "rings", "waves", "spokes")),
   ];
 }
@@ -52,14 +58,14 @@ const plateGroup = (label: string, x: "A" | "B"): ControlGroup => ({ label, cont
   { label: "Dots", controls: [`lattice${x}`, `dotSize${x}`] },
   { label: "Registration", controls: [`angle${x}`, `phase${x}`, { label: "Offset", controls: [`offsetX${x}`, `offsetY${x}`] }] }, `weight${x}`] });
 
-const maskOn: Condition = { maskedPlate: masked };
+const maskOn = { maskedPlate: masked };
 export const opticalPlatesDefinition: InstrumentDefinition = {
   id: "optical-plates", title: "Optical Plates",
   description: "Two editable pattern plates, linked or detached, alone or overlaid, with one of them following a type or region mask.",
   renderer: "2d",
   parameters: [
     ...plateControls("A", "A"), ...plateControls("B", "B"),
-    select("link", "Link", "Linked: plate B is registered to plate A and rides with it when A is rotated, moved or phased. Detached: every plate keeps its own absolute registration.", ["linked", "detached"]),
+    select("link", "Link", "Linked: plate B is registered to plate A and rides with it when A is rotated, moved or phased. Detached: every plate keeps its own absolute registration.", ["linked", "detached"], plateBShown),
     select("show", "Show", "Draw both plates over each other, or one plate alone. The plates keep their registration either way, so two layers with different choices line up.", ["both", "A", "B"]),
     n("centerX", "Center X", "Horizontal center of the footprint and of the registration frame, canvas units.", 80, 560, 1, -1000, 1600),
     n("centerY", "Center Y", "Vertical center of the footprint and of the registration frame, canvas units.", 80, 560, 1, -1000, 1600),

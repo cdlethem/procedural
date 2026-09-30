@@ -31,8 +31,10 @@ type ControlGroup = {
   derived output; authoring it is an error.
 - **Visibility.** Groups do not change conditional visibility ([conditional controls](conditional-controls.md)).
   `inspectorItems(id, values)` returns the tree for current values: visible controls only,
-  groups with nothing visible omitted, `proportional` preserved. Consumers should call it rather
-  than re-deriving the tree or re-implementing visibility.
+  groups with nothing visible omitted, `proportional` preserved. A `visibleWhen` may be an array of
+  alternatives or hold numeric comparisons, so a consumer must call it rather than re-deriving the
+  tree or re-implementing visibility (an old consumer iterating `Object.entries(visibleWhen)`
+  misbehaves on an array).
 - **Pure organization.** Groups never change drawing, validation, defaults or saved values.
 
 ## Authoring guide

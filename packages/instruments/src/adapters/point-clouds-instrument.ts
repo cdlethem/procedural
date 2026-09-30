@@ -2,7 +2,7 @@ import { MAX_LINKS } from "../composition/point-view.js";
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { numeric, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 type Option = readonly [value: string, label: string];
 const control = (parameter: Parameter, visibleWhen?: Condition): Parameter => visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const n = (key: string, label: string, description: string, min: number, max: number, step: number,
@@ -108,7 +108,8 @@ export const pointCloudsParameters: Parameter[] = [
 
   select("colorBy", "Color by", "What picks each point's palette color: its height, its distance from the viewer (near is the last color), how curved or how crowded its neighbourhood is (ranked, so the whole palette is used), how directly it faces the eye, the subject part it belongs to, a seeded random color, or the first color only.",
     [["height", "Height"], ["depth", "Depth"], ["curvature", "Curvature"], ["density", "Crowding"], ["facing", "Facing"], ["part", "Part"], ["mixed", "Random"], ["single", "One color"]]),
-  select("blend", "Palette use", "Smooth blends between palette colors (Oklab); Bands snaps each point to one palette color.", [["smooth", "Smooth"], ["bands", "Bands"]]),
+  select("blend", "Palette use", "Smooth blends between palette colors (Oklab); Bands snaps each point to one palette color.", [["smooth", "Smooth"], ["bands", "Bands"]],
+    { colorBy: ["height", "depth", "curvature", "density", "facing"] }),
 
   select("projection", "Projection", "Perspective shrinks distant points toward the centre and foreshortens marks; orthographic keeps parallel lines parallel.", [["perspective", "Perspective"], ["orthographic", "Orthographic"]]),
   n("yaw", "Yaw", "Turns the camera around the subject, in degrees. Positive swings the eye toward +X.", -180, 180, 1, -3600, 3600),

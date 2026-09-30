@@ -92,8 +92,9 @@ export type InspectorItem =
 
 /**
  * The inspector tree for these values: groups in declared order holding their visible controls
- * and subgroups. Hidden controls are omitted (see `visibility.ts`); a group with nothing visible
- * is omitted too. A proportional group keeps its flag when only some members are visible.
+ * and subgroups. Hidden controls are omitted (see `visibility.ts`: alternatives, numeric
+ * comparisons and effective visibility all apply); a group with nothing visible is omitted too.
+ * A proportional group keeps its flag when only some members are visible.
  */
 export function inspectorItems(item: InstrumentDefinition, values: Values): InspectorItem[] {
   const shown = new Map(visibleParameters(item, values).map((parameter) => [parameter.key, parameter]));

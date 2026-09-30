@@ -2,7 +2,7 @@ import { PATTERN_LIMITS } from "../composition/pattern-competition.js";
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { numeric } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 type Option = readonly [value: string, label: string];
 const control = (parameter: Parameter, visibleWhen?: Condition): Parameter => visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const n = (key: string, label: string, description: string, min: number, max: number, step: number,
@@ -19,17 +19,20 @@ const banded: Condition = { bands: [true] };
 const lined: Condition = { contours: [true] };
 const marked: Condition = { marks: [true] };
 const markStroke: Condition = { marks: [true], markKind: ["rings", "rosette", "arrow"] };
+// The field is drawn by at least one of the three drawings; placement and start only matter then.
+const drawn: Condition = [{ bands: [true] }, { contours: [true] }, { marks: [true] }];
+const evolvedDrawing: Condition = [{ bands: [true] }, { contours: [true], steps: { gte: 1 } }, { marks: [true], steps: { gte: 1 } }];
 
 const parameters: Parameter[] = [
   n("scales", "Scales", "How many activator/inhibitor scale pairs compete, finest to coarsest (the slider stops at five so that every slider corner fits the smallest grid; type more, up to eight). Each cell is updated by the scale whose activator and inhibitor differ least there, so more scales give more levels of structure inside one another.", 2, 5, 1, PATTERN_LIMITS.minScales, PATTERN_LIMITS.maxScales, undefined, true),
   n("smallest", "Smallest scale", "Activator radius of the finest scale, in grid cells (a box half-width). The inhibitor is larger; this sets the size of the smallest features.", 1, 3, 1, 1, PATTERN_LIMITS.maxSmallest, undefined, true),
   n("ratio", "Scale ratio", "How much wider each scale's activator is than the one before. Radii are whole cells, at least one apart, so a small ratio on a small finest scale spaces them by one cell. The slider stops where the coarsest inhibitor still fits the smallest grid; type larger values, up to 4.", 1.3, 1.8, 0.05, 1.05, 4),
   n("inhibitor", "Inhibitor reach", "Inhibitor radius as a multiple of the activator radius (at least one cell wider). Near 1 the scales barely differ and patterns go grainy; near 3 they form broad, separated lobes.", 1.4, 3, 0.05, 1.1, 4),
-  n("increment", "Increment", "Field change per step where a scale dominates. The field is renormalised to span -1 to 1 every step, so this sets how fast patterns form, and how coarse the flips are, not the contrast.", 0.005, 0.1, 0.005, 0.0001, 0.5),
-  n("tilt", "Weight tilt", "How the increment varies across the scales: 0 gives every scale the same, positive lets the coarse scales move the field further per step (the finest scale's increment times 4^tilt is the coarsest's), negative favours the fine texture.", -2, 2, 0.1, -3, 3),
+  n("increment", "Increment", "Field change per step where a scale dominates. The field is renormalised to span -1 to 1 every step, so this sets how fast patterns form, and how coarse the flips are, not the contrast.", 0.005, 0.1, 0.005, 0.0001, 0.5, evolvedDrawing),
+  n("tilt", "Weight tilt", "How the increment varies across the scales: 0 gives every scale the same, positive lets the coarse scales move the field further per step (the finest scale's increment times 4^tilt is the coarsest's), negative favours the fine texture.", -2, 2, 0.1, -3, 3, evolvedDrawing),
 
   select("start", "Start", "The field before the first step. Noise: uniform random per cell. Spots: a few seeded bumps of random sign. Disc and ring: one centred shape. The last three can carry noise.",
-    [["noise", "Noise"], ["spots", "Spots"], ["disc", "Disc"], ["ring", "Ring"]]),
+    [["noise", "Noise"], ["spots", "Spots"], ["disc", "Disc"], ["ring", "Ring"]], drawn),
   n("startSize", "Start size", "Size of the seeded shapes as a fraction of half the grid width: the spot radius, disc radius or ring radius. 0 makes an empty disc, which stays constant and is reported as inert.", 0.1, 1.2, 0.01, 0, 1.5, shaped),
   n("startCount", "Spots", "Number of seeded bumps; each has its own seeded position and sign.", 1, 24, 1, 0, 64, { start: ["spots"] }, true),
   n("noise", "Start noise", "Random noise added to spots, disc or ring, relative to their height of 1. With none, a disc or ring evolves in exact symmetry.", 0, 1, 0.01, 0, 2, shaped),
@@ -37,14 +40,14 @@ const parameters: Parameter[] = [
   n("steps", "Steps", "Update steps to run from the start; scrub it to watch the scales compete. 0 shows the start. Raising it only continues the same run.", 0, 400, 1, 0, PATTERN_LIMITS.maxSteps, undefined, true),
   n("resolution", "Resolution", "Cells along each side of the square grid the model runs on. More cells resolve finer features and cost in proportion to their square; scales are measured in cells, so a larger grid at the same scales gives smaller features.", 48, 120, 12, PATTERN_LIMITS.minResolution, PATTERN_LIMITS.maxResolution, undefined, true),
   select("boundary", "Boundary", "What lies beyond the edge when a scale is blurred. Wrap joins opposite edges (a torus, patterns continue across the seam), mirror reflects the field, void treats the outside as zero.",
-    [["wrap", "Wrap"], ["mirror", "Mirror"], ["void", "Void"]]),
+    [["wrap", "Wrap"], ["mirror", "Mirror"], ["void", "Void"]], drawn),
   select("symmetry", "Symmetry", "Constrains the field, every step, to be exactly symmetric inside each tile: a mirror, a half turn, both mirrors, quarter turns, or quarter turns with mirrors (eight-fold). The scales still compete; symmetry only forces their result to repeat.",
-    [["none", "None"], ["mirror", "Mirror"], ["turn2", "Half turn"], ["quad", "Both mirrors"], ["turn4", "Quarter turns"], ["dihedral", "Eight-fold"]]),
+    [["none", "None"], ["mirror", "Mirror"], ["turn2", "Half turn"], ["quad", "Both mirrors"], ["turn4", "Quarter turns"], ["dihedral", "Eight-fold"]], drawn),
   n("tiles", "Symmetry tiles", "Squares per side that are each symmetric about their own centre. 1 makes the whole field symmetric; more give many local symmetric motifs that the scales still couple across. Must divide the grid.", 1, 4, 1, 1, 4, symmetric, true),
 
-  n("centerX", "Center X", "Horizontal canvas position of the middle of the field.", 100, 540, 1, -4000, 4000),
-  n("centerY", "Center Y", "Vertical canvas position of the middle of the field.", 100, 540, 1, -4000, 4000),
-  n("size", "Size", "Side of the square the grid is laid over, in canvas units. It scales the drawing only; the pattern does not change.", 160, 620, 1, 1, 100000),
+  n("centerX", "Center X", "Horizontal canvas position of the middle of the field.", 100, 540, 1, -4000, 4000, drawn),
+  n("centerY", "Center Y", "Vertical canvas position of the middle of the field.", 100, 540, 1, -4000, 4000, drawn),
+  n("size", "Size", "Side of the square the grid is laid over, in canvas units. It scales the drawing only; the pattern does not change.", 160, 620, 1, 1, 100000, drawn),
 
   flag("bands", "Scale bands", "Fill flat polygons where the field is high, one colour per dominant scale, so the coarse lobes and the fine texture inside them read as different colours."),
   n("bandLevel", "Band level", "Cells at or above this field value are filled; below it stays paper. Higher gives thinner ridges.", -0.6, 0.6, 0.01, -1, 1, banded),

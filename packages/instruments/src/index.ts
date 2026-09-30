@@ -1,6 +1,6 @@
-import type { ControlGroup, CutEdit, InstrumentDefinition, InstrumentInput, Parameter } from "./types.js";
+import type { ControlGroup, CutEdit, InstrumentDefinition, InstrumentInput, NumberComparison, Parameter, VisibilityCondition, VisibleWhen } from "./types.js";
 import { applyControlDependencies } from "./control-dependencies.js";
-import { validateVisibility, visibleParameters as visibleControls } from "./visibility.js";
+import { controlIsVisible as isControlVisible, validateVisibility, visibilityAlternatives, visibilityDrivers, visibleParameters as visibleControls } from "./visibility.js";
 import { inspectorItems as inspectorTree, resolveControlGroups, validateControlGroups, type InspectorItem } from "./control-groups.js";
 import { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits } from "./cut-model.js";
 import type { CutRegion } from "./cut-model.js";
@@ -117,7 +117,7 @@ import { drawPointClouds, pointCloudsComposition, pointCloudsUsesSeed, preparePo
 import { roadsParcelsDefinition } from "./adapters/roads-parcels-instrument.js";
 import { drawRoadsParcels, prepareRoadsParcels, roadsParcelsComposition } from "./composition/roads-parcels.js";
 import { roadsParcelsUsesSeed } from "./composition/roads-parcels-params.js";
-export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
+export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, NumberComparison, Parameter, VisibilityCondition, VisibleWhen, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
 export type {
   CompositionSurface, CompositionRun, Site, LatticeSite, Path, Region, RegionTreeNode, Point, Mark, PathMaterial,
@@ -670,11 +670,21 @@ export function definition(id: string): InstrumentDefinition {
   return found;
 }
 
-/** The controls the inspector should show for these values; hidden controls keep their values. */
+/**
+ * The controls the inspector should show for these values; hidden controls keep their values.
+ * A host must call this (or `controlIsVisible` / `inspectorItems`) rather than evaluate
+ * `visibleWhen` itself: it may be an array of alternatives, hold numeric comparisons, and a
+ * satisfied alternative only counts while every driver it names is itself shown.
+ */
 export function visibleParameters(id: string, values: InstrumentInput["params"]): Parameter[] {
   return visibleControls(definition(id), values);
 }
-export { validateVisibility, validateControlGroups };
+
+/** Whether one control is effectively visible for these values; throws for a key the instrument lacks. */
+export function controlIsVisible(id: string, key: string, values: InstrumentInput["params"]): boolean {
+  return isControlVisible(definition(id), key, values);
+}
+export { validateVisibility, validateControlGroups, visibilityAlternatives, visibilityDrivers };
 
 /** The inspector tree for these values: declared groups holding their visible controls; empty groups omitted. */
 export function inspectorItems(id: string, values: InstrumentInput["params"]): InspectorItem[] {

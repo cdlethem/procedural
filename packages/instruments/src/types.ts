@@ -12,6 +12,21 @@ export type CutEdit =
   | { kind: "cut"; id: number; axis: "X" | "Y"; coordinate: number }
   | { kind: "remove"; id: number };
 
+/**
+ * A comparison on a `number` control: one operator, or one lower bound (`gt`/`gte`) with one
+ * upper bound (`lt`/`lte`). Literals are finite numbers inside the control's hard range.
+ */
+export type NumberComparison = { lt?: number; lte?: number; gt?: number; gte?: number; eq?: number; ne?: number };
+
+/**
+ * One alternative: a conjunction over drivers. A `select` or `boolean` driver lists its allowed
+ * values; a `number` driver states a comparison.
+ */
+export type VisibilityCondition = Record<string, readonly (string | number | boolean)[] | NumberComparison>;
+
+/** A condition, or a non-empty array of alternatives any one of which suffices. */
+export type VisibleWhen = VisibilityCondition | readonly VisibilityCondition[];
+
 export type Parameter = {
   key: string;
   label: string;
@@ -29,8 +44,11 @@ export type Parameter = {
   multiline?: boolean;
   /** Slash-separated path of the control's inspector group, derived from `InstrumentDefinition.controlGroups`; never authored. */
   group?: string;
-  /** Show when every named parameter matches one of its allowed values. Hidden values remain valid and retained. */
-  visibleWhen?: Record<string, readonly (string | number | boolean)[]>;
+  /**
+   * Show when the condition holds: one alternative, or an array of alternatives of which any one
+   * suffices (see `visibility.ts`). Hidden values remain valid and retained.
+   */
+  visibleWhen?: VisibleWhen;
 };
 
 /**
