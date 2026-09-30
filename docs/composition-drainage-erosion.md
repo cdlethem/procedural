@@ -18,7 +18,7 @@ marching-square chains), `drainage-shade.ts` (hillshade bands, lakes, basin colo
 
 The longer side of the grid is 1: spacing `h = 1 / max(columns, rows)`, cell area `h²`; elevation, area and volume use that unit. The instrument
 maps the grid to the canvas with `footprintFor` (`cell = max(width, height) / resolution`; the shorter side snaps to whole cells; the footprint is
-exactly `columns × cell` by `rows × cell`). Resolution is a real control (4 ≤ columns, rows; at most 262,144 cells; slider 48–200, hard 24–384).
+exactly `columns × cell` by `rows × cell`). Resolution is a real control (4 ≤ columns, rows; at most 262,144 cells; slider 48–140, hard 24–384).
 
 ## Model, in update order (one step, synchronous)
 
@@ -75,22 +75,26 @@ up extends a cached run; down replays from the nearest checkpoint. Cancelled pre
 resolution); contour levels ≤ 200 and vertices ≤ 1,500,000 (contour interval, resolution); shading vertices ≤ 800,000; stream cells ≤ 60,000 and graph size
 (stream threshold); hatch strokes ≤ 150,000 (hatch spacing).
 
-## Measured (Node 22, this machine, null surface; ms)
+## Measured (Node 22, this machine, null surface, idle-ish; ms; every treatment on)
 
-| Case | first | appearance edit | extraction edit | structural edit | steps −1 | steps +5 |
-|---|---|---|---|---|---|---|
-| default, 112² × 120 steps | 571 | 7 | 9 | 626 | 114 | 45 |
-| 112² × 300 steps (slider max; a fresh run, about 1.0 s, is the structural-edit figure: the first draw here extended the cached 120-step run) | 609 | 3 | 5 | 1007 | 109 | 48 |
-| 200² × 300 steps (both slider maxima) | 3649 | 5 | 11 | 3371 | 309 | 96 |
-| 384² × 40 steps (hard resolution limit) | 1940 | 7 | 23 | 1962 | 747 | 331 |
+All treatments on: contours with starting contours and interval 0.006, shading, ribbon streams at threshold 0.1 %, wash + divides basins, lakes, marks at sources and
+confluences. One fresh process per row; a structural edit is a full run of a new construction.
 
-384² × 100 steps exceeds the work bound (150,000,000 units) and is refused, naming steps and resolution. A structural edit costs a full run; scrubbing costs only new steps or one checkpoint interval.
+| Case | first draw | appearance edit | structural edit |
+|---|---|---|---|
+| default: 112², 120 steps | 544 | 9 | 501 |
+| **slider corner**: 140² (resolution max), 250 steps (steps max), creep 1.5 (creep max; 3 sub-steps) | 1349 | 10 | 1320 |
+| hard corner, shading off: 384², 100 steps, creep 0 | 4659 | 33 | 4640 |
+| hard corner with shading at depth 0.3: 384², 100 steps | 6425 | 106 | 13370 |
+| hard corner with the default shading depth | refused: "Shading would draw more than 800000 polygon vertices; lower the resolution or the shading depth" | | |
 
-## Limits and not done
+Scrubbing `steps` reuses the cached run: +5 steps costs 45–100 ms at the default and slider-corner sizes, −1 step costs one checkpoint interval (about 110–300 ms).
 
-Not a physical model; D8 routing has grid-aligned artefacts (visible as straight runs and a fringe of short parallel streams along an open edge); no
-multiple-flow-direction routing; no lake outflow bookkeeping beyond the epsilon fill; no host-supplied height raster or rain map (future host work: saved
-instruments name only bundled landforms and scalar controls). The typed simulation accepts any `ErosionParams`; a resolved height input would replace `initial`.
+**Slider intervals versus hard limits.** The slider intervals of the cost drivers were narrowed after the first measurement (200² × 300 steps took 3.6 s, and 200² × 300 steps × creep 4 was
+refused outright, so that slider corner was not admitted): resolution 48–140 (hard 24–384), erosion steps 0–250 (hard 0–5000), creep 0–1.5 (hard 0–100; sub-steps at most 3 on the slider,
+64 at the hard limit). The corner of all three slider maxima is admitted and costs about 1.3 s; a test asserts that it validates, has at most 3 creep sub-steps and stays under half the work bound.
+Exact entry beyond the slider stays valid up to the hard limits and the work bound (150,000,000 units: 384² × 100 steps with no creep is inside it; 384² × 130 steps is refused, naming steps and resolution).
+Every other cost driver (contour interval, stream threshold, hatch spacing, shading depth) throws its own named bound instead of truncating.
 
 ## Looked at (rendered through the SVG surface, Chromium under the render lease; not real-interface acceptance)
 

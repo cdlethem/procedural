@@ -695,6 +695,17 @@ test("definition: control groups, conditional controls and slider intervals insi
   assert.equal(drawFingerprint({ ...plain, params: { ...plain.params, steps: 8, resolution: 48 }, seed: 1 }), drawFingerprint({ ...plain, params: { ...plain.params, steps: 8, resolution: 48 }, seed: 2 }));
 });
 
+test("every slider corner is admitted: the largest resolution, steps and creep together stay inside the work bound", () => {
+  const item = definition("drainage-erosion"), top = Object.fromEntries(["resolution", "steps", "creep"].map((key) => [key, item.parameters.find((p) => p.key === key)!.max!]));
+  const corner = createInstrument("drainage-erosion");
+  Object.assign(corner.params, top);
+  assert.doesNotThrow(() => validateInstrument(corner));
+  const p = erosionParamsFor(corner.params);
+  assert.ok(creepSubsteps(p) <= 3, "creep sub-steps at the slider corner");
+  const work = p.columns * p.rows * (6 + 250 * (8 + creepSubsteps(p)));
+  assert.ok(work < 0.5 * MAX_EROSION_WORK, `slider corner costs ${work} units, well inside the ${MAX_EROSION_WORK} bound`);
+});
+
 test("footprint: the longer side is exact, cells are square and the shorter side snaps to whole cells", () => {
   const f = drainageFootprint({ ...definition("drainage-erosion").defaults, width: 500, height: 300, resolution: 100, centerX: 300, centerY: 250 });
   near(f.cell, 5, 1e-12); assert.equal(f.columns, 100); assert.equal(f.rows, 60);
