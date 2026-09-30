@@ -3,7 +3,7 @@
 Status: **implemented on branch `w4/surface-growth`, unreleased.** One instrument, `surface-growth` ("Surface Growth"),
 built on the F7 snapshots and the F8 spatial foundation. Code: `packages/instruments/src/composition/{growth-seeds,growth-field,surface-growth,surface-growth-controls,surface-growth-draw}.ts`,
 `src/adapters/surface-growth-instrument.ts`; guide `packages/instruments/guides/surface-growth.md`; tests
-`tests/composition-surface-growth.test.ts` (28). Not certified through the real interface: the review below is SVG
+`tests/composition-surface-growth.test.ts` (29). Not certified through the real interface: the review below is SVG
 through Chromium (2D projection, occlusion, hidden lines), not WEBGL and not the private Studio.
 
 ## What it makes, and what it does not claim
@@ -74,16 +74,29 @@ exactly the front-facing triangles.
 
 * Hard limits (`GROWTH_LIMITS`): steps 1,200, vertices 16,000, sweeps 60, rate 0.2, growth limit 8, bending 1, contact 1.5 seed edges, edge limit 1.1..4. Each failure names the control.
 * Work bound: the run declares `steps x worst-case step` (every step at the vertex limit: `16 V sweeps + 70 V (1 + passes) [+ contact]`) and refuses over 400 million units naming "Steps, Relaxation or Vertex limit". About 25 ns per unit on this machine, so the worst case costs about 10 s and typical runs a fraction of it.
-* Slider intervals are narrower: steps 0..300, vertex limit 300..4,000, resolution 8..30, sweeps 4..40. At the defaults the declared cost is 1.2M units per step, so 300 steps fits; steps 300 with vertex limit 4,000 and 12 sweeps does not and says so.
+* Slider intervals are narrower, chosen so that **every numeric control at its slider maximum at once** is valid and costs about 1.7 s of CPU (first preparation plus draw): steps 0..160, vertex limit 300..1,400, resolution 8..24, sweeps 4..16 (the default reaches 1,176 vertices, so the default vertex limit is 1,400). An earlier version allowed steps 300, vertex limit 4,000, resolution 30 and sweeps 40; its all-maximum corner was refused by the work bound and the nearest valid corner cost 5 to 7 s, which the real-interface review measured as 3.4 s for a corner of it. Drawing controls (grains, levels, wire) cost under 10% of the run and are not the limit.
+* Declared cost at the slider maximum of everything: 1,400 vertices x 16 sweeps with contact gives 0.88M units per step, 140M units over 160 steps (measured about 18 ns per unit when the run uses its sweeps, so 2.5 s if every unit were spent). The hard maxima of every control together (steps 1,200, vertex limit 16,000, sweeps 60, contact on) declare 34,000M units and are refused by name, never attempted.
 
 ## Controls and dependencies
 
 Groups in order: Seed surface; Placement (centre X/Y, size); Growth field (with a proportional `Ring` subgroup: radius and width); Growth; Skin; Refinement; Faces (with `Light`); Color; Lines (with a proportional `Line weights` subgroup); Grains; View. All `visibleWhen` are inline:
 `pin` (seed is not the sphere), field numbers by field kind, `spotX/Y/Width` (hot spot), `edgeLimit`/`maxVertices` (refine), `faceOpacity`/`backFaces` (faces not none), light controls (facets or smooth), `creaseAngle`/`contourWeight` (contours), `wireWeight` (wire), `hiddenOpacity` (faded hidden lines), `levels`/`levelWeight` (level lines), `distance` (perspective). Left visible because their relevance is a disjunction a conjunctive condition cannot say: `hidden`, `lineMaterial` (any of contour, wire, level lines), `colorBy` (faces or grains), `grainMark`/`grainSize` (grains > 0 is numeric). Hidden controls are normalized away in the construction (pin ignored on the sphere; refinement numbers fixed when refine is off), tested by changing 23 hidden controls and comparing drawing fingerprints.
 
+## Timings at the slider corners (CPU time, 2026-09-30, machine load average about 8)
+
+| Setting | First preparation + draw (CPU) |
+|---|---|
+| Defaults (disc 16, edge growth, 150 steps, 1,176 vertices reached) | 0.85-0.90 s |
+| Every numeric control at its slider maximum (edge limit 3, so few splits) | 1.67-1.69 s |
+| The same with the finest edge limit 1.2, wire and level lines on (the most expensive reachable setting) | 2.45-2.51 s |
+| Every numeric control at its slider minimum | 0.04 s |
+| Every control at its hard maximum | refused by the work bound (34,000M units declared against 400M) with an error naming Steps, Relaxation and Vertex limit |
+
+Camera, palette and appearance edits at these corners recompute nothing of the run (see the stage table above).
+
 ## Verification
 
-`tests/composition-surface-growth.test.ts` (28 tests, independent expectations): closed-form seed counts, areas (the disc's regular polygon), Euler characteristics, orientation; rejection of quads, non-manifold, flipped, unused-vertex meshes; analytic field values (edge smoothstep, Gaussian ring, stripe cosine, combine max/sum/multiply, baseline lift); bilinear grid field; field identity by content; hinge angle known folds, finite-difference gradient, rigid-motion balance; bitwise rest of an unstretched skin; uniform free growth scaling exactly by the limit (positions, bounds, strain 0); `S = min(limit, (1 + rate G)^steps)` per vertex with `G` recomputed independently; exactly flat without perturbation and ruffling (amplitude against the initial bound, rim length near `limit x` seed rim) with one; monotone energy after growth ends; conforming, orientation-preserving refinement with Euler 1 (open) and 2 (sphere) and area `limit^2 x 4`; newborn transfer of position, scale, field and rest length; ids and lineage stable as steps grow; vertex-budget counting; every control naming itself; pins; contact separating two sheets to the contact distance and leaving a flat sheet alone; collapse report; `checkSimulation`; extension equal to scratch; cancellation; the wire and painter integrations; camera/palette independence; hidden controls.
+`tests/composition-surface-growth.test.ts` (29 tests, independent expectations; the last sets every numeric control to its slider minimum and maximum alone, then all minimums, all maximums and the most expensive reachable corner together, and requires `validateInstrument`, drawing and a charged work within the declared bound, and requires the all-hard-maximum setting to be refused): closed-form seed counts, areas (the disc's regular polygon), Euler characteristics, orientation; rejection of quads, non-manifold, flipped, unused-vertex meshes; analytic field values (edge smoothstep, Gaussian ring, stripe cosine, combine max/sum/multiply, baseline lift); bilinear grid field; field identity by content; hinge angle known folds, finite-difference gradient, rigid-motion balance; bitwise rest of an unstretched skin; uniform free growth scaling exactly by the limit (positions, bounds, strain 0); `S = min(limit, (1 + rate G)^steps)` per vertex with `G` recomputed independently; exactly flat without perturbation and ruffling (amplitude against the initial bound, rim length near `limit x` seed rim) with one; monotone energy after growth ends; conforming, orientation-preserving refinement with Euler 1 (open) and 2 (sphere) and area `limit^2 x 4`; newborn transfer of position, scale, field and rest length; ids and lineage stable as steps grow; vertex-budget counting; every control naming itself; pins; contact separating two sheets to the contact distance and leaving a flat sheet alone; collapse report; `checkSimulation`; extension equal to scratch; cancellation; the wire and painter integrations; camera/palette independence; hidden controls.
 
 Mutations shown to fail (failing tests in brackets): flipped hinge gradient sign (2), newborn field averaged instead of evaluated (1), split flipping the new triangle's winding (9), pins ignored (1), newborn scale from one parent (1), vertex budget off by one (1).
 
@@ -99,7 +112,7 @@ Defects found by looking, and fixed:
 5. Jacobi relaxation converged slowly in the uniform-scaling mode and stopped early at a sweep move of 1e-4: a grown sheet came out 0.2% small. The settle threshold is now 2e-5 seed edges.
 6. Sliders that individually were fine could combine past the work bound (default settings with steps 400): the bound and slider maxima were rebalanced so the default fits with steps up to 300, and the error names the controls.
 
-Timings (this machine, load average 60 to 90 while measured, so read as upper bounds; CPU-ms / wall-ms): default first prepare 1,369 / 8,516 (0.7 s wall on a quieter machine before the settle threshold was tightened), first draw 166 / 282; camera-only 99-172 / 99-142; palette or colour-only 15-26 / 9-15; steps +1 157 / 168; steps -1 508 / 791; a structural edit (rate) 1,534 / 3,688. Large setting (resolution 30, edge limit 1.25, 4,000 vertices, 240 steps): first prepare 10,153 CPU-ms, structural edit 10,069, camera-only 385-421, palette-only 86, steps +1 438, steps -1 1,029.
+Timings (this machine, load average 60 to 90 while measured, so read as upper bounds; CPU-ms / wall-ms): default first prepare 1,369 / 8,516 (0.7 s wall on a quieter machine before the settle threshold was tightened), first draw 166 / 282; camera-only 99-172 / 99-142; palette or colour-only 15-26 / 9-15; steps +1 157 / 168; steps -1 508 / 791; a structural edit (rate) 1,534 / 3,688. Earlier large setting, now beyond the sliders (resolution 30, edge limit 1.25, 4,000 vertices, 240 steps; reachable only through the code API): first prepare 10,153 CPU-ms, structural edit 10,069, camera-only 385-421, palette-only 86, steps +1 438, steps -1 1,029.
 
 ## Decisions on undecided boundaries (conservative)
 

@@ -31,7 +31,7 @@ const perspective: Condition = { projection: ["perspective"] };
 
 const parameters: Parameter[] = [
   select("surface", "Seed surface", "The flat or closed skin that grows: a square sheet, a disc, a long strip (all lying flat, ready to buckle upward) or a sphere. Every one is a triangulated mesh; growth starts from its material lengths.", GROWTH_SEED_KINDS),
-  n("resolution", "Resolution", "Vertex density of the seed surface: cells per side of the sheet, twice the rings of the disc, cells across the strip, or (as its logarithm) the subdivisions of the sphere. Refinement adds detail where the skin stretches on top of this.", 8, 30, 1, 4, 60),
+  n("resolution", "Resolution", "Vertex density of the seed surface: cells per side of the sheet, twice the rings of the disc, cells across the strip, or (as its logarithm) the subdivisions of the sphere. Refinement adds detail where the skin stretches on top of this.", 8, 24, 1, 4, 60),
   n("perturb", "Perturbation", "Random push of every free vertex along the surface normal at the start, as a fraction of a seed edge (from each vertex's own stream). A perfectly flat sheet under compression has no reason to buckle in one direction; this is the nudge. 0 keeps it exactly flat.", 0, 0.6, 0.01, 0, 1),
 
   n("centerX", "Center X", "Horizontal canvas position of the surface's center (the world origin).", 0, 640, 1, 0, 640),
@@ -56,16 +56,16 @@ const parameters: Parameter[] = [
 
   n("rate", "Growth rate", "How much a vertex in full growth lengthens each step, as a fraction of its length. A step multiplies its growth scale by 1 + rate × field, up to the limit.", 0.005, 0.08, 0.001, 0, GROWTH_LIMITS.maxRate),
   n("limit", "Growth limit", "Largest expansion of any part of the skin: 2 lets edges grow to twice their seed length. When every growing part reaches it, growth has ended and the skin only settles.", 1.2, 5, 0.05, 1, GROWTH_LIMITS.maxScale),
-  n("steps", "Steps", "How many growth steps have run. Scrub it to watch the ruffles form: earlier steps are the same skin, younger; it is one run, extended or replayed from a checkpoint, never re-rolled.", 0, 300, 1, 0, GROWTH_LIMITS.maxSteps),
+  n("steps", "Steps", "How many growth steps have run. Scrub it to watch the ruffles form: earlier steps are the same skin, younger; it is one run, extended or replayed from a checkpoint, never re-rolled.", 0, 160, 1, 0, GROWTH_LIMITS.maxSteps),
 
   n("bending", "Bending", "Stiffness of the folds relative to stretching, in bending rigidity (stretch modulus × seed unit²). Low values give many tight ruffles; higher ones give a few broad, smooth folds; 0 is a limp skin.", 0, 0.01, 0.0001, 0, 1),
   select("pin", "Pin", "Hold part of the skin still: nothing, its whole rim, one center vertex, or one side (the left edge of a sheet or strip, the left arc of a disc). Pinned parts never move, so the free part buckles against them. The sphere has no rim and ignores it.", GROWTH_PINS, open),
-  n("sweeps", "Relaxation", "Relaxation sweeps per step, at most (a step ends early once the skin has settled). More sweeps follow the growth more exactly; fewer make the skin lag and the folds soften. Cost is proportional.", 4, 40, 1, 1, GROWTH_LIMITS.maxSweeps),
+  n("sweeps", "Relaxation", "Relaxation sweeps per step, at most (a step ends early once the skin has settled). More sweeps follow the growth more exactly; fewer make the skin lag and the folds soften. Cost is proportional.", 4, 16, 1, 1, GROWTH_LIMITS.maxSweeps),
   n("thickness", "Contact distance", "Vertices closer than this (in seed edges) that are not neighbours push apart, so ruffles that fold over each other keep apart. 0 lets folds pass through one another; this does not stop faces crossing between vertices.", 0, 1.2, 0.01, 0, GROWTH_LIMITS.maxThickness),
 
   flag("refine", "Refine", "Split the skin's longest edges as it stretches, so growing regions get the detail their new length needs. Off keeps the seed's triangles."),
   n("edgeLimit", "Edge limit", "An edge longer than this many seed edges is split at its midpoint (both its triangles). Lower values make finer, more detailed ruffles and use more vertices.", 1.2, 3, 0.05, GROWTH_LIMITS.minEdgeLimit, GROWTH_LIMITS.maxEdgeLimit, refined),
-  n("maxVertices", "Vertex limit", "The most vertices the refined skin may have. Once it is reached, longer edges stay unsplit (the frame counts how many were refused); it may not be below the seed's own vertex count.", 300, 4000, 10, 8, GROWTH_LIMITS.maxVertices, refined),
+  n("maxVertices", "Vertex limit", "The most vertices the refined skin may have. Once it is reached, longer edges stay unsplit (the frame counts how many were refused); it may not be below the seed's own vertex count.", 300, 1400, 10, 8, GROWTH_LIMITS.maxVertices, refined),
 
   select("faces", "Faces", "How the skin's triangles are painted, far to near so nearer folds hide farther ones: not at all, in one flat color, lit with each triangle's own normal (facets), or lit with normals smoothed across triangles.", ["none", "flat", "facets", "shaded"]),
   select("backFaces", "Underside", "How faces turned away from the camera are painted: like the top, mixed toward the line color so the two sides read differently, or not at all.", ["same", "tinted", "hidden"], filled),
@@ -143,7 +143,7 @@ export const surfaceGrowthDefinition: InstrumentDefinition = {
     baseline: 0.04, spot: false, spotX: 0.4, spotY: -0.3, spotWidth: 0.25,
     rate: 0.012, limit: 3, steps: 150,
     bending: 0.0004, pin: "none", sweeps: 12, thickness: 0,
-    refine: true, edgeLimit: 1.4, maxVertices: 3000,
+    refine: true, edgeLimit: 1.4, maxVertices: 1400,
     faces: "shaded", backFaces: "tinted", faceOpacity: 1, lightAzimuth: -35, lightElevation: 45, lightStrength: 0.85, colorBy: "growth",
     lines: "contour", creaseAngle: 0, hidden: "remove", hiddenOpacity: 0.25, lineMaterial: "ink", contourWeight: 1.1, wireWeight: 0.5, levelBy: "none", levels: 8, levelWeight: 0.6,
     grains: 0, grainMark: "dot", grainSize: 2,
