@@ -134,7 +134,14 @@ Defects found and fixed:
 
 Timings (Node 22, this machine, null surface, milliseconds; first draw includes the model, contours, bands and marks): see the table.
 
-TIMING_TABLE
+| Case | First draw | Appearance edit | Structural edit (tilt / seed) | Steps +1 | Steps −30 (checkpoint replay) | Level edit (no model) |
+|---|---|---|---|---|---|---|
+| Default (96², 4 scales, 120 steps) | 258 | 12 | 190 / 179 | 60 | 68 | 6 |
+| Slider maximum (120², 6 scales, 400 steps, marks on) | 1,358 | 6 | 1,376 / 1,326 | 28 | 95 | 2 |
+| Hard limits (192², 8 scales, 300 steps, marks on) | 2,694 | 32 | 2,840 / 2,692 | 421 | 764 | 53 |
+
+Measured on a loaded shared machine, best guess of typical cost, not certified. A structural edit reruns the model (about 2.5 ns per cell read); the appearance edit
+and a level edit reuse the cached snapshot and products. A steps edit costs the new steps or one checkpoint interval.
 
 ## Open items
 
