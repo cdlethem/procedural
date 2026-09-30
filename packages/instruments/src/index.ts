@@ -48,6 +48,8 @@ import { hyperbolicGardensDefinition } from "./adapters/hyperbolic-gardens-instr
 import { meshAbstractionDefinition } from "./adapters/mesh-abstraction-instrument.js";
 import { drawMeshAbstraction, meshAbstractionComposition, prepareMeshAbstraction } from "./composition/mesh-abstraction-draw.js";
 import { meshAbstractionUsesSeed } from "./composition/mesh-abstraction.js";
+import { surfaceGrowthDefinition } from "./adapters/surface-growth-instrument.js";
+import { drawSurfaceGrowth, prepareSurfaceGrowthDrawing, surfaceGrowthComposition, surfaceGrowthUsesSeed } from "./composition/surface-growth-draw.js";
 import { drawHyperbolicGardens, hyperbolicGardensComposition, hyperbolicGardensUsesSeed, prepareHyperbolicGardens } from "./composition/hyperbolic-draw.js";
 import { visibilityDrawingDefinition } from "./adapters/visibility-drawing-instrument.js";
 import { drawVisibilityDrawing, prepareVisibilityDrawing, visibilityDrawingComposition, visibilityDrawingUsesSeed } from "./composition/visibility-drawing.js";
@@ -428,6 +430,16 @@ export type { PosedMeshOptions, PosedPanels } from "./composition/hinge-mesh.js"
 export { posedPanels, MAX_GAP, MAX_THICKNESS } from "./composition/hinge-mesh.js";
 export type { HingedTreatment, HingedFill, HingedColorBy, HingedLines, HingedMotif, HingedPanelsComposition, HingedConsumers, HingedProducts, HingedView } from "./composition/hinge-draw.js";
 export { hingedPanelsComposition, hingedProducts, hingedPosed, hingedCamera, hingedView, hingedCurves, panelTones, LINE_TONE, drawHingedPanels, drawHingedProducts, prepareHingedPanels } from "./composition/hinge-draw.js";
+export type { GrowthSeed, GrowthSeedKind, GrowthPins } from "./composition/growth-seeds.js";
+export { GROWTH_SEED_KINDS, GROWTH_SEED_LIMITS, growthSeed, bundledGrowthSeed, sphereLevels } from "./composition/growth-seeds.js";
+export type { GrowthRegion, GrowthCombine, GrowthFieldSpec, GrowthField, GridFieldInput } from "./composition/growth-field.js";
+export { GROWTH_FIELD_LIMITS, growthField, gridGrowthField, boundaryDistance, stripeValue } from "./composition/growth-field.js";
+export type { GrowthControls, GrowthPin, GrowthFrame, GrowthSnapshots, GrowthRunOptions, GrownSurface } from "./composition/surface-growth.js";
+export { GROWTH_LIMITS, GROWTH_PINS, GROWTH_RETENTION, REFINE_PASSES, CHECKPOINT_EVERY, SETTLED, checkGrowth, growthStepWork, growthTables, hingeAngle, surfaceGrowthSimulation, surfaceGrowthCache, surfaceGrowthSnapshots, prepareSurfaceGrowth, grownSurface } from "./composition/surface-growth.js";
+export type { GrowthFieldKind, SurfaceGrowthConstruction } from "./composition/surface-growth-controls.js";
+export { GROWTH_FIELD_KINDS, growthConstruction, checkSurfaceGrowthControls } from "./composition/surface-growth-controls.js";
+export type { SurfaceGrowthComposition, SurfaceGrowthConsumers, ColorBy as SurfaceGrowthColorBy } from "./composition/surface-growth-draw.js";
+export { surfaceGrowthComposition, surfaceGrowthUsesSeed, growthSources, surfaceGrowthRun, prepareSurfaceGrowthDrawing, surfaceGrowthCamera, surfacePaintOrder, surfaceContourPaths, surfaceWirePaths, surfaceLevelValues, surfaceLevelPaths, surfaceGrains, withAlpha, drawSurfaceGrowth } from "./composition/surface-growth-draw.js";
 export type { Simulation, SimulationContext, SimulationLimits, Snapshots, HistoryEntry, Frozen, RunOptions as SimulationRunOptions,
   AsyncRunOptions as SimulationAsyncRunOptions, SimulationCacheOptions } from "./composition/snapshots.js";
 export { runSimulation, prepareSimulation, resumeSimulation, stateAt, finalState, projectionAt, checkSimulation, createSimulationCache, SimulationCache,
@@ -568,7 +580,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition, hingedPanelsDefinition, ...laplacianFrontsDefinitions, meshAbstractionDefinition, visibilityDrawingDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition, hingedPanelsDefinition, ...laplacianFrontsDefinitions, meshAbstractionDefinition, visibilityDrawingDefinition, surfaceGrowthDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -715,6 +727,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "hinged-panels": [0x252a33, 0xd9694a, 0xecb654, 0x3f8f8b, 0x8a6bb0],
   "mesh-abstraction": [0xd8cbb0, 0x1f2733, 0xc4452b, 0x2f7c78],
   "visibility-drawing": [0x1c2430, 0xb85c3a, 0x2f6f86, 0x6b7f3b, 0x8a5a8c],
+  "surface-growth": [0x1d2a2f, 0xe6d3b0, 0xd8894f, 0x9b3d3d, 0x3f6f6c],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -766,6 +779,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "hyperbolic-gardens") return drawHyperbolicGardens(context, hyperbolicGardensComposition(input));
   if (input.technique === "mesh-abstraction") return drawMeshAbstraction(context, meshAbstractionComposition(input));
   if (input.technique === "visibility-drawing") return drawVisibilityDrawing(context, visibilityDrawingComposition(input));
+  if (input.technique === "surface-growth") return drawSurfaceGrowth(context, surfaceGrowthComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
   if (input.technique === "collision-scores") return drawCollisionScores(context, collisionScoresComposition(input));
@@ -793,7 +807,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "roads-parcels" || id === "hinged-panels" || id === "laplacian-fronts" || id === "mesh-abstraction" || id === "visibility-drawing" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "roads-parcels" || id === "hinged-panels" || id === "laplacian-fronts" || id === "mesh-abstraction" || id === "visibility-drawing" || id === "surface-growth" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -835,6 +849,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "hyperbolic-gardens") return prepareHyperbolicGardens(hyperbolicGardensComposition(input), cancelled);
   if (input.technique === "mesh-abstraction") return prepareMeshAbstraction(meshAbstractionComposition(input), cancelled);
   if (input.technique === "visibility-drawing") return prepareVisibilityDrawing(visibilityDrawingComposition(input), cancelled);
+  if (input.technique === "surface-growth") return prepareSurfaceGrowthDrawing(surfaceGrowthComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
   if (input.technique === "roads-parcels") return prepareRoadsParcels(roadsParcelsComposition(input), cancelled);
   if (input.technique === "inversion-gardens") return prepareInversionGardens(inversionGardensComposition(input), cancelled);
@@ -897,6 +912,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "hinged-panels": return hingedPanelsUsesSeed(q);
     case "mesh-abstraction": return meshAbstractionUsesSeed(q);
     case "visibility-drawing": return visibilityDrawingUsesSeed(q);
+    case "surface-growth": return surfaceGrowthUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
     case "roads-parcels": return roadsParcelsUsesSeed(q);
     case "region-stitch": return regionStitchUsesSeed(q);
