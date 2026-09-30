@@ -107,7 +107,7 @@ export const GROWTH_LIMITS = Object.freeze({
 export const REFINE_PASSES = 2;
 export const CHECKPOINT_EVERY = 25;
 /** Largest move, in seed mean edges, under which a sweep counts as settled. */
-export const SETTLED = 1e-4;
+export const SETTLED = 2e-5;
 const MOVE_FRACTION = 0.25;
 const OMEGA = 0.5;
 const SHIFT = 524_288;
