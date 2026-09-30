@@ -197,6 +197,7 @@ export function drawGeologicalView(surface: CompositionSurface, recipe: Geologic
       surface.strokeWeight(0.6); surface.strokeCap(surface.ROUND);
       for (const t of order) {
         run.check();
+        if (view.triKind[t] === TRI.sliver) continue;
         const pts: [number, number][] = [];
         let ok = true;
         for (let k = 0; k < 3; k++) {
@@ -230,7 +231,9 @@ export function drawGeologicalView(surface: CompositionSurface, recipe: Geologic
         if (!curve || curve.kind !== kind) continue;
         const showHidden = paint.hidden === "dashed" && (kind === "outline" || kind === "fault");
         if (!path.visible && !showHidden) continue;
-        const c = paint.lineColor === "stratum" && (kind === "contact" || kind === "bed") ? strataColors[Math.min(n - 1, Math.max(0, curve.tone))] : ink;
+        const byStratum = paint.lineColor === "stratum" && (kind === "contact" || kind === "bed");
+        // Palette colors are made for fills; as lines they are darkened so they hold against paper.
+        const c: readonly [number, number, number] = byStratum ? (strataColors[Math.min(n - 1, Math.max(0, curve.tone))].map((v) => v * 0.6) as unknown as [number, number, number]) : ink;
         run.check();
         if (path.visible) {
           surface.stroke(c[0], c[1], c[2], 255);

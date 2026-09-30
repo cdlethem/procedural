@@ -38,8 +38,8 @@
  * INVERSE MAP (`stratumAt`). A point is assigned by undoing the faults (add the throws of the faults it is hanging wall of, moving it
  * along the dip vector back) and counting the horizons at or below it. It is the oracle the meshes are tested against.
  *
- * VALIDITY. The block is built column by column, so a horizon must cross a fault plane at most once per column: its steepest slope
- * times `kappa` must stay under 0.92 (`MAX_SLOPE_TIMES_KAPPA`). Violations throw naming the controls to reduce (Tilt, Fold amplitude,
+ * VALIDITY. The block is built column by column, so a horizon must cross a fault plane at most once per column: its steepest slope across
+ * the strike (sampled over the model, +5%) times `kappa` must stay under 0.92 (`MAX_SLOPE_TIMES_KAPPA`). Violations throw naming the controls to reduce (Tilt, Fold amplitude,
  * Fold wavelength, Ground relief) or to raise (Fault dip). Faults must leave every compartment at least 4% of the block across
  * the strike at every height; otherwise Faults, Fault dip or Fault position is named.
  *
@@ -148,7 +148,7 @@ export interface StrataModel {
   /** Bounds on every pre-fault horizon (lowest and highest value anywhere) and on the ground. */
   readonly horizonRange: readonly [number, number];
   readonly groundRange: readonly [number, number];
-  /** Upper bounds on the gradient magnitude of the horizons and of the ground. */
+  /** Steepest gradient magnitude (sampled, +5%) of the pre-fault horizons and of the ground; the bracket of the sheet solves widens by it. */
   readonly slopeBound: { readonly horizon: number; readonly ground: number };
   /** The stratum (0..n-1), compartment and elevation-above-nothing of a point by the inverse map (see the module header). */
   readonly stratumAt: (x: number, y: number, z: number) => { readonly stratum: number; readonly compartment: number };
@@ -247,8 +247,6 @@ function build(o: StrataOptions, key: string): StrataModel {
     if (o.fold === "chevron") return A * triangle(kAcross * across + phase);
     return A * Math.sin(kAcross * across + phase) * Math.sin(kAlong * (x * ax + z * az) + phase2);
   };
-  const foldSlope = o.fold === "none" ? 0 : o.fold === "sinusoidal" ? A * kAcross : o.fold === "chevron" ? A * kAcross * 2 / Math.PI
-    : A * Math.hypot(kAcross, kAlong);
   const foldBound = o.fold === "none" ? 0 : A;
   const tiltBound = Math.abs(tx) * W / 2 + Math.abs(tz) * D / 2;
   const trendBound = Math.max(...trendCoef.map(Math.abs)) / 2;
@@ -261,9 +259,7 @@ function build(o: StrataOptions, key: string): StrataModel {
     return stackHeight * shares[k - 1] * (1 + o.trend * sign(k) * (x / W));
   };
   const horizonRange: [number, number] = [level[1] - trendBound - tiltBound - foldBound - 1e-9, level[n - 1] + trendBound + tiltBound + foldBound + 1e-9];
-  // |x/W| <= 1/2 gives the bound above; the slope of the trend along x is trendCoef / W.
-  const trendSlope = Math.max(...trendCoef.map(Math.abs)) / W;
-  const horizonSlope = Math.hypot(tx, tz) + foldSlope + trendSlope;
+  // |x/W| <= 1/2 gives the bound above.
 
   // Erosion surface.
   const waves = [0, 1, 2].map((i) => ({
@@ -278,7 +274,23 @@ function build(o: StrataOptions, key: string): StrataModel {
     return H - o.relief * H * (0.5 + 0.5 * e / weightSum);
   };
   const groundRange: [number, number] = [H - o.relief * H, H];
-  const groundSlope = o.relief === 0 ? 0 : o.relief * H * 0.5 * waves.reduce((a, b) => a + b.weight * b.k, 0) / weightSum;
+
+  // Steepest slopes, by sampling a window of at least 1.2 wavelengths (adding the components' analytic maxima would over-count: their
+  // peaks rarely coincide). `along` is the slope across the fault strike, the only one that decides whether a column crosses a plane twice.
+  const [wx0, wz0] = toWorld(0, 0), [wx1, wz1] = toWorld(1, 0), eX = wx1 - wx0, eZ = wz1 - wz0;
+  const steepest = (f: (x: number, z: number) => number, extras: readonly number[], half: number): { magnitude: number; along: number } => {
+    const N = 64, h = 1e-6;
+    let magnitude = 0, along = 0;
+    for (let i = 0; i <= N; i++) for (let j = 0; j <= N; j++) {
+      const x = -half + 2 * half * i / N, z = -half + 2 * half * j / N;
+      const gx = (f(x + h, z) - f(x - h, z)) / (2 * h), gz = (f(x, z + h) - f(x, z - h)) / (2 * h);
+      for (const c of extras) { magnitude = Math.max(magnitude, Math.hypot(gx + c, gz)); along = Math.max(along, Math.abs((gx + c) * eX + gz * eZ)); }
+    }
+    return { magnitude: magnitude * 1.05, along: along * 1.05 };
+  };
+  const trendExtras = [Math.min(...trendCoef) / W, Math.max(...trendCoef) / W];
+  const horizonSlope = steepest((x, z) => tx * x + tz * z + fold(x, z), trendExtras, Math.max(1, 1.3 * o.foldWavelength * 1.35));
+  const groundSlope = o.relief === 0 ? { magnitude: 0, along: 0 } : steepest(ground, [0], Math.max(1, 1.3 * o.reliefScale));
 
   // Faults.
   const kappa = o.faultDip === 90 ? 0 : (o.faultDipDirection === "left" ? 1 : -1) / Math.tan(o.faultDip * radians);
@@ -307,10 +319,10 @@ function build(o: StrataOptions, key: string): StrataModel {
     if (!(right - left >= MIN_COMPARTMENT_FRACTION * P))
       throw new Error(`Fault compartment ${c.index} is ${(right - left).toFixed(3)} wide across the strike at height ${y === 0 ? "0 (the base)" : "H (the top)"}; each needs at least ${(MIN_COMPARTMENT_FRACTION * P).toFixed(3)}. Raise Fault dip, lower Faults, or reduce Fault position`);
   }
-  if (M > 0 && Math.abs(kappa) * horizonSlope >= MAX_SLOPE_TIMES_KAPPA)
-    throw new Error(`Horizons are too steep for faults dipping ${o.faultDip} degrees: their steepest slope ${horizonSlope.toFixed(2)} times cot(dip) ${Math.abs(kappa).toFixed(2)} must stay under ${MAX_SLOPE_TIMES_KAPPA}. Lower Tilt, Fold amplitude or Thickness trend, raise Fold wavelength, or raise Fault dip`);
-  if (M > 0 && Math.abs(kappa) * groundSlope >= MAX_SLOPE_TIMES_KAPPA)
-    throw new Error(`The erosion surface is too steep for faults dipping ${o.faultDip} degrees: slope ${groundSlope.toFixed(2)} times cot(dip) ${Math.abs(kappa).toFixed(2)} must stay under ${MAX_SLOPE_TIMES_KAPPA}. Lower Ground relief, raise Ground relief scale or Fault dip`);
+  if (M > 0 && Math.abs(kappa) * horizonSlope.along >= MAX_SLOPE_TIMES_KAPPA)
+    throw new Error(`Horizons are too steep for faults dipping ${o.faultDip} degrees: their steepest slope across the strike ${horizonSlope.along.toFixed(2)} times cot(dip) ${Math.abs(kappa).toFixed(2)} must stay under ${MAX_SLOPE_TIMES_KAPPA}. Lower Tilt, Fold amplitude or Thickness trend, raise Fold wavelength, or raise Fault dip`);
+  if (M > 0 && Math.abs(kappa) * groundSlope.along >= MAX_SLOPE_TIMES_KAPPA)
+    throw new Error(`The erosion surface is too steep for faults dipping ${o.faultDip} degrees: its steepest slope across the strike ${groundSlope.along.toFixed(2)} times cot(dip) ${Math.abs(kappa).toFixed(2)} must stay under ${MAX_SLOPE_TIMES_KAPPA}. Lower Ground relief, raise Ground relief scale or Fault dip`);
 
   const stratumAt = (x: number, y: number, z: number) => {
     const [p, q] = toPQ(x, z);
@@ -336,6 +348,6 @@ function build(o: StrataOptions, key: string): StrataModel {
     key, options: Object.freeze({ ...o }), width: W, depth: D, height: H, strata: n, kappa,
     faults: Object.freeze(faults), compartments: Object.freeze(compartments), thicknessShares: Object.freeze(shares),
     extentP: P, extentQ: Q, toWorld, toPQ, horizon, thickness, ground, horizonRange: Object.freeze(horizonRange), groundRange: Object.freeze(groundRange),
-    slopeBound: Object.freeze({ horizon: horizonSlope, ground: groundSlope }), stratumAt, finalHorizon,
+    slopeBound: Object.freeze({ horizon: horizonSlope.magnitude, ground: groundSlope.magnitude }), stratumAt, finalHorizon,
   });
 }

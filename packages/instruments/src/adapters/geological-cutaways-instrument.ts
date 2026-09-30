@@ -64,7 +64,7 @@ const parameters: Parameter[] = [
 
   n("depth", "Block depth", "Front-to-back size as a fraction of the block width.", 0.4, 1.4, 0.01, 0.2, 4),
   n("height", "Block height", "Height as a fraction of the block width.", 0.25, 0.9, 0.01, 0.1, 3),
-  n("resolution", "Grid resolution", "Cells along the longer horizontal side of every layer surface. Finer grids follow tight folds and faults more closely and cost more to build; the count of layers, faults and cells together is bounded.", 16, 72, 1, 8, 120),
+  n("resolution", "Grid resolution", "Cells along the longer horizontal side of every layer surface. Finer grids follow tight folds and faults more closely and cost more to build; the count of layers, faults and cells together is bounded.", 16, 60, 1, 8, 120),
 
   select("cut", "Cutaway", "Whole block; one slice plane that removes the near side and exposes the layers on it; a corner box cut out to expose three faces; or the block split along a plane and pulled apart.",
     [["block", "Whole block"], ["slice", "Slice"], ["corner", "Corner cut"], ["exploded", "Exploded"]]),
@@ -121,7 +121,7 @@ export const geologicalCutawaysDefinition: InstrumentDefinition = {
   parameters, controlGroups,
   defaults: {
     strata: 8, sequence: "random", contrast: 3, stack: 1, trend: 0.25,
-    centerX: 320, centerY: 330, size: 500,
+    centerX: 320, centerY: 322, size: 540,
     tilt: 4, tiltAzimuth: 20,
     fold: "sinusoidal", foldAmplitude: 0.1, foldWavelength: 0.9, foldAxis: 25, foldPhase: 0,
     faulted: true, faultCount: 2, faultThrow: 0.09, faultDip: 62, faultStrike: "depth", faultDipDirection: "left", faultStyle: "stepped", faultShift: 0, faultScatter: 0.25,

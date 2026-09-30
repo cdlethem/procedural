@@ -33,7 +33,7 @@
 
 import { domainIntersection, planarDomain, planarRegion, ringsDomain, unionDomains, type PlanarDomain, type PlanarRegion } from "./domains.js";
 import { clipPath } from "./domains-paths.js";
-import { ROLE, type GeologicalBlock } from "./strata-block.js";
+import { FLOOR, ROLE, type GeologicalBlock } from "./strata-block.js";
 import { mesh, meshStorage, type Mesh, type Vec3 } from "./mesh.js";
 import { isoContours, sliceMesh, type PlaneFrame, type SectionPlane } from "./mesh-section.js";
 import { triangulatePolygon } from "./polygon-triangulate.js";
@@ -43,7 +43,8 @@ import type { SpatialCurve } from "./visibility.js";
 export type CutKind = "block" | "slice" | "corner" | "exploded";
 export type CornerSide = "front-right" | "front-left" | "back-right" | "back-left";
 export type LineKind = "outline" | "contact" | "fault" | "bed" | "contour";
-export const TRI = Object.freeze({ ground: 0, wall: 1, base: 2, cap: 3 });
+/** Triangle kinds of a view; `sliver` is a floor-thin wall of an eroded stratum: part of the closed surface, never painted. */
+export const TRI = Object.freeze({ ground: 0, wall: 1, base: 2, cap: 3, sliver: 4 });
 
 export interface CutOptions {
   readonly kind: CutKind;
@@ -450,7 +451,13 @@ export function viewGeometry(block: GeologicalBlock, cut: CutOptions, lines: Lin
     const role = block.faceRole[t];
     if (role !== ROLE.wall && role !== ROLE.base) continue;
     const pts: Vec3[] = [0, 1, 2].map((k) => [s.positions[s.triangles[t * 3 + k] * 3], s.positions[s.triangles[t * 3 + k] * 3 + 1], s.positions[s.triangles[t * 3 + k] * 3 + 2]] as Vec3);
-    polys.push({ points: pts, stratum: block.faceStratum[t], kind: role === ROLE.base ? TRI.base : TRI.wall });
+    // A floor-thin sliver (an eroded stratum's wall) is narrower than 1e-4 H across, far under a pixel: it stays in the surface so the
+    // kept solid is closed, but painting it would only draw a hairline of the wrong colour along the edge.
+    const e = [[1, 2], [2, 0], [0, 1]].map(([i, j]) => Math.hypot(pts[j][0] - pts[i][0], pts[j][1] - pts[i][1], pts[j][2] - pts[i][2]));
+    const cross = Math.hypot((pts[1][1] - pts[0][1]) * (pts[2][2] - pts[0][2]) - (pts[1][2] - pts[0][2]) * (pts[2][1] - pts[0][1]),
+      (pts[1][2] - pts[0][2]) * (pts[2][0] - pts[0][0]) - (pts[1][0] - pts[0][0]) * (pts[2][2] - pts[0][2]), (pts[1][0] - pts[0][0]) * (pts[2][1] - pts[0][1]) - (pts[1][1] - pts[0][1]) * (pts[2][0] - pts[0][0]));
+    const sliver = cross / Math.max(...e) < 20 * FLOOR * H;
+    polys.push({ points: pts, stratum: block.faceStratum[t], kind: sliver ? TRI.sliver : role === ROLE.base ? TRI.base : TRI.wall });
   }
   polys.push(...groundOutcrops(block));
 

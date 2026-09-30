@@ -288,6 +288,45 @@ test("triangulation of regions with holes covers them exactly", () => {
   }
 });
 
+test("the painted outer surface agrees with the oracle: outcrops on the ground, strata on the walls, bedding lines inside their own stratum", () => {
+  const { model, block } = build(base, 34);
+  const view = viewGeometry(block, cutOf({ kind: "block" }), { beds: 2, contours: 0 });
+  const { positions, triangles } = meshData(view.mesh);
+  const next = lcg(23);
+  const clear = (x: number, y: number, z: number, stratum: number, margin: number) =>
+    [[margin, 0, 0], [-margin, 0, 0], [0, 0, margin], [0, 0, -margin], [0, -margin, 0], [0, margin, 0]].every((d) => model.stratumAt(x + d[0], y + d[1], z + d[2]).stratum === stratum);
+  const tally = { ground: [0, 0], wall: [0, 0] };
+  for (let i = 0; i < 1500; i++) {
+    const t = Math.floor(next() * view.mesh.triangleCount), kind = view.triKind[t];
+    if (kind !== 0 && kind !== 1) continue;
+    const a = triangles[t * 3] * 3, b = triangles[t * 3 + 1] * 3, c = triangles[t * 3 + 2] * 3;
+    // Floor-thin slivers of eroded strata (under 2e-3 tall) are invisible and not what is being checked.
+    if (kind === 1 && Math.max(positions[a + 1], positions[b + 1], positions[c + 1]) - Math.min(positions[a + 1], positions[b + 1], positions[c + 1]) < 2e-3) continue;
+    const cx = (positions[a] + positions[b] + positions[c]) / 3, cy = (positions[a + 1] + positions[b + 1] + positions[c + 1]) / 3, cz = (positions[a + 2] + positions[b + 2] + positions[c + 2]) / 3;
+    // Step a hair inside the block: below the ground, or inward from a wall.
+    const inward: [number, number, number] = kind === 0 ? [0, -1e-4, 0] : [Math.abs(cx) > model.width / 2 - 1e-6 ? -Math.sign(cx) * 1e-4 : 0, 0, Math.abs(cz) > model.depth / 2 - 1e-6 ? -Math.sign(cz) * 1e-4 : 0];
+    const p: [number, number, number] = [cx + inward[0], cy + inward[1], cz + inward[2]];
+    const here = model.stratumAt(...p).stratum;
+    if (!clear(p[0], p[1], p[2], here, 0.012)) continue;
+    const row = kind === 0 ? tally.ground : tally.wall;
+    row[0]++;
+    if (view.triStratum[t] !== here) row[1]++;
+  }
+  assert.ok(tally.ground[0] > 300 && tally.wall[0] > 100, JSON.stringify(tally));
+  assert.equal(tally.ground[1], 0, `${tally.ground[1]} of ${tally.ground[0]} ground triangles are the wrong stratum`);
+  assert.equal(tally.wall[1], 0, `${tally.wall[1]} of ${tally.wall[0]} wall triangles are the wrong stratum`);
+  // Bedding lines on a cut face sit inside the stratum they are drawn for.
+  const sliced = viewGeometry(block, cutOf({ kind: "slice", sliceAzimuth: 90, sliceDip: 90, slicePosition: 0.5 }), { beds: 2, contours: 0 });
+  let on = 0, right = 0;
+  for (const curve of sliced.curves) if (curve.kind === "bed" && curve.id.startsWith("bed:slice")) for (let k = 0; k + 1 < curve.points.length; k++) {
+    const m = [0, 1, 2].map((d) => (curve.points[k][d] + curve.points[k + 1][d]) / 2) as [number, number, number];
+    if (Math.hypot(...[0, 1, 2].map((d) => curve.points[k][d] - curve.points[k + 1][d])) < 1e-9) continue;
+    on++;
+    if (model.stratumAt(...m).stratum === curve.tone) right++;
+  }
+  assert.ok(on > 100 && right >= on * 0.97, `${right} of ${on} bedding segments are in their stratum`);
+});
+
 // ---- Separation of stages, seeds and limits ---------------------------------------------------
 
 const input = (params: Record<string, number | string | boolean> = {}, seed = 42, palette?: number[]): InstrumentInput => {
