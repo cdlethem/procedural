@@ -50,6 +50,8 @@ import { drawMeshAbstraction, meshAbstractionComposition, prepareMeshAbstraction
 import { meshAbstractionUsesSeed } from "./composition/mesh-abstraction.js";
 import { surfaceGrowthDefinition } from "./adapters/surface-growth-instrument.js";
 import { drawSurfaceGrowth, prepareSurfaceGrowthDrawing, surfaceGrowthComposition, surfaceGrowthUsesSeed } from "./composition/surface-growth-draw.js";
+import { implicitSculptureDefinition } from "./adapters/implicit-sculpture-instrument.js";
+import { drawImplicitSculpture, implicitSculptureComposition, implicitSculptureUsesSeed, prepareImplicitSculpture } from "./composition/sdf-draw.js";
 import { drawHyperbolicGardens, hyperbolicGardensComposition, hyperbolicGardensUsesSeed, prepareHyperbolicGardens } from "./composition/hyperbolic-draw.js";
 import { visibilityDrawingDefinition } from "./adapters/visibility-drawing-instrument.js";
 import { drawVisibilityDrawing, prepareVisibilityDrawing, visibilityDrawingComposition, visibilityDrawingUsesSeed } from "./composition/visibility-drawing.js";
@@ -411,6 +413,17 @@ export { triangleGroup, mirrorAddress, addressMatrix, frameOf, toDisk, fromDisk,
   along as geodesicPoint, distance as hyperbolicDistance } from "./composition/hyperbolic-geometry.js";
 export type { HyperbolicColorBy, HyperbolicCellFill, HyperbolicMark, HyperbolicMotifColor, HyperbolicGardensComposition, HyperbolicConsumers, HyperbolicProducts } from "./composition/hyperbolic-draw.js";
 export { hyperbolicGardensComposition, hyperbolicProducts, hyperbolicTone, hatchPolygon, MAX_HATCH_LINES_PER_CELL, drawHyperbolicGardens, drawHyperbolicProducts, prepareHyperbolicGardens } from "./composition/hyperbolic-draw.js";
+export type { SdfNode, SdfClass, SdfFold, SdfFn, Sdf } from "./composition/sdf.js";
+export { sdf, SDF_LIMITS, twistLipschitz, bendLipschitz, sdfSphere, sdfBox, sdfTorus, sdfCapsule, sdfCylinder, sdfPlace, sdfUnion, sdfIntersection, sdfSubtract, sdfSmoothUnion,
+  sdfShell, sdfRepeat, sdfTwist, sdfBend, sdfFold, sdfField } from "./composition/sdf.js";
+export type { RayBatch, MarchOptions, MarchResult, MarchEngine, ViewOptions as SdfViewOptions, ViewStats as SdfViewStats, SdfView, Light as SdfLight } from "./composition/sdf-march.js";
+export { marchRays, marchWork, releasedScene, primaryRay, frameHalf, sdfView, buildSdfView, cachedSdfView, shadeView, lightDirection, MARCH, DEFAULT_MARCH_WORK, MAX_VIEW_CELLS } from "./composition/sdf-march.js";
+export type { SdfMesh, SdfMeshOptions, SdfMeshProvenance, SurfacePointOptions } from "./composition/sdf-mesh.js";
+export { sdfMesh, sdfSurfacePoints, SDF_MESH_LIMITS, DEFAULT_MESH_WORK } from "./composition/sdf-mesh.js";
+export type { SculptureForm, SculptureCut, SculptureOrder, SculptureSpec } from "./composition/sdf-samples.js";
+export { sculptureForms, formTree, sculptureTree, sculptureSdf } from "./composition/sdf-samples.js";
+export type { SculptureFill, ImplicitSculptureComposition, SculptureConsumers, SculptureProducts, SculptureLines, GrainProducts } from "./composition/sdf-draw.js";
+export { implicitSculptureComposition, implicitSculptureUsesSeed, sculptureCamera, sculptureProducts, toneColor, quantize as quantizeTone, MAX_FACETS, drawImplicitSculpture, drawSculptureProducts, prepareImplicitSculpture } from "./composition/sdf-draw.js";
 export type { SpiralFamily, FrameOptions, SpiralOptions, LettersOptions, ScrollOptions, QuillScaffoldSpec } from "./composition/quill-scaffold.js";
 export { quillScaffold, letterPaths, spiralPaths, scrollPaths, spiralFamilies, MAX_SCAFFOLD_POINTS } from "./composition/quill-scaffold.js";
 export type { QuillTerminals, QuillCurl, QuillNestSide, QuillOverlap, QuillStripOptions, QuillStrip, NestStop, StripClash, QuillDiagnostics, QuillStrips } from "./composition/quill-strips.js";
@@ -609,7 +622,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition, hingedPanelsDefinition, ...laplacianFrontsDefinitions, meshAbstractionDefinition, visibilityDrawingDefinition, surfaceGrowthDefinition, pointCloudsDefinition, geologicalCutawaysDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition, hingedPanelsDefinition, ...laplacianFrontsDefinitions, meshAbstractionDefinition, visibilityDrawingDefinition, surfaceGrowthDefinition, pointCloudsDefinition, geologicalCutawaysDefinition, implicitSculptureDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -759,6 +772,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "surface-growth": [0x1d2a2f, 0xe6d3b0, 0xd8894f, 0x9b3d3d, 0x3f6f6c],
   "point-clouds": [0x1d3557, 0x2a9d8f, 0xe9c46a, 0xf4a261, 0xc4452b],
   "geological-cutaways": [0x2a211c, 0xd9b77e, 0xb8613f, 0x8b9d6a, 0x5d7e8c, 0xe6d6ae],
+  "implicit-sculpture": [0x1f1c24, 0x3b3350, 0x7a4c62, 0xbf7659, 0xe6b877, 0xf4dfae],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -813,6 +827,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "surface-growth") return drawSurfaceGrowth(context, surfaceGrowthComposition(input));
   if (input.technique === "point-clouds") return drawPointClouds(context, pointCloudsComposition(input));
   if (input.technique === "geological-cutaways") return drawGeologicalCutaways(context, geologicalCutawaysComposition(input));
+  if (input.technique === "implicit-sculpture") return drawImplicitSculpture(context, implicitSculptureComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
   if (input.technique === "collision-scores") return drawCollisionScores(context, collisionScoresComposition(input));
@@ -840,7 +855,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "roads-parcels" || id === "hinged-panels" || id === "laplacian-fronts" || id === "mesh-abstraction" || id === "visibility-drawing" || id === "surface-growth" || id === "point-clouds" || id === "geological-cutaways" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "roads-parcels" || id === "hinged-panels" || id === "laplacian-fronts" || id === "mesh-abstraction" || id === "visibility-drawing" || id === "surface-growth" || id === "point-clouds" || id === "geological-cutaways" || id === "implicit-sculpture" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -885,6 +900,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "surface-growth") return prepareSurfaceGrowthDrawing(surfaceGrowthComposition(input), cancelled);
   if (input.technique === "point-clouds") return preparePointClouds(pointCloudsComposition(input), cancelled);
   if (input.technique === "geological-cutaways") return prepareGeologicalCutaways(geologicalCutawaysComposition(input), cancelled);
+  if (input.technique === "implicit-sculpture") return prepareImplicitSculpture(implicitSculptureComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
   if (input.technique === "roads-parcels") return prepareRoadsParcels(roadsParcelsComposition(input), cancelled);
   if (input.technique === "inversion-gardens") return prepareInversionGardens(inversionGardensComposition(input), cancelled);
@@ -950,6 +966,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "surface-growth": return surfaceGrowthUsesSeed(q);
     case "point-clouds": return pointCloudsUsesSeed(q);
     case "geological-cutaways": return geologicalCutawaysUsesSeed(q);
+    case "implicit-sculpture": return implicitSculptureUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
     case "roads-parcels": return roadsParcelsUsesSeed(q);
     case "region-stitch": return regionStitchUsesSeed(q);
