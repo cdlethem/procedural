@@ -91,7 +91,7 @@ an edge and a short mode list; binding your own measured mode shapes to a Studio
 ## Limits
 
 Sampling is at most 480 cells across the longest side and 300,000 cells in all; up to eight modes with indices to 24 through
-the functions (four modes, indices to 24, in the instrument); up to 20,000 grains and 2 million candidate points. Lines
+the functions (four modes, indices to 24, in the instrument); up to 20,000 grains and half a million candidate points. Lines
 shorter than three quarters of a cell are below the resolution and dropped. Circle modes read their radial function from a
 Hermite table accurate to 1e-8 for wavenumbers up to 80; the Bessel functions themselves are accurate to 1e-13 up to
 |x| = 100. A very dense circle mode at the highest resolution can exceed the contour-assembly bound and is refused with

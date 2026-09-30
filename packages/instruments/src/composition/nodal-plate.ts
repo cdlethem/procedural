@@ -37,17 +37,19 @@ import type { Path, Point, Site } from "./types.js";
  * Units    Canvas units; angles in options are degrees, in frames radians; time in periods; tolerance is a
  *          fraction of peak amplitude.
  * Work     Grid cells ≤ 300,000; sampling resolution 16–480 cells across the longest side; modes ≤ 8;
- *          indices ≤ 24; particles ≤ 20,000; candidates ≤ 2,000,000. A request that exceeds any bound
- *          throws before expansion naming the controlling parameter. Nothing is truncated.
- * Failure  Non-finite or out-of-range input, all weights zero, coefficients that cancel to a zero field, only
- *          the uniform mode, a site request that cannot be met.
+ *          indices ≤ 24; particles ≤ 20,000; candidates ≤ 500,000. A grid bound throws before expansion
+ *          naming the controlling parameter. A site request the geometry cannot hold is NOT an error:
+ *          `nodalSiteSet` returns the sites found and the `shortfall`, so every combination of control values
+ *          within their ranges produces a picture; the search costs at most the candidate limit.
+ * Failure  Non-finite or out-of-range input, all weights zero, coefficients that cancel to a zero field.
+ *          A plate of only the free uniform (0, 0) mode is valid and empty (it has no nodes).
  * Known limit  Marching squares resolves a crossing of two nodal lines to one cell: the two lines are two
  *          curves that touch or bounce at the crossing, exactly like any marching-squares saddle.
  */
 
 export const NODAL_LIMITS = Object.freeze({
   modes: 8, index: NODAL_MAX_INDEX, minResolution: 16, maxResolution: 480, cells: 300_000, particles: 20_000,
-  candidates: 2_000_000, size: 8192, pad: 2, minLineCells: 0.75, circleSides: 192,
+  candidates: 500_000, size: 8192, pad: 2, minLineCells: 0.75, circleSides: 192,
 });
 
 export interface NodalMode {
@@ -188,8 +190,8 @@ function buildField(options: NodalFieldOptions): NodalField {
     ? circleMode(edge, mode.n, mode.m, R, mode.orient * Math.PI / 180)
     : rectangleMode(edge, mode.n, mode.m, W, H));
   const positive = functions.map((f) => f.k).filter((k) => k > 0);
-  if (positive.length === 0) throw new Error("Every mode is the uniform (0, 0) mode, which has no nodes. Raise an index n or m of a mode");
-  const reference = Math.min(...positive);
+  // A plate of only the free uniform mode has no nodes: no lines, no bands, no grains. That is a valid empty state.
+  const reference = positive.length === 0 ? 1 : Math.min(...positive);
   const total = modes.reduce((sum, mode) => sum + Math.abs(mode.weight), 0);
   if (!(total > 0)) throw new Error("All mode weights are zero. Give at least one mode a nonzero Weight");
   const resolved: NodalResolvedMode[] = modes.map((mode, i) => {
@@ -337,39 +339,41 @@ function stream(seed: number): () => number {
   let a = seed >>> 0;
   return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 }
-const PILOT = 20_000;
-const siteCache = new WeakMap<NodalField, Map<string, readonly NodalSite[]>>();
-/** Sites drawn toward the nodes by the seeded rejection rule in the header. */
-export function nodalSites(field: NodalField, options: NodalSiteOptions): readonly NodalSite[] {
+/** The sites found for a request and how far short of it they fall. */
+export interface NodalSiteSet {
+  readonly sites: readonly NodalSite[];
+  readonly requested: number;
+  /** `requested − sites.length`: 0 unless the band is too thin, the plate too small or Separation too large for the request. */
+  readonly shortfall: number;
+  /** Candidate points examined (at most `NODAL_LIMITS.candidates`). */
+  readonly candidates: number;
+}
+const siteCache = new WeakMap<NodalField, Map<string, NodalSiteSet>>();
+/**
+ * Sites drawn toward the nodes by the seeded rejection rule in the header, with the shortfall reported. A request the
+ * geometry cannot hold (Particles too high for the Node width, plate and Separation) is not an error: the search stops
+ * after `NODAL_LIMITS.candidates` candidates and returns every site found, a prefix of what a larger plate would give.
+ */
+export function nodalSiteSet(field: NodalField, options: NodalSiteOptions): NodalSiteSet {
   const { seed, tolerance, particles, separation } = options;
   seedOf(seed);
   requireRange("Node width", tolerance, 0.002, 1);
   requireRange("Particles", particles, 0, NODAL_LIMITS.particles, true);
   requireRange("Separation", separation, 0, 1000);
   return cachedBy(siteCache, field, `${seed}:${tolerance}:${particles}:${separation}`, () => {
-    if (particles === 0) return Object.freeze([]);
+    if (particles === 0) return Object.freeze({ sites: Object.freeze([]), requested: 0, shortfall: 0, candidates: 0 });
     const { peak } = field.grid;
     const sites: NodalSite[] = [];
     const hash = new Map<number, number[]>(), bin = separation > 0 ? separation : 1;
     const bins = (x: number, y: number): [number, number] => [Math.floor(x / bin), Math.floor(y / bin)];
     const width = 2 * field.halfWidth, height = 2 * field.halfHeight;
-    // Pilot: the first PILOT candidates measure the acceptance of the density alone, and a request that would need
-    // more than the candidate limit is refused there, before the bulk of the work.
-    let passes = 0;
-    for (let j = 0; sites.length < particles; j++) {
-      if (j === PILOT) {
-        const expected = particles * PILOT / Math.max(passes, 1);
-        if (expected > NODAL_LIMITS.candidates)
-          throw new Error(`Placing ${particles} sites this close to the nodes needs about ${Math.round(expected)} candidates; the limit is ${NODAL_LIMITS.candidates}. Lower Particles or raise Node width`);
-      }
-      if (j >= NODAL_LIMITS.candidates)
-        throw new Error(`Only ${sites.length} of ${particles} sites fit after ${NODAL_LIMITS.candidates} candidates. Lower Particles or Separation, or raise Node width`);
+    let j = 0;
+    for (; sites.length < particles && j < NODAL_LIMITS.candidates; j++) {
       const draw = stream(componentSeed(seed, `cand:${j}`, "site"));
       const x = (draw() - 0.5) * width, y = (draw() - 0.5) * height, a = draw();
       if (field.shape === "circle" && x * x + y * y > field.halfWidth * field.halfWidth) continue;
       const u = field.amplitudeLocal(x, y), z = u / (tolerance * peak), rho = Math.exp(-0.5 * z * z);
       if (a >= rho) continue;
-      passes++;
       const [bx, by] = bins(x, y);
       if (separation > 0) {
         let clear = true;
@@ -390,9 +394,11 @@ export function nodalSites(field: NodalField, options: NodalSiteOptions): readon
         amplitude: u, proximity: rho, nodeDistance: Math.abs(u) / Math.max(slope, 1e-9 / field.halfWidth), lobe: u >= 0 ? 0 : 1,
       }));
     }
-    return Object.freeze(sites);
+    return Object.freeze({ sites: Object.freeze(sites), requested: particles, shortfall: particles - sites.length, candidates: j });
   });
 }
+/** The sites of `nodalSiteSet`. */
+export const nodalSites = (field: NodalField, options: NodalSiteOptions): readonly NodalSite[] => nodalSiteSet(field, options).sites;
 
 // ------------------------------------------------------------------------------------------------ node bands
 

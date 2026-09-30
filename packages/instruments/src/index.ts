@@ -452,8 +452,8 @@ export type { CyclicFrontsComposition, CyclicFrontsConsumers, CyclicFrontsProduc
 export { cyclicFrontsComposition, cyclicFrontsProducts, cyclicSnapshots, hasCyclicSnapshots, cyclicSummary, statePalette, stateHatch, drawCyclicFronts, prepareCyclicFronts, CYCLIC_DRAW_UNITS } from "./composition/cyclic-fronts.js";
 export type { NodalShape, NodalEdge, ModeFunction } from "./composition/nodal-modes.js";
 export { besselJ, besselJPrime, besselPair, besselZero, rectangleMode, circleMode, NODAL_MAX_INDEX } from "./composition/nodal-modes.js";
-export type { NodalMode, NodalFieldOptions, NodalResolvedMode, NodalGrid, NodalField, NodalSiteOptions, NodalSite } from "./composition/nodal-plate.js";
-export { nodalField, nodalPaths, nodalSites, nodalBands, nodalDistance, nodalProximity, NODAL_LIMITS } from "./composition/nodal-plate.js";
+export type { NodalMode, NodalFieldOptions, NodalResolvedMode, NodalGrid, NodalField, NodalSiteOptions, NodalSite, NodalSiteSet } from "./composition/nodal-plate.js";
+export { nodalField, nodalPaths, nodalSites, nodalSiteSet, nodalBands, nodalDistance, nodalProximity, NODAL_LIMITS } from "./composition/nodal-plate.js";
 export type { NodalComposition, NodalConsumers } from "./composition/nodal-draw.js";
 export { nodalPlateComposition, drawNodalPlate, prepareNodalPlate } from "./composition/nodal-draw.js";
 export type { PatternModel, PatternScale, PatternState, PatternProjection, PatternSnapshots, PatternView, PatternFrame, PatternContourOptions, PatternPath, PatternSiteOptions, PatternSite, PatternBandOptions, PatternBand, PatternBoundary, PatternSymmetry, PatternStart, SymmetryOrbits } from "./composition/pattern-competition.js";
