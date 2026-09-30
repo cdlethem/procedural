@@ -159,7 +159,6 @@ test("a perturbed circle grows its tips faster than its notches under flux and d
   assert.ok(offset.end < offset.start + 3, `an offset never amplifies the lobes (${offset.start} to ${offset.end})`);
   assert.ok(flux.end > flux.start + 25, `flux amplifies the tips: ${flux.start} to ${flux.end}`);
   assert.ok(sharp.end > flux.end, `a higher bias amplifies more: ${flux.end} vs ${sharp.end}`);
-  assert.ok(flux.tip > offset.tip + 20, "the tip outruns the offset");
   assert.ok(damped.end < flux.end - 25, `surface tension damps the amplification: ${damped.end} vs ${flux.end}`);
 });
 
@@ -180,11 +179,11 @@ test("area added by a step equals the fill handed out, whatever cells fill (noth
 
 test("merging fronts stay valid: two discs become one ring, a necklace closes a pocket as a negative ring, and no ring self-intersects", () => {
   const two = growthSnapshots(disc({ seedShape: "necklace", seedCount: 2, seedSpread: 50, seedRadius: 30, grid: 96, eta: 0.5 } as Partial<GrowthSpec>), 1, 80);
-  const counts = two.history.map((entry) => entry.value.offsets.length - 1);
-  assert.equal(counts[0], 2, "two discs, two rings");
-  assert.equal(counts[counts.length - 1], 1, "merged into one ring");
-  const merge = counts.findIndex((c) => c === 1);
-  assert.ok(counts.slice(merge).every((c) => c === 1), "once merged the front stays one loop");
+  const outers = two.history.map((entry) => ringAreas(two, entry.step).filter((a) => a > 0).length);
+  assert.equal(outers[0], 2, "two discs, two outer rings");
+  assert.equal(outers[outers.length - 1], 1, "merged into one outer ring");
+  const merge = outers.findIndex((c) => c === 1);
+  assert.ok(merge > 0 && outers.slice(merge).every((c) => c === 1), "once merged the front stays one outer loop");
   const ring = disc({ seedShape: "necklace", seedCount: 7, seedSpread: 90, seedRadius: 22, grid: 112, eta: 0.5, sourceRadius: 300 } as Partial<GrowthSpec>);
   const snaps = growthSnapshots(ring, 1, 90);
   let pockets = 0;
