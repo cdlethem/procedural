@@ -401,6 +401,37 @@ export function ringsDomain(rings: readonly (readonly (readonly [number, number]
   return resolveRings(id, clean, options.fill, options, workFor("ringsDomain", options));
 }
 
+/** A second ring soup, resolved by its own fill rule, that `ringsDomainClipped` intersects with. */
+export interface RingsWithin { readonly rings: readonly (readonly (readonly [number, number])[])[]; readonly fill: Fill }
+/**
+ * `ringsDomain(rings)` intersected with a second ring soup (`within`) and minus a shape (`without`), in ONE exact overlay instead of
+ * three (the same regions, since each source keeps its own fill rule; about half the cost for wash passes). A `within` soup that
+ * encloses nothing makes the result empty.
+ */
+export function ringsDomainClipped(rings: readonly (readonly (readonly [number, number])[])[],
+  options: PlanarOptions & { readonly fill: Fill; readonly within?: RingsWithin; readonly without?: PlanarShape }): PlanarDomain {
+  const id = idOf(options.id, "options.id", "rings");
+  if (options.fill !== "nonzero" && options.fill !== "evenodd" && options.fill !== "positive") throw new PlanarError("INVALID_INPUT", `options.fill must be "nonzero", "evenodd" or "positive"`);
+  const work = workFor("ringsDomainClipped", options);
+  const clean = (soup: readonly (readonly (readonly [number, number])[])[], label: string) => {
+    const out: Pt[][] = [];
+    soup.forEach((ring, k) => {
+      try { out.push(cleanRing(`${label}[${k}]`, ring)); } catch (error) {
+        if (error instanceof PlanarError && /at least 3 distinct/.test(error.message)) return;
+        throw error;
+      }
+    });
+    return out;
+  };
+  const sources: { rings: readonly (readonly Pt[])[]; fill: Fill }[] = [{ rings: clean(rings, "rings"), fill: options.fill }];
+  if (options.within) sources.push({ rings: clean(options.within.rings, "within.rings"), fill: options.within.fill });
+  if (options.without) sources.push({ rings: ringsOfRegions(regionsOf([options.without], work)), fill: "nonzero" });
+  checkEdgeLimit(sources.flatMap((s) => s.rings), "The ring set");
+  const last = sources.length - 1, hasCut = options.without !== undefined;
+  const raw = overlay(sources, (inside) => inside[0] && (options.within === undefined || inside[1]) && !(hasCut && inside[last]), work);
+  return finishRaw(id, raw, options);
+}
+
 // ---------------------------------------------------------------------------------------------
 // Queries
 // ---------------------------------------------------------------------------------------------
