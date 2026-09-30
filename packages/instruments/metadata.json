@@ -401,6 +401,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "hinged-panels",
+      "title": "Hinged Panels",
+      "description": "Fold a flat tiling of panels along its shared edges: each hinge has an editable angle, panels move as rigid bodies from an anchored panel, conflicts the tiling cannot close are reported, and the flat crease pattern is a layer of its own.",
+      "category": "3D forms",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/hinged-panels.md",
+      "source": "packages/instruments/src/composition/hinge-draw.ts",
+      "sourceEntry": "drawHingedPanels",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "gesture-scores",
       "title": "Gesture Scores",
       "description": "Replay a recorded hand movement with its timing and pressure as a broad bristle brush, a lagging fall of sand and glyphs along the path; one time window and smoothing reshape all three.",
@@ -814,6 +827,19 @@
       "guide": "guides/roads-parcels.md",
       "source": "packages/instruments/src/composition/roads-parcels.ts",
       "sourceEntry": "drawRoadsParcels",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "laplacian-fronts",
+      "title": "Laplacian Fronts",
+      "description": "A region grows where the flux of a potential is strongest: the potential between the growing region and a source is solved on a grid, the boundary advances at a speed that follows the potential gradient (raised to a growth bias, softened by a surface tension) and every front is kept; the history is drawn as age-colored fronts, bands of fill, marks at the tips or by age, and the equipotential lines the growth followed.",
+      "category": "Systems & rules",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/laplacian-fronts.md",
+      "source": "packages/instruments/src/composition/laplacian-fronts.ts",
+      "sourceEntry": "drawLaplacianFronts",
       "creativeReviewScope": "instrument-construction"
     },
     {

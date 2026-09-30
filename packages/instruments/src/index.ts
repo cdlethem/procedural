@@ -70,6 +70,8 @@ import { cyclicFrontsDefinition } from "./adapters/cyclic-fronts-instrument.js";
 import { cyclicFrontsComposition, cyclicFrontsUsesSeed, drawCyclicFronts, prepareCyclicFronts } from "./composition/cyclic-fronts.js";
 import { chemotacticTrailsDefinition } from "./adapters/chemotactic-trails-instrument.js";
 import { chemotacticTrailsComposition, drawChemotacticTrails, prepareChemotacticTrails } from "./composition/chemotaxis-draw.js";
+import { hingedPanelsDefinition } from "./adapters/hinged-panels-instrument.js";
+import { drawHingedPanels, hingedPanelsComposition, hingedPanelsUsesSeed, prepareHingedPanels } from "./composition/hinge-draw.js";
 import { drawPathTypography, pathTypographyComposition, preparePathTypography } from "./composition/path-type-draw.js";
 import { drainageErosionDefinition } from "./adapters/drainage-erosion-instrument.js";
 import { drainageErosionComposition, drawDrainageErosion, prepareDrainageErosion } from "./composition/drainage-draw.js";
@@ -393,6 +395,14 @@ export type { EmitterLayout, BarrierKind, EmitterLayoutOptions, BarrierOptions, 
 export { emitterLayout, bundledBarrier, colonyGeometry, barrierBlocks, emitterLayouts, barrierKinds, barrierThickness } from "./composition/chemotaxis-layouts.js";
 export type { ChemotacticTrailsComposition, ChemotacticConsumers, ChemotacticProducts } from "./composition/chemotaxis-draw.js";
 export { chemotacticTrailsComposition, chemotacticProducts, chemotacticSnapshots, drawChemotacticTrails, prepareChemotacticTrails } from "./composition/chemotaxis-draw.js";
+export type { PanelSource, PanelPoint, PanelTilingOptions, Panel, Hinge, PanelTiling, PanelPolygonsInput, PanelEdgePiece } from "./composition/hinge-tiling.js";
+export { panelTiling, panelTilingFromPolygons, panelBoundaryEdges, MAX_PANELS, PANEL_SOURCES, PENROSE_PATCHES } from "./composition/hinge-tiling.js";
+export type { FoldRule, FoldFieldOptions, ClosureOptions, HingeKind, HingeReport, FoldCounts, FoldedPanels } from "./composition/hinge-fold.js";
+export { hingeAngles, foldPanels, panelPoint, panelNormal, MAX_FOLD_ANGLE, ANGLE_TOLERANCE, MAX_ANCHORS, FOLD_RULES, AXIS_WINDOW } from "./composition/hinge-fold.js";
+export type { PosedMeshOptions, PosedPanels } from "./composition/hinge-mesh.js";
+export { posedPanels, MAX_GAP, MAX_THICKNESS } from "./composition/hinge-mesh.js";
+export type { HingedTreatment, HingedFill, HingedColorBy, HingedLines, HingedMotif, HingedPanelsComposition, HingedConsumers, HingedProducts, HingedView } from "./composition/hinge-draw.js";
+export { hingedPanelsComposition, hingedProducts, hingedPosed, hingedCamera, hingedView, hingedCurves, panelTones, LINE_TONE, drawHingedPanels, drawHingedProducts, prepareHingedPanels } from "./composition/hinge-draw.js";
 export type { Simulation, SimulationContext, SimulationLimits, Snapshots, HistoryEntry, Frozen, RunOptions as SimulationRunOptions,
   AsyncRunOptions as SimulationAsyncRunOptions, SimulationCacheOptions } from "./composition/snapshots.js";
 export { runSimulation, prepareSimulation, resumeSimulation, stateAt, finalState, projectionAt, checkSimulation, createSimulationCache, SimulationCache,
@@ -514,7 +524,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition, hingedPanelsDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -657,6 +667,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "chemotactic-trails": [0x1f3040, 0xc4452b, 0xd9a441, 0x2f7a86, 0x6a8f4a],
   "hyperbolic-gardens": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
   "roads-parcels": [0x1f2a33, 0xb5452e, 0xd08a20, 0x2f7c78, 0x7d4d8f],
+  "hinged-panels": [0x252a33, 0xd9694a, 0xecb654, 0x3f8f8b, 0x8a6bb0],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -714,6 +725,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "random-walk-fronts") return drawWalkFronts(context, randomWalkFrontsComposition(input));
   if (input.technique === "chemotactic-trails") return drawChemotacticTrails(context, chemotacticTrailsComposition(input));
   if (input.technique === "wet-pigment") return drawWetPigment(context, wetPigmentComposition(input));
+  if (input.technique === "hinged-panels") return drawHingedPanels(context, hingedPanelsComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
@@ -731,7 +743,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "roads-parcels" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "roads-parcels" || id === "hinged-panels" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -774,6 +786,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "roads-parcels") return prepareRoadsParcels(roadsParcelsComposition(input), cancelled);
   if (input.technique === "inversion-gardens") return prepareInversionGardens(inversionGardensComposition(input), cancelled);
   if (input.technique === "chemotactic-trails") return prepareChemotacticTrails(chemotacticTrailsComposition(input), cancelled);
+  if (input.technique === "hinged-panels") return prepareHingedPanels(hingedPanelsComposition(input), cancelled);
   if (referenceIds[input.technique])
     return prepareReferenceComposition(referenceComposition(input), cancelled);
   if (!externalDynamicsPreparable.has(input.technique)) return !cancelled();
@@ -827,6 +840,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "crossing-lace": return crossingLaceUsesSeed(q);
     case "collision-scores": return collisionScoresUsesSeed(q);
     case "hyperbolic-gardens": return hyperbolicGardensUsesSeed(q);
+    case "hinged-panels": return hingedPanelsUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
     case "roads-parcels": return roadsParcelsUsesSeed(q);
     case "region-stitch": return regionStitchUsesSeed(q);
