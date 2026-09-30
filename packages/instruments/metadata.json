@@ -895,6 +895,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "geological-cutaways",
+      "title": "Geological Cutaways",
+      "description": "Build a block of strata from horizon functions with tilt, folds, planar faults that offset every layer by the declared throw, and an eroded surface, then cut it open: a slice plane, a corner box or exploded halves, sections painted by stratum, outcrops on the ground, fault traces and contact lines with hidden-line removal.",
+      "category": "3D forms",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/geological-cutaways.md",
+      "source": "packages/instruments/src/composition/strata-draw.ts",
+      "sourceEntry": "drawGeologicalCutaways",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",

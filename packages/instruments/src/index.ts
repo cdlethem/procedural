@@ -53,6 +53,8 @@ import { drawSurfaceGrowth, prepareSurfaceGrowthDrawing, surfaceGrowthCompositio
 import { drawHyperbolicGardens, hyperbolicGardensComposition, hyperbolicGardensUsesSeed, prepareHyperbolicGardens } from "./composition/hyperbolic-draw.js";
 import { visibilityDrawingDefinition } from "./adapters/visibility-drawing-instrument.js";
 import { drawVisibilityDrawing, prepareVisibilityDrawing, visibilityDrawingComposition, visibilityDrawingUsesSeed } from "./composition/visibility-drawing.js";
+import { geologicalCutawaysDefinition } from "./adapters/geological-cutaways-instrument.js";
+import { drawGeologicalCutaways, geologicalCutawaysComposition, geologicalCutawaysUsesSeed, prepareGeologicalCutaways } from "./composition/strata-draw.js";
 import { quilledPathsDefinition } from "./adapters/quilled-paths-instrument.js";
 import { drawQuilled, prepareQuilled, quillComposition, quillUsesSeed } from "./composition/quill-draw.js";
 import { bundledRelationsDefinition } from "./adapters/bundled-relations-instrument.js";
@@ -578,6 +580,17 @@ export type { MarkKind as PointMarkKind, AxisKind as PointAxisKind, ColorBy as P
 export { markSites as pointMarkSites, stockMark as stockPointMark, linkMaterial as pointLinkMaterial, paletteRamp as pointPaletteRamp, pointToner, rampIndex, RAMP_STEPS, discSides } from "./composition/point-marks.js";
 export type { PointCloudsComposition, PointCloudProducts, PointCloudScene, PointCloudConsumers } from "./composition/point-clouds-draw.js";
 export { pointCloudsComposition, pointCloudProducts, pointCloudScene, drawPointCloudScene, drawPointClouds, preparePointClouds, MAX_DRAWN_ITEMS } from "./composition/point-clouds-draw.js";
+export type { Triangle as PolygonTriangle } from "./composition/polygon-triangulate.js";
+export { triangulatePolygon } from "./composition/polygon-triangulate.js";
+export type { ThicknessSequence, FoldType, FaultStrike, FaultDipDirection, FaultStyle, StrataOptions, PlaneBound, Fault as StrataFault, Compartment as StrataCompartment, StrataModel } from "./composition/strata.js";
+export { strataModel, MAX_STRATA, MAX_FAULTS, MAX_SLOPE_TIMES_KAPPA, MIN_COMPARTMENT_FRACTION } from "./composition/strata.js";
+export type { Brick as StrataBrick, BlockSheet, CompartmentGrid, GroundSurface, GeologicalBlock } from "./composition/strata-block.js";
+export { geologicalBlock, blockGrid, BLOCK_LIMITS, ROLE as BLOCK_ROLE, FLOOR as BLOCK_FLOOR } from "./composition/strata-block.js";
+export type { CutKind, CornerSide, LineKind as GeologicalLineKind, CutOptions as GeologicalCutOptions, LineOptions as GeologicalLineOptions, ViewCurve as GeologicalCurve, CapRegion, ViewGeometry as GeologicalView } from "./composition/strata-cut.js";
+export { cutGeometry, viewGeometry, TRI as VIEW_TRIANGLE, SECTION_MIN_AREA, VISIBLE_THICKNESS, MAX_BED_VERTICES, MAX_BEDS } from "./composition/strata-cut.js";
+export type { GeologicalColorBy, GeologicalFill, GeologicalCutawaysComposition, GeologicalProducts } from "./composition/strata-draw.js";
+export { geologicalCutawaysComposition, geologicalProducts, geologicalCamera, geologicalPaintOrder, geologicalHiddenLines, stratumColor, drawGeologicalView, drawGeologicalProducts,
+  drawGeologicalCutaways, prepareGeologicalCutaways, DEFAULT_GEOLOGICAL_WORK } from "./composition/strata-draw.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -596,7 +609,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition, hingedPanelsDefinition, ...laplacianFrontsDefinitions, meshAbstractionDefinition, visibilityDrawingDefinition, surfaceGrowthDefinition, pointCloudsDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition, hingedPanelsDefinition, ...laplacianFrontsDefinitions, meshAbstractionDefinition, visibilityDrawingDefinition, surfaceGrowthDefinition, pointCloudsDefinition, geologicalCutawaysDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -745,6 +758,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "visibility-drawing": [0x1c2430, 0xb85c3a, 0x2f6f86, 0x6b7f3b, 0x8a5a8c],
   "surface-growth": [0x1d2a2f, 0xe6d3b0, 0xd8894f, 0x9b3d3d, 0x3f6f6c],
   "point-clouds": [0x1d3557, 0x2a9d8f, 0xe9c46a, 0xf4a261, 0xc4452b],
+  "geological-cutaways": [0x2a211c, 0xd9b77e, 0xb8613f, 0x8b9d6a, 0x5d7e8c, 0xe6d6ae],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -798,6 +812,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "visibility-drawing") return drawVisibilityDrawing(context, visibilityDrawingComposition(input));
   if (input.technique === "surface-growth") return drawSurfaceGrowth(context, surfaceGrowthComposition(input));
   if (input.technique === "point-clouds") return drawPointClouds(context, pointCloudsComposition(input));
+  if (input.technique === "geological-cutaways") return drawGeologicalCutaways(context, geologicalCutawaysComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
   if (input.technique === "collision-scores") return drawCollisionScores(context, collisionScoresComposition(input));
@@ -825,7 +840,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "roads-parcels" || id === "hinged-panels" || id === "laplacian-fronts" || id === "mesh-abstraction" || id === "visibility-drawing" || id === "surface-growth" || id === "point-clouds" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "roads-parcels" || id === "hinged-panels" || id === "laplacian-fronts" || id === "mesh-abstraction" || id === "visibility-drawing" || id === "surface-growth" || id === "point-clouds" || id === "geological-cutaways" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -869,6 +884,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "visibility-drawing") return prepareVisibilityDrawing(visibilityDrawingComposition(input), cancelled);
   if (input.technique === "surface-growth") return prepareSurfaceGrowthDrawing(surfaceGrowthComposition(input), cancelled);
   if (input.technique === "point-clouds") return preparePointClouds(pointCloudsComposition(input), cancelled);
+  if (input.technique === "geological-cutaways") return prepareGeologicalCutaways(geologicalCutawaysComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
   if (input.technique === "roads-parcels") return prepareRoadsParcels(roadsParcelsComposition(input), cancelled);
   if (input.technique === "inversion-gardens") return prepareInversionGardens(inversionGardensComposition(input), cancelled);
@@ -933,6 +949,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "visibility-drawing": return visibilityDrawingUsesSeed(q);
     case "surface-growth": return surfaceGrowthUsesSeed(q);
     case "point-clouds": return pointCloudsUsesSeed(q);
+    case "geological-cutaways": return geologicalCutawaysUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
     case "roads-parcels": return roadsParcelsUsesSeed(q);
     case "region-stitch": return regionStitchUsesSeed(q);
