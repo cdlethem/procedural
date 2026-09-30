@@ -778,6 +778,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "cell-division",
+      "title": "Cell Division",
+      "description": "A colony of cells eats a diffusing nutrient, grows and divides in two, pushing its neighbours aside: cells near the food grow large and divide, starved ones stay small, so sizes and generations record where the food was. Draw the cells, their division tree, the nutrient left and each cell's territory from the same colony.",
+      "category": "Systems & rules",
+      "operationIds": ["geometry.voronoi-cells-2d", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/cell-division.md",
+      "source": "packages/instruments/src/composition/cell-division-draw.ts",
+      "sourceEntry": "drawCellDivision",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
