@@ -252,12 +252,15 @@ tests may not assert wall-clock time (they failed spuriously under load); timing
 All twelve roadmap section-6 layered scenarios were composed from merged studies with their
 decisive edits, and layered pairs were checked in both orders with unmodified older instruments.
 
-**Open.** (1) F9 extension (alternatives and numeric thresholds in `visibleWhen`) is in review;
-until it lands, options whose relevance is a disjunction or numeric threshold (for example a mark
-shape while grains are off) remain visible and inert by design. (2) The real Studio (authenticated
+**Open.** (1) F9 extension (alternatives and numeric thresholds in `visibleWhen`) is merged and
+applied to 183 measured conditions in 54 instruments. Some controls stay visible while inert
+because their relevance needs a richer gate than the audit can prove: Surface Growth grain mark
+(dependents' conditions name it), Point Clouds thinning rule, Adaptive Compartments and Connected
+Value Regions retain-by, Visibility Drawing crease kind, Hinged Panels lines, Cell Division
+boundary, Roads and Parcels dead ends. (2) The real Studio (authenticated
 backend) was not available: layering used the equivalent renderer, not Studio, and the private
-app's own `LayerControls` still has to adopt `inspectorItems`. (3) The control audit
-(`audit-controls`) is owed for Laplacian Fronts and Pattern Competition on an idle machine.
+app's own `LayerControls` still has to adopt `inspectorItems`. (3) The control audits for Laplacian
+Fronts and Pattern Competition were run on a quiet machine: no violations, no dead controls.
 (4) `fm-engraving` and `iso-rings` keep small local clips. (5) Category names are worker-assigned
 and uneven (`Fields & paths` holds 54 entries); a deliberate discovery taxonomy is a UX decision.
 (6) No release has been cut: packages are unpublished local artifacts, and a clean release build
