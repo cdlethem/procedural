@@ -69,6 +69,8 @@ import { chemotacticTrailsComposition, drawChemotacticTrails, prepareChemotactic
 import { drawPathTypography, pathTypographyComposition, preparePathTypography } from "./composition/path-type-draw.js";
 import { nodalPlatesDefinition } from "./adapters/nodal-plates-instrument.js";
 import { drawNodalPlate, nodalPlateComposition, nodalPlatesUsesSeed, prepareNodalPlate } from "./composition/nodal-draw.js";
+import { patternCompetitionDefinition } from "./adapters/pattern-competition-instrument.js";
+import { drawPatternCompetition, patternCompetitionComposition, patternCompetitionUsesSeed, preparePatternCompetition } from "./composition/pattern-draw.js";
 import { glyphPackingDefinition, glyphPackingUsesSeed } from "./adapters/glyph-packing-instrument.js";
 import { drawGlyphPacking, glyphPackingComposition, prepareGlyphPacking } from "./composition/glyph-pack-draw.js";
 import { regionStitchDefinition, regionStitchUsesSeed } from "./adapters/region-stitch-instrument.js";
@@ -377,6 +379,10 @@ export type { NodalMode, NodalFieldOptions, NodalResolvedMode, NodalGrid, NodalF
 export { nodalField, nodalPaths, nodalSites, nodalBands, nodalDistance, nodalProximity, NODAL_LIMITS } from "./composition/nodal-plate.js";
 export type { NodalComposition, NodalConsumers } from "./composition/nodal-draw.js";
 export { nodalPlateComposition, drawNodalPlate, prepareNodalPlate } from "./composition/nodal-draw.js";
+export type { PatternModel, PatternScale, PatternState, PatternProjection, PatternSnapshots, PatternView, PatternFrame, PatternContourOptions, PatternPath, PatternSiteOptions, PatternSite, PatternBandOptions, PatternBand, PatternBoundary, PatternSymmetry, PatternStart, SymmetryOrbits } from "./composition/pattern-competition.js";
+export { patternSimulation, patternSnapshots, preparePatternSnapshots, patternView, patternCompetingFields, patternScales, patternStepWork, checkPatternModel, patternFrame, patternContours, patternSites, patternBands, symmetryOrbits, scaleTone as patternScaleTone, PATTERN_LIMITS, PATTERN_BOUNDARIES, PATTERN_SYMMETRIES, PATTERN_STARTS } from "./composition/pattern-competition.js";
+export type { PatternCompetitionComposition, PatternConsumers, PatternProducts } from "./composition/pattern-draw.js";
+export { patternCompetitionComposition, patternRecipeSnapshots, patternProducts, drawPatternCompetition, preparePatternCompetition } from "./composition/pattern-draw.js";
 export type { Cline, ClineShape, CircleInversion, Frame as InversionFrame, Segment as InversionSegment, Circle as InversionCircleCurve, Arc as InversionArc,
   Constraint as ClineConstraint } from "./composition/inversion.js";
 export { circleCline, lineCline, clineValue, clineDot, clineShape, circleInversion, invertPoint, invertCline, invertFrame, segmentIntervals, circleIntervals,
@@ -442,7 +448,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -568,6 +574,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "painterly-source": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0xf0e6d2],
   "slit-compositions": [0x1d2733, 0xb5452e, 0xe0a13a, 0xf1e6cc],
   "nodal-plates": [0x1c2430, 0xb8452f, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
+  "pattern-competition": [0x1c2430, 0xb8452f, 0xd9a441, 0x4f7a5c, 0x2f6f8f],
   "adaptive-compartments": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0xefe6d2],
   "connected-value-regions": [0x231f24, 0xb5452e, 0xe0a13a, 0x2f6f7a, 0xefe6d2],
   "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
@@ -618,6 +625,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "painterly-source") return drawPainterly(context, painterlyComposition(input));
   if (input.technique === "slit-compositions") return drawSlit(context, slitComposition(input));
   if (input.technique === "nodal-plates") return drawNodalPlate(context, nodalPlateComposition(input));
+  if (input.technique === "pattern-competition") return drawPatternCompetition(context, patternCompetitionComposition(input));
   if (input.technique === "stroke-relief") return drawStrokeRelief(context, strokeReliefComposition(input));
   if (input.technique === "image-directed-field") return drawImageDirectedField(context, imageDirectedFieldComposition(input));
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
@@ -647,7 +655,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -677,6 +685,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "painterly-source") return preparePainterly(painterlyComposition(input), cancelled);
   if (input.technique === "slit-compositions") return prepareSlit(slitComposition(input), cancelled);
   if (input.technique === "nodal-plates") return prepareNodalPlate(nodalPlateComposition(input), cancelled);
+  if (input.technique === "pattern-competition") return preparePatternCompetition(patternCompetitionComposition(input), cancelled);
   if (input.technique === "stroke-relief") return prepareStrokeRelief(strokeReliefComposition(input), cancelled);
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
   if (input.technique === "region-stitch") return prepareStitches(regionStitchComposition(input), cancelled);
@@ -716,6 +725,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "cyclic-fronts": return cyclicFrontsUsesSeed(q);
     case "river-ribbons": return riverUsesSeed({ planform: q.planform as "wandering", amplitude: Number(q.amplitude), heterogeneity: Number(q.heterogeneity) });
     case "nodal-plates": return nodalPlatesUsesSeed(q);
+    case "pattern-competition": return patternCompetitionUsesSeed(q);
     case "quilled-paths": return quillUsesSeed(q);
     case "gesture-scores": return q.recording === "wander" || Number(q.hairs) > 0 && q.bristles === true || q.sandMark !== "none" ||
       q.glyphMark !== "none" && (Number(q.glyphVariation) > 0 || Number(q.glyphRetention) < 1);

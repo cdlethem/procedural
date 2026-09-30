@@ -242,7 +242,7 @@ function buildField(options: NodalFieldOptions): NodalField {
 // ------------------------------------------------------------------------------------------------ nodal lines
 
 /** Split segments into non-branching runs (union across vertices met by exactly two segments). */
-function nonBranching(segments: readonly (readonly number[])[]): number[][][] {
+export function nonBranching(segments: readonly (readonly number[])[]): number[][][] {
   const incident = new Map<string, number[]>();
   const keys = segments.map(([x1, y1, x2, y2]) => [`${x1},${y1}`, `${x2},${y2}`]);
   keys.forEach((pair, edge) => { for (const key of pair) { const list = incident.get(key); if (list) list.push(edge); else incident.set(key, [edge]); } });

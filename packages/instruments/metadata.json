@@ -622,6 +622,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "pattern-competition",
+      "title": "Pattern Competition",
+      "description": "Several scales of activation and inhibition compete on one grid, and the scale with the smallest disagreement updates each cell: broad lobes hold finer patterns, which hold finer ones. Flat bands by scale, contours and scale-sized marks are three drawings of the same evolving field, scrubbed by steps.",
+      "category": "Fields & paths",
+      "operationIds": ["geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/pattern-competition.md",
+      "source": "packages/instruments/src/composition/pattern-draw.ts",
+      "sourceEntry": "drawPatternCompetition",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "dry-bristles",
       "title": "Dry Bristles",
       "description": "Carry a broad brush of separate hairs along any path (harmonic traces, a contour family or a hand scribble): hairs lift on light pressure and paper tooth, run dry, taper at the ends and gather into tufts, while the other paths stay fine stitched contours.",
