@@ -56,7 +56,8 @@ export interface FrontStrokes {
 export interface FillView { mode: "flat" | "bands"; opacity: number; bands: number }
 export interface MarksView { source: "age" | "tips"; mark: MotifSpec; spacing: number; threshold: number }
 export interface PotentialView { levels: number; weight: number }
-export interface BoundaryView { weight: number }
+/** Stroke width of the wall/pillar outline and of the sink outline; null leaves that outline out. */
+export interface BoundaryView { barrier: number | null; sinks: number | null }
 
 export interface LaplacianFrontsComposition {
   kind: "laplacian-fronts";
@@ -102,7 +103,8 @@ export function laplacianFrontsComposition(input: InstrumentInput): LaplacianFro
       mark: { kind: q.markKind as MotifSpec["kind"], size: num("markSize"), petals: 6, opening: 0.25, weight: 1, rotation: 0, variation: 0, retention: num("markRetention") },
     },
     potential: q.potential === "none" ? null : { levels: num("potentialLines"), weight: num("potentialWeight") },
-    boundary: q.boundary === "none" ? null : { weight: num("boundaryWeight") },
+    boundary: q.barrierOutline === false && q.sinkOutline === false ? null
+      : { barrier: q.barrierOutline === false ? null : num("barrierLineWeight"), sinks: q.sinkOutline === false ? null : num("sinkLineWeight") },
   };
 }
 
@@ -228,10 +230,13 @@ export function drawLaplacianFronts(surface: CompositionSurface, recipe: Laplaci
   }
   if (recipe.boundary) {
     const outlines = boundaryPaths(growthLayout(snapshots.params as GrowthSpec, snapshots.seed));
-    const ink: PathMaterialSpec = { kind: "ink", weight: recipe.boundary.weight, spacing: 4, phase: 0, phaseSpread: 0, levelRamp: 0, retention: 1,
-      mark: { kind: "dot", size: 1, petals: 6, opening: 0, weight: 1, rotation: 0, variation: 0, retention: 1 } };
-    // Walls take the first palette tone, sinks the last.
-    strokeWith(surface, outlines.map((path) => ({ ...path, tone: path.level === 0 ? 0 : RAMP - 1 })), consumers.boundary ?? pathMaterial(ink, ramp), run);
+    const ink = (weight: number): PathMaterialSpec => ({ kind: "ink", weight, spacing: 4, phase: 0, phaseSpread: 0, levelRamp: 0, retention: 1,
+      mark: { kind: "dot", size: 1, petals: 6, opening: 0, weight: 1, rotation: 0, variation: 0, retention: 1 } });
+    // Walls and pillars (level 0) take the first palette tone, sinks (level 1) the last; each has its own weight.
+    const wanted = (path: Path): boolean => (path.level === 0 ? recipe.boundary!.barrier : recipe.boundary!.sinks) !== null;
+    const tinted = outlines.filter(wanted).map((path) => ({ ...path, tone: path.level === 0 ? 0 : RAMP - 1 }));
+    const walls = pathMaterial(ink(recipe.boundary.barrier ?? 1), ramp), sinks = pathMaterial(ink(recipe.boundary.sinks ?? 1), ramp);
+    strokeWith(surface, tinted, consumers.boundary ?? ((s, path, r) => (path.level === 0 ? walls : sinks)(s, path, r)), run);
   }
   if (recipe.potential) {
     const levels = Array.from({ length: recipe.potential.levels }, (_, k) => (k + 1) / (recipe.potential!.levels + 1));

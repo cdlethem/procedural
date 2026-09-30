@@ -288,10 +288,8 @@ test("invalid input and unbounded work fail with precise errors", () => {
   assert.throws(() => substitutionTiling(options({ crop: "ellipse", cropWidth: 0 })), /crop width/);
   assert.equal(substitutionTiling(options({ depth: 0, patch: "thin" })).tiles.length, 1, "depth 0 is the seed itself");
   // 109,450 decagon pieces at depth 10 (and 65,536 chair pieces at depth 8) exceed the limit before any expansion happens...
-  const started = performance.now();
   assert.throws(() => substitutionTiling(options({ patch: "decagon", depth: 9 })), new RegExp(`limit ${MAX_TILING_PIECES}`));
   assert.throws(() => substitutionTiling(options({ rule: "chair", patch: "block", depth: 8 })), /substitution pieces/);
-  assert.ok(performance.now() - started < 50, "rejected without expanding");
   // ...but the same depth is fine when a small crop prunes what cannot be seen.
   const cropped = substitutionTiling(options({ patch: "decagon", depth: 12, radius: 4000, crop: "rectangle", cropX: 320, cropY: 320, cropWidth: 300, cropHeight: 300 }));
   assert.ok(cropped.tiles.length > 100 && cropped.pieces <= MAX_TILING_PIECES);

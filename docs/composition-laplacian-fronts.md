@@ -82,12 +82,11 @@ layout would then be built from `maskDomain`-compatible masks instead of the ana
 ## Controls and groups
 
 Sections: **Seed** (shape, lobes, lobe depth, seed discs), **Placement** (seed X/Y, proportional *Size*: radius and spread, angle),
-**Source**, **Sinks** (proportional *Size*: sink size and ring), **Barrier** (proportional *Widths*: wall width and gap width),
+**Source**, **Sinks** (proportional *Size*: sink size and ring; outline toggle and weight), **Barrier** (proportional *Widths*: wall width and gap width; outline toggle and weight),
 **Growth** (steps, growth bias, surface tension, step size, noise), **Solver** (grid, precision, iterations), **Fronts** (material,
-interval, first/last front, proportional *Line weights*, stitch spacing, bead size, smoothing), **Fill**, **Marks**, **Boundary lines**,
-**Potential lines**. Inline `visibleWhen`: lobes/depth by lobed seed; discs by cluster/necklace; spread by cluster/necklace/bar; angle by
+interval, first/last front, proportional *Line weights*, stitch spacing, bead size, smoothing), **Fill**, **Marks**, **Potential lines**. Inline `visibleWhen`: lobes/depth by lobed seed; discs by cluster/necklace; spread by cluster/necklace/bar; angle by
 lobed/necklace/bar; source controls by source kind; sink and barrier controls by their selects; front controls by front material;
-fill controls by fill; marks controls by marks; boundary weight and potential controls by their selects.
+fill controls by fill; marks controls by marks; the outline toggles by barrier wall/pillars and sinks discs, their weights by the toggles (a chain), and the potential controls by their select. Nothing offered at the defaults is a no-op (test below): the outlines are toggles inside the barrier and sink groups rather than one always-visible select, because at the defaults there is neither.
 
 Slider intervals of the cost drivers (grid 48–112, steps 1–120, solver iterations 100–1000, precision 4–8; growth bias 0–3, tension
 0–40) were narrowed so that the worst slider corner, with every treatment on, prepares in about 2 s or less (table below). Hard bounds
@@ -99,7 +98,7 @@ Steps and Grid. Drawn front vertices ≤ 1,500,000 (message names Front interval
 
 ## Checks
 
-`tests/composition-laplacian-fronts.test.ts` (22 tests), independent expectations throughout: the potential of a disc in a ring against
+`tests/composition-laplacian-fronts.test.ts` (23 tests), independent expectations throughout: the potential of a disc in a ring against
 `ln(r/a)/ln(b/a)` at the cells' effective radii (deviation < 0.02) and an independent residual pass equal to the reported one; maximum
 principle, fixed cells never entered, for every source kind with sinks and barriers; an unconverged solve throws naming the controls; a
 poisoned (NaN) iterate never converges and a one-cell gap solves finite; the speed law (`w = rate(1)²/rate(2) ∈ [1, √2]`, `rate(0) = w`,
@@ -111,7 +110,7 @@ cancellation) for two constructions; prefix property on fronts and ages; palette
 and every structural edit, seed, and hidden-control-free edit recompute or reuse as declared; extension and checkpoint replay; cooperative
 preparation with cancellation leaving nothing cached; layout classification, dropped seeds, pillar prefix stability; sinks and one-sided
 sources bend growth; tips are frontier speed maxima pointing outward, ages increase outward, equipotentials nest; consumer replacement;
-boundary outline areas; bounds naming controls; the slider corner of every cost driver validates, runs to its last step within its residual and draws, while a hard-limit setting beyond every slider still validates and one beyond the work bound names its controls.
+boundary outline areas; from the defaults every select option and toggle either changes the drawing or is hidden there; bounds naming controls; the slider corner of every cost driver validates, runs to its last step within its residual and draws, while a hard-limit setting beyond every slider still validates and one beyond the work bound names its controls.
 
 Mutations confirmed to fail (each by at least one test): growth bias ignored; a non-converged solve accepted; excess fill dropped;
 surface-tension sign flipped; staircase weight removed; reached-source stop removed; hidden controls entering the construction key; NaN
@@ -137,6 +136,16 @@ in both orders. Defects found by looking and fixed:
 - lattice anisotropy: on a plain disc with η ≥ 2 and little noise the fingers align to the grid axes, and η = 0 gives a slightly
   octagonal offset (22.5° radius 4.5% above 0°). Not fixed: it is a property of the square grid and the cell-wise flux estimate;
   noise, off-axis lobes and finer grids reduce it (stated in the guide).
+
+### Real-interface option sweep finding
+
+A sweep in the real interface reported Source = edge, Source = points and Boundary lines = none as identical to the default. The library
+draws all of them differently (distinct recorded call sequences for every select option; `source` edge 6252 calls, points 8704, frame 8812,
+ring 8632), with or without `prepareInstrument` first, so the two source options are not inert and not unwired. What was inert at the
+defaults was *Boundary lines*: the defaults have no wall, pillars or sinks to outline. It is now two toggles inside the Barrier and Sinks
+groups, visible only when there is something to outline. The edge and points sources are also the slowest first preparations (1–3 s on a
+machine at load 38, with the defaults' 80 steps), so a capture taken before preparation settles would show the previous picture; that is a
+hypothesis about the sweep, not something I could reproduce.
 
 ## Timing (Node, null surface, this machine)
 

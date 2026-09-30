@@ -43,14 +43,13 @@ step size, noise, grid, solver settings, steps or the seed recomputes.
 | **Seed** | Seed shape, Lobes, Lobe depth, Seed discs | The starting region: disc, lobed disc, cluster of discs, necklace, bar. Lobes decide where the first tips form. |
 | **Placement** | Seed X/Y, Size (Seed radius, Seed spread), Seed angle | Where the seed sits and how big it is; a seed smaller than the surface tension never grows. |
 | **Source** | Source, Source radius/size/points/side/angle | Where the flux comes from. A ring feeds all sides; one side makes a one-sided dendrite; points make growth lean toward each. |
-| **Sinks** | Sinks, Sink discs, Size (sink size, ring), Sink angle | Absorbers that steal flux: growth leans away from them and leaves bare space around them. |
-| **Barrier** | Barrier, Wall angle/offset, Widths (wall, gap), Wall gaps, Pillars, Pillar size | Insulating walls and pillars; fronts funnel through gaps and split around pillars. |
+| **Sinks** | Sinks, Sink discs, Size (sink size, ring), Sink angle, Outline sinks, Sink line weight | Absorbers that steal flux: growth leans away from them and leaves bare space around them; their outline is drawn unless turned off. |
+| **Barrier** | Barrier, Wall angle/offset, Widths (wall, gap), Wall gaps, Pillars, Pillar size, Outline barrier, Barrier line weight | Insulating walls and pillars, outlined so the reason a front bends is visible; fronts funnel through gaps and split around pillars. |
 | **Growth** | Steps, Growth bias, Surface tension, Step size, Noise | How far it grows; how strongly tips run ahead; how round the tips stay; how finely it follows the flux; how uneven the ground is. |
 | **Solver** | Grid, Solver precision, Solver iterations | Resolution of the potential and front (finer resolves thin fingers, costs much more), and the residual the solve must reach. |
 | **Fronts** | Front material, Front interval, First/Last front, Line weights, Stitch spacing, Bead size, Front smoothing | Which historical fronts are stroked and with what: ink, stitches or beads; each is tinted by its age along the palette. |
 | **Fill** | Fill, Fill opacity, Fill bands | The occupied region as one tone or as age bands (oldest inside). |
 | **Marks** | Marks, Mark shape, Mark size, Mark spacing, Tip threshold, Mark retention | Motifs by age over the region (small and dark where old), or at the tips pointing the way the front runs. |
-| **Boundary lines** | Boundary lines, Boundary weight | Outlines of the walls, pillars and sinks, so the reason a front bends is visible. |
 | **Potential lines** | Potential lines, Potential levels, Potential weight | Equipotential lines of the final field; they crowd where the flux is strong. |
 
 Controls that only matter for a choice are hidden until it is made (lobes only for the lobed seed, wall controls
