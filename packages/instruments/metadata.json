@@ -401,6 +401,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "hinged-panels",
+      "title": "Hinged Panels",
+      "description": "Fold a flat tiling of panels along its shared edges: each hinge has an editable angle, panels move as rigid bodies from an anchored panel, conflicts the tiling cannot close are reported, and the flat crease pattern is a layer of its own.",
+      "category": "3D forms",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/hinged-panels.md",
+      "source": "packages/instruments/src/composition/hinge-draw.ts",
+      "sourceEntry": "drawHingedPanels",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "gesture-scores",
       "title": "Gesture Scores",
       "description": "Replay a recorded hand movement with its timing and pressure as a broad bristle brush, a lagging fall of sand and glyphs along the path; one time window and smoothing reshape all three.",
