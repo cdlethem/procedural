@@ -336,6 +336,18 @@ export function auditInstrument(id: string): InstrumentAudit {
     const parameter = item.parameters.find((entry) => entry.key === key)!, oracle = oracleFor(parameter);
     const set: Sample[] = (relevance.get(key) ?? []).map((relevant, index) => ({ values: usable[index].values, relevant }));
     for (const values of samples) { const relevant = oracle(values); if (relevant !== undefined) set.push({ values, relevant }); }
+    // One-at-a-time moves off the defaults: a gate such as "grains > 0" shows up when a number leaves the
+    // value that disables the control, which random configurations rarely isolate.
+    for (const driver of [...drivers, ...numericDrivers]) {
+      if (driver.key === key) continue;
+      const moves = driver.type === "number" ? [driver.min ?? driver.hardMin!, driver.max ?? driver.hardMax!] : valuesOf(driver);
+      for (const move of moves) {
+        if (move === defaults.params[driver.key]) continue;
+        const values = { ...defaults.params, [driver.key]: move };
+        const relevant = oracle(values);
+        if (relevant !== undefined) set.push({ values, relevant });
+      }
+    }
     training.set(key, set);
   }
   for (const key of pending) {

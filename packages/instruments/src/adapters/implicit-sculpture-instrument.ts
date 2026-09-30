@@ -1,7 +1,7 @@
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { choice, numeric, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 const withCondition = (parameter: Parameter, visibleWhen?: Condition): Parameter => visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const integerKeys = new Set(["bores", "cells", "branches", "twigs", "iterations", "repeatX", "repeatY", "repeatZ", "levels", "pointCount", "steps", "meshDetail", "slices"]);
 const n = (key: string, label: string, description: string, min: number, max: number, step: number,
@@ -94,7 +94,7 @@ const parameters: Parameter[] = [
   flag("silhouette", "Silhouette", "Draw the outline and the edges where a nearer part of the surface hides a farther one, from the extracted mesh with hidden-line removal."),
   flag("creases", "Creases", "Draw sharp edges of the extracted mesh where neighbouring faces meet at more than the crease angle."),
   n("creaseAngle", "Crease angle", "Smallest dihedral angle drawn as an edge, degrees; a cube's edges are 90.", 10, 90, 1, 1, 179, creased),
-  select("sliceAxis", "Slice axis", "The axis the slice planes are stacked along.", [["x", "Left-right"], ["y", "Vertical"], ["z", "Front-back"]]),
+  select("sliceAxis", "Slice axis", "The axis the slice planes are stacked along.", [["x", "Left-right"], ["y", "Vertical"], ["z", "Front-back"]], { slices: { gte: 1 } }),
   n("slices", "Slices", "Evenly spaced planar sections of the extracted mesh drawn as contour lines, hidden where the solid covers them. 0 for none.", 0, 40, 1, 0, 120),
   select("hiddenLines", "Hidden lines", "What happens to line work behind the solid: dropped, or drawn faint.", [["drop", "Drop"], ["faint", "Faint"]]),
   n("lineWeight", "Outline weight", "Thickness of silhouette and crease lines.", 0.2, 3, 0.05, 0, 50),

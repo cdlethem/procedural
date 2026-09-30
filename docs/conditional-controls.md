@@ -201,6 +201,16 @@ therefore stay visible: `adaptive-compartments` / `connected-value-regions` `kee
 configuration made it matter, so it is reported irrelevant rather than conditional on
 `retained < 1`), `crossing-lace` overlay `near`, `inversion-gardens` `retention` and `weight`.
 
+A follow-up run on an idle machine added one-at-a-time moves off the defaults to the samples (so a
+gate such as `grains > 0` is seen) and proved `implicit-sculpture.sliceAxis` (`slices >= 1`) and
+`point-clouds.dispersionBias` (`dispersion > 0`). It did not prove: `surface-growth.grainMark` /
+`grainSize` (the fit `grains >= 1` is right on the drawing, but hiding it would hide controls whose
+existing conditions name it as a driver, so it was rejected); `point-clouds` `thinRule` and the
+focus controls, `adaptive-compartments` / `connected-value-regions` `keepBy`, `crossing-lace`
+(no control called `near`), `visibility-drawing` `crease` (relevant at the default), `hinged-panels`
+`lines`, `cell-division` `boundary` and `roads-parcels` `deadEnds`: no single move off the
+defaults made these matter, and the random fit found no short explanation.
+
 The audit found two inline conditions from earlier waves that hide a control that matters:
 `hinged-panels.perspective` and `surface-growth.backFaces` / `faceOpacity`. They are not changed
 here.

@@ -71,7 +71,7 @@ export const pointCloudsParameters: Parameter[] = [
   flag("cutFlip", "Keep the other side", "Keep the high-coordinate side of the plane instead of the low.", cutting),
 
   n("dispersion", "Dispersion", "Every point moves by a fixed random offset of up to this many local point spacings, blurring the surface into a shell of grains. 0 leaves points exactly on the surface.", 0, 3, 0.01, 0, 20),
-  n("dispersionBias", "Along normals", "0 scatters points in every direction; 1 pushes them only in and out along the surface normal, thickening a skin without smearing its outline sideways.", 0, 1, 0.01, 0, 1),
+  n("dispersionBias", "Along normals", "0 scatters points in every direction; 1 pushes them only in and out along the surface normal, thickening a skin without smearing its outline sideways.", 0, 1, 0.01, 0, 1, { dispersion: { gt: 0 } }),
 
   select("mark", "Mark", "What is drawn at each point: a round grain, a ring, a rosette glyph, an arrow or a short stroke along an axis, or a disc lying on the surface normal (seen edge-on it thins to a sliver). None keeps only links and outline.",
     [["disc", "Disc on normal"], ["grain", "Grain"], ["stroke", "Stroke"], ["arrow", "Arrow"], ["ring", "Ring"], ["rosette", "Rosette"], ["none", "None"]]),
