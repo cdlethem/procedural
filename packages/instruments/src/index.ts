@@ -245,7 +245,7 @@ export { dryBristlesComposition, dryBristlesPlan, dryBristlesStrokes, drawDryBri
 export type { PolygonWatercolorComposition, PolygonWatercolorConsumers, WashInk, WashPainter } from "./composition/polygon-watercolor.js";
 export { polygonWatercolorComposition, polygonWatercolorParent, polygonWatercolorPasses, drawPolygonWatercolor, preparePolygonWatercolor, washPainter, washTone } from "./composition/polygon-watercolor.js";
 export type { WashBoundary, WashDivergence, WashEdge, WashLaw, WashOptions, WashOutline, WashPass, WashPasses, WashPatches } from "./composition/wash.js";
-export { WASH_LIMITS, checkWashOptions, prepareWashPasses, washLaw, washOffset, washOutline, washParent, washPassCount, washPasses, washPatch, washSide, washWork } from "./composition/wash.js";
+export { WASH_LIMITS, checkWashOptions, prepareWashPasses, washBroadest, washLaw, washOctaves, washOffset, washOutline, washParent, washPassCount, washPasses, washPatch, washSide, washWork } from "./composition/wash.js";
 export type { WashParent, WashPlacement, WashShape, WashWord } from "./composition/wash-shapes.js";
 export { washParentDomain, washShapes, washWords } from "./composition/wash-shapes.js";
 export type {
@@ -253,7 +253,7 @@ export type {
 } from "./composition/types.js";
 export { substitutionTiling, tilingRules, tilingEdgePaths, tileAncestorId, MAX_TILING_DEPTH, MAX_TILING_PIECES } from "./composition/tilings.js";
 export { tileFill, tileTone, tonedTiles, tonedEdges, selectedVertices, shownTiles, insetPolygon, drawTiling } from "./composition/tiling-materials.js";
-export { planarRegion, planarDomain, ringsDomain, locateInDomain, domainClearance, domainContains, domainRings, domainUnion, domainIntersection, domainDifference, domainXor,
+export { planarRegion, planarDomain, ringsDomain, ringsDomainClipped, locateInDomain, domainClearance, domainContains, domainRings, domainUnion, domainIntersection, domainDifference, domainXor,
   unionDomains, emptyDomain, rectangleRegion, rectangleDomain, textDomain, keyholeRing, keyholeJoin, keyholeRings, PlanarError, PLANAR_LIMITS } from "./composition/domains.js";
 export type { PlanarRegion, PlanarDomain, PlanarRegionData, PlanarShape, PlanarOptions, RepairOptions, TextDomainOptions, DomainLocation, Fill, PlanarErrorCode } from "./composition/domains.js";
 export { offsetDomain, sweepDomain, shadowDomain } from "./composition/domains-offset.js";
