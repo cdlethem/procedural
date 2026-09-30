@@ -1,6 +1,6 @@
 # @procedurals/instruments
 
-The current tree provides 173 editable p5.js study IDs: 155 canonical instruments, including 14 shared discovery families (the released 0.2.2 artifacts contain the earlier 117 IDs / 99 canonical instruments). It uses `@procedurals/javascript` 0.2.2 operations; this package supplies current drawing constructions and guides, **not** new operation certification or a portable recipe executor. The package does not bundle p5.js or own a canvas, user documents, storage, or compositing.
+The current tree provides 174 editable p5.js study IDs: 156 canonical instruments, including 14 shared discovery families (the released 0.2.2 artifacts contain the earlier 117 IDs / 99 canonical instruments). It uses `@procedurals/javascript` 0.2.2 operations; this package supplies current drawing constructions and guides, **not** new operation certification or a portable recipe executor. The package does not bundle p5.js or own a canvas, user documents, storage, or compositing.
 
 ## Install and draw
 
