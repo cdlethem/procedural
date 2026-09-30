@@ -27,7 +27,7 @@ const marked: Condition = { mark: ["dot", "rings", "rosette", "arrow"] };
 const parameters: Parameter[] = [
   select("layout", "Emitter layout", "How the emitters are arranged around the center: evenly on a ring, evenly along a line, or scattered in a disc (the seed scatters them; adding one keeps the others).", emitterLayouts),
   n("emitters", "Emitters", "Sources where agents are born. A single emitter sits exactly at the center. More emitters make more colonies that meet and compete for the same chemical.", 1, 8, 1, 1, CHEMOTAXIS_LIMITS.maxEmitters),
-  n("agents", "Agents per emitter", "Agents born at each emitter. Emitters × agents may not exceed 2,400; the trajectory history keeps four values per agent per step.", 10, 300, 1, 1, 1000),
+  n("agents", "Agents per emitter", "Agents born at each emitter. Emitters × agents may not exceed 2,400; the trajectory history keeps four values per agent per step, so the slider stops where every slider at its maximum still fits (typing a larger number is allowed within the limits).", 10, 150, 1, 1, 1000),
   n("strengthTaper", "Strength taper", "How much weaker the last emitter is than the first: 0 gives every emitter the same strength; 1 makes the last one lay no chemical at all. Strength scales the deposit of an emitter's agents and its beacon.", 0, 1, 0.01, 0, 1),
   n("release", "Release", "Steps over which the agents are born, one emitter after another in turn. 0 starts the whole population at once; a longer release streams agents out.", 0, 200, 1, 0, CHEMOTAXIS_LIMITS.maxSteps),
   n("lifespan", "Lifespan", "Steps an agent acts before it dies. 0 lives for ever. When every agent has died and no emitter leaks, the chemical decays away and the drawing ends.", 0, 400, 1, 0, CHEMOTAXIS_LIMITS.maxSteps),

@@ -5,7 +5,7 @@ import {
   barrierMask, barrierThickness, bundledBarrier, canPrepareInstrument, checkChemotaxis, checkSimulation, chemicalField, chemotacticProducts, chemotacticSnapshots,
   chemotacticTrailsComposition, chemotaxisAgents, colonyGeometry, barrierBlocks, chemotaxisCache, chemotaxisRunOptions, chemotaxisSimulation, chemotaxisSnapshots, chemotaxisTrails,
   contourLevels, createInstrument, drawChemotacticTrails, drawInstrument, emitterLayout, fieldContourPaths, inspectorItems, prepareChemotaxis, prepareInstrument,
-  relaxField, runChemotaxis, sampleField, stateAt, visibleParameters, CHEMOTAXIS_ARENA, CHEMOTAXIS_LIMITS, SENSE_FLOOR,
+  definition, validateInstrument, relaxField, runChemotaxis, chemotaxisStepWork, totalAgents, sampleField, stateAt, visibleParameters, CHEMOTAXIS_ARENA, CHEMOTAXIS_LIMITS, SENSE_FLOOR,
   type ChemotaxisConstruction, type ChemotaxisSnapshots, type CompositionSurface, type DrawingContext,
 } from "../dist/index.js";
 import { drawFingerprint } from "./helpers/draw-fingerprint.js";
@@ -444,4 +444,28 @@ test("scatter emitters keep clear of a solid barrier, pillars keep clear of the 
     }
   }
   assert.throws(() => colonyGeometry({ ...createInstrument("chemotactic-trails").params, barrier: "island", barrierSize: 200 } as never, 1), /Emitter 1 lies inside the barrier/);
+});
+
+test("every numeric control at its slider minimum and maximum (each alone, all together) is admitted, draws, and stays within the declared work bound", () => {
+  const item = definition("chemotactic-trails");
+  const numeric = item.parameters.filter((p) => p.type === "number");
+  const base = createInstrument("chemotactic-trails");
+  const check = (label: string, values: Record<string, number>) => {
+    const input = { ...base, params: { ...base.params, ...values } };
+    validateInstrument(input);
+    const recipe = chemotacticTrailsComposition(input);
+    const snaps = chemotacticSnapshots(recipe);
+    const c = recipe.construction;
+    const bound = 4 * c.grid * c.grid + 8 * totalAgents(c) + 8 + recipe.steps * chemotaxisStepWork(c);
+    assert.ok(snaps.work <= bound && bound <= CHEMOTAXIS_LIMITS.maxWork, `${label}: work ${snaps.work} vs declared ${bound}`);
+    drawChemotacticTrails(new Recorder(), recipe);
+  };
+  const allMin: Record<string, number> = {}, allMax: Record<string, number> = {};
+  for (const p of numeric) {
+    allMin[p.key] = p.min!; allMax[p.key] = p.max!;
+    check(`${p.key} at min`, { [p.key]: p.min! });
+    check(`${p.key} at max`, { [p.key]: p.max! });
+  }
+  check("all minimums", allMin);
+  check("all maximums", allMax);
 });
