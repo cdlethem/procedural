@@ -479,6 +479,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "collision-scores",
+      "title": "Collision Scores",
+      "description": "Discs bounce in a container and the record of every contact becomes the drawing: trails with exact corners at each bounce, marks sized by impulse, rays along the bounce angles and a graph of who met whom, all read from one deterministic log.",
+      "category": "Motion",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/collision-scores.md",
+      "source": "packages/instruments/src/composition/collision-draw.ts",
+      "sourceEntry": "drawCollisionScores",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "pixel-sorting",
       "title": "Pixel Sorting",
       "description": "Dissolve a bundled image into ordered streaks: pick the scan direction, the value interval that selects runs, the sort key and order, and a protected region that stays exact; drawn as merged vector bars or stitch-like streaks, with run outlines from a path material.",

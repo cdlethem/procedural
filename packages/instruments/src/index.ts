@@ -50,6 +50,8 @@ import { dryBristlesDefinition } from "./adapters/dry-bristles-instrument.js";
 import { drawDryBristles, dryBristlesComposition, prepareDryBristles } from "./composition/dry-bristles.js";
 import { polygonWatercolorDefinition } from "./adapters/polygon-watercolor-instrument.js";
 import { drawPolygonWatercolor, polygonWatercolorComposition, polygonWatercolorUsesSeed, preparePolygonWatercolor } from "./composition/polygon-watercolor.js";
+import { collisionScoresDefinition } from "./adapters/collision-scores-instrument.js";
+import { collisionScoresComposition, collisionScoresUsesSeed, drawCollisionScores, prepareCollisionScores } from "./composition/collision-draw.js";
 import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
@@ -368,6 +370,18 @@ export type { PointGridOptions, PointHit } from "./composition/spatial-index.js"
 export { PointGrid, MAX_GRID_CELLS } from "./composition/spatial-index.js";
 export type { LatticeWalkOptions, LatticeStep, AngleWalkOptions, AngleStep } from "./composition/walks.js";
 export { latticeWalkStep, angleWalkStep, LATTICE_DIRECTIONS } from "./composition/walks.js";
+export type { WallSet as CollisionWalls } from "./composition/collision-walls.js";
+export { buildWalls, timeToSegment, timeToReach, insideContainer, distanceToWalls, wallsNear, APPROACH_EPS } from "./composition/collision-walls.js";
+export type { Bodies as CollisionBodyArrays, Physics as CollisionPhysics, PairOutcome, WallOutcome, FrameLimits } from "./composition/collision-solver.js";
+export { pairLaw, wallLaw, solveFrame, EVENT, EVENT_STRIDE, KIND_PAIR, KIND_WALL, KIND_EMIT, REST_SPEED, TIE } from "./composition/collision-solver.js";
+export type { ContainerShape, BarrierKind as CollisionBarrierKind, ContainerSpec, EmitterFootprint } from "./composition/collision-containers.js";
+export { bundledContainer, containerRings, containerShapes, barrierKinds as collisionBarrierKinds, barriers as collisionBarriers } from "./composition/collision-containers.js";
+export type { EmitterMode, MassLaw, CollisionBodies, CollisionEmitter, CollisionSetup, CollisionModel, CollisionState, CollisionFrame, CollisionBody, CollisionTrail,
+  Contact as CollisionContact, CollisionScore, CollisionRunOptions } from "./composition/collision.js";
+export { collisionModel, collisionSimulation, collisionSnapshots, prepareCollisionSnapshots, hasCollisionSnapshots, collisionScore, collisionScoreOfModel,
+  emitterModes, COLLISION_LIMITS } from "./composition/collision.js";
+export type { CollisionColorBy, CollisionView, CollisionScoresRecipe, ContactSite, DiscSite, TrailPath, CollisionConsumers } from "./composition/collision-draw.js";
+export { collisionScoresComposition, collisionScoresUsesSeed, collisionScoreOfRecipe, drawCollisionScores, prepareCollisionScores } from "./composition/collision-draw.js";
 export type { CyclicRule, CyclicConstruction, CyclicState, CyclicStep, InitialSpec, ObstacleSpec, NeighbourhoodShape, StampName } from "./composition/cyclic-rule.js";
 export { cyclicSimulation, neighbourOffsets, obstacleRuns, lettersObstacle, checkConstruction as checkCyclicConstruction, CYCLIC_LIMITS, WALL as CYCLIC_WALL } from "./composition/cyclic-rule.js";
 export type { CyclicGrid, CyclicFrame, GridGeometry, StateRegion, FrontPath, FrontOptions, CoreSite } from "./composition/cyclic-structure.js";
@@ -458,7 +472,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -590,6 +604,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "connected-value-regions": [0x231f24, 0xb5452e, 0xe0a13a, 0x2f6f7a, 0xefe6d2],
   "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "crossing-lace": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
+  "collision-scores": [0x1f2733, 0xc4452b, 0x2f7f8f, 0xd9a441, 0x5d8a55, 0x8b5190],
   "cyclic-fronts": [0x1c2b4f, 0x2e8b9d, 0xe6be5a, 0xd9553b, 0x8a2f7a],
   "river-ribbons": [0x1f5f73, 0x6b5636, 0x2f7f86, 0xc9a86a],
   "region-stitch": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0x7f9a4f, 0x8b4a6f],
@@ -645,6 +660,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "hyperbolic-gardens") return drawHyperbolicGardens(context, hyperbolicGardensComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
+  if (input.technique === "collision-scores") return drawCollisionScores(context, collisionScoresComposition(input));
   if (input.technique === "polygon-watercolor") return drawPolygonWatercolor(context, polygonWatercolorComposition(input));
   if (input.technique === "inversion-gardens") return drawInversionGardens(context, inversionGardensComposition(input));
   if (input.technique === "random-walk-fronts") return drawWalkFronts(context, randomWalkFrontsComposition(input));
@@ -667,7 +683,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -701,6 +717,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "pattern-competition") return preparePatternCompetition(patternCompetitionComposition(input), cancelled);
   if (input.technique === "stroke-relief") return prepareStrokeRelief(strokeReliefComposition(input), cancelled);
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
+  if (input.technique === "collision-scores") return prepareCollisionScores(collisionScoresComposition(input), cancelled);
   if (input.technique === "region-stitch") return prepareStitches(regionStitchComposition(input), cancelled);
   if (input.technique === "hyperbolic-gardens") return prepareHyperbolicGardens(hyperbolicGardensComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
@@ -755,6 +772,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "outline-type": return outlineTypeUsesSeed(q);
     case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
+    case "collision-scores": return collisionScoresUsesSeed(q);
     case "hyperbolic-gardens": return hyperbolicGardensUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
     case "region-stitch": return regionStitchUsesSeed(q);
