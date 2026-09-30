@@ -132,15 +132,15 @@ const terraceDefaults = {count: 38,
   outlined: true};
 /** Trajectory studies share their whole path setup; only the material's defaults differ. */
 const pathGroups: ControlGroup[] = [
-  { label: "Paths", controls: ["lines", "spacing", "variation", "sourcePoints"] },
-  { label: "Placement", controls: ["sourceCenterX", "sourceCenterY", "sourceSpan", "direction"] },
-  { label: "Bend", controls: ["waves", "amplitude", "forwardBend", "disorder"] },
-  { label: "Material", controls: ["material", "weight", "sampleSpacing",
+  { label: "Paths", stage: "form", controls: ["lines", "spacing", "variation", "sourcePoints"] },
+  { label: "Placement", stage: "frame", controls: ["sourceCenterX", "sourceCenterY", "sourceSpan", "direction"] },
+  { label: "Bend", stage: "process", controls: ["waves", "amplitude", "forwardBend", "disorder"] },
+  { label: "Material", stage: "material", controls: ["material", "weight", "sampleSpacing",
     { label: "Size", controls: ["markLength", "markWidth"], proportional: true }, "markAngle",
     { label: "Breaks", controls: ["gaps", "omitChance"] }] },
 ];
 /** Hull studies draw their hulls, fill and source dots with the same switches. */
-const hullDrawing: ControlGroup = { label: "Drawing", controls: ["outlined", "weight", "filled",
+const hullDrawing: ControlGroup = { label: "Drawing", stage: "material", controls: ["outlined", "weight", "filled",
   { label: "Source dots", controls: ["showDots", "inset"] }] };
 export const pathMaterialInstrumentDefinitions: StudioDefinition[] = [
   { id: "stitched-contours", title: "Stitched contours", description: "Arc-length material sewn along independently seeded local trajectories.",
@@ -174,18 +174,18 @@ export const pathMaterialInstrumentDefinitions: StudioDefinition[] = [
   { id: "scatter-envelopes", title: "Scatter envelopes", description: "Convex hulls around seeded sites in editable local supports and separate groups.",
     parameters: scatterParameters,
     controlGroups: [
-      { label: "Population", controls: ["count", "support", "innerRing"] },
-      { label: "Groups", controls: ["clusterCount", "clusterSpread"] },
-      { label: "Placement", controls: ["centerX", "centerY", "extent", "aspect", "direction"] },
+      { label: "Population", stage: "form", controls: ["count", "support", "innerRing"] },
+      { label: "Groups", stage: "process", controls: ["clusterCount", "clusterSpread"] },
+      { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "extent", "aspect", "direction"] },
       hullDrawing,
     ],
     defaults: scatterDefaults, validate: q => validatePathMaterialInstrument("scatter-envelopes", q) },
   { id: "terraced-islands", title: "Terraced islands", description: "Independently seeded islands, each with scaled nested copies of its actual convex hull.",
     parameters: terraceParameters,
     controlGroups: [
-      { label: "Islands", controls: ["islands", "spread", "count", "disorder"] },
-      { label: "Placement", controls: ["centerX", "centerY", "radius", "aspect", "direction"] },
-      { label: "Terraces", controls: ["terraces", "terraceScale", "terraceSpacing"] },
+      { label: "Islands", stage: "form", controls: ["islands", "spread", "count", "disorder"] },
+      { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "radius", "aspect", "direction"] },
+      { label: "Terraces", stage: "process", controls: ["terraces", "terraceScale", "terraceSpacing"] },
       hullDrawing,
     ],
     defaults: terraceDefaults, validate: q => validatePathMaterialInstrument("terraced-islands", q) },

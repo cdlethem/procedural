@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  createInstrument, definitions, inspectorItems, validateControlGroups, visibilityDrivers, visibleParameters,
-  type ControlGroup, type InspectorItem, type InstrumentDefinition, type Parameter,
+  CONTROL_STAGES, createInstrument, definitions, featuredControls, inspectorItems, stageItems, validateControlGroups, validateFeatured, visibilityDrivers, visibleParameters,
+  type ControlGroup, type ControlStage, type InspectorItem, type InstrumentDefinition, type Parameter,
 } from "../dist/index.js";
 import { resolveControlGroups } from "../dist/control-groups.js";
 
@@ -17,40 +17,40 @@ const rejects = (parameters: Parameter[], groups: readonly ControlGroup[], patte
 
 test("every control belongs to exactly one existing, non-empty group", () => {
   const [a, b] = [length("a"), length("b")];
-  rejects([a, b], [{ label: "One", controls: ["a"] }], /leaves b ungrouped/);
-  rejects([a, b], [{ label: "One", controls: ["a", "b"] }, { label: "Two", controls: ["a"] }], /a belongs to more than one group/);
-  rejects([a, b], [{ label: "One", controls: ["a", "b", "c"] }], /unknown control c/);
-  rejects([{ ...a, group: "Other" }, b], [{ label: "One", controls: ["a", "b"] }], /control a authors group "Other"/);
-  rejects([a, b], [{ label: "One", controls: "ab" as unknown as string[] }], /One has no controls/);
+  rejects([a, b], [{ label: "One", stage: "form", controls: ["a"] }], /leaves b ungrouped/);
+  rejects([a, b], [{ label: "One", stage: "form", controls: ["a", "b"] }, { label: "Two", stage: "form", controls: ["a"] }], /a belongs to more than one group/);
+  rejects([a, b], [{ label: "One", stage: "form", controls: ["a", "b", "c"] }], /unknown control c/);
+  rejects([{ ...a, group: "Other" }, b], [{ label: "One", stage: "form", controls: ["a", "b"] }], /control a authors group "Other"/);
+  rejects([a, b], [{ label: "One", stage: "form", controls: "ab" as unknown as string[] }], /One has no controls/);
   // A published definition (group already derived) validates again.
-  validateControlGroups(probe([{ ...a, group: "One" }, b], [{ label: "One", controls: ["a", "b"] }]));
-  rejects([a, b], [{ label: "One", controls: ["a", "b"] }, { label: "Two", controls: [] }], /Two has no controls/);
+  validateControlGroups(probe([{ ...a, group: "One" }, b], [{ label: "One", stage: "form", controls: ["a", "b"] }]));
+  rejects([a, b], [{ label: "One", stage: "form", controls: ["a", "b"] }, { label: "Two", stage: "form", controls: [] }], /Two has no controls/);
   rejects([a, b], [], /at least one group/);
 });
 
 test("labels are unique among siblings, free of the path separator, and nest at most three deep", () => {
   const [a, b] = [length("a"), length("b")];
-  rejects([a, b], [{ label: "One", controls: ["a"] }, { label: "One", controls: ["b"] }], /repeats group One/);
-  rejects([a, b], [{ label: "A/B", controls: ["a", "b"] }], /free of "\/"/);
-  rejects([a, b], [{ label: " One", controls: ["a", "b"] }], /trimmed/);
-  rejects([a, b], [{ label: "1", controls: ["a", { label: "2", controls: [{ label: "3", controls: [{ label: "4", controls: ["b"] }] }] }] }],
+  rejects([a, b], [{ label: "One", stage: "form", controls: ["a"] }, { label: "One", stage: "form", controls: ["b"] }], /repeats group One/);
+  rejects([a, b], [{ label: "A/B", stage: "form", controls: ["a", "b"] }], /free of "\/"/);
+  rejects([a, b], [{ label: " One", stage: "form", controls: ["a", "b"] }], /trimmed/);
+  rejects([a, b], [{ label: "1", stage: "form", controls: ["a", { label: "2", controls: [{ label: "3", controls: [{ label: "4", controls: ["b"] }] }] }] }],
     /1\/2\/3\/4 is nested deeper than 3/);
   // The same label under different parents is fine.
-  validateControlGroups(probe([a, b], [{ label: "One", controls: [{ label: "Size", controls: ["a"] }] }, { label: "Two", controls: [{ label: "Size", controls: ["b"] }] }]));
+  validateControlGroups(probe([a, b], [{ label: "One", stage: "form", controls: [{ label: "Size", controls: ["a"] }] }, { label: "Two", stage: "form", controls: [{ label: "Size", controls: ["b"] }] }]));
 });
 
 test("proportional groups hold two or more non-negative numbers and nothing else", () => {
   const [a, b] = [length("a"), length("b")];
-  rejects([a, b], [{ label: "Size", controls: ["a"], proportional: true }, { label: "Rest", controls: ["b"] }], /at least two controls/);
-  rejects([a, select("b", ["x", "y"])], [{ label: "Size", controls: ["a", "b"], proportional: true }], /b, which is not a number/);
-  rejects([a, length("b", { min: 0, hardMin: -10 })], [{ label: "Size", controls: ["a", "b"], proportional: true }], /b, which can be negative/);
-  rejects([a, b, length("c")], [{ label: "Size", controls: ["a", "b", { label: "Inner", controls: ["c"] }], proportional: true }], /cannot contain a nested group/);
-  validateControlGroups(probe([a, b], [{ label: "Size", controls: ["a", "b"], proportional: true }]));
+  rejects([a, b], [{ label: "Size", stage: "form", controls: ["a"], proportional: true }, { label: "Rest", stage: "form", controls: ["b"] }], /at least two controls/);
+  rejects([a, select("b", ["x", "y"])], [{ label: "Size", stage: "form", controls: ["a", "b"], proportional: true }], /b, which is not a number/);
+  rejects([a, length("b", { min: 0, hardMin: -10 })], [{ label: "Size", stage: "form", controls: ["a", "b"], proportional: true }], /b, which can be negative/);
+  rejects([a, b, length("c")], [{ label: "Size", stage: "form", controls: ["a", "b", { label: "Inner", controls: ["c"] }], proportional: true }], /cannot contain a nested group/);
+  validateControlGroups(probe([a, b], [{ label: "Size", stage: "form", controls: ["a", "b"], proportional: true }]));
 });
 
 test("resolution orders controls by group and derives each slash path", () => {
   const resolved = resolveControlGroups(probe([length("w"), select("mode", ["x", "y"]), length("h"), length("gap")], [
-    { label: "Form", controls: ["mode", { label: "Size", controls: ["w", "h"], proportional: true }, "gap"] },
+    { label: "Form", stage: "form", controls: ["mode", { label: "Size", controls: ["w", "h"], proportional: true }, "gap"] },
   ]));
   assert.deepEqual(resolved.parameters.map((parameter) => [parameter.key, parameter.group]),
     [["mode", "Form"], ["w", "Form/Size"], ["h", "Form/Size"], ["gap", "Form"]]);
@@ -87,6 +87,53 @@ test("for every instrument the inspector tree shows exactly the visible controls
       const expected = visibleParameters(item.id, values).map((parameter) => parameter.key);
       assert.deepEqual(flatten(inspectorItems(item.id, values)), expected, `${item.id} trial ${trial}`);
     }
+  }
+});
+
+test("every top-level group states one of the ordered stages; nested groups inherit it", () => {
+  const [a, b] = [length("a"), length("b")];
+  rejects([a, b], [{ label: "One", controls: ["a", "b"] } as ControlGroup], /top-level group One must state its stage/);
+  rejects([a, b], [{ label: "One", stage: "shape" as ControlStage, controls: ["a", "b"] }], /stage "shape" is not one of form, process, material, color, frame/);
+  rejects([a, b], [{ label: "One", stage: "form", controls: ["a", { label: "Inner", stage: "form", controls: ["b"] }] }], /nested group One\/Inner cannot state a stage/);
+  rejects([{ ...a, stage: "material" }, b], [{ label: "One", stage: "form", controls: ["a", "b"] }], /control a authors stage "material"/);
+  assert.deepEqual(CONTROL_STAGES.map((stage) => stage.id), ["form", "process", "material", "color", "frame"]);
+  const resolved = resolveControlGroups(probe([a, b, length("c")], [
+    { label: "Marks", stage: "material", controls: ["a", { label: "Scale", controls: ["b"] }] },
+    { label: "Sites", stage: "form", controls: ["c"] },
+  ]));
+  assert.deepEqual(resolved.parameters.map((parameter) => [parameter.key, parameter.stage]), [["a", "material"], ["b", "material"], ["c", "form"]]);
+});
+
+test("stageItems buckets the visible tree by stage order, keeping declared order inside a stage and omitting empty stages", () => {
+  const input = createInstrument("cell-mosaic");
+  const stages = stageItems("cell-mosaic", input.params);
+  assert.deepEqual(stages.map((stage) => stage.stage), ["form", "process", "material", "frame"]);
+  const labels = Object.fromEntries(stages.map((stage) => [stage.stage, stage.items.map((item) => item.kind === "group" ? item.label : item.parameter.key)]));
+  assert.deepEqual(labels.form, ["Sites", "Cells"]);
+  assert.deepEqual(labels.frame, ["Placement"]);
+  assert.ok(stages.every((stage) => stage.items.every((item) => item.kind === "group" && item.stage === stage.stage)));
+  // A stage whose only group hides every control disappears with it.
+  const lace = createInstrument("crossing-lace");
+  const noDiagnostics = stageItems("crossing-lace", { ...lace.params, overlay: "none" });
+  assert.ok(!noDiagnostics.some((stage) => stage.items.some((item) => item.kind === "group" && item.label === "Diagnostics")) ||
+    inspectorItems("crossing-lace", { ...lace.params, overlay: "none" }).some((item) => item.kind === "group" && item.label === "Diagnostics"));
+});
+
+test("featured controls are one to four existing numbers or selects, and fall back to the first form group", () => {
+  const [a, b] = [length("a"), select("b", ["x", "y"])];
+  const groups: ControlGroup[] = [{ label: "One", stage: "form", controls: ["a", "b"] }];
+  const featuredProbe = (featured: string[]) => ({ ...probe([a, b], groups), featured });
+  assert.throws(() => validateFeatured(featuredProbe([])), /one to 4 control keys/);
+  assert.throws(() => validateFeatured(featuredProbe(["a", "b", "a"])), /repeats a/);
+  assert.throws(() => validateFeatured(featuredProbe(["zzz"])), /unknown control zzz/);
+  const toggle: Parameter = { key: "t", label: "t", description: "t", type: "boolean" };
+  assert.throws(() => validateFeatured({ id: "probe", parameters: [a, b, toggle], featured: ["t"] }), /t, which is a boolean/);
+  validateFeatured(featuredProbe(["b", "a"]));
+  for (const item of definitions) {
+    const featured = featuredControls(item.id);
+    assert.ok(featured.length >= 1 && featured.length <= 4, `${item.id} has ${featured.length} featured controls`);
+    for (const parameter of featured) assert.ok(parameter.type === "number" || parameter.type === "select", `${item.id} features ${parameter.key}`);
+    if (!item.featured) for (const parameter of featured) assert.equal(parameter.stage, "form", `${item.id} fallback ${parameter.key} is not a form control`);
   }
 });
 

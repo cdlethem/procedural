@@ -44,12 +44,12 @@ const parameters: Parameter[] = [numeric("sites", "Sites", "Exact number of init
   numeric("finalSize", "Final dot size", "Final-site mark diameter; zero hides them even when dots are enabled.", 0, 14, .25, { hardMin: 0, hardMax: 60 })];
 /** The four relaxed-cell instruments share one control set, so they share one organization. */
 const controlGroups: ControlGroup[] = [
-  { label: "Sites", controls: ["sites", "arrangement", "spread", "disorder"] },
-  { label: "Relaxation", controls: ["iterations", "strength"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["domainWidth", "domainHeight"], proportional: true }, "domainRotation"] },
-  { label: "Cells", controls: ["cellInset", "fillOpacity", "outlineWeight", "facets", "facetOpacity"] },
-  { label: "Echoes", controls: ["echoes", "echoWeight", "alternating"] },
-  { label: "Trails and marks", controls: ["trailWeight", "dots",
+  { label: "Sites", stage: "form", controls: ["sites", "arrangement", "spread", "disorder"] },
+  { label: "Relaxation", stage: "process", controls: ["iterations", "strength"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["domainWidth", "domainHeight"], proportional: true }, "domainRotation"] },
+  { label: "Cells", stage: "form", controls: ["cellInset", "fillOpacity", "outlineWeight", "facets", "facetOpacity"] },
+  { label: "Echoes", stage: "material", controls: ["echoes", "echoWeight", "alternating"] },
+  { label: "Trails and marks", stage: "material", controls: ["trailWeight", "dots",
     { label: "Scale", controls: ["initialSize", "finalSize"], proportional: true }] },
 ];
 const commonDefaults = {sites: 24,

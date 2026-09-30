@@ -97,19 +97,19 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Nutrient", controls: ["source", "sourceAngle", "sourceOffset", "sourceSize", "reserve", "diffusion", "fieldCell"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
-  { label: "Seed cells", controls: ["seedLayout", "seedCount", "seedX", "seedY", "seedSpread", "seedAngle"] },
-  { label: "Growth", controls: [{ label: "Radii", controls: ["startRadius", "divideRadius"], proportional: true }, "uptake", "maxCells"] },
-  { label: "Division", controls: ["split", "orientation", "splitAngle", "orientJitter"] },
-  { label: "Mechanics", controls: ["boundary", "overlap", "stiffness", "relax"] },
-  { label: "Time", controls: ["steps"] },
-  { label: "Age selection", controls: ["ageMin", "ageMax"] },
-  { label: "Color", controls: ["colorBy"] },
-  { label: "Cells", controls: ["cells", "cellFit", "cellWeight"] },
-  { label: "Lineage", controls: ["lineage", "lineageColor", "lineageWeight", "lineageSpacing", "lineageBead"] },
-  { label: "Nutrient lines", controls: ["nutrient", "nutrientLevels", "nutrientWeight"] },
-  { label: "Walls", controls: ["walls", "wallReach", "wallWeight", "hatchSpacing", "hatchAngle", "hatchTwist", "hatchWeight"] },
+  { label: "Nutrient", stage: "form", controls: ["source", "sourceAngle", "sourceOffset", "sourceSize", "reserve", "diffusion", "fieldCell"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
+  { label: "Seed cells", stage: "form", controls: ["seedLayout", "seedCount", "seedX", "seedY", "seedSpread", "seedAngle"] },
+  { label: "Growth", stage: "process", controls: [{ label: "Radii", controls: ["startRadius", "divideRadius"], proportional: true }, "uptake", "maxCells"] },
+  { label: "Division", stage: "process", controls: ["split", "orientation", "splitAngle", "orientJitter"] },
+  { label: "Mechanics", stage: "process", controls: ["boundary", "overlap", "stiffness", "relax"] },
+  { label: "Time", stage: "process", controls: ["steps"] },
+  { label: "Age selection", stage: "process", controls: ["ageMin", "ageMax"] },
+  { label: "Color", stage: "color", controls: ["colorBy"] },
+  { label: "Cells", stage: "form", controls: ["cells", "cellFit", "cellWeight"] },
+  { label: "Lineage", stage: "material", controls: ["lineage", "lineageColor", "lineageWeight", "lineageSpacing", "lineageBead"] },
+  { label: "Nutrient lines", stage: "material", controls: ["nutrient", "nutrientLevels", "nutrientWeight"] },
+  { label: "Walls", stage: "material", controls: ["walls", "wallReach", "wallWeight", "hatchSpacing", "hatchAngle", "hatchTwist", "hatchWeight"] },
 ];
 
 type Values = Record<string, number | string | boolean>;

@@ -82,16 +82,16 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Rule", controls: ["states", "neighbourhood", "range", "threshold"] },
-  { label: "Grid and time", controls: ["columns", "steps"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
-  { label: "Start", controls: ["initial", "density", "seedCount", "seedSize", "stamp", "stampX", "stampY", "stripeWidth", "stripeAngle", "noise"] },
-  { label: "Obstacles", controls: ["obstacles", "obstacleSize", "obstacleCount", "obstacleGap", "obstacleText", "obstacleDraw"] },
-  { label: "Cells", controls: ["fill", "fillOpacity", { label: "Hatching", controls: ["hatchSpacing", "hatchWeight", "hatchAngle"] },
+  { label: "Rule", stage: "form", controls: ["states", "neighbourhood", "range", "threshold"] },
+  { label: "Grid and time", stage: "process", controls: ["columns", "steps"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
+  { label: "Start", stage: "form", controls: ["initial", "density", "seedCount", "seedSize", "stamp", "stampX", "stampY", "stripeWidth", "stripeAngle", "noise"] },
+  { label: "Obstacles", stage: "process", controls: ["obstacles", "obstacleSize", "obstacleCount", "obstacleGap", "obstacleText", "obstacleDraw"] },
+  { label: "Cells", stage: "form", controls: ["fill", "fillOpacity", { label: "Hatching", controls: ["hatchSpacing", "hatchWeight", "hatchAngle"] },
     { label: "Cell mark", controls: ["cellMark", "cellMarkSize", "cellMarkWeight"] }] },
-  { label: "Fronts", controls: ["fronts", "frontMaterial", "frontColor", "frontWeight", "frontSpacing", "smoothing", { label: "Earlier fronts", controls: ["echoes", "echoSpacing"] }] },
-  { label: "Cores", controls: ["coreMark", "coreReach", { label: "Scale", controls: ["coreSize", "coreWeight"], proportional: true }] },
-  { label: "Color", controls: ["colors"] },
+  { label: "Fronts", stage: "material", controls: ["fronts", "frontMaterial", "frontColor", "frontWeight", "frontSpacing", "smoothing", { label: "Earlier fronts", controls: ["echoes", "echoSpacing"] }] },
+  { label: "Cores", stage: "material", controls: ["coreMark", "coreReach", { label: "Scale", controls: ["coreSize", "coreWeight"], proportional: true }] },
+  { label: "Color", stage: "color", controls: ["colors"] },
 ];
 
 export const cyclicFrontsDefinition: InstrumentDefinition = {

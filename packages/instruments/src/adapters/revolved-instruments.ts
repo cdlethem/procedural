@@ -102,14 +102,14 @@ const annularDefaults = {outer: 160,
   colorMode: "band"};
 
 /** Placement, palette, lighting and edges are shared by every revolved study. */
-const placementGroup: ControlGroup = { label: "Placement", controls: ["offsetX", "offsetY", { label: "Rotation", controls: ["yaw", "pitch", "roll"] }] };
-const paletteGroup: ControlGroup = { label: "Color", controls: ["colorMode", "noiseScale", "noiseDepth"] };
-const facesGroup: ControlGroup = { label: "Faces", controls: ["faces",
+const placementGroup: ControlGroup = { label: "Placement", stage: "frame", controls: ["offsetX", "offsetY", { label: "Rotation", controls: ["yaw", "pitch", "roll"] }] };
+const paletteGroup: ControlGroup = { label: "Color", stage: "color", controls: ["colorMode", "noiseScale", "noiseDepth"] };
+const facesGroup: ControlGroup = { label: "Faces", stage: "material", controls: ["faces",
   { label: "Intensity", controls: ["ambient", "directional"], proportional: true },
   { label: "Direction", controls: ["lightAzimuth", "lightElevation"] }] };
-const edgesGroup: ControlGroup = { label: "Edges", controls: ["edges", "strokeWeight"] };
+const edgesGroup: ControlGroup = { label: "Edges", stage: "material", controls: ["edges", "strokeWeight"] };
 const profileGroups: ControlGroup[] = [
-  { label: "Profile", controls: ["profile", { label: "Size", controls: ["height", "radius"], proportional: true }, "slices",
+  { label: "Profile", stage: "form", controls: ["profile", { label: "Size", controls: ["height", "radius"], proportional: true }, "slices",
     { label: "Caps", controls: ["capStart", "capEnd"] }] },
   placementGroup, paletteGroup, facesGroup, edgesGroup];
 
@@ -132,7 +132,7 @@ export const revolvedInstrumentDefinitions: StudioDefinition[] = [
       toggle("showOuter", "Outer wall", "Include outer wall faces."),
       ...sharedMaterial()],
     controlGroups: [
-      { label: "Solid", controls: [{ label: "Size", controls: ["outer", "inner", "depth"], proportional: true }, "slices",
+      { label: "Solid", stage: "form", controls: [{ label: "Size", controls: ["outer", "inner", "depth"], proportional: true }, "slices",
         { label: "Cells", controls: ["startCell", "visibleCells"] },
         { label: "Face kinds", controls: ["showTop", "showBottom", "showInner", "showOuter"] }] },
       placementGroup, paletteGroup, facesGroup, edgesGroup],

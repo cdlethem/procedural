@@ -104,16 +104,16 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Panels", controls: ["source", { label: "Grid", controls: ["columns", "rows"], proportional: true }, "patch", "depth", "retention"] },
-  { label: "Fold", controls: ["rule", "angle", "direction", "period", "stripeAngle", "phase", "disorder", "amount", "hinges", "hingeAxis", "hingeShare"] },
-  { label: "Closure", controls: ["tree", "anchor", "anchors"] },
-  { label: "Body", controls: ["gap", "thickness"] },
-  { label: "Placement", controls: ["centerX", "centerY", "size", "fit", "roll"] },
-  { label: "View", controls: ["projection", "yaw", "pitch", "perspective"] },
-  { label: "Drawing", controls: ["treatment", "fill", "colorBy", "opacity", { label: "Light", controls: ["shade", "lightAzimuth", "lightElevation"] },
+  { label: "Panels", stage: "form", controls: ["source", { label: "Grid", controls: ["columns", "rows"], proportional: true }, "patch", "depth", "retention"] },
+  { label: "Fold", stage: "process", controls: ["rule", "angle", "direction", "period", "stripeAngle", "phase", "disorder", "amount", "hinges", "hingeAxis", "hingeShare"] },
+  { label: "Closure", stage: "process", controls: ["tree", "anchor", "anchors"] },
+  { label: "Body", stage: "form", controls: ["gap", "thickness"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "size", "fit", "roll"] },
+  { label: "View", stage: "frame", controls: ["projection", "yaw", "pitch", "perspective"] },
+  { label: "Drawing", stage: "material", controls: ["treatment", "fill", "colorBy", "opacity", { label: "Light", controls: ["shade", "lightAzimuth", "lightElevation"] },
     { label: "Hatch", controls: ["hatch", "hatchAngle", "hatchSpacing", "hatchWeight"] }] },
-  { label: "Lines", controls: ["lines", "lineWeight", "hidden", "open"] },
-  { label: "Motif", controls: ["motif", "motifSize", "motifWeight", "motifTurn", "motifVariation"] },
+  { label: "Lines", stage: "material", controls: ["lines", "lineWeight", "hidden", "open"] },
+  { label: "Motif", stage: "material", controls: ["motif", "motifSize", "motifWeight", "motifTurn", "motifVariation"] },
 ];
 
 type Values = Record<string, number | string | boolean>;

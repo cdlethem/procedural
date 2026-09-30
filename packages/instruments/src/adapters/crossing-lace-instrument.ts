@@ -83,19 +83,19 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Paths", controls: ["family",
+  { label: "Paths", stage: "form", controls: ["family",
     { label: "Braid", controls: ["strands", "twists", "depth", "detail"] },
     { label: "Plait", controls: [{ label: "Grid", controls: ["columns", "rows"], proportional: true }, "blocked"] },
     { label: "Fields", controls: ["field", "fieldB", "frequency", "ratio", "levels", "levelStep", "resolution"] },
     { label: "Loops", controls: ["loops", "reach", "wobble", "openShare"] },
     "smoothing"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
-  { label: "Crossings", controls: ["rule", "rankBy", "invert", "exceptions"] },
-  { label: "Strands", controls: ["style", { label: "Line weights", controls: ["widthA", "widthB"], proportional: true }, "casing", "clearance", "minAngle",
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
+  { label: "Crossings", stage: "process", controls: ["rule", "rankBy", "invert", "exceptions"] },
+  { label: "Strands", stage: "material", controls: ["style", { label: "Line weights", controls: ["widthA", "widthB"], proportional: true }, "casing", "clearance", "minAngle",
     { label: "Stations", controls: ["spacing", "stitchPhase"] }, "beadMark"] },
-  { label: "Color", controls: ["coloring", { label: "Palette", controls: ["colorA", "colorB", "casingColor"] }] },
-  { label: "Ends", controls: ["terminal", "terminalSize", "trim"] },
-  { label: "Diagnostics", controls: ["overlay"] },
+  { label: "Color", stage: "color", controls: ["coloring", { label: "Palette", controls: ["colorA", "colorB", "casingColor"] }] },
+  { label: "Ends", stage: "material", controls: ["terminal", "terminalSize", "trim"] },
+  { label: "Diagnostics", stage: "process", controls: ["overlay"] },
 ];
 
 type Values = Record<string, number | string | boolean>;
@@ -144,6 +144,7 @@ export const crossingLaceDefinition: InstrumentDefinition = {
   description: "Interlacing paths woven wherever they really cross: every crossing is found, given an over and an under strand by an explicit rule you can override, and the under strand is cut open around it. A braid knot, a Celtic plait, two contour families or random loops.",
   renderer: "2d",
   parameters, controlGroups,
+  featured: ["columns", "rows", "blocked"],
   defaults: {
     family: "celtic", strands: 3, twists: 4, depth: 0.42, detail: 30,
     columns: 6, rows: 4, blocked: 0.14,

@@ -46,12 +46,12 @@ export const geometryDefinitions: StudioDefinition[] = [
       numeric("outlineWeight", "Outline weight", "Width of the closed contour stroke.", .1, 12, .1),
       numeric("fanOpacity", "Fan opacity", "Opacity of triangle fans.", 0, 255, 1)],
     controlGroups: [
-      { label: "Layout", controls: ["layout", "loopCount", "columns",
+      { label: "Layout", stage: "form", controls: ["layout", "loopCount", "columns",
         { label: "Spacing", controls: ["spacingX", "spacingY"], proportional: true }, "nestedScale"] },
-      { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["radiusX", "radiusY"], proportional: true }] },
-      { label: "Contour", controls: ["knotCount", "subdivisions",
+      { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["radiusX", "radiusY"], proportional: true }] },
+      { label: "Contour", stage: "form", controls: ["knotCount", "subdivisions",
         { label: "Lobes", controls: ["lobes", "lobeDepth", "phase"] }] },
-      { label: "Treatment", controls: ["treatment", "outlineWeight",
+      { label: "Treatment", stage: "material", controls: ["treatment", "outlineWeight",
         { label: "Tiles", controls: ["tileShape", "tileSpacing",
           { label: "Size", controls: ["tileWidth", "tileHeight"], proportional: true }] },
         "fanOpacity"] },
@@ -103,8 +103,8 @@ export const geometryDefinitions: StudioDefinition[] = [
       ),
     ],
     controlGroups: [
-      { label: "Cuts", controls: ["cuts", "staggered", "spread"] },
-      { label: "Drawing", controls: ["inset", "opacity"] },
+      { label: "Cuts", stage: "form", controls: ["cuts", "staggered", "spread"] },
+      { label: "Drawing", stage: "material", controls: ["inset", "opacity"] },
     ],
     defaults: {
       cuts: 10,

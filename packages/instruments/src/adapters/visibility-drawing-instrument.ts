@@ -97,19 +97,19 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Form", controls: ["shape", "detail", "terrainVariant", "vaseProfile"] },
-  { label: "Placement", controls: ["centerX", "centerY", "size"] },
-  { label: "View", controls: ["projection", "yaw", "pitch", "roll", "distance"] },
-  { label: "Silhouette", controls: ["silhouette", "silhouetteMaterial", "silhouetteWeight"] },
-  { label: "Creases", controls: ["crease", "creaseAngle", "creaseKind", "creaseMaterial", "creaseWeight"] },
-  { label: "Rim", controls: ["boundary", "boundaryMaterial", "boundaryWeight"] },
-  { label: "Sections", controls: ["sections", "sectionAxis", "sectionTilt", "sectionSpacing", "sectionOffset", "sectionMaterial", "sectionWeight"] },
-  { label: "Contours", controls: ["contours", "contourField", "contourLevels", "contourMaterial", "contourWeight"] },
-  { label: "Surface tone", controls: ["shading", "shadeAngle",
+  { label: "Form", stage: "form", controls: ["shape", "detail", "terrainVariant", "vaseProfile"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "size"] },
+  { label: "View", stage: "frame", controls: ["projection", "yaw", "pitch", "roll", "distance"] },
+  { label: "Silhouette", stage: "material", controls: ["silhouette", "silhouetteMaterial", "silhouetteWeight"] },
+  { label: "Creases", stage: "material", controls: ["crease", "creaseAngle", "creaseKind", "creaseMaterial", "creaseWeight"] },
+  { label: "Rim", stage: "material", controls: ["boundary", "boundaryMaterial", "boundaryWeight"] },
+  { label: "Sections", stage: "material", controls: ["sections", "sectionAxis", "sectionTilt", "sectionSpacing", "sectionOffset", "sectionMaterial", "sectionWeight"] },
+  { label: "Contours", stage: "material", controls: ["contours", "contourField", "contourLevels", "contourMaterial", "contourWeight"] },
+  { label: "Surface tone", stage: "material", controls: ["shading", "shadeAngle",
     { label: "Hatch", controls: ["hatchSpacing", "hatchAngle", "hatchFamilies", "hatchBare", "hatchMaterial", "hatchWeight"] },
     { label: "Fill", controls: ["fillColor", "fillPale", "fillBands", "fillShade"] },
     { label: "Light", controls: ["lightAzimuth", "lightElevation", "ambient"] }] },
-  { label: "Lines", controls: ["colorBy", "depthCue", "cueAmount", "hiddenOpacity", "hiddenWeight",
+  { label: "Lines", stage: "material", controls: ["colorBy", "depthCue", "cueAmount", "hiddenOpacity", "hiddenWeight",
     { label: "Stations", controls: ["stitchSpacing", "hiddenDash"], proportional: true }, "beadScale"] },
 ];
 

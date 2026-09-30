@@ -55,12 +55,12 @@ const parameters: Parameter[] = [choice("sourceLayout", "Vector source arrangeme
   num("stationSize", "Station diameter", "Diameter of equal-arc-distance dots; zero omits dots.", 0, 13, 0, 100),
   num("stationStride", "Station stride", "One station per approximately this many traced steps, resampled by arc length.", 2, 25, 1, 1000, 1, true)];
 const controlGroups: ControlGroup[] = [
-  { label: "Vector sources", controls: ["sourceLayout", "sourceCount", "sourceX", "sourceY", "sourceExtent", "sourceAspect", "sourceAngle", "sourceDisorder"] },
-  { label: "Flow", controls: ["sourceRadius", "rotation", "radial", { label: "Drift", controls: ["driftX", "driftY"] }] },
-  { label: "Velocity grid", controls: ["gridColumns", "fieldX", "fieldY", "fieldExtent"] },
-  { label: "Trace starts", controls: ["startLayout", "startCount", "startX", "startY", "startExtent", "startAspect", "startAngle", "startDisorder"] },
-  { label: "Integration", controls: ["steps", "timeStep"] },
-  { label: "Drawing", controls: [
+  { label: "Vector sources", stage: "form", controls: ["sourceLayout", "sourceCount", "sourceX", "sourceY", "sourceExtent", "sourceAspect", "sourceAngle", "sourceDisorder"] },
+  { label: "Flow", stage: "process", controls: ["sourceRadius", "rotation", "radial", { label: "Drift", controls: ["driftX", "driftY"] }] },
+  { label: "Velocity grid", stage: "process", controls: ["gridColumns", "fieldX", "fieldY", "fieldExtent"] },
+  { label: "Trace starts", stage: "form", controls: ["startLayout", "startCount", "startX", "startY", "startExtent", "startAspect", "startAngle", "startDisorder"] },
+  { label: "Integration", stage: "process", controls: ["steps", "timeStep"] },
+  { label: "Drawing", stage: "material", controls: [
     { label: "Centerline", controls: ["showLine", "weight"] },
     { label: "Ribbon", controls: ["showRibbon", "ribbonWidth"] },
     { label: "Stations", controls: ["showStations", "stationSize", "stationStride"] },

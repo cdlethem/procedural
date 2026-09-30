@@ -101,17 +101,17 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Strata", controls: ["strata", "sequence", "contrast", "stack", "trend"] },
-  { label: "Placement", controls: ["centerX", "centerY", "size"] },
-  { label: "Tilt", controls: ["tilt", "tiltAzimuth"] },
-  { label: "Folds", controls: ["fold", "foldAmplitude", "foldWavelength", "foldAxis", "foldPhase"] },
-  { label: "Faults", controls: ["faulted", "faultCount", "faultThrow", "faultDip", "faultStrike", "faultDipDirection", "faultStyle", "faultShift", "faultScatter"] },
-  { label: "Erosion", controls: ["ground", "relief", "reliefScale"] },
-  { label: "Block", controls: [{ label: "Proportions", controls: ["depth", "height"], proportional: true }, "resolution"] },
-  { label: "Cutaway", controls: ["cut", { label: "Slice", controls: ["slicePosition", "sliceAzimuth", "sliceDip"] }, "gap", { label: "Corner", controls: ["corner", "cutWidth", "cutDepth", "cutHeight"] }] },
-  { label: "View", controls: ["projection", "yaw", "pitch", "distance"] },
-  { label: "Fill", controls: ["fill", "shade", "opacity", "colorBy"] },
-  { label: "Lines", controls: ["lineColor", "hidden", "beds", "contours", { label: "Line weights", controls: ["outlineWeight", "contactWeight", "faultWeight", "bedWeight", "contourWeight"], proportional: true }] },
+  { label: "Strata", stage: "form", controls: ["strata", "sequence", "contrast", "stack", "trend"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "size"] },
+  { label: "Tilt", stage: "process", controls: ["tilt", "tiltAzimuth"] },
+  { label: "Folds", stage: "process", controls: ["fold", "foldAmplitude", "foldWavelength", "foldAxis", "foldPhase"] },
+  { label: "Faults", stage: "process", controls: ["faulted", "faultCount", "faultThrow", "faultDip", "faultStrike", "faultDipDirection", "faultStyle", "faultShift", "faultScatter"] },
+  { label: "Erosion", stage: "process", controls: ["ground", "relief", "reliefScale"] },
+  { label: "Block", stage: "form", controls: [{ label: "Proportions", controls: ["depth", "height"], proportional: true }, "resolution"] },
+  { label: "Cutaway", stage: "form", controls: ["cut", { label: "Slice", controls: ["slicePosition", "sliceAzimuth", "sliceDip"] }, "gap", { label: "Corner", controls: ["corner", "cutWidth", "cutDepth", "cutHeight"] }] },
+  { label: "View", stage: "frame", controls: ["projection", "yaw", "pitch", "distance"] },
+  { label: "Fill", stage: "material", controls: ["fill", "shade", "opacity", "colorBy"] },
+  { label: "Lines", stage: "material", controls: ["lineColor", "hidden", "beds", "contours", { label: "Line weights", controls: ["outlineWeight", "contactWeight", "faultWeight", "bedWeight", "contourWeight"], proportional: true }] },
 ];
 
 export const geologicalCutawaysDefinition: InstrumentDefinition = {

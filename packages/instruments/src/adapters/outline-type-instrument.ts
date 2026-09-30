@@ -94,14 +94,14 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: readonly ControlGroup[] = [
-  { label: "Text", controls: ["phrase", "kerning", "tracking", "leading"] },
-  { label: "Placement", controls: ["centerX", "centerY", "size", "rotation"] },
-  { label: "Regions", controls: ["unit", "displace", { label: "Field", controls: ["displaceAmount", "displaceLength"] }] },
-  { label: "Fill", controls: ["fill", "share", { label: "Lines", controls: ["spacing", "weight"], proportional: true }, "angle", "angleSpread", "cross", "origin",
+  { label: "Text", stage: "form", controls: ["phrase", "kerning", "tracking", "leading"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "size", "rotation"] },
+  { label: "Regions", stage: "form", controls: ["unit", "displace", { label: "Field", controls: ["displaceAmount", "displaceLength"] }] },
+  { label: "Fill", stage: "material", controls: ["fill", "share", { label: "Lines", controls: ["spacing", "weight"], proportional: true }, "angle", "angleSpread", "cross", "origin",
     "chirp", "waveAmplitude", "waveLength", { label: "Marks", controls: ["lattice", "markKind", "markSize", "ramp"] }, "steps", "wash"] },
-  { label: "Ink", controls: ["stroke", "pitch", "colorBy"] },
-  { label: "Outline", controls: ["outline", "outlineWeight", { label: "Offsets", controls: ["haloDistance", "inlineDistance"], proportional: true }, "join"] },
-  { label: "Shadow", controls: ["shadow", "shadowDistance", "shadowAngle", "shadowOpacity"] },
+  { label: "Ink", stage: "material", controls: ["stroke", "pitch", "colorBy"] },
+  { label: "Outline", stage: "material", controls: ["outline", "outlineWeight", { label: "Offsets", controls: ["haloDistance", "inlineDistance"], proportional: true }, "join"] },
+  { label: "Shadow", stage: "material", controls: ["shadow", "shadowDistance", "shadowAngle", "shadowOpacity"] },
 ];
 
 export const outlineTypeDefinition: InstrumentDefinition = {

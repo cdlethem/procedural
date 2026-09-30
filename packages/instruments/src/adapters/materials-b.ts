@@ -39,21 +39,21 @@ const subdivisionControls: Parameter[] = [
 ];
 
 /** Every materials study ends with the same drawing and camera sections. */
-const surfaceGroup: ControlGroup = { label: "Surface", controls: ["faceMode", "weight"] };
-const viewGroup: ControlGroup = { label: "View", controls: ["rotation", "pitch", "zoom"] };
+const surfaceGroup: ControlGroup = { label: "Surface", stage: "material", controls: ["faceMode", "weight"] };
+const viewGroup: ControlGroup = { label: "View", stage: "frame", controls: ["rotation", "pitch", "zoom"] };
 const footprintGroups: ControlGroup[] = [
-  { label: "Solid", controls: ["footprint",
+  { label: "Solid", stage: "form", controls: ["footprint",
     { label: "Size", controls: ["footprintWidth", "footprintDepth", "height"], proportional: true },
     { label: "Shape", controls: ["inset", "stepDepth", "shoulder"] }] },
   surfaceGroup, viewGroup];
 const ribbonGroups: ControlGroup[] = [
-  { label: "Path", controls: ["segments",
+  { label: "Path", stage: "form", controls: ["segments",
     { label: "Vertical", controls: ["verticalAmplitude", "verticalCycles"] },
     { label: "Depth", controls: ["depthAmplitude", "depthCycles"] }] },
-  { label: "Ribbon", controls: [{ label: "Width", controls: ["width", "endWidth"], proportional: true }, "widthPulse"] },
+  { label: "Ribbon", stage: "material", controls: [{ label: "Width", controls: ["width", "endWidth"], proportional: true }, "widthPulse"] },
   surfaceGroup, viewGroup];
 const subdivisionGroups: ControlGroup[] = [
-  { label: "Mesh", controls: ["base", { label: "Scale", controls: ["axisX", "axisY", "axisZ"] }, "cornerLift", "levels"] },
+  { label: "Mesh", stage: "form", controls: ["base", { label: "Scale", controls: ["axisX", "axisY", "axisZ"] }, "cornerLift", "levels"] },
   surfaceGroup, viewGroup];
 
 function validateFootprint(params: Layer["params"]): void {

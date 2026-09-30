@@ -63,14 +63,14 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Strokes", controls: ["source", "strokeWidth",
+  { label: "Strokes", stage: "form", controls: ["source", "strokeWidth",
     { label: "Dry brush", controls: [{ label: "Widths", controls: ["brushWidth", "hairWidth"], proportional: true }, "hairs", "dryness", "depletion"] }] },
-  { label: "Placement", controls: ["centerX", "centerY", "scale", "rotation"] },
-  { label: "Relief", controls: ["section", "height", "edgeRidge", { label: "Furrows", controls: ["furrows", "furrowDepth"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "scale", "rotation"] },
+  { label: "Relief", stage: "material", controls: ["section", "height", "edgeRidge", { label: "Furrows", controls: ["furrows", "furrowDepth"] },
     { label: "Load", controls: ["loadFloor", "loadCurve"] }, "cell"] },
-  { label: "Deposition", controls: ["overlap", "order"] },
-  { label: "Light", controls: ["azimuth", "elevation", "contrast", "gloss", "shininess"] },
-  { label: "Drawing", controls: ["view", "colorBy"] },
+  { label: "Deposition", stage: "process", controls: ["overlap", "order"] },
+  { label: "Light", stage: "frame", controls: ["azimuth", "elevation", "contrast", "gloss", "shininess"] },
+  { label: "Drawing", stage: "material", controls: ["view", "colorBy"] },
 ];
 
 export const strokeReliefDefinition: InstrumentDefinition = {

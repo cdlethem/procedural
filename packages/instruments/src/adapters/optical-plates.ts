@@ -53,7 +53,7 @@ function plateControls(x: "A" | "B", name: string): Parameter[] {
     n(`weight${x}`, "Line weight", `Stroke width of ${p}'s lines. Dot plates use the dot diameter instead.`, .4, 3, .05, 0, 20, uses(x, "grating", "rings", "waves", "spokes")),
   ];
 }
-const plateGroup = (label: string, x: "A" | "B"): ControlGroup => ({ label, controls: [`pattern${x}`, `period${x}`, `chirp${x}`,
+const plateGroup = (label: string, x: "A" | "B"): ControlGroup => ({ label, stage: "form", controls: [`pattern${x}`, `period${x}`, `chirp${x}`,
   { label: "Wave", controls: [`amplitude${x}`, `wavelength${x}`] }, { label: "Spokes", controls: [`count${x}`, `hub${x}`] },
   { label: "Dots", controls: [`lattice${x}`, `dotSize${x}`] },
   { label: "Registration", controls: [`angle${x}`, `phase${x}`, { label: "Offset", controls: [`offsetX${x}`, `offsetY${x}`] }] }, `weight${x}`] });
@@ -84,9 +84,9 @@ export const opticalPlatesDefinition: InstrumentDefinition = {
   ],
   controlGroups: [
     plateGroup("Plate A", "A"), plateGroup("Plate B", "B"),
-    { label: "Pair", controls: ["link", "show"] },
-    { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
-    { label: "Support", controls: ["footprint", "maskedPlate", "maskShape", "invertMask", "text",
+    { label: "Pair", stage: "form", controls: ["link", "show"] },
+    { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
+    { label: "Support", stage: "form", controls: ["footprint", "maskedPlate", "maskShape", "invertMask", "text",
       { label: "Regions", controls: ["regionGrid", "regionCuts", "regionKeep", "regionInset"] }] },
   ],
   defaults: {

@@ -25,12 +25,12 @@ const glyphed: Condition = { filler: ["detail", "motif"] };
 const bordered: Condition = { border: ["ink", "stitch", "beads"] };
 
 const controlGroups: readonly ControlGroup[] = [
-  { label: "Source", controls: ["image", "variant", "resolution", "measure",
+  { label: "Source", stage: "form", controls: ["image", "variant", "resolution", "measure",
     { label: "Crop", controls: ["zoom", "focusX", "focusY"] }] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
-  { label: "Partition", controls: ["metric", "threshold", "split", { label: "Cell size", controls: ["minCell", "maxCell"], proportional: true }] },
-  { label: "Negative space", controls: ["retained", "keepBy", "gutter"] },
-  { label: "Filler", controls: ["filler", "color", "body",
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
+  { label: "Partition", stage: "form", controls: ["metric", "threshold", "split", { label: "Cell size", controls: ["minCell", "maxCell"], proportional: true }] },
+  { label: "Negative space", stage: "material", controls: ["retained", "keepBy", "gutter"] },
+  { label: "Filler", stage: "material", controls: ["filler", "color", "body",
     { label: "Size classes", controls: ["hatchBelow", "glyphBelow"], proportional: true }, "mixing",
     { label: "Lines and dots", controls: ["spacing", "weight", "angle", "toneResponse", "dotMax", "smoothing"] },
     { label: "Glyph", controls: ["glyphKind", "glyphFit", "petals", "opening"] },

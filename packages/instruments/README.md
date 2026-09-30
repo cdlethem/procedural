@@ -134,6 +134,15 @@ labelled, nested groups in display order, each control in exactly one group. A `
 group holds numeric controls on one non-negative scale (a footprint's width and height, a
 mark's diameter and line weight), so a host may lock their ratio and drive them together.
 Published definitions list `parameters` in group order with a derived `Parameter.group` path.
+Every top-level group also states its `stage`, what the artist is deciding with it, from the
+fixed ordered vocabulary `CONTROL_STAGES`: `form` (what is built), `process` (how it develops),
+`material` (how it is drawn), `color` and `frame` (where it sits, how it is viewed). Nested groups
+inherit their parent's stage and each published control carries a derived `Parameter.stage`.
+`stageItems(id, params)` returns the visible tree bucketed by stage in that order, so a host can
+lay the inspector out as an ordered path; nothing is gated on the order. An instrument may name
+`featured` controls (one to four numbers or selects) that best show it at first touch;
+`featuredControls(id)` returns them, or up to three numeric/select controls of the first `form`
+group when none are declared.
 `visibleWhen` hides controls that cannot affect the drawing: a conjunction of select/boolean value
 lists and number comparisons (`{ retained: { lt: 1 } }`), or an array of such alternatives of
 which any one suffices. Hidden controls retain their values and remain validated. Hosts must

@@ -90,15 +90,15 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Paths", controls: ["source", "figure", "traceCount", "traceSpread", "contourField", "contourFrequency", "contourLevels", "contourInterval", "recording", "strokeLength"] },
-  { label: "Placement", controls: ["centerX", "centerY", "scale", "rotation"] },
-  { label: "Heavy strokes", controls: ["brushShare", "brushMinLength", "widthVariation"] },
-  { label: "Brush", controls: [{ label: "Scale", controls: ["brushWidth", "hairWeight"], proportional: true }, "hairs",
+  { label: "Paths", stage: "form", controls: ["source", "figure", "traceCount", "traceSpread", "contourField", "contourFrequency", "contourLevels", "contourInterval", "recording", "strokeLength"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "scale", "rotation"] },
+  { label: "Heavy strokes", stage: "material", controls: ["brushShare", "brushMinLength", "widthVariation"] },
+  { label: "Brush", stage: "material", controls: [{ label: "Scale", controls: ["brushWidth", "hairWeight"], proportional: true }, "hairs",
     { label: "Distribution", controls: ["bias", "tufts", "clumping", "cohesion"] }, { label: "Hold", controls: ["hold", "tilt"] }, "step"] },
-  { label: "Pressure", controls: ["pressureProfile", "pressureLevel", "pulses", { label: "Light touch", controls: ["pressureFloor", "pressureCurve"] }, "tip", "tipLength"] },
-  { label: "Dry contact", controls: ["dryness", "depletion", "hairWander", { label: "Ends", controls: ["attack", "release"] }, "paper", "toothStrength", "toothGrain"] },
-  { label: "Color", controls: ["hairMix", "wash"] },
-  { label: "Fine line", controls: ["line", "lineWeight", "stitchSpacing", "stitchPhase", "lineOverBrush"] },
+  { label: "Pressure", stage: "process", controls: ["pressureProfile", "pressureLevel", "pulses", { label: "Light touch", controls: ["pressureFloor", "pressureCurve"] }, "tip", "tipLength"] },
+  { label: "Dry contact", stage: "process", controls: ["dryness", "depletion", "hairWander", { label: "Ends", controls: ["attack", "release"] }, "paper", "toothStrength", "toothGrain"] },
+  { label: "Color", stage: "color", controls: ["hairMix", "wash"] },
+  { label: "Fine line", stage: "material", controls: ["line", "lineWeight", "stitchSpacing", "stitchPhase", "lineOverBrush"] },
 ];
 
 const optionLabels: Record<string, Record<string, string>> = {
@@ -117,6 +117,7 @@ export const dryBristlesDefinition: InstrumentDefinition = {
   description: "Broad strokes of separate hairs with gaps, tapered ends and depleted ink, carried along any path: harmonic traces, a contour family or a hand scribble. A few heavy strokes sit beside fine stitched contours.",
   renderer: "2d",
   parameters: parameters.map(labelled), controlGroups,
+  featured: ["contourLevels", "contourFrequency", "dryness"],
   defaults: {
     source: "contours", figure: "3:2", traceCount: 3, traceSpread: 14,
     contourField: "noise", contourFrequency: 2.2, contourLevels: 9, contourInterval: 0.1, recording: "scribble", strokeLength: 320,

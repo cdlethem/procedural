@@ -35,11 +35,11 @@ const common: Parameter[] = [
 ];
 /** Terrain and blobs share one control set, so they share one organization. */
 const contourGroups: ControlGroup[] = [
-  { label: "Field", controls: ["source", { label: "Samples", controls: ["columns", "rows"], proportional: true }, "grid", "frequency", "aspect", "phase",
+  { label: "Field", stage: "form", controls: ["source", { label: "Samples", controls: ["columns", "rows"], proportional: true }, "grid", "frequency", "aspect", "phase",
     { label: "Hills", controls: ["hillCount", "hillRadius", "centers"] }] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "orientation"] },
-  { label: "Levels", controls: ["levels", "levelBase", "levelStep"] },
-  { label: "Lines", controls: ["weight", "indexLines"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "orientation"] },
+  { label: "Levels", stage: "form", controls: ["levels", "levelBase", "levelStep"] },
+  { label: "Lines", stage: "material", controls: ["weight", "indexLines"] },
 ];
 
 export const contourFieldDefinitions: StudioDefinition[] = [{

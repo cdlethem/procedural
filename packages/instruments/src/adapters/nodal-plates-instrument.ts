@@ -82,14 +82,14 @@ const parameters: Parameter[] = [
 
 const modeGroup = (i: number): ControlGroup => ({ label: `Mode ${i}`, controls: [`n${i}`, `m${i}`, `weight${i}`, `phase${i}`, `orient${i}`] });
 const controlGroups: ControlGroup[] = [
-  { label: "Plate", controls: ["shape", "edge", "outline", "outlineWeight"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
-  { label: "Modes", controls: ["modes", "time", modeGroup(1), modeGroup(2), modeGroup(3), modeGroup(4)] },
-  { label: "Nodes", controls: ["tolerance", "resolution"] },
-  { label: "Grains", controls: ["particles", "separation", "grainKind", { label: "Scale", controls: ["grainSize", "grainWeight"], proportional: true },
+  { label: "Plate", stage: "form", controls: ["shape", "edge", "outline", "outlineWeight"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
+  { label: "Modes", stage: "process", controls: ["modes", "time", modeGroup(1), modeGroup(2), modeGroup(3), modeGroup(4)] },
+  { label: "Nodes", stage: "form", controls: ["tolerance", "resolution"] },
+  { label: "Grains", stage: "material", controls: ["particles", "separation", "grainKind", { label: "Scale", controls: ["grainSize", "grainWeight"], proportional: true },
     { label: "Shape", controls: ["grainPetals", "grainOpening"] }, "grainVariation", "grainRetention", "grainColor", "align"] },
-  { label: "Nodal lines", controls: ["lines", "lineKind", "lineWeight", "lineSpacing", "lineBead"] },
-  { label: "Bands", controls: ["bands", "bandOpacity"] },
+  { label: "Nodal lines", stage: "material", controls: ["lines", "lineKind", "lineWeight", "lineSpacing", "lineBead"] },
+  { label: "Bands", stage: "material", controls: ["bands", "bandOpacity"] },
 ];
 
 /** Scalar rules only; geometry-dependent limits are checked when built, naming their controls. */

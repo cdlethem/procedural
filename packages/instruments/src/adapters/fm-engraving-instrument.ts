@@ -71,13 +71,13 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Source image", controls: ["image", "variant", "fit", "clip"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation", "shape"] },
-  { label: "Tone", controls: ["encode", "smoothing", "toneCurve", "threshold", "minLength"] },
-  { label: "Scan lines", controls: ["family", "angle", { label: "Spacing", controls: ["spacing", "spacingGain"] }, "bend", "bendLength", "radialX", "radialY", "follow", "flowSmoothing"] },
-  { label: "Waves", controls: [{ label: "Frequency", controls: ["baseFrequency", "frequencyGain"], proportional: true },
+  { label: "Source image", stage: "form", controls: ["image", "variant", "fit", "clip"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation", "shape"] },
+  { label: "Tone", stage: "color", controls: ["encode", "smoothing", "toneCurve", "threshold", "minLength"] },
+  { label: "Scan lines", stage: "material", controls: ["family", "angle", { label: "Spacing", controls: ["spacing", "spacingGain"] }, "bend", "bendLength", "radialX", "radialY", "follow", "flowSmoothing"] },
+  { label: "Waves", stage: "form", controls: [{ label: "Frequency", controls: ["baseFrequency", "frequencyGain"], proportional: true },
     { label: "Amplitude", controls: ["baseAmplitude", "amplitudeGain"], proportional: true }, "phaseSpread"] },
-  { label: "Line", controls: ["line", "lineWeight", "widthGain", "stitchSpacing", "stitchPhase", "colorBy"] },
+  { label: "Line", stage: "material", controls: ["line", "lineWeight", "widthGain", "stitchSpacing", "stitchPhase", "colorBy"] },
 ];
 
 

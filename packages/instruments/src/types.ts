@@ -44,12 +44,23 @@ export type Parameter = {
   multiline?: boolean;
   /** Slash-separated path of the control's inspector group, derived from `InstrumentDefinition.controlGroups`; never authored. */
   group?: string;
+  /** The stage of the control's top-level group, derived like `group`; never authored. */
+  stage?: ControlStage;
   /**
    * Show when the condition holds: one alternative, or an array of alternatives of which any one
    * suffices (see `visibility.ts`). Hidden values remain valid and retained.
    */
   visibleWhen?: VisibleWhen;
 };
+
+/**
+ * What an artist is trying to do with a group of controls, in the order those decisions are
+ * usually made: `form` decides what is built, `process` how it develops, `material` how it is
+ * drawn, `color` which colors it takes, `frame` where it sits and how it is viewed. Hosts present
+ * the stages as an ordered path through the inspector; nothing is gated on the order.
+ */
+export type ControlStage = "form" | "process" | "material" | "color" | "frame";
+
 
 /**
  * A library-owned inspector group: a labelled cluster of related controls, in display order.
@@ -65,16 +76,23 @@ export type ControlGroup = {
    * single edit. A host may offer to lock their ratios and drive them together.
    */
   proportional?: true;
+  /** Required on every top-level group, never on a nested one: nested groups belong to their parent's stage. */
+  stage?: ControlStage;
 };
 
 export type InstrumentDefinition = {
   id: string;
   title: string;
   description: string;
-  /** Published definitions list these in `controlGroups` order, each with its derived `group`. */
+  /** Published definitions list these in `controlGroups` order, each with its derived `group` and `stage`. */
   parameters: Parameter[];
-  /** Every control belongs to exactly one group. */
+  /** Every control belongs to exactly one group; every top-level group states its stage. */
   controlGroups: readonly ControlGroup[];
+  /**
+   * One to four control keys, in order, that best show what the instrument does at first touch:
+   * a host's landing or "start here" knobs. Numbers or selects only; every key must exist.
+   */
+  featured?: readonly string[];
   defaults: Record<string, number | string | boolean>;
   renderer?: "2d" | "webgl";
   validate?: (params: InstrumentInput["params"]) => void;

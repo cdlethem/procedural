@@ -65,6 +65,17 @@ The report includes all69 family dispositions and all three denominators:800 ass
   visibility-filtered inspector, and ships the matching private preview release. Checkpoint B
   extraction remains historical evidence; tenant checkpoints C–F stay separate.
   No tenant or visitor launch acceptance is claimed.
+- **Unreleased since 0.2.3: control stages and featured knobs** ([control groups](docs/control-groups.md)).
+  Every top-level control group states its `stage` (`form`, `process`, `material`, `color`,
+  `frame`; `CONTROL_STAGES` fixes the order), nested groups inherit it, loading derives
+  `Parameter.stage`, and `stageItems(id, values)` buckets the visible inspector by stage.
+  `InstrumentDefinition.featured` names one to four first-touch controls (numbers or selects,
+  visible at the defaults); `featuredControls(id)` falls back to the first `form` group. All
+  174 definitions are staged; six carry `featured` (hyperbolic-gardens, crossing-lace,
+  dry-bristles, river-ribbons, point-clouds, aggregation-colonies). `tests/control-groups.test.ts`
+  covers the contract; the full instruments suite passed 1648/1648 after the change. The
+  private app's landing tour and staged study controls consume this through the local toolkit
+  preview and need a `web-toolkit-v0.2.4` release to pin.
 - Unreleased instruments can still preview in the private app: its `npm run toolkit:local`
   runs `tools/build_web_toolkit.mjs --allow-dirty` and installs those tarballs unsaved.
   Dev server: https://eunoia.tailf03dad.ts.net:46590 (443 belongs to the separate Airflow

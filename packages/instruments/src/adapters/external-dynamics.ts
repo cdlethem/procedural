@@ -21,24 +21,24 @@ const sourceDefaults={count:48,sourceMode:'ring',centerX:320,centerY:320,extent:
 
 /** Shared source sections; each study appends its own sections after them. */
 const sourceGroups:ControlGroup[]=[
-  {label:'Population',controls:['sourceMode','count','speed','disorder']},
-  {label:'Placement',controls:['centerX','centerY','extent','aspect','sourceAngle']},
+  {label:'Population',stage:'form',controls:['sourceMode','count','speed','disorder']},
+  {label:'Placement',stage:'frame',controls:['centerX','centerY','extent','aspect','sourceAngle']},
 ];
 
 /** Artist-facing controls; operation contracts retain their own required inputs. */
 export const externalDynamicsDefinitions:StudioDefinition[]=[
   {id:'lingering-links',title:'Lingering links',description:'A seeded moving population leaves remembered proximity marks in a freely placed region.',controlGroups:[...sourceGroups,
-    {label:'Contacts',controls:['ticks','radius','linger']},
-    {label:'Drawing',controls:['weight','linkMarks','dotMarks','agentDots']}],
+    {label:'Contacts',stage:'process',controls:['ticks','radius','linger']},
+    {label:'Drawing',stage:'material',controls:['weight','linkMarks','dotMarks','agentDots']}],
   parameters:[numeric('ticks','Ticks','Advance motion and contact memory.',0,80,1,{hardMin:0,hardMax:240,integer:true}), ...sourceParameters, numeric('radius','Contact radius','Distance at which pairs make or renew a contact.',0,180,1,{hardMin:0,hardMax:1024}), numeric('linger','Linger','Steps a separated contact stays present.',0,36,1,{hardMin:0,hardMax:240,integer:true}), numeric('weight','Stroke weight','Scale the thickness of contact strokes and midpoint marks.',.3,3,.1,{hardMin:0,hardMax:20}), toggle('linkMarks','Link strokes','Draw retained connections.'), toggle('dotMarks','Midpoint dots','Mark retained contacts at their midpoint.'), toggle('agentDots','Agent dots','Draw current positions.')],defaults:{ticks:38, ...sourceDefaults, radius:75, linger:15, weight:1, linkMarks:true, dotMarks:false, agentDots:false},validate:q=>validateMotion('lingering-links',q)},
   {id:'sensing-trails',title:'Sensing trails',description:'Seeded agents probe an editable landscape of compact scalar peaks and leave local paths.',controlGroups:[...sourceGroups,
-    {label:'Field',controls:['peaks','fieldSpread','fieldRadius']},
-    {label:'Sensing',controls:['ticks','gain','reach','probeAngle']},
-    {label:'Drawing',controls:['weight','trailMarks','dotMarks','agentDots','showField']}],
+    {label:'Field',stage:'form',controls:['peaks','fieldSpread','fieldRadius']},
+    {label:'Sensing',stage:'process',controls:['ticks','gain','reach','probeAngle']},
+    {label:'Drawing',stage:'material',controls:['weight','trailMarks','dotMarks','agentDots','showField']}],
   parameters:[numeric('ticks','Ticks','Advance the paired-probe trajectories.',0,90,1,{hardMin:0,hardMax:240,integer:true}), ...sourceParameters, numeric('peaks','Peaks','Count of seeded scalar-field peaks.',1,8,1,{hardMin:1,hardMax:12,integer:true}), numeric('fieldSpread','Peak spread','Radius within which peak centers scatter about the source center.',0,280,1,{hardMin:0,hardMax:1024}), numeric('fieldRadius','Peak radius','Width of each scalar peak.',5,140,1,{hardMin:1,hardMax:640}), numeric('gain','Turn gain','Signed response to the right-minus-left probe values.',-.2,.2,.005,{hardMin:-4,hardMax:4}), numeric('reach','Probe distance','Distance ahead of an agent sampled by each sensor.',0,60,1,{hardMin:0,hardMax:640}), numeric('probeAngle','Probe angle','Turn separation between the heading and each sensor, in turns.',0,.25,.005,{hardMin:0,hardMax:.5}), numeric('weight','Stroke weight','Set trajectory and sampled-dot weight without changing the field or paths.',.3,3,.1,{hardMin:0,hardMax:20}), toggle('trailMarks','Trail strokes','Connect successive agent positions.'), toggle('dotMarks','Trail dots','Stamp spaced samples along trails.'), toggle('agentDots','Agent dots','Draw current agent positions.'), toggle('showField','Show field','Show the sampled scalar peaks as translucent tiles.')],defaults:{ticks:56, ...sourceDefaults, count:55, extent:170, speed:1.35, peaks:3, fieldSpread:115, fieldRadius:72, gain:.075, reach:16, probeAngle:.105, weight:1.6, trailMarks:true, dotMarks:false, agentDots:false, showField:false},validate:q=>validateMotion('sensing-trails',q)},
   {id:'flocking-marks',title:'Flocking marks',description:'Seeded agents steer through actual nearby neighbors, tracing local collective motion.',controlGroups:[...sourceGroups,
-    {label:'Steering',controls:['ticks','radius','cohesion','alignment','separation']},
-    {label:'Drawing',controls:['weight','trailMarks','dotMarks','links','agentDots']}],
+    {label:'Steering',stage:'process',controls:['ticks','radius','cohesion','alignment','separation']},
+    {label:'Drawing',stage:'material',controls:['weight','trailMarks','dotMarks','links','agentDots']}],
   parameters:[numeric('ticks','Ticks','Advance synchronous local steering.',0,90,1,{hardMin:0,hardMax:240,integer:true}), ...sourceParameters, numeric('radius','Neighbor radius','Proximity radius queried afresh every tick.',0,170,1,{hardMin:0,hardMax:1024}), numeric('cohesion','Cohesion','Pull toward nearby neighbors.',0,.06,.002,{hardMin:0,hardMax:2}), numeric('alignment','Alignment','Match nearby velocity.',0,.3,.01,{hardMin:0,hardMax:2}), numeric('separation','Separation','Push away from nearby neighbors.',0,.8,.02,{hardMin:0,hardMax:2}), numeric('weight','Stroke weight','Scale trajectory and optional neighbor-link weight.',.3,3,.1,{hardMin:0,hardMax:20}), toggle('trailMarks','Trail strokes','Join successive positions into trajectories.'), toggle('dotMarks','Trail dots','Draw spaced trajectory samples.'), toggle('links','Neighbor links','Show the current proximity graph.'), toggle('agentDots','Agent dots','Mark current agent positions.')],defaults:{ticks:52, ...sourceDefaults, count:48, extent:190, speed:1.1, radius:62, cohesion:.012, alignment:.08, separation:.42, weight:1, trailMarks:true, dotMarks:false, links:false, agentDots:false},validate:q=>validateMotion('flocking-marks',q)}
 ];
 

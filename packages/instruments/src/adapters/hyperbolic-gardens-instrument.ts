@@ -91,15 +91,15 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Tiling", controls: ["p", "q", "center", "generations", "diskRadius", "minSize", "retention"] },
-  { label: "Placement", controls: ["centerX", "centerY", "radius", "rotation"] },
-  { label: "Cells", controls: ["cellFill", "inset", "opacity", { label: "Hatch", controls: ["hatchSpacing", "hatchAngle", "hatchWeight"] }] },
-  { label: "Edges", controls: ["edgeMaterial", "edgeColor", "edgeWeight", { label: "Stations", controls: ["edgeSpacing", "edgePhase"] },
+  { label: "Tiling", stage: "form", controls: ["p", "q", "center", "generations", "diskRadius", "minSize", "retention"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "radius", "rotation"] },
+  { label: "Cells", stage: "form", controls: ["cellFill", "inset", "opacity", { label: "Hatch", controls: ["hatchSpacing", "hatchAngle", "hatchWeight"] }] },
+  { label: "Edges", stage: "material", controls: ["edgeMaterial", "edgeColor", "edgeWeight", { label: "Stations", controls: ["edgeSpacing", "edgePhase"] },
     { label: "Bead mark", controls: ["beadMark", { label: "Scale", controls: ["beadSize", "beadWeight"], proportional: true }] }] },
-  { label: "Rings", controls: ["ringsAround", "ringCount", "ringRadius", "ringRound", "ringWeight"] },
-  { label: "Motif", controls: ["motif", "motifColor", { label: "Anchor", controls: ["anchorRadial", "anchorAlong"] }, "motifFit", "motifWeight", "motifTurn", "petals", "twigs", "opening", "motifVariation", "minMark"] },
-  { label: "Color", controls: ["colorBy"] },
-  { label: "Boundary", controls: ["limit", "limitWeight", "taper"] },
+  { label: "Rings", stage: "material", controls: ["ringsAround", "ringCount", "ringRadius", "ringRound", "ringWeight"] },
+  { label: "Motif", stage: "material", controls: ["motif", "motifColor", { label: "Anchor", controls: ["anchorRadial", "anchorAlong"] }, "motifFit", "motifWeight", "motifTurn", "petals", "twigs", "opening", "motifVariation", "minMark"] },
+  { label: "Color", stage: "color", controls: ["colorBy"] },
+  { label: "Boundary", stage: "material", controls: ["limit", "limitWeight", "taper"] },
 ];
 
 type Values = Record<string, number | string | boolean>;
@@ -116,6 +116,7 @@ export const hyperbolicGardensDefinition: InstrumentDefinition = {
   description: "Regular hyperbolic tilings in the Poincaré disk: cells, geodesic edges and rings that shrink toward the boundary circle, with motifs placed in every mirror-image triangle at the true local scale and turn.",
   renderer: "2d",
   parameters, controlGroups,
+  featured: ["p", "q", "generations"],
   defaults: {
     p: 5, q: 4, center: "polygon", generations: 9, diskRadius: 0.985, minSize: 1.6, retention: 0.95,
     centerX: 320, centerY: 320, radius: 296, rotation: 0,

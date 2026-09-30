@@ -83,17 +83,17 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Construction", controls: ["construction",
+  { label: "Construction", stage: "form", controls: ["construction",
     { label: "Gasket", controls: ["first", "second"] },
     { label: "Inversion circles", controls: ["circles", "arrangement", { label: "Size", controls: ["ringRadius", "circleRadius"], proportional: true }, "spread", "twist", "jitter"] }] },
-  { label: "Growth", controls: ["rule", "word", "generations", "minRadius", "exclusion", "retention"] },
-  { label: "Source", controls: ["source", "density", "glyph", "sourceSize", "sourceX", "sourceY", "sourceTurn"] },
-  { label: "Placement", controls: ["centerX", "centerY", "radius", "rotation", "clipShare"] },
-  { label: "Lines", controls: ["stroke", "weight", { label: "Stations", controls: ["spacing", "beadSize"] }, "tolerance"] },
-  { label: "Discs", controls: ["fill", "fillOpacity", "fillRings"] },
-  { label: "Marks", controls: ["marks", "markSize", "markWeight"] },
-  { label: "Reference", controls: ["original", "guides"] },
-  { label: "Color", controls: ["colorBy"] },
+  { label: "Growth", stage: "process", controls: ["rule", "word", "generations", "minRadius", "exclusion", "retention"] },
+  { label: "Source", stage: "form", controls: ["source", "density", "glyph", "sourceSize", "sourceX", "sourceY", "sourceTurn"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "radius", "rotation", "clipShare"] },
+  { label: "Lines", stage: "material", controls: ["stroke", "weight", { label: "Stations", controls: ["spacing", "beadSize"] }, "tolerance"] },
+  { label: "Discs", stage: "material", controls: ["fill", "fillOpacity", "fillRings"] },
+  { label: "Marks", stage: "material", controls: ["marks", "markSize", "markWeight"] },
+  { label: "Reference", stage: "material", controls: ["original", "guides"] },
+  { label: "Color", stage: "color", controls: ["colorBy"] },
 ];
 
 type Values = Record<string, number | string | boolean>;

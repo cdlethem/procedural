@@ -98,16 +98,16 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Surface", controls: ["surface", "terrain", "vase", "sheet", "detail", "relief", "tube", "cap"] },
-  { label: "Placement", controls: ["centerX", "centerY", "size"] },
-  { label: "Flow", controls: ["flow", "flowAngle", "flowFrequency", "guideYaw", "guidePitch", "angle", "cross", { label: "Swirl", controls: ["swirl", "swirlField"] }] },
-  { label: "Threads", controls: [{ label: "Spacing", controls: ["spacing", "spacingB"] }, "density", "ratio", "reverse", "edge", "margin"] },
-  { label: "Weave", controls: ["rule", "invert", "exceptions", "clearance", "minAngle"] },
-  { label: "Strands", controls: ["style", "section", "width", { label: "Line weights", controls: ["casing", "outlineWeight"], proportional: true }, "shade", "shadeAmount", "hidden"] },
-  { label: "Model", controls: ["model", "veilOpacity"] },
-  { label: "Color", controls: ["coloring", { label: "Palette", controls: ["colorA", "colorB", "inkColor", "veilColor"] }] },
-  { label: "View", controls: ["projection", "yaw", "pitch", "roll", "distance"] },
-  { label: "Diagnostics", controls: ["overlay"] },
+  { label: "Surface", stage: "form", controls: ["surface", "terrain", "vase", "sheet", "detail", "relief", "tube", "cap"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "size"] },
+  { label: "Flow", stage: "process", controls: ["flow", "flowAngle", "flowFrequency", "guideYaw", "guidePitch", "angle", "cross", { label: "Swirl", controls: ["swirl", "swirlField"] }] },
+  { label: "Threads", stage: "material", controls: [{ label: "Spacing", controls: ["spacing", "spacingB"] }, "density", "ratio", "reverse", "edge", "margin"] },
+  { label: "Weave", stage: "material", controls: ["rule", "invert", "exceptions", "clearance", "minAngle"] },
+  { label: "Strands", stage: "material", controls: ["style", "section", "width", { label: "Line weights", controls: ["casing", "outlineWeight"], proportional: true }, "shade", "shadeAmount", "hidden"] },
+  { label: "Model", stage: "process", controls: ["model", "veilOpacity"] },
+  { label: "Color", stage: "color", controls: ["coloring", { label: "Palette", controls: ["colorA", "colorB", "inkColor", "veilColor"] }] },
+  { label: "View", stage: "frame", controls: ["projection", "yaw", "pitch", "roll", "distance"] },
+  { label: "Diagnostics", stage: "process", controls: ["overlay"] },
 ];
 
 type Values = Record<string, number | string | boolean>;

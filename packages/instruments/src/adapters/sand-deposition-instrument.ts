@@ -66,17 +66,17 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Sequence", controls: ["sequence", "motion"] },
-  { label: "Placement", controls: ["centerX", "centerY", "scale", "rotation"] },
-  { label: "Time window", controls: ["windowStart", "windowLength"] },
-  { label: "Deposition", controls: ["deposit", "grainMass",
+  { label: "Sequence", stage: "form", controls: ["sequence", "motion"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "scale", "rotation"] },
+  { label: "Time window", stage: "process", controls: ["windowStart", "windowLength"] },
+  { label: "Deposition", stage: "process", controls: ["deposit", "grainMass",
     { label: "Fall", controls: ["lag", "fall", "fallAngle", "inherit", "spread"] }] },
-  { label: "Protected space", controls: ["protect", "protectWord", "protectX", "protectY",
+  { label: "Protected space", stage: "process", controls: ["protect", "protectWord", "protectX", "protectY",
     { label: "Size", controls: ["protectWidth", "protectHeight"], proportional: true }] },
-  { label: "Exposure", controls: ["exposure", "material"] },
-  { label: "Grains", controls: ["grainSize"] },
-  { label: "Isolines", controls: ["isoLevels", "fieldCell", "isoSmooth", "isoWeight"] },
-  { label: "Curve overlay", controls: ["overlay", "overlayEvery", "overlayWeight"] },
+  { label: "Exposure", stage: "process", controls: ["exposure", "material"] },
+  { label: "Grains", stage: "material", controls: ["grainSize"] },
+  { label: "Isolines", stage: "material", controls: ["isoLevels", "fieldCell", "isoSmooth", "isoWeight"] },
+  { label: "Curve overlay", stage: "material", controls: ["overlay", "overlayEvery", "overlayWeight"] },
 ];
 
 type Values = Record<string, number | string | boolean>;

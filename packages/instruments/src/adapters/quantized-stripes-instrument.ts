@@ -29,11 +29,11 @@ export const quantizedStripeDefinitions: StudioDefinition[] = [{
     num("coverageY", "Vertical coverage", "Fraction of each row painted, centered to leave transparent top and bottom gaps.", 0, 1, .01, 0, 1),
   ],
   controlGroups: [
-    { label: "Source", controls: ["source", "samples", "sequence"] },
-    { label: "Reduction", controls: ["colors", "order"] },
-    { label: "Layout", controls: ["columns", "rowShift"] },
-    { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
-    { label: "Coverage", controls: ["coverageX", "coverageY"] },
+    { label: "Source", stage: "form", controls: ["source", "samples", "sequence"] },
+    { label: "Reduction", stage: "process", controls: ["colors", "order"] },
+    { label: "Layout", stage: "form", controls: ["columns", "rowShift"] },
+    { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
+    { label: "Coverage", stage: "material", controls: ["coverageX", "coverageY"] },
   ],
   defaults: {
     source: "palette-ramp", samples: 48,

@@ -33,10 +33,10 @@ const parameters = [
   num("junctionSize", "Junction size", "Diameter of nonblank junction marks; zero hides them.", 1, 7, .25, 0, 24),
 ];
 const controlGroups: ControlGroup[] = [
-  { label: "Lattice", controls: ["columns", "rows"], proportional: true },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Spacing", controls: ["size", "pitchY"], proportional: true }, "angle"] },
-  { label: "Tiles", controls: ["boundary", "pins", { label: "Weights", controls: [...WEIGHTS] }] },
-  { label: "Drawing", controls: [
+  { label: "Lattice", stage: "form", controls: ["columns", "rows"], proportional: true },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Spacing", controls: ["size", "pitchY"], proportional: true }, "angle"] },
+  { label: "Tiles", stage: "material", controls: ["boundary", "pins", { label: "Weights", controls: [...WEIGHTS] }] },
+  { label: "Drawing", stage: "material", controls: [
     { label: "Body", controls: ["showBody", "bodySize"] },
     { label: "Connectors", controls: ["showConnectors", "lineWeight"] },
     { label: "Junctions", controls: ["showJunctions", "junctionSize"] }] },

@@ -94,30 +94,30 @@ const elasticControls=[
   numeric('nodeSize','Node diameter','Diameter of optional structure and endpoint nodes.',0,12,.2,{hardMin:0,hardMax:40}),
 ];
 const bridgeGroups:ControlGroup[]=[
-  {label:'Strands',controls:['strandCount','sourcePoints','span','spacing','strain','disorder']},
-  {label:'Placement',controls:['centerX','centerY','direction']},
-  {label:'Bridges',controls:['ticks','stride','slant','bridgeSpacing','bridgeAdvance','candidateDisorder']},
-  {label:'Drawing',controls:[{label:'Line weights',controls:['sourceWeight','bridgeWeight'],proportional:true},'nodes','nodeSize','candidate']},
+  {label:'Strands',stage:'form',controls:['strandCount','sourcePoints','span','spacing','strain','disorder']},
+  {label:'Placement',stage:'frame',controls:['centerX','centerY','direction']},
+  {label:'Bridges',stage:'process',controls:['ticks','stride','slant','bridgeSpacing','bridgeAdvance','candidateDisorder']},
+  {label:'Drawing',stage:'material',controls:[{label:'Line weights',controls:['sourceWeight','bridgeWeight'],proportional:true},'nodes','nodeSize','candidate']},
 ];
 const neighborhoodGroups:ControlGroup[]=[
-  {label:'Source',controls:['sourceMode','count','disorder']},
-  {label:'Placement',controls:['centerX','centerY','extent','aspect','direction']},
-  {label:'Proposals',controls:['poolSize','poolCenterX','poolCenterY','poolExtent']},
-  {label:'Growth',controls:['ticks','insert','densityRadius','minNeighbors','maxNeighbors',{label:'Relaxation',controls:['chain','minLength','step']}]},
-  {label:'Drawing',controls:[
+  {label:'Source',stage:'form',controls:['sourceMode','count','disorder']},
+  {label:'Placement',stage:'frame',controls:['centerX','centerY','extent','aspect','direction']},
+  {label:'Proposals',stage:'form',controls:['poolSize','poolCenterX','poolCenterY','poolExtent']},
+  {label:'Growth',stage:'process',controls:['ticks','insert','densityRadius','minNeighbors','maxNeighbors',{label:'Relaxation',controls:['chain','minLength','step']}]},
+  {label:'Drawing',stage:'material',controls:[
     {label:'Graph',controls:['graphMarks','graphWeight']},
     {label:'Nodes',controls:['nodeMarks','dotSize']},
     {label:'Traces',controls:['traces','traceWeight']},
   ]},
 ];
 const elasticGroups:ControlGroup[]=[
-  {label:'Sources',controls:['sourceMode','strandCount','sourcePoints','length','radius','separation','bend','disorder']},
-  {label:'Placement',controls:['centerX','centerY','direction']},
-  {label:'Growth',controls:['ticks','pinning','growth','curl',
+  {label:'Sources',stage:'form',controls:['sourceMode','strandCount','sourcePoints','length','radius','separation','bend','disorder']},
+  {label:'Placement',stage:'frame',controls:['centerX','centerY','direction']},
+  {label:'Growth',stage:'process',controls:['ticks','pinning','growth','curl',
     {label:'Wind',controls:['windX','windY']},
     {label:'Avoidance',controls:['range','strength']},
     {label:'Refinement',controls:['refineLength','nodeCap']}]},
-  {label:'Drawing',controls:['weight','seedGuides','structure','endpoints','nodeSize']},
+  {label:'Drawing',stage:'material',controls:['weight','seedGuides','structure','endpoints','nodeSize']},
 ];
 export const growthInstrumentDefinitions:StudioDefinition[]=[
   {id:'bridge-web',title:'Bridge web',description:'Seed parallel strands, then select crossings that split and link their graph.',controlGroups:bridgeGroups,parameters:bridgeControls,defaults:{ticks:10, strandCount:6, sourcePoints:6, span:400, spacing:56, strain:24, disorder:.35, centerX:320, centerY:320, direction:90, slant:21, stride:5, bridgeSpacing:32, bridgeAdvance:42, candidateDisorder:.2, sourceWeight:1.25, bridgeWeight:2.4, nodes:false, nodeSize:3, candidate:false},validate:q=>validateGrowthInstrument('bridge-web',q)},

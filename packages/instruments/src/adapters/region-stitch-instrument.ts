@@ -97,15 +97,15 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Regions", controls: ["source", "word", "letterWeight", "variant", "patches", "merge", "windows", "image", "bands", "minRegion", "leaveLightest"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
-  { label: "Direction", controls: ["field", "angle", "fieldX", "fieldY", "twist", "fieldImage", "fieldVariant", "follow", "smoothing", "angleSpread"] },
-  { label: "Stitches", controls: ["fill", { label: "Scale", controls: ["spacing", "stitchLength"], proportional: true }, "stagger", "scatter", "inset"] },
-  { label: "Underlay", controls: ["underlay", "underlaySpacing", "underlayInset"] },
-  { label: "Crossing", controls: ["crossing", "crossAngle", "crossSpacing"] },
-  { label: "Outline", controls: ["outline", "outlineWidth", "lap"] },
-  { label: "Seam and routing", controls: ["seam", "order", "travel"] },
-  { label: "Thread", controls: ["thread", "weight", "dash", "colorBy", "trim"] },
+  { label: "Regions", stage: "form", controls: ["source", "word", "letterWeight", "variant", "patches", "merge", "windows", "image", "bands", "minRegion", "leaveLightest"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
+  { label: "Direction", stage: "process", controls: ["field", "angle", "fieldX", "fieldY", "twist", "fieldImage", "fieldVariant", "follow", "smoothing", "angleSpread"] },
+  { label: "Stitches", stage: "material", controls: ["fill", { label: "Scale", controls: ["spacing", "stitchLength"], proportional: true }, "stagger", "scatter", "inset"] },
+  { label: "Underlay", stage: "material", controls: ["underlay", "underlaySpacing", "underlayInset"] },
+  { label: "Crossing", stage: "material", controls: ["crossing", "crossAngle", "crossSpacing"] },
+  { label: "Outline", stage: "material", controls: ["outline", "outlineWidth", "lap"] },
+  { label: "Seam and routing", stage: "material", controls: ["seam", "order", "travel"] },
+  { label: "Thread", stage: "material", controls: ["thread", "weight", "dash", "colorBy", "trim"] },
 ];
 
 export type ThreadKind = "ink" | "stitch" | "beads";

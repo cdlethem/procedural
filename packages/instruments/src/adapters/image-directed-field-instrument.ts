@@ -89,17 +89,17 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Image", controls: ["image", "imageVariant", "resolution", "channel"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
-  { label: "Field", controls: ["mode", "ambientKind", "ambientAngle", "ambientWeight", "smoothing", "minConfidence",
+  { label: "Image", stage: "form", controls: ["image", "imageVariant", "resolution", "channel"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
+  { label: "Field", stage: "form", controls: ["mode", "ambientKind", "ambientAngle", "ambientWeight", "smoothing", "minConfidence",
     { label: "Tone mask", controls: ["maskTones", "maskMin", "maskMax"] }] },
-  { label: "Streamlines", controls: ["lines", { label: "Spacing", controls: ["separation", "stopFraction", "startSpacing", "startJitter"] }, "fill",
+  { label: "Streamlines", stage: "process", controls: ["lines", { label: "Spacing", controls: ["separation", "stopFraction", "startSpacing", "startJitter"] }, "fill",
     { label: "Extent", controls: ["minLength", "maxLength", "minRadius"] }, "clip"] },
-  { label: "Line material", controls: ["material", "weight", "toneWeight", { label: "Stations", controls: ["spacing", "phase", "phaseSpread"] }, "retention",
+  { label: "Line material", stage: "material", controls: ["material", "weight", "toneWeight", { label: "Stations", controls: ["spacing", "phase", "phaseSpread"] }, "retention",
     { label: "Bead mark", controls: ["beadMark", { label: "Scale", controls: ["beadSize", "beadWeight"], proportional: true }, { label: "Shape", controls: ["beadPetals", "beadOpening"] }] }] },
-  { label: "Marks", controls: ["mark", { label: "Spacing", controls: ["markSpacing", "markJitter"] }, { label: "Scale", controls: ["markSize", "markWeight"], proportional: true },
+  { label: "Marks", stage: "material", controls: ["mark", { label: "Spacing", controls: ["markSpacing", "markJitter"] }, { label: "Scale", controls: ["markSize", "markWeight"], proportional: true },
     { label: "Shape", controls: ["markPetals", "markOpening"] }, "markVariation", "markRetention"] },
-  { label: "Color", controls: ["colorBy"] },
+  { label: "Color", stage: "color", controls: ["colorBy"] },
 ];
 
 type Values = Record<string, number | string | boolean>;

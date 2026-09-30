@@ -27,16 +27,16 @@ const control = (key: string, label: string, detail: string, min: number, max: n
   hardMin = min, hardMax = max, integer = false) => numeric(key, label, detail, min, max, step, { hardMin, hardMax, integer });
 const emptyGrid = "0 0 0 0 0\n0 1 2 1 0\n0 2 4 2 0\n0 1 2 1 0\n0 0 0 0 0";
 const contourReliefGroups: ControlGroup[] = [
-  { label: "Height source", controls: ["source",
+  { label: "Height source", stage: "form", controls: ["source",
     { label: "Grid", controls: ["columns", "rows"], proportional: true }, "grid",
     "frequency", "aspect", "phase",
     { label: "Hills", controls: ["hillCount", "hillRadius"] }] },
-  { label: "Placement", controls: ["centerX", "centerY",
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY",
     { label: "Size", controls: ["width", "height"], proportional: true }, "heightScale",
     { label: "Rotation", controls: ["yaw", "pitch", "roll"] }] },
-  { label: "Faces", controls: ["faces", "faceColor"] },
-  { label: "Edges", controls: ["edges", "edgeWeight"] },
-  { label: "Contours", controls: ["contours", "levelMode", "levelList", "levelCount", "levelBase", "levelStep", "contourWeight"] },
+  { label: "Faces", stage: "material", controls: ["faces", "faceColor"] },
+  { label: "Edges", stage: "material", controls: ["edges", "edgeWeight"] },
+  { label: "Contours", stage: "material", controls: ["contours", "levelMode", "levelList", "levelCount", "levelBase", "levelStep", "contourWeight"] },
 ];
 
 export const contourReliefDefinitions: StudioDefinition[] = [{

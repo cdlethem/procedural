@@ -66,14 +66,14 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Parent shape", controls: ["shape", "lobes", "holeCount", "holeSize", "ringHole", "word", "compartments", "merge", "layout", "gutter"] },
-  { label: "Placement", controls: [
+  { label: "Parent shape", stage: "form", controls: ["shape", "lobes", "holeCount", "holeSize", "ringHole", "word", "compartments", "merge", "layout", "gutter"] },
+  { label: "Placement", stage: "frame", controls: [
     "centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
-  { label: "Boundary", controls: ["swell", "detail", "roughness", "variance"] },
-  { label: "Correlation", controls: ["independence", "divergence", "coupling"] },
-  { label: "Passes", controls: ["passes", "extent", "patchSize", "focus", "creep"] },
-  { label: "Reserve", controls: ["holes", "margin"] },
-  { label: "Pigment", controls: ["pigment", "mix", "opacity", { label: "Edge", controls: ["edge", "edgeWeight"] }] },
+  { label: "Boundary", stage: "form", controls: ["swell", "detail", "roughness", "variance"] },
+  { label: "Correlation", stage: "process", controls: ["independence", "divergence", "coupling"] },
+  { label: "Passes", stage: "process", controls: ["passes", "extent", "patchSize", "focus", "creep"] },
+  { label: "Reserve", stage: "process", controls: ["holes", "margin"] },
+  { label: "Pigment", stage: "material", controls: ["pigment", "mix", "opacity", { label: "Edge", controls: ["edge", "edgeWeight"] }] },
 ];
 
 const optionLabels: Record<string, Record<string, string>> = {

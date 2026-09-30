@@ -75,20 +75,20 @@ const grammarParameters = (depthKey: "iterations" | "depth"): Parameter[] => [
   numeric("tickLength", "Tick length", "Midpoint-mark extent.", 0, 12, .1, { hardMin: 0, hardMax: 80 }),
 ];
 const latticeGroups: ControlGroup[] = [
-  { label: "Lattice", controls: ["columns", "rows"], proportional: true },
-  { label: "Placement", controls: ["centerX", "centerY", "spacing", "orientation"] },
-  { label: "Region", controls: ["shape", "innerRadius", "blocked"] },
-  { label: "Traversal", controls: [
+  { label: "Lattice", stage: "form", controls: ["columns", "rows"], proportional: true },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "spacing", "orientation"] },
+  { label: "Region", stage: "form", controls: ["shape", "innerRadius", "blocked"] },
+  { label: "Traversal", stage: "process", controls: [
     { label: "Root", controls: ["rootX", "rootY"] },
     { label: "Depth range", controls: ["minDepth", "maxDepth"] },
     "branchRetention"] },
-  { label: "Drawing", controls: ["weight", { label: "Site marks", controls: ["nodes", "dotSize"] }] },
+  { label: "Drawing", stage: "material", controls: ["weight", { label: "Site marks", controls: ["nodes", "dotSize"] }] },
 ];
 const grammarGroups = (depthKey: "iterations" | "depth"): ControlGroup[] => [
-  { label: "Grammar", controls: ["axiom", { label: "Productions", controls: ["ruleF", "ruleG", "ruleX", "ruleY"] }, depthKey] },
-  { label: "Turtle", controls: ["step", "contraction", "angle"] },
-  { label: "Placement", controls: ["startX", "startY", "heading"] },
-  { label: "Drawing", controls: ["weight",
+  { label: "Grammar", stage: "form", controls: ["axiom", { label: "Productions", controls: ["ruleF", "ruleG", "ruleX", "ruleY"] }, depthKey] },
+  { label: "Turtle", stage: "form", controls: ["step", "contraction", "angle"] },
+  { label: "Placement", stage: "frame", controls: ["startX", "startY", "heading"] },
+  { label: "Drawing", stage: "material", controls: ["weight",
     { label: "Endpoint marks", controls: ["nodes", "dotSize"] },
     { label: "Midpoint ticks", controls: ["ticks", "tickLength"] }] },
 ];

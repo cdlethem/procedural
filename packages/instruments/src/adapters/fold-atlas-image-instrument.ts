@@ -29,16 +29,16 @@ const banded: Condition = { display: ["bands"] };
 const dotted: Condition = { display: ["dots"] };
 
 const controlGroups: readonly ControlGroup[] = [
-  { label: "Image", controls: ["image", "variant", "resolution"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Image size", controls: ["width", "height"], proportional: true },
+  { label: "Image", stage: "form", controls: ["image", "variant", "resolution"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Image size", controls: ["width", "height"], proportional: true },
     { label: "Frame", controls: ["frameWidth", "frameHeight"], proportional: true }] },
-  { label: "Map", controls: ["mapCenterX", "mapCenterY", "mapRadius",
+  { label: "Map", stage: "form", controls: ["mapCenterX", "mapCenterY", "mapRadius",
     ...(["First", "Second", "Third"] as const).map((label, index) => ({ label,
       controls: [`stage${index + 1}Map`, `stage${index + 1}Amount`, `stage${index + 1}Frequency`] })),
     "iterations", "bound"] },
-  { label: "Show", controls: ["mode", "cell"] },
-  { label: "Fragments", controls: ["filter", "areaAverage", { label: "Folds", controls: ["search", "seeds", "sheet", "backShade"] }, { label: "Color", controls: ["levels", "color"] }] },
-  { label: "Density", controls: [{ label: "Samples", controls: ["sampling", "count", "weight", "curve", "jitter"] },
+  { label: "Show", stage: "material", controls: ["mode", "cell"] },
+  { label: "Fragments", stage: "material", controls: ["filter", "areaAverage", { label: "Folds", controls: ["search", "seeds", "sheet", "backShade"] }, { label: "Color", controls: ["levels", "color"] }] },
+  { label: "Density", stage: "material", controls: [{ label: "Samples", controls: ["sampling", "count", "weight", "curve", "jitter"] },
     { label: "Exposure", controls: ["exposure", "tonemap"] }, { label: "Marks", controls: ["display", "bands", "dotMax", "densityColor"] }] },
 ];
 

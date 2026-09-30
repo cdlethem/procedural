@@ -95,13 +95,13 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: readonly ControlGroup[] = [
-  { label: "Path", controls: ["supply", "field", "frequency", "level", "levelStep", "levels", "recording", "gestureSmoothing",
+  { label: "Path", stage: "form", controls: ["supply", "field", "frequency", "level", "levelStep", "levels", "recording", "gestureSmoothing",
     { label: "Growth", controls: ["sourceCount", "ticks", "branches", "branchSpread"] }, "routing", "pick", "count", "smooth"] },
-  { label: "Placement", controls: ["centerX", "centerY", "extent", "rotation"] },
-  { label: "Text", controls: ["phrase", "size", "kerning", "tracking"] },
-  { label: "Layout", controls: ["direction", "start", "baseline", "repeat", "gap", "curves", "crowding", "clearance"] },
-  { label: "Disruption", controls: ["disruption", "disruptLength", { label: "Amount", controls: ["disruptShift", "disruptTilt", "disruptGrow", "disruptDropout"] }] },
-  { label: "Ink", controls: ["style", "weight", "colorBy", "guide", "guideWeight"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "extent", "rotation"] },
+  { label: "Text", stage: "form", controls: ["phrase", "size", "kerning", "tracking"] },
+  { label: "Layout", stage: "form", controls: ["direction", "start", "baseline", "repeat", "gap", "curves", "crowding", "clearance"] },
+  { label: "Disruption", stage: "process", controls: ["disruption", "disruptLength", { label: "Amount", controls: ["disruptShift", "disruptTilt", "disruptGrow", "disruptDropout"] }] },
+  { label: "Ink", stage: "material", controls: ["style", "weight", "colorBy", "guide", "guideWeight"] },
 ];
 
 export const pathTypographyDefinition: InstrumentDefinition = {

@@ -77,15 +77,15 @@ const chordParameters = [
   numeric("guideWeight", "Guide weight", "Weight of the optional source curves, independent of chord weight.", 0, 3, .25, { hardMin: 0, hardMax: 50 }),
 ];
 const asemicGroups: ControlGroup[] = [
-  { label: "Dictionary", controls: ["dictionarySize", "strokesPerGlyph", "knotsPerStroke", "loopCharacter", "bend"] },
-  { label: "Arrangement", controls: ["rows", "wordsPerRow", "glyphsPerWord", "regularity",
+  { label: "Dictionary", stage: "form", controls: ["dictionarySize", "strokesPerGlyph", "knotsPerStroke", "loopCharacter", "bend"] },
+  { label: "Arrangement", stage: "form", controls: ["rows", "wordsPerRow", "glyphsPerWord", "regularity",
     { label: "Spacing", controls: ["glyphSpacing", "wordSpacing", "rowSpacing"], proportional: true },
     "layoutDisorder"] },
-  { label: "Placement", controls: ["centerX", "centerY", "direction"] },
-  { label: "Glyph ink", controls: [{ label: "Size", controls: ["glyphWidth", "glyphHeight"], proportional: true }, "weight"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "direction"] },
+  { label: "Glyph ink", stage: "material", controls: [{ label: "Size", controls: ["glyphWidth", "glyphHeight"], proportional: true }, "weight"] },
 ];
 /** The two chord sources are configured identically, so they share one group builder. */
-const chordSourceGroup = (label: "A" | "B"): ControlGroup => ({ label: `Source ${label}`, controls: [
+const chordSourceGroup = (label: "A" | "B"): ControlGroup => ({ label: `Source ${label}`, stage: "form", controls: [
   { label: "Shape", controls: [`shape${label}`, `lobes${label}`, `lobeDepth${label}`, `arcSweep${label}`] },
   { label: "Placement", controls: [`center${label}X`, `center${label}Y`,
     { label: "Size", controls: [`radius${label}X`, `radius${label}Y`], proportional: true },
@@ -93,9 +93,9 @@ const chordSourceGroup = (label: "A" | "B"): ControlGroup => ({ label: `Source $
 const chordGroups: ControlGroup[] = [
   chordSourceGroup("A"),
   chordSourceGroup("B"),
-  { label: "Mapping", controls: ["samples", "stride", "mapPhase", "modulation", "modulationWaves"] },
-  { label: "Disorder", controls: ["retainedFraction", "endpointDisorder"] },
-  { label: "Drawing", controls: ["showGuides", { label: "Line weights", controls: ["weight", "guideWeight"], proportional: true }] },
+  { label: "Mapping", stage: "process", controls: ["samples", "stride", "mapPhase", "modulation", "modulationWaves"] },
+  { label: "Disorder", stage: "process", controls: ["retainedFraction", "endpointDisorder"] },
+  { label: "Drawing", stage: "material", controls: ["showGuides", { label: "Line weights", controls: ["weight", "guideWeight"], proportional: true }] },
 ];
 const asemicDefaults = { dictionarySize: 9, strokesPerGlyph: 2, knotsPerStroke: 5,
   loopCharacter: .32, bend: .65, regularity: .65, rows: 4, wordsPerRow: 5, glyphsPerWord: 5,

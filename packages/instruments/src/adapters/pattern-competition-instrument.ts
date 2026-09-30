@@ -82,13 +82,13 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Scales", controls: ["scales", "smallest", "ratio", "inhibitor", { label: "Weights", controls: ["increment", "tilt"] }] },
-  { label: "Start", controls: ["start", "startSize", "startCount", "noise"] },
-  { label: "Evolution", controls: ["steps", "resolution", "boundary", { label: "Symmetry", controls: ["symmetry", "tiles"] }] },
-  { label: "Placement", controls: ["centerX", "centerY", "size"] },
-  { label: "Bands", controls: ["bands", "bandLevel", "bandSmoothing", "bandMinArea", "bandOpacity"] },
-  { label: "Contours", controls: ["contours", "levelCount", "levelCenter", "levelSpread", "contourMin", "contourColor", "lineKind", "lineWeight", "lineSpacing", "lineBead"] },
-  { label: "Marks", controls: ["marks", "markKind", { label: "Scale", controls: ["markSize", "markWeight"], proportional: true }, "markGap", "markLevel",
+  { label: "Scales", stage: "form", controls: ["scales", "smallest", "ratio", "inhibitor", { label: "Weights", controls: ["increment", "tilt"] }] },
+  { label: "Start", stage: "form", controls: ["start", "startSize", "startCount", "noise"] },
+  { label: "Evolution", stage: "process", controls: ["steps", "resolution", "boundary", { label: "Symmetry", controls: ["symmetry", "tiles"] }] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "size"] },
+  { label: "Bands", stage: "material", controls: ["bands", "bandLevel", "bandSmoothing", "bandMinArea", "bandOpacity"] },
+  { label: "Contours", stage: "material", controls: ["contours", "levelCount", "levelCenter", "levelSpread", "contourMin", "contourColor", "lineKind", "lineWeight", "lineSpacing", "lineBead"] },
+  { label: "Marks", stage: "material", controls: ["marks", "markKind", { label: "Scale", controls: ["markSize", "markWeight"], proportional: true }, "markGap", "markLevel",
     { label: "Shape", controls: ["markPetals", "markOpening"] }, "markVariation", "markRetention", "markColor", "markAlign"] },
 ];
 

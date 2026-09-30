@@ -56,20 +56,20 @@ const sharedDefaults = {columns: 28,
   obstacleInk: 0};
 /** Both instruments build the same weighted grid; the grid and its costs share group builders. */
 const gridGroups: ControlGroup[] = [
-  { label: "Grid", controls: ["originX", "originY", { label: "Size", controls: ["extentX", "extentY"], proportional: true },
+  { label: "Grid", stage: "form", controls: ["originX", "originY", { label: "Size", controls: ["extentX", "extentY"], proportional: true },
     { label: "Cells", controls: ["columns", "rows"], proportional: true }] },
 ];
-const costGroup: ControlGroup = { label: "Costs", controls: ["costMode", "costGrid", "density", "frequency", "contrast"] };
+const costGroup: ControlGroup = { label: "Costs", stage: "form", controls: ["costMode", "costGrid", "density", "frequency", "contrast"] };
 export const costPathInstrumentDefinitions: StudioDefinition[] = [
   { id: "obstacle-roads", title: "Obstacle roads",
     description: "Editable weighted four-neighbor paths from one fixed start to actual goals; blocked destinations remain blocked.",
     parameters: [...sourceParameters, ...treatmentParameters.filter(parameter =>
       !["contourCount", "contourBase", "contourSpacing"].includes(parameter.key))],
     controlGroups: [...gridGroups,
-      { label: "Start", controls: ["startColumn", "startRow"] },
+      { label: "Start", stage: "form", controls: ["startColumn", "startRow"] },
       costGroup,
-      { label: "Goals", controls: ["goalLayout", "goalCount", "goalCells"] },
-      { label: "Roads", controls: ["weight", "nodeSize", "obstacleInk"] }],
+      { label: "Goals", stage: "form", controls: ["goalLayout", "goalCount", "goalCells"] },
+      { label: "Roads", stage: "material", controls: ["weight", "nodeSize", "obstacleInk"] }],
     defaults: { ...sharedDefaults, columns: 24, rows: 24, startColumn: 3, startRow: 12,
       goalLayout: "edge", goalCount: 12, goalCells: "", weight: 1.8, nodeSize: 2, obstacleInk: .65 },
     validate: q => validateCostPathInstrument(q, "obstacle-roads") },
@@ -79,10 +79,10 @@ export const costPathInstrumentDefinitions: StudioDefinition[] = [
       !["goalLayout", "goalCount", "goalCells"].includes(parameter.key)),
       ...treatmentParameters.filter(parameter => parameter.key !== "nodeSize")],
     controlGroups: [...gridGroups,
-      { label: "Start", controls: ["startColumn", "startRow"] },
+      { label: "Start", stage: "form", controls: ["startColumn", "startRow"] },
       costGroup,
-      { label: "Contours", controls: ["contourCount", { label: "Arrival", controls: ["contourBase", "contourSpacing"], proportional: true }] },
-      { label: "Lines", controls: ["weight", "obstacleInk"] }],
+      { label: "Contours", stage: "material", controls: ["contourCount", { label: "Arrival", controls: ["contourBase", "contourSpacing"], proportional: true }] },
+      { label: "Lines", stage: "material", controls: ["weight", "obstacleInk"] }],
     defaults: { ...sharedDefaults, weight: 1.4, density: .08, contrast: 2.3,
       contourCount: 12, contourBase: 7, contourSpacing: 6 },
     validate: q => validateCostPathInstrument(q, "arrival-contours") },

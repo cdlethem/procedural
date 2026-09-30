@@ -42,13 +42,13 @@ export const rampSpringInstrumentDefinitions: StudioDefinition[] = [
       text("stopPositions", "Stop positions", "Blank spaces palette colors evenly; otherwise supply one strictly ascending 0..1 position per color, comma-separated.", 1000),
       choice("mapping", "Ramp mapping", "Hold endpoint colors, wrap each cycle, or reflect alternate cycles.", ["clamp", "repeat", "mirror"])],
     controlGroups: [
-      { label: "Grid", controls: [
+      { label: "Grid", stage: "form", controls: [
         { label: "Divisions", controls: ["columns", "rows"], proportional: true },
         { label: "Spacing", controls: ["pitchX", "pitchY"], proportional: true }] },
-      { label: "Placement", controls: ["centerX", "centerY", "rotation"] },
-      { label: "Disorder", controls: ["disorder", "retention"] },
-      { label: "Mark", controls: ["mark", { label: "Scale", controls: ["width", "length", "weight"], proportional: true }] },
-      { label: "Color", controls: ["coordinate", "fieldX", "fieldY", "axis", "span", "phase",
+      { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "rotation"] },
+      { label: "Disorder", stage: "process", controls: ["disorder", "retention"] },
+      { label: "Mark", stage: "material", controls: ["mark", { label: "Scale", controls: ["width", "length", "weight"], proportional: true }] },
+      { label: "Color", stage: "color", controls: ["coordinate", "fieldX", "fieldY", "axis", "span", "phase",
         { label: "Ramp", controls: ["stopPositions", "mapping"] }] },
     ],
     defaults: {columns: 23,
@@ -106,11 +106,11 @@ export const rampSpringInstrumentDefinitions: StudioDefinition[] = [
       toggle("showSpokes", "Spokes", "Draw final body-to-target displacement segments."),
       numeric("weight", "Spoke weight", "Width of optional body-to-target spokes; zero hides them.", .5, 4, .1, { hardMin: 0, hardMax: 100 })],
     controlGroups: [
-      { label: "Population", controls: ["count", "initialMode", "initialExtent", "initialAspect", "initialX", "initialY", "initialAngle", "initialDisorder"] },
-      { label: "Targets", controls: ["targetMode", "radius", "targetAspect", "targetX", "targetY", "targetAngle"] },
-      { label: "Velocity", controls: ["velocityHeading", "velocitySpeed", "velocitySpread"] },
-      { label: "Simulation", controls: ["ticks", "strength", "damping"] },
-      { label: "Drawing", controls: [
+      { label: "Population", stage: "form", controls: ["count", "initialMode", "initialExtent", "initialAspect", "initialX", "initialY", "initialAngle", "initialDisorder"] },
+      { label: "Targets", stage: "form", controls: ["targetMode", "radius", "targetAspect", "targetX", "targetY", "targetAngle"] },
+      { label: "Velocity", stage: "process", controls: ["velocityHeading", "velocitySpeed", "velocitySpread"] },
+      { label: "Simulation", stage: "process", controls: ["ticks", "strength", "damping"] },
+      { label: "Drawing", stage: "material", controls: [
         { label: "Trails", controls: ["showTrails", "trailStride", "trailWeight"] },
         { label: "Bodies", controls: ["showBodies", "bodySize"] },
         { label: "Target dots", controls: ["showTargets", "targetSize"] },

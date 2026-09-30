@@ -36,13 +36,13 @@ function color(p: Painter, value: number, kind: "fill" | "stroke"): void {
 }
 
 const phyllotacticWhorlsGroups: ControlGroup[] = [
-  { label: "Ranks", controls: ["count", "startIndex", "divergence", "exponent"] },
-  { label: "Placement", controls: ["centerX", "centerY",
+  { label: "Ranks", stage: "form", controls: ["count", "startIndex", "divergence", "exponent"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY",
     { label: "Size", controls: ["radialScale", "innerRadius"], proportional: true }, "anisotropy", "rotation"] },
-  { label: "Disorder", controls: ["angularDisorder", "radialDisorder"] },
-  { label: "Mark", controls: ["mark", { label: "Orientation", controls: ["markOrientation", "markAngle"] }, "aspect",
+  { label: "Disorder", stage: "process", controls: ["angularDisorder", "radialDisorder"] },
+  { label: "Mark", stage: "material", controls: ["mark", { label: "Orientation", controls: ["markOrientation", "markAngle"] }, "aspect",
     { label: "Scale", controls: ["size", "weight"], proportional: true }, "taper", "retention"] },
-  { label: "Connections", controls: ["connectionStride", "connectionWeight"] },
+  { label: "Connections", stage: "material", controls: ["connectionStride", "connectionWeight"] },
 ];
 
 export const phyllotacticWhorlsDefinitions: StudioDefinition[] = [{

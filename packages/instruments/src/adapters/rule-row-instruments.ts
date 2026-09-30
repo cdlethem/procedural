@@ -37,11 +37,11 @@ const parameters = [num("columns", "Columns", "Number of cells in the initial bi
   num("inactiveColor", "Dead palette slot", "Zero-based palette index for dead cells.", 0, 4, 1, 0, 15, true),
   num("inactiveAlpha", "Dead opacity", "Alpha for optional dead glyphs, 0–255.", 0, 120, 1, 0, 255)];
 const controlGroups: ControlGroup[] = [
-  { label: "Grid", controls: ["columns", "rows"], proportional: true },
-  { label: "Rule", controls: ["rule", "boundary"] },
-  { label: "Initial row", controls: ["initialMode", "binaryWord", "density", "phase"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Spacing", controls: ["pitchX", "pitchY"], proportional: true }, "angle"] },
-  { label: "Ink", controls: ["mark", "markScale",
+  { label: "Grid", stage: "form", controls: ["columns", "rows"], proportional: true },
+  { label: "Rule", stage: "form", controls: ["rule", "boundary"] },
+  { label: "Initial row", stage: "form", controls: ["initialMode", "binaryWord", "density", "phase"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Spacing", controls: ["pitchX", "pitchY"], proportional: true }, "angle"] },
+  { label: "Ink", stage: "material", controls: ["mark", "markScale",
     { label: "Live cells", controls: ["activeColor", "activeAlpha"] },
     { label: "Dead cells", controls: ["showInactive", "inactiveColor", "inactiveAlpha"] }] },
 ];

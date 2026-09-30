@@ -113,18 +113,18 @@ export const randomWalkFrontsParameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Region", controls: ["mask", "maskSize", "ringWidth", "islands", "word", "image", "toneFrom", "toneTo",
+  { label: "Region", stage: "form", controls: ["mask", "maskSize", "ringWidth", "islands", "word", "image", "toneFrom", "toneTo",
     { label: "Barrier", controls: ["barrier", "wallPosition", "barrierWidth", "barrierGap", "enclosureSize", "pillarSpacing", "pillarRadius"] }] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Lattice", controls: ["columns", "rows"], proportional: true }, "cell"] },
-  { label: "Seeds", controls: ["seedLayout", "seedCount", "walkersPerSeed"] },
-  { label: "Walk", controls: ["neighbourhood", "persistence", "explore", "revisit", "branching", "maxWalkers", "patience"] },
-  { label: "Color", controls: ["colors", "transition", "shift"] },
-  { label: "Growth", controls: ["steps", "coverage"] },
-  { label: "Fill", controls: ["fill", "fillShape", "fillAlpha", "bandEvery", "bandContrast"] },
-  { label: "Lines", controls: ["lines", "lineMaterial", "lineWeight", "lineSpacing", "lineTone"] },
-  { label: "Hatching", controls: ["hatch", "hatchSpacing", "hatchAngle", "hatchTurn", "hatchWeight"] },
-  { label: "Marks", controls: ["marks", "markStride", "markSize", "markAging"] },
-  { label: "Tips", controls: ["tips"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Lattice", controls: ["columns", "rows"], proportional: true }, "cell"] },
+  { label: "Seeds", stage: "form", controls: ["seedLayout", "seedCount", "walkersPerSeed"] },
+  { label: "Walk", stage: "process", controls: ["neighbourhood", "persistence", "explore", "revisit", "branching", "maxWalkers", "patience"] },
+  { label: "Color", stage: "color", controls: ["colors", "transition", "shift"] },
+  { label: "Growth", stage: "process", controls: ["steps", "coverage"] },
+  { label: "Fill", stage: "material", controls: ["fill", "fillShape", "fillAlpha", "bandEvery", "bandContrast"] },
+  { label: "Lines", stage: "material", controls: ["lines", "lineMaterial", "lineWeight", "lineSpacing", "lineTone"] },
+  { label: "Hatching", stage: "material", controls: ["hatch", "hatchSpacing", "hatchAngle", "hatchTurn", "hatchWeight"] },
+  { label: "Marks", stage: "material", controls: ["marks", "markStride", "markSize", "markAging"] },
+  { label: "Tips", stage: "material", controls: ["tips"] },
 ];
 
 type Values = Record<string, number | string | boolean>;

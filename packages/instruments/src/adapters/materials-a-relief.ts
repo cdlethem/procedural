@@ -36,10 +36,10 @@ const reliefDefaults = (id: "embossed-field" | "signed-edge-print") => ({
 
 /** Both relief studies share the seeded source field and its placement; only the response control differs. */
 const reliefGroups = (response: "gain" | "cutoff"): ControlGroup[] => [
-  { label: "Field", controls: ["source", "features", "featureScale", "aspect", "orientation", "contrast"] },
-  { label: "Placement", controls: ["centerX", "centerY", "spread"] },
-  { label: "Response", controls: ["axis", response] },
-  { label: "Mark", controls: ["treatment", "scale"] },
+  { label: "Field", stage: "form", controls: ["source", "features", "featureScale", "aspect", "orientation", "contrast"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "spread"] },
+  { label: "Response", stage: "process", controls: ["axis", response] },
+  { label: "Mark", stage: "material", controls: ["treatment", "scale"] },
 ];
 
 export const reliefDefinitions: StudioDefinition[] = [

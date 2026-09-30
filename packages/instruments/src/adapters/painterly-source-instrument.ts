@@ -76,15 +76,15 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: readonly ControlGroup[] = [
-  { label: "Source", controls: ["image", "imageVariant"] },
-  { label: "Placement", controls: ["centerX", "centerY", "size"] },
-  { label: "Layers", controls: ["layers", "brush", "ratio", "coverage", "threshold"] },
-  { label: "Marks", controls: ["family", "jitter"] },
-  { label: "Direction", controls: ["coherence", "baseAngle", "smoothing", "scatter"] },
-  { label: "Negative space", controls: ["paper", "retention", "subject", "subjectX", "subjectY",
+  { label: "Source", stage: "form", controls: ["image", "imageVariant"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "size"] },
+  { label: "Layers", stage: "process", controls: ["layers", "brush", "ratio", "coverage", "threshold"] },
+  { label: "Marks", stage: "material", controls: ["family", "jitter"] },
+  { label: "Direction", stage: "process", controls: ["coherence", "baseAngle", "smoothing", "scatter"] },
+  { label: "Negative space", stage: "material", controls: ["paper", "retention", "subject", "subjectX", "subjectY",
     { label: "Window size", controls: ["subjectWidth", "subjectHeight"], proportional: true }, "feather"] },
-  { label: "Material", controls: ["material", "fill", "lineWeight", "petals"] },
-  { label: "Color", controls: ["colorMode", "colors", "saturation"] },
+  { label: "Material", stage: "material", controls: ["material", "fill", "lineWeight", "petals"] },
+  { label: "Color", stage: "color", controls: ["colorMode", "colors", "saturation"] },
 ];
 
 /** Work and material limits that follow from the stored values alone. */

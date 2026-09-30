@@ -58,7 +58,7 @@ const scale = (role: string): ControlGroup => ({ label: "Scale", controls: [`${r
 const shape = (role: string): ControlGroup => ({ label: "Shape", controls: [`${role}Petals`, `${role}Opening`] });
 const eligible = (role: string): ControlGroup => ({ label: "Eligible depth", controls: [`${role}MinDepth`, `${role}MaxDepth`] });
 const roleGroup = (label: string, role: string, depth: boolean, extra: string[] = []): ControlGroup =>
-  ({ label, controls: [`${role}Mark`, ...(depth ? [eligible(role)] : []), ...extra, `${role}Offset`, scale(role), shape(role)] });
+  ({ label, stage: "material", controls: [`${role}Mark`, ...(depth ? [eligible(role)] : []), ...extra, `${role}Offset`, scale(role), shape(role)] });
 
 const stitched: Condition = { edgeMaterial: ["stitch"] };
 const drawn: Condition = { edgeMaterial: ["ink", "stitch"] };
@@ -103,16 +103,16 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Attractors", controls: ["sourceMode", "sourceCount", "disorder", "exclusion", "band", "lobeGap", "lobeBias"] },
-  { label: "Placement", controls: ["centerX", "centerY", "extent", "aspect", "direction"] },
-  { label: "Roots", controls: ["rootPlacement", "rootCount", "rootX", "rootY", "rootHeading", { label: "Spread", controls: ["rootSpread", "rootJitter"], proportional: true }] },
-  { label: "Growth", controls: ["ticks", { label: "Reach", controls: ["step", "reach"], proportional: true },
+  { label: "Attractors", stage: "form", controls: ["sourceMode", "sourceCount", "disorder", "exclusion", "band", "lobeGap", "lobeBias"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "extent", "aspect", "direction"] },
+  { label: "Roots", stage: "form", controls: ["rootPlacement", "rootCount", "rootX", "rootY", "rootHeading", { label: "Spread", controls: ["rootSpread", "rootJitter"], proportional: true }] },
+  { label: "Growth", stage: "process", controls: ["ticks", { label: "Reach", controls: ["step", "reach"], proportional: true },
     { label: "Branching", controls: ["branches", "branchSpread"] }] },
-  { label: "Branches", controls: ["routing", "edgeMaterial", "edgeWeight", "edgeFalloff",
+  { label: "Branches", stage: "process", controls: ["routing", "edgeMaterial", "edgeWeight", "edgeFalloff",
     { label: "Stitches", controls: ["edgeSpacing", "edgePhase", "edgePhaseSpread"] },
     { label: "Visibility", controls: ["edgeMinDepth", "edgeMaxDepth", "edgeRetention"] }] },
-  { label: "Outline", controls: ["outlineWidth", "outlineFalloff", "outlineTaper", "outlineWeight"] },
-  { label: "Marks", controls: ["marksFollowBranches", "angleInheritance", "sizeFalloff", "variation", "ornamentRetention"] },
+  { label: "Outline", stage: "material", controls: ["outlineWidth", "outlineFalloff", "outlineTaper", "outlineWeight"] },
+  { label: "Marks", stage: "material", controls: ["marksFollowBranches", "angleInheritance", "sizeFalloff", "variation", "ornamentRetention"] },
   roleGroup("Tips", "terminal", true),
   roleGroup("Junctions", "fork", true),
   roleGroup("Base", "trunk", false),

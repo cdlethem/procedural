@@ -99,16 +99,16 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Seeds", controls: ["seedShape", "seedCount"] },
-  { label: "Placement", controls: ["seedX", "seedY", { label: "Size", controls: ["seedWidth", "seedHeight"], proportional: true }, "seedAngle"] },
-  { label: "Source", controls: ["source", "sourceX", "sourceY", { label: "Size", controls: ["sourceWidth", "sourceHeight"], proportional: true }, "sourceAngle"] },
-  { label: "Domain", controls: ["domain", "domainWord", "domainImage", "domainVariant", "domainThreshold", "domainX", "domainY",
+  { label: "Seeds", stage: "form", controls: ["seedShape", "seedCount"] },
+  { label: "Placement", stage: "frame", controls: ["seedX", "seedY", { label: "Size", controls: ["seedWidth", "seedHeight"], proportional: true }, "seedAngle"] },
+  { label: "Source", stage: "form", controls: ["source", "sourceX", "sourceY", { label: "Size", controls: ["sourceWidth", "sourceHeight"], proportional: true }, "sourceAngle"] },
+  { label: "Domain", stage: "process", controls: ["domain", "domainWord", "domainImage", "domainVariant", "domainThreshold", "domainX", "domainY",
     { label: "Size", controls: ["domainWidth", "domainHeight"], proportional: true }, "domainHole"] },
-  { label: "Walkers", controls: ["radius", "stick", { label: "Wind", controls: ["bias", "biasAngle"] }, "pull", "turn"] },
-  { label: "Growth", controls: ["steps", "reach", "lifetime", "patience", "escape"] },
-  { label: "Color", controls: ["colorBy", "bands", "taper", "reveal"] },
-  { label: "Marks", controls: ["mark", "markSize", "tipMark", "tipSize", { label: "Halo", controls: ["halo", "haloSize", "haloStrength"] }] },
-  { label: "Links", controls: ["ink", "inkWeight", "inkSpacing", "beadSize", { label: "Outline", controls: ["outline", "outlineWeight"] }] },
+  { label: "Walkers", stage: "process", controls: ["radius", "stick", { label: "Wind", controls: ["bias", "biasAngle"] }, "pull", "turn"] },
+  { label: "Growth", stage: "process", controls: ["steps", "reach", "lifetime", "patience", "escape"] },
+  { label: "Color", stage: "color", controls: ["colorBy", "bands", "taper", "reveal"] },
+  { label: "Marks", stage: "material", controls: ["mark", "markSize", "tipMark", "tipSize", { label: "Halo", controls: ["halo", "haloSize", "haloStrength"] }] },
+  { label: "Links", stage: "material", controls: ["ink", "inkWeight", "inkSpacing", "beadSize", { label: "Outline", controls: ["outline", "outlineWeight"] }] },
 ];
 
 export const aggregationColoniesDefinition: InstrumentDefinition = {
@@ -116,6 +116,7 @@ export const aggregationColoniesDefinition: InstrumentDefinition = {
   description: "Branching accretions grown by random walkers that stick where they touch: seeded particles are released from a source, wander with a wind and a sticking chance, and attach to a growing cluster, leaving empty channels and active tips. The same colony is drawn as marks at its grains, as ink or beads along its parent links, as a halo and as tip marks, coloured by age or limb, and can be confined inside letters or an image silhouette.",
   renderer: "2d",
   parameters, controlGroups,
+  featured: ["steps", "bias", "turn"],
   defaults: {
     seedShape: "point", seedCount: 12, seedX: 320, seedY: 320, seedWidth: 120, seedHeight: 120, seedAngle: 0,
     source: "ellipse", sourceX: 320, sourceY: 320, sourceWidth: 620, sourceHeight: 620, sourceAngle: 0,

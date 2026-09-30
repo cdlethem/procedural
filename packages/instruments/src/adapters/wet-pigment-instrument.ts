@@ -94,15 +94,15 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Wet region", controls: ["maskShape", "word", "roughness", "inner"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
-  { label: "Paper", controls: ["paperVariation", "paperGrain", "absorbency"] },
-  { label: "Water", controls: ["prewet", "evaporation", { label: "Edge", controls: ["edgeDrying", "edgeReach"] }] },
-  { label: "Transport", controls: ["transport", "pigmentSpread", { label: "Tilt", controls: ["tilt", "tiltAngle"] }, "boundary"] },
-  { label: "Pigment", controls: [{ label: "Drops", controls: ["sites", "layout", "dropRadius", "dropDepth"] }, "ratio", "depositRate", "redissolve"] },
-  { label: "Backruns", controls: ["lateWater", "backruns", "backrunStep", "backrunGap", { label: "Drop", controls: ["backrunDepth", "backrunRadius"] }] },
-  { label: "Simulation", controls: ["steps", "grid"] },
-  { label: "Drawing", controls: [
+  { label: "Wet region", stage: "form", controls: ["maskShape", "word", "roughness", "inner"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
+  { label: "Paper", stage: "material", controls: ["paperVariation", "paperGrain", "absorbency"] },
+  { label: "Water", stage: "process", controls: ["prewet", "evaporation", { label: "Edge", controls: ["edgeDrying", "edgeReach"] }] },
+  { label: "Transport", stage: "process", controls: ["transport", "pigmentSpread", { label: "Tilt", controls: ["tilt", "tiltAngle"] }, "boundary"] },
+  { label: "Pigment", stage: "material", controls: [{ label: "Drops", controls: ["sites", "layout", "dropRadius", "dropDepth"] }, "ratio", "depositRate", "redissolve"] },
+  { label: "Backruns", stage: "process", controls: ["lateWater", "backruns", "backrunStep", "backrunGap", { label: "Drop", controls: ["backrunDepth", "backrunRadius"] }] },
+  { label: "Simulation", stage: "process", controls: ["steps", "grid"] },
+  { label: "Drawing", stage: "material", controls: [
     { label: "Pigment", controls: ["showPigment", "colorMode", "bands", "gain", "opacity", "showSuspended"] },
     { label: "Drying fronts", controls: ["showFronts", "frontEvery", "frontWeight"] },
     { label: "Water film", controls: ["showFilm", "filmOpacity", "filmEdge"] },

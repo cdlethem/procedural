@@ -79,17 +79,17 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Scaffold", controls: ["source",
+  { label: "Scaffold", stage: "form", controls: ["source",
     { label: "Contours", controls: ["contourShape", "contourFrequency", "contourHills", "contourHillRadius", "contourLevels", "contourLevel", "contourStep"] },
     "word",
     { label: "Spirals", controls: ["spiralFamily", "arms", "turns", "spiralCore", "armVariation"] },
     { label: "Scrolls", controls: ["scrollSeparation", "scrollLength", "lengthVariation", "scrollBend"] }] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
-  { label: "Paper", controls: [{ label: "Size", controls: ["wallHeight", "thickness"], proportional: true }, "heightVariation", "clearance", "resolution"] },
-  { label: "Nesting", controls: ["nest", "nestSide", "spacing", "nestHeight"] },
-  { label: "Terminals", controls: ["terminals", "curl", { label: "Roll", controls: ["curlRadius", "curlGap"], proportional: true }] },
-  { label: "View", controls: ["view", "yaw", "pitch", "zoom"] },
-  { label: "Material", controls: ["tone", "light", "lightAngle", "edgeWeight"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
+  { label: "Paper", stage: "material", controls: [{ label: "Size", controls: ["wallHeight", "thickness"], proportional: true }, "heightVariation", "clearance", "resolution"] },
+  { label: "Nesting", stage: "process", controls: ["nest", "nestSide", "spacing", "nestHeight"] },
+  { label: "Terminals", stage: "material", controls: ["terminals", "curl", { label: "Roll", controls: ["curlRadius", "curlGap"], proportional: true }] },
+  { label: "View", stage: "frame", controls: ["view", "yaw", "pitch", "zoom"] },
+  { label: "Material", stage: "material", controls: ["tone", "light", "lightAngle", "edgeWeight"] },
 ];
 
 /**

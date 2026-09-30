@@ -47,8 +47,8 @@ const escapeDefaults = {
   footprintX: 320, footprintY: 320, footprintWidth: 550, footprintHeight: 550,
 };
 /** Both fractal studies sample a world window and place the result on the canvas. */
-const worldGroup: ControlGroup = { label: "World window", controls: ["worldCenterX", "worldCenterY", "worldWidth", "worldAspect"] };
-const outputGroup: ControlGroup = { label: "Placement", controls: ["footprintX", "footprintY",
+const worldGroup: ControlGroup = { label: "World window", stage: "frame", controls: ["worldCenterX", "worldCenterY", "worldWidth", "worldAspect"] };
+const outputGroup: ControlGroup = { label: "Placement", stage: "frame", controls: ["footprintX", "footprintY",
   { label: "Size", controls: ["footprintWidth", "footprintHeight"], proportional: true }] };
 export const fractalFieldDefinitions: StudioDefinition[] = [
   {
@@ -73,12 +73,12 @@ export const fractalFieldDefinitions: StudioDefinition[] = [
       numeric("threshold", "Density threshold", "Hide bins below this raw accumulated density; empty bins remain transparent.", 0, 3, .05, { hardMin: 0, hardMax: 1000 }),
     ],
     controlGroups: [
-      { label: "Maps", controls: ["arrangement", "maps", "contraction", "rotationSpread", "translationSpread", "translationAspect",
+      { label: "Maps", stage: "form", controls: ["arrangement", "maps", "contraction", "rotationSpread", "translationSpread", "translationAspect",
         { label: "Bias", controls: ["biasX", "biasY"] }, "disorder"] },
-      { label: "Variations", controls: ["linearWeight", "sinWeight", "absWeight"] },
+      { label: "Variations", stage: "process", controls: ["linearWeight", "sinWeight", "absWeight"] },
       worldGroup,
       outputGroup,
-      { label: "Density", controls: ["iterations", "exposure", "threshold"] },
+      { label: "Density", stage: "material", controls: ["iterations", "exposure", "threshold"] },
     ],
     defaults: flameDefaults,
     validate: q => validateFractalField(q, "flame-clouds"),
@@ -100,9 +100,9 @@ export const fractalFieldDefinitions: StudioDefinition[] = [
       ...footprint,
     ],
     controlGroups: [
-      { label: "Map", controls: ["mapping", "constantReal", "constantImag", "resolution", "iterations"] },
+      { label: "Map", stage: "form", controls: ["mapping", "constantReal", "constantImag", "resolution", "iterations"] },
       worldGroup,
-      { label: "Contours", controls: ["contourCount", { label: "Counts", controls: ["contourStart", "contourInterval"], proportional: true }, "weight"] },
+      { label: "Contours", stage: "material", controls: ["contourCount", { label: "Counts", controls: ["contourStart", "contourInterval"], proportional: true }, "weight"] },
       outputGroup,
     ],
     defaults: escapeDefaults,

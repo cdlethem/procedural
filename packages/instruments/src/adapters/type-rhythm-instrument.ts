@@ -21,16 +21,16 @@ const anchored: Condition = { anchorSide: ["top", "bottom"] };
 const lineStyles: Condition = { textStyle: ["outline", "lined"] };
 
 const controlGroups: readonly ControlGroup[] = [
-  { label: "Modules", controls: ["slicing", { label: "Divisions", controls: ["columns", "rows"], proportional: true },
+  { label: "Modules", stage: "form", controls: ["slicing", { label: "Divisions", controls: ["columns", "rows"], proportional: true },
     "cuts", "axis", "bias", "gutter"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
-  { label: "Anchor", controls: ["anchorSide", "anchorHeight"] },
-  { label: "Type", controls: ["phrase", "size", "leading", "repeatGap", "rowsPerLine", "phase"] },
-  { label: "Mix", controls: ["blank", "screens", "flats", "turned"] },
-  { label: "Disruption", controls: ["displacement", "stretch", "zoom", "correlation", "pinned",
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
+  { label: "Anchor", stage: "form", controls: ["anchorSide", "anchorHeight"] },
+  { label: "Type", stage: "material", controls: ["phrase", "size", "leading", "repeatGap", "rowsPerLine", "phase"] },
+  { label: "Mix", stage: "process", controls: ["blank", "screens", "flats", "turned"] },
+  { label: "Disruption", stage: "process", controls: ["displacement", "stretch", "zoom", "correlation", "pinned",
     { label: "Focus", controls: ["focalX", "focalY", "focalRadius"] }] },
-  { label: "Ink", controls: ["textStyle", "weight"] },
-  { label: "Screens", controls: ["screenPeriod", "screenAngle", "screenAngles", "screenWeight"] },
+  { label: "Ink", stage: "material", controls: ["textStyle", "weight"] },
+  { label: "Screens", stage: "material", controls: ["screenPeriod", "screenAngle", "screenAngles", "screenWeight"] },
 ];
 
 export const typeRhythmDefinition: InstrumentDefinition = {

@@ -45,11 +45,11 @@ const nodeControls = [
 const outlineShape: ControlGroup = { label: "Shape", controls: ["sides", "notch", "aspect", "rotation"] };
 /** Sampled-trajectory studies share their path setup; `processing` is the study's own refinement or simplification. */
 const trajectoryGroups = (count: string, processing: ControlGroup): ControlGroup[] => [
-  { label: "Paths", controls: [count, "spacing", "variation", "sourcePoints"] },
-  { label: "Placement", controls: ["sourceCenterX", "sourceCenterY", "sourceSpan", "direction"] },
-  { label: "Bend", controls: ["frequency", "amplitude", "forwardBend", "disorder"] },
+  { label: "Paths", stage: "form", controls: [count, "spacing", "variation", "sourcePoints"] },
+  { label: "Placement", stage: "frame", controls: ["sourceCenterX", "sourceCenterY", "sourceSpan", "direction"] },
+  { label: "Bend", stage: "process", controls: ["frequency", "amplitude", "forwardBend", "disorder"] },
   processing,
-  { label: "Drawing", controls: ["weight", { label: "Nodes", controls: ["showNodes", "nodeSize"] }] },
+  { label: "Drawing", stage: "material", controls: ["weight", { label: "Nodes", controls: ["showNodes", "nodeSize"] }] },
 ];
 const modern: Record<string, StudioDefinition> = {
   "rounded-panels": {
@@ -67,9 +67,9 @@ const modern: Record<string, StudioDefinition> = {
       n("fillAlpha", "Fill opacity", "Opacity of the bounded panel fill.", 0, 255, 0, 255, 1, true),
     ],
     controlGroups: [
-      { label: "Layout", controls: ["panels", "columns", { label: "Spacing", controls: ["gapX", "gapY"] }, "stagger"] },
-      { label: "Panel", controls: ["panelSize", outlineShape, "iterations"] },
-      { label: "Drawing", controls: ["treatment", "weight", "fillAlpha"] },
+      { label: "Layout", stage: "form", controls: ["panels", "columns", { label: "Spacing", controls: ["gapX", "gapY"] }, "stagger"] },
+      { label: "Panel", stage: "form", controls: ["panelSize", outlineShape, "iterations"] },
+      { label: "Drawing", stage: "material", controls: ["treatment", "weight", "fillAlpha"] },
     ],
     defaults: {iterations: 2,
       panels: 6,
@@ -94,7 +94,7 @@ const modern: Record<string, StudioDefinition> = {
       n("rows", "Brush paths", "Number of sweeps across the group's spacing.", 1, 12, 1, 1000, 1, true), weight,
       ...trajectory, ...nodeControls,
     ],
-    controlGroups: trajectoryGroups("rows", { label: "Smoothing", controls: ["iterations"] }),
+    controlGroups: trajectoryGroups("rows", { label: "Smoothing", stage: "process", controls: ["iterations"] }),
     defaults: {iterations: 3,
       rows: 5,
       weight: 3,
@@ -121,7 +121,7 @@ const modern: Record<string, StudioDefinition> = {
       n("layers", "Records", "Number of simplified records of the source.", 1, 12, 1, 1000, 1, true), weight,
       ...trajectory, ...nodeControls,
     ],
-    controlGroups: trajectoryGroups("layers", { label: "Simplification", controls: ["tolerance"] }),
+    controlGroups: trajectoryGroups("layers", { label: "Simplification", stage: "process", controls: ["tolerance"] }),
     defaults: {tolerance: 27,
       layers: 5,
       weight: 2,
@@ -148,7 +148,7 @@ const modern: Record<string, StudioDefinition> = {
       n("gestures", "Gestures", "Number of independently seeded gestures.", 1, 14, 1, 1000, 1, true), weight,
       ...trajectory, ...nodeControls,
     ],
-    controlGroups: trajectoryGroups("gestures", { label: "Simplification", controls: ["tolerance"] }),
+    controlGroups: trajectoryGroups("gestures", { label: "Simplification", stage: "process", controls: ["tolerance"] }),
     defaults: {tolerance: 13,
       gestures: 6,
       weight: 2.5,
@@ -185,10 +185,10 @@ const modern: Record<string, StudioDefinition> = {
       toggle("showNodes", "Show waypoints", "Mark the route's original waypoints."),
     ],
     controlGroups: [
-      { label: "Routes", controls: ["routes", "turns", "routeSpacing", "iterations"] },
-      { label: "Bend", controls: ["frequency", "amplitude", "phase"] },
-      { label: "Margins", controls: ["distance", "showEdges", "bothSides", "miterLimit"] },
-      { label: "Drawing", controls: ["weight", "showCenterline", "showNodes"] },
+      { label: "Routes", stage: "form", controls: ["routes", "turns", "routeSpacing", "iterations"] },
+      { label: "Bend", stage: "process", controls: ["frequency", "amplitude", "phase"] },
+      { label: "Margins", stage: "process", controls: ["distance", "showEdges", "bothSides", "miterLimit"] },
+      { label: "Drawing", stage: "material", controls: ["weight", "showCenterline", "showNodes"] },
     ],
     defaults: {distance: 12,
       routes: 5,
@@ -220,9 +220,9 @@ const modern: Record<string, StudioDefinition> = {
       n("alpha", "Mark opacity", "Opacity of ring outlines and vertices.", 0, 255, 0, 255, 1, true),
     ],
     controlGroups: [
-      { label: "Boundary", controls: ["scale", outlineShape] },
-      { label: "Rings", controls: ["rings", "distance", "startOffset", "miterLimit"] },
-      { label: "Drawing", controls: ["marks", { label: "Scale", controls: ["weight", "dotSize"], proportional: true }, "alpha"] },
+      { label: "Boundary", stage: "form", controls: ["scale", outlineShape] },
+      { label: "Rings", stage: "material", controls: ["rings", "distance", "startOffset", "miterLimit"] },
+      { label: "Drawing", stage: "material", controls: ["marks", { label: "Scale", controls: ["weight", "dotSize"], proportional: true }, "alpha"] },
     ],
     defaults: {distance: 12,
       rings: 8,
@@ -261,9 +261,9 @@ for (const [id, kind, sides, innerRadius, scale, grain, weightValue] of [
       n("hatchAlpha", "Grain opacity", "Opacity of facet-local grain marks.", 0, 255, 0, 255, 1, true),
     ],
     controlGroups: [
-      { label: "Boundary", controls: ["kind", "sides", "innerRadius", "scale", "aspect", "rotation"] },
-      { label: "Grain", controls: ["hatchMode", "grain"] },
-      { label: "Drawing", controls: ["weight", "showEdges", { label: "Opacity", controls: ["fillAlpha", "hatchAlpha"], proportional: true }] },
+      { label: "Boundary", stage: "form", controls: ["kind", "sides", "innerRadius", "scale", "aspect", "rotation"] },
+      { label: "Grain", stage: "material", controls: ["hatchMode", "grain"] },
+      { label: "Drawing", stage: "material", controls: ["weight", "showEdges", { label: "Opacity", controls: ["fillAlpha", "hatchAlpha"], proportional: true }] },
     ],
     defaults: {scale,
       grain,
@@ -281,7 +281,7 @@ for (const [id, kind, sides, innerRadius, scale, grain, weightValue] of [
   };
 }
 export const pathsADefinitions: StudioDefinition[] = specs.map(([id, title, description, first, second]) =>
-  modern[id] ?? { id, title, description, parameters: [numeric(first[0], first[1], `Changes ${first[1].toLowerCase()} in this composition.`, first[2], first[3], first[4]), numeric(second[0], second[1], `Changes ${second[1].toLowerCase()} in this composition.`, second[2], second[3], second[4]), numeric("weight", "Stroke weight", "Outline width in pixels.", .5, 6, .25)], controlGroups: [{ label: "Composition", controls: [first[0], second[0], "weight"] }], defaults: pathsASettings[id as keyof typeof pathsASettings].defaults });
+  modern[id] ?? { id, title, description, parameters: [numeric(first[0], first[1], `Changes ${first[1].toLowerCase()} in this composition.`, first[2], first[3], first[4]), numeric(second[0], second[1], `Changes ${second[1].toLowerCase()} in this composition.`, second[2], second[3], second[4]), numeric("weight", "Stroke weight", "Outline width in pixels.", .5, 6, .25)], controlGroups: [{ label: "Composition", stage: "form", controls: [first[0], second[0], "weight"] }], defaults: pathsASettings[id as keyof typeof pathsASettings].defaults });
 const draws: Record<string, (p: Parameters<typeof drawRoundedPanels>[0], layer: Layer) => void> = { "rounded-panels": drawRoundedPanels, "flowing-brushes": drawFlowingBrushes, "contour-abstraction": drawContourAbstraction, "gesture-skeletons": drawGestureSkeletons, "road-margins": drawRoadMargins, "nested-contour-strokes": drawNestedContourStrokes, "faceted-silhouettes": drawFacetedSilhouettes, "concave-grain": drawConcaveGrain };
 export function drawPathsA(p: any, layer: Layer): void {
   const draw = draws[layer.technique];

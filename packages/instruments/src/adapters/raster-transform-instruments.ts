@@ -60,20 +60,20 @@ const sharedDefaults = {
 };
 /** One mark population feeds both filters: how it is laid out, what a mark is, then where the raster is displayed. */
 const sourceGroups: ControlGroup[] = [
-  { label: "Source", controls: ["rasterSize", "arrangement", "sourceCount", "sourceSeed", "sourceCenterX", "sourceCenterY",
+  { label: "Source", stage: "form", controls: ["rasterSize", "arrangement", "sourceCount", "sourceSeed", "sourceCenterX", "sourceCenterY",
     { label: "Size", controls: ["sourceExtentX", "sourceExtentY"], proportional: true }, "sourceSpacing", "sourceDisorder"] },
-  { label: "Mark", controls: ["sourceShape", { label: "Size", controls: ["markLength", "markWidth"], proportional: true },
+  { label: "Mark", stage: "material", controls: ["sourceShape", { label: "Size", controls: ["markLength", "markWidth"], proportional: true },
     "markAspect", "markAngle", "sourceAlpha"] },
 ];
-const outputGroup: ControlGroup = { label: "Placement", controls: ["outputX", "outputY",
+const outputGroup: ControlGroup = { label: "Placement", stage: "frame", controls: ["outputX", "outputY",
   { label: "Size", controls: ["outputWidth", "outputHeight"], proportional: true }] };
 const definitions: StudioDefinition[] = [
   { id: "warp-marks", title: "Warp marks", description: "Bend a local RGBA population of marks through an editable directional deformation map.",
     parameters: [...shared,
       ...warp],
     controlGroups: [...sourceGroups,
-      { label: "Focus", controls: ["warpCenterX", "warpCenterY", "warpRadius"] },
-      { label: "Displacement", controls: ["swirl", "pull",
+      { label: "Focus", stage: "process", controls: ["warpCenterX", "warpCenterY", "warpRadius"] },
+      { label: "Displacement", stage: "process", controls: ["swirl", "pull",
         { label: "Directional", controls: ["waveDirection", "wave", "shear", "waveFrequency", "wavePhase"] }] },
       outputGroup],
     defaults: {...sharedDefaults,
@@ -91,7 +91,7 @@ const definitions: StudioDefinition[] = [
     parameters: [...shared,
       ...blur],
     controlGroups: [...sourceGroups,
-      { label: "Blur", controls: ["kernelXRadius", "kernelYRadius"], proportional: true },
+      { label: "Blur", stage: "process", controls: ["kernelXRadius", "kernelYRadius"], proportional: true },
       outputGroup],
     defaults: {...sharedDefaults,
       sourceShape: "disc",

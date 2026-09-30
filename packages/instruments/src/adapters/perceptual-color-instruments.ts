@@ -27,7 +27,7 @@ const colorControls = () => [
   toggle("reverse", "Reverse colors", "Reverse the ramp along band, orbit or arc rank; geometry does not change."),
 ];
 /** Both studies choose their ramp the same way; the orbits' color axis leads it. */
-const colorGroup = (...lead: string[]): ControlGroup => ({ label: "Color", controls: [...lead, "colorSource", "colorStops", "reverse"] });
+const colorGroup = (...lead: string[]): ControlGroup => ({ label: "Color", stage: "color", controls: [...lead, "colorSource", "colorStops", "reverse"] });
 
 export const perceptualColorDefinitions: StudioDefinition[] = [
   {
@@ -46,9 +46,9 @@ export const perceptualColorDefinitions: StudioDefinition[] = [
       ...colorControls(),
     ],
     controlGroups: [
-      { label: "Profile", controls: ["profile", "height"] },
-      { label: "Placement", controls: ["centerX", "centerY", "rotation"] },
-      { label: "Bands", controls: ["bands", "bandCoverage", { label: "Range", controls: ["from", "to"] }] },
+      { label: "Profile", stage: "form", controls: ["profile", "height"] },
+      { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "rotation"] },
+      { label: "Bands", stage: "material", controls: ["bands", "bandCoverage", { label: "Range", controls: ["from", "to"] }] },
       colorGroup(),
     ],
     defaults: { bands: 24, profile: profileDefault, height: 420, centerX: 320, centerY: 320,
@@ -78,10 +78,10 @@ export const perceptualColorDefinitions: StudioDefinition[] = [
       ...colorControls(),
     ],
     controlGroups: [
-      { label: "Orbits", controls: ["orbits", { label: "Radii", controls: ["innerRadius", "outerRadius"], proportional: true }, "spacingPower", "aspect"] },
-      { label: "Arcs", controls: ["startAngle", "sweep", "segments", "weight"] },
-      { label: "Placement", controls: ["centerX", "centerY", "rotation"] },
-      { label: "Drift", controls: ["driftX", "driftY", "twist"] },
+      { label: "Orbits", stage: "form", controls: ["orbits", { label: "Radii", controls: ["innerRadius", "outerRadius"], proportional: true }, "spacingPower", "aspect"] },
+      { label: "Arcs", stage: "form", controls: ["startAngle", "sweep", "segments", "weight"] },
+      { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "rotation"] },
+      { label: "Drift", stage: "process", controls: ["driftX", "driftY", "twist"] },
       colorGroup("colorAxis"),
     ],
     defaults: { orbits: 22, innerRadius: 32, outerRadius: 240, spacingPower: 1, aspect: .65,

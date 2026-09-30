@@ -111,18 +111,18 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Terrain", controls: ["shape", "roughness", "relief", { label: "Noise", controls: ["frequency", "octaves"] }, "outlets", "resolution"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
-  { label: "Water", controls: ["rainMode", "rainVariation", "rainAngle", "storms"] },
-  { label: "Bedrock", controls: ["bedrock", "bedrockContrast", "bedrockScale", "bedrockAngle"] },
-  { label: "Erosion", controls: ["steps", { label: "Stream power", controls: ["erodibility", "areaExponent", "slopeExponent"] }, "uplift", "creep",
+  { label: "Terrain", stage: "form", controls: ["shape", "roughness", "relief", { label: "Noise", controls: ["frequency", "octaves"] }, "outlets", "resolution"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
+  { label: "Water", stage: "process", controls: ["rainMode", "rainVariation", "rainAngle", "storms"] },
+  { label: "Bedrock", stage: "process", controls: ["bedrock", "bedrockContrast", "bedrockScale", "bedrockAngle"] },
+  { label: "Erosion", stage: "process", controls: ["steps", { label: "Stream power", controls: ["erodibility", "areaExponent", "slopeExponent"] }, "uplift", "creep",
     { label: "Sediment", controls: ["deposition", "carrying"] }] },
-  { label: "Contours", controls: ["contours", "contourInterval", "indexEvery", "contourWeight", "ghost"] },
-  { label: "Relief shading", controls: ["shading", { label: "Light", controls: ["azimuth", "elevation"] }, "shadeDepth"] },
-  { label: "Streams", controls: ["streams", "streamThreshold", "streamSmooth", "streamWidth", "streamWeight", "streamSpacing"] },
-  { label: "Basins", controls: ["basins", "basinDepth", "washAlpha", "hatchSpacing", "dividesWeight"] },
-  { label: "Lakes", controls: ["lakes", "lakeDepth"] },
-  { label: "Marks", controls: ["marks", "markKind", "markSize"] },
+  { label: "Contours", stage: "material", controls: ["contours", "contourInterval", "indexEvery", "contourWeight", "ghost"] },
+  { label: "Relief shading", stage: "material", controls: ["shading", { label: "Light", controls: ["azimuth", "elevation"] }, "shadeDepth"] },
+  { label: "Streams", stage: "process", controls: ["streams", "streamThreshold", "streamSmooth", "streamWidth", "streamWeight", "streamSpacing"] },
+  { label: "Basins", stage: "process", controls: ["basins", "basinDepth", "washAlpha", "hatchSpacing", "dividesWeight"] },
+  { label: "Lakes", stage: "process", controls: ["lakes", "lakeDepth"] },
+  { label: "Marks", stage: "material", controls: ["marks", "markKind", "markSize"] },
 ];
 
 /**

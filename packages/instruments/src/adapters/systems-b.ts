@@ -26,10 +26,10 @@ const waveParameters=[
 const impulseGroup = (site:number):ControlGroup=>({label:`Impulse ${site}`,
   controls:[`impulseX${site}`,`impulseY${site}`,`impulseSpread${site}`,`impulseAmplitude${site}`]});
 const waveGroups:ControlGroup[]=[
-  {label:"Impulses",controls:["impulseCount",impulseGroup(1),impulseGroup(2),impulseGroup(3)]},
-  {label:"Pins",controls:["pinMode","pinX","pinY","pinRadius","showPins"]},
-  {label:"Evolution",controls:["passes"]},
-  {label:"Drawing",controls:["scale","weight"]},
+  {label:"Impulses",stage:"form",controls:["impulseCount",impulseGroup(1),impulseGroup(2),impulseGroup(3)]},
+  {label:"Pins",stage:"form",controls:["pinMode","pinX","pinY","pinRadius","showPins"]},
+  {label:"Evolution",stage:"process",controls:["passes"]},
+  {label:"Drawing",stage:"material",controls:["scale","weight"]},
 ];
 const waveDefaults={impulseCount:2,
   impulseX1:26*.32/25,
@@ -74,12 +74,12 @@ const branchDefinition: StudioDefinition = {
     toggle("tips", "Draw tips", "Place small color marks at the final branch endpoints."),
   ],
   controlGroups: [
-    { label: "Growth", controls: ["iterations", "branchCount", "branchSurvival", "step", "contraction", "heading",
+    { label: "Growth", stage: "form", controls: ["iterations", "branchCount", "branchSurvival", "step", "contraction", "heading",
       { label: "Fork", controls: ["angle", "branchBias", "tipSpread"] }] },
-    { label: "Disorder", controls: ["angularDisorder", "lengthDisorder"] },
-    { label: "Placement", controls: ["specimens", "centerX", "centerY",
+    { label: "Disorder", stage: "process", controls: ["angularDisorder", "lengthDisorder"] },
+    { label: "Placement", stage: "frame", controls: ["specimens", "centerX", "centerY",
       { label: "Spread", controls: ["spreadX", "spreadY"], proportional: true }] },
-    { label: "Stroke", controls: ["weight", "taper", "tips"] },
+    { label: "Stroke", stage: "material", controls: ["weight", "taper", "tips"] },
   ],
   defaults: {iterations: 6,
     step: 65,

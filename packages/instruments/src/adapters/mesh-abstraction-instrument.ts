@@ -82,15 +82,15 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Source", controls: ["source", "detail", "terrainVariant", "vaseProfile"] },
-  { label: "Placement", controls: ["centerX", "centerY", "size"] },
-  { label: "Abstraction", controls: ["keep", "rule", "maxError", "boundary", "keepCreases", "creaseAngle"] },
-  { label: "Preserved region", controls: ["region", "regionX", "regionY", "regionZ", "regionSize", "regionAxis", "bandFrom", "bandTo", "regionCount", "falloff", "invert"] },
-  { label: "View", controls: ["projection", "yaw", "pitch", "roll", "distance"] },
-  { label: "Facets", controls: ["facets", "facetOpacity", "light", "contrast"] },
-  { label: "Lines", controls: ["edges", "lineMaterial", "hiddenLines", { label: "Line weights", controls: ["lineWeight", "ghostWeight"], proportional: true }] },
-  { label: "Highlight", controls: ["highlight", "highlightAmount"] },
-  { label: "Comparison", controls: ["compare", "ghostLines", "ghostOpacity"] },
+  { label: "Source", stage: "form", controls: ["source", "detail", "terrainVariant", "vaseProfile"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "size"] },
+  { label: "Abstraction", stage: "process", controls: ["keep", "rule", "maxError", "boundary", "keepCreases", "creaseAngle"] },
+  { label: "Preserved region", stage: "process", controls: ["region", "regionX", "regionY", "regionZ", "regionSize", "regionAxis", "bandFrom", "bandTo", "regionCount", "falloff", "invert"] },
+  { label: "View", stage: "frame", controls: ["projection", "yaw", "pitch", "roll", "distance"] },
+  { label: "Facets", stage: "material", controls: ["facets", "facetOpacity", "light", "contrast"] },
+  { label: "Lines", stage: "material", controls: ["edges", "lineMaterial", "hiddenLines", { label: "Line weights", controls: ["lineWeight", "ghostWeight"], proportional: true }] },
+  { label: "Highlight", stage: "material", controls: ["highlight", "highlightAmount"] },
+  { label: "Comparison", stage: "process", controls: ["compare", "ghostLines", "ghostOpacity"] },
 ];
 
 const optionLabels: Record<string, Record<string, string>> = {

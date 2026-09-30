@@ -97,14 +97,14 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Container", controls: ["container", "barriers", "barrierCount", "barrierSize", "barrierAngle"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
-  { label: "Bodies", controls: ["count", "radius", "radiusSpread", "massLaw"] },
-  { label: "Emitter", controls: ["emitter", "emitterX", "emitterY", "emitterSize", "emitterAngle", "emitEvery", { label: "Launch", controls: ["heading", "headingSpread", "speed", "speedSpread"] }] },
-  { label: "Collisions", controls: ["restitution", "wallRestitution", "wallFriction", "gravity"] },
-  { label: "Time", controls: ["steps", "window"] },
-  { label: "Contacts", controls: ["contacts", "minImpulse", "floor", "colorBy"] },
-  { label: "Drawing", controls: ["outline", { label: "Discs", controls: ["bodies", "bodyWeight"] },
+  { label: "Container", stage: "form", controls: ["container", "barriers", "barrierCount", "barrierSize", "barrierAngle"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
+  { label: "Bodies", stage: "form", controls: ["count", "radius", "radiusSpread", "massLaw"] },
+  { label: "Emitter", stage: "form", controls: ["emitter", "emitterX", "emitterY", "emitterSize", "emitterAngle", "emitEvery", { label: "Launch", controls: ["heading", "headingSpread", "speed", "speedSpread"] }] },
+  { label: "Collisions", stage: "process", controls: ["restitution", "wallRestitution", "wallFriction", "gravity"] },
+  { label: "Time", stage: "process", controls: ["steps", "window"] },
+  { label: "Contacts", stage: "material", controls: ["contacts", "minImpulse", "floor", "colorBy"] },
+  { label: "Drawing", stage: "material", controls: ["outline", { label: "Discs", controls: ["bodies", "bodyWeight"] },
     { label: "Trails", controls: ["trails", "trailWeight", "trailSpacing", "trailBead", "brushWidth"] },
     { label: "Marks", controls: ["markKind", { label: "Scale", controls: ["markSize", "markWeight"], proportional: true }, "markPetals"] },
     { label: "Rays", controls: ["rays", "rayLength", "rayWeight"] },

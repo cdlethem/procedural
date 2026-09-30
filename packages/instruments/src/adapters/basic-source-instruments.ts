@@ -40,7 +40,7 @@ const footprint = [
 ];
 /** The source footprint every basic source instrument positions the same way. */
 const sourcePlacement = (...rotation: string[]): ControlGroup =>
-  ({ label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["extentX", "extentY"], proportional: true }, ...rotation] });
+  ({ label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["extentX", "extentY"], proportional: true }, ...rotation] });
 export const basicSourceInstrumentDefinitions: StudioDefinition[] = [
   {
     id: "field-marks", title: "Field marks", description: "A positioned, retained field of seeded noise-directed dots, short strokes or bars.",
@@ -60,11 +60,11 @@ export const basicSourceInstrumentDefinitions: StudioDefinition[] = [
       num("weight", "Mark weight", "Thickness of strokes and bars; zero hides the drawing.", 0, 8, .1, 0, 80),
     ],
     controlGroups: [
-      { label: "Samples", controls: ["distribution", "pitch",
+      { label: "Samples", stage: "form", controls: ["distribution", "pitch",
         { label: "Grid", controls: ["columns", "rows"], proportional: true }, "retention"] },
       sourcePlacement(),
-      { label: "Field", controls: ["frequency", "direction", "variation"] },
-      { label: "Mark", controls: ["mark",
+      { label: "Field", stage: "form", controls: ["frequency", "direction", "variation"] },
+      { label: "Mark", stage: "material", controls: ["mark",
         { label: "Scale", controls: ["maxLength", "weight"], proportional: true }, "minimumLength"] },
     ],
     defaults: {columns: 80,
@@ -110,12 +110,12 @@ export const basicSourceInstrumentDefinitions: StudioDefinition[] = [
       num("weight", "Weight", "Stroke or bar thickness; zero hides marks.", 0, 6, .1, 0, 80),
     ],
     controlGroups: [
-      { label: "Starts", controls: ["pathCount", "arrangement",
+      { label: "Starts", stage: "form", controls: ["pathCount", "arrangement",
         { label: "Grid", controls: ["sourceColumns", "sourceRows"], proportional: true }] },
       sourcePlacement("sourceAngle"),
-      { label: "Trajectory", controls: ["steps", "distance",
+      { label: "Trajectory", stage: "process", controls: ["steps", "distance",
         { label: "Field", controls: ["fieldScale", "angleBase", "angleScale"] }] },
-      { label: "Mark", controls: ["trace", "mark",
+      { label: "Mark", stage: "material", controls: ["trace", "mark",
         { label: "Scale", controls: ["markLength", "weight"], proportional: true },
         { label: "Stations", controls: ["spacing", "regularity", "drift"] },
         { label: "Gaps", controls: ["gapEvery", "gapLength"] }] },
@@ -165,12 +165,12 @@ export const basicSourceInstrumentDefinitions: StudioDefinition[] = [
       num("weight", "Stroke weight", "Outline and stroke width; zero removes stroke material.", 0, 6, .1, 0, 40),
     ],
     controlGroups: [
-      { label: "Proposals", controls: ["radial", "attempts",
+      { label: "Proposals", stage: "form", controls: ["radial", "attempts",
         { label: "Rings", controls: ["ringCount", "ringSamples", "phase",
           { label: "Size", controls: ["ringRadius", "ringSpacing"], proportional: true }] }] },
       sourcePlacement(),
-      { label: "Exclusion", controls: [{ label: "Radii", controls: ["minimum", "maximum"], proportional: true }, "separation"] },
-      { label: "Mark", controls: ["mark", "materialScale", "orientation", "weight"] },
+      { label: "Exclusion", stage: "process", controls: [{ label: "Radii", controls: ["minimum", "maximum"], proportional: true }, "separation"] },
+      { label: "Mark", stage: "material", controls: ["mark", "materialScale", "orientation", "weight"] },
     ],
     defaults: {attempts: 3000,
       minimum: 4,
@@ -212,13 +212,13 @@ export const basicSourceInstrumentDefinitions: StudioDefinition[] = [
       toggle("shadow", "Shadow", "Optional offset stroke beneath routes."),
     ],
     controlGroups: [
-      { label: "Lattice", controls: [
+      { label: "Lattice", stage: "form", controls: [
         { label: "Grid", controls: ["columns", "rows"], proportional: true },
         { label: "Spacing", controls: ["spacingX", "spacingY"], proportional: true },
         "grid"] },
-      { label: "Placement", controls: ["centerX", "centerY", "orientation"] },
-      { label: "Routes", controls: ["layout", "count", "steps"] },
-      { label: "Drawing", controls: ["dots",
+      { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "orientation"] },
+      { label: "Routes", stage: "form", controls: ["layout", "count", "steps"] },
+      { label: "Drawing", stage: "material", controls: ["dots",
         { label: "Scale", controls: ["weight", "dotSize"], proportional: true },
         "endpoints", "shadow"] },
     ],

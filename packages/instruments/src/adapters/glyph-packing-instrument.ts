@@ -61,12 +61,12 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: readonly ControlGroup[] = [
-  { label: "Container", controls: ["container", "margin", { label: "Protected space", controls: ["negative", "negativeSize", "negativeX", "negativeY"] }] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
-  { label: "Vocabulary", controls: ["vocabulary", "hierarchy", "counters"] },
-  { label: "Packing", controls: ["coverage", { label: "Size", controls: ["largest", "smallest"], proportional: true }, "falloff", "gap", "retries"] },
-  { label: "Orientation", controls: ["orientation", "angle", "spread", "upright"] },
-  { label: "Ink", controls: ["style", "weight", "colorBy", "showContainer"] },
+  { label: "Container", stage: "form", controls: ["container", "margin", { label: "Protected space", controls: ["negative", "negativeSize", "negativeX", "negativeY"] }] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "rotation"] },
+  { label: "Vocabulary", stage: "form", controls: ["vocabulary", "hierarchy", "counters"] },
+  { label: "Packing", stage: "process", controls: ["coverage", { label: "Size", controls: ["largest", "smallest"], proportional: true }, "falloff", "gap", "retries"] },
+  { label: "Orientation", stage: "process", controls: ["orientation", "angle", "spread", "upright"] },
+  { label: "Ink", stage: "material", controls: ["style", "weight", "colorBy", "showContainer"] },
 ];
 
 export const glyphPackingDefinition: InstrumentDefinition = {

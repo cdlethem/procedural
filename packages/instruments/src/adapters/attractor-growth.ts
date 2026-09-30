@@ -52,11 +52,11 @@ const parameters = [
 ];
 
 const controlGroups:ControlGroup[] = [
-  {label:'Attractors',controls:['sourceMode','sourceCount','disorder','exclusion','band','lobeGap','lobeBias']},
-  {label:'Placement',controls:['centerX','centerY','extent','aspect','direction']},
-  {label:'Roots',controls:['rootCount','rootSpread','rootJitter','rootX','rootY','rootHeading']},
-  {label:'Growth',controls:['ticks','step','reach',{label:'Branching',controls:['branches','branchSpread']}]},
-  {label:'Drawing',controls:['weight','taper',
+  {label:'Attractors',stage:'form',controls:['sourceMode','sourceCount','disorder','exclusion','band','lobeGap','lobeBias']},
+  {label:'Placement',stage:'frame',controls:['centerX','centerY','extent','aspect','direction']},
+  {label:'Roots',stage:'form',controls:['rootCount','rootSpread','rootJitter','rootX','rootY','rootHeading']},
+  {label:'Growth',stage:'process',controls:['ticks','step','reach',{label:'Branching',controls:['branches','branchSpread']}]},
+  {label:'Drawing',stage:'material',controls:['weight','taper',
     {label:'Terminals',controls:['terminals','terminalSize']},
     {label:'Guides',controls:['guides','guideSize']}]},
 ];

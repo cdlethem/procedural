@@ -118,19 +118,19 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Seed", controls: ["seedShape", "seedLobes", "seedDepth", "seedCount"] },
-  { label: "Placement", controls: ["seedX", "seedY", { label: "Size", controls: ["seedRadius", "seedSpread"], proportional: true }, "seedAngle"] },
-  { label: "Source", controls: ["source", "sourceRadius", "sourceSize", "sourceCount", "sourceSide", "sourceAngle"] },
-  { label: "Sinks", controls: ["sinks", "sinkCount", { label: "Size", controls: ["sinkSize", "sinkRing"], proportional: true }, "sinkAngle", "sinkOutline", "sinkLineWeight"] },
-  { label: "Barrier", controls: ["barrier", "barrierAngle", "barrierOffset", { label: "Widths", controls: ["barrierWidth", "barrierGapWidth"], proportional: true },
+  { label: "Seed", stage: "form", controls: ["seedShape", "seedLobes", "seedDepth", "seedCount"] },
+  { label: "Placement", stage: "frame", controls: ["seedX", "seedY", { label: "Size", controls: ["seedRadius", "seedSpread"], proportional: true }, "seedAngle"] },
+  { label: "Source", stage: "form", controls: ["source", "sourceRadius", "sourceSize", "sourceCount", "sourceSide", "sourceAngle"] },
+  { label: "Sinks", stage: "process", controls: ["sinks", "sinkCount", { label: "Size", controls: ["sinkSize", "sinkRing"], proportional: true }, "sinkAngle", "sinkOutline", "sinkLineWeight"] },
+  { label: "Barrier", stage: "process", controls: ["barrier", "barrierAngle", "barrierOffset", { label: "Widths", controls: ["barrierWidth", "barrierGapWidth"], proportional: true },
     "barrierGaps", "pillarCount", "pillarSize", "barrierOutline", "barrierLineWeight"] },
-  { label: "Growth", controls: ["steps", "eta", "tension", "stepScale", "noise"] },
-  { label: "Solver", controls: ["grid", "precision", "maxIterations"] },
-  { label: "Fronts", controls: ["frontMaterial", "frontEvery", "frontFrom", "frontTo", { label: "Line weights", controls: ["frontWeight", "finalWeight"], proportional: true },
+  { label: "Growth", stage: "process", controls: ["steps", "eta", "tension", "stepScale", "noise"] },
+  { label: "Solver", stage: "process", controls: ["grid", "precision", "maxIterations"] },
+  { label: "Fronts", stage: "material", controls: ["frontMaterial", "frontEvery", "frontFrom", "frontTo", { label: "Line weights", controls: ["frontWeight", "finalWeight"], proportional: true },
     "frontSpacing", "frontBeadSize", "frontSmooth"] },
-  { label: "Fill", controls: ["fill", "fillOpacity", "fillBands"] },
-  { label: "Marks", controls: ["marks", "markKind", "markSize", "markSpacing", "tipThreshold", "markRetention"] },
-  { label: "Potential lines", controls: ["potential", "potentialLines", "potentialWeight"] },
+  { label: "Fill", stage: "material", controls: ["fill", "fillOpacity", "fillBands"] },
+  { label: "Marks", stage: "material", controls: ["marks", "markKind", "markSize", "markSpacing", "tipThreshold", "markRetention"] },
+  { label: "Potential lines", stage: "material", controls: ["potential", "potentialLines", "potentialWeight"] },
 ];
 
 /**

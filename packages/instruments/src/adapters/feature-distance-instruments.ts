@@ -31,10 +31,10 @@ const sourceDefaults = { siteShape: "area", gridSize: 78, disorder: .34, extent:
   aspect: 1.25, orientation: -16, centerX: .49, centerY: .51 };
 /** The seeded site source is shared: what the sites are, then where the source sits. */
 const sourceGroups = (): ControlGroup[] => [
-  { label: "Sites", controls: ["siteShape", "features", "disorder", "gridSize"] },
-  { label: "Placement", controls: ["centerX", "centerY", "extent", "aspect", "orientation"] },
+  { label: "Sites", stage: "form", controls: ["siteShape", "features", "disorder", "gridSize"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "extent", "aspect", "orientation"] },
 ];
-const siteDots: ControlGroup = { label: "Site dots", controls: ["showSites", "siteSize"] };
+const siteDots: ControlGroup = { label: "Site dots", stage: "material", controls: ["showSites", "siteSize"] };
 
 export const featureDistanceInstrumentDefinitions: StudioDefinition[] = [
   {
@@ -49,7 +49,7 @@ export const featureDistanceInstrumentDefinitions: StudioDefinition[] = [
       toggle("showSites", "Show sites", "Draw dots at the actual occupied source cells."),
       numeric("siteSize", "Site dot size", "Diameter of optional source-site dots; zero hides dots.", 0, 12, .1, { hardMin: 0, hardMax: 50 })],
     controlGroups: [...sourceGroups(),
-      { label: "Contours", controls: ["rings", { label: "Radii", controls: ["startRadius", "radius"], proportional: true }, "weight"] },
+      { label: "Contours", stage: "material", controls: ["rings", { label: "Radii", controls: ["startRadius", "radius"], proportional: true }, "weight"] },
       siteDots],
     defaults: {...sourceDefaults,
       features: 9,
@@ -73,7 +73,7 @@ export const featureDistanceInstrumentDefinitions: StudioDefinition[] = [
       toggle("showSites", "Show sites", "Mark the actual occupied source cells."),
       numeric("siteSize", "Site size", "Diameter of optional source-site dots; zero hides dots.", 0, 12, .1, { hardMin: 0, hardMax: 50 })],
     controlGroups: [...sourceGroups(),
-      { label: "Regions", controls: ["supportRadius", "display", "cellCoverage", "boundaryWidth"] },
+      { label: "Regions", stage: "form", controls: ["supportRadius", "display", "cellCoverage", "boundaryWidth"] },
       siteDots],
     defaults: {...sourceDefaults,
       siteShape: "ring",

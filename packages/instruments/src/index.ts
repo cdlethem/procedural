@@ -1,7 +1,7 @@
-import type { ControlGroup, CutEdit, InstrumentDefinition, InstrumentInput, NumberComparison, Parameter, VisibilityCondition, VisibleWhen } from "./types.js";
+import type { ControlGroup, ControlStage, CutEdit, InstrumentDefinition, InstrumentInput, NumberComparison, Parameter, VisibilityCondition, VisibleWhen } from "./types.js";
 import { applyControlDependencies } from "./control-dependencies.js";
 import { controlIsVisible as isControlVisible, validateVisibility, visibilityAlternatives, visibilityDrivers, visibleParameters as visibleControls } from "./visibility.js";
-import { inspectorItems as inspectorTree, resolveControlGroups, validateControlGroups, type InspectorItem } from "./control-groups.js";
+import { inspectorItems as inspectorTree, stageItems as stageTree, resolveControlGroups, validateControlGroups, validateFeatured, CONTROL_STAGES, MAX_FEATURED, type InspectorItem, type StageItems } from "./control-groups.js";
 import { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits } from "./cut-model.js";
 import type { CutRegion } from "./cut-model.js";
 import { geometryDefinitions, drawGeometry } from "./adapters/geometry.js";
@@ -117,7 +117,8 @@ import { drawPointClouds, pointCloudsComposition, pointCloudsUsesSeed, preparePo
 import { roadsParcelsDefinition } from "./adapters/roads-parcels-instrument.js";
 import { drawRoadsParcels, prepareRoadsParcels, roadsParcelsComposition } from "./composition/roads-parcels.js";
 import { roadsParcelsUsesSeed } from "./composition/roads-parcels-params.js";
-export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, NumberComparison, Parameter, VisibilityCondition, VisibleWhen, CutRegion };
+export type { ControlGroup, ControlStage, CutEdit, InstrumentDefinition, InspectorItem, StageItems, InstrumentInput, NumberComparison, Parameter, VisibilityCondition, VisibleWhen, CutRegion };
+export { CONTROL_STAGES, MAX_FEATURED };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
 export type {
   CompositionSurface, CompositionRun, Site, LatticeSite, Path, Region, RegionTreeNode, Point, Mark, PathMaterial,
@@ -661,6 +662,8 @@ for (const item of definitions) {
     defaultKeys.some(key => !parameterKeys.has(key)))
     throw new Error(`Instrument ${item.id} controls must match defaults exactly`);
   validateVisibility(item);
+  for (const key of item.featured ?? [])
+    if (!isControlVisible(item, key, item.defaults)) throw new Error(`Instrument ${item.id} featured ${key} is hidden at the defaults`);
   byId.set(item.id, item);
 }
 
@@ -684,11 +687,30 @@ export function visibleParameters(id: string, values: InstrumentInput["params"])
 export function controlIsVisible(id: string, key: string, values: InstrumentInput["params"]): boolean {
   return isControlVisible(definition(id), key, values);
 }
-export { validateVisibility, validateControlGroups, visibilityAlternatives, visibilityDrivers };
+export { validateVisibility, validateControlGroups, validateFeatured, visibilityAlternatives, visibilityDrivers };
 
 /** The inspector tree for these values: declared groups holding their visible controls; empty groups omitted. */
 export function inspectorItems(id: string, values: InstrumentInput["params"]): InspectorItem[] {
   return inspectorTree(definition(id), values);
+}
+
+/** The inspector tree bucketed by stage in `CONTROL_STAGES` order; stages with nothing visible omitted. */
+export function stageItems(id: string, values: InstrumentInput["params"]): StageItems[] {
+  return stageTree(definition(id), values);
+}
+
+/**
+ * The instrument's first-touch controls: its declared `featured` keys, or, when it declares none,
+ * up to three number or select controls of its first `form` group, in group order.
+ */
+export function featuredControls(id: string): Parameter[] {
+  const item = definition(id);
+  const byKey: Record<string, Parameter> = Object.fromEntries(item.parameters.map((parameter) => [parameter.key, parameter]));
+  if (item.featured) return item.featured.map((key) => byKey[key]);
+  const firstForm = item.controlGroups.find((group) => group.stage === "form") ?? item.controlGroups[0];
+  return item.parameters
+    .filter((parameter) => parameter.group?.split("/")[0] === firstForm.label && (parameter.type === "number" || parameter.type === "select"))
+    .slice(0, 3);
 }
 
 function paletteFor(id: string): number[] {

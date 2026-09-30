@@ -54,16 +54,16 @@ const packingParameters: Parameter[] = [
   numeric("inset", "Inner inset", "Inset a second palette-colored core; zero omits it.", 0, 32, 1, { hardMin: 0, hardMax: 1000 }),
 ];
 const pointGroups: ControlGroup[] = [
-  { label: "Population", controls: ["support", "innerRadius", "radius", "attempts", "maxPoints"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["footprintWidth", "footprintHeight"], proportional: true }, "orientation"] },
-  { label: "Mark", controls: ["mark", "size", "markAspect", "markAngle", "angleSpread"] },
+  { label: "Population", stage: "form", controls: ["support", "innerRadius", "radius", "attempts", "maxPoints"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["footprintWidth", "footprintHeight"], proportional: true }, "orientation"] },
+  { label: "Mark", stage: "material", controls: ["mark", "size", "markAspect", "markAngle", "angleSpread"] },
 ];
 const packingGroups: ControlGroup[] = [
-  { label: "Blocks", controls: ["count",
+  { label: "Blocks", stage: "form", controls: ["count",
     { label: "Size", controls: ["minWidth", "maxWidth", "minHeight", "maxHeight"], proportional: true },
     "scale", "swapChance", "gutter"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["packWidth", "packHeight"], proportional: true }, "rotation"] },
-  { label: "Drawing", controls: ["filled", "inset", "outline"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["packWidth", "packHeight"], proportional: true }, "rotation"] },
+  { label: "Drawing", stage: "material", controls: ["filled", "inset", "outline"] },
 ];
 const pointsDefault = {radius: 18,
   attempts: 8,

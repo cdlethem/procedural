@@ -30,9 +30,9 @@ export const interferenceLaceDefinition: StudioDefinition = {
     n("weight", "Line weight", "Contour stroke width. Zero omits the marks without changing the field.", .4, 3, .1, 0, 20),
   ],
   controlGroups: [
-    { label: "Waves", controls: ["frequency", "ratio", "angle", "phase", { label: "Distortion", controls: ["warp", "warpScale"] }] },
-    { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
-    { label: "Contours", controls: ["threshold", "levels", "levelGap", "weight"] },
+    { label: "Waves", stage: "form", controls: ["frequency", "ratio", "angle", "phase", { label: "Distortion", controls: ["warp", "warpScale"] }] },
+    { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
+    { label: "Contours", stage: "material", controls: ["threshold", "levels", "levelGap", "weight"] },
   ],
   defaults: { frequency: 7, ratio: 1.08, angle: 27, phase: 0, warp: .42,
     warpScale: 3, threshold: .03, levels: 3, levelGap: .16,

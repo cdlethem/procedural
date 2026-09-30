@@ -80,12 +80,12 @@ export const shapePackingDefinition: InstrumentDefinition = {
     flag("frame", "Container outline", "Draw the container's boundary (and its holes) as an ink line."),
   ],
   controlGroups: [
-    { label: "Container", controls: ["container", "letter", "hole"] },
-    { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "angle"] },
-    { label: "Pieces", controls: ["family", "letters", "count", { label: "Size range", controls: ["sizeMax", "sizeMin"], proportional: true }, "skew", "counters"] },
-    { label: "Packing rule", controls: ["order", "rule", "settleAngle", "rotations", "mirror", { label: "Spacing", controls: ["gap", "margin"], proportional: true }] },
-    { label: "Search", controls: ["resolution", "retries", "shrink", "stop", "coverage"] },
-    { label: "Drawing", controls: ["render", "colorBy", "weight", { label: "Hatch", controls: ["hatchSpacing", "hatchAngle", "hatchFollow"] }, "leftover", "frame"] },
+    { label: "Container", stage: "form", controls: ["container", "letter", "hole"] },
+    { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, "angle"] },
+    { label: "Pieces", stage: "form", controls: ["family", "letters", "count", { label: "Size range", controls: ["sizeMax", "sizeMin"], proportional: true }, "skew", "counters"] },
+    { label: "Packing rule", stage: "process", controls: ["order", "rule", "settleAngle", "rotations", "mirror", { label: "Spacing", controls: ["gap", "margin"], proportional: true }] },
+    { label: "Search", stage: "process", controls: ["resolution", "retries", "shrink", "stop", "coverage"] },
+    { label: "Drawing", stage: "material", controls: ["render", "colorBy", "weight", { label: "Hatch", controls: ["hatchSpacing", "hatchAngle", "hatchFollow"] }, "leftover", "frame"] },
   ] satisfies ControlGroup[],
   defaults: {
     container: "ellipse", letter: "S", hole: .45,

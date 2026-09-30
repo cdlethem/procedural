@@ -85,16 +85,16 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Colony", controls: ["layout", "emitters", "agents", "strengthTaper", "release", "lifespan"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["layoutRadius", "spawnRadius"], proportional: true }, "layoutAngle"] },
-  { label: "Chemistry", controls: ["deposit", "beacon", "diffusion", "decay"] },
-  { label: "Sensing", controls: [{ label: "Probes", controls: ["reach", "sensorAngle"] }, { label: "Steering", controls: ["turnRate", "attraction", "wander"] }, "speed"] },
-  { label: "Arena", controls: ["edge", "grid", "barrier", "barrierSize", "barrierGap", "pillarRadius", "pillars"] },
-  { label: "Time", controls: ["steps"] },
-  { label: "Field", controls: ["fieldMode", "contours", "lowestContour", "contourLine", "contourWeight", "washOpacity"] },
-  { label: "Trails", controls: ["trailLine", "trailShare", "trailMemory", "trailMinLength", "trailWeight", "trailColor", { label: "Brush", controls: ["brushWidth", "hairs"] }] },
-  { label: "Agent marks", controls: ["mark", "markShare", "markSize", "markColor"] },
-  { label: "Barrier fill", controls: ["barrierOpacity"] },
+  { label: "Colony", stage: "form", controls: ["layout", "emitters", "agents", "strengthTaper", "release", "lifespan"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["layoutRadius", "spawnRadius"], proportional: true }, "layoutAngle"] },
+  { label: "Chemistry", stage: "process", controls: ["deposit", "beacon", "diffusion", "decay"] },
+  { label: "Sensing", stage: "process", controls: [{ label: "Probes", controls: ["reach", "sensorAngle"] }, { label: "Steering", controls: ["turnRate", "attraction", "wander"] }, "speed"] },
+  { label: "Arena", stage: "form", controls: ["edge", "grid", "barrier", "barrierSize", "barrierGap", "pillarRadius", "pillars"] },
+  { label: "Time", stage: "process", controls: ["steps"] },
+  { label: "Field", stage: "form", controls: ["fieldMode", "contours", "lowestContour", "contourLine", "contourWeight", "washOpacity"] },
+  { label: "Trails", stage: "material", controls: ["trailLine", "trailShare", "trailMemory", "trailMinLength", "trailWeight", "trailColor", { label: "Brush", controls: ["brushWidth", "hairs"] }] },
+  { label: "Agent marks", stage: "material", controls: ["mark", "markShare", "markSize", "markColor"] },
+  { label: "Barrier fill", stage: "material", controls: ["barrierOpacity"] },
 ];
 
 const optionLabels: Record<string, Record<string, string>> = {

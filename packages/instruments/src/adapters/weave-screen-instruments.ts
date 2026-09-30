@@ -37,7 +37,7 @@ function validateCommon(q: Layer["params"]): void {
 }
 
 /** Screens A and B share one control set; only the key suffix differs. */
-const screenGroup = (label: string, suffix: "A" | "B"): ControlGroup => ({ label, controls: [`enable${suffix}`, `pitch${suffix}`,
+const screenGroup = (label: string, suffix: "A" | "B"): ControlGroup => ({ label, stage: "form", controls: [`enable${suffix}`, `pitch${suffix}`,
   `angle${suffix}`, `phase${suffix}`, { label: "Offset", controls: [`offsetX${suffix}`, `offsetY${suffix}`] },
   { label: "Wave", controls: [`curve${suffix}`, `frequency${suffix}`] }, `weight${suffix}`] });
 
@@ -69,11 +69,11 @@ export const weaveScreenDefinitions: StudioDefinition[] = [
       num("centerY", "Source Y", "Local footprint and lattice center Y.", 100, 540, 5, -1000, 1600),
     ],
     controlGroups: [
-      { label: "Lattice", controls: [{ label: "Strands", controls: ["rows", "columns"], proportional: true }, "spacing", "aspect", "skew"] },
-      { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
-      { label: "Disorder", controls: ["warp", "warpFrequency", "disorder"] },
-      { label: "Crossings", controls: ["sequence", "repeat", "phase", "binary", "clearance"] },
-      { label: "Ink", controls: [{ label: "Line weights", controls: ["rowWidth", "columnWidth"], proportional: true },
+      { label: "Lattice", stage: "form", controls: [{ label: "Strands", controls: ["rows", "columns"], proportional: true }, "spacing", "aspect", "skew"] },
+      { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
+      { label: "Disorder", stage: "process", controls: ["warp", "warpFrequency", "disorder"] },
+      { label: "Crossings", stage: "process", controls: ["sequence", "repeat", "phase", "binary", "clearance"] },
+      { label: "Ink", stage: "material", controls: [{ label: "Line weights", controls: ["rowWidth", "columnWidth"], proportional: true },
         { label: "Palette", controls: ["rowColor", "columnColor"] }] },
     ],
     defaults: { rows: 17, columns: 17, spacing: 29, aspect: 1, skew: .12, warp: .025,
@@ -111,7 +111,7 @@ export const weaveScreenDefinitions: StudioDefinition[] = [
     controlGroups: [
       screenGroup("Screen A", "A"),
       screenGroup("Screen B", "B"),
-      { label: "Placement", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
+      { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }] },
     ],
     defaults: { enableA: true, enableB: true, pitchA: 16, angleA: 0, phaseA: 0,
       offsetXA: 0, offsetYA: 0, curveA: 0, frequencyA: 1.2, weightA: 1.5,

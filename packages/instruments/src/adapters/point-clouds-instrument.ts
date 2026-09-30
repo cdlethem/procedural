@@ -119,22 +119,22 @@ export const pointCloudsParameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Subject", controls: ["subject", "vaseProfile", "terrainVariant",
+  { label: "Subject", stage: "form", controls: ["subject", "vaseProfile", "terrainVariant",
     { label: "Galaxy", controls: ["arms", "twist", "bulge", "thickness", "looseness"] },
     { label: "Volume", controls: ["noiseScale", "noiseContrast", "noiseOctaves"] },
     { label: "Sampling", controls: ["count", "distribution", "neighbors"] }] },
-  { label: "Placement", controls: ["centerX", "centerY", "fit"] },
-  { label: "Thinning", controls: ["keep", "thinRule", "thinBias",
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "fit"] },
+  { label: "Thinning", stage: "process", controls: ["keep", "thinRule", "thinBias",
     { label: "Dense region", controls: ["focus", "focusX", "focusY", "focusZ", "focusRadius", "focusFalloff"] }] },
-  { label: "Cut", controls: ["cut", "cutAt", "cutFlip"] },
-  { label: "Dispersion", controls: ["dispersion", "dispersionBias"] },
-  { label: "Mark", controls: ["mark", { label: "Scale", controls: ["markSize", "markWeight"], proportional: true }, "petals", "opening",
+  { label: "Cut", stage: "form", controls: ["cut", "cutAt", "cutFlip"] },
+  { label: "Dispersion", stage: "process", controls: ["dispersion", "dispersionBias"] },
+  { label: "Mark", stage: "material", controls: ["mark", { label: "Scale", controls: ["markSize", "markWeight"], proportional: true }, "petals", "opening",
     { label: "Direction", controls: ["axis", "axisTurn", "axisJitter"] }, "localScale", "opacity"] },
-  { label: "Depth", controls: ["sizeByDepth", "fade", "sort", "hideBack", "hideBehind"] },
-  { label: "Links", controls: ["links", "linkNodes", "linkNeighbors", "linkReach", "linkWeight", "linkColor"] },
-  { label: "Outline", controls: ["outline", "outlineMaterial", "creaseAngle", "outlineWeight", "outlineHidden"] },
-  { label: "Color", controls: ["colorBy", "blend"] },
-  { label: "View", controls: ["projection", "yaw", "pitch", "roll", "perspective"] },
+  { label: "Depth", stage: "material", controls: ["sizeByDepth", "fade", "sort", "hideBack", "hideBehind"] },
+  { label: "Links", stage: "material", controls: ["links", "linkNodes", "linkNeighbors", "linkReach", "linkWeight", "linkColor"] },
+  { label: "Outline", stage: "material", controls: ["outline", "outlineMaterial", "creaseAngle", "outlineWeight", "outlineHidden"] },
+  { label: "Color", stage: "color", controls: ["colorBy", "blend"] },
+  { label: "View", stage: "frame", controls: ["projection", "yaw", "pitch", "roll", "perspective"] },
 ];
 
 type Values = Record<string, number | string | boolean>;
@@ -152,6 +152,7 @@ export const pointCloudsDefinition: InstrumentDefinition = {
   description: "Rebuild a spatial subject (a vase, a figure, terrain, a torus, a spiral galaxy, a noise volume) from thousands of replaceable marks: discs lying on the surface, strokes along a direction, grains and glyphs, joined by sparse neighbour links, with depth cues, exact hidden-point removal, deterministic thinning and a chosen region kept dense.",
   renderer: "2d",
   parameters: pointCloudsParameters, controlGroups,
+  featured: ["count", "keep", "dispersion"],
   defaults: {
     subject: "vase", vaseProfile: "amphora", terrainVariant: "hills", arms: 3, twist: 1.2, bulge: 0.2, thickness: 0.25, looseness: 0.7,
     noiseScale: 1.6, noiseContrast: 0.55, noiseOctaves: 3, count: 6000, distribution: "even", neighbors: 8,

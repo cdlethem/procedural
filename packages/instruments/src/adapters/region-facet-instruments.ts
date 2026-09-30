@@ -67,38 +67,38 @@ function polygon(p: Canvas, points: Polygon) {
   p.beginShape(); for (const pt of points) p.vertex(pt[0], pt[1]); p.endShape(p.CLOSE);
 }
 /** A footprint centered on (centerX, centerY) with a proportional width/height and an optional rotation. */
-const placement = (...rotation: string[]): ControlGroup => ({ label: "Placement",
+const placement = (...rotation: string[]): ControlGroup => ({ label: "Placement", stage: "frame",
   controls: ["centerX", "centerY", { label: "Size", controls: ["width", "height"], proportional: true }, ...rotation] });
 const regionGroups: ControlGroup[] = [
-  { label: "Partition", controls: ["replacements", "fraction", "maxDepth"] },
+  { label: "Partition", stage: "form", controls: ["replacements", "fraction", "maxDepth"] },
   placement(),
-  { label: "Leaves", controls: ["retention", "inset", "fillLeaves", "outline", "weight"] },
-  { label: "Leaf mark", controls: ["mark", "markCount", "markScale"] },
+  { label: "Leaves", stage: "process", controls: ["retention", "inset", "fillLeaves", "outline", "weight"] },
+  { label: "Leaf mark", stage: "material", controls: ["mark", "markCount", "markScale"] },
 ];
 const panelGroups: ControlGroup[] = [
-  { label: "Partition", controls: [{ label: "Grid", controls: ["columns", "rows"], proportional: true }, "attempts", "axis", "cutBias"] },
+  { label: "Partition", stage: "form", controls: [{ label: "Grid", controls: ["columns", "rows"], proportional: true }, "attempts", "axis", "cutBias"] },
   placement(),
-  { label: "Panels", controls: ["retention", { label: "Spacing", controls: ["inset", "gap"] }, "fillPanels", "outline", "nestedLines", "weight"] },
+  { label: "Panels", stage: "form", controls: ["retention", { label: "Spacing", controls: ["inset", "gap"] }, "fillPanels", "outline", "nestedLines", "weight"] },
 ];
 const polygonGroups: ControlGroup[] = [
-  { label: "Source", controls: ["sides", "irregularity"] },
+  { label: "Source", stage: "form", controls: ["sides", "irregularity"] },
   placement("orientation"),
-  { label: "Proposals", controls: ["proposals", "retention"] },
-  { label: "Mark", controls: ["shape", "size", "ratio", "sizeDisorder",
+  { label: "Proposals", stage: "form", controls: ["proposals", "retention"] },
+  { label: "Mark", stage: "material", controls: ["shape", "size", "ratio", "sizeDisorder",
     { label: "Angle", controls: ["rotation", "rotationSpread"] }] },
-  { label: "Drawing", controls: ["fillMarks", "outline", "weight"] },
+  { label: "Drawing", stage: "material", controls: ["fillMarks", "outline", "weight"] },
 ];
 const facetMarkGroups: ControlGroup[] = [
-  { label: "Source", controls: ["sides", "groups", "groupSpread"] },
+  { label: "Source", stage: "form", controls: ["sides", "groups", "groupSpread"] },
   placement("orientation"),
-  { label: "Sites", controls: ["sites", "distribution", "cluster", "jitter"] },
-  { label: "Facets", controls: ["selectedFraction", "mode", "grain", "weight", "opacity"] },
+  { label: "Sites", stage: "form", controls: ["sites", "distribution", "cluster", "jitter"] },
+  { label: "Facets", stage: "material", controls: ["selectedFraction", "mode", "grain", "weight", "opacity"] },
 ];
 const grainGroups: ControlGroup[] = [
-  { label: "Source", controls: ["sides", "groups", "groupSpread"] },
+  { label: "Source", stage: "form", controls: ["sides", "groups", "groupSpread"] },
   placement("orientation"),
-  { label: "Sampling", controls: ["density", "distribution"] },
-  { label: "Mark", controls: ["strokes", "size", "sizeVariation", "weight",
+  { label: "Sampling", stage: "process", controls: ["density", "distribution"] },
+  { label: "Mark", stage: "material", controls: ["strokes", "size", "sizeVariation", "weight",
     { label: "Angle", controls: ["angle", "angleSpread"] }] },
 ];
 

@@ -94,7 +94,7 @@ function starts(layout: "line" | "grid" | "area" | "ring", count: number, column
 }
 
 /** Band and branch instruments place their start/root arrangement the same way. */
-const rootPlacement: ControlGroup = { label: "Placement", controls: ["centerX", "centerY", "extent", "aspect"] };
+const rootPlacement: ControlGroup = { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "extent", "aspect"] };
 
 const bandDefinition: StudioDefinition = {
   id: "band-marks", title: "Band marks",
@@ -121,12 +121,12 @@ const bandDefinition: StudioDefinition = {
     numeric("nodeSize", "Node size", "Diameter of retained-node dots.", 0, 12, .25),
     numeric("weight", "Stroke weight", "Path/tick stroke width.", .1, 5, .05)],
   controlGroups: [
-    { label: "Starts", controls: ["layout", "columns", "count",
+    { label: "Starts", stage: "form", controls: ["layout", "columns", "count",
       { label: "Heading", controls: ["heading", "spread"] }] },
     rootPlacement,
-    { label: "Trace", controls: ["attempts", "stepDistance", "tolerance"] },
-    { label: "Field", controls: ["fieldScale", "fieldOffsetX", "fieldOffsetY"] },
-    { label: "Drawing", controls: ["pathLines", "pointMaterial", "markStride",
+    { label: "Trace", stage: "process", controls: ["attempts", "stepDistance", "tolerance"] },
+    { label: "Field", stage: "form", controls: ["fieldScale", "fieldOffsetX", "fieldOffsetY"] },
+    { label: "Drawing", stage: "material", controls: ["pathLines", "pointMaterial", "markStride",
       { label: "Scale", controls: ["tickLength", "nodeSize", "weight"], proportional: true }] },
   ],
   defaults: {count: 24,
@@ -175,12 +175,12 @@ const branchDefinition: StudioDefinition = {
     numeric("weight", "Base weight", "Root stroke weight; subsequent generations taper.", .3, 5, .1),
     numeric("tipSize", "Tip size", "Diameter of retained leaf-tip dots; zero hides dots.", 0, 10, .5)],
   controlGroups: [
-    { label: "Roots", controls: ["layout", "columns", "rootCount",
+    { label: "Roots", stage: "form", controls: ["layout", "columns", "rootCount",
       { label: "Heading", controls: ["heading", "headingSpread"] }] },
     rootPlacement,
-    { label: "Growth", controls: ["rootLength", "generations", "children", "contraction", "survival",
+    { label: "Growth", stage: "process", controls: ["rootLength", "generations", "children", "contraction", "survival",
       { label: "Turn", controls: ["angle", "angleSpread"] }] },
-    { label: "Drawing", controls: ["strokes", { label: "Scale", controls: ["weight", "tipSize"], proportional: true }] },
+    { label: "Drawing", stage: "material", controls: ["strokes", { label: "Scale", controls: ["weight", "tipSize"], proportional: true }] },
   ],
   defaults: {generations: 5,
     weight: 2,
@@ -217,11 +217,11 @@ const cutDefinition: StudioDefinition = {
     numeric("weight", "Stroke weight", "Retained segment stroke width.", .15, 2, .05),
     numeric("opacity", "Opacity", "Segment alpha, 0 is invisible.", 0, 255, 1)],
   controlGroups: [
-    { label: "Segment", controls: [
+    { label: "Segment", stage: "form", controls: [
       { label: "Start", controls: ["startX", "startY"] },
       { label: "End", controls: ["endX", "endY"] }] },
-    { label: "Cuts", controls: ["attempts", "minCutLength", "angle"] },
-    { label: "Drawing", controls: ["segments", "weight", "opacity"] },
+    { label: "Cuts", stage: "form", controls: ["attempts", "minCutLength", "angle"] },
+    { label: "Drawing", stage: "material", controls: ["segments", "weight", "opacity"] },
   ],
   defaults: {attempts: 6000,
     angle: 1.1,

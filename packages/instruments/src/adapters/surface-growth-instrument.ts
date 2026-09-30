@@ -98,17 +98,17 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Seed surface", controls: ["surface", "resolution", "perturb"] },
-  { label: "Placement", controls: ["centerX", "centerY", "size"] },
-  { label: "Growth field", controls: ["field", { label: "Ring", controls: ["fieldRadius", "fieldWidth"], proportional: true }, "fieldX", "fieldY", "stripeCount", "stripeAngle", "stripeSharp", "noiseScale", "noiseContrast", "baseline", "spot", "spotX", "spotY", "spotWidth"] },
-  { label: "Growth", controls: ["rate", "limit", "steps"] },
-  { label: "Skin", controls: ["bending", "pin", "sweeps", "thickness"] },
-  { label: "Refinement", controls: ["refine", "edgeLimit", "maxVertices"] },
-  { label: "Faces", controls: ["faces", "backFaces", "faceOpacity", { label: "Light", controls: ["lightAzimuth", "lightElevation", "lightStrength"] }] },
-  { label: "Color", controls: ["colorBy"] },
-  { label: "Lines", controls: ["lines", "creaseAngle", "hidden", "hiddenOpacity", "lineMaterial", { label: "Line weights", controls: ["contourWeight", "wireWeight", "levelWeight"], proportional: true }, "levelBy", "levels"] },
-  { label: "Grains", controls: ["grains", "grainMark", "grainSize"] },
-  { label: "View", controls: ["projection", "yaw", "pitch", "roll", "distance"] },
+  { label: "Seed surface", stage: "form", controls: ["surface", "resolution", "perturb"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "size"] },
+  { label: "Growth field", stage: "process", controls: ["field", { label: "Ring", controls: ["fieldRadius", "fieldWidth"], proportional: true }, "fieldX", "fieldY", "stripeCount", "stripeAngle", "stripeSharp", "noiseScale", "noiseContrast", "baseline", "spot", "spotX", "spotY", "spotWidth"] },
+  { label: "Growth", stage: "process", controls: ["rate", "limit", "steps"] },
+  { label: "Skin", stage: "material", controls: ["bending", "pin", "sweeps", "thickness"] },
+  { label: "Refinement", stage: "process", controls: ["refine", "edgeLimit", "maxVertices"] },
+  { label: "Faces", stage: "material", controls: ["faces", "backFaces", "faceOpacity", { label: "Light", controls: ["lightAzimuth", "lightElevation", "lightStrength"] }] },
+  { label: "Color", stage: "color", controls: ["colorBy"] },
+  { label: "Lines", stage: "material", controls: ["lines", "creaseAngle", "hidden", "hiddenOpacity", "lineMaterial", { label: "Line weights", controls: ["contourWeight", "wireWeight", "levelWeight"], proportional: true }, "levelBy", "levels"] },
+  { label: "Grains", stage: "material", controls: ["grains", "grainMark", "grainSize"] },
+  { label: "View", stage: "frame", controls: ["projection", "yaw", "pitch", "roll", "distance"] },
 ];
 
 const optionLabels: Record<string, Record<string, string>> = {

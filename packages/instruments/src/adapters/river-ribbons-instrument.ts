@@ -72,14 +72,14 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Starting channel", controls: ["planform", "harmonics", "amplitude", "waves", "turn"] },
-  { label: "Placement", controls: ["centerX", "centerY", { label: "Size", proportional: true, controls: ["length", "confinement"] }, "angle"] },
-  { label: "Channel", controls: ["width", "discharge"] },
-  { label: "Migration", controls: ["steps", "mobility", { label: "Smoothing", controls: ["smoothing", "skew"] }, "heterogeneity", "cutoff", "spacing"] },
-  { label: "Ribbon", controls: ["showChannel", "channelOpacity", "widening", { label: "Banks", controls: ["banks", "bankWeight"] }] },
-  { label: "Scars", controls: ["scars", "scarEvery", "scarOpacity", "scarWeight", "oxbows", "oxbowOpacity", "oxbowWeight"] },
-  { label: "Age", controls: ["fade", "deposition"] },
-  { label: "Floodplain", controls: ["floodplain", "plainCell", "plainOpacity"] },
+  { label: "Starting channel", stage: "form", controls: ["planform", "harmonics", "amplitude", "waves", "turn"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", { label: "Size", proportional: true, controls: ["length", "confinement"] }, "angle"] },
+  { label: "Channel", stage: "form", controls: ["width", "discharge"] },
+  { label: "Migration", stage: "process", controls: ["steps", "mobility", { label: "Smoothing", controls: ["smoothing", "skew"] }, "heterogeneity", "cutoff", "spacing"] },
+  { label: "Ribbon", stage: "material", controls: ["showChannel", "channelOpacity", "widening", { label: "Banks", controls: ["banks", "bankWeight"] }] },
+  { label: "Scars", stage: "material", controls: ["scars", "scarEvery", "scarOpacity", "scarWeight", "oxbows", "oxbowOpacity", "oxbowWeight"] },
+  { label: "Age", stage: "process", controls: ["fade", "deposition"] },
+  { label: "Floodplain", stage: "material", controls: ["floodplain", "plainCell", "plainOpacity"] },
 ];
 
 type Values = Record<string, number | string | boolean>;
@@ -102,6 +102,7 @@ export const riverRibbonsDefinition: InstrumentDefinition = {
   id: "river-ribbons", title: "River Ribbons",
   description: "A river channel that migrates: bends erode toward their outsides at a rate set by smoothed curvature, tight necks cut off into oxbows, and every earlier position is kept. Drawn as a ribbon whose width follows the discharge, faded scars of old channels and oxbows, and an age tint of the floodplain.",
   renderer: "2d", parameters, controlGroups,
+  featured: ["amplitude", "harmonics", "steps"],
   defaults: {
     planform: "wandering", harmonics: 6, amplitude: 0.6, waves: 3, turn: 60,
     centerX: 320, centerY: 320, length: 600, confinement: 190, angle: 0,

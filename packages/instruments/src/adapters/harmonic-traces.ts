@@ -21,10 +21,10 @@ const numberControl = (key: string, label: string, tip: string, low: number, hig
   numeric(key, label, tip, low, high, step, { hardMin: hardLow, hardMax: hardHigh, integer });
 const defaultTerms = "x, 160, 3, 0, 0\ny, 160, 2, 90, 0\nx, 40, 7, 30, 0\ny, 40, 5, -20, 0";
 const harmonicTraceGroups: ControlGroup[] = [
-  { label: "Oscillators", controls: ["terms", { label: "Time", controls: ["timeStart", "duration"] }, "samples"] },
-  { label: "Traces", controls: ["traces", "phaseStride"] },
-  { label: "Placement", controls: ["centerX", "centerY", "rotation"] },
-  { label: "Material", controls: ["material", "spacing",
+  { label: "Oscillators", stage: "form", controls: ["terms", { label: "Time", controls: ["timeStart", "duration"] }, "samples"] },
+  { label: "Traces", stage: "material", controls: ["traces", "phaseStride"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "rotation"] },
+  { label: "Material", stage: "material", controls: ["material", "spacing",
     { label: "Scale", controls: ["markSize", "weight"], proportional: true }] },
 ];
 

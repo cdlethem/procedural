@@ -106,20 +106,20 @@ const parameters: Parameter[] = [
 ];
 
 const controlGroups: ControlGroup[] = [
-  { label: "Form", controls: ["form", "blend",
+  { label: "Form", stage: "form", controls: ["form", "blend",
     { label: "Block", controls: ["roundness", "bores", "boreRadius"] },
     { label: "Lattice", controls: ["cells", "voidSize", "tunnel", "voidKeep"] },
     { label: "Growth", controls: ["branches", "twigs", "spread", "thickness", "bulbs"] },
     { label: "Fold", controls: ["fold", "iterations", "foldShape"] }] },
-  { label: "Placement", controls: ["centerX", "centerY", "size"] },
-  { label: "Carve", controls: ["cut", "cutAt", "cutTurn", "hollow", "wall", "order"] },
-  { label: "Deform", controls: ["twist", "bend"] },
-  { label: "Repeat", controls: ["repeatX", "repeatY", "repeatZ", "repeatGap"] },
-  { label: "View", controls: ["projection", "yaw", "pitch", "roll", "distance"] },
-  { label: "Light", controls: ["lightAzimuth", "lightElevation", "ambient", "aoStrength", "depthFade"] },
-  { label: "Fill", controls: ["fill", "levels", "opacity", { label: "Cells", controls: ["cellShape", "cellGap"] }, { label: "Grains", controls: ["pointCount", "pointSize"] }] },
-  { label: "Lines", controls: ["silhouette", "creases", "creaseAngle", "sliceAxis", "slices", "hiddenLines", { label: "Line weights", controls: ["lineWeight", "sliceWeight"], proportional: true }] },
-  { label: "Quality", controls: ["cellSize", "steps", "meshDetail"] },
+  { label: "Placement", stage: "frame", controls: ["centerX", "centerY", "size"] },
+  { label: "Carve", stage: "process", controls: ["cut", "cutAt", "cutTurn", "hollow", "wall", "order"] },
+  { label: "Deform", stage: "process", controls: ["twist", "bend"] },
+  { label: "Repeat", stage: "process", controls: ["repeatX", "repeatY", "repeatZ", "repeatGap"] },
+  { label: "View", stage: "frame", controls: ["projection", "yaw", "pitch", "roll", "distance"] },
+  { label: "Light", stage: "frame", controls: ["lightAzimuth", "lightElevation", "ambient", "aoStrength", "depthFade"] },
+  { label: "Fill", stage: "material", controls: ["fill", "levels", "opacity", { label: "Cells", controls: ["cellShape", "cellGap"] }, { label: "Grains", controls: ["pointCount", "pointSize"] }] },
+  { label: "Lines", stage: "material", controls: ["silhouette", "creases", "creaseAngle", "sliceAxis", "slices", "hiddenLines", { label: "Line weights", controls: ["lineWeight", "sliceWeight"], proportional: true }] },
+  { label: "Quality", stage: "process", controls: ["cellSize", "steps", "meshDetail"] },
 ];
 
 export const implicitSculptureDefinition: InstrumentDefinition = {
