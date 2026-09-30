@@ -3,7 +3,7 @@ import test from "node:test";
 import {
   PACK_LIMITS, createCompositionRun, createInstrument, customItem, customShape, definition, domainDifference, domainIntersection, drawInstrument, drawShapePacking,
   inspectorItems, locateInDomain, packContainer, packItems, packNegativeSpace, packOrder, packShapes, packedSites, planarDomain, planarRegion, prepareInstrument,
-  shapeCovers, shapePackingComposition, shapePackingLayout, unionDomains, visibleParameters,
+  shapeCovers, shapePackingComposition, shapePackingLayout, unionDomains, validateInstrument, visibleParameters,
   type CompositionSurface, type DrawingContext, type InstrumentInput, type PackItem, type PackRules, type PackedInstance, type PlanarDomain, type ShapePacking, type ShapePackingRecipe,
 } from "../dist/index.js";
 
@@ -423,4 +423,28 @@ test("items are a public value: custom silhouettes pack like bundled ones", () =
   near(star.domain.centroid![0], 0, 1e-12);
   near(Math.max(star.domain.bounds![2] - star.domain.bounds![0], star.domain.bounds![3] - star.domain.bounds![1]), 1, 1e-12);
   assert.equal(star.id, "custom:star");
+});
+
+test("every slider corner is admitted and stays inside the declared work bound: each numeric control at its slider min and max, all at max, all at min", () => {
+  const numbers = definition(ID).parameters.filter((p) => p.type === "number");
+  assert.ok(numbers.length >= 20);
+  // Deterministic cost: raster search steps (measured about 0.65 µs of CPU each: the worst corner, 3.04 M steps, took 2.0 s) and the hatch line count the drawing checks.
+  const STEPS = 3_500_000;
+  const check = (label: string, params: Params, seed: number): number => {
+    const value = input(params, seed);
+    assert.doesNotThrow(() => validateInstrument(value), `${label} admitted`);
+    const layout = shapePackingLayout(shapePackingComposition(value));
+    assert.ok(layout.stats.steps <= STEPS, `${label}: ${layout.stats.steps} search steps exceed ${STEPS}`);
+    assert.doesNotThrow(() => drawnInput(value), `${label} draws within its bounds`);
+    return layout.stats.steps;
+  };
+  for (const p of numbers) for (const [end, v] of [["min", p.min!], ["max", p.max!]] as const) check(`${p.key} at ${end}`, { [p.key]: v }, 7);
+  const cornerMax = Object.fromEntries(numbers.map((p) => [p.key, p.max!])), cornerMin = Object.fromEntries(numbers.map((p) => [p.key, p.min!]));
+  // The expensive choices: mirrored angles, and the finest hatching under the finest renderings and biggest work.
+  let worst = 0;
+  for (const seed of [1, 2, 3]) for (const extra of [{ mirror: true }, { mirror: true, render: "hatch", family: "letters", leftover: "fill" }, { mirror: true, render: "mixed", family: "leaves", leftover: "outline", frame: true }, { mirror: true, family: "blobs", counters: "solid", order: "smallest", rule: "walls" }] as Params[])
+    worst = Math.max(worst, check(`all at max ${JSON.stringify(extra)} seed ${seed}`, { ...cornerMax, ...extra }, seed));
+  check("all at min", cornerMin, 1);
+  check("all at min, hatch", { ...cornerMin, render: "hatch" }, 1);
+  assert.ok(worst > 200_000, "the all-max corner really is a heavy configuration");
 });

@@ -116,6 +116,27 @@ Pieces"; "lower Edge margin"). Development-machine timings (Node 22, one thread;
 | hatch spacing 1.5, 150 pieces | 370 ms | 30 ms | 340 ms |
 | 600 pieces, 24 angles, mirror, resolution 320 | refused after ≈ 3.6 s at the step limit | | |
 
+### Slider corners (root finding: all sliders at their maximum took 22 s in the real app)
+
+Cause: at the old slider ends (200 pieces of 120 to 260 units in a 640 box, 24 angles, 6 retries, resolution 256) almost every piece is a large one that fits nowhere,
+and every failed attempt paid the whole raster search for every angle and both mirrors. Two exact speedups (layouts are bit-identical): a footprint whose touched-cell
+count exceeds the remaining free cells is skipped without a search, and a piece's row runs are ANDed longest first so most anchor rows die on the first run. Slider
+intervals then narrowed to the cost drivers: **Pieces** 8–100 (was 200), **Largest piece** 40–200 (260), **Smallest piece** 8–50 (120), **Rotations** 1–12 (24),
+**Search resolution** 64–160 (256), **Retries** 0–3 (6). Hard limits and named bounds are unchanged for typed values.
+
+Measured on the development machine, load average ≈ 100 from other workers (wall times were 2–6× CPU time, so CPU time is given; searches are single-threaded):
+
+| Corner | Search steps | CPU time (prepare + draw) |
+|---|---|---|
+| defaults (80 pieces) | 0.75 M | 0.32 s idle; 1.2 s CPU under the load above |
+| every slider at min | 4.9 k | 0.11 s |
+| old all-max (before the fix), mixed, seed 42 | not finished within the 60 M step limit with mirror; 22 s without | 22 s wall |
+| every slider at max, mirror on, seeds 1–4, six family/rule/order/render/counter combinations (24 layouts) | ≤ 3.04 M | ≤ 2.0 s (typically 1.8–2.2 s; the finest hatch, 1.5, adds ≤ 0.25 s of drawing) |
+| every control at its hard max (typed values: 320 resolution, 600 pieces, 24 angles, 8 retries, 2,000-unit pieces) | 20.2 M | 37.5 s CPU before answering: legal but not a slider position |
+
+The test `every slider corner is admitted and stays inside the declared work bound` sets each numeric control alone to its slider min and max, all at max (four
+mirrored expensive settings, three seeds), and all at min: `validateInstrument` passes, the search steps stay ≤ 3.5 M (≈ 2.3 s of CPU) and the drawing stays inside its bounds.
+
 Coverage reached at the defaults over three seeds: 0.58, 0.63, 0.59 (blobs 0.67, leaves 0.67, polygons 0.60, letters 0.45, an S-shaped
 container 0.38). Sparse and dense settings are inspected in the review list below.
 
