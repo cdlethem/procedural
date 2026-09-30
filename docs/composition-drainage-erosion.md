@@ -31,7 +31,7 @@ exactly `columns × cell` by `rows × cell`). Resolution is a real control (4 �
    upstream (rain multiplier of mean 1) × `h²`.
 3. Walking from the highest `F` to the lowest: `q = A^m S^n`, erosion `E = min(K q, max(0, z − F_receiver))` (never below the receiver's filled
    level), capacity `carrying · K q · A`, `out = load + E h²`, deposit `D = min(deposition · max(0, out − capacity) / h², room)` with room the lowest filled
-   elevation among donors minus `z`; the rest is carried on. `K = erodibility (1 − contrast · hardness)`. Lake cells have almost no slope so they neither
+   elevation among donors minus `z` (a lake bed rises at most to the lake surface); the rest is carried on. `K = erodibility (1 − contrast · hardness)`. Lake cells have almost no slope so they neither
    erode nor pass sediment on; they trap it.
 4. `z += D − E + uplift · ramp`; outlets stay 0. `ramp` is the coastal ramp (0 at outlets, smoothstep to 1 over 0.3 of the map), so uplift does not build a cliff.
 5. Creep: explicit diffusion `κ = creep · 1e-5` between non-outlet 4-neighbours in `ceil(4κ/h² / ½)` sub-steps (at most 64), each a convex average; pairs
@@ -79,14 +79,42 @@ resolution); contour levels ≤ 200 and vertices ≤ 1,500,000 (contour interval
 
 | Case | first | appearance edit | extraction edit | structural edit | steps −1 | steps +5 |
 |---|---|---|---|---|---|---|
-| default, 112² × 120 steps | 486 | 6 | 6 | 438 | 93 | 38 |
-| 112² × 300 steps (slider max) | 544 | 2 | 4 | 936 | 94 | 42 |
-| 200² × 300 steps (both slider maxima) | 3037 | 6 | 10 | 2996 | 291 | 104 |
+| default, 112² × 120 steps | 571 | 7 | 9 | 626 | 114 | 45 |
+| 112² × 300 steps (slider max; a fresh run, about 1.0 s, is the structural-edit figure: the first draw here extended the cached 120-step run) | 609 | 3 | 5 | 1007 | 109 | 48 |
+| 200² × 300 steps (both slider maxima) | 3649 | 5 | 11 | 3371 | 309 | 96 |
+| 384² × 40 steps (hard resolution limit) | 1940 | 7 | 23 | 1962 | 747 | 331 |
 
-The hard limits (384², 100 steps) exceed the work bound and are refused. A structural edit costs a full run; scrubbing costs only new steps or one checkpoint interval.
+384² × 100 steps exceeds the work bound (150,000,000 units) and is refused, naming steps and resolution. A structural edit costs a full run; scrubbing costs only new steps or one checkpoint interval.
 
 ## Limits and not done
 
 Not a physical model; D8 routing has grid-aligned artefacts (visible as straight runs and a fringe of short parallel streams along an open edge); no
 multiple-flow-direction routing; no lake outflow bookkeeping beyond the epsilon fill; no host-supplied height raster or rain map (future host work: saved
 instruments name only bundled landforms and scalar controls). The typed simulation accepts any `ErosionParams`; a resolved height input would replace `initial`.
+
+## Looked at (rendered through the SVG surface, Chromium under the render lease; not real-interface acceptance)
+
+Defaults at seeds 42, 7 and 1234567; six strongly different structures (dome to all edges with hatch basins and ink streams; ridge with storms and divides
+only; escarpment over hard layered bedrock; noise to a single outlet with deposition; slope exponent 2 to side outlets with beads and marks; gradient rain
+over blob bedrock with stitches); steps 0, 12, 40 and 300; sparse (48², threshold 4 %) and dense (200², threshold 0.1 %); combined ghost contours, hatch, marks and
+lakes; no uplift; high creep with uplift; and the drainage layers over and under Motif Ecologies and Optical Plates, in both orders.
+Defects found and fixed: (1) terrain ended in a cliff at the outlets, which uplift then made a wall: added the coastal ramp to terrain and uplift; (2) the first
+defaults (relief 0.3, erodibility 0.05) eroded to a few parallel gullies: lowered erodibility and creep and raised uplift so the defaults show branching valleys at
+120 steps; (3) hundreds of one-cell basins shattered the wash: basins under 3 stream thresholds merge downstream; basin outlines simplified by 1.5 cells; (4)
+erodibility, creep and contour interval slider ranges were far too wide for the model and were narrowed to the observed useful span (hard limits stay wide).
+Remaining visible artefacts: D8 routing leaves a fringe of short parallel streams along an open outlet edge and parallel rills on very smooth planes (high creep with
+uplift); stitch and bead streams are thin and pale against a wash; unlabelled tiny root basins leave straight-edged gaps in the wash on a single-outlet map.
+
+## Checks
+
+`tests/composition-drainage.test.ts` (40 tests, independent expectations): priority flood against a hand-derived pit and an independent minimax spill; no cell lower than its
+receiver and a valid topological order in all four outlet modes; D8 steepest descent with the diagonal weight and every tie; accumulation against a per-cell walk and conservation at the
+outlets; closed-form plane and dome terrain, rain mean exactly 1, gradient direction; stream power `K A^m S^n` on a plane for three exponent pairs; the erosion floor; carry-and-drop deposition
+cell by cell; lakes neither erode nor rise above their surface; creep of a spike and an independent multi-sub-step diffusion with exact mass; the mass ledger over five configurations and
+40 steps; monotone settling; `checkSimulation` (replay, prefix, checkpoint spacing, resume); bound errors naming their control; contours of a ramp (exact position) and a cone (closed rings,
+vertex count = crossed edges), saddles, and a 220² noisy level; hillshade sides; lakes; basin colouring; a hand-made Y network (ids, Strahler, weights), smoothing endpoints, basin merging; on
+eroded terrain flow = rain + donors, reaches partition the stream cells, every basin cell drains to its river's mouth; snapshot identity under palette and view edits (by reference), recompute for
+initial-condition edits and reuse for hidden ones, scrubbing, cancellation caching nothing, the definition's conditions and slider intervals, footprint arithmetic.
+
+Mutations confirmed to fail (each by at least one test): D8 tie taking the last neighbour; fill without the epsilon rise; diagonal distance ignored; erosion allowed below the receiver;
+deposited sediment still carried on; creep share halved wrong; saddle decided the other way; Strahler order raised by every confluence; a hidden bedrock scale reaching the key.
