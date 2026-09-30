@@ -73,7 +73,7 @@ named (the vertex/edge centre offset is subtracted). `<X,X> = -1` is not used to
 
 | Group | Controls | Notes |
 |---|---|---|
-| Tiling | `p`, `q`, `center`, `generations`, `diskRadius`, `minSize`, `retention` | slider 3–12 / 0–10 / .5–.999 / .5–12; hard limits 3–24, 0–40, .001–.9999, .05–10000 |
+| Tiling | `p`, `q`, `center`, `generations`, `diskRadius`, `minSize`, `retention` | slider p 5–12, q 4–12 (so any slider setting is hyperbolic; type 3 or 7 to reach {7,3}, {3,7}), generations 0–10, disk .5–.999, smallest cell .5–12, motif size .05–.75 (so 0.75 × the largest edge at slider ends stays under the 500-unit motif limit); hard limits 3–24, 0–40, .001–.9999, .05–10000 |
 | Placement | `centerX`, `centerY`, `radius`, `rotation` | no proportional subgroup (one length) |
 | Cells | `cellFill`, `inset`, `opacity`, Hatch{`hatchSpacing`, `hatchAngle`, `hatchWeight`} | conditional on `cellFill` (inset/opacity: any fill; Hatch: hatched choices) |
 | Edges | `edgeMaterial`, `edgeColor`, `edgeWeight`, Stations{spacing, phase}, Bead mark{`beadMark`, **Scale** (proportional: `beadSize`, `beadWeight`)} | conditional on `edgeMaterial` |
@@ -89,7 +89,7 @@ mattering for dots and rings (the turn was applied to a symmetric mark); the tur
 Seed use (`usesSeed`): retention strictly between 0 and 1, or a visible motif with size variation above 0. The default shows both
 (retention 0.95, variation 0.25), so seeds re-deal the gaps and mark sizes.
 
-## Checks (`tests/composition-hyperbolic-gardens.test.ts`, 23 tests)
+## Checks (`tests/composition-hyperbolic-gardens.test.ts`, 24 tests)
 
 Independent expected values: Euclidean and spherical {p,q} refused naming both controls; **cells and new vertices per generation
 equal a purely combinatorial boundary-ring oracle** for {5,4}, {7,3}, {4,5}, {6,4} at all three centres (with literal
