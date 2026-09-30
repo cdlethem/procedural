@@ -1,6 +1,6 @@
 # @procedurals/instruments
 
-The current tree provides 174 editable p5.js study IDs: 156 canonical instruments, including 14 shared discovery families (the released 0.2.2 artifacts contain the earlier 117 IDs / 99 canonical instruments). It uses `@procedurals/javascript` 0.2.2 operations; this package supplies current drawing constructions and guides, **not** new operation certification or a portable recipe executor. The package does not bundle p5.js or own a canvas, user documents, storage, or compositing.
+Release 0.2.3 provides 174 editable p5.js study IDs: 156 canonical instruments, including 14 shared discovery families, each with semantic control groups and visibility-filtered inspector items (`inspectorItems`). The earlier 0.2.2 release contained 117 IDs / 99 canonical instruments. It uses `@procedurals/javascript` 0.2.3 operations; this package supplies current drawing constructions and guides, **not** new operation certification or a portable recipe executor. The package does not bundle p5.js or own a canvas, user documents, storage, or compositing.
 
 ## Install and draw
 
@@ -8,8 +8,8 @@ Install this package together with its exact `@procedurals/javascript` peer depe
 
 ```sh
 npm install --save-exact \
-  https://github.com/cdlethem/procedural/releases/download/web-toolkit-v0.2.2/procedurals-javascript-0.2.2.tgz \
-  https://github.com/cdlethem/procedural/releases/download/web-toolkit-v0.2.2/procedurals-instruments-0.2.2.tgz
+  https://github.com/cdlethem/procedural/releases/download/web-toolkit-v0.2.3/procedurals-javascript-0.2.3.tgz \
+  https://github.com/cdlethem/procedural/releases/download/web-toolkit-v0.2.3/procedurals-instruments-0.2.3.tgz
 ```
 
 The caller provides p5.js. The library draws transparent marks in a 640-unit reference coordinate system; the caller creates and clears a canvas/graphics buffer, chooses background and transforms, composites layers and schedules drawing:
@@ -62,7 +62,7 @@ background calls and restores the context method even if drawing fails.
 
 ## Discover and adapt studies
 
-`@procedurals/instruments/metadata.json` lists IDs, titles, descriptions, categories, related operation IDs, logical guide/source locations, and named families with their presets. The published 0.2.2 release has 117 IDs and 14 families; the unreleased reference additions below bring the source tree to 120 IDs. `@procedurals/instruments/guides/<id>.md` provides controls, examples and artist-facing material. `@procedurals/instruments/sources.json` contains the AST-extracted **actual library source**, including local dependencies and imports; each entry is `{ source, path }`, with a logical public repository path such as `packages/instruments/src/adapters/perceptual-color-instruments.ts`. The packaged `src/` includes that editable TypeScript; operation examples may instead refer to actual `packages/javascript/` modules supplied by the SDK package. `@procedurals/instruments/manifest.json` inventories packaged bytes and records the release's actual source commit. JSON package subpaths can be loaded with Node's `with { type: "json" }` import attribute or read as files in a build tool.
+`@procedurals/instruments/metadata.json` lists IDs, titles, descriptions, categories, related operation IDs, logical guide/source locations, and named families with their presets. Release 0.2.3 has 174 IDs (156 canonical instruments) and 14 families. `@procedurals/instruments/guides/<id>.md` provides controls, examples and artist-facing material. `@procedurals/instruments/sources.json` contains the AST-extracted **actual library source**, including local dependencies and imports; each entry is `{ source, path }`, with a logical public repository path such as `packages/instruments/src/adapters/perceptual-color-instruments.ts`. The packaged `src/` includes that editable TypeScript; operation examples may instead refer to actual `packages/javascript/` modules supplied by the SDK package. `@procedurals/instruments/manifest.json` inventories packaged bytes and records the release's actual source commit. JSON package subpaths can be loaded with Node's `with { type: "json" }` import attribute or read as files in a build tool.
 
 Operation IDs identify the computational contracts used by a study, **not** a fresh target-support attestation. Instruments are reusable drawing constructions; studies supply named starting configurations. Related presets are grouped into 14 families rather than counted as separate mechanisms. Creative-review scope is separate from runtime packaging: existing scoped evidence does not certify every possible composition. The `@procedurals/catalog` release remains the source for operation support, versions and attestations.
 
@@ -70,8 +70,8 @@ The package exports `./internal/*` for tightly coupled adapter behavior tests an
 
 ## Functional composition references (unreleased)
 
-The working tree adds **Motif Ecologies**, **Contour Scores** and **Region Quilts**.
-These are not in the published 0.2.2 tarballs above. They share geometry producers and
+Release 0.2.3 includes **Motif Ecologies**, **Contour Scores** and **Region Quilts**.
+They were first released in 0.2.3. They share geometry producers and
 ordinary drawing callbacks; the quilt nests the motif and contour constructions instead
 of maintaining another version of either algorithm.
 
@@ -152,9 +152,9 @@ From a committed, clean checkout, have Node.js 22.12+ and npm available. Install
 
 ```sh
 npm install --prefix packages/instruments --ignore-scripts --no-package-lock --legacy-peer-deps
-node tools/build_web_toolkit.mjs --output .work/dist/web-toolkit-v0.2.2
+node tools/build_web_toolkit.mjs --output .work/dist/web-toolkit-v0.2.3
 ```
 
-The release builder checks clean committed inputs, compiles NodeNext ESM/declarations, generates extracted sources from the current public modules, builds catalog/JavaScript/instruments tarballs, offline-installs all three into an isolated consumer, checks bytes and imports, and writes `report.json` plus `SHA256SUMS`. It does not publish or substitute a guessed commit hash. Run it only after the 0.2.2 inputs have been committed; choose a fresh output path. The builder uses the locally installed Babel parser and TypeScript build tools; isolated-stage and final-consumer installation use explicit local inputs with `--offline`. The source-package behavior tests use the declared `tsx` runner.
+The release builder checks clean committed inputs, compiles NodeNext ESM/declarations, generates extracted sources from the current public modules, builds catalog/JavaScript/instruments tarballs, offline-installs all three into an isolated consumer, checks bytes and imports, and writes `report.json` plus `SHA256SUMS`. It does not publish or substitute a guessed commit hash. Run it only after the release inputs have been committed; choose a fresh output path. The builder uses the locally installed Babel parser and TypeScript build tools; isolated-stage and final-consumer installation use explicit local inputs with `--offline`. The source-package behavior tests use the declared `tsx` runner.
 
 For a private app preview of uncommitted work, add `--allow-dirty`. The same compile, extraction and installed-consumer checks run, but `report.json` records `status: "local-preview"` and lists the uncommitted inputs; that output is never a release artifact.
