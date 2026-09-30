@@ -287,7 +287,7 @@ test("parcels tile each built block's land exactly and stay inside their block",
   }
 });
 
-test("a block with an island of land (a hole) keeps it as a region with a hole, and a dead-end stub is kept out of the lots", () => {
+test("dead ends have a defined disposition: kept stubs are drawn roads with lots held clear of them, dropped ones leave none", () => {
   const p = products({ deadEnds: "stub", wobble: 40, minAngle: 45, blockSize: 60 }, 9);
   const stubs = p.network.streets.filter((s) => s.stub);
   assert.ok(stubs.length > 0, "this configuration leaves stubs");

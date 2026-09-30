@@ -133,11 +133,47 @@ size and class; structure edits update every binding coherently and unchanged bl
 controls; transparent drawing; hidden-control property test; grouped and conditional definition; the authored default
 shows three fills, three road classes, a zone and open land; frozen values.
 
-Mutations proven to fail (see the report in the commit message): see the list below.
+Mutations proven to fail (each by at least one test; count of failing tests): no split of the road a street meets (10); lots keeping
+half the road width but no setback (2); a hidden anchor angle reaching the growth key (1); the network cache ignoring the
+placement (1); lot frames taken from the first face edge instead of the nearest road (1); growth that never sets `done` (2);
+dangling roads not removed from the land (1).
+
+## Review record
+
+Rendered through the throwaway SVG surface under the native render lease: defaults on seeds 42, 7 and 1234567; nine deliberately
+different settings (planned grid with crossroads and four anchors; radial city with hub and tight focus; spiral with long
+crossings; organic old quarter with an open edge and stitched roads; wobble with stubs; a rectangular park with unbuilt largest
+blocks; dense fine mesh; sparse large blocks; bead roads by age with ring marks); steps 0, 4, 12, 30, 80 and 300 with roads coloured by
+age; and two layered pairs in both orders with the unmodified Region Quilts and Contour Scores. Defects found and fixed by looking and by tests:
+
+- Lots met a road at a corner where two roads of different widths join (a flat strip end left land inside the wider road's
+  half-width): a round cap now goes on every corner where widths differ or the boundary turns reflex.
+- A zero-width needle of land, a few ulps wide, at nearly collinear corners became a lot with a spike: land is opened by 0.02
+  units (an inscribed polygon), and fragments under 0.01 square units are dropped as numerical residue.
+- Dead-end stubs and streets leaving an open edge sat inside a block and lots ran through them: dangling edges (found by removing
+  degree-1 nodes repeatedly, not by a flag, because a later street can attach to a stub) are stripped from the land.
+- The first default drew a hatch/dots/contour fill by recomputing each lot's geometry on every draw (the shared 64-entry region
+  cache thrashes with hundreds of lots): lot geometry is published once as a prepared scene, giving 200 ms per redraw down to 2 ms.
+- A rectangular reserved zone had links at corners; links now leave from opposite edge midpoints along the guide field.
+- Solid default fills hid the roads' hierarchy and the default palette made the tiny lots muddy: warmer accents, underpaint 0.3, weight 1.
+- Contour fills in small lots were a few squiggles: one hill and more levels, so they read as concentric rings.
+
+Timing (Node 22, null drawing surface, shared machine, single runs; milliseconds):
+
+| Case | First draw | Palette only | Road, mark, outline styling | Lot width edit | Steps - 1 | Structural (block size + 3) |
+|---|---|---|---|---|---|---|
+| Default (300 steps, 29 streets, 345 lots) | 254 | 2 | 3 | 91 | 109 | 177 |
+| Block 40, 640 x 640, steps 600 (done at 278), 3,249 lots | 873 | 6 | 7 | 406 | 562 | 787 |
+| Block 14, 640 x 640, steps 600 (slider maximum, still growing: 560 streets, 563 blocks) | 889 | 6 | 10 | 308 | 1,493 | 4,070 |
+| Block 14, steps 1500 (hard maximum, done at 1,442: 1,379 streets, 1,382 blocks) | 3,758 | 13 | 26 | 808 | 2,740 | 2,419 |
+
+Choosing new fill kinds (hatch or contours for every lot) at the same sizes costs 284 to 2,731 ms once (geometry of every lot),
+then 0. A structural edit reruns the growth from the start (its key changed), then blocks and lots; `prepareInstrument` runs the
+stages in time slices and can be cancelled between them. Steps up or down reuse checkpoints (every 60 steps).
 
 ## Open questions
 
 - Growth is sequential and single-threaded; the slowest measured case is in the timing table of the review record.
-- Contour fills in very small lots read as a few rings; hatch and dots read better under about 20 units.
+- Contour fills in lots under about 12 units read as one or two rings.
 - The zone is a bundled ellipse or rectangle; binding a user's mask needs a host input.
 - Real-interface review, and layering in the private Studio, are not done.

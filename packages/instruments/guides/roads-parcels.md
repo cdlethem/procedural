@@ -93,7 +93,7 @@ Palette roles: 1 ink for roads and outlines, 2 to 4 lot types A to C, 5 accent (
 - **Radial city:** *Radial and ring*, *Hub ring* 40, *Blocks at focus* 0.4, *Anchors* 0.
 - **Park in a grid:** a rectangular zone, *Unbuilt blocks* 0.2 with *Largest*.
 - **Growth study:** step *Steps* from 0 to 100 with *Road color* by age and *Type A/B/C* open.
-- **Cadastral map:** all three types hatched at different angles is not possible, but *Underpaint* 1 with *Dots* on one type and *Contours* on another reads as a land-use map.
+- **Land-use map:** *Underpaint* 1 with *Dots* on one type, *Contours* on another and *Hatching* on the third reads as a plan of land uses.
 
 ## Use the pieces in code
 
