@@ -238,7 +238,7 @@ function lineMaterial(recipe: HingedPanelsComposition, mode: HingedTreatment, fa
     if (w === 0 || path.points.length < 2) return;
     const tone = path.tone ?? 0;
     const crack = tone === LINE_TONE.crack;
-    const [r, g, b] = rgb(palette, crack && palette.length > 1 ? 1 : 0);
+    const [r, g, b] = rgb(palette, 0);
     let weight = w, alpha = 235;
     if (tone === LINE_TONE.flat) { weight = w * 0.55; alpha = 120; }
     else if (tone === LINE_TONE.outline) weight = w * 1.25;

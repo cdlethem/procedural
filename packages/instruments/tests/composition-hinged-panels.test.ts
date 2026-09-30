@@ -57,20 +57,25 @@ test("bundled tilings have the closed-form panel and hinge counts, areas and bou
   assert.equal(panelBoundaryEdges(panelTiling(tilingOptions({ columns: 5, rows: 2 }))).length, 2 * (5 + 2));
 });
 
-test("Penrose panels are unit rhombs of the two Penrose areas, Euler characteristic 1", () => {
+test("Penrose panels are unit rhombs and their lone half-rhombs, one connected patch of Euler characteristic 1", () => {
   for (const patch of ["sun", "decagon", "thick", "thin"]) {
     const t = panelTiling(tilingOptions({ source: "penrose", patch, depth: 2 }));
     for (const p of t.panels) {
-      assert.equal(p.corners.length, 4);
-      p.corners.forEach(([x, y], i) => near(Math.hypot(p.corners[(i + 1) % 4][0] - x, p.corners[(i + 1) % 4][1] - y), 1, 1e-8));
-      assert.ok(Math.abs(p.area - Math.sin(Math.PI / 5)) < 1e-8 || Math.abs(p.area - Math.sin(2 * Math.PI / 5)) < 1e-8, `area ${p.area}`);
+      const rhomb = p.corners.length === 4, k = p.corners.length;
+      assert.ok(rhomb || k === 3);
+      // a rhomb has four unit edges; a lone half of one has two unit edges (the third is the short or long diagonal)
+      const lengths = p.corners.map(([x, y], i) => Math.hypot(p.corners[(i + 1) % k][0] - x, p.corners[(i + 1) % k][1] - y));
+      assert.equal(lengths.filter((l) => Math.abs(l - 1) < 1e-8).length, rhomb ? 4 : 2);
+      const scale = rhomb ? 1 : 0.5;
+      assert.ok(Math.abs(p.area - scale * Math.sin(Math.PI / 5)) < 1e-8 || Math.abs(p.area - scale * Math.sin(2 * Math.PI / 5)) < 1e-8, `area ${p.area}`);
     }
     // vertices by rounded coordinates, edges = (4F + boundary pieces) / 2: V - E + F = 1 for a disc
     const key = (x: number, y: number) => `${Math.round(x * 1e6)},${Math.round(y * 1e6)}`;
     const vertices = new Set(t.panels.flatMap((p) => p.corners.map(([x, y]) => key(x, y))));
     const boundary = panelBoundaryEdges(t).length;
-    assert.equal(t.hinges.length * 2 + boundary, 4 * t.panels.length, "every panel edge is a hinge half or an outline piece");
-    const edges = (4 * t.panels.length + boundary) / 2;
+    const corners = t.panels.reduce((n, p) => n + p.corners.length, 0);
+    assert.equal(t.hinges.length * 2 + boundary, corners, "every panel edge is a hinge half or an outline piece");
+    const edges = (corners + boundary) / 2;
     assert.equal(vertices.size - edges + t.panels.length, 1);
   }
 });
@@ -362,7 +367,7 @@ test("posed meshes keep panel areas and normals; gaps shrink by (1 - gap)^2; sla
   assert.equal(gap.welded, false);
   for (const p of t.panels) near(faceArea(gap.mesh, gap.frontFace[p.index]), p.area * 0.64, 1e-11);
   const slab = posedPanels(folded, { gap: 0, thickness: 0.3 });
-  assert.equal(slab.mesh.faceCount, t.panels.length * (2 + 4));
+  assert.equal(slab.mesh.faceCount, t.panels.reduce((n, p) => n + 2 + p.corners.length, 0), "front, back and one side per corner");
   const topology = meshTopology(slab.mesh);
   assert.equal(topology.kind, "closed-manifold");
   assert.equal(meshComponents(slab.mesh, topology).length, t.panels.length);

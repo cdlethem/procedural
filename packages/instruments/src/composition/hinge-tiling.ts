@@ -164,7 +164,7 @@ function penrose(options: PanelTilingOptions): { panels: RawPanel[]; hinges: Raw
   let tiling;
   try {
     tiling = substitutionTiling({ seed: options.seed, rule: "penrose-p3", patch: options.patch, depth: options.depth, centerX: 0, centerY: 0, radius: 100, rotation: 0,
-      boundary: "whole", crop: "none", cropX: 0, cropY: 0, cropWidth: 0, cropHeight: 0 });
+      boundary: "half-tiles", crop: "none", cropX: 0, cropY: 0, cropWidth: 0, cropHeight: 0 });
   } catch (error) {
     throw new Error(`Penrose panels: ${(error as Error).message}; reduce Depth`);
   }
@@ -184,7 +184,7 @@ function penrose(options: PanelTilingOptions): { panels: RawPanel[]; hinges: Raw
 function finish(key: string, source: string, seed: number, retention: number, raw: { panels: RawPanel[]; hinges: RawHinge[] }): PanelTiling {
   const kept = raw.panels.filter((panel) => retention >= 1 || unit(seed, panel.id, "keep") < retention);
   if (kept.length === 0) throw new Error("Panel retention leaves no panel: raise Panel retention");
-  if (kept.length > MAX_PANELS) throw new Error(`Panel tiling has ${kept.length} panels; the limit is ${MAX_PANELS}. Reduce Columns and Rows (or Depth)`);
+  if (kept.length > MAX_PANELS) throw new Error(`Panel tiling has ${kept.length} panels; the limit is ${MAX_PANELS}. Reduce ${source === "penrose" ? "Substitution depth" : "Columns and Rows"}`);
   const index = new Map(kept.map((panel, i) => [panel.id, i]));
   const panels: Panel[] = kept.map((panel, i) => {
     let corners = panel.corners;
