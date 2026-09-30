@@ -643,6 +643,54 @@ test("simplification keeps every dropped vertex within tolerance and never break
   near(simplifyDomain(box(0, 0, 10), 5).area, 100);
 });
 
+/** Blobby label rasters (smoothed noise, or raw noise when radius is 0) quantised to `labels` values. */
+function labelBlobs(seed: number, w: number, h: number, labels: number, radius: number): number[] {
+  const r = rng(seed), g = Array.from({ length: w * h }, () => r()), smooth = g.map((_, k) => {
+    const x = k % w, y = Math.floor(k / w);
+    let s = 0, c = 0;
+    for (let dy = -radius; dy <= radius; dy++) for (let dx = -radius; dx <= radius; dx++) { const xx = x + dx, yy = y + dy; if (xx >= 0 && yy >= 0 && xx < w && yy < h) { s += g[yy * w + xx]; c++; } }
+    return s / c;
+  });
+  const lo = Math.min(...smooth), hi = Math.max(...smooth);
+  return smooth.map((v) => Math.min(labels - 1, Math.floor(((v - lo) / (hi - lo)) * labels)));
+}
+
+test("label simplification keeps islands and shared vertices on their side: chords never cut a ring's interior or sweep across an island", () => {
+  // Two failure modes the first version had: a chord joining two vertices of one ring ran through that ring's interior (pinched
+  // pieces), and a chord replacing a long boundary swept over a small ring lying between it and the boundary (the island
+  // changed sides, its hole vanished and areas overlapped). Coarse tolerances over random label rasters reach both.
+  for (let seed = 1; seed <= 90; seed++) {
+    const w = 14 + (seed % 17), h = 12 + (seed % 11), labels = 2 + (seed % 3), radius = seed % 3, data = labelBlobs(seed * 7919, w, h, labels, radius);
+    const exact = labelDomains({ width: w, height: h, data }, { background: null });
+    for (const simplify of [3, 6]) {
+      const thin = labelDomains({ width: w, height: h, data }, { background: null, simplify, protectFrame: true });
+      let total = 0;
+      for (const { label, domain } of thin) {
+        assertValid(domain, `seed ${seed} label ${label} tol ${simplify}`);
+        assert.deepEqual(domain.regions.map((g) => g.holes.length).sort(), exact.find((e) => e.label === label)!.domain.regions.map((g) => g.holes.length).sort(), `seed ${seed} label ${label}: holes`);
+        total += domain.area;
+      }
+      near(total, w * h, 1e-6, `seed ${seed} tol ${simplify}: the labels no longer tile the raster`);
+    }
+  }
+});
+
+test("protectFrame keeps the four corners of the raster frame under any simplification", () => {
+  // A one pixel region in each corner would be cut off by any coarse chord; with the frame protected each keeps its own corner vertex.
+  const w = 12, h = 9, data = Array.from({ length: w * h }, () => 0);
+  for (const [x, y] of [[0, 0], [w - 1, 0], [0, h - 1], [w - 1, h - 1]]) data[y * w + x] = 1;
+  const corners = new Set(["0,0", `${w},0`, `0,${h}`, `${w},${h}`]);
+  const holds = (list: ReturnType<typeof labelDomains>) => new Set(list.flatMap((l) => l.domain.regions.flatMap((g) => [...g.outer, ...g.holes.flat()])).map((p) => p.join(",")));
+  const held = holds(labelDomains({ width: w, height: h, data }, { background: null, simplify: 20, protectFrame: true }));
+  for (const c of corners) assert.ok(held.has(c), `corner ${c} kept`);
+  // Without it a coarse chord cuts a corner off the picture (area is lost); the option is opt-in and the default is unchanged.
+  const free = labelDomains({ width: w, height: h, data }, { background: null, simplify: 20 });
+  assert.ok(free.reduce((s, l) => s + l.domain.area, 0) < w * h - 0.5);
+  near(labelDomains({ width: w, height: h, data }, { background: null, simplify: 20, protectFrame: true }).reduce((s, l) => s + l.domain.area, 0), w * h, 1e-6);
+  const rings = (list: ReturnType<typeof labelDomains>) => JSON.stringify(list.map((l) => l.domain.regions.map((g) => [g.outer, g.holes])));
+  assert.equal(rings(labelDomains({ width: w, height: h, data }, { background: null, simplify: 0.5 })), rings(labelDomains({ width: w, height: h, data }, { background: null, simplify: 0.5, protectFrame: false })));
+});
+
 test("raster failures name the argument", () => {
   planarCode(() => maskDomain({ width: 3, height: 2, data: [1, 1, 1] }), "INVALID_INPUT", /width × height = 6/);
   planarCode(() => maskDomain({ width: 2, height: 1, data: [1, Number.NaN] }), "INVALID_INPUT", /data\[1\]/);

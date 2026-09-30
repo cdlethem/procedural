@@ -52,9 +52,10 @@ import type { CompositionRun, Path, Point } from "./types.js";
  * insulating edge is an open chain and every other front is a closed loop. Occupied outer rings have positive
  * shoelace area (region on the left), pockets negative.
  *
- * TERMINATION. When the frontier is empty (`exhausted`) or every rate is 0 (`stalled`: no flux, or surface tension
- * exceeds the flux everywhere) the state is marked stopped at that step; later steps are recorded as unchanged and
- * their frames carry no rings (`stopStep` is the last step whose front differs).
+ * TERMINATION. Growth stops, and the state is marked stopped at that step, when the front REACHES a source (a newly occupied
+ * cell has a source 4-neighbour: the circuit is closed and nothing more can be said by this model), when the frontier is empty
+ * (`exhausted`), or when every rate is 0 (`stalled`: no flux, or surface tension exceeds the flux everywhere). Later steps
+ * are recorded as unchanged and their frames carry no rings (`stopStep` is the last step whose front differs).
  *
  * IDENTITY. Cells: their grid id `j·n + i`. Fronts: `front:<step>/<k>` with rings in domain order (outer ring then
  * its pockets, regions in the order `maskDomain` reports, which is deterministic). Seeds: the structural seed
@@ -92,8 +93,8 @@ const MIN_FLUX = 1e-6;
 const BLUR_SIGMA = 1.25;
 
 /** The reason growth stopped. */
-export type StopReason = "running" | "exhausted" | "stalled";
-const REASONS: readonly StopReason[] = ["running", "exhausted", "stalled"];
+export type StopReason = "running" | "exhausted" | "stalled" | "reached";
+const REASONS: readonly StopReason[] = ["running", "exhausted", "stalled", "reached"];
 
 export interface GrowthState {
   /** Fill per cell: 1 where occupied, in (0, 1) on the frontier, else 0. */
@@ -109,7 +110,7 @@ export interface GrowthState {
   /** Residual and sweeps of the solve that produced `phi`, and the work of that solve. */
   residual: number; iterations: number;
   rateMax: number; frontier: number;
-  /** 0 running, 1 exhausted, 2 stalled. */
+  /** 0 running, 1 exhausted, 2 stalled, 3 reached a source. */
   stopped: number; stopStep: number;
   lost: number;
 }
@@ -123,7 +124,7 @@ export interface FrontFrame {
   area: number;
   frontier: number;
   residual: number; iterations: number;
-  /** 0 running, 1 exhausted, 2 stalled. */
+  /** 0 running, 1 exhausted, 2 stalled, 3 reached a source. */
   stopped: number;
   /** The step whose state first had no growth possible (-1 while growth runs). */
   stopStep: number;
@@ -186,6 +187,7 @@ export function jacobiRadius(layout: GrowthLayout, fill: Readonly<Float32Array>)
       w[c] = sum / degree[c];
       before += v[c] * v[c]; after += w[c] * w[c];
     }
+    if (!(after > 0) || !(before > 0)) break;
     ratio = Math.sqrt(after / before);
     const scale = 1 / Math.sqrt(after);
     for (let c = 0; c < m * m; c++) w[c] *= scale;
@@ -240,7 +242,7 @@ export function solvePotential(layout: GrowthLayout, phi: Float64Array, fill: Re
       const c = lists[which][k], b = 4 * c, m = open[c];
       const sum = phi[neighbours[b]] + phi[neighbours[b + 1]] + phi[neighbours[b + 2]] + phi[neighbours[b + 3]] - (4 - m) * phi[c];
       const a = Math.abs(sum / m - phi[c]);
-      if (a > largest) largest = a;
+      if (!(a <= largest)) largest = a; // NaN propagates: a poisoned iterate can never report convergence
     }
     return largest;
   };
@@ -360,6 +362,11 @@ export function frontRates(layout: GrowthLayout, spec: PhysicsSpec, fill: Readon
 
 /* ----------------------------------------------------------------------------------- simulation */
 
+function touchesSource(layout: GrowthLayout, c: number): boolean {
+  for (let slot = 0; slot < 4; slot++) if (layout.kind[layout.neighbours[4 * c + slot]] === KIND_SOURCE) return true;
+  return false;
+}
+
 function reasonOf(frontier: number, max: number): number {
   if (frontier === 0) return 1;
   return max > 0 ? 0 : 2;
@@ -407,6 +414,7 @@ export const growthSimulation: Simulation<GrowthState, GrowthSpec, FrontFrame> =
     const state: GrowthState = { fill, age, phi, rate: new Float32Array(cells), time: 0, dt: 0, cells: occupied, area, residual: report.residual,
       iterations: report.iterations, rateMax: 0, frontier: 0, stopped: 0, stopStep: -1, lost: 0 };
     withRates(layout, spec, state, 0, ctx);
+    for (let c = 0; c < cells; c++) if (layout.seedCells[c] && touchesSource(layout, c)) { state.stopped = 3; state.stopStep = 0; break; }
     return state;
   },
   step(state, ctx) {
@@ -424,13 +432,14 @@ export const growthSimulation: Simulation<GrowthState, GrowthSpec, FrontFrame> =
     }
     ctx.charge(cells);
     // Occupy in ascending id per round; excess fill is shared among free, unoccupied neighbours (which join the next round when full).
-    let round = full, lost = state.lost, occupiedNow = 0;
+    let round = full, lost = state.lost, touched = false;
     while (round.length > 0) {
       round.sort((a, b) => a - b);
       const next: number[] = [];
       for (const c of round) {
         if (age[c] >= 0) continue;
-        age[c] = ctx.step; phi[c] = 0; occupiedNow++;
+        age[c] = ctx.step; phi[c] = 0;
+        if (touchesSource(layout, c)) touched = true;
         const excess = fill[c] - 1;
         fill[c] = 1;
         if (excess <= 0) continue;
@@ -456,6 +465,7 @@ export const growthSimulation: Simulation<GrowthState, GrowthSpec, FrontFrame> =
     ctx.charge(report.work);
     state.residual = report.residual; state.iterations = report.iterations;
     withRates(layout, spec, state, ctx.step, ctx);
+    if (touched) { state.stopped = 3; state.stopStep = ctx.step; }
     return state;
   },
   project(state, step): FrontFrame {

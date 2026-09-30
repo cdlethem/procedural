@@ -100,3 +100,62 @@ export function offsetDomain(shape: PlanarShape, distance: number, options: Offs
   const raw = overlay([{ rings, fill: "nonzero" }, { rings: pieces, fill: "nonzero" }], outward ? ([a, b]) => a || b : ([a, b]) => a && !b, work);
   return finishRaw(id, raw, options);
 }
+
+/**
+ * Sweep a region along the vector (dx, dy): the exact Minkowski sum with the segment from the
+ * origin to (dx, dy), i.e. every point some translate `shape + t·(dx, dy)`, `t` in [0, 1], covers.
+ * (Extrusion, or the region a shape moves through.) The sweep is the region united with one
+ * parallelogram per boundary edge (the edge dragged along the vector), computed in one exact
+ * Boolean, so counters narrower than the vector close, wider ones keep a remnant, and non-convex
+ * shapes need no special cases. Edges parallel to the vector sweep no area. A zero vector returns
+ * the region normalised. Work and edge limits are those of `offsetDomain`.
+ */
+export function sweepDomain(shape: PlanarShape, dx: number, dy: number, options: PlanarOptions = {}): PlanarDomain {
+  checkCoordinate("dx", dx); checkCoordinate("dy", dy);
+  const work = workFor("sweepDomain", options);
+  const domain = resolveShape(shape, 0, work);
+  const regions = "regions" in domain ? domain.regions : [domain];
+  const id = options.id ?? `sweep(${domain.id},${dx},${dy})`;
+  if ((dx === 0 && dy === 0) || regions.length === 0) return unionDomains(regions, { ...options, id });
+  const rings = ringsOfRegions(regions);
+  checkEdgeLimit(rings, "sweepDomain input");
+  const pieces: Pt[][] = [];
+  for (const ring of rings) for (let i = 0; i < ring.length; i++) {
+    const a = ring[i], b = ring[(i + 1) % ring.length];
+    const piece: Pt[] = [[a[0], a[1]], [b[0], b[1]], [b[0] + dx, b[1] + dy], [a[0] + dx, a[1] + dy]];
+    const area = ringArea(piece);
+    if (area === 0) continue;
+    pieces.push(area > 0 ? piece : piece.reverse());
+  }
+  const raw = overlay([{ rings, fill: "nonzero" }, { rings: pieces, fill: "nonzero" }], ([p, q]) => p || q, work);
+  return finishRaw(id, raw, options);
+}
+
+/**
+ * The shadow of shapes thrown by the vector (dx, dy): the points the moved copy covers (`sweep: false`,
+ * default) or the whole path the shapes sweep through (`sweep: true`) that no shape itself covers.
+ * The shapes are the OCCLUDERS of all of them together: a shadow never lies over any shape, and shadows of
+ * several shapes overlap without doubling. One exact pass over the copy (or the edge parallelograms) and the
+ * shapes' own rings, so their shared boundary is never rebuilt from rounded vertices. A zero vector has no
+ * shadow (an empty domain). Limits as `sweepDomain`.
+ */
+export function shadowDomain(shapes: readonly PlanarShape[], dx: number, dy: number, options: PlanarOptions & { readonly sweep?: boolean } = {}): PlanarDomain {
+  checkCoordinate("dx", dx); checkCoordinate("dy", dy);
+  const work = workFor("shadowDomain", options);
+  const regions = shapes.flatMap((shape, index) => { const value = resolveShape(shape, index, work); return "regions" in value ? value.regions : [value]; });
+  const id = options.id ?? `shadow(${dx},${dy})`;
+  if ((dx === 0 && dy === 0) || regions.length === 0) return unionDomains([], { ...options, id });
+  const letters = ringsOfRegions(regions);
+  checkEdgeLimit(letters, "shadowDomain input");
+  const thrown: Pt[][] = [];
+  for (const ring of letters) {
+    if (!options.sweep) { thrown.push(ring.map(([x, y]): Pt => [x + dx, y + dy])); continue; }
+    for (let i = 0; i < ring.length; i++) {
+      const a = ring[i], b = ring[(i + 1) % ring.length];
+      const piece: Pt[] = [[a[0], a[1]], [b[0], b[1]], [b[0] + dx, b[1] + dy], [a[0] + dx, a[1] + dy]];
+      const area = ringArea(piece);
+      if (area !== 0) thrown.push(area > 0 ? piece : piece.reverse());
+    }
+  }
+  return finishRaw(id, overlay([{ rings: thrown, fill: "nonzero" }, { rings: letters, fill: "nonzero" }], ([p, q]) => p && !q, work), options);
+}
