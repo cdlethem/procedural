@@ -557,6 +557,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "cyclic-fronts",
+      "title": "Cyclic Fronts",
+      "description": "Expanding domains, interleaved fronts and spiral waves from a cyclic cellular automaton: every cell steps to the next of n states when enough neighbors already are, then the state cells (flat, hatched or marked), the fronts between them and the spiral cores are each drawn from the same grid, with obstacles that stop a front and a step count that scrubs the growth.",
+      "category": "Systems & rules",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/cyclic-fronts.md",
+      "source": "packages/instruments/src/composition/cyclic-fronts.ts",
+      "sourceEntry": "drawCyclicFronts",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "painterly-source",
       "title": "Painterly Source",
       "description": "Assemble a picture from marks in coarse-to-fine layers: broad strokes first, finer ones only where the paint still differs from the source, turned along its edges and colored from it; mark family, material and color are separate choices over one plan.",
