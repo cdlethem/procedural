@@ -635,12 +635,14 @@ test("every slider end, and all ends together, is admitted and draws within the 
     }
 });
 
-test("offsets survive the kernel's non-convergence: a union that defeats single-step offsets still gets its halo and inset", () => {
-  // Found by fuzzing: letters overlapped by tracking -0.2, rotated -13°, block unit: every single-step offset of the union throws NOT_CONVERGED.
+test("the offset that used to defeat the kernel now converges directly, and robustOffset returns that exact result", () => {
+  // Found by fuzzing: letters overlapped by tracking -0.2, rotated -13°, line unit. The kernel used to throw NOT_CONVERGED for every single-step offset
+  // (creeping crossings of nearly concurrent strokes); computed crossings now reuse nearby vertices, so no nudge or sub-step is needed.
   const layout = outlineLayout({ text: outlineText({ id: "t", lines: ["0869", "4@&%"] }), kerning: "optical", tracking: -0.2, size: 40, leading: 1.25, centerX: 0, centerY: 640, rotation: -13 });
   const line = outlineUnits(layout, "line")[1], distance = 2;
-  assert.throws(() => offsetDomain(line.domain, distance, { join: "round" }), /did not become planar/, "the premise: the direct offset fails");
+  const direct = offsetDomain(line.domain, distance, { join: "round", id: "halo" });
   const halo = robustOffset(line.domain, distance, "round", "halo");
+  assert.equal(JSON.stringify(halo.regions.map((r) => [r.outer, r.holes])), JSON.stringify(direct.regions.map((r) => [r.outer, r.holes])), "no fallback was taken");
   // independent reference: dilation distributes over union, so the union of the glyphs' own halos is the same set
   const reference = unionDomains(layout.glyphs.filter((g) => g.line === 1).map((g) => offsetDomain(g.domain, distance, { join: "round" })));
   near(halo.area / reference.area, 1, 0.005, "halo area");

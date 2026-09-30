@@ -45,8 +45,16 @@ predicates (a point on a hole's ring is `"boundary"`; inside a hole is `"outside
 * The only rounding is the position of a *computed* vertex (a proper crossing of two segments), rounded to the nearest binary64 point inside
   both segments' bounding boxes. Because this can move the vertex a few ulps off the exact line, the arrangement is re-examined with the exact
   predicates and any crossing or vertex-on-edge contact the rounding created is split again, up to 32 rounds. Non-convergence throws
-  `NOT_CONVERGED` (never observed in the fuzz runs below); it does not return a wrong result. Every output ring is therefore **exactly**
+  `NOT_CONVERGED`; it does not return a wrong result. Every output ring is therefore **exactly**
   simple and non-crossing in binary64, verified by property tests that push results back through the strict constructor.
+* **Vertex reuse (fix for creeping slivers).** Where three or more nearly concurrent segments meet (overlapped, rotated glyph strokes), the exact
+  crossings of the re-split pieces used to land a few ulps beyond the previous round's vertex every round, so splitting crept along a sliver until
+  `NOT_CONVERGED` (about 1 in 900 offsets of random overlapped outline type, and the reported `0869 / 4@&%` line at −13°). A *computed* crossing that
+  lies within `SNAP_ULPS = 16` ulps (of the largest input coordinate) of an existing vertex now reuses the nearest such vertex (ties to the
+  lexicographically smaller). Input vertices never move, no topological decision uses a tolerance, the exact re-check still decides planarity, and
+  computed vertices are now at least that far from every other vertex, which bounds the rounds. The cost is that a computed vertex can sit up to 16
+  ulps of the drawing's scale from where plain rounding put it (about 1e-12 at coordinates near 700). Across 1,995 drawings of every instrument only one
+  draw call changed, by 1.1e-13 units. A contact that cannot be resolved by splitting throws `NOT_CONVERGED` at once instead of looping.
 * Face classification uses a sweep with an exact status order (winding numbers per input), so touching, collinear, overlapping, T-junction
   and single-point contacts all follow from the same rule: vertices are on edges iff exact orientation is zero.
 * Outputs merge collinear runs unless the vertex is shared with another ring (a touch point); tiny results are kept unless `options.minArea`
