@@ -38,6 +38,9 @@ import { drawShapePacking, prepareShapePacking, shapePackingComposition, shapePa
 import { crossingLaceDefinition } from "./adapters/crossing-lace-instrument.js";
 import { crossingLaceComposition, crossingLaceUsesSeed, drawCrossingLace, prepareCrossingLace } from "./composition/crossing-lace.js";
 import { hyperbolicGardensDefinition } from "./adapters/hyperbolic-gardens-instrument.js";
+import { meshAbstractionDefinition } from "./adapters/mesh-abstraction-instrument.js";
+import { drawMeshAbstraction, meshAbstractionComposition, prepareMeshAbstraction } from "./composition/mesh-abstraction-draw.js";
+import { meshAbstractionUsesSeed } from "./composition/mesh-abstraction.js";
 import { drawHyperbolicGardens, hyperbolicGardensComposition, hyperbolicGardensUsesSeed, prepareHyperbolicGardens } from "./composition/hyperbolic-draw.js";
 import { quilledPathsDefinition } from "./adapters/quilled-paths-instrument.js";
 import { drawQuilled, prepareQuilled, quillComposition, quillUsesSeed } from "./composition/quill-draw.js";
@@ -395,6 +398,14 @@ export { randomWalkFrontsComposition, randomWalkFrontsProducts, drawWalkFronts, 
 export type { ContourEnd, LevelTies, ContourNode, ContourCurve, SectionPlane, PlaneFrame, SectionOptions, SectionLoop, MeshSection, MeshSlices, SlicePlaneOptions,
   SectionDomainOptions, IsoOptions, IsoCurve, IsoContours } from "./composition/mesh-section.js";
 export { planeFrame, sectionMesh, sliceMesh, sliceCurves, slicePlanes, sectionDomain, isoContours, SECTION_LIMITS, DEFAULT_SECTION_WORK } from "./composition/mesh-section.js";
+export type { MeshRegion, Axis as MeshAxis } from "./composition/mesh-region.js";
+export { regionImportance, checkRegion, MAX_SEEDED_REGIONS } from "./composition/mesh-region.js";
+export type { SimplifyParams, SimplifyProjection, SimplifyOptions, Abstraction, StopReason, BlockReason, SimplifyRule, BoundaryMode } from "./composition/mesh-simplify.js";
+export { simplifyMesh, prepareSimplification, abstractionAt, simplifySimulation, simplifyRetention, maxValence, SIMPLIFY_LIMITS, MIN_NORMAL_DOT, MIN_VALENCE_CAP, CONSTRAINT_WEIGHT, IMPORTANCE_BIAS } from "./composition/mesh-simplify.js";
+export type { MeshAbstractionComposition, MeshAbstractionProducts, MeshAbstractionConstruction, AbstractionView, AbstractionSource, ViewSpec as AbstractionViewSpec, ViewProducts as AbstractionViewProducts } from "./composition/mesh-abstraction.js";
+export { meshAbstractionProducts, meshViewProducts as abstractionViewProducts, abstractionCamera, sourceDescriptor as abstractionSourceDescriptor } from "./composition/mesh-abstraction.js";
+export type { MeshAbstractionConsumers, FacetPaint } from "./composition/mesh-abstraction-draw.js";
+export { meshAbstractionComposition, drawMeshAbstraction, prepareMeshAbstraction } from "./composition/mesh-abstraction-draw.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -413,7 +424,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, meshAbstractionDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -547,6 +558,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "random-walk-fronts": [0xc4452b, 0xe0a13a, 0x2f7f86, 0x6f9a55, 0x8b5190, 0x1f2733],
   "chemotactic-trails": [0x1f3040, 0xc4452b, 0xd9a441, 0x2f7a86, 0x6a8f4a],
   "hyperbolic-gardens": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
+  "mesh-abstraction": [0xd8cbb0, 0x1f2733, 0xc4452b, 0x2f7c78],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -589,6 +601,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
   if (input.technique === "region-stitch") return drawStitches(context, regionStitchComposition(input));
   if (input.technique === "hyperbolic-gardens") return drawHyperbolicGardens(context, hyperbolicGardensComposition(input));
+  if (input.technique === "mesh-abstraction") return drawMeshAbstraction(context, meshAbstractionComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
   if (input.technique === "polygon-watercolor") return drawPolygonWatercolor(context, polygonWatercolorComposition(input));
@@ -612,7 +625,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "mesh-abstraction" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -643,6 +656,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
   if (input.technique === "region-stitch") return prepareStitches(regionStitchComposition(input), cancelled);
   if (input.technique === "hyperbolic-gardens") return prepareHyperbolicGardens(hyperbolicGardensComposition(input), cancelled);
+  if (input.technique === "mesh-abstraction") return prepareMeshAbstraction(meshAbstractionComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
   if (input.technique === "inversion-gardens") return prepareInversionGardens(inversionGardensComposition(input), cancelled);
   if (input.technique === "chemotactic-trails") return prepareChemotacticTrails(chemotacticTrailsComposition(input), cancelled);
@@ -692,6 +706,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
     case "hyperbolic-gardens": return hyperbolicGardensUsesSeed(q);
+    case "mesh-abstraction": return meshAbstractionUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
     case "region-stitch": return regionStitchUsesSeed(q);
     case "inversion-gardens": return inversionGardensUsesSeed(q);
