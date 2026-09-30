@@ -10,13 +10,15 @@
  *     each step `STEP` = 0.35 of the local spacing long. Every step end is a SAMPLE; every edge crossing inside a step is
  *     also a vertex, so each segment of a strand lies in one known triangle.
  *  2. A strand stops (and `ends` says why) at a boundary edge (`boundary`), where the surface is nearer the boundary than
- *     the margin (`margin`), when a step end comes nearer than `TEST` = 0.6 of the local spacing to a sample of an
+ *     the margin (`margin`), when a step end comes nearer than `TEST` = 0.5 of the local spacing to a sample of an
  *     EARLIER strand seen on the same side of the surface (`proximity`: unit normals agree by more than 0.3, so two sheets
  *     of a fold or the two walls of a thin vessel never stop each other), at a critical point of the field (`singular`), or
  *     after `MAX_STEPS` steps (`limit`). Returning to its own seed closes it (`closed`): a ring around a peak, the vase or the torus.
- *  3. New seeds come from the accepted strands: for every step end, the point one local spacing away on either side
- *     (walked across the surface perpendicular to the strand). A candidate nearer than the spacing to an existing sample
- *     is discarded. When no candidate is left, seeds are drawn from `sampleSurface` (`even`, prefix property) so a region no
+ *  3. New seeds come from the accepted strands: for every step end, the points 1 and 0.65 local spacings away on either side
+ *     (walked across the surface perpendicular to the strand). A candidate nearer than 0.6 of the spacing to an existing sample
+ *     is discarded (a seed drawn from the surface sample needs a full spacing). Where the strands diverge (a meridian family away from the poles) the first offset fills gaps of 1.6
+ *     spacings or more and the second gaps of 1.25 or more, so neighbouring strands end up between 0.6 and about 1.25
+ *     spacings apart, exactly one spacing on a developable surface where the field is parallel. When no candidate is left, seeds are drawn from `sampleSurface` (`even`, prefix property) so a region no
  *     strand reached (a second component, the far side of a critical point) is still covered.
  *  4. A strand shorter than `MIN_LENGTH` = 3 local spacings that is not closed is dropped.
  * The order of everything is fixed (queue order, then strand order), so the same input gives bit-identical strands, and ids
@@ -49,7 +51,7 @@ import { meshDerived, type Mesh, type Vec3 } from "./mesh.js";
 import type { Path } from "./types.js";
 
 export const STRAND_LIMITS = Object.freeze({ vertices: 300_000, crossings: 30_000, maxSteps: 5_000 });
-const STEP = 0.35, TEST = 0.6, SEPARATION = 1, MIN_LENGTH = 3, CLOSE = 1.2, NORMAL_AGREEMENT = 0.3, U32 = 0x1_0000_0000;
+const STEP = 0.35, TEST = 0.5, SEED_CLEAR = 0.6, OFFSETS = [1, 0.65], MIN_LENGTH = 3, CLOSE = 1.2, NORMAL_AGREEMENT = 0.3, U32 = 0x1_0000_0000;
 
 export type StrandEnd = "boundary" | "margin" | "proximity" | "singular" | "limit" | "closed";
 /** Internal: a curve that turned 1.5 times faster than one turn per 8 steps of radius without closing circles a critical point and is discarded. */
@@ -153,8 +155,8 @@ export function traceStrands(mesh: Mesh, options: FamilyOptions): readonly Surfa
   const w = walker(), probe = walker(), heading = new Float64Array(3), events: number[] = [];
 
   const spacingAt = (at: Walker): number => interpolate(g, spacing, at);
-  const usable = (at: Walker, ds: number, edgeMargin: number): boolean =>
-    (edgeMargin <= 0 || edge === null || interpolate(g, edge, at) >= edgeMargin) && !hash.near(at.p[0], at.p[1], at.p[2], SEPARATION * ds, g.normals, at.tri);
+  const usable = (at: Walker, ds: number, edgeMargin: number, clear: number): boolean =>
+    (edgeMargin <= 0 || edge === null || interpolate(g, edge, at) >= edgeMargin) && !hash.near(at.p[0], at.p[1], at.p[2], clear * ds, g.normals, at.tri);
 
   const closing = (at: Walker, start: Walker, h: number): boolean =>
     Math.hypot(at.p[0] - start.p[0], at.p[1] - start.p[1], at.p[2] - start.p[2]) < CLOSE * h && at.d[0] * start.d[0] + at.d[1] * start.d[1] + at.d[2] * start.d[2] > 0;
@@ -221,18 +223,23 @@ export function traceStrands(mesh: Mesh, options: FamilyOptions): readonly Surfa
       dx /= l; dy /= l; dz /= l;
       const nx = g.normals[probe.tri * 3], ny = g.normals[probe.tri * 3 + 1], nz = g.normals[probe.tri * 3 + 2];
       for (const sign of [1, -1]) {
-        probe.p[0] = pts[k * 3]; probe.p[1] = pts[k * 3 + 1]; probe.p[2] = pts[k * 3 + 2]; probe.tri = tris[segment];
-        probe.d[0] = sign * (ny * dz - nz * dy); probe.d[1] = sign * (nz * dx - nx * dz); probe.d[2] = sign * (nx * dy - ny * dx);
-        const local = interpolate(g, spacing, probe);
-        if (walk(g, probe, SEPARATION * local, null) === "length") queue.push(probe.p[0], probe.p[1], probe.p[2], probe.tri);
+        let reachable = true;
+        for (const offset of OFFSETS) {
+          if (!reachable) break;
+          probe.p[0] = pts[k * 3]; probe.p[1] = pts[k * 3 + 1]; probe.p[2] = pts[k * 3 + 2]; probe.tri = tris[segment];
+          probe.d[0] = sign * (ny * dz - nz * dy); probe.d[1] = sign * (nz * dx - nx * dz); probe.d[2] = sign * (nx * dy - ny * dx);
+          const local = interpolate(g, spacing, probe);
+          // The closer offset only fills a gap the full one would leave; where the full one runs off the surface there is no gap to fill.
+          if (walk(g, probe, offset * local, null) === "length") queue.push(probe.p[0], probe.p[1], probe.p[2], probe.tri); else reachable = false;
+        }
       }
     }
   }
 
-  const tryStart = (tri: number, x: number, y: number, z: number): void => {
+  const tryStart = (tri: number, x: number, y: number, z: number, clear: number): void => {
     w.tri = tri; w.p[0] = x; w.p[1] = y; w.p[2] = z; w.d.fill(0);
     const ds = spacingAt(w);
-    if (!usable(w, ds, margin)) return;
+    if (!usable(w, ds, margin, clear)) return;
     if (!fieldDirection(g, vectors, w, null, heading)) return;
     w.d.set(heading);
     accept(w, ds);
@@ -248,14 +255,14 @@ export function traceStrands(mesh: Mesh, options: FamilyOptions): readonly Surfa
   const pool = sampleSurface(mesh, { seed: componentSeed(seed, `${family}`, "surface-strand-seeds"), count: Math.min(100_000, Math.max(200, Math.ceil(4 * area))), distribution: "even", normals: "face" });
   const P = g.positions, T = g.triangles;
   for (let k = 0; ; ) {
-    if (head < queue.length) { tryStart(queue[head + 3], queue[head], queue[head + 1], queue[head + 2]); head += 4; if (head > 1 << 20) { queue.splice(0, head); head = 0; } continue; }
+    if (head < queue.length) { tryStart(queue[head + 3], queue[head], queue[head + 1], queue[head + 2], SEED_CLEAR); head += 4; if (head > 1 << 20) { queue.splice(0, head); head = 0; } continue; }
     if (k >= pool.count) break;
     const source = sampleSource(pool, k++), t = source.triangle;
     const bary = source.barycentric;
     const x = bary[0] * P[T[t * 3] * 3] + bary[1] * P[T[t * 3 + 1] * 3] + bary[2] * P[T[t * 3 + 2] * 3];
     const y = bary[0] * P[T[t * 3] * 3 + 1] + bary[1] * P[T[t * 3 + 1] * 3 + 1] + bary[2] * P[T[t * 3 + 2] * 3 + 1];
     const z = bary[0] * P[T[t * 3] * 3 + 2] + bary[1] * P[T[t * 3 + 1] * 3 + 2] + bary[2] * P[T[t * 3 + 2] * 3 + 2];
-    tryStart(t, x, y, z);
+    tryStart(t, x, y, z, 1);
   }
 
   const prefix = family === 0 ? "A" : "B";

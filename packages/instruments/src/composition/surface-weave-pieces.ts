@@ -128,7 +128,6 @@ export function weavePieces(products: SurfaceWeaveProducts, projected: Projected
       const low = a + shift - piece.start, high = b + shift - piece.start;
       if (high > 0 && low < length) gaps.push([low, high]);
     }
-    if (!isVisible && gaps.length === 0) return;
     const cut = gaps.length === 0 ? { pieces: [{ points: piece.points.map((p) => [p[0], p[1]] as [number, number]), start: 0 }] } : cutPath(piece.points, piece.closed, gaps);
     cut.pieces.forEach((fragment, n) => {
       const whole = gaps.length === 0 && cut.pieces.length === 1;
@@ -136,6 +135,7 @@ export function weavePieces(products: SurfaceWeaveProducts, projected: Projected
       let run = 0;
       const arcs: number[] = [arc0];
       for (let k = 1; k < fragment.points.length; k++) { run += Math.hypot(fragment.points[k][0] - fragment.points[k - 1][0], fragment.points[k][1] - fragment.points[k - 1][1]); arcs.push(arc0 + run); }
+      if (run < 1e-6) return; // a remnant of no length would draw as a dot at a strand end
       const mid = locate(strand, arc0 + run / 2), source = products.strands[piece.source], count = source.points.length;
       const a = source.points[mid.k], b = source.points[(mid.k + 1) % count];
       const position: Vec3 = [a[0] + (b[0] - a[0]) * mid.f, a[1] + (b[1] - a[1]) * mid.f, a[2] + (b[2] - a[2]) * mid.f];

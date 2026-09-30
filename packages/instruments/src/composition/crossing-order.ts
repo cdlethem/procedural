@@ -14,6 +14,15 @@ import type { Crossing, CrossingSet, CrossingSide } from "./crossings.js";
  *    odd number of crossing occurrences, typically an open strand entering a loop), the
  *    contradictory constraints are reported as `unavoidable` breaks and the rest are still met;
  *    which of the equivalent edges is dropped is fixed by (path order, arc length).
+ *    `solve: "breadth"` (default `"chains"`, the behaviour above) instead 2-colours the crossing graph
+ *    breadth first from the lowest-indexed crossing of each component, visiting neighbours in path
+ *    order then arc length. Both satisfy every constraint that can be satisfied along the tree they
+ *    grow; the chains solve grows one strand at a time, so on a lattice that cannot alternate
+ *    everywhere (a weave on a surface, strands ending in the middle of it, an odd number of strands
+ *    around a cylinder) its contradictions are scattered over the whole lattice, while the
+ *    breadth-first solve grows one front and leaves them where the front meets itself, along a
+ *    seam and at each strand end; a crossing that then disagrees with more than half of its neighbours
+ *    is turned over, until none does. The phase coin and every other rule are unchanged.
  *  - `seeded`: each crossing is an independent coin, `componentSeed(seed, crossing.id, "over")`.
  *  - `rank`: the strand with the higher rank is over. Ranks are per path index (default: the path
  *    index, so later paths lie over earlier ones). Equal ranks (including a path crossing itself)
@@ -40,6 +49,8 @@ export interface CrossingOrderOptions {
   /** Crossing ids to reverse after the rule. */
   flips?: readonly string[];
   invert?: boolean;
+  /** How the alternate rule is solved (see the header); default `"chains"`. */
+  solve?: "chains" | "breadth";
 }
 export interface Occurrence {
   readonly crossing: number;
@@ -87,11 +98,12 @@ export function strandRoles(order: CrossingOrder, crossing: Crossing): { over: C
 }
 
 export function orderCrossings(set: CrossingSet, options: CrossingOrderOptions): CrossingOrder {
-  const { rule, seed, ranks, flips = [], invert = false } = options;
+  const { rule, seed, ranks, flips = [], invert = false, solve = "chains" } = options;
+  if (solve !== "chains" && solve !== "breadth") throw new Error(`Unknown crossing solve: ${String(solve)}`);
   if (rule !== "alternate" && rule !== "seeded" && rule !== "rank") throw new Error(`Unknown crossing rule: ${String(rule)}`);
   if (!Number.isSafeInteger(seed) || seed < 0 || seed > 0xffffffff) throw new Error("Crossing order seed must be a uint32 integer");
   if (ranks && ranks.length !== set.paths.length) throw new Error(`ranks needs one entry per path (${set.paths.length}), got ${ranks.length}`);
-  const key = JSON.stringify([rule, seed, rule === "rank" ? ranks ?? null : null, [...flips].sort(), invert]);
+  const key = JSON.stringify([rule, seed, rule === "rank" ? ranks ?? null : null, [...flips].sort(), invert, solve]);
   let byKey = cache.get(set);
   const hit = byKey?.get(key);
   if (hit) return hit;
@@ -111,20 +123,61 @@ export function orderCrossings(set: CrossingSet, options: CrossingOrderOptions):
     return root;
   };
   const unavoidable: { path: number; pathId: string; before: string; after: string }[] = [];
-  for (let p = 0; p < lists.length; p++) {
-    const list = lists[p], closed = set.paths[p].closed;
-    const edges = closed ? list.length : list.length - 1;
-    for (let k = 0; k < edges; k++) {
-      const a = list[k], b = list[(k + 1) % list.length];
-      // over(o) = x xor side; consecutive occurrences must differ.
-      const want = 1 ^ a.side ^ b.side;
-      const ra = find(a.crossing), rb = find(b.crossing);
-      if (ra === rb) {
-        if ((parity[a.crossing] ^ parity[b.crossing]) !== want)
-          unavoidable.push({ path: p, pathId: set.paths[p].id, before: crossings[a.crossing].id, after: crossings[b.crossing].id });
-      } else {
-        parent[ra] = rb;
-        parity[ra] = parity[a.crossing] ^ parity[b.crossing] ^ want;
+  if (solve === "breadth") {
+    // Neighbours of every crossing along the strands, each with the parity the constraint wants between them.
+    const links: { to: number; want: number; path: number }[][] = Array.from({ length: count }, () => []);
+    const edges: { a: number; b: number; want: number; path: number }[] = [];
+    for (let p = 0; p < lists.length; p++) {
+      const list = lists[p], closed = set.paths[p].closed, n = closed ? list.length : list.length - 1;
+      for (let k = 0; k < n; k++) {
+        const a = list[k], b = list[(k + 1) % list.length], want = 1 ^ a.side ^ b.side;
+        links[a.crossing].push({ to: b.crossing, want, path: p }); links[b.crossing].push({ to: a.crossing, want, path: p });
+        edges.push({ a: a.crossing, b: b.crossing, want, path: p });
+      }
+    }
+    const seen = new Uint8Array(count);
+    for (let root = 0; root < count; root++) {
+      if (seen[root]) continue;
+      seen[root] = 1; parent[root] = root; parity[root] = 0;
+      const queue = [root];
+      for (let head = 0; head < queue.length; head++) {
+        const at = queue[head];
+        for (const link of links[at]) {
+          if (seen[link.to]) continue;
+          seen[link.to] = 1; parent[link.to] = root; parity[link.to] = parity[at] ^ link.want;
+          queue.push(link.to);
+        }
+      }
+    }
+    // Local improvement: a crossing that disagrees with more than half of its neighbours turns over. Each turn removes more
+    // contradictions than it makes, so this ends; passes and visiting order are fixed.
+    for (let pass = 0; pass < 64; pass++) {
+      let turned = 0;
+      for (let i = 0; i < count; i++) {
+        let bad = 0;
+        for (const link of links[i]) if ((parity[i] ^ parity[link.to]) !== link.want) bad++;
+        if (2 * bad > links[i].length) { parity[i] ^= 1; turned++; }
+      }
+      if (turned === 0) break;
+    }
+    for (const edge of edges)
+      if ((parity[edge.a] ^ parity[edge.b]) !== edge.want) unavoidable.push({ path: edge.path, pathId: set.paths[edge.path].id, before: crossings[edge.a].id, after: crossings[edge.b].id });
+  } else {
+    for (let p = 0; p < lists.length; p++) {
+      const list = lists[p], closed = set.paths[p].closed;
+      const edges = closed ? list.length : list.length - 1;
+      for (let k = 0; k < edges; k++) {
+        const a = list[k], b = list[(k + 1) % list.length];
+        // over(o) = x xor side; consecutive occurrences must differ.
+        const want = 1 ^ a.side ^ b.side;
+        const ra = find(a.crossing), rb = find(b.crossing);
+        if (ra === rb) {
+          if ((parity[a.crossing] ^ parity[b.crossing]) !== want)
+            unavoidable.push({ path: p, pathId: set.paths[p].id, before: crossings[a.crossing].id, after: crossings[b.crossing].id });
+        } else {
+          parent[ra] = rb;
+          parity[ra] = parity[a.crossing] ^ parity[b.crossing] ^ want;
+        }
       }
     }
   }
