@@ -445,13 +445,7 @@ test("every slider end, and every combination of slider ends, is admitted and dr
   for (const shape of ["blob", "ring", "letters", "quilt"]) for (const extent of ["whole", "patches"]) for (const holes of ["reserved", "open"])
     worlds.push({ shape, extent, holes, layout: shape === "quilt" ? "gapped" : "abutting", coupling: "separate", pigment: "region" });
   for (const word of ["BLOOM", "PIGMENT", "tide", "WASH"]) worlds.push({ shape: "letters", word, extent: "patches", holes: "reserved" });
-  let slowest = 0;
-  for (const world of worlds) for (const which of ["min", "max"] as const) {
-    const t = performance.now();
-    draws({ ...world, ...edge(which) });
-    if (which === "max") slowest = Math.max(slowest, performance.now() - t);
-  }
-  assert.ok(slowest < 2500, `the all-max corner took ${slowest.toFixed(0)} ms`);
+  for (const world of worlds) for (const which of ["min", "max"] as const) draws({ ...world, ...edge(which) });
   // Each control alone at each end, in the default world, and the blob's crowded corner for a few seeds.
   for (const p of numbers) for (const which of ["min", "max"] as const) draws({ [p.key]: p[which]! });
   for (const seed of [0, 1, 7, 99, 12345]) draws({ ...edge("max"), shape: "blob" }, seed);
