@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  MARCH, camera, cachedSdfView, componentSeed, createInstrument, definition, drawInstrument, hiddenLines, implicitSculptureComposition, inspectorItems, marchRays, marchWork,
+  DEFAULT_MARCH_WORK, MARCH, MAX_FACETS, camera, cachedSdfView, componentSeed, createInstrument, definition, drawInstrument, hiddenLines, implicitSculptureComposition, inspectorItems, marchRays, marchWork,
   meshMeasures, meshTopology, meshVertex, pointCloudData, prepareInstrument, quantizeTone, releasedScene, sculptureCamera, sculptureProducts, sculptureSdf, sculptureTree, sdf, sdfBend, sdfBox,
   sdfCapsule, sdfCylinder, sdfField, sdfFold, sdfIntersection, sdfMesh, sdfPlace, sdfRepeat, sdfShell, sdfSmoothUnion, sdfSphere, sdfSubtract, sdfSurfacePoints, sdfTorus, sdfTwist,
   sdfUnion, sdfView, shadeView, toneColor, twistLipschitz, usesSeed, validateInstrument, visibleParameters,
-  type CompositionSurface, type InstrumentInput, type SdfNode, type Vec3,
+  type CompositionSurface, type InstrumentInput, type SculptureProducts, type SdfNode, type Vec3,
 } from "../dist/index.js";
 import { drawFingerprint } from "./helpers/draw-fingerprint.js";
 
@@ -716,11 +716,14 @@ test("slider ends always give a picture: every numeric control at its slider min
   const numeric = definition(ID).parameters.filter((p) => p.type === "number");
   assert.ok(numeric.length > 30);
   const at = (side: "min" | "max") => Object.fromEntries(numeric.map((p) => [p.key, p[side] as number]));
-  const draw = (label: string, params: Record<string, number | string | boolean>): number => {
+  // Work is bounded deterministically, not by the clock: view cells, declared march work, mesh faces (all counted by the producers).
+  const draw = (label: string, params: Record<string, number | string | boolean>): SculptureProducts => {
     const input = layer({}); Object.assign(input.params, params);
-    const start = performance.now();
     try { validateInstrument(input); drawInstrument(recorder().surface as never, input); } catch (error) { assert.fail(`${label}: ${(error as Error).message}`); }
-    return performance.now() - start;
+    const products = sculptureProducts(implicitSculptureComposition(input)); // cached by the drawing above
+    if (products.view) assert.ok(products.view.stats.cells <= 45_000 && products.view.stats.work <= DEFAULT_MARCH_WORK, `${label}: ${products.view.stats.cells} cells, work ${products.view.stats.work}`);
+    if (products.mesh) assert.ok(products.mesh.mesh.triangleCount <= MAX_FACETS, `${label}: ${products.mesh.mesh.triangleCount} triangles`);
+    return products;
   };
   const forms = ["carved-block", "lattice-cavity", "coral", "fractal-fragment"];
   for (const form of forms) {
@@ -729,8 +732,10 @@ test("slider ends always give a picture: every numeric control at its slider min
       const label = `${form}/${fill}/${JSON.stringify(extra)}`;
       draw(`${label} all-min`, { form, fill, ...extra, ...at("min") });
       for (const key of ["meshDetail", "cellSize", "size", "repeatX", "iterations", "cells"]) draw(`${label} ${key}=max`, { form, fill, ...extra, [key]: numeric.find((p) => p.key === key)!.max as number });
-      const ms = draw(`${label} all-max`, { form, fill, ...extra, ...at("max") });
-      assert.ok(ms < 2500, `${label} all-max took ${ms.toFixed(0)} ms`);
+      // The all-max corner is light by construction (large cells, few copies): a regression that made it heavy shows in these counts.
+      const corner = draw(`${label} all-max`, { form, fill, ...extra, ...at("max") });
+      if (corner.view) assert.ok(corner.view.stats.cells <= 2_500 && corner.view.stats.work <= 60_000_000, `${label} all-max march: ${corner.view.stats.cells} cells, work ${corner.view.stats.work}`);
+      if (corner.mesh) assert.ok(corner.mesh.mesh.triangleCount <= 12_000, `${label} all-max mesh: ${corner.mesh.mesh.triangleCount} triangles`);
     }
   }
 });
