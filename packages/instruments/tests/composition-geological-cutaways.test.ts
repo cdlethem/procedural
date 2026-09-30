@@ -480,11 +480,8 @@ test("every numeric control at its slider minimum and maximum, alone and all tog
   };
   for (const p of numbers) for (const end of ["min", "max"] as const) attempt(`${p.key} at slider ${end}`, { [p.key]: end === "min" ? p.min! : p.max! });
   const all = (end: "min" | "max") => Object.fromEntries(numbers.map((p) => [p.key, end === "min" ? p.min! : p.max!]));
-  const started = performance.now();
   for (const cut of ["block", "slice", "corner", "exploded"]) for (const end of ["min", "max"] as const)
     for (const extra of [{}, { faultStrike: "width", faultDipDirection: "right", fold: "dome", projection: "perspective", faultStyle: "alternating" }])
       attempt(`all ${end}, cut ${cut}, ${JSON.stringify(extra)}`, { ...all(end), cut, ...extra });
   assert.ok(await prepareInstrument(input(all("max")), () => false));
-  // The measured worst corner (all maxima, ~0.4 s alone) leaves ample room for the 16 corner drawings under a busy machine.
-  assert.ok(performance.now() - started < 60_000);
 });

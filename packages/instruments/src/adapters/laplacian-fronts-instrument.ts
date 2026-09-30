@@ -2,7 +2,7 @@ import { GROWTH_STEP_LIMIT, MAX_ITERATIONS, checkGrowthSpec } from "../compositi
 import type { GrowthSpec } from "../composition/laplacian-growth.js";
 import { GROWTH_LIMITS } from "../composition/laplacian-layout.js";
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
-import { choice, numeric } from "./types.js";
+import { choice, numeric, toggle } from "./types.js";
 
 type Condition = Record<string, readonly (string | number | boolean)[]>;
 type Values = Record<string, number | string | boolean>;
@@ -36,7 +36,9 @@ const marked: Condition = { marks: ["age", "tips"] };
 const aged: Condition = { marks: ["age"] };
 const tipped: Condition = { marks: ["tips"] };
 const lined: Condition = { potential: ["lines"] };
-const outlined: Condition = { boundary: ["outline"] };
+const walled2: Condition = { barrier: ["wall", "pillars"] };
+const wallLined: Condition = { barrierOutline: [true] };
+const sinkLined: Condition = { sinkOutline: [true] };
 
 const parameters: Parameter[] = [
   select("seedShape", "Seed shape", "The region that is occupied at the start and grows: a disc, a lobed disc (a circle whose radius swells and shrinks around it), a cluster of scattered discs, a necklace of discs on a ring, or a bar.",
@@ -64,6 +66,8 @@ const parameters: Parameter[] = [
   n("sinkSize", "Sink size", "Radius of each absorber, canvas units.", 6, 80, 1, 0, 2560, sunk),
   n("sinkRing", "Sink ring", "Radius of the circle the absorbers sit on, canvas units.", 40, 300, 1, 0, 2560, sunk),
   n("sinkAngle", "Sink angle", "Degrees. Where the first absorber sits.", -180, 180, 1, -3600, 3600, sunk),
+  withCondition(toggle("sinkOutline", "Outline sinks", "Draw the outline of each absorber."), sunk),
+  n("sinkLineWeight", "Sink line weight", "Stroke width of the sink outline, canvas units.", 0.5, 4, 0.1, 0, 50, sinkLined),
 
   select("barrier", "Barrier", "Insulating obstacles the front cannot enter and the flux cannot cross: a wall with gaps, or scattered pillars. Flux funnels through the gaps and around the pillars.", ["none", "wall", "pillars"]),
   n("barrierAngle", "Wall angle", "Degrees. Direction of the wall: 0 is horizontal.", -90, 90, 1, -3600, 3600, walled),
@@ -73,6 +77,8 @@ const parameters: Parameter[] = [
   n("barrierGapWidth", "Gap width", "Width of each gap, canvas units.", 20, 200, 1, 0, 2560, walled),
   n("pillarCount", "Pillars", "How many pillars, scattered by the structural seed and kept clear of the seed region.", 1, 24, 1, 1, GROWTH_LIMITS.maxPillars, pillared),
   n("pillarSize", "Pillar size", "Radius of each pillar, canvas units.", 6, 60, 1, 0, 2560, pillared),
+  withCondition(toggle("barrierOutline", "Outline barrier", "Draw the outline of the wall or pillars, so the reason a front bends is visible."), walled2),
+  n("barrierLineWeight", "Barrier line weight", "Stroke width of the barrier outline, canvas units.", 0.5, 4, 0.1, 0, 50, wallLined),
 
   n("steps", "Steps", "How many times the front advances. Each step moves the fastest point of the front by the step size; growth that has ended (no flux, or surface tension holding every point) simply stops, and every earlier front stays exactly as it was.", 1, 120, 1, 0, GROWTH_STEP_LIMIT),
   n("eta", "Growth bias", "The exponent η of the front speed: speed follows the potential gradient to the power η. 0 moves every point at the same speed, an offset of the seed; 1 is Laplacian growth, where protruding tips run ahead; higher favours fewer, sharper fingers.", 0, 3, 0.05, 0, 8),
@@ -105,9 +111,6 @@ const parameters: Parameter[] = [
   n("tipThreshold", "Tip threshold", "Which tips get a mark: only local maxima of the speed whose speed is at least this fraction of the fastest point's.", 0, 1, 0.01, 0, 1, tipped),
   n("markRetention", "Mark retention", "Share of the sites that get a mark; the ones dropped are stable under changes elsewhere.", 0, 1, 0.01, 0, 1, marked),
 
-  select("boundary", "Boundary lines", "Outline the walls, pillars and sinks the growth was solved around, so the reason a front bends is visible. The source is not outlined.", ["none", "outline"]),
-  n("boundaryWeight", "Boundary weight", "Stroke width of the outlines, canvas units.", 0.5, 4, 0.1, 0, 50, outlined),
-
   select("potential", "Potential lines", "Draw lines of equal potential around the final region: the field the growth followed. They crowd where the flux is strong.", ["none", "lines"]),
   n("potentialLines", "Potential levels", "How many equipotential lines, evenly spaced in potential between the region (0) and the source (1).", 1, 12, 1, 1, 24, lined),
   n("potentialWeight", "Potential weight", "Stroke width of the equipotential lines, canvas units.", 0.3, 2, 0.05, 0, 50, lined),
@@ -117,16 +120,15 @@ const controlGroups: ControlGroup[] = [
   { label: "Seed", controls: ["seedShape", "seedLobes", "seedDepth", "seedCount"] },
   { label: "Placement", controls: ["seedX", "seedY", { label: "Size", controls: ["seedRadius", "seedSpread"], proportional: true }, "seedAngle"] },
   { label: "Source", controls: ["source", "sourceRadius", "sourceSize", "sourceCount", "sourceSide", "sourceAngle"] },
-  { label: "Sinks", controls: ["sinks", "sinkCount", { label: "Size", controls: ["sinkSize", "sinkRing"], proportional: true }, "sinkAngle"] },
+  { label: "Sinks", controls: ["sinks", "sinkCount", { label: "Size", controls: ["sinkSize", "sinkRing"], proportional: true }, "sinkAngle", "sinkOutline", "sinkLineWeight"] },
   { label: "Barrier", controls: ["barrier", "barrierAngle", "barrierOffset", { label: "Widths", controls: ["barrierWidth", "barrierGapWidth"], proportional: true },
-    "barrierGaps", "pillarCount", "pillarSize"] },
+    "barrierGaps", "pillarCount", "pillarSize", "barrierOutline", "barrierLineWeight"] },
   { label: "Growth", controls: ["steps", "eta", "tension", "stepScale", "noise"] },
   { label: "Solver", controls: ["grid", "precision", "maxIterations"] },
   { label: "Fronts", controls: ["frontMaterial", "frontEvery", "frontFrom", "frontTo", { label: "Line weights", controls: ["frontWeight", "finalWeight"], proportional: true },
     "frontSpacing", "frontBeadSize", "frontSmooth"] },
   { label: "Fill", controls: ["fill", "fillOpacity", "fillBands"] },
   { label: "Marks", controls: ["marks", "markKind", "markSize", "markSpacing", "tipThreshold", "markRetention"] },
-  { label: "Boundary lines", controls: ["boundary", "boundaryWeight"] },
   { label: "Potential lines", controls: ["potential", "potentialLines", "potentialWeight"] },
 ];
 
@@ -183,7 +185,7 @@ export const laplacianFrontsDefinitions: InstrumentDefinition[] = [{
     frontMaterial: "ink", frontEvery: 4, frontFrom: 0, frontTo: 1, frontWeight: 1, finalWeight: 2, frontSpacing: 6, frontBeadSize: 3, frontSmooth: 1,
     fill: "bands", fillOpacity: 0.16, fillBands: 6,
     marks: "none", markKind: "dot", markSize: 8, markSpacing: 22, tipThreshold: 0.35, markRetention: 1,
-    boundary: "outline", boundaryWeight: 1.6,
+    barrierOutline: true, barrierLineWeight: 1.6, sinkOutline: true, sinkLineWeight: 1.6,
     potential: "none", potentialLines: 6, potentialWeight: 0.7,
   },
   validate: validateLaplacianFronts,
