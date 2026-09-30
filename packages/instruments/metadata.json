@@ -453,6 +453,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "river-ribbons",
+      "title": "River Ribbons",
+      "description": "A channel that migrates: each bend erodes toward its outside at a rate set by the curvature averaged along the channel, tight necks cut off into oxbows with their own age, and every earlier position is kept. Drawn as a ribbon whose width follows the discharge, faded scars of old channels and oxbows, and a floodplain tinted by age.",
+      "category": "Motion",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/river-ribbons.md",
+      "source": "packages/instruments/src/composition/river-draw.ts",
+      "sourceEntry": "drawRiverRibbons",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "data-scores",
       "title": "Data Scores",
       "description": "Let recorded values decide structure: three bundled tables with missing values become a lattice that drifts, a treemap with exact areas or a timeline, with explicit mappings and a small generated key.",
