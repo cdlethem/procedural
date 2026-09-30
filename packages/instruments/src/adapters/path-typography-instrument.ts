@@ -15,10 +15,11 @@ const n = (key: string, label: string, description: string, min: number, max: nu
 const select = (key: string, label: string, description: string, options: readonly (readonly [string, string])[], visibleWhen?: Condition): Parameter =>
   withCondition({ ...choice(key, label, description, options.map(([value]) => value)), options: options.map(([value, text]) => ({ value, label: text })) }, visibleWhen);
 /** The growth study's own domain for a control the branch supply shares with it. */
-function growth(key: string, visibleWhen: Condition): Parameter {
+function growth(key: string, visibleWhen: Condition, sliderMax?: number): Parameter {
   const found = attractorGrowthDefinitions[0].parameters.find((parameter) => parameter.key === key);
   if (!found) throw new Error(`Attractor growth has no control ${key}`);
-  return withCondition({ ...found, integer: key === "sourceCount" || key === "ticks" || key === "branches" }, visibleWhen);
+  // The slider interval is narrowed where the study's own reaches together exceed its work budget (exact entry keeps the study's domain).
+  return withCondition({ ...found, ...(sliderMax === undefined ? {} : { max: sliderMax }), integer: key === "sourceCount" || key === "ticks" || key === "branches" }, visibleWhen);
 }
 
 const contour: Condition = { supply: ["contour"] };
@@ -43,7 +44,7 @@ const parameters: Parameter[] = [
   select("recording", "Recording", "Which bundled hand movement to follow; each seed is a slightly different take.",
     bundledRecordingIds.map((id) => [id, bundledRecordingInfo[id].title] as const), gesture),
   n("gestureSmoothing", "Hand smoothing", "Softens the hand's tremor before the type is laid on it, in milliseconds of recorded time.", 0, 200, 5, 0, 5000, false, gesture),
-  growth("sourceCount", branch), growth("ticks", branch), growth("branches", branch), growth("branchSpread", branch),
+  growth("sourceCount", branch), growth("ticks", branch, 50), growth("branches", branch, 2), growth("branchSpread", branch),
   select("routing", "Branch routing", "How each branch runs between junctions: as grown, softened, straight chords, or 45° elbows.",
     [["grown", "As grown"], ["smooth", "Softened"], ["straight", "Straight"], ["octilinear", "Elbows"]], branch),
   n("pick", "Path", "Which path carries the type, longest first: 0 is the longest.", 0, 9, 1, 0, 199, true),
