@@ -190,7 +190,7 @@ export { splineDeposit, protectedSpace, keepOut, curvePaths, sandDepositionCompo
   isolineTone, densityAtTone, drawSandDeposition, prepareSandDeposition, MAX_DEPOSIT_GRAINS, MAX_SAMPLED_GRAINS, MAX_OVERLAY_CURVES } from "./composition/deposition.js";
 export type { RiverOptions, RiverConstruction, RiverPlanform, RiverState, RiverFrameData, OxbowRecord, RiverChannel, RiverOxbow, RiverFrame, RiverScene, RiverControl, RiverAgeField } from "./composition/river.js";
 export { riverRibbons, prepareRiverRibbons, riverSnapshots, riverSimulation, riverConstruction, checkRiver, riverFields, riverTraces, oxbowPaths, riverAgeField, riverUsesSeed, isRiverCached, clearRiverCache,
-  RIVER_LIMITS, MAX_SINUOSITY, MAX_NODES, END_ROOM, MAX_AGE_CELLS, MAX_AGE_WORK } from "./composition/river.js";
+  RIVER_LIMITS, RIVER_MAX_WORK, MAX_START_SINUOSITY, MAX_SINUOSITY, MAX_NODES, END_ROOM, MAX_AGE_CELLS, MAX_AGE_WORK } from "./composition/river.js";
 export type { Valley as RiverValley, Walls as RiverWalls, Cut as RiverCut, Loop as RiverLoop } from "./composition/river-model.js";
 export { arcLengths as channelArcLengths, signedCurvature as channelCurvature, smoothCurvature as smoothChannelCurvature, kernelTaps as curvatureKernelTaps, dischargeAt, dischargeWidths,
   valleyOf as riverValley, migrationOffsets, easeAtWalls, confine as confineChannel, findCuts as findNeckCuts, applyCuts as applyNeckCuts, resample as resampleChannel, firstSelfCrossing,

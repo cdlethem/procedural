@@ -39,16 +39,16 @@ const parameters: Parameter[] = [
   n("confinement", "Valley half-width", "Distance from the valley axis to each wall, in canvas units. The banks are held inside; a narrow valley presses the channel into tight switchbacks and cuts it off often.", 50, 320, 1),
   n("angle", "Valley angle", "Rotation of the whole valley in degrees; 0 runs left to right.", -90, 90, 1),
 
-  n("width", "Channel width", "Width of the channel at the inlet, in canvas units. Migration, spacing, smoothing and the cutoff all scale with it, so a different width is the same river at another scale.", 3, 14, 0.25),
-  n("discharge", "Outlet discharge", "Discharge at the outlet relative to the inlet, growing along the channel; the channel widens with its square root. 1 keeps a constant width.", 0.4, 3, 0.05),
+  n("width", "Channel width", "Width of the channel at the inlet, in canvas units. Migration, spacing, smoothing and the cutoff all scale with it, so a different width is the same river at another scale.", 7, 14, 0.25),
+  n("discharge", "Outlet discharge", "Discharge at the outlet relative to the inlet, growing along the channel; the channel widens with its square root. 1 keeps a constant width.", 0.5, 3, 0.05),
 
   n("steps", "Migration steps", "How many steps the channel migrates from the starting channel. Drag it to watch the river move, cut off and leave scars; every step is retained, so going back is cheap.", 0, 360, 1),
   n("mobility", "Bank mobility", "How fast the banks erode, in channel widths per step per unit of width times curvature. Higher bends and cuts off sooner; 0 leaves the channel where it started.", 0.02, 0.3, 0.005),
   n("smoothing", "Smoothing length", "Length, in channel widths, over which curvature is averaged along the channel before it drives erosion. Longer makes broad, rounded bends; shorter lets tight bends run away.", 1, 6, 0.25),
   n("skew", "Downstream lag", "0 averages curvature evenly both ways along the channel. 1 feels only the curvature upstream, so bends slide downstream as they grow.", 0, 1, 0.05),
   n("heterogeneity", "Bank resistance", "How unevenly the floodplain erodes: 0 is uniform; higher leaves resistant patches the channel bends around and soft ground where it swings. Seeded.", 0, 0.9, 0.05),
-  n("cutoff", "Cutoff neck", "When two distant parts of the channel come closer than this many channel widths the bend between them is cut off into an oxbow. Lower lets bends grow into tighter loops first.", 1.6, 5, 0.1),
-  n("spacing", "Node spacing", "Distance between the equally spaced nodes of the centerline, in channel widths. Finer follows tight bends; coarser is cheaper. It must not exceed half the cutoff neck.", 0.5, 0.8, 0.05),
+  n("cutoff", "Cutoff neck", "When two distant parts of the channel come closer than this many channel widths the bend between them is cut off into an oxbow. Lower lets bends grow into tighter loops first.", 2.5, 5, 0.1),
+  n("spacing", "Node spacing", "Distance between the equally spaced nodes of the centerline, in channel widths. Finer follows tight bends; coarser is cheaper. It must not exceed half the cutoff neck.", 0.5, 0.7, 0.05),
 
   flag("showChannel", "Current channel", "Draw the current channel as a ribbon whose width follows the discharge."),
   appearance("channelOpacity", "Channel opacity", "Opacity of the current channel ribbon.", 0.2, 1, 0.01, [0, 1], shown),

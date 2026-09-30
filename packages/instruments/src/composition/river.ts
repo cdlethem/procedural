@@ -70,10 +70,10 @@ export type RiverConstruction = Omit<RiverOptions, "seed" | "steps">;
 /** Most cutoff passes in one step (each pass removes at least one node, so this is a guard, not a limit reached in practice). */
 const MAX_CUT_PASSES = 12;
 /** Work bound of a run: the model's declared per-step bound is pessimistic (it assumes the node limit is reached), so the run gets its own ceiling. */
-export const RIVER_MAX_WORK = 150_000_000;
+export const RIVER_MAX_WORK = 600_000_000;
 
 /** Longest sinuosity (channel length over valley length) the node bound allows; beyond it the run fails naming the controls. */
-export const MAX_SINUOSITY = 4;
+export const MAX_SINUOSITY = 6;
 export const MAX_NODES = 2000;
 
 export function riverConstruction(options: RiverOptions): RiverConstruction {
@@ -93,7 +93,8 @@ function derive(c: RiverConstruction): Derived {
   const spacing = c.spacing * c.width, scale = c.smoothing * c.width, taps = kernelTaps(c.spacing, c.smoothing);
   const wmin = c.width * Math.sqrt(Math.min(1, c.discharge)), wmax = c.width * Math.sqrt(Math.max(1, c.discharge));
   const nodeLimit = Math.min(MAX_NODES, Math.ceil(MAX_SINUOSITY * c.length / spacing) + 2);
-  return { spacing, scale, taps, wmin, wmax, nodeLimit, workPerStep: nodeLimit * (2 * taps + NODE_WORK) };
+  // The cutoff search visits, per node, the nodes of the 3 x 3 grid cells around it (at most all of them) plus the 9 cells.
+  return { spacing, scale, taps, wmin, wmax, nodeLimit, workPerStep: nodeLimit * (2 * taps + NODE_WORK + nodeLimit + 9) };
 }
 
 /** Admit a river or throw naming the control (or the coupled controls) to change. */
@@ -193,6 +194,16 @@ function initialProfile(c: RiverConstruction, free: number, harmonic: (h: number
 }
 
 const PROFILE_SAMPLES = 2400;
+/** The starting channel is at most this many times longer than the straight valley between its pinned ends; a larger offset is scaled down (never rerolled). */
+export const MAX_START_SINUOSITY = 3;
+function capStartSinuosity(profile: { u: Float64Array; v: Float64Array }): void {
+  const { u, v } = profile, n = u.length, span = Math.abs(u[n - 1] - u[0]);
+  const arc = (scale: number) => { let sum = 0; for (let k = 1; k < n; k++) sum += Math.hypot(u[k] - u[k - 1], (v[k] - v[k - 1]) * scale); return sum; };
+  if (arc(1) <= MAX_START_SINUOSITY * span) return;
+  let low = 0, high = 1;
+  for (let iteration = 0; iteration < 40; iteration++) { const mid = (low + high) / 2; if (arc(mid) <= MAX_START_SINUOSITY * span) low = mid; else high = mid; }
+  for (let k = 0; k < n; k++) v[k] *= low;
+}
 const INITIAL_WORK = PROFILE_SAMPLES * 8 + MAX_NODES * 8;
 
 export const riverSimulation: Simulation<RiverState, RiverConstruction, RiverFrameData> = {
@@ -201,6 +212,7 @@ export const riverSimulation: Simulation<RiverState, RiverConstruction, RiverFra
   initial(ctx) {
     const c = ctx.params, d = derive(c), valley = valleyOf(c.centerX, c.centerY, c.length, c.angle);
     const profile = initialProfile(c, c.confinement - d.wmax / 2, (h) => ctx.stream("channel", `harmonic:${h}`).next() * 2 - 1)(PROFILE_SAMPLES);
+    capStartSinuosity(profile);
     const xy = new Float64Array(2 * (PROFILE_SAMPLES + 1));
     for (let k = 0; k <= PROFILE_SAMPLES; k++) {
       xy[2 * k] = valley.cx + profile.u[k] * valley.ax - profile.v[k] * valley.ay;
@@ -223,12 +235,15 @@ export const riverSimulation: Simulation<RiverState, RiverConstruction, RiverFra
     // 1. Read the old channel everywhere.
     const arc = arcLengths(state.xy), width = dischargeWidths(arc, c.width, c.discharge);
     const smooth = smoothCurvature(signedCurvature(state.xy), arc[n - 1] / (n - 1), d.scale, c.skew);
-    const { offsets, maxMove: unwalled } = migrationOffsets(state.xy, arc, smooth, width, c.mobility, ANCHOR_WIDTHS * c.width, erodibility(state, valley, c.heterogeneity));
-    if (unwalled > d.spacing / 2)
-      throw new Error(`step ${ctx.step}: bank migration would move a node ${+unwalled.toFixed(3)}, more than half the node spacing (${+(d.spacing / 2).toFixed(3)}); lower mobility, raise spacing or raise smoothing`);
+    const { offsets } = migrationOffsets(state.xy, arc, smooth, width, c.mobility, ANCHOR_WIDTHS * c.width, erodibility(state, valley, c.heterogeneity));
     easeAtWalls(offsets, state.xy, width, { valley, half: c.confinement }, WALL_WIDTHS * c.width);
+    // Speed limit: no node moves more than half the node spacing in one step, so a limb cannot skip over another (spacing is at most half the neck).
+    // It only acts on extreme mobility with short smoothing; the direction of migration is unchanged.
     let maxMove = 0;
-    for (let i = 0; i < offsets.length; i += 2) maxMove = Math.max(maxMove, Math.hypot(offsets[i], offsets[i + 1]));
+    for (let i = 0; i < offsets.length; i += 2) {
+      const length = Math.hypot(offsets[i], offsets[i + 1]);
+      if (length > d.spacing / 2) { const k = d.spacing / 2 / length; offsets[i] *= k; offsets[i + 1] *= k; maxMove = d.spacing / 2; } else maxMove = Math.max(maxMove, length);
+    }
     // 2. Move every node, then hold the banks inside the valley walls.
     const moved = Float64Array.from(state.xy);
     for (let i = 0; i < moved.length; i++) moved[i] += offsets[i];
