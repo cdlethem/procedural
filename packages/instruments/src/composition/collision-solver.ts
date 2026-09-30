@@ -31,7 +31,8 @@
  * is at most `2 |g|` (a disc lying on a wall meets it at exactly the kick each frame) is resolved but not recorded, so a pile
  * does not fill the log with one micro-impulse per body per frame. With `g = 0` nothing is dropped.
  *
- * Bounds: a frame may resolve at most `maxEvents` contacts (logged or not); over that the frame throws instead of dropping any.
+ * Bounds: a frame may resolve at most `maxEvents` contacts (logged or not); over that the frame throws a `FrameLimitError`
+ * instead of dropping any (the caller then discards the whole frame).
  */
 import { PointGrid } from "./spatial-index.js";
 import { timeToReach, timeToSegment, wallsNear, type WallSet } from "./collision-walls.js";
@@ -83,10 +84,15 @@ export function wallLaw(m: number, vx: number, vy: number, nx: number, ny: numbe
   return { impulse: m * kick, approach, vx: outX, vy: outY };
 }
 
+/** Thrown when one frame needs more contacts or work than its bound; the caller decides what that means (Collision Scores ends the recording). */
+export class FrameLimitError extends Error {
+  constructor(message: string) { super(message); this.name = "FrameLimitError"; }
+}
+
 export interface FrameLimits {
   readonly maxEvents: number;
   charge(units: number): void;
-  /** Message of the error thrown when a frame exceeds `maxEvents`; names the controls to change. */
+  /** Message of the `FrameLimitError` thrown when a frame exceeds `maxEvents`; names the controls to change. */
   overflow(events: number): string;
 }
 
@@ -168,7 +174,7 @@ export function solveFrame(bodies: Bodies, walls: WallSet, physics: Physics, fra
     const dt = ct[best];
     advance(dt);
     tNow += dt;
-    if (++events > limits.maxEvents) throw new Error(limits.overflow(events));
+    if (++events > limits.maxEvents) throw new FrameLimitError(limits.overflow(events));
     const i = ca[best], time = frameStart + tNow;
     let fastest = 0;
     if (cr[best] === 1) {

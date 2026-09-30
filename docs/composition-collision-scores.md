@@ -4,7 +4,7 @@ Status: **implemented on branch `w3/collision-scores`, unreleased.** Instrument 
 `packages/instruments/guides/collision-scores.md`. Code (all in `packages/instruments/src/`):
 `composition/collision-walls.ts` (wall elements, exact times of impact), `collision-solver.ts` (one frame,
 laws, tie order), `collision-containers.ts` (bundled containers, barriers), `collision-room.ts` (room
-resolution and feasibility), `collision.ts` (the `Simulation`, cache, `CollisionScore`), `collision-draw.ts`
+resolution), `collision.ts` (the `Simulation`, cache, `CollisionScore`), `collision-draw.ts`
 (recipe, five treatments), `adapters/collision-scores-instrument.ts` (controls). Tests:
 `tests/composition-collision-scores.test.ts`.
 
@@ -49,14 +49,30 @@ wall elements from a per-frame cell list, so cost is not all-pairs.
 - **Launch.** `heading ± headingSpread` degrees, speed `speed (1 ± speedSpread)`; ring headings are measured from the outward
   direction. Nozzle births happen at the start of a step, one per `Release every` steps, only when the spot is free.
   Nothing is dropped; a blocked nozzle waits.
+- **Line and ring.** Disc `k` has a fixed site (evenly along the line, or around the ring). At step 0 and at the start of each later step
+  (at most 8 births a step) discs are born in serial order while the next site is free, stopping at the first that is not. A line or ring too
+  small for all discs at once therefore releases them one after another; sites are fitted to the room first (see Bounds).
 
-## Bounds (each throws naming the control)
+## Bounds, and the slider-ends rule
 
-Bodies ≤ 96, steps ≤ 3000, wall elements (edges + corners + posts) ≤ 4000, log ≤ 30,000 records, ≤ 32 + 8·bodies contacts
-per frame, work per step ≤ 2000 + 1200·bodies units (charged through `ctx.charge`), radius ≤ 60, speed ≤ 40. Emitter
-feasibility (line length, ring diameter, nozzle clearance, scatter area ≤ 35%) is validated with the scalar controls; the
-seeded scatter placement itself can still fail for a given seed and then names Bodies/Radius/container. Termination:
-there is no growth to stop; a run that has settled simply stops logging. A nozzle that never frees up stops births.
+Every numeric control at its slider minimum and maximum, alone and all together (also over each emitter), validates and draws; a test
+iterates them, and every select option and combination of container, barriers, emitter and mass draws at the defaults.
+
+Refused, naming the control: Bodies ≤ 96, steps ≤ 3000, wall elements (edges + corners + posts) ≤ 4000, radius ≤ 60, speed ≤ 40, and
+a room in which no disc of the largest radius has any clear place.
+
+Never refused, fitted or deferred instead:
+- **Emitter places.** Line, ring and nozzle places are fitted by `snapToClear` (`collision-walls.ts`): a place clear of every wall element
+  by `radius × (1 + spread) + 0.5` stays exactly; any other moves to the nearest clear cell centre of a 96 × 96 grid over the container's
+  bounding box (ties to the first cell in row order). The grid is built only when a place needs it (at most 9,216 cells, each an
+  even-odd scan of the edges), once per model.
+- **Crowding.** Line, ring and scatter discs that cannot be placed are born later in serial order, at most 8 births and a bounded number
+  of scatter tries a step. Nothing is dropped; a disc that never leaves keeps the rest unborn.
+- **Recording end.** The log holds at most 30,000 records (checked after each step, so it may exceed that by one frame's contacts), and a
+  frame may resolve at most 32 + 8·bodies contacts and 2000 + 1200·bodies work units. At the first step where the log is full
+  (`stopReason "log-full"`) or a frame exceeds its bound (`"frame-limit"`: the frame is discarded whole, bodies stay where it found them,
+  its contacts are not logged), the recording ends: later steps change nothing and `CollisionScore.stoppedAt`/`stopReason` say when and why.
+  Prefix and replay hold (a longer run has the same log). This is the model's explicit termination.
 
 ## Treatments (all read one `CollisionScore`)
 

@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  EVENT, EVENT_STRIDE, KIND_PAIR, KIND_WALL, REST_SPEED, buildWalls, bundledContainer, checkSimulation, collisionBarriers, collisionModel, collisionScore, collisionScoreOfRecipe, collisionScoresComposition,
+  COLLISION_LIMITS, EVENT, EVENT_STRIDE, KIND_PAIR, KIND_WALL, REST_SPEED, buildWalls, bundledContainer, checkSimulation, collisionBarriers, collisionModel, collisionScore, collisionScoreOfRecipe, collisionScoresComposition,
   collisionScoresUsesSeed, collisionSimulation, collisionSnapshots, containerRings, createInstrument, definition, distanceToWalls, drawCollisionScores, finalState, hasCollisionSnapshots,
-  insideContainer, inspectorItems, pairLaw, prepareCollisionSnapshots, prepareInstrument, solveFrame, stateAt, timeToReach, timeToSegment, usesSeed, visibleParameters, wallLaw,
-  type CollisionModel, type CollisionScore, type CollisionScoresRecipe, type CollisionSetup, type CollisionState, type CompositionSurface, type ContactSite, type Path,
+  insideContainer, inspectorItems, validateInstrument, pairLaw, prepareCollisionSnapshots, prepareInstrument, solveFrame, stateAt, timeToReach, timeToSegment, usesSeed, visibleParameters, wallLaw,
+  drawInstrument, type DrawingContext, type InstrumentInput, type CollisionModel, type CollisionScore, type CollisionScoresRecipe, type CollisionSetup, type CollisionState, type CompositionSurface, type ContactSite, type Path,
 } from "../dist/index.js";
 import { drawFingerprint } from "./helpers/draw-fingerprint.js";
 
@@ -31,6 +31,7 @@ const kinetic = (state: CollisionState): number => {
   for (let i = 0; i < state.born; i++) sum += 0.5 * state.m[i] * (state.vx[i] ** 2 + state.vy[i] ** 2);
   return sum;
 };
+const drawInstrumentOnce = (input: InstrumentInput): void => { drawInstrument(new Recorder() as unknown as DrawingContext, input); };
 const inputOf = (params: Params = {}, seed = 42) => { const base = createInstrument(ID); return { ...base, seed, params: { ...base.params, ...params } }; };
 const recipeOf = (params: Params = {}, seed = 42) => collisionScoresComposition(inputOf(params, seed));
 
@@ -351,11 +352,7 @@ test("the bounds throw, naming the control to change", () => {
   assert.throws(() => modelOf({ bodies: { count: 200 } }), /Bodies/);
   assert.throws(() => collisionSnapshots(modelOf(), 1, 4000), /Steps/);
   assert.throws(() => modelOf({ bodies: { radius: 200 } }), /Radius/);
-  assert.throws(() => collisionSnapshots(modelOf({ container: box(120, 120), bodies: { count: 60, radius: 12 }, emitter: { mode: "scatter" } }), 1, 1), /Bodies or Radius/);
-  assert.throws(() => collisionSnapshots(modelOf({ emitter: { mode: "nozzle", x: 2000, y: 320, every: 3 } }), 1, 1), /Emitter X\/Y/);
-  assert.throws(() => collisionSnapshots(modelOf({ bodies: { count: 5 }, emitter: { mode: "ring", extent: 20 } }), 1, 1), /does not fit on the ring emitter/);
-  // A crowd in a small room reaches a per-frame or whole-log bound and says so, instead of truncating.
-  assert.throws(() => collisionSnapshots(modelOf({ container: box(150, 150), bodies: { count: 60, radius: 6 }, emitter: { mode: "scatter", speed: 30, headingSpread: 180 } }), 1, 3000), /Bodies|Steps|Speed|Radius/);
+  assert.throws(() => collisionSnapshots(modelOf({ container: box(20, 20), bodies: { radius: 12 }, emitter: { mode: "nozzle", x: 320, y: 320, every: 3 } }), 1, 1), /no place clear of its walls.*Radius/);
   // The solver itself refuses a frame with more contacts than its limit.
   const room = buildWalls([[[0, 0], [100, 0], [100, 100], [0, 100]]], []);
   const bodies = { count: 1, x: Float64Array.of(50), y: Float64Array.of(50), vx: Float64Array.of(200), vy: Float64Array.of(190), r: Float64Array.of(3), m: Float64Array.of(1) };
@@ -509,4 +506,114 @@ test("defaults draw, and the authored default shows every treatment", () => {
   const surface = new Recorder();
   drawCollisionScores(surface, recipeOf());
   assert.ok(surface.calls > 100);
+});
+
+test("a line or ring too small for all discs at once releases them in serial order as each site frees, and never overlaps", () => {
+  // Five discs of radius 10 on a 20-unit line: adjacent sites overlap, so each waits for the one before it to leave.
+  const score = scoreOf(modelOf({ container: box(600, 400), bodies: { count: 5 }, emitter: { mode: "line", x: 320, y: 320, extent: 20, angle: 90, heading: 0, speed: 4 } }), 40);
+  assert.deepEqual(score.bodies.map((body) => body.id), ["body:0", "body:1", "body:2", "body:3", "body:4"]);
+  assert.equal(score.bodies[0].bornAt, 0);
+  for (let i = 1; i < 5; i++) assert.ok(score.bodies[i].bornAt > score.bodies[i - 1].bornAt, `body ${i} waits for its predecessor`);
+  // Each disc is born at its own site, along the line: y = 310 + 5 k.
+  score.trails.forEach((trail, k) => { near(trail.xs[0], 320); near(trail.ys[0], 310 + 5 * k, 1e-9, `site ${k}`); });
+  // Never born overlapping anything: at every birth the centre distance to each earlier disc is at least the radii sum.
+  for (const body of score.bodies) for (const other of score.bodies) if (other.serial < body.serial) {
+    const trail = score.trails[other.serial], j = trail.times.indexOf(body.bornAt), at = score.trails[body.serial];
+    assert.ok(j >= 0);
+    assert.ok(Math.hypot(trail.xs[j] - at.xs[0], trail.ys[j] - at.ys[0]) >= body.radius + other.radius, `${body.id} vs ${other.id}`);
+  }
+  // A disc that never leaves keeps the rest unborn, without an error.
+  const stuck = scoreOf(modelOf({ bodies: { count: 5 }, emitter: { mode: "ring", x: 320, y: 320, extent: 0, speed: 0 } }), 30);
+  assert.equal(stuck.bodies.length, 1);
+});
+
+test("every option of every select draws at the defaults, alone and in combination with the other structural selects", () => {
+  const item = definition(ID), base = createInstrument(ID);
+  const selects = item.parameters.filter((parameter) => parameter.type === "select");
+  const surface = new Recorder();
+  const drawWith = (params: Params) => {
+    const input = validateInstrument({ ...base, params: { ...base.params, ...params } });
+    drawCollisionScores(surface, collisionScoresComposition(input));
+    drawInstrumentOnce(input);
+  };
+  let count = 0;
+  for (const select of selects) for (const option of select.options!) { drawWith({ [select.key]: option.value }); count++; }
+  for (const container of ["rectangle", "ellipse", "diamond", "l-room", "island"]) for (const barriers of ["none", "pins", "slats"])
+    for (const emitter of ["scatter", "line", "ring", "nozzle"]) for (const massLaw of ["equal", "area"]) { drawWith({ container, barriers, emitter, massLaw }); count++; }
+  assert.ok(count > 120);
+  // Every drawing has bodies and a log to draw from, not an empty study.
+  for (const emitter of ["scatter", "line", "ring", "nozzle"]) {
+    const score = collisionScoreOfRecipe(recipeOf({ emitter }));
+    assert.equal(score.bodies.length, 14, emitter);
+    assert.ok(score.contacts.length > 10, emitter);
+  }
+});
+
+test("emitter places outside the room move to the nearest clear place; places already clear are kept exactly", () => {
+  // Room 400 × 300 about (320, 320): walls at x 120..520, y 170..470; radius 10, gap 0.5 -> centres must stay 10.5 from a wall.
+  const born = (emitter: object) => scoreOf(modelOf({ bodies: { count: 3 }, emitter: { speed: 0, ...emitter } }), 2).trails.map((trail) => [trail.xs[0], trail.ys[0]]);
+  assert.deepEqual(born({ mode: "nozzle", x: 200, y: 250, every: 3 })[0], [200, 250]);
+  const far = born({ mode: "nozzle", x: 2000, y: 320, every: 3 })[0];
+  assert.ok(far[0] <= 520 - 10.5 && far[0] > 520 - 10.5 - 400 / 96 - 1e-9, `snapped to the nearest cell on the right: ${far}`);
+  near(far[1], 320, 400 / 96 + 1e-9);
+  // Two clear places are kept; only the one against the wall moves, into the room.
+  const line = born({ mode: "line", x: 320, y: 320, extent: 620, angle: 0 });
+  assert.equal(line[1][0], 320);
+  assert.ok(line[0][0] >= 120 + 10.5 && line[2][0] <= 520 - 10.5, `line ends pulled into the room: ${line[0]} ${line[2]}`);
+});
+
+test("a full log ends the recording at a stated step: no error, nothing recorded or moving after it, and more steps change nothing", () => {
+  const model = modelOf({ container: box(200, 200), bodies: { count: 40, radius: 8 }, emitter: { mode: "scatter", speed: 30, headingSpread: 180 }, physics: { gravity: 0 } });
+  const score = scoreOf(model, 900, 6);
+  assert.ok(score.stoppedAt !== null && score.stoppedAt < 900, `stopped at ${score.stoppedAt}`);
+  assert.ok(["log-full", "frame-limit"].includes(score.stopReason!));
+  if (score.stopReason === "log-full") assert.ok(score.contacts.length >= COLLISION_LIMITS.maxContacts && score.contacts.length < COLLISION_LIMITS.maxContacts + 32 + 8 * 40);
+  assert.ok(score.contacts.every((contact) => contact.time <= score.stoppedAt!));
+  const state = stateAt(collisionSnapshots(model, 6, 900), 900), at = stateAt(collisionSnapshots(model, 6, score.stoppedAt!), score.stoppedAt!);
+  assert.deepEqual(Array.from(state.x), Array.from(at.x));
+  const more = scoreOf(model, 950, 6);
+  assert.equal(more.stoppedAt, score.stoppedAt);
+  assert.deepEqual(more.contacts, score.contacts);
+  assert.equal(scoreOf(modelOf(), 100, 1).stoppedAt, null);
+  // A frame needing more contacts than its bound is discarded whole: the recording ends at the last complete step.
+  const busy = modelOf({ container: box(200, 200), bodies: { count: 40, radius: 8 }, emitter: { mode: "scatter", speed: 39, headingSpread: 180 }, physics: { restitution: 0, wallRestitution: 0 } });
+  const cut = scoreOf(busy, 300, 2);
+  assert.equal(cut.stopReason, "frame-limit");
+  const last = cut.stoppedAt!;
+  assert.ok(cut.contacts.every((contact) => contact.time <= last - 1 + 1e-9), "nothing from the discarded frame is logged");
+  assert.deepEqual(Array.from(stateAt(collisionSnapshots(busy, 2, 300), 300).x), Array.from(stateAt(collisionSnapshots(busy, 2, last), last).x));
+});
+
+test("slider ends always give a picture: every numeric control at its slider minimum and maximum, alone and all together", () => {
+  const numeric = definition(ID).parameters.filter((parameter) => parameter.type === "number");
+  const base = createInstrument(ID);
+  const cases: [string, Params][] = [];
+  for (const parameter of numeric) for (const side of ["min", "max"] as const) cases.push([`${parameter.key}=${parameter[side]}`, { [parameter.key]: parameter[side]! }]);
+  for (const side of ["min", "max"] as const) cases.push([`all ${side}`, Object.fromEntries(numeric.map((parameter) => [parameter.key, parameter[side]!]))]);
+  // The same, over every emitter, since the place and size controls only act under some of them.
+  for (const emitter of ["scatter", "line", "ring", "nozzle"]) for (const side of ["min", "max"] as const)
+    cases.push([`${emitter}: all ${side}`, { emitter, ...Object.fromEntries(numeric.map((parameter) => [parameter.key, parameter[side]!])) }]);
+  for (const [label, params] of cases) {
+    try {
+      const input = validateInstrument({ ...base, params: { ...base.params, ...params } });
+      drawInstrument(new Recorder() as unknown as DrawingContext, input);
+    } catch (error) { assert.fail(`${label}: ${(error as Error).message}`); }
+  }
+  assert.equal(cases.length, numeric.length * 2 + 2 + 8);
+  // Ends that place nothing drawable are still a picture of the recorded bodies: the default at the emitter's extreme has discs and a log.
+  const far = collisionScoreOfRecipe(recipeOf({ emitterX: 640, emitterY: 0 }));
+  assert.equal(far.bodies.length, 14);
+});
+
+test("a room too crowded for every disc releases the rest later instead of refusing, in order and never overlapping", () => {
+  const model = modelOf({ container: box(160, 160), bodies: { count: 30, radius: 12 }, emitter: { mode: "scatter", speed: 3, headingSpread: 180 } });
+  const score = scoreOf(model, 200, 4);
+  assert.ok(score.bodies.length > 3 && score.bodies.length <= 30, `${score.bodies.length} born`);
+  score.bodies.forEach((body, k) => assert.equal(body.serial, k));
+  for (let i = 1; i < score.bodies.length; i++) assert.ok(score.bodies[i].bornAt >= score.bodies[i - 1].bornAt);
+  for (const body of score.bodies) for (const other of score.bodies) if (other.serial < body.serial) {
+    const trail = score.trails[other.serial], j = trail.times.indexOf(body.bornAt);
+    assert.ok(j >= 0);
+    assert.ok(Math.hypot(trail.xs[j] - score.trails[body.serial].xs[0], trail.ys[j] - score.trails[body.serial].ys[0]) >= body.radius + other.radius, `${body.id} vs ${other.id}`);
+  }
 });

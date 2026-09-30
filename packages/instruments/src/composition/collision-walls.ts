@@ -185,3 +185,46 @@ export function distanceToWalls(walls: WallSet, x: number, y: number, elements: 
   }
   return best;
 }
+
+/** Cells per side of the grid `snapToClear` searches. */
+export const SNAP_CELLS = 96;
+
+/**
+ * Fit emitter sites to the room. A target that is inside the container and at least `clearance` from every wall element
+ * is kept exactly. Any other target moves to the nearest clear cell centre of a `SNAP_CELLS` × `SNAP_CELLS` grid over
+ * the walls' bounding box (nearest by distance, ties to the first cell in row order), so the result never depends on
+ * anything but the walls, the targets and the clearance. The grid is tested once, only if some target needs it: at most
+ * `SNAP_CELLS²` cells, each an even-odd scan of the container's edges. Returns `null` when no cell is clear.
+ */
+export function snapToClear(walls: WallSet, targets: readonly (readonly [number, number])[], clearance: number): [number, number][] | null {
+  const marks = new Int32Array(walls.segmentCount + walls.roundCount), near: number[] = [];
+  let stamp = 0;
+  const clear = (x: number, y: number): boolean => {
+    if (!insideContainer(walls, x, y)) return false;
+    wallsNear(walls, x - clearance, y - clearance, x + clearance, y + clearance, marks, ++stamp, near);
+    return distanceToWalls(walls, x, y, near) >= clearance;
+  };
+  let cells: [number, number][] | undefined;
+  const grid = (): [number, number][] => {
+    if (cells) return cells;
+    const [x0, y0, x1, y1] = walls.bounds;
+    cells = [];
+    for (let j = 0; j < SNAP_CELLS; j++) for (let i = 0; i < SNAP_CELLS; i++) {
+      const x = x0 + (i + 0.5) * (x1 - x0) / SNAP_CELLS, y = y0 + (j + 0.5) * (y1 - y0) / SNAP_CELLS;
+      if (clear(x, y)) cells.push([x, y]);
+    }
+    return cells;
+  };
+  const out: [number, number][] = [];
+  for (const [x, y] of targets) {
+    if (clear(x, y)) { out.push([x, y]); continue; }
+    let best: [number, number] | undefined, bestSquared = Infinity;
+    for (const cell of grid()) {
+      const squared = (cell[0] - x) ** 2 + (cell[1] - y) ** 2;
+      if (squared < bestSquared) { bestSquared = squared; best = cell; }
+    }
+    if (!best) return null;
+    out.push(best);
+  }
+  return out;
+}
