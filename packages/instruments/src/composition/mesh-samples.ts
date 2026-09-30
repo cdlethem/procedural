@@ -167,15 +167,41 @@ export interface VaseOptions {
   /** Close the bottom / top ring with a fan (default: bottom closed, top open like a vessel). */
   readonly capBottom?: boolean;
   readonly capTop?: boolean;
+  /**
+   * Rings per profile band (integer 1..8, default 1 = the profile's own knots, so the stacked-frusta closed forms hold). Above 1 each band is
+   * split at equal axial steps and the radius follows the cubic Hermite curve through the knots (finite-difference slopes in the axial
+   * variable), so the profile is C1 between knots and a strand marching over the vase turns smoothly instead of kinking at every band.
+   */
+  readonly smooth?: number;
+}
+/** `[axial, radius]` knots with `k - 1` Hermite-interpolated rings inserted in every band; `k = 1` returns the knots. */
+function refineProfile(knots: readonly (readonly [number, number])[], k: number): [number, number][] {
+  if (k === 1) return knots.map(([a, r]) => [a, r]);
+  const slope = (i: number): number => {
+    const lo = Math.max(0, i - 1), hi = Math.min(knots.length - 1, i + 1);
+    return (knots[hi][1] - knots[lo][1]) / (knots[hi][0] - knots[lo][0]);
+  };
+  const out: [number, number][] = [];
+  for (let i = 0; i < knots.length - 1; i++) {
+    const [a0, r0] = knots[i], [a1, r1] = knots[i + 1], da = a1 - a0, m0 = slope(i), m1 = slope(i + 1);
+    for (let j = 0; j < k; j++) {
+      const u = j / k, u2 = u * u, u3 = u2 * u;
+      const r = (2 * u3 - 3 * u2 + 1) * r0 + (u3 - 2 * u2 + u) * da * m0 + (-2 * u3 + 3 * u2) * r1 + (u3 - u2) * da * m1;
+      out.push([a0 + da * u, Math.max(r, 1e-3)]);
+    }
+  }
+  out.push([knots[knots.length - 1][0], knots[knots.length - 1][1]]);
+  return out;
 }
 export function vaseMesh(options: VaseOptions): Mesh {
   const profile = vaseProfiles[options.profile];
   if (!profile) throw new Error(`vase profile must be one of ${vaseProfileNames.join(", ")} (got ${String(options.profile)})`);
   const slices = integerIn("vase slices", options.slices ?? 32, 3, 256), height = positive("vase height", options.height ?? 2), radius = positive("vase radius", options.radius ?? 0.6);
+  const smooth = integerIn("vase smooth", options.smooth ?? 1, 1, 8);
   const capBottom = options.capBottom ?? true, capTop = options.capTop ?? false;
-  return cached(["vase", options.profile, slices, height, radius, capBottom, capTop], () => {
+  return cached(["vase", options.profile, slices, height, radius, capBottom, capTop, smooth], () => {
     const values = RadialProfile3D.generate({
-      profile: profile.map(([axial, r]) => [(axial - 0.5) * height, r * radius]), slices, capStart: capBottom, capEnd: capTop, maxFaces: MESH_LIMITS.maxTriangles,
+      profile: refineProfile(profile, smooth).map(([axial, r]) => [(axial - 0.5) * height, r * radius]), slices, capStart: capBottom, capEnd: capTop, maxFaces: MESH_LIMITS.maxTriangles,
     }).toValues() as { positions: number[][]; triangles: number[][]; faceKinds: string[]; bands: number[]; cells: number[] };
     // The source revolves about +Z; (x, y, z) -> (x, z, -y) is a proper rotation taking +Z to +Y.
     const positions = values.positions.flatMap(([x, y, z]) => [x, z, -y]);

@@ -921,6 +921,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "surface-weave",
+      "title": "Surface Weave",
+      "description": "Trace two families of threads across a curved surface (terrain, vase, torus, sphere cap or a parametric sheet), with spacing measured on the surface and direction and density steered by fields, then weave them over and under and draw them through a camera with true occlusion.",
+      "category": "3D forms",
+      "operationIds": ["mesh.radial-profile-surface-3d", "field.gradient-noise-2d-01"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/surface-weave.md",
+      "source": "packages/instruments/src/composition/surface-weave.ts",
+      "sourceEntry": "drawSurfaceWeave",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",

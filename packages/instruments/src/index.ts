@@ -44,6 +44,8 @@ import { shapePackingDefinition } from "./adapters/shape-packing-instrument.js";
 import { drawShapePacking, prepareShapePacking, shapePackingComposition, shapePackingUsesSeed } from "./composition/shape-packing.js";
 import { crossingLaceDefinition } from "./adapters/crossing-lace-instrument.js";
 import { crossingLaceComposition, crossingLaceUsesSeed, drawCrossingLace, prepareCrossingLace } from "./composition/crossing-lace.js";
+import { surfaceWeaveDefinition } from "./adapters/surface-weave-instrument.js";
+import { drawSurfaceWeave, prepareSurfaceWeave, surfaceWeaveComposition, surfaceWeaveUsesSeed } from "./composition/surface-weave.js";
 import { hyperbolicGardensDefinition } from "./adapters/hyperbolic-gardens-instrument.js";
 import { meshAbstractionDefinition } from "./adapters/mesh-abstraction-instrument.js";
 import { drawMeshAbstraction, meshAbstractionComposition, prepareMeshAbstraction } from "./composition/mesh-abstraction-draw.js";
@@ -604,6 +606,22 @@ export { cutGeometry, viewGeometry, TRI as VIEW_TRIANGLE, SECTION_MIN_AREA, VISI
 export type { GeologicalColorBy, GeologicalFill, GeologicalCutawaysComposition, GeologicalProducts } from "./composition/strata-draw.js";
 export { geologicalCutawaysComposition, geologicalProducts, geologicalCamera, geologicalPaintOrder, geologicalHiddenLines, stratumColor, drawGeologicalView, drawGeologicalProducts,
   drawGeologicalCutaways, prepareGeologicalCutaways, DEFAULT_GEOLOGICAL_WORK } from "./composition/strata-draw.js";
+export type { SheetKind, SheetOptions } from "./composition/mesh-surfaces.js";
+export { parametricSheetMesh, icospherePatchMesh, sheetKinds, sheetWaves, HELICOID, SCROLL, MAX_PATCH_LEVELS } from "./composition/mesh-surfaces.js";
+export type { TraceGraph, Walker as MeshWalker, WalkEnd as MeshWalkEnd, StepEnd } from "./composition/mesh-trace.js";
+export { traceGraph, walk as walkMesh, walker as meshWalker, stepRK2, fieldDirection, barycentric as meshBarycentric, boundaryDistance, interpolate as interpolateVertexValues, TRACE_LIMITS } from "./composition/mesh-trace.js";
+export type { ScalarKind, ScalarSpec, FlowSpec, DensitySpec as SpacingDensitySpec } from "./composition/surface-fields.js";
+export { scalarKinds, scalarField, tangentGradients, waveTerms, flowVectors, spacingField } from "./composition/surface-fields.js";
+export type { StrandEnd, SurfaceStrand, FamilyOptions as SurfaceStrandOptions, SurfaceCrossing } from "./composition/surface-strands.js";
+export { traceStrands, surfaceCrossings, surfaceCrossingSet, estimateStrandVertices, STRAND_LIMITS } from "./composition/surface-strands.js";
+export type { WeaveSurface, FlowField, ModulationField, SurfaceWeaveStructure, SurfaceWeaveOrder, SurfaceWeaveStrands, SurfaceWeaveProducts } from "./composition/surface-weave-products.js";
+export { weaveMesh, surfaceWeaveStrands, surfaceWeaveOrder, familyRanks } from "./composition/surface-weave-products.js";
+export type { WeaveViewOptions, ProjectedStrand, ProjectedWeave } from "./composition/surface-weave-view.js";
+export { weaveCamera, projectWeave } from "./composition/surface-weave-view.js";
+export type { WeavePieceOptions, WeavePiece, WeavePieces, WeaveModel } from "./composition/surface-weave-pieces.js";
+export { weavePieces, weaveModel, HAIRLINE_WIDTH } from "./composition/surface-weave-pieces.js";
+export type { SurfaceWeaveComposition, WeaveConsumers, SurfaceWeaveView } from "./composition/surface-weave.js";
+export { surfaceWeaveComposition, surfaceWeaveProducts, surfaceWeaveView, drawSurfaceWeave, drawSurfaceWeaveProducts, prepareSurfaceWeave } from "./composition/surface-weave.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -622,7 +640,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition, hingedPanelsDefinition, ...laplacianFrontsDefinitions, meshAbstractionDefinition, visibilityDrawingDefinition, surfaceGrowthDefinition, pointCloudsDefinition, geologicalCutawaysDefinition, implicitSculptureDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition, hingedPanelsDefinition, ...laplacianFrontsDefinitions, meshAbstractionDefinition, visibilityDrawingDefinition, surfaceGrowthDefinition, pointCloudsDefinition, geologicalCutawaysDefinition, implicitSculptureDefinition, surfaceWeaveDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -760,6 +778,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "cyclic-fronts": [0x1c2b4f, 0x2e8b9d, 0xe6be5a, 0xd9553b, 0x8a2f7a],
   "river-ribbons": [0x1f5f73, 0x6b5636, 0x2f7f86, 0xc9a86a],
   "drainage-erosion": [0x2b2622, 0x2f6f8f, 0xd6a45a, 0x8ea15a, 0xc46a4a, 0x6f8fa3],
+  "surface-weave": [0x22303a, 0xc4452b, 0x2f6f8f, 0xe8dcc0, 0x4f7a5c],
   "region-stitch": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0x7f9a4f, 0x8b4a6f],
   "inversion-gardens": [0x1d2733, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "random-walk-fronts": [0xc4452b, 0xe0a13a, 0x2f7f86, 0x6f9a55, 0x8b5190, 0x1f2733],
@@ -820,6 +839,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "drainage-erosion") return drawDrainageErosion(context, drainageErosionComposition(input));
   if (input.technique === "image-directed-field") return drawImageDirectedField(context, imageDirectedFieldComposition(input));
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
+  if (input.technique === "surface-weave") return drawSurfaceWeave(context, surfaceWeaveComposition(input));
   if (input.technique === "region-stitch") return drawStitches(context, regionStitchComposition(input));
   if (input.technique === "hyperbolic-gardens") return drawHyperbolicGardens(context, hyperbolicGardensComposition(input));
   if (input.technique === "mesh-abstraction") return drawMeshAbstraction(context, meshAbstractionComposition(input));
@@ -855,7 +875,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "roads-parcels" || id === "hinged-panels" || id === "laplacian-fronts" || id === "mesh-abstraction" || id === "visibility-drawing" || id === "surface-growth" || id === "point-clouds" || id === "geological-cutaways" || id === "implicit-sculpture" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "roads-parcels" || id === "hinged-panels" || id === "laplacian-fronts" || id === "mesh-abstraction" || id === "visibility-drawing" || id === "surface-growth" || id === "point-clouds" || id === "geological-cutaways" || id === "implicit-sculpture" || id === "surface-weave" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -893,6 +913,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "drainage-erosion") return prepareDrainageErosion(drainageErosionComposition(input), cancelled);
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
   if (input.technique === "collision-scores") return prepareCollisionScores(collisionScoresComposition(input), cancelled);
+  if (input.technique === "surface-weave") return prepareSurfaceWeave(surfaceWeaveComposition(input), cancelled);
   if (input.technique === "region-stitch") return prepareStitches(regionStitchComposition(input), cancelled);
   if (input.technique === "hyperbolic-gardens") return prepareHyperbolicGardens(hyperbolicGardensComposition(input), cancelled);
   if (input.technique === "mesh-abstraction") return prepareMeshAbstraction(meshAbstractionComposition(input), cancelled);
@@ -959,6 +980,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
     case "collision-scores": return collisionScoresUsesSeed(q);
+    case "surface-weave": return surfaceWeaveUsesSeed(q);
     case "hyperbolic-gardens": return hyperbolicGardensUsesSeed(q);
     case "hinged-panels": return hingedPanelsUsesSeed(q);
     case "mesh-abstraction": return meshAbstractionUsesSeed(q);
