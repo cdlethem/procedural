@@ -387,7 +387,7 @@ export { quillGeometry, quillProjection, projectPoint, stripHeight, stripHeightF
 export type { QuillTone, QuillMaterialSpec, QuillView, QuilledPathsComposition, QuillFace, QuillFacePainter, QuillConsumers, QuillProducts } from "./composition/quill-draw.js";
 export { quillComposition, quillProducts, quillCamera, quillPaper, drawQuilled, prepareQuilled } from "./composition/quill-draw.js";
 export type { ChemotaxisEmitter, ChemotaxisConstruction, ChemotaxisFrame, ChemotaxisSnapshots, ChemicalField, ChemotaxisTrail, TrailOptions, ChemotaxisAgent } from "./composition/chemotaxis.js";
-export { CHEMOTAXIS_ARENA, CHEMOTAXIS_LIMITS, SENSE_FLOOR, FIELD_EPSILON, checkChemotaxis, chemotaxisSimulation, chemotaxisCache, chemotaxisRunOptions, chemotaxisSnapshots, prepareChemotaxis, runChemotaxis, chemicalField,
+export { CHEMOTAXIS_ARENA, CHEMOTAXIS_LIMITS, SENSE_FLOOR, FIELD_EPSILON, checkChemotaxis, chemotaxisStepWork, chemotaxisSimulation, chemotaxisCache, chemotaxisRunOptions, chemotaxisSnapshots, prepareChemotaxis, runChemotaxis, chemicalField,
   chemotaxisTrails, chemotaxisAgents, contourLevels, fieldContourPaths, fieldBands, sampleField, relaxField, barrierMask, totalAgents } from "./composition/chemotaxis.js";
 export type { EmitterLayout, BarrierKind, EmitterLayoutOptions, BarrierOptions, ColonyControls } from "./composition/chemotaxis-layouts.js";
 export { emitterLayout, bundledBarrier, colonyGeometry, barrierBlocks, emitterLayouts, barrierKinds, barrierThickness } from "./composition/chemotaxis-layouts.js";
