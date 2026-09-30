@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   besselJ, besselJPrime, besselZero, circleMode, createInstrument, nodalBands, nodalDistance, nodalField, nodalPaths, nodalPlateComposition,
-  nodalProximity, nodalSites, rectangleMode, validateInstrument, NODAL_LIMITS,
+  nodalProximity, nodalSites, nodalSiteSet, rectangleMode, validateInstrument, definition, drawInstrument, NODAL_LIMITS,
   type NodalFieldOptions, type NodalMode, type Path,
 } from "../dist/index.js";
 import { drawFingerprint } from "./helpers/draw-fingerprint.js";
@@ -258,17 +258,30 @@ test("the node band of one mode has the analytic area H · (2W/π) · asin(τ)",
   for (const region of b.regions) for (const [x, y] of region.outer) assert.ok(Math.hypot(x - 320, y - 320) <= 200 + 1e-6, "clipped to the disc");
 });
 
-test("bounds fail before expansion and name the control", () => {
-  const field = nodalField(plate({ shape: "square", width: 400, modes: [mode(3, 5), mode(5, 3, -1)] }));
-  assert.throws(() => nodalSites(nodalField(plate({ modes: [mode(3, 0)] })), { seed: 1, tolerance: 0.002, particles: NODAL_LIMITS.particles, separation: 0 }), /Particles.*Node width/);
-  assert.throws(() => nodalSites(field, { seed: 1, tolerance: 0.05, particles: 6000, separation: 30 }), /Separation/);
+test("bounds: grid and input limits fail naming the control; an unmeetable grain request reports its shortfall", () => {
   assert.throws(() => nodalField(plate({ resolution: 481 })), /Resolution/);
   assert.throws(() => nodalField(plate({ modes: [mode(25, 0)] })), /index n/);
-  assert.throws(() => nodalField(plate({ modes: [mode(0, 0)] })), /uniform/);
   assert.throws(() => nodalField(plate({ modes: [mode(1, 0, 0)] })), /Weight/);
   assert.throws(() => nodalField(plate({ modes: [mode(2, 1, 1, 90)] })), /cancel/);
   assert.throws(() => nodalPaths(nodalField(plate({ shape: "circle", width: 400, modes: [mode(24, 24)], resolution: 480 })), 1), /Resolution/);
   assert.throws(() => nodalField(plate({ edge: "sticky" as never })), /edge/);
+  const field = nodalField(plate({ shape: "square", width: 400, modes: [mode(3, 5), mode(5, 3, -1)] }));
+  // A 400-unit square holds at most 400² / (√3/2 · 30²) ≈ 205 discs at separation 30 (hexagonal packing bound).
+  const packed = nodalSiteSet(field, { seed: 1, tolerance: 0.05, particles: 6000, separation: 30 });
+  assert.equal(packed.requested, 6000);
+  assert.equal(packed.shortfall, 6000 - packed.sites.length);
+  assert.ok(packed.sites.length > 20 && packed.sites.length <= 205, `${packed.sites.length} sites`);
+  assert.equal(packed.candidates, NODAL_LIMITS.candidates);
+  const met = nodalSiteSet(field, { seed: 1, tolerance: 0.05, particles: 500, separation: 2 });
+  assert.equal(met.shortfall, 0); assert.equal(met.sites.length, 500);
+  // The shortfall result is still a prefix of the larger request's sites.
+  const fewer = nodalSites(field, { seed: 1, tolerance: 0.05, particles: 30, separation: 30 });
+  fewer.forEach((site, i) => assert.deepEqual(site.position, packed.sites[i].position));
+  // Uniform free modes have no nodes: a valid empty picture with no lines, bands or grains.
+  const flat = nodalField(plate({ modes: [mode(0, 0)] }));
+  assert.equal(nodalPaths(flat, 1).length, 0);
+  assert.equal(nodalBands(flat, 0.1).regions.length, 0);
+  assert.equal(nodalSiteSet(flat, { seed: 1, tolerance: 0.1, particles: 100, separation: 0 }).sites.length, 0);
 });
 
 test("the instrument: hidden controls never change the drawing, visible ones do", () => {
@@ -303,4 +316,31 @@ test("admission: invalid weights, indices and shapes are refused with the contro
   validateInstrument(inputWith({ modes: "1", weight1: 0 })); // hidden weight: the mode still draws
   assert.throws(() => validateInstrument(inputWith({ n1: 2.5 })), /n1/);
   assert.throws(() => validateInstrument(inputWith({ shape: "oval" })), /shape/);
+});
+
+// Every numeric slider end, alone and together, for each plate shape and mode count, must be admitted and draw.
+test("every combination of slider ends is admitted and draws", () => {
+  const numeric = definition("nodal-plates").parameters.filter((p) => p.type === "number");
+  const drawOk = (params: Record<string, number | string | boolean>, label: string) => {
+    const input = inputWith(params);
+    try {
+      validateInstrument(input);
+      drawInstrument({ CLOSE: 1, ROUND: 2, ...Object.fromEntries(["push", "pop", "translate", "rotate", "scale", "noFill", "noStroke", "fill", "stroke",
+        "strokeWeight", "strokeCap", "circle", "line", "rect", "beginShape", "vertex", "endShape"].map((k) => [k, () => {}])) } as never, input);
+    } catch (error) { assert.fail(`${label}: ${(error as Error).message}`); }
+  };
+  const ends = (which: "min" | "max") => Object.fromEntries(numeric.map((p) => [p.key, which === "min" ? p.min! : p.max!]));
+  for (const shape of ["square", "rectangle", "circle"]) for (const edge of ["free", "fixed"]) for (const modes of ["1", "2", "4"]) {
+    const base = { shape, edge, modes, grainKind: "rosette", lineKind: "beads", lines: true, bands: true, outline: true, align: true };
+    const at = `${shape}/${edge}/${modes}`;
+    drawOk({ ...base, ...ends("min") }, `${at} all min`);
+    drawOk({ ...base, ...ends("max") }, `${at} all max`);
+  }
+  // Every single slider end, on three representative plates (one per shape, spanning both edges and 1, 2 and 4 modes).
+  for (const [shape, edge, modes] of [["square", "free", "2"], ["rectangle", "fixed", "1"], ["circle", "free", "4"]])
+    for (const p of numeric) for (const which of ["min", "max"] as const)
+      drawOk({ shape, edge, modes, grainKind: "rosette", lineKind: "beads", bands: true, [p.key]: which === "min" ? p.min! : p.max! }, `${shape}/${edge}/${modes} ${p.key} at slider ${which}`);
+  // Mixed extremes that stress the grains: most grains, narrowest band, widest separation, smallest and largest plate.
+  for (const width of [160, 620]) for (const edge of ["free", "fixed"])
+    drawOk({ edge, width, height: width, particles: 6000, tolerance: 0.02, separation: 12, resolution: 240, modes: "4" }, `crowded ${width} ${edge}`);
 });

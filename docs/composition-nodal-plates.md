@@ -86,10 +86,11 @@ below 1e-8 for κ ≤ 80; beyond the table the exact integral is used. Every mod
   retention. The seed derives the path and site seeds only; the field, lines and bands read no seed, the grains do (`usesSeed` is
   `particles > 0`). Structural edits may replace ids; appearance edits never rename or move anything (tested by object identity).
 - **Failure and limits (named in the message).** Modes ≤ 8 (instrument 4); indices ≤ 24; resolution 16–480 and cells ≤ 300,000;
-  particles ≤ 20,000; candidates ≤ 2,000,000 (a 20,000-candidate pilot measures the density's acceptance and refuses a request that
-  would exceed the limit, naming Particles and Node width; a Separation that leaves no room fails when the limit is reached and
-  names Particles, Separation and Node width); all weights zero; modes that cancel at the snapshot (names Weight, Phase, Time);
-  only the uniform mode; contour assembly bounds (names Line resolution and the mode indices). Nothing is truncated.
+  particles ≤ 20,000; candidates ≤ 500,000. **A grain request the geometry cannot hold is not an error**: `nodalSiteSet` returns the
+  sites found after the candidate limit with `requested`, `shortfall` and `candidates` (`nodalSites` is its `.sites`), so any combination of
+  slider values draws; the sites returned are still the prefix a roomier plate would give. Errors (naming the control): grid cells,
+  resolution, indices, all weights zero, modes that cancel at the snapshot (Weight, Phase, Time), contour assembly bounds (Line
+  resolution and the mode indices). A plate of only the free uniform (0, 0) mode has no nodes and is a valid empty picture.
 
 ## Controls, groups and conditions
 
@@ -134,10 +135,11 @@ both orders). The images were read; the layered pairs differ subtly because the 
 1. Marching squares turned interior lines onto the edge contour under a fixed edge, so line pieces ran along the plate edge and
    reached the corner (found by a failing line-geometry test, confirmed on a lines-only render): edge segments are now removed
    segment-wise and the line cut there.
-2. The first request-size preflight sampled ρ on the grid; lattice-aligned nodal lines hit ρ = 1 exactly and it over-counted, so a
-   hopeless request ran the full 2,000,000 candidates. Replaced by a 20,000-candidate pilot.
-3. A dense separation with many grains (900 arrows at separation 9) has no solution; the first render failed with the message that
-   now names Particles, Separation and Node width. Guide and limits say so; it is a bound, not a fallback picture.
+2. Root's real-interface run found every slider at its maximum refused to draw (1,511 of 6,000 grains fit). Refusal is now reserved for
+   invalid values; an unmeetable grain request returns the grains found with a reported shortfall (and the candidate limit fell
+   from 2,000,000 to 500,000, since the 2,000,000-candidate search took 3.2 s at four modes of index 10). Sliders' all-min, all-max and
+   every single end are tested to validate and draw for each shape, edge and mode count. All-min sets free indices to (0, 0), the
+   uniform mode, so that state became a valid empty picture instead of an error.
 4. Near a crossing the marching-squares saddle leaves a small notch at thick line weights (visible on the default at weight 2.5);
    finer Line resolution shrinks it. Left as a documented limit rather than special-casing crossings.
 
