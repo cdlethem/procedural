@@ -13,7 +13,7 @@ const n = (key: string, label: string, description: string, min: number, max: nu
 export const interferenceLaceDefinition: StudioDefinition = {
   id: "interference-lace", title: "Interference lace",
   description: "Interfering wave crests open into ribbons, beads and cellular lace.",
-  procedure: "Add two crossing wave families, bent by a seeded distortion and faded toward an elliptical edge, into a scalar field. Contour it at the chosen crest levels and echoes above them. Near-equal frequencies give broad beats, stretched into ribs, islands and lace.",
+  procedure: "Two families of waves cross at a shallow angle and are added together, bent by a seeded distortion and faded toward an oval edge. The code traces contour lines through the crests, so slightly mismatched waves beat into ribs, beads and lace.",
   parameters: [
     n("frequency", "Wave count", "Cycles across the source; controls the spacing of the fine ribs.", 2, 18, .25, .25, 32),
     n("ratio", "Frequency ratio", "Relative spacing of the second wave family; near equality produces broad beats.", .5, 1.5, .01, .05, 4),

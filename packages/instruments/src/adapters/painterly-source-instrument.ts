@@ -98,7 +98,7 @@ export function validatePainterlySource(q: Record<string, Scalar>): void {
 export const painterlySourceDefinition: InstrumentDefinition = {
   id: "painterly-source", title: "Painterly Source",
   description: "A picture assembled from marks in coarse-to-fine layers: broad strokes first, finer ones only where the paint still differs from the source, turned along its edges and colored from it. Mark family, material and color are separate choices over one plan.",
-  procedure: "Plan marks in layers from a picture, coarsest brush first. Before each finer layer, compare the paint so far with the picture blurred to that brush size and add marks only in cells that still differ too much, each turned along the local edges and coloured by an average in linear light.",
+  procedure: "A portrait is painted in layers, starting with the broadest brush. Each finer layer adds strokes only where the paint so far still differs from the picture, turning every stroke along the local edges.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

@@ -31,7 +31,7 @@ const harmonicTraceGroups: ControlGroup[] = [
 export const harmonicTraceDefinitions: StudioDefinition[] = [{
   id: "harmonic-traces", title: "Harmonic traces",
   description: "Editable sums of decaying axis oscillators sampled as ordered parametric curves.",
-  procedure: "Sum a few oscillator terms for x and y, each with amplitude, frequency, phase and decay, and sample the curve over a time span. Repeat it for several traces that advance every phase by a stride. Draw each as a polyline, dots or stitches around the centre.",
+  procedure: "Several decaying waves are summed for x and for y and traced over time, like the path of a harmonograph pen. The curve is drawn again with every phase stepped forward, so the traces wind into a rosette.",
   parameters: [
     text("terms", "Oscillator terms", "One axis, amplitude, frequency, phase degrees, decay per line, comma-separated.", 2048, true),
     numberControl("timeStart", "Start time", "Absolute parameter t at the first sample.", -5, 5, -10000, 10000, .01),

@@ -82,12 +82,12 @@ const rows = [
 ] as const;
 
 const PROCEDURES: Record<string, string> = {
-  "extruded-seals": "Build a beveled or stepped polygon footprint, then extrude it into a solid made of two caps and a ring of walls. A fixed tilted camera paints the triangles far to near, so the outline and height control the form.",
-  "stepped-blocks": "Cut a shoulder into a rectangular footprint to leave a lower ledge, then extrude the polygon into a block of cap and wall triangles. A fixed tilted camera paints the faces far to near, so the stepped outline reads as a solid.",
-  "transported-ribbons": "Sample a 3D centerline with a width at each point, bending it vertically and in depth, then sweep a strip along it. The strip's local frame is parallel-transported from point to point so it never flips, and its projected triangles are painted far to near.",
-  "twisting-streamers": "Bend a 3D centerline through repeated vertical and depth turns and sweep a variable-width strip along it. The strip's frame is parallel-transported along the path, so it turns smoothly through loops and crossings, and its triangles are painted far to near.",
-  "rounded-polyhedra": "Take a tetrahedron, stretched along its axes with one vertex lifted, and refine it with Loop subdivision. Each level splits every triangle in four and moves the vertices toward a smoother surface. A fixed camera draws the result.",
-  "subdivided-shells": "Begin with an octahedron scaled along each axis, with one corner raised, and refine it by repeated Loop subdivision. Every level splits each triangle into four and smooths the positions, so the faceted solid softens into a shell. Draw the triangles far to near.",
+  "extruded-seals": "A beveled outline is pushed straight up into a solid with a top cap, a bottom cap and a ring of walls. A tilted camera paints the faces from back to front, so the outline's corners become the seal's ridges.",
+  "stepped-blocks": "A rectangular footprint has a shoulder cut from one edge, and the notched outline is extruded into a block. A tilted camera paints its faces from back to front, and the cut becomes a ledge.",
+  "transported-ribbons": "A 3D centreline rises, falls and swings toward the viewer while a strip of varying width is swept along it. The strip's orientation is carried smoothly from point to point, so it bends without flipping, and its faces are painted back to front.",
+  "twisting-streamers": "A 3D centreline folds through repeated rises and turns toward the viewer, and a tapering strip is swept along it. Its orientation is carried smoothly around each loop, so the ribbon twists and crosses itself without snapping.",
+  "rounded-polyhedra": "A tetrahedron is stretched and one of its corners lifted, then every triangle is split into four and its vertices eased toward a smoother surface. Each round of this Loop subdivision softens the sharp solid a little further.",
+  "subdivided-shells": "An octahedron is scaled along each axis and one corner raised, then its triangles are split and smoothed by Loop subdivision. The faceted solid swells into a rounded shell, drawn face by face from back to front.",
 };
 export const materialsBDefinitions: StudioDefinition[] = rows.map(([id, title, description, source, controlGroups, validate]) => {
   const parameters = [...source, ...cameraAndSurface];

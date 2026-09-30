@@ -98,7 +98,7 @@ export function validateSandDeposition(q: Values): void {
 export const sandDepositionDefinitions: InstrumentDefinition[] = [{
   id: "sand-deposition", title: "Sand Deposition",
   description: "Sand falls from a moving spline: the control points travel through time, grains are released along the curve and land with a delay, and their accumulated density is drawn as exposed grains, isolines, or both. A protected region stays empty; a sparse crisp copy of the generating curve can lie on top.",
-  procedure: "Move a spline whose control points follow a recorded motion and release grains from points along it, each carrying an amount of sand. Every grain falls for a short random delay, keeps some of the curve's velocity, scatters and lands, so sand piles up where many land and a protected oval stays bare.",
+  procedure: "Grains are released from points along a moving curve, each falling for a moment while keeping some of the curve's motion. Sand piles up where many land, thickest where the curve lingered, while a protected oval stays bare.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

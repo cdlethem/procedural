@@ -128,7 +128,7 @@ export function validateSurfaceWeave(q: Values): void {
 export const surfaceWeaveDefinition: InstrumentDefinition = {
   id: "surface-weave", title: "Surface Weave",
   description: "Two families of threads traced across a curved surface and woven over and under where they cross: spacing measured on the surface, direction and density steered by fields, the whole thing seen through a camera with true occlusion.",
-  procedure: "Trace two families of threads across a vase mesh, triangle to triangle at an even spacing on the surface, each end where a neighbour comes too close. Solve which strand passes over at every crossing, then draw flat ribbons going over and under, with hidden parts removed.",
+  procedure: "Two families of threads are traced over a vase, cell by cell across its surface, spaced evenly and stopping when they crowd a neighbour. At every crossing one thread passes over the other, so the vase is wrapped in woven ribbons.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

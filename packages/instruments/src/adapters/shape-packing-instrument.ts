@@ -25,7 +25,7 @@ export const shapePackingDefinition: InstrumentDefinition = {
   id: "shape-packing",
   title: "Shape Packing",
   description: "Interlocking non-convex pieces (letters, leaves, blobs, polygons with holes) fitted into a container by a deterministic rule: largest first, at a set of angles, at the exact place that touches its neighbours, with a minimum gap. What does not fit is reported, and the negative space that remains can be drawn.",
-  procedure: "Take a mixed set of irregular pieces, largest first, and try each at every allowed rotation, finding places where it fits and touches the container or a placed piece. Choose by a rule such as nearest the middle, check the exact outline plus a gap, then slide the piece snug. Report what cannot fit.",
+  procedure: "Irregular pieces are fitted into a round frame largest first, each tried at every angle against the edge and the pieces already placed. A piece slides into the snuggest spot nearest the middle, so shapes lock together with thin even channels between.",
   renderer: "2d",
   parameters: [
     select("container", "Container", "The shape the pieces are packed into. A ring has a hole nothing enters; a letter uses the ink of a glyph (its counters are holes too); the leaf is a curved, lobed outline. Pieces keep at least the edge margin from every edge, hole and counter.",

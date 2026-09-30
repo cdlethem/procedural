@@ -113,10 +113,10 @@ const controlGroups: ControlGroup[] = [
 ];
 export const proximityReplayInstrumentDefinitions: StudioDefinition[] = [
   { id: "contact-network", title: "Contact network", description: "Editable current neighborhood links under synchronous pair-force replay.",
-  procedure: "Place agents on a starting shape and replay a short synchronous pair-force step, recomputing each tick which agents lie within a radius. After the last tick, link every pair currently in range, drawing links and nodes at the final positions.",
+  procedure: "Agents are placed on a starting shape and nudged by pushes and pulls between close neighbours for a few steps. At the end, every pair still within reach is joined by a line, weaving a web of current contacts.",
     parameters, controlGroups, defaults: { ...base, count: 60, extent: 320, ticks: 24, radius: 43, nodeSize: 2.6, linkWeight: .7 }, validate: validateProximityReplayInstrument },
   { id: "agent-trails", title: "Agent trails", description: "Retained movement histories from the same editable proximity-force replay.",
-  procedure: "Start agents on a ring with seeded headings and run a synchronous step that applies attraction and short-range avoidance between nearby pairs. Keep every position from tick zero onward and draw them as trails, with a node at each agent's final position.",
+  procedure: "Agents start on a ring with seeded headings and are drawn toward each other while dodging whoever gets too close. Every position they pass through is kept, so their paths are drawn as trails that braid and part.",
     parameters, controlGroups, defaults: { ...base, count: 75, sourceMode: "ring", extent: 340, aspect: .8, disorder: .06,
       velocityHeading: 30, speed: 1.5, velocitySpread: 100, force: .00042,
       repulsionRadius: 34, damping: .995, trails: true, trailStride: 2, trailWeight: 1.2,

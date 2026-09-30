@@ -117,7 +117,7 @@ const controlGroups: ControlGroup[] = [
 export const geologicalCutawaysDefinition: InstrumentDefinition = {
   id: "geological-cutaways", title: "Geological Cutaways",
   description: "A layered block of strata with tilt, folds, planar faults and an eroded surface, cut open along slice planes, corners or exploded halves: sections painted by stratum, outcrops on the ground, fault traces and contact lines with hidden-line removal.",
-  procedure: "Build a block of rock as a stack of eight solid strata, tilt and fold it, offset the layers across two normal faults by the declared throw, and erode valleys into the top. Cut a box from one corner and paint the ground and every cut face as exact sections of those solids.",
+  procedure: "Eight layers of rock are stacked, tilted, folded and broken by two faults, and valleys are eroded into the top. A box is cut from one corner, and every exposed face is drawn as an exact section through the layers.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

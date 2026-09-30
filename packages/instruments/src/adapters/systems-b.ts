@@ -52,7 +52,7 @@ const waveDefaults={impulseCount:2,
 const branchDefinition: StudioDefinition = {
   id: "branching-sentences", title: "Branching sentences",
   description: "Compose depth-indexed branching grammar with seeded irregularity and spatially placed specimens.",
-  procedure: "Grow three sprigs from a grove origin by a depth-indexed branching grammar: each step draws a segment and forks into two children that fan out, lean, shorten by about 14 percent, and are kept or dropped at random. Stroke thins toward the tips.",
+  procedure: "A small grammar grows three sprigs by drawing a segment and forking it into two shorter children that fan outward. Some branches are dropped by chance, so every sprig grows its own gaps, and the strokes thin toward the tips.",
   parameters: [
     bounded("branchCount", "Branches per fork", "Number of child branches from each joint; one grows a single crooked path.", 1, 4, 1, 8, 1, true),
     bounded("angle", "Signed divergence", "Degrees between each outer branch and its parent heading; negative reverses the fork order.", -75, 75, -180, 180, 1),
@@ -105,10 +105,10 @@ const branchDefinition: StudioDefinition = {
 };
 const waveDefinitions:Record<string,StudioDefinition>={
   "ripple-interference":{id:"ripple-interference",title:"Ripple interference",description:"Compose signed wave impulses and evolve their interference as drawn contours.",
-  procedure: "Give a 26 by 26 grid two opposing pulses and advance a damped wave equation through 18 steps. Draw each interior row of the grid as a coloured line displaced by the current field, so the two sets of ripples cross and cancel in the contours.",
+  procedure: "Two opposite pulses are dropped into a square pond and a damped wave equation runs forward in time. Each row of the grid is drawn as a line lifted by the wave height, so the rings meet, cross and cancel.",
     parameters:waveParameters,controlGroups:waveGroups,defaults:{...waveDefaults,...systemsBSettings["ripple-interference"].defaults},validate:validateWaveQuality},
   "pinned-waves":{id:"pinned-waves",title:"Pinned waves",description:"Compose wave impulses and pin chosen cells while the field evolves.",
-  procedure: "Give a 26 by 26 grid a single pulse and pin its perimeter cells to zero displacement and velocity. Advance a damped wave equation through 22 steps, then draw each interior row as a coloured line displaced by the field, with small dots on the pins.",
+  procedure: "A single pulse spreads through a grid whose border cells are held perfectly still. As the damped wave reflects off the pinned edge, each grid row is drawn as a line displaced by the wave height.",
     parameters:waveParameters,controlGroups:waveGroups,defaults:{...waveDefaults,...systemsBSettings["pinned-waves"].defaults,impulseCount:1,pinMode:"perimeter",showPins:true},validate:validateWaveQuality},
 };
 export const systemsBDefinitions:StudioDefinition[]=[

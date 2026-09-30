@@ -40,7 +40,7 @@ export const featureDistanceInstrumentDefinitions: StudioDefinition[] = [
   {
     id: "distance-halos", title: "Distance halos",
     description: "Contours of measured distance from an editable, seeded group of raster sites.",
-    procedure: "Place a few distinct sites on a raster and compute each cell's true Euclidean distance to the nearest one. Trace contour lines at evenly spaced distances. Rings around each site meet and bend where neighbouring sites compete. Optional dots mark the sites.",
+    procedure: "A few sites are scattered on a grid, and every cell measures its exact distance to the nearest site. Contour lines are traced at even distances, so rings grow around each site and bend where they meet their neighbours.",
     parameters: [...sourceParameters,
       numeric("features", "Sites", "Exact number of distinct raster sites in the shared source.", 1, 48, 1, { hardMin: 1, hardMax: 256, integer: true }),
       numeric("startRadius", "First radius", "First positive measured contour radius in raster cells.", .25, 12, .25, { hardMin: .001, hardMax: 160 }),
@@ -65,7 +65,7 @@ export const featureDistanceInstrumentDefinitions: StudioDefinition[] = [
   {
     id: "nearest-feature-mosaic", title: "Nearest feature mosaic",
     description: "Color real nearest-site ownership, draw its boundaries, or cut it into locally supported fragments.",
-    procedure: "Place distinct sites on a raster and find each cell's nearest site by exact Euclidean distance. Fill supported cells with their owner's colour and draw edges between cells with different owners, giving a Voronoi-like mosaic that fragments as site support shrinks.",
+    procedure: "A few sites are scattered on a grid, and every cell is claimed by whichever site is nearest. Cells are painted in their owner's colour and edges are drawn where owners change, giving a Voronoi mosaic.",
     parameters: [...sourceParameters,
       numeric("features", "Sites", "Exact number of distinct raster sites in the shared source.", 1, 48, 1, { hardMin: 1, hardMax: 256, integer: true }),
       choice("display", "Region display", "Draw region fills, actual different-owner boundaries, or both.", ["regions", "boundaries", "both"]),

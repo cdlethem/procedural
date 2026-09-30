@@ -85,8 +85,8 @@ export type InstrumentDefinition = {
   title: string;
   description: string;
   /**
-   * The procedure the code follows, in one to three plain sentences (60 to 360 characters): what
-   * is built, how it develops, how the marks are made. Present tense, accurate to the drawing,
+   * The procedure the code follows, in exactly two plain, active sentences (60 to 360 characters):
+   * what happens, step by step, to draw the image. Present tense, accurate to the drawing,
    * evocative but never a claim the code does not keep. A host shows it beside the image.
    */
   procedure: string;

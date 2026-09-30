@@ -72,7 +72,7 @@ const controlGroups: readonly ControlGroup[] = [
 export const glyphPackingDefinition: InstrumentDefinition = {
   id: "glyph-packing", title: "Glyph Packing",
   description: "Words and ornaments packed into a silhouette from largest to smallest without touching: each keeps its own outline clear of its neighbours and of the container's edge and holes, follows the boundary or an angle you set, and the ones that cannot fit are counted rather than squeezed in.",
-  procedure: "Plan a power-law range of glyph sizes, from big words to tiny ornaments, to fill a container to a set coverage. Place them largest first at seeded positions and angles, rejecting any whose exact outline touches the edge, a hole or another glyph. Count whatever cannot fit instead of squeezing it in.",
+  procedure: "Words and ornaments are tried largest first at random positions and angles inside a pebble-shaped container. A glyph is kept only if its exact outline touches nothing else, so smaller and smaller pieces fill the gaps.",
   renderer: "2d",
   parameters,
   controlGroups,

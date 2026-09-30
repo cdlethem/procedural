@@ -663,6 +663,7 @@ export function validateProcedure(item: Pick<InstrumentDefinition, "id" | "proce
     throw new Error(`${where} must be ${PROCEDURE_LENGTH.min} to ${PROCEDURE_LENGTH.max} characters, not ${text.length}`);
   if (!text.endsWith(".")) throw new Error(`${where} must end with a full stop`);
   if (/\s{2,}|\n/.test(text)) throw new Error(`${where} must be one paragraph with single spaces`);
+  if ((text.match(/[.!?]\s+[A-Z]/g) ?? []).length !== 1) throw new Error(`${where} must be exactly two sentences`);
 }
 
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);

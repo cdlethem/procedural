@@ -117,7 +117,7 @@ export const dryBristlesDefinition: InstrumentDefinition = {
   description: "Broad strokes of separate hairs with gaps, tapered ends and depleted ink, carried along any path: harmonic traces, a contour family or a hand scribble. A few heavy strokes sit beside fine stitched contours.",
   renderer: "2d",
   parameters: parameters.map(labelled), controlGroups,
-  procedure: "Trace a family of contour lines through a noise field, then drag a brush of separate hairs along a few of them: dense and dark where the pressure is high, splitting into pale hairs and gaps where the brush lifts or runs dry, with a swelling start and a tapered end. The other contours stay as fine stitched lines.",
+  procedure: "Contour lines are traced through a noise field, and a brush of separate hairs is dragged along a few of them. It lays down dark ink where it presses and splits into pale, broken hairs where it lifts or runs dry, while the other contours stay as fine stitches.",
   featured: ["contourLevels", "contourFrequency", "dryness"],
   defaults: {
     source: "contours", figure: "3:2", traceCount: 3, traceSpread: 14,

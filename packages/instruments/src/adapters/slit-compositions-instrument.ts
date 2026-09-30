@@ -27,7 +27,7 @@ export const slitCompositionsDefinition: InstrumentDefinition = {
   id: "slit-compositions",
   title: "Slit Compositions",
   description: "Recompose one image through parallel slices with editable ordering, or slit-scan a short bundled frame sequence so time is stretched into bands. Each band is a vector strip; a slice table records which source position or frame every band shows.",
-  procedure: "Cut a portrait into 96 vertical slices and build a table saying which source slice each output band shows. Keep most in place, swap a tenth, and nudge each band up or down along a slow wave. Draw every band as a vector strip, with two windows left showing the original.",
+  procedure: "A portrait is cut into ninety-six vertical slices, and a tenth of them trade places. Every slice is nudged up or down along a slow wave, so the face survives but is rebuilt from displaced strips.",
   renderer: "2d",
   parameters: [
     select("mode", "Method", "Slice one image: every band is a strip of the picture, so ordering recomposes it. Slit-scan: every band is one moment of a moving scene read along a thin line (the slit), so ordering reorders time. Both share one slice table; only the meaning of a band's source differs.", modeOptions),

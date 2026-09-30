@@ -33,7 +33,7 @@ export const regionInstrumentDefinitions: StudioDefinition[] = [
   {
     id: "guarded-bands", title: "Guarded bands",
     description: "Seeded ordered ribbons retained only when their filled footprints leave the required clearance.",
-    procedure: "Lay out nine wavy centre paths in order, each swollen into a filled strip of varying width that tapers at its ends. Accept a strip only if its filled outline clears every strip already accepted by a set gap, and draw the survivors as flat ribbons.",
+    procedure: "Nine wavy ribbons are proposed in order, each swelling and tapering along its centre path. A ribbon is kept only if its whole filled shape clears every ribbon already kept, so the survivors lie like paper strips that never touch.",
     parameters: [numeric("candidateCount", "Candidates", "Ordered ribbon proposals; earlier candidates take precedence.", 1, 14, 1, { hardMin: 1, hardMax: 64, integer: true }),
       numeric("sourcePoints", "Points per ribbon", "Polyline resolution before actual strip selection.", 2, 8, 1, { hardMin: 2, hardMax: 80, integer: true }),
       numeric("length", "Length", "Positive span keeps adjacent trajectory points distinct.", 25, 620, 1, { hardMin: .01, hardMax: 4000, integer: false }),
@@ -84,7 +84,7 @@ export const regionInstrumentDefinitions: StudioDefinition[] = [
   {
     id: "hatched-islands", title: "Hatched islands",
     description: "Seeded perforated silhouette with independently directed, clipped hatch fields.",
-    procedure: "Build a lobed, irregular island with three round holes inside it. Clip two families of parallel hatch lines to its outline so the holes and the surroundings stay empty, and trace the boundary in ink.",
+    procedure: "A lobed island with three round holes is built from a seeded outline. Two families of parallel hatch lines are clipped to its shape, so the holes and the sea around it stay empty and the island reads as an engraving.",
     parameters: [numeric("sourceCenterX", "Source X", "Horizontal center of the island on a 720-unit canvas.", 0, 720, 1, { hardMin: -4000, hardMax: 4000 }),
       numeric("sourceCenterY", "Source Y", "Vertical center of the island.", 0, 720, 1, { hardMin: -4000, hardMax: 4000 }),
       numeric("radius", "Radius", "Horizontal outer source radius.", 20, 330, 1, { hardMin: 1, hardMax: 2000 }),

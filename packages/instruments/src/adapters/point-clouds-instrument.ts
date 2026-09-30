@@ -152,7 +152,7 @@ export const pointCloudsDefinition: InstrumentDefinition = {
   description: "Rebuild a spatial subject (a vase, a figure, terrain, a torus, a spiral galaxy, a noise volume) from thousands of replaceable marks: discs lying on the surface, strokes along a direction, grains and glyphs, joined by sparse neighbour links, with depth cues, exact hidden-point removal, deterministic thinning and a chosen region kept dense.",
   renderer: "2d",
   parameters: pointCloudsParameters, controlGroups,
-  procedure: "Sample a vase by surface area into thousands of points, then draw each as a small disc lying on the surface at that spot, coloured by height, smaller and paler toward the far side, in one far-to-near sequence so the vase's own body hides what is behind it. A sparse network of links joins some points to their nearest neighbours.",
+  procedure: "A vase is sampled into thousands of points spread evenly over its surface. Each point becomes a tiny disc lying on the surface, coloured by height and drawn from back to front, so the vase's own body hides its far side.",
   featured: ["count", "keep", "dispersion"],
   defaults: {
     subject: "vase", vaseProfile: "amphora", terrainVariant: "hills", arms: 3, twist: 1.2, bulge: 0.2, thickness: 0.25, looseness: 0.7,

@@ -69,7 +69,7 @@ const outputGroup: ControlGroup = { label: "Placement", stage: "frame", controls
   { label: "Size", controls: ["outputWidth", "outputHeight"], proportional: true }] };
 const definitions: StudioDefinition[] = [
   { id: "warp-marks", title: "Warp marks", description: "Bend a local RGBA population of marks through an editable directional deformation map.",
-  procedure: "Build a small transparent RGBA image of bars, discs, rings or tiles, then resample it through a local deformation map of swirl, radial pull and a directional wave or shear. Draw the warped raster in its own output rectangle.",
+  procedure: "A small image of coloured bars and discs is painted, then resampled through a map that swirls, pulls and waves the space beneath it. The shapes melt and twist as every pixel is fetched from a displaced spot.",
     parameters: [...shared,
       ...warp],
     controlGroups: [...sourceGroups,
@@ -89,7 +89,7 @@ const definitions: StudioDefinition[] = [
       wavePhase: 0,
       waveDirection: 45} },
   { id: "blur-marks", title: "Blur marks", description: "Filter the same editable transparent mark source with independent normalized horizontal and vertical kernels.",
-  procedure: "Build a small transparent RGBA image of bars, discs, rings or tiles at seeded positions, then blur it with separable horizontal and vertical triangular kernels that clamp at the edges. Draw the blurred raster in its own output rectangle.",
+  procedure: "A small image of coloured bars and discs is painted at seeded positions. It is then blurred with separate horizontal and vertical triangular kernels, so the shapes soften into smudged ghosts.",
     parameters: [...shared,
       ...blur],
     controlGroups: [...sourceGroups,

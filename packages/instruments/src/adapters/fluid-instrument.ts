@@ -26,7 +26,7 @@ export type FluidVortex = {x:number;y:number;radius:number;sign:number};
 
 export const fluidInstrumentDefinitions:StudioDefinition[]=[{
   id:'dye-currents',title:'Dye currents',description:'Compose compact seeded dye deposits and periodic currents; display them in an independent footprint.',
-  procedure: "Deposit dye in a few elliptical patches on a periodic 64 by 64 grid, optionally striped, with vortices and drift supplying a velocity field. Advect and diffuse the dye for a set number of frames, then draw blended pigment pixels and measured contour lines.",
+  procedure: "Blobs of dye are dropped into a small fluid that wraps at its edges, and swirling vortices and a steady drift carry them along. As the dye advects and diffuses over many frames, it is drawn as blended pigment with contour lines through its densest bands.",
   parameters:[
     numeric('ticks','Frames','Advance periodic transport, diffusion and optional pressure projection.',0,75,1,{hardMin:0,hardMax:120,integer:true}),
     numeric('sourceCount','Dye sources','Independent deposits, cycling among three pigment channels.',1,8,1,{hardMin:0,hardMax:24,integer:true}),

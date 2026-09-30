@@ -104,7 +104,7 @@ export const nodalPlatesDefinition: InstrumentDefinition = {
   id: "nodal-plates",
   title: "Nodal Plates",
   description: "Grains gather along the nodes of combined standing waves: the sand-on-a-plate figures. Choose square, rectangle or disc, one edge condition, and up to four modes with weights and phases; the nodal lines, node bands and grains all come from the same field.",
-  procedure: "Add up to four standing-wave modes of a square plate into one field and find where the sum is zero, the nodal lines, and where it is small, the node bands. Scatter grains into those bands, colour each by its side of a nodal line, and stroke the nodal lines in thin ink.",
+  procedure: "Standing waves on a square plate are added together, and the quiet lines where the sum is zero are found. Grains are scattered into those still bands, like sand gathering on a vibrating plate, and the nodal lines are inked.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

@@ -40,7 +40,7 @@ export const pixelSortingDefinition: InstrumentDefinition = {
   id: "pixel-sorting",
   title: "Pixel Sorting",
   description: "Ordered streaks that selectively dissolve an image while a protected region stays exact: pick the scan direction, the value interval that decides which stretches are sorted, the sort key and order, and drawn as merged vector bars or stitch-like streaks.",
-  procedure: "Scan a picture along columns and collect runs of pixels whose value lies in an interval, skipping a protected ellipse. Sort each run by tone, darkest first, so pixels only rearrange inside their own run. Draw the result as merged vector bars, leaving everything outside the runs as it was.",
+  procedure: "A portrait is scanned in columns, and runs of pixels within a band of brightness are gathered, skipping an oval around the face. Each run is sorted from dark to light, so the collar and background drip into streaks while the face stays untouched.",
   renderer: "2d",
   parameters: [
     select("image", "Source image", "The bundled sample image that is scanned. Each is a deterministic synthetic picture, not a photograph; binding your own image to a Studio layer is future host work, and the library functions already accept any raster you construct." +

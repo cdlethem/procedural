@@ -102,10 +102,10 @@ const defaults = {sourceLayout: "line",
   stationStride: 7};
 export const vectorTraceInstrumentDefinitions: StudioDefinition[] = [
   { id: "stream-ribbons", title: "Stream ribbons", description: "RK4 traces through an editable mixture of uniform drift and seeded radial/rotational sources, with independent ribbons, lines and stations.",
-  procedure: "Build a velocity field from three line-placed sources, each adding spin and an outward or inward push, plus a uniform drift. Start 18 traces along a line, integrate each by fourth-order Runge-Kutta, and fill a strip beside every path with a centreline.",
+  procedure: "Three sources spin and push the space around them while a steady drift carries everything sideways. Traces released along a line are integrated through that current, and each path is drawn as a filled ribbon.",
     parameters, controlGroups, defaults, validate: q => validateVectorTraceInstrument("stream-ribbons", q) },
   { id: "curved-trajectories", title: "Curved trajectories", description: "The same explicit vector mixture and RK4 tracing with a different start geometry and sparse station material.",
-  procedure: "Build a velocity field from four ring-placed sources, each adding a spin and an inward pull, plus a uniform drift. Start 16 traces on a squashed ring, integrate each by fourth-order Runge-Kutta, and draw its centreline with a dot at regular intervals of travel.",
+  procedure: "Four sources set in a ring spin the space around them and draw it inward. Traces released from a squashed ring are carried through the current, and each path is drawn as a line beaded at even distances.",
     parameters, controlGroups, defaults: { ...defaults, sourceLayout: "ring", sourceCount: 4, sourceExtent: 260, sourceAngle: 0,
       sourceDisorder: 0, radial: -8, rotation: 18, driftX: 1.5, driftY: 2,
       startLayout: "ring", startX: 315, startY: 330, startExtent: 350, startAspect: .7,

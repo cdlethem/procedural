@@ -32,7 +32,7 @@ export const tilingDefinitions: InstrumentDefinition[] = [
   {
     id: "substitution-tilings", title: "Substitution Tilings",
     description: "Nonperiodic tilings grown by exact substitution (Penrose rhombi or the chair), with editable tile interiors, shared edges and vertex marks colored by ancestry.",
-    procedure: "Start from a Penrose star of five thick rhombi and substitute it five times, cutting every rhombus into smaller thick and thin ones that fit with no gap. Wash each tile in layered watercolor and colour it by the supertile it descends from.",
+    procedure: "Five thick rhombi form a Penrose star, and every rhombus is cut into smaller thick and thin ones that fit with no gaps, five times over. Each tile is washed in layered watercolour and tinted by the ancestor it came from.",
     renderer: "2d",
     parameters: [
       select("rule", "Construction", "Penrose rhombi (thin and thick, aperiodic, golden-ratio scaling) or the chair (an L-shaped tile, four copies per substitution).", ["penrose-p3", "chair"]),

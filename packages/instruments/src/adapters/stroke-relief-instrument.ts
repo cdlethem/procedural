@@ -76,7 +76,7 @@ const controlGroups: ControlGroup[] = [
 export const strokeReliefDefinition: InstrumentDefinition = {
   id: "stroke-relief", title: "Stroke Relief",
   description: "Deposit variable-width, pressure-loaded strokes into a height field with an explicit rule for crossings, then light it: ridges, levees and bristle furrows catch a movable light. The flat pigment layer and the transparent light-and-shadow patch are separate layers.",
-  procedure: "Lay a few long brush strokes, each with a width and a paint load, into a height field whose value is height times load times cross-section. Decide where strokes cross by an overlap rule and deposition order. Light the slope from a chosen direction and draw nested bands of shadow and highlight.",
+  procedure: "Long brush strokes are laid into a height field, each with its own width and load of paint, and later strokes build walls where they cross earlier ones. A light is swept across the relief, and bands of highlight and shadow model every ridge.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

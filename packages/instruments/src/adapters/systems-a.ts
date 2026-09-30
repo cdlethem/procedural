@@ -20,10 +20,10 @@ const initialField: ControlGroup = { label: "Initial field", stage: "form", cont
 const cellMark = (size: string): ControlGroup => ({ label: "Mark", stage: "material", controls: [size, "weight"], proportional: true });
 const curlField: ControlGroup = { label: "Field", stage: "form", controls: ["fieldFrequency", "anisotropy", "disorder"] };
 const PROCEDURES: Record<string, string> = {
-  "reaction-spots": "Seed a 24 by 24 grid with speckled chemical and run 12 steps of Gray-Scott reaction-diffusion, wrapping at the edges. Draw a disc at every cell above a threshold, larger where the concentration is higher.",
-  "reaction-stripes": "Seed a 24 by 24 grid by activating the ten percent of cells where a diagonal band pattern is strongest, then run eight steps of Gray-Scott reaction-diffusion. Draw a coloured square at every cell above a threshold.",
-  "organic-cells": "Seed a 20 by 20 grid with seeded speckle and run eight generations of Conway's Life, wrapping at the edges. Paint a coloured disc at every cell still alive.",
-  "geometric-generations": "Seed a 20 by 20 grid with a checker pattern of live cells and run six generations of Conway's Life, wrapping at the edges. Paint a coloured square at every cell still alive.",
+  "reaction-spots": "Two virtual chemicals react and diffuse across a small grid seeded with speckle, the Gray–Scott model run for a dozen steps. Wherever one chemical is concentrated, a disc is drawn, larger where it is stronger.",
+  "reaction-stripes": "Two virtual chemicals are seeded along diagonal bands and left to react and diffuse for a few steps. Every cell where the concentration crosses a threshold becomes a coloured square, so the bands break into stripes.",
+  "organic-cells": "Scattered live cells on a small grid follow Conway's Life for a handful of generations, wrapping at the edges. Every cell still alive at the end is drawn as a round disc, so the colonies read as soft clusters.",
+  "geometric-generations": "A checkerboard of live cells runs through a few generations of Conway's Life, wrapping at the edges. Each survivor is drawn as a square, so the grid's order breaks into blocks and gaps.",
 };
 const modern:Record<string,StudioDefinition>={};
 for(const [id,title,source,passes,scale] of [
@@ -76,7 +76,7 @@ const curlFieldControls = [
 modern["swirling-particles"]={
   id:"swirling-particles",title:"Swirling particles",
   description:"Trace seeded starting points through a shared scalar curl field with RK4.",
-  procedure: "Build a scalar potential from ordered waves mixed with seeded noise and take its curl to get a velocity field. Start 55 particles across an area and advance each 70 steps by fourth-order Runge-Kutta, drawing every path as a trail.",
+  procedure: "Waves and seeded noise are blended into a smooth landscape, and its curl gives a velocity field that spins around every hill and hollow. Particles released into it are advanced step by step, and their paths are drawn as swirling trails.",
   parameters:[
     ...curlFieldControls,
     choice("sourceMode","Source placement","Start particles throughout an area, around a ring, or along a line.",["area","ring","line"]),
@@ -106,7 +106,7 @@ modern["swirling-particles"]={
 modern["flow-needles"]={
   id:"flow-needles",title:"Flow needles",
   description:"Read the same seeded scalar curl field as directional vector marks, not paths.",
-  procedure: "Build a scalar potential from ordered waves mixed with seeded noise and take its curl to get a velocity field. Sample it on a 20 by 20 grid and draw a short needle at each sample along the local flow direction.",
+  procedure: "Waves and seeded noise are blended into a smooth landscape, and its curl gives a velocity field that circles every hill. The field is read at the points of a grid, and a short needle is drawn at each one pointing along the flow.",
   parameters:[
     ...curlFieldControls,
     n("columns","Sample columns","Samples per axis; at most 128² direction marks to keep drawing bounded.",8,50,8,128,1,true),

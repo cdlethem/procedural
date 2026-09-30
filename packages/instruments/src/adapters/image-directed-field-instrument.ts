@@ -126,7 +126,7 @@ export function validateImageDirectedField(q: Values): void {
 export const imageDirectedFieldDefinition: InstrumentDefinition = {
   id: "image-directed-field", title: "Image Directed Field",
   description: "Lines and marks that follow or cross the structure of a picture: edges and contours become evenly spaced strokes of ink, stitches or beads, stopping where the picture stops having a direction.",
-  procedure: "Measure the direction of edges and textures in a picture with a structure tensor, along with how one-sided that structure is. Trace evenly spaced streamlines that follow those directions, stopping at the border, another line, low confidence or a tight turn, and draw them heavier where the picture is dark.",
+  procedure: "The direction of every edge and texture in a portrait is measured, and evenly spaced streamlines are traced along that flow. Lines never cross, stop where structure fades, and thicken where the picture is dark.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

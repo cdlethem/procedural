@@ -29,7 +29,7 @@ export const graphRolesDefinition: InstrumentDefinition = {
   id: "graph-roles",
   title: "Graph Roles",
   description: "A network read by roles: a thin supporting web, a bold focal route between two chosen places, motifs on the nodes and fills only in the faces that really are planar.",
-  procedure: "Grow a lattice maze with loops over a grid of sites, then read that one graph in several roles: hairline links tinted by age, a route between two chosen points, dots sized by connectivity, and fills in enclosed faces. Each role is styled separately.",
+  procedure: "A maze with loops is grown over a grid, and that one network is read several ways at once. Hairlines trace its links by age, a bold route climbs between two points, dots swell at busy junctions, and some enclosed faces are filled.",
   renderer: "2d",
   parameters: [
     select("source", "Network", "Where the graph comes from: contact links between drifting agents, a grown lattice maze with loops and diagonals, or seeded branching trees.", ["contact", "lattice", "branches"]),

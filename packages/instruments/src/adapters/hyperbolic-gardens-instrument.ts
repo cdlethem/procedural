@@ -116,7 +116,7 @@ export const hyperbolicGardensDefinition: InstrumentDefinition = {
   description: "Regular hyperbolic tilings in the Poincaré disk: cells, geodesic edges and rings that shrink toward the boundary circle, with motifs placed in every mirror-image triangle at the true local scale and turn.",
   renderer: "2d",
   parameters, controlGroups,
-  procedure: "Start from one pentagon in the Poincaré disk and grow rings of cells by reflecting each across its edges, so every cell mirrors its neighbour and the disk's scale falls to nothing at the rim. Edges are the straight lines of that geometry, circular arcs meeting the boundary square on; alternate generations are painted and a sprig is planted in every triangle.",
+  procedure: "A pentagon is reflected across its edges, and each copy again, growing rings of identical cells that shrink toward the rim of the Poincaré disk without ever reaching it. The edges curve as true arcs of that geometry, alternate rings are painted, and a sprig grows in every triangle.",
   featured: ["p", "q", "generations"],
   defaults: {
     p: 5, q: 4, center: "polygon", generations: 9, diskRadius: 0.985, minSize: 1.6, retention: 0.95,

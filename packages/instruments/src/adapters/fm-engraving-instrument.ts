@@ -124,7 +124,7 @@ export const fmEngravingUsesSeed = (q: Values): boolean => Number(q.phaseSpread)
 export const fmEngravingDefinition: InstrumentDefinition = {
   id: "fm-engraving", title: "FM Engraving",
   description: "Engrave a picture as wavy line bands: scan lines run across its tones, and where it is dark the waves grow taller and quicker while the lines crowd or thicken; light places stay open paper.",
-  procedure: "Lay scan lines across a picture and read its tone every 1.5 units along each one. Darker tone makes the line wave faster and taller, with the phase kept as a running total so it never kinks, and where the tone is lighter than a threshold the line is simply not drawn, leaving open paper.",
+  procedure: "Horizontal lines are laid across a portrait, and each one waves faster and taller where the picture beneath is darker. In the light areas the line is not drawn at all, so the face appears as tightly woven engraving surrounded by open paper.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

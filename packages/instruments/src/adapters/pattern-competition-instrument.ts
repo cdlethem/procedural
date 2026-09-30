@@ -96,7 +96,7 @@ export const patternCompetitionDefinition: InstrumentDefinition = {
   id: "pattern-competition",
   title: "Pattern Competition",
   description: "Several scales of activation and inhibition compete on one grid, and the scale with the smallest disagreement updates each cell: broad lobes hold finer patterns, which hold finer ones. Flat bands by scale, contours and scale-sized marks are three drawings of the same evolving field.",
-  procedure: "Hold a field on a grid, seeded with noise, and give it four scales, each an activator radius paired with a wider inhibitor radius. Each step, every cell takes the scale whose two blurs disagree least, nudges up or down by that scale's increment, and the field is renormalised. Paint bands by dominant scale, then contours.",
+  procedure: "Four pattern scales, each a pairing of short-range growth and long-range suppression, compete across one grid seeded with noise. At every cell the most stable scale wins and nudges the value, so broad lobes fill with loops that fill with rings.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

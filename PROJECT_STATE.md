@@ -74,10 +74,9 @@ The report includes all69 family dispositions and all three denominators:800 ass
   174 definitions are staged; six carry `featured` (hyperbolic-gardens, crossing-lace,
   dry-bristles, river-ribbons, point-clouds, aggregation-colonies). `tests/control-groups.test.ts`
   covers the contract; the full instruments suite passed 1648/1648 after the change. The
-  Every instrument also states its `procedure` (one to three plain sentences, 60–360 characters,
+  Every instrument also states its `procedure` (exactly two active sentences, 60–360 characters,
   validated by `validateProcedure`): what the code does to make the image, shown by the app beside
-  the live picture. Six were written by hand; the rest were authored from the guides and reviewed at
-  the defaults. The full suite passes 1650/1650. The private app's landing tour and staged study
+  the live picture. All 174 were rewritten by hand from the guides. The full suite passes 1650/1650. The private app's landing tour and staged study
   controls consume this through the local toolkit preview and need a `web-toolkit-v0.2.4` release to pin.
 - Unreleased instruments can still preview in the private app: its `npm run toolkit:local`
   runs `tools/build_web_toolkit.mjs --allow-dirty` and installs those tarballs unsaved.

@@ -143,9 +143,8 @@ lay the inspector out as an ordered path; nothing is gated on the order. An inst
 `featured` controls (one to four numbers or selects) that best show it at first touch;
 `featuredControls(id)` returns them, or up to three numeric/select controls of the first `form`
 group when none are declared.
-Every instrument also states its `procedure`: one to three plain sentences (60 to 360 characters)
-saying what the code does to make the image, what is built, how it develops, how the marks are
-made, accurate to the drawing and shown by hosts beside the live image. `validateProcedure` is the
+Every instrument also states its `procedure`: exactly two plain, active sentences (60 to 360 characters)
+saying what happens to draw the image, accurate to the drawing and shown by hosts beside the live image. `validateProcedure` is the
 load-time contract.
 `visibleWhen` hides controls that cannot affect the drawing: a conjunction of select/boolean value
 lists and number comparisons (`{ retained: { lt: 1 } }`), or an array of such alternatives of

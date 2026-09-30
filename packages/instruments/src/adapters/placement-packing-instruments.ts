@@ -98,16 +98,16 @@ const packingDefault = {count: 22,
   inset: 0};
 export const placementPackingInstrumentDefinitions: StudioDefinition[] = [
   { id: "blue-noise-stipple", title: "Blue-noise stipple", description: "One Poisson point-placement instrument with editable support and independent marks.",
-  procedure: "Sample a rectangle by Poisson-disc so no two sites lie closer than a minimum separation, then keep only those inside the chosen support, such as an ellipse or ring. Stamp a small dot at each surviving site.",
+  procedure: "Points are thrown into a rectangle one at a time, and each is kept only if it lands far enough from every point already kept. The survivors inside an ellipse are stamped as dots, giving an even stipple with no clumps.",
     parameters: pointParameters, controlGroups: pointGroups, defaults: pointsDefault, validate: validatePointPlacement },
   { id: "spaced-symbols", title: "Spaced symbols", description: "The same Poisson instrument, starting with square sites; shape is freely editable.",
-  procedure: "Sample sites by Poisson-disc so centres stay a minimum distance apart, then filter them through an ellipse or ring if chosen. Stamp a square at each surviving site, turned by a seeded angle, at a wider spacing than the stipple recipe.",
+  procedure: "Points are thrown into the frame and kept only when they land a minimum distance from the rest. A small square is stamped at each survivor, turned by a seeded angle, so the marks scatter evenly without touching.",
     parameters: pointParameters, controlGroups: pointGroups, defaults: { ...pointsDefault, radius: 26, attempts: 7, mark: "square", size: 10, angleSpread: 45 }, validate: validatePointPlacement },
   { id: "packed-posters", title: "Packed posters", description: "Seeded rectangles proposed to an ordered skyline; only placed cores are painted.",
-  procedure: "Draw a seeded list of rectangles of varied width and height, some turned a quarter, and offer them in order to a skyline packer that keeps a gutter between cores. Those that fit are painted as blocks; the rest are dropped, never resized.",
+  procedure: "A seeded list of rectangles in varied sizes is handed, in order, to a skyline packer that stacks them into a box with a gutter between. Blocks that fit are painted, and the rest are simply left out.",
     parameters: packingParameters, controlGroups: packingGroups, defaults: packingDefault, validate: validatePacking },
   { id: "aspect-tiles", title: "Aspect tiles", description: "The same skyline packing instrument, starting from a broader aspect population.",
-  procedure: "Draw 25 seeded rectangles with widths and heights between 20 and 95, some turned a quarter, and offer them in order to a skyline packer. Each tile is placed only if its padded footprint fits; the rest are left out, and placed tiles are filled and outlined.",
+  procedure: "Tall and wide rectangles are drawn from a broad range of sizes, some turned sideways, and packed in order against a rising skyline. Each tile that fits is filled and outlined, and the ones that don't are dropped.",
     parameters: packingParameters, controlGroups: packingGroups, defaults: { ...packingDefault, count: 25, minWidth: 20, maxWidth: 95, minHeight: 20, maxHeight: 95, outline: 1 }, validate: validatePacking },
 ];
 function number(q: Params, key: string, low: number, high: number, integer = false): number {

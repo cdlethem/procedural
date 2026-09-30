@@ -107,7 +107,7 @@ const controlGroups: readonly ControlGroup[] = [
 export const outlineTypeDefinition: InstrumentDefinition = {
   id: "outline-type", title: "Outline Type",
   description: "Set large type as regions and fill each letter with another technique, exactly clipped to its outline with the counters kept open: hatching, waves, rings, contour rings, dot lattices, washes or a different technique per letter. Outline halos, insets and shadows come from exact offsets, and a correlated field can displace the letters first.",
-  procedure: "Set two lines of heavy capital letters from an outline font and give each letter its own filler, such as wavy lines, hatching, concentric rings, a dot lattice or stacked washes. Fill lines are cut exactly at the letter's edge, counters stay open, and each letter gets a double outline.",
+  procedure: "Two lines of heavy capitals are set from an outline font, and each letter is filled with its own technique: waves, hatching, rings, dots or washes. Every fill is cut exactly at the letter's edge, the counters stay open, and each letter gets a double outline.",
   renderer: "2d",
   parameters,
   controlGroups,

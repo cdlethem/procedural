@@ -109,10 +109,10 @@ const chordDefaults = { shapeA: "ellipse", shapeB: "ellipse", centerAX: 285, cen
   weight: .8, showGuides: false, guideWeight: .8 };
 export const symbolChordDefinitions: StudioDefinition[] = [
   { id: "asemic-lines", title: "Asemic lines", description: "Seed a reusable abstract spline dictionary, then arrange its paths into editable line-like rhythms without asserting a writing system.",
-  procedure: "Build a dictionary of nine abstract glyphs, each two strokes of knots smoothed by Chaikin subdivision. Set them out in four rows of words, reusing the same glyphs with loose spacing and jitter, with no text, baseline or writing system behind them.",
+  procedure: "Nine made-up glyphs are built from smoothed knots of two strokes each, forming a private alphabet. The glyphs are reused in rows of word-like clusters with loose spacing and jitter, so the page looks written in a language that doesn't exist.",
     parameters: asemicParameters, controlGroups: asemicGroups, defaults: asemicDefaults, validate: validateAsemic },
   { id: "chord-looms", title: "Chord looms", description: "Arc-length samples on two independent curves joined by modular, optionally modulated index mapping.",
-  procedure: "Sample two ellipses by arc length, 160 points each. Join sample i of the first to sample 3i of the second, modulo the count, with a straight chord, and draw only these chords so the string-art envelope appears without the source curves.",
+  procedure: "Two ellipses are sampled at equal steps, and point number i of the first is joined by a straight thread to point 3i of the second. Only the threads are drawn, and together they curve into a string-art envelope.",
     parameters: chordParameters, controlGroups: chordGroups, defaults: chordDefaults, validate: validateChords },
 ];
 export function validateAsemic(q: Params): void {

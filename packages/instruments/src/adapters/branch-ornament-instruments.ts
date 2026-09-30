@@ -128,7 +128,7 @@ export function validateBranchOrnament(params: Record<string, number | string | 
 export const branchOrnamentDefinitions: InstrumentDefinition[] = [{
   id: "branch-ornament", title: "Branch Ornament",
   description: "Grow a branching tree toward an editable attractor field, then attach marks by role: blossoms at tips, joints at forks, pennants along the stems, with a separate outline.",
-  procedure: "Grow a tree by attractor growth, where tips chase the nearest unclaimed target point and split when they reach one. Decorate the finished tree by role: rosettes at the tips, dots at the forks, marks along the trunk, and a tapering ribbon outline around every branch.",
+  procedure: "A tree grows by sending its tips toward scattered targets, splitting whenever one is reached. The finished tree is dressed by role, with rosettes at the tips, dots at the forks, marks up the trunk and a ribbon outline narrowing along every branch.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

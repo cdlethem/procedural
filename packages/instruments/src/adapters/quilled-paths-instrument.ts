@@ -118,7 +118,7 @@ export function validateQuilledPaths(q: Values): void {
 export const quilledPathsDefinition: InstrumentDefinition = {
   id: "quilled-paths", title: "Quilled Paths",
   description: "Paper strips stood on edge along contour lines, letter outlines, spirals or scattered scrolls, nested inside one another and rolled at the ends, drawn with thickness and occlusion from a tilted camera or flat.",
-  procedure: "Take a contour landscape as a scaffold and stand paper strips on edge along each line, nesting extra strips inside the closed ones and rolling the open ends into tight spirals. Bends tighter than the paper pinch the top edge. Paint the walls back to front from a tilted camera.",
+  procedure: "Paper strips are stood on edge along the lines of a contour map, with extra strips nested inside the closed loops and the open ends rolled into spirals. A tilted camera shows the walls, so the drawing reads as a paper sculpture.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

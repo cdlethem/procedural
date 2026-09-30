@@ -63,7 +63,7 @@ const costGroup: ControlGroup = { label: "Costs", stage: "form", controls: ["cos
 export const costPathInstrumentDefinitions: StudioDefinition[] = [
   { id: "obstacle-roads", title: "Obstacle roads",
     description: "Editable weighted four-neighbor paths from one fixed start to actual goals; blocked destinations remain blocked.",
-    procedure: "From one start cell, compute the cheapest four-neighbour route to every reachable cell on a grid of seeded costs and blocked cells. Trace the route back from each goal and draw it as orthogonal lines, merging where routes share steps, with dots at path nodes.",
+    procedure: "A grid of seeded costs and walls is flooded from one start cell to find the cheapest route to every reachable cell. Routes are traced back from each goal, merging where they share a path, like roads converging on a town.",
     parameters: [...sourceParameters, ...treatmentParameters.filter(parameter =>
       !["contourCount", "contourBase", "contourSpacing"].includes(parameter.key))],
     controlGroups: [...gridGroups,
@@ -76,7 +76,7 @@ export const costPathInstrumentDefinitions: StudioDefinition[] = [
     validate: q => validateCostPathInstrument(q, "obstacle-roads") },
   { id: "arrival-contours", title: "Arrival contours",
     description: "Arrival-cost isolines only where all four source samples are finite and reachable.",
-    procedure: "Fill a grid with seeded costs and obstacles and find the cheapest four-neighbour arrival cost from one start cell to every reachable cell. Trace equal-cost contour lines through those values; they bend around costly cells and stop at walls and unreachable pockets.",
+    procedure: "A grid of seeded costs and walls is flooded from one start cell, recording the cheapest cost to reach every cell. Contour lines are traced through those arrival times, bending around costly ground and stopping at walls.",
     parameters: [...sourceParameters.filter(parameter =>
       !["goalLayout", "goalCount", "goalCells"].includes(parameter.key)),
       ...treatmentParameters.filter(parameter => parameter.key !== "nodeSize")],

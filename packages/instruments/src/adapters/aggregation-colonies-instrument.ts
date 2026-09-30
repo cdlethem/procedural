@@ -116,7 +116,7 @@ export const aggregationColoniesDefinition: InstrumentDefinition = {
   description: "Branching accretions grown by random walkers that stick where they touch: seeded particles are released from a source, wander with a wind and a sticking chance, and attach to a growing cluster, leaving empty channels and active tips. The same colony is drawn as marks at its grains, as ink or beads along its parent links, as a halo and as tip marks, coloured by age or limb, and can be confined inside letters or an image silhouette.",
   renderer: "2d",
   parameters, controlGroups,
-  procedure: "Release walkers one at a time from a source around a small seed of grains. Each wanders at random until it touches the colony and sticks there, so the arms shield the channels behind them and growth piles up at the tips. Draw a mark at every grain, ink the parent links, and colour each by when, where and on which limb it attached.",
+  procedure: "Particles are released one by one and wander at random until they touch a growing cluster and stick. The branches shield the space behind them, so growth races ahead at the tips, like frost spreading across a window.",
   featured: ["steps", "bias", "turn"],
   defaults: {
     seedShape: "point", seedCount: 12, seedX: 320, seedY: 320, seedWidth: 120, seedHeight: 120, seedAngle: 0,

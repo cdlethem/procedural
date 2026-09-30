@@ -62,7 +62,7 @@ const maskOn = { maskedPlate: masked };
 export const opticalPlatesDefinition: InstrumentDefinition = {
   id: "optical-plates", title: "Optical Plates",
   description: "Two editable pattern plates, linked or detached, alone or overlaid, with one of them following a type or region mask.",
-  procedure: "Draw two real pattern plates, dot screens, gratings or rings, with slightly different periods, angles and offsets, and overlay them. The finer, rotated second plate is confined to the letters OP, so moiré shows where the plates drift out of register.",
+  procedure: "Two dot screens are laid over each other, the second slightly finer and turned, and confined to the letters OP. Where the screens drift in and out of register, moiré makes the letters appear.",
   renderer: "2d",
   parameters: [
     ...plateControls("A", "A"), ...plateControls("B", "B"),
