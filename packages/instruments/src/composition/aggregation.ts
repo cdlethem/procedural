@@ -77,7 +77,7 @@ export const COLONY_LIMITS = Object.freeze({
   maxSeeds: 400,
   maxLifetime: 20_000,
   /** Walker micro-steps a run may spend in the worst case (every walker using its whole lifetime). */
-  maxWork: 60_000_000,
+  maxWork: 16_000_000,
   /** Release attempts per walker. */
   launchTries: 24,
   /** The 640-unit reference canvas the arena is built around. */
@@ -525,7 +525,7 @@ export function colonySimulation(domain: PlanarDomain | null): Simulation<Colony
             if (near) free = near.distance - contact;
           }
           let disp = Math.min(reach, free);
-          if (walls) disp = Math.min(disp, walls.gap(x, y, reach + radius) - radius);
+          if (walls) disp = walls.gap(x, y, disp + radius) - radius;
           disp = Math.max(minStep, disp);
           const length = disp / (1 + drift);
           const toX = p.seedX - x, toY = p.seedY - y, toLength = Math.hypot(toX, toY);
