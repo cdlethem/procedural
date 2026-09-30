@@ -52,6 +52,8 @@ import { strokeReliefDefinition } from "./adapters/stroke-relief-instrument.js";
 import { drawStrokeRelief, prepareStrokeRelief, strokeReliefComposition } from "./composition/stroke-relief.js";
 import { pathTypographyDefinition, pathTypographyUsesSeed } from "./adapters/path-typography-instrument.js";
 import { drawPathTypography, pathTypographyComposition, preparePathTypography } from "./composition/path-type-draw.js";
+import { aggregationColoniesDefinition } from "./adapters/aggregation-colonies-instrument.js";
+import { aggregationColoniesComposition, drawAggregationColonies, prepareAggregationColonies } from "./composition/aggregation-draw.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
@@ -258,6 +260,14 @@ export type { PointGridOptions, PointHit } from "./composition/spatial-index.js"
 export { PointGrid, MAX_GRID_CELLS } from "./composition/spatial-index.js";
 export type { LatticeWalkOptions, LatticeStep, AngleWalkOptions, AngleStep } from "./composition/walks.js";
 export { latticeWalkStep, angleWalkStep, LATTICE_DIRECTIONS } from "./composition/walks.js";
+export { DomainWalls } from "./composition/domain-walls.js";
+export type { SeedShape, SourceShape, SeedSpec, SourceSpec, ColonyDomainSpec, WalkerSpec, GrowthSpec, ColonyOptions, ColonySite, ColonyStatus, Colony,
+  ColonyParams, ColonyState, ColonyFrame, Box as ColonyBox } from "./composition/aggregation.js";
+export { growColony, prepareColony, colonyIsCached, colonyReleasePoint, colonySimulation, colonyDomain, colonyParams, colonyCache, checkColonyOptions, checkColonySteps, colonyWorkBound, domainPaths,
+  COLONY_LIMITS } from "./composition/aggregation.js";
+export type { ColonyColorBy, ColonyView, AggregationColoniesRecipe, ColonyConsumers, LinkLayer } from "./composition/aggregation-draw.js";
+export { aggregationColoniesComposition, drawAggregationColonies, prepareAggregationColonies, colonyOfRecipe, colonyMarkSites, colonyTipSites, colonyLinkPaths,
+  colonyTone, massFraction, shownGrains, colonyColorings } from "./composition/aggregation-draw.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -276,7 +286,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, aggregationColoniesDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -392,6 +402,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "image-directed-field": [0x1d2230, 0x8d3b2a, 0x2f6f7a, 0xc99a3b],
   "bundled-relations": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86, 0x9c5f34],
   "dry-bristles": [0x22252b, 0x2f6f7a, 0xb8452f, 0xc99a3b],
+  "aggregation-colonies": [0x243b4a, 0x3f7f7a, 0xd9a441, 0xc4452b, 0x8a4a86],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
   "typographic-rhythm": [0x1c1d20, 0xc93a2a, 0x2b5d9b, 0xe6ae2c],
   "painterly-source": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0xf0e6d2],
@@ -422,6 +433,7 @@ export function drawInstrument(context: DrawingContext, input: InstrumentInput):
 function drawUncomposited(context: DrawingContext, input: InstrumentInput): void {
   definition(input.technique);
   if (input.technique === "branch-ornament") return drawBranchOrnament(context, branchOrnamentComposition(input));
+  if (input.technique === "aggregation-colonies") return drawAggregationColonies(context, aggregationColoniesComposition(input));
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
   if (input.technique === "path-typography") return drawPathTypography(context, pathTypographyComposition(input));
   if (input.technique === "sand-deposition") return drawSandDeposition(context, sandDepositionComposition(input));
@@ -453,7 +465,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "aggregation-colonies" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -462,6 +474,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "branch-ornament")
     return prepareBranchOrnament(branchOrnamentComposition(input), cancelled);
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
+  if (input.technique === "aggregation-colonies") return prepareAggregationColonies(aggregationColoniesComposition(input), cancelled);
   if (input.technique === "fm-engraving") return prepareEngraving(engravingComposition(input), cancelled);
   if (input.technique === "path-typography") return preparePathTypography(pathTypographyComposition(input), cancelled);
   if (input.technique === "image-directed-field") return prepareImageDirectedField(imageDirectedFieldComposition(input), cancelled);
