@@ -20,6 +20,8 @@ import { referenceComposition, prepareReferenceComposition } from "./composition
 import { branchOrnamentDefinitions } from "./adapters/branch-ornament-instruments.js";
 import { sandDepositionDefinitions } from "./adapters/sand-deposition-instrument.js";
 import { drawSandDeposition, prepareSandDeposition, sandDepositionComposition } from "./composition/deposition.js";
+import { cellDivisionDefinitions } from "./adapters/cell-division-instrument.js";
+import { cellDivisionComposition, cellDivisionUsesSeed, drawCellDivision, prepareCellDivision } from "./composition/cell-division-draw.js";
 import { branchOrnamentComposition, drawBranchOrnament, prepareBranchOrnament } from "./composition/branch-ornament.js";
 import { gestureScoresDefinitions } from "./adapters/gesture-scores-instruments.js";
 import { drawGestureScore, gestureScoreComposition, prepareGestureScore } from "./composition/gesture-scores.js";
@@ -123,6 +125,12 @@ export type { DepositOptions, Deposit, ProtectedSpec, ProtectedSpace, KeptDeposi
   SandConsumers, DepositionProducts } from "./composition/deposition.js";
 export { splineDeposit, protectedSpace, keepOut, curvePaths, sandDepositionComposition, resolveSequence, sandDepositionProducts, depositionDensity,
   isolineTone, densityAtTone, drawSandDeposition, prepareSandDeposition, MAX_DEPOSIT_GRAINS, MAX_SAMPLED_GRAINS, MAX_OVERLAY_CURVES } from "./composition/deposition.js";
+export type { ColonyOptions, Colony, ColonyCell, ColonyFrame, ColonyStatus, CellBoundary, NutrientSource, SeedLayout, DivisionAxis } from "./composition/cell-division.js";
+export { cellColony, prepareCellColony, colonyAt, colonyFrameAt, colonyOptionsOf, colonyConstruction, colonyUsesSeed, validateColony, fieldSize, fieldLayout, diffusionPlan,
+  cellDivisionSimulation, COLONY_LIMITS, MAX_COLONY_WORK } from "./composition/cell-division.js";
+export type { CellShape, ColorBy as ColonyColorBy, CellDivisionComposition, CellDivisionConsumers, CellSite, CellWall } from "./composition/cell-division-draw.js";
+export { cellDivisionComposition, cellDivisionProducts, cellSites, lineagePaths, nutrientPaths, cellWalls, wallPaths, wallHatch, agedCells,
+  drawCellDivision, prepareCellDivision, MAX_WALL_CELLS } from "./composition/cell-division-draw.js";
 export type { Raster, RasterData, RasterChannels, RasterFormat, ColorSpace, AlphaMode, ConvertOptions, SampleFilter, EdgeRule, SampleOptions, ScalarGrid, LabelGrid,
   ValueKind, ValueOptions, RasterMapping, ResizeFilter } from "./composition/raster.js";
 export { createRaster, rasterData, rasterPixel, convertRaster, sampleRaster, sampleInto, sampleGrid, createScalarGrid, valueField, rasterMapping, cropRaster,
@@ -276,7 +284,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, ...cellDivisionDefinitions,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -385,6 +393,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "gesture-scores": [0x24262b, 0xc99a3b, 0xb8452f, 0x2f6f7a],
   "fm-engraving": [0x1d2733, 0xb5452e, 0xd39a3a, 0x2f6f8f],
   "sand-deposition": [0x3b2f27, 0xb5522f, 0x1f5f73],
+  "cell-division": [0x2b3a55, 0x2f6f8f, 0x4f9a8a, 0xd9a441, 0xc4452b],
   "quilled-paths": [0xd4563f, 0xe6a23a, 0x2f7f86, 0x6f9a55, 0x8b5190],
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "pixel-sorting": [0x1c2230, 0x8a3b32, 0xd9a441, 0xf1e6cf],
@@ -425,6 +434,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
   if (input.technique === "path-typography") return drawPathTypography(context, pathTypographyComposition(input));
   if (input.technique === "sand-deposition") return drawSandDeposition(context, sandDepositionComposition(input));
+  if (input.technique === "cell-division") return drawCellDivision(context, cellDivisionComposition(input));
   if (input.technique === "quilled-paths") return drawQuilled(context, quillComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
   if (input.technique === "pixel-sorting") return drawPixelSorting(context, pixelSortingComposition(input));
@@ -453,7 +463,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "cell-division" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -466,6 +476,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "path-typography") return preparePathTypography(pathTypographyComposition(input), cancelled);
   if (input.technique === "image-directed-field") return prepareImageDirectedField(imageDirectedFieldComposition(input), cancelled);
   if (input.technique === "sand-deposition") return prepareSandDeposition(sandDepositionComposition(input), cancelled);
+  if (input.technique === "cell-division") return prepareCellDivision(cellDivisionComposition(input), cancelled);
   if (input.technique === "quilled-paths") return prepareQuilled(quillComposition(input), cancelled);
   if (input.technique === "dry-bristles") return prepareDryBristles(dryBristlesComposition(input), cancelled);
   if (input.technique === "data-scores")
@@ -505,6 +516,7 @@ export function usesSeed(input: InstrumentInput): boolean {
   switch (input.technique) {
     case "quantized-stripes": return q.order === "shuffle";
     case "sand-deposition": return true;
+    case "cell-division": return cellDivisionUsesSeed(q);
     case "quilled-paths": return quillUsesSeed(q);
     case "gesture-scores": return q.recording === "wander" || Number(q.hairs) > 0 && q.bristles === true || q.sandMark !== "none" ||
       q.glyphMark !== "none" && (Number(q.glyphVariation) > 0 || Number(q.glyphRetention) < 1);
