@@ -49,10 +49,10 @@ configurations from the solved sheets: sinusoidal, chevron, dome, both dip direc
 
 **Inverse map** (`stratumAt`, the oracle of the tests): undo the throws of the faults the point is hanging wall of, then count the horizons at or below it.
 
-**Failure.** A column-by-column build needs each horizon to cross a plane once per column: (steepest slope across the strike, sampled over the model, +5%) times
-`kappa` must stay under 0.92, for horizons and ground; every compartment must be at least 4% of the block across the strike at base and top. Violations throw
-naming the controls (Tilt, Fold amplitude, Fold wavelength, Thickness trend, Ground relief, Ground relief scale, Fault dip, Faults, Fault position). Every value is
-checked (`Strata must be a whole number from 2 to 16 ...`). Nothing is clamped.
+**Validity by steepening, not refusal.** A column-by-column build needs each horizon to cross a plane once per column: (steepest slope across the strike, sampled over the model, +5%) times
+`kappa` must stay under 0.92, for horizons and ground; and a plane's base-to-top trace must span at most 60% of the room left inside the walls. A requested dip that breaks either is **steepened to the
+shallowest that does not** (`model.dip` is the angle used; offsets are exact for that angle, tested with a finite-difference slope oracle), and the fault family is compressed and slid so every
+trace stays inside the walls (compartments are never under 4% of the block). Every input is checked (`Strata must be a whole number from 2 to 16 ...`); nothing is clamped silently, except that the dip is documented as a request.
 
 ## The block mesh
 
@@ -103,7 +103,7 @@ conditions are identical to its proposals and it was not repeated); `contourWeig
 
 ## Limits
 
-`BLOCK_LIMITS`: 160,000 vertices, 190,000 triangles (the mesh foundation refuses 200,000 faces), grid 8 to 120 (slider 16 to 60), refused before anything is solved with Grid resolution, Strata and
+`BLOCK_LIMITS`: 160,000 vertices, 190,000 triangles (the mesh foundation refuses 200,000 faces), grid 8 to 120 (slider 16 to 48; Bedding lines slider 0 to 4), refused before anything is solved with Grid resolution, Strata and
 Faults named; bedding sheets 140,000 vertices (Beds); 16 strata, 6 faults. Timings are below; an eroded stratum keeps `1e-5 H`; contacts beside
 a stratum thinner than 0.4% of the height are not drawn. The default `hiddenLines` and `paintOrder` budgets are raised to 2·10^8 work units per view; the drawing charges its triangles and line points to the run (default 600,000).
 

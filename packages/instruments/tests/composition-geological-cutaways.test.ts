@@ -3,7 +3,7 @@ import test from "node:test";
 import {
   BLOCK_LIMITS, camera, createInstrument, geologicalBlock, geologicalCamera, geologicalCutawaysComposition, geologicalHiddenLines, geologicalPaintOrder,
   geologicalProducts, inspectorItems, locateInDomain, meshComponents, meshData, meshMeasures, meshTopology, planarDomain, strataModel, triangulatePolygon, usesSeed,
-  validateInstrument, viewGeometry, visibleParameters,
+  definitions, drawInstrument, prepareInstrument, validateInstrument, viewGeometry, visibleParameters,
   type GeologicalBlock, type GeologicalCutOptions, type GeologicalView, type InstrumentInput, type StrataOptions,
 } from "../dist/index.js";
 import { drawFingerprint } from "./helpers/draw-fingerprint.ts";
@@ -373,9 +373,6 @@ test("a hidden control never changes the drawing, and the seed changes the drawi
 
 test("errors name the control to change and nothing is truncated", () => {
   const throwing = (params: Record<string, number | string | boolean>) => () => geologicalProducts(geologicalCutawaysComposition(input(params)));
-  assert.throws(throwing({ fold: "chevron", foldAmplitude: 0.4, foldWavelength: 0.3, faultDip: 40, faultCount: 1 }), /too steep for faults dipping 40 degrees[^]*Fold amplitude/);
-  assert.throws(throwing({ tilt: 50, faultDip: 45, fold: "none", faultCount: 1 }), /Horizons are too steep[^]*Tilt/);
-  assert.throws(throwing({ faultCount: 4, faultDip: 35, depth: 0.4, height: 0.9, faultStrike: "width" }), /compartment[^]*(Fault dip|Faults)/i);
   assert.throws(throwing({ strata: 16, faultCount: 4, resolution: 72 }), /Grid resolution/);
   assert.throws(throwing({ beds: 6, strata: 16, resolution: 60, faultCount: 2, cut: "slice" }), /Beds|Grid resolution/);
   assert.throws(() => geologicalBlock(strataModel(flat()), 7), /Grid resolution must be a whole number from 8 to 120/);
@@ -385,6 +382,37 @@ test("errors name the control to change and nothing is truncated", () => {
 });
 
 // ---- Lines, faults and depth ------------------------------------------------------------------
+
+test("a dip the geology forbids is steepened to the shallowest that works, and every offset then holds for the dip used", () => {
+  const gentle = strataModel(flat({ fold: "none", tilt: 0, trend: 0, faultDip: 50, faultCount: 2 }));
+  assert.ok(Math.abs(gentle.dip - 50) < 1e-9 && Math.abs(gentle.kappa - 1 / Math.tan(50 * Math.PI / 180)) < 1e-12, "a dip that fits is honoured exactly");
+  // Steep folds against a shallow dip: cot(dip) times the steepest slope across the strike is held under 0.92.
+  const folded = strataModel(flat({ fold: "sinusoidal", foldAmplitude: 0.4, foldWavelength: 0.3, faultDip: 35, faultCount: 2 }));
+  assert.ok(folded.dip > 35 + 5 && folded.dip < 90);
+  // Independently: the steepest slope of any horizon across the strike (finite differences on a fine window) times cot(dip) stays under 0.92.
+  const [x0, z0] = folded.toWorld(0, 0), [x1, z1] = folded.toWorld(1, 0), eX = x1 - x0, eZ = z1 - z0;
+  let steepest = 0;
+  for (let w = 1; w < folded.strata; w++) for (let i = 0; i <= 80; i++) for (let j = 0; j <= 40; j++) {
+    const x = -0.5 + i / 80, z = -0.4 + 0.8 * j / 40, h = 1e-6;
+    steepest = Math.max(steepest, Math.abs(eX * (folded.horizon(w, x + h, z) - folded.horizon(w, x - h, z)) + eZ * (folded.horizon(w, x, z + h) - folded.horizon(w, x, z - h))) / (2 * h));
+  }
+  assert.ok(Math.abs(folded.kappa) * steepest <= 0.92, `${Math.abs(folded.kappa) * steepest}`);
+  assert.ok(Math.abs(folded.kappa) * steepest > 0.6, "steepened only as far as needed");
+  // A tall block with four faults in a shallow block across the strike: the traces stay inside the walls.
+  const tall = strataModel(flat({ fold: "none", tilt: 0, faultCount: 4, faultDip: 35, depth: 0.4, height: 0.9, faultStrike: "width" }));
+  assert.ok(tall.dip > 60);
+  for (const f of tall.faults) for (const y of [0, tall.height]) {
+    const p = f.position + tall.kappa * (y - tall.height / 2);
+    assert.ok(Math.abs(p) < tall.extentP / 2 - 0.04 * tall.extentP * 0.99, `fault ${f.id} leaves the block at height ${y}`);
+  }
+  // The block still builds and the throw across a fault is exact at the dip used.
+  const block = geologicalBlock(folded, 20);
+  const fault = folded.faults[0], left = block.grids[0], right = block.grids[1];
+  for (let b = 0; b <= left.nq; b += 3) {
+    const yl = left.raw[2][b * (left.nz + 1) + left.nz], yr = right.raw[2][b * (right.nz + 1)];
+    assert.ok(Math.abs(Math.abs(yr - yl) - Math.abs(fault.throw)) < 1e-9);
+  }
+});
 
 test("fault traces lie on their planes on the ground, the walls, the base and the cut faces", () => {
   const { model, block } = build(flat({ fold: "sinusoidal", faultCount: 3, faultDip: 65, relief: 0.1 }), 22);
@@ -437,4 +465,26 @@ test("controls: groups are proportional only where scaling together is one edit,
   assert.ok(shown({ cut: "exploded" }).has("gap") && shown({ cut: "exploded" }).has("sliceDip"));
   assert.ok(!shown({ faulted: false }).has("faultDip") && !shown({ fold: "none" }).has("foldAmplitude") && !shown({ ground: "flat" }).has("relief"));
   assert.ok(!shown({ fill: "none" }).has("opacity") && shown({ fill: "shaded" }).has("shade") && !shown({ fill: "flat" }).has("shade"));
+});
+
+// ---- Slider ends: every combination of slider limits is a picture, never a refusal -----------------
+
+test("every numeric control at its slider minimum and maximum, alone and all together, in every cutaway, validates and draws", async () => {
+  const definition = definitions.find((d) => d.id === ID)!;
+  const numbers = definition.parameters.filter((p) => p.type === "number");
+  assert.ok(numbers.length >= 30);
+  const nullSurface = new Proxy({ CLOSE: 1, ROUND: 2 } as Record<string, unknown>, { get: (t, k: string) => (k in t ? t[k] : () => {}) }) as never;
+  const attempt = (label: string, params: Record<string, number | string | boolean>) => {
+    const spec = input(params);
+    try { validateInstrument(spec); drawInstrument(nullSurface, spec); } catch (e) { assert.fail(`${label}: ${(e as Error).message}`); }
+  };
+  for (const p of numbers) for (const end of ["min", "max"] as const) attempt(`${p.key} at slider ${end}`, { [p.key]: end === "min" ? p.min! : p.max! });
+  const all = (end: "min" | "max") => Object.fromEntries(numbers.map((p) => [p.key, end === "min" ? p.min! : p.max!]));
+  const started = performance.now();
+  for (const cut of ["block", "slice", "corner", "exploded"]) for (const end of ["min", "max"] as const)
+    for (const extra of [{}, { faultStrike: "width", faultDipDirection: "right", fold: "dome", projection: "perspective", faultStyle: "alternating" }])
+      attempt(`all ${end}, cut ${cut}, ${JSON.stringify(extra)}`, { ...all(end), cut, ...extra });
+  assert.ok(await prepareInstrument(input(all("max")), () => false));
+  // The measured worst corner (all maxima, ~0.4 s alone) leaves ample room for the 16 corner drawings under a busy machine.
+  assert.ok(performance.now() - started < 60_000);
 });

@@ -36,9 +36,10 @@ with folds off, uniform thickness, no scatter and a flat surface it changes noth
 | **Fault pattern** | **Stepped**: every fault the same sense, a staircase; **alternating**: horsts and grabens; **mixed**: seeded senses. |
 | **Ground surface**, **Erosion depth**, **Valley spacing** | **Flat**: level top, so tilt and folds give outcrop bands. **Eroded**: seeded valleys cut into the top that expose older units in the low ground. |
 
-Very steep folds or tilts against a shallow fault dip are refused with the controls to change named: a horizon steeper than
-the fault plane would cross it twice within one column, and the block is built column by column. The same goes for so many
-faults that a compartment would be narrower than 4% of the block.
+Fault dip is a request. A plane is steepened, only as far as needed, when a shallower one would meet a horizon twice within a
+column (steep folds, tilt or valleys) or would run out of the block between the base and the top (a tall, narrow block); the
+picture and every offset then use the angle actually drawn, so no slider setting is refused. The faults are spread inside the
+walls, so a compartment never gets narrower than 4% of the block.
 
 ## Cutaway
 
@@ -100,8 +101,9 @@ and it makes no claim of geological simulation.
 
 ## Limits
 
-The block is refused with the controls to lower named (Grid resolution, Strata, Faults) beyond 160,000 vertices or 190,000 triangles;
-bedding lines beyond 140,000 sheet vertices (Beds). More than 6 faults, 16 strata or a grid over 120 cells are outside the hard limits.
+The sliders are narrowed so that every combination of slider ends draws (tested: each control alone at both ends, all minima, all maxima, in every cutaway
+and for both fault strikes; the all-maxima corner prepares in about 0.4 s). Typed values past the sliders are refused with the controls to lower named (Grid
+resolution, Strata, Faults, Beds) beyond 160,000 vertices or 190,000 triangles, or 140,000 bedding sheet vertices. More than 6 faults, 16 strata or a grid over 120 cells are outside the hard limits.
 A stratum that is eroded away or pinched out keeps a sliver of one hundred-thousandth of the block's height instead of vanishing, so every
 solid stays closed; cut-face regions under 1e-5 of the block width squared and contacts beside a stratum thinner than 0.4% of the height
 are not drawn. A surface is a straight-edged triangle mesh at the chosen resolution: tight folds need a finer grid. The section of a plane
