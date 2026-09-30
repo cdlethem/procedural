@@ -87,7 +87,7 @@ scale together; nothing in the model groups is proportional (counts and radii in
 disc/ring/spots, spots follow spots, start noise follows spots/disc/ring; tiles follow a symmetry; band controls follow bands; contour controls
 follow contours (weight for ink/stitch, spacing for stitch/beads, bead for beads); mark controls follow marks (line weight for ring/rosette/arrow,
 petals for rosette, opening for ring/rosette, follow for rosette/arrow). Slider intervals differ from hard limits (resolution 48–120 vs 24–192,
-scales 2–6 vs 2–8, steps 0–400 vs 2,000, ratio 1.3–2.6 vs 1.05–4, band level −0.6–0.6 vs −1–1). The full control audit (`tests/helpers/audit-controls.ts pattern-competition`) was started but not finished: every probe is a model run, and on the loaded shared machine it did not complete in over an hour. It was stopped and is **not** claimed; the hidden-control property test in the suite (each declared condition's hidden controls changed on a small grid, fingerprint unchanged; visible controls change it) is the evidence.
+scales 2–5 vs 2–8, smallest scale 1–3 vs 1–24, steps 0–400 vs 2,000, ratio 1.3–1.8 vs 1.05–4, inhibitor reach 1.4–3 vs 1.1–4, contour spread ≤ 0.5 vs 0.98, band level −0.6–0.6 vs −1–1). The full control audit (`tests/helpers/audit-controls.ts pattern-competition`) was started but not finished: every probe is a model run, and on the loaded shared machine it did not complete in over an hour. It was stopped and is **not** claimed; the hidden-control property test in the suite (each declared condition's hidden controls changed on a small grid, fingerprint unchanged; visible controls change it) is the evidence.
 
 ## Checks (`tests/composition-pattern-competition.test.ts`, 21 tests)
 
@@ -151,3 +151,13 @@ and a level edit reuse the cached snapshot and products. A steps edit costs the 
   stitching from a Studio binding, are host work (the values are published; the descriptors are not).
 - Patterns keep evolving slowly; there is no convergence detector beyond `activity`, only the inert (constant) termination.
 - Work and slider bounds derive from measurement on one machine.
+
+## Slider corners (added after real-interface review)
+
+The first slider ranges (scales to 6, ratio to 2.6, smallest to 6) produced an inhibitor radius of 371 cells at the slider maximum and refused to draw. The
+sliders are now narrowed so that every slider end, alone and all together (the smallest grid with every scale control at maximum is the binding corner: coarsest
+inhibitor radius 96 = 2 × 48), is a valid input whose declared work is within the bound and which draws; a test sets each numeric control to its slider minimum
+and maximum, and all minimums and all maximums together over three start/symmetry/boundary combinations. The contour-spread slider stopped at 0.5 for the same
+reason (centre 0.5 plus spread 0.9 put a level past 1). The worst slider corner (steps 400, resolution 120, 5 scales, increment 0.1, nine contour levels, marks on) took 2.5 s of CPU on the shared machine while its load
+average was about 80 (1.65 s the model, 0.8 s bands and contours, 0.1 s marks); the 6-scale slider maximum measured earlier on a quieter machine was 1.4 s. Treat these as
+upper observations, not bounds.

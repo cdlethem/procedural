@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  canPrepareInstrument, checkSimulation, createInstrument, drawPatternCompetition, patternBands, patternCompetingFields, patternCompetitionComposition,
+  canPrepareInstrument, checkSimulation, definition, createInstrument, drawPatternCompetition, patternBands, patternCompetingFields, patternCompetitionComposition,
   patternContours, patternFrame, patternProducts, patternRecipeSnapshots, patternScales, patternSimulation, patternSites, patternSnapshots, patternView,
   prepareInstrument, preparePatternSnapshots, runSimulation, stateAt, usesSeed, validateInstrument, visibleParameters, PATTERN_LIMITS,
   type CompositionSurface, type PatternModel, type PatternSnapshots, type PatternState, type PatternSymmetry,
@@ -563,4 +563,25 @@ test("consumers are replaceable and receive the same frozen values", () => {
   assert.equal(marks.length, products.sites.length);
   assert.ok((lines as { id: string }[]).every((p, i) => p.id === products.paths[i].id));
   assert.ok(Object.isFrozen(products.paths) && Object.isFrozen(products.paths[0]) && Object.isFrozen(products.sites[0]) && Object.isFrozen(products.bands));
+});
+
+test("every slider end, and the slider corners together, are admitted: valid input, declared work within the bound, and a drawing", () => {
+  const numeric = definition("pattern-competition").parameters.filter((p) => p.type === "number");
+  assert.ok(numeric.length > 30);
+  const at = (pick: (p: (typeof numeric)[number]) => number, only?: string): Record<string, number> =>
+    Object.fromEntries(numeric.filter((p) => !only || p.key === only).map((p) => [p.key, pick(p)]));
+  const min = (p: (typeof numeric)[number]) => p.min!, max = (p: (typeof numeric)[number]) => p.max!;
+  const admitted = (params: Record<string, number | string | boolean>, note: string) => {
+    const input = validateInstrument(inputWith(params));
+    const recipe = patternCompetitionComposition(input), limits = patternSimulation.limits(recipe.model);
+    assert.ok(recipe.steps * limits.workPerStep + (limits.initialWork ?? 0) <= PATTERN_LIMITS.maxWork, `${note}: declared work within the bound`);
+    assert.ok(drawFingerprint(input).length > 0, note);
+  };
+  for (const p of numeric) { admitted(at(min, p.key), `${p.key} at its slider minimum`); admitted(at(max, p.key), `${p.key} at its slider maximum`); }
+  for (const [symmetry, start, boundary] of [["none", "noise", "wrap"], ["dihedral", "ring", "void"], ["quad", "spots", "mirror"]]) {
+    admitted({ ...at(min), symmetry, start, boundary }, `all minimums, ${symmetry}/${start}/${boundary}`);
+    admitted({ ...at(max), symmetry, start, boundary, marks: true, markKind: "rosette" }, `all maximums, ${symmetry}/${start}/${boundary}`);
+  }
+  // The smallest grid with every scale control at its maximum is the binding corner for the blur windows.
+  admitted({ ...at(max), resolution: 48 }, "widest scales on the smallest grid");
 });

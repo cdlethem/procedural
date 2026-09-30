@@ -110,5 +110,8 @@ binding your own start field (a mask or an image) is future host work, not somet
 Resolution 24–192 cells per side, 2–8 scales, at most 2,000 steps, and a total work bound of 1.5 billion cell reads (about three
 seconds on the review machine): at the widest settings that is about 300 steps, and the message names Steps, Resolution or Scales.
 An inhibitor radius over twice the grid is refused. A single contour piece over 2,200 segments is refused with the control
-to change. Slider ranges are narrower than these limits: steps to 400, resolution 48–120 in twelves (so tiles 1–4 all divide it),
-scales 2–6.
+to change. Slider ranges are narrower than these limits and chosen so that **every combination of slider ends is admitted**: resolution 48–120 in twelves
+(so tiles 1–4 all divide it), scales 2–5, smallest scale 1–3, scale ratio 1.3–1.8, inhibitor reach 1.4–3, steps to 400, contour spread up to 0.5
+(so levels stay inside −1 to 1 whatever the centre). The widest slider corner puts the coarsest inhibitor radius at exactly twice the smallest grid.
+Typed values past the sliders (six to eight scales, larger ratios, a wider contour spread) are accepted when they fit, and refused with the control named when
+they do not.
