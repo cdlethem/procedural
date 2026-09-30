@@ -53,7 +53,7 @@ const parameters: Parameter[] = [
   n("startRadius", "Start radius", "Radius of a seed cell, in canvas units. Cells that never find food stay near this size.", 2, 14, 0.25, 0.05, 500),
   n("divideRadius", "Division radius", "A cell divides when it grows to this radius; no cell grows larger. Larger cells mean fewer, bolder cells in the same dish.", 6, 30, 0.25, 0.05, 500),
   n("uptake", "Uptake", "Share of the nutrient under a cell that it absorbs each step. Higher grows and divides faster and starves the neighbours behind a growing front sooner.", 0.02, 0.3, 0.005, 0.0001, 1),
-  n("maxCells", "Cell limit", "Most cells the colony will hold. At the limit division stops, cells finish growing and the colony settles.", 20, 1000, 10, 1, 2000),
+  n("maxCells", "Cell limit", "Most cells the colony will hold. At the limit division stops, cells finish growing and the colony settles.", 30, 600, 10, 1, 2000),
 
   n("split", "Split", "Share of the mother's area that the larger daughter takes: 0.5 divides evenly, higher gives one big and one small daughter, so sizes differ from the first division on.", 0.5, 0.9, 0.01, 0.5, 0.95),
   select("orientation", "Division axis", "The line the daughters separate along: random, along or across the nutrient gradient (chains toward the food, or sheets across it), out from or around the colony's middle, or one fixed direction. With a slope the larger daughter leads toward the food or outward.",
@@ -64,9 +64,9 @@ const parameters: Parameter[] = [
   select("boundary", "Boundary", "The dish wall: a rectangle, or the ellipse inside it. Cells and nutrient stay inside; cells pile up against the wall.", ["dish", "box"]),
   n("overlap", "Allowed overlap", "How far two cells may overlap before they are pushed apart, as a fraction of the sum of their radii. 0 keeps them touching but never overlapping; higher lets a crowded colony compress.", 0, 0.3, 0.01, 0, 0.5),
   n("stiffness", "Stiffness", "Share of an overlap resolved each relaxation pass. Low leaves soft, overlapping cells; 1 pushes them apart at once. At 0 cells never move apart.", 0.05, 1, 0.05, 0, 1),
-  n("relax", "Relaxation", "Overlap-resolving passes per step. More passes spread the push through a crowd; fewer let daughters stay tucked where they were born. Each pass costs time in a large colony.", 1, 6, 1, 1, 16),
+  n("relax", "Relaxation", "Overlap-resolving passes per step. More passes spread the push through a crowd; fewer let daughters stay tucked where they were born. Each pass costs time in a large colony.", 1, 5, 1, 1, 16),
 
-  n("steps", "Steps", "How long the colony has grown. Drag it to watch the colony grow and divide; the states before it never change, they are only extended.", 0, 500, 1, 0, 1000),
+  n("steps", "Steps", "How long the colony has grown. Drag it to watch the colony grow and divide; the states before it never change, they are only extended.", 0, 400, 1, 0, 1000),
 
   n("ageMin", "Youngest shown", "Hide cells younger than this fraction of the run: 0 shows even the cells born at the last step, 1 only the founders.", 0, 1, 0.01, 0, 1),
   n("ageMax", "Oldest shown", "Hide cells older than this fraction of the run: 1 shows the founders, lower shows only their descendants. Hiding never moves a cell.", 0, 1, 0.01, 0, 1),
@@ -129,7 +129,7 @@ export const cellDivisionDefinitions: InstrumentDefinition[] = [{
     source: "ring", sourceAngle: 0, sourceOffset: 0.5, sourceSize: 0.06, reserve: 0.3, diffusion: 100, fieldCell: 8,
     centerX: 320, centerY: 320, width: 560, height: 560,
     seedLayout: "cluster", seedCount: 3, seedX: 0.5, seedY: 0.5, seedSpread: 16, seedAngle: 0,
-    startRadius: 7, divideRadius: 13, uptake: 0.12, maxCells: 700,
+    startRadius: 7, divideRadius: 13, uptake: 0.12, maxCells: 600,
     split: 0.6, orientation: "random", splitAngle: 0, orientJitter: 0,
     boundary: "dish", overlap: 0.05, stiffness: 0.5, relax: 4,
     steps: 230,

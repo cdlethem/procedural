@@ -62,7 +62,7 @@ without a source has eaten all its food (starved). Cells never disappear.
 
 ## Try these
 
-- **Feeding front:** *Cell limit* 700, *Steps* 230: the default; then drag *Steps* to watch it spread inward from the rim.
+- **Feeding front:** *Cell limit* 600, *Steps* 230: the default; then drag *Steps* to watch it spread inward from the rim.
 - **Chains toward food:** *Source* edge, *Source direction* 180, seeds a *Seed layout* line at *Seed X* 0.12, *Division axis* gradient, *Color by* size.
 - **Two clans:** *Source* pair, *Seed layout* scatter, 9 seeds, *Color by* founder, *Lineage* ink in the first colour.
 - **A closed culture:** *Source* none, *Reserve* 0.5, *Diffusion* 80: it grows on what it has and stops.

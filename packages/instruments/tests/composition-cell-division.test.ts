@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  agedCells, canPrepareInstrument, cellColony, cellDivisionComposition, cellDivisionSimulation, cellSites, cellWalls, checkSimulation, colonyAt,
+  agedCells, canPrepareInstrument, definition, MAX_COLONY_WORK, cellColony, cellDivisionComposition, cellDivisionSimulation, cellSites, cellWalls, checkSimulation, colonyAt,
   colonyConstruction, colonyFrameAt, colonyUsesSeed, createInstrument, diffusionPlan, drawCellDivision, drawInstrument, fieldLayout, identical,
   lineagePaths, locateInDomain, nutrientPaths, planarRegion, prepareCellColony, prepareInstrument, stateAt, usesSeed, validateInstrument, wallHatch, wallPaths,
-  type ColonyOptions, type CompositionSurface, type InstrumentInput,
+  colonyOptionsOf, type ColonyOptions, type CompositionSurface, type InstrumentInput,
 } from "../dist/index.js";
 
 /** Counts what a drawing does and remembers its translation; nothing else. */
@@ -497,4 +497,21 @@ test("the instrument prepares cooperatively, draws from the prepared colony, and
     drawInstrument(new Recorder() as never, input);
     assert.equal(calls, 0, "drawing reads the prepared colony");
   } finally { cellDivisionSimulation.step = step; }
+});
+
+test("every combination of the cost drivers at their slider ends is admitted, inside the work bound", () => {
+  const item = definition("cell-division"), input = createInstrument("cell-division");
+  const ends = (key: string) => { const p = item.parameters.find((q) => q.key === key)!; return [p.min!, p.max!]; };
+  const drivers = ["steps", "maxCells", "relax", "fieldCell", "diffusion", "width", "height", "seedCount", "uptake"];
+  let worst = 0;
+  for (let mask = 0; mask < 2 ** drivers.length; mask++) {
+    const over = Object.fromEntries(drivers.map((key, k) => [key, ends(key)[(mask >> k) & 1]]));
+    const values = { ...input.params, ...over };
+    assert.doesNotThrow(() => validateInstrument({ ...input, params: values }), JSON.stringify(over));
+    const options = colonyOptionsOf(values), limits = cellDivisionSimulation.limits(options);
+    const work = limits.initialWork! + (values.steps as number) * limits.workPerStep;
+    worst = Math.max(worst, work);
+    assert.ok(work <= MAX_COLONY_WORK, `slider corner ${JSON.stringify(over)} declares ${work} work units`);
+  }
+  assert.ok(worst > 1e7, "the corners were actually expensive");
 });
