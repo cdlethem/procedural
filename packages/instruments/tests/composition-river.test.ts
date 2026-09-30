@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  applyNeckCuts, canPrepareInstrument, channelCurvature, checkRiver, checkSimulation, clearRiverCache, createInstrument, definitions,
+  applyNeckCuts, canPrepareInstrument, MAX_NODES, MAX_START_SINUOSITY, RIVER_MAX_WORK, channelCurvature, checkRiver, checkSimulation, clearRiverCache, createInstrument, definitions,
   dischargeWidths, drawRiverRibbons, easeAtWalls, END_ROOM, findNeckCuts, firstSelfCrossing, inspectorItems, isRiverCached, LOOP_FACTOR,
   migrationOffsets, oxbowPaths, prepareInstrument, prepareRiverRibbons, resampleChannel, ribbonHalfWidths, riverAgeField, riverBanks,
   riverConstruction, riverFields, riverRibbons, riverRibbonsComposition, riverSimulation, riverSnapshots, riverTraces, riverValley, SETTLE_TOLERANCE,
@@ -420,13 +420,76 @@ test("every hard bound is checked before running and names the control to change
   fails({ confinement: 20, width: 8 }, /confinement \(20\) must be at least twice the widest channel \(22\.63\).*raise confinement or lower width or discharge/);
   fails({ smoothing: 20, spacing: 0.2 }, /smoothing \(20 widths\) at spacing 0\.2 needs 400 kernel taps.*lower smoothing or raise spacing/);
   fails({ length: 4000, width: 0.5, spacing: 0.2, confinement: 500 }, /length 4000 at spacing 0\.1 needs 32001 nodes.*lower length or raise spacing or width/);
-  fails({ steps: 600, length: 500, width: 2, spacing: 0.2, cutoff: 3, confinement: 300 }, /steps \(600\).*work units.*lower steps, length or smoothing, or raise spacing/);
+  fails({ steps: 600, length: 620, width: 2, spacing: 0.3, cutoff: 3, confinement: 300 }, /steps \(600\).*work units.*lower steps, length or smoothing, or raise spacing/);
   assert.throws(() => riverRibbons({ ...river(), planform: "meander" as never }), /planform/);
   assert.throws(() => riverRibbons(river({}, -1)), /seed/);
-  // Bank mobility beyond half a node per step is reported when it happens, with the step and the controls.
-  assert.throws(() => riverRibbons(river({ mobility: 2, steps: 60 })), /step \d+: bank migration would move a node .* more than half the node spacing.*lower mobility, raise spacing or raise smoothing/);
+  // Bank mobility far past the slider is limited, not refused: no node moves more than half a node spacing in a step, and the river stays a simple curve.
+  const wild = riverRibbons(river({ mobility: 2, steps: 30 })), spacing = wild.options.spacing * wild.options.width;
+  wild.frames.forEach((frame) => assert.equal(firstSelfCrossing(frame.xy), null, `step ${frame.step}`));
+  // A node keeps its id only where it stays the nearest to its old place, so it moved at most half a spacing (the limit) plus half a spacing (its resampling slot).
+  const before = wild.frames[0], after = wild.frames[1], at = new Map(Array.from(before.ids, (id, k) => [id, k]));
+  let compared = 0;
+  Array.from(after.ids).forEach((id, k) => {
+    const from = at.get(id);
+    if (from === undefined) return;
+    compared++;
+    assert.ok(Math.hypot(after.xy[2 * k] - before.xy[2 * from], after.xy[2 * k + 1] - before.xy[2 * from + 1]) <= spacing * 1.001, `node ${id}`);
+  });
+  assert.ok(compared > 20);
   // Direct-API `steps` at the slider's hard maximum is admitted for the authored river.
   assert.doesNotThrow(() => checkRiver(river({ steps: 600 })));
+});
+
+/* ----------------------------------------------------------------- slider corners ---- */
+
+/** Slider ends of every numeric control, in every combination the test can afford: each alone, all minima, all maxima and seeded mixtures of ends. */
+function sliderCorners(planform: string): { label: string; values: Record<string, number | string | boolean> }[] {
+  const definition = definitions.find((item) => item.id === "river-ribbons")!;
+  const numbers = definition.parameters.filter((parameter: Parameter) => parameter.type === "number");
+  const base = { ...definition.defaults, planform } as Record<string, number | string | boolean>;
+  const corner = (pick: (parameter: Parameter) => number) => ({ ...base, ...Object.fromEntries(numbers.map((parameter: Parameter) => [parameter.key, pick(parameter)])) });
+  const corners = [{ label: "all minima", values: corner((parameter) => parameter.min!) }, { label: "all maxima", values: corner((parameter) => parameter.max!) }];
+  for (const parameter of numbers) for (const [end, value] of [["min", parameter.min!], ["max", parameter.max!]] as const)
+    corners.push({ label: `${parameter.key} at ${end}`, values: { ...base, [parameter.key]: value } });
+  let state = 0x5eed + planform.length;
+  const random = () => { state = (state + 0x6d2b79f5) >>> 0; let t = state; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  for (let k = 0; k < 40; k++) corners.push({ label: `mixed ends ${k}`, values: corner((parameter) => (random() < 0.5 ? parameter.min! : parameter.max!)) });
+  return corners;
+}
+
+test("every slider end, alone and combined, is admitted and its declared work is within the bound", () => {
+  const input = createInstrument("river-ribbons");
+  for (const planform of ["wandering", "sine-generated"]) for (const { label, values } of sliderCorners(planform)) {
+    const admitted = validateInstrument({ ...input, params: values });
+    const options = riverRibbonsComposition(admitted).source, { workPerStep, initialWork = workPerStep, stepLimit } = riverSimulation.limits(riverConstruction(options));
+    assert.ok(options.steps <= stepLimit, `${planform} ${label}: steps within the model's limit`);
+    assert.ok(workPerStep * options.steps + initialWork <= RIVER_MAX_WORK, `${planform} ${label}: declared work ${workPerStep * options.steps + initialWork} within ${RIVER_MAX_WORK}`);
+    assert.doesNotThrow(() => checkRiver(options), `${planform} ${label}`);
+  }
+});
+
+test("the extreme slider corners draw: every planform's all-minima and all-maxima river runs to its last step", () => {
+  const input = createInstrument("river-ribbons");
+  for (const [planform, seed] of [["wandering", 42], ["sine-generated", 7]] as const) {
+    const corners = sliderCorners(planform).filter((corner) => corner.label.startsWith("all") || /^mixed ends [0-1]$/.test(corner.label));
+    for (const { label, values } of corners) {
+      clearRiverCache();
+      const options = riverRibbonsComposition({ ...input, seed, params: values }).source;
+      const scene = riverRibbons(options);
+      assert.equal(scene.frames.length, options.steps + 1, `${planform} seed ${seed} ${label}`);
+      assert.equal(firstSelfCrossing(scene.channel.xy), null, `${planform} seed ${seed} ${label}`);
+      assert.ok(scene.channel.ids.length <= MAX_NODES);
+    }
+  }
+});
+
+test("a starting channel is never longer than the stated multiple of the valley: a large offset is scaled down, deterministically", () => {
+  for (const over of [{ amplitude: 1, harmonics: 10 }, { planform: "sine-generated" as const, waves: 6, turn: 80 }]) for (const seed of [1, 2, 3]) {
+    const scene = riverRibbons(river({ steps: 0, ...over }, seed));
+    assert.ok(scene.channel.length <= MAX_START_SINUOSITY * scene.options.length * (1 - 2 * END_ROOM) * 1.02, `${JSON.stringify(over)} seed ${seed}: ${scene.channel.length}`);
+  }
+  const calm = riverRibbons(river({ steps: 0, amplitude: 0.3, harmonics: 2 }));
+  assert.ok(calm.channel.length < 1.3 * calm.options.length, "a gentle start is not scaled");
 });
 
 /* -------------------------------------------------------------------------- consumers ---- */
