@@ -4,7 +4,7 @@ import {
   GROWTH_LIMITS, bundledGrowthSeed, canPrepareInstrument, checkSimulation, createInstrument, definitions, drawInstrument, gridGrowthField, growthField, growthSeed,
   grownSurface, hingeAngle, icosphereMesh, inspectorItems, mergeMeshes, mesh, meshAttribute, meshBoundaryEdges, meshTopology, prepareInstrument, prepareSurfaceGrowth,
   runSimulation, stateAt, surfaceGrowthCache, surfaceGrowthComposition, surfaceGrowthRun, surfaceGrowthSimulation, surfaceGrowthSnapshots, transformMesh,
-  usesSeed, validateParameters, visibleParameters, GROWTH_RETENTION,
+  usesSeed, validateInstrument, validateParameters, visibleParameters, GROWTH_RETENTION,
   type CompositionSurface, type GrowthControls, type GrowthField, type GrowthSeed, type InstrumentInput,
 } from "../dist/index.js";
 import { meshStorage } from "../dist/composition/mesh.js";
@@ -568,4 +568,27 @@ test("a cancelled preparation paints nothing stale and a later one matches a dir
   assert.equal(await prepareInstrument(input(params), () => false), true);
   const direct = drawFingerprint(input(params));
   assert.equal(drawFingerprint(input(params)), direct);
+});
+
+test("every numeric control at its slider minimum and maximum, alone and all together, validates and draws inside the declared work bound", () => {
+  const definition = definitions.find((d) => d.id === "surface-growth")!;
+  const numeric = definition.parameters.filter((p) => p.type === "number");
+  assert.ok(numeric.length > 40);
+  const silent = new Proxy({ CLOSE: "close", ROUND: "round" } as Record<string, unknown>, { get: (target, key) => (key in target ? target[key] : () => {}) }) as unknown as CompositionSurface;
+  const check = (label: string, params: Record<string, number | string | boolean>) => {
+    const candidate = { ...createInstrument("surface-growth"), params: { ...createInstrument("surface-growth").params, ...params } };
+    assert.doesNotThrow(() => validateInstrument(candidate), `${label} validates`);
+    assert.doesNotThrow(() => drawInstrument(silent, candidate), `${label} draws`);
+    const run = surfaceGrowthRun(surfaceGrowthComposition(candidate));
+    assert.ok(run.work <= GROWTH_LIMITS.maxWork, `${label}: ${run.work} units charged against the bound ${GROWTH_LIMITS.maxWork}`);
+    assert.equal(run.steps, candidate.params.steps);
+  };
+  for (const p of numeric) { check(`${p.key} = min`, { [p.key]: p.min! }); check(`${p.key} = max`, { [p.key]: p.max! }); }
+  check("all minimums", Object.fromEntries(numeric.map((p) => [p.key, p.min!])));
+  check("all maximums", Object.fromEntries(numeric.map((p) => [p.key, p.max!])));
+  // and the most expensive reachable setting the sliders allow: every maximum with the finest edge limit, contact on, every line pass
+  check("all maximums, finest edge limit", { ...Object.fromEntries(numeric.map((p) => [p.key, p.max!])), edgeLimit: numeric.find((p) => p.key === "edgeLimit")!.min!, lines: "both", levelBy: "growth" });
+  // the hard maximum of every control together is refused by name, not attempted
+  const hard = Object.fromEntries(numeric.map((p) => [p.key, p.hardMax ?? p.max!]));
+  assert.throws(() => validateParameters("surface-growth", { ...createInstrument("surface-growth").params, ...hard }), /Steps|Vertex limit|Relaxation|Pin|must be/);
 });

@@ -80,10 +80,11 @@ lines is as useful as a filled one.
 
 ## Limits and errors
 
-Nothing is truncated silently and every error names the control to change: steps up to 1,200 by the work bound,
-**Vertex limit** up to 16,000, **Relaxation** up to 60. The run declares a worst case (every step at the full
-vertex limit) and refuses it beyond 400 million work units, which costs about 10 seconds; the default costs
-about a second, a scrub of one step a fraction of that. A triangle that collapses to a sliver is reported with its
+Nothing is truncated silently and every error names the control to change. The sliders stop at 160 steps, a
+vertex limit of 1,400, 16 relaxation sweeps and resolution 24, so that every slider at its maximum at once still
+prepares in under two seconds; the code accepts up to 1,200 steps, 16,000 vertices and 60 sweeps, limited by a
+declared worst case (every step at the full vertex limit) that is refused beyond 400 million work units, naming
+the controls to lower. The default prepares in under a second; a scrub of one step takes a fraction of that. A triangle that collapses to a sliver is reported with its
 step, its vertex ids and what to change (lower Growth rate or limit, raise Bending or Relaxation). Self-contact is
 scoped as above. Seed surfaces are the four bundled ones; binding a user's own mesh or growth field to the app is
 future work, though the code API accepts any triangle mesh and a sampled field (a reaction pattern, for instance).
