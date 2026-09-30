@@ -17,8 +17,8 @@
  * other's lines) are clipped to the projected triangle, unprojected onto the triangle's plane and handed to the same exact
  * solver as 3D segments, so a hatch line is hidden exactly where a nearer surface covers it, and the visible pieces
  * of one lattice line are re-joined across triangles. Tone: `darkness = 1 - (ambient + (1 - ambient) * max(0, n . L))`
- * with `L` from azimuth (0 = +z, positive toward +x) and elevation, `n` the triangle's flat normal or the mean of its
- * vertices' angle-weighted normals ("smooth"), flipped toward the viewer for back faces of an open mesh (two-sided
+ * with `L` from azimuth (0 = +z, positive toward +x) and elevation, `n` the triangle's face normal or, within `smoothAngle`,
+ * the blend of the faces around its corners (a cube stays flat, a sphere shades smoothly), flipped toward the viewer for back faces of an open mesh (two-sided
  * light). Family `j` of `F` (angle `angle + 180 j / F`) is drawn on a triangle when `darkness > threshold + (1 - threshold) j / F`,
  * so darker faces carry more crossing families and lighter faces fewer. There are no cast shadows.
  *
@@ -35,7 +35,7 @@
 import { camera, type Camera } from "./camera.js";
 import { cachedBy, componentSeed } from "./core.js";
 import { meshTopology } from "./mesh-topology.js";
-import { internalVertexNormals, meshDerived, meshStorage, type Mesh } from "./mesh.js";
+import { meshDerived, meshStorage, type Mesh } from "./mesh.js";
 import { hiddenLines, paintOrder, type ProjectedPath, type SpatialCurve, type VisibilityStats } from "./visibility.js";
 import { constructionCounts } from "./visibility-features.js";
 
@@ -131,25 +131,73 @@ export function curvePaths(mesh: Mesh, curves: readonly SpatialCurve[], view: Ca
 // ---------------------------------------------------------------------------------------------
 // Light and tone
 
-export interface LightRule { readonly azimuth: number; readonly elevation: number; readonly ambient: number; readonly smooth: boolean }
+export interface LightRule {
+  readonly azimuth: number;
+  readonly elevation: number;
+  readonly ambient: number;
+  /** Degrees: a triangle's normal blends in the faces around each of its corners whose normals lie within this angle of its own face; 0 is flat. */
+  readonly smoothAngle: number;
+}
 export const lightDirection = (light: LightRule): readonly [number, number, number] => {
   const a = light.azimuth * Math.PI / 180, e = light.elevation * Math.PI / 180;
   return [Math.sin(a) * Math.cos(e), Math.sin(e), Math.cos(a) * Math.cos(e)];
 };
 
+interface CornerFaces { readonly start: Uint32Array; readonly face: Uint32Array; readonly angle: Float64Array }
+const cornerCache = new WeakMap<Mesh, CornerFaces>();
+/** For every vertex the source faces around it with the face's interior angle there (CSR arrays). */
+function cornerFaces(mesh: Mesh): CornerFaces {
+  const hit = cornerCache.get(mesh);
+  if (hit) return hit;
+  const s = meshStorage(mesh), p = s.positions, V = mesh.vertexCount;
+  const start = new Uint32Array(V + 1);
+  for (let k = 0; k < s.faceIndices.length; k++) start[s.faceIndices[k] + 1]++;
+  for (let v = 0; v < V; v++) start[v + 1] += start[v];
+  const fill = start.slice(0, V), face = new Uint32Array(s.faceIndices.length), angle = new Float64Array(s.faceIndices.length);
+  for (let f = 0; f < mesh.faceCount; f++) {
+    const from = s.faceStart[f], size = s.faceStart[f + 1] - from;
+    for (let k = 0; k < size; k++) {
+      const v = s.faceIndices[from + k], prev = s.faceIndices[from + (k + size - 1) % size], next = s.faceIndices[from + (k + 1) % size];
+      const ux = p[prev * 3] - p[v * 3], uy = p[prev * 3 + 1] - p[v * 3 + 1], uz = p[prev * 3 + 2] - p[v * 3 + 2];
+      const wx = p[next * 3] - p[v * 3], wy = p[next * 3 + 1] - p[v * 3 + 1], wz = p[next * 3 + 2] - p[v * 3 + 2];
+      const cross = Math.hypot(uy * wz - uz * wy, uz * wx - ux * wz, ux * wy - uy * wx);
+      const slot = fill[v]++;
+      face[slot] = f; angle[slot] = Math.atan2(cross, ux * wx + uy * wy + uz * wz);
+    }
+  }
+  const built = { start, face, angle };
+  cornerCache.set(mesh, built);
+  return built;
+}
+
 const litCache = new WeakMap<Mesh, Map<string, Float64Array>>();
-/** `n . L` of every triangle (view independent): flat normal, or the normalised mean of the vertices' normals when `smooth`. */
+/**
+ * `n . L` of every triangle (view independent). With `smoothAngle` 0 the triangle's own face normal; otherwise the normalised sum,
+ * over its three corners, of the interior-angle-weighted normals of the faces around the corner that lie within `smoothAngle`
+ * of the triangle's face. A cube stays flat (its faces are 90 degrees apart) while a sphere shades smoothly, and the two
+ * triangles of a flat quad always agree.
+ */
 export function triangleLit(mesh: Mesh, light: LightRule): Float64Array {
-  return cachedBy(litCache, mesh, `${light.azimuth}|${light.elevation}|${light.smooth}`, () => {
+  if (!(light.smoothAngle >= 0 && light.smoothAngle <= 180)) throw new Error(`Smoothing angle must be from 0 to 180 degrees (got ${String(light.smoothAngle)})`);
+  return cachedBy(litCache, mesh, `${light.azimuth}|${light.elevation}|${light.smoothAngle}`, () => {
     const s = meshStorage(mesh), d = meshDerived(mesh), L = lightDirection(light), T = mesh.triangleCount, out = new Float64Array(T);
-    const vn = light.smooth ? internalVertexNormals(mesh) : null;
+    const corners = light.smoothAngle > 0 ? cornerFaces(mesh) : null, cosine = Math.cos(light.smoothAngle * Math.PI / 180) - 1e-12;
     for (let t = 0; t < T; t++) {
-      let nx = d.triangleNormals[t * 3], ny = d.triangleNormals[t * 3 + 1], nz = d.triangleNormals[t * 3 + 2];
-      if (vn) {
+      const f = s.triangleFace[t];
+      const fx = d.faceNormals[f * 3], fy = d.faceNormals[f * 3 + 1], fz = d.faceNormals[f * 3 + 2];
+      let nx = fx, ny = fy, nz = fz;
+      if (corners) {
         nx = ny = nz = 0;
-        for (let k = 0; k < 3; k++) { const v = s.triangles[t * 3 + k]; nx += vn[v * 3]; ny += vn[v * 3 + 1]; nz += vn[v * 3 + 2]; }
+        for (let k = 0; k < 3; k++) {
+          const v = s.triangles[t * 3 + k];
+          for (let i = corners.start[v]; i < corners.start[v + 1]; i++) {
+            const g = corners.face[i], gx = d.faceNormals[g * 3], gy = d.faceNormals[g * 3 + 1], gz = d.faceNormals[g * 3 + 2];
+            if (gx * fx + gy * fy + gz * fz < cosine) continue;
+            nx += gx * corners.angle[i]; ny += gy * corners.angle[i]; nz += gz * corners.angle[i];
+          }
+        }
         const length = Math.hypot(nx, ny, nz);
-        if (length > 1e-12) { nx /= length; ny /= length; nz /= length; } else { nx = d.triangleNormals[t * 3]; ny = d.triangleNormals[t * 3 + 1]; nz = d.triangleNormals[t * 3 + 2]; }
+        if (length > 1e-12) { nx /= length; ny /= length; nz /= length; } else { nx = fx; ny = fy; nz = fz; }
       }
       out[t] = nx * L[0] + ny * L[1] + nz * L[2];
     }
@@ -234,7 +282,7 @@ export function tonedHatch(mesh: Mesh, view: Camera, rule: HatchRule): HatchResu
   if (!(spacing >= 0.5)) throw new Error(`Hatch spacing must be at least 0.5 canvas units (got ${String(spacing)})`);
   if (!Number.isInteger(families) || families < 1 || families > 3) throw new Error(`Hatch families must be 1, 2 or 3 (got ${String(families)})`);
   if (!(threshold >= 0 && threshold < 1)) throw new Error(`Bare highlights must be at least 0 and below 1 (got ${String(threshold)})`);
-  const key = `${view.key}|${spacing}|${angle}|${families}|${threshold}|${rule.light.azimuth}|${rule.light.elevation}|${rule.light.ambient}|${rule.light.smooth}`;
+  const key = `${view.key}|${spacing}|${angle}|${families}|${threshold}|${rule.light.azimuth}|${rule.light.elevation}|${rule.light.ambient}|${rule.light.smoothAngle}`;
   return cachedBy(hatchCache, mesh, key, () => {
     constructionCounts.hatch++;
     const s = meshStorage(mesh), p = s.positions, d = meshDerived(mesh), o = view.options, perspective = o.projection === "perspective";

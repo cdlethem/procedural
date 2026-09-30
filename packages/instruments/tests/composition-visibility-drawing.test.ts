@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   assemblyMesh, boxMesh, camera, creaseCurvesExcluding, createInstrument, cueBin, cueFactor, definition, depthRange, drawInstrument, icosphereMesh, inspectorItems,
-  mergeMeshes, meanCurvature, meshComponents, meshData, meshTopology, meshVertex, paintedFaces, splitByDepth, toneDarkness, tonedHatch, torusMesh, transformMesh, usesSeed,
+  mergeMeshes, meanCurvature, meshComponents, meshData, meshTopology, meshVertex, paintedFaces, splitByDepth, toneDarkness, triangleLit, tonedHatch, torusMesh, transformMesh, usesSeed,
   validateInstrument, viewCamera, visibleParameters, visibilityConstructionCounts, visibilityContourCurves, visibilityCreaseEdges, visibilityDrawingComposition, visibilityEdgeCurves,
   visibilityMesh, visibilityProducts, visibilitySectionCurves, visibilitySilhouetteEdges, VISIBILITY_LIMITS, MAX_HATCH_SEGMENTS,
   type Camera, type CompositionSurface, type Mesh, type VisibilityProducts, type ProjectedPath, type Vec3,
@@ -238,7 +238,7 @@ test("visible hatch strokes are visible surface only: one lattice line across a 
   const scene = mergeMeshes("scene", [plate, block]);
   const view = camera({ projection: "orthographic", yaw: 0, pitch: 0, zoom: 100, distance: 10, center: [320, 320] });
   // light from behind the viewer's -z side so that the +z faces are dark: darkness 1 - ambient
-  const result = tonedHatch(scene, view, { spacing: 10, angle: 0, families: 1, threshold: 0.3, light: { azimuth: 180, elevation: 5, ambient: 0.1, smooth: false } });
+  const result = tonedHatch(scene, view, { spacing: 10, angle: 0, families: 1, threshold: 0.3, light: { azimuth: 180, elevation: 5, ambient: 0.1, smoothAngle: 0 } });
   const depthOf = (x: number, y: number) => (Math.abs(x - 320) < 100 && Math.abs(y - 320) < 100 ? 10 - 1.1 : 10 + 0.9); // block front z = 1.1, plate front z = -0.9
   let inside = 0, outside = 0;
   for (const path of result.paths) {
@@ -265,7 +265,7 @@ test("tone decides how many hatch families a face carries, and a lattice line is
   const box = boxMesh([4, 1, 4]);
   const view = camera({ projection: "orthographic", yaw: 0, pitch: 90, zoom: 100, distance: 10, center: [320, 320] });
   const families = (elevation: number, ambient: number, threshold = 0) => {
-    const r = tonedHatch(box, view, { spacing: 10, angle: 0, families: 3, threshold, light: { azimuth: 0, elevation, ambient, smooth: false } });
+    const r = tonedHatch(box, view, { spacing: 10, angle: 0, families: 3, threshold, light: { azimuth: 0, elevation, ambient, smoothAngle: 0 } });
     return { ids: new Set(r.paths.map((p) => p.curve.split(":")[0])), r };
   };
   // the top face's darkness is 1 - (ambient + (1 - ambient) sin(elevation)); families j = 0, 1, 2 need darkness above j / 3
@@ -283,7 +283,7 @@ test("tone decides how many hatch families a face carries, and a lattice line is
   // Bare highlights above the darkness leaves the face bare
   assert.equal(families(60, 0.1, 0.5).r.paths.length, 0);
   // a rotated family stays on its lattice: lines of angle 90 are vertical at x = (k + 0.5) 10 for the direction's normal (-sin, cos) = (-1, 0): offsets -x
-  const vertical = tonedHatch(box, view, { spacing: 10, angle: 90, families: 1, threshold: 0, light: { azimuth: 0, elevation: 60, ambient: 0.1, smooth: false } });
+  const vertical = tonedHatch(box, view, { spacing: 10, angle: 90, families: 1, threshold: 0, light: { azimuth: 0, elevation: 60, ambient: 0.1, smoothAngle: 0 } });
   for (const p of vertical.paths) { const x = p.points[0][0]; near(p.points[1][0], x, 1e-12); const k = -x / 10 - 0.5; near(k, Math.round(k), 1e-9); }
 });
 
@@ -420,7 +420,7 @@ test("a weight cue thins far lines monotonically between the class weight and it
 });
 
 test("the fill is opaque, painted from the light, and covers exactly the camera-facing faces of a closed solid", () => {
-  const params = only({ shape: "icosphere", detail: 1, shading: "fill", projection: "orthographic", yaw: 0, pitch: 90, fillPale: 0, fillShade: 1, fillBands: 0, shadeNormals: "flat", lightAzimuth: 0, lightElevation: 70, ambient: 0.2, fillColor: 1 });
+  const params = only({ shape: "icosphere", detail: 1, shading: "fill", projection: "orthographic", yaw: 0, pitch: 90, fillPale: 0, fillShade: 1, fillBands: 0, shadeAngle: 0, lightAzimuth: 0, lightElevation: 70, ambient: 0.2, fillColor: 1 });
   const log = draw(params).filter((r) => r.op === "shape");
   const mesh = visibilityMesh({ shape: "icosphere", detail: 1, terrainVariant: "hills", vaseProfile: "amphora", seed: 0 }), tri = triangulate(mesh);
   const L = [0, Math.sin(70 * Math.PI / 180), Math.cos(70 * Math.PI / 180)];
@@ -473,4 +473,78 @@ test("shape, seed and camera change the structure; a palette does not", () => {
   assert.notEqual(drawFingerprint(palette), base);
   assert.equal(fp({ shape: "torus" }, 1), fp({ shape: "torus" }, 2), "an unseeded shape ignores the seed");
   assert.notEqual(fp({ shape: "terrain" }, 1), fp({ shape: "terrain" }, 2));
+});
+
+test("a field that is constant up to discretisation has no contours, and a varying one has evenly spaced levels inside its range", () => {
+  const sphere = visibilityMesh({ shape: "icosphere", detail: 5, terrainVariant: "hills", vaseProfile: "amphora", seed: 0 });
+  const flat = visibilityContourCurves(sphere, { field: "curvature", levels: 30 });
+  assert.equal(flat.range, null);
+  assert.equal(flat.curves.length, 0);
+  // the torus's curvature runs from the inner equator (1/r - 1/(R-r))/2 to the outer (1/r + 1/(R+r))/2: 0.42 to 1.61, levels evenly spaced strictly inside
+  const torus = visibilityMesh({ shape: "torus", detail: 6, terrainVariant: "hills", vaseProfile: "amphora", seed: 0 });
+  const set = visibilityContourCurves(torus, { field: "curvature", levels: 4 });
+  assert.ok(set.range && set.range[0] > 0.3 && set.range[1] < 1.7);
+  for (let i = 1; i < set.levels.length; i++) near(set.levels[i] - set.levels[i - 1], (set.range![1] - set.range![0]) / 5, 1e-9);
+  assert.ok(set.levels[0] > set.range![0] && set.levels[3] < set.range![1]);
+  assert.ok(set.curves.length >= 4);
+});
+
+test("an open surface is lit from both sides: the inside of a vase takes the flipped normal's tone", () => {
+  const params = only({ shape: "vase", detail: 2, shading: "fill", projection: "orthographic", yaw: 0, pitch: 90, fillPale: 0, fillShade: 1, fillBands: 0, shadeAngle: 0, lightAzimuth: 30, lightElevation: 55, ambient: 0.1, fillColor: 1 });
+  const log = draw(params).filter((r) => r.op === "shape");
+  const mesh = visibilityMesh({ shape: "vase", detail: 2, terrainVariant: "hills", vaseProfile: "amphora", seed: 0 }), tri = triangulate(mesh);
+  const az = 30 * Math.PI / 180, el = 55 * Math.PI / 180, L = [Math.sin(az) * Math.cos(el), Math.sin(el), Math.cos(az) * Math.cos(el)];
+  const palette = createInstrument(ID).palette, rgb = [(palette[1] >>> 16) & 255, (palette[1] >>> 8) & 255, palette[1] & 255];
+  const expected: string[] = [];
+  let flipped = 0;
+  for (let i = 0; i < tri.t.length; i += 3) {
+    const [a, b, c] = [tri.t[i] * 3, tri.t[i + 1] * 3, tri.t[i + 2] * 3], u = [0, 1, 2].map((k) => tri.p[b + k] - tri.p[a + k]), w = [0, 1, 2].map((k) => tri.p[c + k] - tri.p[a + k]);
+    const n = [u[1] * w[2] - u[2] * w[1], u[2] * w[0] - u[0] * w[2], u[0] * w[1] - u[1] * w[0]], len = Math.hypot(...n);
+    if (Math.abs(n[1] / len) < 1e-9) continue; // edge-on from above: no area
+    const side = n[1] > 0 ? 1 : -1;
+    if (side < 0) flipped++;
+    const lit = side * (n[0] * L[0] + n[1] * L[1] + n[2] * L[2]) / len, dark = 1 - (0.1 + 0.9 * Math.max(0, lit));
+    expected.push(rgb.map((ch) => Math.round(ch * (1 - dark))).join(","));
+  }
+  assert.ok(flipped > 20, "the vase has many faces turned away from the eye (its inside and its foot)");
+  assert.deepEqual(log.map((r) => r.fill.slice(0, 3).join(",")).sort(), expected.sort());
+});
+
+test("geometry behind the eye is clipped at the near plane: no polygon or hatch stroke is mirrored through the eye", () => {
+  const slab = boxMesh([40, 1, 40]);
+  const view = camera({ projection: "perspective", yaw: 0, pitch: 0, zoom: 100, distance: 2, target: [0, 1.2, 0], center: [320, 320] });
+  // the eye is 0.7 above the slab's top face and above its middle: half the slab is behind the camera
+  const faces = paintedFaces(slab, view);
+  assert.ok(faces.polygons.length > 0);
+  for (const poly of faces.polygons) for (let v = 0; v < poly.length; v += 2) {
+    assert.ok(Number.isFinite(poly[v]) && Number.isFinite(poly[v + 1]));
+    assert.ok(poly[v + 1] >= 320 - 1e-6, `vertex y ${poly[v + 1]} is above the horizon: it came from behind the eye`);
+  }
+  const hatch = tonedHatch(slab, view, { spacing: 10, angle: 0, families: 1, threshold: 0, light: { azimuth: 0, elevation: 20, ambient: 0, smoothAngle: 0 } });
+  assert.ok(hatch.paths.length > 0);
+  for (const path of hatch.paths) for (const z of path.depths) assert.ok(z >= view.options.near * (1 - 1e-9), `depth ${z} is nearer than the near plane ${view.options.near}`);
+  for (const path of hatch.paths) for (const [, y] of path.points) assert.ok(y >= 320 - 1e-6);
+});
+
+test("smoothing blends normals only across folds under the smoothing angle: a box stays flat, a sphere shades smoothly", () => {
+  const L = { azimuth: 20, elevation: 40, ambient: 0.1, smoothAngle: 35 };
+  const sin = Math.sin(40 * Math.PI / 180), cos = Math.cos(40 * Math.PI / 180);
+  const dir = [Math.sin(20 * Math.PI / 180) * cos, sin, Math.cos(20 * Math.PI / 180) * cos];
+  // every fold of a box is 90 degrees: each triangle's tone is exactly its own face's n . L, on both triangles of every quad
+  const box = boxMesh([3, 1, 2]), lit = triangleLit(box, L), tri = triangulate(box);
+  for (let i = 0; i < tri.t.length / 3; i++) {
+    const [a, b, c] = [tri.t[i * 3] * 3, tri.t[i * 3 + 1] * 3, tri.t[i * 3 + 2] * 3], u = [0, 1, 2].map((k) => tri.p[b + k] - tri.p[a + k]), w = [0, 1, 2].map((k) => tri.p[c + k] - tri.p[a + k]);
+    const n = [u[1] * w[2] - u[2] * w[1], u[2] * w[0] - u[0] * w[2], u[0] * w[1] - u[1] * w[0]], len = Math.hypot(...n);
+    near(lit[i], (n[0] * dir[0] + n[1] * dir[1] + n[2] * dir[2]) / len, 1e-12);
+  }
+  // a sphere: 35 degrees smooths, and the smooth tone of a triangle is within a few degrees of the radial direction at its centre
+  const sphere = icosphereMesh(3), smooth = triangleLit(sphere, L), flat = triangleLit(sphere, { ...L, smoothAngle: 0 }), st = triangulate(sphere);
+  let smoothError = 0, flatError = 0;
+  for (let i = 0; i < st.t.length / 3; i++) {
+    const c = [0, 1, 2].map((k) => (st.p[st.t[i * 3] * 3 + k] + st.p[st.t[i * 3 + 1] * 3 + k] + st.p[st.t[i * 3 + 2] * 3 + k]) / 3), r = Math.hypot(...c);
+    const radial = (c[0] * dir[0] + c[1] * dir[1] + c[2] * dir[2]) / r;
+    smoothError += Math.abs(smooth[i] - radial); flatError += Math.abs(flat[i] - radial);
+  }
+  assert.ok(smoothError < 0.5 * flatError, `smooth ${smoothError} vs flat ${flatError} from the true sphere shading`);
+  assert.throws(() => triangleLit(sphere, { ...L, smoothAngle: 181 }), /Smoothing angle/);
 });

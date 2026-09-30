@@ -154,7 +154,7 @@ export interface ContourSet {
   readonly field: VisibilityField;
   /** The levels traced (evenly spaced strictly inside `range`), or none when the field is constant. */
   readonly levels: readonly number[];
-  /** Low and high of the field used to place levels (5th to 95th percentile for curvature, else min to max), or null when constant. */
+  /** Low and high of the field used to place levels (5th to 95th percentile for curvature, else min to max), or null when constant (for curvature: varying by under a tenth of its size). */
   readonly range: readonly [number, number] | null;
   readonly curves: readonly SpatialCurve[];
   readonly work: number;
@@ -166,7 +166,10 @@ function fieldRange(values: Float64Array, field: VisibilityField): [number, numb
     const sorted = Float64Array.from(values).sort();
     lo = sorted[Math.floor(0.05 * (sorted.length - 1))]; hi = sorted[Math.ceil(0.95 * (sorted.length - 1))];
   } else { lo = Infinity; hi = -Infinity; for (const v of values) { if (v < lo) lo = v; if (v > hi) hi = v; } }
-  return hi - lo <= 1e-9 * Math.max(1, Math.abs(lo), Math.abs(hi)) ? null : [lo, hi];
+  // A curvature field that varies by under a tenth of its own size is constant up to the mesh's discretisation (a sphere's
+  // 1/r): its levels would only trace that noise, so it has none. Height and slope are constant only when exactly so.
+  const flat = field === "curvature" ? 0.1 * Math.max(Math.abs(lo), Math.abs(hi)) : 1e-9 * Math.max(1, Math.abs(lo), Math.abs(hi));
+  return hi - lo <= flat ? null : [lo, hi];
 }
 
 export function contourCurves(mesh: Mesh, rule: ContourRule): ContourSet {

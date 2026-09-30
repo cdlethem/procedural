@@ -93,7 +93,7 @@ export function visibilityDrawingComposition(input: InstrumentInput): Visibility
       shading: q.shading as Shading,
       hatch: { mode: "visible", material: q.hatchMaterial as LineMaterial, weight: num("hatchWeight"), spacing: num("hatchSpacing"), angle: num("hatchAngle"), families: num("hatchFamilies"), bare: num("hatchBare") },
       fill: { color: num("fillColor"), pale: num("fillPale"), bands: num("fillBands"), shade: num("fillShade") },
-      light: { azimuth: num("lightAzimuth"), elevation: num("lightElevation"), ambient: num("ambient"), smooth: q.shadeNormals === "smooth" },
+      light: { azimuth: num("lightAzimuth"), elevation: num("lightElevation"), ambient: num("ambient"), smoothAngle: num("shadeAngle") },
     },
     lines: { colorBy: q.colorBy as ColorBy, depthCue: q.depthCue as DepthCue, cueAmount: num("cueAmount"), hiddenOpacity: num("hiddenOpacity"), hiddenWeight: num("hiddenWeight"),
       hiddenDash: num("hiddenDash"), stitchSpacing: num("stitchSpacing"), beadScale: num("beadScale") },

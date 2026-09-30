@@ -6,9 +6,9 @@ a banded wash. The starting study is a still life of four separate solids on a p
 sphere, an upright ring and a block) seen in perspective: a heavy outline, creases in a second
 colour with their hidden stretches dashed, the vase's rim in a third, and the faces cross-hatched
 more the more they turn from a light on the left. Because the parts stand in front of one another,
-the dashed lines run only where something really covers them; the ring shows through nothing, the
-block hides half the sphere's base edge, and a new seed moves the parts to other slots and turns and
-sizes them a little.
+the dashed lines run only where something really covers them (the plinth's far edges behind the
+solids, the block's back edges behind its own faces), and a new seed moves the parts to other slots
+and turns and sizes them a little.
 
 It is not a wireframe with faded back edges. Every visible or hidden stretch is decided by exact
 geometry: each line is cut wherever a nearer triangle covers it, so an edge that goes behind the vase
@@ -52,7 +52,7 @@ also chooses its own material (**ink**, **stitch**, **beads**) and weight.
 | Controls | What changes on the canvas |
 |---|---|
 | **Surface tone** | **None** leaves a pure line drawing (the edge classes above stand on their own). **Hatched** lays parallel strokes on every visible face, more crossing directions on darker faces. **Filled** paints the visible faces opaque in bands, far to near. **Filled and hatched** does both. |
-| **Face normals** | *Flat* gives each triangle its own tone (faceted); *smooth* blends vertex normals so curved surfaces shade smoothly. |
+| **Smoothing angle** | Faces that meet at a fold no sharper than this shade as one smooth surface; sharper folds stay crisp. 0 shades every triangle flat; the default 35 smooths a sphere or torus but keeps a box's edges hard. |
 | **Hatch spacing**, **Hatch angle**, **Hatch families**, **Bare highlights**, **Hatch material**, **Hatch weight** | The lattice the strokes lie on (fixed across the whole object, so neighbouring faces continue each other's lines), its direction (degrees clockwise from horizontal; further families spread evenly through 180), how many crossing families the darkest faces may carry, the darkness below which a face is left bare, and the stroke style. Beads make a stippled tone. |
 | **Fill color**, **Fill paleness**, **Fill bands**, **Fill shade** | Which palette entry, how far it is mixed toward white (so lines stay readable over it), how many tone steps (2 to 3 is toon, 0 continuous) and how dark the shadow side gets. |
 | **Light direction**, **Light height**, **Ambient light** | Azimuth (from +z toward +x, fixed in the world) and elevation of the light and the share of light that reaches faces turned away. There are no cast shadows. Turning the camera changes which faces the light meets. |
@@ -106,7 +106,7 @@ strokeWith(p, outline.visible.map((path) => ({ ...path, tone: 0 })), ink, create
 
 // tone: hatch strokes of the visible faces, already cut by the same solver
 const hatch = tonedHatch(mesh, view, { spacing: 4.5, angle: -35, families: 2, threshold: 0.3,
-  light: { azimuth: -35, elevation: 50, ambient: 0.15, smooth: true } });
+  light: { azimuth: -35, elevation: 50, ambient: 0.15, smoothAngle: 35 } });
 ```
 
 `visibilityProducts(recipe)` returns all of the producer values for a recipe (`visibilityDrawingComposition(input)`
