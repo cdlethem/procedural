@@ -194,8 +194,13 @@ spacing 3 with tone crowding 402 ms; over the bound (spacing 2 at 900 x 900) rej
   they stop rather than cross, and this is stated behaviour, not smoothed away.
 - The ring omission under radius 6 and the ink-only tone-to-width (stitches keep one weight) are conservative
   choices; both are documented.
-- `canPrepareInstrument` on this branch's `index.ts` also contains an unreachable duplicate `return` line from
-  the earlier data-scores merge; only the `fm-engraving` clause was added to the reachable line.
-- Slider intervals are authored from the reviewed images, not certified; the hard limits are measured
-  (900,000 vertices, 50 waves per 100 units, 4 line spacings of amplitude).
+- **Slider intervals are chosen so every combination of slider ends draws** (typed values past them may still be
+  refused by the hard limits): line spacing 5-20, spacing gain 0-0.4, base frequency 0-10 and frequency gain 0-12
+  (sum 22 of 50), base amplitude 0-0.6 and amplitude gain 0-1 (sum 1.6 of 4), radial centre -0.25 to 0.25. A first
+  version (spacing from 2.5, gain to 0.8, frequency 30+40) refused to draw with all sliders at their maximum. The
+  binding case is rings on the darkest bundled picture (geometry) with tone smoothing 0, threshold 0 and the centre
+  at a corner, which needed 547,000 of the 900,000 vertices; a centre at 0.5 exceeded the bound, hence 0.25.
+  A test sets every numeric control to its slider minimum and maximum (alone, and all together, in every family, on
+  every bundled picture, plus the densest corner with threshold 0 and no smoothing) and requires admission, at most
+  900,000 vertices and under 2.5 s of CPU each. Hard limits stay measured (900,000 vertices, 50 waves per 100 units, 4 spacings).
 - Real-interface acceptance, layered work in the app and interaction cost at large settings are root's to exercise.
