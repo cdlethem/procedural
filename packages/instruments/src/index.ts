@@ -103,6 +103,8 @@ import { wetPigmentDefinition, wetPigmentPalette } from "./adapters/wet-pigment-
 import { drawWetPigment, prepareWetPigment, wetPigmentComposition, wetPigmentUsesSeed } from "./composition/wet-pigment-draw.js";
 import { aggregationColoniesDefinition } from "./adapters/aggregation-colonies-instrument.js";
 import { aggregationColoniesComposition, drawAggregationColonies, prepareAggregationColonies } from "./composition/aggregation-draw.js";
+import { pointCloudsDefinition } from "./adapters/point-clouds-instrument.js";
+import { drawPointClouds, pointCloudsComposition, pointCloudsUsesSeed, preparePointClouds } from "./composition/point-clouds-draw.js";
 
 import { roadsParcelsDefinition } from "./adapters/roads-parcels-instrument.js";
 import { drawRoadsParcels, prepareRoadsParcels, roadsParcelsComposition } from "./composition/roads-parcels.js";
@@ -562,6 +564,20 @@ export { viewCamera, curvePaths as visibilityCurvePaths, tonedHatch, paintedFace
 export type { ClassName as VisibilityClassName, ClassMode as VisibilityClassMode, LineMaterial as VisibilityLineMaterial, Shading as VisibilityShading, DepthCue as VisibilityDepthCue,
   ColorBy as VisibilityColorBy, ClassStyle as VisibilityClassStyle, VisibilityDrawingRecipe, ClassProduct as VisibilityClassProduct, VisibilityProducts, VisibilityConsumers } from "./composition/visibility-drawing.js";
 export { visibilityDrawingComposition, visibilityProducts, drawVisibilityProducts, drawVisibilityDrawing, prepareVisibilityDrawing, classNames as visibilityClassNames, classTone as visibilityClassTone, cueFactor } from "./composition/visibility-drawing.js";
+export { derivePointCloud } from "./composition/mesh-sample.js";
+export type { NeighborTable } from "./composition/point-structure.js";
+export { nearestNeighbors, neighborTable, describePointCloud, eigenSymmetric3, rankValues, STRUCTURE_LIMITS, DESCRIBED_ATTRIBUTES } from "./composition/point-structure.js";
+export type { SubjectKind as PointSubjectKind, GalaxySpec, NoiseSpec as PointNoiseSpec, SubjectSpec as PointSubjectSpec, PointSubject } from "./composition/point-subjects.js";
+export { pointSubject, isMeshSubject, MESH_SUBJECTS, SUBJECT_KINDS, GALAXY_RADIUS } from "./composition/point-subjects.js";
+export type { PointFrame, CutAxis, CutSpec as PointCutSpec, ThinRule, FocusSpec as PointFocusSpec, KeepSpec as PointKeepSpec, Kept as KeptPoints } from "./composition/point-select.js";
+export { pointFrame, cutPoints, cutMesh, keepPoints, dispersePoints, pointRank, THIN_RULES } from "./composition/point-select.js";
+export type { ViewSpec as PointViewSpec, ViewedPoint, ViewOptions as PointViewOptions, PointView, PointLink, LinkSet as PointLinkSet, LinkOptions as PointLinkOptions, LinkPath as PointLinkPath,
+  OutlineSpec as PointOutlineSpec, Outline as PointOutline } from "./composition/point-view.js";
+export { pointCamera, viewPoints, pointLinks, linkPaths, outlinePaths, MAX_LINKS as MAX_POINT_LINKS, VIEW_WORK as POINT_VIEW_WORK } from "./composition/point-view.js";
+export type { MarkKind as PointMarkKind, AxisKind as PointAxisKind, ColorBy as PointColorBy, Blend as PointBlend, MarkStyle as PointMarkStyle, PointSite, PointMark, LinkStyle as PointLinkStyle } from "./composition/point-marks.js";
+export { markSites as pointMarkSites, stockMark as stockPointMark, linkMaterial as pointLinkMaterial, paletteRamp as pointPaletteRamp, pointToner, rampIndex, RAMP_STEPS, discSides } from "./composition/point-marks.js";
+export type { PointCloudsComposition, PointCloudProducts, PointCloudScene, PointCloudConsumers } from "./composition/point-clouds-draw.js";
+export { pointCloudsComposition, pointCloudProducts, pointCloudScene, drawPointCloudScene, drawPointClouds, preparePointClouds, MAX_DRAWN_ITEMS } from "./composition/point-clouds-draw.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -580,7 +596,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition, hingedPanelsDefinition, ...laplacianFrontsDefinitions, meshAbstractionDefinition, visibilityDrawingDefinition, surfaceGrowthDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition, hingedPanelsDefinition, ...laplacianFrontsDefinitions, meshAbstractionDefinition, visibilityDrawingDefinition, surfaceGrowthDefinition, pointCloudsDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -728,6 +744,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "mesh-abstraction": [0xd8cbb0, 0x1f2733, 0xc4452b, 0x2f7c78],
   "visibility-drawing": [0x1c2430, 0xb85c3a, 0x2f6f86, 0x6b7f3b, 0x8a5a8c],
   "surface-growth": [0x1d2a2f, 0xe6d3b0, 0xd8894f, 0x9b3d3d, 0x3f6f6c],
+  "point-clouds": [0x1d3557, 0x2a9d8f, 0xe9c46a, 0xf4a261, 0xc4452b],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -780,6 +797,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "mesh-abstraction") return drawMeshAbstraction(context, meshAbstractionComposition(input));
   if (input.technique === "visibility-drawing") return drawVisibilityDrawing(context, visibilityDrawingComposition(input));
   if (input.technique === "surface-growth") return drawSurfaceGrowth(context, surfaceGrowthComposition(input));
+  if (input.technique === "point-clouds") return drawPointClouds(context, pointCloudsComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
   if (input.technique === "collision-scores") return drawCollisionScores(context, collisionScoresComposition(input));
@@ -807,7 +825,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "roads-parcels" || id === "hinged-panels" || id === "laplacian-fronts" || id === "mesh-abstraction" || id === "visibility-drawing" || id === "surface-growth" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "roads-parcels" || id === "hinged-panels" || id === "laplacian-fronts" || id === "mesh-abstraction" || id === "visibility-drawing" || id === "surface-growth" || id === "point-clouds" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -850,6 +868,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "mesh-abstraction") return prepareMeshAbstraction(meshAbstractionComposition(input), cancelled);
   if (input.technique === "visibility-drawing") return prepareVisibilityDrawing(visibilityDrawingComposition(input), cancelled);
   if (input.technique === "surface-growth") return prepareSurfaceGrowthDrawing(surfaceGrowthComposition(input), cancelled);
+  if (input.technique === "point-clouds") return preparePointClouds(pointCloudsComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
   if (input.technique === "roads-parcels") return prepareRoadsParcels(roadsParcelsComposition(input), cancelled);
   if (input.technique === "inversion-gardens") return prepareInversionGardens(inversionGardensComposition(input), cancelled);
@@ -913,6 +932,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "mesh-abstraction": return meshAbstractionUsesSeed(q);
     case "visibility-drawing": return visibilityDrawingUsesSeed(q);
     case "surface-growth": return surfaceGrowthUsesSeed(q);
+    case "point-clouds": return pointCloudsUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
     case "roads-parcels": return roadsParcelsUsesSeed(q);
     case "region-stitch": return regionStitchUsesSeed(q);

@@ -882,6 +882,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "point-clouds",
+      "title": "Point Clouds",
+      "description": "Rebuild a spatial subject (vase, faceted figure, terrain, torus, spiral galaxy, noise volume) from thousands of replaceable marks: discs lying on the surface, strokes along a direction, grains and glyphs, joined by a sparse neighbour network, with depth size and fade, exact hidden-point removal, deterministic thinning and a region kept dense.",
+      "category": "3D forms",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/point-clouds.md",
+      "source": "packages/instruments/src/composition/point-clouds-draw.ts",
+      "sourceEntry": "drawPointClouds",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",

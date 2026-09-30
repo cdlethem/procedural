@@ -210,7 +210,46 @@ export function selectPoints(cloud: PointCloud, indices: ArrayLike<number>, id: 
   return build(id, n, cloud.seed, positions, normals, attributes, source);
 }
 
-function mixHash(a: number, b: number, c: number): number {
+/**
+ * The same points (ids, seeds, source indices) with replaced geometry and/or extra attributes: a displaced cloud, or one
+ * that gained derived per-point values. Positions and normals, if given, replace the originals (normals must be unit;
+ * `null` drops them); added attributes must not repeat an existing name, and at most `POINT_LIMITS.maxAttributes` remain.
+ * Failures name the cloud and the input to change. `id` defaults to the original's.
+ */
+export function derivePointCloud(cloud: PointCloud, change: { id?: string; positions?: ArrayLike<number>; normals?: ArrayLike<number> | null;
+  attributes?: readonly PointAttributeInput[] }): PointCloud {
+  const s = cloudStorage(cloud), label = `Point cloud "${cloud.id}"`, n = cloud.count;
+  const checked = (name: string, values: ArrayLike<number>, length: number, limit: number): Float64Array => {
+    if (values === null || typeof values !== "object" || values.length !== length) throw new Error(`${label}: ${name} must have ${length} numbers`);
+    const out = new Float64Array(length);
+    for (let i = 0; i < length; i++) {
+      const v = finiteValue(`${label}: ${name}[${i}]`, values[i]);
+      if (Math.abs(v) > limit) throw new Error(`${label}: ${name}[${i}] = ${v} exceeds ${limit}`);
+      out[i] = v;
+    }
+    return out;
+  };
+  const positions = change.positions === undefined ? s.positions : checked("positions", change.positions, n * 3, POINT_LIMITS.maxCoordinate);
+  let normals = s.normals;
+  if (change.normals === null) normals = null;
+  else if (change.normals !== undefined) {
+    normals = checked("normals", change.normals, n * 3, 1 + 1e-6);
+    for (let p = 0; p < n; p++) if (Math.abs(Math.hypot(normals[p * 3], normals[p * 3 + 1], normals[p * 3 + 2]) - 1) > 1e-6) throw new Error(`${label}: normal of point ${p} is not a unit vector`);
+  }
+  const attributes = s.attributes.map((a) => ({ name: a.name, size: a.size, values: a.values }));
+  for (const a of change.attributes ?? []) {
+    if (typeof a.name !== "string" || !NAME.test(a.name)) throw new Error(`${label}: attribute name ${JSON.stringify(a.name)} must match ${NAME}`);
+    if (attributes.some((x) => x.name === a.name)) throw new Error(`${label}: attribute "${a.name}" already exists`);
+    if (a.size !== 1 && a.size !== 2 && a.size !== 3 && a.size !== 4) throw new Error(`${label}: attribute "${a.name}" size must be 1, 2, 3 or 4`);
+    attributes.push({ name: a.name, size: a.size, values: checked(`attribute "${a.name}"`, a.values, n * a.size, Infinity) });
+  }
+  if (attributes.length > POINT_LIMITS.maxAttributes) throw new Error(`${label}: ${attributes.length} attributes; the limit is ${POINT_LIMITS.maxAttributes}`);
+  attributes.sort((x, y) => (x.name < y.name ? -1 : 1));
+  return build(change.id ?? cloud.id, n, cloud.seed, positions, normals, attributes, s.source);
+}
+
+/** Deterministic hash of three integers to [0, 1). */
+export function mixHash(a: number, b: number, c: number): number {
   let h = Math.imul(a ^ 0x9e3779b9, 0x85ebca6b) >>> 0;
   h = Math.imul(h ^ (h >>> 13) ^ b, 0xc2b2ae35) >>> 0;
   h = Math.imul(h ^ (h >>> 16) ^ c, 0x27d4eb2f) >>> 0;
