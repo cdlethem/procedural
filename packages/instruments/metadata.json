@@ -1202,7 +1202,7 @@
       "id": "ramp-marks",
       "title": "Ramp Marks",
       "description": "A local mark grid samples a positioned RGB palette ramp through stopRamp.",
-      "category": "Color & raster",
+      "category": "Raster & color",
       "operationIds": [
         "color.stop-ramp"
       ],
@@ -1217,7 +1217,7 @@
       "id": "warp-marks",
       "title": "Warp Marks",
       "description": "Construct a small transparent RGBA image from bars, discs, rings or tiles, then sample it through a local deformation map.",
-      "category": "Color & raster",
+      "category": "Raster & color",
       "operationIds": [
         "raster.bilinear-remap-2d"
       ],
@@ -1232,7 +1232,7 @@
       "id": "blur-marks",
       "title": "Blur Marks",
       "description": "Filter an editable transparent RGBA population of bars, discs, rings or tiles with independently sized horizontal and vertical kernels.",
-      "category": "Color & raster",
+      "category": "Raster & color",
       "operationIds": [
         "raster.separable-blur-2d"
       ],
