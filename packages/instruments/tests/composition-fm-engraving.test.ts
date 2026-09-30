@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   areaAverage, canPrepareInstrument, componentSeed, createInstrument, createRaster, drawEngraving, engravedLines, engravingCarriers, engravingComposition,
-  engravingProducts, inspectorItems, prepareInstrument, segmentValueBands, srgbToLinear, toneField, tonePieces, usesSeed, validateParameters, valueRegionMask,
+  definition, engravingProducts, inspectorItems, validateInstrument, prepareInstrument, segmentValueBands, srgbToLinear, toneField, tonePieces, usesSeed, validateParameters, valueRegionMask,
   visibleParameters, TONE_BINS, ENGRAVING_LIMITS,
   type CompositionSurface, type EngravingOptions, type Raster,
 } from "../dist/index.js";
@@ -426,4 +426,37 @@ test("a region mask engraves one connected value region and nothing else", () =>
     assert.ok(x >= -100 + 4 * px - 1 && x <= -100 + 12 * px + 1, `x ${x}`);
     assert.ok(y >= -100 + 4 * px - 1 - 1 && y <= -100 + 12 * px + 1 + 1, `y ${y}`);
   }
+});
+
+test("slider ends are always admitted: every numeric control at its slider minimum, maximum, and together, in every family, within the declared bound and time", async () => {
+  const numeric = definition("fm-engraving").parameters.filter((parameter) => parameter.type === "number");
+  const cpuSeconds = (from: NodeJS.CpuUsage) => { const used = process.cpuUsage(from); return (used.user + used.system) / 1e6; };
+  const build = async (params: Record<string, number | string | boolean>, label: string) => {
+    const input = { ...createInstrument("fm-engraving"), params };
+    validateInstrument(input);
+    const start = process.cpuUsage();
+    assert.equal(await prepareInstrument(input, () => false), true, label);
+    const { stats } = engravingProducts(engravingComposition(input));
+    assert.ok(stats.vertices <= 900_000, `${label}: ${stats.vertices} vertices`);
+    assert.ok(cpuSeconds(start) < 2.5, `${label}: ${cpuSeconds(start).toFixed(2)} s`);
+  };
+  const defaults = createInstrument("fm-engraving").params;
+  const together = (edge: "min" | "max") => Object.fromEntries(numeric.map((parameter) => [parameter.key, edge === "min" ? parameter.min! : parameter.max!]));
+  for (const family of ["straight", "curved", "rings", "spiral", "flow"]) {
+    for (const image of ["portrait", "geometry", "landscape", "noise"]) {
+      // the densest reachable corner: every slider at its end, all tone drawn (threshold 0), no tone smoothing
+      await build({ ...defaults, ...together("max"), threshold: 0, smoothing: 0, family, image }, `${family}/${image}/all max, threshold 0, no smoothing`);
+      if (image === "portrait" || image === "geometry")
+        for (const [name, over] of [["all min", together("min")], ["all max", together("max")]] as const) await build({ ...defaults, ...over, family, image }, `${family}/${image}/${name}`);
+    }
+    if (family !== "straight" && family !== "flow") continue;  // single-control ends run for one ruled family and the tone-following one
+    for (const parameter of numeric) for (const edge of [parameter.min!, parameter.max!])
+      await build({ ...defaults, family, [parameter.key]: edge }, `${family}: ${parameter.key} = ${edge}`);
+  }
+  // every slider interval keeps the wave sums inside their hard bounds (typing past the sliders is what may be refused)
+  const slider = (key: string) => numeric.find((parameter) => parameter.key === key)!.max!;
+  assert.ok(slider("baseFrequency") + slider("frequencyGain") <= ENGRAVING_LIMITS.frequencyPer100);
+  assert.ok(slider("baseAmplitude") + slider("amplitudeGain") <= ENGRAVING_LIMITS.amplitudeSpacings);
+  assert.throws(() => validateParameters("fm-engraving", { ...defaults, baseFrequency: 30, frequencyGain: 40 }), /exceeds 50 waves per 100 units/);
+  assert.throws(() => validateParameters("fm-engraving", { ...defaults, baseAmplitude: 2, amplitudeGain: 3 }), /exceeds 4 line spacings/);
 });

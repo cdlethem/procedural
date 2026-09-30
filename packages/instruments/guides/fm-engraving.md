@@ -63,7 +63,7 @@ space**, the line is simply not drawn.
 
 | Controls | What changes on the canvas |
 |---|---|
-| **Base frequency**, **Frequency gain** | Waves per 100 canvas units at the lightest drawn tone, and how many more are added at the darkest. Base plus gain is at most 50 (a 2-unit wavelength). Scaling the two together retunes the whole range. |
+| **Base frequency**, **Frequency gain** | Waves per 100 canvas units at the lightest drawn tone, and how many more are added at the darkest. Base plus gain is at most 50 (a 2-unit wavelength); the sliders stop at 22 together so any slider setting draws. Scaling the two together retunes the whole range. |
 | **Base amplitude**, **Amplitude gain** | Wave height in line spacings at the lightest tone and how much taller at the darkest. Base plus gain is at most 4. Above about 0.5 neighbouring lines overlap into a mesh. A base of 0 leaves light lines straight; a gain of 0 gives pure frequency modulation. |
 | **Phase spread** | How far each line's wave starts from a common phase, drawn from the seed. 0 lines every crest up; 1 scatters them. |
 
@@ -84,12 +84,12 @@ phase spread and a non-flow family the seed changes nothing, and the instrument 
 ## Try these
 
 - **Etched portrait:** the default, then *Negative space* 0.40 for the whole head, or 0.5 for hair, shoulders and eyes only.
-- **Banknote:** *Scan lines* rings, *Radial center* on the face, *Line spacing* 4, *Tone to width* 0.
-- **Toned photograph:** *Line spacing* 2.5, *Base amplitude* 0.25, *Amplitude gain* 0, *Frequency gain* 30, *Tone to width* 0: constant-height waves whose frequency alone carries the tone, reading as a smooth gray.
+- **Banknote:** *Scan lines* rings, *Radial center Y* -0.08, *Line spacing* 5, *Tone to width* 0.
+- **Toned photograph:** *Line spacing* 5, *Base amplitude* 0.25, *Amplitude gain* 0, *Frequency gain* 12, *Tone to width* 0: constant-height waves whose frequency alone carries the tone, reading as a smooth gray. (Typing a finer spacing such as 2.5 and a gain of 30 works too, past the sliders.)
 - **Following the form:** *Scan lines* flow, *Image direction* 1: lines wrap the hair and fold with the shoulders.
 - **Sparse:** *Line spacing* 14, *Base frequency* 2.5, *Frequency gain* 4, *Line weight* 1.6, *Tone to width* 0.7.
 - **Stitched:** *Line* stitch, *Line spacing* 8, *Stitch spacing* 6, *Color by* tone with a palette ordered light to dark.
-- **Landscape relief:** *Source image* landscape, *Negative space* 0.3, *Spacing gain* 0.8, *Scan angle* 20.
+- **Landscape relief:** *Source image* landscape, *Negative space* 0.3, *Spacing gain* 0.4, *Scan angle* 20.
 
 ## Use the pieces in code
 
