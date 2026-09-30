@@ -46,9 +46,11 @@ cell area (yield 1). One step, synchronous rules reading the old state:
    every cell at `R`, nothing moved more than 1e-4. *Starved* (halts): no source and less than 1e-6 nutrient left.
 
 Ids never repeat; parents are older than daughters; `cell:k` is born once. Cells never disappear: relaxation only
-moves, and the wall constrains rather than deletes. Under heavy crowding with few passes cells may overlap by more
-than `overlap` (the push is capped per pass); the *Relaxation* and *Stiffness* controls trade that against
-compaction, and the wall row of a full box shows it.
+moves, and the wall constrains rather than deletes. Growth adds area in place, so a colony under pressure overlaps by more
+than `overlap` (the push is capped per pass and travels one neighbour per pass): measured at the default, 321
+cells, 744 overlapping pairs, mean overlap 12% and worst 32% of `r1 + r2`; 8 passes at stiffness 1 bring the mean to
+7%. A dish too small for the cell limit (1,000 cells of radius 13 need 1.75 times the area of a 620-unit dish)
+overlaps by about 23% on average; cells are compressed, never removed.
 
 **Declared quantities (tests):** cell area + field nutrient = initial + `inflow` at every step; `absorbed` equals
 the area gained; division keeps area and centre of area; live count grows by exactly one per division and births by
@@ -72,7 +74,7 @@ Field <= 62,500 cells (*Field cell*, *Width*, *Height*); diffusion <= 64 passes 
 (*Diffusion*, *Field cell*); *Cell limit* <= 2,000; *Steps* <= 1,000; declared work per step
 `passes x open cells + limit x (footprint candidates) + relax x limit x 100 + ...` charged with `ctx.charge`, over
 which a step throws naming *Cell limit* / *Field cell* / the dish size; total work <= 1.5e9; walls <= 2,000 cells.
-Slider intervals are narrower than the hard limits (cell limit slider to 1,000, steps slider to 500).
+Slider intervals are narrower than the hard limits and every combination inside them is admitted (cell limit to 1,000, steps to 500, relaxation to 6, diffusion to 300, field cell from 6, dish to 620): the worst slider corner passes validation.
 
 ## Controls and groups
 
@@ -99,9 +101,12 @@ colour ramps; walls tiling the dish (areas sum to `w x h`) and holding only thei
 `area / spacing` and the twist per generation; contours inside the wall and equal to the level on the field;
 drawing counts; consumer substitution; cooperative preparation and cancellation.
 
-Mutations confirmed to fail (see report): growth not shared by footprint; division not conserving area (daughter
-radii `R/2`); relaxation weighting by radius instead of area; ids reusing the mother's serial; cancelled runs cached
-(via the shared cache); colour palette entering the key.
+Mutations confirmed to fail (each by 1 to 29 tests, run on a copy of `dist`): growth not shared by claims; footprint
+not normalised to the disc's area; daughters not conserving area; daughters centred on the wrong point; relaxation
+weighted by radius instead of area; a daughter reusing the mother's serial; a diffusion coefficient doubled; source
+inflow not counted; no halt when full and stationary; cells allowed past the limit; the age window boundary changed;
+hatch direction ignoring the generation twist. (The shared cache's cancellation and identity guarantees are the F7
+ones; `checkSimulation` runs on this model.) Full suite after merging main: 1,072 tests pass.
 
 ## Review record
 
@@ -111,12 +116,24 @@ and late steps; sources ring/edge/point/pair/none; every division axis; scatter/
 lineage combined; and a layered composition with an existing instrument in both orders. Defects found by looking
 and fixed:
 
-- first default barely grew (three cells, no division): uptake, reserve and step defaults raised until the front reaches 545 cells by step 230;
+- a dense colony drew a 4-pole artefact of contour fragments along the wall: fixed as above;
+- the slider maximum (diffusion 400 at field cell 5 on a 620 dish) was refused by the diffusion bound: slider floors and maxima tightened so every slider combination is admitted;
+- first default barely grew (three cells, no division): uptake, reserve and step defaults raised until the front reaches about 545 cells by step 230;
 - sizes were identical once the dish filled; the size colour ramp was against the division radius and showed one colour: it now spans the colony's own smallest to largest;
 - a disc smaller than a field cell fell between grid centres and could not eat: coverage uses a kernel of at least 0.71 cell;
 - seeded chains reached the wall with uniform radii, hiding the food gradient: lower uptake defaults and slider floor;
 - nutrient contour fragments and a staircase along the wall: field extended past the wall and contours cut at the wall inset by half a field cell;
 - lineage lines over discs hid the cells: default links are one thin colour.
+
+## Timing (Node, null surface, shared busy machine; draw cost in a real p5 canvas is higher)
+
+Default (230 steps, about 545 cells, lineage on): first preparation and draw 490 ms; redraw 2 ms; palette edit 2 ms
+(same snapshot); appearance edit (colour rule, cell size, wall reach) 5 ms; `steps` - 1 (replay from a checkpoint)
+116 ms; `steps` + 5 (extension) 87 ms; structural edit (uptake, source) 350 to 730 ms. Slider maximum (500 steps, cell
+limit 1,000, 620 dish, field cell 6, diffusion 300, relaxation 6, every treatment on, about 98,000 draw calls): first
+preparation and draw 7.4 s (the colony alone is about 5 s; relaxation is the cost: 1 pass about 1.7 s); redraw 10 ms;
+palette edit 25 ms; appearance edit 170 ms; `steps` - 1 570 ms; `steps` + 5 290 ms; a structural edit recomputes
+everything (4.4 s for a source change). Cooperative preparation yields between step slices and cancels cleanly.
 
 ## Open concerns and decisions to confirm
 

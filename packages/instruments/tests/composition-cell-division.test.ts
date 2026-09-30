@@ -412,21 +412,24 @@ test("walls tile the dish: with a long reach the Voronoi areas add up to width x
 });
 
 test("hatching covers each wall: total stroke length is close to area over spacing, and the direction turns per generation", () => {
-  const colony = cellColony({ ...fed, boundary: "box" }, 3, 60);
+  const colony = cellColony({ ...fed, boundary: "box", maxCells: 60 }, 3, 100);
   const spacing = 2;
   const strokes = wallHatch(colony, { reach: 1.5, spacing, angle: 0, twist: 0, colorBy: "generation", palette: 5, min: 0, max: 1 });
   const length = sum(strokes.map((p) => Math.hypot(p.points[1][0] - p.points[0][0], p.points[1][1] - p.points[0][1])));
   const area = sum(cellWalls(colony, 1.5).map((w) => w.area));
   near(length / (area / spacing), 1, 0.06, "hatch length against area / spacing");
-  const twisted = wallHatch(colony, { reach: 1.5, spacing, angle: 0, twist: 90, colorBy: "generation", palette: 5, min: 0, max: 1 });
-  const angleOf = (p: { points: readonly (readonly number[])[] }) => Math.abs(Math.atan2(p.points[1][1] - p.points[0][1], p.points[1][0] - p.points[0][0]));
+  const twisted = wallHatch(colony, { reach: 1.5, spacing, angle: 10, twist: 25, colorBy: "generation", palette: 5, min: 0, max: 1 });
+  // Direction as an undirected angle in [0, 180) degrees: lines at `angle + twist x generation`.
+  const direction = (p: { points: readonly (readonly number[])[] }) => (((Math.atan2(p.points[1][1] - p.points[0][1], p.points[1][0] - p.points[0][0]) * 180 / Math.PI) % 180) + 180) % 180;
   const generation = new Map(colony.cells.map((c) => [c.id, c.generation] as const));
-  for (const path of twisted.slice(0, 300)) {
-    const turn = generation.get(path.id.split("/")[0])! % 2;
-    const a = angleOf(path);
-    if (turn === 0) assert.ok(a < 1e-6 || Math.abs(a - Math.PI) < 1e-6, `generation even ${path.id}`);
-    else near(Math.abs(Math.sin(a)), 1, 1e-6, `generation odd ${path.id}`);
+  const seen = new Set<number>();
+  for (const path of twisted) {
+    const g = generation.get(path.id.split("/")[0])!;
+    seen.add(g);
+    const expected = (10 + 25 * g) % 180, d = direction(path), gap = Math.abs(d - expected);
+    assert.ok(Math.min(gap, 180 - gap) < 1e-6, `${path.id} generation ${g}: ${d} != ${expected}`);
   }
+  assert.ok(seen.size >= 2, `several generations were hatched: ${[...seen]}`);
 });
 
 test("nutrient contours stay inside the wall, one family per level, and follow the concentration", () => {
