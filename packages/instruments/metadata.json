@@ -713,6 +713,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "roads-parcels",
+      "title": "Roads and Parcels",
+      "description": "Grow a street network one street at a time along a guide field (grid, radial and ring, spiral, organic), then read it as blocks and lots: roads in width classes, every enclosed block cut into lots along its nearest road, lots in three types with their own fills, and a reserved zone and unbuilt blocks left open. Scrub the growth steps; recolouring and restyling never regrow the streets.",
+      "category": "Layouts",
+      "operationIds": ["field.gradient-noise-2d-01", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/roads-parcels.md",
+      "source": "packages/instruments/src/composition/roads-parcels.ts",
+      "sourceEntry": "drawRoadsParcels",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",

@@ -1,5 +1,6 @@
 import { componentSeed } from "./core.js";
 import { domainDifference, domainIntersection, emptyDomain, locateInDomain, planarRegion, unionDomains } from "./domains.js";
+import { offsetDomain } from "./domains-offset.js";
 import type { PlanarDomain, PlanarRegion, PlanarRegionData } from "./domains.js";
 import type { GraphFace } from "./graph.js";
 import { roadFaces } from "./road-network.js";
@@ -56,6 +57,10 @@ import type { Point } from "./types.js";
  */
 export const MAX_BLOCKS = 4000;
 export const MAX_PARCELS = 12_000;
+/** Fragments of land smaller than this (canvas units squared, about a thousandth of a lot) are numerical residue of a Boolean, not land. */
+const NEGLIGIBLE = 0.01;
+/** Half-width of the thinnest land kept, canvas units. */
+const OPENING = 0.02;
 
 export interface RoadHierarchy { readonly avenues: number; readonly collectors: number }
 export interface RoadWidths { readonly avenue: number; readonly collector: number; readonly street: number }
@@ -158,11 +163,29 @@ function* buildBlocks(network: RoadNetwork, options: BlockOptions): Generator<vo
   const ageOf = (s: RoadStreet): number => s.kind === "route" ? s.rank / routes : 0;
   const at = new Map(network.graph.nodes.map((n) => [n.id, n.position] as const));
   const edgeById = new Map(network.graph.edges.map((e) => [e.id, e] as const));
-  // Dead-end stubs: the edges of stub streets from the free end to the junction (every edge of the street is a stub edge).
+  // Dangling roads: edges that bound no face (dead-end stubs, and streets that leave an open site edge), found by
+  // removing degree-1 nodes repeatedly. They lie inside a block, so their strips are removed from its land.
   const stubs: Stub[] = [];
-  for (const street of network.streets) if (street.stub) for (const id of street.edges) {
-    const edge = edgeById.get(id)!, a = at.get(edge.from)!, b = at.get(edge.to)!;
-    stubs.push({ ax: a[0], ay: a[1], bx: b[0], by: b[1], cls: classOfStreet.get(street.id)!, free: a });
+  {
+    const degree = new Map<string, number>(), incident = new Map<string, string[]>();
+    for (const edge of network.graph.edges) for (const n of [edge.from, edge.to]) {
+      degree.set(n, (degree.get(n) ?? 0) + 1);
+      (incident.get(n) ?? incident.set(n, []).get(n)!).push(edge.id);
+    }
+    const dead = new Set<string>(), queue = [...degree].filter(([, d]) => d === 1).map(([n]) => n);
+    for (let head = 0; head < queue.length; head++) {
+      const node = queue[head];
+      if (degree.get(node) !== 1) continue;
+      const id = incident.get(node)!.find((e) => !dead.has(e))!;
+      dead.add(id);
+      const edge = edgeById.get(id)!, other = edge.from === node ? edge.to : edge.from;
+      degree.set(node, 0); degree.set(other, degree.get(other)! - 1);
+      if (degree.get(other) === 1) queue.push(other);
+    }
+    for (const id of dead) {
+      const edge = edgeById.get(id)!, a = at.get(edge.from)!, b = at.get(edge.to)!;
+      stubs.push({ ax: a[0], ay: a[1], bx: b[0], by: b[1], cls: classOfStreet.get(network.edgeStreet[id])!, free: a });
+    }
   }
   const blocks: RoadBlock[] = [];
   for (const face of extraction.faces) {
@@ -182,7 +205,9 @@ function* buildBlocks(network: RoadNetwork, options: BlockOptions): Generator<vo
         shapes.push(strip(a[0], a[1], b[0], b[1], half[i]));
         const p = face.points[(i + n - 1) % n];
         // A reflex corner (interior angle over 180°) leaves a wedge between the two strips: round it.
-        if ((a[0] - p[0]) * (b[1] - a[1]) - (a[1] - p[1]) * (b[0] - a[0]) < 0) shapes.push(octagon(a[0], a[1], Math.max(half[i], half[(i + n - 1) % n])));
+        // A convex corner between roads of different widths needs the wider road's round cap too, or lots reach it.
+        const before = half[(i + n - 1) % n], turn = (a[0] - p[0]) * (b[1] - a[1]) - (a[1] - p[1]) * (b[0] - a[0]);
+        if (turn < 0 || before !== half[i]) shapes.push(octagon(a[0], a[1], Math.max(half[i], before)));
       }
       for (const stub of stubs) {
         const mx = (stub.ax + stub.bx) / 2, my = (stub.ay + stub.by) / 2;
@@ -190,7 +215,11 @@ function* buildBlocks(network: RoadNetwork, options: BlockOptions): Generator<vo
         const h = classWidth(widths, stub.cls) / 2 + setback;
         shapes.push(strip(stub.ax, stub.ay, stub.bx, stub.by, h), octagon(stub.ax, stub.ay, h), octagon(stub.bx, stub.by, h));
       }
-      land = domainDifference(region, unionDomains(shapes), { id: `${id}/land` });
+      const raw = domainDifference(region, unionDomains(shapes), { id: `${id}/land`, minArea: NEGLIGIBLE });
+      // Opening (shrink then grow by OPENING, round joins: an inscribed polygon) removes needles and hairlines a few ulps wide that the union of nearly
+      // collinear strips leaves at a corner; the result is a subset of the raw land, so lots still keep clear of roads.
+      land = raw.regions.length === 0 ? raw
+        : offsetDomain(offsetDomain(raw, -OPENING, { join: "round", id: `${id}/open` }), OPENING, { join: "round", id: `${id}/land`, minArea: NEGLIGIBLE });
     }
     blocks.push(Object.freeze({ id, face, region, kind, area: face.area, land, edgeClass: Object.freeze(edgeClass),
       edgeAge: Object.freeze(streets.map(ageOf)), edgeStreet: Object.freeze(streets.map((s) => s.id)), centroid: region.centroid }));
@@ -338,7 +367,7 @@ function lotsOf(block: RoadBlock, options: LotOptions): Leaf[] {
     if (!cut) { finish(piece.id, piece.region, frontage); continue; }
     const reach = 2 * Math.hypot(piece.region.bounds[2] - piece.region.bounds[0], piece.region.bounds[3] - piece.region.bounds[1]) + 1;
     const half = halfPlane(cut.through, cut.normal, cut.side, reach);
-    const positive = domainIntersection(piece.region, half).regions, negative = domainDifference(piece.region, half).regions;
+    const positive = domainIntersection(piece.region, half, { minArea: NEGLIGIBLE }).regions, negative = domainDifference(piece.region, half, { minArea: NEGLIGIBLE }).regions;
     if (positive.length === 0 || negative.length === 0) { finish(piece.id, piece.region, frontage); continue; }
     const sep = separator(piece.id);
     for (const [regions, tag] of [[positive, cut.tags[0]], [negative, cut.tags[1]]] as const)

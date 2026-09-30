@@ -4,7 +4,8 @@ import { validateParameterValues } from "../parameter-validation.js";
 import { atEach, componentSeed, createCompositionRun, inside, strokeWith } from "./core.js";
 import { selectGraph } from "./graph.js";
 import type { GraphView } from "./graph.js";
-import { motif, pathMaterial, regionFill } from "./materials.js";
+import { motif, pathMaterial, regionFill, regionGeometry, regionGeometryKey, retainPreparedRegions } from "./materials.js";
+import type { PreparedRegionGeometry } from "./materials.js";
 import { growRoads, prepareRoads, roadNetwork } from "./road-network.js";
 import type { RoadNetwork, RoadPlacement, RoadSnapshots } from "./road-network.js";
 import type { RoadGrowthParams } from "./road-growth.js";
@@ -119,7 +120,9 @@ export async function prepareRoadsParcels(recipe: RoadsParcelsComposition, cance
   const network = roadNetwork(snapshots, recipe.placement);
   const blocks = await prepareBlocks(network, blockOptions(recipe), cancelled);
   if (!blocks) return false;
-  return (await prepareParcels(blocks, lotOptions(recipe), cancelled)) !== null;
+  const parcels = await prepareParcels(blocks, lotOptions(recipe), cancelled);
+  if (!parcels) return false;
+  return prepareLotScene(recipe, parcels, cancelled);
 }
 
 /* --------------------------------------------------------------------------------- treatments */
@@ -129,7 +132,7 @@ const dot = (size: number): MotifSpec => ({ kind: "dot", size, petals: 6, openin
 function fillSpec(kind: "hatch" | "motifs" | "contours", f: RoadsParcelsComposition["fill"]): RegionFillSpec {
   return { kind, inset: f.inset, retention: 1, spacing: f.spacing, angle: f.hatchAngle, weight: f.weight, underpaint: 0, mark: dot(f.weight * 2.2),
     material: { kind: "ink", weight: f.weight, spacing: f.spacing, phase: .5, phaseSpread: 0, levelRamp: 0, retention: 1, mark: dot(f.weight * 2.2) },
-    contour: { source: "noise", resolution: 24, frequency: 1.4, aspect: 1, hillCount: 3, hillRadius: .5, levelBase: .3, levelStep: Math.max(.04, f.spacing / 40), levels: 6 } };
+    contour: { source: "hills", resolution: 24, frequency: 1, aspect: 1, hillCount: 1, hillRadius: .7, levelBase: .15, levelStep: Math.max(.05, f.spacing / 30), levels: 8 } };
 }
 
 const junctionViews = new WeakMap<RoadNetwork, GraphView>();
@@ -159,6 +162,50 @@ const rgb = (palette: readonly number[], tone: number): [number, number, number]
   return [(value >>> 16) & 255, (value >>> 8) & 255, value & 255];
 };
 
+const lotRegion = (parcel: Parcel): Region | null => parcel.frame
+  ? { id: parcel.id, seed: parcel.seed, bounds: [-parcel.frame.width / 2, -parcel.frame.height / 2, parcel.frame.width / 2, parcel.frame.height / 2] } : null;
+const fillKind = (kind: LotFill): "hatch" | "motifs" | "contours" | null => kind === "hatch" ? "hatch" : kind === "dots" ? "motifs" : kind === "contours" ? "contours" : null;
+const scenes = new WeakMap<RoadParcels, Map<string, ReadonlyMap<string, PreparedRegionGeometry | undefined>>>();
+const sceneKey = (f: RoadsParcelsComposition["fill"]): string => JSON.stringify([f.types, f.spacing, f.hatchAngle, f.inset]);
+
+/**
+ * The geometry (hatch lines, dot sites, contour paths) of every filled lot, published once so the per-lot fillers
+ * read it instead of recomputing (the shared region-geometry cache holds only 64 entries; a network has hundreds of
+ * lots). Keyed by the parcels and the construction fields of the fill only, so palette, weight and underpaint edits reuse it.
+ */
+function* sceneSteps(recipe: RoadsParcelsComposition, parcels: RoadParcels): Generator<void, ReadonlyMap<string, PreparedRegionGeometry | undefined>, void> {
+  const key = sceneKey(recipe.fill);
+  let byFill = scenes.get(parcels);
+  if (!byFill) { byFill = new Map(); scenes.set(parcels, byFill); }
+  const hit = byFill.get(key);
+  if (hit) { retainPreparedRegions(hit); return hit; }
+  const scene = new Map<string, PreparedRegionGeometry | undefined>();
+  let index = 0;
+  for (const parcel of parcels.lots) {
+    const kind = fillKind(recipe.fill.types[parcel.type]), region = lotRegion(parcel);
+    if (kind && region) {
+      const spec = fillSpec(kind, recipe.fill);
+      scene.set(regionGeometryKey(spec, region), regionGeometry(spec, region));
+    }
+    if (++index % 8 === 0) yield;
+  }
+  byFill.set(key, scene);
+  retainPreparedRegions(scene);
+  return scene;
+}
+function lotScene(recipe: RoadsParcelsComposition, parcels: RoadParcels): void {
+  const steps = sceneSteps(recipe, parcels);
+  while (!steps.next().done);
+}
+async function prepareLotScene(recipe: RoadsParcelsComposition, parcels: RoadParcels, cancelled: () => boolean): Promise<boolean> {
+  const steps = sceneSteps(recipe, parcels);
+  for (;;) {
+    if (cancelled()) return false;
+    if (steps.next().done) return true;
+    await new Promise<void>((resolve) => setTimeout(resolve, 0));
+  }
+}
+
 /** Paint the lots of `parcels` (underpaint, filler, outline), one parcel at a time. */
 function drawLots(surface: CompositionSurface, recipe: RoadsParcelsComposition, parcels: RoadParcels, consumers: RoadsParcelsConsumers, run: CompositionRun): void {
   const { fill, palette } = recipe;
@@ -181,7 +228,7 @@ function drawLots(surface: CompositionSurface, recipe: RoadsParcelsComposition, 
       const frame = parcel.frame;
       const filler = consumers.lot ?? fillers[parcel.type];
       if (filler && frame && kind !== "none" && kind !== "solid") {
-        const region: Region = { id: parcel.id, seed: parcel.seed, bounds: [-frame.width / 2, -frame.height / 2, frame.width / 2, frame.height / 2] };
+        const region = lotRegion(parcel)!;
         surface.push();
         try {
           surface.translate(frame.center[0], frame.center[1]);
@@ -218,6 +265,7 @@ export function drawRoadsParcels(surface: CompositionSurface, recipe: RoadsParce
   run: CompositionRun = createCompositionRun({ maxWork: 2_000_000 })): void {
   run.check();
   const products = roadsParcelsProducts(recipe);
+  lotScene(recipe, products.parcels);
   drawLots(surface, recipe, products.parcels, consumers, run);
   const groups = roadPaths(recipe, products.network);
   for (const cls of [2, 1, 0]) if (groups[cls].length > 0 && classWidth(recipe.widths, cls) > 0) strokeWith(surface, groups[cls], consumers.road ?? roadMaterial(recipe, cls), run);
