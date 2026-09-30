@@ -132,6 +132,13 @@ test("fold rules produce their analytic angles", () => {
     const parity = (Math.floor(h.mid[0] + 0.25) + Math.floor(h.mid[1] + 0.25)) % 2;
     assert.equal(checker[h.index], parity === 0 ? 20 : -20);
   }
+  // the same cells on a tiling whose hinge midpoints are not on whole numbers: the quarter-cell offset applies to both axes
+  const tri = panelTiling(tilingOptions({ source: "triangle", columns: 5, rows: 4 }));
+  const triChecker = hingeAngles(tri, foldOptions({ rule: "checker", angle: 20, period: 0.7 }));
+  for (const h of tri.hinges) {
+    const parity = Math.abs(Math.floor((h.mid[0] - tri.bounds.minU) / 0.7 + 0.25) + Math.floor((h.mid[1] - tri.bounds.minV) / 0.7 + 0.25)) % 2;
+    assert.equal(triChecker[h.index], parity === 0 ? 20 : -20);
+  }
   // amount scales linearly, and 0 is exactly flat
   const half = hingeAngles(t, foldOptions({ rule: "stripes", angle: 50, amount: 0.5 }));
   hingeAngles(t, foldOptions({ rule: "stripes", angle: 50 })).forEach((a, i) => near(half[i], a / 2, 1e-12));

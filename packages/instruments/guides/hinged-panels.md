@@ -25,7 +25,7 @@ lines or motifs never moves a panel; changing *Fold progress* to 0 gives the fla
 
 | Controls | What changes on the canvas |
 |---|---|
-| **Panel source** | The flat tiling: **squares**, **triangles**, **bricks** (2 x 1, every row shifted, so one edge is shared with two panels) or **Penrose rhombs** grown from a seed patch by substitution. A shared edge is a hinge. |
+| **Panel source** | The flat tiling: **squares**, **triangles**, **bricks** (2 x 1, every row shifted, so one edge is shared with two panels) or **Penrose rhombs** grown from a seed patch by substitution (with the lone half-rhombs at the patch edge, so the patch is one piece). A shared edge is a hinge. |
 | **Columns**, **Rows** | Panels across and up, for squares, triangles (a cell is two triangles) and bricks. |
 | **Seed patch**, **Substitution depth** | The Penrose patch (the five-fold **sun**, the **decagon**, a single **thick** or **thin** rhomb) and how many times it is divided; panels multiply by about 2.6 per step. |
 | **Panel retention** | Share of panels kept. Omitted panels leave bare paper and cut the hinge graph; a piece cut loose from the anchor stays flat where it started. The same panels are omitted whatever the fold or drawing. |
