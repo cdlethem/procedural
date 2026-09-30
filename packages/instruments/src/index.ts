@@ -33,14 +33,20 @@ import { drawImageDirectedField, imageDirectedFieldComposition, prepareImageDire
 import { dataScoresComposition, dataScoresUsesSeed, drawDataScores, prepareDataScores } from "./composition/data-scores.js";
 import { pixelSortingDefinition } from "./adapters/pixel-sorting-instrument.js";
 import { drawPixelSorting, pixelSortingComposition, pixelSortingUsesSeed, preparePixelSorting } from "./composition/pixel-sorting.js";
+import { shapePackingDefinition } from "./adapters/shape-packing-instrument.js";
+import { drawShapePacking, prepareShapePacking, shapePackingComposition, shapePackingUsesSeed } from "./composition/shape-packing.js";
 import { crossingLaceDefinition } from "./adapters/crossing-lace-instrument.js";
 import { crossingLaceComposition, crossingLaceUsesSeed, drawCrossingLace, prepareCrossingLace } from "./composition/crossing-lace.js";
+import { hyperbolicGardensDefinition } from "./adapters/hyperbolic-gardens-instrument.js";
+import { drawHyperbolicGardens, hyperbolicGardensComposition, hyperbolicGardensUsesSeed, prepareHyperbolicGardens } from "./composition/hyperbolic-draw.js";
 import { quilledPathsDefinition } from "./adapters/quilled-paths-instrument.js";
 import { drawQuilled, prepareQuilled, quillComposition, quillUsesSeed } from "./composition/quill-draw.js";
 import { bundledRelationsDefinition } from "./adapters/bundled-relations-instrument.js";
 import { bundledRelationsComposition, bundledRelationsUsesSeed, drawBundledRelations, prepareBundledRelations } from "./composition/bundled-relations.js";
 import { dryBristlesDefinition } from "./adapters/dry-bristles-instrument.js";
 import { drawDryBristles, dryBristlesComposition, prepareDryBristles } from "./composition/dry-bristles.js";
+import { polygonWatercolorDefinition } from "./adapters/polygon-watercolor-instrument.js";
+import { drawPolygonWatercolor, polygonWatercolorComposition, polygonWatercolorUsesSeed, preparePolygonWatercolor } from "./composition/polygon-watercolor.js";
 import type { CompositionSurface } from "./composition/types.js";
 import { graphRolesUsesSeed } from "./composition/graph-draw.js";
 import { validateParameterValues } from "./parameter-validation.js";
@@ -50,11 +56,29 @@ import { drawSlit, prepareSlit, slitComposition } from "./composition/slit-draw.
 import { compartmentsUsesSeed } from "./adapters/compartments-instrument.js";
 import { strokeReliefDefinition } from "./adapters/stroke-relief-instrument.js";
 import { drawStrokeRelief, prepareStrokeRelief, strokeReliefComposition } from "./composition/stroke-relief.js";
+import { inversionGardensDefinition } from "./adapters/inversion-gardens-instrument.js";
+import { drawInversionGardens, inversionGardensComposition, inversionGardensUsesSeed, prepareInversionGardens } from "./composition/inversion-gardens.js";
 import { pathTypographyDefinition, pathTypographyUsesSeed } from "./adapters/path-typography-instrument.js";
+import { chemotacticTrailsDefinition } from "./adapters/chemotactic-trails-instrument.js";
+import { chemotacticTrailsComposition, drawChemotacticTrails, prepareChemotacticTrails } from "./composition/chemotaxis-draw.js";
 import { drawPathTypography, pathTypographyComposition, preparePathTypography } from "./composition/path-type-draw.js";
 import { drainageErosionDefinition } from "./adapters/drainage-erosion-instrument.js";
 import { drainageErosionComposition, drawDrainageErosion, prepareDrainageErosion } from "./composition/drainage-draw.js";
 import { drainageUsesSeed } from "./composition/drainage-settings.js";
+import { nodalPlatesDefinition } from "./adapters/nodal-plates-instrument.js";
+import { drawNodalPlate, nodalPlateComposition, nodalPlatesUsesSeed, prepareNodalPlate } from "./composition/nodal-draw.js";
+import { glyphPackingDefinition, glyphPackingUsesSeed } from "./adapters/glyph-packing-instrument.js";
+import { drawGlyphPacking, glyphPackingComposition, prepareGlyphPacking } from "./composition/glyph-pack-draw.js";
+import { regionStitchDefinition, regionStitchUsesSeed } from "./adapters/region-stitch-instrument.js";
+import { drawStitches, prepareStitches, regionStitchComposition } from "./composition/stitch-draw.js";
+import { outlineTypeDefinition, outlineTypeUsesSeed } from "./adapters/outline-type-instrument.js";
+import { drawOutlineType, outlineTypeComposition, prepareOutlineType } from "./composition/outline-type-draw.js";
+import { valueRegionsDefinition } from "./adapters/value-regions-instrument.js";
+import { drawValueRegions, prepareValueRegions, valueRegionsComposition, valueRegionsUsesSeed } from "./composition/value-regions-draw.js";
+import { randomWalkFrontsDefinition } from "./adapters/random-walk-fronts-instrument.js";
+import { drawWalkFronts, prepareRandomWalkFronts, randomWalkFrontsComposition } from "./composition/walk-fronts-draw.js";
+import { wetPigmentDefinition, wetPigmentPalette } from "./adapters/wet-pigment-instrument.js";
+import { drawWetPigment, prepareWetPigment, wetPigmentComposition, wetPigmentUsesSeed } from "./composition/wet-pigment-draw.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
@@ -114,6 +138,17 @@ export type { FootprintShape, ClipMode, EngravingOptions, EngravingSignal, Engra
 export { engravedLines, engravingTone, toneSignal, shapedTone, ENGRAVING_LIMITS } from "./composition/engraving.js";
 export type { LineKind, ColorBy as EngravingColorBy, EngravingLineSpec, EngravingComposition, EngravingConsumers } from "./composition/engraving-draw.js";
 export { engravingComposition, engravingProducts, tonePieces, drawEngraving, prepareEngraving, TONE_BINS } from "./composition/engraving-draw.js";
+export type { StitchFieldSpec, StitchFieldKind, StitchField } from "./composition/stitch-field.js";
+export { stitchField, fieldKey as stitchFieldKey, stitchFieldKinds } from "./composition/stitch-field.js";
+export type { StitchRegion, StitchFootprint, StitchWord, StitchSourceKind, RegionSourceSpec } from "./composition/stitch-regions.js";
+export { bundledStitchRegions, stitchRegionsOf, regionBoundaries, stitchWords, stitchSourceKinds, STITCH_REGION_LIMITS } from "./composition/stitch-regions.js";
+export type { Chain as StitchChain, Run as StitchRun, RouteOptions as StitchRouteOptions } from "./composition/stitch-route.js";
+export { routeRuns, runningStitches, spanStitches, boundStitches, samplePolyline, polylineLength } from "./composition/stitch-route.js";
+export type { FillRule as StitchFillRule, FillChoice as StitchFillChoice, UnderlayKind as StitchUnderlayKind, OutlineKind as StitchOutlineKind, CrossingKind as StitchCrossingKind,
+  RegionOrder as StitchRegionOrder, ThreadRole as StitchThreadRole, StitchOptions, StitchThread, StitchRegionInfo, StitchStats, StitchProducts } from "./composition/stitch.js";
+export { stitchThreads, stitchUsesSeed, estimateStitches, STITCH_LIMITS, INSIDE_TOLERANCE as STITCH_INSIDE_TOLERANCE, fillChoices as stitchFillChoices } from "./composition/stitch.js";
+export type { StitchColorBy, StitchComposition, StitchThreadSpec, ThreadKind as StitchThreadKind, StitchTrim, StitchConsumers } from "./composition/stitch-draw.js";
+export { regionStitchComposition, regionStitchProducts, stitchRuns, drawStitches, drawStitchProducts, prepareStitches } from "./composition/stitch-draw.js";
 export type { ControlSequenceData, ControlSequence } from "./composition/control-sequence.js";
 export { createControlSequence, controlSequenceData, sequenceFingerprint, SEQUENCE_LIMITS } from "./composition/control-sequence.js";
 export type { BundledControlSequenceId, BundledSequenceInfo } from "./composition/control-sequence-samples.js";
@@ -136,25 +171,39 @@ export type { ImageSource, SegmentOptions, ValueRegion, RegionAdjacency, Segment
   OrientationOptions, OrientationSample, OrientationField, OrientationVectorOptions, ScanDirection, ScanOptions, ScanRun, RunSet, SortRunsOptions, PixelMoves,
   ApplyMovesOptions, FrequencyModulationOptions, ModulatedLine } from "./composition/image-structure.js";
 export { segmentValueBands, valueRegionMask, subdivideImage, subdivisionLabels, orientationField, orientationPixel, orientationAt, orientationInRect, orientationGrids, orientationVector,
-  scanRuns, scanRunPixel, scanRunSegment, sortScanRuns, applyPixelMoves, pixelSort, frequencyModulation, modulatedPolyline, IMAGE_STRUCTURE_LIMITS } from "./composition/image-structure.js";
+  scanRuns, scanRunPixel, scanRunSegment, sortScanRuns, applyPixelMoves, pixelSort, frequencyModulation, modulatedPolyline, smoothValues, IMAGE_STRUCTURE_LIMITS } from "./composition/image-structure.js";
 export type { SourceFrame, TraceFigure, PathData, BristleSource } from "./composition/bristle-sources.js";
 export { bristleSourcePaths, pathSet, traceFigures, contourFields, MAX_SOURCE_PATHS, MAX_SOURCE_POINTS } from "./composition/bristle-sources.js";
 export type { DryBristlesComposition, DryBristlesConsumers, DryBristlesPlan } from "./composition/dry-bristles.js";
 export { dryBristlesComposition, dryBristlesPlan, dryBristlesStrokes, drawDryBristles, prepareDryBristles } from "./composition/dry-bristles.js";
+export type { PolygonWatercolorComposition, PolygonWatercolorConsumers, WashInk, WashPainter } from "./composition/polygon-watercolor.js";
+export { polygonWatercolorComposition, polygonWatercolorParent, polygonWatercolorPasses, drawPolygonWatercolor, preparePolygonWatercolor, washPainter, washTone } from "./composition/polygon-watercolor.js";
+export type { WashBoundary, WashDivergence, WashEdge, WashLaw, WashOptions, WashOutline, WashPass, WashPasses, WashPatches } from "./composition/wash.js";
+export { WASH_LIMITS, checkWashOptions, prepareWashPasses, washLaw, washOffset, washOutline, washParent, washPassCount, washPasses, washPatch, washSide, washWork } from "./composition/wash.js";
+export type { WashParent, WashPlacement, WashShape, WashWord } from "./composition/wash-shapes.js";
+export { washParentDomain, washShapes, washWords } from "./composition/wash-shapes.js";
 export type {
   TilingRuleName, TilingOptions, TilingTile, TilingVertex, TilingEdge, Tiling, TileFiller, TileFillSpec, TileColorMode, TilingView,
 } from "./composition/types.js";
 export { substitutionTiling, tilingRules, tilingEdgePaths, tileAncestorId, MAX_TILING_DEPTH, MAX_TILING_PIECES } from "./composition/tilings.js";
 export { tileFill, tileTone, tonedTiles, tonedEdges, selectedVertices, shownTiles, insetPolygon, drawTiling } from "./composition/tiling-materials.js";
-export { planarRegion, planarDomain, ringsDomain, locateInDomain, domainContains, domainRings, domainUnion, domainIntersection, domainDifference, domainXor,
+export { planarRegion, planarDomain, ringsDomain, locateInDomain, domainClearance, domainContains, domainRings, domainUnion, domainIntersection, domainDifference, domainXor,
   unionDomains, emptyDomain, rectangleRegion, rectangleDomain, textDomain, keyholeRing, keyholeJoin, keyholeRings, PlanarError, PLANAR_LIMITS } from "./composition/domains.js";
 export type { PlanarRegion, PlanarDomain, PlanarRegionData, PlanarShape, PlanarOptions, RepairOptions, TextDomainOptions, DomainLocation, Fill, PlanarErrorCode } from "./composition/domains.js";
-export { offsetDomain } from "./composition/domains-offset.js";
+export { offsetDomain, sweepDomain, shadowDomain } from "./composition/domains-offset.js";
 export type { OffsetOptions } from "./composition/domains-offset.js";
 export { clipPath, clipPaths, hatchDomain, clipRingToRect } from "./composition/domains-paths.js";
 export type { ClipOptions, ClippedPiece, HatchOptions, HatchStroke } from "./composition/domains-paths.js";
 export { maskDomain, labelDomains, simplifyDomain, MASK_DOMAIN_LIMITS } from "./composition/domains-raster.js";
 export type { MaskRaster, RasterOptions, MaskOptions, LabelOptions, LabelDomain } from "./composition/domains-raster.js";
+export { regionsOverlap, regionInside, shapesOverlap, shapeCovers } from "./composition/domains-overlap.js";
+export type { RingRegion } from "./composition/domains-overlap.js";
+export type { PackShape, PackItem, PackItemsOptions, PieceFamily, LetterSet, ContainerKind, PackContainerSpec } from "./composition/shape-pieces.js";
+export { PIECE_FAMILIES, LETTER_SETS, PACK_ITEM_LIMITS, CONTAINER_KINDS, CONTAINER_LETTERS, packItems, customItem, customShape, pieceShape, packContainer } from "./composition/shape-pieces.js";
+export type { PackOrder, PackRule, PackRules, PackedInstance, UnplacedItem, PackStats, ShapePacking } from "./composition/shape-packing-layout.js";
+export { PACK_LIMITS, packOrder, packShapes, packNegativeSpace } from "./composition/shape-packing-layout.js";
+export type { PackColorBy as ShapePackColorBy, PackRender as ShapePackRender, ShapePackingLook, ShapePackingRecipe, PackSite, ShapePackingConsumers } from "./composition/shape-packing.js";
+export { SHAPE_PACKING_LIMITS, shapePackingLayout, packedSites, drawShapePacking, prepareShapePacking, shapePackingComposition } from "./composition/shape-packing.js";
 export type { ContinuousColumn, CategoricalColumn, Column, ColumnInput, DataTableInput, DataTable, Curve, Outside, ChannelSpec, MeasureMapping,
   QuantityMapping, ResolvedChannel, Aggregate, MissingPolicy, UnitWindow, UnitOptions, DataUnit, OmitReason, OmittedUnit, ResolveOptions,
   ResolvedUnit, ResolvedMapping, ResolvedData } from "./composition/data-table.js";
@@ -213,6 +262,14 @@ export type { CompartmentFillKind, CompartmentColor, CompartmentFiller, Compartm
   CompartmentImage, CompartmentsComposition } from "./composition/compartments-draw.js";
 export { compartmentFiller, compartmentFillKind, compartmentAngle, compartmentInk, nearestPaletteIndex, hatchSegments, halftoneCentres, hatchSpacing, halftoneRadius,
   boundCompartmentWork, compartmentSource, compartmentOptions, compartmentDrawRegions, drawCompartments, prepareCompartments, MIN_COHERENCE, MAX_COMPARTMENT_UNITS } from "./composition/compartments-draw.js";
+export type { ValueMeasure, ValueBandRule, ValueMergePolicy, ValueRegionOptions, ValueRegionNeighbor, ValueRegionShape, ValueRegionArc, ValueRegionAdjacency, ValueRegionMap,
+  ValueRetainRule } from "./composition/value-regions.js";
+export { valueRegionMap, keptValueRegions, valueRetainRules, valueMeasures, VALUE_REGION_LIMITS } from "./composition/value-regions.js";
+export type { ValueRegionFillKind, ValueRegionColor, ValueNestedKind, ValueNestedMaterial, ValueRegionHatchSpec, ValueRegionNestedSpec, ValueRegionFillSpec, ValueRegionOutlineSpec,
+  ValueRegionSelect, DrawnValueRegion, ValueRegionFiller, ValueRegionConsumers, ValueRegionImage, ValueRegionsRecipe } from "./composition/value-regions-draw.js";
+export { valueRegionFillValid, valueRegionOutlineValid, insetValueRegion, drawnValueRegions, valueRegionInk, valueRegionHatchSpacing, valueRegionHatchAngle, valueRegionHatch,
+  valueRegionFiller, valueRegionOutline, boundValueRegionWork, valueRegionSource, valueRegionOptions, valueRegionsOf, drawValueRegions, prepareValueRegions,
+  valueRegionsComposition, valueRegionsUsesSeed, MIN_VALUE_REGION_ELONGATION, MAX_VALUE_REGION_UNITS } from "./composition/value-regions-draw.js";
 export type { StrokeData, ReliefStroke, StrokeSet, StrokeFrame, DepositionOrder } from "./composition/strokes.js";
 export { strokeSet, strokeData, strokesFromPaths, strokeFromGesture, placeStrokes, scaleWidths, depositionOrder, depositionOrders, paintMass, STROKE_LIMITS } from "./composition/strokes.js";
 export type { BundledStrokeId } from "./composition/stroke-samples.js";
@@ -251,6 +308,24 @@ export { branchChains, gestureNaturalExtent, rankedPaths, supplyPaths, smoothPat
 export type { ColorBy as PathTypographyColorBy, PathTypographyComposition, GlyphMark, PathTypographyConsumers, TypographyProducts } from "./composition/path-type-draw.js";
 export { pathTypographyComposition, pathTypographyProducts, glyphTone, glyphFill, glyphOutline, drawPathTypography, preparePathTypography,
   MAX_TYPE_FRAMES, MIN_STRAIGHTNESS, GESTURE_SPACING, SPAN_CAPS } from "./composition/path-type-draw.js";
+export type { FlatRing, FlatRegion, Tally } from "./composition/domains-contact.js";
+export { flatRing, transformRing, segmentsContact, ringsContact, regionsContact, locateInFlatRing, ringWithin } from "./composition/domains-contact.js";
+export type { GlyphPart, GlyphSource, SymbolInput, VocabularyEntry, GlyphVocabulary, CounterPolicy, FlatPart, Footprint, BundledSymbolId, BundledVocabularyId } from "./composition/glyph-sources.js";
+export { wordSource, symbolSource, bundledSymbol, bundledSymbolIds, glyphVocabulary, bundledVocabulary, bundledVocabularyIds, footprintOf, MAX_SOURCE_TEXT } from "./composition/glyph-sources.js";
+export type { BundledContainerId, ContainerPlacement, NegativeKind, NegativeSpec, PackingField } from "./composition/glyph-containers.js";
+export { bundledContainerIds, containerSilhouette, placeContainer, negativeSpace, noNegativeSpace, packingField } from "./composition/glyph-containers.js";
+export type { OrientationRule, Orientation, PackOptions, GlyphInstance, UnplacedReason, Unplaced, PackingStats, GlyphPacking, Demand } from "./composition/glyph-pack.js";
+export { GLYPH_PACKING_LIMITS, validatePack, pickEntry, planDemands, packGlyphs, instanceInk } from "./composition/glyph-pack.js";
+export type { GlyphColorBy, ContainerShown, GlyphPackingComposition, GlyphMark as GlyphPackMark, GlyphPackingConsumers, GlyphPackingProducts } from "./composition/glyph-pack-draw.js";
+export { glyphPackingComposition, glyphPackingProducts, glyphTone as packedGlyphTone, glyphFill as packedGlyphFill, glyphOutline as packedGlyphOutline,
+  drawGlyphPacking, prepareGlyphPacking } from "./composition/glyph-pack-draw.js";
+export type { OutlineText, OutlineUnitKind, OutlineLayoutOptions, OutlineGlyph, OutlineLine, OutlineLayout, OutlineUnit, OutlineDisplacement, OutlineDisplacementSpec } from "./composition/outline-type.js";
+export { outlineText, bundledOutlineTexts, outlineLayout, outlineUnits, displacementField, deformDomain, displaceUnits, MAX_OUTLINE_LINES, MAX_OUTLINE_LINE_CHARS, MAX_DISPLACED_VERTICES } from "./composition/outline-type.js";
+export type { OutlineFillKind, OutlineFillSpec, OutlineFillShape, OutlineFillMark, OutlineFill, OutlineFillContext, OutlineFiller } from "./composition/outline-type-fill.js";
+export { outlineFillerFor, validateOutlineFill, resolveOutlineFillKind, OUTLINE_MIXED_KINDS } from "./composition/outline-type-fill.js";
+export type { OutlineTypeColorBy, OutlineTypeComposition, OutlineUnitProduct, OutlineTypeProducts, OutlineTypeConsumers } from "./composition/outline-type-draw.js";
+export { outlineTypeComposition, outlineTypeProducts, outlineTone, trimPath, fillMaterial, drawOutlineType, prepareOutlineType,
+  MAX_FILL_PATHS, MAX_FILL_POINTS, MAX_FILL_MARKS, MAX_OUTLINE_STATIONS } from "./composition/outline-type-draw.js";
 export type { Crossing, CrossingSide, Contact, NearMiss, CrossingSet, CrossingOptions } from "./composition/crossings.js";
 export { findCrossings, CROSSING_LIMITS } from "./composition/crossings.js";
 export type { OverRule, CrossingOrderOptions, Occurrence, AlternationBreak, CrossingOrder } from "./composition/crossing-order.js";
@@ -262,6 +337,16 @@ export type { LaceFrame, LaceShape, LaceOptions } from "./composition/lace-famil
 export { lacePaths, laceVertexEstimate, MAX_LACE_VERTICES } from "./composition/lace-families.js";
 export type { StrandStyle, CrossingLaceComposition, LaceConsumers, CrossingLaceProducts } from "./composition/crossing-lace.js";
 export { crossingLaceComposition, crossingLaceProducts, drawCrossingLace, drawCrossingLaceProducts, prepareCrossingLace } from "./composition/crossing-lace.js";
+export type { HyperbolicOptions, HyperbolicCenter, HyperbolicTile, HyperbolicVertex, HyperbolicEdge, HyperbolicTiling } from "./composition/hyperbolic.js";
+export { hyperbolicTiling, hyperbolicEdgePaths, hyperbolicCellPaths, retainCells, geodesicPolyline, curvePolyline, MAX_HYPERBOLIC_TILES, MAX_HYPERBOLIC_GENERATIONS, MAX_DISK_RADIUS, EDGE_TOLERANCE } from "./composition/hyperbolic.js";
+export type { HyperbolicFrame, HyperbolicRing, HyperbolicRingAround, HyperbolicFrameOptions, HyperbolicRingOptions } from "./composition/hyperbolic-frames.js";
+export { hyperbolicFrames, hyperbolicRings, MAX_HYPERBOLIC_FRAMES, MAX_HYPERBOLIC_ARCS } from "./composition/hyperbolic-frames.js";
+export type { Vec3 as HyperbolicVec3, Mat3 as HyperbolicMat3, TriangleGroup, MirrorAddress, DiskFrame } from "./composition/hyperbolic-geometry.js";
+export { triangleGroup, mirrorAddress, addressMatrix, frameOf, toDisk, fromDisk, validateSchlafli, MAX_HYPERBOLIC_X0, IDENTITY as HYPERBOLIC_IDENTITY,
+  apply as applyHyperbolic, mul as composeHyperbolic, inverse as invertHyperbolic, det as hyperbolicDeterminant, lorentz as lorentzProduct,
+  along as geodesicPoint, distance as hyperbolicDistance } from "./composition/hyperbolic-geometry.js";
+export type { HyperbolicColorBy, HyperbolicCellFill, HyperbolicMark, HyperbolicMotifColor, HyperbolicGardensComposition, HyperbolicConsumers, HyperbolicProducts } from "./composition/hyperbolic-draw.js";
+export { hyperbolicGardensComposition, hyperbolicProducts, hyperbolicTone, hatchPolygon, MAX_HATCH_LINES_PER_CELL, drawHyperbolicGardens, drawHyperbolicProducts, prepareHyperbolicGardens } from "./composition/hyperbolic-draw.js";
 export type { SpiralFamily, FrameOptions, SpiralOptions, LettersOptions, ScrollOptions, QuillScaffoldSpec } from "./composition/quill-scaffold.js";
 export { quillScaffold, letterPaths, spiralPaths, scrollPaths, spiralFamilies, MAX_SCAFFOLD_POINTS } from "./composition/quill-scaffold.js";
 export type { QuillTerminals, QuillCurl, QuillNestSide, QuillOverlap, QuillStripOptions, QuillStrip, NestStop, StripClash, QuillDiagnostics, QuillStrips } from "./composition/quill-strips.js";
@@ -270,6 +355,13 @@ export type { QuillFaceKind, QuillGeometryOptions, QuillGeometry, QuillCamera, Q
 export { quillGeometry, quillProjection, projectPoint, stripHeight, stripHeightFactor, stripSides, MAX_QUILL_FACES, MAX_PITCH, MIN_WALL } from "./composition/quill-geometry.js";
 export type { QuillTone, QuillMaterialSpec, QuillView, QuilledPathsComposition, QuillFace, QuillFacePainter, QuillConsumers, QuillProducts } from "./composition/quill-draw.js";
 export { quillComposition, quillProducts, quillCamera, quillPaper, drawQuilled, prepareQuilled } from "./composition/quill-draw.js";
+export type { ChemotaxisEmitter, ChemotaxisConstruction, ChemotaxisFrame, ChemotaxisSnapshots, ChemicalField, ChemotaxisTrail, TrailOptions, ChemotaxisAgent } from "./composition/chemotaxis.js";
+export { CHEMOTAXIS_ARENA, CHEMOTAXIS_LIMITS, SENSE_FLOOR, FIELD_EPSILON, checkChemotaxis, chemotaxisSimulation, chemotaxisCache, chemotaxisRunOptions, chemotaxisSnapshots, prepareChemotaxis, runChemotaxis, chemicalField,
+  chemotaxisTrails, chemotaxisAgents, contourLevels, fieldContourPaths, fieldBands, sampleField, relaxField, barrierMask, totalAgents } from "./composition/chemotaxis.js";
+export type { EmitterLayout, BarrierKind, EmitterLayoutOptions, BarrierOptions, ColonyControls } from "./composition/chemotaxis-layouts.js";
+export { emitterLayout, bundledBarrier, colonyGeometry, barrierBlocks, emitterLayouts, barrierKinds, barrierThickness } from "./composition/chemotaxis-layouts.js";
+export type { ChemotacticTrailsComposition, ChemotacticConsumers, ChemotacticProducts } from "./composition/chemotaxis-draw.js";
+export { chemotacticTrailsComposition, chemotacticProducts, chemotacticSnapshots, drawChemotacticTrails, prepareChemotacticTrails } from "./composition/chemotaxis-draw.js";
 export type { Simulation, SimulationContext, SimulationLimits, Snapshots, HistoryEntry, Frozen, RunOptions as SimulationRunOptions,
   AsyncRunOptions as SimulationAsyncRunOptions, SimulationCacheOptions } from "./composition/snapshots.js";
 export { runSimulation, prepareSimulation, resumeSimulation, stateAt, finalState, projectionAt, checkSimulation, createSimulationCache, SimulationCache,
@@ -278,6 +370,59 @@ export type { PointGridOptions, PointHit } from "./composition/spatial-index.js"
 export { PointGrid, MAX_GRID_CELLS } from "./composition/spatial-index.js";
 export type { LatticeWalkOptions, LatticeStep, AngleWalkOptions, AngleStep } from "./composition/walks.js";
 export { latticeWalkStep, angleWalkStep, LATTICE_DIRECTIONS } from "./composition/walks.js";
+export type { NodalShape, NodalEdge, ModeFunction } from "./composition/nodal-modes.js";
+export { besselJ, besselJPrime, besselPair, besselZero, rectangleMode, circleMode, NODAL_MAX_INDEX } from "./composition/nodal-modes.js";
+export type { NodalMode, NodalFieldOptions, NodalResolvedMode, NodalGrid, NodalField, NodalSiteOptions, NodalSite } from "./composition/nodal-plate.js";
+export { nodalField, nodalPaths, nodalSites, nodalBands, nodalDistance, nodalProximity, NODAL_LIMITS } from "./composition/nodal-plate.js";
+export type { NodalComposition, NodalConsumers } from "./composition/nodal-draw.js";
+export { nodalPlateComposition, drawNodalPlate, prepareNodalPlate } from "./composition/nodal-draw.js";
+export type { Cline, ClineShape, CircleInversion, Frame as InversionFrame, Segment as InversionSegment, Circle as InversionCircleCurve, Arc as InversionArc,
+  Constraint as ClineConstraint } from "./composition/inversion.js";
+export { circleCline, lineCline, clineValue, clineDot, clineShape, circleInversion, invertPoint, invertCline, invertFrame, segmentIntervals, circleIntervals,
+  arcThrough, arcSteps, sampleArc, circumcircle, LINE_CURVATURE } from "./composition/inversion.js";
+export type { GasketOptions, GasketCircle, GasketDual, Gasket } from "./composition/inversion-gasket.js";
+export { apollonianGasket, tangencyPoint, GASKET_LIMITS } from "./composition/inversion-gasket.js";
+export type { SourceKind, SourceOptions, SourceChain, SourceCircle, SourceSite, Source as InversionSource } from "./composition/inversion-sources.js";
+export { sourceGeometry, SOURCE_KINDS, GLYPHS as INVERSION_GLYPHS } from "./composition/inversion-sources.js";
+export type { Arrangement, OrbitRule, OrbitOptions, OrbitCircle, OrbitImage, GardenPath, GardenDisc, GardenSite, Orbit } from "./composition/inversion-orbit.js";
+export { orbitCircles, orbitImages, wordConstraints, inWordDomain, parseWord, ORBIT_LIMITS } from "./composition/inversion-orbit.js";
+export type { Construction, GardenOptions, GardenImage, Garden } from "./composition/inversion-garden.js";
+export { gardenProducts, orbitOptions, GARDEN_LIMITS } from "./composition/inversion-garden.js";
+export type { ColorBy as GardenColorBy, OriginalMode, StrokeStyle as GardenStrokeStyle, FillKind, MarkKind, InversionGardensComposition, DiscFiller, GardenConsumers } from "./composition/inversion-gardens.js";
+export { inversionGardensComposition, inversionGardensProducts, inversionGardensUsesSeed, gardenSource, gardenTone, discFill, markSites, drawInversionGardens, drawInversionGardensProducts,
+  prepareInversionGardens } from "./composition/inversion-gardens.js";
+export type { CornerAttributes, Vec3, Mesh, MeshInput, MeshAttributeInput, MeshAttributeInfo, MeshMeasures, MeshTransform, AttributeDomain, DegeneratePolicy } from "./composition/mesh.js";
+export { mesh, isMesh, meshData, meshVertex, meshFace, meshAttribute, meshMeasures, faceNormal, faceArea, vertexNormals, meshCornerAttributes, transformMesh, mergeMeshes, boxMesh, MESH_LIMITS } from "./composition/mesh.js";
+export type { MeshTopology, MeshTopologyCounts, MeshKind, MeshEdgeClass, MeshVertexClass, MeshComponentSummary, MeshFeatureOptions, MeshFeatureEdge } from "./composition/mesh-topology.js";
+export { meshTopology, meshEdgeId, meshEdgeVertices, meshEdgeFaces, meshEdgeClass, meshEdgeAngle, findMeshEdge, meshFaceNeighbors, meshVertexClass, meshVertexFanCount,
+  meshComponentOfFace, meshComponents, meshCreaseEdges, meshBoundaryEdges, meshFaceFacing, meshSilhouetteEdges, meshFeatureEdges } from "./composition/mesh-topology.js";
+export type { Camera, CameraOptions, Projection, ProjectedVertex } from "./composition/camera.js";
+export { camera, DEFAULT_CAMERA } from "./composition/camera.js";
+export type { PointCloud, PointCloudInput, PointAttributeInput, SurfaceSampleOptions, SurfaceSamples, ProjectedPoint, ProjectOptions } from "./composition/mesh-sample.js";
+export { pointCloud, isPointCloud, pointCloudData, pointPosition, pointId, pointSeed, pointAttribute, selectPoints, thinPointCloud, cropPointCloud, meshVertexCloud,
+  sampleSurface, sampleSource, projectPoints, POINT_LIMITS } from "./composition/mesh-sample.js";
+export type { SpatialCurve, VisibilityOptions, HiddenLineOptions, ProjectedPath, VisibilityStats, HiddenLineResult, PaintOptions, PaintOrder } from "./composition/visibility.js";
+export { hiddenLines, visiblePoints, meshEdgeCurves, paintOrder, MAX_VISIBILITY_SEGMENTS, DEFAULT_VISIBILITY_WORK } from "./composition/visibility.js";
+export type { TorusOptions, TerrainOptions, TerrainVariant, VaseProfile, VaseOptions, BundledMeshId, BundledMeshInfo, MeshSource, PointSource } from "./composition/mesh-samples.js";
+export { icosphereMesh, torusMesh, terrainMesh, terrainHeight, vaseMesh, figureMesh, bundledMesh, bundledMeshIds, bundledMeshInfo, terrainVariants, vaseProfiles, vaseProfileNames,
+  resolveMeshSource, resolvePointSource, MAX_ICOSPHERE_LEVELS } from "./composition/mesh-samples.js";
+export type { WalkGrid, WalkShapeName, WalkMaskSource, WalkBarrier, WalkRegions } from "./composition/walk-grid.js";
+export { walkGrid, walkRegions, nearestAllowedCell, walkShapeNames, WALK_GRID_LIMITS } from "./composition/walk-grid.js";
+export type { WalkRules, WalkSeeding, SeedLayout, WalkRevisit, WalkTransition, WalkEnd, FrontsField, FrontsSeed, FrontsWalker, FrontsSnapshots } from "./composition/walk-fronts.js";
+export { walkFronts, runWalkFronts, prepareWalkFrontsSnapshots, frontsField, frontsSimulation, checkWalkRules, WALK_FRONT_LIMITS } from "./composition/walk-fronts.js";
+export type { FrontsFrame, Territory, BandDomain, CellRuns, HatchOptions as FrontsHatchOptions, SiteOptions as FrontsSiteOptions } from "./composition/walk-fronts-products.js";
+export { territoryDomains, bandDomains, cellRuns, frontContours, territoryOutlines, territoryHatching, frontSites, bandCount, FRONT_PRODUCT_LIMITS } from "./composition/walk-fronts-products.js";
+export type { FrontsView, FillKind as FrontsFillKind, LineKind as FrontsLineKind, RandomWalkFrontsComposition, RandomWalkFrontsConsumers, FrontsProducts } from "./composition/walk-fronts-draw.js";
+export { randomWalkFrontsComposition, randomWalkFrontsProducts, drawWalkFronts, prepareRandomWalkFronts } from "./composition/walk-fronts-draw.js";
+export type { ContourEnd, LevelTies, ContourNode, ContourCurve, SectionPlane, PlaneFrame, SectionOptions, SectionLoop, MeshSection, MeshSlices, SlicePlaneOptions,
+  SectionDomainOptions, IsoOptions, IsoCurve, IsoContours } from "./composition/mesh-section.js";
+export { planeFrame, sectionMesh, sliceMesh, sliceCurves, slicePlanes, sectionDomain, isoContours, SECTION_LIMITS, DEFAULT_SECTION_WORK } from "./composition/mesh-section.js";
+export type { WetMaskSpec, WetBoundary, WetLayout, WetModel, WetSite, WetAccounting, WetState, WetFrame, WetEnvironment, WetSnapshots } from "./composition/wet-pigment.js";
+export { WET_LIMITS, wetPigmentSimulation, wetPigmentSnapshots, prepareWetPigmentSnapshots, wetEnvironment, wetMaskDomain, checkWetModel, wetWork } from "./composition/wet-pigment.js";
+export type { WetPigmentComposition, PigmentBands, DryingFronts, WetFilm, WetPigmentProducts, WetPigmentConsumers } from "./composition/wet-pigment-draw.js";
+export { wetPigmentComposition, wetPigmentProducts, pigmentBands, dryingFronts, wetFilm, pigmentFills, frontLines, filmSheen, bandAlpha, drawWetPigment,
+  prepareWetPigment, wetPigmentUsesSeed, MAX_FRONTS, MAX_BANDS } from "./composition/wet-pigment-draw.js";
+export { WET_WORDS } from "./adapters/wet-pigment-instrument.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -296,7 +441,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, drainageErosionDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, drainageErosionDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -330,6 +475,7 @@ export function inspectorItems(id: string, values: InstrumentInput["params"]): I
 
 function paletteFor(id: string): number[] {
   if (referencePalettes[id]) return [...referencePalettes[id]];
+  if (id === "wet-pigment") return [...wetPigmentPalette];
   return imageAndControlsPalette(id) ?? externalDynamicsPalette(id) ??
     externalExpansionPalette(id) ?? (id === "lattice-marks" ? [...latticeOriginal] : [...original]);
 }
@@ -408,18 +554,29 @@ const referencePalettes: Record<string, readonly number[]> = {
   "quilled-paths": [0xd4563f, 0xe6a23a, 0x2f7f86, 0x6f9a55, 0x8b5190],
   "data-scores": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "pixel-sorting": [0x1c2230, 0x8a3b32, 0xd9a441, 0xf1e6cf],
+  "shape-packing": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "path-typography": [0x1f2226, 0xc24a34, 0x2f6c8f, 0xb8862b],
+  "glyph-packing": [0x1e2228, 0xb8452f, 0x2f6f7a, 0xd9a441],
+  "outline-type": [0x20232a, 0x2b7a83, 0xc9493a, 0xb98524, 0x7d4a8a, 0x5b7f3b, 0x3d5a9e],
   "image-directed-field": [0x1d2230, 0x8d3b2a, 0x2f6f7a, 0xc99a3b],
   "bundled-relations": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86, 0x9c5f34],
   "dry-bristles": [0x22252b, 0x2f6f7a, 0xb8452f, 0xc99a3b],
+  "polygon-watercolor": [0x2f6f8f, 0xc4573b, 0xd9a441, 0x4f7a5c],
   "substitution-tilings": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
   "typographic-rhythm": [0x1c1d20, 0xc93a2a, 0x2b5d9b, 0xe6ae2c],
   "painterly-source": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0xf0e6d2],
   "slit-compositions": [0x1d2733, 0xb5452e, 0xe0a13a, 0xf1e6cc],
+  "nodal-plates": [0x1c2430, 0xb8452f, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "adaptive-compartments": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0xefe6d2],
+  "connected-value-regions": [0x231f24, 0xb5452e, 0xe0a13a, 0x2f6f7a, 0xefe6d2],
   "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "crossing-lace": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "drainage-erosion": [0x2b2622, 0x2f6f8f, 0xd6a45a, 0x8ea15a, 0xc46a4a, 0x6f8fa3],
+  "region-stitch": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0x7f9a4f, 0x8b4a6f],
+  "inversion-gardens": [0x1d2733, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
+  "random-walk-fronts": [0xc4452b, 0xe0a13a, 0x2f7f86, 0x6f9a55, 0x8b5190, 0x1f2733],
+  "chemotactic-trails": [0x1f3040, 0xc4452b, 0xd9a441, 0x2f7a86, 0x6a8f4a],
+  "hyperbolic-gardens": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -445,19 +602,31 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "branch-ornament") return drawBranchOrnament(context, branchOrnamentComposition(input));
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
   if (input.technique === "path-typography") return drawPathTypography(context, pathTypographyComposition(input));
+  if (input.technique === "glyph-packing") return drawGlyphPacking(context, glyphPackingComposition(input));
+  if (input.technique === "outline-type") return drawOutlineType(context, outlineTypeComposition(input));
   if (input.technique === "sand-deposition") return drawSandDeposition(context, sandDepositionComposition(input));
   if (input.technique === "quilled-paths") return drawQuilled(context, quillComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
   if (input.technique === "pixel-sorting") return drawPixelSorting(context, pixelSortingComposition(input));
+  if (input.technique === "shape-packing") return drawShapePacking(context, shapePackingComposition(input));
+  if (input.technique === "connected-value-regions") return drawValueRegions(context, valueRegionsComposition(input));
   if (input.technique === "fm-engraving") return drawEngraving(context, engravingComposition(input));
   if (input.technique === "painterly-source") return drawPainterly(context, painterlyComposition(input));
   if (input.technique === "slit-compositions") return drawSlit(context, slitComposition(input));
+  if (input.technique === "nodal-plates") return drawNodalPlate(context, nodalPlateComposition(input));
   if (input.technique === "stroke-relief") return drawStrokeRelief(context, strokeReliefComposition(input));
   if (input.technique === "drainage-erosion") return drawDrainageErosion(context, drainageErosionComposition(input));
   if (input.technique === "image-directed-field") return drawImageDirectedField(context, imageDirectedFieldComposition(input));
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
+  if (input.technique === "region-stitch") return drawStitches(context, regionStitchComposition(input));
+  if (input.technique === "hyperbolic-gardens") return drawHyperbolicGardens(context, hyperbolicGardensComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
+  if (input.technique === "polygon-watercolor") return drawPolygonWatercolor(context, polygonWatercolorComposition(input));
+  if (input.technique === "inversion-gardens") return drawInversionGardens(context, inversionGardensComposition(input));
+  if (input.technique === "random-walk-fronts") return drawWalkFronts(context, randomWalkFrontsComposition(input));
+  if (input.technique === "chemotactic-trails") return drawChemotacticTrails(context, chemotacticTrailsComposition(input));
+  if (input.technique === "wet-pigment") return drawWetPigment(context, wetPigmentComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
@@ -475,7 +644,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "drainage-erosion" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "drainage-erosion" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -486,19 +655,31 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
   if (input.technique === "fm-engraving") return prepareEngraving(engravingComposition(input), cancelled);
   if (input.technique === "path-typography") return preparePathTypography(pathTypographyComposition(input), cancelled);
+  if (input.technique === "glyph-packing") return prepareGlyphPacking(glyphPackingComposition(input), cancelled);
+  if (input.technique === "outline-type") return prepareOutlineType(outlineTypeComposition(input), cancelled);
   if (input.technique === "image-directed-field") return prepareImageDirectedField(imageDirectedFieldComposition(input), cancelled);
   if (input.technique === "sand-deposition") return prepareSandDeposition(sandDepositionComposition(input), cancelled);
   if (input.technique === "quilled-paths") return prepareQuilled(quillComposition(input), cancelled);
   if (input.technique === "dry-bristles") return prepareDryBristles(dryBristlesComposition(input), cancelled);
+  if (input.technique === "polygon-watercolor") return preparePolygonWatercolor(polygonWatercolorComposition(input), cancelled);
+  if (input.technique === "random-walk-fronts") return prepareRandomWalkFronts(randomWalkFrontsComposition(input), cancelled);
+  if (input.technique === "wet-pigment") return prepareWetPigment(wetPigmentComposition(input), cancelled);
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
   if (input.technique === "pixel-sorting") return preparePixelSorting(pixelSortingComposition(input), cancelled);
+  if (input.technique === "shape-packing") return prepareShapePacking(shapePackingComposition(input), cancelled);
+  if (input.technique === "connected-value-regions") return prepareValueRegions(valueRegionsComposition(input), cancelled);
   if (input.technique === "painterly-source") return preparePainterly(painterlyComposition(input), cancelled);
   if (input.technique === "slit-compositions") return prepareSlit(slitComposition(input), cancelled);
+  if (input.technique === "nodal-plates") return prepareNodalPlate(nodalPlateComposition(input), cancelled);
   if (input.technique === "stroke-relief") return prepareStrokeRelief(strokeReliefComposition(input), cancelled);
   if (input.technique === "drainage-erosion") return prepareDrainageErosion(drainageErosionComposition(input), cancelled);
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
+  if (input.technique === "region-stitch") return prepareStitches(regionStitchComposition(input), cancelled);
+  if (input.technique === "hyperbolic-gardens") return prepareHyperbolicGardens(hyperbolicGardensComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
+  if (input.technique === "inversion-gardens") return prepareInversionGardens(inversionGardensComposition(input), cancelled);
+  if (input.technique === "chemotactic-trails") return prepareChemotacticTrails(chemotacticTrailsComposition(input), cancelled);
   if (referenceIds[input.technique])
     return prepareReferenceComposition(referenceComposition(input), cancelled);
   if (!externalDynamicsPreparable.has(input.technique)) return !cancelled();
@@ -529,17 +710,27 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "quantized-stripes": return q.order === "shuffle";
     case "sand-deposition": return true;
     case "drainage-erosion": return drainageUsesSeed(q);
+    case "nodal-plates": return nodalPlatesUsesSeed(q);
     case "quilled-paths": return quillUsesSeed(q);
     case "gesture-scores": return q.recording === "wander" || Number(q.hairs) > 0 && q.bristles === true || q.sandMark !== "none" ||
       q.glyphMark !== "none" && (Number(q.glyphVariation) > 0 || Number(q.glyphRetention) < 1);
     case "optical-plates": return q.maskedPlate !== "none" && q.maskShape === "regions";
     case "data-scores": return dataScoresUsesSeed(q);
     case "pixel-sorting": return pixelSortingUsesSeed(q);
+    case "polygon-watercolor": return polygonWatercolorUsesSeed(q);
+    case "shape-packing": return shapePackingUsesSeed(q);
+    case "connected-value-regions": return valueRegionsUsesSeed(q);
     case "fm-engraving": return fmEngravingUsesSeed(q);
+    case "wet-pigment": return wetPigmentUsesSeed(q);
     case "path-typography": return pathTypographyUsesSeed(q);
+    case "glyph-packing": return glyphPackingUsesSeed(q);
+    case "outline-type": return outlineTypeUsesSeed(q);
     case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
+    case "hyperbolic-gardens": return hyperbolicGardensUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
+    case "region-stitch": return regionStitchUsesSeed(q);
+    case "inversion-gardens": return inversionGardensUsesSeed(q);
     case "substitution-tilings":
       return Number(q.retention) > 0 && Number(q.retention) < 1 || q.interior === "wash" && Number(q.bleed) > 0 ||
         q.interior !== "none" && q.colorBy === "supertile";

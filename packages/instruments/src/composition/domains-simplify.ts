@@ -1,4 +1,4 @@
-import { PlanarError, charge, classify, orient, type Pt, type Seg, type Work } from "./planar-kernel.js";
+import { PlanarError, charge, classify, locateInRing, orient, type Pt, type Seg, type Work } from "./planar-kernel.js";
 
 /**
  * Topology-preserving simplification of a set of closed rings that may share boundary pieces.
@@ -8,8 +8,8 @@ import { PlanarError, charge, classify, orient, type Pt, type Seg, type Work } f
  * recognised and simplified once, so shared boundaries stay identical. Each chain is simplified
  * with Douglas–Peucker (perpendicular distance to the chord ≤ tolerance) in Saalfeld's
  * topology-preserving form: a chord replaces a run of vertices only if it neither crosses nor
- * touches any other current segment of any ring (exact predicates), otherwise the run is split at
- * its farthest vertex. Only original vertices are kept, so the result of simplifying simple,
+ * touches any other current segment of any ring (exact predicates) and no other vertex lies inside the loop formed by the run and
+ * the chord (a small ring caught between them would change sides), otherwise the run is split at its farthest vertex. Only original vertices are kept, so the result of simplifying simple,
  * pairwise non-crossing rings is again simple and non-crossing, and anchors never move.
  * A ring with fewer than two anchors receives deterministic artificial ones (lowest vertex id,
  * then the farthest vertex from it), identically for every ring that traverses the same loop.
@@ -64,6 +64,32 @@ class SegmentGrid {
     return id;
   }
   remove(id: number): void { this.alive[id] = false; }
+  /**
+   * True when a live vertex outside [skipLo, skipHi) lies strictly inside the loop formed by `run` and its closing chord: a ring
+   * (an island) caught between the chord and the boundary it replaces would change sides.
+   */
+  enclosesOther(run: readonly Pt[], skipLo: number, skipHi: number, work: Work): boolean {
+    let l = Infinity, t = Infinity, r = -Infinity, b = -Infinity;
+    for (const [x, y] of run) { l = Math.min(l, x); r = Math.max(r, x); t = Math.min(t, y); b = Math.max(b, y); }
+    const clock = ++this.clock, checked = new Set<string>();
+    for (let row = this.cy(t); row <= this.cy(b); row++) for (let col = this.cx(l); col <= this.cx(r); col++) {
+      const list = this.cells[row * this.gx + col];
+      charge(work, list.length + 1);
+      for (const id of list) {
+        if (!this.alive[id] || this.stamp[id] === clock || (id >= skipLo && id < skipHi)) continue;
+        this.stamp[id] = clock;
+        for (const [x, y] of [[this.ax[id], this.ay[id]], [this.bx[id], this.by[id]]]) {
+          if (x <= l || x >= r || y <= t || y >= b) continue;
+          const key = `${x},${y}`;
+          if (checked.has(key)) continue;
+          checked.add(key);
+          charge(work, run.length);
+          if (locateInRing(run, x, y) > 0) return true;
+        }
+      }
+    }
+    return false;
+  }
   /** True when the chord p→q conflicts with a live segment outside [skipLo, skipHi). */
   conflicts(p: Pt, q: Pt, skipLo: number, skipHi: number, work: Work): boolean {
     const clock = ++this.clock;
@@ -89,6 +115,7 @@ class SegmentGrid {
     return found;
   }
 }
+
 function lex(a: Pt, b: Pt): Seg {
   const forward = a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]);
   const [p, q] = forward ? [a, b] : [b, a];
@@ -169,7 +196,7 @@ export function simplifyRingSet(set: RingSet, tolerance: number, work: Work): nu
           if (d > worst) { worst = d; far = k; }
         }
         charge(work, j - i);
-        if (worst <= tolerance && !grid.conflicts(pts[i], pts[j], base[c] + i, base[c] + j, work)) {
+        if (worst <= tolerance && !grid.conflicts(pts[i], pts[j], base[c] + i, base[c] + j, work) && !grid.enclosesOther(pts.slice(i, j + 1), base[c] + i, base[c] + j, work)) {
           for (let s = base[c] + i; s < base[c] + j; s++) grid.remove(s);
           grid.add(pts[i], pts[j]);
           continue;
