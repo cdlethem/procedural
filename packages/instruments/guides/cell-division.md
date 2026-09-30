@@ -53,7 +53,7 @@ without a source has eaten all its food (starved). Cells never disappear.
 
 | Controls | What changes on the canvas |
 |---|---|
-| **Youngest / Oldest shown** | Age selection: age is the share of the run a cell has existed (1 for founders). Hides cells outside the window; nothing moves. |
+| **Youngest / Oldest shown** | Age selection: age is the share of the run a cell has existed (1 for founders). Hides cells outside the window (a youngest above the oldest shows nothing); nothing moves. |
 | **Color by** | Generation (divisions from a founder), age, size (smallest to largest in the colony) or founder, spread over the palette in order. |
 | **Cells, Cell size, Cell weight** | Discs, outlines or outlines with a nucleus, drawn at each cell's own size (scaled by *Cell size*). |
 | **Lineage, colour, weight, spacing, bead** | Lines from where each mother divided to each daughter, as ink, stitches or beads, in one colour or the daughter's. |
@@ -62,7 +62,7 @@ without a source has eaten all its food (starved). Cells never disappear.
 
 ## Try these
 
-- **Feeding front:** *Cell limit* 600, *Steps* 230: the default; then drag *Steps* to watch it spread inward from the rim.
+- **Feeding front:** *Cell limit* 400, *Steps* 230: the default; then drag *Steps* to watch it spread inward from the rim.
 - **Chains toward food:** *Source* edge, *Source direction* 180, seeds a *Seed layout* line at *Seed X* 0.12, *Division axis* gradient, *Color by* size.
 - **Two clans:** *Source* pair, *Seed layout* scatter, 9 seeds, *Color by* founder, *Lineage* ink in the first colour.
 - **A closed culture:** *Source* none, *Reserve* 0.5, *Diffusion* 80: it grows on what it has and stops.

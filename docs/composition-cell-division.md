@@ -74,7 +74,7 @@ Field <= 62,500 cells (*Field cell*, *Width*, *Height*); diffusion <= 64 passes 
 (*Diffusion*, *Field cell*); *Cell limit* <= 2,000; *Steps* <= 1,000; declared work per step
 `passes x open cells + limit x (footprint candidates) + relax x limit x 100 + ...` charged with `ctx.charge`, over
 which a step throws naming *Cell limit* / *Field cell* / the dish size; total work <= 1.5e9; walls <= 2,000 cells.
-Slider intervals are narrower than the hard limits and every combination inside them is admitted (see Timing): the worst slider corner passes validation and prepares in about 1.5 s.
+Slider intervals are narrower than the hard limits and every combination inside them is admitted (see Timing).
 
 ## Controls and groups
 
@@ -88,7 +88,7 @@ style; lineage controls by the lineage material; nutrient controls by contours; 
 
 ## Checks
 
-`tests/composition-cell-division.test.ts` (30 tests), independent closed forms and invariants: first-step radius
+`tests/composition-cell-division.test.ts` (31 tests), independent closed forms and invariants: first-step radius
 `r0 sqrt(1 + uptake c)` and identical on three field resolutions; conservation at five steps on a fed dish;
 division area, centre of area, touching, axis placement and ids; id density and lineage order; relaxation of equal
 cells `10 - 6 (0.5)^passes` and unequal cells by the other's area share; cells never vanish and stay inside box and
@@ -106,7 +106,7 @@ not normalised to the disc's area; daughters not conserving area; daughters cent
 weighted by radius instead of area; a daughter reusing the mother's serial; a diffusion coefficient doubled; source
 inflow not counted; no halt when full and stationary; cells allowed past the limit; the age window boundary changed;
 hatch direction ignoring the generation twist. (The shared cache's cancellation and identity guarantees are the F7
-ones; `checkSimulation` runs on this model.) Full suite after merging main: 1,073 tests pass.
+ones; `checkSimulation` runs on this model.) Full suite after merging main: 1,319 tests pass.
 
 ## Review record
 
@@ -125,28 +125,39 @@ and fixed:
 - nutrient contour fragments and a staircase along the wall: field extended past the wall and contours cut at the wall inset by half a field cell;
 - lineage lines over discs hid the cells: default links are one thin colour.
 
-## Timing (Node, null surface, lightly loaded shared machine; draw cost in a real p5 canvas is higher)
+## Timing (Node, null surface; draw cost in a real p5 canvas is higher)
 
-Slider intervals of the cost drivers are chosen so the worst slider corner prepares in about 2 s: **steps 0 to 400,
-cell limit 30 to 600, relaxation 1 to 5, field cell 6 to 16, diffusion 10 to 300, dish 200 to 620, seed cells 1 to
-24**. Hard limits stay high for exact entry (steps 1,000, cell limit 2,000, relaxation 16, field cell 1, diffusion
-100,000, dish 2,000) and stay bounded: over the 1.5e9 declared-work bound, or the field or diffusion bound, the
-entry is refused by name. A test checks that every combination of the slider ends of nine cost drivers passes
-validation and stays inside the work bound (it found one real hole: a 24-seed slider end against a 20-cell
-limit floor, now 30).
+**Slider intervals** of everything that costs time are narrow enough that the corner with *every* numeric control at its
+slider maximum, every treatment on (nutrient contours with 12 levels, walls with hatching at 2-unit spacing and reach 4,
+lineage beads, nucleated cells) and the youngest-shown control at its useful end (0, so nothing is hidden), prepares and
+draws in about 2 s: **steps 0 to 250, cell limit 30 to 400, relaxation 1 to 4, field cell 8 to 16, diffusion 10 to 200,
+dish 200 to 620, seed cells 1 to 24, start radius 2 to 8, division radius 8 to 20, uptake 0.02 to 0.3**. Hard limits stay high for
+exact entry (steps 1,000, cell limit 2,000, relaxation 16, field cell 1, diffusion 100,000, dish 2,000, radii 500) and stay
+bounded: over the 1.5e9 declared-work bound, or the field or diffusion bound, the entry is refused by name.
+The radius sliders no longer overlap (start radius at most 8, division radius at least 8), and an inverted age window
+(youngest above oldest) is not an error: it selects nothing. That keeps every slider combination valid.
 
-| Case (every treatment on: contours, walls with hatch, lineage ink, discs) | First prepare and draw | Redraw | Palette edit | Appearance edit | `steps` ± few | Structural edit |
+`tests/composition-cell-division.test.ts` "slider ends of every numeric control are admitted" checks the two corners
+(all minima, all maxima), each numeric control alone at each end (alone, against all maxima, against all minima) and 3,000
+seeded random corners: every one passes `validateInstrument` and declares work inside the bound. (The earlier version
+covered nine cost drivers only and missed the start-radius/division-radius and age-window conflicts above.)
+
+Measurements are CPU time of the draw call (`process.cpuUsage`), because the shared development machine was at a load
+average of 60 to 90 while measuring (wall time was 1.5 to 7 times higher and noisy); an idle machine's wall time is about the CPU time.
+
+| Case (treatments as listed) | First prepare and draw | Redraw | Palette edit | Appearance edit | `steps` - 1 / + 5 | Structural edit (source) |
 |---|---|---|---|---|---|---|
-| Default (230 steps, about 545 cells) | 0.2 to 0.3 s | 3 ms | 3 ms | 40 ms | 90 to 120 ms | 60 to 360 ms |
-| Worst slider corner (400 steps, 600 cells, 620 dish, field cell 6, diffusion 300, relaxation 5, uptake 0.3; about 66,000 draw calls) | 1.5 to 1.7 s | 9 ms | 9 ms | 50 to 60 ms | about 0.4 s | 1.4 to 1.7 s (source change) |
-| Same corner, draw side extreme (wall reach 4, hatch 2, 12 contour levels, beads every 3; about 247,000 calls) | 1.6 s | 27 ms | | 80 ms | | 1.5 s |
-| Hard limits, admitted (1,000 steps, 2,000 cells, 620 dish, field cell 6, diffusion 300) at relaxation 1 / 2 / 3 | 5.7 / 9.9 / 23 s | 15 to 23 ms | | about 0.5 s | | 6.8 / 11 / 15 s |
-| Hard limits, relaxation above 3 | refused: declared work exceeds 1.5e9, message names steps and the model's size | | | | | |
+| Default (230 steps, 400 cell limit, lineage ink, discs) | 1.0 s (0.2 to 0.3 s wall when idle) | 8 ms | 4 ms | 8 ms | 185 / 115 ms | 0.85 s |
+| Every slider at its maximum, every treatment on, nothing hidden (250 steps, 400 cells, about 73,000 draw calls) | 1.73 to 1.79 s | 10 to 30 ms | 10 to 30 ms | 0.1 to 0.4 s | about 0.4 s | about 1.7 s |
+| Same with plain selects (edge source, cluster seeds, outlines, ink lineage) | 1.9 s | | | 0.1 s | | |
+| Hard limits, admitted: 1,000 steps, 2,000 cells, 620 dish, field cell 6, diffusion 300; relaxation 1 / 2 / 3 | 5.7 / 9.9 / 23 s | 15 to 23 ms | | about 0.5 s | | 6.8 / 11 / 15 s |
+| Hard limits, relaxation above 3 at 1,000 steps and 2,000 cells | refused: declared work exceeds 1.5e9; the message names steps and the model's size | | | | | |
 
-Before narrowing, the old slider maximum (500 steps, 1,000 cells, relaxation 6) took 4.6 to 7.4 s for the first draw and
-4.2 to 4.4 s for a source change. Relaxation is the cost (neighbour queries on every pass), then the cell count, then
-steps. A structural edit recomputes the whole colony; a palette or appearance edit never does. Cooperative preparation
-yields between step slices and cancels cleanly.
+The previous version's corner (steps 500, limit 1,000, relaxation 6) took 4.6 to 7.4 s, and a corner with every control
+raised (division radius 30, field cell 16 at cell limit 600) 7 s of CPU time, dominated by relaxation neighbour queries
+(about 30%), the field update inside each step (25%) and state copies for checkpoints. A structural edit recomputes the
+whole colony; palette, colour, mark and wall edits never do. Cooperative preparation yields between step slices and
+cancels cleanly.
 
 ## Open concerns and decisions to confirm
 
