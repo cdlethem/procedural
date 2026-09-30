@@ -21,7 +21,7 @@ export const imageSignalInstrumentDefinitions: StudioDefinition[] = [
   {
     id: "weighted-image-atlas", title: "Weighted image atlas",
     description: "Seeded editable density fragments become local weighted dots, stitches or bars.",
-    procedure: "Seeded ridges are rasterised into a density map, and points are sampled across it in proportion to its darkness. Each point is nudged toward the weighted centre of its neighbourhood and drawn as a dot, so the density surfaces as texture.",
+    procedure: "Seeded ridges are rasterised into a density map, and points are sampled across it in proportion to its darkness. Each point is drawn as a dot, so the ridges surface as dense stipple over a sparse ground.",
     parameters: [choice("source", "Density source", "Relief ridge, thermal clusters, or a digit grid.", ["relief", "thermal", "grid"]),
       text("densityGrid", "Density grid", "For grid source: 2–32 equal-width digit rows; one terminal newline is allowed. Sampling mass is checked after floor, inversion and threshold.", 1100, true),
       numeric("features", "Source features", "Number of seeded ridges or clusters.", 2, 8, 1, { hardMin: 1, hardMax: 12, integer: true }),

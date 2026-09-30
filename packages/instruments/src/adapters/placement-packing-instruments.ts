@@ -98,7 +98,7 @@ const packingDefault = {count: 22,
   inset: 0};
 export const placementPackingInstrumentDefinitions: StudioDefinition[] = [
   { id: "blue-noise-stipple", title: "Blue-noise stipple", description: "One Poisson point-placement instrument with editable support and independent marks.",
-  procedure: "Points are thrown into a rectangle one at a time, and each is kept only if it lands far enough from every point already kept. The survivors inside an ellipse are stamped as dots, giving an even stipple with no clumps.",
+  procedure: "Points are thrown into a square one at a time, and each is kept only if it lands far enough from every point already kept. The survivors are stamped as dots, giving an even stipple with no clumps and no gaps.",
     parameters: pointParameters, controlGroups: pointGroups, defaults: pointsDefault, validate: validatePointPlacement },
   { id: "spaced-symbols", title: "Spaced symbols", description: "The same Poisson instrument, starting with square sites; shape is freely editable.",
   procedure: "Points are thrown into the frame and kept only when they land a minimum distance from the rest. A small square is stamped at each survivor, turned by a seeded angle, so the marks scatter evenly without touching.",

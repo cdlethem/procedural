@@ -119,7 +119,7 @@ export const revolvedInstrumentDefinitions: StudioDefinition[] = [
   { id: "depth-marks", title: "Depth marks", description: "The same editable radial-profile source, with seeded noise palette mapping.", procedure: "A tapering silhouette is spun around its axis into a faceted form with open ends. Each lit triangle takes its colour from a noise field at its centre, so patches of colour drift across the surface.", renderer: "webgl",
     parameters: [...profileControls()], controlGroups: profileGroups,
     defaults: depthDefaults, validate: validateProfile },
-  { id: "annular-marks", title: "Annular marks", description: "Core annular solid with independently selected face kinds and angular cells.", procedure: "A thick ring is built from top, bottom, inner and outer walls and tilted toward the viewer. Each face is shaded by the direction it faces, so the flat mesh reads as a solid washer.", renderer: "webgl",
+  { id: "annular-marks", title: "Annular marks", description: "Core annular solid with independently selected face kinds and angular cells.", procedure: "A thick ring is built from top, bottom, inner and outer walls and tilted toward the viewer. Every face is filled and lit from one side, so the flat drawing reads as a solid washer.", renderer: "webgl",
     parameters: [numeric("outer", "Outer radius", "Outer wall radius in canvas units.", 50, 230, 1, { hardMin: .001, hardMax: 1000, integer: false }),
       numeric("inner", "Inner radius", "Inner wall radius in canvas units, strictly below outer radius.", 10, 150, 1, { hardMin: .001, hardMax: 1000, integer: false }),
       numeric("depth", "Solid depth", "Distance from bottom to top annulus in canvas units.", 10, 190, 1, { hardMin: .001, hardMax: 1000, integer: false }),

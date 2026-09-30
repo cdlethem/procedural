@@ -67,7 +67,7 @@ const shared = {columns: 56,
   inactiveAlpha: 35};
 export const ruleRowDefinitions: StudioDefinition[] = [
   { id: "woven-rows", title: "Woven Rows", description: "Editable elementary automaton generations as separated woven bars.",
-  procedure: "A repeating row of on and off cells is fed through Rule 90, each new cell switching on only if exactly one of its upper neighbours was on. Row by row the pattern unfolds downward, and every live cell becomes an ink bar.",
+  procedure: "A repeating row of on and off cells is fed through Rule 90, where each new cell switches on when exactly one of the two cells diagonally above it was on. Row by row the pattern unfolds downward into nested triangles, and every live cell becomes an ink bar.",
     parameters, controlGroups, defaults: {...shared}, validate: validateRuleRows },
   { id: "triangle-glyphs", title: "Triangle Glyphs", description: "The same true automaton source drawn with triangular ink.",
   procedure: "A single live cell is fed through Rule 110, each new cell decided by the three cells above it. Generation by generation the pattern spills down and to one side, and every live cell is drawn as a triangle.",
