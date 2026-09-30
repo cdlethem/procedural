@@ -49,6 +49,7 @@ export const phyllotacticWhorlsDefinitions: StudioDefinition[] = [{
   id: "phyllotactic-whorls",
   title: "Phyllotactic whorls",
   description: "Ranked radius and divergence marks, optionally joined at a parastichy stride; no packing or botanical simulation.",
+  procedure: "Place each rank at an angle of its index times a divergence and at a radius that grows as a power of the index, making spiral arms. Perturb sites with seeded disorder, draw leaf, disc or bar marks, and optionally link each rank to a later one.",
   parameters: [
     numeric("count", "Ranks", "Number of ranked sites; zero gives an empty source.", 0, 1400, 1, { hardMin: 0, hardMax: 5000, integer: true }),
     numeric("startIndex", "Starting index", "Absolute index of the first site, not an offset applied after construction.", 0, 300, 1, { hardMin: 0, hardMax: 100000, integer: true }),

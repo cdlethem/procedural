@@ -126,6 +126,7 @@ export function validateMeshAbstraction(q: Record<string, number | string | bool
 export const meshAbstractionDefinition: InstrumentDefinition = {
   id: "mesh-abstraction", title: "Mesh Abstraction",
   description: "A detailed surface (a fine sphere, terrain, vase, figure or torus) transitions into coarse flat facets while a chosen region keeps every vertex of its detail. Edge collapse removes the cheapest edges first under a stated error rule, never tearing the surface or folding a facet, and the facet count is scrubbable. The facets are painted far to near, the edges are hidden-line solved, the preserved region can be tinted or ruled in its own color, and the untouched source can ghost over the result or stand beside it.",
+  procedure: "Take a detailed terrain mesh and collapse its edges cheapest first, where each edge's price is how far its ends would move the surface if merged. Refuse any collapse that pinches, tears or folds a facet, and never touch vertices in one preserved patch. Paint the facets far to near and solve the hidden lines.",
   renderer: "2d",
   parameters: parameters.map(labelled), controlGroups,
   validate: validateMeshAbstraction,

@@ -38,6 +38,7 @@ export const referenceDefinitions: InstrumentDefinition[] = [
   {
     id: "motif-ecologies", title: "Motif Ecologies",
     description: "A positioned, editable ecology of open rings, dots and radial rosettes.",
+    procedure: "Sample irregular sites by Poisson-disc in a tilted, open-centred annulus, keeping a minimum separation between them. Place a radial rosette at each site, with stable size variation and omission, in a few palette colours.",
     renderer: "2d",
     parameters: [
       n("centerX", "Center X", "Horizontal population center in canvas units.", 80, 560, 1, -320, 960),
@@ -69,6 +70,7 @@ export const referenceDefinitions: InstrumentDefinition[] = [
   {
     id: "contour-scores", title: "Contour Scores",
     description: "A sampled scalar landscape written as continuous ink, tangent stitches or bead marks.",
+    procedure: "Sample a noise, hill, wave or saddle field on a grid and extract contour lines at a series of thresholds. Draw those paths as ink, tangent stitches or beads placed at even stations along each, dropping some so bare paper shows.",
     renderer: "2d",
     parameters: [
       select("source", "Field", "Switch noise, hills, waves or a saddle without changing the material.", ["noise", "hills", "waves", "saddle"]),
@@ -114,6 +116,7 @@ export const referenceDefinitions: InstrumentDefinition[] = [
   {
     id: "region-quilts", title: "Region Quilts",
     description: "Binary partitions filled by hatch lines, point ecologies or contour scores.",
+    procedure: "Cut a rectangle into leaves by seeded binary subdivision, leaving clear gutters and dropping some leaves entirely. Fill each surviving leaf with its own small construction: diagonal hatching, a population of motifs, or nested contour lines, mixed across the quilt.",
     renderer: "2d",
     parameters: [
       n("centerX", "Center X", "Horizontal quilt center.", 80, 560, 1, -320, 960),
@@ -156,6 +159,7 @@ export const referenceDefinitions: InstrumentDefinition[] = [
   {
     id: "wallpaper-motifs", title: "Wallpaper Motifs",
     description: "A stated plane symmetry group stamps one motif across the plane, with stable breaking.",
+    procedure: "Choose a plane symmetry group, here p4g, and copy one arrow motif across the lattice by the group's rotations, mirrors and glides. Colour each copy by the operation that produced it, and knock a stable fraction of copies slightly out of place.",
     renderer: "2d",
     parameters: [
       select("group", "Symmetry group", "One of the seventeen plane groups; changes the instance lattice and operations.",
@@ -195,6 +199,7 @@ export const referenceDefinitions: InstrumentDefinition[] = [
   {
     id: "ordered-disorder", title: "Ordered Disorder",
     description: "A regular lattice under a shared correlated field of displacement, rotation, scale and omission.",
+    procedure: "Place sites on a regular grid, then push them with a slowly varying field that displaces, turns, resizes and removes sites in coherent regions. Draw a mark at each site, colouring the most disturbed sites and the pinned anchors differently.",
     renderer: "2d",
     parameters: [
       n("columns", "Columns", "Lattice columns.", 3, 40, 1, 2, 96),
@@ -235,6 +240,7 @@ export const referenceDefinitions: InstrumentDefinition[] = [
   {
     id: "recursive-cells", title: "Recursive Cell Worlds",
     description: "Nested compartments grown by bounded recursive subdivision, filled like region quilts.",
+    procedure: "Split a rectangle recursively, cutting each cell across its length until a depth or minimum size is reached, with some branches stopped early or dropped. Fill the leaf cells with hatching, motif populations or contour scores, leaving open paper.",
     renderer: "2d",
     parameters: [
       n("centerX", "Center X", "Horizontal world center.", 80, 560, 1, -320, 960),
@@ -279,6 +285,7 @@ export const referenceDefinitions: InstrumentDefinition[] = [
   {
     id: "fold-atlas", title: "Fold Atlas",
     description: "A grid pushed through chained coordinate maps: folds, swirls, seams and pinched centers, with lines and nodes following the same mapping.",
+    procedure: "Start with a rectangular grid of lines and nodes and push every point through a chain of up to three coordinate maps, such as swirl and sinusoidal folds. Draw the mapped lines in two colours by direction, with nodes a fold turns inside out in the second.",
     renderer: "2d",
     parameters: [
       n("centerX", "Grid center X", "Horizontal center of the source grid.", 80, 560, 1, -320, 960),

@@ -62,7 +62,7 @@ const controlGroups:ControlGroup[] = [
 ];
 
 export const attractorGrowthDefinitions:StudioDefinition[] = [{
-  id:'attractor-growth',title:'Attractor growth',description:'Seed an editable attractor footprint and independent roots; grow branching tips toward nearest unconsumed targets.',parameters,controlGroups,
+  id:'attractor-growth',title:'Attractor growth',description:'Seed an editable attractor footprint and independent roots; grow branching tips toward nearest unconsumed targets.', procedure: "Scatter target points, then place roots apart from them. Each tick, every active tip steps toward its nearest unconsumed target; a tip that reaches one consumes it and splits into new tips across a branch spread. Draw each tick as a stroke that thins generation by generation.",parameters,controlGroups,
   defaults:{sourceCount:95,sourceMode:'area',extent:315,aspect:1.1,direction:0,centerX:320,centerY:305,disorder:.45,exclusion:.12,band:.18,lobeGap:.3,lobeBias:.62,rootCount:1,rootSpread:0,rootJitter:5,rootX:320,rootY:530,rootHeading:0,ticks:65,step:7,reach:17,branches:2,branchSpread:42,weight:2.6,taper:.973,terminals:false,terminalSize:4,guides:false,guideSize:3},
   validate:validateAttractorGrowth,
 }];

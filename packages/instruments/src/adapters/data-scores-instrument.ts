@@ -54,6 +54,7 @@ export const dataScoresDefinition: InstrumentDefinition = {
   id: "data-scores",
   title: "Data Scores",
   description: "Recorded values decide structure: which cell, how large, how loose, how much area, when along a score. Three bundled tables with missing values, a lattice, an exact-area treemap and a timeline, and a small key generated from the mapping.",
+  procedure: "Read a small table of twelve months by three genres of library loans and let its columns decide the picture. Each month becomes a mark placed by month in its genre's lane, lifted by loan count, sized by late share and coloured by season, with ringed ghosts where a value is missing.",
   renderer: "2d",
   parameters: [
     select("dataset", "Table", "The recorded table. All three have three numeric columns and two category columns, with some values missing, so any column choice below works with any table; columns are chosen by position and the labels list what each position is in every table.",

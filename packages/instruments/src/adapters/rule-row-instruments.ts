@@ -67,8 +67,10 @@ const shared = {columns: 56,
   inactiveAlpha: 35};
 export const ruleRowDefinitions: StudioDefinition[] = [
   { id: "woven-rows", title: "Woven Rows", description: "Editable elementary automaton generations as separated woven bars.",
+  procedure: "Run an elementary cellular automaton, Rule 90, from a repeating binary word across 56 columns and 28 generations, each cell reading the three above it. Draw an ink bar at every live cell, on a grid by column and generation.",
     parameters, controlGroups, defaults: {...shared}, validate: validateRuleRows },
   { id: "triangle-glyphs", title: "Triangle Glyphs", description: "The same true automaton source drawn with triangular ink.",
+  procedure: "Run an elementary cellular automaton, Rule 110, from a single live cell across 49 columns and 25 generations. Draw one triangle at every live cell, placed on a grid by column and generation.",
     parameters, controlGroups, defaults: {...shared,
       columns: 49,
       rows: 25,

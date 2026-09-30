@@ -92,6 +92,7 @@ const labelled = (parameter: Parameter): Parameter => {
 export const polygonWatercolorDefinition: InstrumentDefinition = {
   id: "polygon-watercolor", title: "Polygon Watercolor",
   description: "Translucent washes laid over a shape (a blob, a ring, letterforms or quilt compartments): every pass keeps the shape but has its own ragged boundary, correlated with the others, so pigment builds up unevenly toward the middle and reserved holes stay unpainted. A light partial wash and a dense overpainted patch are the same instrument with different settings.",
+  procedure: "Take one parent shape, a lobed blob with holes, and make twenty translucent passes by displacing its boundary with broad swells and finer ripples. Each pass mixes a field shared by all passes with one of its own, so edges agree loosely; overlap builds up tone steps toward the centre.",
   renderer: "2d",
   parameters: parameters.map(labelled), controlGroups,
   defaults: {

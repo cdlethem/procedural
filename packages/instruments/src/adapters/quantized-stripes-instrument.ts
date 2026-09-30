@@ -12,6 +12,7 @@ export const quantizedStripeDefinitions: StudioDefinition[] = [{
   id: "quantized-stripes",
   title: "Quantized Stripes",
   description: "Reduce an editable RGB source to a smaller palette, then place its weighted colors in rows of separated strips or tiles.",
+  procedure: "Take an editable weighted sequence of RGB colours, reduce it with median-cut quantization and give each source colour its reduced colour. Lay them out as rows of cells whose heights and widths follow the weights, leaving gaps between cells.",
   parameters: [
     choice("source", "Color source", "Sample every palette stop in encoded RGB, or edit an explicit weighted color sequence.", ["palette-ramp", "sequence"]),
     num("samples", "Ramp samples", "Number of source colors interpolated across all palette stops; only used for palette-ramp.", 2, 128, 1, 0, 512, true),

@@ -98,6 +98,7 @@ export const cyclicFrontsDefinition: InstrumentDefinition = {
   id: "cyclic-fronts",
   title: "Cyclic Fronts",
   description: "Expanding domains, interleaved fronts and spiral waves from a cyclic cellular automaton: every cell steps to the next of n states when enough neighbors already are, and the state cells, the fronts between them and the spiral cores can each be drawn on their own.",
+  procedure: "Fill a grid with colours arranged on a cycle, with a few pinwheels seeded on a quiet ground. Each step, a cell advances to the next colour if enough of its neighbours already hold it, so domains invade one another and spiral waves form. Draw flat colour cells, the boundaries between them, and a ring at each spiral core.",
   renderer: "2d",
   parameters,
   controlGroups,

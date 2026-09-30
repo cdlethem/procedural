@@ -102,6 +102,7 @@ export const riverRibbonsDefinition: InstrumentDefinition = {
   id: "river-ribbons", title: "River Ribbons",
   description: "A river channel that migrates: bends erode toward their outsides at a rate set by smoothed curvature, tight necks cut off into oxbows, and every earlier position is kept. Drawn as a ribbon whose width follows the discharge, faded scars of old channels and oxbows, and an age tint of the floodplain.",
   renderer: "2d", parameters, controlGroups,
+  procedure: "Begin with a wandering channel of equally spaced nodes. Each step, move every node sideways toward the outside of its bend by an amount set by the curvature there, resample, and when two parts of the channel come closer than a neck width cut the loop out as an oxbow. Keep every earlier centreline and draw them faded behind the final ribbon.",
   featured: ["amplitude", "harmonics", "steps"],
   defaults: {
     planform: "wandering", harmonics: 6, amplitude: 0.6, waves: 3, turn: 60,

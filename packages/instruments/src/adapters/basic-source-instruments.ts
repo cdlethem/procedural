@@ -44,6 +44,7 @@ const sourcePlacement = (...rotation: string[]): ControlGroup =>
 export const basicSourceInstrumentDefinitions: StudioDefinition[] = [
   {
     id: "field-marks", title: "Field marks", description: "A positioned, retained field of seeded noise-directed dots, short strokes or bars.",
+    procedure: "Lay out sample positions on a grid or scatter them, then drop whole samples at random by a retention fraction. At each survivor, read seeded noise for direction, length and colour, and draw a short line, bar or dot aligned to the sampled angle.",
     parameters: [
       num("columns", "Columns", "Samples in each row.", 2, 120, 1, 1, 500, true),
       num("rows", "Rows", "Sample rows.", 2, 120, 1, 1, 500, true),
@@ -87,6 +88,7 @@ export const basicSourceInstrumentDefinitions: StudioDefinition[] = [
   },
   {
     id: "path-marks", title: "Path marks", description: "Editable gradient-field trajectories, with independent marks at arc-length stations.",
+    procedure: "Place starts on a grid, in an ellipse or around its edge, and follow each through a seeded gradient field in fixed steps. Then set marks at regular distances along every trajectory, with optional omissions, instead of tracing the path itself.",
     parameters: [
       num("steps", "Steps", "Movement steps per path.", 10, 1000, 1, 0, 4000, true),
       num("distance", "Step distance", "Travel per movement step.", .1, 3, .05, 0, 50),
@@ -147,6 +149,7 @@ export const basicSourceInstrumentDefinitions: StudioDefinition[] = [
   },
   {
     id: "placement-marks", title: "Placement marks", description: "Ordered circle exclusion within an editable area or an explicit series of radial proposals.",
+    procedure: "Propose circles one by one inside a rectangle, or along concentric rings, and accept each only if its centre clears every earlier circle by the combined radii. Draw each accepted site with a stroke, diamond, ring or disc, so crowded areas fill and leave gaps.",
     parameters: [
       num("attempts", "Proposals", "Seeded candidates considered; accepted count may be smaller.", 20, 1500, 1, 0, 4000, true),
       num("minimum", "Minimum radius", "Smallest proposed exclusion radius.", 2, 32, .5, .01, 1000),
@@ -194,6 +197,7 @@ export const basicSourceInstrumentDefinitions: StudioDefinition[] = [
   },
   {
     id: "lattice-marks", title: "Lattice marks", description: "Ordered starts claim unoccupied cells in an editable oriented rectangular lattice.",
+    procedure: "Grow random walks across an occupancy grid, claiming one cell at a time. Paths start in a set order, step only to free neighbours, and stop when blocked or out of moves, so earlier routes shut out later ones. Draw each route through its cells in order-coloured strokes.",
     parameters: [
       num("count", "Paths", "Ordered starting cells; occupied starts become empty routes.", 1, 50, 1, 0, 500, true),
       num("steps", "Moves", "Maximum cardinal moves; blocked routes stop early.", 0, 100, 1, 0, 1000, true),

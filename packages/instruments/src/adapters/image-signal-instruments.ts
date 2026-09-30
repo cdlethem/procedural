@@ -21,6 +21,7 @@ export const imageSignalInstrumentDefinitions: StudioDefinition[] = [
   {
     id: "weighted-image-atlas", title: "Weighted image atlas",
     description: "Seeded editable density fragments become local weighted dots, stitches or bars.",
+    procedure: "Build a local density field from seeded relief ridges, thermal plumes or digit rows, adjusted by floor, threshold and inversion. Sample positions in proportion to density, optionally moving each toward the centroid of its weighted pixels. Draw dots, stitches or bars.",
     parameters: [choice("source", "Density source", "Relief ridge, thermal clusters, or a digit grid.", ["relief", "thermal", "grid"]),
       text("densityGrid", "Density grid", "For grid source: 2–32 equal-width digit rows; one terminal newline is allowed. Sampling mass is checked after floor, inversion and threshold.", 1100, true),
       numeric("features", "Source features", "Number of seeded ridges or clusters.", 2, 8, 1, { hardMin: 1, hardMax: 12, integer: true }),
@@ -80,6 +81,7 @@ export const imageSignalInstrumentDefinitions: StudioDefinition[] = [
   {
     id: "word-echo", title: "Word echo",
     description: "Editable licensed glyph contours or a shaped path receive independently sampled recorded controls.",
+    procedure: "Take the outline of typed letters, or a separate spiral or wave, and space marks along it by distance. Echoes read a recorded signal at earlier times, each shifted and sized by the sampled levels, so the marks drift from the source. Draw dots, strokes or rings.",
     parameters: [text("text", "Contour text", "1–20 printable ASCII characters from the licensed GlyphMarks font; unsupported characters are rejected.", 20),
       choice("signal", "Input series", "Synthesized PCM-derived RMS/accent or authored non-audio tide/gust readings.", ["synth", "non-audio"]),
       numeric("time", "Time (seconds)", "Explicit query in 40 recorded samples, every 0.125 seconds.", 0, 4.875, .125, { hardMin: 0, hardMax: 4.875 }),

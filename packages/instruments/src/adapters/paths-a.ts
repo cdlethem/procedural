@@ -54,6 +54,7 @@ const trajectoryGroups = (count: string, processing: ControlGroup): ControlGroup
 const modern: Record<string, StudioDefinition> = {
   "rounded-panels": {
     id: "rounded-panels", title: "Rounded panels", description: "Repeat editable polygon outlines after Chaikin corner cuts.",
+    procedure: "Arrange straight-sided polygon panels in staggered rows and columns, each built as an editable outline that can be stretched, rotated or notched. Round every outline with Chaikin corner cuts, then draw it filled, outlined or both.",
     parameters: [
       n("iterations", "Corner cuts", "Successive smoothing passes on each source outline.", 0, 6, 0, 16, 1, true),
       n("panels", "Panels", "Total repeated panels.", 1, 16, 1, 1000, 1, true), weight,
@@ -89,6 +90,7 @@ const modern: Record<string, StudioDefinition> = {
   },
   "flowing-brushes": {
     id: "flowing-brushes", title: "Flowing brushes", description: "Smooth continuous sweeps from replaceable sampled source trajectories.",
+    procedure: "Sample several wavy, slightly noisy trajectories as angular polylines, then round each with passes of Chaikin corner cutting. Space the smoothed paths across their direction of travel and draw each as one continuous stroke on a transparent ground.",
     parameters: [
       n("iterations", "Corner cuts", "Chaikin refinement passes on every sampled source path.", 0, 5, 0, 16, 1, true),
       n("rows", "Brush paths", "Number of sweeps across the group's spacing.", 1, 12, 1, 1000, 1, true), weight,
@@ -116,6 +118,7 @@ const modern: Record<string, StudioDefinition> = {
   "contour-abstraction": {
     id: "contour-abstraction", title: "Contour abstraction",
     description: "Layer coarse-to-fine simplified records of one sampled trajectory.",
+    procedure: "Sample one bending trajectory, then simplify it repeatedly with a falling tolerance, coarsest first. Offset each simplified record across the direction of travel and draw it as an open line, so the stack moves from a few large turns to fine detail.",
     parameters: [
       n("tolerance", "Coarsest tolerance", "Simplification tolerance of the first record; later records retain increasingly fine detail.", 0, 100, 0, 10000),
       n("layers", "Records", "Number of simplified records of the source.", 1, 12, 1, 1000, 1, true), weight,
@@ -143,6 +146,7 @@ const modern: Record<string, StudioDefinition> = {
   "gesture-skeletons": {
     id: "gesture-skeletons", title: "Gesture skeletons",
     description: "Sparse articulated fragments from independently seeded sampled gestures.",
+    procedure: "Generate several independently seeded open gestures as sampled curves, then simplify each polyline, dropping every bend smaller than the joint tolerance. Draw the surviving joints joined by straight segments, leaving sparse articulated fragments.",
     parameters: [
       n("tolerance", "Joint tolerance", "Simplification distance controlling which gesture joints survive.", 0, 65, 0, 10000),
       n("gestures", "Gestures", "Number of independently seeded gestures.", 1, 14, 1, 1000, 1, true), weight,
@@ -169,6 +173,7 @@ const modern: Record<string, StudioDefinition> = {
   },
   "road-margins": {
     id: "road-margins", title: "Road margins", description: "Offset editable open routes with optional centerlines and source nodes.",
+    procedure: "Generate winding open routes from sinusoidally bent waypoints, smooth each with Chaikin corner cuts and offset it to the left and right by a signed margin. Draw the offset edges as lines, with the centreline and waypoints optional, on a transparent ground.",
     parameters: [
       n("distance", "Signed margin", "Offset distance; sign selects the side when one edge is shown.", -40, 40, -10000, 10000),
       n("routes", "Routes", "Number of route centerlines.", 1, 12, 1, 1000, 1, true), weight,
@@ -208,6 +213,7 @@ const modern: Record<string, StudioDefinition> = {
   },
   "nested-contour-strokes": {
     id: "nested-contour-strokes", title: "Nested contour strokes", description: "Offset an editable closed outline into contour rings.",
+    procedure: "Build a closed polygon from the shape controls, then offset it to several signed distances, each ring stepping a fixed gap further than the last. Draw each offset path as an outline or as vertex dots; the rings are independent and may cross.",
     parameters: [
       n("distance", "Signed ring gap", "Actual distance between successive offsets; negative values reverse direction.", -40, 40, -10000, 10000),
       n("rings", "Rings", "Number of contours drawn from the source boundary.", 1, 16, 1, 1000, 1, true), weight,
@@ -247,6 +253,7 @@ for (const [id, kind, sides, innerRadius, scale, grain, weightValue] of [
   modern[id] = {
     id, title: id === "concave-grain" ? "Concave grain" : "Faceted silhouettes",
     description: "Triangulate an editable convex or notched boundary, then treat its facets independently.",
+    procedure: id === "concave-grain" ? "Build a polygon with inward-notched corners, triangulate it into straight facets and fill each triangle with a palette colour. Draw the facet edges and add fan lines or dots inside every triangle as grain, leaving the ground transparent." : "Start from a convex polygon, triangulate it into straight facets and fill each triangle with its own palette colour. Outline the facets and add fan lines or dots inside each triangle as grain, leaving the ground transparent.",
     parameters: [
       n("scale", "Boundary radius", "Outer reach of the silhouette.", 60, 280, .01, 10000),
       n("grain", "Grain marks", "Fan lines or dots in each triangle.", 0, 60, 0, 1000, 1, true), weight,

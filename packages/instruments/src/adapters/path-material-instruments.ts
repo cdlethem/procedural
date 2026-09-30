@@ -144,12 +144,15 @@ const hullDrawing: ControlGroup = { label: "Drawing", stage: "material", control
   { label: "Source dots", controls: ["showDots", "inset"] }] };
 export const pathMaterialInstrumentDefinitions: StudioDefinition[] = [
   { id: "stitched-contours", title: "Stitched contours", description: "Arc-length material sewn along independently seeded local trajectories.",
+  procedure: "Generate a few bending, folded trajectories in a local patch, smooth them once by corner cutting and step along each at equal arc distance. At every step place a pair of short parallel stitches angled to the tangent, with some omitted at random.",
     parameters: pathParameters, controlGroups: pathGroups, defaults: pathDefaults, validate: q => validatePathMaterialInstrument("stitched-contours", q) },
   { id: "fragmented-lines", title: "Fragmented lines", description: "Broken, omittable traces on the same editable trajectories and material vocabulary.",
+  procedure: "Lay twelve bending trajectories across a local patch, smooth them with corner cutting and walk along each by equal arc distance. Place a short dash at every step, skip one slot in each rhythm of gaps, and omit another share of marks at random.",
     parameters: pathParameters, controlGroups: pathGroups, defaults: { ...pathDefaults, lines: 12, waves: 1.7, gaps: 4, weight: 2, sourceSpan: 460,
       amplitude: 36, forwardBend: 35, spacing: 34, variation: 17, material: "dash", markLength: 20,
       markWidth: 5, markAngle: 0, omitChance: .28 }, validate: q => validatePathMaterialInstrument("fragmented-lines", q) },
   { id: "stitched-paths", title: "Stitched paths", description: "Arc-spaced transverse marks on editable local waves and folded trajectories.",
+  procedure: "Lay eight gently waving paths side by side, smooth them by corner cutting and step along each at equal arc distance. At every step draw a short bar across the path at right angles to its tangent, making rows of stitches with nothing omitted.",
     parameters: [...pathParameters], controlGroups: pathGroups,
     defaults: {...pathDefaults,
       lines: 8,
@@ -172,6 +175,7 @@ export const pathMaterialInstrumentDefinitions: StudioDefinition[] = [
       weight: 1.2},
     validate: q => validatePathMaterialInstrument("stitched-paths", q) },
   { id: "scatter-envelopes", title: "Scatter envelopes", description: "Convex hulls around seeded sites in editable local supports and separate groups.",
+  procedure: "Scatter seeded sites in one or more local populations, elliptical, ring-shaped or stretched along a line, then compute the convex hull of each group's own sites. Draw each hull as a fill or an outline, with the source dots optionally shown.",
     parameters: scatterParameters,
     controlGroups: [
       { label: "Population", stage: "form", controls: ["count", "support", "innerRing"] },
@@ -181,6 +185,7 @@ export const pathMaterialInstrumentDefinitions: StudioDefinition[] = [
     ],
     defaults: scatterDefaults, validate: q => validatePathMaterialInstrument("scatter-envelopes", q) },
   { id: "terraced-islands", title: "Terraced islands", description: "Independently seeded islands, each with scaled nested copies of its actual convex hull.",
+  procedure: "Give each island its own seeded ring of sites and compute their convex hull. Copy that hull repeatedly, shrinking it about the island's centre by a scale and inset at each level, and outline every copy so the terraces nest like contour lines.",
     parameters: terraceParameters,
     controlGroups: [
       { label: "Islands", stage: "form", controls: ["islands", "spread", "count", "disorder"] },

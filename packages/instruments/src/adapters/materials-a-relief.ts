@@ -44,8 +44,10 @@ const reliefGroups = (response: "gain" | "cutoff"): ControlGroup[] => [
 
 export const reliefDefinitions: StudioDefinition[] = [
   { id: "embossed-field", title: "Embossed field", description: "Signed convolution relief.",
+  procedure: "Scatter seeded mounds, waves or cutout ovals into a small height field, then run a directional signed 3×3 convolution over it. Rising and falling slopes print in two inks, as tiles or dots sized by response, and blank cells print nothing.",
     parameters: reliefParameters("embossed-field"), controlGroups: reliefGroups("gain"), defaults: reliefDefaults("embossed-field") },
   { id: "signed-edge-print", title: "Signed edge print", description: "Two-ink convolution edges.",
+  procedure: "Build a grayscale height field from seeded oval cutouts, then run a directional signed 3×3 convolution over it. Keep only responses above an edge cutoff and print the two signs in two inks, so opposite sides of each boundary take different colours.",
     parameters: reliefParameters("signed-edge-print"), controlGroups: reliefGroups("cutoff"), defaults: reliefDefaults("signed-edge-print") },
 ];
 

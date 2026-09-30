@@ -131,6 +131,7 @@ export function validateHingedPanels(q: Values): void {
 export const hingedPanelsDefinition: InstrumentDefinition = {
   id: "hinged-panels", title: "Hinged Panels",
   description: "A flat tiling of panels folds along its shared edges into spatial fragments: every hinge has an editable fold angle, panels move as rigid bodies from an anchored panel, conflicts the tiling cannot close are reported, and the flat crease pattern is a layer of its own.",
+  procedure: "Tile a sheet of square panels, treat each shared edge as a hinge with its own signed angle, and pose the rigid panels outward from one anchor along a spanning tree of hinges. Project the folded geometry with a camera, paint it far to near, light each panel, and ink the hinges. Unsatisfied hinges show as cracks.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

@@ -40,6 +40,7 @@ const controlGroups: readonly ControlGroup[] = [
 export const compartmentsDefinition: InstrumentDefinition = {
   id: "adaptive-compartments", title: "Adaptive Compartments",
   description: "A picture divided into a mosaic whose cell size follows its detail: big quiet cells where the image is flat, small ones along its edges. Each cell is filled by a replaceable technique (flat color, hatching along the local direction, halftone dots, a nested glyph, a stitched border), and a retained fraction leaves the rest as open paper.",
+  procedure: "Divide a picture into rectangles, splitting a cell while its detail score exceeds a threshold, so flat areas stay large and edges break into small cells. Fill each cell from its own image: flat colour, edge-aligned hatching or glyphs by size, keeping a share open.",
   renderer: "2d",
   parameters: [
     select("image", "Source image", "Bundled sample picture the mosaic is measured on: a soft portrait, a hard-edged geometric scene, a landscape, or worst-case grain. Your own images bind through the host when it supports them.", [...bundledRasterIds]),

@@ -30,6 +30,7 @@ export const valueRegionsDefinition: InstrumentDefinition = {
   id: "connected-value-regions",
   title: "Value Regions",
   description: "A picture reduced to a handful of coherent shapes: pixels are grouped into value bands, split into connected regions (diagonal contact joined or not), small regions are merged into their neighbours, and every region becomes a polygon with holes whose shared edges are drawn once. Each region is filled by a replaceable technique (flat color, hatching by tone, nested marks or contours) and outlined in ink, stitches or beads; a retained share leaves the rest as open paper.",
+  procedure: "Measure one value per pixel of a picture, cut the values into bands, and split each band into its connected pieces. Merge pieces that are too small into a neighbour, trace shared boundaries once as polygons with holes, and fill each region with hatching whose spacing follows its tone.",
   renderer: "2d",
   parameters: [
     select("image", "Source image", "Bundled sample picture the regions are cut from. Each is a deterministic synthetic picture, not a photograph; binding your own image to a Studio layer is future host work, and the library functions already accept any raster you construct." +

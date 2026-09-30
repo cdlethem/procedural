@@ -116,6 +116,7 @@ const labelled = (parameter: Parameter): Parameter => {
 export const chemotacticTrailsDefinition: InstrumentDefinition = {
   id: "chemotactic-trails", title: "Chemotactic Trails",
   description: "Agents that both follow and lay a chemical: each senses the field with two probes, steers toward (or away from) it, and deposits more, while the field diffuses and decays. Trails reinforce into veins, colonies from separate emitters meet and compete, and barriers redirect them. The chemical is drawn as contours or bands, trajectories as ink, stitches or brush hairs, and agents as small marks.",
+  procedure: "Start walker colonies at a few emitters on a grid where walkers deposit chemical that diffuses and decays. Each step, every walker senses the old chemical at two probes ahead, turns toward the stronger, moves and deposits. Draw the resulting trajectories as veins with contour halos around the busiest stretches.",
   renderer: "2d",
   parameters: parameters.map(labelled), controlGroups,
   validate: (q) => {

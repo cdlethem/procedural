@@ -133,6 +133,7 @@ const labelled = (parameter: Parameter): Parameter => {
 export const surfaceGrowthDefinition: InstrumentDefinition = {
   id: "surface-growth", title: "Surface Growth",
   description: "A triangulated sheet, disc, strip or sphere whose edges are allowed to lengthen unevenly. A growth field says where; each step grows the rest lengths there, relaxes the skin in 3-D under stretch and bending, and splits the edges that stretch too far, so ruffles and folds form by real surface evolution. Painted as lit faces far to near, hidden-line contours and wire, level lines and grains, from a camera that never touches the growth.",
+  procedure: "Start from a flat triangulated disc in which each vertex carries a growth scale. Each step, lengthen edges where the growth field is high, relax the mesh in 3-D under stretch and bend, and split overstretched edges. The rim outgrows the centre and folds into ruffles, drawn far to near.",
   renderer: "2d",
   parameters: parameters.map(labelled), controlGroups,
   validate: (q) => checkSurfaceGrowthControls(q),

@@ -122,6 +122,7 @@ export function validateWetPigment(q: Record<string, number | string | boolean>)
 export const wetPigmentDefinition: InstrumentDefinition = {
   id: "wet-pigment", title: "Wet Pigment",
   description: "Pigmented water dropped into an artist-defined wet region spreads, is soaked up by uneven paper and dries from the edge in. Suspended pigment is carried out with the water and left where it dries, so drops bloom into feathered rims, late clear water pushes old pigment outward into backruns, and drying fronts record the order the sheet dried. Drawn as banded pigment fills, drying-front contours and the wet film, all from one stepped simulation. A 2D cellular model, not physical paint.",
+  procedure: "Run a small grid model of water, floating pigment and deposited pigment on seeded porous paper. Water spreads, soaks in and evaporates faster at the edge, carrying pigment that settles as the film thins and is left when a cell dries. Later clear-water drops lift old pigment into backruns.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

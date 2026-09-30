@@ -19,12 +19,18 @@ const initialField: ControlGroup = { label: "Initial field", stage: "form", cont
 /** A concentration or live-cell mark: its size and outline weight scale together. */
 const cellMark = (size: string): ControlGroup => ({ label: "Mark", stage: "material", controls: [size, "weight"], proportional: true });
 const curlField: ControlGroup = { label: "Field", stage: "form", controls: ["fieldFrequency", "anisotropy", "disorder"] };
+const PROCEDURES: Record<string, string> = {
+  "reaction-spots": "Seed a 24 by 24 grid with speckled chemical and run 12 steps of Gray-Scott reaction-diffusion, wrapping at the edges. Draw a disc at every cell above a threshold, larger where the concentration is higher.",
+  "reaction-stripes": "Seed a 24 by 24 grid by activating the ten percent of cells where a diagonal band pattern is strongest, then run eight steps of Gray-Scott reaction-diffusion. Draw a coloured square at every cell above a threshold.",
+  "organic-cells": "Seed a 20 by 20 grid with seeded speckle and run eight generations of Conway's Life, wrapping at the edges. Paint a coloured disc at every cell still alive.",
+  "geometric-generations": "Seed a 20 by 20 grid with a checker pattern of live cells and run six generations of Conway's Life, wrapping at the edges. Paint a coloured square at every cell still alive.",
+};
 const modern:Record<string,StudioDefinition>={};
 for(const [id,title,source,passes,scale] of [
   ["reaction-spots","Reaction spots","speckle",12,18],
   ["reaction-stripes","Reaction stripes","bands",8,13],
 ] as const) modern[id]={
-  id,title,description:"Evolve an editable initial concentration field with Gray–Scott dynamics.",
+  id,title,description:"Evolve an editable initial concentration field with Gray–Scott dynamics.",procedure:PROCEDURES[id],
   parameters:[
     ...sourceControls(true,id==="reaction-stripes"),
     n("passes","Passes","Elapsed chemical updates; zero shows the initial state.",0,16,0,256,1,true),
@@ -44,7 +50,7 @@ for(const [id,title,source,passes,cellSize] of [
   ["organic-cells","Organic cells","speckle",8,18],
   ["geometric-generations","Geometric generations","checker",6,22],
 ] as const) modern[id]={
-  id,title,description:"Evolve an editable binary field under a selectable Life-like rule.",
+  id,title,description:"Evolve an editable binary field under a selectable Life-like rule.",procedure:PROCEDURES[id],
   parameters:[
     ...sourceControls(false),
     choice("rule","Rule","Birth and survival counts used for every synchronous generation.",["life","highlife","seeds","day-night"]),
@@ -70,6 +76,7 @@ const curlFieldControls = [
 modern["swirling-particles"]={
   id:"swirling-particles",title:"Swirling particles",
   description:"Trace seeded starting points through a shared scalar curl field with RK4.",
+  procedure: "Build a scalar potential from ordered waves mixed with seeded noise and take its curl to get a velocity field. Start 55 particles across an area and advance each 70 steps by fourth-order Runge-Kutta, drawing every path as a trail.",
   parameters:[
     ...curlFieldControls,
     choice("sourceMode","Source placement","Start particles throughout an area, around a ring, or along a line.",["area","ring","line"]),
@@ -99,6 +106,7 @@ modern["swirling-particles"]={
 modern["flow-needles"]={
   id:"flow-needles",title:"Flow needles",
   description:"Read the same seeded scalar curl field as directional vector marks, not paths.",
+  procedure: "Build a scalar potential from ordered waves mixed with seeded noise and take its curl to get a velocity field. Sample it on a 20 by 20 grid and draw a short needle at each sample along the local flow direction.",
   parameters:[
     ...curlFieldControls,
     n("columns","Sample columns","Samples per axis; at most 128² direction marks to keep drawing bounded.",8,50,8,128,1,true),

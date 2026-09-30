@@ -32,6 +32,7 @@ export const bundledRelationsDefinition: InstrumentDefinition = {
   id: "bundled-relations",
   title: "Bundled Relations",
   description: "Weighted relationships between grouped places, drawn as families of curves: edges join through shared waypoints only when they connect the same two groups, so a few readable ribbons replace the tangle. Bundle strength zero is the plain straight-edge drawing.",
+  procedure: "Place 48 zones in six districts around a ring and route each of about two hundred weighted links through shared waypoints, so links between the same two districts travel together as one ribbon. Links inside a district curl back as petals, and each link changes colour from origin to destination.",
   renderer: "2d",
   parameters: [
     select("dataset", "Dataset", "The recorded relationships. Every dataset has six groups of places and weighted edges between them; the datasets differ in size, density and whether flows have a direction.",

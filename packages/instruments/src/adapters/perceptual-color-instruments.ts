@@ -33,6 +33,7 @@ export const perceptualColorDefinitions: StudioDefinition[] = [
   {
     id: "perceptual-bands", title: "Perceptual bands",
     description: "Sculpt an Oklab color field with an editable piecewise-linear edge profile and open rank-cell gaps.",
+    procedure: "Cut a field into bands whose left and right edges follow a piecewise-linear profile of height against width. Sample one colour per band from an Oklab ramp and draw each as a polygon covering part of its cell, leaving transparent gaps between.",
     parameters: [
       control("bands", "Bands", "Number of global ramp ranks; zero paints nothing.", 2, 80, 1, 0, 512, true),
       text("profile", "Edge profile", "JSON rows [height fraction, left X, right X]; include 0 and 1 with strictly increasing fractions. X is relative to Center X.", 4096, true),
@@ -58,6 +59,7 @@ export const perceptualColorDefinitions: StudioDefinition[] = [
   {
     id: "oklab-orbits", title: "Oklab orbits",
     description: "Open elliptical arc stacks with eccentric centers and an Oklab gradient across ranks or along each arc.",
+    procedure: "Stack elliptical arcs from an inner to an outer radius, drifting each centre and twisting each ellipse progressively from the first to the last. Draw every orbit as explicit straight segments over a partial sweep, coloured along an Oklab ramp.",
     parameters: [
       control("orbits", "Orbits", "Number of elliptical arc ranks; one uses the first radius and center.", 2, 80, 1, 0, 256, true),
       control("innerRadius", "Inner radius", "First orbit's horizontal radius in canvas units.", 0, 300, 1, 0, 10000),

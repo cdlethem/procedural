@@ -159,6 +159,7 @@ export function regionStitchUsesSeed(q: Values): boolean {
 export const regionStitchDefinition: InstrumentDefinition = {
   id: "region-stitch", title: "Region Stitch",
   description: "Fill regions with directional stitching: rows or scattered stitches follow a field inside letters, blobs, quilt patches or picture tones, over underlay, with satin outlines, a seam and threads that visibly cross.",
+  procedure: "Fill each flat region with simulated thread: pull the region in by an inset, lay underlay stitches, then fill rows along a direction field cut into stitches of a set length, with staggered ends. Route the thread greedily to the nearest unstitched row, then run a satin outline round every edge.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

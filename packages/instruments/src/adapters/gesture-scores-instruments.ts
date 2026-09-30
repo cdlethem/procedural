@@ -139,6 +139,7 @@ export function validateGestureScores(q: Values): void {
 export const gestureScoresDefinitions: InstrumentDefinition[] = [{
   id: "gesture-scores", title: "Gesture Scores",
   description: "Replay a recorded hand movement, with its timing and pressure, as a broad bristle brush, a lagging fall of sand and glyphs placed along the path. One time window and one smoothing reshape all three.",
+  procedure: "Take one recorded hand movement, a list of timestamped positions with pressure, smooth it and replay it three ways at once. Drag a bristle brush along the path, release falling sand that gathers where the hand slowed, and set a row of arrow glyphs along the stroke's direction.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

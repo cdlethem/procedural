@@ -125,6 +125,7 @@ const controlGroups: ControlGroup[] = [
 export const implicitSculptureDefinition: InstrumentDefinition = {
   id: "implicit-sculpture", title: "Implicit Sculpture",
   description: "Solids, cavities, repeated structures and bounded fractals composed as a signed-distance tree, then drawn as ray-marched shading, smooth vector bands, mesh facets or grains with hidden-line silhouettes, creases and slice contours.",
+  procedure: "Build a solid as a signed-distance tree, here a stone block hollowed by a lattice of voids and tunnels with a quarter cut away. March a ray through each cell of a tilted camera, shade the hits in five tones with creases darkened, and solve the hidden lines for the ink outline.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

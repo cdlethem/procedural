@@ -23,6 +23,7 @@ export const geometryDefinitions: StudioDefinition[] = [
     id: "loop-marks",
     title: "Loop marks",
     description: "Construct closed loops, then choose outlines, edge tiles, or triangle fans.",
+    procedure: "Shape each closed loop from a base spline and lobed radial waves, phased differently from loop to loop, and lay loops in a row, grid or nested set. Sample the outline by distance, then draw the outline, tiles such as diamonds, triangle fans, or outline plus tiles.",
     parameters: [choice("layout", "Layout", "Arrange loops along a row, in a grid, or concentrically.", ["row", "grid", "nested"]),
       numeric("loopCount", "Loops", "Number of loops in the chosen layout.", 1, 16, 1, { integer: true }),
       numeric("columns", "Grid columns", "Number of columns when Layout is grid.", 1, 8, 1, { integer: true }),
@@ -84,6 +85,7 @@ export const geometryDefinitions: StudioDefinition[] = [
     id: "cut-marks",
     title: "Cut marks",
     description: "Seeded retained unequal rectangles.",
+    procedure: "Start from one rectangle and divide it in seeded rounds, each cut at a ratio near the middle and optionally crossed by a perpendicular cut. Recorded edits can cut one region at a coordinate or remove it. Draw the surviving rectangles, leaving removed regions open.",
     parameters: [
       numeric("cuts", "Cut rounds", "Number of retained cut rounds.", 2, 24, 1),
       numeric(

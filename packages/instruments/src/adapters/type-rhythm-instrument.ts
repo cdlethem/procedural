@@ -36,6 +36,7 @@ const controlGroups: readonly ControlGroup[] = [
 export const typeRhythmDefinition: InstrumentDefinition = {
   id: "typographic-rhythm", title: "Typographic Rhythm",
   description: "A phrase set huge and repeated, then seen through a grid of modules: neighbouring windows slide, stretch and turn the type, some modules become screens or flat colour or stay blank, and a small legible caption sits outside the fragments.",
+  procedure: "Set a phrase in huge capitals, repeated line after line, and view the poster through uneven rectangular windows cut by seeded subdivision. Some windows are shifted, stretched or turned so letters shear and break; others show a line screen, a flat block or paper, with the phrase set small in a strip alongside.",
   renderer: "2d",
   parameters: [
     select("slicing", "Slicing", "Grid cuts equal rows and columns; partition cuts uneven blocks by seeded binary subdivision. Either way the modules tile the area exactly.", ["grid", "partition"]),

@@ -125,6 +125,7 @@ export function validateVisibilityDrawing(q: Values): void {
 export const visibilityDrawingDefinition: InstrumentDefinition = {
   id: "visibility-drawing", title: "Visibility Drawing",
   description: "A solid drawn as a technical line drawing: silhouettes, creases, section slices and iso-contours with exact hidden-line removal, each class removed, drawn or drawn with its hidden part dashed, plus tone hatching or a banded fill from a light. The camera is separate from the surface features.",
+  procedure: "Take a still life of four solids on a plinth and extract classes of lines from the mesh: silhouette, creases, rim and section cuts. Cut every line wherever a nearer triangle covers it, drawing hidden stretches dashed, and add hatching that thickens as faces turn from the light.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

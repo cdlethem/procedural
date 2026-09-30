@@ -45,6 +45,7 @@ export const weaveScreenDefinitions: StudioDefinition[] = [
   {
     id: "woven-strands", title: "Woven Strands",
     description: "Two ink strand families cross on the same warped lattice; the lower path is truly interrupted at each junction.",
+    procedure: "Lay out one lattice of 17 by 17 junctions, skewed and gently warped, and run a row and column path through every junction. At each crossing a seeded repeating sequence picks the upper strand and a gap is cut in the lower one, leaving the page visible.",
     parameters: [
       num("rows", "Horizontal strands", "Number of row paths; one makes a sparse strip.", 2, 24, 1, 1, 64, true),
       num("columns", "Vertical strands", "Number of column paths; one makes a sparse strip.", 2, 24, 1, 1, 64, true),
@@ -85,6 +86,7 @@ export const weaveScreenDefinitions: StudioDefinition[] = [
   {
     id: "registered-screens", title: "Registered Screens",
     description: "Two independently positioned line screens compose optical beats through real registration and rotation.",
+    procedure: "Draw two families of parallel ink lines, one at zero degrees and one a few degrees off with slightly wider spacing, and clip both to the same rectangle. The near-alignment of the two screens makes broad optical beats, with nothing painted between the strokes.",
     parameters: [
       toggle("enableA", "Screen A", "Show the first screen."), toggle("enableB", "Screen B", "Show the second screen."),
       num("pitchA", "A pitch", "Perpendicular line spacing of screen A.", 8, 32, .5, 3, 160),

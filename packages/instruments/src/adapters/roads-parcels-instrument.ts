@@ -21,6 +21,7 @@ export const roadsParcelsDefinition: InstrumentDefinition = {
   id: "roads-parcels",
   title: "Roads and Parcels",
   description: "A street network grown one street at a time, the blocks it encloses, and lots cut from each block along its nearest road: roads in width classes, lots in three types with their own fills, and land left unbuilt.",
+  procedure: "Grow a street network step by step: pass the first streets through anchor points, then repeatedly find the place with the most room and run a street through it along a guide field, stopping each end at the first road it meets. Cut each enclosed block into lots along its nearest road and fill them by type.",
   renderer: "2d",
   parameters: [
     select("field", "Street pattern", "The guide field streets follow. Grid runs along one angle; radial makes spokes and rings around the focus; spiral turns them; organic bends with smooth noise.", ["grid", "radial", "spiral", "organic"],

@@ -115,6 +115,7 @@ export function inversionGardensUsesSeed(q: Values): boolean {
 export const inversionGardensDefinition: InstrumentDefinition = {
   id: "inversion-gardens", title: "Inversion Gardens",
   description: "Circles, arcs and motifs repeated through exact circle inversion: a Descartes gasket packed with exactly measured circles, or a source shape reflected through a group of inversion circles, every straight edge becoming a true circular arc and every image keeping its correct mirroring.",
+  procedure: "Reflect a letter R through five circles that cross the frame circle at right angles, using exact circle inversion so every image is a mirrored copy shrinking toward the rim. Each straight edge becomes the circular arc through the images of its endpoints and midpoint, sampled to polylines only at the end.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

@@ -137,6 +137,7 @@ export function validateDrainageErosion(q: Values): void {
 export const drainageErosionDefinition: InstrumentDefinition = {
   id: "drainage-erosion", title: "Drainage and Erosion",
   description: "Rain runs over a landform, gathers into rivers and cuts them deeper, step by step: depressions are filled, water is routed downhill and accumulated, stream power erodes, sediment is carried and dropped. The same land is drawn as contours, tapering rivers, drainage basins, lakes, marks at confluences and lit relief.",
+  procedure: "Start with a grid of heights: a tilted landform plus fractal noise, falling to outlets at the bottom edge. Each step, fill hollows, route water to the steepest neighbour, and lower cells by flow and slope while carrying sediment downstream. Then trace streams, basins, lakes, contours and shading from that one height grid.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

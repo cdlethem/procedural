@@ -45,6 +45,7 @@ const controlGroups: readonly ControlGroup[] = [
 export const foldAtlasImageDefinition: InstrumentDefinition = {
   id: "fold-atlas-image", title: "Fold Atlas Image",
   description: "A picture pushed through chained coordinate maps. Fragments inverts the map for every output cell and paints the picture there, so folds show stretched, mirrored and overlapping fragments with one sheet on top; Density pushes thousands of samples of the picture forward and stacks them in cells, so where a fold piles the picture onto itself the density adds up and where it stretches thin the paper stays bare.",
+  procedure: "Push a picture through a chain of coordinate maps, here a handkerchief map then a swirl. For each output cell, invert the map numerically, by damped Newton, to find the picture point that lands there, and paint its colour if it converges inside the picture. Cells no part reaches stay bare paper.",
   renderer: "2d",
   parameters: [
     select("image", "Source image", "Bundled sample picture the map folds: a soft portrait, a hard-edged geometric scene, a landscape, or worst-case grain. Your own images bind through the host when it supports them.", [...bundledRasterIds]),

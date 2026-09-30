@@ -54,6 +54,7 @@ export const fractalFieldDefinitions: StudioDefinition[] = [
   {
     id: "flame-clouds", title: "Flame Clouds",
     description: "Seeded populations of contractive affine maps and mixed variations leave translucent accumulated density marks.",
+    procedure: "Build several contractive affine maps, each with mixed linear, sine and absolute-value variations, and run a random point through them for a fixed number of iterations. Accumulate hits into a 216 by 216 density grid, then tone it into soft translucent marks.",
     parameters: [
       choice("arrangement", "Map arrangement", "Ordered centers along a ring, paired arc, or line before seeded disorder.", ["ring", "arc", "line"]),
       numeric("maps", "Map count", "Number of authored affine map centers; variation weights create real alternate maps at each center.", 3, 9, 1, { hardMin: 2, hardMax: 12, integer: true }),
@@ -86,6 +87,7 @@ export const fractalFieldDefinitions: StudioDefinition[] = [
   {
     id: "escape-contours", title: "Escape Contours",
     description: "Isolines of actual quadratic complex-map escape counts, not a filled rendering of the set.",
+    procedure: "For each point in a window of the complex plane, iterate z squared plus c and record the step at which it escapes, using the Mandelbrot or a Julia map. Run marching squares over that escape-count field and draw each chosen level as contour strokes.",
     parameters: [
       choice("mapping", "Complex mapping", "Mandelbrot samples c; Julia samples starting z for the editable fixed c.", ["mandelbrot", "julia"]),
       numeric("constantReal", "Julia c real", "Real component of Julia's constant; ignored by Mandelbrot mapping.", -1.5, 1.5, .005, { hardMin: -4, hardMax: 4 }),

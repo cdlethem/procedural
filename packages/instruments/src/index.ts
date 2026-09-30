@@ -652,6 +652,19 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
   ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition, hingedPanelsDefinition, ...laplacianFrontsDefinitions, meshAbstractionDefinition, visibilityDrawingDefinition, surfaceGrowthDefinition, pointCloudsDefinition, geologicalCutawaysDefinition, implicitSculptureDefinition, surfaceWeaveDefinition, foldAtlasImageDefinition,
 ];
+export const PROCEDURE_LENGTH = { min: 60, max: 360 } as const;
+
+/** Throw a precise error unless the instrument states its procedure within the contract. */
+export function validateProcedure(item: Pick<InstrumentDefinition, "id" | "procedure">): void {
+  const text = item.procedure;
+  const where = `Instrument ${item.id} procedure`;
+  if (typeof text !== "string" || text.trim() !== text) throw new Error(`${where} must be a trimmed string`);
+  if (text.length < PROCEDURE_LENGTH.min || text.length > PROCEDURE_LENGTH.max)
+    throw new Error(`${where} must be ${PROCEDURE_LENGTH.min} to ${PROCEDURE_LENGTH.max} characters, not ${text.length}`);
+  if (!text.endsWith(".")) throw new Error(`${where} must end with a full stop`);
+  if (/\s{2,}|\n/.test(text)) throw new Error(`${where} must be one paragraph with single spaces`);
+}
+
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
 for (const item of definitions) {
@@ -662,6 +675,7 @@ for (const item of definitions) {
     defaultKeys.some(key => !parameterKeys.has(key)))
     throw new Error(`Instrument ${item.id} controls must match defaults exactly`);
   validateVisibility(item);
+  validateProcedure(item);
   for (const key of item.featured ?? [])
     if (!isControlVisible(item, key, item.defaults)) throw new Error(`Instrument ${item.id} featured ${key} is hidden at the defaults`);
   byId.set(item.id, item);

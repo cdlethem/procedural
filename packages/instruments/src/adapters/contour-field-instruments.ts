@@ -45,6 +45,7 @@ const contourGroups: ControlGroup[] = [
 export const contourFieldDefinitions: StudioDefinition[] = [{
   id: "contour-terrain", title: "Contour terrain",
   description: "Locally placed contours of editable sampled noise, hills or numeric heights.",
+  procedure: "Fill a rectangular grid with heights from seeded noise, then run marching squares at evenly stepped levels. Each level becomes a set of contour segments, every fourth drawn heavier, in colours that cycle by level. Nothing is filled, so the field stays open.",
   parameters: [...common],
   controlGroups: contourGroups,
   defaults: {
@@ -69,6 +70,7 @@ export const contourFieldDefinitions: StudioDefinition[] = [{
 }, {
   id: "contour-blobs", title: "Contour blobs",
   description: "Locally placed sampled contours around seeded hills or an edited numeric grid.",
+  procedure: "Add a handful of seeded soft hills into a height grid, then run marching squares at evenly stepped height levels. Rings form around single peaks and merge or split where hills overlap. Draw the resulting line segments in cycling colours on a transparent layer.",
   parameters: [...common],
   controlGroups: contourGroups,
   defaults: {

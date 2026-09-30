@@ -144,6 +144,7 @@ export const crossingLaceDefinition: InstrumentDefinition = {
   description: "Interlacing paths woven wherever they really cross: every crossing is found, given an over and an under strand by an explicit rule you can override, and the under strand is cut open around it. A braid knot, a Celtic plait, two contour families or random loops.",
   renderer: "2d",
   parameters, controlGroups,
+  procedure: "Lay diagonal strands across a grid of cells, block a few edges so strands turn back and reconnect, then find every place two strands cross. At each crossing decide which strand passes over and cut the other open around it, so the picture reads as thread going over and under, each closed strand in its own colour.",
   featured: ["columns", "rows", "blocked"],
   defaults: {
     family: "celtic", strands: 3, twists: 4, depth: 0.42, detail: 30,

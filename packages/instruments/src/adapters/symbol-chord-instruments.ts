@@ -109,8 +109,10 @@ const chordDefaults = { shapeA: "ellipse", shapeB: "ellipse", centerAX: 285, cen
   weight: .8, showGuides: false, guideWeight: .8 };
 export const symbolChordDefinitions: StudioDefinition[] = [
   { id: "asemic-lines", title: "Asemic lines", description: "Seed a reusable abstract spline dictionary, then arrange its paths into editable line-like rhythms without asserting a writing system.",
+  procedure: "Build a dictionary of nine abstract glyphs, each two strokes of knots smoothed by Chaikin subdivision. Set them out in four rows of words, reusing the same glyphs with loose spacing and jitter, with no text, baseline or writing system behind them.",
     parameters: asemicParameters, controlGroups: asemicGroups, defaults: asemicDefaults, validate: validateAsemic },
   { id: "chord-looms", title: "Chord looms", description: "Arc-length samples on two independent curves joined by modular, optionally modulated index mapping.",
+  procedure: "Sample two ellipses by arc length, 160 points each. Join sample i of the first to sample 3i of the second, modulo the count, with a straight chord, and draw only these chords so the string-art envelope appears without the source curves.",
     parameters: chordParameters, controlGroups: chordGroups, defaults: chordDefaults, validate: validateChords },
 ];
 export function validateAsemic(q: Params): void {

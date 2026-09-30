@@ -81,11 +81,19 @@ const rows = [
   ["subdivided-shells", "Subdivided shells", "Refine closed or open base meshes and control their silhouette.", subdivisionControls, subdivisionGroups, validateSubdivision],
 ] as const;
 
+const PROCEDURES: Record<string, string> = {
+  "extruded-seals": "Build a beveled or stepped polygon footprint, then extrude it into a solid made of two caps and a ring of walls. A fixed tilted camera paints the triangles far to near, so the outline and height control the form.",
+  "stepped-blocks": "Cut a shoulder into a rectangular footprint to leave a lower ledge, then extrude the polygon into a block of cap and wall triangles. A fixed tilted camera paints the faces far to near, so the stepped outline reads as a solid.",
+  "transported-ribbons": "Sample a 3D centerline with a width at each point, bending it vertically and in depth, then sweep a strip along it. The strip's local frame is parallel-transported from point to point so it never flips, and its projected triangles are painted far to near.",
+  "twisting-streamers": "Bend a 3D centerline through repeated vertical and depth turns and sweep a variable-width strip along it. The strip's frame is parallel-transported along the path, so it turns smoothly through loops and crossings, and its triangles are painted far to near.",
+  "rounded-polyhedra": "Take a tetrahedron, stretched along its axes with one vertex lifted, and refine it with Loop subdivision. Each level splits every triangle in four and moves the vertices toward a smoother surface. A fixed camera draws the result.",
+  "subdivided-shells": "Begin with an octahedron scaled along each axis, with one corner raised, and refine it by repeated Loop subdivision. Every level splits each triangle into four and smooths the positions, so the faceted solid softens into a shell. Draw the triangles far to near.",
+};
 export const materialsBDefinitions: StudioDefinition[] = rows.map(([id, title, description, source, controlGroups, validate]) => {
   const parameters = [...source, ...cameraAndSurface];
   const settings = draws.materialsBSettings[id].defaults as Record<string, number | string | boolean>;
   return {
-    id, title, description, parameters, controlGroups,
+    id, title, description, procedure: PROCEDURES[id], parameters, controlGroups,
     defaults: Object.fromEntries(parameters.map(({ key }) => [key, settings[key]])),
     validate,
   };

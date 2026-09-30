@@ -20,6 +20,7 @@ const value = (q: Params, key: string) => q[key] as number;
 export const rampSpringInstrumentDefinitions: StudioDefinition[] = [
   {
     id: "ramp-marks", title: "Ramp marks", description: "Position a local field of dots, bars or strokes and sample an editable palette ramp.",
+    procedure: "Lay out a rotated grid of dots, bars or strokes, then sample a palette ramp at each mark by its distance or angle from an independent colour-field origin. Marks can be thinned at random and jittered, and moving the colour field never moves them.",
     parameters: [numeric("columns", "Columns", "Marks across the local grid.", 2, 50, 1, { hardMin: 1, hardMax: 10000, integer: true }),
       numeric("rows", "Rows", "Marks down the local grid.", 2, 50, 1, { hardMin: 1, hardMax: 10000, integer: true }),
       numeric("pitchX", "Column spacing", "Independent horizontal local spacing, in canvas units.", 3, 50, .1, { hardMin: .01, hardMax: 2000 }),
@@ -76,6 +77,7 @@ export const rampSpringInstrumentDefinitions: StudioDefinition[] = [
   },
   {
     id: "spring-marks", title: "Spring marks", description: "Retained independent target-spring histories with separate paths, bodies, targets and spokes.",
+    procedure: "Give each body its own fixed target and step it: the target spring updates velocity, the velocity moves the body, and damping keeps a fraction of it. Draw each body's stored history as a trail, optionally with target dots and velocity spokes.",
     parameters: [numeric("count", "Bodies", "Number of independent springs.", 6, 72, 1, { hardMin: 1, hardMax: 256, integer: true }),
       numeric("ticks", "Ticks", "Exact number of core spring updates (zero shows initial bodies).", 0, 180, 1, { hardMin: 0, hardMax: 600, integer: true }),
       numeric("strength", "Strength", "Attraction toward each body's own target.", .005, .25, .005, { hardMin: 0, hardMax: 2 }),

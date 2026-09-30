@@ -122,6 +122,7 @@ export function validateCellDivision(q: Values): void {
 export const cellDivisionDefinitions: InstrumentDefinition[] = [{
   id: "cell-division", title: "Cell Division",
   description: "A colony of cells eats a diffusing nutrient, grows, and divides in two when it is big enough, pushing its neighbours aside. Cells near the food grow large and divide; starved ones stay small, so the colony's sizes and generations record where the food was. Draw the cells, their family tree, the nutrient left in the dish and each cell's territory, all from the same colony.",
+  procedure: "Seed founder cells in a dish fed by a ring of nutrient that diffuses inward. Each step, cells eat, grow and divide in two at a set size, then overlapping cells are pushed apart. Draw the cells as discs coloured by how many divisions they descend from, joined by thin lines of descent.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

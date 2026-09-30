@@ -173,6 +173,7 @@ export function validateLaplacianFronts(q: Values): void {
 export const laplacianFrontsDefinitions: InstrumentDefinition[] = [{
   id: "laplacian-fronts", title: "Laplacian Fronts",
   description: "A region grows where the flux of a potential is strongest: the potential between the growing region and a source is solved on a grid, the boundary advances at a speed that follows the potential gradient (raised to a growth bias, softened by a surface tension), and every front is kept. Lobes swell into tips that run ahead, fingers branch and merge, pockets close; the history is drawn as age-colored fronts, bands of fill, marks at the tips or by age, and the equipotential lines the growth followed.",
+  procedure: "Place a five-lobed seed inside a far ring of source and solve for the potential between them on a grid, seed at 0 and source at 1. Each step, advance every front cell at a speed that follows the local flux, so the tips run ahead. Keep the front after every step as a closed contour and colour it by age.",
   renderer: "2d",
   parameters, controlGroups,
   defaults: {

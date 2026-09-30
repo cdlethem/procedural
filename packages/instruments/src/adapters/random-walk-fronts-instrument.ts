@@ -150,6 +150,7 @@ export const randomWalkFrontsDefinition: InstrumentDefinition = {
   id: "random-walk-fronts",
   title: "Random Walk Fronts",
   description: "Branching patches of colour that occupy only part of the canvas. Seeded walkers claim lattice cells for their colour, branch and die on stated rules inside a chosen region (a shape, a word, an image's tone band, with barriers), and the visited region, its colours and the step each cell was claimed are drawn as territories, age bands, front-age contours, hatching or marks.",
+  procedure: "Give each of four colours a seed on a grid of cells inside a disc. Every step each walker moves to a neighbouring cell, claims it if unclaimed, and may spawn a child on it. The walk stops mid-growth, leaving paper in holes, with newer cells lighter and lines marking the front.",
   renderer: "2d",
   parameters: randomWalkFrontsParameters, controlGroups,
   defaults: {

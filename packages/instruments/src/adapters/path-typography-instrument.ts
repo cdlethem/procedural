@@ -107,6 +107,7 @@ const controlGroups: readonly ControlGroup[] = [
 export const pathTypographyDefinition: InstrumentDefinition = {
   id: "path-typography", title: "Path Typography",
   description: "Set a line of text along contours, a branch lineage or a recorded stroke: letters keep their spacing along the path, follow its direction, and are dropped, narrowed or turned where a tight bend would make them collide, or deliberately disrupted in runs.",
+  procedure: "Take a family of contour lines and set a line of text along each, placing every letter by its arc-length distance along the path. Letters narrow where a bend is too tight for their neighbours, and a lettered line that would collide with another is left bare. Thin gold guide lines show the paths.",
   renderer: "2d",
   parameters,
   controlGroups,

@@ -99,6 +99,7 @@ const rootPlacement: ControlGroup = { label: "Placement", stage: "frame", contro
 const bandDefinition: StudioDefinition = {
   id: "band-marks", title: "Band marks",
   description: "Attempt-bounded noise-band traces with independently painted retained paths and marks.",
+  procedure: "From a scatter of starts, send each one wandering through seeded noise. A trial step is kept only if the noise there stays within a narrow band of the starting value; otherwise the heading turns and the position holds. Draw the kept vertices as lines, dots or ticks.",
   parameters: [numeric("count", "Start count", "Independent noise-band paths.", 1, 48, 1, { integer: true, hardMin: 1, hardMax: 96 }),
     choice("layout", "Start layout", "Line, grid, random area or ring.", ["line", "grid", "area", "ring"]),
     numeric("columns", "Grid columns", "Number of start columns for grid layout.", 1, 12, 1, { integer: true, hardMin: 1, hardMax: 96 }),
@@ -155,6 +156,7 @@ const bandDefinition: StudioDefinition = {
 const branchDefinition: StudioDefinition = {
   id: "branch-marks", title: "Branch marks",
   description: "Seeded breadth-first endpoint branches from editable local roots and per-slot survival.",
+  procedure: "Grow a tree from each root, generation by generation: every segment offers a few child slots, each kept or dropped by chance, and kept children turn away from their parent and shorten by a fixed ratio. Dropped slots never grow, so the tree has gaps. Draw the surviving segments.",
   parameters: [numeric("rootCount", "Roots", "Number of independent source trees.", 1, 12, 1, { integer: true, hardMin: 1, hardMax: 24 }),
     choice("layout", "Root layout", "Line, grid, random area or ring.", ["line", "grid", "area", "ring"]),
     numeric("columns", "Grid columns", "Root columns for grid layout.", 1, 8, 1, { integer: true, hardMin: 1, hardMax: 24 }),
@@ -206,6 +208,7 @@ const branchDefinition: StudioDefinition = {
 const cutDefinition: StudioDefinition = {
   id: "cut-branch-marks", title: "Cut branch marks",
   description: "A retained line pool whose source endpoints are split by seeded cut attempts.",
+  procedure: "Start with one segment. Repeatedly select a segment at random and cut it, adding zero to two new segments, and skip any that are too short. Draw the segments that remain, so twig-like forks split off the original stem.",
   parameters: [numeric("startX", "Start X", "Initial source segment start X in canvas units.", -320, 960, 1),
     numeric("startY", "Start Y", "Initial source segment start Y.", -320, 960, 1),
     numeric("endX", "End X", "Initial source segment end X.", -320, 960, 1),

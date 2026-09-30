@@ -132,6 +132,7 @@ const labelled = (parameter: Parameter): Parameter => {
 export const collisionScoresDefinition: InstrumentDefinition = {
   id: "collision-scores", title: "Collision Scores",
   description: "Discs bounce in a container and the record of every contact becomes the drawing: trails with exact corners at each bounce, marks sized by impulse, rays along the bounce angles and a graph of who met whom, all read from one deterministic log.",
+  procedure: "Launch fourteen frictionless discs one after another from a nozzle into an elliptical container, bouncing off the walls and each other by exact reflection, and log every contact. Draw trails with a corner at each bounce, rings sized by impulse, and lines joining discs that met.",
   renderer: "2d",
   parameters: parameters.map(labelled), controlGroups,
   defaults: {

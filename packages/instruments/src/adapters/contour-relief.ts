@@ -42,6 +42,7 @@ const contourReliefGroups: ControlGroup[] = [
 export const contourReliefDefinitions: StudioDefinition[] = [{
   id: "contour-relief", title: "Contour relief", renderer: "webgl",
   description: "Sample a rectangular heightfield as a local surface, horizontal level curves, or both.",
+  procedure: "Sample a heightfield of seeded hills, turn each grid cell into two triangles and tilt the surface in 3D. Cut horizontal level curves through those same triangles and draw them as lines on the folded faces.",
   parameters: [
     choice("source", "Height source", "Waves and saddle are unseeded; noise and hills use the layer seed; numeric grid reads exact samples.", ["hills", "waves", "saddle", "noise", "grid"]),
     control("columns", "Grid columns", "Exact sample columns, including both boundaries.", 9, 65, 1, 2, 78, true),

@@ -84,6 +84,12 @@ export type InstrumentDefinition = {
   id: string;
   title: string;
   description: string;
+  /**
+   * The procedure the code follows, in one to three plain sentences (60 to 360 characters): what
+   * is built, how it develops, how the marks are made. Present tense, accurate to the drawing,
+   * evocative but never a claim the code does not keep. A host shows it beside the image.
+   */
+  procedure: string;
   /** Published definitions list these in `controlGroups` order, each with its derived `group` and `stage`. */
   parameters: Parameter[];
   /** Every control belongs to exactly one group; every top-level group states its stage. */

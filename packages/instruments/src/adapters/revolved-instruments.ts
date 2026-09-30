@@ -114,12 +114,12 @@ const profileGroups: ControlGroup[] = [
   placementGroup, paletteGroup, facesGroup, edgesGroup];
 
 export const revolvedInstrumentDefinitions: StudioDefinition[] = [
-  { id: "profile-marks", title: "Profile marks", description: "Editable axial profile revolved by the retained radial mesh source.", renderer: "webgl",
+  { id: "profile-marks", title: "Profile marks", description: "Editable axial profile revolved by the retained radial mesh source.", procedure: "Take a list of axial positions and radius multipliers, join them with straight segments, and revolve the result around its axis into a faceted mesh of 32 angular slices with both ends capped. Tilt it, shade the lit triangles, and colour them by radial band.", renderer: "webgl",
     parameters: profileControls(), controlGroups: profileGroups, defaults: profileDefaults, validate: validateProfile },
-  { id: "depth-marks", title: "Depth marks", description: "The same editable radial-profile source, with seeded noise palette mapping.", renderer: "webgl",
+  { id: "depth-marks", title: "Depth marks", description: "The same editable radial-profile source, with seeded noise palette mapping.", procedure: "Revolve a tapered profile of five knots around an axis into a faceted mesh of 32 angular slices, leaving the ends open. Shade the lit triangles, choosing each one's colour from a noise field sampled at its centre, so colour changes without moving the mesh.", renderer: "webgl",
     parameters: [...profileControls()], controlGroups: profileGroups,
     defaults: depthDefaults, validate: validateProfile },
-  { id: "annular-marks", title: "Annular marks", description: "Core annular solid with independently selected face kinds and angular cells.", renderer: "webgl",
+  { id: "annular-marks", title: "Annular marks", description: "Core annular solid with independently selected face kinds and angular cells.", procedure: "Generate a thick ring as an indexed mesh of top, bottom, inner-wall and outer-wall triangles in 40 angular cells, tilt it, and show all cells. Shade the lit faces by face kind, so the ring reads as a solid with its opening open.", renderer: "webgl",
     parameters: [numeric("outer", "Outer radius", "Outer wall radius in canvas units.", 50, 230, 1, { hardMin: .001, hardMax: 1000, integer: false }),
       numeric("inner", "Inner radius", "Inner wall radius in canvas units, strictly below outer radius.", 10, 150, 1, { hardMin: .001, hardMax: 1000, integer: false }),
       numeric("depth", "Solid depth", "Distance from bottom to top annulus in canvas units.", 10, 190, 1, { hardMin: .001, hardMax: 1000, integer: false }),
