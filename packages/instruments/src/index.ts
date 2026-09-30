@@ -20,6 +20,9 @@ import { referenceComposition, prepareReferenceComposition } from "./composition
 import { branchOrnamentDefinitions } from "./adapters/branch-ornament-instruments.js";
 import { sandDepositionDefinitions } from "./adapters/sand-deposition-instrument.js";
 import { drawSandDeposition, prepareSandDeposition, sandDepositionComposition } from "./composition/deposition.js";
+import { riverRibbonsDefinition } from "./adapters/river-ribbons-instrument.js";
+import { drawRiverRibbons, prepareRiverRibbonsDrawing, riverRibbonsComposition } from "./composition/river-draw.js";
+import { riverUsesSeed } from "./composition/river.js";
 import { branchOrnamentComposition, drawBranchOrnament, prepareBranchOrnament } from "./composition/branch-ornament.js";
 import { gestureScoresDefinitions } from "./adapters/gesture-scores-instruments.js";
 import { drawGestureScore, gestureScoreComposition, prepareGestureScore } from "./composition/gesture-scores.js";
@@ -123,6 +126,15 @@ export type { DepositOptions, Deposit, ProtectedSpec, ProtectedSpace, KeptDeposi
   SandConsumers, DepositionProducts } from "./composition/deposition.js";
 export { splineDeposit, protectedSpace, keepOut, curvePaths, sandDepositionComposition, resolveSequence, sandDepositionProducts, depositionDensity,
   isolineTone, densityAtTone, drawSandDeposition, prepareSandDeposition, MAX_DEPOSIT_GRAINS, MAX_SAMPLED_GRAINS, MAX_OVERLAY_CURVES } from "./composition/deposition.js";
+export type { RiverOptions, RiverConstruction, RiverPlanform, RiverState, RiverFrameData, OxbowRecord, RiverChannel, RiverOxbow, RiverFrame, RiverScene, RiverControl, RiverAgeField } from "./composition/river.js";
+export { riverRibbons, prepareRiverRibbons, riverSnapshots, riverSimulation, riverConstruction, checkRiver, riverFields, riverTraces, oxbowPaths, riverAgeField, riverUsesSeed, isRiverCached, clearRiverCache,
+  RIVER_LIMITS, MAX_SINUOSITY, MAX_NODES, END_ROOM, MAX_AGE_CELLS, MAX_AGE_WORK } from "./composition/river.js";
+export type { Valley as RiverValley, Walls as RiverWalls, Cut as RiverCut, Loop as RiverLoop } from "./composition/river-model.js";
+export { arcLengths as channelArcLengths, signedCurvature as channelCurvature, smoothCurvature as smoothChannelCurvature, kernelTaps as curvatureKernelTaps, dischargeAt, dischargeWidths,
+  valleyOf as riverValley, migrationOffsets, easeAtWalls, confine as confineChannel, findCuts as findNeckCuts, applyCuts as applyNeckCuts, resample as resampleChannel, firstSelfCrossing,
+  MAX_KERNEL_TAPS, LOOP_FACTOR, SETTLE_TOLERANCE, ANCHOR_WIDTHS, WALL_WIDTHS } from "./composition/river-model.js";
+export type { RiverRibbonsComposition, RiverRibbon, RibbonPainter, RiverConsumers } from "./composition/river-draw.js";
+export { riverRibbonsComposition, drawRiverRibbons, prepareRiverRibbonsDrawing, riverBanks, ribbonHalfWidths } from "./composition/river-draw.js";
 export type { Raster, RasterData, RasterChannels, RasterFormat, ColorSpace, AlphaMode, ConvertOptions, SampleFilter, EdgeRule, SampleOptions, ScalarGrid, LabelGrid,
   ValueKind, ValueOptions, RasterMapping, ResizeFilter } from "./composition/raster.js";
 export { createRaster, rasterData, rasterPixel, convertRaster, sampleRaster, sampleInto, sampleGrid, createScalarGrid, valueField, rasterMapping, cropRaster,
@@ -276,7 +288,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, riverRibbonsDefinition, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -399,6 +411,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "adaptive-compartments": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0xefe6d2],
   "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "crossing-lace": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
+  "river-ribbons": [0x1f5f73, 0x6b5636, 0x2f7f86, 0xc9a86a],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -425,6 +438,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
   if (input.technique === "path-typography") return drawPathTypography(context, pathTypographyComposition(input));
   if (input.technique === "sand-deposition") return drawSandDeposition(context, sandDepositionComposition(input));
+  if (input.technique === "river-ribbons") return drawRiverRibbons(context, riverRibbonsComposition(input));
   if (input.technique === "quilled-paths") return drawQuilled(context, quillComposition(input));
   if (input.technique === "data-scores") return drawDataScores(context, dataScoresComposition(input));
   if (input.technique === "pixel-sorting") return drawPixelSorting(context, pixelSortingComposition(input));
@@ -453,7 +467,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "river-ribbons" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -466,6 +480,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "path-typography") return preparePathTypography(pathTypographyComposition(input), cancelled);
   if (input.technique === "image-directed-field") return prepareImageDirectedField(imageDirectedFieldComposition(input), cancelled);
   if (input.technique === "sand-deposition") return prepareSandDeposition(sandDepositionComposition(input), cancelled);
+  if (input.technique === "river-ribbons") return prepareRiverRibbonsDrawing(riverRibbonsComposition(input), cancelled);
   if (input.technique === "quilled-paths") return prepareQuilled(quillComposition(input), cancelled);
   if (input.technique === "dry-bristles") return prepareDryBristles(dryBristlesComposition(input), cancelled);
   if (input.technique === "data-scores")
@@ -505,6 +520,7 @@ export function usesSeed(input: InstrumentInput): boolean {
   switch (input.technique) {
     case "quantized-stripes": return q.order === "shuffle";
     case "sand-deposition": return true;
+    case "river-ribbons": return riverUsesSeed({ planform: q.planform as "wandering", amplitude: Number(q.amplitude), heterogeneity: Number(q.heterogeneity) });
     case "quilled-paths": return quillUsesSeed(q);
     case "gesture-scores": return q.recording === "wander" || Number(q.hairs) > 0 && q.bristles === true || q.sandMark !== "none" ||
       q.glyphMark !== "none" && (Number(q.glyphVariation) > 0 || Number(q.glyphRetention) < 1);
