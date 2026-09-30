@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  definitions, growthBoundaryPaths, GROWTH_KIND_FREE, GROWTH_KIND_SINK, GROWTH_KIND_SOURCE, GROWTH_KIND_WALL, canPrepareInstrument, checkSimulation, createInstrument, drawLaplacianFronts,
+  visibleParameters, definitions, growthBoundaryPaths, GROWTH_KIND_FREE, GROWTH_KIND_SINK, GROWTH_KIND_SOURCE, GROWTH_KIND_WALL, canPrepareInstrument, checkSimulation, createInstrument, drawLaplacianFronts,
   finalState, growthAgeSites, growthCached, growthDiagnostics, growthFrontPaths, growthFrontRates, growthFrontSteps, growthBandSteps, growthLastActiveStep, growthLayout,
   growthPillarCentres, growthSimulation, growthSnapshots, growthTipSites, laplacianFrontsComposition, laplacianFrontsProducts, prepareInstrument, solveLaplacePotential,
   stateAt, validateParameters, growthEquipotentialPaths, growthPotentialField, growthOccupiedRegion, usesSeed, drawInstrument,
@@ -470,7 +470,7 @@ test("the slider corner of every cost driver validates and prepares within its r
   const hardMax = (key: string): number => item.parameters.find((p) => p.key === key)!.hardMax!;
   const corner = { ...defaults(), grid: max("grid"), steps: max("steps"), maxIterations: max("maxIterations"), precision: max("precision"), source: "edge", sourceSide: "top",
     sourceSize: 14, seedShape: "bar", seedX: 320, seedY: 560, seedSpread: 220, seedRadius: 8, eta: 1, tension: 6, frontMaterial: "beads", frontEvery: 1, frontSpacing: 3,
-    frontSmooth: 3, fill: "bands", marks: "age", markSpacing: 8, potential: "lines", potentialLines: 24, boundary: "outline" };
+    frontSmooth: 3, fill: "bands", marks: "age", markSpacing: 8, potential: "lines", potentialLines: 24 };
   validateParameters("laplacian-fronts", corner);
   const input = { ...createInstrument("laplacian-fronts"), params: corner };
   const products = laplacianFrontsProducts(laplacianFrontsComposition(input)), info = products.diagnostics;
@@ -491,4 +491,32 @@ test("the densest beads a hard setting allows (a bead every half unit on every f
   const surface = new Proxy({ CLOSE: 1, ROUND: 2 } as Record<string, unknown>, { get: (t, k: string) => (k in t ? t[k] : () => { calls++; }) });
   drawLaplacianFronts(surface as never, heavy);
   assert.ok(calls > 100_000, `${calls} drawing calls`);
+});
+
+test("from the defaults every select option and every toggle either changes the drawing or is hidden there, so no visible choice is a no-op", () => {
+  const item = definitions.find((d) => d.id === "laplacian-fronts")!;
+  const base = createInstrument("laplacian-fronts");
+  const fingerprint = (input: typeof base): string => {
+    const calls: string[] = [];
+    const surface = new Proxy({ CLOSE: 1, ROUND: 2 } as Record<string, unknown>, { get: (t, k: string) => (k in t ? t[k] : (...a: unknown[]) => { calls.push(k + JSON.stringify(a)); }) });
+    drawInstrument(surface as never, input);
+    return calls.join("|");
+  };
+  const reference = fingerprint(base), shown = new Set(visibleParameters("laplacian-fronts", base.params).map((p) => p.key));
+  const inert: string[] = [], changed: string[] = [];
+  for (const p of item.parameters) {
+    const options = p.type === "select" ? p.options!.map((o) => o.value) : p.type === "boolean" ? [true, false] : [];
+    for (const value of options) {
+      if (value === base.params[p.key]) continue;
+      const same = fingerprint({ ...base, params: { ...base.params, [p.key]: value } }) === reference;
+      (same ? inert : changed).push(`${p.key}=${String(value)}`);
+      if (same) assert.equal(shown.has(p.key), false, `${p.key}=${String(value)} changes nothing at the defaults but the control is offered`);
+    }
+  }
+  // The choices that matter at the defaults really do change the picture (every source kind, sinks, barriers, materials, fill, marks, potential lines).
+  for (const must of ["source=edge", "source=points", "source=frame", "sinks=discs", "barrier=wall", "barrier=pillars", "frontMaterial=stitch", "frontMaterial=none", "fill=none", "fill=flat", "marks=age", "marks=tips", "potential=lines", "seedShape=bar"])
+    assert.ok(changed.includes(must), `${must} must change the drawing`);
+  // What is inert is inert by construction: hidden until the choice that gives it meaning is made.
+  for (const key of inert.map((entry) => entry.split("=")[0])) assert.equal(shown.has(key), false);
+  assert.ok(inert.includes("sourceSide=right") && inert.includes("markKind=arrow") && inert.includes("barrierOutline=false") && inert.includes("sinkOutline=false"));
 });
