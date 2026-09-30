@@ -401,6 +401,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "visibility-drawing",
+      "title": "Visibility Drawing",
+      "description": "Draw a solid as a technical line drawing: silhouettes, creases, section slices and iso-contours with exact hidden-line removal, each class removed, visible only or with its hidden part dashed, plus tone hatching or a banded fill from a light. The camera is separate from the surface features.",
+      "category": "Layouts",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/visibility-drawing.md",
+      "source": "packages/instruments/src/composition/visibility-drawing.ts",
+      "sourceEntry": "drawVisibilityDrawing",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "gesture-scores",
       "title": "Gesture Scores",
       "description": "Replay a recorded hand movement with its timing and pressure as a broad bristle brush, a lagging fall of sand and glyphs along the path; one time window and smoothing reshape all three.",
