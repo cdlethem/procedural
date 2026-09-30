@@ -88,13 +88,12 @@ const cache = new Map<string, GeologicalBlock>();
 export function blockGrid(model: StrataModel, resolution: number): { nq: number; nz: number[]; vertices: number; triangles: number } {
   if (!Number.isInteger(resolution) || resolution < BLOCK_LIMITS.minResolution || resolution > BLOCK_LIMITS.maxResolution)
     throw new Error(`Grid resolution must be a whole number from ${BLOCK_LIMITS.minResolution} to ${BLOCK_LIMITS.maxResolution} (got ${String(resolution)})`);
-  const cell = Math.max(model.width, model.depth) / resolution, H = model.height;
+  const cell = Math.max(model.width, model.depth) / resolution;
   const nq = Math.max(4, Math.round(model.extentQ / cell));
   const nz = model.compartments.map((c) => {
     const left = c.left ? c.left.p0 : -model.extentP / 2, right = c.right ? c.right.p0 : model.extentP / 2;
     return Math.max(2, Math.round((right - left) / cell));
   });
-  void H;
   let vertices = 0, triangles = 0;
   for (const cells of nz) {
     vertices += (cells + 1) * (nq + 1) * 2 * model.strata;

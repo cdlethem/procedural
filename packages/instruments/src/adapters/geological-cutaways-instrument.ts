@@ -92,12 +92,12 @@ const parameters: Parameter[] = [
   select("lineColor", "Line color", "Ink, or the palette entry of the unit beside each contact line.", [["ink", "Ink"], ["stratum", "By stratum"]]),
   select("hidden", "Hidden edges", "Drop lines behind the block, or draw the hidden block edges and faults as faint dashes.", [["drop", "Drop"], ["dashed", "Dashed"]]),
   n("beds", "Bedding lines", "Fine lines inside each unit, parallel to its contacts, on walls, cut faces and the ground surface.", 0, 6, 1, 0, 6),
-  n("contours", "Ground contours", "Topographic contour lines of the eroded surface (drawn only when it has relief).", 0, 12, 1, 0, 60),
+  n("contours", "Ground contours", "Topographic contour lines of the eroded surface.", 0, 12, 1, 0, 60, eroded),
   n("outlineWeight", "Outline weight", "Line thickness of block edges and the boundary of every cut face.", 0.2, 3, 0.05, 0, 50),
   n("contactWeight", "Contact weight", "Line thickness of the boundaries between units.", 0.2, 3, 0.05, 0, 50),
-  n("faultWeight", "Fault weight", "Line thickness of fault traces.", 0.2, 4, 0.05, 0, 50),
+  n("faultWeight", "Fault weight", "Line thickness of fault traces.", 0.2, 4, 0.05, 0, 50, faulted),
   n("bedWeight", "Bedding weight", "Line thickness of bedding lines.", 0.1, 2, 0.05, 0, 50),
-  n("contourWeight", "Contour weight", "Line thickness of ground contours.", 0.1, 2, 0.05, 0, 50),
+  n("contourWeight", "Contour weight", "Line thickness of ground contours.", 0.1, 2, 0.05, 0, 50, eroded),
 ];
 
 const controlGroups: ControlGroup[] = [

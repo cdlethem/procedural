@@ -96,10 +96,38 @@ Groups (construction first): **Strata** (strata, sequence, contrast, stack, tren
 height; resolution), **Cutaway** (kind; `Slice`; explosion; `Corner`), **View** (projection, yaw, pitch, distance), **Fill**, **Lines** (proportional `Line weights`: five
 thicknesses in one unit). Conditions are inline: fold controls under a fold type, fault controls under the Faults toggle, erosion under Eroded, contrast under a non-uniform sequence, slice/corner/explosion controls
 under their cut, viewing distance under perspective, shading under Shaded, opacity under any fill. Numeric drivers cannot be conditions, so the fault, fold and erosion switches are a toggle and selects.
-The measured audit (`tests/helpers/audit-controls.ts geological-cutaways`) is recorded below.
+The shared control audit (`tests/helpers/audit-controls.ts geological-cutaways`: 56 controls, 2,319 probes over 30 sampled contexts, 20 minutes on a busy machine) reports
+**0 violations**. It proposed two conditions, both adopted inline (`contours` under Eroded, `faultWeight` under Faults; the audit ran before the first was written inline, the
+conditions are identical to its proposals and it was not repeated); `contourWeight` is dead where `contours` is 0 (a numeric disable, left visible) and `colorBy` is disjunctive
+(it colours fills and, with Line color by stratum, lines) so it is left visible. The suite's random hidden-control property test covers the instrument as well as the direct hidden-control test in this brief's tests.
 
 ## Limits
 
 `BLOCK_LIMITS`: 160,000 vertices, 190,000 triangles (the mesh foundation refuses 200,000 faces), grid 8 to 120 (slider 16 to 60), refused before anything is solved with Grid resolution, Strata and
-Faults named; bedding sheets 140,000 vertices (Beds); 16 strata, 6 faults. Measured on the development machine (busy, one thread): see the report; an eroded stratum keeps `1e-5 H`; contacts beside
+Faults named; bedding sheets 140,000 vertices (Beds); 16 strata, 6 faults. Timings are below; an eroded stratum keeps `1e-5 H`; contacts beside
 a stratum thinner than 0.4% of the height are not drawn. The default `hiddenLines` and `paintOrder` budgets are raised to 2·10^8 work units per view; the drawing charges its triangles and line points to the run (default 600,000).
+
+## Checks, mutations and review
+
+`tests/composition-geological-cutaways.test.ts` (16 tests): monotone horizons (closed-form thickness, 40 random models), the exact throw across every fault from the solved sheets, the inverse-map oracle
+against the sheets, closed bricks / exact tiling / point ownership by ray parity, volume under an eroded ground, sections as a partition of the face and dome rings, kept volume of every cut
+against the analytic box, triangulation of annuli and random star regions with holes, stage separation by object identity, hidden-control invariance and `usesSeed` against drawings, named errors, fault
+lines on their planes, hidden-line occlusion, the painted outer surface against the oracle, and the control conditions. **Nine mutations each fail at least one test** (run on a copy of the package):
+fault shift sign (5 tests), fault planes taken as vertical in the builder (7), trend sign drift (1), corner wedge on the wrong side (1), ground outcrop split with the wrong stratum (4), brick walls inward (5),
+exploded far piece not moved (1), hidden lines that see through the block (1), inverse map without the horizontal slip (1).
+
+Looking at the rendered SVG (Chromium, 2D canvas projection; not the Studio) found and fixed: a weld-and-drop treatment of pinched-out strata that made non-manifold edges (replaced by the floor thickness); mesh face
+limit hit by 16 strata at high resolution (limit now checked up front, slider maximum 60); a hairline of the wrong stratum colour along the top of a wall where a stratum is eroded (floor slivers stay in the surface but are
+never painted); edge-only stratum colours too pale as lines (darkened); an analytic slope bound that refused reasonable erosion with faults (now sampled, and measured across the strike only); an exploded block seen from the side that hid its own cut face (the
+guide now recommends a horizontal plane seen from above, where both slabs read). Images reviewed: the default at seeds 1, 2 and 3; six structural settings (undeformed tilt with flat ground, chevron and alternating grabens in a slice,
+domes cut by a horizontal slice, an oblique exploded block, reverse faults with strike across the picture in perspective, edge-only with dashed hidden edges); six extremes (14 strata and 5 faults, 3 strata, top-down at yaw 200,
+strong thinning, ramp colours at 0.8 opacity, a refused erosion depth); six cameras (front, right face, perspective from the left, from behind, from below, near top-down perspective); six combined settings (domes with faults and an oblique slice,
+a horizontal exploded graben, thin beds at high resolution, large relief with vertical faults and contours, strong wedging, reverse faults at 45 degrees); and the layered pairs with Contour Scores and Motif Ecologies in both orders.
+
+Timings (development machine while other agents and a 20-minute audit ran, so upper bounds; ranges are default / large: 12 strata, grid 58, 3 faults, 2 bedding lines, 6 contours, 71,064 vertices):
+first prepare 0.8 s / 0.8 s, camera-only edit 0.10-0.13 s (paint order and hidden lines), appearance-only edit under 20 ms, a cut edit 0.35-0.39 s (strata reused), a structural edit or a new seed 0.55-0.65 s.
+Drawing into a null surface takes 6-25 ms; the canvas cost of the 9,000-15,000 triangles and 300-500 lines was not measured.
+
+Open concerns: only parallel faults of one dip are modelled (crossing fault sets need a different construction of compartments); a horizon steeper than the fault dip is refused, not meshed; bedding is proportional to
+thickness (parallel to contacts) and not a separate model of sedimentation; sections of a stratum eroded to its floor are sub-pixel and omitted, so a wedge tapers to nothing at 1e-5 of the block width squared; the Studio
+interface, layer persistence and export were not exercised.
