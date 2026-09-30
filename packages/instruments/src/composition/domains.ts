@@ -5,7 +5,7 @@ import {
   planarize, pushEdge, ringArea, ringOrientation, windings,
   type Fill, type Pt, type RawRegion, type Seg, type Work,
 } from "./planar-kernel.js";
-import { edgeIndex, locateIndexed } from "./domains-index.js";
+import { cellColumn, cellRow, edgeIndex, locateIndexed } from "./domains-index.js";
 import type { Path, Point, Region } from "./types.js";
 
 /**
@@ -416,6 +416,39 @@ export function locateInDomain(shape: PlanarShape, x: number, y: number): Domain
 }
 /** True for points inside or on the boundary of the shape. */
 export const domainContains = (shape: PlanarShape, x: number, y: number): boolean => locateInDomain(shape, x, y) !== "outside";
+
+/**
+ * Signed clearance of a point: the distance to the nearest boundary edge (a float distance, not an
+ * exact predicate) capped at `limit`, positive inside the shape, negative outside, `0` on the
+ * boundary (decided by the exact `locateInDomain` rule). Only edges within `limit` are examined, so
+ * a query costs about the cells the window `[x ± limit] × [y ± limit]` touches; `limit` defaults to
+ * the shape's larger extent. A disc of radius `r` about a point lies inside the closed shape
+ * whenever `domainClearance(shape, x, y, r) >= r`.
+ */
+export function domainClearance(shape: PlanarShape, x: number, y: number, limit?: number): number {
+  checkCoordinate("x", x); checkCoordinate("y", y);
+  const index = edgeIndex(asDomainOrRegion(shape, 0, workFor("domainClearance", undefined)));
+  if (index.count === 0) return -(limit ?? 0);
+  const cap = limit ?? Math.max(index.maxX - index.minX, index.maxY - index.minY);
+  if (!(cap >= 0) || !Number.isFinite(cap)) throw new PlanarError("INVALID_INPUT", "limit must be a finite number ≥ 0");
+  const at = locateIndexed(index, x, y);
+  if (at === 0) return 0;
+  const { edges, cells, gx } = index;
+  const c0 = cellColumn(index, x - cap), c1 = cellColumn(index, x + cap), r0 = cellRow(index, y - cap), r1 = cellRow(index, y + cap);
+  const clock = ++index.clock;
+  let best = cap * cap;
+  for (let r = r0; r <= r1; r++) for (let c = c0; c <= c1; c++) for (const e of cells[r * gx + c]) {
+    if (index.stamp[e] === clock) continue;
+    index.stamp[e] = clock;
+    const ax = edges[4 * e], ay = edges[4 * e + 1], bx = edges[4 * e + 2], by = edges[4 * e + 3];
+    const ex = bx - ax, ey = by - ay, length2 = ex * ex + ey * ey;
+    const t = length2 === 0 ? 0 : Math.max(0, Math.min(1, ((x - ax) * ex + (y - ay) * ey) / length2));
+    const px = ax + t * ex - x, py = ay + t * ey - y, d2 = px * px + py * py;
+    if (d2 < best) best = d2;
+  }
+  const distance = Math.sqrt(best);
+  return at > 0 ? distance : -distance;
+}
 
 /** All rings of a shape in order: each region's outer ring then its holes. Frozen, not copied. */
 export function domainRings(shape: PlanarShape): readonly Ring[] {
