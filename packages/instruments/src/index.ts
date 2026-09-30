@@ -408,7 +408,7 @@ export type { ViewSpec as PointViewSpec, ViewedPoint, ViewOptions as PointViewOp
   OutlineSpec as PointOutlineSpec, Outline as PointOutline } from "./composition/point-view.js";
 export { pointCamera, viewPoints, pointLinks, linkPaths, outlinePaths, MAX_LINKS as MAX_POINT_LINKS, VIEW_WORK as POINT_VIEW_WORK } from "./composition/point-view.js";
 export type { MarkKind as PointMarkKind, AxisKind as PointAxisKind, ColorBy as PointColorBy, Blend as PointBlend, MarkStyle as PointMarkStyle, PointSite, PointMark, LinkStyle as PointLinkStyle } from "./composition/point-marks.js";
-export { markSites as pointMarkSites, stockMark as stockPointMark, linkMaterial as pointLinkMaterial, paletteRamp as pointPaletteRamp, pointToner, rampIndex, RAMP_STEPS, DISC_SIDES } from "./composition/point-marks.js";
+export { markSites as pointMarkSites, stockMark as stockPointMark, linkMaterial as pointLinkMaterial, paletteRamp as pointPaletteRamp, pointToner, rampIndex, RAMP_STEPS, discSides } from "./composition/point-marks.js";
 export type { PointCloudsComposition, PointCloudProducts, PointCloudScene, PointCloudConsumers } from "./composition/point-clouds-draw.js";
 export { pointCloudsComposition, pointCloudProducts, pointCloudScene, drawPointCloudScene, drawPointClouds, preparePointClouds, MAX_DRAWN_ITEMS } from "./composition/point-clouds-draw.js";
 

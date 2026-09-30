@@ -100,7 +100,7 @@ export function neighborTable(positions: Float64Array, count: number, requested:
             for (let s = start[c]; s < start[c + 1]; s++) {
               const j = order[s];
               if (j === i) continue;
-              const d = Math.hypot(positions[j * 3] - px, positions[j * 3 + 1] - py, positions[j * 3 + 2] - pz);
+              const ex = positions[j * 3] - px, ey = positions[j * 3 + 1] - py, ez = positions[j * 3 + 2] - pz, d = ex * ex + ey * ey + ez * ez;
               if (have === k && (d > dist[k - 1] || (d === dist[k - 1] && j > found[k - 1]))) continue;
               let at = have < k ? have++ : k - 1;
               while (at > 0 && (dist[at - 1] > d || (dist[at - 1] === d && found[at - 1] > j))) { dist[at] = dist[at - 1]; found[at] = found[at - 1]; at--; }
@@ -109,9 +109,9 @@ export function neighborTable(positions: Float64Array, count: number, requested:
           }
         }
       }
-      if (have === k && dist[k - 1] <= r * h) break;
+      if (have === k && dist[k - 1] <= r * h * r * h) break;
     }
-    for (let e = 0; e < k; e++) { index[i * k + e] = found[e]; distance[i * k + e] = dist[e]; }
+    for (let e = 0; e < k; e++) { index[i * k + e] = found[e]; distance[i * k + e] = Math.sqrt(dist[e]); }
   }
   return Object.freeze({ k, count, index, distance });
 }
@@ -124,24 +124,42 @@ export function nearestNeighbors(cloud: PointCloud, k: number): NeighborTable {
   return memoized(tables, `${cloud.key}|${k}`, () => neighborTable(cloudStorage(cloud).positions, cloud.count, k));
 }
 
-/** Eigen-decomposition of a symmetric 3x3 matrix given as [xx, xy, xz, yy, yz, zz] by cyclic Jacobi: ascending values, unit vectors as rows. */
-export function eigenSymmetric3(m: readonly number[]): { values: [number, number, number]; vectors: [number[], number[], number[]] } {
-  const a = [[m[0], m[1], m[2]], [m[1], m[3], m[4]], [m[2], m[4], m[5]]];
-  const v = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+const eigA = new Float64Array(9), eigV = new Float64Array(9);
+/**
+ * Cyclic Jacobi eigen-decomposition of a symmetric 3x3 matrix `[xx, xy, xz, yy, yz, zz]` into caller-owned buffers:
+ * `values[0..2]` ascending, `vectors[3e..3e+2]` the unit eigenvector of value `e`. Allocation-free.
+ */
+export function eigenSymmetricInto(m: ArrayLike<number>, values: Float64Array, vectors: Float64Array): void {
+  const a = eigA, v = eigV;
+  a[0] = m[0]; a[1] = m[1]; a[2] = m[2]; a[3] = m[1]; a[4] = m[3]; a[5] = m[4]; a[6] = m[2]; a[7] = m[4]; a[8] = m[5];
+  v.fill(0); v[0] = v[4] = v[8] = 1;
   for (let sweep = 0; sweep < 24; sweep++) {
-    const off = Math.abs(a[0][1]) + Math.abs(a[0][2]) + Math.abs(a[1][2]);
-    if (off < 1e-300 || off < 1e-15 * (Math.abs(a[0][0]) + Math.abs(a[1][1]) + Math.abs(a[2][2]))) break;
-    for (const [p, q] of [[0, 1], [0, 2], [1, 2]] as const) {
-      if (a[p][q] === 0) continue;
-      const theta = (a[q][q] - a[p][p]) / (2 * a[p][q]);
-      const t = Math.sign(theta || 1) / (Math.abs(theta) + Math.sqrt(theta * theta + 1)), c = 1 / Math.sqrt(t * t + 1), s = t * c;
-      for (let k = 0; k < 3; k++) { const akp = a[k][p], akq = a[k][q]; a[k][p] = c * akp - s * akq; a[k][q] = s * akp + c * akq; }
-      for (let k = 0; k < 3; k++) { const apk = a[p][k], aqk = a[q][k]; a[p][k] = c * apk - s * aqk; a[q][k] = s * apk + c * aqk; }
-      for (let k = 0; k < 3; k++) { const vkp = v[k][p], vkq = v[k][q]; v[k][p] = c * vkp - s * vkq; v[k][q] = s * vkp + c * vkq; }
+    const off = Math.abs(a[1]) + Math.abs(a[2]) + Math.abs(a[5]);
+    if (off < 1e-300 || off < 1e-15 * (Math.abs(a[0]) + Math.abs(a[4]) + Math.abs(a[8]))) break;
+    for (let pair = 0; pair < 3; pair++) {
+      const p = pair === 2 ? 1 : 0, q = pair === 0 ? 1 : 2;
+      const apq = a[p * 3 + q];
+      if (apq === 0) continue;
+      const theta = (a[q * 3 + q] - a[p * 3 + p]) / (2 * apq);
+      const t = (theta >= 0 ? 1 : -1) / (Math.abs(theta) + Math.sqrt(theta * theta + 1)), c = 1 / Math.sqrt(t * t + 1), s = t * c;
+      for (let k = 0; k < 3; k++) { const akp = a[k * 3 + p], akq = a[k * 3 + q]; a[k * 3 + p] = c * akp - s * akq; a[k * 3 + q] = s * akp + c * akq; }
+      for (let k = 0; k < 3; k++) { const apk = a[p * 3 + k], aqk = a[q * 3 + k]; a[p * 3 + k] = c * apk - s * aqk; a[q * 3 + k] = s * apk + c * aqk; }
+      for (let k = 0; k < 3; k++) { const vkp = v[k * 3 + p], vkq = v[k * 3 + q]; v[k * 3 + p] = c * vkp - s * vkq; v[k * 3 + q] = s * vkp + c * vkq; }
     }
   }
-  const order = [0, 1, 2].sort((x, y) => a[x][x] - a[y][y]);
-  return { values: order.map((i) => a[i][i]) as [number, number, number], vectors: order.map((i) => [v[0][i], v[1][i], v[2][i]]) as [number[], number[], number[]] };
+  let lo = 0, mid = 1, hi = 2;
+  if (a[0] > a[4]) { lo = 1; mid = 0; }
+  if (a[hi * 4] < a[mid * 4]) { const t = hi; hi = mid; mid = t; }
+  if (a[mid * 4] < a[lo * 4]) { const t = mid; mid = lo; lo = t; }
+  const order = [lo, mid, hi];
+  for (let e = 0; e < 3; e++) { values[e] = a[order[e] * 4]; for (let k = 0; k < 3; k++) vectors[e * 3 + k] = v[k * 3 + order[e]]; }
+}
+
+/** Eigen-decomposition of a symmetric 3x3 matrix given as [xx, xy, xz, yy, yz, zz]: ascending values, unit vectors as rows. */
+export function eigenSymmetric3(m: readonly number[]): { values: [number, number, number]; vectors: [number[], number[], number[]] } {
+  const values = new Float64Array(3), vectors = new Float64Array(9);
+  eigenSymmetricInto(m, values, vectors);
+  return { values: [values[0], values[1], values[2]], vectors: [0, 1, 2].map((e) => [vectors[e * 3], vectors[e * 3 + 1], vectors[e * 3 + 2]]) as [number[], number[], number[]] };
 }
 
 /** Tie-averaged rank in [0, 1] of every value (1 value: 0.5). */
@@ -181,7 +199,7 @@ function build(cloud: PointCloud, neighbors: number): PointCloud {
   const floor = 1e-9 * (diagonal > 0 ? diagonal : 1);
   let centroid = [0, 0, 0];
   if (!s.normals) { for (let i = 0; i < n; i++) for (let c = 0; c < 3; c++) centroid[c] += p[i * 3 + c] / n; }
-  const estimated = s.normals ? null : new Float64Array(n * 3);
+  const estimated = s.normals ? null : new Float64Array(n * 3), eigValues = new Float64Array(3), eigVectors = new Float64Array(9);
   for (let i = 0; i < n; i++) {
     const r = k > 0 ? Math.max(floor, table.distance[i * k + k - 1]) : floor;
     spacing[i] = r; density[i] = k / (4 / 3 * Math.PI * r * r * r);
@@ -194,12 +212,13 @@ function build(cloud: PointCloud, neighbors: number): PointCloud {
       const dx = p[j * 3] - mean[0], dy = p[j * 3 + 1] - mean[1], dz = p[j * 3 + 2] - mean[2];
       cov[0] += dx * dx; cov[1] += dx * dy; cov[2] += dx * dz; cov[3] += dy * dy; cov[4] += dy * dz; cov[5] += dz * dz;
     }
-    const eig = eigenSymmetric3(cov), trace = eig.values[0] + eig.values[1] + eig.values[2];
-    curvature[i] = trace > 0 ? Math.max(0, eig.values[0]) / trace : 0;
-    const axis = eig.vectors[2], flip = axis[0] !== 0 ? axis[0] < 0 : axis[1] !== 0 ? axis[1] < 0 : axis[2] < 0;
-    for (let c = 0; c < 3; c++) principal[i * 3 + c] = flip ? -axis[c] : axis[c];
+    eigenSymmetricInto(cov, eigValues, eigVectors);
+    const trace = eigValues[0] + eigValues[1] + eigValues[2];
+    curvature[i] = trace > 0 ? Math.max(0, eigValues[0]) / trace : 0;
+    const flip = eigVectors[6] !== 0 ? eigVectors[6] < 0 : eigVectors[7] !== 0 ? eigVectors[7] < 0 : eigVectors[8] < 0;
+    for (let c = 0; c < 3; c++) principal[i * 3 + c] = flip ? -eigVectors[6 + c] : eigVectors[6 + c];
     if (estimated) {
-      const nrm = eig.vectors[0], out = nrm[0] * (p[i * 3] - centroid[0]) + nrm[1] * (p[i * 3 + 1] - centroid[1]) + nrm[2] * (p[i * 3 + 2] - centroid[2]);
+      const nrm = [eigVectors[0], eigVectors[1], eigVectors[2]], out = nrm[0] * (p[i * 3] - centroid[0]) + nrm[1] * (p[i * 3 + 1] - centroid[1]) + nrm[2] * (p[i * 3 + 2] - centroid[2]);
       for (let c = 0; c < 3; c++) estimated[i * 3 + c] = out < 0 ? -nrm[c] : nrm[c];
     }
   }

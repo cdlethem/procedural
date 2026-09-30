@@ -115,7 +115,8 @@ export interface PointCloudProducts {
   readonly occluder: Mesh | null;
 }
 
-const productCache = new Map<string, PointCloudProducts>();
+const subjectKeys = new WeakMap<PointSubject, string>();
+const stages = { estimated: new Map<string, PointCloud>(), kept: new Map<string, Kept>(), fuzzed: new Map<string, PointCloud>(), links: new Map<string, LinkSet | null>(), products: new Map<string, PointCloudProducts>() };
 const frames = new WeakMap<PointCloud, PointFrame>();
 
 function subjectFrame(subject: PointSubject): PointFrame {
@@ -124,21 +125,23 @@ function subjectFrame(subject: PointSubject): PointFrame {
   return hit;
 }
 
-/** The construction values, cached by construction alone (see the module header). */
+/**
+ * The construction values, each stage cached by the construction fields it reads (see the module header): editing the links
+ * keeps the thinned cloud, editing the thinning keeps the estimates, and so on down the chain.
+ */
 export function pointCloudProducts(recipe: PointCloudsComposition): PointCloudProducts {
   const { subject: spec, cut, keep, dispersion, links } = recipe;
-  const key = JSON.stringify([spec.kind, spec.seed, spec.count, spec.kind === "figure" || spec.kind === "torus" ? spec.distribution : spec.kind === "vase" ? [spec.distribution, spec.vase] : spec.kind === "terrain" ? [spec.distribution, spec.terrain] : spec.kind === "galaxy" ? spec.galaxy : spec.noise,
-    recipe.neighbors, cut, keep, dispersion, links.mode === "nearest" ? [links.neighbors, links.reach, links.nodes] : null]);
-  return memoized(productCache, key, () => {
-    const subject = pointSubject(spec), frame = subjectFrame(subject);
-    const described = describePointCloud(subject.cloud, { neighbors: recipe.neighbors });
-    const kept = keepPoints(cutPoints(described, cut, frame), keep, frame);
-    const cloud = dispersePoints(kept.cloud, dispersion);
-    return Object.freeze({
-      subject, frame, described, kept, cloud,
-      links: links.mode === "nearest" && cloud.count > 1 ? pointLinks(cloud, { neighbors: links.neighbors, reach: links.reach, nodes: links.nodes }) : null,
-      occluder: subject.mesh ? cutMesh(subject.mesh, cut, frame) : null,
-    });
+  const subject = pointSubject(spec), frame = subjectFrame(subject);
+  let base = subjectKeys.get(subject);
+  if (!base) { base = `${subject.id}|${subject.cloud.key}`; subjectKeys.set(subject, base); }
+  const estimatedKey = `${base}|${recipe.neighbors}`, keptKey = `${estimatedKey}|${JSON.stringify([cut, keep])}`, fuzzedKey = `${keptKey}|${JSON.stringify(dispersion)}`;
+  const linksKey = `${fuzzedKey}|${links.mode === "nearest" ? JSON.stringify([links.neighbors, links.reach, links.nodes]) : "none"}`;
+  return memoized(stages.products, `${linksKey}|${cut.axis === "none" ? "" : "occluder"}`, () => {
+    const described = memoized(stages.estimated, estimatedKey, () => describePointCloud(subject.cloud, { neighbors: recipe.neighbors }));
+    const kept = memoized(stages.kept, keptKey, () => keepPoints(cutPoints(described, cut, frame), keep, frame));
+    const cloud = memoized(stages.fuzzed, fuzzedKey, () => dispersePoints(kept.cloud, dispersion));
+    const linkSet = memoized(stages.links, linksKey, () => links.mode === "nearest" && cloud.count > 1 ? pointLinks(cloud, { neighbors: links.neighbors, reach: links.reach, nodes: links.nodes }) : null);
+    return Object.freeze({ subject, frame, described, kept, cloud, links: linkSet, occluder: subject.mesh ? cutMesh(subject.mesh, cut, frame) : null });
   });
 }
 

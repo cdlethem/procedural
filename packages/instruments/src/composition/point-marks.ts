@@ -10,7 +10,7 @@
  * - `arrow`: the stock `motif` arrow along the projected 3D axis: the arrow is the projection of a world segment of length
  *   `size / zoom`, so foreshortening is real (an arrow pointing at the eye vanishes; below 0.25 canvas units it is omitted).
  * - `stroke`: the same projected world segment drawn as a line of `weight`.
- * - `disc`: a 10-sided disc of world radius `size / (2 zoom)` lying in the tangent plane of the point's normal, every vertex
+ * - `disc`: a disc (8 to 24 sides by screen radius, see `discSides`) of world radius `size / (2 zoom)` lying in the tangent plane of the point's normal, every vertex
  *   projected with the camera: a disc seen edge-on is a thin sliver, one facing the eye a full polygon, and perspective
  *   foreshortens it exactly. Edge lines are the fill colour darkened.
  *
@@ -43,7 +43,8 @@ export type ColorBy = "height" | "depth" | "curvature" | "density" | "facing" | 
 export type Blend = "smooth" | "bands";
 
 export const RAMP_STEPS = 12;
-export const DISC_SIDES = 10;
+/** Sides of a disc of screen radius `radius` canvas units: 8 below 4 units, two more per 4 units, at most 24. */
+export const discSides = (radius: number): number => 8 + 2 * Math.min(8, Math.floor(Math.max(0, radius) / 4));
 
 export interface MarkStyle {
   readonly mark: MarkKind;
@@ -195,10 +196,10 @@ export function markSites(cloud: PointCloud, viewed: readonly ViewedPoint[], vie
         if (ul < 1e-6) { const k = Math.abs(n[0]) < 0.9 ? [1, 0, 0] : [0, 1, 0], dk = k[0] * n[0] + k[1] * n[1] + k[2] * n[2]; ux = k[0] - n[0] * dk; uy = k[1] - n[1] * dk; uz = k[2] - n[2] * dk; ul = Math.hypot(ux, uy, uz); }
         ux /= ul; uy /= ul; uz /= ul;
         const vx = n[1] * uz - n[2] * uy, vy = n[2] * ux - n[0] * uz, vz = n[0] * uy - n[1] * ux, r = world / 2;
-        const ring: number[] = [];
+        const ring: number[] = [], sides = discSides(style.size * factor * v.perspective / 2);
         let ok = true;
-        for (let q = 0; q < DISC_SIDES && ok; q++) {
-          const th = 2 * Math.PI * q / DISC_SIDES, c = Math.cos(th) * r, sn = Math.sin(th) * r;
+        for (let q = 0; q < sides && ok; q++) {
+          const th = 2 * Math.PI * q / sides, c = Math.cos(th) * r, sn = Math.sin(th) * r;
           const pt = view.project([p[0] + c * ux + sn * vx, p[1] + c * uy + sn * vy, p[2] + c * uz + sn * vz]);
           if (!pt) ok = false; else ring.push(pt.x - v.position[0], pt.y - v.position[1]);
         }
