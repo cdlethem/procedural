@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  STRAND_LIMITS, boundaryDistance, estimateStrandVertices, flowVectors, icosphereMesh, mergeMeshes, meshData, orderCrossings, scalarField, spacingField, surfaceCrossingSet,
+  STRAND_LIMITS, boundaryDistance, meshBarycentric, meshWalker, walkMesh, estimateStrandVertices, flowVectors, icosphereMesh, mergeMeshes, meshData, orderCrossings, scalarField, spacingField, surfaceCrossingSet,
   surfaceCrossings, surfaceWeaveStrands, terrainMesh, traceGraph, traceStrands, transformMesh, waveTerms,
   type FlowSpec, type Mesh, type ScalarSpec, type SurfaceStrand, type SurfaceWeaveStructure,
 } from "../dist/index.js";
@@ -224,7 +224,7 @@ test("work is bounded before anything is traced, and the error names the control
   assert.ok(boundaryDistance(traceGraph(plane(4))).length === 25);
 });
 
-test("the breadth-first alternation solve equals the chain solve where alternation is possible and never does worse on a frustrated lattice", () => {
+test("the alternation solves agree where alternation is possible, and `fewest` keeps the better one on a frustrated lattice", () => {
   const m = plane(20), A = family(m, flow(), 0, 0, 0.2), B = family(m, flow(), 90, 1, 0.2), strands = [...A, ...B];
   const set = surfaceCrossingSet(strands, surfaceCrossings(m, strands));
   const chains = orderCrossings(set, { rule: "alternate", seed: 5 }), breadth = orderCrossings(set, { rule: "alternate", seed: 5, solve: "breadth" });
@@ -235,11 +235,35 @@ test("the breadth-first alternation solve equals the chain solve where alternati
   // A ring crossed an odd number of times cannot alternate: one contradiction is unavoidable, whichever way it is solved.
   const sphere = icosphereMesh(3), f = flow({ scalar: scalar("height") }), lattice = [...family(sphere, f, 0, 0, 0.3), ...family(sphere, f, 90, 1, 0.3)];
   const frustrated = surfaceCrossingSet(lattice, surfaceCrossings(sphere, lattice));
-  const g = orderCrossings(frustrated, { rule: "alternate", seed: 5 }), b = orderCrossings(frustrated, { rule: "alternate", seed: 5, solve: "breadth" });
-  assert.ok(b.breaks.length <= g.breaks.length, `${b.breaks.length} against ${g.breaks.length}`);
+  const g = orderCrossings(frustrated, { rule: "alternate", seed: 5 }), r = orderCrossings(frustrated, { rule: "alternate", seed: 5, solve: "breadth" });
+  const b = orderCrossings(frustrated, { rule: "alternate", seed: 5, solve: "fewest" });
+  assert.equal(b.breaks.length, Math.min(g.breaks.length, r.breaks.length), "fewest keeps the better of the two solves");
+  assert.ok(g.breaks.length > 0 && r.breaks.length > 0, "a lattice of rings and meridians on a sphere cannot alternate everywhere");
   assert.equal(b.unavoidable.length, b.breaks.length, "under the alternate rule every break is unavoidable");
   // every pair of neighbours along a strand that is not listed as a break alternates: recount independently
   let equal = 0;
   b.occurrences.forEach((list) => { for (let k = 1; k < list.length; k++) if ((b.over[list[k].crossing] === list[k].side) === (b.over[list[k - 1].crossing] === list[k - 1].side)) equal++; });
   assert.equal(equal, b.breaks.length);
+});
+
+test("a crossing exactly on a triangle edge is met in both triangles and reported once", () => {
+  const m = plane(20), g = traceGraph(m), lambda = new Float64Array(3);
+  // A straight strand along an axis, built from the walk's own edge events so every segment lies in one known triangle.
+  const strand = (id: string, family: 0 | 1, from: [number, number], along: 0 | 2): SurfaceStrand => {
+    const w = meshWalker(0), p = [from[0], 0, from[1]], d = along === 0 ? [1, 0, 0] : [0, 0, 1];
+    for (let t = 0; t < m.triangleCount; t++) { meshBarycentric(g, t, p, lambda); if (Math.min(...lambda) >= -1e-12) { w.tri = t; break; } }
+    w.p.set(p); w.d.set(d);
+    const events: number[] = [], length = 3.6;
+    assert.equal(walkMesh(g, w, length, events), "length");
+    const points = [p as [number, number, number]], triangles: number[] = [];
+    for (let e = 0; e < events.length; e += 4) { points.push([events[e], events[e + 1], events[e + 2]]); triangles.push(events[e + 3]); }
+    points.push([w.p[0], w.p[1], w.p[2]]); triangles.push(w.tri);
+    const cumulative = points.map((q) => Math.hypot(q[0] - p[0], q[1] - p[1], q[2] - p[2]));
+    return { id, family, seed: 0, points, triangles, closed: false, cumulative, length, spacing: 0.4, ends: ["boundary", "boundary"] };
+  };
+  // Crossings at (x0 + 0.05, z0 + 0.05) inside cells of 0.2: on the diagonal a-c of each quad, which is an edge shared by two triangles.
+  const strands = [5, 7, 9, 11, 13].map((j, k) => strand(`A${k}`, 0, [-1.8, -2 + 0.2 * j + 0.05], 0)).concat([4, 6, 8, 10, 12].map((i, k) => strand(`B${k}`, 1, [-2 + 0.2 * i + 0.05, -1.8], 2)));
+  const crossings = surfaceCrossings(m, strands);
+  assert.equal(crossings.length, 25, "5 x 5 crossings, each once");
+  for (const c of crossings) { near(c.position[0] + 2 - 0.05, Math.round((c.position[0] + 2 - 0.05) / 0.2) * 0.2, 1e-9); near(c.sine, 1, 1e-9); }
 });

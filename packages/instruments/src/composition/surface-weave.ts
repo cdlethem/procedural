@@ -107,7 +107,7 @@ export function surfaceWeaveView(recipe: SurfaceWeaveComposition, products: Surf
   const pieces = weavePieces(products, projected, {
     share: strands.width, hairline, clearance: strands.clearance, minAngle: strands.minAngle, flat: !hairline && strands.section === "flat", faint: strands.hidden === "faint",
   });
-  return { projected, pieces, model: weaveModel(products.mesh, camera, recipe.model.draw === "veil") };
+  return { projected, pieces, model: weaveModel(products.mesh, camera, recipe.model.draw) };
 }
 
 function threadColor(recipe: SurfaceWeaveComposition, piece: WeavePiece): number {

@@ -180,7 +180,7 @@ export function surfaceWeaveOrder(built: SurfaceWeaveStrands, order: SurfaceWeav
     if (!crossing) throw new Error(`Exceptions: crossing ${number} does not exist; this weave has ${built.crossings.length} crossings`);
     return crossing.id;
   });
-  const orderOptions: CrossingOrderOptions = Object.freeze({ rule: order.rule, seed, ranks: order.rule === "rank" ? Object.freeze(familyRanks(built.strands)) : undefined, flips: Object.freeze(flips), invert: order.invert, solve: "breadth" });
+  const orderOptions: CrossingOrderOptions = Object.freeze({ rule: order.rule, seed, ranks: order.rule === "rank" ? Object.freeze(familyRanks(built.strands)) : undefined, flips: Object.freeze(flips), invert: order.invert, solve: "fewest" });
   const result = orderCrossings(built.set, orderOptions);
   return Object.freeze({ ...built, order: result, orderOptions, seams: seamBreaks(built, result) });
 }

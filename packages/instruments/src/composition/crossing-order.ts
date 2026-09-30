@@ -22,7 +22,9 @@ import type { Crossing, CrossingSet, CrossingSide } from "./crossings.js";
  *    around a cylinder) its contradictions are scattered over the whole lattice, while the
  *    breadth-first solve grows one front and leaves them where the front meets itself, along a
  *    seam and at each strand end; a crossing that then disagrees with more than half of its neighbours
- *    is turned over, until none does. The phase coin and every other rule are unchanged.
+ *    is turned over, until none does. Neither solve is better on every lattice, so `solve: "fewest"` runs
+ *    both and keeps the one with fewer contradictions (a tie keeps `"chains"`). The phase coin and every
+ *    other rule are unchanged.
  *  - `seeded`: each crossing is an independent coin, `componentSeed(seed, crossing.id, "over")`.
  *  - `rank`: the strand with the higher rank is over. Ranks are per path index (default: the path
  *    index, so later paths lie over earlier ones). Equal ranks (including a path crossing itself)
@@ -50,7 +52,7 @@ export interface CrossingOrderOptions {
   flips?: readonly string[];
   invert?: boolean;
   /** How the alternate rule is solved (see the header); default `"chains"`. */
-  solve?: "chains" | "breadth";
+  solve?: "chains" | "breadth" | "fewest";
 }
 export interface Occurrence {
   readonly crossing: number;
@@ -99,7 +101,12 @@ export function strandRoles(order: CrossingOrder, crossing: Crossing): { over: C
 
 export function orderCrossings(set: CrossingSet, options: CrossingOrderOptions): CrossingOrder {
   const { rule, seed, ranks, flips = [], invert = false, solve = "chains" } = options;
-  if (solve !== "chains" && solve !== "breadth") throw new Error(`Unknown crossing solve: ${String(solve)}`);
+  if (solve !== "chains" && solve !== "breadth" && solve !== "fewest") throw new Error(`Unknown crossing solve: ${String(solve)}`);
+  if (solve === "fewest") {
+    // Neither solve is better on every lattice (measured: a ring-and-meridian sphere favours chains, a spiral vase breadth first), so keep the one with fewer contradictions; a tie keeps chains.
+    const chains = orderCrossings(set, { ...options, solve: "chains" }), breadth = rule === "alternate" ? orderCrossings(set, { ...options, solve: "breadth" }) : chains;
+    return breadth.unavoidable.length < chains.unavoidable.length ? breadth : chains;
+  }
   if (rule !== "alternate" && rule !== "seeded" && rule !== "rank") throw new Error(`Unknown crossing rule: ${String(rule)}`);
   if (!Number.isSafeInteger(seed) || seed < 0 || seed > 0xffffffff) throw new Error("Crossing order seed must be a uint32 integer");
   if (ranks && ranks.length !== set.paths.length) throw new Error(`ranks needs one entry per path (${set.paths.length}), got ${ranks.length}`);

@@ -188,12 +188,12 @@ export interface WeaveModel {
 }
 const models = new Map<string, WeaveModel>();
 
-/** The mesh's own visible edges (silhouette and boundary) and, when asked, its painter order. Cached by mesh content and camera. */
-export function weaveModel(mesh: Mesh, view: Camera, veil: boolean): WeaveModel {
-  const key = `${mesh.key}|${view.key}|${veil}`, hit = models.get(key);
+/** The mesh's own visible edges (silhouette and boundary; none for `"none"`) and, for `"veil"`, its painter order. Cached by mesh content, camera and choice. */
+export function weaveModel(mesh: Mesh, view: Camera, draw: "none" | "outline" | "veil"): WeaveModel {
+  const veil = draw === "veil", key = `${mesh.key}|${view.key}|${draw}`, hit = models.get(key);
   if (hit) return hit;
   const topology = meshTopology(mesh), closedSolid = topology.kind === "closed-manifold" && meshMeasures(mesh).signedVolume > 0;
-  const edges = meshFeatureEdges(mesh, topology, view, { crease: null, silhouette: true, boundary: true });
+  const edges = draw === "none" ? [] : meshFeatureEdges(mesh, topology, view, { crease: null, silhouette: true, boundary: true });
   const curves = edges.length === 0 ? [] : meshEdgeCurves(mesh, topology, edges);
   const outline = curves.length === 0 ? [] : hiddenLines(mesh, curves, view, { occluders: closedSolid ? "front" : "all" }).paths.filter((path) => path.visible);
   let shaded: WeaveModel["veil"] = null;

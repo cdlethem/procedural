@@ -51,11 +51,27 @@ test("appearance edits reuse the projection; width edits reuse it and recut only
 });
 
 test("gaps in the under thread are exactly (over + under) / (2 sin) + clearance each side, in canvas units", () => {
-  const r = overhead({ width: 0.4, clearance: 2 }), products = surfaceWeaveProducts(r, flatSheet()), view = surfaceWeaveView(r, products);
+  const r = overhead({ width: 0.4, clearance: 2, section: "round" }), products = surfaceWeaveProducts(r, flatSheet()), view = surfaceWeaveView(r, products);
   const zoom = r.view.size / Math.hypot(4, 4, 0), width = 0.4 * products.spacing * zoom;
   assert.ok(view.pieces.strands.gaps.length > 20);
   for (const gap of view.pieces.strands.gaps) near(gap.to - gap.from, 2 * (width + 2), 1e-9);
   // and the pieces of one thread stop and restart exactly at those gaps
+  // each gap is centred on its crossing: the under strand's canvas point at the gap's middle is the projected crossing
+  const at = (strand: number, arc: number) => {
+    const { points } = view.projected.strands[strand].path;
+    let run = 0;
+    for (let k = 1; k < points.length; k++) {
+      const l = Math.hypot(points[k][0] - points[k - 1][0], points[k][1] - points[k - 1][1]);
+      if (run + l >= arc) return [points[k - 1][0] + (points[k][0] - points[k - 1][0]) * (arc - run) / l, points[k - 1][1] + (points[k][1] - points[k - 1][1]) * (arc - run) / l];
+      run += l;
+    }
+    return points[points.length - 1];
+  };
+  const camera = weaveCamera(products.mesh, r.view);
+  for (const gap of view.pieces.strands.gaps) {
+    const crossing = products.crossings.find((c) => c.id === gap.crossing)!, canvas = camera.project(crossing.position)!, middle = at(gap.path, (gap.from + gap.to) / 2);
+    near(middle[0], canvas.x, 1e-6); near(middle[1], canvas.y, 1e-6);
+  }
   const byStrand = new Map<number, typeof view.pieces.visible[number][]>();
   for (const piece of view.pieces.visible) byStrand.set(piece.source, [...(byStrand.get(piece.source) ?? []), piece]);
   const strand = [...byStrand.values()].find((list) => list.length > 3)!;
@@ -116,7 +132,7 @@ test("alternation is exact: breaks are the equal-state neighbours, and only the 
   assert.ok(products.seams.every((seam) => strands[seam.strand].closed));
   assert.ok(equal < 0.4 * crossings.length, "the weave is mostly alternating");
   const chains = orderCrossings(products.set, { ...products.orderOptions, solve: "chains" });
-  assert.ok(order.breaks.length < 0.9 * chains.breaks.length, `the breadth-first solve leaves ${order.breaks.length} contradictions where the chain solve leaves ${chains.breaks.length}`);
+  assert.ok(order.breaks.length < 0.9 * chains.breaks.length, `the chosen solve leaves ${order.breaks.length} contradictions where the chain solve leaves ${chains.breaks.length}`);
   const total = crossings.length;
   const aOver = crossings.filter((c) => (order.over[c.index] === 0) === (strands[c.first.strand].family === 0)).length;
   assert.ok(Math.abs(aOver / total - 0.5) < 0.15, "neither family is over everywhere");
@@ -171,7 +187,7 @@ test("changing a hidden control never changes the drawing (seeded random configu
     }
     const base = input(params, 5 + round), shown = new Set(visibleParameters(ID, base.params).map((p) => p.key)), baseline = drawFingerprint(base);
     const hidden = def.parameters.filter((p) => !shown.has(p.key));
-    for (const p of hidden.slice(0, 5)) {
+    for (const p of hidden) {
       const changed = { ...params };
       if (p.type === "select") changed[p.key] = p.options!.find((o) => o.value !== params[p.key])!.value;
       else if (p.type === "boolean") changed[p.key] = !params[p.key];
@@ -180,7 +196,15 @@ test("changing a hidden control never changes the drawing (seeded random configu
       checked++;
     }
   }
-  assert.ok(checked >= 20, `${checked} hidden-control changes checked`);
+  assert.ok(checked >= 40, `${checked} hidden-control changes checked`);
+});
+
+test("with the model not drawn, its outline weight and veil settings change nothing; drawn, they do", () => {
+  const base = { model: "none", outlineWeight: 1.2 }, none = drawFingerprint(input(base));
+  assert.equal(drawFingerprint(input({ ...base, outlineWeight: 3 })), none);
+  assert.equal(drawFingerprint(input({ ...base, veilOpacity: 0.9, veilColor: 2 })), none);
+  assert.notEqual(drawFingerprint(input({ model: "outline", outlineWeight: 3 })), drawFingerprint(input({ model: "outline", outlineWeight: 1.2 })));
+  assert.notEqual(drawFingerprint(input({ model: "veil" })), drawFingerprint(input({ model: "outline" })));
 });
 
 test("the drawing is deterministic, seed dependent and transparent (no full-canvas fill)", () => {

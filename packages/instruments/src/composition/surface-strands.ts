@@ -316,13 +316,15 @@ export function surfaceCrossings(mesh: Mesh, strands: readonly SurfaceStrand[]):
     let e1x = P[b * 3] - ox, e1y = P[b * 3 + 1] - oy, e1z = P[b * 3 + 2] - oz;
     const el = Math.hypot(e1x, e1y, e1z); e1x /= el; e1y /= el; e1z /= el;
     const e2x = ny * e1z - nz * e1y, e2y = nz * e1x - nx * e1z, e2z = nx * e1y - ny * e1x;
-    const local = (p: Vec3): [number, number] => [(p[0] - ox) * e1x + (p[1] - oy) * e1y + (p[2] - oz) * e1z, (p[0] - ox) * e2x + (p[1] - oy) * e2y + (p[2] - oz) * e2z];
     for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) {
       let si = segmentStrand[list[i]], sj = segmentStrand[list[j]], ki = segmentIndex[list[i]], kj = segmentIndex[list[j]];
       if (si === sj) continue;
       if (si > sj) { [si, sj] = [sj, si]; [ki, kj] = [kj, ki]; }
       const A = strands[si], B = strands[sj], p0 = pointOf(A, ki), p1 = pointOf(A, ki + 1), q0 = pointOf(B, kj), q1 = pointOf(B, kj + 1);
-      const [p0x, p0y] = local(p0), [p1x, p1y] = local(p1), [q0x, q0y] = local(q0), [q1x, q1y] = local(q1);
+      const p0x = (p0[0] - ox) * e1x + (p0[1] - oy) * e1y + (p0[2] - oz) * e1z, p0y = (p0[0] - ox) * e2x + (p0[1] - oy) * e2y + (p0[2] - oz) * e2z;
+      const p1x = (p1[0] - ox) * e1x + (p1[1] - oy) * e1y + (p1[2] - oz) * e1z, p1y = (p1[0] - ox) * e2x + (p1[1] - oy) * e2y + (p1[2] - oz) * e2z;
+      const q0x = (q0[0] - ox) * e1x + (q0[1] - oy) * e1y + (q0[2] - oz) * e1z, q0y = (q0[0] - ox) * e2x + (q0[1] - oy) * e2y + (q0[2] - oz) * e2z;
+      const q1x = (q1[0] - ox) * e1x + (q1[1] - oy) * e1y + (q1[2] - oz) * e1z, q1y = (q1[0] - ox) * e2x + (q1[1] - oy) * e2y + (q1[2] - oz) * e2z;
       const rx = p1x - p0x, ry = p1y - p0y, sx = q1x - q0x, sy = q1y - q0y, denominator = rx * sy - ry * sx;
       const rl = Math.hypot(rx, ry), sl = Math.hypot(sx, sy);
       if (rl === 0 || sl === 0 || Math.abs(denominator) <= 1e-12 * rl * sl) continue;
