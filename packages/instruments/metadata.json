@@ -843,6 +843,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "mesh-abstraction",
+      "title": "Mesh Abstraction",
+      "description": "A detailed surface (fine sphere, terrain, vase, figure or torus) becomes coarse flat facets by edge collapse while a chosen region keeps every vertex of its detail; facets are painter-ordered, edges are hidden-line solved, and the untouched source can ghost over the result or stand beside it.",
+      "category": "3D forms",
+      "operationIds": ["mesh.radial-profile-surface-3d", "field.gradient-noise-2d-01", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/mesh-abstraction.md",
+      "source": "packages/instruments/src/composition/mesh-abstraction-draw.ts",
+      "sourceEntry": "drawMeshAbstraction",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",

@@ -197,8 +197,10 @@ function taper(bw: number, bd: number, tw: number, td: number, y0: number, y1: n
     cx - tw, y1, cz - td, cx + tw, y1, cz - td, cx + tw, y1, cz + td, cx - tw, y1, cz + td];
   return mesh({ id, positions, quads: [0, 1, 2, 3, 4, 7, 6, 5, 1, 0, 4, 5, 2, 1, 5, 6, 3, 2, 6, 7, 0, 3, 7, 4] });
 }
-export function figureMesh(): Mesh {
-  return cached(["figure"], () => {
+/** `headLevels` (0 to 5, default 1) is the subdivision level of the head icosphere: 80 triangles at 1, 5,120 at 4. The body is fixed. */
+export function figureMesh(headLevels = 1): Mesh {
+  integerIn("figure head levels", headLevels, 0, 5);
+  return cached(["figure", headLevels], () => {
     const parts: Mesh[] = [
       boxMesh([1.5, 0.12, 1.0], [0, 0.06, 0], "pedestal"),
       taper(0.17, 0.2, 0.15, 0.17, 0.14, 1.0, -0.2, 0, "leg-left"),
@@ -206,7 +208,7 @@ export function figureMesh(): Mesh {
       taper(0.36, 0.22, 0.5, 0.26, 1.02, 1.76, 0, 0, "torso"),
       transformMesh(taper(0.09, 0.11, 0.13, 0.13, -0.7, 0, 0, 0, "arm"), { rotate: [0, 0, -14], translate: [0.66, 1.68, 0] }, "arm-left"),
       transformMesh(taper(0.09, 0.11, 0.13, 0.13, -0.7, 0, 0, 0, "arm"), { rotate: [0, 0, 14], translate: [-0.66, 1.68, 0] }, "arm-right"),
-      transformMesh(icosphereMesh(1, 1), { scale: [0.26, 0.31, 0.27], translate: [0, 2.08, 0.02] }, "head"),
+      transformMesh(icosphereMesh(headLevels, 1), { scale: [0.26, 0.31, 0.27], translate: [0, 2.08, 0.02] }, "head"),
     ];
     return mergeMeshes("figure", parts);
   });
@@ -236,7 +238,7 @@ const info: Record<BundledMeshId, BundledMeshInfo> = {
   torus: { id: "torus", title: "Torus", closed: true, minDetail: 1, maxDetail: 8, defaultDetail: 4, detailMeaning: "12 x detail segments around the ring, 6 x detail around the tube", usesSeed: false, variants: [] },
   terrain: { id: "terrain", title: "Terrain", closed: false, minDetail: 1, maxDetail: 8, defaultDetail: 4, detailMeaning: "8 x detail cells per side", usesSeed: true, variants: terrainVariants },
   vase: { id: "vase", title: "Vase", closed: false, minDetail: 1, maxDetail: 8, defaultDetail: 4, detailMeaning: "8 x detail angular slices", usesSeed: false, variants: vaseProfileNames },
-  figure: { id: "figure", title: "Faceted figure", closed: true, minDetail: 1, maxDetail: 1, defaultDetail: 1, detailMeaning: "fixed geometry", usesSeed: false, variants: [] },
+  figure: { id: "figure", title: "Faceted figure", closed: true, minDetail: 0, maxDetail: 5, defaultDetail: 1, detailMeaning: "subdivision level of the head icosphere (80 triangles at 1, 5,120 at 4); the body is fixed", usesSeed: false, variants: [] },
 };
 export function bundledMeshInfo(id: BundledMeshId): BundledMeshInfo {
   const found = info[id];
@@ -255,7 +257,7 @@ export function bundledMesh(id: BundledMeshId, options: { detail?: number; seed?
     case "icosphere": return icosphereMesh(detail);
     case "torus": return torusMesh({ u: 12 * detail, v: 6 * detail });
     case "vase": return vaseMesh({ profile: variant as VaseProfile, slices: 8 * detail });
-    case "figure": return figureMesh();
+    case "figure": return figureMesh(detail);
     case "terrain": {
       const cells = 8 * detail;
       return cached(["terrain", variant, seed, cells], () => terrainMesh({ width: 4, depth: 4, columns: cells, rows: cells, height: terrainHeight(variant as TerrainVariant, seed), id: `terrain-${variant}-${cells}` }));
