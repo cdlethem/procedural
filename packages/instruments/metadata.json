@@ -323,6 +323,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "inversion-gardens",
+      "title": "Inversion Gardens",
+      "description": "Circles, arcs and motifs repeated through exact circle inversion: a Descartes gasket packed with exactly measured circles, or a source shape (rings, net, grid, letter or wallpaper motif) reflected through a group of inversion circles, every straight edge becoming a true circular arc and every image keeping its correct mirroring.",
+      "category": "Transforms",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/inversion-gardens.md",
+      "source": "packages/instruments/src/composition/inversion-gardens.ts",
+      "sourceEntry": "drawInversionGardens",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "graph-roles",
       "title": "Graph Roles",
       "description": "Read one network in separate roles: a thin supporting web, a bold focal route between two chosen places, node motifs sized by connectivity and fills only in genuine planar faces.",
@@ -372,6 +385,19 @@
       "guide": "guides/substitution-tilings.md",
       "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
       "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "hyperbolic-gardens",
+      "title": "Hyperbolic Gardens",
+      "description": "Grow a regular hyperbolic tiling {p,q} in the Poincaré disk by exact reflection: cells, geodesic edges and rings shrink toward the boundary circle, and motifs are placed in every mirror-image triangle with the true local turn, reflection and scale.",
+      "category": "Layouts",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/hyperbolic-gardens.md",
+      "source": "packages/instruments/src/composition/hyperbolic-draw.ts",
+      "sourceEntry": "drawHyperbolicGardens",
       "creativeReviewScope": "instrument-construction"
     },
     {
@@ -466,6 +492,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "shape-packing",
+      "title": "Shape Packing",
+      "description": "Fit interlocking non-convex pieces (letters, leaves, blobs, polygons with holes) into a container by a deterministic rule: largest first, at a set of angles, at the exact place that touches its neighbours, with a minimum gap. Pieces that do not fit are reported and the remaining negative space can be drawn.",
+      "category": "Layouts",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/shape-packing.md",
+      "source": "packages/instruments/src/composition/shape-packing.ts",
+      "sourceEntry": "drawShapePacking",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "stroke-relief",
       "title": "Stroke Relief",
       "description": "Deposit variable-width, pressure-loaded strokes into a height field with an explicit rule for crossings (add, maximum or displace), then light it: edge ridges and bristle furrows catch a movable light. The flat pigment layer and the transparent light-and-shadow patch are separate layers.",
@@ -544,6 +583,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "glyph-packing",
+      "title": "Glyph Packing",
+      "description": "Pack words and ornaments into a silhouette from largest to smallest: each outline stays clear of its neighbours and of the container's edge, holes and any protected space, follows the boundary or an angle you set, and the glyphs that cannot fit are counted rather than squeezed in.",
+      "category": "Type",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/glyph-packing.md",
+      "source": "packages/instruments/src/composition/glyph-pack-draw.ts",
+      "sourceEntry": "drawGlyphPacking",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "crossing-lace",
       "title": "Crossing Lace",
       "description": "Weave paths wherever they really cross: every crossing is found exactly, given an over and under strand by an alternating, seeded or ranked rule with editable exceptions, and the under strand is cut open around it. A braid knot, a Celtic plait, two contour families or random loops.",
@@ -557,6 +609,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "nodal-plates",
+      "title": "Nodal Plates",
+      "description": "Grains gather along the nodes of combined standing waves, the sand-on-a-plate figures: square, rectangle or disc, one edge condition, and up to four weighted modes. Nodal lines, node bands and grains all come from one analytic field, so material and grain edits never move them.",
+      "category": "Fields & paths",
+      "operationIds": ["geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/nodal-plates.md",
+      "source": "packages/instruments/src/composition/nodal-draw.ts",
+      "sourceEntry": "drawNodalPlate",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "dry-bristles",
       "title": "Dry Bristles",
       "description": "Carry a broad brush of separate hairs along any path (harmonic traces, a contour family or a hand scribble): hairs lift on light pressure and paper tooth, run dry, taper at the ends and gather into tufts, while the other paths stay fine stitched contours.",
@@ -567,6 +632,32 @@
       "guide": "guides/dry-bristles.md",
       "source": "packages/instruments/src/composition/dry-bristles.ts",
       "sourceEntry": "drawDryBristles",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "cyclic-fronts",
+      "title": "Cyclic Fronts",
+      "description": "Expanding domains, interleaved fronts and spiral waves from a cyclic cellular automaton: every cell steps to the next of n states when enough neighbors already are, then the state cells (flat, hatched or marked), the fronts between them and the spiral cores are each drawn from the same grid, with obstacles that stop a front and a step count that scrubs the growth.",
+      "category": "Systems & rules",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/cyclic-fronts.md",
+      "source": "packages/instruments/src/composition/cyclic-fronts.ts",
+      "sourceEntry": "drawCyclicFronts",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "polygon-watercolor",
+      "title": "Polygon Watercolor",
+      "description": "Lay translucent washes over a shape (a blob, a ring, letterforms or quilt compartments): every pass keeps the parent shape but has its own ragged boundary, correlated with the others, so pigment builds up unevenly; reserved holes stay unpainted, and a light partial wash and a dense overpainted patch are the same instrument with different settings.",
+      "category": "Fields & paths",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/polygon-watercolor.md",
+      "source": "packages/instruments/src/composition/polygon-watercolor.ts",
+      "sourceEntry": "drawPolygonWatercolor",
       "creativeReviewScope": "instrument-construction"
     },
     {
@@ -593,6 +684,58 @@
       "guide": "guides/adaptive-compartments.md",
       "source": "packages/instruments/src/adapters/reference-composition-instruments.ts",
       "sourceEntry": "drawReferenceInstrument",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "outline-type",
+      "title": "Outline Type",
+      "description": "Set large type as regions and fill each letter with another technique, exactly clipped to its outline with the counters kept open: hatching, waves, rings, contour rings, dot lattices, washes or a different technique per letter. Halos, insets and shadows come from exact offsets, and a correlated field can displace the letters first.",
+      "category": "Type",
+      "operationIds": ["field.gradient-noise-2d-01"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/outline-type.md",
+      "source": "packages/instruments/src/composition/outline-type-draw.ts",
+      "sourceEntry": "drawOutlineType",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "connected-value-regions",
+      "title": "Value Regions",
+      "description": "Reduce a picture to a handful of coherent shapes: value bands split into connected regions (corner contact joined or not), small regions merged into neighbours, and every region traced as a polygon with holes whose shared edges are drawn once. Fill each region with flat color, hatching by tone or nested marks and contours, outline the boundaries in ink, stitches or beads, and leave a chosen share as open paper.",
+      "category": "Images",
+      "operationIds": ["geometry.resample-polyline-2d", "geometry.marching-squares-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/connected-value-regions.md",
+      "source": "packages/instruments/src/composition/value-regions-draw.ts",
+      "sourceEntry": "drawValueRegions",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "random-walk-fronts",
+      "title": "Random Walk Fronts",
+      "description": "Branching patches of colour that occupy only part of the canvas: seeded walkers claim lattice cells inside a chosen region (a shape, a word, an image's tone band, with barriers), branch and die on stated rules; the visited region, its colours and claim steps are drawn as territories, age bands, front-age contours, hatching or marks.",
+      "category": "Systems & rules",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/random-walk-fronts.md",
+      "source": "packages/instruments/src/composition/walk-fronts-draw.ts",
+      "sourceEntry": "drawWalkFronts",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "chemotactic-trails",
+      "title": "Chemotactic Trails",
+      "description": "Agents that follow and lay a chemical at once: each senses a diffusing, decaying field with two probes, steers toward or away from it and deposits more, so veins reinforce, colonies from separate emitters meet and barriers redirect them. Draw the chemical as contours or bands, the recorded trajectories as ink, stitches or brush hairs, and the agents as small marks; scrub the step count to watch it organize.",
+      "category": "Motion",
+      "operationIds": ["motion.sensor-motor-step-2d", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/chemotactic-trails.md",
+      "source": "packages/instruments/src/composition/chemotaxis-draw.ts",
+      "sourceEntry": "drawChemotacticTrails",
       "creativeReviewScope": "instrument-construction"
     },
     {
@@ -2760,6 +2903,34 @@
       "guide": "guides/contour-relief.md",
       "source": "packages/instruments/src/adapters/contour-relief.ts",
       "sourceEntry": "drawContourRelief",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "region-stitch",
+      "title": "Region Stitch",
+      "description": "Fill regions with directional stitching: rows or scattered stitches follow a field inside letters, blobs, quilt patches or picture tones, over underlay, with satin outlines, a seam and threads that visibly cross.",
+      "category": "Fields & paths",
+      "operationIds": [
+        "geometry.resample-polyline-2d"
+      ],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/region-stitch.md",
+      "source": "packages/instruments/src/composition/stitch-draw.ts",
+      "sourceEntry": "drawStitches",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "wet-pigment",
+      "title": "Wet Pigment",
+      "description": "Pigmented water dropped into an artist-defined wet region spreads, is soaked up by uneven paper and dries from the edge in. Suspended pigment is carried out with the water and left where it dries, so drops bloom into feathered rims, late clear water pushes old pigment outward into backruns, and drying fronts record the order the sheet dried. Drawn as banded pigment fills, drying-front contours and the wet film, all from one stepped simulation. A 2D cellular model, not physical paint.",
+      "category": "Systems & rules",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/wet-pigment.md",
+      "source": "packages/instruments/src/composition/wet-pigment-draw.ts",
+      "sourceEntry": "drawWetPigment",
       "creativeReviewScope": "instrument-construction"
     }
   ]

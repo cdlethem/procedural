@@ -194,16 +194,51 @@ instruments for all new studies. Latency through the real controls at large sett
 extreme-limit and combined-setting review is partial; the real Studio (auth/backend) was not
 available, so layering used the host compositors' equivalent SVG surface, not Studio.
 
-Deduplication debts recorded from review: two graph types are now bridged by
-`graphFromBranchTree`; Recording versus Word Echo's recorded-control sampling are kept distinct
-with a typed adapter (rationale in the gesture doc); polygon clipping exists in plates,
-typographic rhythm and core and is being absorbed by the planar-domains foundation.
+Deduplication resolved on main: the two graph types are bridged by `graphFromBranchTree`;
+Recording and Word Echo's recorded-control sampling stay distinct with a typed adapter (rationale
+in the gesture doc); the plates stencil and typographic-rhythm ring geometry now run on the
+planar-domains foundation; the bristle and sand consumers were extracted from Gesture Scores and
+are shared with Dry Bristles and Sand Deposition. `fm-engraving` and `iso-rings` still carry their
+own small clips (recorded in their docs) and are retrofit candidates.
 
-Process note: the browser and Chromium review sessions for the first batches ran without the
-native render lease; later scripted Chromium runs use `tools/with_native_render_lock.py`.
+Process notes: the first browser and Chromium review sessions ran without the native render
+lease; later scripted Chromium runs use `tools/with_native_render_lock.py`. Several workers wrote
+into the main checkout by relative path; each reverted its own hunks, and every merge is now
+built and fully tested before it is committed.
 
-**W2 in flight** (separate branches): planar domains (F4), raster and image structure (F3), and
-briefs 10, 11, 12, 14, 38, 48. Brief 41 waits for the graph bridge. W3-W5 not started.
+**W2 materials and sources: built and merged** (19 briefs): Polygon Watercolor (08), Dry Bristles
+(10), Sand Deposition (11), Stroke Relief (12), Region Stitch (13), Quilled Paths (14), Pixel
+Sorting (29), Adaptive Compartments (30), Value Regions (31), Painterly Source (32), FM Engraving
+(33), Slit Compositions (34), Image Directed Field (35), Outline Type (36), Glyph Packing (37),
+Path Typography (38), Bundled Relations (41), Shape Packing (47), Crossing Lace (48). Foundations:
+planar domains (F4, exact predicates, Booleans, offsets, mask/label extraction) and raster plus
+image structure (F3). Real-interface review: defaults of all studies and randomized operation of
+every control of all 20 newer studies (no console errors or blank canvases); layered pairs in both
+orders with unmodified older instruments; latency 27-391 ms per edit at large settings. Not yet
+done: per-study structural sweeps through the real controls for the W2 studies, and the real Studio.
+
+**W3 stateful construction: foundation and two briefs merged, ten in flight.** F7 stateful
+snapshots (`composition-snapshots.md`) is on main; five older dynamics instruments now run through
+it with identical drawings. Merged: Chemotactic Trails (17) and Random Walk Fronts (21).
+In flight (agents were interrupted by a host restart and resumed from their uncommitted
+worktrees): Wet Pigment (09), Aggregation Colonies (15), Laplacian Fronts (16), Pattern
+Competition (18), Cyclic Fronts (19), Cell Division (20), Roads and Parcels (43), River Ribbons
+(44), Drainage and Erosion (45), Collision Scores (49).
+
+**W4 spatial: foundation and three briefs merged, eight in flight.** Merged: the F8 spatial
+foundation (indexed meshes, topology, sampling, cameras, exact hidden lines, planar sections and
+surface iso-contours), Hyperbolic Gardens (24), Nodal Plates (25), Inversion Gardens (26).
+In flight: Geological Cutaways (46), Surface Growth (50), Hinged Panels (51), Surface Weave (52),
+Visibility-aware Mesh Drawing (53), Point Clouds (54), Local Mesh Abstraction (55), Implicit
+Sculpture (56).
+
+**Cross-cutting.** A layered-scenario pass (roadmap section 6) rendered seven of the twelve
+scenarios from merged studies (ornament field, regional flow print, sparse ordered disorder,
+material portrait, chemical garden, optical typography, gesture to many) with their decisive
+edits; the remaining five need the in-flight studies. An option-by-option sweep through the real
+select controls of 24 studies found no errors or blank canvases; inert-at-default options were
+all disjunctive or numeric-threshold relevance, which the F9 extension (in flight) targets.
+
 
 ## Ownership and unchanged boundaries
 
