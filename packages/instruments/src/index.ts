@@ -388,9 +388,9 @@ export type { GlyphColorBy, ContainerShown, GlyphPackingComposition, GlyphMark a
 export { glyphPackingComposition, glyphPackingProducts, glyphTone as packedGlyphTone, glyphFill as packedGlyphFill, glyphOutline as packedGlyphOutline,
   drawGlyphPacking, prepareGlyphPacking } from "./composition/glyph-pack-draw.js";
 export type { OutlineText, OutlineUnitKind, OutlineLayoutOptions, OutlineGlyph, OutlineLine, OutlineLayout, OutlineUnit, OutlineDisplacement, OutlineDisplacementSpec } from "./composition/outline-type.js";
-export { outlineText, bundledOutlineTexts, outlineLayout, outlineUnits, displacementField, deformDomain, displaceUnits, MAX_OUTLINE_LINES, MAX_OUTLINE_LINE_CHARS, MAX_DISPLACED_VERTICES } from "./composition/outline-type.js";
+export { outlineText, bundledOutlineTexts, outlineLayout, outlineUnits, displacementField, deformDomain, displaceUnits, nudged, robustOffset, MAX_OUTLINE_LINES, MAX_OUTLINE_LINE_CHARS, MAX_DISPLACED_VERTICES } from "./composition/outline-type.js";
 export type { OutlineFillKind, OutlineFillSpec, OutlineFillShape, OutlineFillMark, OutlineFill, OutlineFillContext, OutlineFiller } from "./composition/outline-type-fill.js";
-export { outlineFillerFor, validateOutlineFill, resolveOutlineFillKind, OUTLINE_MIXED_KINDS } from "./composition/outline-type-fill.js";
+export { outlineFillerFor, validateOutlineFill, resolveOutlineFillKind, OUTLINE_MIXED_KINDS, MAX_LATTICE_SITES, MAX_WAVE_VERTICES } from "./composition/outline-type-fill.js";
 export type { OutlineTypeColorBy, OutlineTypeComposition, OutlineUnitProduct, OutlineTypeProducts, OutlineTypeConsumers } from "./composition/outline-type-draw.js";
 export { outlineTypeComposition, outlineTypeProducts, outlineTone, trimPath, fillMaterial, drawOutlineType, prepareOutlineType,
   MAX_FILL_PATHS, MAX_FILL_POINTS, MAX_FILL_MARKS, MAX_OUTLINE_STATIONS } from "./composition/outline-type-draw.js";

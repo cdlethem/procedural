@@ -58,9 +58,13 @@ existing drawings are untouched (full package run below).
   regions; counters may close). Fills, halos and shadows are computed on the moved domain.
 - **Fillers** (see the header of `outline-type-fill.ts`). Lines are exactly clipped; shapes are set operations on the domain; marks are
   kept when a disc of their radius fits (`domainClearance`) and never cut. Lines and lattices are counted from an origin: `shared` (the block
-  centre; neighbours continue each other) or `unit` (its own bounding-box centre). Dot lattices are requested around a whole-period translate
-  nearest the unit, so the count follows the unit, not its distance from a shared origin. Contours inset by `k·spacing` (round joins, chord error
-  ≤ 0.15), stopping when the letter is gone. Washes are overlapping half-plane layers drawn at low alpha, so they deepen without seams. Each
+  centre; neighbours continue each other) or `unit` (its own bounding-box centre). Wave lines, rings and dot sites are generated over
+  the unit only (the lines' numbering, ids and positions are those of `patterns.ts` about the origin; the origin is slid along wave lines by whole
+  wavelengths and rings are limited to the radii the unit spans), so the cost follows the unit, not its distance from a shared origin. **Frequency drift**
+  is the fractional change of the line frequency from the origin to the farthest point of the unit (positive tightens outward); it is admitted whenever
+  `spacing / (1 + |drift|)` is at least the pattern minimum period 3 (hard range ±0.8). Contours inset each ring from the previous one by one spacing
+  (round joins, chord error ≤ 2% of the spacing), stopping when the letter is gone, and skip the offsets entirely when a grid of clearance samples
+  proves nothing survives. Washes are overlapping half-plane layers drawn at low alpha, so they deepen without seams. Each
   unit's angle is `angle + spread·(2u − 1)` with `u` from `componentSeed(seed, unit id, "angle")`; `mixed` draws its technique from
   `componentSeed(seed, unit id, "technique")`.
 - **Offsets.** Halo `offsetDomain(D, +d)`, inline `offsetDomain(D, −d)`, both with the chosen join (round / mitre with limit 4 / bevel); a stroke narrower
@@ -75,8 +79,8 @@ existing drawings are untouched (full package run below).
   shadow distance; degrees for angles.
 - **Limits** (each an error naming the controls to change): 4 lines of 14 characters; the planar kernel's work limit around any Boolean, offset,
   sweep or hatch; 200,000 subdivided boundary vertices per displacement; 20,000 fill lines, 600,000 fill vertices, 30,000 marks and 40,000 stitches or
-  beads per composition; the pattern functions' own bounds (dot lattice 40,000, drift over the reach). Nothing is thinned.
-- **Failure.** Invalid options, text, and coupled settings (frequency drift beyond the reach, unknown kinds) throw at admission or first use.
+  beads per composition; 300,000 lattice sites and 1,000,000 wave vertices examined per unit; 4,000 wave lines or rings. Nothing is thinned.
+- **Failure.** Invalid options, text, and coupled settings (a frequency drift that would shrink the spacing below 3 units, unknown kinds) throw at admission or first use.
 
 ## Controls
 
@@ -92,8 +96,15 @@ existing drawings are untouched (full package run below).
 
 Inline `visibleWhen`: every fill-specific control depends on the fill (hatch angle group, waves, lattice/mark group, steps, wash, stroke style; pitch under stitch
 or beads); displacement amount and length under a displacement; outline weight, halo, inline and corners under the outlines that use them; shadow controls under
-a shadow; leading under phrases of more than one line. The measured control audit (41 controls, 1,935 probes) reports 0 violations; `unit` stays visible
+a shadow; leading under phrases of more than one line. The measured control audit (41 controls, 1,950 probes) reports 0 violations; `unit` stays visible
 because its relevance is a disjunction. Slider intervals are narrower than `hardMin`/`hardMax` throughout.
+
+**Every slider end is admitted.** Sliders give pictures; refusals are for typed values beyond them. The slider ranges were narrowed until every combination
+of ends drew: frequency drift ±0.15 (a fraction, so independent of size), wave amplitude ≤ 8 and wavelength ≥ 16, line spacing ≥ 5, halo distance ≤ 0.2,
+displacement amount ≤ 0.25 with correlation length ≥ 0.6 (so no slider pair folds the outline beyond what the kernel resolves). Checked by fuzzing 2,400
+random mixtures of slider ends and select values plus a structured sweep (every fill × every unit × three phrases × min / max / dense / negative-drift ×
+line or stitch, 648 drawings): no refusal, slowest draw 0.7 s (the fuzz: 1.5 s), and the test suite draws each control at its min and max, all minima, all maxima, and 30
+fixed mixtures within 10 s each.
 
 ## Checks
 
@@ -143,4 +154,5 @@ noise displacement) 700 ms. A p5 canvas will spend more painting the polygons th
 - Fills are chosen per unit; `mixed` can give neighbours the same technique or colour.
 - `CompositionSurface` has no contour call, so counters are cut into polygons by zero-width keyholes; none showed as hairlines in Chromium.
 - The named fields are correlated noise and a ripple; other deformation fields (swirl, radial) are not offered though `deformDomain` accepts any function.
-- Pattern lines and rings are clipped after generation, so their cost follows the reach of the shared origin; the pattern functions' own limits apply and are named.
+- Offsets are retried on the kernel's rare `NOT_CONVERGED` (distance and arc tolerance nudged by up to 3%, then the offset applied as 2–4 equal steps); the result can then differ from a single-step offset by under 3% of the distance (round joins compose exactly; mitre and bevel corners are re-cut per step). The underlying kernel failure was observed on overlapped, rotated letters (e.g. "0869/4@&%" at tracking −0.2, size 40, rotation −13°, block unit) and is reported for the foundation, not fixed there.
+- Typed values beyond the sliders can still be refused by the planar work limit or the pattern bounds (for example a halo of 0.3 cap heights on heavily overlapped letters, or spacing 3 on a block at size 260); each names its controls.

@@ -4,9 +4,9 @@ import type { InstrumentInput } from "../types.js";
 import { atEach, createCompositionRun, strokeWith } from "./core.js";
 import { domainRings, keyholeRing } from "./domains.js";
 import type { PlanarDomain } from "./domains.js";
-import { offsetDomain, shadowDomain } from "./domains-offset.js";
+import { shadowDomain } from "./domains-offset.js";
 import { color, motif, pathMaterial, tonedMaterial } from "./materials.js";
-import { bundledOutlineTexts, displaceUnits, outlineLayout, outlineUnits, withControls } from "./outline-type.js";
+import { bundledOutlineTexts, displaceUnits, nudged, outlineLayout, robustOffset, outlineUnits, withControls } from "./outline-type.js";
 import type { OutlineDisplacementSpec, OutlineLayout, OutlineText, OutlineUnit, OutlineUnitKind } from "./outline-type.js";
 import { OUTLINE_MIXED_KINDS, outlineFillerFor, resolveOutlineFillKind } from "./outline-type-fill.js";
 import type { OutlineFill, OutlineFillKind, OutlineFillSpec, OutlineFiller } from "./outline-type-fill.js";
@@ -154,18 +154,18 @@ function buildUnit(recipe: OutlineTypeComposition, unit: OutlineUnit, filler: Ou
   const filled = unitDraw(recipe.seed, unit.id, "share") < recipe.share;
   const fill = filled ? filler(unit, { seed: recipe.seed, origin: [recipe.type.centerX, recipe.type.centerY] }) : null;
   const halo = outline.halo === null ? null : withControls("Halo", "Halo distance, Type size", () =>
-    offsetDomain(unit.domain, outline.halo!, { join: outline.join, id: `${unit.id}/halo` }));
+    robustOffset(unit.domain, outline.halo!, outline.join, `${unit.id}/halo`));
   const inline = outline.inline === null ? null : withControls("Inline", "Inline distance, Type size", () =>
-    offsetDomain(unit.domain, -outline.inline!, { join: outline.join, id: `${unit.id}/inline` }));
+    robustOffset(unit.domain, -outline.inline!, outline.join, `${unit.id}/inline`));
   const cast = shadow.kind === "none" ? null : withControls("Shadow", "Shadow distance, Type size, Fill unit", () =>
-    shadowDomain([unit.domain], shadow.dx, shadow.dy, { sweep: shadow.kind === "extrude", id: `${unit.id}/shadow` }));
+    nudged(1, (k) => shadowDomain([unit.domain], shadow.dx * k, shadow.dy * k, { sweep: shadow.kind === "extrude", id: `${unit.id}/shadow` })));
   return Object.freeze({ unit, fill, halo, inline, shadow: cast });
 }
 
 function assemble(recipe: OutlineTypeComposition, layout: OutlineLayout, units: readonly OutlineUnitProduct[]): OutlineTypeProducts {
   checkTotals(units);
   const shadow = !recipe.shadow || recipe.shadow.kind === "none" ? null : withControls("Shadow", "Shadow distance, Type size, Fill unit", () =>
-    shadowDomain(units.map((p) => p.unit.domain), recipe.shadow.dx, recipe.shadow.dy, { sweep: recipe.shadow.kind === "extrude", id: "shadow" }));
+    nudged(1, (k) => shadowDomain(units.map((p) => p.unit.domain), recipe.shadow.dx * k, recipe.shadow.dy * k, { sweep: recipe.shadow.kind === "extrude", id: "shadow" })));
   return Object.freeze({ layout, units: Object.freeze(units), shadow });
 }
 

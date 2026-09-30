@@ -2,11 +2,10 @@ import { unit as unitDraw } from "./bristle.js";
 import { componentSeed } from "./core.js";
 import { domainClearance, domainIntersection, domainRings } from "./domains.js";
 import type { PlanarDomain } from "./domains.js";
-import { offsetDomain } from "./domains-offset.js";
 import { clipPath, hatchDomain } from "./domains-paths.js";
-import { patternFunction } from "./patterns.js";
-import type { PatternFunction, PatternStroke } from "./patterns.js";
-import { appendControls, withControls } from "./outline-type.js";
+import { MAX_PATTERN_LINES, MAX_PATTERN_VERTICES, driftLimits, driftPhase, driftPosition, gratingLines } from "./patterns.js";
+import type { PatternDot, PatternStroke } from "./patterns.js";
+import { appendControls, robustOffset, withControls } from "./outline-type.js";
 import type { OutlineUnit } from "./outline-type.js";
 import type { Path, Point, Site } from "./types.js";
 
@@ -29,7 +28,7 @@ import type { Path, Point, Site } from "./types.js";
  * KINDS. solid: the domain. hatch: parallel lines from `hatchDomain`, optional second family at 90°.
  * waves / rings: `patterns.ts` waves grating (amplitude 0 is a straight grating) and concentric
  * rings with the frequency drift `chirp`, clipped. contours: the domain inset by successive
- * multiples of `spacing` (round joins, chord error ≤ 0.15), one closed path per ring, so counters
+ * multiples of `spacing` (round joins, chord error ≤ 2% of the spacing), one closed path per ring, so counters
  * grow outward as the letter shrinks; stops at `count` rings or when the letter is gone. dots: a
  * `patterns.ts` dot lattice with a mark whose diameter is `markSize × spacing`, shrinking by `ramp`
  * along the `angle` direction across the unit. bands: `count` overlapping layers, layer k being the
@@ -60,7 +59,11 @@ export interface OutlineFillSpec {
   /** Hatch: add a second family at 90°. */
   readonly cross: boolean;
   readonly origin: "shared" | "unit";
-  /** Frequency drift of waves and rings, per 100 units from the origin. */
+  /**
+   * Frequency drift of waves and rings: the fractional change of the line frequency between the pattern origin and the farthest point
+   * of the unit (positive tightens outward). Independent of size: it is admitted whenever `spacing / (1 + |chirp|)` is at least the
+   * pattern minimum period (3) and |chirp| ≤ 0.8.
+   */
   readonly chirp: number;
   /** Waves: peak sideways displacement and wavelength, canvas units. */
   readonly waveAmplitude: number;
@@ -114,7 +117,7 @@ const finiteIn = (label: string, value: number, min: number, max: number): void 
 export function validateOutlineFill(spec: OutlineFillSpec): void {
   if (spec.kind !== "mixed" && !["none", "solid", "hatch", "waves", "rings", "contours", "dots", "bands"].includes(spec.kind)) throw new Error(`Unknown fill kind: ${String(spec.kind)}`);
   finiteIn("Line spacing", spec.spacing, 3, 1000); finiteIn("Fill angle", spec.angle, -3600, 3600); finiteIn("Angle variation", spec.angleSpread, 0, 360);
-  finiteIn("Frequency drift", spec.chirp, -1, 1); finiteIn("Wave amplitude", spec.waveAmplitude, 0, 1000); finiteIn("Wavelength", spec.waveLength, 4, 10000);
+  finiteIn("Frequency drift", spec.chirp, -0.8, 0.8); finiteIn("Wave amplitude", spec.waveAmplitude, 0, 1000); finiteIn("Wavelength", spec.waveLength, 4, 10000);
   finiteIn("Mark size", spec.markSize, 0.05, 1); finiteIn("Size ramp", spec.ramp, 0, 0.95); finiteIn("Steps", spec.count, 1, 64);
   if (!Number.isInteger(spec.count)) throw new Error("Steps must be an integer");
   if (!["shared", "unit"].includes(spec.origin)) throw new Error(`Unknown pattern origin: ${String(spec.origin)}`);
@@ -128,17 +131,109 @@ export function resolveOutlineFillKind(spec: Pick<OutlineFillSpec, "kind">, seed
 }
 
 const WORK = "Line spacing, Type size, Fill unit";
+const FLATNESS = 0.12;
+/** Most vertices of the wave lines generated for one unit (before clipping). */
+export const MAX_WAVE_VERTICES = 1_000_000;
+const PHASE = 0.5;
+const TAU = 2 * Math.PI;
+type Box = readonly [number, number, number, number];
+
+/**
+ * The lines of a drifting wave family that can touch a unit, indexed from the pattern origin exactly as `patterns.ts` numbers them
+ * (id `line:<k>`, position `driftPosition(k + ½)` along the normal), but generated over the unit only: the normal range is that of the
+ * unit's corners, and the origin is slid along the lines by whole wavelengths to the unit's middle, which leaves every wave in phase.
+ * The cost follows the unit, not its distance from a shared origin.
+ */
+function waveLines(spec: OutlineFillSpec, [left, top, right, bottom]: Box, origin: Point, angle: number): PatternStroke[] {
+  const dx = Math.cos(angle), dy = Math.sin(angle), nx = -dy, ny = dx, amplitude = spec.waveAmplitude, wavelength = spec.waveLength;
+  const corners = [[left, top], [right, top], [left, bottom], [right, bottom]];
+  const us = corners.map(([x, y]) => (x - origin[0]) * dx + (y - origin[1]) * dy), vs = corners.map(([x, y]) => (x - origin[0]) * nx + (y - origin[1]) * ny);
+  const vlow = Math.min(...vs) - amplitude - 1, vhigh = Math.max(...vs) + amplitude + 1, bound = Math.max(Math.abs(vlow), Math.abs(vhigh));
+  const chirp = spec.chirp * 100 / bound;
+  driftLimits(spec.spacing, chirp, bound);
+  const first = Math.ceil(driftPhase(vlow, spec.spacing, chirp) - PHASE), last = Math.floor(driftPhase(vhigh, spec.spacing, chirp) - PHASE);
+  if (last - first + 1 > MAX_PATTERN_LINES) throw new Error(`Wave lines need ${last - first + 1} lines; limit ${MAX_PATTERN_LINES}`);
+  const ulow = Math.min(...us), uhigh = Math.max(...us);
+  const slide = amplitude === 0 ? (ulow + uhigh) / 2 : Math.round((ulow + uhigh) / 2 / wavelength) * wavelength;
+  const travel = Math.max(Math.abs(ulow - slide), Math.abs(uhigh - slide)) + 1;
+  // Chord deviation of a sine: curvature A(2π/λ)², so a step h keeps it below h²·curvature/8 ≤ flatness.
+  const curvature = amplitude * (TAU / wavelength) ** 2;
+  const steps = amplitude === 0 ? 1 : Math.max(2, Math.ceil(2 * travel / Math.sqrt(8 * FLATNESS / curvature)));
+  if ((last - first + 1) * (steps + 1) > MAX_WAVE_VERTICES) throw new Error(`Wave lines need ${(last - first + 1) * (steps + 1)} vertices for one unit; limit ${MAX_WAVE_VERTICES}`);
+  const offsets: number[] = [];
+  for (let k = first; k <= last; k++) offsets.push(driftPosition(k + PHASE, spec.spacing, chirp));
+  const lines = gratingLines({ originX: origin[0] + dx * slide, originY: origin[1] + dy * slide, angle, offsets, travel, steps, curve: amplitude, waveCycles: 1, waveSpan: wavelength });
+  return lines.map((line, index): PatternStroke => Object.freeze({ id: `line:${first + index}`, closed: false, points: Object.freeze(line.map(([x, y]) => freezePoint([x, y]))) }));
+}
+
+/**
+ * True when insetting `domain` by `distance` certainly leaves nothing: the largest clearance found on a grid, plus the most the
+ * true maximum can exceed it (clearance is 1-Lipschitz, so a point is within 0.71 of a grid pitch of a sample), is still below the
+ * distance. A conservative certificate (false never means the inset is non-empty) that spares the kernel the wedges of a large
+ * inset on thin strokes; skipped when the grid would be fine enough to cost more than the inset.
+ */
+function cannotInset(domain: OutlineUnit["domain"], [left, top, right, bottom]: Box, distance: number): boolean {
+  const pitch = distance / 2, columns = Math.ceil((right - left) / pitch) + 1, rows = Math.ceil((bottom - top) / pitch) + 1;
+  if (columns * rows > 6000) return false;
+  let best = 0;
+  for (let j = 0; j < rows; j++) for (let i = 0; i < columns; i++) best = Math.max(best, domainClearance(domain, left + i * pitch, top + j * pitch, distance));
+  return best + 0.71 * pitch < distance;
+}
+
+/** Most lattice sites examined for one unit (marks are then kept only where they fit). */
+export const MAX_LATTICE_SITES = 300_000;
+
+/**
+ * The lattice sites (square or staggered, ids `dot:<i>:<j>` and positions exactly those of the `patterns.ts` dot pattern about the origin)
+ * inside the unit's box in the lattice frame: the count follows the unit, not its distance from a shared origin.
+ */
+function dotSites(spec: OutlineFillSpec, [left, top, right, bottom]: Box, origin: Point, angle: number): PatternDot[] {
+  const dx = Math.cos(angle), dy = Math.sin(angle), nx = -dy, ny = dx, hex = spec.lattice === "hex";
+  const rowStep = hex ? spec.spacing * Math.sqrt(3) / 2 : spec.spacing;
+  const corners = [[left, top], [right, top], [left, bottom], [right, bottom]];
+  const us = corners.map(([x, y]) => (x - origin[0]) * dx + (y - origin[1]) * dy), vs = corners.map(([x, y]) => (x - origin[0]) * nx + (y - origin[1]) * ny);
+  const ulow = Math.min(...us) - spec.spacing, uhigh = Math.max(...us) + spec.spacing;
+  const rows0 = Math.floor(Math.min(...vs) / rowStep), rows1 = Math.ceil(Math.max(...vs) / rowStep);
+  const estimate = (rows1 - rows0 + 1) * ((uhigh - ulow) / spec.spacing + 1);
+  if (estimate > MAX_LATTICE_SITES) throw new Error(`The dot lattice needs about ${Math.ceil(estimate)} sites for one unit; limit ${MAX_LATTICE_SITES}`);
+  const dots: PatternDot[] = [];
+  for (let j = rows0; j <= rows1; j++) {
+    const stagger = hex && Math.abs(j) % 2 === 1 ? 0.5 : 0;
+    for (let i = Math.ceil(ulow / spec.spacing - PHASE - stagger); i <= Math.floor(uhigh / spec.spacing - PHASE - stagger); i++) {
+      const u = (i + PHASE + stagger) * spec.spacing, v = j * rowStep;
+      dots.push(Object.freeze({ id: `dot:${i}:${j}`, position: freezePoint([origin[0] + dx * u + nx * v, origin[1] + dy * u + ny * v]), angle }));
+    }
+  }
+  return dots;
+}
+
+/** The concentric rings (about the origin, radius `driftPosition(k + ½)`, ids `ring:<k>`) that can touch a unit: those whose radius lies between its nearest and farthest points. */
+function ringLines(spec: OutlineFillSpec, [left, top, right, bottom]: Box, origin: Point): PatternStroke[] {
+  const near = Math.hypot(Math.max(left - origin[0], 0, origin[0] - right), Math.max(top - origin[1], 0, origin[1] - bottom));
+  const far = Math.max(...[[left, top], [right, top], [left, bottom], [right, bottom]].map(([x, y]) => Math.hypot(x - origin[0], y - origin[1]))) + 1;
+  const chirp = spec.chirp * 100 / far;
+  driftLimits(spec.spacing, chirp, far);
+  const first = Math.max(0, Math.ceil(driftPhase(Math.max(0, near - 1), spec.spacing, chirp) - PHASE)), last = Math.floor(driftPhase(far, spec.spacing, chirp) - PHASE);
+  if (last - first + 1 > MAX_PATTERN_LINES) throw new Error(`Rings need ${last - first + 1} rings; limit ${MAX_PATTERN_LINES}`);
+  const strokes: PatternStroke[] = [];
+  let vertices = 0;
+  for (let k = first; k <= last; k++) {
+    const r = driftPosition(k + PHASE, spec.spacing, chirp);
+    if (!(r > 0)) continue;
+    const n = r <= FLATNESS ? 12 : Math.max(12, Math.ceil(Math.PI / Math.acos(1 - FLATNESS / r)));
+    vertices += n;
+    if (vertices > MAX_PATTERN_VERTICES) throw new Error(`Rings need more than ${MAX_PATTERN_VERTICES} vertices`);
+    const points: Point[] = [];
+    for (let j = 0; j < n; j++) points.push(freezePoint([origin[0] + r * Math.cos(TAU * j / n), origin[1] + r * Math.sin(TAU * j / n)]));
+    strokes.push(Object.freeze({ id: `ring:${k}`, closed: true, points: Object.freeze(points) }));
+  }
+  return strokes;
+}
 
 /** The stock filler of a spec. */
 export function outlineFillerFor(spec: OutlineFillSpec): OutlineFiller {
   validateOutlineFill(spec);
-  const patterns = new Map<string, PatternFunction>();
-  const pattern = (key: string, make: () => PatternFunction): PatternFunction => {
-    let hit = patterns.get(key);
-    if (!hit) { hit = make(); patterns.set(key, hit); }
-    return hit;
-  };
-  return (unit, context) => {
+    return (unit, context) => {
     const kind = resolveOutlineFillKind(spec, context.seed, unit.id);
     const bounds = unit.domain.bounds;
     if (kind === "none" || !bounds) return empty(unit.id, kind);
@@ -148,9 +243,6 @@ export function outlineFillerFor(spec: OutlineFillSpec): OutlineFiller {
     const seed = componentSeed(context.seed, unit.id, "fill");
     const degrees = spec.angle + spec.angleSpread * (2 * unitDraw(context.seed, unit.id, "angle") - 1), radians = degrees * Math.PI / 180;
     const origin: Point = spec.origin === "shared" ? context.origin : [(left + right) / 2, (top + bottom) / 2];
-    const reach = Math.max(Math.hypot(left - origin[0], top - origin[1]), Math.hypot(right - origin[0], top - origin[1]),
-      Math.hypot(left - origin[0], bottom - origin[1]), Math.hypot(right - origin[0], bottom - origin[1])) + 1;
-    const request = { x: origin[0], y: origin[1], angle: kind === "rings" ? 0 : radians, reach, phase: 0.5, flatness: 0.08 };
     const paths: Path[] = [], shapes: OutlineFillShape[] = [], marks: OutlineFillMark[] = [];
     const clipped = (strokes: readonly PatternStroke[]): void => {
       for (const stroke of strokes) for (const piece of withControls("Clipping", WORK, () => clipPath(stroke.points, unit.domain, { closed: stroke.closed, id: `${unit.id}/${stroke.id}` })))
@@ -161,28 +253,22 @@ export function outlineFillerFor(spec: OutlineFillSpec): OutlineFiller {
       for (const [angle, id] of families) for (const stroke of withControls("Hatching", WORK, () => hatchDomain(unit.domain, { spacing: spec.spacing, angle, origin, id })))
         paths.push(pathOf(stroke.id, seed, stroke.points, false));
     } else if (kind === "waves") {
-      const make = pattern(`waves`, () => patternFunction({ kind: "waves", period: spec.spacing, chirp: spec.chirp, amplitude: spec.waveAmplitude, wavelength: spec.waveLength }));
-      clipped(appendControls("Line spacing, Frequency drift, Wave amplitude, Type size", () => make(request).strokes));
+      clipped(appendControls("Line spacing, Frequency drift, Wave amplitude, Wavelength, Type size", () => waveLines(spec, bounds, origin, radians)));
     } else if (kind === "rings") {
-      const make = pattern(`rings`, () => patternFunction({ kind: "rings", period: spec.spacing, chirp: spec.chirp }));
-      clipped(appendControls("Line spacing, Frequency drift, Type size", () => make(request).strokes));
+      clipped(appendControls("Line spacing, Frequency drift, Type size", () => ringLines(spec, bounds, origin)));
     } else if (kind === "contours") {
-      for (let k = 1; k <= spec.count; k++) {
-        const distance = k * spec.spacing;
-        const inset = withControls("Contours", "Line spacing, Steps, Type size", () => offsetDomain(unit.domain, -distance, { join: "round", arcTolerance: Math.min(distance / 50, 0.15), id: `${unit.id}/c${k}` }));
+      // Each ring insets the previous one by one spacing (erosion by a disc composes, and every step then works on a simpler shape
+      // with wedges of one spacing's radius, so the cost does not grow with the ring number).
+      let current = unit.domain;
+      const vanishes = cannotInset(unit.domain, bounds, spec.spacing);
+      for (let k = 1; !vanishes && k <= spec.count; k++) {
+        const inset = withControls("Contours", "Line spacing, Steps, Type size", () => robustOffset(current, -spec.spacing, "round", `${unit.id}/c${k}`));
         if (inset.regions.length === 0) break;
+        current = inset;
         domainRings(inset).forEach((ring, j) => paths.push(pathOf(`${unit.id}/c${k}#${j}`, seed, ring, true, k, (k - 1) / Math.max(1, spec.count - 1))));
       }
     } else if (kind === "dots") {
-      const make = pattern(`dots`, () => patternFunction({ kind: "dots", period: spec.spacing, lattice: spec.lattice }));
-      // The lattice repeats, so ask for it around a lattice translate nearest the unit (whole periods, an even row count keeps hex stagger): the
-      // count then follows the unit's size, not its distance from a shared origin.
-      const rowStep = spec.lattice === "hex" ? spec.spacing * Math.sqrt(3) / 2 : spec.spacing, c = Math.cos(radians), s = Math.sin(radians);
-      const cx = (left + right) / 2 - origin[0], cy = (top + bottom) / 2 - origin[1];
-      const j0 = 2 * Math.round((-cx * s + cy * c) / (2 * rowStep)), i0 = Math.round((cx * c + cy * s) / spec.spacing);
-      const lx = i0 * spec.spacing, ly = j0 * rowStep;
-      const local = { ...request, x: origin[0] + c * lx - s * ly, y: origin[1] + s * lx + c * ly, reach: Math.hypot(right - left, bottom - top) / 2 + 2 * spec.spacing };
-      const sites = appendControls("Line spacing, Type size", () => make(local).dots);
+      const sites = appendControls("Line spacing, Type size", () => dotSites(spec, bounds, origin, radians));
       const dx = Math.cos(radians), dy = Math.sin(radians);
       const projections = [[left, top], [right, top], [left, bottom], [right, bottom]].map(([x, y]) => x * dx + y * dy);
       const low = Math.min(...projections), span = Math.max(...projections) - low || 1;
@@ -190,7 +276,7 @@ export function outlineFillerFor(spec: OutlineFillSpec): OutlineFiller {
       for (const dot of sites) {
         const [x, y] = dot.position;
         if (x < left - base || x > right + base || y < top - base || y > bottom + base) continue;
-        const scale = 1 - spec.ramp * ((x * dx + y * dy - low) / span), radius = base * scale;
+        const scale = 1 - spec.ramp * Math.min(1, Math.max(0, (x * dx + y * dy - low) / span)), radius = base * scale;
         if (domainClearance(unit.domain, x, y, radius) < radius) continue;
         const id = `${unit.id}/${dot.id}`;
         marks.push(Object.freeze({ id, seed: componentSeed(seed, id, "mark"), position: freezePoint(dot.position), angle: dot.angle, scale, radius }));
