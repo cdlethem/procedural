@@ -3,7 +3,8 @@ import type { InstrumentInput } from "../types.js";
 import { validateParameterValues } from "../parameter-validation.js";
 import { camera as makeCamera, type Camera } from "./camera.js";
 import { createCompositionRun, strokeWith } from "./core.js";
-import { IsoField, fillableRings } from "./iso-rings.js";
+import { domainIntersection, keyholeRing, ringsDomain, type PlanarDomain } from "./domains.js";
+import { IsoField } from "./iso-rings.js";
 import { pointCloudData, projectPoints, type PointCloud } from "./mesh-sample.js";
 import { meshFeatureEdges, meshTopology } from "./mesh-topology.js";
 import { meshDerived, meshStorage } from "./mesh.js";
@@ -298,19 +299,35 @@ function drawCells(surface: CompositionSurface, recipe: ImplicitSculptureComposi
 }
 
 function drawBands(surface: CompositionSurface, recipe: ImplicitSculptureComposition, view: SdfView, shade: Float32Array, run: CompositionRun): void {
-  const { levels, opacity } = recipe.fill, cell = view.cellSize, palette = recipe.palette, n = view.hit.length;
-  const grid = { columns: view.columns, rows: view.rows, x0: view.x0, y0: view.y0, dx: cell, dy: cell };
-  const mask = new Float32Array(n), tones = new Float32Array(n);
-  for (let c = 0; c < n; c++) { mask[c] = view.hit[c] ? Math.max(view.coverage[c], 0.5) : view.coverage[c]; tones[c] = view.hit[c] ? shade[c] : -1; }
-  const paint = (rings: readonly (readonly Point[])[], tone: number): void => {
+  const { levels, opacity } = recipe.fill, cell = view.cellSize, palette = recipe.palette, n = view.hit.length, columns = view.columns, rows = view.rows;
+  const grid = { columns, rows, x0: view.x0, y0: view.y0, dx: cell, dy: cell };
+  const mask = new Float32Array(n);
+  for (let c = 0; c < n; c++) mask[c] = view.hit[c] ? Math.max(view.coverage[c], 0.5) : view.coverage[c];
+  const paint = (domain: PlanarDomain, tone: number): void => {
     const [r, g, b, a] = toneColor(palette, tone, opacity);
     surface.fill(r, g, b, a);
-    for (const ring of fillableRings(rings)) { run.enter(Math.max(1, Math.ceil(ring.length / 8))); try { fillPolygon(surface, ring); } finally { run.leave(); } }
+    for (const region of domain.regions) {
+      const ring = keyholeRing(region);
+      run.enter(Math.max(1, Math.ceil(ring.length / 8)));
+      try { fillPolygon(surface, ring); } finally { run.leave(); }
+    }
   };
   surface.noStroke();
-  paint(new IsoField({ ...grid, values: mask, outside: -1 }).rings(0.5, 400_000), quantize(0, levels));
-  const field = new IsoField({ ...grid, values: tones, outside: -1e9 });
-  for (let l = 1; l < levels; l++) paint(field.rings(l / levels, 400_000), (l + 0.5) / levels);
+  // The silhouette is the 0.5 level of ninths coverage; every band is clipped to it exactly, so bands meet the outline and never stair-step beside it.
+  const outline = ringsDomain(new IsoField({ ...grid, values: mask, outside: -1 }).rings(0.5, 400_000) as never, { fill: "nonzero", id: "silhouette" });
+  paint(outline, quantize(0, levels));
+  const near = (c: number): boolean => {
+    const i = c % columns, j = (c - i) / columns;
+    return (i > 0 && view.hit[c - 1] === 1) || (i < columns - 1 && view.hit[c + 1] === 1) || (j > 0 && view.hit[c - columns] === 1) || (j < rows - 1 && view.hit[c + columns] === 1);
+  };
+  for (let l = 1; l < levels; l++) {
+    const level = l / levels, values = new Float32Array(n);
+    // Cells that did not hit but touch a hit are set just under the level, so the band runs on past the silhouette and the clip trims it.
+    for (let c = 0; c < n; c++) values[c] = view.hit[c] ? shade[c] : near(c) ? level - 1e-3 : -1;
+    const rings = new IsoField({ ...grid, values, outside: -1e9 }).rings(level, 400_000);
+    if (rings.length === 0) continue;
+    paint(domainIntersection(ringsDomain(rings as never, { fill: "nonzero", id: `band${l}` }), outline, { id: `band${l}` }), (l + 0.5) / levels);
+  }
 }
 
 function drawFacets(surface: CompositionSurface, recipe: ImplicitSculptureComposition, products: SculptureProducts, run: CompositionRun): void {

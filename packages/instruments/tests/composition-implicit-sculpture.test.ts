@@ -595,6 +595,25 @@ test("drawing: transparent layer, lines-only is useful, every fill draws, limits
   assert.throws(() => validateInstrument(layer({ iterations: 9 }) as never), /iterations|Iterations/);
 });
 
+test("bands are clipped to the silhouette: the base region has the disc's area and every band lies inside it", () => {
+  // A carved block with roundness 1 and no bores is the unit sphere; the orthographic camera scales the bounding sphere to `size`.
+  const size = 500, input = layer({ form: "carved-block", roundness: 1, bores: 0, cut: "none", fill: "bands", levels: 4, silhouette: false, creases: false, size, cellSize: 4, projection: "orthographic" });
+  const { surface, calls } = recorder();
+  drawInstrument(surface as never, input);
+  const shapes: [number, number][][] = [];
+  for (const c of calls) {
+    if (c.name === "beginShape") shapes.push([]);
+    else if (c.name === "vertex") shapes[shapes.length - 1].push([c.args[0] as number, c.args[1] as number]);
+  }
+  const area = (ring: [number, number][]) => Math.abs(ring.reduce((sum, p, i) => sum + p[0] * ring[(i + 1) % ring.length][1] - ring[(i + 1) % ring.length][0] * p[1], 0)) / 2;
+  const tree = sculptureSdf(recipe({ form: "carved-block", roundness: 1, bores: 0, cut: "none" }).sculpt), radius = (size / (2 * tree.radius)) * 1;
+  near(area(shapes[0]) / (Math.PI * radius * radius), 1, 0.02);
+  assert.ok(shapes.length >= 3, "the base and at least two lighter bands");
+  const centre = [320, 322];
+  for (const ring of shapes) for (const [x, y] of ring) assert.ok(Math.hypot(x - centre[0], y - centre[1]) <= radius * 1.02 + 0.5, `a band vertex at (${x}, ${y}) pokes out of the silhouette`);
+  assert.ok(shapes.slice(1).every((ring) => area(ring) < area(shapes[0]) * 1.001), "bands are inside the base");
+});
+
 test("a hidden-line policy of drop removes hidden runs and faint keeps them lighter", () => {
   const strokes = (hiddenLines: string) => {
     const { surface, calls } = recorder();
