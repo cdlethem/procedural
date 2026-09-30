@@ -217,15 +217,27 @@ every control of all 20 newer studies (no console errors or blank canvases); lay
 orders with unmodified older instruments; latency 27-391 ms per edit at large settings. Not yet
 done: per-study structural sweeps through the real controls for the W2 studies, and the real Studio.
 
-**W3 stateful construction: foundation merged, briefs in flight.** F7 stateful snapshots
-(`composition-snapshots.md`) is on main; five older dynamics instruments now run through it with
-identical drawings. Twelve briefs (09, 15-21, 43-45, 49) are being built on separate branches.
+**W3 stateful construction: foundation and two briefs merged, ten in flight.** F7 stateful
+snapshots (`composition-snapshots.md`) is on main; five older dynamics instruments now run through
+it with identical drawings. Merged: Chemotactic Trails (17) and Random Walk Fronts (21).
+In flight (agents were interrupted by a host restart and resumed from their uncommitted
+worktrees): Wet Pigment (09), Aggregation Colonies (15), Laplacian Fronts (16), Pattern
+Competition (18), Cyclic Fronts (19), Cell Division (20), Roads and Parcels (43), River Ribbons
+(44), Drainage and Erosion (45), Collision Scores (49).
 
-**W4 spatial: foundation merged, briefs in flight.** Nodal Plates (25), Inversion Gardens (26) and
-the F8 spatial foundation (indexed meshes, topology, sampling, cameras, exact hidden lines) are on
-main; Hyperbolic Gardens (24), Surface Growth (50), Hinged Panels (51), Surface Weave (52), Point
-Clouds (54) and Implicit Sculpture (56) are in flight; Geological Cutaways (46), Visibility-aware
-Mesh Drawing (53) and Local Mesh Abstraction (55) wait for the mesh-section work.
+**W4 spatial: foundation and three briefs merged, eight in flight.** Merged: the F8 spatial
+foundation (indexed meshes, topology, sampling, cameras, exact hidden lines, planar sections and
+surface iso-contours), Hyperbolic Gardens (24), Nodal Plates (25), Inversion Gardens (26).
+In flight: Geological Cutaways (46), Surface Growth (50), Hinged Panels (51), Surface Weave (52),
+Visibility-aware Mesh Drawing (53), Point Clouds (54), Local Mesh Abstraction (55), Implicit
+Sculpture (56).
+
+**Cross-cutting.** A layered-scenario pass (roadmap section 6) rendered seven of the twelve
+scenarios from merged studies (ornament field, regional flow print, sparse ordered disorder,
+material portrait, chemical garden, optical typography, gesture to many) with their decisive
+edits; the remaining five need the in-flight studies. An option-by-option sweep through the real
+select controls of 24 studies found no errors or blank canvases; inert-at-default options were
+all disjunctive or numeric-threshold relevance, which the F9 extension (in flight) targets.
 
 
 ## Ownership and unchanged boundaries
