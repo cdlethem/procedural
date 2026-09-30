@@ -674,6 +674,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "aggregation-colonies",
+      "title": "Aggregation Colonies",
+      "description": "Grow a branching accretion from random walkers that stick where they touch: seeds, a release source, a wind, a sticking chance and an optional wall (letters, an image silhouette or a hole) decide the tree; the same colony is drawn as marks at its grains, ink, stitches or beads along its parent links, a halo and tip marks, coloured by age, limb or depth.",
+      "category": "Systems & rules",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/aggregation-colonies.md",
+      "source": "packages/instruments/src/composition/aggregation-draw.ts",
+      "sourceEntry": "drawAggregationColonies",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "painterly-source",
       "title": "Painterly Source",
       "description": "Assemble a picture from marks in coarse-to-fine layers: broad strokes first, finer ones only where the paint still differs from the source, turned along its edges and colored from it; mark family, material and color are separate choices over one plan.",
