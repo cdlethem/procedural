@@ -1,6 +1,6 @@
 # Current project state
 
-Updated 2026-09-28. Read with [AGENTS.md](AGENTS.md); open other documents only for the task.
+Updated 2026-09-30. Read with [AGENTS.md](AGENTS.md); open other documents only for the task.
 This is a current snapshot. Historical plans and reviews are not an active assignment queue.
 
 ## Accepted capabilities
@@ -58,15 +58,17 @@ The report includes all69 family dispositions and all three denominators:800 ass
 
 - Multi-tenant work continues separately in the private successor,
   [cdlethem/procedurals-web](https://github.com/cdlethem/procedurals-web).
-  Public toolkit inputs are published as `web-toolkit-v0.2.2`: JavaScript operations,
-  catalog and the new library-owned instruments package. The private app pins all three
-  release URLs, SHA-256 values and npm integrity records. Checkpoint B extraction remains
-  historical evidence; Checkpoint C persistence/authentication/admission stays separate.
+  Public toolkit inputs are published as [`web-toolkit-v0.2.3`](https://github.com/cdlethem/procedural/releases/tag/web-toolkit-v0.2.3)
+  (source `a98a0ae`): JavaScript operations, catalog and the instruments package with
+  **174 study IDs / 156 canonical instruments**, control groups and `inspectorItems`.
+  The private app pins all three release URLs and npm integrity records, renders the grouped,
+  visibility-filtered inspector, and ships the matching private preview release. Checkpoint B
+  extraction remains historical evidence; tenant checkpoints C–F stay separate.
   No tenant or visitor launch acceptance is claimed.
-- Unreleased instruments preview in the private app without a release: its `npm run toolkit:local`
-  runs `tools/build_web_toolkit.mjs --allow-dirty` and installs those tarballs unsaved, so the
-  app's normal checks apply. Live dev server: https://eunoia.tailf03dad.ts.net:46590
-  (443 belongs to the separate Airflow project, whose workers call its execution API there).
+- Unreleased instruments can still preview in the private app: its `npm run toolkit:local`
+  runs `tools/build_web_toolkit.mjs --allow-dirty` and installs those tarballs unsaved.
+  Dev server: https://eunoia.tailf03dad.ts.net:46590 (443 belongs to the separate Airflow
+  project, whose workers call its execution API there).
 - Checkpoint A containment removed app ingress on 8443 and 8444 and stopped the
   working preview. Historical storage remains loopback-only; its artwork need not migrate.
   The release/preview URLs in the historical reviews below are not currently served.
@@ -111,17 +113,16 @@ source/process/installation distinctions and access limits. No recreation is acc
 
 ## Remaining work and ownership
 
-Next-release planning is complete: the authoritative [roadmap and implementation guide](docs/next-release-roadmap.md)
-specifies **56 substantial capability briefs** in eight areas, built through functional
-composition rather than 56 independent algorithms or mandatory gallery tiles.
-It includes shared contracts, dependency waves, file ownership and twelve layered scenarios.
-The [progress snapshot](docs/next-release-progress.md) records the completed W0 reference examples:
-**Motif Ecologies, Contour Scores and Region Quilts**. Their [contract and implementation map](docs/composition-reference-slice.md)
-freeze shared callbacks, typed named compositions and genuine nested controls.
-Root reviewed thirteen actual-interface configurations and three layered pairs in both orders;
-the [evidence](evidence/web/composition-reference-slice.json) binds exact replay, 27 passing package
-tests, checked packages and observed responsiveness. The slice is unreleased and scoped to p5;
-general graphs, cross-layer links and the remaining capability program are still future work.
+The next-release program is **built, released and live**: all **56 capability briefs** of the
+[roadmap](docs/next-release-roadmap.md) have studies (W0–W4 plus brief 27), published as
+[`web-toolkit-v0.2.3`](https://github.com/cdlethem/procedural/releases/tag/web-toolkit-v0.2.3)
+with **174 study IDs / 156 canonical instruments**, control groups and conditional controls
+(F9/F10), 1,645 package tests. The private app adopted it and passed an authenticated real-Studio
+check (new studies layered over an existing draft, grouped/filtered inspector, save/reload,
+PNG export). The [progress snapshot](docs/next-release-progress.md) records the evidence, the
+review standards adopted and the remaining open items (inert-but-visible controls, ratio locks,
+discovery taxonomy, two retrofit candidates). This is not whole-gallery creative acceptance,
+cross-target parity or a portable recipe executor.
 
 - Separate placement/marks, paths/materials, regions/fillers and fields/consumers. Ordinary
   functions serve code authors; Studio needs serializable equivalents backed by the same
@@ -129,14 +130,13 @@ general graphs, cross-layer links and the remaining capability program are still
   The earlier “strengthen everything first” ordering is superseded. Keep consequential
   controls, purposeful seed variation, useful fragments, negative space and real layered
   review. Consolidate redundant entries; existing artwork is disposable.
-- Every instrument now declares semantic [control groups](docs/control-groups.md) with
-  ratio-lockable `proportional` clusters; drawing is unchanged. Uncommitted; the app has not
-  yet adopted `inspectorItems` or a ratio lock ([progress](docs/next-release-progress.md)).
+- Every instrument declares semantic [control groups](docs/control-groups.md) with
+  ratio-lockable `proportional` clusters; drawing is unchanged. Released in 0.2.3; the app
+  renders `inspectorItems` but has no ratio lock yet.
 - Reusable controls, construction, drawing, preparation, metadata, guides and source now
   live in `packages/instruments/`. The private `/home/colin/dev/procedurals-web` host owns
   UI, document envelopes, transforms/opacity, p5 lifecycle and storage—not copied drawers.
-  Its primary released gallery remains at 117 workflows / 92 API entries; the verified isolated
-  reference-package host has 120 workflows / 102 canonical instruments and the same 92 API entries.
+  Its released gallery is at 174 workflows / 156 canonical instruments / 92 API entries (0.2.3).
 - The preceding bounded pass scanned the 55 IDs not revised previously, revised 27, and
   added **Harmonic Traces, Phyllotactic Whorls and Contour Relief**. The subsequent color pass
   brought that historical checkpoint to **81 revised existing IDs plus eleven additions**

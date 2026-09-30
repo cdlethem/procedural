@@ -118,7 +118,7 @@ Verification: package build, 58 tests (31 new property tests; mutations of six b
 confirmed to fail them) and the `--allow-dirty` preview build over all 124 instruments. The
 isolated private host was not run.
 
-## In progress on branch `conditional-controls`: conditional controls (F9)
+## Merged on main: conditional controls (F9)
 
 Scope added by the maintainer: the app should show only the controls relevant to the current
 choices. [Contract, evidence tooling and coverage](conditional-controls.md); planned as
@@ -238,7 +238,20 @@ stay holes) and inverse raster sampling (damped Newton, exact exclusion) to the 
 the released Fold Atlas is unchanged.
 
 **All 56 briefs now have a built study.** The current tree has 174 instrument definitions (156
-canonical), 1,626 package tests, and every guide/metadata/source agreement check passes.
+canonical), 1,645 package tests, and every guide/metadata/source agreement check passes.
+
+**Released and live in Studio (2026-09-30).** [`web-toolkit-v0.2.3`](https://github.com/cdlethem/procedural/releases/tag/web-toolkit-v0.2.3)
+(source `a98a0ae`, all 1,645 package tests and the builder's offline install/import checks passed)
+publishes the program. The private app pins it, its `LayerControls` renders `inspectorItems`
+(grouped, visibility-filtered, hidden values kept), and it ships a matching private preview release
+(174 technique and six landing captures, every PNG served byte-for-byte). In the authenticated owner
+Studio: all 156 gallery thumbnails loaded; Inversion Gardens and Region Quilts were added over an
+existing pre-release draft; Region Quilts' Leaf filler changed the grouped inspector from 6 to 4
+(hatch) to 5 (motifs) groups; save, reload (title, four layers, retained filler) and PNG export
+worked with no page errors. The first attempt found that a release stranded every saved document
+(exact catalog-digest match); the app now admits the previous release's digest, revalidates each
+layer and rebinds it. This closes the program's build, release and real-Studio items; it is not
+whole-gallery creative acceptance or new target certification.
 
 **Review evidence and standards adopted during the program.** Root operated every new study
 through its actual controls in an isolated copy of the private app (separate port, packages from an
@@ -257,14 +270,14 @@ applied to 183 measured conditions in 54 instruments. Some controls stay visible
 because their relevance needs a richer gate than the audit can prove: Surface Growth grain mark
 (dependents' conditions name it), Point Clouds thinning rule, Adaptive Compartments and Connected
 Value Regions retain-by, Visibility Drawing crease kind, Hinged Panels lines, Cell Division
-boundary, Roads and Parcels dead ends. (2) The real Studio (authenticated
-backend) was not available: layering used the equivalent renderer, not Studio, and the private
-app's own `LayerControls` still has to adopt `inspectorItems`. (3) The control audits for Laplacian
-Fronts and Pattern Competition were run on a quiet machine: no violations, no dead controls.
-(4) `fm-engraving` and `iso-rings` keep small local clips. (5) Category names are worker-assigned
-and uneven (`Fields & paths` holds 54 entries); a deliberate discovery taxonomy is a UX decision.
-(6) No release has been cut: packages are unpublished local artifacts, and a clean release build
-requires committed inputs (the working tree carries unrelated uncommitted edits).
+boundary, Roads and Parcels dead ends. (2) The app renders groups but no ratio lock for
+`proportional` clusters yet. (3) The control audits for Laplacian Fronts and Pattern Competition
+were run on a quiet machine: no violations, no dead controls. (4) `fm-engraving` and `iso-rings`
+keep small local clips. (5) Category names are worker-assigned and uneven (`Fields & paths` holds
+54 entries); a deliberate discovery taxonomy is a UX decision. (6) Contact memory surviving
+separation and flock neighbours following the geometric radius were tested only by the private
+app against internal generators that 0.2.3 folded into snapshots; those assertions belong in the
+package's own tests.
 
 
 ## Ownership and unchanged boundaries
