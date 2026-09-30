@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  STRAND_LIMITS, boundaryDistance, meshBarycentric, meshWalker, walkMesh, estimateStrandVertices, flowVectors, icosphereMesh, mergeMeshes, meshData, orderCrossings, scalarField, spacingField, surfaceCrossingSet,
+  STRAND_LIMITS, meshBoundaryDistance as boundaryDistance, meshBarycentric, meshWalker, walkMesh, estimateStrandVertices, flowVectors, icosphereMesh, mergeMeshes, meshData, orderCrossings, scalarField, spacingField, surfaceCrossingSet,
   surfaceCrossings, surfaceWeaveStrands, terrainMesh, traceGraph, traceStrands, transformMesh, waveTerms,
   type FlowSpec, type Mesh, type ScalarSpec, type SurfaceStrand, type SurfaceWeaveStructure,
 } from "../dist/index.js";

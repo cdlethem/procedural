@@ -609,7 +609,7 @@ export { geologicalCutawaysComposition, geologicalProducts, geologicalCamera, ge
 export type { SheetKind, SheetOptions } from "./composition/mesh-surfaces.js";
 export { parametricSheetMesh, icospherePatchMesh, sheetKinds, sheetWaves, HELICOID, SCROLL, MAX_PATCH_LEVELS } from "./composition/mesh-surfaces.js";
 export type { TraceGraph, Walker as MeshWalker, WalkEnd as MeshWalkEnd, StepEnd } from "./composition/mesh-trace.js";
-export { traceGraph, walk as walkMesh, walker as meshWalker, stepRK2, fieldDirection, barycentric as meshBarycentric, boundaryDistance, interpolate as interpolateVertexValues, TRACE_LIMITS } from "./composition/mesh-trace.js";
+export { traceGraph, walk as walkMesh, walker as meshWalker, stepRK2, fieldDirection, barycentric as meshBarycentric, boundaryDistance as meshBoundaryDistance, interpolate as interpolateVertexValues, TRACE_LIMITS } from "./composition/mesh-trace.js";
 export type { ScalarKind, ScalarSpec, FlowSpec, DensitySpec as SpacingDensitySpec } from "./composition/surface-fields.js";
 export { scalarKinds, scalarField, tangentGradients, waveTerms, flowVectors, spacingField } from "./composition/surface-fields.js";
 export type { StrandEnd, SurfaceStrand, FamilyOptions as SurfaceStrandOptions, SurfaceCrossing } from "./composition/surface-strands.js";

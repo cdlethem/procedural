@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  boundaryDistance, boxMesh, icosphereMesh, interpolateVertexValues, mesh, meshBarycentric, meshWalker, stepRK2, terrainMesh, traceGraph, walkMesh,
+  meshBoundaryDistance as boundaryDistance, boxMesh, icosphereMesh, interpolateVertexValues, mesh, meshBarycentric, meshWalker, stepRK2, terrainMesh, traceGraph, walkMesh,
   type Mesh, type MeshWalker,
 } from "../dist/index.js";
 
