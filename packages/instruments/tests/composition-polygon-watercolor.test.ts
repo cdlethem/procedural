@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   WASH_LIMITS, canPrepareInstrument, createInstrument, definitions, domainIntersection, domainUnion, drawInstrument, drawPolygonWatercolor,
-  locateInDomain, offsetDomain, planarDomain, planarRegion, polygonWatercolorComposition, polygonWatercolorParent, polygonWatercolorPasses, prepareInstrument, usesSeed, visibleParameters,
-  textDomain, washLaw, washOffset, washOutline, washParentDomain, washPasses, washWork,
+  locateInDomain, offsetDomain, planarDomain, planarRegion, polygonWatercolorComposition, polygonWatercolorParent, polygonWatercolorPasses, prepareInstrument, usesSeed, validateInstrument, visibleParameters,
+  textDomain, washBroadest, washLaw, washOctaves, washOffset, washOutline, washParentDomain, washPasses, washWork,
   type CompositionSurface, type DrawingContext, type PlanarDomain, type WashBoundary, type WashOptions, type WashPass,
 } from "../dist/index.js";
 import { drawFingerprint } from "./helpers/draw-fingerprint.js";
@@ -267,18 +267,29 @@ test("work is bounded and measured before any pass exists; every invalid option 
   // Square of side 1000, swell .4, 5 octaves: finest wavelength 400 / 16 = 25, spacing 25 / 3, so 4 * ceil(1000 / (25 / 3)) samples per pass.
   const per = 4 * Math.ceil(1000 / (25 / 3));
   assert.equal(washWork(big, options({ passes: 10, boundary: { swell: 0.4, octaves: 5 } })), 10 * per);
-  // Square of side 4000, swell .1, 8 octaves: finest 400 / 128 = 3.125, spacing 3.125 / 3, so 4 * ceil(4000 / (3.125 / 3)) samples per pass and 64 passes exceed the limit.
+  // Square of side 4000, swell .1 (broadest 400), 8 octaves: finest 400 / 128 = 3.125, spacing 3.125 / 3, so 4 * ceil(4000 / (3.125 / 3)) samples per pass; 64 passes pass the limit.
   const over = options({ passes: 64, boundary: { swell: 0.1, octaves: 8 } });
   assert.equal(washWork(huge, over), 64 * 4 * Math.ceil(4000 / (3.125 / 3)));
   assert.ok(washWork(huge, over) > WASH_LIMITS.vertices);
-  assert.throws(() => washPasses(huge, over), /boundary samples.*limit of 600000.*Detail/s);
-  assert.ok(washWork(huge, options({ passes: 30, boundary: { swell: 0.1, octaves: 8 } })) < WASH_LIMITS.vertices);
+  // Detail is a maximum: the finest scales are dropped until the budget holds. 7 octaves: spacing 400 / 64 / 3, 64 * 4 * ceil(4000 / (400 / 64 / 3)) = 491,520 samples.
+  assert.equal(washOctaves(huge, over), 7);
+  assert.equal(washPasses(huge, over).work, 64 * 4 * Math.ceil(4000 / (400 / 64 / 3)));
+  assert.equal(washOctaves(huge, options({ passes: 30, boundary: { swell: 0.1, octaves: 8 } })), 8);
+  // ... and until the finest ripple is at least 2 units, and the broadest at least 4: side 100, swell .08 gives 8 units, so 3 scales (8, 4, 2); swell .005 gives 4, so 2 scales.
+  const small = square(0, 0, 100, 100, "small");
+  assert.equal(washOctaves(small, options({ boundary: { swell: 0.08, octaves: 5 } })), 3);
+  assert.equal(washOctaves(small, options({ boundary: { swell: 0.005, octaves: 5 } })), 2);
+  assert.equal(washBroadest({ ...boundary, swell: 0.005 }, 100), 4);
+  assert.equal(washLaw({ ...boundary, swell: 0.005, octaves: 2 }, 100).wavelength[0], 4);
+  // Only a parent whose single-scale outline alone passes the budget is refused: 3600 separate 10-unit squares at 1.33-unit spacing, 32 samples each.
+  const squares = planarDomain(Array.from({ length: 3600 }, (_, i) => ({ id: `s${i}`, outer: [[(i % 60) * 12, Math.floor(i / 60) * 12], [(i % 60) * 12 + 10, Math.floor(i / 60) * 12], [(i % 60) * 12 + 10, Math.floor(i / 60) * 12 + 10], [(i % 60) * 12, Math.floor(i / 60) * 12 + 10]] as [number, number][] })), { id: "grid" });
+  assert.throws(() => washPasses(squares, options({ passes: 6, boundary: { swell: 0.005, octaves: 1 } })), /boundary samples.*limit of 600000.*even with a single ripple scale.*Passes/s);
   const bad: [Partial<WashOptions> & { boundary?: Partial<WashBoundary> }, RegExp][] = [
     [{ passes: 0 }, /Passes must be an integer/], [{ passes: 65 }, /Passes must be an integer/], [{ passes: 1.5 }, /Passes must be an integer/],
     [{ boundary: { swell: 0 } }, /Swell must be/], [{ boundary: { octaves: 9 } }, /Detail must be an integer/], [{ boundary: { independence: 1.1 } }, /Independence must be/],
     [{ boundary: { variance: -1 } }, /Edge variance must be/], [{ boundary: { roughness: 2 } }, /Roughness must be/], [{ margin: -1 }, /Reserve margin must be/],
     [{ creep: Infinity }, /Pass creep must be/], [{ patches: { size: 0, focus: 0 } }, /Patch size must be/], [{ patches: { size: 1, focus: 2 } }, /Patch focus must be/],
-    [{ seed: -1 }, /Seed must be/], [{ boundary: { swell: 0.005, octaves: 8 } }, /finest ripple.*Swell.*Detail/],
+    [{ seed: -1 }, /Seed must be/]
   ];
   for (const [patch, message] of bad) assert.throws(() => washPasses(big, options(patch)), message, JSON.stringify(patch));
   assert.equal(washPasses(planarDomain([]), options()).passes.length, 0);
@@ -306,8 +317,17 @@ test("bundled parents are frozen, cached, valid and fitted to their box; bad inp
   assert.equal(merged.regions.length, unmerged.regions.length - Math.floor(0.6 * unmerged.regions.length / 2), "each merge joins two compartments");
   assert.ok(merged.regions.some((r) => r.outer.length > 4), "merged compartments are non-rectangular");
   near(merged.area, 360 * 240, 1e-6);
-  assert.throws(() => washParentDomain({ kind: "blob", lobes: 5, holes: 12, holeSize: 0.5 }, box, 1), /Could not place hole/);
-  assert.throws(() => washParentDomain({ kind: "quilt", compartments: 10, merge: 0, layout: "gapped", gutter: 150 }, box, 2), /Gutter/);
+  // A hole that finds no room shrinks until it fits, so crowded settings still give every hole: 12 large holes.
+  const crowded = washParentDomain({ kind: "blob", lobes: 5, holes: 6, holeSize: 0.25 }, box, 1);
+  assert.equal(crowded.regions[0].holes.length, 6);
+  assert.throws(() => washParentDomain({ kind: "blob", lobes: 5, holes: 12, holeSize: 0.5 }, box, 1), /Could not place hole.*Hole count/);
+  const roomy = washParentDomain({ kind: "blob", lobes: 5, holes: 2, holeSize: 0.1 }, box, 1);
+  assert.ok(crowded.regions[0].holes.every((h) => Math.abs(shoelace(h as never)) > 0) && roomy.regions[0].holes.length === 2);
+  // A gutter wider than a compartment leaves it nothing to wash: it is dropped, not an error (all of them at gutter 200 in this box, some at 90).
+  const bare = washParentDomain({ kind: "quilt", compartments: 10, merge: 0, layout: "gapped", gutter: 200 }, box, 2);
+  assert.equal(bare.regions.length, 0);
+  const fewer = washParentDomain({ kind: "quilt", compartments: 10, merge: 0, layout: "gapped", gutter: 90 }, box, 2);
+  assert.ok(fewer.regions.length > 0 && fewer.regions.length < quilt.regions.length, `${fewer.regions.length} of ${quilt.regions.length} compartments`);
   assert.throws(() => washParentDomain({ kind: "ring", holeSize: 1.2 }, box, 1), /Hole size/);
   const turned = washParentDomain({ kind: "letters", word: "BLOOM" }, { ...box, rotation: 90 }, 1), flat = washParentDomain({ kind: "letters", word: "BLOOM" }, box, 1);
   near(turned.area, flat.area, 1e-6 * flat.area, "rotation preserves area");
@@ -407,4 +427,26 @@ test("drawing goes through a real 2d context call sequence: transparent, no back
   assert.ok(!calls.includes("background") && !calls.includes("rect"));
   const passes = polygonWatercolorPasses(recipeFor({ edge: 0 }));
   assert.equal(calls.filter((c) => c === "endShape").length, passes.passes.reduce((n, pass) => n + pass.domain.regions.length, 0));
+});
+
+test("every slider end, and every combination of slider ends, is admitted and draws", () => {
+  const definition = definitions.find((d) => d.id === "polygon-watercolor")!;
+  const numbers = definition.parameters.filter((p) => p.type === "number");
+  const edge = (which: "min" | "max") => Object.fromEntries(numbers.map((p) => [p.key, p[which]!])) as Params;
+  const surface = new Recorder();
+  const draws = (params: Params, seed = 42) => {
+    const input = instrument(params, seed);
+    assert.deepEqual(validateInstrument(JSON.parse(JSON.stringify(input))).params, input.params);
+    surface.ops.length = 0;
+    drawInstrument(surface as unknown as DrawingContext, input);
+    assert.ok(surface.ops.length > 0, JSON.stringify(params));
+  };
+  const worlds: Params[] = [];
+  for (const shape of ["blob", "ring", "letters", "quilt"]) for (const extent of ["whole", "patches"]) for (const holes of ["reserved", "open"])
+    worlds.push({ shape, extent, holes, layout: shape === "quilt" ? "gapped" : "abutting", coupling: "separate", pigment: "region" });
+  for (const word of ["BLOOM", "PIGMENT", "tide", "WASH"]) worlds.push({ shape: "letters", word, extent: "patches", holes: "reserved" });
+  for (const world of worlds) for (const which of ["min", "max"] as const) draws({ ...world, ...edge(which) });
+  // Each control alone at each end, in the default world, and the blob's crowded corner for a few seeds.
+  for (const p of numbers) for (const which of ["min", "max"] as const) draws({ [p.key]: p[which]! });
+  for (const seed of [0, 1, 7, 99, 12345]) draws({ ...edge("max"), shape: "blob" }, seed);
 });

@@ -21,7 +21,7 @@ saved settings name only the bundled shapes.
 | Controls | What changes on the canvas |
 |---|---|
 | **Shape** | **Blob**, **Ring with a hole**, **Letterforms** or **Quilt compartments**. |
-| **Lobes**, **Hole count**, **Hole size** | (Blob) main bulges of the outline, how many round holes are cut into it, and their radius. The seed sets the outline's phases and the holes' places. |
+| **Lobes**, **Hole count**, **Hole size** | (Blob) main bulges of the outline, how many round holes are cut into it, and their largest radius (a hole that finds no room among the others shrinks until it fits). The seed sets the outline's phases and the holes' places. |
 | **Ring hole** | (Ring) the hole's radius as a fraction of the outer radius. |
 | **Word** | (Letterforms) which bundled word is washed; counters are holes. |
 | **Compartments**, **Merged**, **Layout**, **Gutter** | (Quilt) how many compartments (the 12 by 12 cut grid refuses very fine cuts, so large requests give somewhat fewer), the share joined into L- and T-shaped regions, whether they abut or are inset from each other, and the gap between them. |
@@ -32,7 +32,7 @@ saved settings name only the bundled shapes.
 | Controls | What changes on the canvas |
 |---|---|
 | **Swell** | The wavelength of the broadest ripple, as a fraction of the shape's shorter side. Larger gives long lazy bulges, smaller a busy edge. Scale-free, so the same setting suits a blob and a line of type. |
-| **Detail** | How many ripple scales are layered, each half the wavelength of the one before. One is a smooth swell; six adds fine feathering. Every scale doubles the outline samples. |
+| **Detail** | How many ripple scales are layered, each half the wavelength of the one before. One is a smooth swell; five adds fine feathering. It is a maximum: scales finer than 2 canvas units, or that would pass the sample budget, are not laid, and the broadest ripple is at least 4 units wide. Every scale doubles the outline samples. |
 | **Roughness** | How strongly fine ripples keep up with broad ones: 0 smooth and lapping, 1 torn. |
 | **Edge variance** | How far the boundary strays from the parent. 0 leaves every pass exactly the parent; 1 is the largest broad ripple the boundary allows (a tenth of its wavelength, rms). |
 
@@ -51,7 +51,7 @@ saved settings name only the bundled shapes.
 | **Passes** | Translucent layers per region. More passes deepen the middle; pass *k* never depends on how many there are, so adding passes only appends layers. |
 | **Reach** | **Whole shape**: every pass covers the whole parent. **Patches**: each pass covers only a ragged elliptical patch of it. |
 | **Patch size**, **Patch focus** | (Patches) the patch radius as a fraction of the region's half diagonal, and how far the patches gather on one common point: 0 scatters them, 1 stacks them into a dense overpainted patch with a pale halo. |
-| **Pass creep** | Each later pass is grown (positive) or shrunk (negative) by this many units per pass before its boundary is displaced: nested tone steps rather than a common edge. |
+| **Pass creep** | Each later pass is grown (positive) or shrunk (negative) by this many units per pass before its boundary is displaced: nested tone steps rather than a common edge. Reserved holes are not moved by creep. |
 
 ## Reserve holes
 
@@ -73,10 +73,10 @@ Colour, opacity, edge and pigment never touch the geometry: changing them redraw
 ## Try these
 
 - **Light partial wash:** *Reach* patches, *Patch size* 0.45, *Passes* 6, *Pigment opacity* 0.05, *Patch focus* 0, *Hole count* 0.
-- **Dense overpainted patch:** *Patch size* 0.5, *Patch focus* 1, *Passes* 40, *Pigment opacity* 0.2.
+- **Dense overpainted patch:** *Patch size* 0.5, *Patch focus* 1, *Passes* 24, *Pigment opacity* 0.2.
 - **One shared edge:** *Independence* 0: the passes coincide and the shape reads as a flat cut-out with soft warped edges.
 - **Crisp shape, torn rim:** *Independent at* fine ripples only, *Independence* 1, *Roughness* 0.7, *Detail* 5.
-- **Torn feathering:** *Reach* whole shape, *Roughness* 1, *Detail* 6, *Edge variance* 1, *Independence* 1.
+- **Torn feathering:** *Reach* whole shape, *Roughness* 1, *Detail* 5, *Edge variance* 1, *Independence* 1.
 - **Tone steps:** *Reach* whole shape, *Pass creep* -2 (or +3), *Independence* 0.6.
 - **Masked ring:** *Shape* ring, *Reserve margin* 24: a clean paper halo around the hole.
 - **Quilt of washes:** *Shape* quilt, *Pigment* one per region, *Regions* one shared field; switch to separate fields for overlapping seams.
@@ -135,8 +135,9 @@ inspection. The library never fetches or decodes and never clears a canvas; leng
 
 Boundary samples, summed over every pass and region (the outline length divided by a third of the finest ripple, plus each
 patch outline), may not exceed 600,000. Over the limit the error names what to change (**Detail**, **Passes**,
-**Patch size**, **Swell**) and nothing is truncated. **Passes** go to 64 (the slider stops at 40) and **Detail** to 8; the
-finest ripple may not be narrower than half a canvas unit. On the development machine a default first preparation takes
-about 100 ms, a colour or opacity edit redraws in a few milliseconds, and the largest settings near the sample limit
-prepare in about two seconds. A quilt partition asks for `Compartments - 1` cuts on a 12 by 12 grid; a very small box or
-a gutter wider than a compartment is an error naming **Gutter**.
+**Patch size**, **Swell**) and nothing is truncated. **Passes** go to 64 (the slider stops at 24) and **Detail** to 8; the
+sample budget never refuses a slider setting: **Detail** is reduced instead (the finest scales are dropped), and only a parent whose outline alone,
+with one scale, passes the budget is an error. On the development machine a default first preparation takes
+about 100 ms, a colour or opacity edit redraws in a few milliseconds, and every slider at its maximum together prepares in about one second
+(under two on every bundled shape). A quilt partition asks for `Compartments - 1` cuts on a 12 by 12 grid; a very small box or
+a compartment narrower than the gutter is simply not washed.

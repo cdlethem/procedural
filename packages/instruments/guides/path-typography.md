@@ -38,7 +38,7 @@ laid on the path.
 | **Landscape, Frequency, First threshold, Threshold interval, Threshold count** (contour) | Which landscape, how many wave cycles, where the contours sit, how far apart neighbouring levels are (wider spacing keeps lines of type apart) and how many levels there are. |
 | **Recording, Hand smoothing** (gesture) | Which movement, and how much its tremor is softened before the text is laid on it. |
 | **Attractors, Growth ticks, Branches, Branch spread, Branch routing** (branch) | The tree the chains come from. |
-| **Path, Paths lettered** | Paths are ranked longest first. **Path** is the first one that carries text; **Paths lettered** is how many consecutive ones do. Fewer are lettered if the supply has fewer; a **Path** past the last one is an error. |
+| **Path, Paths lettered** | Paths are ranked longest first. **Path** is the first one that carries text; **Paths lettered** is how many consecutive ones do. Fewer are lettered if the supply has fewer; a **Path** past the last one (or a supply with no paths) leaves the canvas empty. |
 | **Smoothing** | Rounds of corner cutting before layout. A faceted path turns letters in jerks; 0 keeps the source polyline. |
 | **Center, Size, Rotation** | Where the supply sits and how large it is (landscape width, attractor area or the stroke's larger side). |
 

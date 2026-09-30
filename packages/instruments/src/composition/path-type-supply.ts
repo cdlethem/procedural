@@ -155,16 +155,17 @@ export function rankedPaths(supply: PathSupply): readonly Path[] {
 }
 
 /**
- * The paths selected from a supply, smoothed, and how many the supply has. `count` is capped by
- * what exists after `pick`; a `pick` past the last path, or a supply with no paths, is an error.
+ * The paths selected from a supply, smoothed, and how many the supply has. `count` is capped by what
+ * exists after `pick`. A supply with no paths, or a `pick` past its last path, is a VALID EMPTY
+ * selection (`paths` empty, `available` says how many exist): the settings describe a picture with
+ * nothing to letter, which is an artistic state, not an error, so a slider can never refuse to draw.
+ * Malformed values (a non-integer pick or count) still throw.
  */
 export function supplyPaths(supply: PathSupply, selection: PathSelection): SelectedPaths {
   const { pick, count, smooth } = selection;
   if (!Number.isInteger(pick) || pick < 0) throw new Error("Path pick must be a nonnegative integer");
   if (!Number.isInteger(count) || count < 1 || count > 64) throw new Error("Paths lettered must be an integer in [1, 64]");
   const ranked = rankedPaths(supply);
-  if (ranked.length === 0) throw new Error(`This ${supply.kind} supply has no paths; change its ${supply.kind === "contour" ? "Field, Frequency or Level" : "Growth"} settings`);
-  if (pick >= ranked.length) throw new Error(`Path ${pick} does not exist: this ${supply.kind} supply has ${ranked.length} paths (0 to ${ranked.length - 1}); lower Path`);
   // One frozen array per selection, so layouts that depend on the array identity are shared.
   return memoized(selectedCache, JSON.stringify([supply, selection]), () =>
     Object.freeze({ paths: Object.freeze(ranked.slice(pick, pick + count).map((path) => smoothPath(path, smooth))), available: ranked.length }));

@@ -323,6 +323,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "fold-atlas-image",
+      "title": "Fold Atlas Image",
+      "description": "Push a picture through the Fold Atlas coordinate maps two ways: inverse sampling paints stretched, mirrored and overlapping fragments with one sheet on top, and forward density stacks samples of the picture in cells so folds pile up and stretched places leave holes.",
+      "category": "Transforms",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/fold-atlas-image.md",
+      "source": "packages/instruments/src/composition/fold-atlas-image-draw.ts",
+      "sourceEntry": "drawFoldAtlasImage",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "inversion-gardens",
       "title": "Inversion Gardens",
       "description": "Circles, arcs and motifs repeated through exact circle inversion: a Descartes gasket packed with exactly measured circles, or a source shape (rings, net, grid, letter or wallpaper motif) reflected through a group of inversion circles, every straight edge becoming a true circular arc and every image keeping its correct mirroring.",
@@ -401,6 +414,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "hinged-panels",
+      "title": "Hinged Panels",
+      "description": "Fold a flat tiling of panels along its shared edges: each hinge has an editable angle, panels move as rigid bodies from an anchored panel, conflicts the tiling cannot close are reported, and the flat crease pattern is a layer of its own.",
+      "category": "3D forms",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/hinged-panels.md",
+      "source": "packages/instruments/src/composition/hinge-draw.ts",
+      "sourceEntry": "drawHingedPanels",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "gesture-scores",
       "title": "Gesture Scores",
       "description": "Replay a recorded hand movement with its timing and pressure as a broad bristle brush, a lagging fall of sand and glyphs along the path; one time window and smoothing reshape all three.",
@@ -453,6 +479,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "river-ribbons",
+      "title": "River Ribbons",
+      "description": "A channel that migrates: each bend erodes toward its outside at a rate set by the curvature averaged along the channel, tight necks cut off into oxbows with their own age, and every earlier position is kept. Drawn as a ribbon whose width follows the discharge, faded scars of old channels and oxbows, and a floodplain tinted by age.",
+      "category": "Motion",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/river-ribbons.md",
+      "source": "packages/instruments/src/composition/river-draw.ts",
+      "sourceEntry": "drawRiverRibbons",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "data-scores",
       "title": "Data Scores",
       "description": "Let recorded values decide structure: three bundled tables with missing values become a lattice that drifts, a treemap with exact areas or a timeline, with explicit mappings and a small generated key.",
@@ -463,6 +502,19 @@
       "guide": "guides/data-scores.md",
       "source": "packages/instruments/src/composition/data-scores.ts",
       "sourceEntry": "drawDataScores",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "collision-scores",
+      "title": "Collision Scores",
+      "description": "Discs bounce in a container and the record of every contact becomes the drawing: trails with exact corners at each bounce, marks sized by impulse, rays along the bounce angles and a graph of who met whom, all read from one deterministic log.",
+      "category": "Motion",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/collision-scores.md",
+      "source": "packages/instruments/src/composition/collision-draw.ts",
+      "sourceEntry": "drawCollisionScores",
       "creativeReviewScope": "instrument-construction"
     },
     {
@@ -502,6 +554,19 @@
       "guide": "guides/stroke-relief.md",
       "source": "packages/instruments/src/composition/stroke-relief.ts",
       "sourceEntry": "drawStrokeRelief",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "drainage-erosion",
+      "title": "Drainage and Erosion",
+      "description": "Rain runs over a landform, gathers into rivers and cuts them deeper, step by step: depressions are filled, water is routed downhill and accumulated, stream power erodes, sediment is carried and dropped. The same land is drawn as contours, tapering rivers, drainage basins, lakes, marks at confluences and lit relief.",
+      "category": "Fields & paths",
+      "operationIds": ["field.gradient-noise-2d-01"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/drainage-erosion.md",
+      "source": "packages/instruments/src/composition/drainage-draw.ts",
+      "sourceEntry": "drawDrainageErosion",
       "creativeReviewScope": "instrument-construction"
     },
     {
@@ -609,6 +674,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "pattern-competition",
+      "title": "Pattern Competition",
+      "description": "Several scales of activation and inhibition compete on one grid, and the scale with the smallest disagreement updates each cell: broad lobes hold finer patterns, which hold finer ones. Flat bands by scale, contours and scale-sized marks are three drawings of the same evolving field, scrubbed by steps.",
+      "category": "Fields & paths",
+      "operationIds": ["geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/pattern-competition.md",
+      "source": "packages/instruments/src/composition/pattern-draw.ts",
+      "sourceEntry": "drawPatternCompetition",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "dry-bristles",
       "title": "Dry Bristles",
       "description": "Carry a broad brush of separate hairs along any path (harmonic traces, a contour family or a hand scribble): hairs lift on light pressure and paper tooth, run dry, taper at the ends and gather into tufts, while the other paths stay fine stitched contours.",
@@ -622,6 +700,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "cyclic-fronts",
+      "title": "Cyclic Fronts",
+      "description": "Expanding domains, interleaved fronts and spiral waves from a cyclic cellular automaton: every cell steps to the next of n states when enough neighbors already are, then the state cells (flat, hatched or marked), the fronts between them and the spiral cores are each drawn from the same grid, with obstacles that stop a front and a step count that scrubs the growth.",
+      "category": "Systems & rules",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/cyclic-fronts.md",
+      "source": "packages/instruments/src/composition/cyclic-fronts.ts",
+      "sourceEntry": "drawCyclicFronts",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "polygon-watercolor",
       "title": "Polygon Watercolor",
       "description": "Lay translucent washes over a shape (a blob, a ring, letterforms or quilt compartments): every pass keeps the parent shape but has its own ragged boundary, correlated with the others, so pigment builds up unevenly; reserved holes stay unpainted, and a light partial wash and a dense overpainted patch are the same instrument with different settings.",
@@ -632,6 +723,19 @@
       "guide": "guides/polygon-watercolor.md",
       "source": "packages/instruments/src/composition/polygon-watercolor.ts",
       "sourceEntry": "drawPolygonWatercolor",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "aggregation-colonies",
+      "title": "Aggregation Colonies",
+      "description": "Grow a branching accretion from random walkers that stick where they touch: seeds, a release source, a wind, a sticking chance and an optional wall (letters, an image silhouette or a hole) decide the tree; the same colony is drawn as marks at its grains, ink, stitches or beads along its parent links, a halo and tip marks, coloured by age, limb or depth.",
+      "category": "Systems & rules",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/aggregation-colonies.md",
+      "source": "packages/instruments/src/composition/aggregation-draw.ts",
+      "sourceEntry": "drawAggregationColonies",
       "creativeReviewScope": "instrument-construction"
     },
     {
@@ -710,6 +814,136 @@
       "guide": "guides/chemotactic-trails.md",
       "source": "packages/instruments/src/composition/chemotaxis-draw.ts",
       "sourceEntry": "drawChemotacticTrails",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "cell-division",
+      "title": "Cell Division",
+      "description": "A colony of cells eats a diffusing nutrient, grows and divides in two, pushing its neighbours aside: cells near the food grow large and divide, starved ones stay small, so sizes and generations record where the food was. Draw the cells, their division tree, the nutrient left and each cell's territory from the same colony.",
+      "category": "Systems & rules",
+      "operationIds": ["geometry.voronoi-cells-2d", "geometry.marching-squares-2d", "geometry.assemble-segment-chains-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/cell-division.md",
+      "source": "packages/instruments/src/composition/cell-division-draw.ts",
+      "sourceEntry": "drawCellDivision",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "roads-parcels",
+      "title": "Roads and Parcels",
+      "description": "Grow a street network one street at a time along a guide field (grid, radial and ring, spiral, organic), then read it as blocks and lots: roads in width classes, every enclosed block cut into lots along its nearest road, lots in three types with their own fills, and a reserved zone and unbuilt blocks left open. Scrub the growth steps; recolouring and restyling never regrow the streets.",
+      "category": "Layouts",
+      "operationIds": ["field.gradient-noise-2d-01", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/roads-parcels.md",
+      "source": "packages/instruments/src/composition/roads-parcels.ts",
+      "sourceEntry": "drawRoadsParcels",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "laplacian-fronts",
+      "title": "Laplacian Fronts",
+      "description": "A region grows where the flux of a potential is strongest: the potential between the growing region and a source is solved on a grid, the boundary advances at a speed that follows the potential gradient (raised to a growth bias, softened by a surface tension) and every front is kept; the history is drawn as age-colored fronts, bands of fill, marks at the tips or by age, and the equipotential lines the growth followed.",
+      "category": "Systems & rules",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/laplacian-fronts.md",
+      "source": "packages/instruments/src/composition/laplacian-fronts.ts",
+      "sourceEntry": "drawLaplacianFronts",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "mesh-abstraction",
+      "title": "Mesh Abstraction",
+      "description": "A detailed surface (fine sphere, terrain, vase, figure or torus) becomes coarse flat facets by edge collapse while a chosen region keeps every vertex of its detail; facets are painter-ordered, edges are hidden-line solved, and the untouched source can ghost over the result or stand beside it.",
+      "category": "3D forms",
+      "operationIds": ["mesh.radial-profile-surface-3d", "field.gradient-noise-2d-01", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/mesh-abstraction.md",
+      "source": "packages/instruments/src/composition/mesh-abstraction-draw.ts",
+      "sourceEntry": "drawMeshAbstraction",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "visibility-drawing",
+      "title": "Visibility Drawing",
+      "description": "Draw a solid as a technical line drawing: silhouettes, creases, section slices and iso-contours with exact hidden-line removal, each class removed, visible only or with its hidden part dashed, plus tone hatching or a banded fill from a light. The camera is separate from the surface features.",
+      "category": "Layouts",
+      "operationIds": ["geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/visibility-drawing.md",
+      "source": "packages/instruments/src/composition/visibility-drawing.ts",
+      "sourceEntry": "drawVisibilityDrawing",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "surface-growth",
+      "title": "Surface Growth",
+      "description": "Let a triangulated sheet, disc, strip or sphere grow unevenly: a growth field says where its edges lengthen, each step relaxes the skin in 3-D under stretch and bending and splits the edges that stretch too far, so ruffles and folds form by real surface evolution. Draw it as lit faces far to near, hidden-line contours and wire, level lines and grains, from a camera that never touches the growth; scrub the steps to watch it fold.",
+      "category": "3D forms",
+      "operationIds": ["field.gradient-noise-3d-01", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/surface-growth.md",
+      "source": "packages/instruments/src/composition/surface-growth-draw.ts",
+      "sourceEntry": "drawSurfaceGrowth",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "point-clouds",
+      "title": "Point Clouds",
+      "description": "Rebuild a spatial subject (vase, faceted figure, terrain, torus, spiral galaxy, noise volume) from thousands of replaceable marks: discs lying on the surface, strokes along a direction, grains and glyphs, joined by a sparse neighbour network, with depth size and fade, exact hidden-point removal, deterministic thinning and a region kept dense.",
+      "category": "3D forms",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/point-clouds.md",
+      "source": "packages/instruments/src/composition/point-clouds-draw.ts",
+      "sourceEntry": "drawPointClouds",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "geological-cutaways",
+      "title": "Geological Cutaways",
+      "description": "Build a block of strata from horizon functions with tilt, folds, planar faults that offset every layer by the declared throw, and an eroded surface, then cut it open: a slice plane, a corner box or exploded halves, sections painted by stratum, outcrops on the ground, fault traces and contact lines with hidden-line removal.",
+      "category": "3D forms",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/geological-cutaways.md",
+      "source": "packages/instruments/src/composition/strata-draw.ts",
+      "sourceEntry": "drawGeologicalCutaways",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "implicit-sculpture",
+      "title": "Implicit Sculpture",
+      "description": "Compose solids, cavities, repeated structures and bounded fractals as a signed-distance tree, then draw the fragment as ray-marched shading, smooth vector bands, mesh facets or grains, with hidden-line silhouettes, creases and slice contours from one extracted mesh.",
+      "category": "3D forms",
+      "operationIds": ["field.raymarch-implicit-rays-3d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/implicit-sculpture.md",
+      "source": "packages/instruments/src/composition/sdf-draw.ts",
+      "sourceEntry": "drawImplicitSculpture",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "surface-weave",
+      "title": "Surface Weave",
+      "description": "Trace two families of threads across a curved surface (terrain, vase, torus, sphere cap or a parametric sheet), with spacing measured on the surface and direction and density steered by fields, then weave them over and under and draw them through a camera with true occlusion.",
+      "category": "3D forms",
+      "operationIds": ["mesh.radial-profile-surface-3d", "field.gradient-noise-2d-01"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/surface-weave.md",
+      "source": "packages/instruments/src/composition/surface-weave.ts",
+      "sourceEntry": "drawSurfaceWeave",
       "creativeReviewScope": "instrument-construction"
     },
     {
@@ -981,7 +1215,7 @@
       "id": "ramp-marks",
       "title": "Ramp Marks",
       "description": "A local mark grid samples a positioned RGB palette ramp through stopRamp.",
-      "category": "Color & raster",
+      "category": "Raster & color",
       "operationIds": [
         "color.stop-ramp"
       ],
@@ -996,7 +1230,7 @@
       "id": "warp-marks",
       "title": "Warp Marks",
       "description": "Construct a small transparent RGBA image from bars, discs, rings or tiles, then sample it through a local deformation map.",
-      "category": "Color & raster",
+      "category": "Raster & color",
       "operationIds": [
         "raster.bilinear-remap-2d"
       ],
@@ -1011,7 +1245,7 @@
       "id": "blur-marks",
       "title": "Blur Marks",
       "description": "Filter an editable transparent RGBA population of bars, discs, rings or tiles with independently sized horizontal and vertical kernels.",
-      "category": "Color & raster",
+      "category": "Raster & color",
       "operationIds": [
         "raster.separable-blur-2d"
       ],
@@ -2892,6 +3126,19 @@
       "guide": "guides/region-stitch.md",
       "source": "packages/instruments/src/composition/stitch-draw.ts",
       "sourceEntry": "drawStitches",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
+      "id": "wet-pigment",
+      "title": "Wet Pigment",
+      "description": "Pigmented water dropped into an artist-defined wet region spreads, is soaked up by uneven paper and dries from the edge in. Suspended pigment is carried out with the water and left where it dries, so drops bloom into feathered rims, late clear water pushes old pigment outward into backruns, and drying fronts record the order the sheet dried. Drawn as banded pigment fills, drying-front contours and the wet film, all from one stepped simulation. A 2D cellular model, not physical paint.",
+      "category": "Systems & rules",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/wet-pigment.md",
+      "source": "packages/instruments/src/composition/wet-pigment-draw.ts",
+      "sourceEntry": "drawWetPigment",
       "creativeReviewScope": "instrument-construction"
     }
   ]

@@ -1,7 +1,7 @@
 import { gradientNoise2D01 } from "@procedurals/javascript";
 import { componentSeed } from "./core.js";
 import {
-  domainDifference, domainIntersection, emptyDomain, keyholeRing, locateInDomain, planarDomain, ringsDomain, unionDomains,
+  domainDifference, domainIntersection, emptyDomain, keyholeRing, locateInDomain, PlanarError, planarDomain, ringsDomain, ringsDomainClipped, unionDomains,
 } from "./domains.js";
 import type { PlanarDomain, PlanarRegion, PlanarShape, Ring } from "./domains.js";
 import { offsetDomain } from "./domains-offset.js";
@@ -61,8 +61,10 @@ export const WASH_LIMITS = Object.freeze({
   passes: 64,
   /** Boundary samples, summed over every pass and region (including patch outlines). */
   vertices: 600_000,
-  /** Smallest wavelength of the finest ripple, canvas units. */
-  finestWavelength: 0.5,
+  /** Smallest wavelength of the finest ripple laid, canvas units: finer scales are dropped (ripples below this are not visible, and outlines sampled below it degenerate). */
+  finestWavelength: 2,
+  /** Smallest wavelength of the broadest ripple, canvas units: `swell` of a tiny shape is raised to it. */
+  broadestWavelength: 4,
   /** rms displacement of the broadest ripple at edge variance 1, as a fraction of its wavelength. */
   swellAmplitude: 0.1,
   /** rms displacement of any octave never exceeds this fraction of its own wavelength (ripples stay ripples until Roughness tears them). */
@@ -166,7 +168,7 @@ const lawCache = new Map<string, WashLaw>();
 export function washLaw(b: WashBoundary, side: number): WashLaw {
   const key = JSON.stringify([b, side]), hit = lawCache.get(key);
   if (hit) return hit;
-  const octaves = b.octaves, swell = b.swell * side;
+  const octaves = b.octaves, swell = washBroadest(b, side);
   const wavelength = new Float64Array(octaves), amplitude = new Float64Array(octaves), shared = new Float64Array(octaves), own = new Float64Array(octaves);
   const decay = 2 ** -(1 - 0.8 * b.roughness);
   for (let o = 0; o < octaves; o++) {
@@ -234,7 +236,9 @@ export function washOffset(seed: number, scope: string, pass: number, boundary: 
 
 // --- Outline sampling ----------------------------------------------------------------------------------------------
 /** Sample spacing: a third of the finest ripple's wavelength. */
-const stepOf = (b: WashBoundary, side: number) => b.swell * side / 2 ** (b.octaves - 1) / 3;
+const stepOf = (b: WashBoundary, side: number) => washBroadest(b, side) / 2 ** (b.octaves - 1) / 3;
+/** Wavelength of the broadest ripple: `swell` times the parent's shorter side, at least `WASH_LIMITS.broadestWavelength`. */
+export const washBroadest = (b: WashBoundary, side: number): number => Math.max(b.swell * side, WASH_LIMITS.broadestWavelength);
 /** The smaller side of the parent's bounds: the unit `swell` is a fraction of. */
 export const washSide = (parent: PlanarDomain): number => parent.bounds ? Math.min(parent.bounds[2] - parent.bounds[0], parent.bounds[3] - parent.bounds[1]) : 0;
 
@@ -410,9 +414,10 @@ function displacedOutline(region: PlanarRegion, k: number, ctx: Context, run?: {
   let rings: readonly (readonly Point[])[];
   if (options.creep === 0) rings = outlines(ctx.parent, step, options.holes === "reserved").get(region.id)!;
   else {
-    const grown = offsetDomain(options.holes === "reserved" ? region : planarDomain({ id: region.id, outer: region.outer }), options.creep * k,
-      { id: `${id}/offset`, ...(run ? { run } : {}) });
-    rings = grown.regions.flatMap((q) => [q.outer, ...q.holes]).map((ring) => resampleRing(ring, step));
+    // Creep moves the outline only; reserved holes keep their own ragged outlines (and the reserve is subtracted last), so a hole is never offset into collapse.
+    const grown = offsetDomain(planarDomain({ id: region.id, outer: region.outer }), options.creep * k, { id: `${id}/offset`, ...(run ? { run } : {}) });
+    const holeRings = options.holes === "reserved" ? outlines(ctx.parent, step, true).get(region.id)!.slice(1) : [];
+    rings = [...grown.regions.map((q) => resampleRing(q.outer, step)), ...holeRings];
   }
   return { rings: rings.map((ring) => displaceRing(ring, field)),
     patch: options.patches ? displaceRing(resampleRing(washPatch(region, k, options.seed, options.patches), step), field) : null };
@@ -439,13 +444,23 @@ function washPass(region: PlanarRegion, k: number, ctx: Context, run?: { check()
   const cached = passes.get(k);
   if (cached) return cached;
   run?.check();
-  const { options } = ctx, id = `${region.id}/p${k}`;
+  const id = `${region.id}/p${k}`;
   const { rings, patch } = displacedOutline(region, k, ctx, run);
-  let domain = ringsDomain(rings, { fill: "positive", id, ...(run ? { run } : {}) });
-  if (patch && domain.regions.length > 0)
-    domain = domainIntersection(domain, ringsDomain([patch], { fill: "positive", id: `${id}/patch` }), { id, ...(run ? { run } : {}) });
   const reserved = reservedFor(region, ctx);
-  if (reserved && domain.regions.length > 0) domain = domainDifference(domain, reserved, { id, ...(run ? { run } : {}) });
+  const tag = run ? { run } : {};
+  // Fold resolution, patch intersection and reserve difference are ONE exact overlay (each source keeps its own fill rule), about 4x cheaper than three.
+  // Sources that coincide exactly (a reserved hole and the undisplaced hole outline at zero edge variance) can defeat the rounding loop of a combined
+  // overlay; the same three operations one after another (each resolved on its own) always converge on those, so they are the fallback.
+  let domain: PlanarDomain;
+  try {
+    domain = ringsDomainClipped(rings, { fill: "positive", id, ...(patch ? { within: { rings: [patch], fill: "positive" as const } } : {}),
+      ...(reserved ? { without: reserved } : {}), ...tag });
+  } catch (error) {
+    if (!(error instanceof PlanarError) || error.code !== "NOT_CONVERGED") throw error;
+    domain = ringsDomain(rings, { fill: "positive", id, ...tag });
+    if (patch && domain.regions.length > 0) domain = domainIntersection(domain, ringsDomain([patch], { fill: "positive", id: `${id}/patch` }), { id, ...tag });
+    if (reserved && domain.regions.length > 0) domain = domainDifference(domain, reserved, { id, ...tag });
+  }
   if (domain.regions.length === 0 && domain.id !== id) domain = emptyDomain(id);
   const edges = domain.regions.flatMap((q) => [q.outer, ...q.holes]).flatMap((ring): WashEdge[] => reserved
     ? clipPath(ring, reserved, { closed: true, keep: "outside" }).map((piece) => Object.freeze({ points: piece.points, closed: piece.closed }))
@@ -466,16 +481,26 @@ function contextFor(parent: PlanarDomain, options: WashOptions): Context {
   return ctx;
 }
 
-/** Work plan shared by `washPasses` and `prepareWash`: validation, the work bound, and the context. */
-function plan(parent: PlanarShape, options: WashOptions) {
+/** The ripple scales actually laid: `Detail` is a maximum, reduced until the finest ripple is at least `finestWavelength` wide and the sample budget holds. */
+export function washOctaves(parent: PlanarShape, options: WashOptions): number {
   checkWashOptions(options);
-  const domain = washParent(parent), side = washSide(domain), finest = options.boundary.swell * side / 2 ** (options.boundary.octaves - 1);
-  if (domain.regions.length > 0 && finest < WASH_LIMITS.finestWavelength)
-    throw new Error(`The finest ripple would be ${finest.toPrecision(3)} units wide, below ${WASH_LIMITS.finestWavelength}; raise Swell or lower Detail`);
+  const domain = washParent(parent), side = washSide(domain), b = options.boundary;
+  if (domain.regions.length === 0) return b.octaves;
+  let octaves = b.octaves;
+  while (octaves > 1 && (washBroadest(b, side) / 2 ** (octaves - 1) < WASH_LIMITS.finestWavelength ||
+    washWork(domain, { ...options, boundary: { ...b, octaves } }) > WASH_LIMITS.vertices)) octaves--;
+  return octaves;
+}
+
+/** Work plan shared by `washPasses` and `prepareWash`: validation, the effective scales, the work bound, and the context. */
+function plan(parent: PlanarShape, options: WashOptions) {
+  const octaves = washOctaves(parent, options);
+  if (octaves !== options.boundary.octaves) options = { ...options, boundary: { ...options.boundary, octaves } };
+  const domain = washParent(parent);
   const work = washWork(domain, options);
   if (work > WASH_LIMITS.vertices)
-    throw new Error(`The wash needs ${work} boundary samples (passes × outline length ÷ a third of the finest ripple), more than the limit of ${WASH_LIMITS.vertices}; lower Detail or Passes, lower Patch size, raise Swell, or wash a smaller shape`);
-  return { domain, work, ctx: contextFor(domain, options) };
+    throw new Error(`The wash needs ${work} boundary samples (passes × outline length ÷ a third of the finest ripple), more than the limit of ${WASH_LIMITS.vertices} even with a single ripple scale; lower Passes or Patch size, raise Swell, or wash a smaller shape`);
+  return { domain, work, ctx: contextFor(domain, options), options };
 }
 
 const resultCache = new WeakMap<Context, Map<number, WashPasses>>();

@@ -171,7 +171,7 @@ function crossPoint(s: Seg, t: Seg): Pt {
   return [x === 0 ? 0 : x, y === 0 ? 0 : y];
 }
 
-type Adder = (index: number, x: number, y: number) => void;
+type Adder = (index: number, x: number, y: number, computed?: boolean) => void;
 /** Exact contact test of two lex-normalised segments; reports the points at which each must be split. */
 function contact(i: number, s: Seg, j: number, t: Seg, add: Adder): void {
   const o1 = orient(s.ax, s.ay, s.bx, s.by, t.ax, t.ay), o2 = orient(s.ax, s.ay, s.bx, s.by, t.bx, t.by);
@@ -187,7 +187,7 @@ function contact(i: number, s: Seg, j: number, t: Seg, add: Adder): void {
   }
   if (o1 !== 0 && o2 !== 0 && o3 !== 0 && o4 !== 0) {
     const p = crossPoint(s, t);
-    add(i, p[0], p[1]); add(j, p[0], p[1]);
+    add(i, p[0], p[1], true); add(j, p[0], p[1], true);
     return;
   }
   if (o1 === 0 && strictlyBetween(t.ax, t.ay, s.ax, s.ay, s.bx, s.by)) add(i, t.ax, t.ay);
@@ -245,20 +245,70 @@ export function forEachCandidate(segs: readonly Seg[], work: Work, visit: (i: nu
 }
 
 /**
+ * VERTEX REUSE. A computed crossing is rounded to binary64, which puts it a few ulps off both
+ * exact lines. Where three or more nearly concurrent segments meet (overlapped, rotated glyph
+ * strokes produce them), the exact crossings of the re-split pieces keep landing a few ulps
+ * beyond the previous round's vertex, so splitting creeps along a sliver forever. A computed
+ * crossing that lies within `SNAP_ULPS` ulps of the largest input coordinate of an existing vertex
+ * therefore reuses that vertex (the nearest, ties to the lexicographically smaller). Reuse only ever
+ * chooses which binary64 point stands for a computed vertex: input vertices are never moved, no
+ * topological decision involves a tolerance, and the exact re-check afterwards still decides
+ * whether the rounded set is planar. Because a reused vertex creates no new vertex, computed
+ * vertices are at least that far from every other vertex, which bounds the number of rounds.
+ */
+export const SNAP_ULPS = 16;
+
+class VertexIndex {
+  private readonly cells = new Map<string, Pt[]>();
+  constructor(segs: readonly Seg[], readonly radius: number) {
+    for (const s of segs) { this.add(s.ax, s.ay); this.add(s.bx, s.by); }
+  }
+  private key(cx: number, cy: number): string { return `${cx},${cy}`; }
+  private add(x: number, y: number): void {
+    const key = this.key(Math.floor(x / this.radius), Math.floor(y / this.radius));
+    const list = this.cells.get(key);
+    if (list) list.push([x, y]); else this.cells.set(key, [[x, y]]);
+  }
+  /** The nearest vertex within `radius` of (x, y), or the point itself. */
+  snap(x: number, y: number): Pt {
+    const cx = Math.floor(x / this.radius), cy = Math.floor(y / this.radius);
+    let best: Pt | null = null, bestD = this.radius * this.radius;
+    for (let i = cx - 1; i <= cx + 1; i++) for (let j = cy - 1; j <= cy + 1; j++) {
+      const list = this.cells.get(this.key(i, j));
+      if (!list) continue;
+      for (const v of list) {
+        const d = (v[0] - x) ** 2 + (v[1] - y) ** 2;
+        if (d < bestD || (d === bestD && best && lexLess(v[0], v[1], best[0], best[1]))) { best = v; bestD = d; }
+      }
+    }
+    return best ?? [x, y];
+  }
+}
+
+/**
  * Split segments at every contact until the rounded set is exactly planar: no two segments cross
  * and no endpoint lies in another segment's interior. Coincident pieces are merged (nets summed).
+ * Computed crossings reuse nearby existing vertices (see `SNAP_ULPS`).
  */
 export function planarize(input: Seg[], work: Work): Seg[] {
   let segs = mergeSegs(input);
+  let scale = 0;
+  for (const s of segs) scale = Math.max(scale, Math.abs(s.ax), Math.abs(s.ay), Math.abs(s.bx), Math.abs(s.by));
+  const radius = Math.max(scale, MIN_COORDINATE) * SNAP_ULPS * Number.EPSILON;
   for (let pass = 0; pass < MAX_PASSES; pass++) {
     work.cancel?.();
     const splits: (Pt[] | undefined)[] = new Array(segs.length);
-    let any = false;
-    forEachCandidate(segs, work, (i, j) => contact(i, segs[i], j, segs[j], (index, x, y) => {
+    let found = false, effective = false, vertices: VertexIndex | null = null;
+    forEachCandidate(segs, work, (i, j) => contact(i, segs[i], j, segs[j], (index, x, y, computed) => {
+      found = true;
+      if (computed) { vertices ??= new VertexIndex(segs, radius); [x, y] = vertices.snap(x, y); }
+      const s = segs[index];
+      if ((x === s.ax && y === s.ay) || (x === s.bx && y === s.by)) return;
       (splits[index] ??= []).push([x, y]);
-      any = true;
+      effective = true;
     }));
-    if (!any) return segs;
+    if (!found) return segs;
+    if (!effective) throw new PlanarError("NOT_CONVERGED", "Internal error: a contact could not be resolved by splitting");
     const next: Seg[] = [];
     for (let i = 0; i < segs.length; i++) {
       const s = segs[i], cut = splits[i];

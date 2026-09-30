@@ -12,13 +12,14 @@ import { partitionRegions } from "./sources.js";
  *
  * - `blob`: a star-shaped outline `r(a) = 1 + .16 cos(L a + p1) + .09 cos((L + 3) a + p2) + .07 cos(2 a + p3)` (phases from the
  *   seed, so the seed changes the outline), normalised to the box, with `holes` round reserved holes of radius about
- *   `holeSize` (fraction of the box half extent) placed by seeded rejection (fully inside, `.06` apart); failing to place one
- *   in 400 tries throws naming Holes / Hole size.
+ *   `holeSize` (fraction of the box half extent) placed by seeded rejection (fully inside, `.06` apart). `holeSize` is the largest
+ *   radius asked for: when 400 tries find no room the radius shrinks by a fifth (down to 0.8^11 of it) and the tries continue,
+ *   so every slider setting gives a picture; only a hole that fits nowhere throws, naming Hole count.
  * - `ring`: an elliptical annulus, its concentric hole `holeSize` times the outer radius.
  * - `letters`: `textDomain(word)` fitted to the box, counters are holes; rotated about the centre when `rotation` is not 0.
  * - `quilt`: the Region Quilts partition (`partitionRegions`, a 12 x 12 cut grid, `compartments - 1` longest-axis cut attempts; the grid refuses a cut
  *   that would leave less than one grid cell, so a large request yields somewhat fewer, 8 for 10 and 20 for 30) as one region each. `merge` (0 to 1) joins that share of compartments in stable-ranked pairs with an
- *   edge neighbour into L- and T-shaped regions. `layout: "gapped"` insets every compartment by `gutter / 2` (mitred). A
+ *   edge neighbour into L- and T-shaped regions. `layout: "gapped"` insets every compartment by `gutter / 2` (mitred); a compartment the gutter leaves nothing of is not washed. A
  *   partition is axis-aligned: `rotation` does not apply to it.
  *
  * Ids: `blob`, `ring`, `letters:<word>/<n>` (regions in canonical order), `region:<i>` or `merge:<i>+<j>/0` for a quilt. Seeds are
@@ -77,18 +78,23 @@ function blob(seed: number, spec: Extract<WashParent, { kind: "blob" }>, p: Plac
   for (let i = 0; i < sides; i++) { const a = TAU * i / sides, r = radius(a); outer.push(place(p, r * Math.cos(a), r * Math.sin(a))); }
   const holes: { cx: number; cy: number; r: number }[] = [];
   for (let k = 0; k < spec.holes; k++) {
-    const r = spec.holeSize * (0.75 + 0.4 * unit(seed, `hole:${k}`, "radius"));
+    const wanted = spec.holeSize * (0.75 + 0.4 * unit(seed, `hole:${k}`, "radius"));
     let placed = false;
-    for (let attempt = 0; attempt < 400 && !placed; attempt++) {
-      const cx = (unit(seed, `hole:${k}`, `x:${attempt}`) * 2 - 1) * 0.85, cy = (unit(seed, `hole:${k}`, `y:${attempt}`) * 2 - 1) * 0.85;
-      let clear = true;
-      for (let s = 0; s < 16 && clear; s++) {
-        const px = cx + r * Math.cos(TAU * s / 16), py = cy + r * Math.sin(TAU * s / 16);
-        clear = Math.hypot(px, py) < 0.9 * radius(Math.atan2(py, px));
+    // `Hole size` is the largest radius asked for: when 400 seeded tries at a radius find no room, the radius shrinks by a fifth and the tries continue (round 0 is the plain rejection sampling).
+    for (let round = 0; round < HOLE_ROUNDS && !placed; round++) {
+      const r = wanted * 0.8 ** round;
+      for (let attempt = 0; attempt < 400 && !placed; attempt++) {
+        const n = round * 400 + attempt;
+        const cx = (unit(seed, `hole:${k}`, `x:${n}`) * 2 - 1) * 0.85, cy = (unit(seed, `hole:${k}`, `y:${n}`) * 2 - 1) * 0.85;
+        let clear = true;
+        for (let s = 0; s < 16 && clear; s++) {
+          const px = cx + r * Math.cos(TAU * s / 16), py = cy + r * Math.sin(TAU * s / 16);
+          clear = Math.hypot(px, py) < 0.9 * radius(Math.atan2(py, px));
+        }
+        if (clear && holes.every((h) => Math.hypot(h.cx - cx, h.cy - cy) > h.r + r + 0.06)) { holes.push({ cx, cy, r }); placed = true; }
       }
-      if (clear && holes.every((h) => Math.hypot(h.cx - cx, h.cy - cy) > h.r + r + 0.06)) { holes.push({ cx, cy, r }); placed = true; }
     }
-    if (!placed) throw new Error(`Could not place hole ${k + 1} of ${spec.holes} inside the blob; lower Holes or Hole size`);
+    if (!placed) throw new Error(`Could not place hole ${k + 1} of ${spec.holes} inside the blob even at ${(0.8 ** (HOLE_ROUNDS - 1) * 100).toFixed(0)}% of its size; lower Hole count`);
   }
   const data: PlanarRegionData = {
     id: "blob", outer,
@@ -114,6 +120,7 @@ function letters(spec: Extract<WashParent, { kind: "letters" }>, p: Placement): 
 }
 
 const GRID = 12;
+const HOLE_ROUNDS = 12;
 function quilt(seed: number, spec: Extract<WashParent, { kind: "quilt" }>, p: Placement): PlanarDomain {
   num("Compartments", spec.compartments, 1, 150, true); num("Merged", spec.merge, 0, 1); num("Gutter", spec.gutter, 0, 200);
   const cells = partitionRegions({ seed: componentSeed(seed, "quilt", "partition"), width: p.width, height: p.height, centerX: p.centerX, centerY: p.centerY,
@@ -139,7 +146,7 @@ function quilt(seed: number, spec: Extract<WashParent, { kind: "quilt" }>, p: Pl
   for (const { id, region } of items) {
     if (spec.layout !== "gapped" || spec.gutter === 0) { data.push({ id, outer: region.outer, holes: region.holes }); continue; }
     const inset = offsetDomain(region, -spec.gutter / 2, { join: "miter" });
-    if (inset.regions.length === 0) throw new Error(`Gutter ${spec.gutter} is wider than compartment ${id}; lower Gutter or Compartments`);
+    // A compartment no wider than the gutter has no interior left: it is not washed (the rest are), never an error.
     inset.regions.forEach((q, k) => data.push({ id: inset.regions.length > 1 ? `${id}.${k}` : id, outer: q.outer, holes: q.holes }));
   }
   data.sort((x, y) => (x.id! < y.id! ? -1 : 1));

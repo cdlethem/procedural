@@ -164,7 +164,7 @@ const DIGITS: Record<string, readonly (readonly [number, number])[][]> = {
   "8": [[[0, 0], [2, 0], [2, 4], [0, 4], [0, 0]], [[0, 2], [2, 2]]], "9": [[[2, 2], [0, 2], [0, 0], [2, 0], [2, 4], [0, 4]]],
 };
 
-function drawNumber(surface: CompositionSurface, value: number, x: number, y: number, size: number): void {
+export function drawNumber(surface: CompositionSurface, value: number, x: number, y: number, size: number): void {
   const scale = size / 4, text = String(value);
   text.split("").forEach((digit, index) => {
     for (const stroke of DIGITS[digit]) for (let i = 1; i < stroke.length; i++)

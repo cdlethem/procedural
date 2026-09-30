@@ -288,9 +288,16 @@ function solve(container: PlanarDomain, items: readonly PackItem[], rules: PackR
   const steps: Steps = { used: 0, limit: PACK_LIMITS.search, explain: () => `Shape packing needs more than ${PACK_LIMITS.search} search steps: lower Pieces, Rotations, Retries or Search resolution` };
   const placed: Placed[] = [], instances: PackedInstance[] = [], unplaced: UnplacedItem[] = [];
   let levels = buildLevels(free), rowMin = 0, rowMax = -1, placedArea = 0, exactTests = 0, rejected = 0, tried = 0;
+  let freeCells = 0;
   const refreshRows = (): void => {
-    rowMin = gh; rowMax = -1;
-    for (let y = 0; y < gh; y++) for (let w = 0; w < free.W; w++) if (free.rows[y * free.W + w] !== 0) { rowMin = Math.min(rowMin, y); rowMax = Math.max(rowMax, y); break; }
+    rowMin = gh; rowMax = -1; freeCells = 0;
+    for (let y = 0; y < gh; y++) for (let w = 0; w < free.W; w++) {
+      let v = free.rows[y * free.W + w];
+      if (v === 0) continue;
+      rowMin = Math.min(rowMin, y); rowMax = Math.max(rowMax, y);
+      v -= (v >>> 1) & 0x55555555; v = (v & 0x33333333) + ((v >>> 2) & 0x33333333);
+      freeCells += Math.imul((v + (v >>> 4)) & 0x0f0f0f0f, 0x01010101) >>> 24;
+    }
   };
   refreshRows();
 
@@ -352,6 +359,10 @@ function solve(container: PlanarDomain, items: readonly PackItem[], rules: PackR
     variants.forEach((_, k) => {
       const list = runs[k];
       if (!list || list.length === 0) return;
+      // Every cell the footprint touches must be free: a footprint larger than all remaining free space fits nowhere.
+      let touched = 0;
+      for (let i = 0; i < list.length; i += 3) touched += list[i + 2] - list[i + 1] + 1;
+      if (touched > freeCells) return;
       if (!boundaries[k]) boundaries[k] = new Uint32Array(free.W * gh);
       feasibleAnchors(levels, free, list, feasible, rowMin, rowMax, steps);
       // The first piece has nothing to touch: every feasible anchor is a candidate, so the rule alone decides where it starts.

@@ -88,7 +88,7 @@ Failure: nothing is truncated or replaced by a fallback; every error names the c
 60,000,000` (`Steps × (agents and field cells)`); `grid` 16…256; `steps` ≤ 1,200; `speed` ≤ 8; emitters ≤ 16;
 contour vertices ≤ 150,000 (`Contours`, `Lowest contour`); bristle hair points ≤ 600,000
 (`Hairs`, `Trail share`, `Trail memory`, `Shortest trail`). An emitter inside the barrier is an error
-(`Center X/Y`, `Layout radius`); a pillar count that cannot fit clear of the emitters is an error; scatter
+(`Center X/Y`, `Layout radius`); a pillar count that cannot fit clear of the emitters is an error; emitters are held inside the canvas (a ring past the edge or a center dragged to 640 is clamped to the edge); scatter
 emitters move to a clear place instead (up to 40 redraws from their own stream, else an error). Instrument
 admission (`definition.validate`) applies the budget and the seed-free placement checks before drawing.
 
@@ -105,7 +105,7 @@ Inline `visibleWhen`: `layoutAngle` ← layout ring/line; `barrierSize` ← barr
 `washOpacity` ← field bands/both; `trailShare`, `trailMemory`, `trailMinLength`, `trailColor` ← trails ≠ none;
 `trailWeight` ← ink/stitch; `brushWidth`, `hairs` ← bristles; `markShare`, `markSize`, `markColor` ← mark ≠ none.
 Slider intervals are the useful range; hard limits are the model's (e.g. steps slider 0…600, hard 1,200
-subject to the coupled bounds above; agents slider 10…300 per emitter, hard 1,000).
+subject to the coupled bounds above; agents slider 10…150 per emitter, hard 1,000: every slider at its maximum together is admitted, tested).
 
 Persisted settings are technique id, scalars and palette only. Bundled emitter layouts (ring, line, scatter)
 and barriers (wall with door, enclosure with mouth, island, pillars) are validated selects; a user's own
@@ -122,7 +122,7 @@ says so.
 
 ## Checks
 
-`tests/composition-chemotaxis.test.ts` (26 tests, independent expectations): relaxation weights and total
+`tests/composition-chemotaxis.test.ts` (27 tests, including every numeric control at its slider minimum and maximum, alone and together, admitted, drawn and within the declared work; independent expectations): relaxation weights and total
 (quarter shares, decay, corner and torus, wall on each of four sides); the bilinear sampler equals
 `sensorMotorStep2D`'s probes and samples (clamp and wrap); every step of a 24-step colony equals the
 oracle-computed sense-then-move from the previous state (heading to 1e-12, position to 1e-9); a fresh deposit is

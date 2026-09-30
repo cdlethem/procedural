@@ -217,15 +217,51 @@ every control of all 20 newer studies (no console errors or blank canvases); lay
 orders with unmodified older instruments; latency 27-391 ms per edit at large settings. Not yet
 done: per-study structural sweeps through the real controls for the W2 studies, and the real Studio.
 
-**W3 stateful construction: foundation merged, briefs in flight.** F7 stateful snapshots
-(`composition-snapshots.md`) is on main; five older dynamics instruments now run through it with
-identical drawings. Twelve briefs (09, 15-21, 43-45, 49) are being built on separate branches.
+**W3 stateful construction: built and merged** (12 briefs). F7 stateful snapshots
+(`composition-snapshots.md`) is on main; five older dynamics instruments run through it with
+identical drawings. Studies: Wet Pigment (09), Aggregation Colonies (15), Laplacian Fronts (16),
+Chemotactic Trails (17), Pattern Competition (18), Cyclic Fronts (19), Cell Division (20),
+Random Walk Fronts (21), Roads and Parcels (43), River Ribbons (44), Drainage and Erosion (45),
+Collision Scores (49). Every one publishes state (checkpoints, history, projections) consumed by
+two or more treatments; recolor and material edits reuse the same snapshot object, meaningful
+initial-condition edits recompute, and termination is explicit.
 
-**W4 spatial: foundation merged, briefs in flight.** Nodal Plates (25), Inversion Gardens (26) and
-the F8 spatial foundation (indexed meshes, topology, sampling, cameras, exact hidden lines) are on
-main; Hyperbolic Gardens (24), Surface Growth (50), Hinged Panels (51), Surface Weave (52), Point
-Clouds (54) and Implicit Sculpture (56) are in flight; Geological Cutaways (46), Visibility-aware
-Mesh Drawing (53) and Local Mesh Abstraction (55) wait for the mesh-section work.
+**W4 spatial: built and merged** (11 briefs). F8 (indexed meshes, topology, sampling, cameras, exact
+hidden lines, planar sections, surface iso-contours) is on main. Studies: Hyperbolic Gardens (24),
+Nodal Plates (25), Inversion Gardens (26), Geological Cutaways (46), Surface Growth (50), Hinged
+Panels (51), Surface Weave (52), Visibility-aware Mesh Drawing (53), Point Clouds (54), Local Mesh
+Abstraction (55), Implicit Sculpture (56). All draw projected geometry on the 2D canvas with real
+occlusion and perspective; no WEBGL, scan reconstruction or physical-fabrication claim.
+
+**Brief 27 completed**: Fold Atlas Image adds forward density accumulation (collisions add, holes
+stay holes) and inverse raster sampling (damped Newton, exact exclusion) to the coordinate maps;
+the released Fold Atlas is unchanged.
+
+**All 56 briefs now have a built study.** The current tree has 174 instrument definitions (156
+canonical), 1,626 package tests, and every guide/metadata/source agreement check passes.
+
+**Review evidence and standards adopted during the program.** Root operated every new study
+through its actual controls in an isolated copy of the private app (separate port, packages from an
+`--allow-dirty` build, `LayerControls` patched there to render `inspectorItems`): option-by-option
+sweeps of every select, randomized operation of every control, and an all-sliders-at-maximum
+corner test. The corner test found a class of defect the builders' own measurements missed and
+established two rules now enforced by tests: every combination of slider ends must validate and
+draw (typed values past the sliders may be refused with the control named), and the worst slider
+corner must prepare in about 2.5 s (CPU) or less. Ten studies were revised to meet them. Permanent
+tests may not assert wall-clock time (they failed spuriously under load); timings live in docs.
+All twelve roadmap section-6 layered scenarios were composed from merged studies with their
+decisive edits, and layered pairs were checked in both orders with unmodified older instruments.
+
+**Open.** (1) F9 extension (alternatives and numeric thresholds in `visibleWhen`) is in review;
+until it lands, options whose relevance is a disjunction or numeric threshold (for example a mark
+shape while grains are off) remain visible and inert by design. (2) The real Studio (authenticated
+backend) was not available: layering used the equivalent renderer, not Studio, and the private
+app's own `LayerControls` still has to adopt `inspectorItems`. (3) The control audit
+(`audit-controls`) is owed for Laplacian Fronts and Pattern Competition on an idle machine.
+(4) `fm-engraving` and `iso-rings` keep small local clips. (5) Category names are worker-assigned
+and uneven (`Fields & paths` holds 54 entries); a deliberate discovery taxonomy is a UX decision.
+(6) No release has been cut: packages are unpublished local artifacts, and a clean release build
+requires committed inputs (the working tree carries unrelated uncommitted edits).
 
 
 ## Ownership and unchanged boundaries

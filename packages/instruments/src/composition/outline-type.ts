@@ -2,6 +2,7 @@ import { gradientNoise2D01 } from "@procedurals/javascript";
 import { unit as unitDraw } from "./bristle.js";
 import { cachedBy, componentSeed } from "./core.js";
 import { PlanarError, domainRings, ringsDomain, unionDomains } from "./domains.js";
+import { offsetDomain } from "./domains-offset.js";
 import type { PlanarDomain } from "./domains.js";
 import { memoized } from "./sources.js";
 import { pathText, shapeRun } from "./type-glyphs.js";
@@ -153,6 +154,46 @@ export function withControls<T>(step: string, controls: string, make: () => T): 
 export function appendControls<T>(controls: string, make: () => T): T {
   try { return make(); } catch (error) {
     if (error instanceof Error && !(error instanceof PlanarError)) throw new Error(`${error.message.replace(/\.$/, "")}. Change: ${controls}`);
+    throw error;
+  }
+}
+
+/**
+ * Run a planar operation parameterised by a distance, retrying with the distance nudged by up to 3% (and the attempt number, which callers
+ * may use to vary an arc tolerance) when the kernel reports
+ * "NOT_CONVERGED" (its exact splitting did not settle, observed for offsets that collapse a counter at an arbitrary rotation: the
+ * failure is chaotic in the distance, a one-in-a-million change usually settles it). The first attempt is the exact distance; the ladder
+ * (13 rungs) is fixed, so the result is deterministic. If every attempt fails the first error is thrown.
+ */
+export function nudged<T>(distance: number, make: (distance: number, attempt: number) => T): T {
+  let first: unknown;
+  for (const [attempt, scale] of [0, 1e-6, -1e-6, 1e-5, -1e-5, 1e-4, -1e-4, 1e-3, -1e-3, 1e-2, -1e-2, 3e-2, -3e-2].entries()) {
+    try { return make(distance * (1 + scale), attempt); } catch (error) {
+      if (!(error instanceof PlanarError) || error.code !== "NOT_CONVERGED") throw error;
+      first ??= error;
+    }
+  }
+  throw first;
+}
+
+/**
+ * `offsetDomain` that survives the kernel's rare non-convergence. First the exact distance, then the `nudged` ladder (distance and arc
+ * tolerance); if every rung fails, the same offset applied as 2, 3 and 4 equal successive steps, which is exact for round joins (erosion
+ * and dilation by discs compose) and close for mitre and bevel (each step re-cuts its corners). The first failure is thrown only when
+ * all of that fails. Deterministic: the order of attempts is fixed.
+ */
+export function robustOffset(domain: PlanarDomain, distance: number, join: "round" | "miter" | "bevel", id: string): PlanarDomain {
+  const once = (shape: PlanarDomain, d: number): PlanarDomain => nudged(Math.abs(d), (size, attempt) =>
+    offsetDomain(shape, Math.sign(d) * size, { join, arcTolerance: size / 50 * (1 + 0.15 * (attempt % 4)), id }));
+  try { return once(domain, distance); } catch (error) {
+    if (!(error instanceof PlanarError) || error.code !== "NOT_CONVERGED") throw error;
+    for (const steps of [2, 3, 4]) {
+      try {
+        let current = domain;
+        for (let i = 0; i < steps; i++) current = offsetDomain(current, distance / steps, { join, arcTolerance: Math.abs(distance) / steps / 50, id });
+        return current;
+      } catch (inner) { if (!(inner instanceof PlanarError) || inner.code !== "NOT_CONVERGED") throw inner; }
+    }
     throw error;
   }
 }

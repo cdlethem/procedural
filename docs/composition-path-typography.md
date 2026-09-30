@@ -99,7 +99,9 @@ all) have identical draw fingerprints before and after.
   each next-longest only the edges no earlier chain runs along, so chains never share an edge and
   their total length equals the tree's (tested); a single edge is usually shorter than a phrase, hence chains.
   Gesture: `gesturePath` at 3-unit arc stations. `smooth` rounds are Chaikin corner cuts. **Path** picks a rank,
-  **Paths lettered** takes consecutive ranks (capped by what exists; a pick past the end is an error).
+  **Paths lettered** takes consecutive ranks (capped by what exists). A supply with no paths, or a **Path** past its last
+  one, is a **valid empty drawing** (`paths` empty, `available` says how many exist), never an error, so sliders cannot
+  refuse to draw; only malformed values (a non-integer pick) throw.
 - **Units.** Canvas units; `size` is cap height; tracking, gap, shift, correlation length and clearance in cap heights;
   option angles degrees, frame angles radians; `start` a fraction of each path's length in the instrument, arc units in
   `layoutAlongPath`.
@@ -124,11 +126,14 @@ noise/waves); recording and hand smoothing under gesture; growth and routing und
 contour or branch; rotation under contour or gesture; repeat gap under whole/fill; clearance under crowding avoid;
 disruption amounts under correlated; outline weight under outline; guide weight under a guide. The measured control
 audit (43 controls, 2,113 probes) reports 0 violations and 4 controls left visible because their relevance is a
-disjunction (repeat, tight curves, crowding, color by). Slider intervals are narrower than `hardMin`/`hardMax` throughout.
+disjunction (repeat, tight curves, crowding, color by). Slider intervals are narrower than `hardMin`/`hardMax` throughout, and the branch supply's growth sliders (ticks to 50, branches to 2) are
+narrowed below the growth study's own so that every combination of slider ends stays inside its work budget; exact entry keeps
+the study's domain and the admission check reports a budget overrun. A test draws every numeric control at slider min, slider max,
+and all together for every supply and landscape, and every corner of the contour drivers.
 
 ## Checks
 
-`tests/composition-path-typography.test.ts` (20 tests), with expected values from raw geometry and the font, never the
+`tests/composition-path-typography.test.ts` (21 tests), with expected values from raw geometry and the font, never the
 library's own values: the arc table on hand-worked polylines (open, closed, wrapping, turning, spans); branch flank
 stations equal to the original inline walk; a shaped run equal to `textOutlines`; tracking and mono cells; optical
 kerning of straight pairs, pairs beside a space, and no facing ink of any of ~2,100 kerned pairs overlapping (boundary

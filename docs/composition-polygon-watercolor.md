@@ -44,12 +44,12 @@ run budget.
   `shared` and `own_k` are independent fields of equal variance and `rho_o = independence x t_o`, with `t_o = 1` for
   `divergence: all`, `o / (octaves - 1)` for `fine` (broad ripples shared) and `1 - o / (octaves - 1)` for `coarse`. So two
   passes' displacements at one point have correlation exactly `sum A_o^2 (1 - rho_o) / sum A_o^2`, measured in the tests.
-- **Passes.** `creep` offsets pass `k` by `creep x k` (exact round-join offset; 0 skips it). With patches, pass `k` is the
+- **Passes.** `creep` offsets the outer outline of pass `k` by `creep x k` (exact round-join offset; 0 skips it); reserved holes are not offset (offsetting a hole into collapse defeated the kernel at large creep), they keep their own displaced outlines and the reserve is subtracted last. With patches, pass `k` is the
   displaced parent intersected with a displaced 32-gon ellipse: radius `size x halfDiagonal x (0.75 + 0.5 u)`, aspect
   `0.6 + 0.4 u'`, rotation `2 pi u''`, centre `focus_point + (site - focus_point)(1 - focus)`, where `focus_point` is one
   stable interior point of the region and `site` one stable interior point per pass (rejection sampling in the region's
   bounds, 32 tries, then the last candidate). `holes: "open"` washes the parent's outer rings only.
-- **Fold policy.** The displaced rings of a region (outer and holes) are resolved by `ringsDomain(..., { fill: "positive" })`.
+- **Fold policy.** The displaced rings of a region (outer and holes) are resolved by the positive fill rule, in one overlay with the patch intersection and the reserve difference (`ringsDomainClipped`; each source keeps its own fill rule). If the rounding loop of that combined overlay does not converge (sources that coincide exactly, such as a reserved hole and the undisplaced hole outline at edge variance 0), the same three operations run one after another instead.
   A fold produces a loop of reversed winding, which paints nothing, so every pass is a valid `PlanarDomain` for any
   setting; nothing is accepted unchecked. Tested against an independent winding-number oracle on outlines that really fold.
 - **Reserves.** The reserve of a region is its holes reversed to regions (when `holes: "reserved"`), grown by `margin`, united
@@ -72,11 +72,17 @@ run budget.
   alike) or per region (`componentSeed(seed, region.id, "pigment") % palette.length`). Transparent: no background, no
   full-canvas shape.
 - **Units.** Canvas units; `swell` is a fraction of the parent's shorter side; angles degrees.
-- **Limits and failure.** `passes` 1 to 64; `octaves` 1 to 8; the finest ripple at least 0.5 units; **boundary samples
-  summed over passes, regions and patch outlines at most 600,000** (`washWork`), checked before any pass exists, error
-  naming Detail, Passes, Patch size and Swell. A quilt gutter wider than a compartment throws naming Gutter; an
-  unplaceable blob hole throws naming Hole count / Hole size. Empty parents, patches off a region and washes shrunk away are
-  valid empty domains, not errors.
+- **Slider settings never refuse.** Every value on every slider, and every combination of slider ends, draws (tested: each control alone at min
+  and max, all-min and all-max in eleven worlds). Instead of an error the wash derives an admitted value: `Detail` (`octaves`) is a maximum,
+  reduced by `washOctaves` until the finest ripple is at least `WASH_LIMITS.finestWavelength` (2 units) and the sample budget holds; the broadest
+  ripple is at least `WASH_LIMITS.broadestWavelength` (4 units, `washBroadest`), so `swell` of a tiny shape is raised to it (outlines sampled
+  below that degenerate in the kernel: found by an all-min corner); a blob hole that finds no room shrinks by a fifth per 400 tries (12 rounds)
+  until it fits; a quilt compartment narrower than the gutter is not washed. Dropping scales at the budget's edge means adding a pass can coarsen
+  every pass there (stability of earlier passes holds while the budget is not binding).
+- **Limits and failure.** `passes` 1 to 64; `octaves` 1 to 8; **boundary samples summed over passes, regions and patch outlines at most 600,000**
+  (`washWork`), checked before any pass exists; error naming Passes, Patch size, Swell only when one scale alone passes it (a parent of thousands
+  of regions); a blob hole that fits nowhere (typed values such as 12 holes of 0.5) throws naming Hole count. Empty parents, patches off a
+  region, compartments the gutter removes and washes shrunk away are valid empty domains, not errors.
 - **Not modelled.** No pigment flow, granulation, backruns or edge diffusion; a pass is a flat translucent polygon and
   paper texture is not part of it.
 
@@ -92,12 +98,12 @@ Opacity and edge weight are different quantities, so *Edge* is not marked.
 Inline `visibleWhen`: lobes, hole count and hole size by blob; ring hole by ring; word by letters; compartments, merged and
 layout by quilt; gutter by quilt and gapped layout; rotation and holes by blob, ring or letters; regions by letters or
 quilt; patch size and focus by reach patches; reserve margin by holes reserved; second pigment by two pigments. Slider intervals
-are narrower than hard limits: passes to 40 (64), detail 1 to 6 (8), swell .08 to .6 (.005 to 4), compartments 2 to 24 (150).
+are narrower than hard limits: passes to 24 (64), detail 1 to 5 (8), swell .08 to .5 (.005 to 4), creep -3 to 3 (+-1000), reserve margin to 20 (1000), compartments 2 to 24 (150).
 The audit (`tests/helpers/audit-controls.ts polygon-watercolor`: 34 controls, 1,532 probes) reports 0 violations, no dead, disjunctive or numeric controls. It proposes one further condition, `height` only for blob, ring and quilt (a word's ink is fitted by width in the default box); it is not adopted because a wide word in a short box is limited by height, so the control matters there (measured at one configuration only).
 
 ## Checks
 
-`tests/composition-polygon-watercolor.test.ts` (16 tests): displacement correlation between passes equals `1 - independence`
+`tests/composition-polygon-watercolor.test.ts` (17 tests): displacement correlation between passes equals `1 - independence`
 (0, .36, .75, 1) and the octave-weighted formula for all three divergences, with rms amplitude against the documented law;
 edge variance scales the displacement and 0 returns the parent exactly (symmetric-difference area 0); reserved holes never
 painted on a ring (analytic radius, with and without margin, and passes do reach just past the reserve), type counters and an extra
@@ -111,10 +117,12 @@ parents (areas, tiling of the box, merges, gutters, rotation, errors); descripto
 objects; edges never inside the mask; cooperative preparation and cancellation; every control that matters changes the
 drawing and hidden ones do not. Mutations confirmed to fail (each killed by 1 to 3 tests): reserve shrunk by 3 units, linear instead of
 square-root correlation weights, non-canonical edge sampling, nonzero instead of positive fill, own field ignoring the pass index, creep off
-by one pass, focus reversed, no touching-vertex insertion, reversed fine-divergence ramp, separate fields ignored. The existing
+by one pass, focus reversed, no touching-vertex insertion, reversed fine-divergence ramp, separate fields ignored. Slider admission (added after a real-interface finding that every slider at its maximum refused to draw): `every slider end, and every combination of slider ends` validates and draws each numeric control alone at its minimum and maximum, all minima and all maxima together in eleven worlds (four shapes, whole and patches, reserved and open, the four words), and the crowded blob corner at five seeds, and bounds the all-max corner by declared work, not by clock: at most 200,000 boundary samples and 70,000 filled vertices (measured maxima 174,816 and 60,856; the cap is 600,000). Timings appear in this document only. Mutations confirmed to fail for it: hole shrinking off, no octave reduction, no broadest-ripple floor, creep offsetting holes. The existing
 conditional-controls property test also runs over this instrument.
 
 ## Foundation change
+
+`ringsDomainClipped(rings, { fill, within?, without? })` (`domains.ts`, exported) resolves a ring soup, intersects it with a second soup and subtracts a shape in ONE exact overlay. A wash pass took three resolves, an intersection and a difference (about 4 exact overlays, 250 ms per pass on type at large settings); one overlay is about 4x cheaper. Sources keep their own fill rules, so the result equals the sequential operations.
 
 `keyholeJoin` (`domains.ts`) found the nearest outer/hole vertex pair exhaustively with closures; at a few thousand boundary
 samples per pass this dominated first preparation (about 5 s at the largest settings). It now skips an outer vertex whose
@@ -142,10 +150,10 @@ in both orders. Defects found by looking and fixed:
 - (from the tests) a second pass count overwrote the cached result of the first: results are cached per pass count.
 
 Timing (Node, null surface, this machine; canvas drawing costs more): default first preparation 100 to 130 ms, structural edit
-(a new seed) 80 to 95 ms, appearance-only edit (opacity, pigment, colour) 1 to 6 ms. At large settings: 40 passes at Detail 6 on
-the blob 0.7 s (98,000 drawn vertices), a quilt of 24 compartments with 40 passes 1.7 s (500,000 samples, 309,000 vertices),
-type with 40 passes at Detail 5 1.6 s (480,000 samples), the sample limit itself about 2 s; appearance-only edits stay under 20 ms at
-all of them.
+(a new seed) 80 to 95 ms, appearance-only edit (opacity, pigment, colour) 1 to 6 ms. Every slider at its maximum together (24 passes, Detail 5, Swell .5, creep 3, margin 20, patches 1.2, width and height 620; 11 worlds: each
+shape, whole and patches, reserved and open, the four words): 0.15 to 1.0 s after warm-up, the slowest being PIGMENT with patches (before the
+single-overlay change 4 to 10 s at these settings; the first drawing of a session also loads the font, about 1.5 s). Appearance-only edits
+stay under 20 ms.
 
 ## Open concerns and decisions to confirm
 

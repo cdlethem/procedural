@@ -15,6 +15,8 @@ export type BarrierKind = (typeof barrierKinds)[number];
 
 const unit = (seed: number, id: string, purpose: string): number => componentSeed(seed, id, purpose) / 0x1_0000_0000;
 const radians = Math.PI / 180;
+/** Largest emitter coordinate: `checkChemotaxis` admits `[0, 640)`. */
+const ARENA_LIMIT = CHEMOTAXIS_ARENA - 1e-6;
 
 export interface EmitterLayoutOptions {
   layout: EmitterLayout;
@@ -69,6 +71,8 @@ export function emitterLayout(o: EmitterLayoutOptions): ChemotaxisEmitter[] {
         }
       }
     }
+    // Emitters live inside the arena: a ring or line that reaches past the canvas edge, or a center dragged to 640, is held at the edge.
+    x = Math.min(ARENA_LIMIT, Math.max(0, x)); y = Math.min(ARENA_LIMIT, Math.max(0, y));
     out.push({ x, y, agents: o.agents, strength: o.count > 1 ? 1 - o.taper * k / (o.count - 1) : 1 });
   }
   return out;

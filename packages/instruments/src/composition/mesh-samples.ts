@@ -167,15 +167,41 @@ export interface VaseOptions {
   /** Close the bottom / top ring with a fan (default: bottom closed, top open like a vessel). */
   readonly capBottom?: boolean;
   readonly capTop?: boolean;
+  /**
+   * Rings per profile band (integer 1..8, default 1 = the profile's own knots, so the stacked-frusta closed forms hold). Above 1 each band is
+   * split at equal axial steps and the radius follows the cubic Hermite curve through the knots (finite-difference slopes in the axial
+   * variable), so the profile is C1 between knots and a strand marching over the vase turns smoothly instead of kinking at every band.
+   */
+  readonly smooth?: number;
+}
+/** `[axial, radius]` knots with `k - 1` Hermite-interpolated rings inserted in every band; `k = 1` returns the knots. */
+function refineProfile(knots: readonly (readonly [number, number])[], k: number): [number, number][] {
+  if (k === 1) return knots.map(([a, r]) => [a, r]);
+  const slope = (i: number): number => {
+    const lo = Math.max(0, i - 1), hi = Math.min(knots.length - 1, i + 1);
+    return (knots[hi][1] - knots[lo][1]) / (knots[hi][0] - knots[lo][0]);
+  };
+  const out: [number, number][] = [];
+  for (let i = 0; i < knots.length - 1; i++) {
+    const [a0, r0] = knots[i], [a1, r1] = knots[i + 1], da = a1 - a0, m0 = slope(i), m1 = slope(i + 1);
+    for (let j = 0; j < k; j++) {
+      const u = j / k, u2 = u * u, u3 = u2 * u;
+      const r = (2 * u3 - 3 * u2 + 1) * r0 + (u3 - 2 * u2 + u) * da * m0 + (-2 * u3 + 3 * u2) * r1 + (u3 - u2) * da * m1;
+      out.push([a0 + da * u, Math.max(r, 1e-3)]);
+    }
+  }
+  out.push([knots[knots.length - 1][0], knots[knots.length - 1][1]]);
+  return out;
 }
 export function vaseMesh(options: VaseOptions): Mesh {
   const profile = vaseProfiles[options.profile];
   if (!profile) throw new Error(`vase profile must be one of ${vaseProfileNames.join(", ")} (got ${String(options.profile)})`);
   const slices = integerIn("vase slices", options.slices ?? 32, 3, 256), height = positive("vase height", options.height ?? 2), radius = positive("vase radius", options.radius ?? 0.6);
+  const smooth = integerIn("vase smooth", options.smooth ?? 1, 1, 8);
   const capBottom = options.capBottom ?? true, capTop = options.capTop ?? false;
-  return cached(["vase", options.profile, slices, height, radius, capBottom, capTop], () => {
+  return cached(["vase", options.profile, slices, height, radius, capBottom, capTop, smooth], () => {
     const values = RadialProfile3D.generate({
-      profile: profile.map(([axial, r]) => [(axial - 0.5) * height, r * radius]), slices, capStart: capBottom, capEnd: capTop, maxFaces: MESH_LIMITS.maxTriangles,
+      profile: refineProfile(profile, smooth).map(([axial, r]) => [(axial - 0.5) * height, r * radius]), slices, capStart: capBottom, capEnd: capTop, maxFaces: MESH_LIMITS.maxTriangles,
     }).toValues() as { positions: number[][]; triangles: number[][]; faceKinds: string[]; bands: number[]; cells: number[] };
     // The source revolves about +Z; (x, y, z) -> (x, z, -y) is a proper rotation taking +Z to +Y.
     const positions = values.positions.flatMap(([x, y, z]) => [x, z, -y]);
@@ -197,8 +223,10 @@ function taper(bw: number, bd: number, tw: number, td: number, y0: number, y1: n
     cx - tw, y1, cz - td, cx + tw, y1, cz - td, cx + tw, y1, cz + td, cx - tw, y1, cz + td];
   return mesh({ id, positions, quads: [0, 1, 2, 3, 4, 7, 6, 5, 1, 0, 4, 5, 2, 1, 5, 6, 3, 2, 6, 7, 0, 3, 7, 4] });
 }
-export function figureMesh(): Mesh {
-  return cached(["figure"], () => {
+/** `headLevels` (0 to 5, default 1) is the subdivision level of the head icosphere: 80 triangles at 1, 5,120 at 4. The body is fixed. */
+export function figureMesh(headLevels = 1): Mesh {
+  integerIn("figure head levels", headLevels, 0, 5);
+  return cached(["figure", headLevels], () => {
     const parts: Mesh[] = [
       boxMesh([1.5, 0.12, 1.0], [0, 0.06, 0], "pedestal"),
       taper(0.17, 0.2, 0.15, 0.17, 0.14, 1.0, -0.2, 0, "leg-left"),
@@ -206,7 +234,7 @@ export function figureMesh(): Mesh {
       taper(0.36, 0.22, 0.5, 0.26, 1.02, 1.76, 0, 0, "torso"),
       transformMesh(taper(0.09, 0.11, 0.13, 0.13, -0.7, 0, 0, 0, "arm"), { rotate: [0, 0, -14], translate: [0.66, 1.68, 0] }, "arm-left"),
       transformMesh(taper(0.09, 0.11, 0.13, 0.13, -0.7, 0, 0, 0, "arm"), { rotate: [0, 0, 14], translate: [-0.66, 1.68, 0] }, "arm-right"),
-      transformMesh(icosphereMesh(1, 1), { scale: [0.26, 0.31, 0.27], translate: [0, 2.08, 0.02] }, "head"),
+      transformMesh(icosphereMesh(headLevels, 1), { scale: [0.26, 0.31, 0.27], translate: [0, 2.08, 0.02] }, "head"),
     ];
     return mergeMeshes("figure", parts);
   });
@@ -236,7 +264,7 @@ const info: Record<BundledMeshId, BundledMeshInfo> = {
   torus: { id: "torus", title: "Torus", closed: true, minDetail: 1, maxDetail: 8, defaultDetail: 4, detailMeaning: "12 x detail segments around the ring, 6 x detail around the tube", usesSeed: false, variants: [] },
   terrain: { id: "terrain", title: "Terrain", closed: false, minDetail: 1, maxDetail: 8, defaultDetail: 4, detailMeaning: "8 x detail cells per side", usesSeed: true, variants: terrainVariants },
   vase: { id: "vase", title: "Vase", closed: false, minDetail: 1, maxDetail: 8, defaultDetail: 4, detailMeaning: "8 x detail angular slices", usesSeed: false, variants: vaseProfileNames },
-  figure: { id: "figure", title: "Faceted figure", closed: true, minDetail: 1, maxDetail: 1, defaultDetail: 1, detailMeaning: "fixed geometry", usesSeed: false, variants: [] },
+  figure: { id: "figure", title: "Faceted figure", closed: true, minDetail: 0, maxDetail: 5, defaultDetail: 1, detailMeaning: "subdivision level of the head icosphere (80 triangles at 1, 5,120 at 4); the body is fixed", usesSeed: false, variants: [] },
 };
 export function bundledMeshInfo(id: BundledMeshId): BundledMeshInfo {
   const found = info[id];
@@ -255,7 +283,7 @@ export function bundledMesh(id: BundledMeshId, options: { detail?: number; seed?
     case "icosphere": return icosphereMesh(detail);
     case "torus": return torusMesh({ u: 12 * detail, v: 6 * detail });
     case "vase": return vaseMesh({ profile: variant as VaseProfile, slices: 8 * detail });
-    case "figure": return figureMesh();
+    case "figure": return figureMesh(detail);
     case "terrain": {
       const cells = 8 * detail;
       return cached(["terrain", variant, seed, cells], () => terrainMesh({ width: 4, depth: 4, columns: cells, rows: cells, height: terrainHeight(variant as TerrainVariant, seed), id: `terrain-${variant}-${cells}` }));

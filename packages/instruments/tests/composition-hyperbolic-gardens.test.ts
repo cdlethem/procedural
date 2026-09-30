@@ -723,3 +723,29 @@ test("the instrument: controls, groups, seed use and declared visibility", () =>
   Object.assign(big.params, { p: 12, q: 12, motif: "dot", motifFit: 3 });
   assert.throws(() => drawInstrument(recorder().surface as never, big), /Motif size/);
 });
+
+test("every slider end, and all ends together, validate and draw", () => {
+  const numeric = definition(ID).parameters.filter((parameter) => parameter.type === "number");
+  const pick = (which: "min" | "max") => Object.fromEntries(numeric.map((parameter) => [parameter.key, which === "min" ? parameter.min! : parameter.max!]));
+  const trial = (label: string, params: Record<string, number>, motifs: readonly string[] = ["sprig"]) => {
+    for (const motif of motifs) {
+      const input = createInstrument(ID);
+      Object.assign(input.params, { motif, edgeMaterial: "beads", cellFill: "flat-hatch", ringsAround: "vertex", limit: true }, params);
+      assert.doesNotThrow(() => validateInstrument(input), `${label} validates`);
+      assert.doesNotThrow(() => drawInstrument(recorder().surface as never, input), `${label} draws (${motif})`);
+    }
+  };
+  for (const parameter of numeric) {
+    trial(`${parameter.key} at min`, { [parameter.key]: parameter.min! });
+    trial(`${parameter.key} at max`, { [parameter.key]: parameter.max! });
+  }
+  const allMotifs = ["arrow", "sprig", "dot", "rings", "rosette"];
+  trial("all at min", pick("min"), allMotifs);
+  trial("all at max", pick("max"), allMotifs);
+  for (const center of ["vertex", "edge"]) for (const which of ["min", "max"] as const) {
+    const input = createInstrument(ID);
+    Object.assign(input.params, { center, motif: "sprig" }, pick(which));
+    assert.doesNotThrow(() => validateInstrument(input), `${center} ${which}`);
+    assert.doesNotThrow(() => drawInstrument(recorder().surface as never, input), `${center} ${which} draws`);
+  }
+});

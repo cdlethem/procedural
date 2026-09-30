@@ -66,7 +66,7 @@ export function rasterize(rings: readonly (readonly Pt2[])[], x0: number, y0: nu
   return marks;
 }
 
-/** Row runs (dy, x0, x1) of every touched cell of a mark buffer, in cell offsets from the buffer's own origin (x0, y0). */
+/** Row runs (dy, x0, x1) of every touched cell of a mark buffer, in cell offsets from the buffer's own origin (x0, y0), longest run first. */
 export function touchedRuns(marks: Uint8Array, x0: number, y0: number, w: number, h: number): Int32Array {
   const out: number[] = [];
   for (let r = 0; r < h; r++) {
@@ -77,7 +77,11 @@ export function touchedRuns(marks: Uint8Array, x0: number, y0: number, w: number
       else if (!on && start >= 0) { out.push(y0 + r, x0 + start, x0 + c - 1); start = -1; }
     }
   }
-  return Int32Array.from(out);
+  // Most selective first: the AND of every run is order-free, but a long run empties a row of anchors soonest, so the rest are skipped.
+  const runs = Array.from({ length: out.length / 3 }, (_, k) => k).sort((a, b) => (out[3 * b + 2] - out[3 * b + 1]) - (out[3 * a + 2] - out[3 * a + 1]) || a - b);
+  const sorted = new Int32Array(out.length);
+  runs.forEach((k, i) => { sorted[3 * i] = out[3 * k]; sorted[3 * i + 1] = out[3 * k + 1]; sorted[3 * i + 2] = out[3 * k + 2]; });
+  return sorted;
 }
 
 /** A grid of `gw × gh` cells stored as `gh` rows of `W` words. */

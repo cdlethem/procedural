@@ -47,19 +47,19 @@ const parameters: Parameter[] = [
 
   select("family", "Scan lines", "The carriers the waves ride on: straight parallel lines, lines bent by one wave, concentric rings, one spiral, or streamlines that follow the picture's own directions.", ["straight", "curved", "rings", "spiral", "flow"]),
   n("angle", "Scan angle", "Direction of the lines in degrees, 0 along the picture's x axis. In flow it is the direction used where the picture has no clear direction.", -90, 90, 1, -3600, 3600, ruled),
-  n("spacing", "Line spacing", "Gap between neighbouring lines, in canvas units, where the tone is light.", 2.5, 20, 0.5, 1, 200),
-  n("spacingGain", "Spacing gain", "How much dark tones crowd the lines: 0 keeps the spacing constant; 0.5 halves it in the darkest places.", 0, 0.8, 0.01, 0, 0.9),
+  n("spacing", "Line spacing", "Gap between neighbouring lines, in canvas units, where the tone is light.", 5, 20, 0.5, 1, 200),
+  n("spacingGain", "Spacing gain", "How much dark tones crowd the lines: 0 keeps the spacing constant; 0.5 halves it in the darkest places.", 0, 0.4, 0.01, 0, 0.9),
   n("bend", "Bend", "Amplitude, in canvas units, of the sine that bends every line the same way.", 0, 40, 0.5, 0, 1000, curved),
   n("bendLength", "Bend length", "Wavelength of that bend, in canvas units.", 40, 400, 5, 4, 10000, curved),
-  n("radialX", "Radial center X", "Horizontal position of the rings' or spiral's center, as a fraction of the footprint width from its middle.", -0.5, 0.5, 0.01, -2, 2, radial),
-  n("radialY", "Radial center Y", "Vertical position of the rings' or spiral's center, as a fraction of the footprint height from its middle.", -0.5, 0.5, 0.01, -2, 2, radial),
+  n("radialX", "Radial center X", "Horizontal position of the rings' or spiral's center, as a fraction of the footprint width from its middle.", -0.25, 0.25, 0.01, -2, 2, radial),
+  n("radialY", "Radial center Y", "Vertical position of the rings' or spiral's center, as a fraction of the footprint height from its middle.", -0.25, 0.25, 0.01, -2, 2, radial),
   n("follow", "Image direction", "How strongly the lines follow the picture's edges and stripes: 0 ignores them (straight lines), 1 follows wherever the picture has a clear direction.", 0, 1, 0.01, 0, 1, flowing),
   n("flowSmoothing", "Direction smoothing", "Blurs the picture's directions over this length, in canvas units, so lines follow shapes rather than pixel noise.", 0, 60, 0.5, 0, 200, flowing),
 
-  n("baseFrequency", "Base frequency", "Waves per 100 canvas units where the tone is lightest (just above the negative-space level).", 0, 30, 0.5, 0, 50),
-  n("frequencyGain", "Frequency gain", "Extra waves per 100 units at the darkest tone: shadows get shorter waves. Base plus gain is at most 50, a 2-unit wavelength.", 0, 40, 0.5, 0, 50),
-  n("baseAmplitude", "Base amplitude", "Height of the waves in the lightest lines, in line spacings; 0 leaves them straight.", 0, 1, 0.01, 0, 2),
-  n("amplitudeGain", "Amplitude gain", "Extra wave height at the darkest tone, in line spacings. Base plus gain is at most 4; above about 0.5 neighbouring lines overlap.", 0, 1.5, 0.01, 0, 3),
+  n("baseFrequency", "Base frequency", "Waves per 100 canvas units where the tone is lightest (just above the negative-space level).", 0, 10, 0.5, 0, 50),
+  n("frequencyGain", "Frequency gain", "Extra waves per 100 units at the darkest tone: shadows get shorter waves. Base plus gain is at most 50, a 2-unit wavelength; the sliders stop at 22 together, and typing beyond them is allowed.", 0, 12, 0.5, 0, 50),
+  n("baseAmplitude", "Base amplitude", "Height of the waves in the lightest lines, in line spacings; 0 leaves them straight.", 0, 0.6, 0.01, 0, 2),
+  n("amplitudeGain", "Amplitude gain", "Extra wave height at the darkest tone, in line spacings. Base plus gain is at most 4; above about 0.5 neighbouring lines overlap.", 0, 1, 0.01, 0, 3),
   n("phaseSpread", "Phase spread", "How far each line's wave starts from a common phase, as a fraction of a cycle, drawn from the seed: 0 lines the crests up, 1 scatters them.", 0, 1, 0.01, 0, 1),
 
   select("line", "Line", "Continuous ink, or stitches laid along each wave.", ["ink", "stitch"]),
@@ -108,6 +108,10 @@ export function engravingFromValues(q: Values, seed: number, palette: readonly n
 
 /** Work that follows from the stored values alone; the same bounds are enforced exactly while building. */
 export function validateFmEngraving(q: Values): void {
+  if (Number(q.baseFrequency) + Number(q.frequencyGain) > 50)
+    throw new Error(`Base frequency ${q.baseFrequency} + frequency gain ${q.frequencyGain} exceeds 50 waves per 100 units (a 2-unit wavelength); lower either`);
+  if (Number(q.baseAmplitude) + Number(q.amplitudeGain) > 4)
+    throw new Error(`Base amplitude ${q.baseAmplitude} + amplitude gain ${q.amplitudeGain} exceeds 4 line spacings; lower either`);
   const o = engravingFromValues(q, 0, [0]);
   const { vertices } = estimateEngraving(o);
   if (vertices > 2 * MAX_VERTICES)
