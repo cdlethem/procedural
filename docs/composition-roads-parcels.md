@@ -84,7 +84,7 @@ Seeds are `componentSeed` of the instrument seed and an id and purpose; lot cuts
 
 ## Bounds
 
-Steps at most 1500 (hard) and 600 (slider); work per step at most 150,000 counted units (grid cells and segment
+Steps at most 1500 (hard) and 240 (slider); work per step at most 150,000 counted units (grid cells and segment
 tests) so a run is bounded by `steps x 150,000` under `maxWork` 250,000,000; the edge grid has at most 400,000 cells
 (error names **Block size**); at most 4,000 blocks and 12,000 lots (error names Block size, Steps, Lot width or Lot
 depth); state values and checkpoints are bounded by the runner (a checkpoint every 60 steps; every step's counts are
@@ -158,18 +158,33 @@ age; and two layered pairs in both orders with the unmodified Region Quilts and 
 - Solid default fills hid the roads' hierarchy and the default palette made the tiny lots muddy: warmer accents, underpaint 0.3, weight 1.
 - Contour fills in small lots were a few squiggles: one hill and more levels, so they read as concentric rings.
 
-Timing (Node 22, null drawing surface, shared machine, single runs; milliseconds):
+Later review (responsiveness): the worst slider corner with every treatment on took 4.1 s. Cost drivers found and their slider intervals
+narrowed (hard limits unchanged, so exact entry still reaches them): Block size slider 70 to 240 (was 40), Focus block scale slider .6 to 1
+(was .25), Lot width slider from 14 and Lot depth from 18 (were 8 and 12), Steps slider 0 to 240 (was 600), and contour fills use a 12 by 12
+sample and six levels (were 24 by 24 and eight; hatch and dots were cheap). Steps default 60: at the default site growth finishes at step 42
+to 51 on eight seeds, so the default is the finished network and only about the first 50 slider values act; a smaller block or a larger site
+finishes later (about 120 steps at block size 70 on 640 by 640, up to about 210 with the focus shrinking blocks), which the slider maximum
+covers. Two further defects found while measuring: the trace ended on the first road it came within the snap distance of even when the
+junction policy allowed passing it, so crossroads and long crossings did nothing whenever the trace step (block size / 16) was shorter than
+the snap distance (block size 60 or less at the default snap): now a passable route street is not "near"; and the exact Boolean over road
+strips failed to converge (`NOT_CONVERGED`) on a dense organic mesh with snap 1: strips are snapped to a 1/1024 lattice after widening by
+0.001, more than the snapping error, so lots still keep the full half-width. A 150-configuration random fuzz over every pattern, junction
+policy, dead-end policy, zone shape and size now raises only the deliberate error naming Hub radius when the hub ring overlaps the zone.
 
-| Case | First draw | Palette only | Road, mark, outline styling | Lot width edit | Steps - 1 | Structural (block size + 3) |
-|---|---|---|---|---|---|---|
-| Default (300 steps, 29 streets, 345 lots) | 254 | 2 | 3 | 91 | 109 | 177 |
-| Block 40, 640 x 640, steps 600 (done at 278), 3,249 lots | 873 | 6 | 7 | 406 | 562 | 787 |
-| Block 14, 640 x 640, steps 600 (slider maximum, still growing: 560 streets, 563 blocks) | 889 | 6 | 10 | 308 | 1,493 | 4,070 |
-| Block 14, steps 1500 (hard maximum, done at 1,442: 1,379 streets, 1,382 blocks) | 3,758 | 13 | 26 | 808 | 2,740 | 2,419 |
+Timing (Node 22, null drawing surface, best of three seeds, CPU milliseconds with wall time in brackets, on a shared machine with a load
+average of about 17, so an idle machine should be no slower):
 
-Choosing new fill kinds (hatch or contours for every lot) at the same sizes costs 284 to 2,731 ms once (geometry of every lot),
-then 0. A structural edit reruns the growth from the start (its key changed), then blocks and lots; `prepareInstrument` runs the
-stages in time slices and can be cancelled between them. Steps up or down reuse checkpoints (every 60 steps).
+| Case | First draw | Palette only | Road, mark, outline styling | Lot width edit | Structural edit (block size + 2) |
+|---|---|---|---|---|---|
+| Default (60 steps, 29 streets, 345 lots) | 464 (567) | 7 (8) | 5 (7) | 188 (400) | 354 (640) |
+| Default with hatch, contours, dots, ring marks and bead roads on | 243 (229) | 3 (3) | 2 (2) | 51 (50) | 204 (204) |
+| Slider corner: block 70, 640 x 640, 240 steps, focus .6 over 600, lots 14 x 18, every treatment on | 760 (654) | 10 (7) | 8 (6) | 293 (268) | 660 (596) |
+| Same with long crossings | 691 (626) | 6 (6) | 6 (5) | 256 (237) | 678 (612) |
+| Same, organic pattern, wobble 40, snap 1 | 876 (798) | 9 (8) | 7 (7) | 400 (375) | 823 (777) |
+| Hard corner: block 14, focus 1, 1500 steps, lots 10 x 14, every treatment on (1,379 streets, 1,382 blocks) | 2,007 (1,870) | 25 (17) | 16 (15) | 406 (379) | 1,737 (1,586) |
+
+A structural edit reruns growth from the start (its key changed), then blocks, lots and fill geometry; steps up or down reuse checkpoints
+(every 60 steps). `prepareInstrument` runs every stage in time slices and can be cancelled between them.
 
 ## Open questions
 

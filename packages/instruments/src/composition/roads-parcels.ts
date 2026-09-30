@@ -132,7 +132,7 @@ const dot = (size: number): MotifSpec => ({ kind: "dot", size, petals: 6, openin
 function fillSpec(kind: "hatch" | "motifs" | "contours", f: RoadsParcelsComposition["fill"]): RegionFillSpec {
   return { kind, inset: f.inset, retention: 1, spacing: f.spacing, angle: f.hatchAngle, weight: f.weight, underpaint: 0, mark: dot(f.weight * 2.2),
     material: { kind: "ink", weight: f.weight, spacing: f.spacing, phase: .5, phaseSpread: 0, levelRamp: 0, retention: 1, mark: dot(f.weight * 2.2) },
-    contour: { source: "hills", resolution: 24, frequency: 1, aspect: 1, hillCount: 1, hillRadius: .7, levelBase: .15, levelStep: Math.max(.05, f.spacing / 30), levels: 8 } };
+    contour: { source: "hills", resolution: 12, frequency: 1, aspect: 1, hillCount: 1, hillRadius: .7, levelBase: .15, levelStep: Math.max(.06, f.spacing / 24), levels: 6 } };
 }
 
 const junctionViews = new WeakMap<RoadNetwork, GraphView>();

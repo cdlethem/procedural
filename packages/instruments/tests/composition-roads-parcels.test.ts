@@ -112,6 +112,32 @@ test("junction policy: tee never lets a route street pass through another, cross
   assert.ok(passing("through") >= passing("crossing"));
 });
 
+test("the junction policy holds at every block size: a street may pass a road it first meets within the snap distance", () => {
+  // With a step shorter than the snap distance the trace used to end on the first road it came near, ignoring the policy.
+  for (const blockSize of [50, 60, 70]) {
+    const shape = (junction: string, seed: number) => products({ blockSize, junction, wobble: 0, warp: 0, anchors: 0, reserve: "none" }, seed).network;
+    const tee = shape("tee", 1), through = shape("through", 1);
+    assert.ok(through.progress.streets < tee.progress.streets, `block ${blockSize}: ${through.progress.streets} streets through, ${tee.progress.streets} tee`);
+  }
+});
+
+test("a dense mesh with many near-collinear road ends builds: strips are snapped so the exact Boolean converges", () => {
+  const dense = { blockSize: 70, width: 640, height: 640, steps: 240, lotWidth: 14, lotDepth: 18, focusScale: .6, focusReach: 600, field: "organic", wobble: 40, snap: 1 };
+  for (const seed of [42, 43]) {
+    const p = products(dense, seed);
+    assert.ok(p.parcels.lots.length > 500);
+    const { widths, setback } = p.blocks.options, at = new Map(p.network.graph.nodes.map((n) => [n.id, n.position] as const));
+    const edgeById = new Map(p.network.graph.edges.map((e) => [e.id, e] as const));
+    for (const parcel of p.parcels.lots.slice(0, 200)) {
+      const block = p.blocks.blocks.find((b) => b.id === parcel.blockId)!;
+      block.face.edges.forEach((id, i) => {
+        const e = edgeById.get(id)!, half = classWidth(widths, block.edgeClass[i]) / 2 + setback;
+        for (const v of parcel.region.outer) assert.ok(distance(v as P, at.get(e.from)!, at.get(e.to)!) >= half - 1e-6);
+      });
+    }
+  }
+});
+
 /* ------------------------------------------------------------------------- the simulation */
 
 test("the growth is a stateful simulation that passes the shared checker: replay, prefix, checkpoints, spacing", () => {

@@ -25,8 +25,8 @@ export const roadsParcelsDefinition: InstrumentDefinition = {
   parameters: [
     select("field", "Street pattern", "The guide field streets follow. Grid runs along one angle; radial makes spokes and rings around the focus; spiral turns them; organic bends with smooth noise.", ["grid", "radial", "spiral", "organic"],
       { grid: "Grid", radial: "Radial and ring", spiral: "Spiral", organic: "Organic" }),
-    n("blockSize", "Block size", "The widest block the growth accepts: streets keep being added until no disc wider than this fits between roads. Small values give a fine mesh and take many more steps.", 40, 240, 1, 8, 2000),
-    n("steps", "Steps", "Growth steps, one attempted street each. Early streets are long and set the hierarchy; later ones fill what is left. Growth stops by itself when nothing fits, so extra steps change nothing.", 0, 600, 1, 0, 1500),
+    n("blockSize", "Block size", "The widest block the growth accepts: streets keep being added until no disc wider than this fits between roads. Small values give a fine mesh and take many more steps; the slider stops at 70 to stay responsive, exact entry goes down to 8.", 70, 240, 1, 8, 2000),
+    n("steps", "Steps", "Growth steps, one attempted street each. Early streets are long and set the hierarchy; later ones fill what is left. Growth stops by itself when nothing fits (about 50 steps at the default, up to about 210 at the slider corner), so steps beyond that change nothing; the slider ends at 240 and exact entry goes to 1500.", 0, 240, 1, 0, 1500),
     n("wobble", "Wobble", "Each street's own turn away from the field, up to this many degrees either way. Zero follows the field exactly.", 0, 40, 1, 0, 90),
     n("anchors", "Anchors", "Streets grown first, through points on a ring around the site centre, before growth looks for room elsewhere. Zero starts from the most open place.", 0, 6, 1, 0, 12),
     n("anchorSpread", "Anchor ring", "Distance of the anchors from the centre, as a fraction of the way to the nearer site edge.", 0, 1, .01, 0, 1),
@@ -54,7 +54,7 @@ export const roadsParcelsDefinition: InstrumentDefinition = {
 
     n("focusX", "Focus X", "Horizontal offset of the focus from the site centre. The focus is the centre of radial and spiral patterns, of the hub ring, and of the shrinking blocks.", -320, 320, 1, -2000, 2000),
     n("focusY", "Focus Y", "Vertical offset of the focus from the site centre.", -320, 320, 1, -2000, 2000),
-    n("focusScale", "Blocks at focus", "Block size at the focus as a fraction of Block size; it grows back to full size over Focus reach.", .25, 1, .01, .1, 1),
+    n("focusScale", "Blocks at focus", "Block size at the focus as a fraction of Block size; it grows back to full size over Focus reach. The slider stops at .6; exact entry goes to .1.", .6, 1, .01, .1, 1),
     n("focusReach", "Focus reach", "Distance from the focus over which blocks grow back to their full size.", 40, 600, 5, 1, 4000),
 
     select("reserve", "Reserved zone", "A shape kept clear of streets and lots: a park, water or an empty quarter. Its outline is a road, so it is a block of its own.", ["none", "ellipse", "rectangle"],
@@ -71,8 +71,8 @@ export const roadsParcelsDefinition: InstrumentDefinition = {
     n("avenues", "Avenues", "How many of the first streets grown are avenues (the widest class). The boundary road, hub ring and links are avenues too.", 0, 30, 1, 0, 100000),
     n("collectors", "Collectors", "How many streets after the avenues are collectors (medium width). All later streets are local.", 0, 60, 1, 0, 100000),
 
-    n("lotWidth", "Lot width", "Typical frontage of a lot along its road. Lots are cut across a block until they are about this wide.", 8, 60, .5, 2, 2000),
-    n("lotDepth", "Lot depth", "Typical depth of a lot from its road. A block deeper than about twice this keeps an unbuilt interior court.", 12, 90, .5, 2, 2000),
+    n("lotWidth", "Lot width", "Typical frontage of a lot along its road. Lots are cut across a block until they are about this wide. The slider stops at 14 to keep the lot count responsive; exact entry goes to 2.", 14, 60, .5, 2, 2000),
+    n("lotDepth", "Lot depth", "Typical depth of a lot from its road. A block deeper than about twice this keeps an unbuilt interior court. The slider starts at 18; exact entry goes to 2.", 18, 90, .5, 2, 2000),
     n("lotVariety", "Lot variety", "How unevenly blocks are cut into lots. Zero cuts every piece in half; one lets a cut fall anywhere the minimum widths allow.", 0, 1, .01, 0, 1),
     n("setback", "Setback", "Land kept clear beside each road, beyond half its width.", 0, 8, .25, 0, 200),
 
@@ -113,7 +113,7 @@ export const roadsParcelsDefinition: InstrumentDefinition = {
     { label: "Roads", controls: [{ label: "Widths", controls: ["avenueWidth", "collectorWidth", "streetWidth"], proportional: true }, "roadMaterial", "stitchSpacing", "roadColor", "junctionMark", "markSize"] },
   ] satisfies ControlGroup[],
   defaults: {
-    field: "grid", blockSize: 100, steps: 300, wobble: 8, anchors: 2, anchorSpread: .35, anchorAngle: 25, boundaryRoad: true,
+    field: "grid", blockSize: 100, steps: 60, wobble: 8, anchors: 2, anchorSpread: .35, anchorAngle: 25, boundaryRoad: true,
     centerX: 320, centerY: 320, width: 560, height: 520, rotation: 0,
     gridAngle: 8, spin: 35, warp: 22, fieldScale: 240, hubRadius: 34,
     junction: "tee", snap: 4, minAngle: 25, deadEnds: "drop",

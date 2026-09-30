@@ -506,7 +506,8 @@ function trace(st: RoadState, m: Model, own: Own, sx: number, sy: number, d0: Pt
       ownInsert(m, own, px, py, x, y);
       return { via, end: { kind: "boundary", vertex: { x, y } } };
     }
-    if (probe.near) {
+    // A route street the junction policy lets this street pass through is not "near": the next segment crosses it.
+    if (probe.near && !(crossed < m.crossings && st.streetKind[st.edgeStreet[probe.near.edge]] === KIND_ROUTE)) {
       // A road within `snap` of the step end: meet it instead of running alongside.
       if (meetingSine(st, probe.near.edge, b[0], b[1]) < m.minAngleSin) return { via, end: { kind: "fail", vertex: null, reason: "shallow" } };
       const chord = probeSegment(st, m, own, px, py, probe.near.x, probe.near.y, probe.near.edge, w);

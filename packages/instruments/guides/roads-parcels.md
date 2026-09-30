@@ -30,8 +30,8 @@ room for a street; steps after that change nothing.
 | Controls | What changes on the canvas |
 |---|---|
 | **Street pattern** | The guide field: *Grid* (all streets at one angle and its perpendicular), *Radial and ring* (spokes and rings around the focus), *Spiral* (spokes turned by a fixed angle) or *Organic* (smooth noise bends the streets). |
-| **Block size** | The widest open disc growth tolerates between roads. Halving it roughly quadruples the streets; it is the main density control. |
-| **Steps** | How far growth has run (see above). The slider ends at 600; the hard limit is 1500. |
+| **Block size** | The widest open disc growth tolerates between roads. Halving it roughly quadruples the streets; it is the main density control. The slider runs from 70 to 240; type a smaller value (down to 8) for a finer mesh, at a cost of seconds. |
+| **Steps** | How far growth has run (see above). Growth finishes by itself: the default site (560 by 520, block size 100) is complete after about 50 steps, and the default is 60, so the default drawing is the finished network and the useful part of the slider is its first 50. Smaller blocks and larger sites take more: about 120 steps at block size 70 on a 640 by 640 site, and up to about 210 with the focus shrinking blocks. The slider ends at 240; the hard limit is 1500. Steps beyond the finish change nothing. |
 | **Wobble** | Each street's own turn away from the field. 0 is a perfectly regular pattern; larger values give a hand-drawn, less planned network. |
 | **Anchors**, **Anchor ring**, **Anchor angle** | How many streets are placed first, how far from the centre, and how the ring is turned. Anchors set the skeleton of avenues; 0 starts from the most open place. |
 | **Boundary road** | A road around the site. Off, streets run out through the edge and only blocks that are completely enclosed get lots; open-ended streets are drawn but bound nothing. |
@@ -46,7 +46,7 @@ room for a street; steps after that change nothing.
 | **Warp**, **Field scale** | Noise added to the guide angle (up to *Warp* degrees) with features of the given size. Warp 0 keeps a grid straight; organic patterns always use the noise. |
 | **Hub ring** | (Radial and spiral) A ring road around the focus that spokes end on. Its inside is an unbuilt plaza. |
 | **Focus X/Y** | The centre of radial and spiral patterns, of the hub, and of the shrinking blocks, as an offset from the site centre. |
-| **Blocks at focus**, **Focus reach** | Block size at the focus as a fraction of *Block size*, and how far from it blocks stay small before growing back to full size. 1 makes blocks equal everywhere. |
+| **Blocks at focus**, **Focus reach** | Block size at the focus as a fraction of *Block size* (slider .6 to 1, exact entry down to .1), and how far from it blocks stay small before growing back to full size. 1 makes blocks equal everywhere. |
 
 ### Junctions and dead ends
 
@@ -72,7 +72,7 @@ Every junction is a real node of the network and no two roads cross without one:
 |---|---|
 | **Avenues**, **Collectors** | How many of the first-grown streets are avenues (widest) and collectors (medium). Everything later is a local street. The boundary road, hub ring and links count as avenues. |
 | **Avenue / Collector / Street width** | Stroke width of each class. Lots keep half of it, plus the setback, clear of the road, so wider roads take more land. |
-| **Lot width**, **Lot depth** | The typical frontage and depth of a lot. A block wider than about 1.5 lots is cut across; deeper than about 1.6 lots it is cut parallel to its road, and what remains behind the front lots is an unbuilt court. |
+| **Lot width**, **Lot depth** | The typical frontage and depth of a lot (sliders start at 14 and 18; type smaller values, down to 2, for a fine cadastre, at a cost). A block wider than about 1.5 lots is cut across; deeper than about 1.6 lots it is cut parallel to its road, and what remains behind the front lots is an unbuilt court. |
 | **Lot variety** | 0 cuts every piece in half; 1 lets each cut fall anywhere the minimum lot width allows. |
 | **Setback** | Extra land kept clear beside each road. |
 | **Lot types by** | Which rule sorts lots into three types: the class of the road they front, their size (largest first), their distance from the focus (nearest first), the age of their road (oldest first) or chance. The last three make three equal bands. |
@@ -92,7 +92,7 @@ Palette roles: 1 ink for roads and outlines, 2 to 4 lot types A to C, 5 accent (
 - **Old organic quarter:** *Organic*, *Block size* 60, *Wobble* 20, *Boundary road* off.
 - **Radial city:** *Radial and ring*, *Hub ring* 40, *Blocks at focus* 0.4, *Anchors* 0.
 - **Park in a grid:** a rectangular zone, *Unbuilt blocks* 0.2 with *Largest*.
-- **Growth study:** step *Steps* from 0 to 100 with *Road color* by age and *Type A/B/C* open.
+- **Growth study:** step *Steps* from 0 to 50 with *Road color* by age and *Type A/B/C* open.
 - **Land-use map:** *Underpaint* 1 with *Dots* on one type, *Contours* on another and *Hatching* on the third reads as a plan of land uses.
 
 ## Use the pieces in code
@@ -120,7 +120,7 @@ an edge, and a block's id changes exactly when its boundary does; lot ids extend
 
 ## Limits
 
-Steps stop at 1500, and one step may charge at most 150,000 work units; the grid over the site may not have more
+The sliders stop where the drawing stays responsive (under about a second for the worst slider corner with every fill on); exact entry goes further, and the hard corner (block size 14, 1500 steps, lots of 10 by 14) takes about two seconds. Steps stop at 1500, and one step may charge at most 150,000 work units; the grid over the site may not have more
 than 400,000 cells (a small *Block size* on a large site is rejected naming **Block size**). At most 4,000 blocks and
 12,000 lots; over that, the error names **Block size**, **Steps**, **Lot width** or **Lot depth**, and nothing is
 thinned. Your own street geometry or a bound raster or mask for the reserved zone is a future host feature: the

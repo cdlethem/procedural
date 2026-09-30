@@ -141,13 +141,23 @@ const hex = (n: number): string => n.toString(16).padStart(8, "0");
 
 /* ------------------------------------------------------------------------------------- blocks */
 
+/**
+ * Road strips are snapped to a lattice of GRID (a power of two) so the exact Boolean over hundreds of them sees
+ * benign coordinates: arbitrary doubles at nearly collinear corners can make its splitting fail to converge. Every
+ * strip is first widened by MARGIN, more than the largest snapping error (GRID / 2 in x and y), so land still keeps
+ * at least the full half-width from the road.
+ */
+const GRID = 1 / 1024, MARGIN = 0.001;
+const snapped = (v: number): number => Math.round(v / GRID) * GRID;
+const snappedRing = (ring: [number, number][]): PlanarRegionData => ({ outer: ring.map(([x, y]) => [snapped(x), snapped(y)] as [number, number]) });
+
 function octagon(x: number, y: number, r: number): PlanarRegionData {
-  const R = r / Math.cos(Math.PI / 8);
-  return { outer: Array.from({ length: 8 }, (_, i) => [x + R * Math.cos(Math.PI * (2 * i + 1) / 8), y + R * Math.sin(Math.PI * (2 * i + 1) / 8)] as [number, number]) };
+  const R = (r + MARGIN) / Math.cos(Math.PI / 8);
+  return snappedRing(Array.from({ length: 8 }, (_, i) => [x + R * Math.cos(Math.PI * (2 * i + 1) / 8), y + R * Math.sin(Math.PI * (2 * i + 1) / 8)] as [number, number]));
 }
-function strip(ax: number, ay: number, bx: number, by: number, h: number): PlanarRegionData {
-  const length = Math.hypot(bx - ax, by - ay), nx = -(by - ay) / length * h, ny = (bx - ax) / length * h;
-  return { outer: [[ax + nx, ay + ny], [bx + nx, by + ny], [bx - nx, by - ny], [ax - nx, ay - ny]] };
+function strip(ax: number, ay: number, bx: number, by: number, half: number): PlanarRegionData {
+  const h = half + MARGIN, length = Math.hypot(bx - ax, by - ay), nx = -(by - ay) / length * h, ny = (bx - ax) / length * h;
+  return snappedRing([[ax + nx, ay + ny], [bx + nx, by + ny], [bx - nx, by - ny], [ax - nx, ay - ny]]);
 }
 
 interface Stub { readonly ax: number; readonly ay: number; readonly bx: number; readonly by: number; readonly cls: number; readonly free: Point }
