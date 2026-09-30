@@ -111,7 +111,8 @@ negative space and the container outline never re-solve the packing or rename a 
 stable for the same seed, family, letters, size range and bias whatever the count).
 
 Limits: at most 600 pieces, 24 angles (48 with mirrors), search resolution 320, 8 retries and 60,000,000 search
-steps (about four seconds of work on the development machine), each reported with the control to lower;
+steps, each reported with the control to lower when values are typed in; the sliders stop lower (100 pieces, 12 angles,
+resolution 160, 3 retries, pieces up to 200 units) so that every slider at its end still prepares in about two seconds;
 lengths are canvas units of the 640-unit reference canvas. The rule is greedy: it is not optimal and it does not
 relax an existing layout. When a container is a plain rectangle and pieces are rectangles or circles, the
 existing packed shapes and circle placement are cheaper and give the same result.
