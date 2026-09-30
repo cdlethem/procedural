@@ -401,6 +401,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "implicit-sculpture",
+      "title": "Implicit Sculpture",
+      "description": "Compose solids, cavities, repeated structures and bounded fractals as a signed-distance tree, then draw the fragment as ray-marched shading, smooth vector bands, mesh facets or grains, with hidden-line silhouettes, creases and slice contours from one extracted mesh.",
+      "category": "3D forms",
+      "operationIds": ["field.raymarch-implicit-rays-3d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/implicit-sculpture.md",
+      "source": "packages/instruments/src/composition/sdf-draw.ts",
+      "sourceEntry": "drawImplicitSculpture",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "gesture-scores",
       "title": "Gesture Scores",
       "description": "Replay a recorded hand movement with its timing and pressure as a broad bristle brush, a lagging fall of sand and glyphs along the path; one time window and smoothing reshape all three.",
