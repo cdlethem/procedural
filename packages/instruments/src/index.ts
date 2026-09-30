@@ -52,6 +52,8 @@ import { strokeReliefDefinition } from "./adapters/stroke-relief-instrument.js";
 import { drawStrokeRelief, prepareStrokeRelief, strokeReliefComposition } from "./composition/stroke-relief.js";
 import { pathTypographyDefinition, pathTypographyUsesSeed } from "./adapters/path-typography-instrument.js";
 import { drawPathTypography, pathTypographyComposition, preparePathTypography } from "./composition/path-type-draw.js";
+import { wetPigmentDefinition, wetPigmentPalette } from "./adapters/wet-pigment-instrument.js";
+import { drawWetPigment, prepareWetPigment, wetPigmentComposition, wetPigmentUsesSeed } from "./composition/wet-pigment-draw.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
@@ -258,6 +260,12 @@ export type { PointGridOptions, PointHit } from "./composition/spatial-index.js"
 export { PointGrid, MAX_GRID_CELLS } from "./composition/spatial-index.js";
 export type { LatticeWalkOptions, LatticeStep, AngleWalkOptions, AngleStep } from "./composition/walks.js";
 export { latticeWalkStep, angleWalkStep, LATTICE_DIRECTIONS } from "./composition/walks.js";
+export type { WetMaskSpec, WetBoundary, WetLayout, WetModel, WetSite, WetAccounting, WetState, WetFrame, WetEnvironment, WetSnapshots } from "./composition/wet-pigment.js";
+export { WET_LIMITS, wetPigmentSimulation, wetPigmentSnapshots, prepareWetPigmentSnapshots, wetEnvironment, wetMaskDomain, checkWetModel, wetWork } from "./composition/wet-pigment.js";
+export type { WetPigmentComposition, PigmentBands, DryingFronts, WetFilm, WetPigmentProducts, WetPigmentConsumers } from "./composition/wet-pigment-draw.js";
+export { wetPigmentComposition, wetPigmentProducts, pigmentBands, dryingFronts, wetFilm, pigmentFills, frontLines, filmSheen, bandAlpha, drawWetPigment,
+  prepareWetPigment, wetPigmentUsesSeed, MAX_FRONTS, MAX_BANDS } from "./composition/wet-pigment-draw.js";
+export { WET_WORDS } from "./adapters/wet-pigment-instrument.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -276,7 +284,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, wetPigmentDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -310,6 +318,7 @@ export function inspectorItems(id: string, values: InstrumentInput["params"]): I
 
 function paletteFor(id: string): number[] {
   if (referencePalettes[id]) return [...referencePalettes[id]];
+  if (id === "wet-pigment") return [...wetPigmentPalette];
   return imageAndControlsPalette(id) ?? externalDynamicsPalette(id) ??
     externalExpansionPalette(id) ?? (id === "lattice-marks" ? [...latticeOriginal] : [...original]);
 }
@@ -436,6 +445,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
+  if (input.technique === "wet-pigment") return drawWetPigment(context, wetPigmentComposition(input));
   if (referenceIds[input.technique]) return drawReferenceInstrument(context, input);
   const drawCurrent = creativeDrawers[input.technique];
   if (drawCurrent) return drawCurrent(context, input);
@@ -453,7 +463,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "wet-pigment" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -468,6 +478,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "sand-deposition") return prepareSandDeposition(sandDepositionComposition(input), cancelled);
   if (input.technique === "quilled-paths") return prepareQuilled(quillComposition(input), cancelled);
   if (input.technique === "dry-bristles") return prepareDryBristles(dryBristlesComposition(input), cancelled);
+  if (input.technique === "wet-pigment") return prepareWetPigment(wetPigmentComposition(input), cancelled);
   if (input.technique === "data-scores")
     return prepareDataScores(dataScoresComposition(input), cancelled);
   if (input.technique === "pixel-sorting") return preparePixelSorting(pixelSortingComposition(input), cancelled);
@@ -512,6 +523,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "data-scores": return dataScoresUsesSeed(q);
     case "pixel-sorting": return pixelSortingUsesSeed(q);
     case "fm-engraving": return fmEngravingUsesSeed(q);
+    case "wet-pigment": return wetPigmentUsesSeed(q);
     case "path-typography": return pathTypographyUsesSeed(q);
     case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
