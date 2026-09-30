@@ -89,7 +89,7 @@ export interface ViewGeometry {
   readonly stats: { readonly shellTriangles: number; readonly capTriangles: number; readonly sections: number; readonly bedVertices: number };
 }
 
-export const SECTION_MIN_AREA = 2e-5;
+export const SECTION_MIN_AREA = 1e-5;
 export const VISIBLE_THICKNESS = 0.004;
 export const MAX_BED_VERTICES = 140_000;
 export const MAX_BEDS = 6;

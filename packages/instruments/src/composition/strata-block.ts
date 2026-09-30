@@ -29,7 +29,7 @@
 import { mesh, type Mesh, type Vec3 } from "./mesh.js";
 import type { StrataModel } from "./strata.js";
 
-export const BLOCK_LIMITS = Object.freeze({ maxVertices: 160_000, maxTriangles: 330_000, minResolution: 8, maxResolution: 120 });
+export const BLOCK_LIMITS = Object.freeze({ maxVertices: 160_000, maxTriangles: 190_000, minResolution: 8, maxResolution: 120 });
 export const ROLE = Object.freeze({ horizonUp: 0, horizonDown: 1, ground: 2, base: 3, wall: 4, fault: 5 });
 /** Least thickness of any stratum at any vertex (fraction of the block height): eroded and pinched-out strata thin to it. */
 export const FLOOR = 1e-5;
