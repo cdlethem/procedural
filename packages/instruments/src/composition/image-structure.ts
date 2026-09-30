@@ -69,6 +69,10 @@
  * cycle, so the polyline never aliases its own carrier). Tone 0 with `amplitude.min = 0` is a straight
  * line whose phase still advances, so a later dark area continues the same wave. Bound: 1,000,000
  * vertices (throws naming `frequency.max`, `maxPhaseStep` or `length`).
+ *
+ * Value smoothing (`smoothValues`). A ScalarGrid convolved with a separable Gaussian of `sigma` pixels (radius ceil(3 sigma)); border
+ * taps are renormalised over the in-image part (the kernel `orientationField` smooths its tensor with), so constants stay
+ * constant and results stay inside the input's range. Use it before `segmentValueBands` to calm noisy bands.
  */
 
 import { adoptLabelGrid, adoptScalarGrid, createRaster, gridStorage, rasterStorage, valueField } from "./raster.js";
@@ -634,6 +638,46 @@ function decompose(xx: number, xy: number, yy: number, flatEnergy: number, fallb
   return Object.freeze({ direction, gradientDirection: wrapHalfTurn(direction + Math.PI / 2), coherence: Math.min(1, 2 * half / trace), energy: trace, defined: true });
 }
 
+/**
+ * Separable Gaussian of standard deviation `sigma` pixels and integer `radius` (ceil(3 sigma)), in place over `data`.
+ * Each tap is renormalised over the in-image part of its window, so a uniform field stays uniform to the border.
+ */
+function gaussianSmooth(data: Float64Array, width: number, height: number, sigma: number, radius: number): void {
+  const kernel = new Float64Array(radius + 1);
+  for (let k = 0; k <= radius; k++) kernel[k] = Math.exp(-(k * k) / (2 * sigma * sigma));
+  const tmp = new Float64Array(width * height);
+  const normX = new Float64Array(width), normY = new Float64Array(height);
+  for (let x = 0; x < width; x++) { let s = 0; for (let k = Math.max(0, x - radius); k <= Math.min(width - 1, x + radius); k++) s += kernel[Math.abs(k - x)]; normX[x] = s; }
+  for (let y = 0; y < height; y++) { let s = 0; for (let k = Math.max(0, y - radius); k <= Math.min(height - 1, y + radius); k++) s += kernel[Math.abs(k - y)]; normY[y] = s; }
+  for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
+    let s = 0;
+    for (let k = Math.max(0, x - radius); k <= Math.min(width - 1, x + radius); k++) s += kernel[Math.abs(k - x)] * data[y * width + k];
+    tmp[y * width + x] = s / normX[x];
+  }
+  for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
+    let s = 0;
+    for (let k = Math.max(0, y - radius); k <= Math.min(height - 1, y + radius); k++) s += kernel[Math.abs(k - y)] * tmp[k * width + x];
+    data[y * width + x] = s / normY[y];
+  }
+}
+
+/**
+ * A ScalarGrid smoothed by a Gaussian of standard deviation `sigma` pixels (0..64; 0 returns the grid itself). Border taps are
+ * renormalised over the in-image part, so a constant grid stays constant and every result value lies within the input's range.
+ * Work: pixels x (4 ceil(3 sigma) + 4), at most 1,000 million (throws naming `sigma`).
+ */
+export function smoothValues(grid: ScalarGrid, sigma: number): ScalarGrid {
+  const fn = "smoothValues";
+  if (grid === null || typeof grid !== "object" || grid.kind !== "scalar") throw new Error(`${fn}: grid must be a ScalarGrid`);
+  checkNumber(fn, "sigma", sigma, 0, 64);
+  if (sigma === 0) return grid;
+  const size = sourceSize(fn, grid), radius = Math.ceil(3 * sigma), work = size.width * size.height * (4 * radius + 4);
+  if (work > MAX_ORIENTATION_WORK) throw new Error(`${fn}: sigma ${sigma} on ${size.width} x ${size.height} needs about ${Math.round(work / 1e6)} million operations; the limit is ${MAX_ORIENTATION_WORK / 1e6} million: lower sigma or shrink the source`);
+  const out = gridStorage(grid).slice();
+  gaussianSmooth(out, size.width, size.height, sigma, radius);
+  return adoptScalarGrid(size.width, size.height, out);
+}
+
 /** Structure-tensor orientation field with stated smoothing. See the module header. */
 export function orientationField(source: ImageSource, options: OrientationOptions): OrientationField {
   const fn = "orientationField";
@@ -654,25 +698,9 @@ export function orientationField(source: ImageSource, options: OrientationOption
     xx[p] = gx * gx; xy[p] = gx * gy; yy[p] = gy * gy;
   }
   if (radius > 0) {
-    const kernel = new Float64Array(radius + 1);
-    for (let k = 0; k <= radius; k++) kernel[k] = Math.exp(-(k * k) / (2 * smoothing * smoothing));
-    const smooth = (data: Float64Array): void => {
-      const tmp = new Float64Array(P);
-      const normX = new Float64Array(width), normY = new Float64Array(height);
-      for (let x = 0; x < width; x++) { let s = 0; for (let k = Math.max(0, x - radius); k <= Math.min(width - 1, x + radius); k++) s += kernel[Math.abs(k - x)]; normX[x] = s; }
-      for (let y = 0; y < height; y++) { let s = 0; for (let k = Math.max(0, y - radius); k <= Math.min(height - 1, y + radius); k++) s += kernel[Math.abs(k - y)]; normY[y] = s; }
-      for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
-        let s = 0;
-        for (let k = Math.max(0, x - radius); k <= Math.min(width - 1, x + radius); k++) s += kernel[Math.abs(k - x)] * data[y * width + k];
-        tmp[y * width + x] = s / normX[x];
-      }
-      for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
-        let s = 0;
-        for (let k = Math.max(0, y - radius); k <= Math.min(height - 1, y + radius); k++) s += kernel[Math.abs(k - y)] * tmp[k * width + x];
-        data[y * width + x] = s / normY[y];
-      }
-    };
-    smooth(xx); smooth(xy); smooth(yy);
+    gaussianSmooth(xx, width, height, smoothing, radius);
+    gaussianSmooth(xy, width, height, smoothing, radius);
+    gaussianSmooth(yy, width, height, smoothing, radius);
   }
   return Object.freeze({
     width, height, smoothing, flatEnergy, fallback,
