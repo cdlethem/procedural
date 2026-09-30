@@ -75,26 +75,35 @@ up extends a cached run; down replays from the nearest checkpoint. Cancelled pre
 resolution); contour levels ≤ 200 and vertices ≤ 1,500,000 (contour interval, resolution); shading vertices ≤ 800,000; stream cells ≤ 60,000 and graph size
 (stream threshold); hatch strokes ≤ 150,000 (hatch spacing).
 
-## Measured (Node 22, this machine, null surface, idle-ish; ms; every treatment on)
+## Measured (Node 22, null surface; ms)
 
-All treatments on: contours with starting contours and interval 0.006, shading, ribbon streams at threshold 0.1 %, wash + divides basins, lakes, marks at sources and
-confluences. One fresh process per row; a structural edit is a full run of a new construction.
+**Measurement caveat.** The machine was not idle: the load average was 75–90 (24 cores shared with other agents) during the re-measurement, which inflates wall time three- to fourfold. The table gives
+CPU time (`process.cpuUsage`) and the wall time seen, and states the calibration used to estimate idle wall time: the configuration measured earlier on a quiet machine at 1.3 s wall
+(140², 250 steps, creep 1.5, all treatments) cost 3.1 s of CPU under this load, a factor of about 2.4. Idle figures below are CPU divided by that factor and are estimates, not idle measurements.
 
-| Case | first draw | appearance edit | structural edit |
+**Cost structure.** The simulation is 75–80 % of the time at the corner (one step is a fill, a route, an accumulation and a creep pass over every cell); the treatments (contours, shading bands, streams,
+basins, lakes) are 20–25 %. A real canvas adds the cost of painting about 50,000 vertices and 900–1500 shapes, which is the same at the default and at the corner (counted: 56,082 vertices at the default,
+50,057 at the all-maximum corner), so the slider corner is limited by the simulation.
+
+Every treatment on. A structural edit is a full run of a new construction.
+
+| Case | first draw (cpu / wall seen) | structural edit (cpu / wall seen) | estimated idle |
 |---|---|---|---|
-| default: 112², 120 steps | 544 | 9 | 501 |
-| **slider corner**: 140² (resolution max), 250 steps (steps max), creep 1.5 (creep max; 3 sub-steps) | 1349 | 10 | 1320 |
-| hard corner, shading off: 384², 100 steps, creep 0 | 4659 | 33 | 4640 |
-| hard corner with shading at depth 0.3: 384², 100 steps | 6425 | 106 | 13370 |
+| default: 112², 120 steps | 544 wall on a quiet machine | 501 wall on a quiet machine | 0.5 s |
+| **every numeric control at slider maximum** (resolution 128, steps 200, creep 1.5 → 3 sub-steps, shading depth 8, stream threshold 4 %, and so on) | 2197 / 3398 | 2095 / 2267 | about 0.9 s |
+| every slider at its maximum, with the costliest treatment drivers instead (finest contour interval 0.006, threshold 0.1 %, hatch 2, shading depth 8, lake depth 0.002, beads at spacing 3, smoothing 4, basin detail 4) | 2523 / 9826 | 2440 / 2695 | about 1.0 s |
+| every numeric control at slider minimum, finest treatment drivers | 316 / 363 | 178 / 151 | 0.15 s |
+| hard corner, shading off: 384², 100 steps, creep 0 | 4659 wall on a quiet machine | 4640 | 4.7 s |
 | hard corner with the default shading depth | refused: "Shading would draw more than 800000 polygon vertices; lower the resolution or the shading depth" | | |
 
-Scrubbing `steps` reuses the cached run: +5 steps costs 45–100 ms at the default and slider-corner sizes, −1 step costs one checkpoint interval (about 110–300 ms).
+Scrubbing `steps` reuses the cached run: +5 steps costs 45–100 ms at the default and corner sizes, −1 step costs one checkpoint interval.
 
-**Slider intervals versus hard limits.** The slider intervals of the cost drivers were narrowed after the first measurement (200² × 300 steps took 3.6 s, and 200² × 300 steps × creep 4 was
-refused outright, so that slider corner was not admitted): resolution 48–140 (hard 24–384), erosion steps 0–250 (hard 0–5000), creep 0–1.5 (hard 0–100; sub-steps at most 3 on the slider,
-64 at the hard limit). The corner of all three slider maxima is admitted and costs about 1.3 s; a test asserts that it validates, has at most 3 creep sub-steps and stays under half the work bound.
+**Slider intervals versus hard limits.** The slider intervals of the cost drivers were narrowed twice. First (200² × 300 steps took 3.6 s and 200² × 300 × creep 4 was refused outright): resolution 48–140, steps
+0–250, creep 0–1.5. Then, after the real interface showed 5.5 s with every range control raised at once (the second corner also raises every drawing control and the storm and bedrock settings, which the first did
+not): resolution 48–128 (hard 24–384), erosion steps 0–200 (hard 0–5000), creep 0–1.5 (hard 0–100; at most 3 sub-steps on the slider, 64 at the hard limit). The drawing controls needed no narrowing:
+none of them costs more than a fifth of the corner, and each drives its own named bound (contour levels, shading vertices, stream cells, hatch strokes). A test draws every numeric control together at
+slider minimum and at slider maximum, and both again with the finest treatment drivers, and requires all of them to validate and draw; it also requires at most 3 creep sub-steps and under a quarter of the work bound.
 Exact entry beyond the slider stays valid up to the hard limits and the work bound (150,000,000 units: 384² × 100 steps with no creep is inside it; 384² × 130 steps is refused, naming steps and resolution).
-Every other cost driver (contour interval, stream threshold, hatch spacing, shading depth) throws its own named bound instead of truncating.
 
 ## Looked at (rendered through the SVG surface, Chromium under the render lease; not real-interface acceptance)
 

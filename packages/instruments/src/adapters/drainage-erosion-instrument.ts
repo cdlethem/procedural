@@ -52,7 +52,7 @@ const parameters: Parameter[] = [
   n("frequency", "Noise scale", "Cycles of the fractal noise across the longer side. Low values make a few broad hills; high values make many small ones.", 1, 12, 0.1, 0.1, 32),
   n("octaves", "Noise detail", "Octaves of noise added, each twice as fine and half as strong. One is smooth; more add small ridges and hollows.", 1, 7, 1, 1, 8),
   outletSelect,
-  n("resolution", "Resolution", "Cells across the longer side of the map. It is a real setting: the solver works on this grid, streams can be no thinner than one cell and stream-power erosion and creep are expressed per unit area, so a finer grid resolves smaller branches at a cost that grows with the square of the resolution (and with the steps).", 48, 140, 1, 24, 384),
+  n("resolution", "Resolution", "Cells across the longer side of the map. It is a real setting: the solver works on this grid, streams can be no thinner than one cell and stream-power erosion and creep are expressed per unit area, so a finer grid resolves smaller branches at a cost that grows with the square of the resolution (and with the steps).", 48, 128, 1, 24, 384),
 
   n("centerX", "Center X", "Horizontal canvas position of the middle of the map.", 0, 640, 1, -4096, 4096),
   n("centerY", "Center Y", "Vertical canvas position of the middle of the map.", 0, 640, 1, -4096, 4096),
@@ -69,7 +69,7 @@ const parameters: Parameter[] = [
   n("bedrockScale", "Bedrock scale", "Bands (or blobs) across the longer side.", 1, 12, 0.1, 0.25, 64, layered),
   n("bedrockAngle", "Band direction", "Direction the bands run across, in degrees.", -90, 90, 1, -3600, 3600, banded),
 
-  n("steps", "Erosion steps", "How long the water has worked. Each step fills depressions, routes the flow, erodes, deposits and lets the slopes creep; drag it to watch the valleys deepen and the network organize. 0 shows the starting land.", 0, 250, 1, 0, 5000),
+  n("steps", "Erosion steps", "How long the water has worked. Each step fills depressions, routes the flow, erodes, deposits and lets the slopes creep; drag it to watch the valleys deepen and the network organize. 0 shows the starting land.", 0, 200, 1, 0, 5000),
   n("erodibility", "Erodibility", "How fast flowing water lowers the ground: the stream-power coefficient K. Higher cuts deeper valleys faster and wears the land toward a plain; 0 leaves the land untouched.", 0, 0.06, 0.001, 0, 1000),
   n("areaExponent", "Area exponent", "How strongly erosion grows with the water a cell carries (drainage area to this power). Low values erode headwaters almost as hard as trunks; high values concentrate cutting in the big rivers.", 0.2, 1, 0.05, 0, 2),
   n("slopeExponent", "Slope exponent", "How strongly erosion grows with slope. Above 1, steep reaches cut much faster than gentle ones and knickpoints migrate; below 1 the profile evens out.", 0.5, 2, 0.05, 0.25, 4),
