@@ -76,6 +76,8 @@ import { typeRhythmUsesSeed } from "./adapters/type-rhythm-instrument.js";
 import { slitCompositionsDefinition } from "./adapters/slit-compositions-instrument.js";
 import { drawSlit, prepareSlit, slitComposition } from "./composition/slit-draw.js";
 import { compartmentsUsesSeed } from "./adapters/compartments-instrument.js";
+import { foldAtlasImageDefinition, foldAtlasImageUsesSeed } from "./adapters/fold-atlas-image-instrument.js";
+import { drawFoldAtlasImage, foldAtlasImageComposition, prepareFoldAtlasImage } from "./composition/fold-atlas-image-draw.js";
 import { strokeReliefDefinition } from "./adapters/stroke-relief-instrument.js";
 import { drawStrokeRelief, prepareStrokeRelief, strokeReliefComposition } from "./composition/stroke-relief.js";
 import { inversionGardensDefinition } from "./adapters/inversion-gardens-instrument.js";
@@ -124,7 +126,7 @@ export type {
 } from "./composition/types.js";
 export { atEach, strokeWith, inside, componentSeed, createCompositionRun } from "./composition/core.js";
 export { poissonSites, contourPaths, partitionRegions, wallpaperSites, wallpaperOperations, wallpaperUsesCellHeight, latticeSites, regionTree, gridPaths, gridSites } from "./composition/sources.js";
-export { warpPoint, warpSites, warpPaths, mapNames } from "./composition/warp.js";
+export { warpPoint, warpMapper, warpSites, warpPaths, mapNames } from "./composition/warp.js";
 export { motif, pathMaterial, regionFill } from "./composition/materials.js";
 export { referenceComposition, drawReferenceComposition, prepareReferenceComposition } from "./composition/reference.js";
 export { graphFromParts, graphFromBranchTree, withDirection, contactGraph, latticeGraph, branchGraph, selectGraph, nearestNode, connectedNodes, graphRoute, planarFaces,
@@ -330,6 +332,13 @@ export type { CompartmentFillKind, CompartmentColor, CompartmentFiller, Compartm
   CompartmentImage, CompartmentsComposition } from "./composition/compartments-draw.js";
 export { compartmentFiller, compartmentFillKind, compartmentAngle, compartmentInk, nearestPaletteIndex, hatchSegments, halftoneCentres, hatchSpacing, halftoneRadius,
   boundCompartmentWork, compartmentSource, compartmentOptions, compartmentDrawRegions, drawCompartments, prepareCompartments, MIN_COHERENCE, MAX_COMPARTMENT_UNITS } from "./composition/compartments-draw.js";
+export type { FoldAtlasImageComposition, FoldImage } from "./adapters/fold-atlas-image-instrument.js";
+export { foldAtlasImageFromValues, validateFoldAtlasImage } from "./adapters/fold-atlas-image-instrument.js";
+export { foldAtlasImageComposition, foldImageRaster, foldFragmentProducts, foldDensityProducts, foldSamplerSpec, drawFoldAtlasImage, prepareFoldAtlasImage,
+  paletteRamp as foldPaletteRamp, densityColor as foldDensityColor, fragmentKeys as foldFragmentKeys } from "./composition/fold-atlas-image-draw.js";
+export type { FoldRect, FoldGrid, SheetRule, InverseRules, InverseOptions, InverseStatus, Preimage, FoldPreimages, FoldColors, SamplerSpec, FoldSamples, FoldMapped, FoldDensity, Tonemap, FoldRun } from "./composition/fold-raster.js";
+export { foldGrid, invertMap, latticeStarts, foldSeedCount, foldPreimages, foldColors, foldSamples, foldUnit, foldMapped, foldDensity, tonemapDensity, mergeRuns,
+  FOLD_LIMITS, LOG_FULL, LINEAR_FULL } from "./composition/fold-raster.js";
 export type { ValueMeasure, ValueBandRule, ValueMergePolicy, ValueRegionOptions, ValueRegionNeighbor, ValueRegionShape, ValueRegionArc, ValueRegionAdjacency, ValueRegionMap,
   ValueRetainRule } from "./composition/value-regions.js";
 export { valueRegionMap, keptValueRegions, valueRetainRules, valueMeasures, VALUE_REGION_LIMITS } from "./composition/value-regions.js";
@@ -640,7 +649,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition, hingedPanelsDefinition, ...laplacianFrontsDefinitions, meshAbstractionDefinition, visibilityDrawingDefinition, surfaceGrowthDefinition, pointCloudsDefinition, geologicalCutawaysDefinition, implicitSculptureDefinition, surfaceWeaveDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition, riverRibbonsDefinition, patternCompetitionDefinition, aggregationColoniesDefinition, collisionScoresDefinition, ...cellDivisionDefinitions, drainageErosionDefinition, roadsParcelsDefinition, hingedPanelsDefinition, ...laplacianFrontsDefinitions, meshAbstractionDefinition, visibilityDrawingDefinition, surfaceGrowthDefinition, pointCloudsDefinition, geologicalCutawaysDefinition, implicitSculptureDefinition, surfaceWeaveDefinition, foldAtlasImageDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -749,6 +758,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "branch-ornament": [0x23302b, 0xb5452e, 0xd39a3a, 0x4f7a5c],
   "gesture-scores": [0x24262b, 0xc99a3b, 0xb8452f, 0x2f6f7a],
   "fm-engraving": [0x1d2733, 0xb5452e, 0xd39a3a, 0x2f6f8f],
+  "fold-atlas-image": [0x1f2a33, 0xc0452a, 0x2f6f8f, 0xb8862b],
   "sand-deposition": [0x3b2f27, 0xb5522f, 0x1f5f73],
   "cell-division": [0x2b3a55, 0x2f6f8f, 0x4f9a8a, 0xd9a441, 0xc4452b],
   "laplacian-fronts": [0x1f2733, 0xb5452e, 0xe0a13a, 0x2f7f8f],
@@ -831,6 +841,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "shape-packing") return drawShapePacking(context, shapePackingComposition(input));
   if (input.technique === "connected-value-regions") return drawValueRegions(context, valueRegionsComposition(input));
   if (input.technique === "fm-engraving") return drawEngraving(context, engravingComposition(input));
+  if (input.technique === "fold-atlas-image") return drawFoldAtlasImage(context, foldAtlasImageComposition(input));
   if (input.technique === "painterly-source") return drawPainterly(context, painterlyComposition(input));
   if (input.technique === "slit-compositions") return drawSlit(context, slitComposition(input));
   if (input.technique === "nodal-plates") return drawNodalPlate(context, nodalPlateComposition(input));
@@ -875,7 +886,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "roads-parcels" || id === "hinged-panels" || id === "laplacian-fronts" || id === "mesh-abstraction" || id === "visibility-drawing" || id === "surface-growth" || id === "point-clouds" || id === "geological-cutaways" || id === "implicit-sculpture" || id === "surface-weave" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || id === "river-ribbons" || id === "pattern-competition" || id === "aggregation-colonies" || id === "collision-scores" || id === "cell-division" || id === "drainage-erosion" || id === "roads-parcels" || id === "hinged-panels" || id === "laplacian-fronts" || id === "mesh-abstraction" || id === "visibility-drawing" || id === "surface-growth" || id === "point-clouds" || id === "geological-cutaways" || id === "implicit-sculpture" || id === "surface-weave" || id === "fold-atlas-image" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -887,6 +898,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "cyclic-fronts") return prepareCyclicFronts(cyclicFrontsComposition(input), cancelled);
   if (input.technique === "aggregation-colonies") return prepareAggregationColonies(aggregationColoniesComposition(input), cancelled);
   if (input.technique === "fm-engraving") return prepareEngraving(engravingComposition(input), cancelled);
+  if (input.technique === "fold-atlas-image") return prepareFoldAtlasImage(foldAtlasImageComposition(input), cancelled);
   if (input.technique === "path-typography") return preparePathTypography(pathTypographyComposition(input), cancelled);
   if (input.technique === "glyph-packing") return prepareGlyphPacking(glyphPackingComposition(input), cancelled);
   if (input.technique === "outline-type") return prepareOutlineType(outlineTypeComposition(input), cancelled);
@@ -998,6 +1010,7 @@ export function usesSeed(input: InstrumentInput): boolean {
         q.interior !== "none" && q.colorBy === "supertile";
     case "typographic-rhythm": return typeRhythmUsesSeed(q);
     case "adaptive-compartments": return compartmentsUsesSeed(q);
+    case "fold-atlas-image": return foldAtlasImageUsesSeed(q);
     case "orbit-beads": return false;
     case "profile-marks": case "depth-marks": case "annular-marks": return q.colorMode === "noise";
     case "ramp-marks": return Number(q.disorder) > 0 || Number(q.retention) > 0 && Number(q.retention) < 1;

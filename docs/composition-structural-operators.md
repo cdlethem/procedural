@@ -123,8 +123,9 @@ in `composition/sources.ts`.
 - **Seed.** Grid irregularity blends regular line positions with the sorted draws of a seeded
   stream, so spacing clumps differently per seed while order and the edge lines are kept; at 0
   the seed changes nothing.
-- **Not done.** No forward-density accumulation and no inverse raster sampling: the study maps
-  vertices and marks only. Stretched image fragments (brief 27) need the asset foundation.
+- **Not done here.** Forward-density accumulation and inverse raster sampling of an image (stretched image fragments) are
+  not part of this study, which maps vertices and marks only; they are the separate consumers described in
+  [Fold Atlas Image](composition-fold-atlas-image.md), on the same maps.
 
 Tests: `tests/composition-warp.test.ts` (10) pin identity at amount 0, documented map values,
 stage order/repetition, exclusion and path cutting at the pole, the seam/bound invariants over

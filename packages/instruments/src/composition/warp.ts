@@ -65,6 +65,11 @@ export function warpPoint(options: WarpOptions, x: number, y: number): Point | n
   validate(options);
   return mapPoint(options, x, y);
 }
+/** Validate `options` once and return the chain as a point function, for callers that map many points (raster consumers). */
+export function warpMapper(options: WarpOptions): (x: number, y: number) => Point | null {
+  validate(options);
+  return (x, y) => mapPoint(options, x, y);
+}
 /** Unvalidated core for callers that have already validated `options` once. */
 function mapPoint(options: WarpOptions, x: number, y: number): Point | null {
   let u = (x - options.centerX) / options.radius, v = (y - options.centerY) / options.radius;
