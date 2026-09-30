@@ -2,7 +2,7 @@
 
 A lobed blob grows outward through rings of age-colored fronts. Where the blob sticks out, the front runs
 ahead and the tips draw away from the body; where it is tucked in, growth stalls. The starting picture is a
-five-lobed seed in the middle of the canvas, surrounded by a far ring of source, with about thirty fronts
+five-lobed seed in the middle of the canvas, surrounded by a far ring of source, with about twenty fronts
 stroked from the seed to the present edge, bands of fill between them whose tone follows the age of the front
 that bounded them, and a heavier final edge. A new seed changes the lumpy disorder that decides which lobes win.
 
@@ -29,7 +29,8 @@ Hele-Shaw and dielectric-breakdown growth, not a physical simulation of any mate
 4. **History.** The front after every step is kept as closed paths from marching squares, so fronts that merge
    or split, and pockets that close, remain valid closed loops (a front that meets the insulating canvas edge is
    an open chain). When no growth is possible (no flux, or surface tension holds every point) growth stops, and
-   the earlier fronts stay exactly as they were.
+   the earlier fronts stay exactly as they were. Growth also stops when the front reaches a source (a cell
+   beside the source is taken): the circuit is closed, and the last front is the one that touched it.
 
 Changing the palette, the front material, which fronts are drawn, the fill, the marks or the potential lines
 repaints the same computed run. Changing the seed shape, sources, sinks, barriers, growth bias, surface tension,
@@ -49,6 +50,7 @@ step size, noise, grid, solver settings, steps or the seed recomputes.
 | **Fronts** | Front material, Front interval, First/Last front, Line weights, Stitch spacing, Bead size, Front smoothing | Which historical fronts are stroked and with what: ink, stitches or beads; each is tinted by its age along the palette. |
 | **Fill** | Fill, Fill opacity, Fill bands | The occupied region as one tone or as age bands (oldest inside). |
 | **Marks** | Marks, Mark shape, Mark size, Mark spacing, Tip threshold, Mark retention | Motifs by age over the region (small and dark where old), or at the tips pointing the way the front runs. |
+| **Boundary lines** | Boundary lines, Boundary weight | Outlines of the walls, pillars and sinks, so the reason a front bends is visible. |
 | **Potential lines** | Potential lines, Potential levels, Potential weight | Equipotential lines of the final field; they crowd where the flux is strong. |
 
 Controls that only matter for a choice are hidden until it is made (lobes only for the lobed seed, wall controls
@@ -62,6 +64,7 @@ only for a wall, and so on); their values are kept.
 - **Dendrite from one side:** *Source* edge (top), *Seed shape* bar near the bottom.
 - **Around obstacles:** *Barrier* pillars or a wall with gaps.
 - **Tips as marks:** *Marks* tips, *Mark shape* arrow, *Fill* none.
+- **Lattice bias:** at *Growth bias* 2 and above on a plain disc with little noise, fingers line up with the grid axes; the square grid is part of the model. Noise, a lobed seed rotated off the axes, or a finer *Grid* reduce it.
 - **Layers:** transparent layer; put it over or under Contour Scores or Sand Deposition.
 
 ## Use the pieces in code

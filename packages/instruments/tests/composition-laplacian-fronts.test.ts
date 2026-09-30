@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  GROWTH_KIND_FREE, GROWTH_KIND_SINK, GROWTH_KIND_SOURCE, GROWTH_KIND_WALL, canPrepareInstrument, checkSimulation, createInstrument, drawLaplacianFronts,
+  growthBoundaryPaths, GROWTH_KIND_FREE, GROWTH_KIND_SINK, GROWTH_KIND_SOURCE, GROWTH_KIND_WALL, canPrepareInstrument, checkSimulation, createInstrument, drawLaplacianFronts,
   finalState, growthAgeSites, growthCached, growthDiagnostics, growthFrontPaths, growthFrontRates, growthFrontSteps, growthBandSteps, growthLastActiveStep, growthLayout,
   growthPillarCentres, growthSimulation, growthSnapshots, growthTipSites, laplacianFrontsComposition, laplacianFrontsProducts, prepareInstrument, solveLaplacePotential,
   stateAt, validateParameters, growthEquipotentialPaths, growthPotentialField, growthOccupiedRegion, usesSeed, drawInstrument,
@@ -109,6 +109,21 @@ test("a solve that cannot reach the tolerance throws with the residual and the c
   const report = solveLaplacePotential(layout, phi, fill, 1e-9, 10);
   assert.equal(report.converged, false);
   assert.ok(report.residual > 1e-9 && report.iterations <= 10);
+});
+
+test("the solver never reports convergence for a poisoned iterate, and a gap only a cell or two wide still solves to finite values", () => {
+  const spec = disc({ grid: 48 }), layout = growthLayout(spec, 1), cells = 48 * 48;
+  const fill = new Float32Array(cells), phi = new Float64Array(cells).fill(1);
+  for (let c = 0; c < cells; c++) if (layout.seedCells[c]) { fill[c] = 1; phi[c] = 0; }
+  const poisoned = Float64Array.from(phi);
+  poisoned[Math.floor(cells / 2) + 5] = Number.NaN;
+  assert.equal(solveLaplacePotential(layout, poisoned, fill, 1e-6, 400).converged, false);
+  // A disc that nearly touches the source ring leaves unknown cells with no unknown neighbour on the coarse grid.
+  const thin = disc({ grid: 64, seedRadius: 92, sourceRadius: 110 }), thinLayout = growthLayout(thin, 1), thinFill = new Float32Array(64 * 64), thinPhi = new Float64Array(64 * 64).fill(1);
+  for (let c = 0; c < 64 * 64; c++) if (thinLayout.seedCells[c]) { thinFill[c] = 1; thinPhi[c] = 0; }
+  const report = solveLaplacePotential(thinLayout, thinPhi, thinFill, 1e-9, 400);
+  assert.equal(report.converged, true);
+  assert.ok(thinPhi.every((v) => Number.isFinite(v) && v >= -1e-9 && v <= 1 + 1e-9));
 });
 
 test("front speed follows the flux: the speed exponent relation and the staircase weight hold at every front cell", () => {
@@ -424,4 +439,27 @@ test("bounds and failures name the control to change", () => {
   assert.throws(() => laplacianFrontsProducts(recipe({ seedX: 0, seedY: 0, seedRadius: 6 })), /seed region is empty/);
   assert.throws(() => growthSnapshots(specWith({ grid: 100 }, { stepScale: 5 }), 1, 3), /Step size/);
   assert.throws(() => growthSnapshots(specWith({}), 1, 3000), /Steps must be/);
+});
+
+test("boundary outlines are the wall and sink cells: closed rings whose area matches the cell count, pillars sit in the band the growth reaches", () => {
+  const params = { grid: 96, barrier: "pillars", pillarCount: 5, pillarSize: 26, sinks: "discs", sinkCount: 2, sinkSize: 30, sinkRing: 200 };
+  const spec = specWith(params), layout = growthLayout(spec, 3), paths = growthBoundaryPaths(layout);
+  const cell2 = layout.cell ** 2;
+  let walls = 0, sinks = 0;
+  for (const kind of layout.kind) { if (kind === GROWTH_KIND_WALL) walls++; if (kind === GROWTH_KIND_SINK) sinks++; }
+  const shoelace = (points: readonly (readonly [number, number])[]): number => points.reduce((s, p, k) => { const q = points[(k + 1) % points.length]; return s + (p[0] * q[1] - q[0] * p[1]) / 2; }, 0);
+  const area = (name: string): number => paths.filter((p) => p.id.startsWith(`boundary:${name}/`)).reduce((s, p) => s + shoelace(p.points), 0);
+  assert.ok(walls > 30 && sinks > 10);
+  near(area("wall"), walls * cell2, 0.12 * walls * cell2, "wall outline area");
+  near(area("sink"), sinks * cell2, 0.12 * sinks * cell2, "sink outline area");
+  assert.ok(paths.every((p) => p.closed) && growthBoundaryPaths(layout) === paths, "closed and cached per layout");
+  for (const c of growthPillarCentres({ pillarCount: 5, pillarSize: 26, seedX: 320, seedY: 320, seedRadius: 46, seedDepth: 0.1, seedSpread: 0, seedShape: "lobed" }, 3)) {
+    const d = Math.hypot(c[0] - 320, c[1] - 320);
+    assert.ok(d >= 46 * 1.1 + 26 && d <= 46 * 1.1 + 26 + 20 + 150 + 1e-9, `pillar at distance ${d}`);
+  }
+  assert.equal(growthBoundaryPaths(growthLayout(specWith({ grid: 96 }), 3)).length, 0, "no boundary, no outlines");
+  const drawn: string[] = [];
+  const surface = new Proxy({ CLOSE: 1, ROUND: 2 } as Record<string, unknown>, { get: (t, k: string) => (k in t ? t[k] : () => {}) });
+  drawLaplacianFronts(surface as never, recipe({ ...params, grid: 96, steps: 10 }, 3), { boundary: (_s, path) => { drawn.push(path.id); } });
+  assert.deepEqual(drawn, paths.map((p) => p.id));
 });

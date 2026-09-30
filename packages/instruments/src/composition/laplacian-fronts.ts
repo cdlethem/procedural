@@ -3,9 +3,10 @@ import { laplacianFrontsDefinitions, growthSpecOf, laplacianFrontsUsesSeed } fro
 import { validateParameterValues } from "../parameter-validation.js";
 import type { InstrumentInput } from "../types.js";
 import { atEach, componentSeed, createCompositionRun, strokeWith } from "./core.js";
+import { growthLayout } from "./laplacian-layout.js";
 import { equipotentialPaths, frontOutlines, frontPaths, growthDiagnostics, growthSnapshots, lastActiveStep, prepareGrowth } from "./laplacian-growth.js";
 import type { GrowthDiagnostics, GrowthSnapshots, GrowthSpec } from "./laplacian-growth.js";
-import { ageSites, tipSites } from "./laplacian-marks.js";
+import { ageSites, boundaryPaths, tipSites } from "./laplacian-marks.js";
 import type { GrowthSite } from "./laplacian-marks.js";
 import { motif, pathMaterial, tonedMaterial } from "./materials.js";
 import { paletteRamp } from "./slit.js";
@@ -22,6 +23,7 @@ import type { CompositionRun, CompositionSurface, Mark, MotifSpec, Path, PathMat
  * - MARKS: motifs at age sites (a lattice over the occupied region, size and tone by age) or at the tips (local speed maxima,
  *   pointing the way the front runs), through the existing `motif` mark.
  * - POTENTIAL LINES: equipotentials of the final potential, the field the growth followed.
+ * - BOUNDARY: outlines of the walls, pillars and sinks the growth was solved around (`boundaryPaths`).
  *
  * Appearance (materials, palette, which fronts, fill, marks, potential levels) never enters the growth's content key, so a
  * recolour or a change of which fronts are drawn repaints the SAME snapshot object.
@@ -52,6 +54,7 @@ export interface FrontStrokes {
 export interface FillView { mode: "flat" | "bands"; opacity: number; bands: number }
 export interface MarksView { source: "age" | "tips"; mark: MotifSpec; spacing: number; threshold: number }
 export interface PotentialView { levels: number; weight: number }
+export interface BoundaryView { weight: number }
 
 export interface LaplacianFrontsComposition {
   kind: "laplacian-fronts";
@@ -64,13 +67,15 @@ export interface LaplacianFrontsComposition {
   fill: FillView | null;
   marks: MarksView | null;
   potential: PotentialView | null;
+  /** Outlines of the walls, pillars and sinks. */
+  boundary: BoundaryView | null;
 }
 
 /** One band of the fill: `tone` is the age fraction of the front that bounds it. */
 export interface FillBand { index: number; count: number; step: number; tone: number }
 export type BandFill = (surface: CompositionSurface, outline: readonly (readonly Point[])[], band: FillBand, run: CompositionRun) => void;
 /** Replace any consumer of `drawLaplacianFronts` with an ordinary callback. */
-export interface LaplacianConsumers { front?: PathMaterial; finalFront?: PathMaterial; potential?: PathMaterial; mark?: Mark; fill?: BandFill }
+export interface LaplacianConsumers { front?: PathMaterial; finalFront?: PathMaterial; potential?: PathMaterial; boundary?: PathMaterial; mark?: Mark; fill?: BandFill }
 
 /** Resolve stored scalar controls to the public composition value. */
 export function laplacianFrontsComposition(input: InstrumentInput): LaplacianFrontsComposition {
@@ -95,6 +100,7 @@ export function laplacianFrontsComposition(input: InstrumentInput): LaplacianFro
       mark: { kind: q.markKind as MotifSpec["kind"], size: num("markSize"), petals: 6, opening: 0.25, weight: 1, rotation: 0, variation: 0, retention: num("markRetention") },
     },
     potential: q.potential === "none" ? null : { levels: num("potentialLines"), weight: num("potentialWeight") },
+    boundary: q.boundary === "none" ? null : { weight: num("boundaryWeight") },
   };
 }
 
@@ -204,6 +210,13 @@ export function drawLaplacianFronts(surface: CompositionSurface, recipe: Laplaci
       if (consumers.fill) consumers.fill(surface, outline, { index: k, count: steps.length, step: steps[k], tone }, run);
       else paintOutline(surface, outline, mode === "flat" ? recipe.palette[0] : ramp[toneOf(tone)], alpha);
     }
+  }
+  if (recipe.boundary) {
+    const outlines = boundaryPaths(growthLayout(snapshots.params as GrowthSpec, snapshots.seed));
+    const ink: PathMaterialSpec = { kind: "ink", weight: recipe.boundary.weight, spacing: 4, phase: 0, phaseSpread: 0, levelRamp: 0, retention: 1,
+      mark: { kind: "dot", size: 1, petals: 6, opening: 0, weight: 1, rotation: 0, variation: 0, retention: 1 } };
+    // Walls take the first palette tone, sinks the last.
+    strokeWith(surface, outlines.map((path) => ({ ...path, tone: path.level === 0 ? 0 : RAMP - 1 })), consumers.boundary ?? pathMaterial(ink, ramp), run);
   }
   if (recipe.potential) {
     const levels = Array.from({ length: recipe.potential.levels }, (_, k) => (k + 1) / (recipe.potential!.levels + 1));

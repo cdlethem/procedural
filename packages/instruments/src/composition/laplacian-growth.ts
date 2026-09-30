@@ -85,7 +85,7 @@ export const physicsKeys = ["eta", "tension", "stepScale", "tolerance", "maxIter
 export const GROWTH_STEP_LIMIT = 2000;
 export const MAX_ITERATIONS = 5000;
 /** Total declared cell updates one run may need; measured on the development machine (see the brief document). */
-export const MAX_GROWTH_WORK = 4_000_000_000;
+export const MAX_GROWTH_WORK = 10_000_000_000;
 export const CHECKPOINT_EVERY = 25;
 const MAX_HISTORY_VALUES = 16_000_000;
 const MAX_CHECKPOINT_VALUES = 6_000_000;

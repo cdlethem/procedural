@@ -170,8 +170,8 @@ export { solvePotential as solveLaplacePotential, jacobiRadius as growthJacobiRa
   potentialField as growthPotentialField, equipotentialPaths as growthEquipotentialPaths, GROWTH_STEP_LIMIT, MAX_GROWTH_WORK, MAX_ITERATIONS as GROWTH_MAX_ITERATIONS,
   CHECKPOINT_EVERY as GROWTH_CHECKPOINT_EVERY } from "./composition/laplacian-growth.js";
 export type { GrowthSite } from "./composition/laplacian-marks.js";
-export { ageSites as growthAgeSites, tipSites as growthTipSites, MIN_AGE_SPACING as GROWTH_MIN_AGE_SPACING } from "./composition/laplacian-marks.js";
-export type { FrontStrokes, FillView as FrontsFillView, MarksView as FrontsMarksView, PotentialView as FrontsPotentialView, LaplacianFrontsComposition,
+export { ageSites as growthAgeSites, tipSites as growthTipSites, boundaryPaths as growthBoundaryPaths, MIN_AGE_SPACING as GROWTH_MIN_AGE_SPACING } from "./composition/laplacian-marks.js";
+export type { FrontStrokes, FillView as FrontsFillView, MarksView as FrontsMarksView, PotentialView as FrontsPotentialView, BoundaryView as FrontsBoundaryView, LaplacianFrontsComposition,
   FillBand, BandFill, LaplacianConsumers, LaplacianFrontsProducts } from "./composition/laplacian-fronts.js";
 export { laplacianFrontsComposition, laplacianFrontsProducts, drawLaplacianFronts, prepareLaplacianFronts, frontSteps as growthFrontSteps, bandSteps as growthBandSteps,
   frontStrokes as growthFrontStrokes, ageRamp as growthAgeRamp, growthSeedOf, RAMP as GROWTH_AGE_RAMP, MAX_DRAWN_VERTICES as GROWTH_MAX_DRAWN_VERTICES,

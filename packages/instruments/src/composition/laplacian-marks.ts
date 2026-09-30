@@ -1,9 +1,12 @@
 import { componentSeed } from "./core.js";
-import { CANVAS } from "./laplacian-layout.js";
+import { maskDomain } from "./domains-raster.js";
+import { domainRings } from "./domains.js";
+import { CANVAS, KIND_SINK, KIND_WALL } from "./laplacian-layout.js";
+import type { GrowthLayout } from "./laplacian-layout.js";
 import { lastActiveStep } from "./laplacian-growth.js";
 import type { GrowthSnapshots } from "./laplacian-growth.js";
 import { finalState } from "./snapshots.js";
-import type { Site } from "./types.js";
+import type { Path, Site } from "./types.js";
 
 /**
  * Sites published by a growth run for motifs (brief 16). Both are pure functions of the final state of the run, cached per run,
@@ -20,6 +23,10 @@ import type { Site } from "./types.js";
  * `(fill − ½) cell` outward of the centre; `angle` (radians) the outward normal, the direction of increasing potential;
  * `scale = 0.4 + 0.9 amount` with `amount = rate / fastest rate`. id `cell:<cell id>`. Consumers choose the palette tone from `amount`.
  * A run whose growth has ended has no tips.
+ *
+ * BOUNDARY OUTLINES. The wall cells and the sink cells of a layout as closed paths: marching squares (`maskDomain`, contour mode,
+ * threshold ½) of each cell class, region on the left, pockets negative; ids `boundary:wall/<ring>` and `boundary:sink/<ring>`,
+ * `level` 0 (walls) or 1 (sinks). The source is not outlined (it is the canvas edge or a far ring).
  */
 
 export const MIN_AGE_SPACING = 4;
@@ -94,4 +101,25 @@ export function tipSites(snaps: GrowthSnapshots, threshold: number): readonly Gr
     }
     return Object.freeze(sites);
   });
+}
+
+const boundaryCache = new WeakMap<object, readonly Path[]>();
+
+export function boundaryPaths(layout: GrowthLayout): readonly Path[] {
+  const hit = boundaryCache.get(layout);
+  if (hit) return hit;
+  const paths: Path[] = [];
+  const n = layout.n;
+  ([["wall", KIND_WALL], ["sink", KIND_SINK]] as const).forEach(([name, kind], level) => {
+    const data = Float32Array.from(layout.kind, (k) => (k === kind ? 1 : 0));
+    if (!data.includes(1)) return;
+    const domain = maskDomain({ width: n, height: n, data }, { mode: "contour", threshold: 0.5, cell: layout.cell, id: name });
+    domainRings(domain).forEach((ring, k) => {
+      const id = `boundary:${name}/${k}`;
+      paths.push(Object.freeze({ id, seed: componentSeed(0, id, "path"), points: Object.freeze(ring.map((p) => Object.freeze([p[0], p[1]] as const))), closed: true, level, levelFraction: level }));
+    });
+  });
+  const made = Object.freeze(paths);
+  boundaryCache.set(layout, made);
+  return made;
 }

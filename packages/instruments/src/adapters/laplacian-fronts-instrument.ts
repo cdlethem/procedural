@@ -36,6 +36,7 @@ const marked: Condition = { marks: ["age", "tips"] };
 const aged: Condition = { marks: ["age"] };
 const tipped: Condition = { marks: ["tips"] };
 const lined: Condition = { potential: ["lines"] };
+const outlined: Condition = { boundary: ["outline"] };
 
 const parameters: Parameter[] = [
   select("seedShape", "Seed shape", "The region that is occupied at the start and grows: a disc, a lobed disc (a circle whose radius swells and shrinks around it), a cluster of scattered discs, a necklace of discs on a ring, or a bar.",
@@ -81,7 +82,7 @@ const parameters: Parameter[] = [
 
   n("grid", "Grid", "Cells per side of the square grid the potential is solved on and the front is traced through. Finer grids resolve narrow gaps and thin fingers and cost much more: the work grows with the fourth power of this.", 48, 160, 8, GROWTH_LIMITS.minGrid, GROWTH_LIMITS.maxGrid),
   n("precision", "Solver precision", "Decimal digits of residual the potential solve must reach every step (8 means a residual of 1e-8 against a potential drop of 1). If the iteration limit is reached first the drawing fails with the residual instead of being drawn from an unfinished solution.", 4, 10, 1, 2, 12),
-  n("maxIterations", "Solver iterations", "Most relaxation sweeps one step's solve may use (the first solve may use four times as many). It bounds the work: steps × grid² × this.", 100, 2000, 50, 10, MAX_ITERATIONS),
+  n("maxIterations", "Solver iterations", "Most relaxation sweeps one step's solve may use (the first solve may use four times as many). It bounds the work: steps × grid² × this.", 100, 1500, 50, 10, MAX_ITERATIONS),
 
   select("frontMaterial", "Front material", "How the fronts are stroked: ink lines, stitches along them, beads along them, or not at all. Every front takes its color from its age along the palette.", ["ink", "stitch", "beads", "none"]),
   n("frontEvery", "Front interval", "Draw every this-many-th step's front. The most recent one in the window is always drawn.", 1, 20, 1, 1, GROWTH_STEP_LIMIT, stroked),
@@ -104,6 +105,9 @@ const parameters: Parameter[] = [
   n("tipThreshold", "Tip threshold", "Which tips get a mark: only local maxima of the speed whose speed is at least this fraction of the fastest point's.", 0, 1, 0.01, 0, 1, tipped),
   n("markRetention", "Mark retention", "Share of the sites that get a mark; the ones dropped are stable under changes elsewhere.", 0, 1, 0.01, 0, 1, marked),
 
+  select("boundary", "Boundary lines", "Outline the walls, pillars and sinks the growth was solved around, so the reason a front bends is visible. The source is not outlined.", ["none", "outline"]),
+  n("boundaryWeight", "Boundary weight", "Stroke width of the outlines, canvas units.", 0.5, 4, 0.1, 0, 50, outlined),
+
   select("potential", "Potential lines", "Draw lines of equal potential around the final region: the field the growth followed. They crowd where the flux is strong.", ["none", "lines"]),
   n("potentialLines", "Potential levels", "How many equipotential lines, evenly spaced in potential between the region (0) and the source (1).", 1, 12, 1, 1, 24, lined),
   n("potentialWeight", "Potential weight", "Stroke width of the equipotential lines, canvas units.", 0.3, 2, 0.05, 0, 50, lined),
@@ -122,6 +126,7 @@ const controlGroups: ControlGroup[] = [
     "frontSpacing", "frontBeadSize", "frontSmooth"] },
   { label: "Fill", controls: ["fill", "fillOpacity", "fillBands"] },
   { label: "Marks", controls: ["marks", "markKind", "markSize", "markSpacing", "tipThreshold", "markRetention"] },
+  { label: "Boundary lines", controls: ["boundary", "boundaryWeight"] },
   { label: "Potential lines", controls: ["potential", "potentialLines", "potentialWeight"] },
 ];
 
@@ -173,11 +178,12 @@ export const laplacianFrontsDefinitions: InstrumentDefinition[] = [{
     source: "ring", sourceRadius: 300, sourceSize: 12, sourceCount: 5, sourceSide: "top", sourceAngle: -90,
     sinks: "none", sinkCount: 3, sinkSize: 26, sinkRing: 190, sinkAngle: 30,
     barrier: "none", barrierAngle: 0, barrierOffset: 0, barrierWidth: 12, barrierGaps: 2, barrierGapWidth: 70, pillarCount: 6, pillarSize: 22,
-    steps: 90, eta: 1.3, tension: 3, stepScale: 0.5, noise: 0.3,
+    steps: 80, eta: 1.3, tension: 3, stepScale: 0.5, noise: 0.3,
     grid: 96, precision: 7, maxIterations: 1000,
     frontMaterial: "ink", frontEvery: 4, frontFrom: 0, frontTo: 1, frontWeight: 1, finalWeight: 2, frontSpacing: 6, frontBeadSize: 3, frontSmooth: 1,
     fill: "bands", fillOpacity: 0.16, fillBands: 6,
     marks: "none", markKind: "dot", markSize: 8, markSpacing: 22, tipThreshold: 0.35, markRetention: 1,
+    boundary: "outline", boundaryWeight: 1.6,
     potential: "none", potentialLines: 6, potentialWeight: 0.7,
   },
   validate: validateLaplacianFronts,

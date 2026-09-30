@@ -167,21 +167,27 @@ export function ringPoints(count: number, radius: number, angle: number): [numbe
   });
 }
 
-/** Seeded pillar centres in the canvas margin-free area, kept clear of the seed region when possible. */
+/**
+ * Seeded pillar centres in the band around the seed where the growth will meet them: the pillar's distance from the seed's
+ * reach is `20 + 150 √u` canvas units at a uniform angle (both from `componentSeed(seed, "pillar:<k>#<attempt>", …)`), rejected
+ * while it leaves the canvas (30-unit margin) or lies within 8 units of another pillar; after 30 attempts the least bad candidate
+ * is kept. Pillar `k` depends only on pillars before it, so raising the count only adds pillars.
+ */
 export function pillarCentres(spec: Pick<LayoutSpec, "pillarCount" | "pillarSize" | "seedX" | "seedY" | "seedRadius" | "seedDepth" | "seedSpread" | "seedShape">, seed: number): [number, number][] {
   const reach = spec.seedShape === "disc" ? spec.seedRadius : spec.seedShape === "lobed" ? spec.seedRadius * (1 + spec.seedDepth)
     : spec.seedShape === "bar" ? spec.seedSpread / 2 + spec.seedRadius : spec.seedSpread + spec.seedRadius;
   const centres: [number, number][] = [];
   const margin = 30;
   for (let k = 0; k < spec.pillarCount; k++) {
-    let best: [number, number] = [CANVAS / 2, CANVAS / 2], bestGap = -Infinity;
+    let best: [number, number] = [spec.seedX, spec.seedY], bestScore = -Infinity;
     for (let attempt = 0; attempt < 30; attempt++) {
       const id = `pillar:${k}#${attempt}`;
-      const p: [number, number] = [margin + (CANVAS - 2 * margin) * unit(seed, id, "x"), margin + (CANVAS - 2 * margin) * unit(seed, id, "y")];
-      let gap = Math.hypot(p[0] - spec.seedX, p[1] - spec.seedY) - reach - spec.pillarSize;
-      for (const c of centres) gap = Math.min(gap, Math.hypot(c[0] - p[0], c[1] - p[1]) - 2 * spec.pillarSize);
-      if (gap > bestGap) { best = p; bestGap = gap; }
-      if (gap >= 8) break;
+      const radius = reach + spec.pillarSize + 20 + 150 * Math.sqrt(unit(seed, id, "radius")), theta = 2 * Math.PI * unit(seed, id, "angle");
+      const p: [number, number] = [spec.seedX + radius * Math.cos(theta), spec.seedY + radius * Math.sin(theta)];
+      let score = Math.min(p[0] - margin, CANVAS - margin - p[0], p[1] - margin, CANVAS - margin - p[1]);
+      for (const c of centres) score = Math.min(score, Math.hypot(c[0] - p[0], c[1] - p[1]) - 2 * spec.pillarSize - 8);
+      if (score > bestScore) { best = p; bestScore = score; }
+      if (score >= 0) break;
     }
     centres.push(best);
   }
