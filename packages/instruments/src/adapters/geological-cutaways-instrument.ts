@@ -48,7 +48,7 @@ const parameters: Parameter[] = [
   flag("faulted", "Faults", "Cut the block by a family of parallel planar faults that shift the layers along the fault plane."),
   n("faultCount", "Fault count", "Number of parallel faults, evenly spaced across the block.", 1, 4, 1, 1, 6, faulted),
   n("faultThrow", "Fault throw", "Vertical offset of each fault as a fraction of the block height. Positive drops the hanging wall (normal fault), negative raises it (reverse fault). Every layer is offset by exactly this across the plane.", -0.3, 0.3, 0.005, -3, 3, faulted),
-  n("faultDip", "Fault dip", "Angle of the fault planes from horizontal. 90 is vertical; shallower planes give a longer slip and a wider offset at the surface. Steep folds and tilts need a steep enough dip.", 35, 90, 1, 5, 90, faulted),
+  n("faultDip", "Fault dip", "Angle of the fault planes from horizontal. 90 is vertical; shallower planes give a longer slip and a wider offset at the surface. Where steep folds, tilt or valleys, or a tall narrow block, would make a shallow plane cross a layer twice, the plane is steepened just enough to build.", 35, 90, 1, 5, 90, faulted),
   select("faultStrike", "Fault strike", "Whether the faults run into the picture (their dip shows on the front face) or across it (their dip shows on the right-hand face).",
     [["depth", "Into the picture"], ["width", "Across the picture"]], faulted),
   select("faultDipDirection", "Dips toward", "Which way the fault planes lean, seen across the strike from the default camera.", [["left", "Left"], ["right", "Right"]], faulted),
@@ -64,7 +64,7 @@ const parameters: Parameter[] = [
 
   n("depth", "Block depth", "Front-to-back size as a fraction of the block width.", 0.4, 1.4, 0.01, 0.2, 4),
   n("height", "Block height", "Height as a fraction of the block width.", 0.25, 0.9, 0.01, 0.1, 3),
-  n("resolution", "Grid resolution", "Cells along the longer horizontal side of every layer surface. Finer grids follow tight folds and faults more closely and cost more to build; the count of layers, faults and cells together is bounded.", 16, 60, 1, 8, 120),
+  n("resolution", "Grid resolution", "Cells along the longer horizontal side of every layer surface. Finer grids follow tight folds and faults more closely and cost more to build; the count of layers, faults and cells together is bounded.", 16, 48, 1, 8, 120),
 
   select("cut", "Cutaway", "Whole block; one slice plane that removes the near side and exposes the layers on it; a corner box cut out to expose three faces; or the block split along a plane and pulled apart.",
     [["block", "Whole block"], ["slice", "Slice"], ["corner", "Corner cut"], ["exploded", "Exploded"]]),
@@ -91,7 +91,7 @@ const parameters: Parameter[] = [
 
   select("lineColor", "Line color", "Ink, or the palette entry of the unit beside each contact line.", [["ink", "Ink"], ["stratum", "By stratum"]]),
   select("hidden", "Hidden edges", "Drop lines behind the block, or draw the hidden block edges and faults as faint dashes.", [["drop", "Drop"], ["dashed", "Dashed"]]),
-  n("beds", "Bedding lines", "Fine lines inside each unit, parallel to its contacts, on walls, cut faces and the ground surface.", 0, 6, 1, 0, 6),
+  n("beds", "Bedding lines", "Fine lines inside each unit, parallel to its contacts, on walls, cut faces and the ground surface.", 0, 4, 1, 0, 6),
   n("contours", "Ground contours", "Topographic contour lines of the eroded surface.", 0, 12, 1, 0, 60, eroded),
   n("outlineWeight", "Outline weight", "Line thickness of block edges and the boundary of every cut face.", 0.2, 3, 0.05, 0, 50),
   n("contactWeight", "Contact weight", "Line thickness of the boundaries between units.", 0.2, 3, 0.05, 0, 50),

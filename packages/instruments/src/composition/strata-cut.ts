@@ -475,7 +475,7 @@ export function viewGeometry(block: GeologicalBlock, cut: CutOptions, lines: Lin
   const shellTriangles = indices.length / 3;
 
   // Cut faces.
-  const bed = bedSheets(block, lines.beds);
+  const bed = specs.length > 0 ? bedSheets(block, lines.beds) : null;
   const caps = capsOf(block, specs, bed);
   for (const tri of caps.triangles) pushTriangle(tri.points[0], tri.points[1], tri.points[2], tri.stratum, TRI.cap);
 
