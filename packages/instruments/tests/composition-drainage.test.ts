@@ -695,15 +695,32 @@ test("definition: control groups, conditional controls and slider intervals insi
   assert.equal(drawFingerprint({ ...plain, params: { ...plain.params, steps: 8, resolution: 48 }, seed: 1 }), drawFingerprint({ ...plain, params: { ...plain.params, steps: 8, resolution: 48 }, seed: 2 }));
 });
 
-test("every slider corner is admitted: the largest resolution, steps and creep together stay inside the work bound", () => {
-  const item = definition("drainage-erosion"), top = Object.fromEntries(["resolution", "steps", "creep"].map((key) => [key, item.parameters.find((p) => p.key === key)!.max!]));
-  const corner = createInstrument("drainage-erosion");
-  Object.assign(corner.params, top);
-  assert.doesNotThrow(() => validateInstrument(corner));
-  const p = erosionParamsFor(corner.params);
+test("every slider corner is admitted and draws: all numeric controls together at slider minimum and at slider maximum", () => {
+  const item = definition("drainage-erosion"), numbers = item.parameters.filter((p) => p.type === "number");
+  const nullSurface = () => new Proxy({ CLOSE: "close", ROUND: "round" } as Record<string, unknown>, { get: (t, k: string) => k in t ? t[k] : () => {} });
+  const cornerAt = (edge: "min" | "max", over: Record<string, string | number | boolean> = {}) => {
+    const corner = createInstrument("drainage-erosion");
+    for (const p of numbers) corner.params[p.key] = edge === "min" ? p.min! : p.max!;
+    for (const p of item.parameters.filter((q) => q.type === "boolean")) corner.params[p.key] = true;
+    Object.assign(corner.params, over);
+    return corner;
+  };
+  // The costliest treatment drivers are at opposite ends (finest contour interval, lowest thresholds and spacings): try those too.
+  const finest = { contourInterval: 0.006, streamThreshold: 0.1, hatchSpacing: 2, lakeDepth: 0.002, streamSpacing: 3, markSize: 3, basins: "hatch", streams: "beads", marks: "both" };
+  const cases: [string, InstrumentInput][] = [
+    ["all minimum", cornerAt("min")], ["all maximum", cornerAt("max")],
+    ["all maximum with the finest treatment drivers", cornerAt("max", finest)],
+    ["all maximum, wash and divides, ribbon streams", cornerAt("max", { basins: "wash-divides", streams: "ribbon" })],
+    ["all minimum with the finest treatment drivers", cornerAt("min", finest)],
+  ];
+  for (const [label, corner] of cases) {
+    assert.doesNotThrow(() => validateInstrument(corner), label);
+    assert.doesNotThrow(() => drawInstrument(nullSurface() as never, corner), label);
+  }
+  const p = erosionParamsFor(cornerAt("max").params);
   assert.ok(creepSubsteps(p) <= 3, "creep sub-steps at the slider corner");
-  const work = p.columns * p.rows * (6 + 250 * (8 + creepSubsteps(p)));
-  assert.ok(work < 0.5 * MAX_EROSION_WORK, `slider corner costs ${work} units, well inside the ${MAX_EROSION_WORK} bound`);
+  const work = p.columns * p.rows * (6 + 200 * (8 + creepSubsteps(p)));
+  assert.ok(work < 0.25 * MAX_EROSION_WORK, `slider corner costs ${work} units, well inside the ${MAX_EROSION_WORK} bound`);
 });
 
 test("footprint: the longer side is exact, cells are square and the shorter side snaps to whole cells", () => {
