@@ -466,6 +466,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "drainage-erosion",
+      "title": "Drainage and Erosion",
+      "description": "Rain runs over a landform, gathers into rivers and cuts them deeper, step by step: depressions are filled, water is routed downhill and accumulated, stream power erodes, sediment is carried and dropped. The same land is drawn as contours, tapering rivers, drainage basins, lakes, marks at confluences and lit relief.",
+      "category": "Fields & paths",
+      "operationIds": ["field.gradient-noise-2d-01"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/drainage-erosion.md",
+      "source": "packages/instruments/src/composition/drainage-draw.ts",
+      "sourceEntry": "drawDrainageErosion",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "quilled-paths",
       "title": "Quilled Paths",
       "description": "Paper strips stood on edge along contour lines, letter outlines, spirals or scattered scrolls, nested inside one another and rolled at the ends, drawn with thickness and occlusion from a tilted camera or as a flat plan.",
