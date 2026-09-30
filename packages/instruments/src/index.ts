@@ -37,6 +37,8 @@ import { shapePackingDefinition } from "./adapters/shape-packing-instrument.js";
 import { drawShapePacking, prepareShapePacking, shapePackingComposition, shapePackingUsesSeed } from "./composition/shape-packing.js";
 import { crossingLaceDefinition } from "./adapters/crossing-lace-instrument.js";
 import { crossingLaceComposition, crossingLaceUsesSeed, drawCrossingLace, prepareCrossingLace } from "./composition/crossing-lace.js";
+import { surfaceWeaveDefinition } from "./adapters/surface-weave-instrument.js";
+import { drawSurfaceWeave, prepareSurfaceWeave, surfaceWeaveComposition, surfaceWeaveUsesSeed } from "./composition/surface-weave.js";
 import { hyperbolicGardensDefinition } from "./adapters/hyperbolic-gardens-instrument.js";
 import { drawHyperbolicGardens, hyperbolicGardensComposition, hyperbolicGardensUsesSeed, prepareHyperbolicGardens } from "./composition/hyperbolic-draw.js";
 import { quilledPathsDefinition } from "./adapters/quilled-paths-instrument.js";
@@ -395,6 +397,22 @@ export { randomWalkFrontsComposition, randomWalkFrontsProducts, drawWalkFronts, 
 export type { ContourEnd, LevelTies, ContourNode, ContourCurve, SectionPlane, PlaneFrame, SectionOptions, SectionLoop, MeshSection, MeshSlices, SlicePlaneOptions,
   SectionDomainOptions, IsoOptions, IsoCurve, IsoContours } from "./composition/mesh-section.js";
 export { planeFrame, sectionMesh, sliceMesh, sliceCurves, slicePlanes, sectionDomain, isoContours, SECTION_LIMITS, DEFAULT_SECTION_WORK } from "./composition/mesh-section.js";
+export type { SheetKind, SheetOptions } from "./composition/mesh-surfaces.js";
+export { parametricSheetMesh, icospherePatchMesh, sheetKinds, sheetWaves, HELICOID, SCROLL, MAX_PATCH_LEVELS } from "./composition/mesh-surfaces.js";
+export type { TraceGraph, Walker as MeshWalker, WalkEnd as MeshWalkEnd, StepEnd } from "./composition/mesh-trace.js";
+export { traceGraph, walk as walkMesh, walker as meshWalker, stepRK2, fieldDirection, barycentric as meshBarycentric, boundaryDistance, interpolate as interpolateVertexValues, TRACE_LIMITS } from "./composition/mesh-trace.js";
+export type { ScalarKind, ScalarSpec, FlowSpec, DensitySpec as SpacingDensitySpec } from "./composition/surface-fields.js";
+export { scalarKinds, scalarField, tangentGradients, waveTerms, flowVectors, spacingField } from "./composition/surface-fields.js";
+export type { StrandEnd, SurfaceStrand, FamilyOptions as SurfaceStrandOptions, SurfaceCrossing } from "./composition/surface-strands.js";
+export { traceStrands, surfaceCrossings, surfaceCrossingSet, estimateStrandVertices, STRAND_LIMITS } from "./composition/surface-strands.js";
+export type { WeaveSurface, FlowField, ModulationField, SurfaceWeaveStructure, SurfaceWeaveOrder, SurfaceWeaveStrands, SurfaceWeaveProducts } from "./composition/surface-weave-products.js";
+export { weaveMesh, surfaceWeaveStrands, surfaceWeaveOrder, familyRanks } from "./composition/surface-weave-products.js";
+export type { WeaveViewOptions, ProjectedStrand, ProjectedWeave } from "./composition/surface-weave-view.js";
+export { weaveCamera, projectWeave } from "./composition/surface-weave-view.js";
+export type { WeavePieceOptions, WeavePiece, WeavePieces, WeaveModel } from "./composition/surface-weave-pieces.js";
+export { weavePieces, weaveModel, HAIRLINE_WIDTH } from "./composition/surface-weave-pieces.js";
+export type { SurfaceWeaveComposition, WeaveConsumers, SurfaceWeaveView } from "./composition/surface-weave.js";
+export { surfaceWeaveComposition, surfaceWeaveProducts, surfaceWeaveView, drawSurfaceWeave, drawSurfaceWeaveProducts, prepareSurfaceWeave } from "./composition/surface-weave.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -413,7 +431,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, surfaceWeaveDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -542,6 +560,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "connected-value-regions": [0x231f24, 0xb5452e, 0xe0a13a, 0x2f6f7a, 0xefe6d2],
   "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "crossing-lace": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
+  "surface-weave": [0x22303a, 0xc4452b, 0x2f6f8f, 0xe8dcc0, 0x4f7a5c],
   "region-stitch": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0x7f9a4f, 0x8b4a6f],
   "inversion-gardens": [0x1d2733, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "random-walk-fronts": [0xc4452b, 0xe0a13a, 0x2f7f86, 0x6f9a55, 0x8b5190, 0x1f2733],
@@ -587,6 +606,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "stroke-relief") return drawStrokeRelief(context, strokeReliefComposition(input));
   if (input.technique === "image-directed-field") return drawImageDirectedField(context, imageDirectedFieldComposition(input));
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
+  if (input.technique === "surface-weave") return drawSurfaceWeave(context, surfaceWeaveComposition(input));
   if (input.technique === "region-stitch") return drawStitches(context, regionStitchComposition(input));
   if (input.technique === "hyperbolic-gardens") return drawHyperbolicGardens(context, hyperbolicGardensComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
@@ -612,7 +632,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "surface-weave" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -641,6 +661,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "nodal-plates") return prepareNodalPlate(nodalPlateComposition(input), cancelled);
   if (input.technique === "stroke-relief") return prepareStrokeRelief(strokeReliefComposition(input), cancelled);
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
+  if (input.technique === "surface-weave") return prepareSurfaceWeave(surfaceWeaveComposition(input), cancelled);
   if (input.technique === "region-stitch") return prepareStitches(regionStitchComposition(input), cancelled);
   if (input.technique === "hyperbolic-gardens") return prepareHyperbolicGardens(hyperbolicGardensComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
@@ -691,6 +712,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "outline-type": return outlineTypeUsesSeed(q);
     case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
+    case "surface-weave": return surfaceWeaveUsesSeed(q);
     case "hyperbolic-gardens": return hyperbolicGardensUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
     case "region-stitch": return regionStitchUsesSeed(q);
