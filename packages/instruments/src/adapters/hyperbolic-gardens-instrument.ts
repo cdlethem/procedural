@@ -27,8 +27,8 @@ const limited: Condition = { limit: [true] };
 const markChoices: [string, string][] = [["dot", "Dot"], ["rings", "Rings"], ["rosette", "Rosette"], ["arrow", "Arrow"]];
 
 const parameters: Parameter[] = [
-  n("p", "Polygon sides", "Sides of every cell. With Cells at a vertex it names the tiling {p,q}: the cells are regular p-gons, q of them meeting at each corner. It must satisfy (p-2)(q-2) > 4; smaller pairs are the Euclidean or spherical tilings and are refused.", 3, 12, 1, 3, 24),
-  n("q", "Cells at a vertex", "Cells meeting at every corner. More cells per corner and more sides both make cells shrink faster toward the boundary; {7,3}, {5,4}, {4,5} and {3,7} are the classic small cases.", 3, 12, 1, 3, 24),
+  n("p", "Polygon sides", "Sides of every cell. With Cells at a vertex it names the tiling {p,q}: the cells are regular p-gons, q of them meeting at each corner. It must satisfy (p-2)(q-2) > 4; smaller pairs are the Euclidean or spherical tilings and are refused.", 5, 12, 1, 3, 24),
+  n("q", "Cells at a vertex", "Cells meeting at every corner. More cells per corner and more sides both make cells shrink faster toward the boundary; {5,4} and {4,5} are the classic small cases; type a value to reach {7,3} (3 here) or {3,7} (3 sides), which the slider ends omit so that any slider setting is a hyperbolic pair.", 4, 12, 1, 3, 24),
   select("center", "Centre on", "Where the middle of the disk sits: on a cell centre (p-fold symmetry), on a vertex (q-fold) or on the midpoint of an edge (two-fold). The tiling is the same; the view of it is not.",
     [["polygon", "Cell centre"], ["vertex", "Vertex"], ["edge", "Edge midpoint"]]),
   n("generations", "Generations", "Rings of cells grown outward from the centre; each ring is every cell sharing an edge with the previous one. Growth also stops at the disk radius and the smallest cell, so this is a ceiling, not a count.", 0, 10, 1, 0, 40),
@@ -72,7 +72,7 @@ const parameters: Parameter[] = [
   n("anchorAlong", "Anchor: vertex to edge middle", "Slides the anchor along the cell edge from the vertex (0) to the edge midpoint (1). At 0 or 1 the anchor is on a mirror line and coincident copies are merged.", 0, 1, 0.01, 0, 1, marked),
   select("motifColor", "Motif color", "Ink, the same palette entry as the cells beneath (color by), or the next entry along so the motif stands out from a fill of its own color.",
     [["ink", "Ink"], ["color", "As cells"], ["contrast", "Contrast"]], marked),
-  n("motifFit", "Motif size", "Motif diameter as a fraction of one cell edge at that place, so it shrinks with the cells.", 0.05, 1.2, 0.01, 0, 3, marked),
+  n("motifFit", "Motif size", "Motif diameter as a fraction of one cell edge at that place, so it shrinks with the cells.", 0.05, 0.75, 0.01, 0, 3, marked),
   n("motifWeight", "Motif line weight", "Thickness of motif strokes at the disk centre; strokes shrink with the motif.", 0.2, 3, 0.05, 0, 50, stroked),
   n("motifTurn", "Motif turn", "Extra rotation of the motif inside its frame, in degrees, before the frame is applied.", -180, 180, 1, -3600, 3600, turned),
   n("petals", "Rosette petals", "Radial strokes in each rosette.", 3, 12, 1, 1, 48, { motif: ["rosette"] }),
