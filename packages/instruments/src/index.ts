@@ -37,6 +37,8 @@ import { shapePackingDefinition } from "./adapters/shape-packing-instrument.js";
 import { drawShapePacking, prepareShapePacking, shapePackingComposition, shapePackingUsesSeed } from "./composition/shape-packing.js";
 import { crossingLaceDefinition } from "./adapters/crossing-lace-instrument.js";
 import { crossingLaceComposition, crossingLaceUsesSeed, drawCrossingLace, prepareCrossingLace } from "./composition/crossing-lace.js";
+import { hyperbolicGardensDefinition } from "./adapters/hyperbolic-gardens-instrument.js";
+import { drawHyperbolicGardens, hyperbolicGardensComposition, hyperbolicGardensUsesSeed, prepareHyperbolicGardens } from "./composition/hyperbolic-draw.js";
 import { quilledPathsDefinition } from "./adapters/quilled-paths-instrument.js";
 import { drawQuilled, prepareQuilled, quillComposition, quillUsesSeed } from "./composition/quill-draw.js";
 import { bundledRelationsDefinition } from "./adapters/bundled-relations-instrument.js";
@@ -313,6 +315,16 @@ export type { LaceFrame, LaceShape, LaceOptions } from "./composition/lace-famil
 export { lacePaths, laceVertexEstimate, MAX_LACE_VERTICES } from "./composition/lace-families.js";
 export type { StrandStyle, CrossingLaceComposition, LaceConsumers, CrossingLaceProducts } from "./composition/crossing-lace.js";
 export { crossingLaceComposition, crossingLaceProducts, drawCrossingLace, drawCrossingLaceProducts, prepareCrossingLace } from "./composition/crossing-lace.js";
+export type { HyperbolicOptions, HyperbolicCenter, HyperbolicTile, HyperbolicVertex, HyperbolicEdge, HyperbolicTiling } from "./composition/hyperbolic.js";
+export { hyperbolicTiling, hyperbolicEdgePaths, hyperbolicCellPaths, retainCells, geodesicPolyline, curvePolyline, MAX_HYPERBOLIC_TILES, MAX_HYPERBOLIC_GENERATIONS, MAX_DISK_RADIUS, EDGE_TOLERANCE } from "./composition/hyperbolic.js";
+export type { HyperbolicFrame, HyperbolicRing, HyperbolicRingAround, HyperbolicFrameOptions, HyperbolicRingOptions } from "./composition/hyperbolic-frames.js";
+export { hyperbolicFrames, hyperbolicRings, MAX_HYPERBOLIC_FRAMES, MAX_HYPERBOLIC_ARCS } from "./composition/hyperbolic-frames.js";
+export type { Vec3 as HyperbolicVec3, Mat3 as HyperbolicMat3, TriangleGroup, MirrorAddress, DiskFrame } from "./composition/hyperbolic-geometry.js";
+export { triangleGroup, mirrorAddress, addressMatrix, frameOf, toDisk, fromDisk, validateSchlafli, MAX_HYPERBOLIC_X0, IDENTITY as HYPERBOLIC_IDENTITY,
+  apply as applyHyperbolic, mul as composeHyperbolic, inverse as invertHyperbolic, det as hyperbolicDeterminant, lorentz as lorentzProduct,
+  along as geodesicPoint, distance as hyperbolicDistance } from "./composition/hyperbolic-geometry.js";
+export type { HyperbolicColorBy, HyperbolicCellFill, HyperbolicMark, HyperbolicMotifColor, HyperbolicGardensComposition, HyperbolicConsumers, HyperbolicProducts } from "./composition/hyperbolic-draw.js";
+export { hyperbolicGardensComposition, hyperbolicProducts, hyperbolicTone, hatchPolygon, MAX_HATCH_LINES_PER_CELL, drawHyperbolicGardens, drawHyperbolicProducts, prepareHyperbolicGardens } from "./composition/hyperbolic-draw.js";
 export type { SpiralFamily, FrameOptions, SpiralOptions, LettersOptions, ScrollOptions, QuillScaffoldSpec } from "./composition/quill-scaffold.js";
 export { quillScaffold, letterPaths, spiralPaths, scrollPaths, spiralFamilies, MAX_SCAFFOLD_POINTS } from "./composition/quill-scaffold.js";
 export type { QuillTerminals, QuillCurl, QuillNestSide, QuillOverlap, QuillStripOptions, QuillStrip, NestStop, StripClash, QuillDiagnostics, QuillStrips } from "./composition/quill-strips.js";
@@ -398,7 +410,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -531,6 +543,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "inversion-gardens": [0x1d2733, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "random-walk-fronts": [0xc4452b, 0xe0a13a, 0x2f7f86, 0x6f9a55, 0x8b5190, 0x1f2733],
   "chemotactic-trails": [0x1f3040, 0xc4452b, 0xd9a441, 0x2f7a86, 0x6a8f4a],
+  "hyperbolic-gardens": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -572,6 +585,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "image-directed-field") return drawImageDirectedField(context, imageDirectedFieldComposition(input));
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
   if (input.technique === "region-stitch") return drawStitches(context, regionStitchComposition(input));
+  if (input.technique === "hyperbolic-gardens") return drawHyperbolicGardens(context, hyperbolicGardensComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
   if (input.technique === "polygon-watercolor") return drawPolygonWatercolor(context, polygonWatercolorComposition(input));
@@ -595,7 +609,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -625,6 +639,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "stroke-relief") return prepareStrokeRelief(strokeReliefComposition(input), cancelled);
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
   if (input.technique === "region-stitch") return prepareStitches(regionStitchComposition(input), cancelled);
+  if (input.technique === "hyperbolic-gardens") return prepareHyperbolicGardens(hyperbolicGardensComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
   if (input.technique === "inversion-gardens") return prepareInversionGardens(inversionGardensComposition(input), cancelled);
   if (input.technique === "chemotactic-trails") return prepareChemotacticTrails(chemotacticTrailsComposition(input), cancelled);
@@ -673,6 +688,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "outline-type": return outlineTypeUsesSeed(q);
     case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
+    case "hyperbolic-gardens": return hyperbolicGardensUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
     case "region-stitch": return regionStitchUsesSeed(q);
     case "inversion-gardens": return inversionGardensUsesSeed(q);
