@@ -21,10 +21,10 @@ const marked: Condition = { marks: [true] };
 const markStroke: Condition = { marks: [true], markKind: ["rings", "rosette", "arrow"] };
 
 const parameters: Parameter[] = [
-  n("scales", "Scales", "How many activator/inhibitor scale pairs compete, finest to coarsest. Each cell is updated by the scale whose activator and inhibitor differ least there, so more scales give more levels of structure inside one another.", 2, 6, 1, PATTERN_LIMITS.minScales, PATTERN_LIMITS.maxScales, undefined, true),
-  n("smallest", "Smallest scale", "Activator radius of the finest scale, in grid cells (a box half-width). The inhibitor is larger; this sets the size of the smallest features.", 1, 6, 1, 1, PATTERN_LIMITS.maxSmallest, undefined, true),
-  n("ratio", "Scale ratio", "How much wider each scale's activator is than the one before. Radii are whole cells, at least one apart, so a small ratio on a small finest scale spaces them by one cell.", 1.3, 2.6, 0.05, 1.05, 4),
-  n("inhibitor", "Inhibitor reach", "Inhibitor radius as a multiple of the activator radius (at least one cell wider). Near 1 the scales barely differ and patterns go grainy; near 3 they form broad, separated lobes.", 1.4, 3.5, 0.05, 1.1, 4),
+  n("scales", "Scales", "How many activator/inhibitor scale pairs compete, finest to coarsest (the slider stops at five so that every slider corner fits the smallest grid; type more, up to eight). Each cell is updated by the scale whose activator and inhibitor differ least there, so more scales give more levels of structure inside one another.", 2, 5, 1, PATTERN_LIMITS.minScales, PATTERN_LIMITS.maxScales, undefined, true),
+  n("smallest", "Smallest scale", "Activator radius of the finest scale, in grid cells (a box half-width). The inhibitor is larger; this sets the size of the smallest features.", 1, 3, 1, 1, PATTERN_LIMITS.maxSmallest, undefined, true),
+  n("ratio", "Scale ratio", "How much wider each scale's activator is than the one before. Radii are whole cells, at least one apart, so a small ratio on a small finest scale spaces them by one cell. The slider stops where the coarsest inhibitor still fits the smallest grid; type larger values, up to 4.", 1.3, 1.8, 0.05, 1.05, 4),
+  n("inhibitor", "Inhibitor reach", "Inhibitor radius as a multiple of the activator radius (at least one cell wider). Near 1 the scales barely differ and patterns go grainy; near 3 they form broad, separated lobes.", 1.4, 3, 0.05, 1.1, 4),
   n("increment", "Increment", "Field change per step where a scale dominates. The field is renormalised to span -1 to 1 every step, so this sets how fast patterns form, and how coarse the flips are, not the contrast.", 0.005, 0.1, 0.005, 0.0001, 0.5),
   n("tilt", "Weight tilt", "How the increment varies across the scales: 0 gives every scale the same, positive lets the coarse scales move the field further per step (the finest scale's increment times 4^tilt is the coarsest's), negative favours the fine texture.", -2, 2, 0.1, -3, 3),
 
@@ -55,7 +55,7 @@ const parameters: Parameter[] = [
   flag("contours", "Contours", "Trace lines where the field crosses chosen values, with a path material."),
   n("levelCount", "Levels", "Number of contour values, spread evenly around Level center.", 1, 9, 1, 1, PATTERN_LIMITS.maxLevels, lined, true),
   n("levelCenter", "Level center", "Field value at the middle of the contour levels.", -0.5, 0.5, 0.01, -0.98, 0.98, lined),
-  n("levelSpread", "Level spread", "Half the range between the outermost contour values (they stay inside it by one level step). Every level must stay strictly between -1 and 1.", 0.05, 0.9, 0.01, 0, 0.98, lined),
+  n("levelSpread", "Level spread", "Half the range between the outermost contour values (they stay inside it by one level step). Every level must stay strictly between -1 and 1, so typed values past the slider can be refused.", 0.05, 0.5, 0.01, 0, 0.98, lined),
   n("contourMin", "Smallest contour", "Contour pieces shorter than this many cells are dropped: the specks around single cells.", 0, 20, 0.5, 0, 1000, lined),
   select("contourColor", "Contour color", "Ink (palette color 0) for all lines, the dominant scale under most of each line, or one color per level.",
     [["single", "Ink"], ["scale", "By scale"], ["level", "By level"]], lined),
