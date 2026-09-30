@@ -111,8 +111,9 @@ error attribute equal to the RMS distance to the represented source planes (inde
 abstraction, hidden-line edges checked by an independent ray cast in both projections (visible samples see the eye, hidden ones do not), analytic visible and hidden projected
 lengths of a cube, stage separation by object identity, the seed's reach, the region-relative facet target, cooperative preparation, consumer replacement.
 
-Mutations (each shown to fail): see the report of this brief. They are: the fold test removed, the link condition removed, protected vertices allowed to move, the priority ignoring
-importance, the target rule stopping one collapse late, and the heap order made to depend on the requested count.
+Mutations, each shown to fail at least one test (number failing): the facet-turn limit removed (1), the link condition removed (4: prefix Euler, prefix property, blocked
+census, seed), protected vertices allowed to move (4), the importance bias removed from the priority (1: the falloff test), a `Math.random` term in the priority as a hidden input (2: the
+prefix property and the seed test), the error attribute not divided by the represented plane count (1), the tetrahedron rule removed (1), and the target rule asking one collapse too many (4: exact counts, region, the region-relative target, the cube).
 
 ## Measured
 
