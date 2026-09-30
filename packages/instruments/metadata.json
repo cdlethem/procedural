@@ -427,6 +427,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "laplacian-fronts",
+      "title": "Laplacian Fronts",
+      "description": "A region grows where the flux of a potential is strongest: the potential between the growing region and a source is solved on a grid, the boundary advances at a speed that follows the potential gradient (raised to a growth bias, softened by a surface tension) and every front is kept; the history is drawn as age-colored fronts, bands of fill, marks at the tips or by age, and the equipotential lines the growth followed.",
+      "category": "Systems & rules",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/laplacian-fronts.md",
+      "source": "packages/instruments/src/composition/laplacian-fronts.ts",
+      "sourceEntry": "drawLaplacianFronts",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "data-scores",
       "title": "Data Scores",
       "description": "Let recorded values decide structure: three bundled tables with missing values become a lattice that drifts, a treemap with exact areas or a timeline, with explicit mappings and a small generated key.",
