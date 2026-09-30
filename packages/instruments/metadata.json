@@ -713,6 +713,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "surface-growth",
+      "title": "Surface Growth",
+      "description": "Let a triangulated sheet, disc, strip or sphere grow unevenly: a growth field says where its edges lengthen, each step relaxes the skin in 3-D under stretch and bending and splits the edges that stretch too far, so ruffles and folds form by real surface evolution. Draw it as lit faces far to near, hidden-line contours and wire, level lines and grains, from a camera that never touches the growth; scrub the steps to watch it fold.",
+      "category": "3D forms",
+      "operationIds": ["field.gradient-noise-3d-01", "geometry.resample-polyline-2d"],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/surface-growth.md",
+      "source": "packages/instruments/src/composition/surface-growth-draw.ts",
+      "sourceEntry": "drawSurfaceGrowth",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "field-marks",
       "title": "Field Marks",
       "description": "The source is a set of sample positions, not an automatically full-canvas texture.",
