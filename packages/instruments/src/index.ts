@@ -392,6 +392,9 @@ export type { FrontsFrame, Territory, BandDomain, CellRuns, HatchOptions as Fron
 export { territoryDomains, bandDomains, cellRuns, frontContours, territoryOutlines, territoryHatching, frontSites, bandCount, FRONT_PRODUCT_LIMITS } from "./composition/walk-fronts-products.js";
 export type { FrontsView, FillKind as FrontsFillKind, LineKind as FrontsLineKind, RandomWalkFrontsComposition, RandomWalkFrontsConsumers, FrontsProducts } from "./composition/walk-fronts-draw.js";
 export { randomWalkFrontsComposition, randomWalkFrontsProducts, drawWalkFronts, prepareRandomWalkFronts } from "./composition/walk-fronts-draw.js";
+export type { ContourEnd, LevelTies, ContourNode, ContourCurve, SectionPlane, PlaneFrame, SectionOptions, SectionLoop, MeshSection, MeshSlices, SlicePlaneOptions,
+  SectionDomainOptions, IsoOptions, IsoCurve, IsoContours } from "./composition/mesh-section.js";
+export { planeFrame, sectionMesh, sliceMesh, sliceCurves, slicePlanes, sectionDomain, isoContours, SECTION_LIMITS, DEFAULT_SECTION_WORK } from "./composition/mesh-section.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
