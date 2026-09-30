@@ -1,7 +1,7 @@
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { choice, numeric, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 const withCondition = (parameter: Parameter, visibleWhen?: Condition): Parameter => visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const integerKeys = new Set(["p", "q", "generations", "ringCount", "petals", "twigs"]);
 const n = (key: string, label: string, description: string, min: number, max: number, step: number,
@@ -33,7 +33,8 @@ const parameters: Parameter[] = [
     [["polygon", "Cell centre"], ["vertex", "Vertex"], ["edge", "Edge midpoint"]]),
   n("generations", "Generations", "Rings of cells grown outward from the centre; each ring is every cell sharing an edge with the previous one. Growth also stops at the disk radius and the smallest cell, so this is a ceiling, not a count.", 0, 10, 1, 0, 40),
   n("diskRadius", "Disk radius", "Cells are kept only when all their corners lie inside this fraction of the disk. Near 1 the cells crowd toward the boundary circle; lower it to stop early and leave a plain rim. Tilings with many-sided cells have large cells and need a value near 1 before any cell beyond the first fits.", 0.5, 0.999, 0.001, 0.001, 0.9999),
-  n("minSize", "Smallest cell", "Cells whose drawn diameter falls below this many canvas units are not built and nothing beyond them is either: the pixel-scale stop that bounds the work. Lower it to reach closer to the boundary.", 0.5, 12, 0.1, 0.05, 10000),
+  n("minSize", "Smallest cell", "Cells whose drawn diameter falls below this many canvas units are not built and nothing beyond them is either: the pixel-scale stop that bounds the work. Lower it to reach closer to the boundary.", 0.5, 12, 0.1, 0.05, 10000,
+    [{ diskRadius: { gt: 0.9985 } }, { p: { lte: 12 } }]),
   n("retention", "Cell retention", "Share of cells kept. Omitted cells leave bare paper and take their edges, rings and motifs with them; the same cells are omitted whatever the drawing style.", 0, 1, 0.01, 0, 1),
 
   n("centerX", "Center X", "Horizontal canvas position of the middle of the disk.", 80, 560, 1, -100000, 100000),

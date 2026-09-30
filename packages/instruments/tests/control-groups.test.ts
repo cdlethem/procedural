@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  createInstrument, definitions, inspectorItems, validateControlGroups, visibleParameters,
+  createInstrument, definitions, inspectorItems, validateControlGroups, visibilityDrivers, visibleParameters,
   type ControlGroup, type InspectorItem, type InstrumentDefinition, type Parameter,
 } from "../dist/index.js";
 import { resolveControlGroups } from "../dist/control-groups.js";
@@ -95,8 +95,10 @@ test("every published definition re-validates", () => {
 });
 
 test("a proportional group has some reachable setting where two or more of its members are visible", () => {
-  const combos = (drivers: Parameter[]): Record<string, string | boolean>[] => drivers.reduce<Record<string, string | boolean>[]>(
-    (acc, driver) => acc.flatMap((base) => (driver.type === "boolean" ? [true, false] : driver.options!.map((o) => o.value)).map((value) => ({ ...base, [driver.key]: value }))), [{}]);
+  // A number driver is tried at its default and both range ends, which is where a threshold sits.
+  const combos = (drivers: Parameter[], defaults: InstrumentDefinition["defaults"]): Record<string, string | number | boolean>[] => drivers.reduce<Record<string, string | number | boolean>[]>(
+    (acc, driver) => acc.flatMap((base) => (driver.type === "boolean" ? [true, false] : driver.type === "number"
+      ? [...new Set([defaults[driver.key] as number, driver.hardMin ?? driver.min!, driver.hardMax ?? driver.max!])] : driver.options!.map((o) => o.value)).map((value) => ({ ...base, [driver.key]: value }))), [{}]);
   const walk = (groups: readonly ControlGroup[]): ControlGroup[] =>
     groups.flatMap((g) => [g, ...walk(g.controls.filter((m): m is ControlGroup => typeof m !== "string"))]);
   const dead: string[] = [];
@@ -104,10 +106,10 @@ test("a proportional group has some reachable setting where two or more of its m
     if (!group.proportional) continue;
     const members = group.controls as string[];
     const drivers = new Set<string>();
-    for (const key of members) for (const k of Object.keys(item.parameters.find((p) => p.key === key)!.visibleWhen ?? {})) drivers.add(k);
+    for (const key of members) for (const k of visibilityDrivers(item.parameters.find((p) => p.key === key)!)) drivers.add(k);
     // Drivers of drivers matter for effective visibility.
-    for (let grew = true; grew;) { grew = false; for (const k of [...drivers]) for (const d of Object.keys(item.parameters.find((p) => p.key === k)!.visibleWhen ?? {})) if (!drivers.has(d)) { drivers.add(d); grew = true; } }
-    const list = combos([...drivers].map((k) => item.parameters.find((p) => p.key === k)!));
+    for (let grew = true; grew;) { grew = false; for (const k of [...drivers]) for (const d of visibilityDrivers(item.parameters.find((p) => p.key === k)!)) if (!drivers.has(d)) { drivers.add(d); grew = true; } }
+    const list = combos([...drivers].map((k) => item.parameters.find((p) => p.key === k)!), item.defaults);
     const ok = list.some((choice) => {
       const shown = new Set(visibleParameters(item.id, { ...item.defaults, ...choice }).map((p) => p.key));
       return members.filter((key) => shown.has(key)).length >= 2;

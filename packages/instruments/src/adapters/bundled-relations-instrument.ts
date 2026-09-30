@@ -2,7 +2,7 @@ import { relationGroupNames, relationSampleTitles } from "../composition/bundle-
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { numeric, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 type Option = readonly [value: string, label: string];
 const control = (parameter: Parameter, visibleWhen?: Condition): Parameter => visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const n = (key: string, label: string, description: string, min: number, max: number, step: number,
@@ -60,8 +60,8 @@ export const bundledRelationsDefinition: InstrumentDefinition = {
     select("families", "Bundles", "Pair: edges between the same two groups share one bundle. Directed: a → b and b → a form separate, side-by-side bundles, so opposite flows stay apart.",
       [["pair", "One per pair of groups"], ["directed", "One per direction"]], directed),
     n("inset", "Hub depth", "How far each group's hub lies toward the interior (zero at the endpoints, one at the ring's center, the line's full height or the map's centroid). Deeper hubs pull edges into longer shared runs.", 0, 1, .01, 0, 1),
-    n("lift", "Trunk lift", "How far each bundle bulges toward the interior between its two groups, as a share of half the distance between them.", 0, 1, .01, 0, 1),
-    n("separation", "Bundle separation", "Spread of the bundles that meet at one group across that group's extent. Zero stacks them on the hub; larger values leave a visible lane for each partner group.", 0, 1, .01, 0, 1),
+    n("lift", "Trunk lift", "How far each bundle bulges toward the interior between its two groups, as a share of half the distance between them.", 0, 1, .01, 0, 1, { scope: ["all", "between"] }),
+    n("separation", "Bundle separation", "Spread of the bundles that meet at one group across that group's extent. Zero stacks them on the hub; larger values leave a visible lane for each partner group.", 0, 1, .01, 0, 1, { scope: ["all", "between"] }),
     n("detail", "Curve detail", "Samples per curve span. Low values show the polygon's corners; high values are smoother and cost more to draw.", 4, 16, 1, 1, 32, undefined, true),
 
     select("highlight", "Highlight", "Draw a chosen family heavier: every edge touching a group, every edge between two groups, or the heaviest few edges.",

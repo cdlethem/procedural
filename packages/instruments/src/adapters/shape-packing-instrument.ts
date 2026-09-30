@@ -2,7 +2,7 @@ import { CONTAINER_LETTERS } from "../composition/shape-pieces.js";
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { numeric, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 type Option = readonly [value: string, label: string];
 const control = (parameter: Parameter, visibleWhen?: Condition): Parameter => visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const n = (key: string, label: string, description: string, min: number, max: number, step: number,
@@ -70,7 +70,8 @@ export const shapePackingDefinition: InstrumentDefinition = {
       [["fill", "Fill"], ["outline", "Outline"], ["fillOutline", "Fill and outline"], ["hatch", "Hatch"], ["mixed", "Fill, hatch and outline by color"]]),
     select("colorBy", "Color by", "What chooses each piece's color from the palette (the first palette color is the ink; the others are piece tones). Size: from the smallest to the largest placed piece. Order: cycles in placement order. Angle: by the angle step the piece took. Family: letter, leaf, blob, polygon.",
       [["size", "Size"], ["order", "Placement order"], ["angle", "Angle"], ["family", "Family"]]),
-    n("weight", "Line weight", "Stroke width of outlines, hatch lines, the leftover outline and the container outline.", .3, 3, .05, .05, 50),
+    n("weight", "Line weight", "Stroke width of outlines, hatch lines, the leftover outline and the container outline.", .3, 3, .05, .05, 50,
+      [{ frame: [true] }, { leftover: ["fill", "outline"] }, { render: ["outline", "fillOutline", "hatch", "mixed"] }]),
     n("hatchSpacing", "Hatch spacing", "Distance between hatch lines. At most 150,000 lines are drawn; a smaller spacing or many pieces can reach it.", 1.5, 12, .25, .5, 200, hatched),
     n("hatchAngle", "Hatch angle", "Direction of the hatch lines in degrees (added to each piece's own turn when the hatch follows the piece).", 0, 180, 1, -3600, 3600, hatched),
     flag("hatchFollow", "Hatch follows piece", "Turn the hatching with each piece and anchor it to the piece, instead of one global set of lines across the canvas.", hatched),

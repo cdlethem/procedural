@@ -4,7 +4,7 @@ import { bundledRecordingIds, bundledRecordingInfo } from "../composition/record
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { numeric } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 type Option = readonly [value: string, label: string];
 const control = (parameter: Parameter, visibleWhen?: Condition): Parameter => visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const n = (key: string, label: string, description: string, min: number, max: number, step: number,
@@ -41,7 +41,7 @@ export const slitCompositionsDefinition: InstrumentDefinition = {
     select("direction", "Band direction", "Columns: vertical bands side by side. Rows: horizontal bands stacked.", [["columns", "Columns"], ["rows", "Rows"]]),
     n("slices", "Slices", "Source slices per repetition, and so the width of a band: the footprint width divided by slices times repeats. More slices read the source more finely; fewer make broad bands.", 4, 160, 1, 1, 600, undefined, true),
     n("repeats", "Repeats", "How many times the whole slice order is laid across the footprint; each repeat squeezes the picture or the time span into a proportionally narrower stretch.", 1, 6, 1, 1, 64, undefined, true),
-    select("repeatMode", "Repeat order", "Play every repeat the same way, or play alternate repeats backwards. With one repeat this has no effect.", [["same", "Same"], ["alternate", "Alternate backwards"]]),
+    select("repeatMode", "Repeat order", "Play every repeat the same way, or play alternate repeats backwards. With one repeat this has no effect.", [["same", "Same"], ["alternate", "Alternate backwards"]], { repeats: { gte: 2 } }),
     select("order", "Order", "Which source slice each band shows. Sequence keeps it; reverse mirrors it; comb deals the slices into groups, so the picture appears once per group, thinned; interleave riffles the groups together; shuffle lets a fraction of the slices trade places.",
       [["sequence", "Sequence"], ["reverse", "Reverse"], ["comb", "Comb into groups"], ["interleave", "Interleave groups"], ["shuffle", "Seeded shuffle"]]),
     n("groups", "Groups", "Groups for comb and interleave (at most the slice count).", 2, 8, 1, 2, 64, grouped, true),

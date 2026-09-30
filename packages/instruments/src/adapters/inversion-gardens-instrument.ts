@@ -3,7 +3,7 @@ import { parseWord } from "../composition/inversion-orbit.js";
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { choice, numeric, text, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 const withCondition = (parameter: Parameter, visibleWhen?: Condition): Parameter => visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const integerKeys = new Set(["circles", "generations", "density", "fillRings"]);
 const n = (key: string, label: string, description: string, min: number, max: number, step: number,
@@ -65,7 +65,8 @@ const parameters: Parameter[] = [
   n("beadSize", "Bead size", "Diameter of each bead.", 2, 14, 0.5, 0.5, 200, beaded),
   n("tolerance", "Curve tolerance", "Largest distance a drawn chord may fall from the exact arc, in canvas units. Lower is smoother and costs more vertices; it never moves an arc.", 0.05, 1, 0.01, 0.005, 10),
 
-  select("fill", "Disc fill", "Fills every bounded disc (gasket circles, or images of a source circle): a flat tone or concentric rings.", [["none", "None"], ["flat", "Flat"], ["rings", "Rings"]]),
+  select("fill", "Disc fill", "Fills every bounded disc (gasket circles, or images of a source circle): a flat tone or concentric rings.", [["none", "None"], ["flat", "Flat"], ["rings", "Rings"]],
+    [{ construction: ["gasket"] }, { source: ["rings", "net", "grid", "wallpaper"] }]),
   n("fillOpacity", "Fill opacity", "Strength of the fill or rings.", 0.05, 1, 0.01, 0, 1, filled),
   n("fillRings", "Rings per disc", "Concentric rings inside each disc.", 1, 8, 1, 1, 12, nested),
 

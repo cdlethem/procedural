@@ -2,7 +2,7 @@ import { bundledRasterIds, bundledRasterInfo } from "../composition/raster-sampl
 import type { ControlGroup, InstrumentDefinition, Parameter } from "../types.js";
 import { numeric, toggle } from "./types.js";
 
-type Condition = Record<string, readonly (string | number | boolean)[]>;
+type Condition = NonNullable<Parameter["visibleWhen"]>;
 type Option = readonly [value: string, label: string];
 const control = (parameter: Parameter, visibleWhen?: Condition): Parameter => visibleWhen ? { ...parameter, visibleWhen } : parameter;
 const n = (key: string, label: string, description: string, min: number, max: number, step: number,
@@ -64,9 +64,9 @@ export const pixelSortingDefinition: InstrumentDefinition = {
     n("scatter", "Ragged amount", "How far the field can move a pixel's value before the interval test, up to about twice this in value. Zero would be an exact interval.", 0, .5, .01, 0, 1, ragged),
     n("scatterScale", "Ragged scale", "Size of the field's features in image pixels. Small values fray the edge of each run, large ones move whole regions in and out of the selection.", 2, 40, 1, 1, 500, ragged),
 
-    select("keyBy", "Sort by", "The value each run is ordered by. Ties keep the order in which the pixels were visited, in both orders, so equal pixels never swap." + valueNote, valueOptions),
+    select("keyBy", "Sort by", "The value each run is ordered by. Ties keep the order in which the pixels were visited, in both orders, so equal pixels never swap." + valueNote, valueOptions, merging),
     select("order", "Order", "Ascending puts the lowest values first along the scan direction, descending puts the highest first. The pixels of a run are only rearranged inside that run: nothing is moved between runs or into protected pixels.",
-      [["ascending", "Ascending (low first)"], ["descending", "Descending (high first)"]]),
+      [["ascending", "Ascending (low first)"], ["descending", "Descending (high first)"]], merging),
 
     select("protect", "Region", "What keeps a part of the image out of the sort. None sorts wherever the interval selects. Ellipse marks an ellipse you place; Connected region takes the piece of one tone band that lies under a point (like a magic wand); Strong edges marks the sharpest contours; Noise field marks seeded blobs.",
       [["none", "None"], ["ellipse", "Ellipse"], ["region", "Connected region"], ["edges", "Strong edges"], ["field", "Noise field"]]),
