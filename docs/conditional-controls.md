@@ -7,29 +7,75 @@ left. It is part of the [next-release roadmap](next-release-roadmap.md) (F9).
 
 ## Contract
 
-`Parameter.visibleWhen` names the controls a parameter depends on.
+`Parameter.visibleWhen` names the controls a parameter depends on. It is either **one
+alternative** (an object) or a **non-empty array of alternatives** meaning "shown if **any**
+alternative holds". Every object-valued `visibleWhen` written before alternatives existed keeps
+its exact meaning: it is an array of one.
 
-- **Conjunction.** Every named driver must hold one of its allowed values:
+- **An alternative is a conjunction.** Every driver it names must satisfy its entry:
   `{ support: ["annulus"] }`, `{ material: ["beads"], beadMark: ["rosette"] }`.
-- **Drivers are discrete.** A driver is a `select` or `boolean` control of the same
-  instrument. Numeric and text controls cannot be drivers.
-- **Effective visibility.** A control is shown only if its own condition holds **and every
-  driver it names is itself shown**. A chain (`material` → `beadMark` → `beadPetals`) needs no
-  hand-flattening, and a control can never appear under a choice that is itself hidden.
+- **Discrete drivers** (`select`, `boolean`) list allowed values, as before.
+- **Numeric drivers** (`number`) take a comparison object instead of a list, with the operators
+  `lt`, `lte`, `gt`, `gte`, `eq`, `ne` and finite-number literals: `{ retained: { lt: 1 } }`,
+  `{ passes: { gte: 2 } }`, `{ passes: { gte: 2, lt: 8 } }`. One operator, or one lower bound
+  (`gt`/`gte`) with one upper bound (`lt`/`lte`) forming a consistent interval; nothing else. A
+  value that is not a finite number satisfies no comparison (not even `ne`). **Text controls are
+  never drivers.**
+- **Arrays of alternatives.** `weight: [{ showLine: [true] }, { showRibbon: [true] }, { showStations: [true] }]`
+  shows `weight` when any of the three is on. Alternatives may mix discrete and numeric drivers:
+  `keepBy: [{ retainBy: ["area"], retained: { lt: 1 } }, ...]`.
+- **Effective visibility.** A control with no condition is shown. A control with a condition is
+  shown if at least one alternative both **holds against the current values** and **names only
+  drivers that are themselves shown**. An alternative with a hidden driver counts for nothing, so a
+  chain (`material` → `beadMark` → `beadPetals`) needs no hand-flattening, and a control can never
+  appear under a choice that is itself hidden; a hidden numeric driver's value cannot justify
+  anything either. Formally, the shown set is the *least fixpoint* of that rule (start with the
+  unconditional controls, repeatedly add every control with a justified alternative). On a
+  validated instrument, which is acyclic, this is the same as the obvious recursion; an
+  unvalidated cycle simply never justifies itself.
 - **Retention.** Hidden controls keep their values and remain valid. Switching a choice back
   restores what the artist had set.
 - **Irrelevance guarantee (the testable part).** While a control is hidden, changing it does
-  not change what is drawn. Conversely, no condition may hide a control that matters.
-- **Load-time validation** (`validateVisibility`): a condition must name at least one existing
-  select/boolean control, not itself; list at least one legal, distinct value; must actually
-  restrict the driver (a condition allowing every value is rejected); and the dependency graph
-  must be acyclic. Errors name the instrument, control and driver.
+  not change what is drawn. Conversely, no condition may hide a control that matters. (A
+  condition may still show a control that does not currently matter; that is the safe
+  direction, and a numeric threshold located by measurement can sit fractionally on that side.)
+- **Load-time validation** (`validateVisibility`, run for every instrument at load). Errors
+  name the instrument, control, alternative (`visibleWhen[1]`) and driver:
+  - the condition is an object or a non-empty array of objects; no alternative is empty;
+  - every driver exists, is not the control itself, and is a `select`, `boolean` or `number`
+    control (never `text`);
+  - a discrete entry lists at least one distinct legal value and **restricts** its driver (an
+    entry allowing every value is a tautology and is rejected, inside an array too);
+  - a comparison is used only on a number control, uses only the six operators with finite
+    literals, at most two operators that form one interval (`lt`+`lte`, `gt`+`gte`, `eq` or `ne`
+    with anything else are rejected), and a value list is rejected on a number control;
+  - every literal lies inside the driver's **hard range** (`hardMin`/`hardMax`, else `min`/`max`);
+  - a comparison is **satisfiable** and **restricts**: a contradictory interval (`gt 5, lt 3`,
+    `gt 3, lte 3`), one that never holds over the range (`lt 0` on 0–1, `gt 1, lt 2` on an
+    integer control, `eq 1.5` on an integer) or one that always holds (`gte 0` on 0–1) is rejected;
+  - **no exact duplicate alternatives**, no alternative **redundant** because another already
+    shows the control whenever it holds (`{ mark: ["dot"] }` beside `{ mark: ["dot", "ring"] }`),
+    and the alternatives must not jointly allow every combination (`{ on: [true] }` with
+    `{ on: [false] }`, `lt .5` with `gte .5`);
+  - the dependency graph is acyclic **over the union of every alternative's drivers**: a cycle
+    that exists only through the second alternative is still a cycle.
 
-`visibleParameters(id, values)` (also `visibility.ts`) returns the controls to show, in
-definition order, applying effective visibility. **Consumers should call it rather than
-re-implementing the rule.** The private app's `LayerControls` currently checks only each
-control's own condition against the stored values, so under a hidden driver it can show a
-dependent control the contract hides; it should switch to this helper.
+`visibleParameters(id, values)` returns the controls to show, in definition order;
+`controlIsVisible(id, key, values)` answers for one control; `inspectorItems(id, values)`
+(see [control groups](control-groups.md)) returns the grouped tree. Internally the item-based
+forms live in `visibility.ts`, next to `visibilityAlternatives(parameter)` and
+`visibilityDrivers(parameter)`, which hosts can use to describe a condition ("shown when ...")
+or find what to watch. **A host must call one of these and never re-implement the rule.** A raw
+consumer that reads `visibleWhen` as `Record<driver, values[]>`, for instance by iterating
+`Object.entries(visibleWhen)`, is wrong on an array (its entries are alternatives, not
+drivers), wrong on a comparison (an object where it expects a list), and wrong whenever an
+alternative's driver is hidden.
+
+> **The private app's own `LayerControls` (outside this repository) must adopt `inspectorItems`
+> before array conditions or comparisons can appear in its inspector.** It currently checks each
+> control's own condition with `Object.entries(visibleWhen)`, which would misbehave on an array.
+> This repository now ships such conditions in instrument definitions, so that adoption is a
+> prerequisite for the app taking this version.
 
 ## Where conditions are written
 

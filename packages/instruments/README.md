@@ -134,9 +134,12 @@ labelled, nested groups in display order, each control in exactly one group. A `
 group holds numeric controls on one non-negative scale (a footprint's width and height, a
 mark's diameter and line weight), so a host may lock their ratio and drive them together.
 Published definitions list `parameters` in group order with a derived `Parameter.group` path.
-`visibleWhen` hides controls that cannot affect the drawing; hidden controls retain their
-values and remain validated. `inspectorItems(id, params)` returns the current tree: visible
-controls only, with empty groups omitted.
+`visibleWhen` hides controls that cannot affect the drawing: a conjunction of select/boolean value
+lists and number comparisons (`{ retained: { lt: 1 } }`), or an array of such alternatives of
+which any one suffices. Hidden controls retain their values and remain validated. Hosts must
+not evaluate `visibleWhen` themselves: `visibleParameters(id, params)`, `controlIsVisible(id, key,
+params)` and `inspectorItems(id, params)` (the current tree: visible controls only, empty groups
+omitted) apply the alternatives, the comparisons and the rule that a driver must itself be shown.
 
 Read the three packaged study guides for visible effects and deliberate variations.
 The repository's `docs/composition-reference-slice.md` records the implementation boundary

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  createInstrument, definitions, validateParameters, validateVisibility, visibleParameters,
+  createInstrument, definitions, validateParameters, validateVisibility, visibilityAlternatives, visibleParameters,
   type InstrumentDefinition, type Parameter,
 } from "../dist/index.js";
 import { applyControlDependencies } from "../dist/control-dependencies.js";
@@ -17,9 +17,9 @@ const item = (parameters: Parameter[], defaults: InstrumentDefinition["defaults"
   ({ id: "probe", title: "Probe", description: "", parameters, controlGroups: [{ label: "All", controls: parameters.map((parameter) => parameter.key) }], defaults });
 const rejects = (parameters: Parameter[], pattern: RegExp) => assert.throws(() => validateVisibility(item(parameters)), pattern);
 
-test("conditions must name a select or boolean control of the same instrument", () => {
+test("conditions must name a select, boolean or number control of the same instrument", () => {
   rejects([select("mark", ["dot", "ring"]), amount("size", { visibleWhen: { missing: ["a"] } })], /unknown control missing/);
-  rejects([amount("count"), amount("size", { visibleWhen: { count: [1] } })], /select or boolean/);
+  rejects([{ key: "label", label: "label", description: "label", type: "text", maxLength: 9 }, amount("size", { visibleWhen: { label: ["x"] } })], /select, boolean or number control, not label \(text\)/);
   rejects([select("mark", ["dot", "ring"], { visibleWhen: { mark: ["dot"] } })], /cannot depend on itself/);
   rejects([select("mark", ["dot", "ring"]), amount("size", { visibleWhen: {} })], /at least one control/);
   rejects([select("mark", ["dot", "ring"]), amount("size", { visibleWhen: { mark: [] } })], /at least one value/);
@@ -97,8 +97,39 @@ function alternative(parameter: Parameter, current: unknown, random: () => numbe
   return value === current ? undefined : Math.min(parameter.hardMax ?? high, Math.max(parameter.hardMin ?? low, value));
 }
 
+/** Number controls some condition compares, with every literal compared against them. */
+function comparedNumbers(definition: InstrumentDefinition): Map<Parameter, number[]> {
+  const compared = new Map<Parameter, number[]>();
+  for (const parameter of definition.parameters) for (const alternative of visibilityAlternatives(parameter)) for (const [key, entry] of Object.entries(alternative)) {
+    if (Array.isArray(entry)) continue;
+    const driver = definition.parameters.find((candidate) => candidate.key === key)!;
+    compared.set(driver, [...(compared.get(driver) ?? []), ...Object.values(entry as Record<string, number>)]);
+  }
+  return compared;
+}
+
+/** Discrete choices anywhere; every compared number at its default, an end of its range, a literal, just either side of one, or random. */
+function configuration(definition: InstrumentDefinition, random: () => number): Record<string, string | number | boolean> {
+  const values = { ...createInstrument(definition.id).params };
+  for (const driver of definition.parameters.filter((parameter) => parameter.type === "select" || parameter.type === "boolean")) {
+    const pool = driver.type === "boolean" ? [false, true] : driver.options!.map((option) => option.value);
+    values[driver.key] = pool[Math.floor(random() * pool.length)];
+  }
+  for (const [driver, literals] of comparedNumbers(definition)) {
+    const low = driver.hardMin ?? driver.min!, high = driver.hardMax ?? driver.max!, whole = driver.integer ?? driver.step === 1;
+    const near = literals.flatMap((literal) => [literal, literal - (high - low) * 1e-3, literal + (high - low) * 1e-3, literal - 1, literal + 1]);
+    const pool = [values[driver.key] as number, low, high, ...near, low + (high - low) * random()];
+    const pick = pool[Math.floor(random() * pool.length)];
+    values[driver.key] = Math.min(high, Math.max(low, whole ? Math.round(pick) : Math.round(pick * 1e6) / 1e6));
+  }
+  return values;
+}
+
+const usesNewForm = (parameter: Parameter): boolean => Array.isArray(parameter.visibleWhen)
+  || visibilityAlternatives(parameter).some((alternative) => Object.values(alternative).some((entry) => !Array.isArray(entry)));
+
 test("changing a control the inspector hides never changes the drawing", () => {
-  let checked = 0;
+  let checked = 0, checkedNewForm = 0;
   const failures: string[] = [];
   for (const definition of definitions) {
     if (!definition.parameters.some((parameter) => parameter.visibleWhen)) continue;
@@ -106,14 +137,11 @@ test("changing a control the inspector hides never changes the drawing", () => {
     const drivers = definition.parameters.filter((parameter) => parameter.type === "select" || parameter.type === "boolean");
     let budget = 18;
     for (let attempt = 0; attempt < 6 && budget > 0; attempt++) {
-      const values = { ...createInstrument(definition.id).params };
-      for (const driver of drivers) {
-        const pool = driver.type === "boolean" ? [false, true] : driver.options!.map((option) => option.value);
-        values[driver.key] = pool[Math.floor(random() * pool.length)];
-      }
+      const values = configuration(definition, random);
       try { validateParameters(definition.id, values); } catch { continue; }
       const shown = new Set(visibleParameters(definition.id, values).map((parameter) => parameter.key));
-      const hidden = definition.parameters.filter((parameter) => !shown.has(parameter.key));
+      // Controls under alternatives or numeric thresholds first, so a crowd of older hidden controls cannot crowd them out.
+      const hidden = definition.parameters.filter((parameter) => !shown.has(parameter.key)).sort((a, b) => Number(usesNewForm(b)) - Number(usesNewForm(a)));
       const base = drawFingerprint({ ...createInstrument(definition.id), params: values });
       for (const parameter of hidden.slice(0, 4)) {
         const value = alternative(parameter, values[parameter.key], random);
@@ -121,6 +149,7 @@ test("changing a control the inspector hides never changes the drawing", () => {
         const params = { ...values, [parameter.key]: value };
         try { validateParameters(definition.id, params); } catch { continue; }
         checked++;
+        if (usesNewForm(parameter)) checkedNewForm++;
         if (drawFingerprint({ ...createInstrument(definition.id), params }) !== base)
           failures.push(`${definition.id}.${parameter.key} changed the drawing while hidden (${JSON.stringify(Object.fromEntries(drivers.map((driver) => [driver.key, values[driver.key]])))})`);
       }
@@ -128,4 +157,32 @@ test("changing a control the inspector hides never changes the drawing", () => {
   }
   assert.deepEqual(failures, []);
   assert.ok(checked > 40, `only ${checked} hidden-control changes were exercised`);
+  assert.ok(checkedNewForm > 0, "no control hidden by an alternative or a numeric threshold was exercised");
+});
+
+test("a control hidden by an alternative or a numeric threshold never changes the drawing, wherever it is hidden", () => {
+  let checked = 0;
+  const failures: string[] = [];
+  for (const definition of definitions) {
+    const targets = definition.parameters.filter(usesNewForm);
+    if (targets.length === 0) continue;
+    const random = stream([...definition.id].reduce((hash, char) => (hash * 29 + char.charCodeAt(0)) >>> 0, 17));
+    for (const parameter of targets) {
+      let found = 0;
+      for (let attempt = 0; attempt < 60 && found < 3; attempt++) {
+        const values = configuration(definition, random);
+        if (visibleParameters(definition.id, values).some((entry) => entry.key === parameter.key)) continue;
+        try { validateParameters(definition.id, values); } catch { continue; }
+        const value = alternative(parameter, values[parameter.key], random);
+        if (value === undefined) continue;
+        const params = { ...values, [parameter.key]: value };
+        try { validateParameters(definition.id, params); } catch { continue; }
+        found++; checked++;
+        if (drawFingerprint({ ...createInstrument(definition.id), params }) !== drawFingerprint({ ...createInstrument(definition.id), params: values }))
+          failures.push(`${definition.id}.${parameter.key} changed the drawing while hidden by ${JSON.stringify(parameter.visibleWhen)} (${JSON.stringify(values)})`);
+      }
+    }
+  }
+  assert.deepEqual(failures, []);
+  assert.ok(checked > 0, "no hidden control under a new-form condition was exercised");
 });
