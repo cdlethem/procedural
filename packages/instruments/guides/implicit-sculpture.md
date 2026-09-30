@@ -33,7 +33,7 @@ painted again. Nothing is filled behind the sculpture; the layer paints transpar
 | Controls | What changes on the canvas |
 |---|---|
 | **Cutaway**, **Cut position**, **Cut direction** | Removes a half-space, the quarter or octant beyond a corner, or a thin slot, so the inside shows. Direction turns the opening about the vertical axis to face the camera. The framing never changes: the sculpture is always scaled by its uncut bounds. |
-| **Hollow**, **Wall** | Turns the sculpture into a skin: the field becomes the absolute distance to the surface minus half the wall, so the wall has an outside face and an inside face. A wall thinner than about a mesh cell cannot be extracted; with facets, grains or lines on it is refused, naming Wall and Mesh detail. |
+| **Hollow**, **Wall** | Turns the sculpture into a skin: the field becomes the absolute distance to the surface minus half the wall, so the wall has an outside face and an inside face. A wall thinner than about a mesh cell cannot be extracted: facets, grains and lines then leave it out, while cells and bands still draw it. |
 | **Operation order** | With Hollow and a cut, **Shell, then cut** opens the skin and shows the empty interior between the two faces of the wall; **Cut, then shell** skins every cut face too. They differ wherever the cut meets a wall. |
 | **Twist**, **Bend** | Rotates every level about the vertical axis in proportion to height (twist), or about the front-back axis in proportion to width (bend). Strong values slow the marching (see Limits) but stay safe. |
 | **Copies across / up / deep**, **Copy gap** | Repeats the whole sculpture on a lattice spaced by its extent times one plus the gap. The picture is re-fitted, so repeats shrink each copy. |
@@ -69,7 +69,7 @@ painted again. Nothing is filled behind the sculpture; the layer paints transpar
 | Controls | What changes on the canvas |
 |---|---|
 | **Cell size**, **March steps** | The side of a ray-marched cell (cost grows with its inverse square) and the field evaluations allowed per ray. A ray that runs out is a miss, which shows as missing thin or grazing surface. |
-| **Mesh detail** | Grid cubes along the sculpture's longest side for the extracted mesh behind facets, grains and lines; smaller features than a cube blur. |
+| **Mesh detail** | Grid cubes along the sculpture's longest side for the extracted mesh behind facets, grains and lines. Features smaller than a cube blur, and a sculpture with no extractable surface (or a hollow wall thinner than 0.8 of a cube) draws no facets, grains or lines, while cells and bands still draw. |
 
 ## Things to try
 
@@ -126,7 +126,7 @@ A tree holds at most 128 nodes, nested 16 deep; fold iterations stop at 5; a rep
 copies per axis and its child must fit inside half the spacing (the tree refuses otherwise, naming the
 node). A march is checked against a worst-case work bound before any ray is traced, and refused naming
 Cell size and March steps; at most 60,000 cells are marched. The mesh takes at most 2,500,000 grid
-points and 200,000 faces, refused naming Mesh detail. Facets stop at 120,000. Twist and bend divide the
+points and 200,000 faces, refused naming Mesh detail when typed past the sliders (the slider ends always draw). Facets stop at 120,000. Twist and bend divide the
 field by a Lipschitz constant derived from the sculpture's bounding sphere, so heavily twisted forms
 march with shorter steps and may need more March steps. No physical accuracy or fabrication claim is
 made: the mesh approximates the zero set to about a cell, and a feature smaller than a cell blurs.

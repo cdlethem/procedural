@@ -711,3 +711,39 @@ test("the seed, palette and layer are plain scalars: no closure is persisted", (
   assert.throws(() => implicitSculptureComposition({ ...input, technique: "other" }), /Not a implicit-sculpture input/);
   assert.throws(() => implicitSculptureComposition({ ...input, palette: [] }), /packed RGB/);
 });
+
+test("slider ends always give a picture: every numeric control at its slider minimum and maximum, alone and together, over each bundled form", () => {
+  const numeric = definition(ID).parameters.filter((p) => p.type === "number");
+  assert.ok(numeric.length > 30);
+  const at = (side: "min" | "max") => Object.fromEntries(numeric.map((p) => [p.key, p[side] as number]));
+  const draw = (label: string, params: Record<string, number | string | boolean>): number => {
+    const input = layer({}); Object.assign(input.params, params);
+    const start = performance.now();
+    try { validateInstrument(input); drawInstrument(recorder().surface as never, input); } catch (error) { assert.fail(`${label}: ${(error as Error).message}`); }
+    return performance.now() - start;
+  };
+  const forms = ["carved-block", "lattice-cavity", "coral", "fractal-fragment"];
+  for (const form of forms) {
+    for (const p of numeric) for (const side of ["min", "max"] as const) draw(`${form} ${p.key}=${side}`, { form, [p.key]: p[side] as number });
+    for (const fill of ["none", "cells", "bands", "facets", "points"]) for (const extra of [{}, { hollow: true }, { hollow: true, cut: "corner" }, { cut: "slot", projection: "perspective" }]) {
+      const label = `${form}/${fill}/${JSON.stringify(extra)}`;
+      draw(`${label} all-min`, { form, fill, ...extra, ...at("min") });
+      for (const key of ["meshDetail", "cellSize", "size", "repeatX", "iterations", "cells"]) draw(`${label} ${key}=max`, { form, fill, ...extra, [key]: numeric.find((p) => p.key === key)!.max as number });
+      const ms = draw(`${label} all-max`, { form, fill, ...extra, ...at("max") });
+      assert.ok(ms < 2500, `${label} all-max took ${ms.toFixed(0)} ms`);
+    }
+  }
+});
+
+test("a sculpture the mesh grid cannot resolve is a valid drawing: the mesh treatments are empty and the marched ones still draw", () => {
+  // Every coral control at its slider minimum leaves nothing a 12-cube grid can resolve (the case that used to refuse).
+  const thin = Object.fromEntries(definition(ID).parameters.filter((p) => p.type === "number").map((p) => [p.key, p.min as number]));
+  Object.assign(thin, { form: "coral" }); // default quarter cut at its slider minimum leaves only fine limbs
+  const products = sculptureProducts(recipe({ ...thin, fill: "facets" }));
+  assert.equal(products.mesh, null); assert.equal(products.facets, null); assert.equal(products.lines, null);
+  const calls = (params: Record<string, number | string | boolean>) => { const r = recorder(); drawInstrument(r.surface as never, layer({ ...thin, ...params })); return r.calls.filter((c) => ["rect", "endShape", "circle"].includes(c.name)).length; };
+  assert.ok(calls({ fill: "facets", silhouette: false, creases: false, slices: 0 }) === 0, "nothing extractable and nothing marched: an empty drawing");
+  assert.ok(calls({ fill: "cells", size: 600, centerX: 320, centerY: 320, thickness: 0.15, branches: 6, cut: "none", meshDetail: 12 }) > 5, "cells march the field whatever the mesh could resolve");
+  const wall = sculptureProducts(recipe({ form: "carved-block", hollow: true, wall: 0.02, meshDetail: 12, fill: "bands", cut: "none" }));
+  assert.equal(wall.mesh, null); assert.ok(wall.view, "bands still march");
+});

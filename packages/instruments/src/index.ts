@@ -421,11 +421,11 @@ export { sdf, SDF_LIMITS, twistLipschitz, bendLipschitz, sdfSphere, sdfBox, sdfT
 export type { RayBatch, MarchOptions, MarchResult, MarchEngine, ViewOptions as SdfViewOptions, ViewStats as SdfViewStats, SdfView, Light as SdfLight } from "./composition/sdf-march.js";
 export { marchRays, marchWork, releasedScene, primaryRay, frameHalf, sdfView, buildSdfView, cachedSdfView, shadeView, lightDirection as sdfLightDirection, MARCH, DEFAULT_MARCH_WORK, MAX_VIEW_CELLS } from "./composition/sdf-march.js";
 export type { SdfMesh, SdfMeshOptions, SdfMeshProvenance, SurfacePointOptions } from "./composition/sdf-mesh.js";
-export { sdfMesh, sdfSurfacePoints, SDF_MESH_LIMITS, DEFAULT_MESH_WORK } from "./composition/sdf-mesh.js";
+export { sdfMesh, sdfSurfacePoints, SdfNoSurfaceError, SDF_MESH_LIMITS, DEFAULT_MESH_WORK } from "./composition/sdf-mesh.js";
 export type { SculptureForm, SculptureCut, SculptureOrder, SculptureSpec } from "./composition/sdf-samples.js";
 export { sculptureForms, formTree, sculptureTree, sculptureSdf } from "./composition/sdf-samples.js";
 export type { SculptureFill, ImplicitSculptureComposition, SculptureConsumers, SculptureProducts, SculptureLines, GrainProducts } from "./composition/sdf-draw.js";
-export { implicitSculptureComposition, implicitSculptureUsesSeed, sculptureCamera, sculptureProducts, toneColor, quantize as quantizeTone, MAX_FACETS, drawImplicitSculpture, drawSculptureProducts, prepareImplicitSculpture } from "./composition/sdf-draw.js";
+export { implicitSculptureComposition, implicitSculptureUsesSeed, meshOrEmpty, sculptureCamera, sculptureProducts, toneColor, quantize as quantizeTone, MAX_FACETS, drawImplicitSculpture, drawSculptureProducts, prepareImplicitSculpture } from "./composition/sdf-draw.js";
 export type { SpiralFamily, FrameOptions, SpiralOptions, LettersOptions, ScrollOptions, QuillScaffoldSpec } from "./composition/quill-scaffold.js";
 export { quillScaffold, letterPaths, spiralPaths, scrollPaths, spiralFamilies, MAX_SCAFFOLD_POINTS } from "./composition/quill-scaffold.js";
 export type { QuillTerminals, QuillCurl, QuillNestSide, QuillOverlap, QuillStripOptions, QuillStrip, NestStop, StripClash, QuillDiagnostics, QuillStrips } from "./composition/quill-strips.js";

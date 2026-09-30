@@ -10,7 +10,7 @@ import { meshFeatureEdges, meshTopology } from "./mesh-topology.js";
 import { meshDerived, meshStorage } from "./mesh.js";
 import { sliceCurves, slicePlanes, sliceMesh } from "./mesh-section.js";
 import { buildSdfView, cachedSdfView, lightDirection, sdfView, shadeView, type Light, type SdfView, type ViewOptions } from "./sdf-march.js";
-import { sdfMesh, sdfSurfacePoints, type SdfMesh } from "./sdf-mesh.js";
+import { SdfNoSurfaceError, sdfMesh, sdfSurfacePoints, type SdfMesh } from "./sdf-mesh.js";
 import { sculptureSdf, type SculptureSpec } from "./sdf-samples.js";
 import type { Sdf } from "./sdf.js";
 import type { CompositionRun, CompositionSurface, Path, PathMaterial, Point } from "./types.js";
@@ -203,18 +203,31 @@ export const viewOptions = (recipe: ImplicitSculptureComposition, run?: Composit
 const needsMesh = (r: ImplicitSculptureComposition): boolean => r.fill.mode === "facets" || r.fill.mode === "points" || r.lines.silhouette || r.lines.creases || r.lines.slices > 0;
 const needsView = (r: ImplicitSculptureComposition): boolean => r.fill.mode === "cells" || r.fill.mode === "bands";
 
+/**
+ * The extracted mesh for a recipe, or null when there is nothing the grid can resolve: no surface at all, or a hollow wall thinner than 0.8 of a mesh
+ * cell. Facets, grains, silhouettes, creases and slices then draw nothing, while cells and bands (which march the field) still draw. Slider ends
+ * always give a picture; only the mesh treatments can be empty.
+ */
+export function meshOrEmpty(tree: Sdf, recipe: ImplicitSculptureComposition, run?: CompositionRun): SdfMesh | null {
+  try {
+    const extracted = sdfMesh(tree, { detail: recipe.quality.meshDetail, run });
+    const { hollow, wall } = recipe.sculpt.carve;
+    return hollow && wall < 0.8 * extracted.provenance.spacing ? null : extracted;
+  } catch (error) {
+    if (error instanceof SdfNoSurfaceError) return null;
+    throw error;
+  }
+}
+
 export function sculptureProducts(recipe: ImplicitSculptureComposition, run?: CompositionRun): SculptureProducts {
   const tree = sculptureSdf(recipe.sculpt), view = sculptureCamera(tree, recipe.view);
-  const extracted = needsMesh(recipe) ? sdfMesh(tree, { detail: recipe.quality.meshDetail, run }) : null;
-  const { hollow, wall } = recipe.sculpt.carve;
-  if (extracted && hollow && wall < 0.8 * extracted.provenance.spacing)
-    throw new Error(`Implicit Sculpture: the hollow Wall (${wall}) is thinner than 0.8 of a mesh cell (${extracted.provenance.spacing.toFixed(3)}), so the extracted mesh cannot resolve it; raise Wall or Mesh detail, or use only the cells or bands fill without lines`);
+  const extracted = needsMesh(recipe) ? meshOrEmpty(tree, recipe, run) : null;
   return {
     sdf: tree, camera: view, mesh: extracted,
     view: needsView(recipe) ? sdfView(tree, view, viewOptions(recipe, run)) : null,
-    facets: recipe.fill.mode === "facets" ? facets(extracted!, view) : null,
+    facets: recipe.fill.mode === "facets" && extracted ? facets(extracted, view) : null,
     lines: extracted && (recipe.lines.silhouette || recipe.lines.creases || recipe.lines.slices > 0) ? lines(extracted, view, recipe.lines) : null,
-    grains: recipe.fill.mode === "points" ? grains(tree, extracted!, view, recipe) : null,
+    grains: recipe.fill.mode === "points" && extracted ? grains(tree, extracted, view, recipe) : null,
   };
 }
 
@@ -390,8 +403,8 @@ export function drawSculptureProducts(surface: CompositionSurface, recipe: Impli
     if (products.view) {
       const shade = shadeView(products.view, products.camera, products.sdf, recipe.light);
       if (mode === "cells") drawCells(surface, recipe, products.view, shade, run); else drawBands(surface, recipe, products.view, shade, run);
-    } else if (mode === "facets") drawFacets(surface, recipe, products, run);
-    else if (mode === "points") drawGrains(surface, recipe, products, run);
+    } else if (mode === "facets" && products.facets) drawFacets(surface, recipe, products, run);
+    else if (mode === "points" && products.grains) drawGrains(surface, recipe, products, run);
   }
   if (products.lines) {
     if (products.lines.slices.length) strokeWith(surface, products.lines.slices as readonly Path[], consumers.line ?? lineMaterial(recipe, recipe.lines.sliceWeight), run);
@@ -417,7 +430,7 @@ export async function prepareImplicitSculpture(recipe: ImplicitSculptureComposit
     await yieldToHost();
     if (needsMesh(recipe)) {
       if (cancelled()) return false;
-      sdfMesh(tree, { detail: recipe.quality.meshDetail, run });
+      meshOrEmpty(tree, recipe, run);
       await yieldToHost();
     }
     if (needsView(recipe) && !cachedSdfView(tree, view, viewOptions(recipe))) {
