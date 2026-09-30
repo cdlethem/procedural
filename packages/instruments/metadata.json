@@ -622,6 +622,19 @@
       "creativeReviewScope": "instrument-construction"
     },
     {
+      "id": "cyclic-fronts",
+      "title": "Cyclic Fronts",
+      "description": "Expanding domains, interleaved fronts and spiral waves from a cyclic cellular automaton: every cell steps to the next of n states when enough neighbors already are, then the state cells (flat, hatched or marked), the fronts between them and the spiral cores are each drawn from the same grid, with obstacles that stop a front and a step count that scrubs the growth.",
+      "category": "Systems & rules",
+      "operationIds": [],
+      "presetOf": null,
+      "presets": [],
+      "guide": "guides/cyclic-fronts.md",
+      "source": "packages/instruments/src/composition/cyclic-fronts.ts",
+      "sourceEntry": "drawCyclicFronts",
+      "creativeReviewScope": "instrument-construction"
+    },
+    {
       "id": "polygon-watercolor",
       "title": "Polygon Watercolor",
       "description": "Lay translucent washes over a shape (a blob, a ring, letterforms or quilt compartments): every pass keeps the parent shape but has its own ragged boundary, correlated with the others, so pigment builds up unevenly; reserved holes stay unpainted, and a light partial wash and a dense overpainted patch are the same instrument with different settings.",

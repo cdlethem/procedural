@@ -59,6 +59,8 @@ import { drawStrokeRelief, prepareStrokeRelief, strokeReliefComposition } from "
 import { inversionGardensDefinition } from "./adapters/inversion-gardens-instrument.js";
 import { drawInversionGardens, inversionGardensComposition, inversionGardensUsesSeed, prepareInversionGardens } from "./composition/inversion-gardens.js";
 import { pathTypographyDefinition, pathTypographyUsesSeed } from "./adapters/path-typography-instrument.js";
+import { cyclicFrontsDefinition } from "./adapters/cyclic-fronts-instrument.js";
+import { cyclicFrontsComposition, cyclicFrontsUsesSeed, drawCyclicFronts, prepareCyclicFronts } from "./composition/cyclic-fronts.js";
 import { chemotacticTrailsDefinition } from "./adapters/chemotactic-trails-instrument.js";
 import { chemotacticTrailsComposition, drawChemotacticTrails, prepareChemotacticTrails } from "./composition/chemotaxis-draw.js";
 import { drawPathTypography, pathTypographyComposition, preparePathTypography } from "./composition/path-type-draw.js";
@@ -350,6 +352,13 @@ export type { PointGridOptions, PointHit } from "./composition/spatial-index.js"
 export { PointGrid, MAX_GRID_CELLS } from "./composition/spatial-index.js";
 export type { LatticeWalkOptions, LatticeStep, AngleWalkOptions, AngleStep } from "./composition/walks.js";
 export { latticeWalkStep, angleWalkStep, LATTICE_DIRECTIONS } from "./composition/walks.js";
+export type { CyclicRule, CyclicConstruction, CyclicState, CyclicStep, InitialSpec, ObstacleSpec, NeighbourhoodShape, StampName } from "./composition/cyclic-rule.js";
+export { cyclicSimulation, neighbourOffsets, obstacleRuns, lettersObstacle, checkConstruction as checkCyclicConstruction, CYCLIC_LIMITS, WALL as CYCLIC_WALL } from "./composition/cyclic-rule.js";
+export type { CyclicGrid, CyclicFrame, GridGeometry, StateRegion, FrontPath, FrontOptions, CoreSite } from "./composition/cyclic-structure.js";
+export { cyclicGrid, gridGeometry, stateRegions, frontPaths, spiralCores, cellSites, stateCounts, MAX_SMOOTHING } from "./composition/cyclic-structure.js";
+export type { CyclicInk, CyclicParams } from "./composition/cyclic-params.js";
+export type { CyclicFrontsComposition, CyclicFrontsConsumers, CyclicFrontsProducts, CyclicSummary, CyclicSnapshots } from "./composition/cyclic-fronts.js";
+export { cyclicFrontsComposition, cyclicFrontsProducts, cyclicSnapshots, hasCyclicSnapshots, cyclicSummary, statePalette, stateHatch, drawCyclicFronts, prepareCyclicFronts, CYCLIC_DRAW_UNITS } from "./composition/cyclic-fronts.js";
 export type { NodalShape, NodalEdge, ModeFunction } from "./composition/nodal-modes.js";
 export { besselJ, besselJPrime, besselPair, besselZero, rectangleMode, circleMode, NODAL_MAX_INDEX } from "./composition/nodal-modes.js";
 export type { NodalMode, NodalFieldOptions, NodalResolvedMode, NodalGrid, NodalField, NodalSiteOptions, NodalSite } from "./composition/nodal-plate.js";
@@ -421,7 +430,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, wetPigmentDefinition, cyclicFrontsDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -551,6 +560,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "connected-value-regions": [0x231f24, 0xb5452e, 0xe0a13a, 0x2f6f7a, 0xefe6d2],
   "stroke-relief": [0x2b2019, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
   "crossing-lace": [0x1f2a33, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c],
+  "cyclic-fronts": [0x1c2b4f, 0x2e8b9d, 0xe6be5a, 0xd9553b, 0x8a2f7a],
   "region-stitch": [0x2b2a33, 0xb8503a, 0xe0b458, 0x4d7c8a, 0x7f9a4f, 0x8b4a6f],
   "inversion-gardens": [0x1d2733, 0xc4452b, 0x2f6f8f, 0xd9a441, 0x4f7a5c, 0x8a4a86],
   "random-walk-fronts": [0xc4452b, 0xe0a13a, 0x2f7f86, 0x6f9a55, 0x8b5190, 0x1f2733],
@@ -579,6 +589,7 @@ export function drawInstrument(context: DrawingContext, input: InstrumentInput):
 function drawUncomposited(context: DrawingContext, input: InstrumentInput): void {
   definition(input.technique);
   if (input.technique === "branch-ornament") return drawBranchOrnament(context, branchOrnamentComposition(input));
+  if (input.technique === "cyclic-fronts") return drawCyclicFronts(context, cyclicFrontsComposition(input));
   if (input.technique === "gesture-scores") return drawGestureScore(context, gestureScoreComposition(input));
   if (input.technique === "path-typography") return drawPathTypography(context, pathTypographyComposition(input));
   if (input.technique === "glyph-packing") return drawGlyphPacking(context, glyphPackingComposition(input));
@@ -622,7 +633,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "wet-pigment" || id === "cyclic-fronts" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -631,6 +642,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "branch-ornament")
     return prepareBranchOrnament(branchOrnamentComposition(input), cancelled);
   if (input.technique === "gesture-scores") return prepareGestureScore(gestureScoreComposition(input), cancelled);
+  if (input.technique === "cyclic-fronts") return prepareCyclicFronts(cyclicFrontsComposition(input), cancelled);
   if (input.technique === "fm-engraving") return prepareEngraving(engravingComposition(input), cancelled);
   if (input.technique === "path-typography") return preparePathTypography(pathTypographyComposition(input), cancelled);
   if (input.technique === "glyph-packing") return prepareGlyphPacking(glyphPackingComposition(input), cancelled);
@@ -686,6 +698,7 @@ export function usesSeed(input: InstrumentInput): boolean {
   switch (input.technique) {
     case "quantized-stripes": return q.order === "shuffle";
     case "sand-deposition": return true;
+    case "cyclic-fronts": return cyclicFrontsUsesSeed(q);
     case "nodal-plates": return nodalPlatesUsesSeed(q);
     case "quilled-paths": return quillUsesSeed(q);
     case "gesture-scores": return q.recording === "wander" || Number(q.hairs) > 0 && q.bristles === true || q.sandMark !== "none" ||
