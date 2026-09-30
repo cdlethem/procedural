@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  growthBoundaryPaths, GROWTH_KIND_FREE, GROWTH_KIND_SINK, GROWTH_KIND_SOURCE, GROWTH_KIND_WALL, canPrepareInstrument, checkSimulation, createInstrument, drawLaplacianFronts,
+  definitions, growthBoundaryPaths, GROWTH_KIND_FREE, GROWTH_KIND_SINK, GROWTH_KIND_SOURCE, GROWTH_KIND_WALL, canPrepareInstrument, checkSimulation, createInstrument, drawLaplacianFronts,
   finalState, growthAgeSites, growthCached, growthDiagnostics, growthFrontPaths, growthFrontRates, growthFrontSteps, growthBandSteps, growthLastActiveStep, growthLayout,
   growthPillarCentres, growthSimulation, growthSnapshots, growthTipSites, laplacianFrontsComposition, laplacianFrontsProducts, prepareInstrument, solveLaplacePotential,
   stateAt, validateParameters, growthEquipotentialPaths, growthPotentialField, growthOccupiedRegion, usesSeed, drawInstrument,
@@ -462,4 +462,33 @@ test("boundary outlines are the wall and sink cells: closed rings whose area mat
   const surface = new Proxy({ CLOSE: 1, ROUND: 2 } as Record<string, unknown>, { get: (t, k: string) => (k in t ? t[k] : () => {}) });
   drawLaplacianFronts(surface as never, recipe({ ...params, grid: 96, steps: 10 }, 3), { boundary: (_s, path) => { drawn.push(path.id); } });
   assert.deepEqual(drawn, paths.map((p) => p.id));
+});
+
+test("the slider corner of every cost driver validates and prepares within its residual, and hard limits still admit exact entry", () => {
+  const item = definitions.find((d) => d.id === "laplacian-fronts")!;
+  const max = (key: string): number => item.parameters.find((p) => p.key === key)!.max!;
+  const hardMax = (key: string): number => item.parameters.find((p) => p.key === key)!.hardMax!;
+  const corner = { ...defaults(), grid: max("grid"), steps: max("steps"), maxIterations: max("maxIterations"), precision: max("precision"), source: "edge", sourceSide: "top",
+    sourceSize: 14, seedShape: "bar", seedX: 320, seedY: 560, seedSpread: 220, seedRadius: 8, eta: 1, tension: 6, frontMaterial: "beads", frontEvery: 1, frontSpacing: 3,
+    frontSmooth: 3, fill: "bands", marks: "age", markSpacing: 8, potential: "lines", potentialLines: 24, boundary: "outline" };
+  validateParameters("laplacian-fronts", corner);
+  const input = { ...createInstrument("laplacian-fronts"), params: corner };
+  const products = laplacianFrontsProducts(laplacianFrontsComposition(input)), info = products.diagnostics;
+  assert.equal(info.stopped, "running", "the corner is a real run to the last step");
+  assert.equal(info.lastActiveStep, max("steps"));
+  assert.ok(info.residualMax <= 1e-8 && info.iterationsMax <= 4 * max("maxIterations"));
+  const surface = new Proxy({ CLOSE: 1, ROUND: 2 } as Record<string, unknown>, { get: (t, k: string) => (k in t ? t[k] : () => {}) });
+  drawInstrument(surface as never, input);
+  // Hard limits stay for exact entry: a setting beyond every slider but inside the named work bound validates, one beyond it names the controls.
+  validateParameters("laplacian-fronts", { ...defaults(), grid: 160, steps: 240, maxIterations: 1000, precision: 10 });
+  assert.throws(() => validateParameters("laplacian-fronts", { ...defaults(), grid: hardMax("grid"), steps: hardMax("steps"), maxIterations: hardMax("maxIterations") }), /Lower Steps, Grid or Solver iterations/);
+  assert.ok(max("grid") < hardMax("grid") && max("steps") < hardMax("steps") && max("maxIterations") < hardMax("maxIterations") && max("precision") < hardMax("precision"));
+});
+
+test("the densest beads a hard setting allows (a bead every half unit on every front, smoothed) still draw inside the callback budget", () => {
+  const heavy = recipe({ grid: 64, steps: 120, frontMaterial: "beads", frontSpacing: 0.5, frontEvery: 1, frontSmooth: 3, tension: 6 });
+  let calls = 0;
+  const surface = new Proxy({ CLOSE: 1, ROUND: 2 } as Record<string, unknown>, { get: (t, k: string) => (k in t ? t[k] : () => { calls++; }) });
+  drawLaplacianFronts(surface as never, heavy);
+  assert.ok(calls > 100_000, `${calls} drawing calls`);
 });

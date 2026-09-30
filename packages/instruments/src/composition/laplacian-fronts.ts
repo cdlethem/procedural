@@ -39,6 +39,8 @@ type Scalar = number | string | boolean;
 export const RAMP = 12;
 /** Vertices of the fronts one drawing may stroke, after smoothing. */
 export const MAX_DRAWN_VERTICES = 1_500_000;
+/** Callback work of stitches and beads one drawing may spend (the run also carries the mark sites and the solver run's step count). */
+export const MAX_DRAW_WORK = 1_800_000;
 export const MAX_MARK_SITES = 30_000;
 
 export interface FrontStrokes {
@@ -165,18 +167,31 @@ function smoothed(path: Path, rounds: number): Path {
   return made;
 }
 
-/** The stroked fronts of a recipe: frozen paths tinted by age (the last window front separately, for its own weight). */
+/**
+ * The stroked fronts of a recipe: frozen paths tinted by age (the last window front separately, for its own weight).
+ * Stitches and beads cost `points + 2 × stations` callback work per path (stations = arc length / spacing); the total is bounded by
+ * `MAX_DRAW_WORK`, and the error names the controls that lower it.
+ */
 export function frontStrokes(recipe: LaplacianFrontsComposition, products: LaplacianFrontsProducts): { history: readonly Path[]; final: readonly Path[] } {
   const view = recipe.fronts!, last = lastActiveStep(products.snapshots);
   const steps = frontSteps(last, view), edge = steps[steps.length - 1];
-  let vertices = 0;
+  const spaced = view.material.kind !== "ink";
+  let vertices = 0, work = 0;
   const history: Path[] = [], final: Path[] = [];
   for (const step of steps) for (const path of frontPaths(products.snapshots, step)) {
     vertices += path.points.length * 2 ** view.smooth;
     if (vertices > MAX_DRAWN_VERTICES)
       throw new Error(`The drawn fronts would need over ${MAX_DRAWN_VERTICES} vertices; raise Front interval, narrow First front / Last front or lower Front smoothing`);
-    const tinted = { ...smoothed(path, view.smooth), tone: toneOf(path.levelFraction) };
-    (step === edge && view.finalWeight > 0 ? final : history).push(tinted);
+    const smooth = smoothed(path, view.smooth);
+    if (spaced) {
+      let length = 0;
+      const points = smooth.points;
+      for (let i = 1; i < points.length; i++) length += Math.hypot(points[i][0] - points[i - 1][0], points[i][1] - points[i - 1][1]);
+      work += points.length + 2 * (Math.ceil(length / view.material.spacing) + 1);
+      if (work > MAX_DRAW_WORK)
+        throw new Error(`The stitches or beads would need over ${MAX_DRAW_WORK} callback units; raise Front interval or Stitch spacing, narrow First front / Last front or lower Front smoothing`);
+    }
+    (step === edge && view.finalWeight > 0 ? final : history).push({ ...smooth, tone: toneOf(path.levelFraction) });
   }
   return { history, final };
 }
@@ -196,7 +211,7 @@ function paintOutline(surface: CompositionSurface, outline: readonly (readonly P
 
 /** Draw the recipe into a caller-owned surface: fill, potential lines, fronts, then marks. */
 export function drawLaplacianFronts(surface: CompositionSurface, recipe: LaplacianFrontsComposition,
-  consumers: LaplacianConsumers = {}, run: CompositionRun = createCompositionRun({ maxWork: 400_000 })): void {
+  consumers: LaplacianConsumers = {}, run: CompositionRun = createCompositionRun({ maxWork: MAX_DRAW_WORK + 100_000 })): void {
   run.check();
   const products = laplacianFrontsProducts(recipe, run), { snapshots } = products, last = lastActiveStep(snapshots);
   const ramp = ageRamp(recipe.palette);

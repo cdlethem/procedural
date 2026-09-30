@@ -89,16 +89,17 @@ interval, first/last front, proportional *Line weights*, stitch spacing, bead si
 lobed/necklace/bar; source controls by source kind; sink and barrier controls by their selects; front controls by front material;
 fill controls by fill; marks controls by marks; boundary weight and potential controls by their selects.
 
-Slider intervals (grid 48–160, steps 1–240, iterations 100–1500, growth bias 0–3, tension 0–40) sit inside measured territory; hard
-bounds are wider (grid 24–256, steps ≤ 2000, iterations ≤ 5000, bias ≤ 8) and are limited by the declared work
-`initialWork + steps · grid² · (iterations + 30) ≤ 10,000,000,000` cell updates. The cap is the worst case (every solve using every sweep),
-about 50 s at 5 ns/update; actual solves need 100–1100 sweeps, and a solve that exhausts its sweeps fails immediately. Every message names
+Slider intervals of the cost drivers (grid 48–112, steps 1–120, solver iterations 100–1000, precision 4–8; growth bias 0–3, tension
+0–40) were narrowed so that the worst slider corner, with every treatment on, prepares in about 2 s or less (table below). Hard bounds
+stay wider for exact entry (grid 24–256, steps ≤ 2000, iterations ≤ 5000, precision 2–12, bias ≤ 8) and are limited by the declared work
+`initialWork + steps · grid² · (iterations + 30) ≤ 10,000,000,000` cell updates. The cap is the worst case (every solve using every sweep);
+actual solves need 100–1100 sweeps, and a solve that exhausts its sweeps fails immediately. Every message names
 Steps, Grid and Solver iterations. Retained-history and checkpoint memory (16M and 6M values) are bounded by the runner and rethrown naming
 Steps and Grid. Drawn front vertices ≤ 1,500,000 (message names Front interval, First/Last front, Front smoothing); mark sites ≤ 30,000.
 
 ## Checks
 
-`tests/composition-laplacian-fronts.test.ts` (20 tests), independent expectations throughout: the potential of a disc in a ring against
+`tests/composition-laplacian-fronts.test.ts` (22 tests), independent expectations throughout: the potential of a disc in a ring against
 `ln(r/a)/ln(b/a)` at the cells' effective radii (deviation < 0.02) and an independent residual pass equal to the reported one; maximum
 principle, fixed cells never entered, for every source kind with sinks and barriers; an unconverged solve throws naming the controls; a
 poisoned (NaN) iterate never converges and a one-cell gap solves finite; the speed law (`w = rate(1)²/rate(2) ∈ [1, √2]`, `rate(0) = w`,
@@ -110,7 +111,7 @@ cancellation) for two constructions; prefix property on fronts and ages; palette
 and every structural edit, seed, and hidden-control-free edit recompute or reuse as declared; extension and checkpoint replay; cooperative
 preparation with cancellation leaving nothing cached; layout classification, dropped seeds, pillar prefix stability; sinks and one-sided
 sources bend growth; tips are frontier speed maxima pointing outward, ages increase outward, equipotentials nest; consumer replacement;
-boundary outline areas; bounds naming controls.
+boundary outline areas; bounds naming controls; the slider corner of every cost driver validates, runs to its last step within its residual and draws, while a hard-limit setting beyond every slider still validates and one beyond the work bound names its controls.
 
 Mutations confirmed to fail (each by at least one test): growth bias ignored; a non-converged solve accepted; excess fill dropped;
 surface-tension sign flipped; staircase weight removed; reached-source stop removed; hidden controls entering the construction key; NaN
@@ -131,23 +132,32 @@ in both orders. Defects found by looking and fixed:
 - walls and pillars were invisible, so bent fronts had no visible cause: the *Boundary lines* treatment;
 - pillars were placed by maximum distance from the seed, i.e. in the corners: now seeded in the band the growth reaches;
 - a solver bug found by a stalled-looking run (thin gap: NaN Jacobi radius, NaN potential reported as converged): fixed and tested;
-- one-sided sources needed > 600 sweeps: default 1000, slider up to 1500;
+- one-sided sources needed > 600 sweeps: default 1000, slider up to 1000 (grid and steps sliders narrowed to keep the worst corner near 2 s);
+- a beads-every-step corner failed with the unnamed "Composition work budget exceeded": the drawing budget is now 1.9M with the stroke work estimated up front (the densest hard setting, beads every 0.5 units on every front, draws inside it; a test) and its error names the controls;
 - lattice anisotropy: on a plain disc with η ≥ 2 and little noise the fingers align to the grid axes, and η = 0 gives a slightly
   octagonal offset (22.5° radius 4.5% above 0°). Not fixed: it is a property of the square grid and the cell-wise flux estimate;
   noise, off-axis lobes and finer grids reduce it (stated in the guide).
 
-## Timing (Node, null surface, this machine; another agents' load varies it by about 2×)
+## Timing (Node, null surface, this machine)
 
-| Case | First preparation | Appearance edit | Structural edit | +10 steps |
-|---|---|---|---|---|
-| Default (grid 96, 80 steps, reaches nothing) | 470 ms | 3 ms (recolour), 37 ms (material + fill + tips) | 350 ms | 46 ms |
-| Steps 240, grid 96, tension 14 | 300 ms (front reached the ring at step 109) | 1–12 ms | 310 ms | 2 ms |
-| Steps 240, grid 128 | 820 ms (stopped at 145) | 2–20 ms | 855 ms | 2 ms |
-| Steps 240, grid 160, 1000 sweeps | 1.5 s (stopped at 164) | 1–13 ms | 1.6 s | 6 ms |
-| **All maxima**: steps 240, grid 160, 1500 sweeps, one-sided source (240 real steps, 1.9 billion cell updates, 1,074 sweeps at worst) | **4.8 s** | 2–23 ms | 4.9 s | 2 ms |
+Measured while other agents kept the 24-core machine at load 20–24, as **process CPU milliseconds** (wall time was 1.5–2× worse), so an
+idle machine should be about twice as fast: the default measured 305 ms at load 14 and 620 ms at load 24. A test
+(`the slider corner of every cost driver validates…`) builds the corner from the definition's slider maxima and runs it.
 
-Preparation through `prepareInstrument` is time-sliced (steps are the cancellation grain, about 20 ms each at the maximum); a direct
-`drawInstrument` on an unprepared setting blocks for the first-preparation time.
+| Case | First preparation | Recolour / material+fill+marks edit | Structural edit |
+|---|---|---|---|
+| Default (grid 96, 80 steps) | 620 ms (305 ms at lower load) | 2 ms / 100–270 ms with every treatment on | 340 ms |
+| **Slider corner**, one-sided source, grid 112, 120 steps, 1000 sweeps, precision 8, every treatment (beads every step, smoothing 3, 12+ potential lines, age marks, bands, outlines) | 2.1 s solve + 0.4 s drawing | 200 ms | 340 ms drawing / 2.4 s if the construction changes |
+| Slider corner, ring source (120 steps, no contact) | 1.2 s | 220 ms | 1.2 s |
+| Slider corner, frame source (contact at step 108) | 1.5 s | 230 ms | 1.4 s |
+| Slider corner, five point sources (contact at step 87) | 2.3 s | 130 ms | 2.2 s |
+| Slider corner, wall with gaps + one-sided source (worst measured, 1620 sweeps in the first solve) | 2.8 s | 96 ms | 2.2 s |
+| **Hard max**: grid 160, steps 240, 1500 sweeps, precision 10, every treatment (1.9–4.1 billion cell updates) | 8.8 s wall / 13 s CPU under load | 290–620 ms | 9–16 s |
+
+Those loaded figures divided by about two give 1.1–1.4 s for the worst slider corner on an idle machine; they are a conversion, not a
+measurement. A drawing prepared through `prepareInstrument` is time-sliced (steps are the cancellation grain, about 15–25 ms each at the
+corner); a direct `drawInstrument` on an unprepared setting blocks for the first-preparation time. Stitch/bead drawing work is bounded by an
+explicit estimate (`points + 2 × stations ≤ 1,800,000`, error names Front interval, Stitch spacing, First/Last front and Front smoothing).
 
 ## Open concerns and decisions to confirm
 
