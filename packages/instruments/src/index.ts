@@ -74,6 +74,8 @@ import { valueRegionsDefinition } from "./adapters/value-regions-instrument.js";
 import { drawValueRegions, prepareValueRegions, valueRegionsComposition, valueRegionsUsesSeed } from "./composition/value-regions-draw.js";
 import { randomWalkFrontsDefinition } from "./adapters/random-walk-fronts-instrument.js";
 import { drawWalkFronts, prepareRandomWalkFronts, randomWalkFrontsComposition } from "./composition/walk-fronts-draw.js";
+import { pointCloudsDefinition } from "./adapters/point-clouds-instrument.js";
+import { drawPointClouds, pointCloudsComposition, pointCloudsUsesSeed, preparePointClouds } from "./composition/point-clouds-draw.js";
 
 export type { ControlGroup, CutEdit, InstrumentDefinition, InspectorItem, InstrumentInput, Parameter, CutRegion };
 export { createCutModel, cutRegions, MAX_CUT_EDITS, validateCutEdits };
@@ -395,6 +397,20 @@ export { randomWalkFrontsComposition, randomWalkFrontsProducts, drawWalkFronts, 
 export type { ContourEnd, LevelTies, ContourNode, ContourCurve, SectionPlane, PlaneFrame, SectionOptions, SectionLoop, MeshSection, MeshSlices, SlicePlaneOptions,
   SectionDomainOptions, IsoOptions, IsoCurve, IsoContours } from "./composition/mesh-section.js";
 export { planeFrame, sectionMesh, sliceMesh, sliceCurves, slicePlanes, sectionDomain, isoContours, SECTION_LIMITS, DEFAULT_SECTION_WORK } from "./composition/mesh-section.js";
+export { derivePointCloud } from "./composition/mesh-sample.js";
+export type { NeighborTable } from "./composition/point-structure.js";
+export { nearestNeighbors, neighborTable, describePointCloud, eigenSymmetric3, rankValues, STRUCTURE_LIMITS, DESCRIBED_ATTRIBUTES } from "./composition/point-structure.js";
+export type { SubjectKind as PointSubjectKind, GalaxySpec, NoiseSpec as PointNoiseSpec, SubjectSpec as PointSubjectSpec, PointSubject } from "./composition/point-subjects.js";
+export { pointSubject, isMeshSubject, MESH_SUBJECTS, SUBJECT_KINDS, GALAXY_RADIUS } from "./composition/point-subjects.js";
+export type { PointFrame, CutAxis, CutSpec as PointCutSpec, ThinRule, FocusSpec as PointFocusSpec, KeepSpec as PointKeepSpec, Kept as KeptPoints } from "./composition/point-select.js";
+export { pointFrame, cutPoints, cutMesh, keepPoints, dispersePoints, pointRank, THIN_RULES } from "./composition/point-select.js";
+export type { ViewSpec as PointViewSpec, ViewedPoint, ViewOptions as PointViewOptions, PointView, PointLink, LinkSet as PointLinkSet, LinkOptions as PointLinkOptions, LinkPath as PointLinkPath,
+  OutlineSpec as PointOutlineSpec, Outline as PointOutline } from "./composition/point-view.js";
+export { pointCamera, viewPoints, pointLinks, linkPaths, outlinePaths, MAX_LINKS as MAX_POINT_LINKS, VIEW_WORK as POINT_VIEW_WORK } from "./composition/point-view.js";
+export type { MarkKind as PointMarkKind, AxisKind as PointAxisKind, ColorBy as PointColorBy, Blend as PointBlend, MarkStyle as PointMarkStyle, PointSite, PointMark, LinkStyle as PointLinkStyle } from "./composition/point-marks.js";
+export { markSites as pointMarkSites, stockMark as stockPointMark, linkMaterial as pointLinkMaterial, paletteRamp as pointPaletteRamp, pointToner, rampIndex, RAMP_STEPS, DISC_SIDES } from "./composition/point-marks.js";
+export type { PointCloudsComposition, PointCloudProducts, PointCloudScene, PointCloudConsumers } from "./composition/point-clouds-draw.js";
+export { pointCloudsComposition, pointCloudProducts, pointCloudScene, drawPointCloudScene, drawPointClouds, preparePointClouds, MAX_DRAWN_ITEMS } from "./composition/point-clouds-draw.js";
 
 /** A structurally typed caller-owned p5 drawing surface, without a runtime p5 dependency. */
 export type DrawingContext = Parameters<(typeof creativeDrawers)[string]>[0]
@@ -413,7 +429,7 @@ const authoredDefinitions: readonly InstrumentDefinition[] = [
   ...externalExpansionDefinitions, ...externalDynamicsDefinitions,
   ...systemsDefinitions, ...pathsDefinitions,
   ...creativeDefinitions, ...referenceDefinitions, ...branchOrnamentDefinitions,
-  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition,
+  ...gestureScoresDefinitions, dataScoresDefinition, bundledRelationsDefinition, dryBristlesDefinition, ...sandDepositionDefinitions, crossingLaceDefinition, pathTypographyDefinition, quilledPathsDefinition, imageDirectedFieldDefinition, slitCompositionsDefinition, strokeReliefDefinition, fmEngravingDefinition, painterlySourceDefinition, pixelSortingDefinition, nodalPlatesDefinition, glyphPackingDefinition, polygonWatercolorDefinition, shapePackingDefinition, regionStitchDefinition, inversionGardensDefinition, outlineTypeDefinition, valueRegionsDefinition, randomWalkFrontsDefinition, chemotacticTrailsDefinition, hyperbolicGardensDefinition, pointCloudsDefinition,
 ];
 export const definitions: readonly InstrumentDefinition[] = applyControlDependencies(authoredDefinitions).map(resolveControlGroups);
 const byId = new Map<string, InstrumentDefinition>();
@@ -547,6 +563,7 @@ const referencePalettes: Record<string, readonly number[]> = {
   "random-walk-fronts": [0xc4452b, 0xe0a13a, 0x2f7f86, 0x6f9a55, 0x8b5190, 0x1f2733],
   "chemotactic-trails": [0x1f3040, 0xc4452b, 0xd9a441, 0x2f7a86, 0x6a8f4a],
   "hyperbolic-gardens": [0x1f2733, 0xc4573b, 0xe3a93f, 0x2f7c78, 0x7d4d8f],
+  "point-clouds": [0x1d3557, 0x2a9d8f, 0xe9c46a, 0xf4a261, 0xc4452b],
 };
 const effectsIds = new Set(effectsDefinitions.map(item => item.id));
 const pathsIds = new Set(pathsDefinitions.map(item => item.id));
@@ -589,6 +606,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
   if (input.technique === "crossing-lace") return drawCrossingLace(context, crossingLaceComposition(input));
   if (input.technique === "region-stitch") return drawStitches(context, regionStitchComposition(input));
   if (input.technique === "hyperbolic-gardens") return drawHyperbolicGardens(context, hyperbolicGardensComposition(input));
+  if (input.technique === "point-clouds") return drawPointClouds(context, pointCloudsComposition(input));
   if (input.technique === "bundled-relations") return drawBundledRelations(context, bundledRelationsComposition(input));
   if (input.technique === "dry-bristles") return drawDryBristles(context, dryBristlesComposition(input));
   if (input.technique === "polygon-watercolor") return drawPolygonWatercolor(context, polygonWatercolorComposition(input));
@@ -612,7 +630,7 @@ function drawUncomposited(context: DrawingContext, input: InstrumentInput): void
 
 export function canPrepareInstrument(id: string): boolean {
   definition(id);
-  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || externalDynamicsPreparable.has(id);
+  return referenceIds[id] === true || id === "branch-ornament" || id === "gesture-scores" || id === "pixel-sorting" || id === "data-scores" || id === "bundled-relations" || id === "dry-bristles" || id === "sand-deposition" || id === "crossing-lace" || id === "path-typography" || id === "quilled-paths" || id === "image-directed-field" || id === "slit-compositions" || id === "stroke-relief" || id === "fm-engraving" || id === "painterly-source" || id === "nodal-plates" || id === "glyph-packing" || id === "polygon-watercolor" || id === "shape-packing" || id === "region-stitch" || id === "inversion-gardens" || id === "outline-type" || id === "connected-value-regions" || id === "random-walk-fronts" || id === "chemotactic-trails" || id === "hyperbolic-gardens" || id === "point-clouds" || externalDynamicsPreparable.has(id);
 }
 
 /** Cooperative cache warm-up; false means the caller cancelled before drawing. */
@@ -643,6 +661,7 @@ export async function prepareInstrument(input: InstrumentInput, cancelled: () =>
   if (input.technique === "crossing-lace") return prepareCrossingLace(crossingLaceComposition(input), cancelled);
   if (input.technique === "region-stitch") return prepareStitches(regionStitchComposition(input), cancelled);
   if (input.technique === "hyperbolic-gardens") return prepareHyperbolicGardens(hyperbolicGardensComposition(input), cancelled);
+  if (input.technique === "point-clouds") return preparePointClouds(pointCloudsComposition(input), cancelled);
   if (input.technique === "bundled-relations") return prepareBundledRelations(bundledRelationsComposition(input), cancelled);
   if (input.technique === "inversion-gardens") return prepareInversionGardens(inversionGardensComposition(input), cancelled);
   if (input.technique === "chemotactic-trails") return prepareChemotacticTrails(chemotacticTrailsComposition(input), cancelled);
@@ -692,6 +711,7 @@ export function usesSeed(input: InstrumentInput): boolean {
     case "image-directed-field": return q.lines === true || q.mark !== "none" && (Number(q.markJitter) > 0 || Number(q.markVariation) > 0 || Number(q.markRetention) < 1);
     case "crossing-lace": return crossingLaceUsesSeed(q);
     case "hyperbolic-gardens": return hyperbolicGardensUsesSeed(q);
+    case "point-clouds": return pointCloudsUsesSeed(q);
     case "bundled-relations": return bundledRelationsUsesSeed(q);
     case "region-stitch": return regionStitchUsesSeed(q);
     case "inversion-gardens": return inversionGardensUsesSeed(q);
